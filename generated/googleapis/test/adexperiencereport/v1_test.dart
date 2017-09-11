@@ -1,12 +1,10 @@
 library googleapis.adexperiencereport.v1.test;
 
 import "dart:core" as core;
-import "dart:collection" as collection;
 import "dart:async" as async;
 import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
-import 'package:http/testing.dart' as http_testing;
 import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/adexperiencereport/v1.dart' as api;
@@ -22,7 +20,8 @@ class HttpServerMock extends http.BaseClient {
 
   async.Future<http.StreamedResponse> send(http.BaseRequest request) {
     if (_expectJson) {
-      return request.finalize()
+      return request
+          .finalize()
           .transform(convert.UTF8.decoder)
           .join('')
           .then((core.String jsonString) {
@@ -45,20 +44,20 @@ class HttpServerMock extends http.BaseClient {
   }
 }
 
-http.StreamedResponse stringResponse(
-    core.int status, core.Map<core.String, core.String> headers, core.String body) {
+http.StreamedResponse stringResponse(core.int status,
+    core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed1774() {
+buildUnnamed1772() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1774(core.List<core.String> o) {
+checkUnnamed1772(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -74,7 +73,7 @@ buildPlatformSummary() {
     o.enforcementTime = "foo";
     o.filterStatus = "foo";
     o.lastChangeTime = "foo";
-    o.region = buildUnnamed1774();
+    o.region = buildUnnamed1772();
     o.reportUrl = "foo";
     o.underReview = true;
   }
@@ -90,7 +89,7 @@ checkPlatformSummary(api.PlatformSummary o) {
     unittest.expect(o.enforcementTime, unittest.equals('foo'));
     unittest.expect(o.filterStatus, unittest.equals('foo'));
     unittest.expect(o.lastChangeTime, unittest.equals('foo'));
-    checkUnnamed1774(o.region);
+    checkUnnamed1772(o.region);
     unittest.expect(o.reportUrl, unittest.equals('foo'));
     unittest.expect(o.underReview, unittest.isTrue);
   }
@@ -120,14 +119,14 @@ checkSiteSummaryResponse(api.SiteSummaryResponse o) {
   buildCounterSiteSummaryResponse--;
 }
 
-buildUnnamed1775() {
+buildUnnamed1773() {
   var o = new core.List<api.SiteSummaryResponse>();
   o.add(buildSiteSummaryResponse());
   o.add(buildSiteSummaryResponse());
   return o;
 }
 
-checkUnnamed1775(core.List<api.SiteSummaryResponse> o) {
+checkUnnamed1773(core.List<api.SiteSummaryResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSiteSummaryResponse(o[0]);
   checkSiteSummaryResponse(o[1]);
@@ -138,7 +137,7 @@ buildViolatingSitesResponse() {
   var o = new api.ViolatingSitesResponse();
   buildCounterViolatingSitesResponse++;
   if (buildCounterViolatingSitesResponse < 3) {
-    o.violatingSites = buildUnnamed1775();
+    o.violatingSites = buildUnnamed1773();
   }
   buildCounterViolatingSitesResponse--;
   return o;
@@ -147,11 +146,10 @@ buildViolatingSitesResponse() {
 checkViolatingSitesResponse(api.ViolatingSitesResponse o) {
   buildCounterViolatingSitesResponse++;
   if (buildCounterViolatingSitesResponse < 3) {
-    checkUnnamed1775(o.violatingSites);
+    checkUnnamed1773(o.violatingSites);
   }
   buildCounterViolatingSitesResponse--;
 }
-
 
 main() {
   unittest.group("obj-schema-PlatformSummary", () {
@@ -162,7 +160,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-SiteSummaryResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildSiteSummaryResponse();
@@ -170,7 +167,6 @@ main() {
       checkSiteSummaryResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-ViolatingSitesResponse", () {
     unittest.test("to-json--from-json", () {
@@ -180,10 +176,8 @@ main() {
     });
   });
 
-
   unittest.group("resource-SitesResourceApi", () {
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
       api.SitesResourceApi res = new api.AdexperiencereportApi(mock).sites;
       var arg_name = "foo";
@@ -192,9 +186,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -208,41 +204,44 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSiteSummaryResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_name).then(unittest.expectAsync1(((api.SiteSummaryResponse response) {
+      res
+          .get(arg_name)
+          .then(unittest.expectAsync1(((api.SiteSummaryResponse response) {
         checkSiteSummaryResponse(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-ViolatingSitesResourceApi", () {
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.ViolatingSitesResourceApi res = new api.AdexperiencereportApi(mock).violatingSites;
+      api.ViolatingSitesResourceApi res =
+          new api.AdexperiencereportApi(mock).violatingSites;
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17), unittest.equals("v1/violatingSites"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 17),
+            unittest.equals("v1/violatingSites"));
         pathOffset += 17;
 
         var query = (req.url).query;
@@ -255,27 +254,26 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildViolatingSitesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list().then(unittest.expectAsync1(((api.ViolatingSitesResponse response) {
+      res
+          .list()
+          .then(unittest.expectAsync1(((api.ViolatingSitesResponse response) {
         checkViolatingSitesResponse(response);
       })));
     });
-
   });
-
-
 }
-

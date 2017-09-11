@@ -13,7 +13,7 @@
     },
     "basePath": "/sql/v1beta3/",
     "baseUrl": "https://www.googleapis.com/sql/v1beta3/",
-    "batchPath": "batch",
+    "batchPath": "batch/sqladmin/v1beta3",
     "canonicalName": "SQL Admin",
     "description": "Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.",
     "discoveryVersion": "v1",

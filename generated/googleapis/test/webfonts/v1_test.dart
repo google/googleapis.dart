@@ -1,12 +1,10 @@
 library googleapis.webfonts.v1.test;
 
 import "dart:core" as core;
-import "dart:collection" as collection;
 import "dart:async" as async;
 import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
-import 'package:http/testing.dart' as http_testing;
 import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/webfonts/v1.dart' as api;
@@ -22,7 +20,8 @@ class HttpServerMock extends http.BaseClient {
 
   async.Future<http.StreamedResponse> send(http.BaseRequest request) {
     if (_expectJson) {
-      return request.finalize()
+      return request
+          .finalize()
           .transform(convert.UTF8.decoder)
           .join('')
           .then((core.String jsonString) {
@@ -45,46 +44,46 @@ class HttpServerMock extends http.BaseClient {
   }
 }
 
-http.StreamedResponse stringResponse(
-    core.int status, core.Map<core.String, core.String> headers, core.String body) {
+http.StreamedResponse stringResponse(core.int status,
+    core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed1690() {
+buildUnnamed1686() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1690(core.Map<core.String, core.String> o) {
+checkUnnamed1686(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed1691() {
+buildUnnamed1687() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1691(core.List<core.String> o) {
+checkUnnamed1687(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1692() {
+buildUnnamed1688() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1692(core.List<core.String> o) {
+checkUnnamed1688(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -97,11 +96,11 @@ buildWebfont() {
   if (buildCounterWebfont < 3) {
     o.category = "foo";
     o.family = "foo";
-    o.files = buildUnnamed1690();
+    o.files = buildUnnamed1686();
     o.kind = "foo";
     o.lastModified = core.DateTime.parse("2002-02-27T14:01:02Z");
-    o.subsets = buildUnnamed1691();
-    o.variants = buildUnnamed1692();
+    o.subsets = buildUnnamed1687();
+    o.variants = buildUnnamed1688();
     o.version = "foo";
   }
   buildCounterWebfont--;
@@ -113,24 +112,25 @@ checkWebfont(api.Webfont o) {
   if (buildCounterWebfont < 3) {
     unittest.expect(o.category, unittest.equals('foo'));
     unittest.expect(o.family, unittest.equals('foo'));
-    checkUnnamed1690(o.files);
+    checkUnnamed1686(o.files);
     unittest.expect(o.kind, unittest.equals('foo'));
-    unittest.expect(o.lastModified, unittest.equals(core.DateTime.parse("2002-02-27T00:00:00")));
-    checkUnnamed1691(o.subsets);
-    checkUnnamed1692(o.variants);
+    unittest.expect(o.lastModified,
+        unittest.equals(core.DateTime.parse("2002-02-27T00:00:00")));
+    checkUnnamed1687(o.subsets);
+    checkUnnamed1688(o.variants);
     unittest.expect(o.version, unittest.equals('foo'));
   }
   buildCounterWebfont--;
 }
 
-buildUnnamed1693() {
+buildUnnamed1689() {
   var o = new core.List<api.Webfont>();
   o.add(buildWebfont());
   o.add(buildWebfont());
   return o;
 }
 
-checkUnnamed1693(core.List<api.Webfont> o) {
+checkUnnamed1689(core.List<api.Webfont> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWebfont(o[0]);
   checkWebfont(o[1]);
@@ -141,7 +141,7 @@ buildWebfontList() {
   var o = new api.WebfontList();
   buildCounterWebfontList++;
   if (buildCounterWebfontList < 3) {
-    o.items = buildUnnamed1693();
+    o.items = buildUnnamed1689();
     o.kind = "foo";
   }
   buildCounterWebfontList--;
@@ -151,12 +151,11 @@ buildWebfontList() {
 checkWebfontList(api.WebfontList o) {
   buildCounterWebfontList++;
   if (buildCounterWebfontList < 3) {
-    checkUnnamed1693(o.items);
+    checkUnnamed1689(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterWebfontList--;
 }
-
 
 main() {
   unittest.group("obj-schema-Webfont", () {
@@ -167,7 +166,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-WebfontList", () {
     unittest.test("to-json--from-json", () {
       var o = buildWebfontList();
@@ -176,10 +174,8 @@ main() {
     });
   });
 
-
   unittest.group("resource-WebfontsResourceApi", () {
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
       api.WebfontsResourceApi res = new api.WebfontsApi(mock).webfonts;
       var arg_sort = "foo";
@@ -188,11 +184,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("webfonts/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("webfonts/v1/"));
         pathOffset += 12;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("webfonts"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("webfonts"));
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -205,28 +204,27 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
         unittest.expect(queryMap["sort"].first, unittest.equals(arg_sort));
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildWebfontList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(sort: arg_sort).then(unittest.expectAsync1(((api.WebfontList response) {
+      res
+          .list(sort: arg_sort)
+          .then(unittest.expectAsync1(((api.WebfontList response) {
         checkWebfontList(response);
       })));
     });
-
   });
-
-
 }
-

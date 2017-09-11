@@ -13,7 +13,7 @@
     },
     "basePath": "/mirror/v1/",
     "baseUrl": "https://www.googleapis.com/mirror/v1/",
-    "batchPath": "batch",
+    "batchPath": "batch/mirror/v1",
     "description": "Interacts with Glass users via the timeline.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/glass",

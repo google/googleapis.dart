@@ -13,12 +13,12 @@
     },
     "basePath": "/games/v1management/",
     "baseUrl": "https://www.googleapis.com/games/v1management/",
-    "batchPath": "batch",
+    "batchPath": "batch/gamesManagement/v1management",
     "canonicalName": "Games Management",
     "description": "The Management API for Google Play Game Services.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/games/services",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/qylvAu8-iRXUn1-a9vEoZ8CmVQg\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/2NYw0mILjam7wyjJRi8Hm4qib6c\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -553,7 +553,7 @@
             }
         }
     },
-    "revision": "20170815",
+    "revision": "20170831",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AchievementResetAllResponse": {

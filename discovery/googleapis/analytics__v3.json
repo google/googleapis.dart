@@ -25,7 +25,7 @@
     },
     "basePath": "/analytics/v3/",
     "baseUrl": "https://www.googleapis.com/analytics/v3/",
-    "batchPath": "batch",
+    "batchPath": "batch/analytics/v3",
     "description": "Views and manages your Google Analytics data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/analytics/",

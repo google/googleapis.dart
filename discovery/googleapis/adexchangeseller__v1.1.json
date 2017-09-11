@@ -13,7 +13,7 @@
     },
     "basePath": "/adexchangeseller/v1.1/",
     "baseUrl": "https://www.googleapis.com/adexchangeseller/v1.1/",
-    "batchPath": "batch",
+    "batchPath": "batch/adexchangeseller/v1.1",
     "canonicalName": "Ad Exchange Seller",
     "description": "Accesses the inventory of Ad Exchange seller users and generates reports.",
     "discoveryVersion": "v1",

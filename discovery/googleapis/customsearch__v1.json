@@ -1,7 +1,7 @@
 {
     "basePath": "/customsearch/",
     "baseUrl": "https://www.googleapis.com/customsearch/",
-    "batchPath": "batch",
+    "batchPath": "batch/customsearch/v1",
     "description": "Searches over a website or collection of websites",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/custom-search/v1/using_rest",

@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.43.0
+    version: 0.44.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -45,7 +45,7 @@ packages:
     - cloudtrace:v2 # https://cloud.google.com/cloud-trace/
     - compute:v1  # https://developers.google.com/compute/
     - consumersurveys:v2  # https://developers.google.com/consumer-surveys/
-    - container:v1
+    - container:v1  # https://cloud.google.com/container-engine/
     - content:v2  # https://developers.google.com/shopping-content/
     - content:v2sandbox
     - customsearch:v1  # https://developers.google.com/custom-search/
@@ -59,7 +59,8 @@ packages:
     - doubleclicksearch:v2  # https://developers.google.com/doubleclick-search/
     - drive:v2  # https://developers.google.com/drive/v2/reference/
     - drive:v3  # https://developers.google.com/drive/v3/reference/
-    - firebasedynamiclinks:v1  #
+    - firebasedynamiclinks:v1  # https://firebase.google.com/docs/dynamic-links/
+    - firebaseremoteconfig:v1  # https://firebase.google.com/docs/remote-config/
     - firebaserules:v1  # https://firebase.google.com/docs/storage/security/start
     - fitness:v1  # https://developers.google.com/fitness/
     - fusiontables:v1  # https://developers.google.com/fusiontables/
@@ -76,8 +77,8 @@ packages:
     - kgsearch:v1  # https://developers.google.com/knowledge-graph/
     - language:v1 # https://cloud.google.com/natural-language/
     - licensing:v1  # https://developers.google.com/admin-sdk/licensing/v1/how-tos/using
-    - logging:v2  #
-    - manufacturers:v1  #
+    - logging:v2  # https://cloud.google.com/logging/docs/
+    - manufacturers:v1  # https://developers.google.com/manufacturers/
     - mirror:v1  # https://developers.google.com/glass/develop/mirror/
     - ml:v1 # https://cloud.google.com/ml-engine/
     - monitoring:v3
@@ -125,7 +126,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.39.1
+    version: 0.39.2
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -176,13 +177,13 @@ skipped_apis:
 - clouduseraccounts:vm_beta # seems to be the same API as "beta"
 - compute:alpha # v1 included
 - compute:beta # v1 included
-- datastore:v1beta3  # v1 included
 - dataproc:v1beta2  # v1 included
-- dfareporting:v2.7 # v2.8 included
+- datastore:v1beta1  # v1 included
+- datastore:v1beta3  # v1 included
 - deploymentmanager:alpha # v2beta # v1 included
 - deploymentmanager:v2beta # v1 included
+- dfareporting:v2.7 # v2.8 included
 - genomics:v1alpha2 # v1 included
-- ml:v1beta1  # v1 included
 - oauth2:v1  # v2 included
 - prediction:v1.2  # v1.6 included
 - prediction:v1.3  # v1.6 included

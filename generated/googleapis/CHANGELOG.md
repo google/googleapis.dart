@@ -1,3 +1,35 @@
+## 0.44.0
+ * [api-new] firebaseremoteconfig:v1
+ * [api] androiddeviceprovisioning:v1
+ * [api] androidenterprise:v1
+ * [api] androidmanagement:v1
+ * [api] appengine:v1
+ * [api] bigquerydatatransfer:v1
+ * [api] bigquery:v2
+ * [api] cloudkms:v1
+ * [api] cloudtrace:v2
+ * [api] container:v1
+ * [api] content:v2
+ * [api] dfareporting:v2_8
+ * [api] drive:v2
+ * [api] drive:v3
+ * [api] firebasedynamiclinks:v1
+ * [api] gmail:v1
+ * [api] identitytoolkit:v3
+ * [api] logging:v2
+ * [api] monitoring:v3
+ * [api] people:v1
+ * [api] servicecontrol:v1
+ * [api] storage:v1
+ * [api-breaking] bigquerydatatransfer:v1
+ * [api-breaking] bigquerydatatransfer:v1
+ * [api-breaking] cloudkms:v1
+ * [api-breaking] cloudtrace:v2
+ * [api-breaking] ml:v1
+ * [api-breaking] script:v1
+ * [api-breaking] servicemanagement:v1
+ * [api-breaking] spanner:v1
+
 ## 0.43.0
 * [api] adexperiencereport:v1
 * [api] analytics:v3

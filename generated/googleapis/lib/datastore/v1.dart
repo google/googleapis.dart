@@ -9,59 +9,59 @@ import 'dart:convert' as convert;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
-    ApiRequestError, DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
+    show ApiRequestError, DetailedApiRequestError;
 
 const core.String USER_AGENT = 'dart-api-client datastore/v1';
 
-/**
- * Accesses the schemaless NoSQL database to provide fully managed, robust,
- * scalable storage for your application.
- */
+/// Accesses the schemaless NoSQL database to provide fully managed, robust,
+/// scalable storage for your application.
 class DatastoreApi {
-  /** View and manage your data across Google Cloud Platform services */
-  static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
+  /// View and manage your data across Google Cloud Platform services
+  static const CloudPlatformScope =
+      "https://www.googleapis.com/auth/cloud-platform";
 
-  /** View and manage your Google Cloud Datastore data */
+  /// View and manage your Google Cloud Datastore data
   static const DatastoreScope = "https://www.googleapis.com/auth/datastore";
-
 
   final commons.ApiRequester _requester;
 
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
-  DatastoreApi(http.Client client, {core.String rootUrl: "https://datastore.googleapis.com/", core.String servicePath: ""}) :
-      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+  DatastoreApi(http.Client client,
+      {core.String rootUrl: "https://datastore.googleapis.com/",
+      core.String servicePath: ""})
+      : _requester =
+            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
-
 
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsOperationsResourceApi get operations => new ProjectsOperationsResourceApi(_requester);
+  ProjectsOperationsResourceApi get operations =>
+      new ProjectsOperationsResourceApi(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Allocates IDs for the given keys, which is useful for referencing an entity
-   * before it is inserted.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [projectId] - The ID of the project against which to make the request.
-   *
-   * Completes with a [AllocateIdsResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<AllocateIdsResponse> allocateIds(AllocateIdsRequest request, core.String projectId) {
+  /// Allocates IDs for the given keys, which is useful for referencing an
+  /// entity
+  /// before it is inserted.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - The ID of the project against which to make the request.
+  ///
+  /// Completes with a [AllocateIdsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AllocateIdsResponse> allocateIds(
+      AllocateIdsRequest request, core.String projectId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -76,36 +76,36 @@ class ProjectsResourceApi {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
 
-    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + ':allocateIds';
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        ':allocateIds';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new AllocateIdsResponse.fromJson(data));
   }
 
-  /**
-   * Begins a new transaction.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [projectId] - The ID of the project against which to make the request.
-   *
-   * Completes with a [BeginTransactionResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<BeginTransactionResponse> beginTransaction(BeginTransactionRequest request, core.String projectId) {
+  /// Begins a new transaction.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - The ID of the project against which to make the request.
+  ///
+  /// Completes with a [BeginTransactionResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BeginTransactionResponse> beginTransaction(
+      BeginTransactionRequest request, core.String projectId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -120,37 +120,38 @@ class ProjectsResourceApi {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
 
-    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + ':beginTransaction';
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        ':beginTransaction';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new BeginTransactionResponse.fromJson(data));
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new BeginTransactionResponse.fromJson(data));
   }
 
-  /**
-   * Commits a transaction, optionally creating, deleting or modifying some
-   * entities.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [projectId] - The ID of the project against which to make the request.
-   *
-   * Completes with a [CommitResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<CommitResponse> commit(CommitRequest request, core.String projectId) {
+  /// Commits a transaction, optionally creating, deleting or modifying some
+  /// entities.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - The ID of the project against which to make the request.
+  ///
+  /// Completes with a [CommitResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CommitResponse> commit(
+      CommitRequest request, core.String projectId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -165,36 +166,36 @@ class ProjectsResourceApi {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
 
-    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + ':commit';
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        ':commit';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new CommitResponse.fromJson(data));
   }
 
-  /**
-   * Looks up entities by key.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [projectId] - The ID of the project against which to make the request.
-   *
-   * Completes with a [LookupResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<LookupResponse> lookup(LookupRequest request, core.String projectId) {
+  /// Looks up entities by key.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - The ID of the project against which to make the request.
+  ///
+  /// Completes with a [LookupResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LookupResponse> lookup(
+      LookupRequest request, core.String projectId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -209,36 +210,36 @@ class ProjectsResourceApi {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
 
-    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + ':lookup';
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        ':lookup';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new LookupResponse.fromJson(data));
   }
 
-  /**
-   * Rolls back a transaction.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [projectId] - The ID of the project against which to make the request.
-   *
-   * Completes with a [RollbackResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<RollbackResponse> rollback(RollbackRequest request, core.String projectId) {
+  /// Rolls back a transaction.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - The ID of the project against which to make the request.
+  ///
+  /// Completes with a [RollbackResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RollbackResponse> rollback(
+      RollbackRequest request, core.String projectId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -253,36 +254,36 @@ class ProjectsResourceApi {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
 
-    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + ':rollback';
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        ':rollback';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new RollbackResponse.fromJson(data));
   }
 
-  /**
-   * Queries for entities.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [projectId] - The ID of the project against which to make the request.
-   *
-   * Completes with a [RunQueryResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<RunQueryResponse> runQuery(RunQueryRequest request, core.String projectId) {
+  /// Queries for entities.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - The ID of the project against which to make the request.
+  ///
+  /// Completes with a [RunQueryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RunQueryResponse> runQuery(
+      RunQueryRequest request, core.String projectId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -297,52 +298,49 @@ class ProjectsResourceApi {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
 
-    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$projectId') + ':runQuery';
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        ':runQuery';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new RunQueryResponse.fromJson(data));
   }
-
 }
-
 
 class ProjectsOperationsResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsOperationsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  ProjectsOperationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Starts asynchronous cancellation on a long-running operation.  The server
-   * makes a best effort to cancel the operation, but success is not
-   * guaranteed.  If the server doesn't support this method, it returns
-   * `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
-   * Operations.GetOperation or
-   * other methods to check whether the cancellation succeeded or whether the
-   * operation completed despite cancellation. On successful cancellation,
-   * the operation is not deleted; instead, it becomes an operation with
-   * an Operation.error value with a google.rpc.Status.code of 1,
-   * corresponding to `Code.CANCELLED`.
-   *
-   * Request parameters:
-   *
-   * [name] - The name of the operation resource to be cancelled.
-   * Value must have pattern "^projects/[^/]+/operations/[^/]+$".
-   *
-   * Completes with a [Empty].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Starts asynchronous cancellation on a long-running operation.  The server
+  /// makes a best effort to cancel the operation, but success is not
+  /// guaranteed.  If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use
+  /// Operations.GetOperation or
+  /// other methods to check whether the cancellation succeeded or whether the
+  /// operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with
+  /// an Operation.error value with a google.rpc.Status.code of 1,
+  /// corresponding to `Code.CANCELLED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern "^projects/[^/]+/operations/[^/]+$".
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Empty> cancel(core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -357,35 +355,32 @@ class ProjectsOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /**
-   * Deletes a long-running operation. This method indicates that the client is
-   * no longer interested in the operation result. It does not cancel the
-   * operation. If the server doesn't support this method, it returns
-   * `google.rpc.Code.UNIMPLEMENTED`.
-   *
-   * Request parameters:
-   *
-   * [name] - The name of the operation resource to be deleted.
-   * Value must have pattern "^projects/[^/]+/operations/[^/]+$".
-   *
-   * Completes with a [Empty].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Deletes a long-running operation. This method indicates that the client is
+  /// no longer interested in the operation result. It does not cancel the
+  /// operation. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern "^projects/[^/]+/operations/[^/]+$".
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -400,34 +395,31 @@ class ProjectsOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /**
-   * Gets the latest state of a long-running operation.  Clients can use this
-   * method to poll the operation result at intervals as recommended by the API
-   * service.
-   *
-   * Request parameters:
-   *
-   * [name] - The name of the operation resource.
-   * Value must have pattern "^projects/[^/]+/operations/[^/]+$".
-   *
-   * Completes with a [GoogleLongrunningOperation].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Gets the latest state of a long-running operation.  Clients can use this
+  /// method to poll the operation result at intervals as recommended by the API
+  /// service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern "^projects/[^/]+/operations/[^/]+$".
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> get(core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -442,48 +434,48 @@ class ProjectsOperationsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleLongrunningOperation.fromJson(data));
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleLongrunningOperation.fromJson(data));
   }
 
-  /**
-   * Lists operations that match the specified filter in the request. If the
-   * server doesn't support this method, it returns `UNIMPLEMENTED`.
-   *
-   * NOTE: the `name` binding allows API services to override the binding
-   * to use different resource name schemes, such as `users / * /operations`. To
-   * override the binding, API services can add a binding such as
-   * `"/v1/{name=users / * }/operations"` to their service configuration.
-   * For backwards compatibility, the default name includes the operations
-   * collection id, however overriding users must ensure the name binding
-   * is the parent resource, without the operations collection id.
-   *
-   * Request parameters:
-   *
-   * [name] - The name of the operation's parent resource.
-   * Value must have pattern "^projects/[^/]+$".
-   *
-   * [pageSize] - The standard list page size.
-   *
-   * [filter] - The standard list filter.
-   *
-   * [pageToken] - The standard list page token.
-   *
-   * Completes with a [GoogleLongrunningListOperationsResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<GoogleLongrunningListOperationsResponse> list(core.String name, {core.int pageSize, core.String filter, core.String pageToken}) {
+  /// Lists operations that match the specified filter in the request. If the
+  /// server doesn't support this method, it returns `UNIMPLEMENTED`.
+  ///
+  /// NOTE: the `name` binding allows API services to override the binding
+  /// to use different resource name schemes, such as `users / * /operations`.
+  /// To
+  /// override the binding, API services can add a binding such as
+  /// `"/v1/{name=users / * }/operations"` to their service configuration.
+  /// For backwards compatibility, the default name includes the operations
+  /// collection id, however overriding users must ensure the name binding
+  /// is the parent resource, without the operations collection id.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// Completes with a [GoogleLongrunningListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
+      {core.int pageSize, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -504,28 +496,24 @@ class ProjectsOperationsResourceApi {
       _queryParams["pageToken"] = [pageToken];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new GoogleLongrunningListOperationsResponse.fromJson(data));
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new GoogleLongrunningListOperationsResponse.fromJson(data));
   }
-
 }
 
-
-
-/** The request for Datastore.AllocateIds. */
+/// The request for Datastore.AllocateIds.
 class AllocateIdsRequest {
-  /**
-   * A list of keys with incomplete key paths for which to allocate IDs.
-   * No key may be reserved/read-only.
-   */
+  /// A list of keys with incomplete key paths for which to allocate IDs.
+  /// No key may be reserved/read-only.
   core.List<Key> keys;
 
   AllocateIdsRequest();
@@ -537,7 +525,8 @@ class AllocateIdsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (keys != null) {
       _json["keys"] = keys.map((value) => (value).toJson()).toList();
     }
@@ -545,12 +534,10 @@ class AllocateIdsRequest {
   }
 }
 
-/** The response for Datastore.AllocateIds. */
+/// The response for Datastore.AllocateIds.
 class AllocateIdsResponse {
-  /**
-   * The keys specified in the request (in the same order), each with
-   * its key path completed with a newly allocated ID.
-   */
+  /// The keys specified in the request (in the same order), each with
+  /// its key path completed with a newly allocated ID.
   core.List<Key> keys;
 
   AllocateIdsResponse();
@@ -562,7 +549,8 @@ class AllocateIdsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (keys != null) {
       _json["keys"] = keys.map((value) => (value).toJson()).toList();
     }
@@ -570,25 +558,25 @@ class AllocateIdsResponse {
   }
 }
 
-/** An array value. */
+/// An array value.
 class ArrayValue {
-  /**
-   * Values in the array.
-   * The order of this array may not be preserved if it contains a mix of
-   * indexed and unindexed values.
-   */
+  /// Values in the array.
+  /// The order of this array may not be preserved if it contains a mix of
+  /// indexed and unindexed values.
   core.List<Value> values;
 
   ArrayValue();
 
   ArrayValue.fromJson(core.Map _json) {
     if (_json.containsKey("values")) {
-      values = _json["values"].map((value) => new Value.fromJson(value)).toList();
+      values =
+          _json["values"].map((value) => new Value.fromJson(value)).toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (values != null) {
       _json["values"] = values.map((value) => (value).toJson()).toList();
     }
@@ -596,21 +584,23 @@ class ArrayValue {
   }
 }
 
-/** The request for Datastore.BeginTransaction. */
+/// The request for Datastore.BeginTransaction.
 class BeginTransactionRequest {
-  /** Options for a new transaction. */
+  /// Options for a new transaction.
   TransactionOptions transactionOptions;
 
   BeginTransactionRequest();
 
   BeginTransactionRequest.fromJson(core.Map _json) {
     if (_json.containsKey("transactionOptions")) {
-      transactionOptions = new TransactionOptions.fromJson(_json["transactionOptions"]);
+      transactionOptions =
+          new TransactionOptions.fromJson(_json["transactionOptions"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (transactionOptions != null) {
       _json["transactionOptions"] = (transactionOptions).toJson();
     }
@@ -618,16 +608,17 @@ class BeginTransactionRequest {
   }
 }
 
-/** The response for Datastore.BeginTransaction. */
+/// The response for Datastore.BeginTransaction.
 class BeginTransactionResponse {
-  /** The transaction identifier (always present). */
+  /// The transaction identifier (always present).
   core.String transaction;
   core.List<core.int> get transactionAsBytes {
     return convert.BASE64.decode(transaction);
   }
 
   void set transactionAsBytes(core.List<core.int> _bytes) {
-    transaction = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    transaction =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   BeginTransactionResponse();
@@ -639,7 +630,8 @@ class BeginTransactionResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (transaction != null) {
       _json["transaction"] = transaction;
     }
@@ -647,48 +639,45 @@ class BeginTransactionResponse {
   }
 }
 
-/** The request for Datastore.Commit. */
+/// The request for Datastore.Commit.
 class CommitRequest {
-  /**
-   * The type of commit to perform. Defaults to `TRANSACTIONAL`.
-   * Possible string values are:
-   * - "MODE_UNSPECIFIED" : Unspecified. This value must not be used.
-   * - "TRANSACTIONAL" : Transactional: The mutations are either all applied, or
-   * none are applied.
-   * Learn about transactions
-   * [here](https://cloud.google.com/datastore/docs/concepts/transactions).
-   * - "NON_TRANSACTIONAL" : Non-transactional: The mutations may not apply as
-   * all or none.
-   */
+  /// The type of commit to perform. Defaults to `TRANSACTIONAL`.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : Unspecified. This value must not be used.
+  /// - "TRANSACTIONAL" : Transactional: The mutations are either all applied,
+  /// or none are applied.
+  /// Learn about transactions
+  /// [here](https://cloud.google.com/datastore/docs/concepts/transactions).
+  /// - "NON_TRANSACTIONAL" : Non-transactional: The mutations may not apply as
+  /// all or none.
   core.String mode;
-  /**
-   * The mutations to perform.
-   *
-   * When mode is `TRANSACTIONAL`, mutations affecting a single entity are
-   * applied in order. The following sequences of mutations affecting a single
-   * entity are not permitted in a single `Commit` request:
-   *
-   * - `insert` followed by `insert`
-   * - `update` followed by `insert`
-   * - `upsert` followed by `insert`
-   * - `delete` followed by `update`
-   *
-   * When mode is `NON_TRANSACTIONAL`, no two mutations may affect a single
-   * entity.
-   */
+
+  /// The mutations to perform.
+  ///
+  /// When mode is `TRANSACTIONAL`, mutations affecting a single entity are
+  /// applied in order. The following sequences of mutations affecting a single
+  /// entity are not permitted in a single `Commit` request:
+  ///
+  /// - `insert` followed by `insert`
+  /// - `update` followed by `insert`
+  /// - `upsert` followed by `insert`
+  /// - `delete` followed by `update`
+  ///
+  /// When mode is `NON_TRANSACTIONAL`, no two mutations may affect a single
+  /// entity.
   core.List<Mutation> mutations;
-  /**
-   * The identifier of the transaction associated with the commit. A
-   * transaction identifier is returned by a call to
-   * Datastore.BeginTransaction.
-   */
+
+  /// The identifier of the transaction associated with the commit. A
+  /// transaction identifier is returned by a call to
+  /// Datastore.BeginTransaction.
   core.String transaction;
   core.List<core.int> get transactionAsBytes {
     return convert.BASE64.decode(transaction);
   }
 
   void set transactionAsBytes(core.List<core.int> _bytes) {
-    transaction = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    transaction =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   CommitRequest();
@@ -698,7 +687,9 @@ class CommitRequest {
       mode = _json["mode"];
     }
     if (_json.containsKey("mutations")) {
-      mutations = _json["mutations"].map((value) => new Mutation.fromJson(value)).toList();
+      mutations = _json["mutations"]
+          .map((value) => new Mutation.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("transaction")) {
       transaction = _json["transaction"];
@@ -706,7 +697,8 @@ class CommitRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (mode != null) {
       _json["mode"] = mode;
     }
@@ -720,17 +712,15 @@ class CommitRequest {
   }
 }
 
-/** The response for Datastore.Commit. */
+/// The response for Datastore.Commit.
 class CommitResponse {
-  /**
-   * The number of index entries updated during the commit, or zero if none were
-   * updated.
-   */
+  /// The number of index entries updated during the commit, or zero if none
+  /// were
+  /// updated.
   core.int indexUpdates;
-  /**
-   * The result of performing the mutations.
-   * The i-th mutation result corresponds to the i-th mutation in the request.
-   */
+
+  /// The result of performing the mutations.
+  /// The i-th mutation result corresponds to the i-th mutation in the request.
   core.List<MutationResult> mutationResults;
 
   CommitResponse();
@@ -740,42 +730,45 @@ class CommitResponse {
       indexUpdates = _json["indexUpdates"];
     }
     if (_json.containsKey("mutationResults")) {
-      mutationResults = _json["mutationResults"].map((value) => new MutationResult.fromJson(value)).toList();
+      mutationResults = _json["mutationResults"]
+          .map((value) => new MutationResult.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (indexUpdates != null) {
       _json["indexUpdates"] = indexUpdates;
     }
     if (mutationResults != null) {
-      _json["mutationResults"] = mutationResults.map((value) => (value).toJson()).toList();
+      _json["mutationResults"] =
+          mutationResults.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
 }
 
-/** A filter that merges multiple other filters using the given operator. */
+/// A filter that merges multiple other filters using the given operator.
 class CompositeFilter {
-  /**
-   * The list of filters to combine.
-   * Must contain at least one filter.
-   */
+  /// The list of filters to combine.
+  /// Must contain at least one filter.
   core.List<Filter> filters;
-  /**
-   * The operator for combining multiple filters.
-   * Possible string values are:
-   * - "OPERATOR_UNSPECIFIED" : Unspecified. This value must not be used.
-   * - "AND" : The results are required to satisfy each of the combined filters.
-   */
+
+  /// The operator for combining multiple filters.
+  /// Possible string values are:
+  /// - "OPERATOR_UNSPECIFIED" : Unspecified. This value must not be used.
+  /// - "AND" : The results are required to satisfy each of the combined
+  /// filters.
   core.String op;
 
   CompositeFilter();
 
   CompositeFilter.fromJson(core.Map _json) {
     if (_json.containsKey("filters")) {
-      filters = _json["filters"].map((value) => new Filter.fromJson(value)).toList();
+      filters =
+          _json["filters"].map((value) => new Filter.fromJson(value)).toList();
     }
     if (_json.containsKey("op")) {
       op = _json["op"];
@@ -783,7 +776,8 @@ class CompositeFilter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (filters != null) {
       _json["filters"] = filters.map((value) => (value).toJson()).toList();
     }
@@ -794,55 +788,47 @@ class CompositeFilter {
   }
 }
 
-/**
- * A generic empty message that you can re-use to avoid defining duplicated
- * empty messages in your APIs. A typical example is to use it as the request
- * or the response type of an API method. For instance:
- *
- *     service Foo {
- *       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
- *     }
- *
- * The JSON representation for `Empty` is empty JSON object `{}`.
- */
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs. A typical example is to use it as the request
+/// or the response type of an API method. For instance:
+///
+///     service Foo {
+///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+///     }
+///
+/// The JSON representation for `Empty` is empty JSON object `{}`.
 class Empty {
-
   Empty();
 
-  Empty.fromJson(core.Map _json) {
-  }
+  Empty.fromJson(core.Map _json) {}
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }
 
-/**
- * A Datastore data object.
- *
- * An entity is limited to 1 megabyte when stored. That _roughly_
- * corresponds to a limit of 1 megabyte for the serialized form of this
- * message.
- */
+/// A Datastore data object.
+///
+/// An entity is limited to 1 megabyte when stored. That _roughly_
+/// corresponds to a limit of 1 megabyte for the serialized form of this
+/// message.
 class Entity {
-  /**
-   * The entity's key.
-   *
-   * An entity must have a key, unless otherwise documented (for example,
-   * an entity in `Value.entity_value` may have no key).
-   * An entity's kind is its key path's last element's kind,
-   * or null if it has no key.
-   */
+  /// The entity's key.
+  ///
+  /// An entity must have a key, unless otherwise documented (for example,
+  /// an entity in `Value.entity_value` may have no key).
+  /// An entity's kind is its key path's last element's kind,
+  /// or null if it has no key.
   Key key;
-  /**
-   * The entity's properties.
-   * The map's keys are property names.
-   * A property name matching regex `__.*__` is reserved.
-   * A reserved property name is forbidden in certain documented contexts.
-   * The name must not contain more than 500 characters.
-   * The name cannot be `""`.
-   */
+
+  /// The entity's properties.
+  /// The map's keys are property names.
+  /// A property name matching regex `__.*__` is reserved.
+  /// A reserved property name is forbidden in certain documented contexts.
+  /// The name must not contain more than 500 characters.
+  /// The name cannot be `""`.
   core.Map<core.String, Value> properties;
 
   Entity();
@@ -852,49 +838,54 @@ class Entity {
       key = new Key.fromJson(_json["key"]);
     }
     if (_json.containsKey("properties")) {
-      properties = commons.mapMap<core.Map<core.String, core.Object>, Value>(_json["properties"], (core.Map<core.String, core.Object> item) => new Value.fromJson(item));
+      properties = commons.mapMap<core.Map<core.String, core.Object>, Value>(
+          _json["properties"],
+          (core.Map<core.String, core.Object> item) =>
+              new Value.fromJson(item));
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = (key).toJson();
     }
     if (properties != null) {
-      _json["properties"] = commons.mapMap<Value, core.Map<core.String, core.Object>>(properties, (Value item) => (item).toJson());
+      _json["properties"] =
+          commons.mapMap<Value, core.Map<core.String, core.Object>>(
+              properties, (Value item) => (item).toJson());
     }
     return _json;
   }
 }
 
-/** The result of fetching an entity from Datastore. */
+/// The result of fetching an entity from Datastore.
 class EntityResult {
-  /**
-   * A cursor that points to the position after the result entity.
-   * Set only when the `EntityResult` is part of a `QueryResultBatch` message.
-   */
+  /// A cursor that points to the position after the result entity.
+  /// Set only when the `EntityResult` is part of a `QueryResultBatch` message.
   core.String cursor;
   core.List<core.int> get cursorAsBytes {
     return convert.BASE64.decode(cursor);
   }
 
   void set cursorAsBytes(core.List<core.int> _bytes) {
-    cursor = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    cursor =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
-  /** The resulting entity. */
+
+  /// The resulting entity.
   Entity entity;
-  /**
-   * The version of the entity, a strictly positive number that monotonically
-   * increases with changes to the entity.
-   *
-   * This field is set for `FULL` entity
-   * results.
-   *
-   * For missing entities in `LookupResponse`, this
-   * is the version of the snapshot that was used to look up the entity, and it
-   * is always set except for eventually consistent reads.
-   */
+
+  /// The version of the entity, a strictly positive number that monotonically
+  /// increases with changes to the entity.
+  ///
+  /// This field is set for `FULL` entity
+  /// results.
+  ///
+  /// For missing entities in `LookupResponse`, this
+  /// is the version of the snapshot that was used to look up the entity, and it
+  /// is always set except for eventually consistent reads.
   core.String version;
 
   EntityResult();
@@ -912,7 +903,8 @@ class EntityResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (cursor != null) {
       _json["cursor"] = cursor;
     }
@@ -926,11 +918,12 @@ class EntityResult {
   }
 }
 
-/** A holder for any type of filter. */
+/// A holder for any type of filter.
 class Filter {
-  /** A composite filter. */
+  /// A composite filter.
   CompositeFilter compositeFilter;
-  /** A filter on a property. */
+
+  /// A filter on a property.
   PropertyFilter propertyFilter;
 
   Filter();
@@ -945,7 +938,8 @@ class Filter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (compositeFilter != null) {
       _json["compositeFilter"] = (compositeFilter).toJson();
     }
@@ -956,45 +950,43 @@ class Filter {
   }
 }
 
-/** Metadata common to all Datastore Admin operations. */
+/// Metadata common to all Datastore Admin operations.
 class GoogleDatastoreAdminV1beta1CommonMetadata {
-  /** The time the operation ended, either successfully or otherwise. */
+  /// The time the operation ended, either successfully or otherwise.
   core.String endTime;
-  /**
-   * The client-assigned labels which were provided when the operation was
-   * created.  May also include additional labels.
-   */
+
+  /// The client-assigned labels which were provided when the operation was
+  /// created.  May also include additional labels.
   core.Map<core.String, core.String> labels;
-  /**
-   * The type of the operation.  Can be used as a filter in
-   * ListOperationsRequest.
-   * Possible string values are:
-   * - "OPERATION_TYPE_UNSPECIFIED" : Unspecified.
-   * - "EXPORT_ENTITIES" : ExportEntities.
-   * - "IMPORT_ENTITIES" : ImportEntities.
-   * - "BUILD_INDEX" : Build an index.
-   * - "CLEAR_INDEX" : Clear an index.
-   */
+
+  /// The type of the operation.  Can be used as a filter in
+  /// ListOperationsRequest.
+  /// Possible string values are:
+  /// - "OPERATION_TYPE_UNSPECIFIED" : Unspecified.
+  /// - "EXPORT_ENTITIES" : ExportEntities.
+  /// - "IMPORT_ENTITIES" : ImportEntities.
+  /// - "BUILD_INDEX" : Build an index.
+  /// - "CLEAR_INDEX" : Clear an index.
   core.String operationType;
-  /** The time that work began on the operation. */
+
+  /// The time that work began on the operation.
   core.String startTime;
-  /**
-   * The current state of the Operation.
-   * Possible string values are:
-   * - "STATE_UNSPECIFIED" : Unspecified.
-   * - "INITIALIZING" : Request is being prepared for processing.
-   * - "PROCESSING" : Request is actively being processed.
-   * - "CANCELLING" : Request is in the process of being cancelled after user
-   * called
-   * longrunning.Operations.CancelOperation on the operation.
-   * - "FINALIZING" : Request has been processed and is in its finalization
-   * stage.
-   * - "SUCCESSFUL" : Request has completed successfully.
-   * - "FAILED" : Request has finished being processed, but encountered an
-   * error.
-   * - "CANCELLED" : Request has finished being cancelled after user called
-   * longrunning.Operations.CancelOperation.
-   */
+
+  /// The current state of the Operation.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified.
+  /// - "INITIALIZING" : Request is being prepared for processing.
+  /// - "PROCESSING" : Request is actively being processed.
+  /// - "CANCELLING" : Request is in the process of being cancelled after user
+  /// called
+  /// longrunning.Operations.CancelOperation on the operation.
+  /// - "FINALIZING" : Request has been processed and is in its finalization
+  /// stage.
+  /// - "SUCCESSFUL" : Request has completed successfully.
+  /// - "FAILED" : Request has finished being processed, but encountered an
+  /// error.
+  /// - "CANCELLED" : Request has finished being cancelled after user called
+  /// longrunning.Operations.CancelOperation.
   core.String state;
 
   GoogleDatastoreAdminV1beta1CommonMetadata();
@@ -1018,7 +1010,8 @@ class GoogleDatastoreAdminV1beta1CommonMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (endTime != null) {
       _json["endTime"] = endTime;
     }
@@ -1038,39 +1031,37 @@ class GoogleDatastoreAdminV1beta1CommonMetadata {
   }
 }
 
-/**
- * Identifies a subset of entities in a project.  This is specified as
- * combinations of kind + namespace (either or both of which may be all, as
- * described in the following examples).
- * Example usage:
- *
- * Entire project:
- *   kinds=[], namespace_ids=[]
- *
- * Kinds Foo and Bar in all namespaces:
- *   kinds=['Foo', 'Bar'], namespace_ids=[]
- *
- * Kinds Foo and Bar only in the default namespace:
- *   kinds=['Foo', 'Bar'], namespace_ids=['']
- *
- * Kinds Foo and Bar in both the default and Baz namespaces:
- *   kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
- *
- * The entire Baz namespace:
- *   kinds=[], namespace_ids=['Baz']
- */
+/// Identifies a subset of entities in a project.  This is specified as
+/// combinations of kind + namespace (either or both of which may be all, as
+/// described in the following examples).
+/// Example usage:
+///
+/// Entire project:
+///   kinds=[], namespace_ids=[]
+///
+/// Kinds Foo and Bar in all namespaces:
+///   kinds=['Foo', 'Bar'], namespace_ids=[]
+///
+/// Kinds Foo and Bar only in the default namespace:
+///   kinds=['Foo', 'Bar'], namespace_ids=['']
+///
+/// Kinds Foo and Bar in both the default and Baz namespaces:
+///   kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
+///
+/// The entire Baz namespace:
+///   kinds=[], namespace_ids=['Baz']
 class GoogleDatastoreAdminV1beta1EntityFilter {
-  /** If empty, then this represents all kinds. */
+  /// If empty, then this represents all kinds.
   core.List<core.String> kinds;
-  /**
-   * An empty list represents all namespaces.  This is the preferred
-   * usage for projects that don't use namespaces.
-   *
-   * An empty string element represents the default namespace.  This should be
-   * used if the project has data in non-default namespaces, but doesn't want to
-   * include them.
-   * Each namespace in this list must be unique.
-   */
+
+  /// An empty list represents all namespaces.  This is the preferred
+  /// usage for projects that don't use namespaces.
+  ///
+  /// An empty string element represents the default namespace.  This should be
+  /// used if the project has data in non-default namespaces, but doesn't want
+  /// to
+  /// include them.
+  /// Each namespace in this list must be unique.
   core.List<core.String> namespaceIds;
 
   GoogleDatastoreAdminV1beta1EntityFilter();
@@ -1085,7 +1076,8 @@ class GoogleDatastoreAdminV1beta1EntityFilter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (kinds != null) {
       _json["kinds"] = kinds;
     }
@@ -1096,47 +1088,54 @@ class GoogleDatastoreAdminV1beta1EntityFilter {
   }
 }
 
-/** Metadata for ExportEntities operations. */
+/// Metadata for ExportEntities operations.
 class GoogleDatastoreAdminV1beta1ExportEntitiesMetadata {
-  /** Metadata common to all Datastore Admin operations. */
+  /// Metadata common to all Datastore Admin operations.
   GoogleDatastoreAdminV1beta1CommonMetadata common;
-  /** Description of which entities are being exported. */
+
+  /// Description of which entities are being exported.
   GoogleDatastoreAdminV1beta1EntityFilter entityFilter;
-  /**
-   * Location for the export metadata and data files. This will be the same
-   * value as the
-   * google.datastore.admin.v1beta1.ExportEntitiesRequest.output_url_prefix
-   * field. The final output location is provided in
-   * google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url.
-   */
+
+  /// Location for the export metadata and data files. This will be the same
+  /// value as the
+  /// google.datastore.admin.v1beta1.ExportEntitiesRequest.output_url_prefix
+  /// field. The final output location is provided in
+  /// google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url.
   core.String outputUrlPrefix;
-  /** An estimate of the number of bytes processed. */
+
+  /// An estimate of the number of bytes processed.
   GoogleDatastoreAdminV1beta1Progress progressBytes;
-  /** An estimate of the number of entities processed. */
+
+  /// An estimate of the number of entities processed.
   GoogleDatastoreAdminV1beta1Progress progressEntities;
 
   GoogleDatastoreAdminV1beta1ExportEntitiesMetadata();
 
   GoogleDatastoreAdminV1beta1ExportEntitiesMetadata.fromJson(core.Map _json) {
     if (_json.containsKey("common")) {
-      common = new GoogleDatastoreAdminV1beta1CommonMetadata.fromJson(_json["common"]);
+      common = new GoogleDatastoreAdminV1beta1CommonMetadata.fromJson(
+          _json["common"]);
     }
     if (_json.containsKey("entityFilter")) {
-      entityFilter = new GoogleDatastoreAdminV1beta1EntityFilter.fromJson(_json["entityFilter"]);
+      entityFilter = new GoogleDatastoreAdminV1beta1EntityFilter.fromJson(
+          _json["entityFilter"]);
     }
     if (_json.containsKey("outputUrlPrefix")) {
       outputUrlPrefix = _json["outputUrlPrefix"];
     }
     if (_json.containsKey("progressBytes")) {
-      progressBytes = new GoogleDatastoreAdminV1beta1Progress.fromJson(_json["progressBytes"]);
+      progressBytes = new GoogleDatastoreAdminV1beta1Progress.fromJson(
+          _json["progressBytes"]);
     }
     if (_json.containsKey("progressEntities")) {
-      progressEntities = new GoogleDatastoreAdminV1beta1Progress.fromJson(_json["progressEntities"]);
+      progressEntities = new GoogleDatastoreAdminV1beta1Progress.fromJson(
+          _json["progressEntities"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (common != null) {
       _json["common"] = (common).toJson();
     }
@@ -1156,17 +1155,13 @@ class GoogleDatastoreAdminV1beta1ExportEntitiesMetadata {
   }
 }
 
-/**
- * The response for
- * google.datastore.admin.v1beta1.DatastoreAdmin.ExportEntities.
- */
+/// The response for
+/// google.datastore.admin.v1beta1.DatastoreAdmin.ExportEntities.
 class GoogleDatastoreAdminV1beta1ExportEntitiesResponse {
-  /**
-   * Location of the output metadata file. This can be used to begin an import
-   * into Cloud Datastore (this project or another project). See
-   * google.datastore.admin.v1beta1.ImportEntitiesRequest.input_url.
-   * Only present if the operation completed successfully.
-   */
+  /// Location of the output metadata file. This can be used to begin an import
+  /// into Cloud Datastore (this project or another project). See
+  /// google.datastore.admin.v1beta1.ImportEntitiesRequest.input_url.
+  /// Only present if the operation completed successfully.
   core.String outputUrl;
 
   GoogleDatastoreAdminV1beta1ExportEntitiesResponse();
@@ -1178,7 +1173,8 @@ class GoogleDatastoreAdminV1beta1ExportEntitiesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (outputUrl != null) {
       _json["outputUrl"] = outputUrl;
     }
@@ -1186,45 +1182,52 @@ class GoogleDatastoreAdminV1beta1ExportEntitiesResponse {
   }
 }
 
-/** Metadata for ImportEntities operations. */
+/// Metadata for ImportEntities operations.
 class GoogleDatastoreAdminV1beta1ImportEntitiesMetadata {
-  /** Metadata common to all Datastore Admin operations. */
+  /// Metadata common to all Datastore Admin operations.
   GoogleDatastoreAdminV1beta1CommonMetadata common;
-  /** Description of which entities are being imported. */
+
+  /// Description of which entities are being imported.
   GoogleDatastoreAdminV1beta1EntityFilter entityFilter;
-  /**
-   * The location of the import metadata file. This will be the same value as
-   * the google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url
-   * field.
-   */
+
+  /// The location of the import metadata file. This will be the same value as
+  /// the google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url
+  /// field.
   core.String inputUrl;
-  /** An estimate of the number of bytes processed. */
+
+  /// An estimate of the number of bytes processed.
   GoogleDatastoreAdminV1beta1Progress progressBytes;
-  /** An estimate of the number of entities processed. */
+
+  /// An estimate of the number of entities processed.
   GoogleDatastoreAdminV1beta1Progress progressEntities;
 
   GoogleDatastoreAdminV1beta1ImportEntitiesMetadata();
 
   GoogleDatastoreAdminV1beta1ImportEntitiesMetadata.fromJson(core.Map _json) {
     if (_json.containsKey("common")) {
-      common = new GoogleDatastoreAdminV1beta1CommonMetadata.fromJson(_json["common"]);
+      common = new GoogleDatastoreAdminV1beta1CommonMetadata.fromJson(
+          _json["common"]);
     }
     if (_json.containsKey("entityFilter")) {
-      entityFilter = new GoogleDatastoreAdminV1beta1EntityFilter.fromJson(_json["entityFilter"]);
+      entityFilter = new GoogleDatastoreAdminV1beta1EntityFilter.fromJson(
+          _json["entityFilter"]);
     }
     if (_json.containsKey("inputUrl")) {
       inputUrl = _json["inputUrl"];
     }
     if (_json.containsKey("progressBytes")) {
-      progressBytes = new GoogleDatastoreAdminV1beta1Progress.fromJson(_json["progressBytes"]);
+      progressBytes = new GoogleDatastoreAdminV1beta1Progress.fromJson(
+          _json["progressBytes"]);
     }
     if (_json.containsKey("progressEntities")) {
-      progressEntities = new GoogleDatastoreAdminV1beta1Progress.fromJson(_json["progressEntities"]);
+      progressEntities = new GoogleDatastoreAdminV1beta1Progress.fromJson(
+          _json["progressEntities"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (common != null) {
       _json["common"] = (common).toJson();
     }
@@ -1244,14 +1247,13 @@ class GoogleDatastoreAdminV1beta1ImportEntitiesMetadata {
   }
 }
 
-/** Measures the progress of a particular metric. */
+/// Measures the progress of a particular metric.
 class GoogleDatastoreAdminV1beta1Progress {
-  /** Note that this may be greater than work_estimated. */
+  /// Note that this may be greater than work_estimated.
   core.String workCompleted;
-  /**
-   * An estimate of how much work needs to be performed.  May be zero if the
-   * work estimate is unavailable.
-   */
+
+  /// An estimate of how much work needs to be performed.  May be zero if the
+  /// work estimate is unavailable.
   core.String workEstimated;
 
   GoogleDatastoreAdminV1beta1Progress();
@@ -1266,7 +1268,8 @@ class GoogleDatastoreAdminV1beta1Progress {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (workCompleted != null) {
       _json["workCompleted"] = workCompleted;
     }
@@ -1277,11 +1280,12 @@ class GoogleDatastoreAdminV1beta1Progress {
   }
 }
 
-/** The response message for Operations.ListOperations. */
+/// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {
-  /** The standard List next-page token. */
+  /// The standard List next-page token.
   core.String nextPageToken;
-  /** A list of operations that matches the specified filter in the request. */
+
+  /// A list of operations that matches the specified filter in the request.
   core.List<GoogleLongrunningOperation> operations;
 
   GoogleLongrunningListOperationsResponse();
@@ -1291,64 +1295,63 @@ class GoogleLongrunningListOperationsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("operations")) {
-      operations = _json["operations"].map((value) => new GoogleLongrunningOperation.fromJson(value)).toList();
+      operations = _json["operations"]
+          .map((value) => new GoogleLongrunningOperation.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] = operations.map((value) => (value).toJson()).toList();
+      _json["operations"] =
+          operations.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
 }
 
-/**
- * This resource represents a long-running operation that is the result of a
- * network API call.
- */
+/// This resource represents a long-running operation that is the result of a
+/// network API call.
 class GoogleLongrunningOperation {
-  /**
-   * If the value is `false`, it means the operation is still in progress.
-   * If true, the operation is completed, and either `error` or `response` is
-   * available.
-   */
+  /// If the value is `false`, it means the operation is still in progress.
+  /// If true, the operation is completed, and either `error` or `response` is
+  /// available.
   core.bool done;
-  /** The error result of the operation in case of failure or cancellation. */
+
+  /// The error result of the operation in case of failure or cancellation.
   Status error;
-  /**
-   * Service-specific metadata associated with the operation.  It typically
-   * contains progress information and common metadata such as create time.
-   * Some services might not provide such metadata.  Any method that returns a
-   * long-running operation should document the metadata type, if any.
-   *
-   * The values for Object must be JSON objects. It can consist of `num`,
-   * `String`, `bool` and `null` as well as `Map` and `List` values.
-   */
+
+  /// Service-specific metadata associated with the operation.  It typically
+  /// contains progress information and common metadata such as create time.
+  /// Some services might not provide such metadata.  Any method that returns a
+  /// long-running operation should document the metadata type, if any.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
-  /**
-   * The server-assigned name, which is only unique within the same service that
-   * originally returns it. If you use the default HTTP mapping, the
-   * `name` should have the format of `operations/some/unique/name`.
-   */
+
+  /// The server-assigned name, which is only unique within the same service
+  /// that
+  /// originally returns it. If you use the default HTTP mapping, the
+  /// `name` should have the format of `operations/some/unique/name`.
   core.String name;
-  /**
-   * The normal response of the operation in case of success.  If the original
-   * method returns no data on success, such as `Delete`, the response is
-   * `google.protobuf.Empty`.  If the original method is standard
-   * `Get`/`Create`/`Update`, the response should be the resource.  For other
-   * methods, the response should have the type `XxxResponse`, where `Xxx`
-   * is the original method name.  For example, if the original method name
-   * is `TakeSnapshot()`, the inferred response type is
-   * `TakeSnapshotResponse`.
-   *
-   * The values for Object must be JSON objects. It can consist of `num`,
-   * `String`, `bool` and `null` as well as `Map` and `List` values.
-   */
+
+  /// The normal response of the operation in case of success.  If the original
+  /// method returns no data on success, such as `Delete`, the response is
+  /// `google.protobuf.Empty`.  If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource.  For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx`
+  /// is the original method name.  For example, if the original method name
+  /// is `TakeSnapshot()`, the inferred response type is
+  /// `TakeSnapshotResponse`.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> response;
 
   GoogleLongrunningOperation();
@@ -1372,7 +1375,8 @@ class GoogleLongrunningOperation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (done != null) {
       _json["done"] = done;
     }
@@ -1392,38 +1396,33 @@ class GoogleLongrunningOperation {
   }
 }
 
-/**
- * A [GQL
- * query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
- */
+/// A [GQL
+/// query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
 class GqlQuery {
-  /**
-   * When false, the query string must not contain any literals and instead must
-   * bind all values. For example,
-   * `SELECT * FROM Kind WHERE a = 'string literal'` is not allowed, while
-   * `SELECT * FROM Kind WHERE a = @value` is.
-   */
+  /// When false, the query string must not contain any literals and instead
+  /// must
+  /// bind all values. For example,
+  /// `SELECT * FROM Kind WHERE a = 'string literal'` is not allowed, while
+  /// `SELECT * FROM Kind WHERE a = @value` is.
   core.bool allowLiterals;
-  /**
-   * For each non-reserved named binding site in the query string, there must be
-   * a named parameter with that name, but not necessarily the inverse.
-   *
-   * Key must match regex `A-Za-z_$*`, must not match regex
-   * `__.*__`, and must not be `""`.
-   */
+
+  /// For each non-reserved named binding site in the query string, there must
+  /// be
+  /// a named parameter with that name, but not necessarily the inverse.
+  ///
+  /// Key must match regex `A-Za-z_$*`, must not match regex
+  /// `__.*__`, and must not be `""`.
   core.Map<core.String, GqlQueryParameter> namedBindings;
-  /**
-   * Numbered binding site @1 references the first numbered parameter,
-   * effectively using 1-based indexing, rather than the usual 0.
-   *
-   * For each binding site numbered i in `query_string`, there must be an i-th
-   * numbered parameter. The inverse must also be true.
-   */
+
+  /// Numbered binding site @1 references the first numbered parameter,
+  /// effectively using 1-based indexing, rather than the usual 0.
+  ///
+  /// For each binding site numbered i in `query_string`, there must be an i-th
+  /// numbered parameter. The inverse must also be true.
   core.List<GqlQueryParameter> positionalBindings;
-  /**
-   * A string of the format described
-   * [here](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
-   */
+
+  /// A string of the format described
+  /// [here](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
   core.String queryString;
 
   GqlQuery();
@@ -1433,10 +1432,16 @@ class GqlQuery {
       allowLiterals = _json["allowLiterals"];
     }
     if (_json.containsKey("namedBindings")) {
-      namedBindings = commons.mapMap<core.Map<core.String, core.Object>, GqlQueryParameter>(_json["namedBindings"], (core.Map<core.String, core.Object> item) => new GqlQueryParameter.fromJson(item));
+      namedBindings =
+          commons.mapMap<core.Map<core.String, core.Object>, GqlQueryParameter>(
+              _json["namedBindings"],
+              (core.Map<core.String, core.Object> item) =>
+                  new GqlQueryParameter.fromJson(item));
     }
     if (_json.containsKey("positionalBindings")) {
-      positionalBindings = _json["positionalBindings"].map((value) => new GqlQueryParameter.fromJson(value)).toList();
+      positionalBindings = _json["positionalBindings"]
+          .map((value) => new GqlQueryParameter.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("queryString")) {
       queryString = _json["queryString"];
@@ -1444,15 +1449,19 @@ class GqlQuery {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (allowLiterals != null) {
       _json["allowLiterals"] = allowLiterals;
     }
     if (namedBindings != null) {
-      _json["namedBindings"] = commons.mapMap<GqlQueryParameter, core.Map<core.String, core.Object>>(namedBindings, (GqlQueryParameter item) => (item).toJson());
+      _json["namedBindings"] =
+          commons.mapMap<GqlQueryParameter, core.Map<core.String, core.Object>>(
+              namedBindings, (GqlQueryParameter item) => (item).toJson());
     }
     if (positionalBindings != null) {
-      _json["positionalBindings"] = positionalBindings.map((value) => (value).toJson()).toList();
+      _json["positionalBindings"] =
+          positionalBindings.map((value) => (value).toJson()).toList();
     }
     if (queryString != null) {
       _json["queryString"] = queryString;
@@ -1461,21 +1470,21 @@ class GqlQuery {
   }
 }
 
-/** A binding parameter for a GQL query. */
+/// A binding parameter for a GQL query.
 class GqlQueryParameter {
-  /**
-   * A query cursor. Query cursors are returned in query
-   * result batches.
-   */
+  /// A query cursor. Query cursors are returned in query
+  /// result batches.
   core.String cursor;
   core.List<core.int> get cursorAsBytes {
     return convert.BASE64.decode(cursor);
   }
 
   void set cursorAsBytes(core.List<core.int> _bytes) {
-    cursor = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    cursor =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
-  /** A value parameter. */
+
+  /// A value parameter.
   Value value;
 
   GqlQueryParameter();
@@ -1490,7 +1499,8 @@ class GqlQueryParameter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (cursor != null) {
       _json["cursor"] = cursor;
     }
@@ -1501,37 +1511,32 @@ class GqlQueryParameter {
   }
 }
 
-/**
- * A unique identifier for an entity.
- * If a key's partition ID or any of its path kinds or names are
- * reserved/read-only, the key is reserved/read-only.
- * A reserved/read-only key is forbidden in certain documented contexts.
- */
+/// A unique identifier for an entity.
+/// If a key's partition ID or any of its path kinds or names are
+/// reserved/read-only, the key is reserved/read-only.
+/// A reserved/read-only key is forbidden in certain documented contexts.
 class Key {
-  /**
-   * Entities are partitioned into subsets, currently identified by a project
-   * ID and namespace ID.
-   * Queries are scoped to a single partition.
-   */
+  /// Entities are partitioned into subsets, currently identified by a project
+  /// ID and namespace ID.
+  /// Queries are scoped to a single partition.
   PartitionId partitionId;
-  /**
-   * The entity path.
-   * An entity path consists of one or more elements composed of a kind and a
-   * string or numerical identifier, which identify entities. The first
-   * element identifies a _root entity_, the second element identifies
-   * a _child_ of the root entity, the third element identifies a child of the
-   * second entity, and so forth. The entities identified by all prefixes of
-   * the path are called the element's _ancestors_.
-   *
-   * An entity path is always fully complete: *all* of the entity's ancestors
-   * are required to be in the path along with the entity identifier itself.
-   * The only exception is that in some documented cases, the identifier in the
-   * last path element (for the entity) itself may be omitted. For example,
-   * the last path element of the key of `Mutation.insert` may have no
-   * identifier.
-   *
-   * A path can never be empty, and a path can have at most 100 elements.
-   */
+
+  /// The entity path.
+  /// An entity path consists of one or more elements composed of a kind and a
+  /// string or numerical identifier, which identify entities. The first
+  /// element identifies a _root entity_, the second element identifies
+  /// a _child_ of the root entity, the third element identifies a child of the
+  /// second entity, and so forth. The entities identified by all prefixes of
+  /// the path are called the element's _ancestors_.
+  ///
+  /// An entity path is always fully complete: *all* of the entity's ancestors
+  /// are required to be in the path along with the entity identifier itself.
+  /// The only exception is that in some documented cases, the identifier in the
+  /// last path element (for the entity) itself may be omitted. For example,
+  /// the last path element of the key of `Mutation.insert` may have no
+  /// identifier.
+  ///
+  /// A path can never be empty, and a path can have at most 100 elements.
   core.List<PathElement> path;
 
   Key();
@@ -1541,12 +1546,15 @@ class Key {
       partitionId = new PartitionId.fromJson(_json["partitionId"]);
     }
     if (_json.containsKey("path")) {
-      path = _json["path"].map((value) => new PathElement.fromJson(value)).toList();
+      path = _json["path"]
+          .map((value) => new PathElement.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (partitionId != null) {
       _json["partitionId"] = (partitionId).toJson();
     }
@@ -1557,9 +1565,9 @@ class Key {
   }
 }
 
-/** A representation of a kind. */
+/// A representation of a kind.
 class KindExpression {
-  /** The name of the kind. */
+  /// The name of the kind.
   core.String name;
 
   KindExpression();
@@ -1571,7 +1579,8 @@ class KindExpression {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -1579,51 +1588,51 @@ class KindExpression {
   }
 }
 
-/**
- * An object representing a latitude/longitude pair. This is expressed as a pair
- * of doubles representing degrees latitude and degrees longitude. Unless
- * specified otherwise, this must conform to the
- * <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
- * standard</a>. Values must be within normalized ranges.
- *
- * Example of normalization code in Python:
- *
- *     def NormalizeLongitude(longitude):
- *       """Wraps decimal degrees longitude to [-180.0, 180.0]."""
- *       q, r = divmod(longitude, 360.0)
- *       if r > 180.0 or (r == 180.0 and q <= -1.0):
- *         return r - 360.0
- *       return r
- *
- *     def NormalizeLatLng(latitude, longitude):
- *       """Wraps decimal degrees latitude and longitude to
- *       [-90.0, 90.0] and [-180.0, 180.0], respectively."""
- *       r = latitude % 360.0
- *       if r <= 90.0:
- *         return r, NormalizeLongitude(longitude)
- *       elif r >= 270.0:
- *         return r - 360, NormalizeLongitude(longitude)
- *       else:
- *         return 180 - r, NormalizeLongitude(longitude + 180.0)
- *
- *     assert 180.0 == NormalizeLongitude(180.0)
- *     assert -180.0 == NormalizeLongitude(-180.0)
- *     assert -179.0 == NormalizeLongitude(181.0)
- *     assert (0.0, 0.0) == NormalizeLatLng(360.0, 0.0)
- *     assert (0.0, 0.0) == NormalizeLatLng(-360.0, 0.0)
- *     assert (85.0, 180.0) == NormalizeLatLng(95.0, 0.0)
- *     assert (-85.0, -170.0) == NormalizeLatLng(-95.0, 10.0)
- *     assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0)
- *     assert (-90.0, -10.0) == NormalizeLatLng(-90.0, -10.0)
- *     assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0)
- *     assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
- *     assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
- *     assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
- */
+/// An object representing a latitude/longitude pair. This is expressed as a
+/// pair
+/// of doubles representing degrees latitude and degrees longitude. Unless
+/// specified otherwise, this must conform to the
+/// <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
+/// standard</a>. Values must be within normalized ranges.
+///
+/// Example of normalization code in Python:
+///
+///     def NormalizeLongitude(longitude):
+///       """Wraps decimal degrees longitude to [-180.0, 180.0]."""
+///       q, r = divmod(longitude, 360.0)
+///       if r > 180.0 or (r == 180.0 and q <= -1.0):
+///         return r - 360.0
+///       return r
+///
+///     def NormalizeLatLng(latitude, longitude):
+///       """Wraps decimal degrees latitude and longitude to
+///       [-90.0, 90.0] and [-180.0, 180.0], respectively."""
+///       r = latitude % 360.0
+///       if r <= 90.0:
+///         return r, NormalizeLongitude(longitude)
+///       elif r >= 270.0:
+///         return r - 360, NormalizeLongitude(longitude)
+///       else:
+///         return 180 - r, NormalizeLongitude(longitude + 180.0)
+///
+///     assert 180.0 == NormalizeLongitude(180.0)
+///     assert -180.0 == NormalizeLongitude(-180.0)
+///     assert -179.0 == NormalizeLongitude(181.0)
+///     assert (0.0, 0.0) == NormalizeLatLng(360.0, 0.0)
+///     assert (0.0, 0.0) == NormalizeLatLng(-360.0, 0.0)
+///     assert (85.0, 180.0) == NormalizeLatLng(95.0, 0.0)
+///     assert (-85.0, -170.0) == NormalizeLatLng(-95.0, 10.0)
+///     assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0)
+///     assert (-90.0, -10.0) == NormalizeLatLng(-90.0, -10.0)
+///     assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0)
+///     assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
+///     assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
+///     assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
 class LatLng {
-  /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
+  /// The latitude in degrees. It must be in the range [-90.0, +90.0].
   core.double latitude;
-  /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
+
+  /// The longitude in degrees. It must be in the range [-180.0, +180.0].
   core.double longitude;
 
   LatLng();
@@ -1638,7 +1647,8 @@ class LatLng {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (latitude != null) {
       _json["latitude"] = latitude;
     }
@@ -1649,11 +1659,12 @@ class LatLng {
   }
 }
 
-/** The request for Datastore.Lookup. */
+/// The request for Datastore.Lookup.
 class LookupRequest {
-  /** Keys of entities to look up. */
+  /// Keys of entities to look up.
   core.List<Key> keys;
-  /** The options for this lookup request. */
+
+  /// The options for this lookup request.
   ReadOptions readOptions;
 
   LookupRequest();
@@ -1668,7 +1679,8 @@ class LookupRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (keys != null) {
       _json["keys"] = keys.map((value) => (value).toJson()).toList();
     }
@@ -1679,43 +1691,45 @@ class LookupRequest {
   }
 }
 
-/** The response for Datastore.Lookup. */
+/// The response for Datastore.Lookup.
 class LookupResponse {
-  /**
-   * A list of keys that were not looked up due to resource constraints. The
-   * order of results in this field is undefined and has no relation to the
-   * order of the keys in the input.
-   */
+  /// A list of keys that were not looked up due to resource constraints. The
+  /// order of results in this field is undefined and has no relation to the
+  /// order of the keys in the input.
   core.List<Key> deferred;
-  /**
-   * Entities found as `ResultType.FULL` entities. The order of results in this
-   * field is undefined and has no relation to the order of the keys in the
-   * input.
-   */
+
+  /// Entities found as `ResultType.FULL` entities. The order of results in this
+  /// field is undefined and has no relation to the order of the keys in the
+  /// input.
   core.List<EntityResult> found;
-  /**
-   * Entities not found as `ResultType.KEY_ONLY` entities. The order of results
-   * in this field is undefined and has no relation to the order of the keys
-   * in the input.
-   */
+
+  /// Entities not found as `ResultType.KEY_ONLY` entities. The order of results
+  /// in this field is undefined and has no relation to the order of the keys
+  /// in the input.
   core.List<EntityResult> missing;
 
   LookupResponse();
 
   LookupResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deferred")) {
-      deferred = _json["deferred"].map((value) => new Key.fromJson(value)).toList();
+      deferred =
+          _json["deferred"].map((value) => new Key.fromJson(value)).toList();
     }
     if (_json.containsKey("found")) {
-      found = _json["found"].map((value) => new EntityResult.fromJson(value)).toList();
+      found = _json["found"]
+          .map((value) => new EntityResult.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("missing")) {
-      missing = _json["missing"].map((value) => new EntityResult.fromJson(value)).toList();
+      missing = _json["missing"]
+          .map((value) => new EntityResult.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (deferred != null) {
       _json["deferred"] = deferred.map((value) => (value).toJson()).toList();
     }
@@ -1729,32 +1743,26 @@ class LookupResponse {
   }
 }
 
-/** A mutation to apply to an entity. */
+/// A mutation to apply to an entity.
 class Mutation {
-  /**
-   * The version of the entity that this mutation is being applied to. If this
-   * does not match the current version on the server, the mutation conflicts.
-   */
+  /// The version of the entity that this mutation is being applied to. If this
+  /// does not match the current version on the server, the mutation conflicts.
   core.String baseVersion;
-  /**
-   * The key of the entity to delete. The entity may or may not already exist.
-   * Must have a complete key path and must not be reserved/read-only.
-   */
+
+  /// The key of the entity to delete. The entity may or may not already exist.
+  /// Must have a complete key path and must not be reserved/read-only.
   Key delete;
-  /**
-   * The entity to insert. The entity must not already exist.
-   * The entity key's final path element may be incomplete.
-   */
+
+  /// The entity to insert. The entity must not already exist.
+  /// The entity key's final path element may be incomplete.
   Entity insert;
-  /**
-   * The entity to update. The entity must already exist.
-   * Must have a complete key path.
-   */
+
+  /// The entity to update. The entity must already exist.
+  /// Must have a complete key path.
   Entity update;
-  /**
-   * The entity to upsert. The entity may or may not already exist.
-   * The entity key's final path element may be incomplete.
-   */
+
+  /// The entity to upsert. The entity may or may not already exist.
+  /// The entity key's final path element may be incomplete.
   Entity upsert;
 
   Mutation();
@@ -1778,7 +1786,8 @@ class Mutation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (baseVersion != null) {
       _json["baseVersion"] = baseVersion;
     }
@@ -1798,25 +1807,22 @@ class Mutation {
   }
 }
 
-/** The result of applying a mutation. */
+/// The result of applying a mutation.
 class MutationResult {
-  /**
-   * Whether a conflict was detected for this mutation. Always false when a
-   * conflict detection strategy field is not set in the mutation.
-   */
+  /// Whether a conflict was detected for this mutation. Always false when a
+  /// conflict detection strategy field is not set in the mutation.
   core.bool conflictDetected;
-  /**
-   * The automatically allocated key.
-   * Set only when the mutation allocated a key.
-   */
+
+  /// The automatically allocated key.
+  /// Set only when the mutation allocated a key.
   Key key;
-  /**
-   * The version of the entity on the server after processing the mutation. If
-   * the mutation doesn't change anything on the server, then the version will
-   * be the version of the current entity or, if no entity is present, a version
-   * that is strictly greater than the version of any previous entity and less
-   * than the version of any possible future entity.
-   */
+
+  /// The version of the entity on the server after processing the mutation. If
+  /// the mutation doesn't change anything on the server, then the version will
+  /// be the version of the current entity or, if no entity is present, a
+  /// version
+  /// that is strictly greater than the version of any previous entity and less
+  /// than the version of any possible future entity.
   core.String version;
 
   MutationResult();
@@ -1834,7 +1840,8 @@ class MutationResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (conflictDetected != null) {
       _json["conflictDetected"] = conflictDetected;
     }
@@ -1848,32 +1855,31 @@ class MutationResult {
   }
 }
 
-/**
- * A partition ID identifies a grouping of entities. The grouping is always
- * by project and namespace, however the namespace ID may be empty.
- *
- * A partition ID contains several dimensions:
- * project ID and namespace ID.
- *
- * Partition dimensions:
- *
- * - May be `""`.
- * - Must be valid UTF-8 bytes.
- * - Must have values that match regex `[A-Za-z\d\.\-_]{1,100}`
- * If the value of any dimension matches regex `__.*__`, the partition is
- * reserved/read-only.
- * A reserved/read-only partition ID is forbidden in certain documented
- * contexts.
- *
- * Foreign partition IDs (in which the project ID does
- * not match the context project ID ) are discouraged.
- * Reads and writes of foreign partition IDs may fail if the project is not in
- * an active state.
- */
+/// A partition ID identifies a grouping of entities. The grouping is always
+/// by project and namespace, however the namespace ID may be empty.
+///
+/// A partition ID contains several dimensions:
+/// project ID and namespace ID.
+///
+/// Partition dimensions:
+///
+/// - May be `""`.
+/// - Must be valid UTF-8 bytes.
+/// - Must have values that match regex `[A-Za-z\d\.\-_]{1,100}`
+/// If the value of any dimension matches regex `__.*__`, the partition is
+/// reserved/read-only.
+/// A reserved/read-only partition ID is forbidden in certain documented
+/// contexts.
+///
+/// Foreign partition IDs (in which the project ID does
+/// not match the context project ID ) are discouraged.
+/// Reads and writes of foreign partition IDs may fail if the project is not in
+/// an active state.
 class PartitionId {
-  /** If not empty, the ID of the namespace to which the entities belong. */
+  /// If not empty, the ID of the namespace to which the entities belong.
   core.String namespaceId;
-  /** The ID of the project to which the entities belong. */
+
+  /// The ID of the project to which the entities belong.
   core.String projectId;
 
   PartitionId();
@@ -1888,7 +1894,8 @@ class PartitionId {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (namespaceId != null) {
       _json["namespaceId"] = namespaceId;
     }
@@ -1899,32 +1906,26 @@ class PartitionId {
   }
 }
 
-/**
- * A (kind, ID/name) pair used to construct a key path.
- *
- * If either name or ID is set, the element is complete.
- * If neither is set, the element is incomplete.
- */
+/// A (kind, ID/name) pair used to construct a key path.
+///
+/// If either name or ID is set, the element is complete.
+/// If neither is set, the element is incomplete.
 class PathElement {
-  /**
-   * The auto-allocated ID of the entity.
-   * Never equal to zero. Values less than zero are discouraged and may not
-   * be supported in the future.
-   */
+  /// The auto-allocated ID of the entity.
+  /// Never equal to zero. Values less than zero are discouraged and may not
+  /// be supported in the future.
   core.String id;
-  /**
-   * The kind of the entity.
-   * A kind matching regex `__.*__` is reserved/read-only.
-   * A kind must not contain more than 1500 bytes when UTF-8 encoded.
-   * Cannot be `""`.
-   */
+
+  /// The kind of the entity.
+  /// A kind matching regex `__.*__` is reserved/read-only.
+  /// A kind must not contain more than 1500 bytes when UTF-8 encoded.
+  /// Cannot be `""`.
   core.String kind;
-  /**
-   * The name of the entity.
-   * A name matching regex `__.*__` is reserved/read-only.
-   * A name must not be more than 1500 bytes when UTF-8 encoded.
-   * Cannot be `""`.
-   */
+
+  /// The name of the entity.
+  /// A name matching regex `__.*__` is reserved/read-only.
+  /// A name must not be more than 1500 bytes when UTF-8 encoded.
+  /// Cannot be `""`.
   core.String name;
 
   PathElement();
@@ -1942,7 +1943,8 @@ class PathElement {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -1956,9 +1958,9 @@ class PathElement {
   }
 }
 
-/** A representation of a property in a projection. */
+/// A representation of a property in a projection.
 class Projection {
-  /** The property to project. */
+  /// The property to project.
   PropertyReference property;
 
   Projection();
@@ -1970,7 +1972,8 @@ class Projection {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (property != null) {
       _json["property"] = (property).toJson();
     }
@@ -1978,23 +1981,23 @@ class Projection {
   }
 }
 
-/** A filter on a specific property. */
+/// A filter on a specific property.
 class PropertyFilter {
-  /**
-   * The operator to filter by.
-   * Possible string values are:
-   * - "OPERATOR_UNSPECIFIED" : Unspecified. This value must not be used.
-   * - "LESS_THAN" : Less than.
-   * - "LESS_THAN_OR_EQUAL" : Less than or equal.
-   * - "GREATER_THAN" : Greater than.
-   * - "GREATER_THAN_OR_EQUAL" : Greater than or equal.
-   * - "EQUAL" : Equal.
-   * - "HAS_ANCESTOR" : Has ancestor.
-   */
+  /// The operator to filter by.
+  /// Possible string values are:
+  /// - "OPERATOR_UNSPECIFIED" : Unspecified. This value must not be used.
+  /// - "LESS_THAN" : Less than.
+  /// - "LESS_THAN_OR_EQUAL" : Less than or equal.
+  /// - "GREATER_THAN" : Greater than.
+  /// - "GREATER_THAN_OR_EQUAL" : Greater than or equal.
+  /// - "EQUAL" : Equal.
+  /// - "HAS_ANCESTOR" : Has ancestor.
   core.String op;
-  /** The property to filter by. */
+
+  /// The property to filter by.
   PropertyReference property;
-  /** The value to compare the property to. */
+
+  /// The value to compare the property to.
   Value value;
 
   PropertyFilter();
@@ -2012,7 +2015,8 @@ class PropertyFilter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (op != null) {
       _json["op"] = op;
     }
@@ -2026,17 +2030,16 @@ class PropertyFilter {
   }
 }
 
-/** The desired order for a specific property. */
+/// The desired order for a specific property.
 class PropertyOrder {
-  /**
-   * The direction to order by. Defaults to `ASCENDING`.
-   * Possible string values are:
-   * - "DIRECTION_UNSPECIFIED" : Unspecified. This value must not be used.
-   * - "ASCENDING" : Ascending.
-   * - "DESCENDING" : Descending.
-   */
+  /// The direction to order by. Defaults to `ASCENDING`.
+  /// Possible string values are:
+  /// - "DIRECTION_UNSPECIFIED" : Unspecified. This value must not be used.
+  /// - "ASCENDING" : Ascending.
+  /// - "DESCENDING" : Descending.
   core.String direction;
-  /** The property to order by. */
+
+  /// The property to order by.
   PropertyReference property;
 
   PropertyOrder();
@@ -2051,7 +2054,8 @@ class PropertyOrder {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (direction != null) {
       _json["direction"] = direction;
     }
@@ -2062,12 +2066,10 @@ class PropertyOrder {
   }
 }
 
-/** A reference to a property relative to the kind expressions. */
+/// A reference to a property relative to the kind expressions.
 class PropertyReference {
-  /**
-   * The name of the property.
-   * If name includes "."s, it may be interpreted as a property name path.
-   */
+  /// The name of the property.
+  /// If name includes "."s, it may be interpreted as a property name path.
   core.String name;
 
   PropertyReference();
@@ -2079,7 +2081,8 @@ class PropertyReference {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -2087,73 +2090,71 @@ class PropertyReference {
   }
 }
 
-/** A query for entities. */
+/// A query for entities.
 class Query {
-  /**
-   * The properties to make distinct. The query results will contain the first
-   * result for each distinct combination of values for the given properties
-   * (if empty, all results are returned).
-   */
+  /// The properties to make distinct. The query results will contain the first
+  /// result for each distinct combination of values for the given properties
+  /// (if empty, all results are returned).
   core.List<PropertyReference> distinctOn;
-  /**
-   * An ending point for the query results. Query cursors are
-   * returned in query result batches and
-   * [can only be used to limit the same
-   * query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets).
-   */
+
+  /// An ending point for the query results. Query cursors are
+  /// returned in query result batches and
+  /// [can only be used to limit the same
+  /// query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets).
   core.String endCursor;
   core.List<core.int> get endCursorAsBytes {
     return convert.BASE64.decode(endCursor);
   }
 
   void set endCursorAsBytes(core.List<core.int> _bytes) {
-    endCursor = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    endCursor =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
-  /** The filter to apply. */
+
+  /// The filter to apply.
   Filter filter;
-  /**
-   * The kinds to query (if empty, returns entities of all kinds).
-   * Currently at most 1 kind may be specified.
-   */
+
+  /// The kinds to query (if empty, returns entities of all kinds).
+  /// Currently at most 1 kind may be specified.
   core.List<KindExpression> kind;
-  /**
-   * The maximum number of results to return. Applies after all other
-   * constraints. Optional.
-   * Unspecified is interpreted as no limit.
-   * Must be >= 0 if specified.
-   */
+
+  /// The maximum number of results to return. Applies after all other
+  /// constraints. Optional.
+  /// Unspecified is interpreted as no limit.
+  /// Must be >= 0 if specified.
   core.int limit;
-  /**
-   * The number of results to skip. Applies before limit, but after all other
-   * constraints. Optional. Must be >= 0 if specified.
-   */
+
+  /// The number of results to skip. Applies before limit, but after all other
+  /// constraints. Optional. Must be >= 0 if specified.
   core.int offset;
-  /**
-   * The order to apply to the query results (if empty, order is unspecified).
-   */
+
+  /// The order to apply to the query results (if empty, order is unspecified).
   core.List<PropertyOrder> order;
-  /** The projection to return. Defaults to returning all properties. */
+
+  /// The projection to return. Defaults to returning all properties.
   core.List<Projection> projection;
-  /**
-   * A starting point for the query results. Query cursors are
-   * returned in query result batches and
-   * [can only be used to continue the same
-   * query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets).
-   */
+
+  /// A starting point for the query results. Query cursors are
+  /// returned in query result batches and
+  /// [can only be used to continue the same
+  /// query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets).
   core.String startCursor;
   core.List<core.int> get startCursorAsBytes {
     return convert.BASE64.decode(startCursor);
   }
 
   void set startCursorAsBytes(core.List<core.int> _bytes) {
-    startCursor = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    startCursor =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   Query();
 
   Query.fromJson(core.Map _json) {
     if (_json.containsKey("distinctOn")) {
-      distinctOn = _json["distinctOn"].map((value) => new PropertyReference.fromJson(value)).toList();
+      distinctOn = _json["distinctOn"]
+          .map((value) => new PropertyReference.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("endCursor")) {
       endCursor = _json["endCursor"];
@@ -2162,7 +2163,9 @@ class Query {
       filter = new Filter.fromJson(_json["filter"]);
     }
     if (_json.containsKey("kind")) {
-      kind = _json["kind"].map((value) => new KindExpression.fromJson(value)).toList();
+      kind = _json["kind"]
+          .map((value) => new KindExpression.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("limit")) {
       limit = _json["limit"];
@@ -2171,10 +2174,14 @@ class Query {
       offset = _json["offset"];
     }
     if (_json.containsKey("order")) {
-      order = _json["order"].map((value) => new PropertyOrder.fromJson(value)).toList();
+      order = _json["order"]
+          .map((value) => new PropertyOrder.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("projection")) {
-      projection = _json["projection"].map((value) => new Projection.fromJson(value)).toList();
+      projection = _json["projection"]
+          .map((value) => new Projection.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("startCursor")) {
       startCursor = _json["startCursor"];
@@ -2182,9 +2189,11 @@ class Query {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (distinctOn != null) {
-      _json["distinctOn"] = distinctOn.map((value) => (value).toJson()).toList();
+      _json["distinctOn"] =
+          distinctOn.map((value) => (value).toJson()).toList();
     }
     if (endCursor != null) {
       _json["endCursor"] = endCursor;
@@ -2205,7 +2214,8 @@ class Query {
       _json["order"] = order.map((value) => (value).toJson()).toList();
     }
     if (projection != null) {
-      _json["projection"] = projection.map((value) => (value).toJson()).toList();
+      _json["projection"] =
+          projection.map((value) => (value).toJson()).toList();
     }
     if (startCursor != null) {
       _json["startCursor"] = startCursor;
@@ -2214,70 +2224,70 @@ class Query {
   }
 }
 
-/** A batch of results produced by a query. */
+/// A batch of results produced by a query.
 class QueryResultBatch {
-  /**
-   * A cursor that points to the position after the last result in the batch.
-   */
+  /// A cursor that points to the position after the last result in the batch.
   core.String endCursor;
   core.List<core.int> get endCursorAsBytes {
     return convert.BASE64.decode(endCursor);
   }
 
   void set endCursorAsBytes(core.List<core.int> _bytes) {
-    endCursor = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    endCursor =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
-  /**
-   * The result type for every entity in `entity_results`.
-   * Possible string values are:
-   * - "RESULT_TYPE_UNSPECIFIED" : Unspecified. This value is never used.
-   * - "FULL" : The key and properties.
-   * - "PROJECTION" : A projected subset of properties. The entity may have no
-   * key.
-   * - "KEY_ONLY" : Only the key.
-   */
+
+  /// The result type for every entity in `entity_results`.
+  /// Possible string values are:
+  /// - "RESULT_TYPE_UNSPECIFIED" : Unspecified. This value is never used.
+  /// - "FULL" : The key and properties.
+  /// - "PROJECTION" : A projected subset of properties. The entity may have no
+  /// key.
+  /// - "KEY_ONLY" : Only the key.
   core.String entityResultType;
-  /** The results for this batch. */
+
+  /// The results for this batch.
   core.List<EntityResult> entityResults;
-  /**
-   * The state of the query after the current batch.
-   * Possible string values are:
-   * - "MORE_RESULTS_TYPE_UNSPECIFIED" : Unspecified. This value is never used.
-   * - "NOT_FINISHED" : There may be additional batches to fetch from this
-   * query.
-   * - "MORE_RESULTS_AFTER_LIMIT" : The query is finished, but there may be more
-   * results after the limit.
-   * - "MORE_RESULTS_AFTER_CURSOR" : The query is finished, but there may be
-   * more results after the end
-   * cursor.
-   * - "NO_MORE_RESULTS" : The query is finished, and there are no more results.
-   */
+
+  /// The state of the query after the current batch.
+  /// Possible string values are:
+  /// - "MORE_RESULTS_TYPE_UNSPECIFIED" : Unspecified. This value is never used.
+  /// - "NOT_FINISHED" : There may be additional batches to fetch from this
+  /// query.
+  /// - "MORE_RESULTS_AFTER_LIMIT" : The query is finished, but there may be
+  /// more results after the limit.
+  /// - "MORE_RESULTS_AFTER_CURSOR" : The query is finished, but there may be
+  /// more results after the end
+  /// cursor.
+  /// - "NO_MORE_RESULTS" : The query is finished, and there are no more
+  /// results.
   core.String moreResults;
-  /**
-   * A cursor that points to the position after the last skipped result.
-   * Will be set when `skipped_results` != 0.
-   */
+
+  /// A cursor that points to the position after the last skipped result.
+  /// Will be set when `skipped_results` != 0.
   core.String skippedCursor;
   core.List<core.int> get skippedCursorAsBytes {
     return convert.BASE64.decode(skippedCursor);
   }
 
   void set skippedCursorAsBytes(core.List<core.int> _bytes) {
-    skippedCursor = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    skippedCursor =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
-  /** The number of results skipped, typically because of an offset. */
+
+  /// The number of results skipped, typically because of an offset.
   core.int skippedResults;
-  /**
-   * The version number of the snapshot this batch was returned from.
-   * This applies to the range of results from the query's `start_cursor` (or
-   * the beginning of the query if no cursor was given) to this batch's
-   * `end_cursor` (not the query's `end_cursor`).
-   *
-   * In a single transaction, subsequent query result batches for the same query
-   * can have a greater snapshot version number. Each batch's snapshot version
-   * is valid for all preceding batches.
-   * The value will be zero for eventually consistent queries.
-   */
+
+  /// The version number of the snapshot this batch was returned from.
+  /// This applies to the range of results from the query's `start_cursor` (or
+  /// the beginning of the query if no cursor was given) to this batch's
+  /// `end_cursor` (not the query's `end_cursor`).
+  ///
+  /// In a single transaction, subsequent query result batches for the same
+  /// query
+  /// can have a greater snapshot version number. Each batch's snapshot version
+  /// is valid for all preceding batches.
+  /// The value will be zero for eventually consistent queries.
   core.String snapshotVersion;
 
   QueryResultBatch();
@@ -2290,7 +2300,9 @@ class QueryResultBatch {
       entityResultType = _json["entityResultType"];
     }
     if (_json.containsKey("entityResults")) {
-      entityResults = _json["entityResults"].map((value) => new EntityResult.fromJson(value)).toList();
+      entityResults = _json["entityResults"]
+          .map((value) => new EntityResult.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("moreResults")) {
       moreResults = _json["moreResults"];
@@ -2307,7 +2319,8 @@ class QueryResultBatch {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (endCursor != null) {
       _json["endCursor"] = endCursor;
     }
@@ -2315,7 +2328,8 @@ class QueryResultBatch {
       _json["entityResultType"] = entityResultType;
     }
     if (entityResults != null) {
-      _json["entityResults"] = entityResults.map((value) => (value).toJson()).toList();
+      _json["entityResults"] =
+          entityResults.map((value) => (value).toJson()).toList();
     }
     if (moreResults != null) {
       _json["moreResults"] = moreResults;
@@ -2333,44 +2347,41 @@ class QueryResultBatch {
   }
 }
 
-/** Options specific to read-only transactions. */
+/// Options specific to read-only transactions.
 class ReadOnly {
-
   ReadOnly();
 
-  ReadOnly.fromJson(core.Map _json) {
-  }
+  ReadOnly.fromJson(core.Map _json) {}
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }
 
-/** The options shared by read requests. */
+/// The options shared by read requests.
 class ReadOptions {
-  /**
-   * The non-transactional read consistency to use.
-   * Cannot be set to `STRONG` for global queries.
-   * Possible string values are:
-   * - "READ_CONSISTENCY_UNSPECIFIED" : Unspecified. This value must not be
-   * used.
-   * - "STRONG" : Strong consistency.
-   * - "EVENTUAL" : Eventual consistency.
-   */
+  /// The non-transactional read consistency to use.
+  /// Cannot be set to `STRONG` for global queries.
+  /// Possible string values are:
+  /// - "READ_CONSISTENCY_UNSPECIFIED" : Unspecified. This value must not be
+  /// used.
+  /// - "STRONG" : Strong consistency.
+  /// - "EVENTUAL" : Eventual consistency.
   core.String readConsistency;
-  /**
-   * The identifier of the transaction in which to read. A
-   * transaction identifier is returned by a call to
-   * Datastore.BeginTransaction.
-   */
+
+  /// The identifier of the transaction in which to read. A
+  /// transaction identifier is returned by a call to
+  /// Datastore.BeginTransaction.
   core.String transaction;
   core.List<core.int> get transactionAsBytes {
     return convert.BASE64.decode(transaction);
   }
 
   void set transactionAsBytes(core.List<core.int> _bytes) {
-    transaction = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    transaction =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   ReadOptions();
@@ -2385,7 +2396,8 @@ class ReadOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (readConsistency != null) {
       _json["readConsistency"] = readConsistency;
     }
@@ -2396,16 +2408,17 @@ class ReadOptions {
   }
 }
 
-/** Options specific to read / write transactions. */
+/// Options specific to read / write transactions.
 class ReadWrite {
-  /** The transaction identifier of the transaction being retried. */
+  /// The transaction identifier of the transaction being retried.
   core.String previousTransaction;
   core.List<core.int> get previousTransactionAsBytes {
     return convert.BASE64.decode(previousTransaction);
   }
 
   void set previousTransactionAsBytes(core.List<core.int> _bytes) {
-    previousTransaction = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    previousTransaction =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   ReadWrite();
@@ -2417,7 +2430,8 @@ class ReadWrite {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (previousTransaction != null) {
       _json["previousTransaction"] = previousTransaction;
     }
@@ -2425,19 +2439,18 @@ class ReadWrite {
   }
 }
 
-/** The request for Datastore.Rollback. */
+/// The request for Datastore.Rollback.
 class RollbackRequest {
-  /**
-   * The transaction identifier, returned by a call to
-   * Datastore.BeginTransaction.
-   */
+  /// The transaction identifier, returned by a call to
+  /// Datastore.BeginTransaction.
   core.String transaction;
   core.List<core.int> get transactionAsBytes {
     return convert.BASE64.decode(transaction);
   }
 
   void set transactionAsBytes(core.List<core.int> _bytes) {
-    transaction = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    transaction =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   RollbackRequest();
@@ -2449,7 +2462,8 @@ class RollbackRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (transaction != null) {
       _json["transaction"] = transaction;
     }
@@ -2457,37 +2471,35 @@ class RollbackRequest {
   }
 }
 
-/**
- * The response for Datastore.Rollback.
- * (an empty message).
- */
+/// The response for Datastore.Rollback.
+/// (an empty message).
 class RollbackResponse {
-
   RollbackResponse();
 
-  RollbackResponse.fromJson(core.Map _json) {
-  }
+  RollbackResponse.fromJson(core.Map _json) {}
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }
 
-/** The request for Datastore.RunQuery. */
+/// The request for Datastore.RunQuery.
 class RunQueryRequest {
-  /** The GQL query to run. */
+  /// The GQL query to run.
   GqlQuery gqlQuery;
-  /**
-   * Entities are partitioned into subsets, identified by a partition ID.
-   * Queries are scoped to a single partition.
-   * This partition ID is normalized with the standard default context
-   * partition ID.
-   */
+
+  /// Entities are partitioned into subsets, identified by a partition ID.
+  /// Queries are scoped to a single partition.
+  /// This partition ID is normalized with the standard default context
+  /// partition ID.
   PartitionId partitionId;
-  /** The query to run. */
+
+  /// The query to run.
   Query query;
-  /** The options for this query. */
+
+  /// The options for this query.
   ReadOptions readOptions;
 
   RunQueryRequest();
@@ -2508,7 +2520,8 @@ class RunQueryRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (gqlQuery != null) {
       _json["gqlQuery"] = (gqlQuery).toJson();
     }
@@ -2525,11 +2538,12 @@ class RunQueryRequest {
   }
 }
 
-/** The response for Datastore.RunQuery. */
+/// The response for Datastore.RunQuery.
 class RunQueryResponse {
-  /** A batch of query results (always present). */
+  /// A batch of query results (always present).
   QueryResultBatch batch;
-  /** The parsed form of the `GqlQuery` from the request, if it was set. */
+
+  /// The parsed form of the `GqlQuery` from the request, if it was set.
   Query query;
 
   RunQueryResponse();
@@ -2544,7 +2558,8 @@ class RunQueryResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (batch != null) {
       _json["batch"] = (batch).toJson();
     }
@@ -2555,78 +2570,76 @@ class RunQueryResponse {
   }
 }
 
-/**
- * The `Status` type defines a logical error model that is suitable for
- * different
- * programming environments, including REST APIs and RPC APIs. It is used by
- * [gRPC](https://github.com/grpc). The error model is designed to be:
- *
- * - Simple to use and understand for most users
- * - Flexible enough to meet unexpected needs
- *
- * # Overview
- *
- * The `Status` message contains three pieces of data: error code, error
- * message,
- * and error details. The error code should be an enum value of
- * google.rpc.Code, but it may accept additional error codes if needed.  The
- * error message should be a developer-facing English message that helps
- * developers *understand* and *resolve* the error. If a localized user-facing
- * error message is needed, put the localized message in the error details or
- * localize it in the client. The optional error details may contain arbitrary
- * information about the error. There is a predefined set of error detail types
- * in the package `google.rpc` that can be used for common error conditions.
- *
- * # Language mapping
- *
- * The `Status` message is the logical representation of the error model, but it
- * is not necessarily the actual wire format. When the `Status` message is
- * exposed in different client libraries and different wire protocols, it can be
- * mapped differently. For example, it will likely be mapped to some exceptions
- * in Java, but more likely mapped to some error codes in C.
- *
- * # Other uses
- *
- * The error model and the `Status` message can be used in a variety of
- * environments, either with or without APIs, to provide a
- * consistent developer experience across different environments.
- *
- * Example uses of this error model include:
- *
- * - Partial errors. If a service needs to return partial errors to the client,
- *     it may embed the `Status` in the normal response to indicate the partial
- *     errors.
- *
- * - Workflow errors. A typical workflow has multiple steps. Each step may
- *     have a `Status` message for error reporting.
- *
- * - Batch operations. If a client uses batch request and batch response, the
- *     `Status` message should be used directly inside batch response, one for
- *     each error sub-response.
- *
- * - Asynchronous operations. If an API call embeds asynchronous operation
- *     results in its response, the status of those operations should be
- *     represented directly using the `Status` message.
- *
- * - Logging. If some API errors are stored in logs, the message `Status` could
- * be used directly after any stripping needed for security/privacy reasons.
- */
+/// The `Status` type defines a logical error model that is suitable for
+/// different
+/// programming environments, including REST APIs and RPC APIs. It is used by
+/// [gRPC](https://github.com/grpc). The error model is designed to be:
+///
+/// - Simple to use and understand for most users
+/// - Flexible enough to meet unexpected needs
+///
+/// # Overview
+///
+/// The `Status` message contains three pieces of data: error code, error
+/// message,
+/// and error details. The error code should be an enum value of
+/// google.rpc.Code, but it may accept additional error codes if needed.  The
+/// error message should be a developer-facing English message that helps
+/// developers *understand* and *resolve* the error. If a localized user-facing
+/// error message is needed, put the localized message in the error details or
+/// localize it in the client. The optional error details may contain arbitrary
+/// information about the error. There is a predefined set of error detail types
+/// in the package `google.rpc` that can be used for common error conditions.
+///
+/// # Language mapping
+///
+/// The `Status` message is the logical representation of the error model, but
+/// it
+/// is not necessarily the actual wire format. When the `Status` message is
+/// exposed in different client libraries and different wire protocols, it can
+/// be
+/// mapped differently. For example, it will likely be mapped to some exceptions
+/// in Java, but more likely mapped to some error codes in C.
+///
+/// # Other uses
+///
+/// The error model and the `Status` message can be used in a variety of
+/// environments, either with or without APIs, to provide a
+/// consistent developer experience across different environments.
+///
+/// Example uses of this error model include:
+///
+/// - Partial errors. If a service needs to return partial errors to the client,
+/// it may embed the `Status` in the normal response to indicate the partial
+///     errors.
+///
+/// - Workflow errors. A typical workflow has multiple steps. Each step may
+///     have a `Status` message for error reporting.
+///
+/// - Batch operations. If a client uses batch request and batch response, the
+///     `Status` message should be used directly inside batch response, one for
+///     each error sub-response.
+///
+/// - Asynchronous operations. If an API call embeds asynchronous operation
+///     results in its response, the status of those operations should be
+///     represented directly using the `Status` message.
+///
+/// - Logging. If some API errors are stored in logs, the message `Status` could
+/// be used directly after any stripping needed for security/privacy reasons.
 class Status {
-  /** The status code, which should be an enum value of google.rpc.Code. */
+  /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
-  /**
-   * A list of messages that carry the error details.  There is a common set of
-   * message types for APIs to use.
-   *
-   * The values for Object must be JSON objects. It can consist of `num`,
-   * `String`, `bool` and `null` as well as `Map` and `List` values.
-   */
+
+  /// A list of messages that carry the error details.  There is a common set of
+  /// message types for APIs to use.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
-  /**
-   * A developer-facing error message, which should be in English. Any
-   * user-facing error message should be localized and sent in the
-   * google.rpc.Status.details field, or localized by the client.
-   */
+
+  /// A developer-facing error message, which should be in English. Any
+  /// user-facing error message should be localized and sent in the
+  /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
   Status();
@@ -2644,7 +2657,8 @@ class Status {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -2658,17 +2672,16 @@ class Status {
   }
 }
 
-/**
- * Options for beginning a new transaction.
- *
- * Transactions can be created explicitly with calls to
- * Datastore.BeginTransaction or implicitly by setting
- * ReadOptions.new_transaction in read requests.
- */
+/// Options for beginning a new transaction.
+///
+/// Transactions can be created explicitly with calls to
+/// Datastore.BeginTransaction or implicitly by setting
+/// ReadOptions.new_transaction in read requests.
 class TransactionOptions {
-  /** The transaction should only allow reads. */
+  /// The transaction should only allow reads.
   ReadOnly readOnly;
-  /** The transaction should allow both reads and writes. */
+
+  /// The transaction should allow both reads and writes.
   ReadWrite readWrite;
 
   TransactionOptions();
@@ -2683,7 +2696,8 @@ class TransactionOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (readOnly != null) {
       _json["readOnly"] = (readOnly).toJson();
     }
@@ -2694,77 +2708,72 @@ class TransactionOptions {
   }
 }
 
-/**
- * A message that can hold any of the supported value types and associated
- * metadata.
- */
+/// A message that can hold any of the supported value types and associated
+/// metadata.
 class Value {
-  /**
-   * An array value.
-   * Cannot contain another array value.
-   * A `Value` instance that sets field `array_value` must not set fields
-   * `meaning` or `exclude_from_indexes`.
-   */
+  /// An array value.
+  /// Cannot contain another array value.
+  /// A `Value` instance that sets field `array_value` must not set fields
+  /// `meaning` or `exclude_from_indexes`.
   ArrayValue arrayValue;
-  /**
-   * A blob value.
-   * May have at most 1,000,000 bytes.
-   * When `exclude_from_indexes` is false, may have at most 1500 bytes.
-   * In JSON requests, must be base64-encoded.
-   */
+
+  /// A blob value.
+  /// May have at most 1,000,000 bytes.
+  /// When `exclude_from_indexes` is false, may have at most 1500 bytes.
+  /// In JSON requests, must be base64-encoded.
   core.String blobValue;
   core.List<core.int> get blobValueAsBytes {
     return convert.BASE64.decode(blobValue);
   }
 
   void set blobValueAsBytes(core.List<core.int> _bytes) {
-    blobValue = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    blobValue =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
-  /** A boolean value. */
+
+  /// A boolean value.
   core.bool booleanValue;
-  /** A double value. */
+
+  /// A double value.
   core.double doubleValue;
-  /**
-   * An entity value.
-   *
-   * - May have no key.
-   * - May have a key with an incomplete key path.
-   * - May have a reserved/read-only key.
-   */
+
+  /// An entity value.
+  ///
+  /// - May have no key.
+  /// - May have a key with an incomplete key path.
+  /// - May have a reserved/read-only key.
   Entity entityValue;
-  /**
-   * If the value should be excluded from all indexes including those defined
-   * explicitly.
-   */
+
+  /// If the value should be excluded from all indexes including those defined
+  /// explicitly.
   core.bool excludeFromIndexes;
-  /** A geo point value representing a point on the surface of Earth. */
+
+  /// A geo point value representing a point on the surface of Earth.
   LatLng geoPointValue;
-  /** An integer value. */
+
+  /// An integer value.
   core.String integerValue;
-  /** A key value. */
+
+  /// A key value.
   Key keyValue;
-  /**
-   * The `meaning` field should only be populated for backwards compatibility.
-   */
+
+  /// The `meaning` field should only be populated for backwards compatibility.
   core.int meaning;
-  /**
-   * A null value.
-   * Possible string values are:
-   * - "NULL_VALUE" : Null value.
-   */
+
+  /// A null value.
+  /// Possible string values are:
+  /// - "NULL_VALUE" : Null value.
   core.String nullValue;
-  /**
-   * A UTF-8 encoded string value.
-   * When `exclude_from_indexes` is false (it is indexed) , may have at most
-   * 1500 bytes.
-   * Otherwise, may be set to at least 1,000,000 bytes.
-   */
+
+  /// A UTF-8 encoded string value.
+  /// When `exclude_from_indexes` is false (it is indexed) , may have at most
+  /// 1500 bytes.
+  /// Otherwise, may be set to at least 1,000,000 bytes.
   core.String stringValue;
-  /**
-   * A timestamp value.
-   * When stored in the Datastore, precise only to microseconds;
-   * any additional precision is rounded down.
-   */
+
+  /// A timestamp value.
+  /// When stored in the Datastore, precise only to microseconds;
+  /// any additional precision is rounded down.
   core.String timestampValue;
 
   Value();
@@ -2812,7 +2821,8 @@ class Value {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (arrayValue != null) {
       _json["arrayValue"] = (arrayValue).toJson();
     }

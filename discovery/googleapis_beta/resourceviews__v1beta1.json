@@ -25,7 +25,7 @@
     },
     "basePath": "/resourceviews/v1beta1/projects/",
     "baseUrl": "https://www.googleapis.com/resourceviews/v1beta1/projects/",
-    "batchPath": "batch",
+    "batchPath": "batch/resourceviews/v1beta1",
     "description": "The Resource View API allows users to create and manage logical sets of Google Compute Engine instances.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/",

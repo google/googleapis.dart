@@ -1,12 +1,10 @@
 library googleapis.doubleclickbidmanager.v1.test;
 
 import "dart:core" as core;
-import "dart:collection" as collection;
 import "dart:async" as async;
 import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
-import 'package:http/testing.dart' as http_testing;
 import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/doubleclickbidmanager/v1.dart' as api;
@@ -22,7 +20,8 @@ class HttpServerMock extends http.BaseClient {
 
   async.Future<http.StreamedResponse> send(http.BaseRequest request) {
     if (_expectJson) {
-      return request.finalize()
+      return request
+          .finalize()
           .transform(convert.UTF8.decoder)
           .join('')
           .then((core.String jsonString) {
@@ -45,20 +44,20 @@ class HttpServerMock extends http.BaseClient {
   }
 }
 
-http.StreamedResponse stringResponse(
-    core.int status, core.Map<core.String, core.String> headers, core.String body) {
+http.StreamedResponse stringResponse(core.int status,
+    core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed1261() {
+buildUnnamed1257() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1261(core.List<core.String> o) {
+checkUnnamed1257(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -70,7 +69,7 @@ buildDownloadLineItemsRequest() {
   buildCounterDownloadLineItemsRequest++;
   if (buildCounterDownloadLineItemsRequest < 3) {
     o.fileSpec = "foo";
-    o.filterIds = buildUnnamed1261();
+    o.filterIds = buildUnnamed1257();
     o.filterType = "foo";
     o.format = "foo";
   }
@@ -82,7 +81,7 @@ checkDownloadLineItemsRequest(api.DownloadLineItemsRequest o) {
   buildCounterDownloadLineItemsRequest++;
   if (buildCounterDownloadLineItemsRequest < 3) {
     unittest.expect(o.fileSpec, unittest.equals('foo'));
-    checkUnnamed1261(o.filterIds);
+    checkUnnamed1257(o.filterIds);
     unittest.expect(o.filterType, unittest.equals('foo'));
     unittest.expect(o.format, unittest.equals('foo'));
   }
@@ -108,27 +107,27 @@ checkDownloadLineItemsResponse(api.DownloadLineItemsResponse o) {
   buildCounterDownloadLineItemsResponse--;
 }
 
-buildUnnamed1262() {
+buildUnnamed1258() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1262(core.List<core.String> o) {
+checkUnnamed1258(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1263() {
+buildUnnamed1259() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1263(core.List<core.String> o) {
+checkUnnamed1259(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -139,8 +138,8 @@ buildDownloadRequest() {
   var o = new api.DownloadRequest();
   buildCounterDownloadRequest++;
   if (buildCounterDownloadRequest < 3) {
-    o.fileTypes = buildUnnamed1262();
-    o.filterIds = buildUnnamed1263();
+    o.fileTypes = buildUnnamed1258();
+    o.filterIds = buildUnnamed1259();
     o.filterType = "foo";
     o.version = "foo";
   }
@@ -151,8 +150,8 @@ buildDownloadRequest() {
 checkDownloadRequest(api.DownloadRequest o) {
   buildCounterDownloadRequest++;
   if (buildCounterDownloadRequest < 3) {
-    checkUnnamed1262(o.fileTypes);
-    checkUnnamed1263(o.filterIds);
+    checkUnnamed1258(o.fileTypes);
+    checkUnnamed1259(o.filterIds);
     unittest.expect(o.filterType, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals('foo'));
   }
@@ -205,14 +204,14 @@ checkFilterPair(api.FilterPair o) {
   buildCounterFilterPair--;
 }
 
-buildUnnamed1264() {
+buildUnnamed1260() {
   var o = new core.List<api.Query>();
   o.add(buildQuery());
   o.add(buildQuery());
   return o;
 }
 
-checkUnnamed1264(core.List<api.Query> o) {
+checkUnnamed1260(core.List<api.Query> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkQuery(o[0]);
   checkQuery(o[1]);
@@ -224,7 +223,7 @@ buildListQueriesResponse() {
   buildCounterListQueriesResponse++;
   if (buildCounterListQueriesResponse < 3) {
     o.kind = "foo";
-    o.queries = buildUnnamed1264();
+    o.queries = buildUnnamed1260();
   }
   buildCounterListQueriesResponse--;
   return o;
@@ -234,19 +233,19 @@ checkListQueriesResponse(api.ListQueriesResponse o) {
   buildCounterListQueriesResponse++;
   if (buildCounterListQueriesResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1264(o.queries);
+    checkUnnamed1260(o.queries);
   }
   buildCounterListQueriesResponse--;
 }
 
-buildUnnamed1265() {
+buildUnnamed1261() {
   var o = new core.List<api.Report>();
   o.add(buildReport());
   o.add(buildReport());
   return o;
 }
 
-checkUnnamed1265(core.List<api.Report> o) {
+checkUnnamed1261(core.List<api.Report> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReport(o[0]);
   checkReport(o[1]);
@@ -258,7 +257,7 @@ buildListReportsResponse() {
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
     o.kind = "foo";
-    o.reports = buildUnnamed1265();
+    o.reports = buildUnnamed1261();
   }
   buildCounterListReportsResponse--;
   return o;
@@ -268,45 +267,45 @@ checkListReportsResponse(api.ListReportsResponse o) {
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1265(o.reports);
+    checkUnnamed1261(o.reports);
   }
   buildCounterListReportsResponse--;
 }
 
-buildUnnamed1266() {
+buildUnnamed1262() {
   var o = new core.List<api.FilterPair>();
   o.add(buildFilterPair());
   o.add(buildFilterPair());
   return o;
 }
 
-checkUnnamed1266(core.List<api.FilterPair> o) {
+checkUnnamed1262(core.List<api.FilterPair> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFilterPair(o[0]);
   checkFilterPair(o[1]);
 }
 
-buildUnnamed1267() {
+buildUnnamed1263() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1267(core.List<core.String> o) {
+checkUnnamed1263(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1268() {
+buildUnnamed1264() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1268(core.List<core.String> o) {
+checkUnnamed1264(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -317,10 +316,10 @@ buildParameters() {
   var o = new api.Parameters();
   buildCounterParameters++;
   if (buildCounterParameters < 3) {
-    o.filters = buildUnnamed1266();
-    o.groupBys = buildUnnamed1267();
+    o.filters = buildUnnamed1262();
+    o.groupBys = buildUnnamed1263();
     o.includeInviteData = true;
-    o.metrics = buildUnnamed1268();
+    o.metrics = buildUnnamed1264();
     o.type = "foo";
   }
   buildCounterParameters--;
@@ -330,10 +329,10 @@ buildParameters() {
 checkParameters(api.Parameters o) {
   buildCounterParameters++;
   if (buildCounterParameters < 3) {
-    checkUnnamed1266(o.filters);
-    checkUnnamed1267(o.groupBys);
+    checkUnnamed1262(o.filters);
+    checkUnnamed1263(o.groupBys);
     unittest.expect(o.includeInviteData, unittest.isTrue);
-    checkUnnamed1268(o.metrics);
+    checkUnnamed1264(o.metrics);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterParameters--;
@@ -372,14 +371,14 @@ checkQuery(api.Query o) {
   buildCounterQuery--;
 }
 
-buildUnnamed1269() {
+buildUnnamed1265() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1269(core.List<core.String> o) {
+checkUnnamed1265(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -399,7 +398,7 @@ buildQueryMetadata() {
     o.reportCount = 42;
     o.running = true;
     o.sendNotification = true;
-    o.shareEmailAddress = buildUnnamed1269();
+    o.shareEmailAddress = buildUnnamed1265();
     o.title = "foo";
   }
   buildCounterQueryMetadata--;
@@ -411,14 +410,15 @@ checkQueryMetadata(api.QueryMetadata o) {
   if (buildCounterQueryMetadata < 3) {
     unittest.expect(o.dataRange, unittest.equals('foo'));
     unittest.expect(o.format, unittest.equals('foo'));
-    unittest.expect(o.googleCloudStoragePathForLatestReport, unittest.equals('foo'));
+    unittest.expect(
+        o.googleCloudStoragePathForLatestReport, unittest.equals('foo'));
     unittest.expect(o.googleDrivePathForLatestReport, unittest.equals('foo'));
     unittest.expect(o.latestReportRunTimeMs, unittest.equals('foo'));
     unittest.expect(o.locale, unittest.equals('foo'));
     unittest.expect(o.reportCount, unittest.equals(42));
     unittest.expect(o.running, unittest.isTrue);
     unittest.expect(o.sendNotification, unittest.isTrue);
-    checkUnnamed1269(o.shareEmailAddress);
+    checkUnnamed1265(o.shareEmailAddress);
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterQueryMetadata--;
@@ -562,14 +562,14 @@ checkReportStatus(api.ReportStatus o) {
   buildCounterReportStatus--;
 }
 
-buildUnnamed1270() {
+buildUnnamed1266() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1270(core.List<core.String> o) {
+checkUnnamed1266(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -583,7 +583,7 @@ buildRowStatus() {
     o.changed = true;
     o.entityId = "foo";
     o.entityName = "foo";
-    o.errors = buildUnnamed1270();
+    o.errors = buildUnnamed1266();
     o.persisted = true;
     o.rowNumber = 42;
   }
@@ -597,7 +597,7 @@ checkRowStatus(api.RowStatus o) {
     unittest.expect(o.changed, unittest.isTrue);
     unittest.expect(o.entityId, unittest.equals('foo'));
     unittest.expect(o.entityName, unittest.equals('foo'));
-    checkUnnamed1270(o.errors);
+    checkUnnamed1266(o.errors);
     unittest.expect(o.persisted, unittest.isTrue);
     unittest.expect(o.rowNumber, unittest.equals(42));
   }
@@ -671,27 +671,27 @@ checkUploadLineItemsResponse(api.UploadLineItemsResponse o) {
   buildCounterUploadLineItemsResponse--;
 }
 
-buildUnnamed1271() {
+buildUnnamed1267() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1271(core.List<core.String> o) {
+checkUnnamed1267(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1272() {
+buildUnnamed1268() {
   var o = new core.List<api.RowStatus>();
   o.add(buildRowStatus());
   o.add(buildRowStatus());
   return o;
 }
 
-checkUnnamed1272(core.List<api.RowStatus> o) {
+checkUnnamed1268(core.List<api.RowStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRowStatus(o[0]);
   checkRowStatus(o[1]);
@@ -702,8 +702,8 @@ buildUploadStatus() {
   var o = new api.UploadStatus();
   buildCounterUploadStatus++;
   if (buildCounterUploadStatus < 3) {
-    o.errors = buildUnnamed1271();
-    o.rowStatus = buildUnnamed1272();
+    o.errors = buildUnnamed1267();
+    o.rowStatus = buildUnnamed1268();
   }
   buildCounterUploadStatus--;
   return o;
@@ -712,12 +712,11 @@ buildUploadStatus() {
 checkUploadStatus(api.UploadStatus o) {
   buildCounterUploadStatus++;
   if (buildCounterUploadStatus < 3) {
-    checkUnnamed1271(o.errors);
-    checkUnnamed1272(o.rowStatus);
+    checkUnnamed1267(o.errors);
+    checkUnnamed1268(o.rowStatus);
   }
   buildCounterUploadStatus--;
 }
-
 
 main() {
   unittest.group("obj-schema-DownloadLineItemsRequest", () {
@@ -728,7 +727,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-DownloadLineItemsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildDownloadLineItemsResponse();
@@ -736,7 +734,6 @@ main() {
       checkDownloadLineItemsResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-DownloadRequest", () {
     unittest.test("to-json--from-json", () {
@@ -746,7 +743,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-DownloadResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildDownloadResponse();
@@ -754,7 +750,6 @@ main() {
       checkDownloadResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-FilterPair", () {
     unittest.test("to-json--from-json", () {
@@ -764,7 +759,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ListQueriesResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListQueriesResponse();
@@ -772,7 +766,6 @@ main() {
       checkListQueriesResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-ListReportsResponse", () {
     unittest.test("to-json--from-json", () {
@@ -782,7 +775,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Parameters", () {
     unittest.test("to-json--from-json", () {
       var o = buildParameters();
@@ -790,7 +782,6 @@ main() {
       checkParameters(od);
     });
   });
-
 
   unittest.group("obj-schema-Query", () {
     unittest.test("to-json--from-json", () {
@@ -800,7 +791,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-QueryMetadata", () {
     unittest.test("to-json--from-json", () {
       var o = buildQueryMetadata();
@@ -808,7 +798,6 @@ main() {
       checkQueryMetadata(od);
     });
   });
-
 
   unittest.group("obj-schema-QuerySchedule", () {
     unittest.test("to-json--from-json", () {
@@ -818,7 +807,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Report", () {
     unittest.test("to-json--from-json", () {
       var o = buildReport();
@@ -826,7 +814,6 @@ main() {
       checkReport(od);
     });
   });
-
 
   unittest.group("obj-schema-ReportFailure", () {
     unittest.test("to-json--from-json", () {
@@ -836,7 +823,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ReportKey", () {
     unittest.test("to-json--from-json", () {
       var o = buildReportKey();
@@ -844,7 +830,6 @@ main() {
       checkReportKey(od);
     });
   });
-
 
   unittest.group("obj-schema-ReportMetadata", () {
     unittest.test("to-json--from-json", () {
@@ -854,7 +839,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ReportStatus", () {
     unittest.test("to-json--from-json", () {
       var o = buildReportStatus();
@@ -862,7 +846,6 @@ main() {
       checkReportStatus(od);
     });
   });
-
 
   unittest.group("obj-schema-RowStatus", () {
     unittest.test("to-json--from-json", () {
@@ -872,7 +855,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-RunQueryRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildRunQueryRequest();
@@ -880,7 +862,6 @@ main() {
       checkRunQueryRequest(od);
     });
   });
-
 
   unittest.group("obj-schema-UploadLineItemsRequest", () {
     unittest.test("to-json--from-json", () {
@@ -890,7 +871,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-UploadLineItemsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildUploadLineItemsResponse();
@@ -898,7 +878,6 @@ main() {
       checkUploadLineItemsResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-UploadStatus", () {
     unittest.test("to-json--from-json", () {
@@ -908,12 +887,11 @@ main() {
     });
   });
 
-
   unittest.group("resource-LineitemsResourceApi", () {
     unittest.test("method--downloadlineitems", () {
-
       var mock = new HttpServerMock();
-      api.LineitemsResourceApi res = new api.DoubleclickbidmanagerApi(mock).lineitems;
+      api.LineitemsResourceApi res =
+          new api.DoubleclickbidmanagerApi(mock).lineitems;
       var arg_request = buildDownloadLineItemsRequest();
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.DownloadLineItemsRequest.fromJson(json);
@@ -923,11 +901,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 25), unittest.equals("doubleclickbidmanager/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 25),
+            unittest.equals("doubleclickbidmanager/v1/"));
         pathOffset += 25;
-        unittest.expect(path.substring(pathOffset, pathOffset + 27), unittest.equals("lineitems/downloadlineitems"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 27),
+            unittest.equals("lineitems/downloadlineitems"));
         pathOffset += 27;
 
         var query = (req.url).query;
@@ -940,29 +921,31 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildDownloadLineItemsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.downloadlineitems(arg_request).then(unittest.expectAsync1(((api.DownloadLineItemsResponse response) {
+      res.downloadlineitems(arg_request).then(
+          unittest.expectAsync1(((api.DownloadLineItemsResponse response) {
         checkDownloadLineItemsResponse(response);
       })));
     });
 
     unittest.test("method--uploadlineitems", () {
-
       var mock = new HttpServerMock();
-      api.LineitemsResourceApi res = new api.DoubleclickbidmanagerApi(mock).lineitems;
+      api.LineitemsResourceApi res =
+          new api.DoubleclickbidmanagerApi(mock).lineitems;
       var arg_request = buildUploadLineItemsRequest();
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.UploadLineItemsRequest.fromJson(json);
@@ -972,11 +955,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 25), unittest.equals("doubleclickbidmanager/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 25),
+            unittest.equals("doubleclickbidmanager/v1/"));
         pathOffset += 25;
-        unittest.expect(path.substring(pathOffset, pathOffset + 25), unittest.equals("lineitems/uploadlineitems"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 25),
+            unittest.equals("lineitems/uploadlineitems"));
         pathOffset += 25;
 
         var query = (req.url).query;
@@ -989,33 +975,34 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildUploadLineItemsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.uploadlineitems(arg_request).then(unittest.expectAsync1(((api.UploadLineItemsResponse response) {
+      res
+          .uploadlineitems(arg_request)
+          .then(unittest.expectAsync1(((api.UploadLineItemsResponse response) {
         checkUploadLineItemsResponse(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-QueriesResourceApi", () {
     unittest.test("method--createquery", () {
-
       var mock = new HttpServerMock();
-      api.QueriesResourceApi res = new api.DoubleclickbidmanagerApi(mock).queries;
+      api.QueriesResourceApi res =
+          new api.DoubleclickbidmanagerApi(mock).queries;
       var arg_request = buildQuery();
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Query.fromJson(json);
@@ -1025,11 +1012,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 25), unittest.equals("doubleclickbidmanager/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 25),
+            unittest.equals("doubleclickbidmanager/v1/"));
         pathOffset += 25;
-        unittest.expect(path.substring(pathOffset, pathOffset + 5), unittest.equals("query"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 5),
+            unittest.equals("query"));
         pathOffset += 5;
 
         var query = (req.url).query;
@@ -1042,40 +1032,46 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildQuery());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.createquery(arg_request).then(unittest.expectAsync1(((api.Query response) {
+      res
+          .createquery(arg_request)
+          .then(unittest.expectAsync1(((api.Query response) {
         checkQuery(response);
       })));
     });
 
     unittest.test("method--deletequery", () {
-
       var mock = new HttpServerMock();
-      api.QueriesResourceApi res = new api.DoubleclickbidmanagerApi(mock).queries;
+      api.QueriesResourceApi res =
+          new api.DoubleclickbidmanagerApi(mock).queries;
       var arg_queryId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 25), unittest.equals("doubleclickbidmanager/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 25),
+            unittest.equals("doubleclickbidmanager/v1/"));
         pathOffset += 25;
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("query/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("query/"));
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -1091,16 +1087,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
@@ -1109,20 +1106,23 @@ main() {
     });
 
     unittest.test("method--getquery", () {
-
       var mock = new HttpServerMock();
-      api.QueriesResourceApi res = new api.DoubleclickbidmanagerApi(mock).queries;
+      api.QueriesResourceApi res =
+          new api.DoubleclickbidmanagerApi(mock).queries;
       var arg_queryId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 25), unittest.equals("doubleclickbidmanager/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 25),
+            unittest.equals("doubleclickbidmanager/v1/"));
         pathOffset += 25;
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("query/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("query/"));
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -1138,39 +1138,45 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildQuery());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getquery(arg_queryId).then(unittest.expectAsync1(((api.Query response) {
+      res
+          .getquery(arg_queryId)
+          .then(unittest.expectAsync1(((api.Query response) {
         checkQuery(response);
       })));
     });
 
     unittest.test("method--listqueries", () {
-
       var mock = new HttpServerMock();
-      api.QueriesResourceApi res = new api.DoubleclickbidmanagerApi(mock).queries;
+      api.QueriesResourceApi res =
+          new api.DoubleclickbidmanagerApi(mock).queries;
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 25), unittest.equals("doubleclickbidmanager/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 25),
+            unittest.equals("doubleclickbidmanager/v1/"));
         pathOffset += 25;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("queries"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("queries"));
         pathOffset += 7;
 
         var query = (req.url).query;
@@ -1183,29 +1189,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListQueriesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.listqueries().then(unittest.expectAsync1(((api.ListQueriesResponse response) {
+      res
+          .listqueries()
+          .then(unittest.expectAsync1(((api.ListQueriesResponse response) {
         checkListQueriesResponse(response);
       })));
     });
 
     unittest.test("method--runquery", () {
-
       var mock = new HttpServerMock();
-      api.QueriesResourceApi res = new api.DoubleclickbidmanagerApi(mock).queries;
+      api.QueriesResourceApi res =
+          new api.DoubleclickbidmanagerApi(mock).queries;
       var arg_request = buildRunQueryRequest();
       var arg_queryId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1216,11 +1225,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 25), unittest.equals("doubleclickbidmanager/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 25),
+            unittest.equals("doubleclickbidmanager/v1/"));
         pathOffset += 25;
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("query/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("query/"));
         pathOffset += 6;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -1236,49 +1248,55 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.runquery(arg_request, arg_queryId).then(unittest.expectAsync1((_) {}));
+      res
+          .runquery(arg_request, arg_queryId)
+          .then(unittest.expectAsync1((_) {}));
     });
-
   });
-
 
   unittest.group("resource-ReportsResourceApi", () {
     unittest.test("method--listreports", () {
-
       var mock = new HttpServerMock();
-      api.ReportsResourceApi res = new api.DoubleclickbidmanagerApi(mock).reports;
+      api.ReportsResourceApi res =
+          new api.DoubleclickbidmanagerApi(mock).reports;
       var arg_queryId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 25), unittest.equals("doubleclickbidmanager/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 25),
+            unittest.equals("doubleclickbidmanager/v1/"));
         pathOffset += 25;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("queries/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("queries/"));
         pathOffset += 8;
         index = path.indexOf("/reports", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_queryId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("/reports"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/reports"));
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -1291,31 +1309,31 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListReportsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.listreports(arg_queryId).then(unittest.expectAsync1(((api.ListReportsResponse response) {
+      res
+          .listreports(arg_queryId)
+          .then(unittest.expectAsync1(((api.ListReportsResponse response) {
         checkListReportsResponse(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-SdfResourceApi", () {
     unittest.test("method--download", () {
-
       var mock = new HttpServerMock();
       api.SdfResourceApi res = new api.DoubleclickbidmanagerApi(mock).sdf;
       var arg_request = buildDownloadRequest();
@@ -1327,11 +1345,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 25), unittest.equals("doubleclickbidmanager/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 25),
+            unittest.equals("doubleclickbidmanager/v1/"));
         pathOffset += 25;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("sdf/download"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("sdf/download"));
         pathOffset += 12;
 
         var query = (req.url).query;
@@ -1344,27 +1365,26 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildDownloadResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.download(arg_request).then(unittest.expectAsync1(((api.DownloadResponse response) {
+      res
+          .download(arg_request)
+          .then(unittest.expectAsync1(((api.DownloadResponse response) {
         checkDownloadResponse(response);
       })));
     });
-
   });
-
-
 }
-

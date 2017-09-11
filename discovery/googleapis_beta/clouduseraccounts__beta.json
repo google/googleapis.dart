@@ -19,7 +19,7 @@
     },
     "basePath": "/clouduseraccounts/beta/projects/",
     "baseUrl": "https://www.googleapis.com/clouduseraccounts/beta/projects/",
-    "batchPath": "batch",
+    "batchPath": "batch/clouduseraccounts/beta",
     "canonicalName": "Cloud User Accounts",
     "description": "Creates and manages users and groups for accessing Google Compute Engine virtual machines.",
     "discoveryVersion": "v1",

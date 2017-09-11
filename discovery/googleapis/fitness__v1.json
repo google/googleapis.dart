@@ -61,7 +61,7 @@
     },
     "basePath": "/fitness/v1/users/",
     "baseUrl": "https://www.googleapis.com/fitness/v1/users/",
-    "batchPath": "batch",
+    "batchPath": "batch/fitness/v1",
     "description": "Stores and accesses user data in the fitness store from apps on any platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/fit/rest/",

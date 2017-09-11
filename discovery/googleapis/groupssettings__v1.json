@@ -10,7 +10,7 @@
     },
     "basePath": "/groups/v1/groups/",
     "baseUrl": "https://www.googleapis.com/groups/v1/groups/",
-    "batchPath": "batch",
+    "batchPath": "batch/groupssettings/v1",
     "description": "Lets you manage permission levels and related settings of a group.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/groups-settings/get_started",

@@ -13,7 +13,7 @@
     },
     "basePath": "/blogger/v3/",
     "baseUrl": "https://www.googleapis.com/blogger/v3/",
-    "batchPath": "batch",
+    "batchPath": "batch/blogger/v3",
     "description": "API for access to the data within Blogger.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/blogger/docs/3.0/getting_started",

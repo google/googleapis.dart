@@ -1,12 +1,10 @@
 library googleapis.cloudbilling.v1.test;
 
 import "dart:core" as core;
-import "dart:collection" as collection;
 import "dart:async" as async;
 import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
-import 'package:http/testing.dart' as http_testing;
 import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/cloudbilling/v1.dart' as api;
@@ -22,7 +20,8 @@ class HttpServerMock extends http.BaseClient {
 
   async.Future<http.StreamedResponse> send(http.BaseRequest request) {
     if (_expectJson) {
-      return request.finalize()
+      return request
+          .finalize()
           .transform(convert.UTF8.decoder)
           .join('')
           .then((core.String jsonString) {
@@ -45,8 +44,8 @@ class HttpServerMock extends http.BaseClient {
   }
 }
 
-http.StreamedResponse stringResponse(
-    core.int status, core.Map<core.String, core.String> headers, core.String body) {
+http.StreamedResponse stringResponse(core.int status,
+    core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -122,14 +121,14 @@ checkCategory(api.Category o) {
   buildCounterCategory--;
 }
 
-buildUnnamed68() {
+buildUnnamed63() {
   var o = new core.List<api.BillingAccount>();
   o.add(buildBillingAccount());
   o.add(buildBillingAccount());
   return o;
 }
 
-checkUnnamed68(core.List<api.BillingAccount> o) {
+checkUnnamed63(core.List<api.BillingAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBillingAccount(o[0]);
   checkBillingAccount(o[1]);
@@ -140,7 +139,7 @@ buildListBillingAccountsResponse() {
   var o = new api.ListBillingAccountsResponse();
   buildCounterListBillingAccountsResponse++;
   if (buildCounterListBillingAccountsResponse < 3) {
-    o.billingAccounts = buildUnnamed68();
+    o.billingAccounts = buildUnnamed63();
     o.nextPageToken = "foo";
   }
   buildCounterListBillingAccountsResponse--;
@@ -150,20 +149,20 @@ buildListBillingAccountsResponse() {
 checkListBillingAccountsResponse(api.ListBillingAccountsResponse o) {
   buildCounterListBillingAccountsResponse++;
   if (buildCounterListBillingAccountsResponse < 3) {
-    checkUnnamed68(o.billingAccounts);
+    checkUnnamed63(o.billingAccounts);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListBillingAccountsResponse--;
 }
 
-buildUnnamed69() {
+buildUnnamed64() {
   var o = new core.List<api.ProjectBillingInfo>();
   o.add(buildProjectBillingInfo());
   o.add(buildProjectBillingInfo());
   return o;
 }
 
-checkUnnamed69(core.List<api.ProjectBillingInfo> o) {
+checkUnnamed64(core.List<api.ProjectBillingInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProjectBillingInfo(o[0]);
   checkProjectBillingInfo(o[1]);
@@ -175,7 +174,7 @@ buildListProjectBillingInfoResponse() {
   buildCounterListProjectBillingInfoResponse++;
   if (buildCounterListProjectBillingInfoResponse < 3) {
     o.nextPageToken = "foo";
-    o.projectBillingInfo = buildUnnamed69();
+    o.projectBillingInfo = buildUnnamed64();
   }
   buildCounterListProjectBillingInfoResponse--;
   return o;
@@ -185,19 +184,19 @@ checkListProjectBillingInfoResponse(api.ListProjectBillingInfoResponse o) {
   buildCounterListProjectBillingInfoResponse++;
   if (buildCounterListProjectBillingInfoResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed69(o.projectBillingInfo);
+    checkUnnamed64(o.projectBillingInfo);
   }
   buildCounterListProjectBillingInfoResponse--;
 }
 
-buildUnnamed70() {
+buildUnnamed65() {
   var o = new core.List<api.Service>();
   o.add(buildService());
   o.add(buildService());
   return o;
 }
 
-checkUnnamed70(core.List<api.Service> o) {
+checkUnnamed65(core.List<api.Service> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkService(o[0]);
   checkService(o[1]);
@@ -209,7 +208,7 @@ buildListServicesResponse() {
   buildCounterListServicesResponse++;
   if (buildCounterListServicesResponse < 3) {
     o.nextPageToken = "foo";
-    o.services = buildUnnamed70();
+    o.services = buildUnnamed65();
   }
   buildCounterListServicesResponse--;
   return o;
@@ -219,19 +218,19 @@ checkListServicesResponse(api.ListServicesResponse o) {
   buildCounterListServicesResponse++;
   if (buildCounterListServicesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed70(o.services);
+    checkUnnamed65(o.services);
   }
   buildCounterListServicesResponse--;
 }
 
-buildUnnamed71() {
+buildUnnamed66() {
   var o = new core.List<api.Sku>();
   o.add(buildSku());
   o.add(buildSku());
   return o;
 }
 
-checkUnnamed71(core.List<api.Sku> o) {
+checkUnnamed66(core.List<api.Sku> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSku(o[0]);
   checkSku(o[1]);
@@ -243,7 +242,7 @@ buildListSkusResponse() {
   buildCounterListSkusResponse++;
   if (buildCounterListSkusResponse < 3) {
     o.nextPageToken = "foo";
-    o.skus = buildUnnamed71();
+    o.skus = buildUnnamed66();
   }
   buildCounterListSkusResponse--;
   return o;
@@ -253,7 +252,7 @@ checkListSkusResponse(api.ListSkusResponse o) {
   buildCounterListSkusResponse++;
   if (buildCounterListSkusResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed71(o.skus);
+    checkUnnamed66(o.skus);
   }
   buildCounterListSkusResponse--;
 }
@@ -281,14 +280,14 @@ checkMoney(api.Money o) {
   buildCounterMoney--;
 }
 
-buildUnnamed72() {
+buildUnnamed67() {
   var o = new core.List<api.TierRate>();
   o.add(buildTierRate());
   o.add(buildTierRate());
   return o;
 }
 
-checkUnnamed72(core.List<api.TierRate> o) {
+checkUnnamed67(core.List<api.TierRate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTierRate(o[0]);
   checkTierRate(o[1]);
@@ -303,7 +302,7 @@ buildPricingExpression() {
     o.baseUnitConversionFactor = 42.0;
     o.baseUnitDescription = "foo";
     o.displayQuantity = 42.0;
-    o.tieredRates = buildUnnamed72();
+    o.tieredRates = buildUnnamed67();
     o.usageUnit = "foo";
     o.usageUnitDescription = "foo";
   }
@@ -318,7 +317,7 @@ checkPricingExpression(api.PricingExpression o) {
     unittest.expect(o.baseUnitConversionFactor, unittest.equals(42.0));
     unittest.expect(o.baseUnitDescription, unittest.equals('foo'));
     unittest.expect(o.displayQuantity, unittest.equals(42.0));
-    checkUnnamed72(o.tieredRates);
+    checkUnnamed67(o.tieredRates);
     unittest.expect(o.usageUnit, unittest.equals('foo'));
     unittest.expect(o.usageUnitDescription, unittest.equals('foo'));
   }
@@ -400,27 +399,27 @@ checkService(api.Service o) {
   buildCounterService--;
 }
 
-buildUnnamed73() {
+buildUnnamed68() {
   var o = new core.List<api.PricingInfo>();
   o.add(buildPricingInfo());
   o.add(buildPricingInfo());
   return o;
 }
 
-checkUnnamed73(core.List<api.PricingInfo> o) {
+checkUnnamed68(core.List<api.PricingInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPricingInfo(o[0]);
   checkPricingInfo(o[1]);
 }
 
-buildUnnamed74() {
+buildUnnamed69() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed74(core.List<core.String> o) {
+checkUnnamed69(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -434,9 +433,9 @@ buildSku() {
     o.category = buildCategory();
     o.description = "foo";
     o.name = "foo";
-    o.pricingInfo = buildUnnamed73();
+    o.pricingInfo = buildUnnamed68();
     o.serviceProviderName = "foo";
-    o.serviceRegions = buildUnnamed74();
+    o.serviceRegions = buildUnnamed69();
     o.skuId = "foo";
   }
   buildCounterSku--;
@@ -449,9 +448,9 @@ checkSku(api.Sku o) {
     checkCategory(o.category);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed73(o.pricingInfo);
+    checkUnnamed68(o.pricingInfo);
     unittest.expect(o.serviceProviderName, unittest.equals('foo'));
-    checkUnnamed74(o.serviceRegions);
+    checkUnnamed69(o.serviceRegions);
     unittest.expect(o.skuId, unittest.equals('foo'));
   }
   buildCounterSku--;
@@ -478,7 +477,6 @@ checkTierRate(api.TierRate o) {
   buildCounterTierRate--;
 }
 
-
 main() {
   unittest.group("obj-schema-AggregationInfo", () {
     unittest.test("to-json--from-json", () {
@@ -488,7 +486,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-BillingAccount", () {
     unittest.test("to-json--from-json", () {
       var o = buildBillingAccount();
@@ -496,7 +493,6 @@ main() {
       checkBillingAccount(od);
     });
   });
-
 
   unittest.group("obj-schema-Category", () {
     unittest.test("to-json--from-json", () {
@@ -506,7 +502,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ListBillingAccountsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListBillingAccountsResponse();
@@ -514,7 +509,6 @@ main() {
       checkListBillingAccountsResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-ListProjectBillingInfoResponse", () {
     unittest.test("to-json--from-json", () {
@@ -524,7 +518,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ListServicesResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildListServicesResponse();
@@ -532,7 +525,6 @@ main() {
       checkListServicesResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-ListSkusResponse", () {
     unittest.test("to-json--from-json", () {
@@ -542,7 +534,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Money", () {
     unittest.test("to-json--from-json", () {
       var o = buildMoney();
@@ -550,7 +541,6 @@ main() {
       checkMoney(od);
     });
   });
-
 
   unittest.group("obj-schema-PricingExpression", () {
     unittest.test("to-json--from-json", () {
@@ -560,7 +550,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-PricingInfo", () {
     unittest.test("to-json--from-json", () {
       var o = buildPricingInfo();
@@ -568,7 +557,6 @@ main() {
       checkPricingInfo(od);
     });
   });
-
 
   unittest.group("obj-schema-ProjectBillingInfo", () {
     unittest.test("to-json--from-json", () {
@@ -578,7 +566,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Service", () {
     unittest.test("to-json--from-json", () {
       var o = buildService();
@@ -586,7 +573,6 @@ main() {
       checkService(od);
     });
   });
-
 
   unittest.group("obj-schema-Sku", () {
     unittest.test("to-json--from-json", () {
@@ -596,7 +582,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-TierRate", () {
     unittest.test("to-json--from-json", () {
       var o = buildTierRate();
@@ -605,21 +590,22 @@ main() {
     });
   });
 
-
   unittest.group("resource-BillingAccountsResourceApi", () {
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.BillingAccountsResourceApi res = new api.CloudbillingApi(mock).billingAccounts;
+      api.BillingAccountsResourceApi res =
+          new api.CloudbillingApi(mock).billingAccounts;
       var arg_name = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -633,29 +619,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildBillingAccount());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_name).then(unittest.expectAsync1(((api.BillingAccount response) {
+      res
+          .get(arg_name)
+          .then(unittest.expectAsync1(((api.BillingAccount response) {
         checkBillingAccount(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.BillingAccountsResourceApi res = new api.CloudbillingApi(mock).billingAccounts;
+      api.BillingAccountsResourceApi res =
+          new api.CloudbillingApi(mock).billingAccounts;
       var arg_pageSize = 42;
       var arg_pageToken = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -663,9 +652,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("v1/billingAccounts"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 18),
+            unittest.equals("v1/billingAccounts"));
         pathOffset += 18;
 
         var query = (req.url).query;
@@ -678,35 +669,37 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListBillingAccountsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(pageSize: arg_pageSize, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.ListBillingAccountsResponse response) {
+      res.list(pageSize: arg_pageSize, pageToken: arg_pageToken).then(
+          unittest.expectAsync1(((api.ListBillingAccountsResponse response) {
         checkListBillingAccountsResponse(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-BillingAccountsProjectsResourceApi", () {
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.BillingAccountsProjectsResourceApi res = new api.CloudbillingApi(mock).billingAccounts.projects;
+      api.BillingAccountsProjectsResourceApi res =
+          new api.CloudbillingApi(mock).billingAccounts.projects;
       var arg_name = "foo";
       var arg_pageSize = 42;
       var arg_pageToken = "foo";
@@ -715,9 +708,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -731,33 +726,34 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListProjectBillingInfoResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_name, pageSize: arg_pageSize, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.ListProjectBillingInfoResponse response) {
+      res.list(arg_name, pageSize: arg_pageSize, pageToken: arg_pageToken).then(
+          unittest.expectAsync1(((api.ListProjectBillingInfoResponse response) {
         checkListProjectBillingInfoResponse(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-ProjectsResourceApi", () {
     unittest.test("method--getBillingInfo", () {
-
       var mock = new HttpServerMock();
       api.ProjectsResourceApi res = new api.CloudbillingApi(mock).projects;
       var arg_name = "foo";
@@ -766,9 +762,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -782,27 +780,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildProjectBillingInfo());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getBillingInfo(arg_name).then(unittest.expectAsync1(((api.ProjectBillingInfo response) {
+      res
+          .getBillingInfo(arg_name)
+          .then(unittest.expectAsync1(((api.ProjectBillingInfo response) {
         checkProjectBillingInfo(response);
       })));
     });
 
     unittest.test("method--updateBillingInfo", () {
-
       var mock = new HttpServerMock();
       api.ProjectsResourceApi res = new api.CloudbillingApi(mock).projects;
       var arg_request = buildProjectBillingInfo();
@@ -815,9 +815,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -831,31 +833,31 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildProjectBillingInfo());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.updateBillingInfo(arg_request, arg_name).then(unittest.expectAsync1(((api.ProjectBillingInfo response) {
+      res
+          .updateBillingInfo(arg_request, arg_name)
+          .then(unittest.expectAsync1(((api.ProjectBillingInfo response) {
         checkProjectBillingInfo(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-ServicesResourceApi", () {
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
       api.ServicesResourceApi res = new api.CloudbillingApi(mock).services;
       var arg_pageSize = 42;
@@ -865,9 +867,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("v1/services"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("v1/services"));
         pathOffset += 11;
 
         var query = (req.url).query;
@@ -880,35 +884,38 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListServicesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(pageSize: arg_pageSize, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.ListServicesResponse response) {
+      res
+          .list(pageSize: arg_pageSize, pageToken: arg_pageToken)
+          .then(unittest.expectAsync1(((api.ListServicesResponse response) {
         checkListServicesResponse(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-ServicesSkusResourceApi", () {
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.ServicesSkusResourceApi res = new api.CloudbillingApi(mock).services.skus;
+      api.ServicesSkusResourceApi res =
+          new api.CloudbillingApi(mock).services.skus;
       var arg_parent = "foo";
       var arg_currencyCode = "foo";
       var arg_endTime = "foo";
@@ -920,9 +927,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -936,32 +945,41 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["currencyCode"].first, unittest.equals(arg_currencyCode));
-        unittest.expect(queryMap["endTime"].first, unittest.equals(arg_endTime));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["startTime"].first, unittest.equals(arg_startTime));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
+        unittest.expect(
+            queryMap["currencyCode"].first, unittest.equals(arg_currencyCode));
+        unittest.expect(
+            queryMap["endTime"].first, unittest.equals(arg_endTime));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["startTime"].first, unittest.equals(arg_startTime));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListSkusResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_parent, currencyCode: arg_currencyCode, endTime: arg_endTime, pageSize: arg_pageSize, startTime: arg_startTime, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.ListSkusResponse response) {
+      res
+          .list(arg_parent,
+              currencyCode: arg_currencyCode,
+              endTime: arg_endTime,
+              pageSize: arg_pageSize,
+              startTime: arg_startTime,
+              pageToken: arg_pageToken)
+          .then(unittest.expectAsync1(((api.ListSkusResponse response) {
         checkListSkusResponse(response);
       })));
     });
-
   });
-
-
 }
-

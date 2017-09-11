@@ -9,65 +9,68 @@ import 'dart:convert' as convert;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
-    ApiRequestError, DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
+    show ApiRequestError, DetailedApiRequestError;
 
 const core.String USER_AGENT = 'dart-api-client webmasters/v3';
 
-/** View Google Search Console data for your verified sites. */
+/// View Google Search Console data for your verified sites.
 class WebmastersApi {
-  /** View and manage Search Console data for your verified sites */
+  /// View and manage Search Console data for your verified sites
   static const WebmastersScope = "https://www.googleapis.com/auth/webmasters";
 
-  /** View Search Console data for your verified sites */
-  static const WebmastersReadonlyScope = "https://www.googleapis.com/auth/webmasters.readonly";
-
+  /// View Search Console data for your verified sites
+  static const WebmastersReadonlyScope =
+      "https://www.googleapis.com/auth/webmasters.readonly";
 
   final commons.ApiRequester _requester;
 
-  SearchanalyticsResourceApi get searchanalytics => new SearchanalyticsResourceApi(_requester);
+  SearchanalyticsResourceApi get searchanalytics =>
+      new SearchanalyticsResourceApi(_requester);
   SitemapsResourceApi get sitemaps => new SitemapsResourceApi(_requester);
   SitesResourceApi get sites => new SitesResourceApi(_requester);
-  UrlcrawlerrorscountsResourceApi get urlcrawlerrorscounts => new UrlcrawlerrorscountsResourceApi(_requester);
-  UrlcrawlerrorssamplesResourceApi get urlcrawlerrorssamples => new UrlcrawlerrorssamplesResourceApi(_requester);
+  UrlcrawlerrorscountsResourceApi get urlcrawlerrorscounts =>
+      new UrlcrawlerrorscountsResourceApi(_requester);
+  UrlcrawlerrorssamplesResourceApi get urlcrawlerrorssamples =>
+      new UrlcrawlerrorssamplesResourceApi(_requester);
 
-  WebmastersApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "webmasters/v3/"}) :
-      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+  WebmastersApi(http.Client client,
+      {core.String rootUrl: "https://www.googleapis.com/",
+      core.String servicePath: "webmasters/v3/"})
+      : _requester =
+            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
-
 
 class SearchanalyticsResourceApi {
   final commons.ApiRequester _requester;
 
-  SearchanalyticsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  SearchanalyticsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Query your data with filters and parameters that you define. Returns zero
-   * or more rows grouped by the row keys that you define. You must define a
-   * date range of one or more days.
-   *
-   * When date is one of the group by values, any days without data are omitted
-   * from the result list. If you need to know which days have data, issue a
-   * broad date range query grouped by date for any metric, and see which day
-   * rows are returned.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [siteUrl] - The site's URL, including protocol. For example:
-   * http://www.example.com/
-   *
-   * Completes with a [SearchAnalyticsQueryResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<SearchAnalyticsQueryResponse> query(SearchAnalyticsQueryRequest request, core.String siteUrl) {
+  /// Query your data with filters and parameters that you define. Returns zero
+  /// or more rows grouped by the row keys that you define. You must define a
+  /// date range of one or more days.
+  ///
+  /// When date is one of the group by values, any days without data are omitted
+  /// from the result list. If you need to know which days have data, issue a
+  /// broad date range query grouped by date for any metric, and see which day
+  /// rows are returned.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [siteUrl] - The site's URL, including protocol. For example:
+  /// http://www.example.com/
+  ///
+  /// Completes with a [SearchAnalyticsQueryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchAnalyticsQueryResponse> query(
+      SearchAnalyticsQueryRequest request, core.String siteUrl) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -82,44 +85,41 @@ class SearchanalyticsResourceApi {
       throw new core.ArgumentError("Parameter siteUrl is required.");
     }
 
-    _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl') + '/searchAnalytics/query';
+    _url = 'sites/' +
+        commons.Escaper.ecapeVariable('$siteUrl') +
+        '/searchAnalytics/query';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new SearchAnalyticsQueryResponse.fromJson(data));
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new SearchAnalyticsQueryResponse.fromJson(data));
   }
-
 }
-
 
 class SitemapsResourceApi {
   final commons.ApiRequester _requester;
 
-  SitemapsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  SitemapsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Deletes a sitemap from this site.
-   *
-   * Request parameters:
-   *
-   * [siteUrl] - The site's URL, including protocol. For example:
-   * http://www.example.com/
-   *
-   * [feedpath] - The URL of the actual sitemap. For example:
-   * http://www.example.com/sitemap.xml
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Deletes a sitemap from this site.
+  ///
+  /// Request parameters:
+  ///
+  /// [siteUrl] - The site's URL, including protocol. For example:
+  /// http://www.example.com/
+  ///
+  /// [feedpath] - The URL of the actual sitemap. For example:
+  /// http://www.example.com/sitemap.xml
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future delete(core.String siteUrl, core.String feedpath) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -137,37 +137,37 @@ class SitemapsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl') + '/sitemaps/' + commons.Escaper.ecapeVariable('$feedpath');
+    _url = 'sites/' +
+        commons.Escaper.ecapeVariable('$siteUrl') +
+        '/sitemaps/' +
+        commons.Escaper.ecapeVariable('$feedpath');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Retrieves information about a specific sitemap.
-   *
-   * Request parameters:
-   *
-   * [siteUrl] - The site's URL, including protocol. For example:
-   * http://www.example.com/
-   *
-   * [feedpath] - The URL of the actual sitemap. For example:
-   * http://www.example.com/sitemap.xml
-   *
-   * Completes with a [WmxSitemap].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Retrieves information about a specific sitemap.
+  ///
+  /// Request parameters:
+  ///
+  /// [siteUrl] - The site's URL, including protocol. For example:
+  /// http://www.example.com/
+  ///
+  /// [feedpath] - The URL of the actual sitemap. For example:
+  /// http://www.example.com/sitemap.xml
+  ///
+  /// Completes with a [WmxSitemap].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<WmxSitemap> get(core.String siteUrl, core.String feedpath) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -183,39 +183,40 @@ class SitemapsResourceApi {
       throw new core.ArgumentError("Parameter feedpath is required.");
     }
 
-    _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl') + '/sitemaps/' + commons.Escaper.ecapeVariable('$feedpath');
+    _url = 'sites/' +
+        commons.Escaper.ecapeVariable('$siteUrl') +
+        '/sitemaps/' +
+        commons.Escaper.ecapeVariable('$feedpath');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new WmxSitemap.fromJson(data));
   }
 
-  /**
-   * Lists the sitemaps-entries submitted for this site, or included in the
-   * sitemap index file (if sitemapIndex is specified in the request).
-   *
-   * Request parameters:
-   *
-   * [siteUrl] - The site's URL, including protocol. For example:
-   * http://www.example.com/
-   *
-   * [sitemapIndex] - A URL of a site's sitemap index. For example:
-   * http://www.example.com/sitemapindex.xml
-   *
-   * Completes with a [SitemapsListResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<SitemapsListResponse> list(core.String siteUrl, {core.String sitemapIndex}) {
+  /// Lists the sitemaps-entries submitted for this site, or included in the
+  /// sitemap index file (if sitemapIndex is specified in the request).
+  ///
+  /// Request parameters:
+  ///
+  /// [siteUrl] - The site's URL, including protocol. For example:
+  /// http://www.example.com/
+  ///
+  /// [sitemapIndex] - A URL of a site's sitemap index. For example:
+  /// http://www.example.com/sitemapindex.xml
+  ///
+  /// Completes with a [SitemapsListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SitemapsListResponse> list(core.String siteUrl,
+      {core.String sitemapIndex}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -232,33 +233,30 @@ class SitemapsResourceApi {
 
     _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl') + '/sitemaps';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new SitemapsListResponse.fromJson(data));
   }
 
-  /**
-   * Submits a sitemap for a site.
-   *
-   * Request parameters:
-   *
-   * [siteUrl] - The site's URL, including protocol. For example:
-   * http://www.example.com/
-   *
-   * [feedpath] - The URL of the sitemap to add. For example:
-   * http://www.example.com/sitemap.xml
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Submits a sitemap for a site.
+  ///
+  /// Request parameters:
+  ///
+  /// [siteUrl] - The site's URL, including protocol. For example:
+  /// http://www.example.com/
+  ///
+  /// [feedpath] - The URL of the sitemap to add. For example:
+  /// http://www.example.com/sitemap.xml
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future submit(core.String siteUrl, core.String feedpath) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -276,40 +274,37 @@ class SitemapsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl') + '/sitemaps/' + commons.Escaper.ecapeVariable('$feedpath');
+    _url = 'sites/' +
+        commons.Escaper.ecapeVariable('$siteUrl') +
+        '/sitemaps/' +
+        commons.Escaper.ecapeVariable('$feedpath');
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
-
 }
-
 
 class SitesResourceApi {
   final commons.ApiRequester _requester;
 
-  SitesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  SitesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Adds a site to the set of the user's sites in Search Console.
-   *
-   * Request parameters:
-   *
-   * [siteUrl] - The URL of the site to add.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Adds a site to the set of the user's sites in Search Console.
+  ///
+  /// Request parameters:
+  ///
+  /// [siteUrl] - The URL of the site to add.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future add(core.String siteUrl) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -326,30 +321,27 @@ class SitesResourceApi {
 
     _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl');
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Removes a site from the set of the user's Search Console sites.
-   *
-   * Request parameters:
-   *
-   * [siteUrl] - The URI of the property as defined in Search Console. Examples:
-   * http://www.example.com/ or android-app://com.example/
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Removes a site from the set of the user's Search Console sites.
+  ///
+  /// Request parameters:
+  ///
+  /// [siteUrl] - The URI of the property as defined in Search Console.
+  /// Examples: http://www.example.com/ or android-app://com.example/
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future delete(core.String siteUrl) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -366,32 +358,29 @@ class SitesResourceApi {
 
     _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Retrieves information about specific site.
-   *
-   * Request parameters:
-   *
-   * [siteUrl] - The URI of the property as defined in Search Console. Examples:
-   * http://www.example.com/ or android-app://com.example/
-   *
-   * Completes with a [WmxSite].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Retrieves information about specific site.
+  ///
+  /// Request parameters:
+  ///
+  /// [siteUrl] - The URI of the property as defined in Search Console.
+  /// Examples: http://www.example.com/ or android-app://com.example/
+  ///
+  /// Completes with a [WmxSite].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<WmxSite> get(core.String siteUrl) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -406,29 +395,26 @@ class SitesResourceApi {
 
     _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new WmxSite.fromJson(data));
   }
 
-  /**
-   * Lists the user's Search Console sites.
-   *
-   * Request parameters:
-   *
-   * Completes with a [SitesListResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Lists the user's Search Console sites.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [SitesListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<SitesListResponse> list() {
     var _url = null;
     var _queryParams = new core.Map();
@@ -437,68 +423,65 @@ class SitesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-
     _url = 'sites';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new SitesListResponse.fromJson(data));
   }
-
 }
-
 
 class UrlcrawlerrorscountsResourceApi {
   final commons.ApiRequester _requester;
 
-  UrlcrawlerrorscountsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  UrlcrawlerrorscountsResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Retrieves a time series of the number of URL crawl errors per error
-   * category and platform.
-   *
-   * Request parameters:
-   *
-   * [siteUrl] - The site's URL, including protocol. For example:
-   * http://www.example.com/
-   *
-   * [category] - The crawl error category. For example: serverError. If not
-   * specified, returns results for all categories.
-   * Possible string values are:
-   * - "authPermissions"
-   * - "flashContent"
-   * - "manyToOneRedirect"
-   * - "notFollowed"
-   * - "notFound"
-   * - "other"
-   * - "roboted"
-   * - "serverError"
-   * - "soft404"
-   *
-   * [latestCountsOnly] - If true, returns only the latest crawl error counts.
-   *
-   * [platform] - The user agent type (platform) that made the request. For
-   * example: web. If not specified, returns results for all platforms.
-   * Possible string values are:
-   * - "mobile"
-   * - "smartphoneOnly"
-   * - "web"
-   *
-   * Completes with a [UrlCrawlErrorsCountsQueryResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<UrlCrawlErrorsCountsQueryResponse> query(core.String siteUrl, {core.String category, core.bool latestCountsOnly, core.String platform}) {
+  /// Retrieves a time series of the number of URL crawl errors per error
+  /// category and platform.
+  ///
+  /// Request parameters:
+  ///
+  /// [siteUrl] - The site's URL, including protocol. For example:
+  /// http://www.example.com/
+  ///
+  /// [category] - The crawl error category. For example: serverError. If not
+  /// specified, returns results for all categories.
+  /// Possible string values are:
+  /// - "authPermissions"
+  /// - "flashContent"
+  /// - "manyToOneRedirect"
+  /// - "notFollowed"
+  /// - "notFound"
+  /// - "other"
+  /// - "roboted"
+  /// - "serverError"
+  /// - "soft404"
+  ///
+  /// [latestCountsOnly] - If true, returns only the latest crawl error counts.
+  ///
+  /// [platform] - The user agent type (platform) that made the request. For
+  /// example: web. If not specified, returns results for all platforms.
+  /// Possible string values are:
+  /// - "mobile"
+  /// - "smartphoneOnly"
+  /// - "web"
+  ///
+  /// Completes with a [UrlCrawlErrorsCountsQueryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UrlCrawlErrorsCountsQueryResponse> query(core.String siteUrl,
+      {core.String category,
+      core.bool latestCountsOnly,
+      core.String platform}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -519,68 +502,67 @@ class UrlcrawlerrorscountsResourceApi {
       _queryParams["platform"] = [platform];
     }
 
-    _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl') + '/urlCrawlErrorsCounts/query';
+    _url = 'sites/' +
+        commons.Escaper.ecapeVariable('$siteUrl') +
+        '/urlCrawlErrorsCounts/query';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new UrlCrawlErrorsCountsQueryResponse.fromJson(data));
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new UrlCrawlErrorsCountsQueryResponse.fromJson(data));
   }
-
 }
-
 
 class UrlcrawlerrorssamplesResourceApi {
   final commons.ApiRequester _requester;
 
-  UrlcrawlerrorssamplesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  UrlcrawlerrorssamplesResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Retrieves details about crawl errors for a site's sample URL.
-   *
-   * Request parameters:
-   *
-   * [siteUrl] - The site's URL, including protocol. For example:
-   * http://www.example.com/
-   *
-   * [url] - The relative path (without the site) of the sample URL. It must be
-   * one of the URLs returned by list(). For example, for the URL
-   * https://www.example.com/pagename on the site https://www.example.com/, the
-   * url value is pagename
-   *
-   * [category] - The crawl error category. For example: authPermissions
-   * Possible string values are:
-   * - "authPermissions"
-   * - "flashContent"
-   * - "manyToOneRedirect"
-   * - "notFollowed"
-   * - "notFound"
-   * - "other"
-   * - "roboted"
-   * - "serverError"
-   * - "soft404"
-   *
-   * [platform] - The user agent type (platform) that made the request. For
-   * example: web
-   * Possible string values are:
-   * - "mobile"
-   * - "smartphoneOnly"
-   * - "web"
-   *
-   * Completes with a [UrlCrawlErrorsSample].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<UrlCrawlErrorsSample> get(core.String siteUrl, core.String url, core.String category, core.String platform) {
+  /// Retrieves details about crawl errors for a site's sample URL.
+  ///
+  /// Request parameters:
+  ///
+  /// [siteUrl] - The site's URL, including protocol. For example:
+  /// http://www.example.com/
+  ///
+  /// [url] - The relative path (without the site) of the sample URL. It must be
+  /// one of the URLs returned by list(). For example, for the URL
+  /// https://www.example.com/pagename on the site https://www.example.com/, the
+  /// url value is pagename
+  ///
+  /// [category] - The crawl error category. For example: authPermissions
+  /// Possible string values are:
+  /// - "authPermissions"
+  /// - "flashContent"
+  /// - "manyToOneRedirect"
+  /// - "notFollowed"
+  /// - "notFound"
+  /// - "other"
+  /// - "roboted"
+  /// - "serverError"
+  /// - "soft404"
+  ///
+  /// [platform] - The user agent type (platform) that made the request. For
+  /// example: web
+  /// Possible string values are:
+  /// - "mobile"
+  /// - "smartphoneOnly"
+  /// - "web"
+  ///
+  /// Completes with a [UrlCrawlErrorsSample].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UrlCrawlErrorsSample> get(core.String siteUrl, core.String url,
+      core.String category, core.String platform) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -603,55 +585,56 @@ class UrlcrawlerrorssamplesResourceApi {
     }
     _queryParams["platform"] = [platform];
 
-    _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl') + '/urlCrawlErrorsSamples/' + commons.Escaper.ecapeVariable('$url');
+    _url = 'sites/' +
+        commons.Escaper.ecapeVariable('$siteUrl') +
+        '/urlCrawlErrorsSamples/' +
+        commons.Escaper.ecapeVariable('$url');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new UrlCrawlErrorsSample.fromJson(data));
   }
 
-  /**
-   * Lists a site's sample URLs for the specified crawl error category and
-   * platform.
-   *
-   * Request parameters:
-   *
-   * [siteUrl] - The site's URL, including protocol. For example:
-   * http://www.example.com/
-   *
-   * [category] - The crawl error category. For example: authPermissions
-   * Possible string values are:
-   * - "authPermissions"
-   * - "flashContent"
-   * - "manyToOneRedirect"
-   * - "notFollowed"
-   * - "notFound"
-   * - "other"
-   * - "roboted"
-   * - "serverError"
-   * - "soft404"
-   *
-   * [platform] - The user agent type (platform) that made the request. For
-   * example: web
-   * Possible string values are:
-   * - "mobile"
-   * - "smartphoneOnly"
-   * - "web"
-   *
-   * Completes with a [UrlCrawlErrorsSamplesListResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<UrlCrawlErrorsSamplesListResponse> list(core.String siteUrl, core.String category, core.String platform) {
+  /// Lists a site's sample URLs for the specified crawl error category and
+  /// platform.
+  ///
+  /// Request parameters:
+  ///
+  /// [siteUrl] - The site's URL, including protocol. For example:
+  /// http://www.example.com/
+  ///
+  /// [category] - The crawl error category. For example: authPermissions
+  /// Possible string values are:
+  /// - "authPermissions"
+  /// - "flashContent"
+  /// - "manyToOneRedirect"
+  /// - "notFollowed"
+  /// - "notFound"
+  /// - "other"
+  /// - "roboted"
+  /// - "serverError"
+  /// - "soft404"
+  ///
+  /// [platform] - The user agent type (platform) that made the request. For
+  /// example: web
+  /// Possible string values are:
+  /// - "mobile"
+  /// - "smartphoneOnly"
+  /// - "web"
+  ///
+  /// Completes with a [UrlCrawlErrorsSamplesListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UrlCrawlErrorsSamplesListResponse> list(
+      core.String siteUrl, core.String category, core.String platform) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -671,58 +654,59 @@ class UrlcrawlerrorssamplesResourceApi {
     }
     _queryParams["platform"] = [platform];
 
-    _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl') + '/urlCrawlErrorsSamples';
+    _url = 'sites/' +
+        commons.Escaper.ecapeVariable('$siteUrl') +
+        '/urlCrawlErrorsSamples';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new UrlCrawlErrorsSamplesListResponse.fromJson(data));
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new UrlCrawlErrorsSamplesListResponse.fromJson(data));
   }
 
-  /**
-   * Marks the provided site's sample URL as fixed, and removes it from the
-   * samples list.
-   *
-   * Request parameters:
-   *
-   * [siteUrl] - The site's URL, including protocol. For example:
-   * http://www.example.com/
-   *
-   * [url] - The relative path (without the site) of the sample URL. It must be
-   * one of the URLs returned by list(). For example, for the URL
-   * https://www.example.com/pagename on the site https://www.example.com/, the
-   * url value is pagename
-   *
-   * [category] - The crawl error category. For example: authPermissions
-   * Possible string values are:
-   * - "authPermissions"
-   * - "flashContent"
-   * - "manyToOneRedirect"
-   * - "notFollowed"
-   * - "notFound"
-   * - "other"
-   * - "roboted"
-   * - "serverError"
-   * - "soft404"
-   *
-   * [platform] - The user agent type (platform) that made the request. For
-   * example: web
-   * Possible string values are:
-   * - "mobile"
-   * - "smartphoneOnly"
-   * - "web"
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future markAsFixed(core.String siteUrl, core.String url, core.String category, core.String platform) {
+  /// Marks the provided site's sample URL as fixed, and removes it from the
+  /// samples list.
+  ///
+  /// Request parameters:
+  ///
+  /// [siteUrl] - The site's URL, including protocol. For example:
+  /// http://www.example.com/
+  ///
+  /// [url] - The relative path (without the site) of the sample URL. It must be
+  /// one of the URLs returned by list(). For example, for the URL
+  /// https://www.example.com/pagename on the site https://www.example.com/, the
+  /// url value is pagename
+  ///
+  /// [category] - The crawl error category. For example: authPermissions
+  /// Possible string values are:
+  /// - "authPermissions"
+  /// - "flashContent"
+  /// - "manyToOneRedirect"
+  /// - "notFollowed"
+  /// - "notFound"
+  /// - "other"
+  /// - "roboted"
+  /// - "serverError"
+  /// - "soft404"
+  ///
+  /// [platform] - The user agent type (platform) that made the request. For
+  /// example: web
+  /// Possible string values are:
+  /// - "mobile"
+  /// - "smartphoneOnly"
+  /// - "web"
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future markAsFixed(core.String siteUrl, core.String url,
+      core.String category, core.String platform) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -747,21 +731,20 @@ class UrlcrawlerrorssamplesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl') + '/urlCrawlErrorsSamples/' + commons.Escaper.ecapeVariable('$url');
+    _url = 'sites/' +
+        commons.Escaper.ecapeVariable('$siteUrl') +
+        '/urlCrawlErrorsSamples/' +
+        commons.Escaper.ecapeVariable('$url');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
-
 }
-
-
 
 class ApiDataRow {
   core.double clicks;
@@ -791,7 +774,8 @@ class ApiDataRow {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (clicks != null) {
       _json["clicks"] = clicks;
     }
@@ -831,7 +815,8 @@ class ApiDimensionFilter {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (dimension != null) {
       _json["dimension"] = dimension;
     }
@@ -853,7 +838,9 @@ class ApiDimensionFilterGroup {
 
   ApiDimensionFilterGroup.fromJson(core.Map _json) {
     if (_json.containsKey("filters")) {
-      filters = _json["filters"].map((value) => new ApiDimensionFilter.fromJson(value)).toList();
+      filters = _json["filters"]
+          .map((value) => new ApiDimensionFilter.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("groupType")) {
       groupType = _json["groupType"];
@@ -861,7 +848,8 @@ class ApiDimensionFilterGroup {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (filters != null) {
       _json["filters"] = filters.map((value) => (value).toJson()).toList();
     }
@@ -873,60 +861,53 @@ class ApiDimensionFilterGroup {
 }
 
 class SearchAnalyticsQueryRequest {
-  /**
-   * [Optional; Default is "auto"] How data is aggregated. If aggregated by
-   * property, all data for the same property is aggregated; if aggregated by
-   * page, all data is aggregated by canonical URI. If you filter or group by
-   * page, choose AUTO; otherwise you can aggregate either by property or by
-   * page, depending on how you want your data calculated; see  the help
-   * documentation to learn how data is calculated differently by site versus by
-   * page.
-   *
-   * Note: If you group or filter by page, you cannot aggregate by property.
-   *
-   * If you specify any value other than AUTO, the aggregation type in the
-   * result will match the requested type, or if you request an invalid type,
-   * you will get an error. The API will never change your aggregation type if
-   * the requested type is invalid.
-   */
+  /// [Optional; Default is "auto"] How data is aggregated. If aggregated by
+  /// property, all data for the same property is aggregated; if aggregated by
+  /// page, all data is aggregated by canonical URI. If you filter or group by
+  /// page, choose AUTO; otherwise you can aggregate either by property or by
+  /// page, depending on how you want your data calculated; see  the help
+  /// documentation to learn how data is calculated differently by site versus
+  /// by page.
+  ///
+  /// Note: If you group or filter by page, you cannot aggregate by property.
+  ///
+  /// If you specify any value other than AUTO, the aggregation type in the
+  /// result will match the requested type, or if you request an invalid type,
+  /// you will get an error. The API will never change your aggregation type if
+  /// the requested type is invalid.
   core.String aggregationType;
-  /**
-   * [Optional] Zero or more filters to apply to the dimension grouping values;
-   * for example, 'query contains "buy"' to see only data where the query string
-   * contains the substring "buy" (not case-sensitive). You can filter by a
-   * dimension without grouping by it.
-   */
+
+  /// [Optional] Zero or more filters to apply to the dimension grouping values;
+  /// for example, 'query contains "buy"' to see only data where the query
+  /// string contains the substring "buy" (not case-sensitive). You can filter
+  /// by a dimension without grouping by it.
   core.List<ApiDimensionFilterGroup> dimensionFilterGroups;
-  /**
-   * [Optional] Zero or more dimensions to group results by. Dimensions are the
-   * group-by values in the Search Analytics page. Dimensions are combined to
-   * create a unique row key for each row. Results are grouped in the order that
-   * you supply these dimensions.
-   */
+
+  /// [Optional] Zero or more dimensions to group results by. Dimensions are the
+  /// group-by values in the Search Analytics page. Dimensions are combined to
+  /// create a unique row key for each row. Results are grouped in the order
+  /// that you supply these dimensions.
   core.List<core.String> dimensions;
-  /**
-   * [Required] End date of the requested date range, in YYYY-MM-DD format, in
-   * PST (UTC - 8:00). Must be greater than or equal to the start date. This
-   * value is included in the range.
-   */
+
+  /// [Required] End date of the requested date range, in YYYY-MM-DD format, in
+  /// PST (UTC - 8:00). Must be greater than or equal to the start date. This
+  /// value is included in the range.
   core.String endDate;
-  /**
-   * [Optional; Default is 1000] The maximum number of rows to return. Must be a
-   * number from 1 to 5,000 (inclusive).
-   */
+
+  /// [Optional; Default is 1000] The maximum number of rows to return. Must be
+  /// a number from 1 to 5,000 (inclusive).
   core.int rowLimit;
-  /** [Optional; Default is "web"] The search type to filter for. */
+
+  /// [Optional; Default is "web"] The search type to filter for.
   core.String searchType;
-  /**
-   * [Required] Start date of the requested date range, in YYYY-MM-DD format, in
-   * PST time (UTC - 8:00). Must be less than or equal to the end date. This
-   * value is included in the range.
-   */
+
+  /// [Required] Start date of the requested date range, in YYYY-MM-DD format,
+  /// in PST time (UTC - 8:00). Must be less than or equal to the end date. This
+  /// value is included in the range.
   core.String startDate;
-  /**
-   * [Optional; Default is 0] Zero-based index of the first row in the response.
-   * Must be a non-negative number.
-   */
+
+  /// [Optional; Default is 0] Zero-based index of the first row in the
+  /// response. Must be a non-negative number.
   core.int startRow;
 
   SearchAnalyticsQueryRequest();
@@ -936,7 +917,9 @@ class SearchAnalyticsQueryRequest {
       aggregationType = _json["aggregationType"];
     }
     if (_json.containsKey("dimensionFilterGroups")) {
-      dimensionFilterGroups = _json["dimensionFilterGroups"].map((value) => new ApiDimensionFilterGroup.fromJson(value)).toList();
+      dimensionFilterGroups = _json["dimensionFilterGroups"]
+          .map((value) => new ApiDimensionFilterGroup.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("dimensions")) {
       dimensions = _json["dimensions"];
@@ -959,12 +942,14 @@ class SearchAnalyticsQueryRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (aggregationType != null) {
       _json["aggregationType"] = aggregationType;
     }
     if (dimensionFilterGroups != null) {
-      _json["dimensionFilterGroups"] = dimensionFilterGroups.map((value) => (value).toJson()).toList();
+      _json["dimensionFilterGroups"] =
+          dimensionFilterGroups.map((value) => (value).toJson()).toList();
     }
     if (dimensions != null) {
       _json["dimensions"] = dimensions;
@@ -988,17 +973,14 @@ class SearchAnalyticsQueryRequest {
   }
 }
 
-/**
- * A list of rows, one per result, grouped by key. Metrics in each row are
- * aggregated for all data grouped by that key either by page or property, as
- * specified by the aggregation type parameter.
- */
+/// A list of rows, one per result, grouped by key. Metrics in each row are
+/// aggregated for all data grouped by that key either by page or property, as
+/// specified by the aggregation type parameter.
 class SearchAnalyticsQueryResponse {
-  /** How the results were aggregated. */
+  /// How the results were aggregated.
   core.String responseAggregationType;
-  /**
-   * A list of rows grouped by the key values in the order given in the query.
-   */
+
+  /// A list of rows grouped by the key values in the order given in the query.
   core.List<ApiDataRow> rows;
 
   SearchAnalyticsQueryResponse();
@@ -1008,12 +990,14 @@ class SearchAnalyticsQueryResponse {
       responseAggregationType = _json["responseAggregationType"];
     }
     if (_json.containsKey("rows")) {
-      rows = _json["rows"].map((value) => new ApiDataRow.fromJson(value)).toList();
+      rows =
+          _json["rows"].map((value) => new ApiDataRow.fromJson(value)).toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (responseAggregationType != null) {
       _json["responseAggregationType"] = responseAggregationType;
     }
@@ -1024,23 +1008,24 @@ class SearchAnalyticsQueryResponse {
   }
 }
 
-/** List of sitemaps. */
+/// List of sitemaps.
 class SitemapsListResponse {
-  /**
-   * Contains detailed information about a specific URL submitted as a sitemap.
-   */
+  /// Contains detailed information about a specific URL submitted as a sitemap.
   core.List<WmxSitemap> sitemap;
 
   SitemapsListResponse();
 
   SitemapsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("sitemap")) {
-      sitemap = _json["sitemap"].map((value) => new WmxSitemap.fromJson(value)).toList();
+      sitemap = _json["sitemap"]
+          .map((value) => new WmxSitemap.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (sitemap != null) {
       _json["sitemap"] = sitemap.map((value) => (value).toJson()).toList();
     }
@@ -1048,24 +1033,25 @@ class SitemapsListResponse {
   }
 }
 
-/** List of sites with access level information. */
+/// List of sites with access level information.
 class SitesListResponse {
-  /**
-   * Contains permission level information about a Search Console site. For more
-   * information, see Permissions in Search Console.
-   */
+  /// Contains permission level information about a Search Console site. For
+  /// more information, see Permissions in Search Console.
   core.List<WmxSite> siteEntry;
 
   SitesListResponse();
 
   SitesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("siteEntry")) {
-      siteEntry = _json["siteEntry"].map((value) => new WmxSite.fromJson(value)).toList();
+      siteEntry = _json["siteEntry"]
+          .map((value) => new WmxSite.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (siteEntry != null) {
       _json["siteEntry"] = siteEntry.map((value) => (value).toJson()).toList();
     }
@@ -1073,13 +1059,12 @@ class SitesListResponse {
   }
 }
 
-/** An entry in a URL crawl errors time series. */
+/// An entry in a URL crawl errors time series.
 class UrlCrawlErrorCount {
-  /** The error count at the given timestamp. */
+  /// The error count at the given timestamp.
   core.String count;
-  /**
-   * The date and time when the crawl attempt took place, in RFC 3339 format.
-   */
+
+  /// The date and time when the crawl attempt took place, in RFC 3339 format.
   core.DateTime timestamp;
 
   UrlCrawlErrorCount();
@@ -1094,7 +1079,8 @@ class UrlCrawlErrorCount {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (count != null) {
       _json["count"] = count;
     }
@@ -1105,19 +1091,17 @@ class UrlCrawlErrorCount {
   }
 }
 
-/**
- * Number of errors per day for a specific error type (defined by platform and
- * category).
- */
+/// Number of errors per day for a specific error type (defined by platform and
+/// category).
 class UrlCrawlErrorCountsPerType {
-  /** The crawl error type. */
+  /// The crawl error type.
   core.String category;
-  /** The error count entries time series. */
+
+  /// The error count entries time series.
   core.List<UrlCrawlErrorCount> entries;
-  /**
-   * The general type of Googlebot that made the request (see list of Googlebot
-   * user-agents for the user-agents used).
-   */
+
+  /// The general type of Googlebot that made the request (see list of Googlebot
+  /// user-agents for the user-agents used).
   core.String platform;
 
   UrlCrawlErrorCountsPerType();
@@ -1127,7 +1111,9 @@ class UrlCrawlErrorCountsPerType {
       category = _json["category"];
     }
     if (_json.containsKey("entries")) {
-      entries = _json["entries"].map((value) => new UrlCrawlErrorCount.fromJson(value)).toList();
+      entries = _json["entries"]
+          .map((value) => new UrlCrawlErrorCount.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("platform")) {
       platform = _json["platform"];
@@ -1135,7 +1121,8 @@ class UrlCrawlErrorCountsPerType {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (category != null) {
       _json["category"] = category;
     }
@@ -1149,45 +1136,49 @@ class UrlCrawlErrorCountsPerType {
   }
 }
 
-/**
- * A time series of the number of URL crawl errors per error category and
- * platform.
- */
+/// A time series of the number of URL crawl errors per error category and
+/// platform.
 class UrlCrawlErrorsCountsQueryResponse {
-  /**
-   * The time series of the number of URL crawl errors per error category and
-   * platform.
-   */
+  /// The time series of the number of URL crawl errors per error category and
+  /// platform.
   core.List<UrlCrawlErrorCountsPerType> countPerTypes;
 
   UrlCrawlErrorsCountsQueryResponse();
 
   UrlCrawlErrorsCountsQueryResponse.fromJson(core.Map _json) {
     if (_json.containsKey("countPerTypes")) {
-      countPerTypes = _json["countPerTypes"].map((value) => new UrlCrawlErrorCountsPerType.fromJson(value)).toList();
+      countPerTypes = _json["countPerTypes"]
+          .map((value) => new UrlCrawlErrorCountsPerType.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (countPerTypes != null) {
-      _json["countPerTypes"] = countPerTypes.map((value) => (value).toJson()).toList();
+      _json["countPerTypes"] =
+          countPerTypes.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
 }
 
-/** Contains information about specific crawl errors. */
+/// Contains information about specific crawl errors.
 class UrlCrawlErrorsSample {
-  /** The time the error was first detected, in RFC 3339 format. */
+  /// The time the error was first detected, in RFC 3339 format.
   core.DateTime firstDetected;
-  /** The time when the URL was last crawled, in RFC 3339 format. */
+
+  /// The time when the URL was last crawled, in RFC 3339 format.
   core.DateTime lastCrawled;
-  /** The URL of an error, relative to the site. */
+
+  /// The URL of an error, relative to the site.
   core.String pageUrl;
-  /** The HTTP response code, if any. */
+
+  /// The HTTP response code, if any.
   core.int responseCode;
-  /** Additional details about the URL, set only when calling get(). */
+
+  /// Additional details about the URL, set only when calling get().
   UrlSampleDetails urlDetails;
 
   UrlCrawlErrorsSample();
@@ -1211,7 +1202,8 @@ class UrlCrawlErrorsSample {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (firstDetected != null) {
       _json["first_detected"] = (firstDetected).toIso8601String();
     }
@@ -1231,33 +1223,38 @@ class UrlCrawlErrorsSample {
   }
 }
 
-/** List of crawl error samples. */
+/// List of crawl error samples.
 class UrlCrawlErrorsSamplesListResponse {
-  /** Information about the sample URL and its crawl error. */
+  /// Information about the sample URL and its crawl error.
   core.List<UrlCrawlErrorsSample> urlCrawlErrorSample;
 
   UrlCrawlErrorsSamplesListResponse();
 
   UrlCrawlErrorsSamplesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("urlCrawlErrorSample")) {
-      urlCrawlErrorSample = _json["urlCrawlErrorSample"].map((value) => new UrlCrawlErrorsSample.fromJson(value)).toList();
+      urlCrawlErrorSample = _json["urlCrawlErrorSample"]
+          .map((value) => new UrlCrawlErrorsSample.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (urlCrawlErrorSample != null) {
-      _json["urlCrawlErrorSample"] = urlCrawlErrorSample.map((value) => (value).toJson()).toList();
+      _json["urlCrawlErrorSample"] =
+          urlCrawlErrorSample.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
 }
 
-/** Additional details about the URL, set only when calling get(). */
+/// Additional details about the URL, set only when calling get().
 class UrlSampleDetails {
-  /** List of sitemaps pointing at this URL. */
+  /// List of sitemaps pointing at this URL.
   core.List<core.String> containingSitemaps;
-  /** A sample set of URLs linking to this URL. */
+
+  /// A sample set of URLs linking to this URL.
   core.List<core.String> linkedFromUrls;
 
   UrlSampleDetails();
@@ -1272,7 +1269,8 @@ class UrlSampleDetails {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (containingSitemaps != null) {
       _json["containingSitemaps"] = containingSitemaps;
     }
@@ -1283,14 +1281,13 @@ class UrlSampleDetails {
   }
 }
 
-/**
- * Contains permission level information about a Search Console site. For more
- * information, see  Permissions in Search Console.
- */
+/// Contains permission level information about a Search Console site. For more
+/// information, see  Permissions in Search Console.
 class WmxSite {
-  /** The user's permission level for the site. */
+  /// The user's permission level for the site.
   core.String permissionLevel;
-  /** The URL of the site. */
+
+  /// The URL of the site.
   core.String siteUrl;
 
   WmxSite();
@@ -1305,7 +1302,8 @@ class WmxSite {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (permissionLevel != null) {
       _json["permissionLevel"] = permissionLevel;
     }
@@ -1316,46 +1314,46 @@ class WmxSite {
   }
 }
 
-/**
- * Contains detailed information about a specific URL submitted as a sitemap.
- */
+/// Contains detailed information about a specific URL submitted as a sitemap.
 class WmxSitemap {
-  /** The various content types in the sitemap. */
+  /// The various content types in the sitemap.
   core.List<WmxSitemapContent> contents;
-  /**
-   * Number of errors in the sitemap. These are issues with the sitemap itself
-   * that need to be fixed before it can be processed correctly.
-   */
+
+  /// Number of errors in the sitemap. These are issues with the sitemap itself
+  /// that need to be fixed before it can be processed correctly.
   core.String errors;
-  /** If true, the sitemap has not been processed. */
+
+  /// If true, the sitemap has not been processed.
   core.bool isPending;
-  /** If true, the sitemap is a collection of sitemaps. */
+
+  /// If true, the sitemap is a collection of sitemaps.
   core.bool isSitemapsIndex;
-  /**
-   * Date & time in which this sitemap was last downloaded. Date format is in
-   * RFC 3339 format (yyyy-mm-dd).
-   */
+
+  /// Date & time in which this sitemap was last downloaded. Date format is in
+  /// RFC 3339 format (yyyy-mm-dd).
   core.DateTime lastDownloaded;
-  /**
-   * Date & time in which this sitemap was submitted. Date format is in RFC 3339
-   * format (yyyy-mm-dd).
-   */
+
+  /// Date & time in which this sitemap was submitted. Date format is in RFC
+  /// 3339 format (yyyy-mm-dd).
   core.DateTime lastSubmitted;
-  /** The url of the sitemap. */
+
+  /// The url of the sitemap.
   core.String path;
-  /** The type of the sitemap. For example: rssFeed. */
+
+  /// The type of the sitemap. For example: rssFeed.
   core.String type;
-  /**
-   * Number of warnings for the sitemap. These are generally non-critical issues
-   * with URLs in the sitemaps.
-   */
+
+  /// Number of warnings for the sitemap. These are generally non-critical
+  /// issues with URLs in the sitemaps.
   core.String warnings;
 
   WmxSitemap();
 
   WmxSitemap.fromJson(core.Map _json) {
     if (_json.containsKey("contents")) {
-      contents = _json["contents"].map((value) => new WmxSitemapContent.fromJson(value)).toList();
+      contents = _json["contents"]
+          .map((value) => new WmxSitemapContent.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("errors")) {
       errors = _json["errors"];
@@ -1384,7 +1382,8 @@ class WmxSitemap {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (contents != null) {
       _json["contents"] = contents.map((value) => (value).toJson()).toList();
     }
@@ -1416,16 +1415,16 @@ class WmxSitemap {
   }
 }
 
-/** Information about the various content types in the sitemap. */
+/// Information about the various content types in the sitemap.
 class WmxSitemapContent {
-  /**
-   * The number of URLs from the sitemap that were indexed (of the content
-   * type).
-   */
+  /// The number of URLs from the sitemap that were indexed (of the content
+  /// type).
   core.String indexed;
-  /** The number of URLs in the sitemap (of the content type). */
+
+  /// The number of URLs in the sitemap (of the content type).
   core.String submitted;
-  /** The specific type of content in this sitemap. For example: web. */
+
+  /// The specific type of content in this sitemap. For example: web.
   core.String type;
 
   WmxSitemapContent();
@@ -1443,7 +1442,8 @@ class WmxSitemapContent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (indexed != null) {
       _json["indexed"] = indexed;
     }

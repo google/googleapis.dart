@@ -10,7 +10,7 @@
     },
     "basePath": "/urlshortener/v1/",
     "baseUrl": "https://www.googleapis.com/urlshortener/v1/",
-    "batchPath": "batch",
+    "batchPath": "batch/urlshortener/v1",
     "description": "Lets you create, inspect, and manage goo.gl short URLs",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/url-shortener/v1/getting_started",

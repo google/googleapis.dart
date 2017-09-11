@@ -1,12 +1,10 @@
 library googleapis.fusiontables.v1.test;
 
 import "dart:core" as core;
-import "dart:collection" as collection;
 import "dart:async" as async;
 import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
-import 'package:http/testing.dart' as http_testing;
 import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/fusiontables/v1.dart' as api;
@@ -22,7 +20,8 @@ class HttpServerMock extends http.BaseClient {
 
   async.Future<http.StreamedResponse> send(http.BaseRequest request) {
     if (_expectJson) {
-      return request.finalize()
+      return request
+          .finalize()
           .transform(convert.UTF8.decoder)
           .join('')
           .then((core.String jsonString) {
@@ -45,8 +44,8 @@ class HttpServerMock extends http.BaseClient {
   }
 }
 
-http.StreamedResponse stringResponse(
-    core.int status, core.Map<core.String, core.String> headers, core.String body) {
+http.StreamedResponse stringResponse(core.int status,
+    core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -132,14 +131,14 @@ checkColumn(api.Column o) {
   buildCounterColumn--;
 }
 
-buildUnnamed2661() {
+buildUnnamed2648() {
   var o = new core.List<api.Column>();
   o.add(buildColumn());
   o.add(buildColumn());
   return o;
 }
 
-checkUnnamed2661(core.List<api.Column> o) {
+checkUnnamed2648(core.List<api.Column> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkColumn(o[0]);
   checkColumn(o[1]);
@@ -150,7 +149,7 @@ buildColumnList() {
   var o = new api.ColumnList();
   buildCounterColumnList++;
   if (buildCounterColumnList < 3) {
-    o.items = buildUnnamed2661();
+    o.items = buildUnnamed2648();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.totalItems = 42;
@@ -162,7 +161,7 @@ buildColumnList() {
 checkColumnList(api.ColumnList o) {
   buildCounterColumnList++;
   if (buildCounterColumnList < 3) {
-    checkUnnamed2661(o.items);
+    checkUnnamed2648(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
@@ -170,17 +169,33 @@ checkColumnList(api.ColumnList o) {
   buildCounterColumnList--;
 }
 
-buildUnnamed2662() {
+buildUnnamed2649() {
   var o = new core.List<core.Object>();
-  o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
-  o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
+  o.add({
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  });
+  o.add({
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  });
   return o;
 }
 
-checkUnnamed2662(core.List<core.Object> o) {
+checkUnnamed2649(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o[0]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
-  var casted2 = (o[1]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
+  var casted1 = (o[0]) as core.Map;
+  unittest.expect(casted1, unittest.hasLength(3));
+  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1["bool"], unittest.equals(true));
+  unittest.expect(casted1["string"], unittest.equals('foo'));
+  var casted2 = (o[1]) as core.Map;
+  unittest.expect(casted2, unittest.hasLength(3));
+  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2["bool"], unittest.equals(true));
+  unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
 core.int buildCounterGeometry = 0;
@@ -188,8 +203,12 @@ buildGeometry() {
   var o = new api.Geometry();
   buildCounterGeometry++;
   if (buildCounterGeometry < 3) {
-    o.geometries = buildUnnamed2662();
-    o.geometry = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
+    o.geometries = buildUnnamed2649();
+    o.geometry = {
+      'list': [1, 2, 3],
+      'bool': true,
+      'string': 'foo'
+    };
     o.type = "foo";
   }
   buildCounterGeometry--;
@@ -199,8 +218,12 @@ buildGeometry() {
 checkGeometry(api.Geometry o) {
   buildCounterGeometry++;
   if (buildCounterGeometry < 3) {
-    checkUnnamed2662(o.geometries);
-    var casted3 = (o.geometry) as core.Map; unittest.expect(casted3, unittest.hasLength(3)); unittest.expect(casted3["list"], unittest.equals([1, 2, 3])); unittest.expect(casted3["bool"], unittest.equals(true)); unittest.expect(casted3["string"], unittest.equals('foo')); 
+    checkUnnamed2649(o.geometries);
+    var casted3 = (o.geometry) as core.Map;
+    unittest.expect(casted3, unittest.hasLength(3));
+    unittest.expect(casted3["list"], unittest.equals([1, 2, 3]));
+    unittest.expect(casted3["bool"], unittest.equals(true));
+    unittest.expect(casted3["string"], unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterGeometry--;
@@ -227,30 +250,30 @@ checkImport(api.Import o) {
   buildCounterImport--;
 }
 
-buildUnnamed2663() {
+buildUnnamed2650() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed2663(core.List<core.double> o) {
+checkUnnamed2650(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
 }
 
-buildUnnamed2664() {
+buildUnnamed2651() {
   var o = new core.List<core.List<core.double>>();
-  o.add(buildUnnamed2663());
-  o.add(buildUnnamed2663());
+  o.add(buildUnnamed2650());
+  o.add(buildUnnamed2650());
   return o;
 }
 
-checkUnnamed2664(core.List<core.List<core.double>> o) {
+checkUnnamed2651(core.List<core.List<core.double>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed2663(o[0]);
-  checkUnnamed2663(o[1]);
+  checkUnnamed2650(o[0]);
+  checkUnnamed2650(o[1]);
 }
 
 core.int buildCounterLine = 0;
@@ -258,7 +281,7 @@ buildLine() {
   var o = new api.Line();
   buildCounterLine++;
   if (buildCounterLine < 3) {
-    o.coordinates = buildUnnamed2664();
+    o.coordinates = buildUnnamed2651();
     o.type = "foo";
   }
   buildCounterLine--;
@@ -268,7 +291,7 @@ buildLine() {
 checkLine(api.Line o) {
   buildCounterLine++;
   if (buildCounterLine < 3) {
-    checkUnnamed2664(o.coordinates);
+    checkUnnamed2651(o.coordinates);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterLine--;
@@ -301,14 +324,14 @@ checkLineStyle(api.LineStyle o) {
   buildCounterLineStyle--;
 }
 
-buildUnnamed2665() {
+buildUnnamed2652() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed2665(core.List<core.double> o) {
+checkUnnamed2652(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
@@ -319,7 +342,7 @@ buildPoint() {
   var o = new api.Point();
   buildCounterPoint++;
   if (buildCounterPoint < 3) {
-    o.coordinates = buildUnnamed2665();
+    o.coordinates = buildUnnamed2652();
     o.type = "foo";
   }
   buildCounterPoint--;
@@ -329,7 +352,7 @@ buildPoint() {
 checkPoint(api.Point o) {
   buildCounterPoint++;
   if (buildCounterPoint < 3) {
-    checkUnnamed2665(o.coordinates);
+    checkUnnamed2652(o.coordinates);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterPoint--;
@@ -356,43 +379,43 @@ checkPointStyle(api.PointStyle o) {
   buildCounterPointStyle--;
 }
 
-buildUnnamed2666() {
+buildUnnamed2653() {
   var o = new core.List<core.double>();
   o.add(42.0);
   o.add(42.0);
   return o;
 }
 
-checkUnnamed2666(core.List<core.double> o) {
+checkUnnamed2653(core.List<core.double> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42.0));
   unittest.expect(o[1], unittest.equals(42.0));
 }
 
-buildUnnamed2667() {
+buildUnnamed2654() {
   var o = new core.List<core.List<core.double>>();
-  o.add(buildUnnamed2666());
-  o.add(buildUnnamed2666());
+  o.add(buildUnnamed2653());
+  o.add(buildUnnamed2653());
   return o;
 }
 
-checkUnnamed2667(core.List<core.List<core.double>> o) {
+checkUnnamed2654(core.List<core.List<core.double>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed2666(o[0]);
-  checkUnnamed2666(o[1]);
+  checkUnnamed2653(o[0]);
+  checkUnnamed2653(o[1]);
 }
 
-buildUnnamed2668() {
+buildUnnamed2655() {
   var o = new core.List<core.List<core.List<core.double>>>();
-  o.add(buildUnnamed2667());
-  o.add(buildUnnamed2667());
+  o.add(buildUnnamed2654());
+  o.add(buildUnnamed2654());
   return o;
 }
 
-checkUnnamed2668(core.List<core.List<core.List<core.double>>> o) {
+checkUnnamed2655(core.List<core.List<core.List<core.double>>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed2667(o[0]);
-  checkUnnamed2667(o[1]);
+  checkUnnamed2654(o[0]);
+  checkUnnamed2654(o[1]);
 }
 
 core.int buildCounterPolygon = 0;
@@ -400,7 +423,7 @@ buildPolygon() {
   var o = new api.Polygon();
   buildCounterPolygon++;
   if (buildCounterPolygon < 3) {
-    o.coordinates = buildUnnamed2668();
+    o.coordinates = buildUnnamed2655();
     o.type = "foo";
   }
   buildCounterPolygon--;
@@ -410,7 +433,7 @@ buildPolygon() {
 checkPolygon(api.Polygon o) {
   buildCounterPolygon++;
   if (buildCounterPolygon < 3) {
-    checkUnnamed2668(o.coordinates);
+    checkUnnamed2655(o.coordinates);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterPolygon--;
@@ -449,43 +472,59 @@ checkPolygonStyle(api.PolygonStyle o) {
   buildCounterPolygonStyle--;
 }
 
-buildUnnamed2669() {
+buildUnnamed2656() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2669(core.List<core.String> o) {
+checkUnnamed2656(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2670() {
+buildUnnamed2657() {
   var o = new core.List<core.Object>();
-  o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
-  o.add({'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'});
+  o.add({
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  });
+  o.add({
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  });
   return o;
 }
 
-checkUnnamed2670(core.List<core.Object> o) {
+checkUnnamed2657(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted4 = (o[0]) as core.Map; unittest.expect(casted4, unittest.hasLength(3)); unittest.expect(casted4["list"], unittest.equals([1, 2, 3])); unittest.expect(casted4["bool"], unittest.equals(true)); unittest.expect(casted4["string"], unittest.equals('foo')); 
-  var casted5 = (o[1]) as core.Map; unittest.expect(casted5, unittest.hasLength(3)); unittest.expect(casted5["list"], unittest.equals([1, 2, 3])); unittest.expect(casted5["bool"], unittest.equals(true)); unittest.expect(casted5["string"], unittest.equals('foo')); 
+  var casted4 = (o[0]) as core.Map;
+  unittest.expect(casted4, unittest.hasLength(3));
+  unittest.expect(casted4["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4["bool"], unittest.equals(true));
+  unittest.expect(casted4["string"], unittest.equals('foo'));
+  var casted5 = (o[1]) as core.Map;
+  unittest.expect(casted5, unittest.hasLength(3));
+  unittest.expect(casted5["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted5["bool"], unittest.equals(true));
+  unittest.expect(casted5["string"], unittest.equals('foo'));
 }
 
-buildUnnamed2671() {
+buildUnnamed2658() {
   var o = new core.List<core.List<core.Object>>();
-  o.add(buildUnnamed2670());
-  o.add(buildUnnamed2670());
+  o.add(buildUnnamed2657());
+  o.add(buildUnnamed2657());
   return o;
 }
 
-checkUnnamed2671(core.List<core.List<core.Object>> o) {
+checkUnnamed2658(core.List<core.List<core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed2670(o[0]);
-  checkUnnamed2670(o[1]);
+  checkUnnamed2657(o[0]);
+  checkUnnamed2657(o[1]);
 }
 
 core.int buildCounterSqlresponse = 0;
@@ -493,9 +532,9 @@ buildSqlresponse() {
   var o = new api.Sqlresponse();
   buildCounterSqlresponse++;
   if (buildCounterSqlresponse < 3) {
-    o.columns = buildUnnamed2669();
+    o.columns = buildUnnamed2656();
     o.kind = "foo";
-    o.rows = buildUnnamed2671();
+    o.rows = buildUnnamed2658();
   }
   buildCounterSqlresponse--;
   return o;
@@ -504,21 +543,21 @@ buildSqlresponse() {
 checkSqlresponse(api.Sqlresponse o) {
   buildCounterSqlresponse++;
   if (buildCounterSqlresponse < 3) {
-    checkUnnamed2669(o.columns);
+    checkUnnamed2656(o.columns);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2671(o.rows);
+    checkUnnamed2658(o.rows);
   }
   buildCounterSqlresponse--;
 }
 
-buildUnnamed2672() {
+buildUnnamed2659() {
   var o = new core.List<api.Bucket>();
   o.add(buildBucket());
   o.add(buildBucket());
   return o;
 }
 
-checkUnnamed2672(core.List<api.Bucket> o) {
+checkUnnamed2659(core.List<api.Bucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucket(o[0]);
   checkBucket(o[1]);
@@ -545,14 +584,14 @@ checkStyleFunctionGradientColors(api.StyleFunctionGradientColors o) {
   buildCounterStyleFunctionGradientColors--;
 }
 
-buildUnnamed2673() {
+buildUnnamed2660() {
   var o = new core.List<api.StyleFunctionGradientColors>();
   o.add(buildStyleFunctionGradientColors());
   o.add(buildStyleFunctionGradientColors());
   return o;
 }
 
-checkUnnamed2673(core.List<api.StyleFunctionGradientColors> o) {
+checkUnnamed2660(core.List<api.StyleFunctionGradientColors> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStyleFunctionGradientColors(o[0]);
   checkStyleFunctionGradientColors(o[1]);
@@ -563,7 +602,7 @@ buildStyleFunctionGradient() {
   var o = new api.StyleFunctionGradient();
   buildCounterStyleFunctionGradient++;
   if (buildCounterStyleFunctionGradient < 3) {
-    o.colors = buildUnnamed2673();
+    o.colors = buildUnnamed2660();
     o.max = 42.0;
     o.min = 42.0;
   }
@@ -574,7 +613,7 @@ buildStyleFunctionGradient() {
 checkStyleFunctionGradient(api.StyleFunctionGradient o) {
   buildCounterStyleFunctionGradient++;
   if (buildCounterStyleFunctionGradient < 3) {
-    checkUnnamed2673(o.colors);
+    checkUnnamed2660(o.colors);
     unittest.expect(o.max, unittest.equals(42.0));
     unittest.expect(o.min, unittest.equals(42.0));
   }
@@ -586,7 +625,7 @@ buildStyleFunction() {
   var o = new api.StyleFunction();
   buildCounterStyleFunction++;
   if (buildCounterStyleFunction < 3) {
-    o.buckets = buildUnnamed2672();
+    o.buckets = buildUnnamed2659();
     o.columnName = "foo";
     o.gradient = buildStyleFunctionGradient();
     o.kind = "foo";
@@ -598,7 +637,7 @@ buildStyleFunction() {
 checkStyleFunction(api.StyleFunction o) {
   buildCounterStyleFunction++;
   if (buildCounterStyleFunction < 3) {
-    checkUnnamed2672(o.buckets);
+    checkUnnamed2659(o.buckets);
     unittest.expect(o.columnName, unittest.equals('foo'));
     checkStyleFunctionGradient(o.gradient);
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -637,14 +676,14 @@ checkStyleSetting(api.StyleSetting o) {
   buildCounterStyleSetting--;
 }
 
-buildUnnamed2674() {
+buildUnnamed2661() {
   var o = new core.List<api.StyleSetting>();
   o.add(buildStyleSetting());
   o.add(buildStyleSetting());
   return o;
 }
 
-checkUnnamed2674(core.List<api.StyleSetting> o) {
+checkUnnamed2661(core.List<api.StyleSetting> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStyleSetting(o[0]);
   checkStyleSetting(o[1]);
@@ -655,7 +694,7 @@ buildStyleSettingList() {
   var o = new api.StyleSettingList();
   buildCounterStyleSettingList++;
   if (buildCounterStyleSettingList < 3) {
-    o.items = buildUnnamed2674();
+    o.items = buildUnnamed2661();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.totalItems = 42;
@@ -667,7 +706,7 @@ buildStyleSettingList() {
 checkStyleSettingList(api.StyleSettingList o) {
   buildCounterStyleSettingList++;
   if (buildCounterStyleSettingList < 3) {
-    checkUnnamed2674(o.items);
+    checkUnnamed2661(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
@@ -675,27 +714,27 @@ checkStyleSettingList(api.StyleSettingList o) {
   buildCounterStyleSettingList--;
 }
 
-buildUnnamed2675() {
+buildUnnamed2662() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2675(core.List<core.String> o) {
+checkUnnamed2662(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2676() {
+buildUnnamed2663() {
   var o = new core.List<api.Column>();
   o.add(buildColumn());
   o.add(buildColumn());
   return o;
 }
 
-checkUnnamed2676(core.List<api.Column> o) {
+checkUnnamed2663(core.List<api.Column> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkColumn(o[0]);
   checkColumn(o[1]);
@@ -708,8 +747,8 @@ buildTable() {
   if (buildCounterTable < 3) {
     o.attribution = "foo";
     o.attributionLink = "foo";
-    o.baseTableIds = buildUnnamed2675();
-    o.columns = buildUnnamed2676();
+    o.baseTableIds = buildUnnamed2662();
+    o.columns = buildUnnamed2663();
     o.description = "foo";
     o.isExportable = true;
     o.kind = "foo";
@@ -726,8 +765,8 @@ checkTable(api.Table o) {
   if (buildCounterTable < 3) {
     unittest.expect(o.attribution, unittest.equals('foo'));
     unittest.expect(o.attributionLink, unittest.equals('foo'));
-    checkUnnamed2675(o.baseTableIds);
-    checkUnnamed2676(o.columns);
+    checkUnnamed2662(o.baseTableIds);
+    checkUnnamed2663(o.columns);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.isExportable, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -738,14 +777,14 @@ checkTable(api.Table o) {
   buildCounterTable--;
 }
 
-buildUnnamed2677() {
+buildUnnamed2664() {
   var o = new core.List<api.Table>();
   o.add(buildTable());
   o.add(buildTable());
   return o;
 }
 
-checkUnnamed2677(core.List<api.Table> o) {
+checkUnnamed2664(core.List<api.Table> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTable(o[0]);
   checkTable(o[1]);
@@ -756,7 +795,7 @@ buildTableList() {
   var o = new api.TableList();
   buildCounterTableList++;
   if (buildCounterTableList < 3) {
-    o.items = buildUnnamed2677();
+    o.items = buildUnnamed2664();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -767,7 +806,7 @@ buildTableList() {
 checkTableList(api.TableList o) {
   buildCounterTableList++;
   if (buildCounterTableList < 3) {
-    checkUnnamed2677(o.items);
+    checkUnnamed2664(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -801,14 +840,14 @@ checkTask(api.Task o) {
   buildCounterTask--;
 }
 
-buildUnnamed2678() {
+buildUnnamed2665() {
   var o = new core.List<api.Task>();
   o.add(buildTask());
   o.add(buildTask());
   return o;
 }
 
-checkUnnamed2678(core.List<api.Task> o) {
+checkUnnamed2665(core.List<api.Task> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTask(o[0]);
   checkTask(o[1]);
@@ -819,7 +858,7 @@ buildTaskList() {
   var o = new api.TaskList();
   buildCounterTaskList++;
   if (buildCounterTaskList < 3) {
-    o.items = buildUnnamed2678();
+    o.items = buildUnnamed2665();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.totalItems = 42;
@@ -831,7 +870,7 @@ buildTaskList() {
 checkTaskList(api.TaskList o) {
   buildCounterTaskList++;
   if (buildCounterTaskList < 3) {
-    checkUnnamed2678(o.items);
+    checkUnnamed2665(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
@@ -839,14 +878,14 @@ checkTaskList(api.TaskList o) {
   buildCounterTaskList--;
 }
 
-buildUnnamed2679() {
+buildUnnamed2666() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2679(core.List<core.String> o) {
+checkUnnamed2666(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -857,7 +896,7 @@ buildTemplate() {
   var o = new api.Template();
   buildCounterTemplate++;
   if (buildCounterTemplate < 3) {
-    o.automaticColumnNames = buildUnnamed2679();
+    o.automaticColumnNames = buildUnnamed2666();
     o.body = "foo";
     o.kind = "foo";
     o.name = "foo";
@@ -871,7 +910,7 @@ buildTemplate() {
 checkTemplate(api.Template o) {
   buildCounterTemplate++;
   if (buildCounterTemplate < 3) {
-    checkUnnamed2679(o.automaticColumnNames);
+    checkUnnamed2666(o.automaticColumnNames);
     unittest.expect(o.body, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -881,14 +920,14 @@ checkTemplate(api.Template o) {
   buildCounterTemplate--;
 }
 
-buildUnnamed2680() {
+buildUnnamed2667() {
   var o = new core.List<api.Template>();
   o.add(buildTemplate());
   o.add(buildTemplate());
   return o;
 }
 
-checkUnnamed2680(core.List<api.Template> o) {
+checkUnnamed2667(core.List<api.Template> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTemplate(o[0]);
   checkTemplate(o[1]);
@@ -899,7 +938,7 @@ buildTemplateList() {
   var o = new api.TemplateList();
   buildCounterTemplateList++;
   if (buildCounterTemplateList < 3) {
-    o.items = buildUnnamed2680();
+    o.items = buildUnnamed2667();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.totalItems = 42;
@@ -911,14 +950,13 @@ buildTemplateList() {
 checkTemplateList(api.TemplateList o) {
   buildCounterTemplateList++;
   if (buildCounterTemplateList < 3) {
-    checkUnnamed2680(o.items);
+    checkUnnamed2667(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
   }
   buildCounterTemplateList--;
 }
-
 
 main() {
   unittest.group("obj-schema-Bucket", () {
@@ -929,7 +967,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ColumnBaseColumn", () {
     unittest.test("to-json--from-json", () {
       var o = buildColumnBaseColumn();
@@ -937,7 +974,6 @@ main() {
       checkColumnBaseColumn(od);
     });
   });
-
 
   unittest.group("obj-schema-Column", () {
     unittest.test("to-json--from-json", () {
@@ -947,7 +983,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ColumnList", () {
     unittest.test("to-json--from-json", () {
       var o = buildColumnList();
@@ -955,7 +990,6 @@ main() {
       checkColumnList(od);
     });
   });
-
 
   unittest.group("obj-schema-Geometry", () {
     unittest.test("to-json--from-json", () {
@@ -965,7 +999,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Import", () {
     unittest.test("to-json--from-json", () {
       var o = buildImport();
@@ -973,7 +1006,6 @@ main() {
       checkImport(od);
     });
   });
-
 
   unittest.group("obj-schema-Line", () {
     unittest.test("to-json--from-json", () {
@@ -983,7 +1015,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-LineStyle", () {
     unittest.test("to-json--from-json", () {
       var o = buildLineStyle();
@@ -991,7 +1022,6 @@ main() {
       checkLineStyle(od);
     });
   });
-
 
   unittest.group("obj-schema-Point", () {
     unittest.test("to-json--from-json", () {
@@ -1001,7 +1031,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-PointStyle", () {
     unittest.test("to-json--from-json", () {
       var o = buildPointStyle();
@@ -1009,7 +1038,6 @@ main() {
       checkPointStyle(od);
     });
   });
-
 
   unittest.group("obj-schema-Polygon", () {
     unittest.test("to-json--from-json", () {
@@ -1019,7 +1047,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-PolygonStyle", () {
     unittest.test("to-json--from-json", () {
       var o = buildPolygonStyle();
@@ -1027,7 +1054,6 @@ main() {
       checkPolygonStyle(od);
     });
   });
-
 
   unittest.group("obj-schema-Sqlresponse", () {
     unittest.test("to-json--from-json", () {
@@ -1037,7 +1063,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-StyleFunctionGradientColors", () {
     unittest.test("to-json--from-json", () {
       var o = buildStyleFunctionGradientColors();
@@ -1045,7 +1070,6 @@ main() {
       checkStyleFunctionGradientColors(od);
     });
   });
-
 
   unittest.group("obj-schema-StyleFunctionGradient", () {
     unittest.test("to-json--from-json", () {
@@ -1055,7 +1079,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-StyleFunction", () {
     unittest.test("to-json--from-json", () {
       var o = buildStyleFunction();
@@ -1063,7 +1086,6 @@ main() {
       checkStyleFunction(od);
     });
   });
-
 
   unittest.group("obj-schema-StyleSetting", () {
     unittest.test("to-json--from-json", () {
@@ -1073,7 +1095,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-StyleSettingList", () {
     unittest.test("to-json--from-json", () {
       var o = buildStyleSettingList();
@@ -1081,7 +1102,6 @@ main() {
       checkStyleSettingList(od);
     });
   });
-
 
   unittest.group("obj-schema-Table", () {
     unittest.test("to-json--from-json", () {
@@ -1091,7 +1111,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-TableList", () {
     unittest.test("to-json--from-json", () {
       var o = buildTableList();
@@ -1099,7 +1118,6 @@ main() {
       checkTableList(od);
     });
   });
-
 
   unittest.group("obj-schema-Task", () {
     unittest.test("to-json--from-json", () {
@@ -1109,7 +1127,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-TaskList", () {
     unittest.test("to-json--from-json", () {
       var o = buildTaskList();
@@ -1117,7 +1134,6 @@ main() {
       checkTaskList(od);
     });
   });
-
 
   unittest.group("obj-schema-Template", () {
     unittest.test("to-json--from-json", () {
@@ -1127,7 +1143,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-TemplateList", () {
     unittest.test("to-json--from-json", () {
       var o = buildTemplateList();
@@ -1136,10 +1151,8 @@ main() {
     });
   });
 
-
   unittest.group("resource-ColumnResourceApi", () {
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
       api.ColumnResourceApi res = new api.FusiontablesApi(mock).column;
       var arg_tableId = "foo";
@@ -1149,18 +1162,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/columns/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_tableId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/columns/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/columns/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -1176,16 +1194,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
@@ -1194,7 +1213,6 @@ main() {
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
       api.ColumnResourceApi res = new api.FusiontablesApi(mock).column;
       var arg_tableId = "foo";
@@ -1204,18 +1222,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/columns/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_tableId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/columns/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/columns/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -1231,27 +1254,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildColumn());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_tableId, arg_columnId).then(unittest.expectAsync1(((api.Column response) {
+      res
+          .get(arg_tableId, arg_columnId)
+          .then(unittest.expectAsync1(((api.Column response) {
         checkColumn(response);
       })));
     });
 
     unittest.test("method--insert", () {
-
       var mock = new HttpServerMock();
       api.ColumnResourceApi res = new api.FusiontablesApi(mock).column;
       var arg_request = buildColumn();
@@ -1264,18 +1289,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/columns", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_tableId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("/columns"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/columns"));
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -1288,27 +1318,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildColumn());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_tableId).then(unittest.expectAsync1(((api.Column response) {
+      res
+          .insert(arg_request, arg_tableId)
+          .then(unittest.expectAsync1(((api.Column response) {
         checkColumn(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
       api.ColumnResourceApi res = new api.FusiontablesApi(mock).column;
       var arg_tableId = "foo";
@@ -1319,18 +1351,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/columns", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_tableId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("/columns"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/columns"));
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -1343,29 +1380,34 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildColumnList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_tableId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.ColumnList response) {
+      res
+          .list(arg_tableId,
+              maxResults: arg_maxResults, pageToken: arg_pageToken)
+          .then(unittest.expectAsync1(((api.ColumnList response) {
         checkColumnList(response);
       })));
     });
 
     unittest.test("method--patch", () {
-
       var mock = new HttpServerMock();
       api.ColumnResourceApi res = new api.FusiontablesApi(mock).column;
       var arg_request = buildColumn();
@@ -1379,18 +1421,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/columns/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_tableId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/columns/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/columns/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -1406,27 +1453,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildColumn());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_tableId, arg_columnId).then(unittest.expectAsync1(((api.Column response) {
+      res
+          .patch(arg_request, arg_tableId, arg_columnId)
+          .then(unittest.expectAsync1(((api.Column response) {
         checkColumn(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
       api.ColumnResourceApi res = new api.FusiontablesApi(mock).column;
       var arg_request = buildColumn();
@@ -1440,18 +1489,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/columns/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_tableId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/columns/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/columns/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -1467,27 +1521,28 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildColumn());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_tableId, arg_columnId).then(unittest.expectAsync1(((api.Column response) {
+      res
+          .update(arg_request, arg_tableId, arg_columnId)
+          .then(unittest.expectAsync1(((api.Column response) {
         checkColumn(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-QueryResourceApi", () {
     unittest.test("method--sql", () {
@@ -1504,11 +1559,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 5), unittest.equals("query"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 5),
+            unittest.equals("query"));
         pathOffset += 5;
 
         var query = (req.url).query;
@@ -1521,24 +1579,27 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
         unittest.expect(queryMap["sql"].first, unittest.equals(arg_sql_1));
         unittest.expect(queryMap["hdrs"].first, unittest.equals("$arg_hdrs"));
         unittest.expect(queryMap["typed"].first, unittest.equals("$arg_typed"));
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSqlresponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.sql(arg_sql_1, hdrs: arg_hdrs, typed: arg_typed).then(unittest.expectAsync1(((api.Sqlresponse response) {
+      res
+          .sql(arg_sql_1, hdrs: arg_hdrs, typed: arg_typed)
+          .then(unittest.expectAsync1(((api.Sqlresponse response) {
         checkSqlresponse(response);
       })));
     });
@@ -1557,11 +1618,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 5), unittest.equals("query"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 5),
+            unittest.equals("query"));
         pathOffset += 5;
 
         var query = (req.url).query;
@@ -1574,34 +1638,34 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
         unittest.expect(queryMap["sql"].first, unittest.equals(arg_sql_1));
         unittest.expect(queryMap["hdrs"].first, unittest.equals("$arg_hdrs"));
         unittest.expect(queryMap["typed"].first, unittest.equals("$arg_typed"));
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSqlresponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.sqlGet(arg_sql_1, hdrs: arg_hdrs, typed: arg_typed).then(unittest.expectAsync1(((api.Sqlresponse response) {
+      res
+          .sqlGet(arg_sql_1, hdrs: arg_hdrs, typed: arg_typed)
+          .then(unittest.expectAsync1(((api.Sqlresponse response) {
         checkSqlresponse(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-StyleResourceApi", () {
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
       api.StyleResourceApi res = new api.FusiontablesApi(mock).style;
       var arg_tableId = "foo";
@@ -1611,18 +1675,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/styles/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_tableId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("/styles/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/styles/"));
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -1638,16 +1707,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
@@ -1656,7 +1726,6 @@ main() {
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
       api.StyleResourceApi res = new api.FusiontablesApi(mock).style;
       var arg_tableId = "foo";
@@ -1666,18 +1735,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/styles/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_tableId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("/styles/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/styles/"));
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -1693,27 +1767,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildStyleSetting());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_tableId, arg_styleId).then(unittest.expectAsync1(((api.StyleSetting response) {
+      res
+          .get(arg_tableId, arg_styleId)
+          .then(unittest.expectAsync1(((api.StyleSetting response) {
         checkStyleSetting(response);
       })));
     });
 
     unittest.test("method--insert", () {
-
       var mock = new HttpServerMock();
       api.StyleResourceApi res = new api.FusiontablesApi(mock).style;
       var arg_request = buildStyleSetting();
@@ -1726,18 +1802,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/styles", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_tableId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/styles"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/styles"));
         pathOffset += 7;
 
         var query = (req.url).query;
@@ -1750,27 +1831,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildStyleSetting());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_tableId).then(unittest.expectAsync1(((api.StyleSetting response) {
+      res
+          .insert(arg_request, arg_tableId)
+          .then(unittest.expectAsync1(((api.StyleSetting response) {
         checkStyleSetting(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
       api.StyleResourceApi res = new api.FusiontablesApi(mock).style;
       var arg_tableId = "foo";
@@ -1781,18 +1864,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/styles", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_tableId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/styles"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/styles"));
         pathOffset += 7;
 
         var query = (req.url).query;
@@ -1805,29 +1893,34 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildStyleSettingList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_tableId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.StyleSettingList response) {
+      res
+          .list(arg_tableId,
+              maxResults: arg_maxResults, pageToken: arg_pageToken)
+          .then(unittest.expectAsync1(((api.StyleSettingList response) {
         checkStyleSettingList(response);
       })));
     });
 
     unittest.test("method--patch", () {
-
       var mock = new HttpServerMock();
       api.StyleResourceApi res = new api.FusiontablesApi(mock).style;
       var arg_request = buildStyleSetting();
@@ -1841,18 +1934,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/styles/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_tableId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("/styles/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/styles/"));
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -1868,27 +1966,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildStyleSetting());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_tableId, arg_styleId).then(unittest.expectAsync1(((api.StyleSetting response) {
+      res
+          .patch(arg_request, arg_tableId, arg_styleId)
+          .then(unittest.expectAsync1(((api.StyleSetting response) {
         checkStyleSetting(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
       api.StyleResourceApi res = new api.FusiontablesApi(mock).style;
       var arg_request = buildStyleSetting();
@@ -1902,18 +2002,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/styles/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_tableId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("/styles/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/styles/"));
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -1929,31 +2034,31 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildStyleSetting());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_tableId, arg_styleId).then(unittest.expectAsync1(((api.StyleSetting response) {
+      res
+          .update(arg_request, arg_tableId, arg_styleId)
+          .then(unittest.expectAsync1(((api.StyleSetting response) {
         checkStyleSetting(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-TableResourceApi", () {
     unittest.test("method--copy", () {
-
       var mock = new HttpServerMock();
       api.TableResourceApi res = new api.FusiontablesApi(mock).table;
       var arg_tableId = "foo";
@@ -1963,18 +2068,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/copy", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_tableId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5), unittest.equals("/copy"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 5),
+            unittest.equals("/copy"));
         pathOffset += 5;
 
         var query = (req.url).query;
@@ -1987,28 +2097,31 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["copyPresentation"].first, unittest.equals("$arg_copyPresentation"));
-
+        unittest.expect(queryMap["copyPresentation"].first,
+            unittest.equals("$arg_copyPresentation"));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTable());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.copy(arg_tableId, copyPresentation: arg_copyPresentation).then(unittest.expectAsync1(((api.Table response) {
+      res
+          .copy(arg_tableId, copyPresentation: arg_copyPresentation)
+          .then(unittest.expectAsync1(((api.Table response) {
         checkTable(response);
       })));
     });
 
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
       api.TableResourceApi res = new api.FusiontablesApi(mock).table;
       var arg_tableId = "foo";
@@ -2017,11 +2130,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -2037,16 +2153,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
@@ -2055,7 +2172,6 @@ main() {
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
       api.TableResourceApi res = new api.FusiontablesApi(mock).table;
       var arg_tableId = "foo";
@@ -2064,11 +2180,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -2084,16 +2203,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTable());
         return new async.Future.value(stringResponse(200, h, resp));
@@ -2120,18 +2240,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/import", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_tableId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/import"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/import"));
         pathOffset += 7;
 
         var query = (req.url).query;
@@ -2144,26 +2269,39 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["delimiter"].first, unittest.equals(arg_delimiter));
-        unittest.expect(queryMap["encoding"].first, unittest.equals(arg_encoding));
-        unittest.expect(core.int.parse(queryMap["endLine"].first), unittest.equals(arg_endLine));
-        unittest.expect(queryMap["isStrict"].first, unittest.equals("$arg_isStrict"));
-        unittest.expect(core.int.parse(queryMap["startLine"].first), unittest.equals(arg_startLine));
-
+        unittest.expect(
+            queryMap["delimiter"].first, unittest.equals(arg_delimiter));
+        unittest.expect(
+            queryMap["encoding"].first, unittest.equals(arg_encoding));
+        unittest.expect(core.int.parse(queryMap["endLine"].first),
+            unittest.equals(arg_endLine));
+        unittest.expect(
+            queryMap["isStrict"].first, unittest.equals("$arg_isStrict"));
+        unittest.expect(core.int.parse(queryMap["startLine"].first),
+            unittest.equals(arg_startLine));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildImport());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.importRows(arg_tableId, delimiter: arg_delimiter, encoding: arg_encoding, endLine: arg_endLine, isStrict: arg_isStrict, startLine: arg_startLine).then(unittest.expectAsync1(((api.Import response) {
+      res
+          .importRows(arg_tableId,
+              delimiter: arg_delimiter,
+              encoding: arg_encoding,
+              endLine: arg_endLine,
+              isStrict: arg_isStrict,
+              startLine: arg_startLine)
+          .then(unittest.expectAsync1(((api.Import response) {
         checkImport(response);
       })));
     });
@@ -2182,11 +2320,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("tables/import"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("tables/import"));
         pathOffset += 13;
 
         var query = (req.url).query;
@@ -2199,30 +2340,35 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
         unittest.expect(queryMap["name"].first, unittest.equals(arg_name));
-        unittest.expect(queryMap["delimiter"].first, unittest.equals(arg_delimiter));
-        unittest.expect(queryMap["encoding"].first, unittest.equals(arg_encoding));
-
+        unittest.expect(
+            queryMap["delimiter"].first, unittest.equals(arg_delimiter));
+        unittest.expect(
+            queryMap["encoding"].first, unittest.equals(arg_encoding));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTable());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.importTable(arg_name, delimiter: arg_delimiter, encoding: arg_encoding).then(unittest.expectAsync1(((api.Table response) {
+      res
+          .importTable(arg_name,
+              delimiter: arg_delimiter, encoding: arg_encoding)
+          .then(unittest.expectAsync1(((api.Table response) {
         checkTable(response);
       })));
     });
 
     unittest.test("method--insert", () {
-
       var mock = new HttpServerMock();
       api.TableResourceApi res = new api.FusiontablesApi(mock).table;
       var arg_request = buildTable();
@@ -2234,11 +2380,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("tables"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("tables"));
         pathOffset += 6;
 
         var query = (req.url).query;
@@ -2251,16 +2400,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTable());
         return new async.Future.value(stringResponse(200, h, resp));
@@ -2271,7 +2421,6 @@ main() {
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
       api.TableResourceApi res = new api.FusiontablesApi(mock).table;
       var arg_maxResults = 42;
@@ -2281,11 +2430,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("tables"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("tables"));
         pathOffset += 6;
 
         var query = (req.url).query;
@@ -2298,29 +2450,33 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTableList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.TableList response) {
+      res
+          .list(maxResults: arg_maxResults, pageToken: arg_pageToken)
+          .then(unittest.expectAsync1(((api.TableList response) {
         checkTableList(response);
       })));
     });
 
     unittest.test("method--patch", () {
-
       var mock = new HttpServerMock();
       api.TableResourceApi res = new api.FusiontablesApi(mock).table;
       var arg_request = buildTable();
@@ -2334,11 +2490,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -2354,28 +2513,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["replaceViewDefinition"].first, unittest.equals("$arg_replaceViewDefinition"));
-
+        unittest.expect(queryMap["replaceViewDefinition"].first,
+            unittest.equals("$arg_replaceViewDefinition"));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTable());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_tableId, replaceViewDefinition: arg_replaceViewDefinition).then(unittest.expectAsync1(((api.Table response) {
+      res
+          .patch(arg_request, arg_tableId,
+              replaceViewDefinition: arg_replaceViewDefinition)
+          .then(unittest.expectAsync1(((api.Table response) {
         checkTable(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
       api.TableResourceApi res = new api.FusiontablesApi(mock).table;
       var arg_request = buildTable();
@@ -2389,11 +2552,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -2409,32 +2575,34 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["replaceViewDefinition"].first, unittest.equals("$arg_replaceViewDefinition"));
-
+        unittest.expect(queryMap["replaceViewDefinition"].first,
+            unittest.equals("$arg_replaceViewDefinition"));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTable());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_tableId, replaceViewDefinition: arg_replaceViewDefinition).then(unittest.expectAsync1(((api.Table response) {
+      res
+          .update(arg_request, arg_tableId,
+              replaceViewDefinition: arg_replaceViewDefinition)
+          .then(unittest.expectAsync1(((api.Table response) {
         checkTable(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-TaskResourceApi", () {
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
       api.TaskResourceApi res = new api.FusiontablesApi(mock).task;
       var arg_tableId = "foo";
@@ -2444,18 +2612,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/tasks/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_tableId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/tasks/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/tasks/"));
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -2471,16 +2644,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
@@ -2489,7 +2663,6 @@ main() {
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
       api.TaskResourceApi res = new api.FusiontablesApi(mock).task;
       var arg_tableId = "foo";
@@ -2499,18 +2672,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/tasks/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_tableId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/tasks/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/tasks/"));
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -2526,27 +2704,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTask());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_tableId, arg_taskId).then(unittest.expectAsync1(((api.Task response) {
+      res
+          .get(arg_tableId, arg_taskId)
+          .then(unittest.expectAsync1(((api.Task response) {
         checkTask(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
       api.TaskResourceApi res = new api.FusiontablesApi(mock).task;
       var arg_tableId = "foo";
@@ -2558,18 +2738,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/tasks", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_tableId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("/tasks"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("/tasks"));
         pathOffset += 6;
 
         var query = (req.url).query;
@@ -2582,34 +2767,40 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["startIndex"].first), unittest.equals(arg_startIndex));
-
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["startIndex"].first),
+            unittest.equals(arg_startIndex));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTaskList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_tableId, maxResults: arg_maxResults, pageToken: arg_pageToken, startIndex: arg_startIndex).then(unittest.expectAsync1(((api.TaskList response) {
+      res
+          .list(arg_tableId,
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              startIndex: arg_startIndex)
+          .then(unittest.expectAsync1(((api.TaskList response) {
         checkTaskList(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-TemplateResourceApi", () {
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
       api.TemplateResourceApi res = new api.FusiontablesApi(mock).template;
       var arg_tableId = "foo";
@@ -2619,18 +2810,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/templates/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_tableId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("/templates/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("/templates/"));
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -2646,25 +2842,27 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_tableId, arg_templateId).then(unittest.expectAsync1((_) {}));
+      res
+          .delete(arg_tableId, arg_templateId)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
       api.TemplateResourceApi res = new api.FusiontablesApi(mock).template;
       var arg_tableId = "foo";
@@ -2674,18 +2872,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/templates/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_tableId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("/templates/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("/templates/"));
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -2701,27 +2904,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTemplate());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_tableId, arg_templateId).then(unittest.expectAsync1(((api.Template response) {
+      res
+          .get(arg_tableId, arg_templateId)
+          .then(unittest.expectAsync1(((api.Template response) {
         checkTemplate(response);
       })));
     });
 
     unittest.test("method--insert", () {
-
       var mock = new HttpServerMock();
       api.TemplateResourceApi res = new api.FusiontablesApi(mock).template;
       var arg_request = buildTemplate();
@@ -2734,18 +2939,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/templates", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_tableId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/templates"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/templates"));
         pathOffset += 10;
 
         var query = (req.url).query;
@@ -2758,27 +2968,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTemplate());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_tableId).then(unittest.expectAsync1(((api.Template response) {
+      res
+          .insert(arg_request, arg_tableId)
+          .then(unittest.expectAsync1(((api.Template response) {
         checkTemplate(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
       api.TemplateResourceApi res = new api.FusiontablesApi(mock).template;
       var arg_tableId = "foo";
@@ -2789,18 +3001,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/templates", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_tableId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/templates"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/templates"));
         pathOffset += 10;
 
         var query = (req.url).query;
@@ -2813,29 +3030,34 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTemplateList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_tableId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.TemplateList response) {
+      res
+          .list(arg_tableId,
+              maxResults: arg_maxResults, pageToken: arg_pageToken)
+          .then(unittest.expectAsync1(((api.TemplateList response) {
         checkTemplateList(response);
       })));
     });
 
     unittest.test("method--patch", () {
-
       var mock = new HttpServerMock();
       api.TemplateResourceApi res = new api.FusiontablesApi(mock).template;
       var arg_request = buildTemplate();
@@ -2849,18 +3071,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/templates/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_tableId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("/templates/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("/templates/"));
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -2876,27 +3103,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTemplate());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_tableId, arg_templateId).then(unittest.expectAsync1(((api.Template response) {
+      res
+          .patch(arg_request, arg_tableId, arg_templateId)
+          .then(unittest.expectAsync1(((api.Template response) {
         checkTemplate(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
       api.TemplateResourceApi res = new api.FusiontablesApi(mock).template;
       var arg_request = buildTemplate();
@@ -2910,18 +3139,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("fusiontables/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("fusiontables/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("tables/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("tables/"));
         pathOffset += 7;
         index = path.indexOf("/templates/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_tableId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("/templates/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("/templates/"));
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -2937,27 +3171,26 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTemplate());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_tableId, arg_templateId).then(unittest.expectAsync1(((api.Template response) {
+      res
+          .update(arg_request, arg_tableId, arg_templateId)
+          .then(unittest.expectAsync1(((api.Template response) {
         checkTemplate(response);
       })));
     });
-
   });
-
-
 }
-

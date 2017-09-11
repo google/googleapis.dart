@@ -13,12 +13,12 @@
     },
     "basePath": "/adsense/v1.4/",
     "baseUrl": "https://www.googleapis.com/adsense/v1.4/",
-    "batchPath": "batch",
+    "batchPath": "batch/adsense/v1.4",
     "canonicalName": "AdSense",
     "description": "Accesses AdSense publishers' inventory and generates performance reports.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/adsense/management/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/_gBMJa_FGIhvGvj9giMLkSFllu8\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/jS4_R7wwlz6Q8XPQCV2KH5UxqTk\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/adsense-16.png",
         "x32": "https://www.google.com/images/icons/product/adsense-32.png"
@@ -1624,7 +1624,7 @@
             }
         }
     },
-    "revision": "20170816",
+    "revision": "20170906",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {

@@ -9,25 +9,26 @@ import 'dart:convert' as convert;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
-    ApiRequestError, DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
+    show ApiRequestError, DetailedApiRequestError;
 
 const core.String USER_AGENT = 'dart-api-client plus/v1';
 
-/** Builds on top of the Google+ platform. */
+/// Builds on top of the Google+ platform.
 class PlusApi {
-  /** Know the list of people in your circles, your age range, and language */
+  /// Know the list of people in your circles, your age range, and language
   static const PlusLoginScope = "https://www.googleapis.com/auth/plus.login";
 
-  /** Know who you are on Google */
+  /// Know who you are on Google
   static const PlusMeScope = "https://www.googleapis.com/auth/plus.me";
 
-  /** View your email address */
-  static const UserinfoEmailScope = "https://www.googleapis.com/auth/userinfo.email";
+  /// View your email address
+  static const UserinfoEmailScope =
+      "https://www.googleapis.com/auth/userinfo.email";
 
-  /** View your basic profile info */
-  static const UserinfoProfileScope = "https://www.googleapis.com/auth/userinfo.profile";
-
+  /// View your basic profile info
+  static const UserinfoProfileScope =
+      "https://www.googleapis.com/auth/userinfo.profile";
 
   final commons.ApiRequester _requester;
 
@@ -35,32 +36,31 @@ class PlusApi {
   CommentsResourceApi get comments => new CommentsResourceApi(_requester);
   PeopleResourceApi get people => new PeopleResourceApi(_requester);
 
-  PlusApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "plus/v1/"}) :
-      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+  PlusApi(http.Client client,
+      {core.String rootUrl: "https://www.googleapis.com/",
+      core.String servicePath: "plus/v1/"})
+      : _requester =
+            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
-
 
 class ActivitiesResourceApi {
   final commons.ApiRequester _requester;
 
-  ActivitiesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  ActivitiesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Get an activity.
-   *
-   * Request parameters:
-   *
-   * [activityId] - The ID of the activity to get.
-   *
-   * Completes with a [Activity].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Get an activity.
+  ///
+  /// Request parameters:
+  ///
+  /// [activityId] - The ID of the activity to get.
+  ///
+  /// Completes with a [Activity].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Activity> get(core.String activityId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -75,47 +75,45 @@ class ActivitiesResourceApi {
 
     _url = 'activities/' + commons.Escaper.ecapeVariable('$activityId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Activity.fromJson(data));
   }
 
-  /**
-   * List all of the activities in the specified collection for a particular
-   * user.
-   *
-   * Request parameters:
-   *
-   * [userId] - The ID of the user to get activities for. The special value "me"
-   * can be used to indicate the authenticated user.
-   *
-   * [collection] - The collection of activities to list.
-   * Possible string values are:
-   * - "public" : All public activities created by the specified user.
-   *
-   * [maxResults] - The maximum number of activities to include in the response,
-   * which is used for paging. For any response, the actual number returned
-   * might be less than the specified maxResults.
-   * Value must be between "1" and "100".
-   *
-   * [pageToken] - The continuation token, which is used to page through large
-   * result sets. To get the next page of results, set this parameter to the
-   * value of "nextPageToken" from the previous response.
-   *
-   * Completes with a [ActivityFeed].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ActivityFeed> list(core.String userId, core.String collection, {core.int maxResults, core.String pageToken}) {
+  /// List all of the activities in the specified collection for a particular
+  /// user.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - The ID of the user to get activities for. The special value
+  /// "me" can be used to indicate the authenticated user.
+  ///
+  /// [collection] - The collection of activities to list.
+  /// Possible string values are:
+  /// - "public" : All public activities created by the specified user.
+  ///
+  /// [maxResults] - The maximum number of activities to include in the
+  /// response, which is used for paging. For any response, the actual number
+  /// returned might be less than the specified maxResults.
+  /// Value must be between "1" and "100".
+  ///
+  /// [pageToken] - The continuation token, which is used to page through large
+  /// result sets. To get the next page of results, set this parameter to the
+  /// value of "nextPageToken" from the previous response.
+  ///
+  /// Completes with a [ActivityFeed].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ActivityFeed> list(core.String userId, core.String collection,
+      {core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -136,52 +134,56 @@ class ActivitiesResourceApi {
       _queryParams["pageToken"] = [pageToken];
     }
 
-    _url = 'people/' + commons.Escaper.ecapeVariable('$userId') + '/activities/' + commons.Escaper.ecapeVariable('$collection');
+    _url = 'people/' +
+        commons.Escaper.ecapeVariable('$userId') +
+        '/activities/' +
+        commons.Escaper.ecapeVariable('$collection');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ActivityFeed.fromJson(data));
   }
 
-  /**
-   * Search public activities.
-   *
-   * Request parameters:
-   *
-   * [query] - Full-text search query string.
-   *
-   * [language] - Specify the preferred language to search with. See search
-   * language codes for available values.
-   *
-   * [maxResults] - The maximum number of activities to include in the response,
-   * which is used for paging. For any response, the actual number returned
-   * might be less than the specified maxResults.
-   * Value must be between "1" and "20".
-   *
-   * [orderBy] - Specifies how to order search results.
-   * Possible string values are:
-   * - "best" : Sort activities by relevance to the user, most relevant first.
-   * - "recent" : Sort activities by published date, most recent first.
-   *
-   * [pageToken] - The continuation token, which is used to page through large
-   * result sets. To get the next page of results, set this parameter to the
-   * value of "nextPageToken" from the previous response. This token can be of
-   * any length.
-   *
-   * Completes with a [ActivityFeed].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ActivityFeed> search(core.String query, {core.String language, core.int maxResults, core.String orderBy, core.String pageToken}) {
+  /// Search public activities.
+  ///
+  /// Request parameters:
+  ///
+  /// [query] - Full-text search query string.
+  ///
+  /// [language] - Specify the preferred language to search with. See search
+  /// language codes for available values.
+  ///
+  /// [maxResults] - The maximum number of activities to include in the
+  /// response, which is used for paging. For any response, the actual number
+  /// returned might be less than the specified maxResults.
+  /// Value must be between "1" and "20".
+  ///
+  /// [orderBy] - Specifies how to order search results.
+  /// Possible string values are:
+  /// - "best" : Sort activities by relevance to the user, most relevant first.
+  /// - "recent" : Sort activities by published date, most recent first.
+  ///
+  /// [pageToken] - The continuation token, which is used to page through large
+  /// result sets. To get the next page of results, set this parameter to the
+  /// value of "nextPageToken" from the previous response. This token can be of
+  /// any length.
+  ///
+  /// Completes with a [ActivityFeed].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ActivityFeed> search(core.String query,
+      {core.String language,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -208,40 +210,34 @@ class ActivitiesResourceApi {
 
     _url = 'activities';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ActivityFeed.fromJson(data));
   }
-
 }
-
 
 class CommentsResourceApi {
   final commons.ApiRequester _requester;
 
-  CommentsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  CommentsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Get a comment.
-   *
-   * Request parameters:
-   *
-   * [commentId] - The ID of the comment to get.
-   *
-   * Completes with a [Comment].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Get a comment.
+  ///
+  /// Request parameters:
+  ///
+  /// [commentId] - The ID of the comment to get.
+  ///
+  /// Completes with a [Comment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Comment> get(core.String commentId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -256,46 +252,44 @@ class CommentsResourceApi {
 
     _url = 'comments/' + commons.Escaper.ecapeVariable('$commentId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Comment.fromJson(data));
   }
 
-  /**
-   * List all of the comments for an activity.
-   *
-   * Request parameters:
-   *
-   * [activityId] - The ID of the activity to get comments for.
-   *
-   * [maxResults] - The maximum number of comments to include in the response,
-   * which is used for paging. For any response, the actual number returned
-   * might be less than the specified maxResults.
-   * Value must be between "0" and "500".
-   *
-   * [pageToken] - The continuation token, which is used to page through large
-   * result sets. To get the next page of results, set this parameter to the
-   * value of "nextPageToken" from the previous response.
-   *
-   * [sortOrder] - The order in which to sort the list of comments.
-   * Possible string values are:
-   * - "ascending" : Sort oldest comments first.
-   * - "descending" : Sort newest comments first.
-   *
-   * Completes with a [CommentFeed].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<CommentFeed> list(core.String activityId, {core.int maxResults, core.String pageToken, core.String sortOrder}) {
+  /// List all of the comments for an activity.
+  ///
+  /// Request parameters:
+  ///
+  /// [activityId] - The ID of the activity to get comments for.
+  ///
+  /// [maxResults] - The maximum number of comments to include in the response,
+  /// which is used for paging. For any response, the actual number returned
+  /// might be less than the specified maxResults.
+  /// Value must be between "0" and "500".
+  ///
+  /// [pageToken] - The continuation token, which is used to page through large
+  /// result sets. To get the next page of results, set this parameter to the
+  /// value of "nextPageToken" from the previous response.
+  ///
+  /// [sortOrder] - The order in which to sort the list of comments.
+  /// Possible string values are:
+  /// - "ascending" : Sort oldest comments first.
+  /// - "descending" : Sort newest comments first.
+  ///
+  /// Completes with a [CommentFeed].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CommentFeed> list(core.String activityId,
+      {core.int maxResults, core.String pageToken, core.String sortOrder}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -316,45 +310,41 @@ class CommentsResourceApi {
       _queryParams["sortOrder"] = [sortOrder];
     }
 
-    _url = 'activities/' + commons.Escaper.ecapeVariable('$activityId') + '/comments';
+    _url = 'activities/' +
+        commons.Escaper.ecapeVariable('$activityId') +
+        '/comments';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new CommentFeed.fromJson(data));
   }
-
 }
-
 
 class PeopleResourceApi {
   final commons.ApiRequester _requester;
 
-  PeopleResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  PeopleResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Get a person's profile. If your app uses scope
-   * https://www.googleapis.com/auth/plus.login, this method is guaranteed to
-   * return ageRange and language.
-   *
-   * Request parameters:
-   *
-   * [userId] - The ID of the person to get the profile for. The special value
-   * "me" can be used to indicate the authenticated user.
-   *
-   * Completes with a [Person].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Get a person's profile. If your app uses scope
+  /// https://www.googleapis.com/auth/plus.login, this method is guaranteed to
+  /// return ageRange and language.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - The ID of the person to get the profile for. The special value
+  /// "me" can be used to indicate the authenticated user.
+  ///
+  /// Completes with a [Person].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Person> get(core.String userId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -369,55 +359,53 @@ class PeopleResourceApi {
 
     _url = 'people/' + commons.Escaper.ecapeVariable('$userId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Person.fromJson(data));
   }
 
-  /**
-   * List all of the people in the specified collection.
-   *
-   * Request parameters:
-   *
-   * [userId] - Get the collection of people for the person identified. Use "me"
-   * to indicate the authenticated user.
-   *
-   * [collection] - The collection of people to list.
-   * Possible string values are:
-   * - "connected" : The list of visible people in the authenticated user's
-   * circles who also use the requesting app. This list is limited to users who
-   * made their app activities visible to the authenticated user.
-   * - "visible" : The list of people who this user has added to one or more
-   * circles, limited to the circles visible to the requesting application.
-   *
-   * [maxResults] - The maximum number of people to include in the response,
-   * which is used for paging. For any response, the actual number returned
-   * might be less than the specified maxResults.
-   * Value must be between "1" and "100".
-   *
-   * [orderBy] - The order to return people in.
-   * Possible string values are:
-   * - "alphabetical" : Order the people by their display name.
-   * - "best" : Order people based on the relevence to the viewer.
-   *
-   * [pageToken] - The continuation token, which is used to page through large
-   * result sets. To get the next page of results, set this parameter to the
-   * value of "nextPageToken" from the previous response.
-   *
-   * Completes with a [PeopleFeed].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<PeopleFeed> list(core.String userId, core.String collection, {core.int maxResults, core.String orderBy, core.String pageToken}) {
+  /// List all of the people in the specified collection.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - Get the collection of people for the person identified. Use
+  /// "me" to indicate the authenticated user.
+  ///
+  /// [collection] - The collection of people to list.
+  /// Possible string values are:
+  /// - "connected" : The list of visible people in the authenticated user's
+  /// circles who also use the requesting app. This list is limited to users who
+  /// made their app activities visible to the authenticated user.
+  /// - "visible" : The list of people who this user has added to one or more
+  /// circles, limited to the circles visible to the requesting application.
+  ///
+  /// [maxResults] - The maximum number of people to include in the response,
+  /// which is used for paging. For any response, the actual number returned
+  /// might be less than the specified maxResults.
+  /// Value must be between "1" and "100".
+  ///
+  /// [orderBy] - The order to return people in.
+  /// Possible string values are:
+  /// - "alphabetical" : Order the people by their display name.
+  /// - "best" : Order people based on the relevence to the viewer.
+  ///
+  /// [pageToken] - The continuation token, which is used to page through large
+  /// result sets. To get the next page of results, set this parameter to the
+  /// value of "nextPageToken" from the previous response.
+  ///
+  /// Completes with a [PeopleFeed].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PeopleFeed> list(core.String userId, core.String collection,
+      {core.int maxResults, core.String orderBy, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -441,49 +429,51 @@ class PeopleResourceApi {
       _queryParams["pageToken"] = [pageToken];
     }
 
-    _url = 'people/' + commons.Escaper.ecapeVariable('$userId') + '/people/' + commons.Escaper.ecapeVariable('$collection');
+    _url = 'people/' +
+        commons.Escaper.ecapeVariable('$userId') +
+        '/people/' +
+        commons.Escaper.ecapeVariable('$collection');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new PeopleFeed.fromJson(data));
   }
 
-  /**
-   * List all of the people in the specified collection for a particular
-   * activity.
-   *
-   * Request parameters:
-   *
-   * [activityId] - The ID of the activity to get the list of people for.
-   *
-   * [collection] - The collection of people to list.
-   * Possible string values are:
-   * - "plusoners" : List all people who have +1'd this activity.
-   * - "resharers" : List all people who have reshared this activity.
-   *
-   * [maxResults] - The maximum number of people to include in the response,
-   * which is used for paging. For any response, the actual number returned
-   * might be less than the specified maxResults.
-   * Value must be between "1" and "100".
-   *
-   * [pageToken] - The continuation token, which is used to page through large
-   * result sets. To get the next page of results, set this parameter to the
-   * value of "nextPageToken" from the previous response.
-   *
-   * Completes with a [PeopleFeed].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<PeopleFeed> listByActivity(core.String activityId, core.String collection, {core.int maxResults, core.String pageToken}) {
+  /// List all of the people in the specified collection for a particular
+  /// activity.
+  ///
+  /// Request parameters:
+  ///
+  /// [activityId] - The ID of the activity to get the list of people for.
+  ///
+  /// [collection] - The collection of people to list.
+  /// Possible string values are:
+  /// - "plusoners" : List all people who have +1'd this activity.
+  /// - "resharers" : List all people who have reshared this activity.
+  ///
+  /// [maxResults] - The maximum number of people to include in the response,
+  /// which is used for paging. For any response, the actual number returned
+  /// might be less than the specified maxResults.
+  /// Value must be between "1" and "100".
+  ///
+  /// [pageToken] - The continuation token, which is used to page through large
+  /// result sets. To get the next page of results, set this parameter to the
+  /// value of "nextPageToken" from the previous response.
+  ///
+  /// Completes with a [PeopleFeed].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PeopleFeed> listByActivity(
+      core.String activityId, core.String collection,
+      {core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -504,48 +494,49 @@ class PeopleResourceApi {
       _queryParams["pageToken"] = [pageToken];
     }
 
-    _url = 'activities/' + commons.Escaper.ecapeVariable('$activityId') + '/people/' + commons.Escaper.ecapeVariable('$collection');
+    _url = 'activities/' +
+        commons.Escaper.ecapeVariable('$activityId') +
+        '/people/' +
+        commons.Escaper.ecapeVariable('$collection');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new PeopleFeed.fromJson(data));
   }
 
-  /**
-   * Search all public profiles.
-   *
-   * Request parameters:
-   *
-   * [query] - Specify a query string for full text search of public text in all
-   * profiles.
-   *
-   * [language] - Specify the preferred language to search with. See search
-   * language codes for available values.
-   *
-   * [maxResults] - The maximum number of people to include in the response,
-   * which is used for paging. For any response, the actual number returned
-   * might be less than the specified maxResults.
-   * Value must be between "1" and "50".
-   *
-   * [pageToken] - The continuation token, which is used to page through large
-   * result sets. To get the next page of results, set this parameter to the
-   * value of "nextPageToken" from the previous response. This token can be of
-   * any length.
-   *
-   * Completes with a [PeopleFeed].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<PeopleFeed> search(core.String query, {core.String language, core.int maxResults, core.String pageToken}) {
+  /// Search all public profiles.
+  ///
+  /// Request parameters:
+  ///
+  /// [query] - Specify a query string for full text search of public text in
+  /// all profiles.
+  ///
+  /// [language] - Specify the preferred language to search with. See search
+  /// language codes for available values.
+  ///
+  /// [maxResults] - The maximum number of people to include in the response,
+  /// which is used for paging. For any response, the actual number returned
+  /// might be less than the specified maxResults.
+  /// Value must be between "1" and "50".
+  ///
+  /// [pageToken] - The continuation token, which is used to page through large
+  /// result sets. To get the next page of results, set this parameter to the
+  /// value of "nextPageToken" from the previous response. This token can be of
+  /// any length.
+  ///
+  /// Completes with a [PeopleFeed].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PeopleFeed> search(core.String query,
+      {core.String language, core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -569,29 +560,25 @@ class PeopleResourceApi {
 
     _url = 'people';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new PeopleFeed.fromJson(data));
   }
-
 }
 
-
-
 class Acl {
-  /** Description of the access granted, suitable for display. */
+  /// Description of the access granted, suitable for display.
   core.String description;
-  /** The list of access entries. */
+
+  /// The list of access entries.
   core.List<PlusAclentryResource> items;
-  /**
-   * Identifies this resource as a collection of access controls. Value:
-   * "plus#acl".
-   */
+
+  /// Identifies this resource as a collection of access controls. Value:
+  /// "plus#acl".
   core.String kind;
 
   Acl();
@@ -601,7 +588,9 @@ class Acl {
       description = _json["description"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new PlusAclentryResource.fromJson(value)).toList();
+      items = _json["items"]
+          .map((value) => new PlusAclentryResource.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -609,7 +598,8 @@ class Acl {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -623,21 +613,23 @@ class Acl {
   }
 }
 
-/** Actor info specific to YouTube clients. */
+/// Actor info specific to YouTube clients.
 class ActivityActorClientSpecificActorInfoYoutubeActorInfo {
-  /** ID of the YouTube channel owned by the Actor. */
+  /// ID of the YouTube channel owned by the Actor.
   core.String channelId;
 
   ActivityActorClientSpecificActorInfoYoutubeActorInfo();
 
-  ActivityActorClientSpecificActorInfoYoutubeActorInfo.fromJson(core.Map _json) {
+  ActivityActorClientSpecificActorInfoYoutubeActorInfo.fromJson(
+      core.Map _json) {
     if (_json.containsKey("channelId")) {
       channelId = _json["channelId"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (channelId != null) {
       _json["channelId"] = channelId;
     }
@@ -645,21 +637,24 @@ class ActivityActorClientSpecificActorInfoYoutubeActorInfo {
   }
 }
 
-/** Actor info specific to particular clients. */
+/// Actor info specific to particular clients.
 class ActivityActorClientSpecificActorInfo {
-  /** Actor info specific to YouTube clients. */
+  /// Actor info specific to YouTube clients.
   ActivityActorClientSpecificActorInfoYoutubeActorInfo youtubeActorInfo;
 
   ActivityActorClientSpecificActorInfo();
 
   ActivityActorClientSpecificActorInfo.fromJson(core.Map _json) {
     if (_json.containsKey("youtubeActorInfo")) {
-      youtubeActorInfo = new ActivityActorClientSpecificActorInfoYoutubeActorInfo.fromJson(_json["youtubeActorInfo"]);
+      youtubeActorInfo =
+          new ActivityActorClientSpecificActorInfoYoutubeActorInfo.fromJson(
+              _json["youtubeActorInfo"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (youtubeActorInfo != null) {
       _json["youtubeActorInfo"] = (youtubeActorInfo).toJson();
     }
@@ -667,13 +662,11 @@ class ActivityActorClientSpecificActorInfo {
   }
 }
 
-/** The image representation of the actor. */
+/// The image representation of the actor.
 class ActivityActorImage {
-  /**
-   * The URL of the actor's profile photo. To resize the image and crop it to a
-   * square, append the query string ?sz=x, where x is the dimension in pixels
-   * of each side.
-   */
+  /// The URL of the actor's profile photo. To resize the image and crop it to a
+  /// square, append the query string ?sz=x, where x is the dimension in pixels
+  /// of each side.
   core.String url;
 
   ActivityActorImage();
@@ -685,7 +678,8 @@ class ActivityActorImage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (url != null) {
       _json["url"] = url;
     }
@@ -693,11 +687,12 @@ class ActivityActorImage {
   }
 }
 
-/** An object representation of the individual components of name. */
+/// An object representation of the individual components of name.
 class ActivityActorName {
-  /** The family name ("last name") of the actor. */
+  /// The family name ("last name") of the actor.
   core.String familyName;
-  /** The given name ("first name") of the actor. */
+
+  /// The given name ("first name") of the actor.
   core.String givenName;
 
   ActivityActorName();
@@ -712,7 +707,8 @@ class ActivityActorName {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (familyName != null) {
       _json["familyName"] = familyName;
     }
@@ -723,9 +719,9 @@ class ActivityActorName {
   }
 }
 
-/** Verification status of actor. */
+/// Verification status of actor.
 class ActivityActorVerification {
-  /** Verification for one-time or manual processes. */
+  /// Verification for one-time or manual processes.
   core.String adHocVerified;
 
   ActivityActorVerification();
@@ -737,7 +733,8 @@ class ActivityActorVerification {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (adHocVerified != null) {
       _json["adHocVerified"] = adHocVerified;
     }
@@ -745,28 +742,36 @@ class ActivityActorVerification {
   }
 }
 
-/** The person who performed this activity. */
+/// The person who performed this activity.
 class ActivityActor {
-  /** Actor info specific to particular clients. */
+  /// Actor info specific to particular clients.
   ActivityActorClientSpecificActorInfo clientSpecificActorInfo;
-  /** The name of the actor, suitable for display. */
+
+  /// The name of the actor, suitable for display.
   core.String displayName;
-  /** The ID of the actor's Person resource. */
+
+  /// The ID of the actor's Person resource.
   core.String id;
-  /** The image representation of the actor. */
+
+  /// The image representation of the actor.
   ActivityActorImage image;
-  /** An object representation of the individual components of name. */
+
+  /// An object representation of the individual components of name.
   ActivityActorName name;
-  /** The link to the actor's Google profile. */
+
+  /// The link to the actor's Google profile.
   core.String url;
-  /** Verification status of actor. */
+
+  /// Verification status of actor.
   ActivityActorVerification verification;
 
   ActivityActor();
 
   ActivityActor.fromJson(core.Map _json) {
     if (_json.containsKey("clientSpecificActorInfo")) {
-      clientSpecificActorInfo = new ActivityActorClientSpecificActorInfo.fromJson(_json["clientSpecificActorInfo"]);
+      clientSpecificActorInfo =
+          new ActivityActorClientSpecificActorInfo.fromJson(
+              _json["clientSpecificActorInfo"]);
     }
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
@@ -784,12 +789,14 @@ class ActivityActor {
       url = _json["url"];
     }
     if (_json.containsKey("verification")) {
-      verification = new ActivityActorVerification.fromJson(_json["verification"]);
+      verification =
+          new ActivityActorVerification.fromJson(_json["verification"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (clientSpecificActorInfo != null) {
       _json["clientSpecificActorInfo"] = (clientSpecificActorInfo).toJson();
     }
@@ -815,21 +822,23 @@ class ActivityActor {
   }
 }
 
-/** Actor info specific to YouTube clients. */
+/// Actor info specific to YouTube clients.
 class ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo {
-  /** ID of the YouTube channel owned by the Actor. */
+  /// ID of the YouTube channel owned by the Actor.
   core.String channelId;
 
   ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo();
 
-  ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo.fromJson(core.Map _json) {
+  ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo.fromJson(
+      core.Map _json) {
     if (_json.containsKey("channelId")) {
       channelId = _json["channelId"];
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (channelId != null) {
       _json["channelId"] = channelId;
     }
@@ -837,21 +846,24 @@ class ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo {
   }
 }
 
-/** Actor info specific to particular clients. */
+/// Actor info specific to particular clients.
 class ActivityObjectActorClientSpecificActorInfo {
-  /** Actor info specific to YouTube clients. */
+  /// Actor info specific to YouTube clients.
   ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo youtubeActorInfo;
 
   ActivityObjectActorClientSpecificActorInfo();
 
   ActivityObjectActorClientSpecificActorInfo.fromJson(core.Map _json) {
     if (_json.containsKey("youtubeActorInfo")) {
-      youtubeActorInfo = new ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo.fromJson(_json["youtubeActorInfo"]);
+      youtubeActorInfo =
+          new ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo
+              .fromJson(_json["youtubeActorInfo"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (youtubeActorInfo != null) {
       _json["youtubeActorInfo"] = (youtubeActorInfo).toJson();
     }
@@ -859,9 +871,9 @@ class ActivityObjectActorClientSpecificActorInfo {
   }
 }
 
-/** The image representation of the original actor. */
+/// The image representation of the original actor.
 class ActivityObjectActorImage {
-  /** A URL that points to a thumbnail photo of the original actor. */
+  /// A URL that points to a thumbnail photo of the original actor.
   core.String url;
 
   ActivityObjectActorImage();
@@ -873,7 +885,8 @@ class ActivityObjectActorImage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (url != null) {
       _json["url"] = url;
     }
@@ -881,9 +894,9 @@ class ActivityObjectActorImage {
   }
 }
 
-/** Verification status of actor. */
+/// Verification status of actor.
 class ActivityObjectActorVerification {
-  /** Verification for one-time or manual processes. */
+  /// Verification for one-time or manual processes.
   core.String adHocVerified;
 
   ActivityObjectActorVerification();
@@ -895,7 +908,8 @@ class ActivityObjectActorVerification {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (adHocVerified != null) {
       _json["adHocVerified"] = adHocVerified;
     }
@@ -903,29 +917,34 @@ class ActivityObjectActorVerification {
   }
 }
 
-/**
- * If this activity's object is itself another activity, such as when a person
- * reshares an activity, this property specifies the original activity's actor.
- */
+/// If this activity's object is itself another activity, such as when a person
+/// reshares an activity, this property specifies the original activity's actor.
 class ActivityObjectActor {
-  /** Actor info specific to particular clients. */
+  /// Actor info specific to particular clients.
   ActivityObjectActorClientSpecificActorInfo clientSpecificActorInfo;
-  /** The original actor's name, which is suitable for display. */
+
+  /// The original actor's name, which is suitable for display.
   core.String displayName;
-  /** ID of the original actor. */
+
+  /// ID of the original actor.
   core.String id;
-  /** The image representation of the original actor. */
+
+  /// The image representation of the original actor.
   ActivityObjectActorImage image;
-  /** A link to the original actor's Google profile. */
+
+  /// A link to the original actor's Google profile.
   core.String url;
-  /** Verification status of actor. */
+
+  /// Verification status of actor.
   ActivityObjectActorVerification verification;
 
   ActivityObjectActor();
 
   ActivityObjectActor.fromJson(core.Map _json) {
     if (_json.containsKey("clientSpecificActorInfo")) {
-      clientSpecificActorInfo = new ActivityObjectActorClientSpecificActorInfo.fromJson(_json["clientSpecificActorInfo"]);
+      clientSpecificActorInfo =
+          new ActivityObjectActorClientSpecificActorInfo.fromJson(
+              _json["clientSpecificActorInfo"]);
     }
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
@@ -940,12 +959,14 @@ class ActivityObjectActor {
       url = _json["url"];
     }
     if (_json.containsKey("verification")) {
-      verification = new ActivityObjectActorVerification.fromJson(_json["verification"]);
+      verification =
+          new ActivityObjectActorVerification.fromJson(_json["verification"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (clientSpecificActorInfo != null) {
       _json["clientSpecificActorInfo"] = (clientSpecificActorInfo).toJson();
     }
@@ -968,11 +989,12 @@ class ActivityObjectActor {
   }
 }
 
-/** If the attachment is a video, the embeddable link. */
+/// If the attachment is a video, the embeddable link.
 class ActivityObjectAttachmentsEmbed {
-  /** Media type of the link. */
+  /// Media type of the link.
   core.String type;
-  /** URL of the link. */
+
+  /// URL of the link.
   core.String url;
 
   ActivityObjectAttachmentsEmbed();
@@ -987,7 +1009,8 @@ class ActivityObjectAttachmentsEmbed {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (type != null) {
       _json["type"] = type;
     }
@@ -998,15 +1021,18 @@ class ActivityObjectAttachmentsEmbed {
   }
 }
 
-/** The full image URL for photo attachments. */
+/// The full image URL for photo attachments.
 class ActivityObjectAttachmentsFullImage {
-  /** The height, in pixels, of the linked resource. */
+  /// The height, in pixels, of the linked resource.
   core.int height;
-  /** Media type of the link. */
+
+  /// Media type of the link.
   core.String type;
-  /** URL of the image. */
+
+  /// URL of the image.
   core.String url;
-  /** The width, in pixels, of the linked resource. */
+
+  /// The width, in pixels, of the linked resource.
   core.int width;
 
   ActivityObjectAttachmentsFullImage();
@@ -1027,7 +1053,8 @@ class ActivityObjectAttachmentsFullImage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (height != null) {
       _json["height"] = height;
     }
@@ -1044,15 +1071,18 @@ class ActivityObjectAttachmentsFullImage {
   }
 }
 
-/** The preview image for photos or videos. */
+/// The preview image for photos or videos.
 class ActivityObjectAttachmentsImage {
-  /** The height, in pixels, of the linked resource. */
+  /// The height, in pixels, of the linked resource.
   core.int height;
-  /** Media type of the link. */
+
+  /// Media type of the link.
   core.String type;
-  /** Image URL. */
+
+  /// Image URL.
   core.String url;
-  /** The width, in pixels, of the linked resource. */
+
+  /// The width, in pixels, of the linked resource.
   core.int width;
 
   ActivityObjectAttachmentsImage();
@@ -1073,7 +1103,8 @@ class ActivityObjectAttachmentsImage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (height != null) {
       _json["height"] = height;
     }
@@ -1090,15 +1121,18 @@ class ActivityObjectAttachmentsImage {
   }
 }
 
-/** Image resource. */
+/// Image resource.
 class ActivityObjectAttachmentsThumbnailsImage {
-  /** The height, in pixels, of the linked resource. */
+  /// The height, in pixels, of the linked resource.
   core.int height;
-  /** Media type of the link. */
+
+  /// Media type of the link.
   core.String type;
-  /** Image url. */
+
+  /// Image url.
   core.String url;
-  /** The width, in pixels, of the linked resource. */
+
+  /// The width, in pixels, of the linked resource.
   core.int width;
 
   ActivityObjectAttachmentsThumbnailsImage();
@@ -1119,7 +1153,8 @@ class ActivityObjectAttachmentsThumbnailsImage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (height != null) {
       _json["height"] = height;
     }
@@ -1137,11 +1172,13 @@ class ActivityObjectAttachmentsThumbnailsImage {
 }
 
 class ActivityObjectAttachmentsThumbnails {
-  /** Potential name of the thumbnail. */
+  /// Potential name of the thumbnail.
   core.String description;
-  /** Image resource. */
+
+  /// Image resource.
   ActivityObjectAttachmentsThumbnailsImage image;
-  /** URL of the webpage containing the image. */
+
+  /// URL of the webpage containing the image.
   core.String url;
 
   ActivityObjectAttachmentsThumbnails();
@@ -1151,7 +1188,8 @@ class ActivityObjectAttachmentsThumbnails {
       description = _json["description"];
     }
     if (_json.containsKey("image")) {
-      image = new ActivityObjectAttachmentsThumbnailsImage.fromJson(_json["image"]);
+      image =
+          new ActivityObjectAttachmentsThumbnailsImage.fromJson(_json["image"]);
     }
     if (_json.containsKey("url")) {
       url = _json["url"];
@@ -1159,7 +1197,8 @@ class ActivityObjectAttachmentsThumbnails {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -1174,38 +1213,38 @@ class ActivityObjectAttachmentsThumbnails {
 }
 
 class ActivityObjectAttachments {
-  /**
-   * If the attachment is an article, this property contains a snippet of text
-   * from the article. It can also include descriptions for other types.
-   */
+  /// If the attachment is an article, this property contains a snippet of text
+  /// from the article. It can also include descriptions for other types.
   core.String content;
-  /**
-   * The title of the attachment, such as a photo caption or an article title.
-   */
+
+  /// The title of the attachment, such as a photo caption or an article title.
   core.String displayName;
-  /** If the attachment is a video, the embeddable link. */
+
+  /// If the attachment is a video, the embeddable link.
   ActivityObjectAttachmentsEmbed embed;
-  /** The full image URL for photo attachments. */
+
+  /// The full image URL for photo attachments.
   ActivityObjectAttachmentsFullImage fullImage;
-  /** The ID of the attachment. */
+
+  /// The ID of the attachment.
   core.String id;
-  /** The preview image for photos or videos. */
+
+  /// The preview image for photos or videos.
   ActivityObjectAttachmentsImage image;
-  /**
-   * The type of media object. Possible values include, but are not limited to,
-   * the following values:
-   * - "photo" - A photo.
-   * - "album" - A photo album.
-   * - "video" - A video.
-   * - "article" - An article, specified by a link.
-   */
+
+  /// The type of media object. Possible values include, but are not limited to,
+  /// the following values:
+  /// - "photo" - A photo.
+  /// - "album" - A photo album.
+  /// - "video" - A video.
+  /// - "article" - An article, specified by a link.
   core.String objectType;
-  /**
-   * If the attachment is an album, this property is a list of potential
-   * additional thumbnails from the album.
-   */
+
+  /// If the attachment is an album, this property is a list of potential
+  /// additional thumbnails from the album.
   core.List<ActivityObjectAttachmentsThumbnails> thumbnails;
-  /** The link to the attachment, which should be of type text/html. */
+
+  /// The link to the attachment, which should be of type text/html.
   core.String url;
 
   ActivityObjectAttachments();
@@ -1221,7 +1260,8 @@ class ActivityObjectAttachments {
       embed = new ActivityObjectAttachmentsEmbed.fromJson(_json["embed"]);
     }
     if (_json.containsKey("fullImage")) {
-      fullImage = new ActivityObjectAttachmentsFullImage.fromJson(_json["fullImage"]);
+      fullImage =
+          new ActivityObjectAttachmentsFullImage.fromJson(_json["fullImage"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -1233,7 +1273,10 @@ class ActivityObjectAttachments {
       objectType = _json["objectType"];
     }
     if (_json.containsKey("thumbnails")) {
-      thumbnails = _json["thumbnails"].map((value) => new ActivityObjectAttachmentsThumbnails.fromJson(value)).toList();
+      thumbnails = _json["thumbnails"]
+          .map((value) =>
+              new ActivityObjectAttachmentsThumbnails.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("url")) {
       url = _json["url"];
@@ -1241,7 +1284,8 @@ class ActivityObjectAttachments {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (content != null) {
       _json["content"] = content;
     }
@@ -1264,7 +1308,8 @@ class ActivityObjectAttachments {
       _json["objectType"] = objectType;
     }
     if (thumbnails != null) {
-      _json["thumbnails"] = thumbnails.map((value) => (value).toJson()).toList();
+      _json["thumbnails"] =
+          thumbnails.map((value) => (value).toJson()).toList();
     }
     if (url != null) {
       _json["url"] = url;
@@ -1273,11 +1318,12 @@ class ActivityObjectAttachments {
   }
 }
 
-/** People who +1'd this activity. */
+/// People who +1'd this activity.
 class ActivityObjectPlusoners {
-  /** The URL for the collection of people who +1'd this activity. */
+  /// The URL for the collection of people who +1'd this activity.
   core.String selfLink;
-  /** Total number of people who +1'd this activity. */
+
+  /// Total number of people who +1'd this activity.
   core.int totalItems;
 
   ActivityObjectPlusoners();
@@ -1292,7 +1338,8 @@ class ActivityObjectPlusoners {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
     }
@@ -1303,11 +1350,12 @@ class ActivityObjectPlusoners {
   }
 }
 
-/** Comments in reply to this activity. */
+/// Comments in reply to this activity.
 class ActivityObjectReplies {
-  /** The URL for the collection of comments in reply to this activity. */
+  /// The URL for the collection of comments in reply to this activity.
   core.String selfLink;
-  /** Total number of comments on this activity. */
+
+  /// Total number of comments on this activity.
   core.int totalItems;
 
   ActivityObjectReplies();
@@ -1322,7 +1370,8 @@ class ActivityObjectReplies {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
     }
@@ -1333,11 +1382,12 @@ class ActivityObjectReplies {
   }
 }
 
-/** People who reshared this activity. */
+/// People who reshared this activity.
 class ActivityObjectResharers {
-  /** The URL for the collection of resharers. */
+  /// The URL for the collection of resharers.
   core.String selfLink;
-  /** Total number of people who reshared this activity. */
+
+  /// Total number of people who reshared this activity.
   core.int totalItems;
 
   ActivityObjectResharers();
@@ -1352,7 +1402,8 @@ class ActivityObjectResharers {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
     }
@@ -1363,43 +1414,44 @@ class ActivityObjectResharers {
   }
 }
 
-/** The object of this activity. */
+/// The object of this activity.
 class ActivityObject {
-  /**
-   * If this activity's object is itself another activity, such as when a person
-   * reshares an activity, this property specifies the original activity's
-   * actor.
-   */
+  /// If this activity's object is itself another activity, such as when a
+  /// person reshares an activity, this property specifies the original
+  /// activity's actor.
   ActivityObjectActor actor;
-  /** The media objects attached to this activity. */
+
+  /// The media objects attached to this activity.
   core.List<ActivityObjectAttachments> attachments;
-  /** The HTML-formatted content, which is suitable for display. */
+
+  /// The HTML-formatted content, which is suitable for display.
   core.String content;
-  /**
-   * The ID of the object. When resharing an activity, this is the ID of the
-   * activity that is being reshared.
-   */
+
+  /// The ID of the object. When resharing an activity, this is the ID of the
+  /// activity that is being reshared.
   core.String id;
-  /**
-   * The type of the object. Possible values include, but are not limited to,
-   * the following values:
-   * - "note" - Textual content.
-   * - "activity" - A Google+ activity.
-   */
+
+  /// The type of the object. Possible values include, but are not limited to,
+  /// the following values:
+  /// - "note" - Textual content.
+  /// - "activity" - A Google+ activity.
   core.String objectType;
-  /**
-   * The content (text) as provided by the author, which is stored without any
-   * HTML formatting. When creating or updating an activity, this value must be
-   * supplied as plain text in the request.
-   */
+
+  /// The content (text) as provided by the author, which is stored without any
+  /// HTML formatting. When creating or updating an activity, this value must be
+  /// supplied as plain text in the request.
   core.String originalContent;
-  /** People who +1'd this activity. */
+
+  /// People who +1'd this activity.
   ActivityObjectPlusoners plusoners;
-  /** Comments in reply to this activity. */
+
+  /// Comments in reply to this activity.
   ActivityObjectReplies replies;
-  /** People who reshared this activity. */
+
+  /// People who reshared this activity.
   ActivityObjectResharers resharers;
-  /** The URL that points to the linked resource. */
+
+  /// The URL that points to the linked resource.
   core.String url;
 
   ActivityObject();
@@ -1409,7 +1461,9 @@ class ActivityObject {
       actor = new ActivityObjectActor.fromJson(_json["actor"]);
     }
     if (_json.containsKey("attachments")) {
-      attachments = _json["attachments"].map((value) => new ActivityObjectAttachments.fromJson(value)).toList();
+      attachments = _json["attachments"]
+          .map((value) => new ActivityObjectAttachments.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("content")) {
       content = _json["content"];
@@ -1438,12 +1492,14 @@ class ActivityObject {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (actor != null) {
       _json["actor"] = (actor).toJson();
     }
     if (attachments != null) {
-      _json["attachments"] = attachments.map((value) => (value).toJson()).toList();
+      _json["attachments"] =
+          attachments.map((value) => (value).toJson()).toList();
     }
     if (content != null) {
       _json["content"] = content;
@@ -1473,9 +1529,9 @@ class ActivityObject {
   }
 }
 
-/** The service provider that initially published this activity. */
+/// The service provider that initially published this activity.
 class ActivityProvider {
-  /** Name of the service provider. */
+  /// Name of the service provider.
   core.String title;
 
   ActivityProvider();
@@ -1487,7 +1543,8 @@ class ActivityProvider {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (title != null) {
       _json["title"] = title;
     }
@@ -1496,68 +1553,73 @@ class ActivityProvider {
 }
 
 class Activity {
-  /** Identifies who has access to see this activity. */
+  /// Identifies who has access to see this activity.
   Acl access;
-  /** The person who performed this activity. */
+
+  /// The person who performed this activity.
   ActivityActor actor;
-  /** Street address where this activity occurred. */
+
+  /// Street address where this activity occurred.
   core.String address;
-  /**
-   * Additional content added by the person who shared this activity, applicable
-   * only when resharing an activity.
-   */
+
+  /// Additional content added by the person who shared this activity,
+  /// applicable only when resharing an activity.
   core.String annotation;
-  /**
-   * If this activity is a crosspost from another system, this property
-   * specifies the ID of the original activity.
-   */
+
+  /// If this activity is a crosspost from another system, this property
+  /// specifies the ID of the original activity.
   core.String crosspostSource;
-  /** ETag of this response for caching purposes. */
+
+  /// ETag of this response for caching purposes.
   core.String etag;
-  /**
-   * Latitude and longitude where this activity occurred. Format is latitude
-   * followed by longitude, space separated.
-   */
+
+  /// Latitude and longitude where this activity occurred. Format is latitude
+  /// followed by longitude, space separated.
   core.String geocode;
-  /** The ID of this activity. */
+
+  /// The ID of this activity.
   core.String id;
-  /** Identifies this resource as an activity. Value: "plus#activity". */
+
+  /// Identifies this resource as an activity. Value: "plus#activity".
   core.String kind;
-  /** The location where this activity occurred. */
+
+  /// The location where this activity occurred.
   Place location;
-  /** The object of this activity. */
+
+  /// The object of this activity.
   ActivityObject object;
-  /** ID of the place where this activity occurred. */
+
+  /// ID of the place where this activity occurred.
   core.String placeId;
-  /** Name of the place where this activity occurred. */
+
+  /// Name of the place where this activity occurred.
   core.String placeName;
-  /** The service provider that initially published this activity. */
+
+  /// The service provider that initially published this activity.
   ActivityProvider provider;
-  /**
-   * The time at which this activity was initially published. Formatted as an
-   * RFC 3339 timestamp.
-   */
+
+  /// The time at which this activity was initially published. Formatted as an
+  /// RFC 3339 timestamp.
   core.DateTime published;
-  /**
-   * Radius, in meters, of the region where this activity occurred, centered at
-   * the latitude and longitude identified in geocode.
-   */
+
+  /// Radius, in meters, of the region where this activity occurred, centered at
+  /// the latitude and longitude identified in geocode.
   core.String radius;
-  /** Title of this activity. */
+
+  /// Title of this activity.
   core.String title;
-  /**
-   * The time at which this activity was last updated. Formatted as an RFC 3339
-   * timestamp.
-   */
+
+  /// The time at which this activity was last updated. Formatted as an RFC 3339
+  /// timestamp.
   core.DateTime updated;
-  /** The link to this activity. */
+
+  /// The link to this activity.
   core.String url;
-  /**
-   * This activity's verb, which indicates the action that was performed.
-   * Possible values include, but are not limited to, the following values:
-   * - "post" - Publish content to the stream.
-   * - "share" - Reshare an activity.
-   */
+
+  /// This activity's verb, which indicates the action that was performed.
+  /// Possible values include, but are not limited to, the following values:
+  /// - "post" - Publish content to the stream.
+  /// - "share" - Reshare an activity.
   core.String verb;
 
   Activity();
@@ -1626,7 +1688,8 @@ class Activity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (access != null) {
       _json["access"] = (access).toJson();
     }
@@ -1692,36 +1755,36 @@ class Activity {
 }
 
 class ActivityFeed {
-  /** ETag of this response for caching purposes. */
+  /// ETag of this response for caching purposes.
   core.String etag;
-  /** The ID of this collection of activities. Deprecated. */
+
+  /// The ID of this collection of activities. Deprecated.
   core.String id;
-  /** The activities in this page of results. */
+
+  /// The activities in this page of results.
   core.List<Activity> items;
-  /**
-   * Identifies this resource as a collection of activities. Value:
-   * "plus#activityFeed".
-   */
+
+  /// Identifies this resource as a collection of activities. Value:
+  /// "plus#activityFeed".
   core.String kind;
-  /** Link to the next page of activities. */
+
+  /// Link to the next page of activities.
   core.String nextLink;
-  /**
-   * The continuation token, which is used to page through large result sets.
-   * Provide this value in a subsequent request to return the next page of
-   * results.
-   */
+
+  /// The continuation token, which is used to page through large result sets.
+  /// Provide this value in a subsequent request to return the next page of
+  /// results.
   core.String nextPageToken;
-  /** Link to this activity resource. */
+
+  /// Link to this activity resource.
   core.String selfLink;
-  /**
-   * The title of this collection of activities, which is a truncated portion of
-   * the content.
-   */
+
+  /// The title of this collection of activities, which is a truncated portion
+  /// of the content.
   core.String title;
-  /**
-   * The time at which this collection of activities was last updated. Formatted
-   * as an RFC 3339 timestamp.
-   */
+
+  /// The time at which this collection of activities was last updated.
+  /// Formatted as an RFC 3339 timestamp.
   core.DateTime updated;
 
   ActivityFeed();
@@ -1734,7 +1797,8 @@ class ActivityFeed {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Activity.fromJson(value)).toList();
+      items =
+          _json["items"].map((value) => new Activity.fromJson(value)).toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -1757,7 +1821,8 @@ class ActivityFeed {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -1789,9 +1854,9 @@ class ActivityFeed {
   }
 }
 
-/** Actor info specific to YouTube clients. */
+/// Actor info specific to YouTube clients.
 class CommentActorClientSpecificActorInfoYoutubeActorInfo {
-  /** ID of the YouTube channel owned by the Actor. */
+  /// ID of the YouTube channel owned by the Actor.
   core.String channelId;
 
   CommentActorClientSpecificActorInfoYoutubeActorInfo();
@@ -1803,7 +1868,8 @@ class CommentActorClientSpecificActorInfoYoutubeActorInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (channelId != null) {
       _json["channelId"] = channelId;
     }
@@ -1811,21 +1877,24 @@ class CommentActorClientSpecificActorInfoYoutubeActorInfo {
   }
 }
 
-/** Actor info specific to particular clients. */
+/// Actor info specific to particular clients.
 class CommentActorClientSpecificActorInfo {
-  /** Actor info specific to YouTube clients. */
+  /// Actor info specific to YouTube clients.
   CommentActorClientSpecificActorInfoYoutubeActorInfo youtubeActorInfo;
 
   CommentActorClientSpecificActorInfo();
 
   CommentActorClientSpecificActorInfo.fromJson(core.Map _json) {
     if (_json.containsKey("youtubeActorInfo")) {
-      youtubeActorInfo = new CommentActorClientSpecificActorInfoYoutubeActorInfo.fromJson(_json["youtubeActorInfo"]);
+      youtubeActorInfo =
+          new CommentActorClientSpecificActorInfoYoutubeActorInfo.fromJson(
+              _json["youtubeActorInfo"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (youtubeActorInfo != null) {
       _json["youtubeActorInfo"] = (youtubeActorInfo).toJson();
     }
@@ -1833,13 +1902,11 @@ class CommentActorClientSpecificActorInfo {
   }
 }
 
-/** The image representation of this actor. */
+/// The image representation of this actor.
 class CommentActorImage {
-  /**
-   * The URL of the actor's profile photo. To resize the image and crop it to a
-   * square, append the query string ?sz=x, where x is the dimension in pixels
-   * of each side.
-   */
+  /// The URL of the actor's profile photo. To resize the image and crop it to a
+  /// square, append the query string ?sz=x, where x is the dimension in pixels
+  /// of each side.
   core.String url;
 
   CommentActorImage();
@@ -1851,7 +1918,8 @@ class CommentActorImage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (url != null) {
       _json["url"] = url;
     }
@@ -1859,9 +1927,9 @@ class CommentActorImage {
   }
 }
 
-/** Verification status of actor. */
+/// Verification status of actor.
 class CommentActorVerification {
-  /** Verification for one-time or manual processes. */
+  /// Verification for one-time or manual processes.
   core.String adHocVerified;
 
   CommentActorVerification();
@@ -1873,7 +1941,8 @@ class CommentActorVerification {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (adHocVerified != null) {
       _json["adHocVerified"] = adHocVerified;
     }
@@ -1881,26 +1950,33 @@ class CommentActorVerification {
   }
 }
 
-/** The person who posted this comment. */
+/// The person who posted this comment.
 class CommentActor {
-  /** Actor info specific to particular clients. */
+  /// Actor info specific to particular clients.
   CommentActorClientSpecificActorInfo clientSpecificActorInfo;
-  /** The name of this actor, suitable for display. */
+
+  /// The name of this actor, suitable for display.
   core.String displayName;
-  /** The ID of the actor. */
+
+  /// The ID of the actor.
   core.String id;
-  /** The image representation of this actor. */
+
+  /// The image representation of this actor.
   CommentActorImage image;
-  /** A link to the Person resource for this actor. */
+
+  /// A link to the Person resource for this actor.
   core.String url;
-  /** Verification status of actor. */
+
+  /// Verification status of actor.
   CommentActorVerification verification;
 
   CommentActor();
 
   CommentActor.fromJson(core.Map _json) {
     if (_json.containsKey("clientSpecificActorInfo")) {
-      clientSpecificActorInfo = new CommentActorClientSpecificActorInfo.fromJson(_json["clientSpecificActorInfo"]);
+      clientSpecificActorInfo =
+          new CommentActorClientSpecificActorInfo.fromJson(
+              _json["clientSpecificActorInfo"]);
     }
     if (_json.containsKey("displayName")) {
       displayName = _json["displayName"];
@@ -1915,12 +1991,14 @@ class CommentActor {
       url = _json["url"];
     }
     if (_json.containsKey("verification")) {
-      verification = new CommentActorVerification.fromJson(_json["verification"]);
+      verification =
+          new CommentActorVerification.fromJson(_json["verification"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (clientSpecificActorInfo != null) {
       _json["clientSpecificActorInfo"] = (clientSpecificActorInfo).toJson();
     }
@@ -1944,9 +2022,10 @@ class CommentActor {
 }
 
 class CommentInReplyTo {
-  /** The ID of the activity. */
+  /// The ID of the activity.
   core.String id;
-  /** The URL of the activity. */
+
+  /// The URL of the activity.
   core.String url;
 
   CommentInReplyTo();
@@ -1961,7 +2040,8 @@ class CommentInReplyTo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -1972,20 +2052,18 @@ class CommentInReplyTo {
   }
 }
 
-/** The object of this comment. */
+/// The object of this comment.
 class CommentObject {
-  /** The HTML-formatted content, suitable for display. */
+  /// The HTML-formatted content, suitable for display.
   core.String content;
-  /**
-   * The object type of this comment. Possible values are:
-   * - "comment" - A comment in reply to an activity.
-   */
+
+  /// The object type of this comment. Possible values are:
+  /// - "comment" - A comment in reply to an activity.
   core.String objectType;
-  /**
-   * The content (text) as provided by the author, stored without any HTML
-   * formatting. When creating or updating a comment, this value must be
-   * supplied as plain text in the request.
-   */
+
+  /// The content (text) as provided by the author, stored without any HTML
+  /// formatting. When creating or updating a comment, this value must be
+  /// supplied as plain text in the request.
   core.String originalContent;
 
   CommentObject();
@@ -2003,7 +2081,8 @@ class CommentObject {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (content != null) {
       _json["content"] = content;
     }
@@ -2017,9 +2096,9 @@ class CommentObject {
   }
 }
 
-/** People who +1'd this comment. */
+/// People who +1'd this comment.
 class CommentPlusoners {
-  /** Total number of people who +1'd this comment. */
+  /// Total number of people who +1'd this comment.
   core.int totalItems;
 
   CommentPlusoners();
@@ -2031,7 +2110,8 @@ class CommentPlusoners {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (totalItems != null) {
       _json["totalItems"] = totalItems;
     }
@@ -2040,37 +2120,41 @@ class CommentPlusoners {
 }
 
 class Comment {
-  /** The person who posted this comment. */
+  /// The person who posted this comment.
   CommentActor actor;
-  /** ETag of this response for caching purposes. */
+
+  /// ETag of this response for caching purposes.
   core.String etag;
-  /** The ID of this comment. */
+
+  /// The ID of this comment.
   core.String id;
-  /** The activity this comment replied to. */
+
+  /// The activity this comment replied to.
   core.List<CommentInReplyTo> inReplyTo;
-  /** Identifies this resource as a comment. Value: "plus#comment". */
+
+  /// Identifies this resource as a comment. Value: "plus#comment".
   core.String kind;
-  /** The object of this comment. */
+
+  /// The object of this comment.
   CommentObject object;
-  /** People who +1'd this comment. */
+
+  /// People who +1'd this comment.
   CommentPlusoners plusoners;
-  /**
-   * The time at which this comment was initially published. Formatted as an RFC
-   * 3339 timestamp.
-   */
+
+  /// The time at which this comment was initially published. Formatted as an
+  /// RFC 3339 timestamp.
   core.DateTime published;
-  /** Link to this comment resource. */
+
+  /// Link to this comment resource.
   core.String selfLink;
-  /**
-   * The time at which this comment was last updated. Formatted as an RFC 3339
-   * timestamp.
-   */
+
+  /// The time at which this comment was last updated. Formatted as an RFC 3339
+  /// timestamp.
   core.DateTime updated;
-  /**
-   * This comment's verb, indicating what action was performed. Possible values
-   * are:
-   * - "post" - Publish content to the stream.
-   */
+
+  /// This comment's verb, indicating what action was performed. Possible values
+  /// are:
+  /// - "post" - Publish content to the stream.
   core.String verb;
 
   Comment();
@@ -2086,7 +2170,9 @@ class Comment {
       id = _json["id"];
     }
     if (_json.containsKey("inReplyTo")) {
-      inReplyTo = _json["inReplyTo"].map((value) => new CommentInReplyTo.fromJson(value)).toList();
+      inReplyTo = _json["inReplyTo"]
+          .map((value) => new CommentInReplyTo.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -2112,7 +2198,8 @@ class Comment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (actor != null) {
       _json["actor"] = (actor).toJson();
     }
@@ -2151,31 +2238,32 @@ class Comment {
 }
 
 class CommentFeed {
-  /** ETag of this response for caching purposes. */
+  /// ETag of this response for caching purposes.
   core.String etag;
-  /** The ID of this collection of comments. */
+
+  /// The ID of this collection of comments.
   core.String id;
-  /** The comments in this page of results. */
+
+  /// The comments in this page of results.
   core.List<Comment> items;
-  /**
-   * Identifies this resource as a collection of comments. Value:
-   * "plus#commentFeed".
-   */
+
+  /// Identifies this resource as a collection of comments. Value:
+  /// "plus#commentFeed".
   core.String kind;
-  /** Link to the next page of activities. */
+
+  /// Link to the next page of activities.
   core.String nextLink;
-  /**
-   * The continuation token, which is used to page through large result sets.
-   * Provide this value in a subsequent request to return the next page of
-   * results.
-   */
+
+  /// The continuation token, which is used to page through large result sets.
+  /// Provide this value in a subsequent request to return the next page of
+  /// results.
   core.String nextPageToken;
-  /** The title of this collection of comments. */
+
+  /// The title of this collection of comments.
   core.String title;
-  /**
-   * The time at which this collection of comments was last updated. Formatted
-   * as an RFC 3339 timestamp.
-   */
+
+  /// The time at which this collection of comments was last updated. Formatted
+  /// as an RFC 3339 timestamp.
   core.DateTime updated;
 
   CommentFeed();
@@ -2188,7 +2276,8 @@ class CommentFeed {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Comment.fromJson(value)).toList();
+      items =
+          _json["items"].map((value) => new Comment.fromJson(value)).toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -2208,7 +2297,8 @@ class CommentFeed {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -2238,34 +2328,32 @@ class CommentFeed {
 }
 
 class PeopleFeed {
-  /** ETag of this response for caching purposes. */
+  /// ETag of this response for caching purposes.
   core.String etag;
-  /**
-   * The people in this page of results. Each item includes the id, displayName,
-   * image, and url for the person. To retrieve additional profile data, see the
-   * people.get method.
-   */
+
+  /// The people in this page of results. Each item includes the id,
+  /// displayName, image, and url for the person. To retrieve additional profile
+  /// data, see the people.get method.
   core.List<Person> items;
-  /**
-   * Identifies this resource as a collection of people. Value:
-   * "plus#peopleFeed".
-   */
+
+  /// Identifies this resource as a collection of people. Value:
+  /// "plus#peopleFeed".
   core.String kind;
-  /**
-   * The continuation token, which is used to page through large result sets.
-   * Provide this value in a subsequent request to return the next page of
-   * results.
-   */
+
+  /// The continuation token, which is used to page through large result sets.
+  /// Provide this value in a subsequent request to return the next page of
+  /// results.
   core.String nextPageToken;
-  /** Link to this resource. */
+
+  /// Link to this resource.
   core.String selfLink;
-  /** The title of this collection of people. */
+
+  /// The title of this collection of people.
   core.String title;
-  /**
-   * The total number of people available in this list. The number of people in
-   * a response might be smaller due to paging. This might not be set for all
-   * collections.
-   */
+
+  /// The total number of people available in this list. The number of people in
+  /// a response might be smaller due to paging. This might not be set for all
+  /// collections.
   core.int totalItems;
 
   PeopleFeed();
@@ -2275,7 +2363,8 @@ class PeopleFeed {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Person.fromJson(value)).toList();
+      items =
+          _json["items"].map((value) => new Person.fromJson(value)).toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -2295,7 +2384,8 @@ class PeopleFeed {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -2321,25 +2411,20 @@ class PeopleFeed {
   }
 }
 
-/**
- * The age range of the person. Valid ranges are 17 or younger, 18 to 20, and 21
- * or older. Age is determined from the user's birthday using Western age
- * reckoning.
- */
+/// The age range of the person. Valid ranges are 17 or younger, 18 to 20, and
+/// 21 or older. Age is determined from the user's birthday using Western age
+/// reckoning.
 class PersonAgeRange {
-  /**
-   * The age range's upper bound, if any. Possible values include, but are not
-   * limited to, the following:
-   * - "17" - for age 17
-   * - "20" - for age 20
-   */
+  /// The age range's upper bound, if any. Possible values include, but are not
+  /// limited to, the following:
+  /// - "17" - for age 17
+  /// - "20" - for age 20
   core.int max;
-  /**
-   * The age range's lower bound, if any. Possible values include, but are not
-   * limited to, the following:
-   * - "21" - for age 21
-   * - "18" - for age 18
-   */
+
+  /// The age range's lower bound, if any. Possible values include, but are not
+  /// limited to, the following:
+  /// - "21" - for age 21
+  /// - "18" - for age 18
   core.int min;
 
   PersonAgeRange();
@@ -2354,7 +2439,8 @@ class PersonAgeRange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (max != null) {
       _json["max"] = max;
     }
@@ -2365,17 +2451,14 @@ class PersonAgeRange {
   }
 }
 
-/** Extra information about the cover photo. */
+/// Extra information about the cover photo.
 class PersonCoverCoverInfo {
-  /**
-   * The difference between the left position of the cover image and the actual
-   * displayed cover image. Only valid for banner layout.
-   */
+  /// The difference between the left position of the cover image and the actual
+  /// displayed cover image. Only valid for banner layout.
   core.int leftImageOffset;
-  /**
-   * The difference between the top position of the cover image and the actual
-   * displayed cover image. Only valid for banner layout.
-   */
+
+  /// The difference between the top position of the cover image and the actual
+  /// displayed cover image. Only valid for banner layout.
   core.int topImageOffset;
 
   PersonCoverCoverInfo();
@@ -2390,7 +2473,8 @@ class PersonCoverCoverInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (leftImageOffset != null) {
       _json["leftImageOffset"] = leftImageOffset;
     }
@@ -2401,13 +2485,15 @@ class PersonCoverCoverInfo {
   }
 }
 
-/** The person's primary cover image. */
+/// The person's primary cover image.
 class PersonCoverCoverPhoto {
-  /** The height of the image. */
+  /// The height of the image.
   core.int height;
-  /** The URL of the image. */
+
+  /// The URL of the image.
   core.String url;
-  /** The width of the image. */
+
+  /// The width of the image.
   core.int width;
 
   PersonCoverCoverPhoto();
@@ -2425,7 +2511,8 @@ class PersonCoverCoverPhoto {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (height != null) {
       _json["height"] = height;
     }
@@ -2439,17 +2526,17 @@ class PersonCoverCoverPhoto {
   }
 }
 
-/** The cover photo content. */
+/// The cover photo content.
 class PersonCover {
-  /** Extra information about the cover photo. */
+  /// Extra information about the cover photo.
   PersonCoverCoverInfo coverInfo;
-  /** The person's primary cover image. */
+
+  /// The person's primary cover image.
   PersonCoverCoverPhoto coverPhoto;
-  /**
-   * The layout of the cover art. Possible values include, but are not limited
-   * to, the following values:
-   * - "banner" - One large image banner.
-   */
+
+  /// The layout of the cover art. Possible values include, but are not limited
+  /// to, the following values:
+  /// - "banner" - One large image banner.
   core.String layout;
 
   PersonCover();
@@ -2467,7 +2554,8 @@ class PersonCover {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (coverInfo != null) {
       _json["coverInfo"] = (coverInfo).toJson();
     }
@@ -2482,16 +2570,15 @@ class PersonCover {
 }
 
 class PersonEmails {
-  /**
-   * The type of address. Possible values include, but are not limited to, the
-   * following values:
-   * - "account" - Google account email address.
-   * - "home" - Home email address.
-   * - "work" - Work email address.
-   * - "other" - Other.
-   */
+  /// The type of address. Possible values include, but are not limited to, the
+  /// following values:
+  /// - "account" - Google account email address.
+  /// - "home" - Home email address.
+  /// - "work" - Work email address.
+  /// - "other" - Other.
   core.String type;
-  /** The email address. */
+
+  /// The email address.
   core.String value;
 
   PersonEmails();
@@ -2506,7 +2593,8 @@ class PersonEmails {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (type != null) {
       _json["type"] = type;
     }
@@ -2517,15 +2605,14 @@ class PersonEmails {
   }
 }
 
-/** The representation of the person's profile photo. */
+/// The representation of the person's profile photo.
 class PersonImage {
-  /** Whether the person's profile photo is the default one */
+  /// Whether the person's profile photo is the default one
   core.bool isDefault;
-  /**
-   * The URL of the person's profile photo. To resize the image and crop it to a
-   * square, append the query string ?sz=x, where x is the dimension in pixels
-   * of each side.
-   */
+
+  /// The URL of the person's profile photo. To resize the image and crop it to
+  /// a square, append the query string ?sz=x, where x is the dimension in
+  /// pixels of each side.
   core.String url;
 
   PersonImage();
@@ -2540,7 +2627,8 @@ class PersonImage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (isDefault != null) {
       _json["isDefault"] = isDefault;
     }
@@ -2551,21 +2639,24 @@ class PersonImage {
   }
 }
 
-/**
- * An object representation of the individual components of a person's name.
- */
+/// An object representation of the individual components of a person's name.
 class PersonName {
-  /** The family name (last name) of this person. */
+  /// The family name (last name) of this person.
   core.String familyName;
-  /** The full name of this person, including middle names, suffixes, etc. */
+
+  /// The full name of this person, including middle names, suffixes, etc.
   core.String formatted;
-  /** The given name (first name) of this person. */
+
+  /// The given name (first name) of this person.
   core.String givenName;
-  /** The honorific prefixes (such as "Dr." or "Mrs.") for this person. */
+
+  /// The honorific prefixes (such as "Dr." or "Mrs.") for this person.
   core.String honorificPrefix;
-  /** The honorific suffixes (such as "Jr.") for this person. */
+
+  /// The honorific suffixes (such as "Jr.") for this person.
   core.String honorificSuffix;
-  /** The middle name of this person. */
+
+  /// The middle name of this person.
   core.String middleName;
 
   PersonName();
@@ -2592,7 +2683,8 @@ class PersonName {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (familyName != null) {
       _json["familyName"] = familyName;
     }
@@ -2616,33 +2708,35 @@ class PersonName {
 }
 
 class PersonOrganizations {
-  /** The department within the organization. Deprecated. */
+  /// The department within the organization. Deprecated.
   core.String department;
-  /**
-   * A short description of the person's role in this organization. Deprecated.
-   */
+
+  /// A short description of the person's role in this organization. Deprecated.
   core.String description;
-  /** The date that the person left this organization. */
+
+  /// The date that the person left this organization.
   core.String endDate;
-  /** The location of this organization. Deprecated. */
+
+  /// The location of this organization. Deprecated.
   core.String location;
-  /** The name of the organization. */
+
+  /// The name of the organization.
   core.String name;
-  /**
-   * If "true", indicates this organization is the person's primary one, which
-   * is typically interpreted as the current one.
-   */
+
+  /// If "true", indicates this organization is the person's primary one, which
+  /// is typically interpreted as the current one.
   core.bool primary;
-  /** The date that the person joined this organization. */
+
+  /// The date that the person joined this organization.
   core.String startDate;
-  /** The person's job title or role within the organization. */
+
+  /// The person's job title or role within the organization.
   core.String title;
-  /**
-   * The type of organization. Possible values include, but are not limited to,
-   * the following values:
-   * - "work" - Work.
-   * - "school" - School.
-   */
+
+  /// The type of organization. Possible values include, but are not limited to,
+  /// the following values:
+  /// - "work" - Work.
+  /// - "school" - School.
   core.String type;
 
   PersonOrganizations();
@@ -2678,7 +2772,8 @@ class PersonOrganizations {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (department != null) {
       _json["department"] = department;
     }
@@ -2711,12 +2806,11 @@ class PersonOrganizations {
 }
 
 class PersonPlacesLived {
-  /** If "true", this place of residence is this person's primary residence. */
+  /// If "true", this place of residence is this person's primary residence.
   core.bool primary;
-  /**
-   * A place where this person has lived. For example: "Seattle, WA", "Near
-   * Toronto".
-   */
+
+  /// A place where this person has lived. For example: "Seattle, WA", "Near
+  /// Toronto".
   core.String value;
 
   PersonPlacesLived();
@@ -2731,7 +2825,8 @@ class PersonPlacesLived {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (primary != null) {
       _json["primary"] = primary;
     }
@@ -2743,18 +2838,18 @@ class PersonPlacesLived {
 }
 
 class PersonUrls {
-  /** The label of the URL. */
+  /// The label of the URL.
   core.String label;
-  /**
-   * The type of URL. Possible values include, but are not limited to, the
-   * following values:
-   * - "otherProfile" - URL for another profile.
-   * - "contributor" - URL to a site for which this person is a contributor.
-   * - "website" - URL for this Google+ Page's primary website.
-   * - "other" - Other URL.
-   */
+
+  /// The type of URL. Possible values include, but are not limited to, the
+  /// following values:
+  /// - "otherProfile" - URL for another profile.
+  /// - "contributor" - URL to a site for which this person is a contributor.
+  /// - "website" - URL for this Google+ Page's primary website.
+  /// - "other" - Other URL.
   core.String type;
-  /** The URL value. */
+
+  /// The URL value.
   core.String value;
 
   PersonUrls();
@@ -2772,7 +2867,8 @@ class PersonUrls {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (label != null) {
       _json["label"] = label;
     }
@@ -2787,110 +2883,121 @@ class PersonUrls {
 }
 
 class Person {
-  /** A short biography for this person. */
+  /// A short biography for this person.
   core.String aboutMe;
-  /**
-   * The age range of the person. Valid ranges are 17 or younger, 18 to 20, and
-   * 21 or older. Age is determined from the user's birthday using Western age
-   * reckoning.
-   */
+
+  /// The age range of the person. Valid ranges are 17 or younger, 18 to 20, and
+  /// 21 or older. Age is determined from the user's birthday using Western age
+  /// reckoning.
   PersonAgeRange ageRange;
-  /** The person's date of birth, represented as YYYY-MM-DD. */
+
+  /// The person's date of birth, represented as YYYY-MM-DD.
   core.String birthday;
-  /** The "bragging rights" line of this person. */
+
+  /// The "bragging rights" line of this person.
   core.String braggingRights;
-  /**
-   * For followers who are visible, the number of people who have added this
-   * person or page to a circle.
-   */
+
+  /// For followers who are visible, the number of people who have added this
+  /// person or page to a circle.
   core.int circledByCount;
-  /** The cover photo content. */
+
+  /// The cover photo content.
   PersonCover cover;
-  /** (this field is not currently used) */
+
+  /// (this field is not currently used)
   core.String currentLocation;
-  /** The name of this person, which is suitable for display. */
+
+  /// The name of this person, which is suitable for display.
   core.String displayName;
-  /**
-   * The hosted domain name for the user's Google Apps account. For instance,
-   * example.com. The plus.profile.emails.read or email scope is needed to get
-   * this domain name.
-   */
+
+  /// The hosted domain name for the user's Google Apps account. For instance,
+  /// example.com. The plus.profile.emails.read or email scope is needed to get
+  /// this domain name.
   core.String domain;
-  /**
-   * A list of email addresses that this person has, including their Google
-   * account email address, and the public verified email addresses on their
-   * Google+ profile. The plus.profile.emails.read scope is needed to retrieve
-   * these email addresses, or the email scope can be used to retrieve just the
-   * Google account email address.
-   */
+
+  /// A list of email addresses that this person has, including their Google
+  /// account email address, and the public verified email addresses on their
+  /// Google+ profile. The plus.profile.emails.read scope is needed to retrieve
+  /// these email addresses, or the email scope can be used to retrieve just the
+  /// Google account email address.
   core.List<PersonEmails> emails;
-  /** ETag of this response for caching purposes. */
+
+  /// ETag of this response for caching purposes.
   core.String etag;
-  /**
-   * The person's gender. Possible values include, but are not limited to, the
-   * following values:
-   * - "male" - Male gender.
-   * - "female" - Female gender.
-   * - "other" - Other.
-   */
+
+  /// The person's gender. Possible values include, but are not limited to, the
+  /// following values:
+  /// - "male" - Male gender.
+  /// - "female" - Female gender.
+  /// - "other" - Other.
   core.String gender;
-  /** The ID of this person. */
+
+  /// The ID of this person.
   core.String id;
-  /** The representation of the person's profile photo. */
+
+  /// The representation of the person's profile photo.
   PersonImage image;
-  /** Whether this user has signed up for Google+. */
+
+  /// Whether this user has signed up for Google+.
   core.bool isPlusUser;
-  /** Identifies this resource as a person. Value: "plus#person". */
+
+  /// Identifies this resource as a person. Value: "plus#person".
   core.String kind;
-  /** The user's preferred language for rendering. */
+
+  /// The user's preferred language for rendering.
   core.String language;
-  /**
-   * An object representation of the individual components of a person's name.
-   */
+
+  /// An object representation of the individual components of a person's name.
   PersonName name;
-  /** The nickname of this person. */
+
+  /// The nickname of this person.
   core.String nickname;
-  /**
-   * Type of person within Google+. Possible values include, but are not limited
-   * to, the following values:
-   * - "person" - represents an actual person.
-   * - "page" - represents a page.
-   */
+
+  /// Type of person within Google+. Possible values include, but are not
+  /// limited to, the following values:
+  /// - "person" - represents an actual person.
+  /// - "page" - represents a page.
   core.String objectType;
-  /** The occupation of this person. */
+
+  /// The occupation of this person.
   core.String occupation;
-  /**
-   * A list of current or past organizations with which this person is
-   * associated.
-   */
+
+  /// A list of current or past organizations with which this person is
+  /// associated.
   core.List<PersonOrganizations> organizations;
-  /** A list of places where this person has lived. */
+
+  /// A list of places where this person has lived.
   core.List<PersonPlacesLived> placesLived;
-  /** If a Google+ Page, the number of people who have +1'd this page. */
+
+  /// If a Google+ Page, the number of people who have +1'd this page.
   core.int plusOneCount;
-  /**
-   * The person's relationship status. Possible values include, but are not
-   * limited to, the following values:
-   * - "single" - Person is single.
-   * - "in_a_relationship" - Person is in a relationship.
-   * - "engaged" - Person is engaged.
-   * - "married" - Person is married.
-   * - "its_complicated" - The relationship is complicated.
-   * - "open_relationship" - Person is in an open relationship.
-   * - "widowed" - Person is widowed.
-   * - "in_domestic_partnership" - Person is in a domestic partnership.
-   * - "in_civil_union" - Person is in a civil union.
-   */
+
+  /// The person's relationship status. Possible values include, but are not
+  /// limited to, the following values:
+  /// - "single" - Person is single.
+  /// - "in_a_relationship" - Person is in a relationship.
+  /// - "engaged" - Person is engaged.
+  /// - "married" - Person is married.
+  /// - "its_complicated" - The relationship is complicated.
+  /// - "open_relationship" - Person is in an open relationship.
+  /// - "widowed" - Person is widowed.
+  /// - "in_domestic_partnership" - Person is in a domestic partnership.
+  /// - "in_civil_union" - Person is in a civil union.
   core.String relationshipStatus;
-  /** The person's skills. */
+
+  /// The person's skills.
   core.String skills;
-  /** The brief description (tagline) of this person. */
+
+  /// The brief description (tagline) of this person.
   core.String tagline;
-  /** The URL of this person's profile. */
+
+  /// The URL of this person's profile.
   core.String url;
-  /** A list of URLs for this person. */
+
+  /// A list of URLs for this person.
   core.List<PersonUrls> urls;
-  /** Whether the person or Google+ Page has been verified. */
+
+  /// Whether the person or Google+ Page has been verified.
   core.bool verified;
 
   Person();
@@ -2924,7 +3031,9 @@ class Person {
       domain = _json["domain"];
     }
     if (_json.containsKey("emails")) {
-      emails = _json["emails"].map((value) => new PersonEmails.fromJson(value)).toList();
+      emails = _json["emails"]
+          .map((value) => new PersonEmails.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -2960,10 +3069,14 @@ class Person {
       occupation = _json["occupation"];
     }
     if (_json.containsKey("organizations")) {
-      organizations = _json["organizations"].map((value) => new PersonOrganizations.fromJson(value)).toList();
+      organizations = _json["organizations"]
+          .map((value) => new PersonOrganizations.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("placesLived")) {
-      placesLived = _json["placesLived"].map((value) => new PersonPlacesLived.fromJson(value)).toList();
+      placesLived = _json["placesLived"]
+          .map((value) => new PersonPlacesLived.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("plusOneCount")) {
       plusOneCount = _json["plusOneCount"];
@@ -2981,7 +3094,8 @@ class Person {
       url = _json["url"];
     }
     if (_json.containsKey("urls")) {
-      urls = _json["urls"].map((value) => new PersonUrls.fromJson(value)).toList();
+      urls =
+          _json["urls"].map((value) => new PersonUrls.fromJson(value)).toList();
     }
     if (_json.containsKey("verified")) {
       verified = _json["verified"];
@@ -2989,7 +3103,8 @@ class Person {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (aboutMe != null) {
       _json["aboutMe"] = aboutMe;
     }
@@ -3054,10 +3169,12 @@ class Person {
       _json["occupation"] = occupation;
     }
     if (organizations != null) {
-      _json["organizations"] = organizations.map((value) => (value).toJson()).toList();
+      _json["organizations"] =
+          organizations.map((value) => (value).toJson()).toList();
     }
     if (placesLived != null) {
-      _json["placesLived"] = placesLived.map((value) => (value).toJson()).toList();
+      _json["placesLived"] =
+          placesLived.map((value) => (value).toJson()).toList();
     }
     if (plusOneCount != null) {
       _json["plusOneCount"] = plusOneCount;
@@ -3084,9 +3201,9 @@ class Person {
   }
 }
 
-/** The physical address of the place. */
+/// The physical address of the place.
 class PlaceAddress {
-  /** The formatted address for display. */
+  /// The formatted address for display.
   core.String formatted;
 
   PlaceAddress();
@@ -3098,7 +3215,8 @@ class PlaceAddress {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (formatted != null) {
       _json["formatted"] = formatted;
     }
@@ -3106,11 +3224,12 @@ class PlaceAddress {
   }
 }
 
-/** The position of the place. */
+/// The position of the place.
 class PlacePosition {
-  /** The latitude of this position. */
+  /// The latitude of this position.
   core.double latitude;
-  /** The longitude of this position. */
+
+  /// The longitude of this position.
   core.double longitude;
 
   PlacePosition();
@@ -3125,7 +3244,8 @@ class PlacePosition {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (latitude != null) {
       _json["latitude"] = latitude;
     }
@@ -3137,15 +3257,19 @@ class PlacePosition {
 }
 
 class Place {
-  /** The physical address of the place. */
+  /// The physical address of the place.
   PlaceAddress address;
-  /** The display name of the place. */
+
+  /// The display name of the place.
   core.String displayName;
-  /** The id of the place. */
+
+  /// The id of the place.
   core.String id;
-  /** Identifies this resource as a place. Value: "plus#place". */
+
+  /// Identifies this resource as a place. Value: "plus#place".
   core.String kind;
-  /** The position of the place. */
+
+  /// The position of the place.
   PlacePosition position;
 
   Place();
@@ -3169,7 +3293,8 @@ class Place {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (address != null) {
       _json["address"] = (address).toJson();
     }
@@ -3190,24 +3315,22 @@ class Place {
 }
 
 class PlusAclentryResource {
-  /** A descriptive name for this entry. Suitable for display. */
+  /// A descriptive name for this entry. Suitable for display.
   core.String displayName;
-  /**
-   * The ID of the entry. For entries of type "person" or "circle", this is the
-   * ID of the resource. For other types, this property is not set.
-   */
+
+  /// The ID of the entry. For entries of type "person" or "circle", this is the
+  /// ID of the resource. For other types, this property is not set.
   core.String id;
-  /**
-   * The type of entry describing to whom access is granted. Possible values
-   * are:
-   * - "person" - Access to an individual.
-   * - "circle" - Access to members of a circle.
-   * - "myCircles" - Access to members of all the person's circles.
-   * - "extendedCircles" - Access to members of all the person's circles, plus
-   * all of the people in their circles.
-   * - "domain" - Access to members of the person's Google Apps domain.
-   * - "public" - Access to anyone on the web.
-   */
+
+  /// The type of entry describing to whom access is granted. Possible values
+  /// are:
+  /// - "person" - Access to an individual.
+  /// - "circle" - Access to members of a circle.
+  /// - "myCircles" - Access to members of all the person's circles.
+  /// - "extendedCircles" - Access to members of all the person's circles, plus
+  /// all of the people in their circles.
+  /// - "domain" - Access to members of the person's Google Apps domain.
+  /// - "public" - Access to anyone on the web.
   core.String type;
 
   PlusAclentryResource();
@@ -3225,7 +3348,8 @@ class PlusAclentryResource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (displayName != null) {
       _json["displayName"] = displayName;
     }

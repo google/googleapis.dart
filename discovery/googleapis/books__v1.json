@@ -10,7 +10,7 @@
     },
     "basePath": "/books/v1/",
     "baseUrl": "https://www.googleapis.com/books/v1/",
-    "batchPath": "batch",
+    "batchPath": "batch/books/v1",
     "description": "Searches for books and manages your Google Books library.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/books/docs/v1/getting_started",

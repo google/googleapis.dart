@@ -1,12 +1,10 @@
 library googleapis.gamesConfiguration.v1configuration.test;
 
 import "dart:core" as core;
-import "dart:collection" as collection;
 import "dart:async" as async;
 import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
-import 'package:http/testing.dart' as http_testing;
 import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/gamesconfiguration/v1configuration.dart' as api;
@@ -22,7 +20,8 @@ class HttpServerMock extends http.BaseClient {
 
   async.Future<http.StreamedResponse> send(http.BaseRequest request) {
     if (_expectJson) {
-      return request.finalize()
+      return request
+          .finalize()
           .transform(convert.UTF8.decoder)
           .join('')
           .then((core.String jsonString) {
@@ -45,8 +44,8 @@ class HttpServerMock extends http.BaseClient {
   }
 }
 
-http.StreamedResponse stringResponse(
-    core.int status, core.Map<core.String, core.String> headers, core.String body) {
+http.StreamedResponse stringResponse(core.int status,
+    core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -139,7 +138,8 @@ buildAchievementConfigurationListResponse() {
   return o;
 }
 
-checkAchievementConfigurationListResponse(api.AchievementConfigurationListResponse o) {
+checkAchievementConfigurationListResponse(
+    api.AchievementConfigurationListResponse o) {
   buildCounterAchievementConfigurationListResponse++;
   if (buildCounterAchievementConfigurationListResponse < 3) {
     checkUnnamed755(o.items);
@@ -314,7 +314,8 @@ buildLeaderboardConfigurationListResponse() {
   return o;
 }
 
-checkLeaderboardConfigurationListResponse(api.LeaderboardConfigurationListResponse o) {
+checkLeaderboardConfigurationListResponse(
+    api.LeaderboardConfigurationListResponse o) {
   buildCounterLeaderboardConfigurationListResponse++;
   if (buildCounterLeaderboardConfigurationListResponse < 3) {
     checkUnnamed756(o.items);
@@ -381,7 +382,6 @@ checkLocalizedStringBundle(api.LocalizedStringBundle o) {
   buildCounterLocalizedStringBundle--;
 }
 
-
 main() {
   unittest.group("obj-schema-AchievementConfiguration", () {
     unittest.test("to-json--from-json", () {
@@ -391,7 +391,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-AchievementConfigurationDetail", () {
     unittest.test("to-json--from-json", () {
       var o = buildAchievementConfigurationDetail();
@@ -400,15 +399,14 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-AchievementConfigurationListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildAchievementConfigurationListResponse();
-      var od = new api.AchievementConfigurationListResponse.fromJson(o.toJson());
+      var od =
+          new api.AchievementConfigurationListResponse.fromJson(o.toJson());
       checkAchievementConfigurationListResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-GamesNumberAffixConfiguration", () {
     unittest.test("to-json--from-json", () {
@@ -418,7 +416,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-GamesNumberFormatConfiguration", () {
     unittest.test("to-json--from-json", () {
       var o = buildGamesNumberFormatConfiguration();
@@ -426,7 +423,6 @@ main() {
       checkGamesNumberFormatConfiguration(od);
     });
   });
-
 
   unittest.group("obj-schema-ImageConfiguration", () {
     unittest.test("to-json--from-json", () {
@@ -436,7 +432,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-LeaderboardConfiguration", () {
     unittest.test("to-json--from-json", () {
       var o = buildLeaderboardConfiguration();
@@ -444,7 +439,6 @@ main() {
       checkLeaderboardConfiguration(od);
     });
   });
-
 
   unittest.group("obj-schema-LeaderboardConfigurationDetail", () {
     unittest.test("to-json--from-json", () {
@@ -454,15 +448,14 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-LeaderboardConfigurationListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildLeaderboardConfigurationListResponse();
-      var od = new api.LeaderboardConfigurationListResponse.fromJson(o.toJson());
+      var od =
+          new api.LeaderboardConfigurationListResponse.fromJson(o.toJson());
       checkLeaderboardConfigurationListResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-LocalizedString", () {
     unittest.test("to-json--from-json", () {
@@ -472,7 +465,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-LocalizedStringBundle", () {
     unittest.test("to-json--from-json", () {
       var o = buildLocalizedStringBundle();
@@ -481,23 +473,25 @@ main() {
     });
   });
 
-
   unittest.group("resource-AchievementConfigurationsResourceApi", () {
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
-      api.AchievementConfigurationsResourceApi res = new api.GamesConfigurationApi(mock).achievementConfigurations;
+      api.AchievementConfigurationsResourceApi res =
+          new api.GamesConfigurationApi(mock).achievementConfigurations;
       var arg_achievementId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("games/v1configuration/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 22),
+            unittest.equals("games/v1configuration/"));
         pathOffset += 22;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("achievements/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("achievements/"));
         pathOffset += 13;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -513,16 +507,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
@@ -531,20 +526,23 @@ main() {
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.AchievementConfigurationsResourceApi res = new api.GamesConfigurationApi(mock).achievementConfigurations;
+      api.AchievementConfigurationsResourceApi res =
+          new api.GamesConfigurationApi(mock).achievementConfigurations;
       var arg_achievementId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("games/v1configuration/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 22),
+            unittest.equals("games/v1configuration/"));
         pathOffset += 22;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("achievements/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("achievements/"));
         pathOffset += 13;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -560,29 +558,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAchievementConfiguration());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_achievementId).then(unittest.expectAsync1(((api.AchievementConfiguration response) {
+      res
+          .get(arg_achievementId)
+          .then(unittest.expectAsync1(((api.AchievementConfiguration response) {
         checkAchievementConfiguration(response);
       })));
     });
 
     unittest.test("method--insert", () {
-
       var mock = new HttpServerMock();
-      api.AchievementConfigurationsResourceApi res = new api.GamesConfigurationApi(mock).achievementConfigurations;
+      api.AchievementConfigurationsResourceApi res =
+          new api.GamesConfigurationApi(mock).achievementConfigurations;
       var arg_request = buildAchievementConfiguration();
       var arg_applicationId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -593,18 +594,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("games/v1configuration/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 22),
+            unittest.equals("games/v1configuration/"));
         pathOffset += 22;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("applications/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("applications/"));
         pathOffset += 13;
         index = path.indexOf("/achievements", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_applicationId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/achievements"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("/achievements"));
         pathOffset += 13;
 
         var query = (req.url).query;
@@ -617,29 +623,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAchievementConfiguration());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_applicationId).then(unittest.expectAsync1(((api.AchievementConfiguration response) {
+      res
+          .insert(arg_request, arg_applicationId)
+          .then(unittest.expectAsync1(((api.AchievementConfiguration response) {
         checkAchievementConfiguration(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.AchievementConfigurationsResourceApi res = new api.GamesConfigurationApi(mock).achievementConfigurations;
+      api.AchievementConfigurationsResourceApi res =
+          new api.GamesConfigurationApi(mock).achievementConfigurations;
       var arg_applicationId = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
@@ -648,18 +657,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("games/v1configuration/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 22),
+            unittest.equals("games/v1configuration/"));
         pathOffset += 22;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("applications/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("applications/"));
         pathOffset += 13;
         index = path.indexOf("/achievements", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_applicationId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/achievements"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("/achievements"));
         pathOffset += 13;
 
         var query = (req.url).query;
@@ -672,31 +686,39 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildAchievementConfigurationListResponse());
+        var resp =
+            convert.JSON.encode(buildAchievementConfigurationListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_applicationId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.AchievementConfigurationListResponse response) {
+      res
+          .list(arg_applicationId,
+              maxResults: arg_maxResults, pageToken: arg_pageToken)
+          .then(unittest.expectAsync1(
+              ((api.AchievementConfigurationListResponse response) {
         checkAchievementConfigurationListResponse(response);
       })));
     });
 
     unittest.test("method--patch", () {
-
       var mock = new HttpServerMock();
-      api.AchievementConfigurationsResourceApi res = new api.GamesConfigurationApi(mock).achievementConfigurations;
+      api.AchievementConfigurationsResourceApi res =
+          new api.GamesConfigurationApi(mock).achievementConfigurations;
       var arg_request = buildAchievementConfiguration();
       var arg_achievementId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -707,11 +729,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("games/v1configuration/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 22),
+            unittest.equals("games/v1configuration/"));
         pathOffset += 22;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("achievements/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("achievements/"));
         pathOffset += 13;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -727,29 +752,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAchievementConfiguration());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_achievementId).then(unittest.expectAsync1(((api.AchievementConfiguration response) {
+      res
+          .patch(arg_request, arg_achievementId)
+          .then(unittest.expectAsync1(((api.AchievementConfiguration response) {
         checkAchievementConfiguration(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
-      api.AchievementConfigurationsResourceApi res = new api.GamesConfigurationApi(mock).achievementConfigurations;
+      api.AchievementConfigurationsResourceApi res =
+          new api.GamesConfigurationApi(mock).achievementConfigurations;
       var arg_request = buildAchievementConfiguration();
       var arg_achievementId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -760,11 +788,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("games/v1configuration/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 22),
+            unittest.equals("games/v1configuration/"));
         pathOffset += 22;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("achievements/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("achievements/"));
         pathOffset += 13;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -780,27 +811,28 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAchievementConfiguration());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_achievementId).then(unittest.expectAsync1(((api.AchievementConfiguration response) {
+      res
+          .update(arg_request, arg_achievementId)
+          .then(unittest.expectAsync1(((api.AchievementConfiguration response) {
         checkAchievementConfiguration(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-ImageConfigurationsResourceApi", () {
     unittest.test("method--upload", () {
@@ -808,7 +840,8 @@ main() {
       // TODO: Implement tests for media download;
 
       var mock = new HttpServerMock();
-      api.ImageConfigurationsResourceApi res = new api.GamesConfigurationApi(mock).imageConfigurations;
+      api.ImageConfigurationsResourceApi res =
+          new api.GamesConfigurationApi(mock).imageConfigurations;
       var arg_resourceId = "foo";
       var arg_imageType = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -816,18 +849,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("games/v1configuration/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 22),
+            unittest.equals("games/v1configuration/"));
         pathOffset += 22;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("images/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("images/"));
         pathOffset += 7;
         index = path.indexOf("/imageType/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_resourceId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("/imageType/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("/imageType/"));
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -843,44 +881,48 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildImageConfiguration());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.upload(arg_resourceId, arg_imageType).then(unittest.expectAsync1(((api.ImageConfiguration response) {
+      res
+          .upload(arg_resourceId, arg_imageType)
+          .then(unittest.expectAsync1(((api.ImageConfiguration response) {
         checkImageConfiguration(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-LeaderboardConfigurationsResourceApi", () {
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
-      api.LeaderboardConfigurationsResourceApi res = new api.GamesConfigurationApi(mock).leaderboardConfigurations;
+      api.LeaderboardConfigurationsResourceApi res =
+          new api.GamesConfigurationApi(mock).leaderboardConfigurations;
       var arg_leaderboardId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("games/v1configuration/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 22),
+            unittest.equals("games/v1configuration/"));
         pathOffset += 22;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("leaderboards/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("leaderboards/"));
         pathOffset += 13;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -896,16 +938,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
@@ -914,20 +957,23 @@ main() {
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.LeaderboardConfigurationsResourceApi res = new api.GamesConfigurationApi(mock).leaderboardConfigurations;
+      api.LeaderboardConfigurationsResourceApi res =
+          new api.GamesConfigurationApi(mock).leaderboardConfigurations;
       var arg_leaderboardId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("games/v1configuration/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 22),
+            unittest.equals("games/v1configuration/"));
         pathOffset += 22;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("leaderboards/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("leaderboards/"));
         pathOffset += 13;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -943,29 +989,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLeaderboardConfiguration());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_leaderboardId).then(unittest.expectAsync1(((api.LeaderboardConfiguration response) {
+      res
+          .get(arg_leaderboardId)
+          .then(unittest.expectAsync1(((api.LeaderboardConfiguration response) {
         checkLeaderboardConfiguration(response);
       })));
     });
 
     unittest.test("method--insert", () {
-
       var mock = new HttpServerMock();
-      api.LeaderboardConfigurationsResourceApi res = new api.GamesConfigurationApi(mock).leaderboardConfigurations;
+      api.LeaderboardConfigurationsResourceApi res =
+          new api.GamesConfigurationApi(mock).leaderboardConfigurations;
       var arg_request = buildLeaderboardConfiguration();
       var arg_applicationId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -976,18 +1025,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("games/v1configuration/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 22),
+            unittest.equals("games/v1configuration/"));
         pathOffset += 22;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("applications/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("applications/"));
         pathOffset += 13;
         index = path.indexOf("/leaderboards", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_applicationId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/leaderboards"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("/leaderboards"));
         pathOffset += 13;
 
         var query = (req.url).query;
@@ -1000,29 +1054,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLeaderboardConfiguration());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_applicationId).then(unittest.expectAsync1(((api.LeaderboardConfiguration response) {
+      res
+          .insert(arg_request, arg_applicationId)
+          .then(unittest.expectAsync1(((api.LeaderboardConfiguration response) {
         checkLeaderboardConfiguration(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.LeaderboardConfigurationsResourceApi res = new api.GamesConfigurationApi(mock).leaderboardConfigurations;
+      api.LeaderboardConfigurationsResourceApi res =
+          new api.GamesConfigurationApi(mock).leaderboardConfigurations;
       var arg_applicationId = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
@@ -1031,18 +1088,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("games/v1configuration/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 22),
+            unittest.equals("games/v1configuration/"));
         pathOffset += 22;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("applications/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("applications/"));
         pathOffset += 13;
         index = path.indexOf("/leaderboards", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_applicationId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/leaderboards"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("/leaderboards"));
         pathOffset += 13;
 
         var query = (req.url).query;
@@ -1055,31 +1117,39 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildLeaderboardConfigurationListResponse());
+        var resp =
+            convert.JSON.encode(buildLeaderboardConfigurationListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_applicationId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.LeaderboardConfigurationListResponse response) {
+      res
+          .list(arg_applicationId,
+              maxResults: arg_maxResults, pageToken: arg_pageToken)
+          .then(unittest.expectAsync1(
+              ((api.LeaderboardConfigurationListResponse response) {
         checkLeaderboardConfigurationListResponse(response);
       })));
     });
 
     unittest.test("method--patch", () {
-
       var mock = new HttpServerMock();
-      api.LeaderboardConfigurationsResourceApi res = new api.GamesConfigurationApi(mock).leaderboardConfigurations;
+      api.LeaderboardConfigurationsResourceApi res =
+          new api.GamesConfigurationApi(mock).leaderboardConfigurations;
       var arg_request = buildLeaderboardConfiguration();
       var arg_leaderboardId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1090,11 +1160,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("games/v1configuration/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 22),
+            unittest.equals("games/v1configuration/"));
         pathOffset += 22;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("leaderboards/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("leaderboards/"));
         pathOffset += 13;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -1110,29 +1183,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLeaderboardConfiguration());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_leaderboardId).then(unittest.expectAsync1(((api.LeaderboardConfiguration response) {
+      res
+          .patch(arg_request, arg_leaderboardId)
+          .then(unittest.expectAsync1(((api.LeaderboardConfiguration response) {
         checkLeaderboardConfiguration(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
-      api.LeaderboardConfigurationsResourceApi res = new api.GamesConfigurationApi(mock).leaderboardConfigurations;
+      api.LeaderboardConfigurationsResourceApi res =
+          new api.GamesConfigurationApi(mock).leaderboardConfigurations;
       var arg_request = buildLeaderboardConfiguration();
       var arg_leaderboardId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1143,11 +1219,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("games/v1configuration/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 22),
+            unittest.equals("games/v1configuration/"));
         pathOffset += 22;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("leaderboards/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("leaderboards/"));
         pathOffset += 13;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -1163,27 +1242,26 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLeaderboardConfiguration());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_leaderboardId).then(unittest.expectAsync1(((api.LeaderboardConfiguration response) {
+      res
+          .update(arg_request, arg_leaderboardId)
+          .then(unittest.expectAsync1(((api.LeaderboardConfiguration response) {
         checkLeaderboardConfiguration(response);
       })));
     });
-
   });
-
-
 }
-

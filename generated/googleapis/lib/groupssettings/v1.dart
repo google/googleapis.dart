@@ -9,47 +9,46 @@ import 'dart:convert' as convert;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
-    ApiRequestError, DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
+    show ApiRequestError, DetailedApiRequestError;
 
 const core.String USER_AGENT = 'dart-api-client groupssettings/v1';
 
-/** Lets you manage permission levels and related settings of a group. */
+/// Lets you manage permission levels and related settings of a group.
 class GroupssettingsApi {
-  /** View and manage the settings of a G Suite group */
-  static const AppsGroupsSettingsScope = "https://www.googleapis.com/auth/apps.groups.settings";
-
+  /// View and manage the settings of a G Suite group
+  static const AppsGroupsSettingsScope =
+      "https://www.googleapis.com/auth/apps.groups.settings";
 
   final commons.ApiRequester _requester;
 
   GroupsResourceApi get groups => new GroupsResourceApi(_requester);
 
-  GroupssettingsApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "groups/v1/groups/"}) :
-      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+  GroupssettingsApi(http.Client client,
+      {core.String rootUrl: "https://www.googleapis.com/",
+      core.String servicePath: "groups/v1/groups/"})
+      : _requester =
+            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
-
 
 class GroupsResourceApi {
   final commons.ApiRequester _requester;
 
-  GroupsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  GroupsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Gets one resource by id.
-   *
-   * Request parameters:
-   *
-   * [groupUniqueId] - The resource ID
-   *
-   * Completes with a [Groups].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Gets one resource by id.
+  ///
+  /// Request parameters:
+  ///
+  /// [groupUniqueId] - The resource ID
+  ///
+  /// Completes with a [Groups].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Groups> get(core.String groupUniqueId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -64,33 +63,30 @@ class GroupsResourceApi {
 
     _url = commons.Escaper.ecapeVariable('$groupUniqueId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Groups.fromJson(data));
   }
 
-  /**
-   * Updates an existing resource. This method supports patch semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [groupUniqueId] - The resource ID
-   *
-   * Completes with a [Groups].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Updates an existing resource. This method supports patch semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [groupUniqueId] - The resource ID
+  ///
+  /// Completes with a [Groups].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Groups> patch(Groups request, core.String groupUniqueId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -108,33 +104,30 @@ class GroupsResourceApi {
 
     _url = commons.Escaper.ecapeVariable('$groupUniqueId');
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Groups.fromJson(data));
   }
 
-  /**
-   * Updates an existing resource.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [groupUniqueId] - The resource ID
-   *
-   * Completes with a [Groups].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Updates an existing resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [groupUniqueId] - The resource ID
+  ///
+  /// Completes with a [Groups].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Groups> update(Groups request, core.String groupUniqueId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -152,122 +145,124 @@ class GroupsResourceApi {
 
     _url = commons.Escaper.ecapeVariable('$groupUniqueId');
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Groups.fromJson(data));
   }
-
 }
 
-
-
-/** JSON template for Group resource */
+/// JSON template for Group resource
 class Groups {
-  /** Are external members allowed to join the group. */
+  /// Are external members allowed to join the group.
   core.String allowExternalMembers;
-  /** Is google allowed to contact admins. */
+
+  /// Is google allowed to contact admins.
   core.String allowGoogleCommunication;
-  /** If posting from web is allowed. */
+
+  /// If posting from web is allowed.
   core.String allowWebPosting;
-  /** If the group is archive only */
+
+  /// If the group is archive only
   core.String archiveOnly;
-  /** Custom footer text. */
+
+  /// Custom footer text.
   core.String customFooterText;
-  /** Default email to which reply to any message should go. */
+
+  /// Default email to which reply to any message should go.
   core.String customReplyTo;
-  /** Default message deny notification message */
+
+  /// Default message deny notification message
   core.String defaultMessageDenyNotificationText;
-  /** Description of the group */
+
+  /// Description of the group
   core.String description;
-  /** Email id of the group */
+
+  /// Email id of the group
   core.String email;
-  /** Whether to include custom footer. */
+
+  /// Whether to include custom footer.
   core.String includeCustomFooter;
-  /** If this groups should be included in global address list or not. */
+
+  /// If this groups should be included in global address list or not.
   core.String includeInGlobalAddressList;
-  /** If the contents of the group are archived. */
+
+  /// If the contents of the group are archived.
   core.String isArchived;
-  /** The type of the resource. */
+
+  /// The type of the resource.
   core.String kind;
-  /** Maximum message size allowed. */
+
+  /// Maximum message size allowed.
   core.int maxMessageBytes;
-  /** Can members post using the group email address. */
+
+  /// Can members post using the group email address.
   core.String membersCanPostAsTheGroup;
-  /**
-   * Default message display font. Possible values are: DEFAULT_FONT
-   * FIXED_WIDTH_FONT
-   */
+
+  /// Default message display font. Possible values are: DEFAULT_FONT
+  /// FIXED_WIDTH_FONT
   core.String messageDisplayFont;
-  /**
-   * Moderation level for messages. Possible values are: MODERATE_ALL_MESSAGES
-   * MODERATE_NON_MEMBERS MODERATE_NEW_MEMBERS MODERATE_NONE
-   */
+
+  /// Moderation level for messages. Possible values are: MODERATE_ALL_MESSAGES
+  /// MODERATE_NON_MEMBERS MODERATE_NEW_MEMBERS MODERATE_NONE
   core.String messageModerationLevel;
-  /** Name of the Group */
+
+  /// Name of the Group
   core.String name;
-  /** Primary language for the group. */
+
+  /// Primary language for the group.
   core.String primaryLanguage;
-  /**
-   * Whome should the default reply to a message go to. Possible values are:
-   * REPLY_TO_CUSTOM REPLY_TO_SENDER REPLY_TO_LIST REPLY_TO_OWNER
-   * REPLY_TO_IGNORE REPLY_TO_MANAGERS
-   */
+
+  /// Whome should the default reply to a message go to. Possible values are:
+  /// REPLY_TO_CUSTOM REPLY_TO_SENDER REPLY_TO_LIST REPLY_TO_OWNER
+  /// REPLY_TO_IGNORE REPLY_TO_MANAGERS
   core.String replyTo;
-  /** Should the member be notified if his message is denied by owner. */
+
+  /// Should the member be notified if his message is denied by owner.
   core.String sendMessageDenyNotification;
-  /** Is the group listed in groups directory */
+
+  /// Is the group listed in groups directory
   core.String showInGroupDirectory;
-  /**
-   * Moderation level for messages detected as spam. Possible values are: ALLOW
-   * MODERATE SILENTLY_MODERATE REJECT
-   */
+
+  /// Moderation level for messages detected as spam. Possible values are: ALLOW
+  /// MODERATE SILENTLY_MODERATE REJECT
   core.String spamModerationLevel;
-  /**
-   * Permissions to add members. Possible values are: ALL_MANAGERS_CAN_ADD
-   * ALL_MEMBERS_CAN_ADD NONE_CAN_ADD
-   */
+
+  /// Permissions to add members. Possible values are: ALL_MANAGERS_CAN_ADD
+  /// ALL_MEMBERS_CAN_ADD NONE_CAN_ADD
   core.String whoCanAdd;
-  /**
-   * Permission to contact owner of the group via web UI. Possible values are:
-   * ANYONE_CAN_CONTACT ALL_IN_DOMAIN_CAN_CONTACT ALL_MEMBERS_CAN_CONTACT
-   * ALL_MANAGERS_CAN_CONTACT
-   */
+
+  /// Permission to contact owner of the group via web UI. Possible values are:
+  /// ANYONE_CAN_CONTACT ALL_IN_DOMAIN_CAN_CONTACT ALL_MEMBERS_CAN_CONTACT
+  /// ALL_MANAGERS_CAN_CONTACT
   core.String whoCanContactOwner;
-  /**
-   * Permissions to invite members. Possible values are: ALL_MEMBERS_CAN_INVITE
-   * ALL_MANAGERS_CAN_INVITE NONE_CAN_INVITE
-   */
+
+  /// Permissions to invite members. Possible values are: ALL_MEMBERS_CAN_INVITE
+  /// ALL_MANAGERS_CAN_INVITE NONE_CAN_INVITE
   core.String whoCanInvite;
-  /**
-   * Permissions to join the group. Possible values are: ANYONE_CAN_JOIN
-   * ALL_IN_DOMAIN_CAN_JOIN INVITED_CAN_JOIN CAN_REQUEST_TO_JOIN
-   */
+
+  /// Permissions to join the group. Possible values are: ANYONE_CAN_JOIN
+  /// ALL_IN_DOMAIN_CAN_JOIN INVITED_CAN_JOIN CAN_REQUEST_TO_JOIN
   core.String whoCanJoin;
-  /**
-   * Permission to leave the group. Possible values are: ALL_MANAGERS_CAN_LEAVE
-   * ALL_MEMBERS_CAN_LEAVE NONE_CAN_LEAVE
-   */
+
+  /// Permission to leave the group. Possible values are: ALL_MANAGERS_CAN_LEAVE
+  /// ALL_MEMBERS_CAN_LEAVE NONE_CAN_LEAVE
   core.String whoCanLeaveGroup;
-  /**
-   * Permissions to post messages to the group. Possible values are:
-   * NONE_CAN_POST ALL_MANAGERS_CAN_POST ALL_MEMBERS_CAN_POST
-   * ALL_OWNERS_CAN_POST ALL_IN_DOMAIN_CAN_POST ANYONE_CAN_POST
-   */
+
+  /// Permissions to post messages to the group. Possible values are:
+  /// NONE_CAN_POST ALL_MANAGERS_CAN_POST ALL_MEMBERS_CAN_POST
+  /// ALL_OWNERS_CAN_POST ALL_IN_DOMAIN_CAN_POST ANYONE_CAN_POST
   core.String whoCanPostMessage;
-  /**
-   * Permissions to view group. Possible values are: ANYONE_CAN_VIEW
-   * ALL_IN_DOMAIN_CAN_VIEW ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW
-   */
+
+  /// Permissions to view group. Possible values are: ANYONE_CAN_VIEW
+  /// ALL_IN_DOMAIN_CAN_VIEW ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW
   core.String whoCanViewGroup;
-  /**
-   * Permissions to view membership. Possible values are: ALL_IN_DOMAIN_CAN_VIEW
-   * ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW
-   */
+
+  /// Permissions to view membership. Possible values are:
+  /// ALL_IN_DOMAIN_CAN_VIEW ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW
   core.String whoCanViewMembership;
 
   Groups();
@@ -292,7 +287,8 @@ class Groups {
       customReplyTo = _json["customReplyTo"];
     }
     if (_json.containsKey("defaultMessageDenyNotificationText")) {
-      defaultMessageDenyNotificationText = _json["defaultMessageDenyNotificationText"];
+      defaultMessageDenyNotificationText =
+          _json["defaultMessageDenyNotificationText"];
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -369,7 +365,8 @@ class Groups {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (allowExternalMembers != null) {
       _json["allowExternalMembers"] = allowExternalMembers;
     }
@@ -389,7 +386,8 @@ class Groups {
       _json["customReplyTo"] = customReplyTo;
     }
     if (defaultMessageDenyNotificationText != null) {
-      _json["defaultMessageDenyNotificationText"] = defaultMessageDenyNotificationText;
+      _json["defaultMessageDenyNotificationText"] =
+          defaultMessageDenyNotificationText;
     }
     if (description != null) {
       _json["description"] = description;

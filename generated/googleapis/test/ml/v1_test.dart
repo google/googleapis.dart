@@ -1,12 +1,10 @@
 library googleapis.ml.v1.test;
 
 import "dart:core" as core;
-import "dart:collection" as collection;
 import "dart:async" as async;
 import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
-import 'package:http/testing.dart' as http_testing;
 import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/ml/v1.dart' as api;
@@ -22,7 +20,8 @@ class HttpServerMock extends http.BaseClient {
 
   async.Future<http.StreamedResponse> send(http.BaseRequest request) {
     if (_expectJson) {
-      return request.finalize()
+      return request
+          .finalize()
           .transform(convert.UTF8.decoder)
           .join('')
           .then((core.String jsonString) {
@@ -45,23 +44,39 @@ class HttpServerMock extends http.BaseClient {
   }
 }
 
-http.StreamedResponse stringResponse(
-    core.int status, core.Map<core.String, core.String> headers, core.String body) {
+http.StreamedResponse stringResponse(core.int status,
+    core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
 buildUnnamed0() {
   var o = new core.Map<core.String, core.Object>();
-  o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
-  o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
+  o["x"] = {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  };
+  o["y"] = {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  };
   return o;
 }
 
 checkUnnamed0(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o["x"]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
-  var casted2 = (o["y"]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
+  var casted1 = (o["x"]) as core.Map;
+  unittest.expect(casted1, unittest.hasLength(3));
+  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1["bool"], unittest.equals(true));
+  unittest.expect(casted1["string"], unittest.equals('foo'));
+  var casted2 = (o["y"]) as core.Map;
+  unittest.expect(casted2, unittest.hasLength(3));
+  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2["bool"], unittest.equals(true));
+  unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
 buildUnnamed1() {
@@ -100,7 +115,8 @@ checkGoogleApiHttpBody(api.GoogleApiHttpBody o) {
   buildCounterGoogleApiHttpBody--;
 }
 
-core.int buildCounterGoogleCloudMlV1HyperparameterOutputHyperparameterMetric = 0;
+core.int buildCounterGoogleCloudMlV1HyperparameterOutputHyperparameterMetric =
+    0;
 buildGoogleCloudMlV1HyperparameterOutputHyperparameterMetric() {
   var o = new api.GoogleCloudMlV1HyperparameterOutputHyperparameterMetric();
   buildCounterGoogleCloudMlV1HyperparameterOutputHyperparameterMetric++;
@@ -112,7 +128,8 @@ buildGoogleCloudMlV1HyperparameterOutputHyperparameterMetric() {
   return o;
 }
 
-checkGoogleCloudMlV1HyperparameterOutputHyperparameterMetric(api.GoogleCloudMlV1HyperparameterOutputHyperparameterMetric o) {
+checkGoogleCloudMlV1HyperparameterOutputHyperparameterMetric(
+    api.GoogleCloudMlV1HyperparameterOutputHyperparameterMetric o) {
   buildCounterGoogleCloudMlV1HyperparameterOutputHyperparameterMetric++;
   if (buildCounterGoogleCloudMlV1HyperparameterOutputHyperparameterMetric < 3) {
     unittest.expect(o.objectiveValue, unittest.equals(42.0));
@@ -144,16 +161,14 @@ core.int buildCounterGoogleCloudMlV1CancelJobRequest = 0;
 buildGoogleCloudMlV1CancelJobRequest() {
   var o = new api.GoogleCloudMlV1CancelJobRequest();
   buildCounterGoogleCloudMlV1CancelJobRequest++;
-  if (buildCounterGoogleCloudMlV1CancelJobRequest < 3) {
-  }
+  if (buildCounterGoogleCloudMlV1CancelJobRequest < 3) {}
   buildCounterGoogleCloudMlV1CancelJobRequest--;
   return o;
 }
 
 checkGoogleCloudMlV1CancelJobRequest(api.GoogleCloudMlV1CancelJobRequest o) {
   buildCounterGoogleCloudMlV1CancelJobRequest++;
-  if (buildCounterGoogleCloudMlV1CancelJobRequest < 3) {
-  }
+  if (buildCounterGoogleCloudMlV1CancelJobRequest < 3) {}
   buildCounterGoogleCloudMlV1CancelJobRequest--;
 }
 
@@ -179,13 +194,15 @@ checkGoogleCloudMlV1GetConfigResponse(api.GoogleCloudMlV1GetConfigResponse o) {
 }
 
 buildUnnamed2() {
-  var o = new core.List<api.GoogleCloudMlV1HyperparameterOutputHyperparameterMetric>();
+  var o = new core
+      .List<api.GoogleCloudMlV1HyperparameterOutputHyperparameterMetric>();
   o.add(buildGoogleCloudMlV1HyperparameterOutputHyperparameterMetric());
   o.add(buildGoogleCloudMlV1HyperparameterOutputHyperparameterMetric());
   return o;
 }
 
-checkUnnamed2(core.List<api.GoogleCloudMlV1HyperparameterOutputHyperparameterMetric> o) {
+checkUnnamed2(
+    core.List<api.GoogleCloudMlV1HyperparameterOutputHyperparameterMetric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudMlV1HyperparameterOutputHyperparameterMetric(o[0]);
   checkGoogleCloudMlV1HyperparameterOutputHyperparameterMetric(o[1]);
@@ -210,7 +227,8 @@ buildGoogleCloudMlV1HyperparameterOutput() {
   buildCounterGoogleCloudMlV1HyperparameterOutput++;
   if (buildCounterGoogleCloudMlV1HyperparameterOutput < 3) {
     o.allMetrics = buildUnnamed2();
-    o.finalMetric = buildGoogleCloudMlV1HyperparameterOutputHyperparameterMetric();
+    o.finalMetric =
+        buildGoogleCloudMlV1HyperparameterOutputHyperparameterMetric();
     o.hyperparameters = buildUnnamed3();
     o.trialId = "foo";
   }
@@ -218,7 +236,8 @@ buildGoogleCloudMlV1HyperparameterOutput() {
   return o;
 }
 
-checkGoogleCloudMlV1HyperparameterOutput(api.GoogleCloudMlV1HyperparameterOutput o) {
+checkGoogleCloudMlV1HyperparameterOutput(
+    api.GoogleCloudMlV1HyperparameterOutput o) {
   buildCounterGoogleCloudMlV1HyperparameterOutput++;
   if (buildCounterGoogleCloudMlV1HyperparameterOutput < 3) {
     checkUnnamed2(o.allMetrics);
@@ -257,7 +276,8 @@ buildGoogleCloudMlV1HyperparameterSpec() {
   return o;
 }
 
-checkGoogleCloudMlV1HyperparameterSpec(api.GoogleCloudMlV1HyperparameterSpec o) {
+checkGoogleCloudMlV1HyperparameterSpec(
+    api.GoogleCloudMlV1HyperparameterSpec o) {
   buildCounterGoogleCloudMlV1HyperparameterSpec++;
   if (buildCounterGoogleCloudMlV1HyperparameterSpec < 3) {
     unittest.expect(o.goal, unittest.equals('foo'));
@@ -365,7 +385,8 @@ buildGoogleCloudMlV1ListModelsResponse() {
   return o;
 }
 
-checkGoogleCloudMlV1ListModelsResponse(api.GoogleCloudMlV1ListModelsResponse o) {
+checkGoogleCloudMlV1ListModelsResponse(
+    api.GoogleCloudMlV1ListModelsResponse o) {
   buildCounterGoogleCloudMlV1ListModelsResponse++;
   if (buildCounterGoogleCloudMlV1ListModelsResponse < 3) {
     checkUnnamed6(o.models);
@@ -399,7 +420,8 @@ buildGoogleCloudMlV1ListVersionsResponse() {
   return o;
 }
 
-checkGoogleCloudMlV1ListVersionsResponse(api.GoogleCloudMlV1ListVersionsResponse o) {
+checkGoogleCloudMlV1ListVersionsResponse(
+    api.GoogleCloudMlV1ListVersionsResponse o) {
   buildCounterGoogleCloudMlV1ListVersionsResponse++;
   if (buildCounterGoogleCloudMlV1ListVersionsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -653,16 +675,15 @@ core.int buildCounterGoogleCloudMlV1SetDefaultVersionRequest = 0;
 buildGoogleCloudMlV1SetDefaultVersionRequest() {
   var o = new api.GoogleCloudMlV1SetDefaultVersionRequest();
   buildCounterGoogleCloudMlV1SetDefaultVersionRequest++;
-  if (buildCounterGoogleCloudMlV1SetDefaultVersionRequest < 3) {
-  }
+  if (buildCounterGoogleCloudMlV1SetDefaultVersionRequest < 3) {}
   buildCounterGoogleCloudMlV1SetDefaultVersionRequest--;
   return o;
 }
 
-checkGoogleCloudMlV1SetDefaultVersionRequest(api.GoogleCloudMlV1SetDefaultVersionRequest o) {
+checkGoogleCloudMlV1SetDefaultVersionRequest(
+    api.GoogleCloudMlV1SetDefaultVersionRequest o) {
   buildCounterGoogleCloudMlV1SetDefaultVersionRequest++;
-  if (buildCounterGoogleCloudMlV1SetDefaultVersionRequest < 3) {
-  }
+  if (buildCounterGoogleCloudMlV1SetDefaultVersionRequest < 3) {}
   buildCounterGoogleCloudMlV1SetDefaultVersionRequest--;
 }
 
@@ -812,173 +833,6 @@ checkGoogleCloudMlV1Version(api.GoogleCloudMlV1Version o) {
   buildCounterGoogleCloudMlV1Version--;
 }
 
-core.int buildCounterGoogleCloudMlV1beta1AutoScaling = 0;
-buildGoogleCloudMlV1beta1AutoScaling() {
-  var o = new api.GoogleCloudMlV1beta1AutoScaling();
-  buildCounterGoogleCloudMlV1beta1AutoScaling++;
-  if (buildCounterGoogleCloudMlV1beta1AutoScaling < 3) {
-    o.minNodes = 42;
-  }
-  buildCounterGoogleCloudMlV1beta1AutoScaling--;
-  return o;
-}
-
-checkGoogleCloudMlV1beta1AutoScaling(api.GoogleCloudMlV1beta1AutoScaling o) {
-  buildCounterGoogleCloudMlV1beta1AutoScaling++;
-  if (buildCounterGoogleCloudMlV1beta1AutoScaling < 3) {
-    unittest.expect(o.minNodes, unittest.equals(42));
-  }
-  buildCounterGoogleCloudMlV1beta1AutoScaling--;
-}
-
-core.int buildCounterGoogleCloudMlV1beta1ManualScaling = 0;
-buildGoogleCloudMlV1beta1ManualScaling() {
-  var o = new api.GoogleCloudMlV1beta1ManualScaling();
-  buildCounterGoogleCloudMlV1beta1ManualScaling++;
-  if (buildCounterGoogleCloudMlV1beta1ManualScaling < 3) {
-    o.nodes = 42;
-  }
-  buildCounterGoogleCloudMlV1beta1ManualScaling--;
-  return o;
-}
-
-checkGoogleCloudMlV1beta1ManualScaling(api.GoogleCloudMlV1beta1ManualScaling o) {
-  buildCounterGoogleCloudMlV1beta1ManualScaling++;
-  if (buildCounterGoogleCloudMlV1beta1ManualScaling < 3) {
-    unittest.expect(o.nodes, unittest.equals(42));
-  }
-  buildCounterGoogleCloudMlV1beta1ManualScaling--;
-}
-
-core.int buildCounterGoogleCloudMlV1beta1OperationMetadata = 0;
-buildGoogleCloudMlV1beta1OperationMetadata() {
-  var o = new api.GoogleCloudMlV1beta1OperationMetadata();
-  buildCounterGoogleCloudMlV1beta1OperationMetadata++;
-  if (buildCounterGoogleCloudMlV1beta1OperationMetadata < 3) {
-    o.createTime = "foo";
-    o.endTime = "foo";
-    o.isCancellationRequested = true;
-    o.modelName = "foo";
-    o.operationType = "foo";
-    o.startTime = "foo";
-    o.version = buildGoogleCloudMlV1beta1Version();
-  }
-  buildCounterGoogleCloudMlV1beta1OperationMetadata--;
-  return o;
-}
-
-checkGoogleCloudMlV1beta1OperationMetadata(api.GoogleCloudMlV1beta1OperationMetadata o) {
-  buildCounterGoogleCloudMlV1beta1OperationMetadata++;
-  if (buildCounterGoogleCloudMlV1beta1OperationMetadata < 3) {
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.endTime, unittest.equals('foo'));
-    unittest.expect(o.isCancellationRequested, unittest.isTrue);
-    unittest.expect(o.modelName, unittest.equals('foo'));
-    unittest.expect(o.operationType, unittest.equals('foo'));
-    unittest.expect(o.startTime, unittest.equals('foo'));
-    checkGoogleCloudMlV1beta1Version(o.version);
-  }
-  buildCounterGoogleCloudMlV1beta1OperationMetadata--;
-}
-
-core.int buildCounterGoogleCloudMlV1beta1Version = 0;
-buildGoogleCloudMlV1beta1Version() {
-  var o = new api.GoogleCloudMlV1beta1Version();
-  buildCounterGoogleCloudMlV1beta1Version++;
-  if (buildCounterGoogleCloudMlV1beta1Version < 3) {
-    o.autoScaling = buildGoogleCloudMlV1beta1AutoScaling();
-    o.createTime = "foo";
-    o.deploymentUri = "foo";
-    o.description = "foo";
-    o.errorMessage = "foo";
-    o.isDefault = true;
-    o.lastUseTime = "foo";
-    o.manualScaling = buildGoogleCloudMlV1beta1ManualScaling();
-    o.name = "foo";
-    o.runtimeVersion = "foo";
-    o.state = "foo";
-  }
-  buildCounterGoogleCloudMlV1beta1Version--;
-  return o;
-}
-
-checkGoogleCloudMlV1beta1Version(api.GoogleCloudMlV1beta1Version o) {
-  buildCounterGoogleCloudMlV1beta1Version++;
-  if (buildCounterGoogleCloudMlV1beta1Version < 3) {
-    checkGoogleCloudMlV1beta1AutoScaling(o.autoScaling);
-    unittest.expect(o.createTime, unittest.equals('foo'));
-    unittest.expect(o.deploymentUri, unittest.equals('foo'));
-    unittest.expect(o.description, unittest.equals('foo'));
-    unittest.expect(o.errorMessage, unittest.equals('foo'));
-    unittest.expect(o.isDefault, unittest.isTrue);
-    unittest.expect(o.lastUseTime, unittest.equals('foo'));
-    checkGoogleCloudMlV1beta1ManualScaling(o.manualScaling);
-    unittest.expect(o.name, unittest.equals('foo'));
-    unittest.expect(o.runtimeVersion, unittest.equals('foo'));
-    unittest.expect(o.state, unittest.equals('foo'));
-  }
-  buildCounterGoogleCloudMlV1beta1Version--;
-}
-
-core.int buildCounterGoogleIamV1LogConfigCloudAuditOptions = 0;
-buildGoogleIamV1LogConfigCloudAuditOptions() {
-  var o = new api.GoogleIamV1LogConfigCloudAuditOptions();
-  buildCounterGoogleIamV1LogConfigCloudAuditOptions++;
-  if (buildCounterGoogleIamV1LogConfigCloudAuditOptions < 3) {
-    o.logName = "foo";
-  }
-  buildCounterGoogleIamV1LogConfigCloudAuditOptions--;
-  return o;
-}
-
-checkGoogleIamV1LogConfigCloudAuditOptions(api.GoogleIamV1LogConfigCloudAuditOptions o) {
-  buildCounterGoogleIamV1LogConfigCloudAuditOptions++;
-  if (buildCounterGoogleIamV1LogConfigCloudAuditOptions < 3) {
-    unittest.expect(o.logName, unittest.equals('foo'));
-  }
-  buildCounterGoogleIamV1LogConfigCloudAuditOptions--;
-}
-
-core.int buildCounterGoogleIamV1LogConfigCounterOptions = 0;
-buildGoogleIamV1LogConfigCounterOptions() {
-  var o = new api.GoogleIamV1LogConfigCounterOptions();
-  buildCounterGoogleIamV1LogConfigCounterOptions++;
-  if (buildCounterGoogleIamV1LogConfigCounterOptions < 3) {
-    o.field = "foo";
-    o.metric = "foo";
-  }
-  buildCounterGoogleIamV1LogConfigCounterOptions--;
-  return o;
-}
-
-checkGoogleIamV1LogConfigCounterOptions(api.GoogleIamV1LogConfigCounterOptions o) {
-  buildCounterGoogleIamV1LogConfigCounterOptions++;
-  if (buildCounterGoogleIamV1LogConfigCounterOptions < 3) {
-    unittest.expect(o.field, unittest.equals('foo'));
-    unittest.expect(o.metric, unittest.equals('foo'));
-  }
-  buildCounterGoogleIamV1LogConfigCounterOptions--;
-}
-
-core.int buildCounterGoogleIamV1LogConfigDataAccessOptions = 0;
-buildGoogleIamV1LogConfigDataAccessOptions() {
-  var o = new api.GoogleIamV1LogConfigDataAccessOptions();
-  buildCounterGoogleIamV1LogConfigDataAccessOptions++;
-  if (buildCounterGoogleIamV1LogConfigDataAccessOptions < 3) {
-    o.logMode = "foo";
-  }
-  buildCounterGoogleIamV1LogConfigDataAccessOptions--;
-  return o;
-}
-
-checkGoogleIamV1LogConfigDataAccessOptions(api.GoogleIamV1LogConfigDataAccessOptions o) {
-  buildCounterGoogleIamV1LogConfigDataAccessOptions++;
-  if (buildCounterGoogleIamV1LogConfigDataAccessOptions < 3) {
-    unittest.expect(o.logMode, unittest.equals('foo'));
-  }
-  buildCounterGoogleIamV1LogConfigDataAccessOptions--;
-}
-
 buildUnnamed15() {
   var o = new core.List<api.GoogleIamV1AuditLogConfig>();
   o.add(buildGoogleIamV1AuditLogConfig());
@@ -1099,107 +953,29 @@ checkGoogleIamV1Binding(api.GoogleIamV1Binding o) {
 }
 
 buildUnnamed19() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed19(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.int buildCounterGoogleIamV1Condition = 0;
-buildGoogleIamV1Condition() {
-  var o = new api.GoogleIamV1Condition();
-  buildCounterGoogleIamV1Condition++;
-  if (buildCounterGoogleIamV1Condition < 3) {
-    o.iam = "foo";
-    o.op = "foo";
-    o.svc = "foo";
-    o.sys = "foo";
-    o.value = "foo";
-    o.values = buildUnnamed19();
-  }
-  buildCounterGoogleIamV1Condition--;
-  return o;
-}
-
-checkGoogleIamV1Condition(api.GoogleIamV1Condition o) {
-  buildCounterGoogleIamV1Condition++;
-  if (buildCounterGoogleIamV1Condition < 3) {
-    unittest.expect(o.iam, unittest.equals('foo'));
-    unittest.expect(o.op, unittest.equals('foo'));
-    unittest.expect(o.svc, unittest.equals('foo'));
-    unittest.expect(o.sys, unittest.equals('foo'));
-    unittest.expect(o.value, unittest.equals('foo'));
-    checkUnnamed19(o.values);
-  }
-  buildCounterGoogleIamV1Condition--;
-}
-
-core.int buildCounterGoogleIamV1LogConfig = 0;
-buildGoogleIamV1LogConfig() {
-  var o = new api.GoogleIamV1LogConfig();
-  buildCounterGoogleIamV1LogConfig++;
-  if (buildCounterGoogleIamV1LogConfig < 3) {
-    o.cloudAudit = buildGoogleIamV1LogConfigCloudAuditOptions();
-    o.counter = buildGoogleIamV1LogConfigCounterOptions();
-    o.dataAccess = buildGoogleIamV1LogConfigDataAccessOptions();
-  }
-  buildCounterGoogleIamV1LogConfig--;
-  return o;
-}
-
-checkGoogleIamV1LogConfig(api.GoogleIamV1LogConfig o) {
-  buildCounterGoogleIamV1LogConfig++;
-  if (buildCounterGoogleIamV1LogConfig < 3) {
-    checkGoogleIamV1LogConfigCloudAuditOptions(o.cloudAudit);
-    checkGoogleIamV1LogConfigCounterOptions(o.counter);
-    checkGoogleIamV1LogConfigDataAccessOptions(o.dataAccess);
-  }
-  buildCounterGoogleIamV1LogConfig--;
-}
-
-buildUnnamed20() {
   var o = new core.List<api.GoogleIamV1AuditConfig>();
   o.add(buildGoogleIamV1AuditConfig());
   o.add(buildGoogleIamV1AuditConfig());
   return o;
 }
 
-checkUnnamed20(core.List<api.GoogleIamV1AuditConfig> o) {
+checkUnnamed19(core.List<api.GoogleIamV1AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1AuditConfig(o[0]);
   checkGoogleIamV1AuditConfig(o[1]);
 }
 
-buildUnnamed21() {
+buildUnnamed20() {
   var o = new core.List<api.GoogleIamV1Binding>();
   o.add(buildGoogleIamV1Binding());
   o.add(buildGoogleIamV1Binding());
   return o;
 }
 
-checkUnnamed21(core.List<api.GoogleIamV1Binding> o) {
+checkUnnamed20(core.List<api.GoogleIamV1Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleIamV1Binding(o[0]);
   checkGoogleIamV1Binding(o[1]);
-}
-
-buildUnnamed22() {
-  var o = new core.List<api.GoogleIamV1Rule>();
-  o.add(buildGoogleIamV1Rule());
-  o.add(buildGoogleIamV1Rule());
-  return o;
-}
-
-checkUnnamed22(core.List<api.GoogleIamV1Rule> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleIamV1Rule(o[0]);
-  checkGoogleIamV1Rule(o[1]);
 }
 
 core.int buildCounterGoogleIamV1Policy = 0;
@@ -1207,11 +983,10 @@ buildGoogleIamV1Policy() {
   var o = new api.GoogleIamV1Policy();
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    o.auditConfigs = buildUnnamed20();
-    o.bindings = buildUnnamed21();
+    o.auditConfigs = buildUnnamed19();
+    o.bindings = buildUnnamed20();
     o.etag = "foo";
     o.iamOwned = true;
-    o.rules = buildUnnamed22();
     o.version = 42;
   }
   buildCounterGoogleIamV1Policy--;
@@ -1221,110 +996,13 @@ buildGoogleIamV1Policy() {
 checkGoogleIamV1Policy(api.GoogleIamV1Policy o) {
   buildCounterGoogleIamV1Policy++;
   if (buildCounterGoogleIamV1Policy < 3) {
-    checkUnnamed20(o.auditConfigs);
-    checkUnnamed21(o.bindings);
+    checkUnnamed19(o.auditConfigs);
+    checkUnnamed20(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.iamOwned, unittest.isTrue);
-    checkUnnamed22(o.rules);
     unittest.expect(o.version, unittest.equals(42));
   }
   buildCounterGoogleIamV1Policy--;
-}
-
-buildUnnamed23() {
-  var o = new core.List<api.GoogleIamV1Condition>();
-  o.add(buildGoogleIamV1Condition());
-  o.add(buildGoogleIamV1Condition());
-  return o;
-}
-
-checkUnnamed23(core.List<api.GoogleIamV1Condition> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleIamV1Condition(o[0]);
-  checkGoogleIamV1Condition(o[1]);
-}
-
-buildUnnamed24() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed24(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-buildUnnamed25() {
-  var o = new core.List<api.GoogleIamV1LogConfig>();
-  o.add(buildGoogleIamV1LogConfig());
-  o.add(buildGoogleIamV1LogConfig());
-  return o;
-}
-
-checkUnnamed25(core.List<api.GoogleIamV1LogConfig> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGoogleIamV1LogConfig(o[0]);
-  checkGoogleIamV1LogConfig(o[1]);
-}
-
-buildUnnamed26() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed26(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-buildUnnamed27() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed27(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.int buildCounterGoogleIamV1Rule = 0;
-buildGoogleIamV1Rule() {
-  var o = new api.GoogleIamV1Rule();
-  buildCounterGoogleIamV1Rule++;
-  if (buildCounterGoogleIamV1Rule < 3) {
-    o.action = "foo";
-    o.conditions = buildUnnamed23();
-    o.description = "foo";
-    o.in_ = buildUnnamed24();
-    o.logConfig = buildUnnamed25();
-    o.notIn = buildUnnamed26();
-    o.permissions = buildUnnamed27();
-  }
-  buildCounterGoogleIamV1Rule--;
-  return o;
-}
-
-checkGoogleIamV1Rule(api.GoogleIamV1Rule o) {
-  buildCounterGoogleIamV1Rule++;
-  if (buildCounterGoogleIamV1Rule < 3) {
-    unittest.expect(o.action, unittest.equals('foo'));
-    checkUnnamed23(o.conditions);
-    unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed24(o.in_);
-    checkUnnamed25(o.logConfig);
-    checkUnnamed26(o.notIn);
-    checkUnnamed27(o.permissions);
-  }
-  buildCounterGoogleIamV1Rule--;
 }
 
 core.int buildCounterGoogleIamV1SetIamPolicyRequest = 0;
@@ -1348,14 +1026,14 @@ checkGoogleIamV1SetIamPolicyRequest(api.GoogleIamV1SetIamPolicyRequest o) {
   buildCounterGoogleIamV1SetIamPolicyRequest--;
 }
 
-buildUnnamed28() {
+buildUnnamed21() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed28(core.List<core.String> o) {
+checkUnnamed21(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1366,28 +1044,29 @@ buildGoogleIamV1TestIamPermissionsRequest() {
   var o = new api.GoogleIamV1TestIamPermissionsRequest();
   buildCounterGoogleIamV1TestIamPermissionsRequest++;
   if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed28();
+    o.permissions = buildUnnamed21();
   }
   buildCounterGoogleIamV1TestIamPermissionsRequest--;
   return o;
 }
 
-checkGoogleIamV1TestIamPermissionsRequest(api.GoogleIamV1TestIamPermissionsRequest o) {
+checkGoogleIamV1TestIamPermissionsRequest(
+    api.GoogleIamV1TestIamPermissionsRequest o) {
   buildCounterGoogleIamV1TestIamPermissionsRequest++;
   if (buildCounterGoogleIamV1TestIamPermissionsRequest < 3) {
-    checkUnnamed28(o.permissions);
+    checkUnnamed21(o.permissions);
   }
   buildCounterGoogleIamV1TestIamPermissionsRequest--;
 }
 
-buildUnnamed29() {
+buildUnnamed22() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed29(core.List<core.String> o) {
+checkUnnamed22(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1398,28 +1077,29 @@ buildGoogleIamV1TestIamPermissionsResponse() {
   var o = new api.GoogleIamV1TestIamPermissionsResponse();
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed29();
+    o.permissions = buildUnnamed22();
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
   return o;
 }
 
-checkGoogleIamV1TestIamPermissionsResponse(api.GoogleIamV1TestIamPermissionsResponse o) {
+checkGoogleIamV1TestIamPermissionsResponse(
+    api.GoogleIamV1TestIamPermissionsResponse o) {
   buildCounterGoogleIamV1TestIamPermissionsResponse++;
   if (buildCounterGoogleIamV1TestIamPermissionsResponse < 3) {
-    checkUnnamed29(o.permissions);
+    checkUnnamed22(o.permissions);
   }
   buildCounterGoogleIamV1TestIamPermissionsResponse--;
 }
 
-buildUnnamed30() {
+buildUnnamed23() {
   var o = new core.List<api.GoogleLongrunningOperation>();
   o.add(buildGoogleLongrunningOperation());
   o.add(buildGoogleLongrunningOperation());
   return o;
 }
 
-checkUnnamed30(core.List<api.GoogleLongrunningOperation> o) {
+checkUnnamed23(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
@@ -1431,45 +1111,78 @@ buildGoogleLongrunningListOperationsResponse() {
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = "foo";
-    o.operations = buildUnnamed30();
+    o.operations = buildUnnamed23();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
 }
 
-checkGoogleLongrunningListOperationsResponse(api.GoogleLongrunningListOperationsResponse o) {
+checkGoogleLongrunningListOperationsResponse(
+    api.GoogleLongrunningListOperationsResponse o) {
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed30(o.operations);
+    checkUnnamed23(o.operations);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-buildUnnamed31() {
+buildUnnamed24() {
   var o = new core.Map<core.String, core.Object>();
-  o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
-  o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
+  o["x"] = {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  };
+  o["y"] = {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  };
   return o;
 }
 
-checkUnnamed31(core.Map<core.String, core.Object> o) {
+checkUnnamed24(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted3 = (o["x"]) as core.Map; unittest.expect(casted3, unittest.hasLength(3)); unittest.expect(casted3["list"], unittest.equals([1, 2, 3])); unittest.expect(casted3["bool"], unittest.equals(true)); unittest.expect(casted3["string"], unittest.equals('foo')); 
-  var casted4 = (o["y"]) as core.Map; unittest.expect(casted4, unittest.hasLength(3)); unittest.expect(casted4["list"], unittest.equals([1, 2, 3])); unittest.expect(casted4["bool"], unittest.equals(true)); unittest.expect(casted4["string"], unittest.equals('foo')); 
+  var casted3 = (o["x"]) as core.Map;
+  unittest.expect(casted3, unittest.hasLength(3));
+  unittest.expect(casted3["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3["bool"], unittest.equals(true));
+  unittest.expect(casted3["string"], unittest.equals('foo'));
+  var casted4 = (o["y"]) as core.Map;
+  unittest.expect(casted4, unittest.hasLength(3));
+  unittest.expect(casted4["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4["bool"], unittest.equals(true));
+  unittest.expect(casted4["string"], unittest.equals('foo'));
 }
 
-buildUnnamed32() {
+buildUnnamed25() {
   var o = new core.Map<core.String, core.Object>();
-  o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
-  o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
+  o["x"] = {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  };
+  o["y"] = {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  };
   return o;
 }
 
-checkUnnamed32(core.Map<core.String, core.Object> o) {
+checkUnnamed25(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o["x"]) as core.Map; unittest.expect(casted5, unittest.hasLength(3)); unittest.expect(casted5["list"], unittest.equals([1, 2, 3])); unittest.expect(casted5["bool"], unittest.equals(true)); unittest.expect(casted5["string"], unittest.equals('foo')); 
-  var casted6 = (o["y"]) as core.Map; unittest.expect(casted6, unittest.hasLength(3)); unittest.expect(casted6["list"], unittest.equals([1, 2, 3])); unittest.expect(casted6["bool"], unittest.equals(true)); unittest.expect(casted6["string"], unittest.equals('foo')); 
+  var casted5 = (o["x"]) as core.Map;
+  unittest.expect(casted5, unittest.hasLength(3));
+  unittest.expect(casted5["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted5["bool"], unittest.equals(true));
+  unittest.expect(casted5["string"], unittest.equals('foo'));
+  var casted6 = (o["y"]) as core.Map;
+  unittest.expect(casted6, unittest.hasLength(3));
+  unittest.expect(casted6["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted6["bool"], unittest.equals(true));
+  unittest.expect(casted6["string"], unittest.equals('foo'));
 }
 
 core.int buildCounterGoogleLongrunningOperation = 0;
@@ -1479,9 +1192,9 @@ buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed31();
+    o.metadata = buildUnnamed24();
     o.name = "foo";
-    o.response = buildUnnamed32();
+    o.response = buildUnnamed25();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -1492,9 +1205,9 @@ checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkGoogleRpcStatus(o.error);
-    checkUnnamed31(o.metadata);
+    checkUnnamed24(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed32(o.response);
+    checkUnnamed25(o.response);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -1503,43 +1216,57 @@ core.int buildCounterGoogleProtobufEmpty = 0;
 buildGoogleProtobufEmpty() {
   var o = new api.GoogleProtobufEmpty();
   buildCounterGoogleProtobufEmpty++;
-  if (buildCounterGoogleProtobufEmpty < 3) {
-  }
+  if (buildCounterGoogleProtobufEmpty < 3) {}
   buildCounterGoogleProtobufEmpty--;
   return o;
 }
 
 checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty++;
-  if (buildCounterGoogleProtobufEmpty < 3) {
-  }
+  if (buildCounterGoogleProtobufEmpty < 3) {}
   buildCounterGoogleProtobufEmpty--;
 }
 
-buildUnnamed33() {
+buildUnnamed26() {
   var o = new core.Map<core.String, core.Object>();
-  o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
-  o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
+  o["x"] = {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  };
+  o["y"] = {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  };
   return o;
 }
 
-checkUnnamed33(core.Map<core.String, core.Object> o) {
+checkUnnamed26(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted7 = (o["x"]) as core.Map; unittest.expect(casted7, unittest.hasLength(3)); unittest.expect(casted7["list"], unittest.equals([1, 2, 3])); unittest.expect(casted7["bool"], unittest.equals(true)); unittest.expect(casted7["string"], unittest.equals('foo')); 
-  var casted8 = (o["y"]) as core.Map; unittest.expect(casted8, unittest.hasLength(3)); unittest.expect(casted8["list"], unittest.equals([1, 2, 3])); unittest.expect(casted8["bool"], unittest.equals(true)); unittest.expect(casted8["string"], unittest.equals('foo')); 
+  var casted7 = (o["x"]) as core.Map;
+  unittest.expect(casted7, unittest.hasLength(3));
+  unittest.expect(casted7["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted7["bool"], unittest.equals(true));
+  unittest.expect(casted7["string"], unittest.equals('foo'));
+  var casted8 = (o["y"]) as core.Map;
+  unittest.expect(casted8, unittest.hasLength(3));
+  unittest.expect(casted8["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted8["bool"], unittest.equals(true));
+  unittest.expect(casted8["string"], unittest.equals('foo'));
 }
 
-buildUnnamed34() {
+buildUnnamed27() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed33());
-  o.add(buildUnnamed33());
+  o.add(buildUnnamed26());
+  o.add(buildUnnamed26());
   return o;
 }
 
-checkUnnamed34(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed27(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed33(o[0]);
-  checkUnnamed33(o[1]);
+  checkUnnamed26(o[0]);
+  checkUnnamed26(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -1548,7 +1275,7 @@ buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed34();
+    o.details = buildUnnamed27();
     o.message = "foo";
   }
   buildCounterGoogleRpcStatus--;
@@ -1559,7 +1286,7 @@ checkGoogleRpcStatus(api.GoogleRpcStatus o) {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed34(o.details);
+    checkUnnamed27(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterGoogleRpcStatus--;
@@ -1590,7 +1317,6 @@ checkGoogleTypeExpr(api.GoogleTypeExpr o) {
   buildCounterGoogleTypeExpr--;
 }
 
-
 main() {
   unittest.group("obj-schema-GoogleApiHttpBody", () {
     unittest.test("to-json--from-json", () {
@@ -1600,15 +1326,16 @@ main() {
     });
   });
 
-
-  unittest.group("obj-schema-GoogleCloudMlV1HyperparameterOutputHyperparameterMetric", () {
+  unittest.group(
+      "obj-schema-GoogleCloudMlV1HyperparameterOutputHyperparameterMetric", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudMlV1HyperparameterOutputHyperparameterMetric();
-      var od = new api.GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromJson(o.toJson());
+      var od = new api
+              .GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromJson(
+          o.toJson());
       checkGoogleCloudMlV1HyperparameterOutputHyperparameterMetric(od);
     });
   });
-
 
   unittest.group("obj-schema-GoogleCloudMlV1AutoScaling", () {
     unittest.test("to-json--from-json", () {
@@ -1618,7 +1345,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-GoogleCloudMlV1CancelJobRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudMlV1CancelJobRequest();
@@ -1626,7 +1352,6 @@ main() {
       checkGoogleCloudMlV1CancelJobRequest(od);
     });
   });
-
 
   unittest.group("obj-schema-GoogleCloudMlV1GetConfigResponse", () {
     unittest.test("to-json--from-json", () {
@@ -1636,7 +1361,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-GoogleCloudMlV1HyperparameterOutput", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudMlV1HyperparameterOutput();
@@ -1644,7 +1368,6 @@ main() {
       checkGoogleCloudMlV1HyperparameterOutput(od);
     });
   });
-
 
   unittest.group("obj-schema-GoogleCloudMlV1HyperparameterSpec", () {
     unittest.test("to-json--from-json", () {
@@ -1654,7 +1377,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-GoogleCloudMlV1Job", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudMlV1Job();
@@ -1662,7 +1384,6 @@ main() {
       checkGoogleCloudMlV1Job(od);
     });
   });
-
 
   unittest.group("obj-schema-GoogleCloudMlV1ListJobsResponse", () {
     unittest.test("to-json--from-json", () {
@@ -1672,7 +1393,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-GoogleCloudMlV1ListModelsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudMlV1ListModelsResponse();
@@ -1680,7 +1400,6 @@ main() {
       checkGoogleCloudMlV1ListModelsResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-GoogleCloudMlV1ListVersionsResponse", () {
     unittest.test("to-json--from-json", () {
@@ -1690,7 +1409,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-GoogleCloudMlV1ManualScaling", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudMlV1ManualScaling();
@@ -1698,7 +1416,6 @@ main() {
       checkGoogleCloudMlV1ManualScaling(od);
     });
   });
-
 
   unittest.group("obj-schema-GoogleCloudMlV1Model", () {
     unittest.test("to-json--from-json", () {
@@ -1708,7 +1425,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-GoogleCloudMlV1OperationMetadata", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudMlV1OperationMetadata();
@@ -1716,7 +1432,6 @@ main() {
       checkGoogleCloudMlV1OperationMetadata(od);
     });
   });
-
 
   unittest.group("obj-schema-GoogleCloudMlV1ParameterSpec", () {
     unittest.test("to-json--from-json", () {
@@ -1726,7 +1441,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-GoogleCloudMlV1PredictRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudMlV1PredictRequest();
@@ -1734,7 +1448,6 @@ main() {
       checkGoogleCloudMlV1PredictRequest(od);
     });
   });
-
 
   unittest.group("obj-schema-GoogleCloudMlV1PredictionInput", () {
     unittest.test("to-json--from-json", () {
@@ -1744,7 +1457,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-GoogleCloudMlV1PredictionOutput", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudMlV1PredictionOutput();
@@ -1753,15 +1465,14 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-GoogleCloudMlV1SetDefaultVersionRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudMlV1SetDefaultVersionRequest();
-      var od = new api.GoogleCloudMlV1SetDefaultVersionRequest.fromJson(o.toJson());
+      var od =
+          new api.GoogleCloudMlV1SetDefaultVersionRequest.fromJson(o.toJson());
       checkGoogleCloudMlV1SetDefaultVersionRequest(od);
     });
   });
-
 
   unittest.group("obj-schema-GoogleCloudMlV1TrainingInput", () {
     unittest.test("to-json--from-json", () {
@@ -1771,7 +1482,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-GoogleCloudMlV1TrainingOutput", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleCloudMlV1TrainingOutput();
@@ -1779,7 +1489,6 @@ main() {
       checkGoogleCloudMlV1TrainingOutput(od);
     });
   });
-
 
   unittest.group("obj-schema-GoogleCloudMlV1Version", () {
     unittest.test("to-json--from-json", () {
@@ -1789,70 +1498,6 @@ main() {
     });
   });
 
-
-  unittest.group("obj-schema-GoogleCloudMlV1beta1AutoScaling", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildGoogleCloudMlV1beta1AutoScaling();
-      var od = new api.GoogleCloudMlV1beta1AutoScaling.fromJson(o.toJson());
-      checkGoogleCloudMlV1beta1AutoScaling(od);
-    });
-  });
-
-
-  unittest.group("obj-schema-GoogleCloudMlV1beta1ManualScaling", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildGoogleCloudMlV1beta1ManualScaling();
-      var od = new api.GoogleCloudMlV1beta1ManualScaling.fromJson(o.toJson());
-      checkGoogleCloudMlV1beta1ManualScaling(od);
-    });
-  });
-
-
-  unittest.group("obj-schema-GoogleCloudMlV1beta1OperationMetadata", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildGoogleCloudMlV1beta1OperationMetadata();
-      var od = new api.GoogleCloudMlV1beta1OperationMetadata.fromJson(o.toJson());
-      checkGoogleCloudMlV1beta1OperationMetadata(od);
-    });
-  });
-
-
-  unittest.group("obj-schema-GoogleCloudMlV1beta1Version", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildGoogleCloudMlV1beta1Version();
-      var od = new api.GoogleCloudMlV1beta1Version.fromJson(o.toJson());
-      checkGoogleCloudMlV1beta1Version(od);
-    });
-  });
-
-
-  unittest.group("obj-schema-GoogleIamV1LogConfigCloudAuditOptions", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildGoogleIamV1LogConfigCloudAuditOptions();
-      var od = new api.GoogleIamV1LogConfigCloudAuditOptions.fromJson(o.toJson());
-      checkGoogleIamV1LogConfigCloudAuditOptions(od);
-    });
-  });
-
-
-  unittest.group("obj-schema-GoogleIamV1LogConfigCounterOptions", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildGoogleIamV1LogConfigCounterOptions();
-      var od = new api.GoogleIamV1LogConfigCounterOptions.fromJson(o.toJson());
-      checkGoogleIamV1LogConfigCounterOptions(od);
-    });
-  });
-
-
-  unittest.group("obj-schema-GoogleIamV1LogConfigDataAccessOptions", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildGoogleIamV1LogConfigDataAccessOptions();
-      var od = new api.GoogleIamV1LogConfigDataAccessOptions.fromJson(o.toJson());
-      checkGoogleIamV1LogConfigDataAccessOptions(od);
-    });
-  });
-
-
   unittest.group("obj-schema-GoogleIamV1AuditConfig", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleIamV1AuditConfig();
@@ -1860,7 +1505,6 @@ main() {
       checkGoogleIamV1AuditConfig(od);
     });
   });
-
 
   unittest.group("obj-schema-GoogleIamV1AuditLogConfig", () {
     unittest.test("to-json--from-json", () {
@@ -1870,7 +1514,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-GoogleIamV1Binding", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleIamV1Binding();
@@ -1878,25 +1521,6 @@ main() {
       checkGoogleIamV1Binding(od);
     });
   });
-
-
-  unittest.group("obj-schema-GoogleIamV1Condition", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildGoogleIamV1Condition();
-      var od = new api.GoogleIamV1Condition.fromJson(o.toJson());
-      checkGoogleIamV1Condition(od);
-    });
-  });
-
-
-  unittest.group("obj-schema-GoogleIamV1LogConfig", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildGoogleIamV1LogConfig();
-      var od = new api.GoogleIamV1LogConfig.fromJson(o.toJson());
-      checkGoogleIamV1LogConfig(od);
-    });
-  });
-
 
   unittest.group("obj-schema-GoogleIamV1Policy", () {
     unittest.test("to-json--from-json", () {
@@ -1906,16 +1530,6 @@ main() {
     });
   });
 
-
-  unittest.group("obj-schema-GoogleIamV1Rule", () {
-    unittest.test("to-json--from-json", () {
-      var o = buildGoogleIamV1Rule();
-      var od = new api.GoogleIamV1Rule.fromJson(o.toJson());
-      checkGoogleIamV1Rule(od);
-    });
-  });
-
-
   unittest.group("obj-schema-GoogleIamV1SetIamPolicyRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleIamV1SetIamPolicyRequest();
@@ -1924,33 +1538,32 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-GoogleIamV1TestIamPermissionsRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleIamV1TestIamPermissionsRequest();
-      var od = new api.GoogleIamV1TestIamPermissionsRequest.fromJson(o.toJson());
+      var od =
+          new api.GoogleIamV1TestIamPermissionsRequest.fromJson(o.toJson());
       checkGoogleIamV1TestIamPermissionsRequest(od);
     });
   });
 
-
   unittest.group("obj-schema-GoogleIamV1TestIamPermissionsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleIamV1TestIamPermissionsResponse();
-      var od = new api.GoogleIamV1TestIamPermissionsResponse.fromJson(o.toJson());
+      var od =
+          new api.GoogleIamV1TestIamPermissionsResponse.fromJson(o.toJson());
       checkGoogleIamV1TestIamPermissionsResponse(od);
     });
   });
 
-
   unittest.group("obj-schema-GoogleLongrunningListOperationsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleLongrunningListOperationsResponse();
-      var od = new api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
+      var od =
+          new api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
       checkGoogleLongrunningListOperationsResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-GoogleLongrunningOperation", () {
     unittest.test("to-json--from-json", () {
@@ -1960,7 +1573,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-GoogleProtobufEmpty", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleProtobufEmpty();
@@ -1968,7 +1580,6 @@ main() {
       checkGoogleProtobufEmpty(od);
     });
   });
-
 
   unittest.group("obj-schema-GoogleRpcStatus", () {
     unittest.test("to-json--from-json", () {
@@ -1978,7 +1589,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-GoogleTypeExpr", () {
     unittest.test("to-json--from-json", () {
       var o = buildGoogleTypeExpr();
@@ -1987,10 +1597,8 @@ main() {
     });
   });
 
-
   unittest.group("resource-ProjectsResourceApi", () {
     unittest.test("method--getConfig", () {
-
       var mock = new HttpServerMock();
       api.ProjectsResourceApi res = new api.MlApi(mock).projects;
       var arg_name = "foo";
@@ -1999,9 +1607,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2015,27 +1625,28 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGoogleCloudMlV1GetConfigResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getConfig(arg_name).then(unittest.expectAsync1(((api.GoogleCloudMlV1GetConfigResponse response) {
+      res.getConfig(arg_name).then(unittest
+          .expectAsync1(((api.GoogleCloudMlV1GetConfigResponse response) {
         checkGoogleCloudMlV1GetConfigResponse(response);
       })));
     });
 
     unittest.test("method--predict", () {
-
       var mock = new HttpServerMock();
       api.ProjectsResourceApi res = new api.MlApi(mock).projects;
       var arg_request = buildGoogleCloudMlV1PredictRequest();
@@ -2048,9 +1659,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2064,31 +1677,31 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGoogleApiHttpBody());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.predict(arg_request, arg_name).then(unittest.expectAsync1(((api.GoogleApiHttpBody response) {
+      res
+          .predict(arg_request, arg_name)
+          .then(unittest.expectAsync1(((api.GoogleApiHttpBody response) {
         checkGoogleApiHttpBody(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-ProjectsJobsResourceApi", () {
     unittest.test("method--cancel", () {
-
       var mock = new HttpServerMock();
       api.ProjectsJobsResourceApi res = new api.MlApi(mock).projects.jobs;
       var arg_request = buildGoogleCloudMlV1CancelJobRequest();
@@ -2101,9 +1714,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2117,27 +1732,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGoogleProtobufEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.cancel(arg_request, arg_name).then(unittest.expectAsync1(((api.GoogleProtobufEmpty response) {
+      res
+          .cancel(arg_request, arg_name)
+          .then(unittest.expectAsync1(((api.GoogleProtobufEmpty response) {
         checkGoogleProtobufEmpty(response);
       })));
     });
 
     unittest.test("method--create", () {
-
       var mock = new HttpServerMock();
       api.ProjectsJobsResourceApi res = new api.MlApi(mock).projects.jobs;
       var arg_request = buildGoogleCloudMlV1Job();
@@ -2150,9 +1767,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2166,27 +1785,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGoogleCloudMlV1Job());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.create(arg_request, arg_parent).then(unittest.expectAsync1(((api.GoogleCloudMlV1Job response) {
+      res
+          .create(arg_request, arg_parent)
+          .then(unittest.expectAsync1(((api.GoogleCloudMlV1Job response) {
         checkGoogleCloudMlV1Job(response);
       })));
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
       api.ProjectsJobsResourceApi res = new api.MlApi(mock).projects.jobs;
       var arg_name = "foo";
@@ -2195,9 +1816,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2211,27 +1834,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGoogleCloudMlV1Job());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_name).then(unittest.expectAsync1(((api.GoogleCloudMlV1Job response) {
+      res
+          .get(arg_name)
+          .then(unittest.expectAsync1(((api.GoogleCloudMlV1Job response) {
         checkGoogleCloudMlV1Job(response);
       })));
     });
 
     unittest.test("method--getIamPolicy", () {
-
       var mock = new HttpServerMock();
       api.ProjectsJobsResourceApi res = new api.MlApi(mock).projects.jobs;
       var arg_resource = "foo";
@@ -2240,9 +1865,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2256,41 +1883,45 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGoogleIamV1Policy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getIamPolicy(arg_resource).then(unittest.expectAsync1(((api.GoogleIamV1Policy response) {
+      res
+          .getIamPolicy(arg_resource)
+          .then(unittest.expectAsync1(((api.GoogleIamV1Policy response) {
         checkGoogleIamV1Policy(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
       api.ProjectsJobsResourceApi res = new api.MlApi(mock).projects.jobs;
       var arg_parent = "foo";
+      var arg_filter = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
-      var arg_filter = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2304,30 +1935,38 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGoogleCloudMlV1ListJobsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_parent, pageToken: arg_pageToken, pageSize: arg_pageSize, filter: arg_filter).then(unittest.expectAsync1(((api.GoogleCloudMlV1ListJobsResponse response) {
+      res
+          .list(arg_parent,
+              filter: arg_filter,
+              pageToken: arg_pageToken,
+              pageSize: arg_pageSize)
+          .then(unittest
+              .expectAsync1(((api.GoogleCloudMlV1ListJobsResponse response) {
         checkGoogleCloudMlV1ListJobsResponse(response);
       })));
     });
 
     unittest.test("method--setIamPolicy", () {
-
       var mock = new HttpServerMock();
       api.ProjectsJobsResourceApi res = new api.MlApi(mock).projects.jobs;
       var arg_request = buildGoogleIamV1SetIamPolicyRequest();
@@ -2340,9 +1979,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2356,27 +1997,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGoogleIamV1Policy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.setIamPolicy(arg_request, arg_resource).then(unittest.expectAsync1(((api.GoogleIamV1Policy response) {
+      res
+          .setIamPolicy(arg_request, arg_resource)
+          .then(unittest.expectAsync1(((api.GoogleIamV1Policy response) {
         checkGoogleIamV1Policy(response);
       })));
     });
 
     unittest.test("method--testIamPermissions", () {
-
       var mock = new HttpServerMock();
       api.ProjectsJobsResourceApi res = new api.MlApi(mock).projects.jobs;
       var arg_request = buildGoogleIamV1TestIamPermissionsRequest();
@@ -2389,9 +2032,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2405,31 +2050,31 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildGoogleIamV1TestIamPermissionsResponse());
+        var resp =
+            convert.JSON.encode(buildGoogleIamV1TestIamPermissionsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.testIamPermissions(arg_request, arg_resource).then(unittest.expectAsync1(((api.GoogleIamV1TestIamPermissionsResponse response) {
+      res.testIamPermissions(arg_request, arg_resource).then(unittest
+          .expectAsync1(((api.GoogleIamV1TestIamPermissionsResponse response) {
         checkGoogleIamV1TestIamPermissionsResponse(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-ProjectsModelsResourceApi", () {
     unittest.test("method--create", () {
-
       var mock = new HttpServerMock();
       api.ProjectsModelsResourceApi res = new api.MlApi(mock).projects.models;
       var arg_request = buildGoogleCloudMlV1Model();
@@ -2442,9 +2087,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2458,27 +2105,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGoogleCloudMlV1Model());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.create(arg_request, arg_parent).then(unittest.expectAsync1(((api.GoogleCloudMlV1Model response) {
+      res
+          .create(arg_request, arg_parent)
+          .then(unittest.expectAsync1(((api.GoogleCloudMlV1Model response) {
         checkGoogleCloudMlV1Model(response);
       })));
     });
 
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
       api.ProjectsModelsResourceApi res = new api.MlApi(mock).projects.models;
       var arg_name = "foo";
@@ -2487,9 +2136,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2503,27 +2154,28 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGoogleLongrunningOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_name).then(unittest.expectAsync1(((api.GoogleLongrunningOperation response) {
+      res.delete(arg_name).then(
+          unittest.expectAsync1(((api.GoogleLongrunningOperation response) {
         checkGoogleLongrunningOperation(response);
       })));
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
       api.ProjectsModelsResourceApi res = new api.MlApi(mock).projects.models;
       var arg_name = "foo";
@@ -2532,9 +2184,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2548,27 +2202,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGoogleCloudMlV1Model());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_name).then(unittest.expectAsync1(((api.GoogleCloudMlV1Model response) {
+      res
+          .get(arg_name)
+          .then(unittest.expectAsync1(((api.GoogleCloudMlV1Model response) {
         checkGoogleCloudMlV1Model(response);
       })));
     });
 
     unittest.test("method--getIamPolicy", () {
-
       var mock = new HttpServerMock();
       api.ProjectsModelsResourceApi res = new api.MlApi(mock).projects.models;
       var arg_resource = "foo";
@@ -2577,9 +2233,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2593,27 +2251,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGoogleIamV1Policy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getIamPolicy(arg_resource).then(unittest.expectAsync1(((api.GoogleIamV1Policy response) {
+      res
+          .getIamPolicy(arg_resource)
+          .then(unittest.expectAsync1(((api.GoogleIamV1Policy response) {
         checkGoogleIamV1Policy(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
       api.ProjectsModelsResourceApi res = new api.MlApi(mock).projects.models;
       var arg_parent = "foo";
@@ -2624,9 +2284,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2640,29 +2302,35 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
-
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildGoogleCloudMlV1ListModelsResponse());
+        var resp =
+            convert.JSON.encode(buildGoogleCloudMlV1ListModelsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_parent, pageToken: arg_pageToken, pageSize: arg_pageSize).then(unittest.expectAsync1(((api.GoogleCloudMlV1ListModelsResponse response) {
+      res
+          .list(arg_parent, pageToken: arg_pageToken, pageSize: arg_pageSize)
+          .then(unittest
+              .expectAsync1(((api.GoogleCloudMlV1ListModelsResponse response) {
         checkGoogleCloudMlV1ListModelsResponse(response);
       })));
     });
 
     unittest.test("method--setIamPolicy", () {
-
       var mock = new HttpServerMock();
       api.ProjectsModelsResourceApi res = new api.MlApi(mock).projects.models;
       var arg_request = buildGoogleIamV1SetIamPolicyRequest();
@@ -2675,9 +2343,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2691,27 +2361,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGoogleIamV1Policy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.setIamPolicy(arg_request, arg_resource).then(unittest.expectAsync1(((api.GoogleIamV1Policy response) {
+      res
+          .setIamPolicy(arg_request, arg_resource)
+          .then(unittest.expectAsync1(((api.GoogleIamV1Policy response) {
         checkGoogleIamV1Policy(response);
       })));
     });
 
     unittest.test("method--testIamPermissions", () {
-
       var mock = new HttpServerMock();
       api.ProjectsModelsResourceApi res = new api.MlApi(mock).projects.models;
       var arg_request = buildGoogleIamV1TestIamPermissionsRequest();
@@ -2724,9 +2396,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2740,33 +2414,34 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildGoogleIamV1TestIamPermissionsResponse());
+        var resp =
+            convert.JSON.encode(buildGoogleIamV1TestIamPermissionsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.testIamPermissions(arg_request, arg_resource).then(unittest.expectAsync1(((api.GoogleIamV1TestIamPermissionsResponse response) {
+      res.testIamPermissions(arg_request, arg_resource).then(unittest
+          .expectAsync1(((api.GoogleIamV1TestIamPermissionsResponse response) {
         checkGoogleIamV1TestIamPermissionsResponse(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-ProjectsModelsVersionsResourceApi", () {
     unittest.test("method--create", () {
-
       var mock = new HttpServerMock();
-      api.ProjectsModelsVersionsResourceApi res = new api.MlApi(mock).projects.models.versions;
+      api.ProjectsModelsVersionsResourceApi res =
+          new api.MlApi(mock).projects.models.versions;
       var arg_request = buildGoogleCloudMlV1Version();
       var arg_parent = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2777,9 +2452,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2793,38 +2470,42 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGoogleLongrunningOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.create(arg_request, arg_parent).then(unittest.expectAsync1(((api.GoogleLongrunningOperation response) {
+      res.create(arg_request, arg_parent).then(
+          unittest.expectAsync1(((api.GoogleLongrunningOperation response) {
         checkGoogleLongrunningOperation(response);
       })));
     });
 
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
-      api.ProjectsModelsVersionsResourceApi res = new api.MlApi(mock).projects.models.versions;
+      api.ProjectsModelsVersionsResourceApi res =
+          new api.MlApi(mock).projects.models.versions;
       var arg_name = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2838,38 +2519,42 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGoogleLongrunningOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_name).then(unittest.expectAsync1(((api.GoogleLongrunningOperation response) {
+      res.delete(arg_name).then(
+          unittest.expectAsync1(((api.GoogleLongrunningOperation response) {
         checkGoogleLongrunningOperation(response);
       })));
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.ProjectsModelsVersionsResourceApi res = new api.MlApi(mock).projects.models.versions;
+      api.ProjectsModelsVersionsResourceApi res =
+          new api.MlApi(mock).projects.models.versions;
       var arg_name = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2883,29 +2568,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGoogleCloudMlV1Version());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_name).then(unittest.expectAsync1(((api.GoogleCloudMlV1Version response) {
+      res
+          .get(arg_name)
+          .then(unittest.expectAsync1(((api.GoogleCloudMlV1Version response) {
         checkGoogleCloudMlV1Version(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.ProjectsModelsVersionsResourceApi res = new api.MlApi(mock).projects.models.versions;
+      api.ProjectsModelsVersionsResourceApi res =
+          new api.MlApi(mock).projects.models.versions;
       var arg_parent = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
@@ -2914,9 +2602,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2930,44 +2620,54 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
-
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildGoogleCloudMlV1ListVersionsResponse());
+        var resp =
+            convert.JSON.encode(buildGoogleCloudMlV1ListVersionsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_parent, pageToken: arg_pageToken, pageSize: arg_pageSize).then(unittest.expectAsync1(((api.GoogleCloudMlV1ListVersionsResponse response) {
+      res
+          .list(arg_parent, pageToken: arg_pageToken, pageSize: arg_pageSize)
+          .then(unittest.expectAsync1(
+              ((api.GoogleCloudMlV1ListVersionsResponse response) {
         checkGoogleCloudMlV1ListVersionsResponse(response);
       })));
     });
 
     unittest.test("method--setDefault", () {
-
       var mock = new HttpServerMock();
-      api.ProjectsModelsVersionsResourceApi res = new api.MlApi(mock).projects.models.versions;
+      api.ProjectsModelsVersionsResourceApi res =
+          new api.MlApi(mock).projects.models.versions;
       var arg_request = buildGoogleCloudMlV1SetDefaultVersionRequest();
       var arg_name = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = new api.GoogleCloudMlV1SetDefaultVersionRequest.fromJson(json);
+        var obj =
+            new api.GoogleCloudMlV1SetDefaultVersionRequest.fromJson(json);
         checkGoogleCloudMlV1SetDefaultVersionRequest(obj);
 
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -2981,42 +2681,45 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGoogleCloudMlV1Version());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.setDefault(arg_request, arg_name).then(unittest.expectAsync1(((api.GoogleCloudMlV1Version response) {
+      res
+          .setDefault(arg_request, arg_name)
+          .then(unittest.expectAsync1(((api.GoogleCloudMlV1Version response) {
         checkGoogleCloudMlV1Version(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-ProjectsOperationsResourceApi", () {
     unittest.test("method--cancel", () {
-
       var mock = new HttpServerMock();
-      api.ProjectsOperationsResourceApi res = new api.MlApi(mock).projects.operations;
+      api.ProjectsOperationsResourceApi res =
+          new api.MlApi(mock).projects.operations;
       var arg_name = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -3030,38 +2733,43 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGoogleProtobufEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.cancel(arg_name).then(unittest.expectAsync1(((api.GoogleProtobufEmpty response) {
+      res
+          .cancel(arg_name)
+          .then(unittest.expectAsync1(((api.GoogleProtobufEmpty response) {
         checkGoogleProtobufEmpty(response);
       })));
     });
 
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
-      api.ProjectsOperationsResourceApi res = new api.MlApi(mock).projects.operations;
+      api.ProjectsOperationsResourceApi res =
+          new api.MlApi(mock).projects.operations;
       var arg_name = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -3075,38 +2783,43 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGoogleProtobufEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_name).then(unittest.expectAsync1(((api.GoogleProtobufEmpty response) {
+      res
+          .delete(arg_name)
+          .then(unittest.expectAsync1(((api.GoogleProtobufEmpty response) {
         checkGoogleProtobufEmpty(response);
       })));
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.ProjectsOperationsResourceApi res = new api.MlApi(mock).projects.operations;
+      api.ProjectsOperationsResourceApi res =
+          new api.MlApi(mock).projects.operations;
       var arg_name = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -3120,29 +2833,31 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGoogleLongrunningOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_name).then(unittest.expectAsync1(((api.GoogleLongrunningOperation response) {
+      res.get(arg_name).then(
+          unittest.expectAsync1(((api.GoogleLongrunningOperation response) {
         checkGoogleLongrunningOperation(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.ProjectsOperationsResourceApi res = new api.MlApi(mock).projects.operations;
+      api.ProjectsOperationsResourceApi res =
+          new api.MlApi(mock).projects.operations;
       var arg_name = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
@@ -3152,9 +2867,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
         pathOffset += 3;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -3168,30 +2885,36 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first), unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildGoogleLongrunningListOperationsResponse());
+        var resp =
+            convert.JSON.encode(buildGoogleLongrunningListOperationsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_name, pageToken: arg_pageToken, pageSize: arg_pageSize, filter: arg_filter).then(unittest.expectAsync1(((api.GoogleLongrunningListOperationsResponse response) {
+      res
+          .list(arg_name,
+              pageToken: arg_pageToken,
+              pageSize: arg_pageSize,
+              filter: arg_filter)
+          .then(unittest.expectAsync1(
+              ((api.GoogleLongrunningListOperationsResponse response) {
         checkGoogleLongrunningListOperationsResponse(response);
       })));
     });
-
   });
-
-
 }
-

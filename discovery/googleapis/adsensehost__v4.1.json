@@ -10,12 +10,12 @@
     },
     "basePath": "/adsensehost/v4.1/",
     "baseUrl": "https://www.googleapis.com/adsensehost/v4.1/",
-    "batchPath": "batch",
+    "batchPath": "batch/adsensehost/v4.1",
     "canonicalName": "AdSense Host",
     "description": "Generates performance reports, generates ad codes, and provides publisher management capabilities for AdSense Hosts.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/adsense/host/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/6PBskXS0FDap7pWG0YLeW91uNl8\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/xouN6oV9olZGP9n4-O6JanS23To\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/adsense-16.png",
         "x32": "https://www.google.com/images/icons/product/adsense-32.png"
@@ -1072,7 +1072,7 @@
             }
         }
     },
-    "revision": "20170816",
+    "revision": "20170906",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {

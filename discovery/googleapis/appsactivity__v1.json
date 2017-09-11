@@ -22,7 +22,7 @@
     },
     "basePath": "/appsactivity/v1/",
     "baseUrl": "https://www.googleapis.com/appsactivity/v1/",
-    "batchPath": "batch",
+    "batchPath": "batch/appsactivity/v1",
     "description": "Provides a historical view of activity.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/activity/",

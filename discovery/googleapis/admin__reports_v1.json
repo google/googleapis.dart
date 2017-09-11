@@ -13,7 +13,7 @@
     },
     "basePath": "/admin/reports/v1/",
     "baseUrl": "https://www.googleapis.com/admin/reports/v1/",
-    "batchPath": "batch",
+    "batchPath": "batch/admin/reports_v1",
     "canonicalName": "reports",
     "description": "Fetches reports for the administrators of G Suite customers about the usage, collaboration, security, and risk for their users.",
     "discoveryVersion": "v1",

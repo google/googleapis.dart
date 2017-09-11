@@ -19,11 +19,11 @@
     },
     "basePath": "/plus/v1/",
     "baseUrl": "https://www.googleapis.com/plus/v1/",
-    "batchPath": "batch",
+    "batchPath": "batch/plus/v1",
     "description": "Builds on top of the Google+ platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/+/api/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/3pK9DkdwYbmyFWdFN8R7tdRF5k8\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/e5EzALeRN0V4G9pDZ9NMnYZoVEo\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/gplus-16.png",
         "x32": "http://www.google.com/images/icons/product/gplus-32.png"
@@ -491,7 +491,7 @@
             }
         }
     },
-    "revision": "20170815",
+    "revision": "20170828",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Acl": {

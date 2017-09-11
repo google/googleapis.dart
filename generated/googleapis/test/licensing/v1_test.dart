@@ -1,12 +1,10 @@
 library googleapis.licensing.v1.test;
 
 import "dart:core" as core;
-import "dart:collection" as collection;
 import "dart:async" as async;
 import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
-import 'package:http/testing.dart' as http_testing;
 import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/licensing/v1.dart' as api;
@@ -22,7 +20,8 @@ class HttpServerMock extends http.BaseClient {
 
   async.Future<http.StreamedResponse> send(http.BaseRequest request) {
     if (_expectJson) {
-      return request.finalize()
+      return request
+          .finalize()
           .transform(convert.UTF8.decoder)
           .join('')
           .then((core.String jsonString) {
@@ -45,8 +44,8 @@ class HttpServerMock extends http.BaseClient {
   }
 }
 
-http.StreamedResponse stringResponse(
-    core.int status, core.Map<core.String, core.String> headers, core.String body) {
+http.StreamedResponse stringResponse(core.int status,
+    core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -103,14 +102,14 @@ checkLicenseAssignmentInsert(api.LicenseAssignmentInsert o) {
   buildCounterLicenseAssignmentInsert--;
 }
 
-buildUnnamed2104() {
+buildUnnamed2102() {
   var o = new core.List<api.LicenseAssignment>();
   o.add(buildLicenseAssignment());
   o.add(buildLicenseAssignment());
   return o;
 }
 
-checkUnnamed2104(core.List<api.LicenseAssignment> o) {
+checkUnnamed2102(core.List<api.LicenseAssignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLicenseAssignment(o[0]);
   checkLicenseAssignment(o[1]);
@@ -122,7 +121,7 @@ buildLicenseAssignmentList() {
   buildCounterLicenseAssignmentList++;
   if (buildCounterLicenseAssignmentList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed2104();
+    o.items = buildUnnamed2102();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -134,13 +133,12 @@ checkLicenseAssignmentList(api.LicenseAssignmentList o) {
   buildCounterLicenseAssignmentList++;
   if (buildCounterLicenseAssignmentList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed2104(o.items);
+    checkUnnamed2102(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterLicenseAssignmentList--;
 }
-
 
 main() {
   unittest.group("obj-schema-LicenseAssignment", () {
@@ -151,7 +149,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-LicenseAssignmentInsert", () {
     unittest.test("to-json--from-json", () {
       var o = buildLicenseAssignmentInsert();
@@ -159,7 +156,6 @@ main() {
       checkLicenseAssignmentInsert(od);
     });
   });
-
 
   unittest.group("obj-schema-LicenseAssignmentList", () {
     unittest.test("to-json--from-json", () {
@@ -169,12 +165,11 @@ main() {
     });
   });
 
-
   unittest.group("resource-LicenseAssignmentsResourceApi", () {
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
-      api.LicenseAssignmentsResourceApi res = new api.LicensingApi(mock).licenseAssignments;
+      api.LicenseAssignmentsResourceApi res =
+          new api.LicensingApi(mock).licenseAssignments;
       var arg_productId = "foo";
       var arg_skuId = "foo";
       var arg_userId = "foo";
@@ -183,7 +178,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -196,27 +192,30 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_productId, arg_skuId, arg_userId).then(unittest.expectAsync1((_) {}));
+      res
+          .delete(arg_productId, arg_skuId, arg_userId)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.LicenseAssignmentsResourceApi res = new api.LicensingApi(mock).licenseAssignments;
+      api.LicenseAssignmentsResourceApi res =
+          new api.LicensingApi(mock).licenseAssignments;
       var arg_productId = "foo";
       var arg_skuId = "foo";
       var arg_userId = "foo";
@@ -225,7 +224,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -238,29 +238,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLicenseAssignment());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_productId, arg_skuId, arg_userId).then(unittest.expectAsync1(((api.LicenseAssignment response) {
+      res
+          .get(arg_productId, arg_skuId, arg_userId)
+          .then(unittest.expectAsync1(((api.LicenseAssignment response) {
         checkLicenseAssignment(response);
       })));
     });
 
     unittest.test("method--insert", () {
-
       var mock = new HttpServerMock();
-      api.LicenseAssignmentsResourceApi res = new api.LicensingApi(mock).licenseAssignments;
+      api.LicenseAssignmentsResourceApi res =
+          new api.LicensingApi(mock).licenseAssignments;
       var arg_request = buildLicenseAssignmentInsert();
       var arg_productId = "foo";
       var arg_skuId = "foo";
@@ -272,7 +275,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -285,29 +289,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLicenseAssignment());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_productId, arg_skuId).then(unittest.expectAsync1(((api.LicenseAssignment response) {
+      res
+          .insert(arg_request, arg_productId, arg_skuId)
+          .then(unittest.expectAsync1(((api.LicenseAssignment response) {
         checkLicenseAssignment(response);
       })));
     });
 
     unittest.test("method--listForProduct", () {
-
       var mock = new HttpServerMock();
-      api.LicenseAssignmentsResourceApi res = new api.LicensingApi(mock).licenseAssignments;
+      api.LicenseAssignmentsResourceApi res =
+          new api.LicensingApi(mock).licenseAssignments;
       var arg_productId = "foo";
       var arg_customerId = "foo";
       var arg_maxResults = 42;
@@ -317,7 +324,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -330,32 +338,39 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["customerId"].first, unittest.equals(arg_customerId));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
+        unittest.expect(
+            queryMap["customerId"].first, unittest.equals(arg_customerId));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLicenseAssignmentList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.listForProduct(arg_productId, arg_customerId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.LicenseAssignmentList response) {
+      res
+          .listForProduct(arg_productId, arg_customerId,
+              maxResults: arg_maxResults, pageToken: arg_pageToken)
+          .then(unittest.expectAsync1(((api.LicenseAssignmentList response) {
         checkLicenseAssignmentList(response);
       })));
     });
 
     unittest.test("method--listForProductAndSku", () {
-
       var mock = new HttpServerMock();
-      api.LicenseAssignmentsResourceApi res = new api.LicensingApi(mock).licenseAssignments;
+      api.LicenseAssignmentsResourceApi res =
+          new api.LicensingApi(mock).licenseAssignments;
       var arg_productId = "foo";
       var arg_skuId = "foo";
       var arg_customerId = "foo";
@@ -366,7 +381,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -379,32 +395,39 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["customerId"].first, unittest.equals(arg_customerId));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
+        unittest.expect(
+            queryMap["customerId"].first, unittest.equals(arg_customerId));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLicenseAssignmentList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.listForProductAndSku(arg_productId, arg_skuId, arg_customerId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.LicenseAssignmentList response) {
+      res
+          .listForProductAndSku(arg_productId, arg_skuId, arg_customerId,
+              maxResults: arg_maxResults, pageToken: arg_pageToken)
+          .then(unittest.expectAsync1(((api.LicenseAssignmentList response) {
         checkLicenseAssignmentList(response);
       })));
     });
 
     unittest.test("method--patch", () {
-
       var mock = new HttpServerMock();
-      api.LicenseAssignmentsResourceApi res = new api.LicensingApi(mock).licenseAssignments;
+      api.LicenseAssignmentsResourceApi res =
+          new api.LicensingApi(mock).licenseAssignments;
       var arg_request = buildLicenseAssignment();
       var arg_productId = "foo";
       var arg_skuId = "foo";
@@ -417,7 +440,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -430,29 +454,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLicenseAssignment());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_productId, arg_skuId, arg_userId).then(unittest.expectAsync1(((api.LicenseAssignment response) {
+      res
+          .patch(arg_request, arg_productId, arg_skuId, arg_userId)
+          .then(unittest.expectAsync1(((api.LicenseAssignment response) {
         checkLicenseAssignment(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
-      api.LicenseAssignmentsResourceApi res = new api.LicensingApi(mock).licenseAssignments;
+      api.LicenseAssignmentsResourceApi res =
+          new api.LicensingApi(mock).licenseAssignments;
       var arg_request = buildLicenseAssignment();
       var arg_productId = "foo";
       var arg_skuId = "foo";
@@ -465,7 +492,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -478,27 +506,26 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLicenseAssignment());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_productId, arg_skuId, arg_userId).then(unittest.expectAsync1(((api.LicenseAssignment response) {
+      res
+          .update(arg_request, arg_productId, arg_skuId, arg_userId)
+          .then(unittest.expectAsync1(((api.LicenseAssignment response) {
         checkLicenseAssignment(response);
       })));
     });
-
   });
-
-
 }
-

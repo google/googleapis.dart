@@ -10,7 +10,7 @@
     },
     "basePath": "/groups/v1/groups/",
     "baseUrl": "https://www.googleapis.com/groups/v1/groups/",
-    "batchPath": "batch",
+    "batchPath": "batch/groupsmigration/v1",
     "canonicalName": "Groups Migration",
     "description": "Groups Migration Api.",
     "discoveryVersion": "v1",

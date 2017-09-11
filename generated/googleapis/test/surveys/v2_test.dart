@@ -1,12 +1,10 @@
 library googleapis.surveys.v2.test;
 
 import "dart:core" as core;
-import "dart:collection" as collection;
 import "dart:async" as async;
 import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
-import 'package:http/testing.dart' as http_testing;
 import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/surveys/v2.dart' as api;
@@ -22,7 +20,8 @@ class HttpServerMock extends http.BaseClient {
 
   async.Future<http.StreamedResponse> send(http.BaseRequest request) {
     if (_expectJson) {
-      return request.finalize()
+      return request
+          .finalize()
           .transform(convert.UTF8.decoder)
           .join('')
           .then((core.String jsonString) {
@@ -45,20 +44,20 @@ class HttpServerMock extends http.BaseClient {
   }
 }
 
-http.StreamedResponse stringResponse(
-    core.int status, core.Map<core.String, core.String> headers, core.String body) {
+http.StreamedResponse stringResponse(core.int status,
+    core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed2226() {
+buildUnnamed2213() {
   var o = new core.List<api.FieldMask>();
   o.add(buildFieldMask());
   o.add(buildFieldMask());
   return o;
 }
 
-checkUnnamed2226(core.List<api.FieldMask> o) {
+checkUnnamed2213(core.List<api.FieldMask> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFieldMask(o[0]);
   checkFieldMask(o[1]);
@@ -69,7 +68,7 @@ buildFieldMask() {
   var o = new api.FieldMask();
   buildCounterFieldMask++;
   if (buildCounterFieldMask < 3) {
-    o.fields = buildUnnamed2226();
+    o.fields = buildUnnamed2213();
     o.id = 42;
   }
   buildCounterFieldMask--;
@@ -79,20 +78,20 @@ buildFieldMask() {
 checkFieldMask(api.FieldMask o) {
   buildCounterFieldMask++;
   if (buildCounterFieldMask < 3) {
-    checkUnnamed2226(o.fields);
+    checkUnnamed2213(o.fields);
     unittest.expect(o.id, unittest.equals(42));
   }
   buildCounterFieldMask--;
 }
 
-buildUnnamed2227() {
+buildUnnamed2214() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2227(core.List<core.String> o) {
+checkUnnamed2214(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -108,7 +107,7 @@ buildMobileAppPanel() {
     o.language = "foo";
     o.mobileAppPanelId = "foo";
     o.name = "foo";
-    o.owners = buildUnnamed2227();
+    o.owners = buildUnnamed2214();
   }
   buildCounterMobileAppPanel--;
   return o;
@@ -122,19 +121,19 @@ checkMobileAppPanel(api.MobileAppPanel o) {
     unittest.expect(o.language, unittest.equals('foo'));
     unittest.expect(o.mobileAppPanelId, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed2227(o.owners);
+    checkUnnamed2214(o.owners);
   }
   buildCounterMobileAppPanel--;
 }
 
-buildUnnamed2228() {
+buildUnnamed2215() {
   var o = new core.List<api.MobileAppPanel>();
   o.add(buildMobileAppPanel());
   o.add(buildMobileAppPanel());
   return o;
 }
 
-checkUnnamed2228(core.List<api.MobileAppPanel> o) {
+checkUnnamed2215(core.List<api.MobileAppPanel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMobileAppPanel(o[0]);
   checkMobileAppPanel(o[1]);
@@ -147,7 +146,7 @@ buildMobileAppPanelsListResponse() {
   if (buildCounterMobileAppPanelsListResponse < 3) {
     o.pageInfo = buildPageInfo();
     o.requestId = "foo";
-    o.resources = buildUnnamed2228();
+    o.resources = buildUnnamed2215();
     o.tokenPagination = buildTokenPagination();
   }
   buildCounterMobileAppPanelsListResponse--;
@@ -159,7 +158,7 @@ checkMobileAppPanelsListResponse(api.MobileAppPanelsListResponse o) {
   if (buildCounterMobileAppPanelsListResponse < 3) {
     checkPageInfo(o.pageInfo);
     unittest.expect(o.requestId, unittest.equals('foo'));
-    checkUnnamed2228(o.resources);
+    checkUnnamed2215(o.resources);
     checkTokenPagination(o.tokenPagination);
   }
   buildCounterMobileAppPanelsListResponse--;
@@ -207,14 +206,14 @@ checkResultsGetRequest(api.ResultsGetRequest o) {
   buildCounterResultsGetRequest--;
 }
 
-buildUnnamed2229() {
+buildUnnamed2216() {
   var o = new core.List<api.FieldMask>();
   o.add(buildFieldMask());
   o.add(buildFieldMask());
   return o;
 }
 
-checkUnnamed2229(core.List<api.FieldMask> o) {
+checkUnnamed2216(core.List<api.FieldMask> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFieldMask(o[0]);
   checkFieldMask(o[1]);
@@ -225,7 +224,7 @@ buildResultsMask() {
   var o = new api.ResultsMask();
   buildCounterResultsMask++;
   if (buildCounterResultsMask < 3) {
-    o.fields = buildUnnamed2229();
+    o.fields = buildUnnamed2216();
     o.projection = "foo";
   }
   buildCounterResultsMask--;
@@ -235,33 +234,33 @@ buildResultsMask() {
 checkResultsMask(api.ResultsMask o) {
   buildCounterResultsMask++;
   if (buildCounterResultsMask < 3) {
-    checkUnnamed2229(o.fields);
+    checkUnnamed2216(o.fields);
     unittest.expect(o.projection, unittest.equals('foo'));
   }
   buildCounterResultsMask--;
 }
 
-buildUnnamed2230() {
+buildUnnamed2217() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2230(core.List<core.String> o) {
+checkUnnamed2217(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2231() {
+buildUnnamed2218() {
   var o = new core.List<api.SurveyQuestion>();
   o.add(buildSurveyQuestion());
   o.add(buildSurveyQuestion());
   return o;
 }
 
-checkUnnamed2231(core.List<api.SurveyQuestion> o) {
+checkUnnamed2218(core.List<api.SurveyQuestion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSurveyQuestion(o[0]);
   checkSurveyQuestion(o[1]);
@@ -276,8 +275,8 @@ buildSurvey() {
     o.cost = buildSurveyCost();
     o.customerData = "foo";
     o.description = "foo";
-    o.owners = buildUnnamed2230();
-    o.questions = buildUnnamed2231();
+    o.owners = buildUnnamed2217();
+    o.questions = buildUnnamed2218();
     o.rejectionReason = buildSurveyRejection();
     o.state = "foo";
     o.surveyUrlId = "foo";
@@ -295,8 +294,8 @@ checkSurvey(api.Survey o) {
     checkSurveyCost(o.cost);
     unittest.expect(o.customerData, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed2230(o.owners);
-    checkUnnamed2231(o.questions);
+    checkUnnamed2217(o.owners);
+    checkUnnamed2218(o.questions);
     checkSurveyRejection(o.rejectionReason);
     unittest.expect(o.state, unittest.equals('foo'));
     unittest.expect(o.surveyUrlId, unittest.equals('foo'));
@@ -306,27 +305,27 @@ checkSurvey(api.Survey o) {
   buildCounterSurvey--;
 }
 
-buildUnnamed2232() {
+buildUnnamed2219() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2232(core.List<core.String> o) {
+checkUnnamed2219(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2233() {
+buildUnnamed2220() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2233(core.List<core.String> o) {
+checkUnnamed2220(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -337,11 +336,11 @@ buildSurveyAudience() {
   var o = new api.SurveyAudience();
   buildCounterSurveyAudience++;
   if (buildCounterSurveyAudience < 3) {
-    o.ages = buildUnnamed2232();
+    o.ages = buildUnnamed2219();
     o.country = "foo";
     o.countrySubdivision = "foo";
     o.gender = "foo";
-    o.languages = buildUnnamed2233();
+    o.languages = buildUnnamed2220();
     o.mobileAppPanelId = "foo";
     o.populationSource = "foo";
   }
@@ -352,11 +351,11 @@ buildSurveyAudience() {
 checkSurveyAudience(api.SurveyAudience o) {
   buildCounterSurveyAudience++;
   if (buildCounterSurveyAudience < 3) {
-    checkUnnamed2232(o.ages);
+    checkUnnamed2219(o.ages);
     unittest.expect(o.country, unittest.equals('foo'));
     unittest.expect(o.countrySubdivision, unittest.equals('foo'));
     unittest.expect(o.gender, unittest.equals('foo'));
-    checkUnnamed2233(o.languages);
+    checkUnnamed2220(o.languages);
     unittest.expect(o.mobileAppPanelId, unittest.equals('foo'));
     unittest.expect(o.populationSource, unittest.equals('foo'));
   }
@@ -388,53 +387,53 @@ checkSurveyCost(api.SurveyCost o) {
   buildCounterSurveyCost--;
 }
 
-buildUnnamed2234() {
+buildUnnamed2221() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2234(core.List<core.String> o) {
+checkUnnamed2221(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2235() {
+buildUnnamed2222() {
   var o = new core.List<api.SurveyQuestionImage>();
   o.add(buildSurveyQuestionImage());
   o.add(buildSurveyQuestionImage());
   return o;
 }
 
-checkUnnamed2235(core.List<api.SurveyQuestionImage> o) {
+checkUnnamed2222(core.List<api.SurveyQuestionImage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSurveyQuestionImage(o[0]);
   checkSurveyQuestionImage(o[1]);
 }
 
-buildUnnamed2236() {
+buildUnnamed2223() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2236(core.List<core.String> o) {
+checkUnnamed2223(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2237() {
+buildUnnamed2224() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2237(core.List<core.String> o) {
+checkUnnamed2224(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -446,20 +445,20 @@ buildSurveyQuestion() {
   buildCounterSurveyQuestion++;
   if (buildCounterSurveyQuestion < 3) {
     o.answerOrder = "foo";
-    o.answers = buildUnnamed2234();
+    o.answers = buildUnnamed2221();
     o.hasOther = true;
     o.highValueLabel = "foo";
-    o.images = buildUnnamed2235();
+    o.images = buildUnnamed2222();
     o.lastAnswerPositionPinned = true;
     o.lowValueLabel = "foo";
     o.mustPickSuggestion = true;
     o.numStars = "foo";
     o.openTextPlaceholder = "foo";
-    o.openTextSuggestions = buildUnnamed2236();
+    o.openTextSuggestions = buildUnnamed2223();
     o.question = "foo";
     o.sentimentText = "foo";
     o.singleLineResponse = true;
-    o.thresholdAnswers = buildUnnamed2237();
+    o.thresholdAnswers = buildUnnamed2224();
     o.type = "foo";
     o.unitOfMeasurementLabel = "foo";
     o.videoId = "foo";
@@ -472,20 +471,20 @@ checkSurveyQuestion(api.SurveyQuestion o) {
   buildCounterSurveyQuestion++;
   if (buildCounterSurveyQuestion < 3) {
     unittest.expect(o.answerOrder, unittest.equals('foo'));
-    checkUnnamed2234(o.answers);
+    checkUnnamed2221(o.answers);
     unittest.expect(o.hasOther, unittest.isTrue);
     unittest.expect(o.highValueLabel, unittest.equals('foo'));
-    checkUnnamed2235(o.images);
+    checkUnnamed2222(o.images);
     unittest.expect(o.lastAnswerPositionPinned, unittest.isTrue);
     unittest.expect(o.lowValueLabel, unittest.equals('foo'));
     unittest.expect(o.mustPickSuggestion, unittest.isTrue);
     unittest.expect(o.numStars, unittest.equals('foo'));
     unittest.expect(o.openTextPlaceholder, unittest.equals('foo'));
-    checkUnnamed2236(o.openTextSuggestions);
+    checkUnnamed2223(o.openTextSuggestions);
     unittest.expect(o.question, unittest.equals('foo'));
     unittest.expect(o.sentimentText, unittest.equals('foo'));
     unittest.expect(o.singleLineResponse, unittest.isTrue);
-    checkUnnamed2237(o.thresholdAnswers);
+    checkUnnamed2224(o.thresholdAnswers);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.unitOfMeasurementLabel, unittest.equals('foo'));
     unittest.expect(o.videoId, unittest.equals('foo'));
@@ -577,14 +576,14 @@ checkSurveysDeleteResponse(api.SurveysDeleteResponse o) {
   buildCounterSurveysDeleteResponse--;
 }
 
-buildUnnamed2238() {
+buildUnnamed2225() {
   var o = new core.List<api.Survey>();
   o.add(buildSurvey());
   o.add(buildSurvey());
   return o;
 }
 
-checkUnnamed2238(core.List<api.Survey> o) {
+checkUnnamed2225(core.List<api.Survey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSurvey(o[0]);
   checkSurvey(o[1]);
@@ -597,7 +596,7 @@ buildSurveysListResponse() {
   if (buildCounterSurveysListResponse < 3) {
     o.pageInfo = buildPageInfo();
     o.requestId = "foo";
-    o.resources = buildUnnamed2238();
+    o.resources = buildUnnamed2225();
     o.tokenPagination = buildTokenPagination();
   }
   buildCounterSurveysListResponse--;
@@ -609,7 +608,7 @@ checkSurveysListResponse(api.SurveysListResponse o) {
   if (buildCounterSurveysListResponse < 3) {
     checkPageInfo(o.pageInfo);
     unittest.expect(o.requestId, unittest.equals('foo'));
-    checkUnnamed2238(o.resources);
+    checkUnnamed2225(o.resources);
     checkTokenPagination(o.tokenPagination);
   }
   buildCounterSurveysListResponse--;
@@ -693,7 +692,6 @@ checkTokenPagination(api.TokenPagination o) {
   buildCounterTokenPagination--;
 }
 
-
 main() {
   unittest.group("obj-schema-FieldMask", () {
     unittest.test("to-json--from-json", () {
@@ -703,7 +701,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-MobileAppPanel", () {
     unittest.test("to-json--from-json", () {
       var o = buildMobileAppPanel();
@@ -711,7 +708,6 @@ main() {
       checkMobileAppPanel(od);
     });
   });
-
 
   unittest.group("obj-schema-MobileAppPanelsListResponse", () {
     unittest.test("to-json--from-json", () {
@@ -721,7 +717,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-PageInfo", () {
     unittest.test("to-json--from-json", () {
       var o = buildPageInfo();
@@ -729,7 +724,6 @@ main() {
       checkPageInfo(od);
     });
   });
-
 
   unittest.group("obj-schema-ResultsGetRequest", () {
     unittest.test("to-json--from-json", () {
@@ -739,7 +733,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ResultsMask", () {
     unittest.test("to-json--from-json", () {
       var o = buildResultsMask();
@@ -747,7 +740,6 @@ main() {
       checkResultsMask(od);
     });
   });
-
 
   unittest.group("obj-schema-Survey", () {
     unittest.test("to-json--from-json", () {
@@ -757,7 +749,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-SurveyAudience", () {
     unittest.test("to-json--from-json", () {
       var o = buildSurveyAudience();
@@ -765,7 +756,6 @@ main() {
       checkSurveyAudience(od);
     });
   });
-
 
   unittest.group("obj-schema-SurveyCost", () {
     unittest.test("to-json--from-json", () {
@@ -775,7 +765,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-SurveyQuestion", () {
     unittest.test("to-json--from-json", () {
       var o = buildSurveyQuestion();
@@ -783,7 +772,6 @@ main() {
       checkSurveyQuestion(od);
     });
   });
-
 
   unittest.group("obj-schema-SurveyQuestionImage", () {
     unittest.test("to-json--from-json", () {
@@ -793,7 +781,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-SurveyRejection", () {
     unittest.test("to-json--from-json", () {
       var o = buildSurveyRejection();
@@ -801,7 +788,6 @@ main() {
       checkSurveyRejection(od);
     });
   });
-
 
   unittest.group("obj-schema-SurveyResults", () {
     unittest.test("to-json--from-json", () {
@@ -811,7 +797,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-SurveysDeleteResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildSurveysDeleteResponse();
@@ -819,7 +804,6 @@ main() {
       checkSurveysDeleteResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-SurveysListResponse", () {
     unittest.test("to-json--from-json", () {
@@ -829,7 +813,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-SurveysStartRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildSurveysStartRequest();
@@ -837,7 +820,6 @@ main() {
       checkSurveysStartRequest(od);
     });
   });
-
 
   unittest.group("obj-schema-SurveysStartResponse", () {
     unittest.test("to-json--from-json", () {
@@ -847,7 +829,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-SurveysStopResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildSurveysStopResponse();
@@ -855,7 +836,6 @@ main() {
       checkSurveysStopResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-TokenPagination", () {
     unittest.test("to-json--from-json", () {
@@ -865,23 +845,25 @@ main() {
     });
   });
 
-
   unittest.group("resource-MobileapppanelsResourceApi", () {
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.MobileapppanelsResourceApi res = new api.SurveysApi(mock).mobileapppanels;
+      api.MobileapppanelsResourceApi res =
+          new api.SurveysApi(mock).mobileapppanels;
       var arg_panelId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("surveys/v2/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("surveys/v2/"));
         pathOffset += 11;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("mobileAppPanels/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("mobileAppPanels/"));
         pathOffset += 16;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -897,29 +879,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildMobileAppPanel());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_panelId).then(unittest.expectAsync1(((api.MobileAppPanel response) {
+      res
+          .get(arg_panelId)
+          .then(unittest.expectAsync1(((api.MobileAppPanel response) {
         checkMobileAppPanel(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.MobileapppanelsResourceApi res = new api.SurveysApi(mock).mobileapppanels;
+      api.MobileapppanelsResourceApi res =
+          new api.SurveysApi(mock).mobileapppanels;
       var arg_maxResults = 42;
       var arg_startIndex = 42;
       var arg_token = "foo";
@@ -928,11 +913,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("surveys/v2/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("surveys/v2/"));
         pathOffset += 11;
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("mobileAppPanels"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 15),
+            unittest.equals("mobileAppPanels"));
         pathOffset += 15;
 
         var query = (req.url).query;
@@ -945,32 +933,41 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(core.int.parse(queryMap["startIndex"].first), unittest.equals(arg_startIndex));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(core.int.parse(queryMap["startIndex"].first),
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["token"].first, unittest.equals(arg_token));
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildMobileAppPanelsListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(maxResults: arg_maxResults, startIndex: arg_startIndex, token: arg_token).then(unittest.expectAsync1(((api.MobileAppPanelsListResponse response) {
+      res
+          .list(
+              maxResults: arg_maxResults,
+              startIndex: arg_startIndex,
+              token: arg_token)
+          .then(unittest
+              .expectAsync1(((api.MobileAppPanelsListResponse response) {
         checkMobileAppPanelsListResponse(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
-      api.MobileapppanelsResourceApi res = new api.SurveysApi(mock).mobileapppanels;
+      api.MobileapppanelsResourceApi res =
+          new api.SurveysApi(mock).mobileapppanels;
       var arg_request = buildMobileAppPanel();
       var arg_panelId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -981,11 +978,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("surveys/v2/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("surveys/v2/"));
         pathOffset += 11;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("mobileAppPanels/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("mobileAppPanels/"));
         pathOffset += 16;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -1001,27 +1001,28 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildMobileAppPanel());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_panelId).then(unittest.expectAsync1(((api.MobileAppPanel response) {
+      res
+          .update(arg_request, arg_panelId)
+          .then(unittest.expectAsync1(((api.MobileAppPanel response) {
         checkMobileAppPanel(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-ResultsResourceApi", () {
     unittest.test("method--get", () {
@@ -1040,18 +1041,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("surveys/v2/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("surveys/v2/"));
         pathOffset += 11;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("surveys/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("surveys/"));
         pathOffset += 8;
         index = path.indexOf("/results", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_surveyUrlId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("/results"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/results"));
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -1064,31 +1070,31 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSurveyResults());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_request, arg_surveyUrlId).then(unittest.expectAsync1(((api.SurveyResults response) {
+      res
+          .get(arg_request, arg_surveyUrlId)
+          .then(unittest.expectAsync1(((api.SurveyResults response) {
         checkSurveyResults(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-SurveysResourceApi", () {
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
       api.SurveysResourceApi res = new api.SurveysApi(mock).surveys;
       var arg_surveyUrlId = "foo";
@@ -1097,11 +1103,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("surveys/v2/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("surveys/v2/"));
         pathOffset += 11;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("surveys/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("surveys/"));
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -1117,27 +1126,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSurveysDeleteResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_surveyUrlId).then(unittest.expectAsync1(((api.SurveysDeleteResponse response) {
+      res
+          .delete(arg_surveyUrlId)
+          .then(unittest.expectAsync1(((api.SurveysDeleteResponse response) {
         checkSurveysDeleteResponse(response);
       })));
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
       api.SurveysResourceApi res = new api.SurveysApi(mock).surveys;
       var arg_surveyUrlId = "foo";
@@ -1146,11 +1157,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("surveys/v2/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("surveys/v2/"));
         pathOffset += 11;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("surveys/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("surveys/"));
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -1166,27 +1180,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSurvey());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_surveyUrlId).then(unittest.expectAsync1(((api.Survey response) {
+      res
+          .get(arg_surveyUrlId)
+          .then(unittest.expectAsync1(((api.Survey response) {
         checkSurvey(response);
       })));
     });
 
     unittest.test("method--insert", () {
-
       var mock = new HttpServerMock();
       api.SurveysResourceApi res = new api.SurveysApi(mock).surveys;
       var arg_request = buildSurvey();
@@ -1198,11 +1214,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("surveys/v2/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("surveys/v2/"));
         pathOffset += 11;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("surveys"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("surveys"));
         pathOffset += 7;
 
         var query = (req.url).query;
@@ -1215,27 +1234,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSurvey());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request).then(unittest.expectAsync1(((api.Survey response) {
+      res
+          .insert(arg_request)
+          .then(unittest.expectAsync1(((api.Survey response) {
         checkSurvey(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
       api.SurveysResourceApi res = new api.SurveysApi(mock).surveys;
       var arg_maxResults = 42;
@@ -1246,11 +1267,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("surveys/v2/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("surveys/v2/"));
         pathOffset += 11;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("surveys"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("surveys"));
         pathOffset += 7;
 
         var query = (req.url).query;
@@ -1263,30 +1287,37 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(core.int.parse(queryMap["startIndex"].first), unittest.equals(arg_startIndex));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(core.int.parse(queryMap["startIndex"].first),
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["token"].first, unittest.equals(arg_token));
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSurveysListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(maxResults: arg_maxResults, startIndex: arg_startIndex, token: arg_token).then(unittest.expectAsync1(((api.SurveysListResponse response) {
+      res
+          .list(
+              maxResults: arg_maxResults,
+              startIndex: arg_startIndex,
+              token: arg_token)
+          .then(unittest.expectAsync1(((api.SurveysListResponse response) {
         checkSurveysListResponse(response);
       })));
     });
 
     unittest.test("method--start", () {
-
       var mock = new HttpServerMock();
       api.SurveysResourceApi res = new api.SurveysApi(mock).surveys;
       var arg_request = buildSurveysStartRequest();
@@ -1299,18 +1330,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("surveys/v2/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("surveys/v2/"));
         pathOffset += 11;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("surveys/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("surveys/"));
         pathOffset += 8;
         index = path.indexOf("/start", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_resourceId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("/start"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("/start"));
         pathOffset += 6;
 
         var query = (req.url).query;
@@ -1323,27 +1359,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSurveysStartResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.start(arg_request, arg_resourceId).then(unittest.expectAsync1(((api.SurveysStartResponse response) {
+      res
+          .start(arg_request, arg_resourceId)
+          .then(unittest.expectAsync1(((api.SurveysStartResponse response) {
         checkSurveysStartResponse(response);
       })));
     });
 
     unittest.test("method--stop", () {
-
       var mock = new HttpServerMock();
       api.SurveysResourceApi res = new api.SurveysApi(mock).surveys;
       var arg_resourceId = "foo";
@@ -1352,18 +1390,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("surveys/v2/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("surveys/v2/"));
         pathOffset += 11;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("surveys/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("surveys/"));
         pathOffset += 8;
         index = path.indexOf("/stop", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_resourceId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 5), unittest.equals("/stop"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 5),
+            unittest.equals("/stop"));
         pathOffset += 5;
 
         var query = (req.url).query;
@@ -1376,27 +1419,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSurveysStopResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.stop(arg_resourceId).then(unittest.expectAsync1(((api.SurveysStopResponse response) {
+      res
+          .stop(arg_resourceId)
+          .then(unittest.expectAsync1(((api.SurveysStopResponse response) {
         checkSurveysStopResponse(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
       api.SurveysResourceApi res = new api.SurveysApi(mock).surveys;
       var arg_request = buildSurvey();
@@ -1409,11 +1454,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("surveys/v2/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("surveys/v2/"));
         pathOffset += 11;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("surveys/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("surveys/"));
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -1429,27 +1477,26 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSurvey());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_surveyUrlId).then(unittest.expectAsync1(((api.Survey response) {
+      res
+          .update(arg_request, arg_surveyUrlId)
+          .then(unittest.expectAsync1(((api.Survey response) {
         checkSurvey(response);
       })));
     });
-
   });
-
-
 }
-

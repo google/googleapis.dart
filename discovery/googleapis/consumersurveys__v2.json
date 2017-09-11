@@ -16,7 +16,7 @@
     },
     "basePath": "/consumersurveys/v2/",
     "baseUrl": "https://www.googleapis.com/consumersurveys/v2/",
-    "batchPath": "batch",
+    "batchPath": "batch/consumersurveys/v2",
     "canonicalName": "Consumer Surveys",
     "description": "Creates and conducts surveys, lists the surveys that an authenticated user owns, and retrieves survey results and information about specified surveys.",
     "discoveryVersion": "v1",

@@ -9,24 +9,25 @@ import 'dart:convert' as convert;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
-    ApiRequestError, DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
+    show ApiRequestError, DetailedApiRequestError;
 
 const core.String USER_AGENT = 'dart-api-client calendar/v3';
 
-/** Manipulates events and other calendar data. */
+/// Manipulates events and other calendar data.
 class CalendarApi {
-  /** Manage your calendars */
+  /// Manage your calendars
   static const CalendarScope = "https://www.googleapis.com/auth/calendar";
 
-  /** View your calendars */
-  static const CalendarReadonlyScope = "https://www.googleapis.com/auth/calendar.readonly";
-
+  /// View your calendars
+  static const CalendarReadonlyScope =
+      "https://www.googleapis.com/auth/calendar.readonly";
 
   final commons.ApiRequester _requester;
 
   AclResourceApi get acl => new AclResourceApi(_requester);
-  CalendarListResourceApi get calendarList => new CalendarListResourceApi(_requester);
+  CalendarListResourceApi get calendarList =>
+      new CalendarListResourceApi(_requester);
   CalendarsResourceApi get calendars => new CalendarsResourceApi(_requester);
   ChannelsResourceApi get channels => new ChannelsResourceApi(_requester);
   ColorsResourceApi get colors => new ColorsResourceApi(_requester);
@@ -34,34 +35,33 @@ class CalendarApi {
   FreebusyResourceApi get freebusy => new FreebusyResourceApi(_requester);
   SettingsResourceApi get settings => new SettingsResourceApi(_requester);
 
-  CalendarApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "calendar/v3/"}) :
-      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+  CalendarApi(http.Client client,
+      {core.String rootUrl: "https://www.googleapis.com/",
+      core.String servicePath: "calendar/v3/"})
+      : _requester =
+            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
-
 
 class AclResourceApi {
   final commons.ApiRequester _requester;
 
-  AclResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  AclResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Deletes an access control rule.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * [ruleId] - ACL rule identifier.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Deletes an access control rule.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// [ruleId] - ACL rule identifier.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future delete(core.String calendarId, core.String ruleId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -79,37 +79,37 @@ class AclResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl/' + commons.Escaper.ecapeVariable('$ruleId');
+    _url = 'calendars/' +
+        commons.Escaper.ecapeVariable('$calendarId') +
+        '/acl/' +
+        commons.Escaper.ecapeVariable('$ruleId');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Returns an access control rule.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * [ruleId] - ACL rule identifier.
-   *
-   * Completes with a [AclRule].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Returns an access control rule.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// [ruleId] - ACL rule identifier.
+  ///
+  /// Completes with a [AclRule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<AclRule> get(core.String calendarId, core.String ruleId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -125,37 +125,37 @@ class AclResourceApi {
       throw new core.ArgumentError("Parameter ruleId is required.");
     }
 
-    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl/' + commons.Escaper.ecapeVariable('$ruleId');
+    _url = 'calendars/' +
+        commons.Escaper.ecapeVariable('$calendarId') +
+        '/acl/' +
+        commons.Escaper.ecapeVariable('$ruleId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new AclRule.fromJson(data));
   }
 
-  /**
-   * Creates an access control rule.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * Completes with a [AclRule].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Creates an access control rule.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// Completes with a [AclRule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<AclRule> insert(AclRule request, core.String calendarId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -173,55 +173,56 @@ class AclResourceApi {
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new AclRule.fromJson(data));
   }
 
-  /**
-   * Returns the rules in the access control list for the calendar.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * [maxResults] - Maximum number of entries returned on one result page. By
-   * default the value is 100 entries. The page size can never be larger than
-   * 250 entries. Optional.
-   *
-   * [pageToken] - Token specifying which result page to return. Optional.
-   *
-   * [showDeleted] - Whether to include deleted ACLs in the result. Deleted ACLs
-   * are represented by role equal to "none". Deleted ACLs will always be
-   * included if syncToken is provided. Optional. The default is False.
-   *
-   * [syncToken] - Token obtained from the nextSyncToken field returned on the
-   * last page of results from the previous list request. It makes the result of
-   * this list request contain only entries that have changed since then. All
-   * entries deleted since the previous list request will always be in the
-   * result set and it is not allowed to set showDeleted to False.
-   * If the syncToken expires, the server will respond with a 410 GONE response
-   * code and the client should clear its storage and perform a full
-   * synchronization without any syncToken.
-   * Learn more about incremental synchronization.
-   * Optional. The default is to return all entries.
-   *
-   * Completes with a [Acl].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Acl> list(core.String calendarId, {core.int maxResults, core.String pageToken, core.bool showDeleted, core.String syncToken}) {
+  /// Returns the rules in the access control list for the calendar.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// [maxResults] - Maximum number of entries returned on one result page. By
+  /// default the value is 100 entries. The page size can never be larger than
+  /// 250 entries. Optional.
+  ///
+  /// [pageToken] - Token specifying which result page to return. Optional.
+  ///
+  /// [showDeleted] - Whether to include deleted ACLs in the result. Deleted
+  /// ACLs are represented by role equal to "none". Deleted ACLs will always be
+  /// included if syncToken is provided. Optional. The default is False.
+  ///
+  /// [syncToken] - Token obtained from the nextSyncToken field returned on the
+  /// last page of results from the previous list request. It makes the result
+  /// of this list request contain only entries that have changed since then.
+  /// All entries deleted since the previous list request will always be in the
+  /// result set and it is not allowed to set showDeleted to False.
+  /// If the syncToken expires, the server will respond with a 410 GONE response
+  /// code and the client should clear its storage and perform a full
+  /// synchronization without any syncToken.
+  /// Learn more about incremental synchronization.
+  /// Optional. The default is to return all entries.
+  ///
+  /// Completes with a [Acl].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Acl> list(core.String calendarId,
+      {core.int maxResults,
+      core.String pageToken,
+      core.bool showDeleted,
+      core.String syncToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -247,38 +248,36 @@ class AclResourceApi {
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Acl.fromJson(data));
   }
 
-  /**
-   * Updates an access control rule. This method supports patch semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * [ruleId] - ACL rule identifier.
-   *
-   * Completes with a [AclRule].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<AclRule> patch(AclRule request, core.String calendarId, core.String ruleId) {
+  /// Updates an access control rule. This method supports patch semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// [ruleId] - ACL rule identifier.
+  ///
+  /// Completes with a [AclRule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AclRule> patch(
+      AclRule request, core.String calendarId, core.String ruleId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -296,40 +295,41 @@ class AclResourceApi {
       throw new core.ArgumentError("Parameter ruleId is required.");
     }
 
-    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl/' + commons.Escaper.ecapeVariable('$ruleId');
+    _url = 'calendars/' +
+        commons.Escaper.ecapeVariable('$calendarId') +
+        '/acl/' +
+        commons.Escaper.ecapeVariable('$ruleId');
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new AclRule.fromJson(data));
   }
 
-  /**
-   * Updates an access control rule.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * [ruleId] - ACL rule identifier.
-   *
-   * Completes with a [AclRule].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<AclRule> update(AclRule request, core.String calendarId, core.String ruleId) {
+  /// Updates an access control rule.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// [ruleId] - ACL rule identifier.
+  ///
+  /// Completes with a [AclRule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AclRule> update(
+      AclRule request, core.String calendarId, core.String ruleId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -347,59 +347,63 @@ class AclResourceApi {
       throw new core.ArgumentError("Parameter ruleId is required.");
     }
 
-    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl/' + commons.Escaper.ecapeVariable('$ruleId');
+    _url = 'calendars/' +
+        commons.Escaper.ecapeVariable('$calendarId') +
+        '/acl/' +
+        commons.Escaper.ecapeVariable('$ruleId');
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new AclRule.fromJson(data));
   }
 
-  /**
-   * Watch for changes to ACL resources.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * [maxResults] - Maximum number of entries returned on one result page. By
-   * default the value is 100 entries. The page size can never be larger than
-   * 250 entries. Optional.
-   *
-   * [pageToken] - Token specifying which result page to return. Optional.
-   *
-   * [showDeleted] - Whether to include deleted ACLs in the result. Deleted ACLs
-   * are represented by role equal to "none". Deleted ACLs will always be
-   * included if syncToken is provided. Optional. The default is False.
-   *
-   * [syncToken] - Token obtained from the nextSyncToken field returned on the
-   * last page of results from the previous list request. It makes the result of
-   * this list request contain only entries that have changed since then. All
-   * entries deleted since the previous list request will always be in the
-   * result set and it is not allowed to set showDeleted to False.
-   * If the syncToken expires, the server will respond with a 410 GONE response
-   * code and the client should clear its storage and perform a full
-   * synchronization without any syncToken.
-   * Learn more about incremental synchronization.
-   * Optional. The default is to return all entries.
-   *
-   * Completes with a [Channel].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Channel> watch(Channel request, core.String calendarId, {core.int maxResults, core.String pageToken, core.bool showDeleted, core.String syncToken}) {
+  /// Watch for changes to ACL resources.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// [maxResults] - Maximum number of entries returned on one result page. By
+  /// default the value is 100 entries. The page size can never be larger than
+  /// 250 entries. Optional.
+  ///
+  /// [pageToken] - Token specifying which result page to return. Optional.
+  ///
+  /// [showDeleted] - Whether to include deleted ACLs in the result. Deleted
+  /// ACLs are represented by role equal to "none". Deleted ACLs will always be
+  /// included if syncToken is provided. Optional. The default is False.
+  ///
+  /// [syncToken] - Token obtained from the nextSyncToken field returned on the
+  /// last page of results from the previous list request. It makes the result
+  /// of this list request contain only entries that have changed since then.
+  /// All entries deleted since the previous list request will always be in the
+  /// result set and it is not allowed to set showDeleted to False.
+  /// If the syncToken expires, the server will respond with a 410 GONE response
+  /// code and the client should clear its storage and perform a full
+  /// synchronization without any syncToken.
+  /// Learn more about incremental synchronization.
+  /// Optional. The default is to return all entries.
+  ///
+  /// Completes with a [Channel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Channel> watch(Channel request, core.String calendarId,
+      {core.int maxResults,
+      core.String pageToken,
+      core.bool showDeleted,
+      core.String syncToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -426,42 +430,38 @@ class AclResourceApi {
       _queryParams["syncToken"] = [syncToken];
     }
 
-    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl/watch';
+    _url = 'calendars/' +
+        commons.Escaper.ecapeVariable('$calendarId') +
+        '/acl/watch';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Channel.fromJson(data));
   }
-
 }
-
 
 class CalendarListResourceApi {
   final commons.ApiRequester _requester;
 
-  CalendarListResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  CalendarListResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Deletes an entry on the user's calendar list.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Deletes an entry on the user's calendar list.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future delete(core.String calendarId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -476,35 +476,33 @@ class CalendarListResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
+    _url =
+        'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Returns an entry on the user's calendar list.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * Completes with a [CalendarListEntry].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Returns an entry on the user's calendar list.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// Completes with a [CalendarListEntry].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<CalendarListEntry> get(core.String calendarId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -517,39 +515,38 @@ class CalendarListResourceApi {
       throw new core.ArgumentError("Parameter calendarId is required.");
     }
 
-    _url = 'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
+    _url =
+        'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new CalendarListEntry.fromJson(data));
   }
 
-  /**
-   * Adds an entry to the user's calendar list.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [colorRgbFormat] - Whether to use the foregroundColor and backgroundColor
-   * fields to write the calendar colors (RGB). If this feature is used, the
-   * index-based colorId field will be set to the best matching option
-   * automatically. Optional. The default is False.
-   *
-   * Completes with a [CalendarListEntry].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<CalendarListEntry> insert(CalendarListEntry request, {core.bool colorRgbFormat}) {
+  /// Adds an entry to the user's calendar list.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [colorRgbFormat] - Whether to use the foregroundColor and backgroundColor
+  /// fields to write the calendar colors (RGB). If this feature is used, the
+  /// index-based colorId field will be set to the best matching option
+  /// automatically. Optional. The default is False.
+  ///
+  /// Completes with a [CalendarListEntry].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CalendarListEntry> insert(CalendarListEntry request,
+      {core.bool colorRgbFormat}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -566,65 +563,68 @@ class CalendarListResourceApi {
 
     _url = 'users/me/calendarList';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new CalendarListEntry.fromJson(data));
   }
 
-  /**
-   * Returns entries on the user's calendar list.
-   *
-   * Request parameters:
-   *
-   * [maxResults] - Maximum number of entries returned on one result page. By
-   * default the value is 100 entries. The page size can never be larger than
-   * 250 entries. Optional.
-   *
-   * [minAccessRole] - The minimum access role for the user in the returned
-   * entries. Optional. The default is no restriction.
-   * Possible string values are:
-   * - "freeBusyReader" : The user can read free/busy information.
-   * - "owner" : The user can read and modify events and access control lists.
-   * - "reader" : The user can read events that are not private.
-   * - "writer" : The user can read and modify events.
-   *
-   * [pageToken] - Token specifying which result page to return. Optional.
-   *
-   * [showDeleted] - Whether to include deleted calendar list entries in the
-   * result. Optional. The default is False.
-   *
-   * [showHidden] - Whether to show hidden entries. Optional. The default is
-   * False.
-   *
-   * [syncToken] - Token obtained from the nextSyncToken field returned on the
-   * last page of results from the previous list request. It makes the result of
-   * this list request contain only entries that have changed since then. If
-   * only read-only fields such as calendar properties or ACLs have changed, the
-   * entry won't be returned. All entries deleted and hidden since the previous
-   * list request will always be in the result set and it is not allowed to set
-   * showDeleted neither showHidden to False.
-   * To ensure client state consistency minAccessRole query parameter cannot be
-   * specified together with nextSyncToken.
-   * If the syncToken expires, the server will respond with a 410 GONE response
-   * code and the client should clear its storage and perform a full
-   * synchronization without any syncToken.
-   * Learn more about incremental synchronization.
-   * Optional. The default is to return all entries.
-   *
-   * Completes with a [CalendarList].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<CalendarList> list({core.int maxResults, core.String minAccessRole, core.String pageToken, core.bool showDeleted, core.bool showHidden, core.String syncToken}) {
+  /// Returns entries on the user's calendar list.
+  ///
+  /// Request parameters:
+  ///
+  /// [maxResults] - Maximum number of entries returned on one result page. By
+  /// default the value is 100 entries. The page size can never be larger than
+  /// 250 entries. Optional.
+  ///
+  /// [minAccessRole] - The minimum access role for the user in the returned
+  /// entries. Optional. The default is no restriction.
+  /// Possible string values are:
+  /// - "freeBusyReader" : The user can read free/busy information.
+  /// - "owner" : The user can read and modify events and access control lists.
+  /// - "reader" : The user can read events that are not private.
+  /// - "writer" : The user can read and modify events.
+  ///
+  /// [pageToken] - Token specifying which result page to return. Optional.
+  ///
+  /// [showDeleted] - Whether to include deleted calendar list entries in the
+  /// result. Optional. The default is False.
+  ///
+  /// [showHidden] - Whether to show hidden entries. Optional. The default is
+  /// False.
+  ///
+  /// [syncToken] - Token obtained from the nextSyncToken field returned on the
+  /// last page of results from the previous list request. It makes the result
+  /// of this list request contain only entries that have changed since then. If
+  /// only read-only fields such as calendar properties or ACLs have changed,
+  /// the entry won't be returned. All entries deleted and hidden since the
+  /// previous list request will always be in the result set and it is not
+  /// allowed to set showDeleted neither showHidden to False.
+  /// To ensure client state consistency minAccessRole query parameter cannot be
+  /// specified together with nextSyncToken.
+  /// If the syncToken expires, the server will respond with a 410 GONE response
+  /// code and the client should clear its storage and perform a full
+  /// synchronization without any syncToken.
+  /// Learn more about incremental synchronization.
+  /// Optional. The default is to return all entries.
+  ///
+  /// Completes with a [CalendarList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CalendarList> list(
+      {core.int maxResults,
+      core.String minAccessRole,
+      core.String pageToken,
+      core.bool showDeleted,
+      core.bool showHidden,
+      core.String syncToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -653,42 +653,41 @@ class CalendarListResourceApi {
 
     _url = 'users/me/calendarList';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new CalendarList.fromJson(data));
   }
 
-  /**
-   * Updates an entry on the user's calendar list. This method supports patch
-   * semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * [colorRgbFormat] - Whether to use the foregroundColor and backgroundColor
-   * fields to write the calendar colors (RGB). If this feature is used, the
-   * index-based colorId field will be set to the best matching option
-   * automatically. Optional. The default is False.
-   *
-   * Completes with a [CalendarListEntry].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<CalendarListEntry> patch(CalendarListEntry request, core.String calendarId, {core.bool colorRgbFormat}) {
+  /// Updates an entry on the user's calendar list. This method supports patch
+  /// semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// [colorRgbFormat] - Whether to use the foregroundColor and backgroundColor
+  /// fields to write the calendar colors (RGB). If this feature is used, the
+  /// index-based colorId field will be set to the best matching option
+  /// automatically. Optional. The default is False.
+  ///
+  /// Completes with a [CalendarListEntry].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CalendarListEntry> patch(
+      CalendarListEntry request, core.String calendarId,
+      {core.bool colorRgbFormat}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -706,43 +705,43 @@ class CalendarListResourceApi {
       _queryParams["colorRgbFormat"] = ["${colorRgbFormat}"];
     }
 
-    _url = 'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
+    _url =
+        'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new CalendarListEntry.fromJson(data));
   }
 
-  /**
-   * Updates an entry on the user's calendar list.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * [colorRgbFormat] - Whether to use the foregroundColor and backgroundColor
-   * fields to write the calendar colors (RGB). If this feature is used, the
-   * index-based colorId field will be set to the best matching option
-   * automatically. Optional. The default is False.
-   *
-   * Completes with a [CalendarListEntry].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<CalendarListEntry> update(CalendarListEntry request, core.String calendarId, {core.bool colorRgbFormat}) {
+  /// Updates an entry on the user's calendar list.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// [colorRgbFormat] - Whether to use the foregroundColor and backgroundColor
+  /// fields to write the calendar colors (RGB). If this feature is used, the
+  /// index-based colorId field will be set to the best matching option
+  /// automatically. Optional. The default is False.
+  ///
+  /// Completes with a [CalendarListEntry].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CalendarListEntry> update(
+      CalendarListEntry request, core.String calendarId,
+      {core.bool colorRgbFormat}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -760,69 +759,73 @@ class CalendarListResourceApi {
       _queryParams["colorRgbFormat"] = ["${colorRgbFormat}"];
     }
 
-    _url = 'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
+    _url =
+        'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new CalendarListEntry.fromJson(data));
   }
 
-  /**
-   * Watch for changes to CalendarList resources.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [maxResults] - Maximum number of entries returned on one result page. By
-   * default the value is 100 entries. The page size can never be larger than
-   * 250 entries. Optional.
-   *
-   * [minAccessRole] - The minimum access role for the user in the returned
-   * entries. Optional. The default is no restriction.
-   * Possible string values are:
-   * - "freeBusyReader" : The user can read free/busy information.
-   * - "owner" : The user can read and modify events and access control lists.
-   * - "reader" : The user can read events that are not private.
-   * - "writer" : The user can read and modify events.
-   *
-   * [pageToken] - Token specifying which result page to return. Optional.
-   *
-   * [showDeleted] - Whether to include deleted calendar list entries in the
-   * result. Optional. The default is False.
-   *
-   * [showHidden] - Whether to show hidden entries. Optional. The default is
-   * False.
-   *
-   * [syncToken] - Token obtained from the nextSyncToken field returned on the
-   * last page of results from the previous list request. It makes the result of
-   * this list request contain only entries that have changed since then. If
-   * only read-only fields such as calendar properties or ACLs have changed, the
-   * entry won't be returned. All entries deleted and hidden since the previous
-   * list request will always be in the result set and it is not allowed to set
-   * showDeleted neither showHidden to False.
-   * To ensure client state consistency minAccessRole query parameter cannot be
-   * specified together with nextSyncToken.
-   * If the syncToken expires, the server will respond with a 410 GONE response
-   * code and the client should clear its storage and perform a full
-   * synchronization without any syncToken.
-   * Learn more about incremental synchronization.
-   * Optional. The default is to return all entries.
-   *
-   * Completes with a [Channel].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Channel> watch(Channel request, {core.int maxResults, core.String minAccessRole, core.String pageToken, core.bool showDeleted, core.bool showHidden, core.String syncToken}) {
+  /// Watch for changes to CalendarList resources.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [maxResults] - Maximum number of entries returned on one result page. By
+  /// default the value is 100 entries. The page size can never be larger than
+  /// 250 entries. Optional.
+  ///
+  /// [minAccessRole] - The minimum access role for the user in the returned
+  /// entries. Optional. The default is no restriction.
+  /// Possible string values are:
+  /// - "freeBusyReader" : The user can read free/busy information.
+  /// - "owner" : The user can read and modify events and access control lists.
+  /// - "reader" : The user can read events that are not private.
+  /// - "writer" : The user can read and modify events.
+  ///
+  /// [pageToken] - Token specifying which result page to return. Optional.
+  ///
+  /// [showDeleted] - Whether to include deleted calendar list entries in the
+  /// result. Optional. The default is False.
+  ///
+  /// [showHidden] - Whether to show hidden entries. Optional. The default is
+  /// False.
+  ///
+  /// [syncToken] - Token obtained from the nextSyncToken field returned on the
+  /// last page of results from the previous list request. It makes the result
+  /// of this list request contain only entries that have changed since then. If
+  /// only read-only fields such as calendar properties or ACLs have changed,
+  /// the entry won't be returned. All entries deleted and hidden since the
+  /// previous list request will always be in the result set and it is not
+  /// allowed to set showDeleted neither showHidden to False.
+  /// To ensure client state consistency minAccessRole query parameter cannot be
+  /// specified together with nextSyncToken.
+  /// If the syncToken expires, the server will respond with a 410 GONE response
+  /// code and the client should clear its storage and perform a full
+  /// synchronization without any syncToken.
+  /// Learn more about incremental synchronization.
+  /// Optional. The default is to return all entries.
+  ///
+  /// Completes with a [Channel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Channel> watch(Channel request,
+      {core.int maxResults,
+      core.String minAccessRole,
+      core.String pageToken,
+      core.bool showDeleted,
+      core.bool showHidden,
+      core.String syncToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -854,41 +857,35 @@ class CalendarListResourceApi {
 
     _url = 'users/me/calendarList/watch';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Channel.fromJson(data));
   }
-
 }
-
 
 class CalendarsResourceApi {
   final commons.ApiRequester _requester;
 
-  CalendarsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  CalendarsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Clears a primary calendar. This operation deletes all events associated
-   * with the primary calendar of an account.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Clears a primary calendar. This operation deletes all events associated
+  /// with the primary calendar of an account.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future clear(core.String calendarId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -903,34 +900,32 @@ class CalendarsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/clear';
+    _url =
+        'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/clear';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Deletes a secondary calendar. Use calendars.clear for clearing all events
-   * on primary calendars.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Deletes a secondary calendar. Use calendars.clear for clearing all events
+  /// on primary calendars.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future delete(core.String calendarId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -947,33 +942,30 @@ class CalendarsResourceApi {
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Returns metadata for a calendar.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * Completes with a [Calendar].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Returns metadata for a calendar.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// Completes with a [Calendar].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Calendar> get(core.String calendarId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -988,31 +980,28 @@ class CalendarsResourceApi {
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Calendar.fromJson(data));
   }
 
-  /**
-   * Creates a secondary calendar.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [Calendar].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Creates a secondary calendar.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [Calendar].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Calendar> insert(Calendar request) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1027,35 +1016,32 @@ class CalendarsResourceApi {
 
     _url = 'calendars';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Calendar.fromJson(data));
   }
 
-  /**
-   * Updates metadata for a calendar. This method supports patch semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * Completes with a [Calendar].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Updates metadata for a calendar. This method supports patch semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// Completes with a [Calendar].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Calendar> patch(Calendar request, core.String calendarId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1073,35 +1059,32 @@ class CalendarsResourceApi {
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Calendar.fromJson(data));
   }
 
-  /**
-   * Updates metadata for a calendar.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * Completes with a [Calendar].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Updates metadata for a calendar.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// Completes with a [Calendar].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Calendar> update(Calendar request, core.String calendarId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1119,38 +1102,32 @@ class CalendarsResourceApi {
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Calendar.fromJson(data));
   }
-
 }
-
 
 class ChannelsResourceApi {
   final commons.ApiRequester _requester;
 
-  ChannelsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  ChannelsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Stop watching resources through this channel
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Stop watching resources through this channel
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future stop(Channel request) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1167,38 +1144,32 @@ class ChannelsResourceApi {
 
     _url = 'channels/stop';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
-
 }
-
 
 class ColorsResourceApi {
   final commons.ApiRequester _requester;
 
-  ColorsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  ColorsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Returns the color definitions for calendars and events.
-   *
-   * Request parameters:
-   *
-   * Completes with a [Colors].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Returns the color definitions for calendars and events.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [Colors].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Colors> get() {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1207,49 +1178,43 @@ class ColorsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-
     _url = 'colors';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Colors.fromJson(data));
   }
-
 }
-
 
 class EventsResourceApi {
   final commons.ApiRequester _requester;
 
-  EventsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  EventsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Deletes an event.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * [eventId] - Event identifier.
-   *
-   * [sendNotifications] - Whether to send notifications about the deletion of
-   * the event. Optional. The default is False.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future delete(core.String calendarId, core.String eventId, {core.bool sendNotifications}) {
+  /// Deletes an event.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// [eventId] - Event identifier.
+  ///
+  /// [sendNotifications] - Whether to send notifications about the deletion of
+  /// the event. Optional. The default is False.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future delete(core.String calendarId, core.String eventId,
+      {core.bool sendNotifications}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1269,52 +1234,55 @@ class EventsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/' + commons.Escaper.ecapeVariable('$eventId');
+    _url = 'calendars/' +
+        commons.Escaper.ecapeVariable('$calendarId') +
+        '/events/' +
+        commons.Escaper.ecapeVariable('$eventId');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Returns an event.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * [eventId] - Event identifier.
-   *
-   * [alwaysIncludeEmail] - Whether to always include a value in the email field
-   * for the organizer, creator and attendees, even if no real email is
-   * available (i.e. a generated, non-working value will be provided). The use
-   * of this option is discouraged and should only be used by clients which
-   * cannot handle the absence of an email address value in the mentioned
-   * places. Optional. The default is False.
-   *
-   * [maxAttendees] - The maximum number of attendees to include in the
-   * response. If there are more than the specified number of attendees, only
-   * the participant is returned. Optional.
-   *
-   * [timeZone] - Time zone used in the response. Optional. The default is the
-   * time zone of the calendar.
-   *
-   * Completes with a [Event].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Event> get(core.String calendarId, core.String eventId, {core.bool alwaysIncludeEmail, core.int maxAttendees, core.String timeZone}) {
+  /// Returns an event.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// [eventId] - Event identifier.
+  ///
+  /// [alwaysIncludeEmail] - Whether to always include a value in the email
+  /// field for the organizer, creator and attendees, even if no real email is
+  /// available (i.e. a generated, non-working value will be provided). The use
+  /// of this option is discouraged and should only be used by clients which
+  /// cannot handle the absence of an email address value in the mentioned
+  /// places. Optional. The default is False.
+  ///
+  /// [maxAttendees] - The maximum number of attendees to include in the
+  /// response. If there are more than the specified number of attendees, only
+  /// the participant is returned. Optional.
+  ///
+  /// [timeZone] - Time zone used in the response. Optional. The default is the
+  /// time zone of the calendar.
+  ///
+  /// Completes with a [Event].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Event> get(core.String calendarId, core.String eventId,
+      {core.bool alwaysIncludeEmail,
+      core.int maxAttendees,
+      core.String timeZone}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1338,42 +1306,43 @@ class EventsResourceApi {
       _queryParams["timeZone"] = [timeZone];
     }
 
-    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/' + commons.Escaper.ecapeVariable('$eventId');
+    _url = 'calendars/' +
+        commons.Escaper.ecapeVariable('$calendarId') +
+        '/events/' +
+        commons.Escaper.ecapeVariable('$eventId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Event.fromJson(data));
   }
 
-  /**
-   * Imports an event. This operation is used to add a private copy of an
-   * existing event to a calendar.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * [supportsAttachments] - Whether API client performing operation supports
-   * event attachments. Optional. The default is False.
-   *
-   * Completes with a [Event].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Event> import(Event request, core.String calendarId, {core.bool supportsAttachments}) {
+  /// Imports an event. This operation is used to add a private copy of an
+  /// existing event to a calendar.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// [supportsAttachments] - Whether API client performing operation supports
+  /// event attachments. Optional. The default is False.
+  ///
+  /// Completes with a [Event].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Event> import(Event request, core.String calendarId,
+      {core.bool supportsAttachments}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1391,48 +1360,50 @@ class EventsResourceApi {
       _queryParams["supportsAttachments"] = ["${supportsAttachments}"];
     }
 
-    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/import';
+    _url = 'calendars/' +
+        commons.Escaper.ecapeVariable('$calendarId') +
+        '/events/import';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Event.fromJson(data));
   }
 
-  /**
-   * Creates an event.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * [maxAttendees] - The maximum number of attendees to include in the
-   * response. If there are more than the specified number of attendees, only
-   * the participant is returned. Optional.
-   *
-   * [sendNotifications] - Whether to send notifications about the creation of
-   * the new event. Optional. The default is False.
-   *
-   * [supportsAttachments] - Whether API client performing operation supports
-   * event attachments. Optional. The default is False.
-   *
-   * Completes with a [Event].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Event> insert(Event request, core.String calendarId, {core.int maxAttendees, core.bool sendNotifications, core.bool supportsAttachments}) {
+  /// Creates an event.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// [maxAttendees] - The maximum number of attendees to include in the
+  /// response. If there are more than the specified number of attendees, only
+  /// the participant is returned. Optional.
+  ///
+  /// [sendNotifications] - Whether to send notifications about the creation of
+  /// the new event. Optional. The default is False.
+  ///
+  /// [supportsAttachments] - Whether API client performing operation supports
+  /// event attachments. Optional. The default is False.
+  ///
+  /// Completes with a [Event].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Event> insert(Event request, core.String calendarId,
+      {core.int maxAttendees,
+      core.bool sendNotifications,
+      core.bool supportsAttachments}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1456,73 +1427,81 @@ class EventsResourceApi {
       _queryParams["supportsAttachments"] = ["${supportsAttachments}"];
     }
 
-    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events';
+    _url =
+        'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Event.fromJson(data));
   }
 
-  /**
-   * Returns instances of the specified recurring event.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * [eventId] - Recurring event identifier.
-   *
-   * [alwaysIncludeEmail] - Whether to always include a value in the email field
-   * for the organizer, creator and attendees, even if no real email is
-   * available (i.e. a generated, non-working value will be provided). The use
-   * of this option is discouraged and should only be used by clients which
-   * cannot handle the absence of an email address value in the mentioned
-   * places. Optional. The default is False.
-   *
-   * [maxAttendees] - The maximum number of attendees to include in the
-   * response. If there are more than the specified number of attendees, only
-   * the participant is returned. Optional.
-   *
-   * [maxResults] - Maximum number of events returned on one result page. By
-   * default the value is 250 events. The page size can never be larger than
-   * 2500 events. Optional.
-   *
-   * [originalStart] - The original start time of the instance in the result.
-   * Optional.
-   *
-   * [pageToken] - Token specifying which result page to return. Optional.
-   *
-   * [showDeleted] - Whether to include deleted events (with status equals
-   * "cancelled") in the result. Cancelled instances of recurring events will
-   * still be included if singleEvents is False. Optional. The default is False.
-   *
-   * [timeMax] - Upper bound (exclusive) for an event's start time to filter by.
-   * Optional. The default is not to filter by start time. Must be an RFC3339
-   * timestamp with mandatory time zone offset.
-   *
-   * [timeMin] - Lower bound (inclusive) for an event's end time to filter by.
-   * Optional. The default is not to filter by end time. Must be an RFC3339
-   * timestamp with mandatory time zone offset.
-   *
-   * [timeZone] - Time zone used in the response. Optional. The default is the
-   * time zone of the calendar.
-   *
-   * Completes with a [Events].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Events> instances(core.String calendarId, core.String eventId, {core.bool alwaysIncludeEmail, core.int maxAttendees, core.int maxResults, core.String originalStart, core.String pageToken, core.bool showDeleted, core.DateTime timeMax, core.DateTime timeMin, core.String timeZone}) {
+  /// Returns instances of the specified recurring event.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// [eventId] - Recurring event identifier.
+  ///
+  /// [alwaysIncludeEmail] - Whether to always include a value in the email
+  /// field for the organizer, creator and attendees, even if no real email is
+  /// available (i.e. a generated, non-working value will be provided). The use
+  /// of this option is discouraged and should only be used by clients which
+  /// cannot handle the absence of an email address value in the mentioned
+  /// places. Optional. The default is False.
+  ///
+  /// [maxAttendees] - The maximum number of attendees to include in the
+  /// response. If there are more than the specified number of attendees, only
+  /// the participant is returned. Optional.
+  ///
+  /// [maxResults] - Maximum number of events returned on one result page. By
+  /// default the value is 250 events. The page size can never be larger than
+  /// 2500 events. Optional.
+  ///
+  /// [originalStart] - The original start time of the instance in the result.
+  /// Optional.
+  ///
+  /// [pageToken] - Token specifying which result page to return. Optional.
+  ///
+  /// [showDeleted] - Whether to include deleted events (with status equals
+  /// "cancelled") in the result. Cancelled instances of recurring events will
+  /// still be included if singleEvents is False. Optional. The default is
+  /// False.
+  ///
+  /// [timeMax] - Upper bound (exclusive) for an event's start time to filter
+  /// by. Optional. The default is not to filter by start time. Must be an
+  /// RFC3339 timestamp with mandatory time zone offset.
+  ///
+  /// [timeMin] - Lower bound (inclusive) for an event's end time to filter by.
+  /// Optional. The default is not to filter by end time. Must be an RFC3339
+  /// timestamp with mandatory time zone offset.
+  ///
+  /// [timeZone] - Time zone used in the response. Optional. The default is the
+  /// time zone of the calendar.
+  ///
+  /// Completes with a [Events].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Events> instances(core.String calendarId, core.String eventId,
+      {core.bool alwaysIncludeEmail,
+      core.int maxAttendees,
+      core.int maxResults,
+      core.String originalStart,
+      core.String pageToken,
+      core.bool showDeleted,
+      core.DateTime timeMax,
+      core.DateTime timeMin,
+      core.String timeZone}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1564,135 +1543,157 @@ class EventsResourceApi {
       _queryParams["timeZone"] = [timeZone];
     }
 
-    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/' + commons.Escaper.ecapeVariable('$eventId') + '/instances';
+    _url = 'calendars/' +
+        commons.Escaper.ecapeVariable('$calendarId') +
+        '/events/' +
+        commons.Escaper.ecapeVariable('$eventId') +
+        '/instances';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Events.fromJson(data));
   }
 
-  /**
-   * Returns events on the specified calendar.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * [alwaysIncludeEmail] - Whether to always include a value in the email field
-   * for the organizer, creator and attendees, even if no real email is
-   * available (i.e. a generated, non-working value will be provided). The use
-   * of this option is discouraged and should only be used by clients which
-   * cannot handle the absence of an email address value in the mentioned
-   * places. Optional. The default is False.
-   *
-   * [iCalUID] - Specifies event ID in the iCalendar format to be included in
-   * the response. Optional.
-   *
-   * [maxAttendees] - The maximum number of attendees to include in the
-   * response. If there are more than the specified number of attendees, only
-   * the participant is returned. Optional.
-   *
-   * [maxResults] - Maximum number of events returned on one result page. The
-   * number of events in the resulting page may be less than this value, or none
-   * at all, even if there are more events matching the query. Incomplete pages
-   * can be detected by a non-empty nextPageToken field in the response. By
-   * default the value is 250 events. The page size can never be larger than
-   * 2500 events. Optional.
-   *
-   * [orderBy] - The order of the events returned in the result. Optional. The
-   * default is an unspecified, stable order.
-   * Possible string values are:
-   * - "startTime" : Order by the start date/time (ascending). This is only
-   * available when querying single events (i.e. the parameter singleEvents is
-   * True)
-   * - "updated" : Order by last modification time (ascending).
-   *
-   * [pageToken] - Token specifying which result page to return. Optional.
-   *
-   * [privateExtendedProperty] - Extended properties constraint specified as
-   * propertyName=value. Matches only private properties. This parameter might
-   * be repeated multiple times to return events that match all given
-   * constraints.
-   *
-   * [q] - Free text search terms to find events that match these terms in any
-   * field, except for extended properties. Optional.
-   *
-   * [sharedExtendedProperty] - Extended properties constraint specified as
-   * propertyName=value. Matches only shared properties. This parameter might be
-   * repeated multiple times to return events that match all given constraints.
-   *
-   * [showDeleted] - Whether to include deleted events (with status equals
-   * "cancelled") in the result. Cancelled instances of recurring events (but
-   * not the underlying recurring event) will still be included if showDeleted
-   * and singleEvents are both False. If showDeleted and singleEvents are both
-   * True, only single instances of deleted events (but not the underlying
-   * recurring events) are returned. Optional. The default is False.
-   *
-   * [showHiddenInvitations] - Whether to include hidden invitations in the
-   * result. Optional. The default is False.
-   *
-   * [singleEvents] - Whether to expand recurring events into instances and only
-   * return single one-off events and instances of recurring events, but not the
-   * underlying recurring events themselves. Optional. The default is False.
-   *
-   * [syncToken] - Token obtained from the nextSyncToken field returned on the
-   * last page of results from the previous list request. It makes the result of
-   * this list request contain only entries that have changed since then. All
-   * events deleted since the previous list request will always be in the result
-   * set and it is not allowed to set showDeleted to False.
-   * There are several query parameters that cannot be specified together with
-   * nextSyncToken to ensure consistency of the client state.
-   *
-   * These are:
-   * - iCalUID
-   * - orderBy
-   * - privateExtendedProperty
-   * - q
-   * - sharedExtendedProperty
-   * - timeMin
-   * - timeMax
-   * - updatedMin If the syncToken expires, the server will respond with a 410
-   * GONE response code and the client should clear its storage and perform a
-   * full synchronization without any syncToken.
-   * Learn more about incremental synchronization.
-   * Optional. The default is to return all entries.
-   *
-   * [timeMax] - Upper bound (exclusive) for an event's start time to filter by.
-   * Optional. The default is not to filter by start time. Must be an RFC3339
-   * timestamp with mandatory time zone offset, e.g., 2011-06-03T10:00:00-07:00,
-   * 2011-06-03T10:00:00Z. Milliseconds may be provided but will be ignored. If
-   * timeMin is set, timeMax must be greater than timeMin.
-   *
-   * [timeMin] - Lower bound (inclusive) for an event's end time to filter by.
-   * Optional. The default is not to filter by end time. Must be an RFC3339
-   * timestamp with mandatory time zone offset, e.g., 2011-06-03T10:00:00-07:00,
-   * 2011-06-03T10:00:00Z. Milliseconds may be provided but will be ignored. If
-   * timeMax is set, timeMin must be smaller than timeMax.
-   *
-   * [timeZone] - Time zone used in the response. Optional. The default is the
-   * time zone of the calendar.
-   *
-   * [updatedMin] - Lower bound for an event's last modification time (as a
-   * RFC3339 timestamp) to filter by. When specified, entries deleted since this
-   * time will always be included regardless of showDeleted. Optional. The
-   * default is not to filter by last modification time.
-   *
-   * Completes with a [Events].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Events> list(core.String calendarId, {core.bool alwaysIncludeEmail, core.String iCalUID, core.int maxAttendees, core.int maxResults, core.String orderBy, core.String pageToken, core.List<core.String> privateExtendedProperty, core.String q, core.List<core.String> sharedExtendedProperty, core.bool showDeleted, core.bool showHiddenInvitations, core.bool singleEvents, core.String syncToken, core.DateTime timeMax, core.DateTime timeMin, core.String timeZone, core.DateTime updatedMin}) {
+  /// Returns events on the specified calendar.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// [alwaysIncludeEmail] - Whether to always include a value in the email
+  /// field for the organizer, creator and attendees, even if no real email is
+  /// available (i.e. a generated, non-working value will be provided). The use
+  /// of this option is discouraged and should only be used by clients which
+  /// cannot handle the absence of an email address value in the mentioned
+  /// places. Optional. The default is False.
+  ///
+  /// [iCalUID] - Specifies event ID in the iCalendar format to be included in
+  /// the response. Optional.
+  ///
+  /// [maxAttendees] - The maximum number of attendees to include in the
+  /// response. If there are more than the specified number of attendees, only
+  /// the participant is returned. Optional.
+  ///
+  /// [maxResults] - Maximum number of events returned on one result page. The
+  /// number of events in the resulting page may be less than this value, or
+  /// none at all, even if there are more events matching the query. Incomplete
+  /// pages can be detected by a non-empty nextPageToken field in the response.
+  /// By default the value is 250 events. The page size can never be larger than
+  /// 2500 events. Optional.
+  ///
+  /// [orderBy] - The order of the events returned in the result. Optional. The
+  /// default is an unspecified, stable order.
+  /// Possible string values are:
+  /// - "startTime" : Order by the start date/time (ascending). This is only
+  /// available when querying single events (i.e. the parameter singleEvents is
+  /// True)
+  /// - "updated" : Order by last modification time (ascending).
+  ///
+  /// [pageToken] - Token specifying which result page to return. Optional.
+  ///
+  /// [privateExtendedProperty] - Extended properties constraint specified as
+  /// propertyName=value. Matches only private properties. This parameter might
+  /// be repeated multiple times to return events that match all given
+  /// constraints.
+  ///
+  /// [q] - Free text search terms to find events that match these terms in any
+  /// field, except for extended properties. Optional.
+  ///
+  /// [sharedExtendedProperty] - Extended properties constraint specified as
+  /// propertyName=value. Matches only shared properties. This parameter might
+  /// be repeated multiple times to return events that match all given
+  /// constraints.
+  ///
+  /// [showDeleted] - Whether to include deleted events (with status equals
+  /// "cancelled") in the result. Cancelled instances of recurring events (but
+  /// not the underlying recurring event) will still be included if showDeleted
+  /// and singleEvents are both False. If showDeleted and singleEvents are both
+  /// True, only single instances of deleted events (but not the underlying
+  /// recurring events) are returned. Optional. The default is False.
+  ///
+  /// [showHiddenInvitations] - Whether to include hidden invitations in the
+  /// result. Optional. The default is False.
+  ///
+  /// [singleEvents] - Whether to expand recurring events into instances and
+  /// only return single one-off events and instances of recurring events, but
+  /// not the underlying recurring events themselves. Optional. The default is
+  /// False.
+  ///
+  /// [syncToken] - Token obtained from the nextSyncToken field returned on the
+  /// last page of results from the previous list request. It makes the result
+  /// of this list request contain only entries that have changed since then.
+  /// All events deleted since the previous list request will always be in the
+  /// result set and it is not allowed to set showDeleted to False.
+  /// There are several query parameters that cannot be specified together with
+  /// nextSyncToken to ensure consistency of the client state.
+  ///
+  /// These are:
+  /// - iCalUID
+  /// - orderBy
+  /// - privateExtendedProperty
+  /// - q
+  /// - sharedExtendedProperty
+  /// - timeMin
+  /// - timeMax
+  /// - updatedMin If the syncToken expires, the server will respond with a 410
+  /// GONE response code and the client should clear its storage and perform a
+  /// full synchronization without any syncToken.
+  /// Learn more about incremental synchronization.
+  /// Optional. The default is to return all entries.
+  ///
+  /// [timeMax] - Upper bound (exclusive) for an event's start time to filter
+  /// by. Optional. The default is not to filter by start time. Must be an
+  /// RFC3339 timestamp with mandatory time zone offset, e.g.,
+  /// 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be
+  /// provided but will be ignored. If timeMin is set, timeMax must be greater
+  /// than timeMin.
+  ///
+  /// [timeMin] - Lower bound (inclusive) for an event's end time to filter by.
+  /// Optional. The default is not to filter by end time. Must be an RFC3339
+  /// timestamp with mandatory time zone offset, e.g.,
+  /// 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be
+  /// provided but will be ignored. If timeMax is set, timeMin must be smaller
+  /// than timeMax.
+  ///
+  /// [timeZone] - Time zone used in the response. Optional. The default is the
+  /// time zone of the calendar.
+  ///
+  /// [updatedMin] - Lower bound for an event's last modification time (as a
+  /// RFC3339 timestamp) to filter by. When specified, entries deleted since
+  /// this time will always be included regardless of showDeleted. Optional. The
+  /// default is not to filter by last modification time.
+  ///
+  /// Completes with a [Events].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Events> list(core.String calendarId,
+      {core.bool alwaysIncludeEmail,
+      core.String iCalUID,
+      core.int maxAttendees,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.List<core.String> privateExtendedProperty,
+      core.String q,
+      core.List<core.String> sharedExtendedProperty,
+      core.bool showDeleted,
+      core.bool showHiddenInvitations,
+      core.bool singleEvents,
+      core.String syncToken,
+      core.DateTime timeMax,
+      core.DateTime timeMin,
+      core.String timeZone,
+      core.DateTime updatedMin}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1755,43 +1756,43 @@ class EventsResourceApi {
       _queryParams["updatedMin"] = [(updatedMin).toIso8601String()];
     }
 
-    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events';
+    _url =
+        'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Events.fromJson(data));
   }
 
-  /**
-   * Moves an event to another calendar, i.e. changes an event's organizer.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier of the source calendar where the event
-   * currently is on.
-   *
-   * [eventId] - Event identifier.
-   *
-   * [destination] - Calendar identifier of the target calendar where the event
-   * is to be moved to.
-   *
-   * [sendNotifications] - Whether to send notifications about the change of the
-   * event's organizer. Optional. The default is False.
-   *
-   * Completes with a [Event].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Event> move(core.String calendarId, core.String eventId, core.String destination, {core.bool sendNotifications}) {
+  /// Moves an event to another calendar, i.e. changes an event's organizer.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier of the source calendar where the event
+  /// currently is on.
+  ///
+  /// [eventId] - Event identifier.
+  ///
+  /// [destination] - Calendar identifier of the target calendar where the event
+  /// is to be moved to.
+  ///
+  /// [sendNotifications] - Whether to send notifications about the change of
+  /// the event's organizer. Optional. The default is False.
+  ///
+  /// Completes with a [Event].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Event> move(
+      core.String calendarId, core.String eventId, core.String destination,
+      {core.bool sendNotifications}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1813,58 +1814,64 @@ class EventsResourceApi {
       _queryParams["sendNotifications"] = ["${sendNotifications}"];
     }
 
-    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/' + commons.Escaper.ecapeVariable('$eventId') + '/move';
+    _url = 'calendars/' +
+        commons.Escaper.ecapeVariable('$calendarId') +
+        '/events/' +
+        commons.Escaper.ecapeVariable('$eventId') +
+        '/move';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Event.fromJson(data));
   }
 
-  /**
-   * Updates an event. This method supports patch semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * [eventId] - Event identifier.
-   *
-   * [alwaysIncludeEmail] - Whether to always include a value in the email field
-   * for the organizer, creator and attendees, even if no real email is
-   * available (i.e. a generated, non-working value will be provided). The use
-   * of this option is discouraged and should only be used by clients which
-   * cannot handle the absence of an email address value in the mentioned
-   * places. Optional. The default is False.
-   *
-   * [maxAttendees] - The maximum number of attendees to include in the
-   * response. If there are more than the specified number of attendees, only
-   * the participant is returned. Optional.
-   *
-   * [sendNotifications] - Whether to send notifications about the event update
-   * (e.g. attendee's responses, title changes, etc.). Optional. The default is
-   * False.
-   *
-   * [supportsAttachments] - Whether API client performing operation supports
-   * event attachments. Optional. The default is False.
-   *
-   * Completes with a [Event].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Event> patch(Event request, core.String calendarId, core.String eventId, {core.bool alwaysIncludeEmail, core.int maxAttendees, core.bool sendNotifications, core.bool supportsAttachments}) {
+  /// Updates an event. This method supports patch semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// [eventId] - Event identifier.
+  ///
+  /// [alwaysIncludeEmail] - Whether to always include a value in the email
+  /// field for the organizer, creator and attendees, even if no real email is
+  /// available (i.e. a generated, non-working value will be provided). The use
+  /// of this option is discouraged and should only be used by clients which
+  /// cannot handle the absence of an email address value in the mentioned
+  /// places. Optional. The default is False.
+  ///
+  /// [maxAttendees] - The maximum number of attendees to include in the
+  /// response. If there are more than the specified number of attendees, only
+  /// the participant is returned. Optional.
+  ///
+  /// [sendNotifications] - Whether to send notifications about the event update
+  /// (e.g. attendee's responses, title changes, etc.). Optional. The default is
+  /// False.
+  ///
+  /// [supportsAttachments] - Whether API client performing operation supports
+  /// event attachments. Optional. The default is False.
+  ///
+  /// Completes with a [Event].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Event> patch(
+      Event request, core.String calendarId, core.String eventId,
+      {core.bool alwaysIncludeEmail,
+      core.int maxAttendees,
+      core.bool sendNotifications,
+      core.bool supportsAttachments}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1894,41 +1901,42 @@ class EventsResourceApi {
       _queryParams["supportsAttachments"] = ["${supportsAttachments}"];
     }
 
-    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/' + commons.Escaper.ecapeVariable('$eventId');
+    _url = 'calendars/' +
+        commons.Escaper.ecapeVariable('$calendarId') +
+        '/events/' +
+        commons.Escaper.ecapeVariable('$eventId');
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Event.fromJson(data));
   }
 
-  /**
-   * Creates an event based on a simple text string.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * [text] - The text describing the event to be created.
-   *
-   * [sendNotifications] - Whether to send notifications about the creation of
-   * the event. Optional. The default is False.
-   *
-   * Completes with a [Event].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Event> quickAdd(core.String calendarId, core.String text, {core.bool sendNotifications}) {
+  /// Creates an event based on a simple text string.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// [text] - The text describing the event to be created.
+  ///
+  /// [sendNotifications] - Whether to send notifications about the creation of
+  /// the event. Optional. The default is False.
+  ///
+  /// Completes with a [Event].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Event> quickAdd(core.String calendarId, core.String text,
+      {core.bool sendNotifications}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1947,58 +1955,62 @@ class EventsResourceApi {
       _queryParams["sendNotifications"] = ["${sendNotifications}"];
     }
 
-    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/quickAdd';
+    _url = 'calendars/' +
+        commons.Escaper.ecapeVariable('$calendarId') +
+        '/events/quickAdd';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Event.fromJson(data));
   }
 
-  /**
-   * Updates an event.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * [eventId] - Event identifier.
-   *
-   * [alwaysIncludeEmail] - Whether to always include a value in the email field
-   * for the organizer, creator and attendees, even if no real email is
-   * available (i.e. a generated, non-working value will be provided). The use
-   * of this option is discouraged and should only be used by clients which
-   * cannot handle the absence of an email address value in the mentioned
-   * places. Optional. The default is False.
-   *
-   * [maxAttendees] - The maximum number of attendees to include in the
-   * response. If there are more than the specified number of attendees, only
-   * the participant is returned. Optional.
-   *
-   * [sendNotifications] - Whether to send notifications about the event update
-   * (e.g. attendee's responses, title changes, etc.). Optional. The default is
-   * False.
-   *
-   * [supportsAttachments] - Whether API client performing operation supports
-   * event attachments. Optional. The default is False.
-   *
-   * Completes with a [Event].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Event> update(Event request, core.String calendarId, core.String eventId, {core.bool alwaysIncludeEmail, core.int maxAttendees, core.bool sendNotifications, core.bool supportsAttachments}) {
+  /// Updates an event.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// [eventId] - Event identifier.
+  ///
+  /// [alwaysIncludeEmail] - Whether to always include a value in the email
+  /// field for the organizer, creator and attendees, even if no real email is
+  /// available (i.e. a generated, non-working value will be provided). The use
+  /// of this option is discouraged and should only be used by clients which
+  /// cannot handle the absence of an email address value in the mentioned
+  /// places. Optional. The default is False.
+  ///
+  /// [maxAttendees] - The maximum number of attendees to include in the
+  /// response. If there are more than the specified number of attendees, only
+  /// the participant is returned. Optional.
+  ///
+  /// [sendNotifications] - Whether to send notifications about the event update
+  /// (e.g. attendee's responses, title changes, etc.). Optional. The default is
+  /// False.
+  ///
+  /// [supportsAttachments] - Whether API client performing operation supports
+  /// event attachments. Optional. The default is False.
+  ///
+  /// Completes with a [Event].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Event> update(
+      Event request, core.String calendarId, core.String eventId,
+      {core.bool alwaysIncludeEmail,
+      core.int maxAttendees,
+      core.bool sendNotifications,
+      core.bool supportsAttachments}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2028,137 +2040,158 @@ class EventsResourceApi {
       _queryParams["supportsAttachments"] = ["${supportsAttachments}"];
     }
 
-    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/' + commons.Escaper.ecapeVariable('$eventId');
+    _url = 'calendars/' +
+        commons.Escaper.ecapeVariable('$calendarId') +
+        '/events/' +
+        commons.Escaper.ecapeVariable('$eventId');
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Event.fromJson(data));
   }
 
-  /**
-   * Watch for changes to Events resources.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [calendarId] - Calendar identifier. To retrieve calendar IDs call the
-   * calendarList.list method. If you want to access the primary calendar of the
-   * currently logged in user, use the "primary" keyword.
-   *
-   * [alwaysIncludeEmail] - Whether to always include a value in the email field
-   * for the organizer, creator and attendees, even if no real email is
-   * available (i.e. a generated, non-working value will be provided). The use
-   * of this option is discouraged and should only be used by clients which
-   * cannot handle the absence of an email address value in the mentioned
-   * places. Optional. The default is False.
-   *
-   * [iCalUID] - Specifies event ID in the iCalendar format to be included in
-   * the response. Optional.
-   *
-   * [maxAttendees] - The maximum number of attendees to include in the
-   * response. If there are more than the specified number of attendees, only
-   * the participant is returned. Optional.
-   *
-   * [maxResults] - Maximum number of events returned on one result page. The
-   * number of events in the resulting page may be less than this value, or none
-   * at all, even if there are more events matching the query. Incomplete pages
-   * can be detected by a non-empty nextPageToken field in the response. By
-   * default the value is 250 events. The page size can never be larger than
-   * 2500 events. Optional.
-   *
-   * [orderBy] - The order of the events returned in the result. Optional. The
-   * default is an unspecified, stable order.
-   * Possible string values are:
-   * - "startTime" : Order by the start date/time (ascending). This is only
-   * available when querying single events (i.e. the parameter singleEvents is
-   * True)
-   * - "updated" : Order by last modification time (ascending).
-   *
-   * [pageToken] - Token specifying which result page to return. Optional.
-   *
-   * [privateExtendedProperty] - Extended properties constraint specified as
-   * propertyName=value. Matches only private properties. This parameter might
-   * be repeated multiple times to return events that match all given
-   * constraints.
-   *
-   * [q] - Free text search terms to find events that match these terms in any
-   * field, except for extended properties. Optional.
-   *
-   * [sharedExtendedProperty] - Extended properties constraint specified as
-   * propertyName=value. Matches only shared properties. This parameter might be
-   * repeated multiple times to return events that match all given constraints.
-   *
-   * [showDeleted] - Whether to include deleted events (with status equals
-   * "cancelled") in the result. Cancelled instances of recurring events (but
-   * not the underlying recurring event) will still be included if showDeleted
-   * and singleEvents are both False. If showDeleted and singleEvents are both
-   * True, only single instances of deleted events (but not the underlying
-   * recurring events) are returned. Optional. The default is False.
-   *
-   * [showHiddenInvitations] - Whether to include hidden invitations in the
-   * result. Optional. The default is False.
-   *
-   * [singleEvents] - Whether to expand recurring events into instances and only
-   * return single one-off events and instances of recurring events, but not the
-   * underlying recurring events themselves. Optional. The default is False.
-   *
-   * [syncToken] - Token obtained from the nextSyncToken field returned on the
-   * last page of results from the previous list request. It makes the result of
-   * this list request contain only entries that have changed since then. All
-   * events deleted since the previous list request will always be in the result
-   * set and it is not allowed to set showDeleted to False.
-   * There are several query parameters that cannot be specified together with
-   * nextSyncToken to ensure consistency of the client state.
-   *
-   * These are:
-   * - iCalUID
-   * - orderBy
-   * - privateExtendedProperty
-   * - q
-   * - sharedExtendedProperty
-   * - timeMin
-   * - timeMax
-   * - updatedMin If the syncToken expires, the server will respond with a 410
-   * GONE response code and the client should clear its storage and perform a
-   * full synchronization without any syncToken.
-   * Learn more about incremental synchronization.
-   * Optional. The default is to return all entries.
-   *
-   * [timeMax] - Upper bound (exclusive) for an event's start time to filter by.
-   * Optional. The default is not to filter by start time. Must be an RFC3339
-   * timestamp with mandatory time zone offset, e.g., 2011-06-03T10:00:00-07:00,
-   * 2011-06-03T10:00:00Z. Milliseconds may be provided but will be ignored. If
-   * timeMin is set, timeMax must be greater than timeMin.
-   *
-   * [timeMin] - Lower bound (inclusive) for an event's end time to filter by.
-   * Optional. The default is not to filter by end time. Must be an RFC3339
-   * timestamp with mandatory time zone offset, e.g., 2011-06-03T10:00:00-07:00,
-   * 2011-06-03T10:00:00Z. Milliseconds may be provided but will be ignored. If
-   * timeMax is set, timeMin must be smaller than timeMax.
-   *
-   * [timeZone] - Time zone used in the response. Optional. The default is the
-   * time zone of the calendar.
-   *
-   * [updatedMin] - Lower bound for an event's last modification time (as a
-   * RFC3339 timestamp) to filter by. When specified, entries deleted since this
-   * time will always be included regardless of showDeleted. Optional. The
-   * default is not to filter by last modification time.
-   *
-   * Completes with a [Channel].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Channel> watch(Channel request, core.String calendarId, {core.bool alwaysIncludeEmail, core.String iCalUID, core.int maxAttendees, core.int maxResults, core.String orderBy, core.String pageToken, core.List<core.String> privateExtendedProperty, core.String q, core.List<core.String> sharedExtendedProperty, core.bool showDeleted, core.bool showHiddenInvitations, core.bool singleEvents, core.String syncToken, core.DateTime timeMax, core.DateTime timeMin, core.String timeZone, core.DateTime updatedMin}) {
+  /// Watch for changes to Events resources.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [calendarId] - Calendar identifier. To retrieve calendar IDs call the
+  /// calendarList.list method. If you want to access the primary calendar of
+  /// the currently logged in user, use the "primary" keyword.
+  ///
+  /// [alwaysIncludeEmail] - Whether to always include a value in the email
+  /// field for the organizer, creator and attendees, even if no real email is
+  /// available (i.e. a generated, non-working value will be provided). The use
+  /// of this option is discouraged and should only be used by clients which
+  /// cannot handle the absence of an email address value in the mentioned
+  /// places. Optional. The default is False.
+  ///
+  /// [iCalUID] - Specifies event ID in the iCalendar format to be included in
+  /// the response. Optional.
+  ///
+  /// [maxAttendees] - The maximum number of attendees to include in the
+  /// response. If there are more than the specified number of attendees, only
+  /// the participant is returned. Optional.
+  ///
+  /// [maxResults] - Maximum number of events returned on one result page. The
+  /// number of events in the resulting page may be less than this value, or
+  /// none at all, even if there are more events matching the query. Incomplete
+  /// pages can be detected by a non-empty nextPageToken field in the response.
+  /// By default the value is 250 events. The page size can never be larger than
+  /// 2500 events. Optional.
+  ///
+  /// [orderBy] - The order of the events returned in the result. Optional. The
+  /// default is an unspecified, stable order.
+  /// Possible string values are:
+  /// - "startTime" : Order by the start date/time (ascending). This is only
+  /// available when querying single events (i.e. the parameter singleEvents is
+  /// True)
+  /// - "updated" : Order by last modification time (ascending).
+  ///
+  /// [pageToken] - Token specifying which result page to return. Optional.
+  ///
+  /// [privateExtendedProperty] - Extended properties constraint specified as
+  /// propertyName=value. Matches only private properties. This parameter might
+  /// be repeated multiple times to return events that match all given
+  /// constraints.
+  ///
+  /// [q] - Free text search terms to find events that match these terms in any
+  /// field, except for extended properties. Optional.
+  ///
+  /// [sharedExtendedProperty] - Extended properties constraint specified as
+  /// propertyName=value. Matches only shared properties. This parameter might
+  /// be repeated multiple times to return events that match all given
+  /// constraints.
+  ///
+  /// [showDeleted] - Whether to include deleted events (with status equals
+  /// "cancelled") in the result. Cancelled instances of recurring events (but
+  /// not the underlying recurring event) will still be included if showDeleted
+  /// and singleEvents are both False. If showDeleted and singleEvents are both
+  /// True, only single instances of deleted events (but not the underlying
+  /// recurring events) are returned. Optional. The default is False.
+  ///
+  /// [showHiddenInvitations] - Whether to include hidden invitations in the
+  /// result. Optional. The default is False.
+  ///
+  /// [singleEvents] - Whether to expand recurring events into instances and
+  /// only return single one-off events and instances of recurring events, but
+  /// not the underlying recurring events themselves. Optional. The default is
+  /// False.
+  ///
+  /// [syncToken] - Token obtained from the nextSyncToken field returned on the
+  /// last page of results from the previous list request. It makes the result
+  /// of this list request contain only entries that have changed since then.
+  /// All events deleted since the previous list request will always be in the
+  /// result set and it is not allowed to set showDeleted to False.
+  /// There are several query parameters that cannot be specified together with
+  /// nextSyncToken to ensure consistency of the client state.
+  ///
+  /// These are:
+  /// - iCalUID
+  /// - orderBy
+  /// - privateExtendedProperty
+  /// - q
+  /// - sharedExtendedProperty
+  /// - timeMin
+  /// - timeMax
+  /// - updatedMin If the syncToken expires, the server will respond with a 410
+  /// GONE response code and the client should clear its storage and perform a
+  /// full synchronization without any syncToken.
+  /// Learn more about incremental synchronization.
+  /// Optional. The default is to return all entries.
+  ///
+  /// [timeMax] - Upper bound (exclusive) for an event's start time to filter
+  /// by. Optional. The default is not to filter by start time. Must be an
+  /// RFC3339 timestamp with mandatory time zone offset, e.g.,
+  /// 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be
+  /// provided but will be ignored. If timeMin is set, timeMax must be greater
+  /// than timeMin.
+  ///
+  /// [timeMin] - Lower bound (inclusive) for an event's end time to filter by.
+  /// Optional. The default is not to filter by end time. Must be an RFC3339
+  /// timestamp with mandatory time zone offset, e.g.,
+  /// 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be
+  /// provided but will be ignored. If timeMax is set, timeMin must be smaller
+  /// than timeMax.
+  ///
+  /// [timeZone] - Time zone used in the response. Optional. The default is the
+  /// time zone of the calendar.
+  ///
+  /// [updatedMin] - Lower bound for an event's last modification time (as a
+  /// RFC3339 timestamp) to filter by. When specified, entries deleted since
+  /// this time will always be included regardless of showDeleted. Optional. The
+  /// default is not to filter by last modification time.
+  ///
+  /// Completes with a [Channel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Channel> watch(Channel request, core.String calendarId,
+      {core.bool alwaysIncludeEmail,
+      core.String iCalUID,
+      core.int maxAttendees,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.List<core.String> privateExtendedProperty,
+      core.String q,
+      core.List<core.String> sharedExtendedProperty,
+      core.bool showDeleted,
+      core.bool showHiddenInvitations,
+      core.bool singleEvents,
+      core.String syncToken,
+      core.DateTime timeMax,
+      core.DateTime timeMin,
+      core.String timeZone,
+      core.DateTime updatedMin}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2224,42 +2257,38 @@ class EventsResourceApi {
       _queryParams["updatedMin"] = [(updatedMin).toIso8601String()];
     }
 
-    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events/watch';
+    _url = 'calendars/' +
+        commons.Escaper.ecapeVariable('$calendarId') +
+        '/events/watch';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Channel.fromJson(data));
   }
-
 }
-
 
 class FreebusyResourceApi {
   final commons.ApiRequester _requester;
 
-  FreebusyResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  FreebusyResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Returns free/busy information for a set of calendars.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [FreeBusyResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Returns free/busy information for a set of calendars.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [FreeBusyResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<FreeBusyResponse> query(FreeBusyRequest request) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -2274,40 +2303,34 @@ class FreebusyResourceApi {
 
     _url = 'freeBusy';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new FreeBusyResponse.fromJson(data));
   }
-
 }
-
 
 class SettingsResourceApi {
   final commons.ApiRequester _requester;
 
-  SettingsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  SettingsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Returns a single user setting.
-   *
-   * Request parameters:
-   *
-   * [setting] - The id of the user setting.
-   *
-   * Completes with a [Setting].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Returns a single user setting.
+  ///
+  /// Request parameters:
+  ///
+  /// [setting] - The id of the user setting.
+  ///
+  /// Completes with a [Setting].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Setting> get(core.String setting) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -2322,45 +2345,43 @@ class SettingsResourceApi {
 
     _url = 'users/me/settings/' + commons.Escaper.ecapeVariable('$setting');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Setting.fromJson(data));
   }
 
-  /**
-   * Returns all user settings for the authenticated user.
-   *
-   * Request parameters:
-   *
-   * [maxResults] - Maximum number of entries returned on one result page. By
-   * default the value is 100 entries. The page size can never be larger than
-   * 250 entries. Optional.
-   *
-   * [pageToken] - Token specifying which result page to return. Optional.
-   *
-   * [syncToken] - Token obtained from the nextSyncToken field returned on the
-   * last page of results from the previous list request. It makes the result of
-   * this list request contain only entries that have changed since then.
-   * If the syncToken expires, the server will respond with a 410 GONE response
-   * code and the client should clear its storage and perform a full
-   * synchronization without any syncToken.
-   * Learn more about incremental synchronization.
-   * Optional. The default is to return all entries.
-   *
-   * Completes with a [Settings].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Settings> list({core.int maxResults, core.String pageToken, core.String syncToken}) {
+  /// Returns all user settings for the authenticated user.
+  ///
+  /// Request parameters:
+  ///
+  /// [maxResults] - Maximum number of entries returned on one result page. By
+  /// default the value is 100 entries. The page size can never be larger than
+  /// 250 entries. Optional.
+  ///
+  /// [pageToken] - Token specifying which result page to return. Optional.
+  ///
+  /// [syncToken] - Token obtained from the nextSyncToken field returned on the
+  /// last page of results from the previous list request. It makes the result
+  /// of this list request contain only entries that have changed since then.
+  /// If the syncToken expires, the server will respond with a 410 GONE response
+  /// code and the client should clear its storage and perform a full
+  /// synchronization without any syncToken.
+  /// Learn more about incremental synchronization.
+  /// Optional. The default is to return all entries.
+  ///
+  /// Completes with a [Settings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Settings> list(
+      {core.int maxResults, core.String pageToken, core.String syncToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2380,47 +2401,45 @@ class SettingsResourceApi {
 
     _url = 'users/me/settings';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Settings.fromJson(data));
   }
 
-  /**
-   * Watch for changes to Settings resources.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [maxResults] - Maximum number of entries returned on one result page. By
-   * default the value is 100 entries. The page size can never be larger than
-   * 250 entries. Optional.
-   *
-   * [pageToken] - Token specifying which result page to return. Optional.
-   *
-   * [syncToken] - Token obtained from the nextSyncToken field returned on the
-   * last page of results from the previous list request. It makes the result of
-   * this list request contain only entries that have changed since then.
-   * If the syncToken expires, the server will respond with a 410 GONE response
-   * code and the client should clear its storage and perform a full
-   * synchronization without any syncToken.
-   * Learn more about incremental synchronization.
-   * Optional. The default is to return all entries.
-   *
-   * Completes with a [Channel].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Channel> watch(Channel request, {core.int maxResults, core.String pageToken, core.String syncToken}) {
+  /// Watch for changes to Settings resources.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [maxResults] - Maximum number of entries returned on one result page. By
+  /// default the value is 100 entries. The page size can never be larger than
+  /// 250 entries. Optional.
+  ///
+  /// [pageToken] - Token specifying which result page to return. Optional.
+  ///
+  /// [syncToken] - Token obtained from the nextSyncToken field returned on the
+  /// last page of results from the previous list request. It makes the result
+  /// of this list request contain only entries that have changed since then.
+  /// If the syncToken expires, the server will respond with a 410 GONE response
+  /// code and the client should clear its storage and perform a full
+  /// synchronization without any syncToken.
+  /// Learn more about incremental synchronization.
+  /// Optional. The default is to return all entries.
+  ///
+  /// Completes with a [Channel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Channel> watch(Channel request,
+      {core.int maxResults, core.String pageToken, core.String syncToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2443,37 +2462,33 @@ class SettingsResourceApi {
 
     _url = 'users/me/settings/watch';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Channel.fromJson(data));
   }
-
 }
 
-
-
 class Acl {
-  /** ETag of the collection. */
+  /// ETag of the collection.
   core.String etag;
-  /** List of rules on the access control list. */
+
+  /// List of rules on the access control list.
   core.List<AclRule> items;
-  /** Type of the collection ("calendar#acl"). */
+
+  /// Type of the collection ("calendar#acl").
   core.String kind;
-  /**
-   * Token used to access the next page of this result. Omitted if no further
-   * results are available, in which case nextSyncToken is provided.
-   */
+
+  /// Token used to access the next page of this result. Omitted if no further
+  /// results are available, in which case nextSyncToken is provided.
   core.String nextPageToken;
-  /**
-   * Token used at a later point in time to retrieve only the entries that have
-   * changed since this result was returned. Omitted if further results are
-   * available, in which case nextPageToken is provided.
-   */
+
+  /// Token used at a later point in time to retrieve only the entries that have
+  /// changed since this result was returned. Omitted if further results are
+  /// available, in which case nextPageToken is provided.
   core.String nextSyncToken;
 
   Acl();
@@ -2483,7 +2498,8 @@ class Acl {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new AclRule.fromJson(value)).toList();
+      items =
+          _json["items"].map((value) => new AclRule.fromJson(value)).toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -2497,7 +2513,8 @@ class Acl {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -2517,21 +2534,19 @@ class Acl {
   }
 }
 
-/** The scope of the rule. */
+/// The scope of the rule.
 class AclRuleScope {
-  /**
-   * The type of the scope. Possible values are:
-   * - "default" - The public scope. This is the default value.
-   * - "user" - Limits the scope to a single user.
-   * - "group" - Limits the scope to a group.
-   * - "domain" - Limits the scope to a domain.  Note: The permissions granted
-   * to the "default", or public, scope apply to any user, authenticated or not.
-   */
+  /// The type of the scope. Possible values are:
+  /// - "default" - The public scope. This is the default value.
+  /// - "user" - Limits the scope to a single user.
+  /// - "group" - Limits the scope to a group.
+  /// - "domain" - Limits the scope to a domain.  Note: The permissions granted
+  /// to the "default", or public, scope apply to any user, authenticated or
+  /// not.
   core.String type;
-  /**
-   * The email address of a user or group, or the name of a domain, depending on
-   * the scope type. Omitted for type "default".
-   */
+
+  /// The email address of a user or group, or the name of a domain, depending
+  /// on the scope type. Omitted for type "default".
   core.String value;
 
   AclRuleScope();
@@ -2546,7 +2561,8 @@ class AclRuleScope {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (type != null) {
       _json["type"] = type;
     }
@@ -2558,26 +2574,29 @@ class AclRuleScope {
 }
 
 class AclRule {
-  /** ETag of the resource. */
+  /// ETag of the resource.
   core.String etag;
-  /** Identifier of the ACL rule. */
+
+  /// Identifier of the ACL rule.
   core.String id;
-  /** Type of the resource ("calendar#aclRule"). */
+
+  /// Type of the resource ("calendar#aclRule").
   core.String kind;
-  /**
-   * The role assigned to the scope. Possible values are:
-   * - "none" - Provides no access.
-   * - "freeBusyReader" - Provides read access to free/busy information.
-   * - "reader" - Provides read access to the calendar. Private events will
-   * appear to users with reader access, but event details will be hidden.
-   * - "writer" - Provides read and write access to the calendar. Private events
-   * will appear to users with writer access, and event details will be visible.
-   * - "owner" - Provides ownership of the calendar. This role has all of the
-   * permissions of the writer role with the additional ability to see and
-   * manipulate ACLs.
-   */
+
+  /// The role assigned to the scope. Possible values are:
+  /// - "none" - Provides no access.
+  /// - "freeBusyReader" - Provides read access to free/busy information.
+  /// - "reader" - Provides read access to the calendar. Private events will
+  /// appear to users with reader access, but event details will be hidden.
+  /// - "writer" - Provides read and write access to the calendar. Private
+  /// events will appear to users with writer access, and event details will be
+  /// visible.
+  /// - "owner" - Provides ownership of the calendar. This role has all of the
+  /// permissions of the writer role with the additional ability to see and
+  /// manipulate ACLs.
   core.String role;
-  /** The scope of the rule. */
+
+  /// The scope of the rule.
   AclRuleScope scope;
 
   AclRule();
@@ -2601,7 +2620,8 @@ class AclRule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -2622,25 +2642,27 @@ class AclRule {
 }
 
 class Calendar {
-  /** Description of the calendar. Optional. */
+  /// Description of the calendar. Optional.
   core.String description;
-  /** ETag of the resource. */
+
+  /// ETag of the resource.
   core.String etag;
-  /**
-   * Identifier of the calendar. To retrieve IDs call the calendarList.list()
-   * method.
-   */
+
+  /// Identifier of the calendar. To retrieve IDs call the calendarList.list()
+  /// method.
   core.String id;
-  /** Type of the resource ("calendar#calendar"). */
+
+  /// Type of the resource ("calendar#calendar").
   core.String kind;
-  /** Geographic location of the calendar as free-form text. Optional. */
+
+  /// Geographic location of the calendar as free-form text. Optional.
   core.String location;
-  /** Title of the calendar. */
+
+  /// Title of the calendar.
   core.String summary;
-  /**
-   * The time zone of the calendar. (Formatted as an IANA Time Zone Database
-   * name, e.g. "Europe/Zurich".) Optional.
-   */
+
+  /// The time zone of the calendar. (Formatted as an IANA Time Zone Database
+  /// name, e.g. "Europe/Zurich".) Optional.
   core.String timeZone;
 
   Calendar();
@@ -2670,7 +2692,8 @@ class Calendar {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -2697,22 +2720,22 @@ class Calendar {
 }
 
 class CalendarList {
-  /** ETag of the collection. */
+  /// ETag of the collection.
   core.String etag;
-  /** Calendars that are present on the user's calendar list. */
+
+  /// Calendars that are present on the user's calendar list.
   core.List<CalendarListEntry> items;
-  /** Type of the collection ("calendar#calendarList"). */
+
+  /// Type of the collection ("calendar#calendarList").
   core.String kind;
-  /**
-   * Token used to access the next page of this result. Omitted if no further
-   * results are available, in which case nextSyncToken is provided.
-   */
+
+  /// Token used to access the next page of this result. Omitted if no further
+  /// results are available, in which case nextSyncToken is provided.
   core.String nextPageToken;
-  /**
-   * Token used at a later point in time to retrieve only the entries that have
-   * changed since this result was returned. Omitted if further results are
-   * available, in which case nextPageToken is provided.
-   */
+
+  /// Token used at a later point in time to retrieve only the entries that have
+  /// changed since this result was returned. Omitted if further results are
+  /// available, in which case nextPageToken is provided.
   core.String nextSyncToken;
 
   CalendarList();
@@ -2722,7 +2745,9 @@ class CalendarList {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new CalendarListEntry.fromJson(value)).toList();
+      items = _json["items"]
+          .map((value) => new CalendarListEntry.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -2736,7 +2761,8 @@ class CalendarList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -2756,114 +2782,112 @@ class CalendarList {
   }
 }
 
-/**
- * The notifications that the authenticated user is receiving for this calendar.
- */
+/// The notifications that the authenticated user is receiving for this
+/// calendar.
 class CalendarListEntryNotificationSettings {
-  /** The list of notifications set for this calendar. */
+  /// The list of notifications set for this calendar.
   core.List<CalendarNotification> notifications;
 
   CalendarListEntryNotificationSettings();
 
   CalendarListEntryNotificationSettings.fromJson(core.Map _json) {
     if (_json.containsKey("notifications")) {
-      notifications = _json["notifications"].map((value) => new CalendarNotification.fromJson(value)).toList();
+      notifications = _json["notifications"]
+          .map((value) => new CalendarNotification.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (notifications != null) {
-      _json["notifications"] = notifications.map((value) => (value).toJson()).toList();
+      _json["notifications"] =
+          notifications.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
 }
 
 class CalendarListEntry {
-  /**
-   * The effective access role that the authenticated user has on the calendar.
-   * Read-only. Possible values are:
-   * - "freeBusyReader" - Provides read access to free/busy information.
-   * - "reader" - Provides read access to the calendar. Private events will
-   * appear to users with reader access, but event details will be hidden.
-   * - "writer" - Provides read and write access to the calendar. Private events
-   * will appear to users with writer access, and event details will be visible.
-   * - "owner" - Provides ownership of the calendar. This role has all of the
-   * permissions of the writer role with the additional ability to see and
-   * manipulate ACLs.
-   */
+  /// The effective access role that the authenticated user has on the calendar.
+  /// Read-only. Possible values are:
+  /// - "freeBusyReader" - Provides read access to free/busy information.
+  /// - "reader" - Provides read access to the calendar. Private events will
+  /// appear to users with reader access, but event details will be hidden.
+  /// - "writer" - Provides read and write access to the calendar. Private
+  /// events will appear to users with writer access, and event details will be
+  /// visible.
+  /// - "owner" - Provides ownership of the calendar. This role has all of the
+  /// permissions of the writer role with the additional ability to see and
+  /// manipulate ACLs.
   core.String accessRole;
-  /**
-   * The main color of the calendar in the hexadecimal format "#0088aa". This
-   * property supersedes the index-based colorId property. To set or change this
-   * property, you need to specify colorRgbFormat=true in the parameters of the
-   * insert, update and patch methods. Optional.
-   */
+
+  /// The main color of the calendar in the hexadecimal format "#0088aa". This
+  /// property supersedes the index-based colorId property. To set or change
+  /// this property, you need to specify colorRgbFormat=true in the parameters
+  /// of the insert, update and patch methods. Optional.
   core.String backgroundColor;
-  /**
-   * The color of the calendar. This is an ID referring to an entry in the
-   * calendar section of the colors definition (see the colors endpoint). This
-   * property is superseded by the backgroundColor and foregroundColor
-   * properties and can be ignored when using these properties. Optional.
-   */
+
+  /// The color of the calendar. This is an ID referring to an entry in the
+  /// calendar section of the colors definition (see the colors endpoint). This
+  /// property is superseded by the backgroundColor and foregroundColor
+  /// properties and can be ignored when using these properties. Optional.
   core.String colorId;
-  /**
-   * The default reminders that the authenticated user has for this calendar.
-   */
+
+  /// The default reminders that the authenticated user has for this calendar.
   core.List<EventReminder> defaultReminders;
-  /**
-   * Whether this calendar list entry has been deleted from the calendar list.
-   * Read-only. Optional. The default is False.
-   */
+
+  /// Whether this calendar list entry has been deleted from the calendar list.
+  /// Read-only. Optional. The default is False.
   core.bool deleted;
-  /** Description of the calendar. Optional. Read-only. */
+
+  /// Description of the calendar. Optional. Read-only.
   core.String description;
-  /** ETag of the resource. */
+
+  /// ETag of the resource.
   core.String etag;
-  /**
-   * The foreground color of the calendar in the hexadecimal format "#ffffff".
-   * This property supersedes the index-based colorId property. To set or change
-   * this property, you need to specify colorRgbFormat=true in the parameters of
-   * the insert, update and patch methods. Optional.
-   */
+
+  /// The foreground color of the calendar in the hexadecimal format "#ffffff".
+  /// This property supersedes the index-based colorId property. To set or
+  /// change this property, you need to specify colorRgbFormat=true in the
+  /// parameters of the insert, update and patch methods. Optional.
   core.String foregroundColor;
-  /**
-   * Whether the calendar has been hidden from the list. Optional. The default
-   * is False.
-   */
+
+  /// Whether the calendar has been hidden from the list. Optional. The default
+  /// is False.
   core.bool hidden;
-  /** Identifier of the calendar. */
+
+  /// Identifier of the calendar.
   core.String id;
-  /** Type of the resource ("calendar#calendarListEntry"). */
+
+  /// Type of the resource ("calendar#calendarListEntry").
   core.String kind;
-  /**
-   * Geographic location of the calendar as free-form text. Optional. Read-only.
-   */
+
+  /// Geographic location of the calendar as free-form text. Optional.
+  /// Read-only.
   core.String location;
-  /**
-   * The notifications that the authenticated user is receiving for this
-   * calendar.
-   */
+
+  /// The notifications that the authenticated user is receiving for this
+  /// calendar.
   CalendarListEntryNotificationSettings notificationSettings;
-  /**
-   * Whether the calendar is the primary calendar of the authenticated user.
-   * Read-only. Optional. The default is False.
-   */
+
+  /// Whether the calendar is the primary calendar of the authenticated user.
+  /// Read-only. Optional. The default is False.
   core.bool primary;
-  /**
-   * Whether the calendar content shows up in the calendar UI. Optional. The
-   * default is False.
-   */
+
+  /// Whether the calendar content shows up in the calendar UI. Optional. The
+  /// default is False.
   core.bool selected;
-  /** Title of the calendar. Read-only. */
+
+  /// Title of the calendar. Read-only.
   core.String summary;
-  /**
-   * The summary that the authenticated user has set for this calendar.
-   * Optional.
-   */
+
+  /// The summary that the authenticated user has set for this calendar.
+  /// Optional.
   core.String summaryOverride;
-  /** The time zone of the calendar. Optional. Read-only. */
+
+  /// The time zone of the calendar. Optional. Read-only.
   core.String timeZone;
 
   CalendarListEntry();
@@ -2879,7 +2903,9 @@ class CalendarListEntry {
       colorId = _json["colorId"];
     }
     if (_json.containsKey("defaultReminders")) {
-      defaultReminders = _json["defaultReminders"].map((value) => new EventReminder.fromJson(value)).toList();
+      defaultReminders = _json["defaultReminders"]
+          .map((value) => new EventReminder.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("deleted")) {
       deleted = _json["deleted"];
@@ -2906,7 +2932,8 @@ class CalendarListEntry {
       location = _json["location"];
     }
     if (_json.containsKey("notificationSettings")) {
-      notificationSettings = new CalendarListEntryNotificationSettings.fromJson(_json["notificationSettings"]);
+      notificationSettings = new CalendarListEntryNotificationSettings.fromJson(
+          _json["notificationSettings"]);
     }
     if (_json.containsKey("primary")) {
       primary = _json["primary"];
@@ -2926,7 +2953,8 @@ class CalendarListEntry {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (accessRole != null) {
       _json["accessRole"] = accessRole;
     }
@@ -2937,7 +2965,8 @@ class CalendarListEntry {
       _json["colorId"] = colorId;
     }
     if (defaultReminders != null) {
-      _json["defaultReminders"] = defaultReminders.map((value) => (value).toJson()).toList();
+      _json["defaultReminders"] =
+          defaultReminders.map((value) => (value).toJson()).toList();
     }
     if (deleted != null) {
       _json["deleted"] = deleted;
@@ -2986,24 +3015,21 @@ class CalendarListEntry {
 }
 
 class CalendarNotification {
-  /**
-   * The method used to deliver the notification. Possible values are:
-   * - "email" - Reminders are sent via email.
-   * - "sms" - Reminders are sent via SMS. This value is read-only and is
-   * ignored on inserts and updates. SMS reminders are only available for G
-   * Suite customers.
-   */
+  /// The method used to deliver the notification. Possible values are:
+  /// - "email" - Reminders are sent via email.
+  /// - "sms" - Reminders are sent via SMS. This value is read-only and is
+  /// ignored on inserts and updates. SMS reminders are only available for G
+  /// Suite customers.
   core.String method;
-  /**
-   * The type of notification. Possible values are:
-   * - "eventCreation" - Notification sent when a new event is put on the
-   * calendar.
-   * - "eventChange" - Notification sent when an event is changed.
-   * - "eventCancellation" - Notification sent when an event is cancelled.
-   * - "eventResponse" - Notification sent when an event is changed.
-   * - "agenda" - An agenda with the events of the day (sent out in the
-   * morning).
-   */
+
+  /// The type of notification. Possible values are:
+  /// - "eventCreation" - Notification sent when a new event is put on the
+  /// calendar.
+  /// - "eventChange" - Notification sent when an event is changed.
+  /// - "eventCancellation" - Notification sent when an event is cancelled.
+  /// - "eventResponse" - Notification sent when an event is changed.
+  /// - "agenda" - An agenda with the events of the day (sent out in the
+  /// morning).
   core.String type;
 
   CalendarNotification();
@@ -3018,7 +3044,8 @@ class CalendarNotification {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (method != null) {
       _json["method"] = method;
     }
@@ -3030,37 +3057,38 @@ class CalendarNotification {
 }
 
 class Channel {
-  /** The address where notifications are delivered for this channel. */
+  /// The address where notifications are delivered for this channel.
   core.String address;
-  /**
-   * Date and time of notification channel expiration, expressed as a Unix
-   * timestamp, in milliseconds. Optional.
-   */
+
+  /// Date and time of notification channel expiration, expressed as a Unix
+  /// timestamp, in milliseconds. Optional.
   core.String expiration;
-  /** A UUID or similar unique string that identifies this channel. */
+
+  /// A UUID or similar unique string that identifies this channel.
   core.String id;
-  /**
-   * Identifies this as a notification channel used to watch for changes to a
-   * resource. Value: the fixed string "api#channel".
-   */
+
+  /// Identifies this as a notification channel used to watch for changes to a
+  /// resource. Value: the fixed string "api#channel".
   core.String kind;
-  /** Additional parameters controlling delivery channel behavior. Optional. */
+
+  /// Additional parameters controlling delivery channel behavior. Optional.
   core.Map<core.String, core.String> params;
-  /** A Boolean value to indicate whether payload is wanted. Optional. */
+
+  /// A Boolean value to indicate whether payload is wanted. Optional.
   core.bool payload;
-  /**
-   * An opaque ID that identifies the resource being watched on this channel.
-   * Stable across different API versions.
-   */
+
+  /// An opaque ID that identifies the resource being watched on this channel.
+  /// Stable across different API versions.
   core.String resourceId;
-  /** A version-specific identifier for the watched resource. */
+
+  /// A version-specific identifier for the watched resource.
   core.String resourceUri;
-  /**
-   * An arbitrary string delivered to the target address with each notification
-   * delivered over this channel. Optional.
-   */
+
+  /// An arbitrary string delivered to the target address with each notification
+  /// delivered over this channel. Optional.
   core.String token;
-  /** The type of delivery mechanism used for this channel. */
+
+  /// The type of delivery mechanism used for this channel.
   core.String type;
 
   Channel();
@@ -3099,7 +3127,8 @@ class Channel {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (address != null) {
       _json["address"] = address;
     }
@@ -3135,12 +3164,11 @@ class Channel {
 }
 
 class ColorDefinition {
-  /** The background color associated with this color definition. */
+  /// The background color associated with this color definition.
   core.String background;
-  /**
-   * The foreground color that can be used to write on top of a background with
-   * 'background' color.
-   */
+
+  /// The foreground color that can be used to write on top of a background with
+  /// 'background' color.
   core.String foreground;
 
   ColorDefinition();
@@ -3155,7 +3183,8 @@ class ColorDefinition {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (background != null) {
       _json["background"] = background;
     }
@@ -3167,34 +3196,39 @@ class ColorDefinition {
 }
 
 class Colors {
-  /**
-   * A global palette of calendar colors, mapping from the color ID to its
-   * definition. A calendarListEntry resource refers to one of these color IDs
-   * in its color field. Read-only.
-   */
+  /// A global palette of calendar colors, mapping from the color ID to its
+  /// definition. A calendarListEntry resource refers to one of these color IDs
+  /// in its color field. Read-only.
   core.Map<core.String, ColorDefinition> calendar;
-  /**
-   * A global palette of event colors, mapping from the color ID to its
-   * definition. An event resource may refer to one of these color IDs in its
-   * color field. Read-only.
-   */
+
+  /// A global palette of event colors, mapping from the color ID to its
+  /// definition. An event resource may refer to one of these color IDs in its
+  /// color field. Read-only.
   core.Map<core.String, ColorDefinition> event;
-  /** Type of the resource ("calendar#colors"). */
+
+  /// Type of the resource ("calendar#colors").
   core.String kind;
-  /**
-   * Last modification time of the color palette (as a RFC3339 timestamp).
-   * Read-only.
-   */
+
+  /// Last modification time of the color palette (as a RFC3339 timestamp).
+  /// Read-only.
   core.DateTime updated;
 
   Colors();
 
   Colors.fromJson(core.Map _json) {
     if (_json.containsKey("calendar")) {
-      calendar = commons.mapMap<core.Map<core.String, core.Object>, ColorDefinition>(_json["calendar"], (core.Map<core.String, core.Object> item) => new ColorDefinition.fromJson(item));
+      calendar =
+          commons.mapMap<core.Map<core.String, core.Object>, ColorDefinition>(
+              _json["calendar"],
+              (core.Map<core.String, core.Object> item) =>
+                  new ColorDefinition.fromJson(item));
     }
     if (_json.containsKey("event")) {
-      event = commons.mapMap<core.Map<core.String, core.Object>, ColorDefinition>(_json["event"], (core.Map<core.String, core.Object> item) => new ColorDefinition.fromJson(item));
+      event =
+          commons.mapMap<core.Map<core.String, core.Object>, ColorDefinition>(
+              _json["event"],
+              (core.Map<core.String, core.Object> item) =>
+                  new ColorDefinition.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -3205,12 +3239,17 @@ class Colors {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (calendar != null) {
-      _json["calendar"] = commons.mapMap<ColorDefinition, core.Map<core.String, core.Object>>(calendar, (ColorDefinition item) => (item).toJson());
+      _json["calendar"] =
+          commons.mapMap<ColorDefinition, core.Map<core.String, core.Object>>(
+              calendar, (ColorDefinition item) => (item).toJson());
     }
     if (event != null) {
-      _json["event"] = commons.mapMap<ColorDefinition, core.Map<core.String, core.Object>>(event, (ColorDefinition item) => (item).toJson());
+      _json["event"] =
+          commons.mapMap<ColorDefinition, core.Map<core.String, core.Object>>(
+              event, (ColorDefinition item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -3223,19 +3262,18 @@ class Colors {
 }
 
 class Error {
-  /** Domain, or broad category, of the error. */
+  /// Domain, or broad category, of the error.
   core.String domain;
-  /**
-   * Specific reason for the error. Some of the possible values are:
-   * - "groupTooBig" - The group of users requested is too large for a single
-   * query.
-   * - "tooManyCalendarsRequested" - The number of calendars requested is too
-   * large for a single query.
-   * - "notFound" - The requested resource was not found.
-   * - "internalError" - The API service has encountered an internal error.
-   * Additional error types may be added in the future, so clients should
-   * gracefully handle additional error statuses not included in this list.
-   */
+
+  /// Specific reason for the error. Some of the possible values are:
+  /// - "groupTooBig" - The group of users requested is too large for a single
+  /// query.
+  /// - "tooManyCalendarsRequested" - The number of calendars requested is too
+  /// large for a single query.
+  /// - "notFound" - The requested resource was not found.
+  /// - "internalError" - The API service has encountered an internal error.
+  /// Additional error types may be added in the future, so clients should
+  /// gracefully handle additional error statuses not included in this list.
   core.String reason;
 
   Error();
@@ -3250,7 +3288,8 @@ class Error {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (domain != null) {
       _json["domain"] = domain;
     }
@@ -3261,21 +3300,20 @@ class Error {
   }
 }
 
-/** The creator of the event. Read-only. */
+/// The creator of the event. Read-only.
 class EventCreator {
-  /** The creator's name, if available. */
+  /// The creator's name, if available.
   core.String displayName;
-  /** The creator's email address, if available. */
+
+  /// The creator's email address, if available.
   core.String email;
-  /**
-   * The creator's Profile ID, if available. It corresponds to theid field in
-   * the People collection of the Google+ API
-   */
+
+  /// The creator's Profile ID, if available. It corresponds to theid field in
+  /// the People collection of the Google+ API
   core.String id;
-  /**
-   * Whether the creator corresponds to the calendar on which this copy of the
-   * event appears. Read-only. The default is False.
-   */
+
+  /// Whether the creator corresponds to the calendar on which this copy of the
+  /// event appears. Read-only. The default is False.
   core.bool self;
 
   EventCreator();
@@ -3296,7 +3334,8 @@ class EventCreator {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -3313,17 +3352,14 @@ class EventCreator {
   }
 }
 
-/** Extended properties of the event. */
+/// Extended properties of the event.
 class EventExtendedProperties {
-  /**
-   * Properties that are private to the copy of the event that appears on this
-   * calendar.
-   */
+  /// Properties that are private to the copy of the event that appears on this
+  /// calendar.
   core.Map<core.String, core.String> private;
-  /**
-   * Properties that are shared between copies of the event on other attendees'
-   * calendars.
-   */
+
+  /// Properties that are shared between copies of the event on other attendees'
+  /// calendars.
   core.Map<core.String, core.String> shared;
 
   EventExtendedProperties();
@@ -3338,7 +3374,8 @@ class EventExtendedProperties {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (private != null) {
       _json["private"] = private;
     }
@@ -3349,34 +3386,35 @@ class EventExtendedProperties {
   }
 }
 
-/** A gadget that extends this event. */
+/// A gadget that extends this event.
 class EventGadget {
-  /**
-   * The gadget's display mode. Optional. Possible values are:
-   * - "icon" - The gadget displays next to the event's title in the calendar
-   * view.
-   * - "chip" - The gadget displays when the event is clicked.
-   */
+  /// The gadget's display mode. Optional. Possible values are:
+  /// - "icon" - The gadget displays next to the event's title in the calendar
+  /// view.
+  /// - "chip" - The gadget displays when the event is clicked.
   core.String display;
-  /**
-   * The gadget's height in pixels. The height must be an integer greater than
-   * 0. Optional.
-   */
+
+  /// The gadget's height in pixels. The height must be an integer greater than
+  /// 0. Optional.
   core.int height;
-  /** The gadget's icon URL. The URL scheme must be HTTPS. */
+
+  /// The gadget's icon URL. The URL scheme must be HTTPS.
   core.String iconLink;
-  /** The gadget's URL. The URL scheme must be HTTPS. */
+
+  /// The gadget's URL. The URL scheme must be HTTPS.
   core.String link;
-  /** Preferences. */
+
+  /// Preferences.
   core.Map<core.String, core.String> preferences;
-  /** The gadget's title. */
+
+  /// The gadget's title.
   core.String title;
-  /** The gadget's type. */
+
+  /// The gadget's type.
   core.String type;
-  /**
-   * The gadget's width in pixels. The width must be an integer greater than 0.
-   * Optional.
-   */
+
+  /// The gadget's width in pixels. The width must be an integer greater than 0.
+  /// Optional.
   core.int width;
 
   EventGadget();
@@ -3409,7 +3447,8 @@ class EventGadget {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (display != null) {
       _json["display"] = display;
     }
@@ -3438,29 +3477,24 @@ class EventGadget {
   }
 }
 
-/**
- * The organizer of the event. If the organizer is also an attendee, this is
- * indicated with a separate entry in attendees with the organizer field set to
- * True. To change the organizer, use the move operation. Read-only, except when
- * importing an event.
- */
+/// The organizer of the event. If the organizer is also an attendee, this is
+/// indicated with a separate entry in attendees with the organizer field set to
+/// True. To change the organizer, use the move operation. Read-only, except
+/// when importing an event.
 class EventOrganizer {
-  /** The organizer's name, if available. */
+  /// The organizer's name, if available.
   core.String displayName;
-  /**
-   * The organizer's email address, if available. It must be a valid email
-   * address as per RFC5322.
-   */
+
+  /// The organizer's email address, if available. It must be a valid email
+  /// address as per RFC5322.
   core.String email;
-  /**
-   * The organizer's Profile ID, if available. It corresponds to theid field in
-   * the People collection of the Google+ API
-   */
+
+  /// The organizer's Profile ID, if available. It corresponds to theid field in
+  /// the People collection of the Google+ API
   core.String id;
-  /**
-   * Whether the organizer corresponds to the calendar on which this copy of the
-   * event appears. Read-only. The default is False.
-   */
+
+  /// Whether the organizer corresponds to the calendar on which this copy of
+  /// the event appears. Read-only. The default is False.
   core.bool self;
 
   EventOrganizer();
@@ -3481,7 +3515,8 @@ class EventOrganizer {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -3498,22 +3533,23 @@ class EventOrganizer {
   }
 }
 
-/** Information about the event's reminders for the authenticated user. */
+/// Information about the event's reminders for the authenticated user.
 class EventReminders {
-  /**
-   * If the event doesn't use the default reminders, this lists the reminders
-   * specific to the event, or, if not set, indicates that no reminders are set
-   * for this event. The maximum number of override reminders is 5.
-   */
+  /// If the event doesn't use the default reminders, this lists the reminders
+  /// specific to the event, or, if not set, indicates that no reminders are set
+  /// for this event. The maximum number of override reminders is 5.
   core.List<EventReminder> overrides;
-  /** Whether the default reminders of the calendar apply to the event. */
+
+  /// Whether the default reminders of the calendar apply to the event.
   core.bool useDefault;
 
   EventReminders();
 
   EventReminders.fromJson(core.Map _json) {
     if (_json.containsKey("overrides")) {
-      overrides = _json["overrides"].map((value) => new EventReminder.fromJson(value)).toList();
+      overrides = _json["overrides"]
+          .map((value) => new EventReminder.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("useDefault")) {
       useDefault = _json["useDefault"];
@@ -3521,7 +3557,8 @@ class EventReminders {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (overrides != null) {
       _json["overrides"] = overrides.map((value) => (value).toJson()).toList();
     }
@@ -3532,20 +3569,16 @@ class EventReminders {
   }
 }
 
-/**
- * Source from which the event was created. For example, a web page, an email
- * message or any document identifiable by an URL with HTTP or HTTPS scheme. Can
- * only be seen or modified by the creator of the event.
- */
+/// Source from which the event was created. For example, a web page, an email
+/// message or any document identifiable by an URL with HTTP or HTTPS scheme.
+/// Can only be seen or modified by the creator of the event.
 class EventSource {
-  /**
-   * Title of the source; for example a title of a web page or an email subject.
-   */
+  /// Title of the source; for example a title of a web page or an email
+  /// subject.
   core.String title;
-  /**
-   * URL of the source pointing to a resource. The URL scheme must be HTTP or
-   * HTTPS.
-   */
+
+  /// URL of the source pointing to a resource. The URL scheme must be HTTP or
+  /// HTTPS.
   core.String url;
 
   EventSource();
@@ -3560,7 +3593,8 @@ class EventSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (title != null) {
       _json["title"] = title;
     }
@@ -3572,201 +3606,186 @@ class EventSource {
 }
 
 class Event {
-  /**
-   * Whether anyone can invite themselves to the event (currently works for
-   * Google+ events only). Optional. The default is False.
-   */
+  /// Whether anyone can invite themselves to the event (currently works for
+  /// Google+ events only). Optional. The default is False.
   core.bool anyoneCanAddSelf;
-  /**
-   * File attachments for the event. Currently only Google Drive attachments are
-   * supported.
-   * In order to modify attachments the supportsAttachments request parameter
-   * should be set to true.
-   * There can be at most 25 attachments per event,
-   */
+
+  /// File attachments for the event. Currently only Google Drive attachments
+  /// are supported.
+  /// In order to modify attachments the supportsAttachments request parameter
+  /// should be set to true.
+  /// There can be at most 25 attachments per event,
   core.List<EventAttachment> attachments;
-  /**
-   * The attendees of the event. See the Events with attendees guide for more
-   * information on scheduling events with other calendar users.
-   */
+
+  /// The attendees of the event. See the Events with attendees guide for more
+  /// information on scheduling events with other calendar users.
   core.List<EventAttendee> attendees;
-  /**
-   * Whether attendees may have been omitted from the event's representation.
-   * When retrieving an event, this may be due to a restriction specified by the
-   * maxAttendee query parameter. When updating an event, this can be used to
-   * only update the participant's response. Optional. The default is False.
-   */
+
+  /// Whether attendees may have been omitted from the event's representation.
+  /// When retrieving an event, this may be due to a restriction specified by
+  /// the maxAttendee query parameter. When updating an event, this can be used
+  /// to only update the participant's response. Optional. The default is False.
   core.bool attendeesOmitted;
-  /**
-   * The color of the event. This is an ID referring to an entry in the event
-   * section of the colors definition (see the  colors endpoint). Optional.
-   */
+
+  /// The color of the event. This is an ID referring to an entry in the event
+  /// section of the colors definition (see the  colors endpoint). Optional.
   core.String colorId;
-  /** Creation time of the event (as a RFC3339 timestamp). Read-only. */
+
+  /// Creation time of the event (as a RFC3339 timestamp). Read-only.
   core.DateTime created;
-  /** The creator of the event. Read-only. */
+
+  /// The creator of the event. Read-only.
   EventCreator creator;
-  /** Description of the event. Optional. */
+
+  /// Description of the event. Optional.
   core.String description;
-  /**
-   * The (exclusive) end time of the event. For a recurring event, this is the
-   * end time of the first instance.
-   */
+
+  /// The (exclusive) end time of the event. For a recurring event, this is the
+  /// end time of the first instance.
   EventDateTime end;
-  /**
-   * Whether the end time is actually unspecified. An end time is still provided
-   * for compatibility reasons, even if this attribute is set to True. The
-   * default is False.
-   */
+
+  /// Whether the end time is actually unspecified. An end time is still
+  /// provided for compatibility reasons, even if this attribute is set to True.
+  /// The default is False.
   core.bool endTimeUnspecified;
-  /** ETag of the resource. */
+
+  /// ETag of the resource.
   core.String etag;
-  /** Extended properties of the event. */
+
+  /// Extended properties of the event.
   EventExtendedProperties extendedProperties;
-  /** A gadget that extends this event. */
+
+  /// A gadget that extends this event.
   EventGadget gadget;
-  /**
-   * Whether attendees other than the organizer can invite others to the event.
-   * Optional. The default is True.
-   */
+
+  /// Whether attendees other than the organizer can invite others to the event.
+  /// Optional. The default is True.
   core.bool guestsCanInviteOthers;
-  /**
-   * Whether attendees other than the organizer can modify the event. Optional.
-   * The default is False.
-   */
+
+  /// Whether attendees other than the organizer can modify the event. Optional.
+  /// The default is False.
   core.bool guestsCanModify;
-  /**
-   * Whether attendees other than the organizer can see who the event's
-   * attendees are. Optional. The default is True.
-   */
+
+  /// Whether attendees other than the organizer can see who the event's
+  /// attendees are. Optional. The default is True.
   core.bool guestsCanSeeOtherGuests;
-  /**
-   * An absolute link to the Google+ hangout associated with this event.
-   * Read-only.
-   */
+
+  /// An absolute link to the Google+ hangout associated with this event.
+  /// Read-only.
   core.String hangoutLink;
-  /**
-   * An absolute link to this event in the Google Calendar Web UI. Read-only.
-   */
+
+  /// An absolute link to this event in the Google Calendar Web UI. Read-only.
   core.String htmlLink;
-  /**
-   * Event unique identifier as defined in RFC5545. It is used to uniquely
-   * identify events accross calendaring systems and must be supplied when
-   * importing events via the import method.
-   * Note that the icalUID and the id are not identical and only one of them
-   * should be supplied at event creation time. One difference in their
-   * semantics is that in recurring events, all occurrences of one event have
-   * different ids while they all share the same icalUIDs.
-   */
+
+  /// Event unique identifier as defined in RFC5545. It is used to uniquely
+  /// identify events accross calendaring systems and must be supplied when
+  /// importing events via the import method.
+  /// Note that the icalUID and the id are not identical and only one of them
+  /// should be supplied at event creation time. One difference in their
+  /// semantics is that in recurring events, all occurrences of one event have
+  /// different ids while they all share the same icalUIDs.
   core.String iCalUID;
-  /**
-   * Opaque identifier of the event. When creating new single or recurring
-   * events, you can specify their IDs. Provided IDs must follow these rules:
-   * - characters allowed in the ID are those used in base32hex encoding, i.e.
-   * lowercase letters a-v and digits 0-9, see section 3.1.2 in RFC2938
-   * - the length of the ID must be between 5 and 1024 characters
-   * - the ID must be unique per calendar  Due to the globally distributed
-   * nature of the system, we cannot guarantee that ID collisions will be
-   * detected at event creation time. To minimize the risk of collisions we
-   * recommend using an established UUID algorithm such as one described in
-   * RFC4122.
-   * If you do not specify an ID, it will be automatically generated by the
-   * server.
-   * Note that the icalUID and the id are not identical and only one of them
-   * should be supplied at event creation time. One difference in their
-   * semantics is that in recurring events, all occurrences of one event have
-   * different ids while they all share the same icalUIDs.
-   */
+
+  /// Opaque identifier of the event. When creating new single or recurring
+  /// events, you can specify their IDs. Provided IDs must follow these rules:
+  /// - characters allowed in the ID are those used in base32hex encoding, i.e.
+  /// lowercase letters a-v and digits 0-9, see section 3.1.2 in RFC2938
+  /// - the length of the ID must be between 5 and 1024 characters
+  /// - the ID must be unique per calendar  Due to the globally distributed
+  /// nature of the system, we cannot guarantee that ID collisions will be
+  /// detected at event creation time. To minimize the risk of collisions we
+  /// recommend using an established UUID algorithm such as one described in
+  /// RFC4122.
+  /// If you do not specify an ID, it will be automatically generated by the
+  /// server.
+  /// Note that the icalUID and the id are not identical and only one of them
+  /// should be supplied at event creation time. One difference in their
+  /// semantics is that in recurring events, all occurrences of one event have
+  /// different ids while they all share the same icalUIDs.
   core.String id;
-  /** Type of the resource ("calendar#event"). */
+
+  /// Type of the resource ("calendar#event").
   core.String kind;
-  /** Geographic location of the event as free-form text. Optional. */
+
+  /// Geographic location of the event as free-form text. Optional.
   core.String location;
-  /**
-   * Whether this is a locked event copy where no changes can be made to the
-   * main event fields "summary", "description", "location", "start", "end" or
-   * "recurrence". The default is False. Read-Only.
-   */
+
+  /// Whether this is a locked event copy where no changes can be made to the
+  /// main event fields "summary", "description", "location", "start", "end" or
+  /// "recurrence". The default is False. Read-Only.
   core.bool locked;
-  /**
-   * The organizer of the event. If the organizer is also an attendee, this is
-   * indicated with a separate entry in attendees with the organizer field set
-   * to True. To change the organizer, use the move operation. Read-only, except
-   * when importing an event.
-   */
+
+  /// The organizer of the event. If the organizer is also an attendee, this is
+  /// indicated with a separate entry in attendees with the organizer field set
+  /// to True. To change the organizer, use the move operation. Read-only,
+  /// except when importing an event.
   EventOrganizer organizer;
-  /**
-   * For an instance of a recurring event, this is the time at which this event
-   * would start according to the recurrence data in the recurring event
-   * identified by recurringEventId. Immutable.
-   */
+
+  /// For an instance of a recurring event, this is the time at which this event
+  /// would start according to the recurrence data in the recurring event
+  /// identified by recurringEventId. Immutable.
   EventDateTime originalStartTime;
-  /**
-   * Whether this is a private event copy where changes are not shared with
-   * other copies on other calendars. Optional. Immutable. The default is False.
-   */
+
+  /// Whether this is a private event copy where changes are not shared with
+  /// other copies on other calendars. Optional. Immutable. The default is
+  /// False.
   core.bool privateCopy;
-  /**
-   * List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as
-   * specified in RFC5545. Note that DTSTART and DTEND lines are not allowed in
-   * this field; event start and end times are specified in the start and end
-   * fields. This field is omitted for single events or instances of recurring
-   * events.
-   */
+
+  /// List of RRULE, EXRULE, RDATE and EXDATE lines for a recurring event, as
+  /// specified in RFC5545. Note that DTSTART and DTEND lines are not allowed in
+  /// this field; event start and end times are specified in the start and end
+  /// fields. This field is omitted for single events or instances of recurring
+  /// events.
   core.List<core.String> recurrence;
-  /**
-   * For an instance of a recurring event, this is the id of the recurring event
-   * to which this instance belongs. Immutable.
-   */
+
+  /// For an instance of a recurring event, this is the id of the recurring
+  /// event to which this instance belongs. Immutable.
   core.String recurringEventId;
-  /** Information about the event's reminders for the authenticated user. */
+
+  /// Information about the event's reminders for the authenticated user.
   EventReminders reminders;
-  /** Sequence number as per iCalendar. */
+
+  /// Sequence number as per iCalendar.
   core.int sequence;
-  /**
-   * Source from which the event was created. For example, a web page, an email
-   * message or any document identifiable by an URL with HTTP or HTTPS scheme.
-   * Can only be seen or modified by the creator of the event.
-   */
+
+  /// Source from which the event was created. For example, a web page, an email
+  /// message or any document identifiable by an URL with HTTP or HTTPS scheme.
+  /// Can only be seen or modified by the creator of the event.
   EventSource source;
-  /**
-   * The (inclusive) start time of the event. For a recurring event, this is the
-   * start time of the first instance.
-   */
+
+  /// The (inclusive) start time of the event. For a recurring event, this is
+  /// the start time of the first instance.
   EventDateTime start;
-  /**
-   * Status of the event. Optional. Possible values are:
-   * - "confirmed" - The event is confirmed. This is the default status.
-   * - "tentative" - The event is tentatively confirmed.
-   * - "cancelled" - The event is cancelled.
-   */
+
+  /// Status of the event. Optional. Possible values are:
+  /// - "confirmed" - The event is confirmed. This is the default status.
+  /// - "tentative" - The event is tentatively confirmed.
+  /// - "cancelled" - The event is cancelled.
   core.String status;
-  /** Title of the event. */
+
+  /// Title of the event.
   core.String summary;
-  /**
-   * Whether the event blocks time on the calendar. Optional. Possible values
-   * are:
-   * - "opaque" - Default value. The event does block time on the calendar. This
-   * is equivalent to setting Show me as to Busy in the Calendar UI.
-   * - "transparent" - The event does not block time on the calendar. This is
-   * equivalent to setting Show me as to Available in the Calendar UI.
-   */
+
+  /// Whether the event blocks time on the calendar. Optional. Possible values
+  /// are:
+  /// - "opaque" - Default value. The event does block time on the calendar.
+  /// This is equivalent to setting Show me as to Busy in the Calendar UI.
+  /// - "transparent" - The event does not block time on the calendar. This is
+  /// equivalent to setting Show me as to Available in the Calendar UI.
   core.String transparency;
-  /**
-   * Last modification time of the event (as a RFC3339 timestamp). Read-only.
-   */
+
+  /// Last modification time of the event (as a RFC3339 timestamp). Read-only.
   core.DateTime updated;
-  /**
-   * Visibility of the event. Optional. Possible values are:
-   * - "default" - Uses the default visibility for events on the calendar. This
-   * is the default value.
-   * - "public" - The event is public and event details are visible to all
-   * readers of the calendar.
-   * - "private" - The event is private and only event attendees may view event
-   * details.
-   * - "confidential" - The event is private. This value is provided for
-   * compatibility reasons.
-   */
+
+  /// Visibility of the event. Optional. Possible values are:
+  /// - "default" - Uses the default visibility for events on the calendar. This
+  /// is the default value.
+  /// - "public" - The event is public and event details are visible to all
+  /// readers of the calendar.
+  /// - "private" - The event is private and only event attendees may view event
+  /// details.
+  /// - "confidential" - The event is private. This value is provided for
+  /// compatibility reasons.
   core.String visibility;
 
   Event();
@@ -3776,10 +3795,14 @@ class Event {
       anyoneCanAddSelf = _json["anyoneCanAddSelf"];
     }
     if (_json.containsKey("attachments")) {
-      attachments = _json["attachments"].map((value) => new EventAttachment.fromJson(value)).toList();
+      attachments = _json["attachments"]
+          .map((value) => new EventAttachment.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("attendees")) {
-      attendees = _json["attendees"].map((value) => new EventAttendee.fromJson(value)).toList();
+      attendees = _json["attendees"]
+          .map((value) => new EventAttendee.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("attendeesOmitted")) {
       attendeesOmitted = _json["attendeesOmitted"];
@@ -3806,7 +3829,8 @@ class Event {
       etag = _json["etag"];
     }
     if (_json.containsKey("extendedProperties")) {
-      extendedProperties = new EventExtendedProperties.fromJson(_json["extendedProperties"]);
+      extendedProperties =
+          new EventExtendedProperties.fromJson(_json["extendedProperties"]);
     }
     if (_json.containsKey("gadget")) {
       gadget = new EventGadget.fromJson(_json["gadget"]);
@@ -3845,7 +3869,8 @@ class Event {
       organizer = new EventOrganizer.fromJson(_json["organizer"]);
     }
     if (_json.containsKey("originalStartTime")) {
-      originalStartTime = new EventDateTime.fromJson(_json["originalStartTime"]);
+      originalStartTime =
+          new EventDateTime.fromJson(_json["originalStartTime"]);
     }
     if (_json.containsKey("privateCopy")) {
       privateCopy = _json["privateCopy"];
@@ -3886,12 +3911,14 @@ class Event {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (anyoneCanAddSelf != null) {
       _json["anyoneCanAddSelf"] = anyoneCanAddSelf;
     }
     if (attachments != null) {
-      _json["attachments"] = attachments.map((value) => (value).toJson()).toList();
+      _json["attachments"] =
+          attachments.map((value) => (value).toJson()).toList();
     }
     if (attendees != null) {
       _json["attendees"] = attendees.map((value) => (value).toJson()).toList();
@@ -4003,23 +4030,23 @@ class Event {
 }
 
 class EventAttachment {
-  /**
-   * ID of the attached file. Read-only.
-   * For Google Drive files, this is the ID of the corresponding Files resource
-   * entry in the Drive API.
-   */
+  /// ID of the attached file. Read-only.
+  /// For Google Drive files, this is the ID of the corresponding Files resource
+  /// entry in the Drive API.
   core.String fileId;
-  /**
-   * URL link to the attachment.
-   * For adding Google Drive file attachments use the same format as in
-   * alternateLink property of the Files resource in the Drive API.
-   */
+
+  /// URL link to the attachment.
+  /// For adding Google Drive file attachments use the same format as in
+  /// alternateLink property of the Files resource in the Drive API.
   core.String fileUrl;
-  /** URL link to the attachment's icon. Read-only. */
+
+  /// URL link to the attachment's icon. Read-only.
   core.String iconLink;
-  /** Internet media type (MIME type) of the attachment. */
+
+  /// Internet media type (MIME type) of the attachment.
   core.String mimeType;
-  /** Attachment title. */
+
+  /// Attachment title.
   core.String title;
 
   EventAttachment();
@@ -4043,7 +4070,8 @@ class EventAttachment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (fileId != null) {
       _json["fileId"] = fileId;
     }
@@ -4064,43 +4092,42 @@ class EventAttachment {
 }
 
 class EventAttendee {
-  /** Number of additional guests. Optional. The default is 0. */
+  /// Number of additional guests. Optional. The default is 0.
   core.int additionalGuests;
-  /** The attendee's response comment. Optional. */
+
+  /// The attendee's response comment. Optional.
   core.String comment;
-  /** The attendee's name, if available. Optional. */
+
+  /// The attendee's name, if available. Optional.
   core.String displayName;
-  /**
-   * The attendee's email address, if available. This field must be present when
-   * adding an attendee. It must be a valid email address as per RFC5322.
-   */
+
+  /// The attendee's email address, if available. This field must be present
+  /// when adding an attendee. It must be a valid email address as per RFC5322.
   core.String email;
-  /**
-   * The attendee's Profile ID, if available. It corresponds to theid field in
-   * the People collection of the Google+ API
-   */
+
+  /// The attendee's Profile ID, if available. It corresponds to theid field in
+  /// the People collection of the Google+ API
   core.String id;
-  /** Whether this is an optional attendee. Optional. The default is False. */
+
+  /// Whether this is an optional attendee. Optional. The default is False.
   core.bool optional;
-  /**
-   * Whether the attendee is the organizer of the event. Read-only. The default
-   * is False.
-   */
+
+  /// Whether the attendee is the organizer of the event. Read-only. The default
+  /// is False.
   core.bool organizer;
-  /** Whether the attendee is a resource. Read-only. The default is False. */
+
+  /// Whether the attendee is a resource. Read-only. The default is False.
   core.bool resource;
-  /**
-   * The attendee's response status. Possible values are:
-   * - "needsAction" - The attendee has not responded to the invitation.
-   * - "declined" - The attendee has declined the invitation.
-   * - "tentative" - The attendee has tentatively accepted the invitation.
-   * - "accepted" - The attendee has accepted the invitation.
-   */
+
+  /// The attendee's response status. Possible values are:
+  /// - "needsAction" - The attendee has not responded to the invitation.
+  /// - "declined" - The attendee has declined the invitation.
+  /// - "tentative" - The attendee has tentatively accepted the invitation.
+  /// - "accepted" - The attendee has accepted the invitation.
   core.String responseStatus;
-  /**
-   * Whether this entry represents the calendar on which this copy of the event
-   * appears. Read-only. The default is False.
-   */
+
+  /// Whether this entry represents the calendar on which this copy of the event
+  /// appears. Read-only. The default is False.
   core.bool self;
 
   EventAttendee();
@@ -4139,7 +4166,8 @@ class EventAttendee {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (additionalGuests != null) {
       _json["additionalGuests"] = additionalGuests;
     }
@@ -4175,21 +4203,19 @@ class EventAttendee {
 }
 
 class EventDateTime {
-  /** The date, in the format "yyyy-mm-dd", if this is an all-day event. */
+  /// The date, in the format "yyyy-mm-dd", if this is an all-day event.
   core.DateTime date;
-  /**
-   * The time, as a combined date-time value (formatted according to RFC3339). A
-   * time zone offset is required unless a time zone is explicitly specified in
-   * timeZone.
-   */
+
+  /// The time, as a combined date-time value (formatted according to RFC3339).
+  /// A time zone offset is required unless a time zone is explicitly specified
+  /// in timeZone.
   core.DateTime dateTime;
-  /**
-   * The time zone in which the time is specified. (Formatted as an IANA Time
-   * Zone Database name, e.g. "Europe/Zurich".) For recurring events this field
-   * is required and specifies the time zone in which the recurrence is
-   * expanded. For single events this field is optional and indicates a custom
-   * time zone for the event start/end.
-   */
+
+  /// The time zone in which the time is specified. (Formatted as an IANA Time
+  /// Zone Database name, e.g. "Europe/Zurich".) For recurring events this field
+  /// is required and specifies the time zone in which the recurrence is
+  /// expanded. For single events this field is optional and indicates a custom
+  /// time zone for the event start/end.
   core.String timeZone;
 
   EventDateTime();
@@ -4207,9 +4233,11 @@ class EventDateTime {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (date != null) {
-      _json["date"] = "${(date).year.toString().padLeft(4, '0')}-${(date).month.toString().padLeft(2, '0')}-${(date).day.toString().padLeft(2, '0')}";
+      _json["date"] =
+          "${(date).year.toString().padLeft(4, '0')}-${(date).month.toString().padLeft(2, '0')}-${(date).day.toString().padLeft(2, '0')}";
     }
     if (dateTime != null) {
       _json["dateTime"] = (dateTime).toIso8601String();
@@ -4222,19 +4250,16 @@ class EventDateTime {
 }
 
 class EventReminder {
-  /**
-   * The method used by this reminder. Possible values are:
-   * - "email" - Reminders are sent via email.
-   * - "sms" - Reminders are sent via SMS. These are only available for G Suite
-   * customers. Requests to set SMS reminders for other account types are
-   * ignored.
-   * - "popup" - Reminders are sent via a UI popup.
-   */
+  /// The method used by this reminder. Possible values are:
+  /// - "email" - Reminders are sent via email.
+  /// - "sms" - Reminders are sent via SMS. These are only available for G Suite
+  /// customers. Requests to set SMS reminders for other account types are
+  /// ignored.
+  /// - "popup" - Reminders are sent via a UI popup.
   core.String method;
-  /**
-   * Number of minutes before the start of the event when the reminder should
-   * trigger. Valid values are between 0 and 40320 (4 weeks in minutes).
-   */
+
+  /// Number of minutes before the start of the event when the reminder should
+  /// trigger. Valid values are between 0 and 40320 (4 weeks in minutes).
   core.int minutes;
 
   EventReminder();
@@ -4249,7 +4274,8 @@ class EventReminder {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (method != null) {
       _json["method"] = method;
     }
@@ -4261,52 +4287,53 @@ class EventReminder {
 }
 
 class Events {
-  /**
-   * The user's access role for this calendar. Read-only. Possible values are:
-   * - "none" - The user has no access.
-   * - "freeBusyReader" - The user has read access to free/busy information.
-   * - "reader" - The user has read access to the calendar. Private events will
-   * appear to users with reader access, but event details will be hidden.
-   * - "writer" - The user has read and write access to the calendar. Private
-   * events will appear to users with writer access, and event details will be
-   * visible.
-   * - "owner" - The user has ownership of the calendar. This role has all of
-   * the permissions of the writer role with the additional ability to see and
-   * manipulate ACLs.
-   */
+  /// The user's access role for this calendar. Read-only. Possible values are:
+  /// - "none" - The user has no access.
+  /// - "freeBusyReader" - The user has read access to free/busy information.
+  /// - "reader" - The user has read access to the calendar. Private events will
+  /// appear to users with reader access, but event details will be hidden.
+  /// - "writer" - The user has read and write access to the calendar. Private
+  /// events will appear to users with writer access, and event details will be
+  /// visible.
+  /// - "owner" - The user has ownership of the calendar. This role has all of
+  /// the permissions of the writer role with the additional ability to see and
+  /// manipulate ACLs.
   core.String accessRole;
-  /**
-   * The default reminders on the calendar for the authenticated user. These
-   * reminders apply to all events on this calendar that do not explicitly
-   * override them (i.e. do not have reminders.useDefault set to True).
-   */
+
+  /// The default reminders on the calendar for the authenticated user. These
+  /// reminders apply to all events on this calendar that do not explicitly
+  /// override them (i.e. do not have reminders.useDefault set to True).
   core.List<EventReminder> defaultReminders;
-  /** Description of the calendar. Read-only. */
+
+  /// Description of the calendar. Read-only.
   core.String description;
-  /** ETag of the collection. */
+
+  /// ETag of the collection.
   core.String etag;
-  /** List of events on the calendar. */
+
+  /// List of events on the calendar.
   core.List<Event> items;
-  /** Type of the collection ("calendar#events"). */
+
+  /// Type of the collection ("calendar#events").
   core.String kind;
-  /**
-   * Token used to access the next page of this result. Omitted if no further
-   * results are available, in which case nextSyncToken is provided.
-   */
+
+  /// Token used to access the next page of this result. Omitted if no further
+  /// results are available, in which case nextSyncToken is provided.
   core.String nextPageToken;
-  /**
-   * Token used at a later point in time to retrieve only the entries that have
-   * changed since this result was returned. Omitted if further results are
-   * available, in which case nextPageToken is provided.
-   */
+
+  /// Token used at a later point in time to retrieve only the entries that have
+  /// changed since this result was returned. Omitted if further results are
+  /// available, in which case nextPageToken is provided.
   core.String nextSyncToken;
-  /** Title of the calendar. Read-only. */
+
+  /// Title of the calendar. Read-only.
   core.String summary;
-  /** The time zone of the calendar. Read-only. */
+
+  /// The time zone of the calendar. Read-only.
   core.String timeZone;
-  /**
-   * Last modification time of the calendar (as a RFC3339 timestamp). Read-only.
-   */
+
+  /// Last modification time of the calendar (as a RFC3339 timestamp).
+  /// Read-only.
   core.DateTime updated;
 
   Events();
@@ -4316,7 +4343,9 @@ class Events {
       accessRole = _json["accessRole"];
     }
     if (_json.containsKey("defaultReminders")) {
-      defaultReminders = _json["defaultReminders"].map((value) => new EventReminder.fromJson(value)).toList();
+      defaultReminders = _json["defaultReminders"]
+          .map((value) => new EventReminder.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -4348,12 +4377,14 @@ class Events {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (accessRole != null) {
       _json["accessRole"] = accessRole;
     }
     if (defaultReminders != null) {
-      _json["defaultReminders"] = defaultReminders.map((value) => (value).toJson()).toList();
+      _json["defaultReminders"] =
+          defaultReminders.map((value) => (value).toJson()).toList();
     }
     if (description != null) {
       _json["description"] = description;
@@ -4387,26 +4418,28 @@ class Events {
 }
 
 class FreeBusyCalendar {
-  /**
-   * List of time ranges during which this calendar should be regarded as busy.
-   */
+  /// List of time ranges during which this calendar should be regarded as busy.
   core.List<TimePeriod> busy;
-  /** Optional error(s) (if computation for the calendar failed). */
+
+  /// Optional error(s) (if computation for the calendar failed).
   core.List<Error> errors;
 
   FreeBusyCalendar();
 
   FreeBusyCalendar.fromJson(core.Map _json) {
     if (_json.containsKey("busy")) {
-      busy = _json["busy"].map((value) => new TimePeriod.fromJson(value)).toList();
+      busy =
+          _json["busy"].map((value) => new TimePeriod.fromJson(value)).toList();
     }
     if (_json.containsKey("errors")) {
-      errors = _json["errors"].map((value) => new Error.fromJson(value)).toList();
+      errors =
+          _json["errors"].map((value) => new Error.fromJson(value)).toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (busy != null) {
       _json["busy"] = busy.map((value) => (value).toJson()).toList();
     }
@@ -4418,9 +4451,10 @@ class FreeBusyCalendar {
 }
 
 class FreeBusyGroup {
-  /** List of calendars' identifiers within a group. */
+  /// List of calendars' identifiers within a group.
   core.List<core.String> calendars;
-  /** Optional error(s) (if computation for the group failed). */
+
+  /// Optional error(s) (if computation for the group failed).
   core.List<Error> errors;
 
   FreeBusyGroup();
@@ -4430,12 +4464,14 @@ class FreeBusyGroup {
       calendars = _json["calendars"];
     }
     if (_json.containsKey("errors")) {
-      errors = _json["errors"].map((value) => new Error.fromJson(value)).toList();
+      errors =
+          _json["errors"].map((value) => new Error.fromJson(value)).toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (calendars != null) {
       _json["calendars"] = calendars;
     }
@@ -4447,24 +4483,25 @@ class FreeBusyGroup {
 }
 
 class FreeBusyRequest {
-  /**
-   * Maximal number of calendars for which FreeBusy information is to be
-   * provided. Optional.
-   */
+  /// Maximal number of calendars for which FreeBusy information is to be
+  /// provided. Optional.
   core.int calendarExpansionMax;
-  /**
-   * Maximal number of calendar identifiers to be provided for a single group.
-   * Optional. An error will be returned for a group with more members than this
-   * value.
-   */
+
+  /// Maximal number of calendar identifiers to be provided for a single group.
+  /// Optional. An error will be returned for a group with more members than
+  /// this value.
   core.int groupExpansionMax;
-  /** List of calendars and/or groups to query. */
+
+  /// List of calendars and/or groups to query.
   core.List<FreeBusyRequestItem> items;
-  /** The end of the interval for the query. */
+
+  /// The end of the interval for the query.
   core.DateTime timeMax;
-  /** The start of the interval for the query. */
+
+  /// The start of the interval for the query.
   core.DateTime timeMin;
-  /** Time zone used in the response. Optional. The default is UTC. */
+
+  /// Time zone used in the response. Optional. The default is UTC.
   core.String timeZone;
 
   FreeBusyRequest();
@@ -4477,7 +4514,9 @@ class FreeBusyRequest {
       groupExpansionMax = _json["groupExpansionMax"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new FreeBusyRequestItem.fromJson(value)).toList();
+      items = _json["items"]
+          .map((value) => new FreeBusyRequestItem.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("timeMax")) {
       timeMax = core.DateTime.parse(_json["timeMax"]);
@@ -4491,7 +4530,8 @@ class FreeBusyRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (calendarExpansionMax != null) {
       _json["calendarExpansionMax"] = calendarExpansionMax;
     }
@@ -4515,7 +4555,7 @@ class FreeBusyRequest {
 }
 
 class FreeBusyRequestItem {
-  /** The identifier of a calendar or a group. */
+  /// The identifier of a calendar or a group.
   core.String id;
 
   FreeBusyRequestItem();
@@ -4527,7 +4567,8 @@ class FreeBusyRequestItem {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -4536,25 +4577,37 @@ class FreeBusyRequestItem {
 }
 
 class FreeBusyResponse {
-  /** List of free/busy information for calendars. */
+  /// List of free/busy information for calendars.
   core.Map<core.String, FreeBusyCalendar> calendars;
-  /** Expansion of groups. */
+
+  /// Expansion of groups.
   core.Map<core.String, FreeBusyGroup> groups;
-  /** Type of the resource ("calendar#freeBusy"). */
+
+  /// Type of the resource ("calendar#freeBusy").
   core.String kind;
-  /** The end of the interval. */
+
+  /// The end of the interval.
   core.DateTime timeMax;
-  /** The start of the interval. */
+
+  /// The start of the interval.
   core.DateTime timeMin;
 
   FreeBusyResponse();
 
   FreeBusyResponse.fromJson(core.Map _json) {
     if (_json.containsKey("calendars")) {
-      calendars = commons.mapMap<core.Map<core.String, core.Object>, FreeBusyCalendar>(_json["calendars"], (core.Map<core.String, core.Object> item) => new FreeBusyCalendar.fromJson(item));
+      calendars =
+          commons.mapMap<core.Map<core.String, core.Object>, FreeBusyCalendar>(
+              _json["calendars"],
+              (core.Map<core.String, core.Object> item) =>
+                  new FreeBusyCalendar.fromJson(item));
     }
     if (_json.containsKey("groups")) {
-      groups = commons.mapMap<core.Map<core.String, core.Object>, FreeBusyGroup>(_json["groups"], (core.Map<core.String, core.Object> item) => new FreeBusyGroup.fromJson(item));
+      groups =
+          commons.mapMap<core.Map<core.String, core.Object>, FreeBusyGroup>(
+              _json["groups"],
+              (core.Map<core.String, core.Object> item) =>
+                  new FreeBusyGroup.fromJson(item));
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -4568,12 +4621,17 @@ class FreeBusyResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (calendars != null) {
-      _json["calendars"] = commons.mapMap<FreeBusyCalendar, core.Map<core.String, core.Object>>(calendars, (FreeBusyCalendar item) => (item).toJson());
+      _json["calendars"] =
+          commons.mapMap<FreeBusyCalendar, core.Map<core.String, core.Object>>(
+              calendars, (FreeBusyCalendar item) => (item).toJson());
     }
     if (groups != null) {
-      _json["groups"] = commons.mapMap<FreeBusyGroup, core.Map<core.String, core.Object>>(groups, (FreeBusyGroup item) => (item).toJson());
+      _json["groups"] =
+          commons.mapMap<FreeBusyGroup, core.Map<core.String, core.Object>>(
+              groups, (FreeBusyGroup item) => (item).toJson());
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -4589,16 +4647,18 @@ class FreeBusyResponse {
 }
 
 class Setting {
-  /** ETag of the resource. */
+  /// ETag of the resource.
   core.String etag;
-  /** The id of the user setting. */
+
+  /// The id of the user setting.
   core.String id;
-  /** Type of the resource ("calendar#setting"). */
+
+  /// Type of the resource ("calendar#setting").
   core.String kind;
-  /**
-   * Value of the user setting. The format of the value depends on the ID of the
-   * setting. It must always be a UTF-8 string of length up to 1024 characters.
-   */
+
+  /// Value of the user setting. The format of the value depends on the ID of
+  /// the setting. It must always be a UTF-8 string of length up to 1024
+  /// characters.
   core.String value;
 
   Setting();
@@ -4619,7 +4679,8 @@ class Setting {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -4637,22 +4698,22 @@ class Setting {
 }
 
 class Settings {
-  /** Etag of the collection. */
+  /// Etag of the collection.
   core.String etag;
-  /** List of user settings. */
+
+  /// List of user settings.
   core.List<Setting> items;
-  /** Type of the collection ("calendar#settings"). */
+
+  /// Type of the collection ("calendar#settings").
   core.String kind;
-  /**
-   * Token used to access the next page of this result. Omitted if no further
-   * results are available, in which case nextSyncToken is provided.
-   */
+
+  /// Token used to access the next page of this result. Omitted if no further
+  /// results are available, in which case nextSyncToken is provided.
   core.String nextPageToken;
-  /**
-   * Token used at a later point in time to retrieve only the entries that have
-   * changed since this result was returned. Omitted if further results are
-   * available, in which case nextPageToken is provided.
-   */
+
+  /// Token used at a later point in time to retrieve only the entries that have
+  /// changed since this result was returned. Omitted if further results are
+  /// available, in which case nextPageToken is provided.
   core.String nextSyncToken;
 
   Settings();
@@ -4662,7 +4723,8 @@ class Settings {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Setting.fromJson(value)).toList();
+      items =
+          _json["items"].map((value) => new Setting.fromJson(value)).toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -4676,7 +4738,8 @@ class Settings {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -4697,9 +4760,10 @@ class Settings {
 }
 
 class TimePeriod {
-  /** The (exclusive) end of the time period. */
+  /// The (exclusive) end of the time period.
   core.DateTime end;
-  /** The (inclusive) start of the time period. */
+
+  /// The (inclusive) start of the time period.
   core.DateTime start;
 
   TimePeriod();
@@ -4714,7 +4778,8 @@ class TimePeriod {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (end != null) {
       _json["end"] = (end).toIso8601String();
     }

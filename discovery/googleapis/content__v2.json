@@ -10,12 +10,12 @@
     },
     "basePath": "/content/v2/",
     "baseUrl": "https://www.googleapis.com/content/v2/",
-    "batchPath": "batch",
+    "batchPath": "batch/content/v2",
     "canonicalName": "Shopping Content",
     "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/Jt8A6kt1GnP24vdp0UtThptYtC0\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/7DxE-WvhKyxBCPMjpNGA9QTXnO8\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -110,7 +110,7 @@
                             "type": "string"
                         },
                         "overwrite": {
-                            "description": "Flag to remove any existing claim on the requested website by another account and replace it with a claim from this account.",
+                            "description": "Only available to selected merchants. When set to True, this flag removes any existing claim on the requested website by another account and replaces it with a claim from this account.",
                             "location": "query",
                             "type": "boolean"
                         }
@@ -163,6 +163,12 @@
                         },
                         "dryRun": {
                             "description": "Flag to run the request in dry-run mode.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "force": {
+                            "default": "true",
+                            "description": "Flag to delete sub-accounts with products. The default value of false will become active on September 28, 2017.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -2018,7 +2024,7 @@
             }
         }
     },
-    "revision": "20170803",
+    "revision": "20170905",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -2386,6 +2392,10 @@
                     "description": "An entry ID, unique within the batch request.",
                     "format": "uint32",
                     "type": "integer"
+                },
+                "force": {
+                    "description": "Whether the account should be deleted if the account has offers. Only applicable if the method is delete.",
+                    "type": "boolean"
                 },
                 "merchantId": {
                     "description": "The ID of the managing account.",
@@ -5817,6 +5827,10 @@
                 "deliveryTime": {
                     "$ref": "DeliveryTime",
                     "description": "Time spent in various aspects from order to the delivery of the product. Required."
+                },
+                "minimumOrderValue": {
+                    "$ref": "Price",
+                    "description": "Minimum order value for this service. If set, indicates that customers will have to spend at least this amount. All prices within a service must have the same currency."
                 },
                 "name": {
                     "description": "Free-form name of the service. Must be unique within target account. Required.",

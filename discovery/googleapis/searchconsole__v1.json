@@ -16,6 +16,45 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
+        "$.xgafv": {
+            "description": "V1 error format.",
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
         "alt": {
             "default": "json",
             "description": "Data format for response.",
@@ -53,52 +92,13 @@
             "location": "query",
             "type": "boolean"
         },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
         "bearer_token": {
             "description": "OAuth bearer token.",
             "location": "query",
             "type": "string"
         },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
-            "location": "query",
-            "type": "string"
-        },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
-            "location": "query",
-            "type": "string"
-        },
-        "$.xgafv": {
-            "description": "V1 error format.",
-            "enum": [
-                "1",
-                "2"
-            ],
-            "enumDescriptions": [
-                "v1 error format",
-                "v2 error format"
-            ],
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
         }
@@ -128,63 +128,9 @@
             }
         }
     },
-    "revision": "20170819",
+    "revision": "20170905",
     "rootUrl": "https://searchconsole.googleapis.com/",
     "schemas": {
-        "RunMobileFriendlyTestResponse": {
-            "description": "Mobile-friendly test response, including mobile-friendly issues and resource\nissues.",
-            "id": "RunMobileFriendlyTestResponse",
-            "properties": {
-                "screenshot": {
-                    "$ref": "Image",
-                    "description": "Screenshot of the requested URL."
-                },
-                "resourceIssues": {
-                    "description": "Information about embedded resources issues.",
-                    "items": {
-                        "$ref": "ResourceIssue"
-                    },
-                    "type": "array"
-                },
-                "testStatus": {
-                    "$ref": "TestStatus",
-                    "description": "Final state of the test, can be either complete or an error."
-                },
-                "mobileFriendliness": {
-                    "description": "Test verdict, whether the page is mobile friendly or not.",
-                    "enum": [
-                        "MOBILE_FRIENDLY_TEST_RESULT_UNSPECIFIED",
-                        "MOBILE_FRIENDLY",
-                        "NOT_MOBILE_FRIENDLY"
-                    ],
-                    "enumDescriptions": [
-                        "Internal error when running this test. Please try running the test again.",
-                        "The page is mobile friendly.",
-                        "The page is not mobile friendly."
-                    ],
-                    "type": "string"
-                },
-                "mobileFriendlyIssues": {
-                    "description": "List of mobile-usability issues.",
-                    "items": {
-                        "$ref": "MobileFriendlyIssue"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "ResourceIssue": {
-            "description": "Information about a resource with issue.",
-            "id": "ResourceIssue",
-            "properties": {
-                "blockedResource": {
-                    "$ref": "BlockedResource",
-                    "description": "Describes a blocked resource issue."
-                }
-            },
-            "type": "object"
-        },
         "BlockedResource": {
             "description": "Blocked resource.",
             "id": "BlockedResource",
@@ -200,10 +146,6 @@
             "description": "Final state of the test, including error details if necessary.",
             "id": "TestStatus",
             "properties": {
-                "details": {
-                    "description": "Error details if applicable.",
-                    "type": "string"
-                },
                 "status": {
                     "description": "Status of the test.",
                     "enum": [
@@ -218,6 +160,25 @@
                         "Inspection terminated in an error state. This indicates a problem in\nGoogle's infrastructure, not a user error. Please try again later.",
                         "Google can not access the URL because of a user error such as a robots.txt\nblockage, a 403 or 500 code etc. Please make sure that the URL provided is\naccessible by Googlebot and is not password protected."
                     ],
+                    "type": "string"
+                },
+                "details": {
+                    "description": "Error details if applicable.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RunMobileFriendlyTestRequest": {
+            "description": "Mobile-friendly test request.",
+            "id": "RunMobileFriendlyTestRequest",
+            "properties": {
+                "requestScreenshot": {
+                    "description": "Whether or not screenshot is requested. Default is false.",
+                    "type": "boolean"
+                },
+                "url": {
+                    "description": "URL for inspection.",
                     "type": "string"
                 }
             },
@@ -235,21 +196,6 @@
                     "description": "Image data in format determined by the mime type. Currently, the format\nwill always be \"image/png\", but this might change in the future.",
                     "format": "byte",
                     "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "RunMobileFriendlyTestRequest": {
-            "description": "Mobile-friendly test request.",
-            "id": "RunMobileFriendlyTestRequest",
-            "properties": {
-                "url": {
-                    "description": "URL for inspection.",
-                    "type": "string"
-                },
-                "requestScreenshot": {
-                    "description": "Whether or not screenshot is requested. Default is false.",
-                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -279,6 +225,60 @@
                         "Touch elements are too close to each other. [Learn more]\n(https://support.google.com/webmasters/answer/6352293#touch_elements_too_close)."
                     ],
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RunMobileFriendlyTestResponse": {
+            "description": "Mobile-friendly test response, including mobile-friendly issues and resource\nissues.",
+            "id": "RunMobileFriendlyTestResponse",
+            "properties": {
+                "testStatus": {
+                    "$ref": "TestStatus",
+                    "description": "Final state of the test, can be either complete or an error."
+                },
+                "resourceIssues": {
+                    "description": "Information about embedded resources issues.",
+                    "items": {
+                        "$ref": "ResourceIssue"
+                    },
+                    "type": "array"
+                },
+                "mobileFriendliness": {
+                    "description": "Test verdict, whether the page is mobile friendly or not.",
+                    "enum": [
+                        "MOBILE_FRIENDLY_TEST_RESULT_UNSPECIFIED",
+                        "MOBILE_FRIENDLY",
+                        "NOT_MOBILE_FRIENDLY"
+                    ],
+                    "enumDescriptions": [
+                        "Internal error when running this test. Please try running the test again.",
+                        "The page is mobile friendly.",
+                        "The page is not mobile friendly."
+                    ],
+                    "type": "string"
+                },
+                "mobileFriendlyIssues": {
+                    "description": "List of mobile-usability issues.",
+                    "items": {
+                        "$ref": "MobileFriendlyIssue"
+                    },
+                    "type": "array"
+                },
+                "screenshot": {
+                    "$ref": "Image",
+                    "description": "Screenshot of the requested URL."
+                }
+            },
+            "type": "object"
+        },
+        "ResourceIssue": {
+            "description": "Information about a resource with issue.",
+            "id": "ResourceIssue",
+            "properties": {
+                "blockedResource": {
+                    "$ref": "BlockedResource",
+                    "description": "Describes a blocked resource issue."
                 }
             },
             "type": "object"

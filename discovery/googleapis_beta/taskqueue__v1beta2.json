@@ -13,7 +13,7 @@
     },
     "basePath": "/taskqueue/v1beta2/projects/",
     "baseUrl": "https://www.googleapis.com/taskqueue/v1beta2/projects/",
-    "batchPath": "batch",
+    "batchPath": "batch/taskqueue/v1beta2",
     "description": "Accesses a Google App Engine Pull Task Queue over REST.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/appengine/docs/python/taskqueue/rest",

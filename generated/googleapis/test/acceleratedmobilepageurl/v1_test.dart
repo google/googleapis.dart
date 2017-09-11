@@ -1,12 +1,10 @@
 library googleapis.acceleratedmobilepageurl.v1.test;
 
 import "dart:core" as core;
-import "dart:collection" as collection;
 import "dart:async" as async;
 import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
-import 'package:http/testing.dart' as http_testing;
 import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/acceleratedmobilepageurl/v1.dart' as api;
@@ -22,7 +20,8 @@ class HttpServerMock extends http.BaseClient {
 
   async.Future<http.StreamedResponse> send(http.BaseRequest request) {
     if (_expectJson) {
-      return request.finalize()
+      return request
+          .finalize()
           .transform(convert.UTF8.decoder)
           .join('')
           .then((core.String jsonString) {
@@ -45,8 +44,8 @@ class HttpServerMock extends http.BaseClient {
   }
 }
 
-http.StreamedResponse stringResponse(
-    core.int status, core.Map<core.String, core.String> headers, core.String body) {
+http.StreamedResponse stringResponse(core.int status,
+    core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -97,14 +96,14 @@ checkAmpUrlError(api.AmpUrlError o) {
   buildCounterAmpUrlError--;
 }
 
-buildUnnamed1258() {
+buildUnnamed1254() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1258(core.List<core.String> o) {
+checkUnnamed1254(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -116,7 +115,7 @@ buildBatchGetAmpUrlsRequest() {
   buildCounterBatchGetAmpUrlsRequest++;
   if (buildCounterBatchGetAmpUrlsRequest < 3) {
     o.lookupStrategy = "foo";
-    o.urls = buildUnnamed1258();
+    o.urls = buildUnnamed1254();
   }
   buildCounterBatchGetAmpUrlsRequest--;
   return o;
@@ -126,32 +125,32 @@ checkBatchGetAmpUrlsRequest(api.BatchGetAmpUrlsRequest o) {
   buildCounterBatchGetAmpUrlsRequest++;
   if (buildCounterBatchGetAmpUrlsRequest < 3) {
     unittest.expect(o.lookupStrategy, unittest.equals('foo'));
-    checkUnnamed1258(o.urls);
+    checkUnnamed1254(o.urls);
   }
   buildCounterBatchGetAmpUrlsRequest--;
 }
 
-buildUnnamed1259() {
+buildUnnamed1255() {
   var o = new core.List<api.AmpUrl>();
   o.add(buildAmpUrl());
   o.add(buildAmpUrl());
   return o;
 }
 
-checkUnnamed1259(core.List<api.AmpUrl> o) {
+checkUnnamed1255(core.List<api.AmpUrl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAmpUrl(o[0]);
   checkAmpUrl(o[1]);
 }
 
-buildUnnamed1260() {
+buildUnnamed1256() {
   var o = new core.List<api.AmpUrlError>();
   o.add(buildAmpUrlError());
   o.add(buildAmpUrlError());
   return o;
 }
 
-checkUnnamed1260(core.List<api.AmpUrlError> o) {
+checkUnnamed1256(core.List<api.AmpUrlError> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAmpUrlError(o[0]);
   checkAmpUrlError(o[1]);
@@ -162,8 +161,8 @@ buildBatchGetAmpUrlsResponse() {
   var o = new api.BatchGetAmpUrlsResponse();
   buildCounterBatchGetAmpUrlsResponse++;
   if (buildCounterBatchGetAmpUrlsResponse < 3) {
-    o.ampUrls = buildUnnamed1259();
-    o.urlErrors = buildUnnamed1260();
+    o.ampUrls = buildUnnamed1255();
+    o.urlErrors = buildUnnamed1256();
   }
   buildCounterBatchGetAmpUrlsResponse--;
   return o;
@@ -172,12 +171,11 @@ buildBatchGetAmpUrlsResponse() {
 checkBatchGetAmpUrlsResponse(api.BatchGetAmpUrlsResponse o) {
   buildCounterBatchGetAmpUrlsResponse++;
   if (buildCounterBatchGetAmpUrlsResponse < 3) {
-    checkUnnamed1259(o.ampUrls);
-    checkUnnamed1260(o.urlErrors);
+    checkUnnamed1255(o.ampUrls);
+    checkUnnamed1256(o.urlErrors);
   }
   buildCounterBatchGetAmpUrlsResponse--;
 }
-
 
 main() {
   unittest.group("obj-schema-AmpUrl", () {
@@ -188,7 +186,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-AmpUrlError", () {
     unittest.test("to-json--from-json", () {
       var o = buildAmpUrlError();
@@ -196,7 +193,6 @@ main() {
       checkAmpUrlError(od);
     });
   });
-
 
   unittest.group("obj-schema-BatchGetAmpUrlsRequest", () {
     unittest.test("to-json--from-json", () {
@@ -206,7 +202,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-BatchGetAmpUrlsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildBatchGetAmpUrlsResponse();
@@ -215,12 +210,11 @@ main() {
     });
   });
 
-
   unittest.group("resource-AmpUrlsResourceApi", () {
     unittest.test("method--batchGet", () {
-
       var mock = new HttpServerMock();
-      api.AmpUrlsResourceApi res = new api.AcceleratedmobilepageurlApi(mock).ampUrls;
+      api.AmpUrlsResourceApi res =
+          new api.AcceleratedmobilepageurlApi(mock).ampUrls;
       var arg_request = buildBatchGetAmpUrlsRequest();
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.BatchGetAmpUrlsRequest.fromJson(json);
@@ -230,9 +224,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("v1/ampUrls:batchGet"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("v1/ampUrls:batchGet"));
         pathOffset += 19;
 
         var query = (req.url).query;
@@ -245,27 +241,26 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildBatchGetAmpUrlsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.batchGet(arg_request).then(unittest.expectAsync1(((api.BatchGetAmpUrlsResponse response) {
+      res
+          .batchGet(arg_request)
+          .then(unittest.expectAsync1(((api.BatchGetAmpUrlsResponse response) {
         checkBatchGetAmpUrlsResponse(response);
       })));
     });
-
   });
-
-
 }
-

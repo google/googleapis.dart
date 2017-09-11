@@ -13,7 +13,7 @@
     },
     "basePath": "/admin/datatransfer/v1/",
     "baseUrl": "https://www.googleapis.com/admin/datatransfer/v1/",
-    "batchPath": "batch",
+    "batchPath": "batch/admin/datatransfer_v1",
     "canonicalName": "DataTransfer",
     "description": "Transfers user data from one user to another.",
     "discoveryVersion": "v1",

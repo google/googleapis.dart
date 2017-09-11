@@ -1,7 +1,7 @@
 {
     "basePath": "/webfonts/v1/",
     "baseUrl": "https://www.googleapis.com/webfonts/v1/",
-    "batchPath": "batch",
+    "batchPath": "batch/webfonts/v1",
     "description": "Accesses the metadata for all families served by Google Fonts, providing a list of families currently available (including available styles and a list of supported script subsets).",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/fonts/docs/developer_api",

@@ -9,53 +9,52 @@ import 'dart:convert' as convert;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
-    ApiRequestError, DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
+    show ApiRequestError, DetailedApiRequestError;
 
 const core.String USER_AGENT = 'dart-api-client urlshortener/v1';
 
-/** Lets you create, inspect, and manage goo.gl short URLs */
+/// Lets you create, inspect, and manage goo.gl short URLs
 class UrlshortenerApi {
-  /** Manage your goo.gl short URLs */
-  static const UrlshortenerScope = "https://www.googleapis.com/auth/urlshortener";
-
+  /// Manage your goo.gl short URLs
+  static const UrlshortenerScope =
+      "https://www.googleapis.com/auth/urlshortener";
 
   final commons.ApiRequester _requester;
 
   UrlResourceApi get url => new UrlResourceApi(_requester);
 
-  UrlshortenerApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "urlshortener/v1/"}) :
-      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+  UrlshortenerApi(http.Client client,
+      {core.String rootUrl: "https://www.googleapis.com/",
+      core.String servicePath: "urlshortener/v1/"})
+      : _requester =
+            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
-
 
 class UrlResourceApi {
   final commons.ApiRequester _requester;
 
-  UrlResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  UrlResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Expands a short URL or gets creation time and analytics.
-   *
-   * Request parameters:
-   *
-   * [shortUrl] - The short URL, including the protocol.
-   *
-   * [projection] - Additional information to return.
-   * Possible string values are:
-   * - "ANALYTICS_CLICKS" : Returns only click counts.
-   * - "ANALYTICS_TOP_STRINGS" : Returns only top string counts.
-   * - "FULL" : Returns the creation timestamp and all available analytics.
-   *
-   * Completes with a [Url].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Expands a short URL or gets creation time and analytics.
+  ///
+  /// Request parameters:
+  ///
+  /// [shortUrl] - The short URL, including the protocol.
+  ///
+  /// [projection] - Additional information to return.
+  /// Possible string values are:
+  /// - "ANALYTICS_CLICKS" : Returns only click counts.
+  /// - "ANALYTICS_TOP_STRINGS" : Returns only top string counts.
+  /// - "FULL" : Returns the creation timestamp and all available analytics.
+  ///
+  /// Completes with a [Url].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Url> get(core.String shortUrl, {core.String projection}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -74,31 +73,28 @@ class UrlResourceApi {
 
     _url = 'url';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Url.fromJson(data));
   }
 
-  /**
-   * Creates a new short URL.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [Url].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Creates a new short URL.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [Url].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Url> insert(Url request) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -113,37 +109,35 @@ class UrlResourceApi {
 
     _url = 'url';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Url.fromJson(data));
   }
 
-  /**
-   * Retrieves a list of URLs shortened by a user.
-   *
-   * Request parameters:
-   *
-   * [projection] - Additional information to return.
-   * Possible string values are:
-   * - "ANALYTICS_CLICKS" : Returns short URL click counts.
-   * - "FULL" : Returns short URL click counts.
-   *
-   * [start_token] - Token for requesting successive pages of results.
-   *
-   * Completes with a [UrlHistory].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<UrlHistory> list({core.String projection, core.String start_token}) {
+  /// Retrieves a list of URLs shortened by a user.
+  ///
+  /// Request parameters:
+  ///
+  /// [projection] - Additional information to return.
+  /// Possible string values are:
+  /// - "ANALYTICS_CLICKS" : Returns short URL click counts.
+  /// - "FULL" : Returns short URL click counts.
+  ///
+  /// [start_token] - Token for requesting successive pages of results.
+  ///
+  /// Completes with a [UrlHistory].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UrlHistory> list(
+      {core.String projection, core.String start_token}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -160,63 +154,64 @@ class UrlResourceApi {
 
     _url = 'url/history';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new UrlHistory.fromJson(data));
   }
-
 }
 
-
-
 class AnalyticsSnapshot {
-  /**
-   * Top browsers, e.g. "Chrome"; sorted by (descending) click counts. Only
-   * present if this data is available.
-   */
+  /// Top browsers, e.g. "Chrome"; sorted by (descending) click counts. Only
+  /// present if this data is available.
   core.List<StringCount> browsers;
-  /**
-   * Top countries (expressed as country codes), e.g. "US" or "DE"; sorted by
-   * (descending) click counts. Only present if this data is available.
-   */
+
+  /// Top countries (expressed as country codes), e.g. "US" or "DE"; sorted by
+  /// (descending) click counts. Only present if this data is available.
   core.List<StringCount> countries;
-  /** Number of clicks on all goo.gl short URLs pointing to this long URL. */
+
+  /// Number of clicks on all goo.gl short URLs pointing to this long URL.
   core.String longUrlClicks;
-  /**
-   * Top platforms or OSes, e.g. "Windows"; sorted by (descending) click counts.
-   * Only present if this data is available.
-   */
+
+  /// Top platforms or OSes, e.g. "Windows"; sorted by (descending) click
+  /// counts. Only present if this data is available.
   core.List<StringCount> platforms;
-  /**
-   * Top referring hosts, e.g. "www.google.com"; sorted by (descending) click
-   * counts. Only present if this data is available.
-   */
+
+  /// Top referring hosts, e.g. "www.google.com"; sorted by (descending) click
+  /// counts. Only present if this data is available.
   core.List<StringCount> referrers;
-  /** Number of clicks on this short URL. */
+
+  /// Number of clicks on this short URL.
   core.String shortUrlClicks;
 
   AnalyticsSnapshot();
 
   AnalyticsSnapshot.fromJson(core.Map _json) {
     if (_json.containsKey("browsers")) {
-      browsers = _json["browsers"].map((value) => new StringCount.fromJson(value)).toList();
+      browsers = _json["browsers"]
+          .map((value) => new StringCount.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("countries")) {
-      countries = _json["countries"].map((value) => new StringCount.fromJson(value)).toList();
+      countries = _json["countries"]
+          .map((value) => new StringCount.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("longUrlClicks")) {
       longUrlClicks = _json["longUrlClicks"];
     }
     if (_json.containsKey("platforms")) {
-      platforms = _json["platforms"].map((value) => new StringCount.fromJson(value)).toList();
+      platforms = _json["platforms"]
+          .map((value) => new StringCount.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("referrers")) {
-      referrers = _json["referrers"].map((value) => new StringCount.fromJson(value)).toList();
+      referrers = _json["referrers"]
+          .map((value) => new StringCount.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("shortUrlClicks")) {
       shortUrlClicks = _json["shortUrlClicks"];
@@ -224,7 +219,8 @@ class AnalyticsSnapshot {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (browsers != null) {
       _json["browsers"] = browsers.map((value) => (value).toJson()).toList();
     }
@@ -248,15 +244,19 @@ class AnalyticsSnapshot {
 }
 
 class AnalyticsSummary {
-  /** Click analytics over all time. */
+  /// Click analytics over all time.
   AnalyticsSnapshot allTime;
-  /** Click analytics over the last day. */
+
+  /// Click analytics over the last day.
   AnalyticsSnapshot day;
-  /** Click analytics over the last month. */
+
+  /// Click analytics over the last month.
   AnalyticsSnapshot month;
-  /** Click analytics over the last two hours. */
+
+  /// Click analytics over the last two hours.
   AnalyticsSnapshot twoHours;
-  /** Click analytics over the last week. */
+
+  /// Click analytics over the last week.
   AnalyticsSnapshot week;
 
   AnalyticsSummary();
@@ -280,7 +280,8 @@ class AnalyticsSummary {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (allTime != null) {
       _json["allTime"] = (allTime).toJson();
     }
@@ -301,12 +302,11 @@ class AnalyticsSummary {
 }
 
 class StringCount {
-  /**
-   * Number of clicks for this top entry, e.g. for this particular country or
-   * browser.
-   */
+  /// Number of clicks for this top entry, e.g. for this particular country or
+  /// browser.
   core.String count;
-  /** Label assigned to this top entry, e.g. "US" or "Chrome". */
+
+  /// Label assigned to this top entry, e.g. "US" or "Chrome".
   core.String id;
 
   StringCount();
@@ -321,7 +321,8 @@ class StringCount {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (count != null) {
       _json["count"] = count;
     }
@@ -333,30 +334,27 @@ class StringCount {
 }
 
 class Url {
-  /**
-   * A summary of the click analytics for the short and long URL. Might not be
-   * present if not requested or currently unavailable.
-   */
+  /// A summary of the click analytics for the short and long URL. Might not be
+  /// present if not requested or currently unavailable.
   AnalyticsSummary analytics;
-  /**
-   * Time the short URL was created; ISO 8601 representation using the
-   * yyyy-MM-dd'T'HH:mm:ss.SSSZZ format, e.g. "2010-10-14T19:01:24.944+00:00".
-   */
+
+  /// Time the short URL was created; ISO 8601 representation using the
+  /// yyyy-MM-dd'T'HH:mm:ss.SSSZZ format, e.g. "2010-10-14T19:01:24.944+00:00".
   core.String created;
-  /** Short URL, e.g. "http://goo.gl/l6MS". */
+
+  /// Short URL, e.g. "http://goo.gl/l6MS".
   core.String id;
-  /** The fixed string "urlshortener#url". */
+
+  /// The fixed string "urlshortener#url".
   core.String kind;
-  /**
-   * Long URL, e.g. "http://www.google.com/". Might not be present if the status
-   * is "REMOVED".
-   */
+
+  /// Long URL, e.g. "http://www.google.com/". Might not be present if the
+  /// status is "REMOVED".
   core.String longUrl;
-  /**
-   * Status of the target URL. Possible values: "OK", "MALWARE", "PHISHING", or
-   * "REMOVED". A URL might be marked "REMOVED" if it was flagged as spam, for
-   * example.
-   */
+
+  /// Status of the target URL. Possible values: "OK", "MALWARE", "PHISHING", or
+  /// "REMOVED". A URL might be marked "REMOVED" if it was flagged as spam, for
+  /// example.
   core.String status;
 
   Url();
@@ -383,7 +381,8 @@ class Url {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (analytics != null) {
       _json["analytics"] = (analytics).toJson();
     }
@@ -407,20 +406,20 @@ class Url {
 }
 
 class UrlHistory {
-  /** A list of URL resources. */
+  /// A list of URL resources.
   core.List<Url> items;
-  /**
-   * Number of items returned with each full "page" of results. Note that the
-   * last page could have fewer items than the "itemsPerPage" value.
-   */
+
+  /// Number of items returned with each full "page" of results. Note that the
+  /// last page could have fewer items than the "itemsPerPage" value.
   core.int itemsPerPage;
-  /** The fixed string "urlshortener#urlHistory". */
+
+  /// The fixed string "urlshortener#urlHistory".
   core.String kind;
-  /** A token to provide to get the next page of results. */
+
+  /// A token to provide to get the next page of results.
   core.String nextPageToken;
-  /**
-   * Total number of short URLs associated with this user (may be approximate).
-   */
+
+  /// Total number of short URLs associated with this user (may be approximate).
   core.int totalItems;
 
   UrlHistory();
@@ -444,7 +443,8 @@ class UrlHistory {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }

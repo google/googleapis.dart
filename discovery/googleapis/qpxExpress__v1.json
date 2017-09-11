@@ -1,7 +1,7 @@
 {
     "basePath": "/qpxExpress/v1/trips/",
     "baseUrl": "https://www.googleapis.com/qpxExpress/v1/trips/",
-    "batchPath": "batch",
+    "batchPath": "batch/qpxExpress/v1",
     "canonicalName": "QPX Express",
     "description": "Finds the least expensive flights between an origin and a destination.",
     "discoveryVersion": "v1",

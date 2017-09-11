@@ -1,12 +1,10 @@
 library googleapis_beta.dns.v2beta1.test;
 
 import "dart:core" as core;
-import "dart:collection" as collection;
 import "dart:async" as async;
 import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
-import 'package:http/testing.dart' as http_testing;
 import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis_beta/dns/v2beta1.dart' as api;
@@ -22,7 +20,8 @@ class HttpServerMock extends http.BaseClient {
 
   async.Future<http.StreamedResponse> send(http.BaseRequest request) {
     if (_expectJson) {
-      return request.finalize()
+      return request
+          .finalize()
           .transform(convert.UTF8.decoder)
           .join('')
           .then((core.String jsonString) {
@@ -45,33 +44,33 @@ class HttpServerMock extends http.BaseClient {
   }
 }
 
-http.StreamedResponse stringResponse(
-    core.int status, core.Map<core.String, core.String> headers, core.String body) {
+http.StreamedResponse stringResponse(core.int status,
+    core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed3469() {
+buildUnnamed3474() {
   var o = new core.List<api.ResourceRecordSet>();
   o.add(buildResourceRecordSet());
   o.add(buildResourceRecordSet());
   return o;
 }
 
-checkUnnamed3469(core.List<api.ResourceRecordSet> o) {
+checkUnnamed3474(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceRecordSet(o[0]);
   checkResourceRecordSet(o[1]);
 }
 
-buildUnnamed3470() {
+buildUnnamed3475() {
   var o = new core.List<api.ResourceRecordSet>();
   o.add(buildResourceRecordSet());
   o.add(buildResourceRecordSet());
   return o;
 }
 
-checkUnnamed3470(core.List<api.ResourceRecordSet> o) {
+checkUnnamed3475(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceRecordSet(o[0]);
   checkResourceRecordSet(o[1]);
@@ -82,8 +81,8 @@ buildChange() {
   var o = new api.Change();
   buildCounterChange++;
   if (buildCounterChange < 3) {
-    o.additions = buildUnnamed3469();
-    o.deletions = buildUnnamed3470();
+    o.additions = buildUnnamed3474();
+    o.deletions = buildUnnamed3475();
     o.id = "foo";
     o.isServing = true;
     o.kind = "foo";
@@ -97,8 +96,8 @@ buildChange() {
 checkChange(api.Change o) {
   buildCounterChange++;
   if (buildCounterChange < 3) {
-    checkUnnamed3469(o.additions);
-    checkUnnamed3470(o.deletions);
+    checkUnnamed3474(o.additions);
+    checkUnnamed3475(o.deletions);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.isServing, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -108,14 +107,14 @@ checkChange(api.Change o) {
   buildCounterChange--;
 }
 
-buildUnnamed3471() {
+buildUnnamed3476() {
   var o = new core.List<api.Change>();
   o.add(buildChange());
   o.add(buildChange());
   return o;
 }
 
-checkUnnamed3471(core.List<api.Change> o) {
+checkUnnamed3476(core.List<api.Change> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChange(o[0]);
   checkChange(o[1]);
@@ -126,7 +125,7 @@ buildChangesListResponse() {
   var o = new api.ChangesListResponse();
   buildCounterChangesListResponse++;
   if (buildCounterChangesListResponse < 3) {
-    o.changes = buildUnnamed3471();
+    o.changes = buildUnnamed3476();
     o.header = buildResponseHeader();
     o.kind = "foo";
     o.nextPageToken = "foo";
@@ -138,7 +137,7 @@ buildChangesListResponse() {
 checkChangesListResponse(api.ChangesListResponse o) {
   buildCounterChangesListResponse++;
   if (buildCounterChangesListResponse < 3) {
-    checkUnnamed3471(o.changes);
+    checkUnnamed3476(o.changes);
     checkResponseHeader(o.header);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -146,14 +145,14 @@ checkChangesListResponse(api.ChangesListResponse o) {
   buildCounterChangesListResponse--;
 }
 
-buildUnnamed3472() {
+buildUnnamed3477() {
   var o = new core.List<api.DnsKeyDigest>();
   o.add(buildDnsKeyDigest());
   o.add(buildDnsKeyDigest());
   return o;
 }
 
-checkUnnamed3472(core.List<api.DnsKeyDigest> o) {
+checkUnnamed3477(core.List<api.DnsKeyDigest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDnsKeyDigest(o[0]);
   checkDnsKeyDigest(o[1]);
@@ -167,7 +166,7 @@ buildDnsKey() {
     o.algorithm = "foo";
     o.creationTime = "foo";
     o.description = "foo";
-    o.digests = buildUnnamed3472();
+    o.digests = buildUnnamed3477();
     o.id = "foo";
     o.isActive = true;
     o.keyLength = 42;
@@ -186,7 +185,7 @@ checkDnsKey(api.DnsKey o) {
     unittest.expect(o.algorithm, unittest.equals('foo'));
     unittest.expect(o.creationTime, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed3472(o.digests);
+    checkUnnamed3477(o.digests);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.isActive, unittest.isTrue);
     unittest.expect(o.keyLength, unittest.equals(42));
@@ -244,14 +243,14 @@ checkDnsKeySpec(api.DnsKeySpec o) {
   buildCounterDnsKeySpec--;
 }
 
-buildUnnamed3473() {
+buildUnnamed3478() {
   var o = new core.List<api.DnsKey>();
   o.add(buildDnsKey());
   o.add(buildDnsKey());
   return o;
 }
 
-checkUnnamed3473(core.List<api.DnsKey> o) {
+checkUnnamed3478(core.List<api.DnsKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDnsKey(o[0]);
   checkDnsKey(o[1]);
@@ -262,7 +261,7 @@ buildDnsKeysListResponse() {
   var o = new api.DnsKeysListResponse();
   buildCounterDnsKeysListResponse++;
   if (buildCounterDnsKeysListResponse < 3) {
-    o.dnsKeys = buildUnnamed3473();
+    o.dnsKeys = buildUnnamed3478();
     o.header = buildResponseHeader();
     o.kind = "foo";
     o.nextPageToken = "foo";
@@ -274,7 +273,7 @@ buildDnsKeysListResponse() {
 checkDnsKeysListResponse(api.DnsKeysListResponse o) {
   buildCounterDnsKeysListResponse++;
   if (buildCounterDnsKeysListResponse < 3) {
-    checkUnnamed3473(o.dnsKeys);
+    checkUnnamed3478(o.dnsKeys);
     checkResponseHeader(o.header);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -282,14 +281,14 @@ checkDnsKeysListResponse(api.DnsKeysListResponse o) {
   buildCounterDnsKeysListResponse--;
 }
 
-buildUnnamed3474() {
+buildUnnamed3479() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3474(core.List<core.String> o) {
+checkUnnamed3479(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -308,7 +307,7 @@ buildManagedZone() {
     o.kind = "foo";
     o.name = "foo";
     o.nameServerSet = "foo";
-    o.nameServers = buildUnnamed3474();
+    o.nameServers = buildUnnamed3479();
   }
   buildCounterManagedZone--;
   return o;
@@ -325,19 +324,19 @@ checkManagedZone(api.ManagedZone o) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.nameServerSet, unittest.equals('foo'));
-    checkUnnamed3474(o.nameServers);
+    checkUnnamed3479(o.nameServers);
   }
   buildCounterManagedZone--;
 }
 
-buildUnnamed3475() {
+buildUnnamed3480() {
   var o = new core.List<api.DnsKeySpec>();
   o.add(buildDnsKeySpec());
   o.add(buildDnsKeySpec());
   return o;
 }
 
-checkUnnamed3475(core.List<api.DnsKeySpec> o) {
+checkUnnamed3480(core.List<api.DnsKeySpec> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDnsKeySpec(o[0]);
   checkDnsKeySpec(o[1]);
@@ -348,7 +347,7 @@ buildManagedZoneDnsSecConfig() {
   var o = new api.ManagedZoneDnsSecConfig();
   buildCounterManagedZoneDnsSecConfig++;
   if (buildCounterManagedZoneDnsSecConfig < 3) {
-    o.defaultKeySpecs = buildUnnamed3475();
+    o.defaultKeySpecs = buildUnnamed3480();
     o.kind = "foo";
     o.nonExistence = "foo";
     o.state = "foo";
@@ -360,7 +359,7 @@ buildManagedZoneDnsSecConfig() {
 checkManagedZoneDnsSecConfig(api.ManagedZoneDnsSecConfig o) {
   buildCounterManagedZoneDnsSecConfig++;
   if (buildCounterManagedZoneDnsSecConfig < 3) {
-    checkUnnamed3475(o.defaultKeySpecs);
+    checkUnnamed3480(o.defaultKeySpecs);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nonExistence, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
@@ -368,14 +367,14 @@ checkManagedZoneDnsSecConfig(api.ManagedZoneDnsSecConfig o) {
   buildCounterManagedZoneDnsSecConfig--;
 }
 
-buildUnnamed3476() {
+buildUnnamed3481() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed3476(core.List<api.Operation> o) {
+checkUnnamed3481(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -389,19 +388,20 @@ buildManagedZoneOperationsListResponse() {
     o.header = buildResponseHeader();
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.operations = buildUnnamed3476();
+    o.operations = buildUnnamed3481();
   }
   buildCounterManagedZoneOperationsListResponse--;
   return o;
 }
 
-checkManagedZoneOperationsListResponse(api.ManagedZoneOperationsListResponse o) {
+checkManagedZoneOperationsListResponse(
+    api.ManagedZoneOperationsListResponse o) {
   buildCounterManagedZoneOperationsListResponse++;
   if (buildCounterManagedZoneOperationsListResponse < 3) {
     checkResponseHeader(o.header);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3476(o.operations);
+    checkUnnamed3481(o.operations);
   }
   buildCounterManagedZoneOperationsListResponse--;
 }
@@ -425,14 +425,14 @@ checkManagedZonesDeleteResponse(api.ManagedZonesDeleteResponse o) {
   buildCounterManagedZonesDeleteResponse--;
 }
 
-buildUnnamed3477() {
+buildUnnamed3482() {
   var o = new core.List<api.ManagedZone>();
   o.add(buildManagedZone());
   o.add(buildManagedZone());
   return o;
 }
 
-checkUnnamed3477(core.List<api.ManagedZone> o) {
+checkUnnamed3482(core.List<api.ManagedZone> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedZone(o[0]);
   checkManagedZone(o[1]);
@@ -445,7 +445,7 @@ buildManagedZonesListResponse() {
   if (buildCounterManagedZonesListResponse < 3) {
     o.header = buildResponseHeader();
     o.kind = "foo";
-    o.managedZones = buildUnnamed3477();
+    o.managedZones = buildUnnamed3482();
     o.nextPageToken = "foo";
   }
   buildCounterManagedZonesListResponse--;
@@ -457,7 +457,7 @@ checkManagedZonesListResponse(api.ManagedZonesListResponse o) {
   if (buildCounterManagedZonesListResponse < 3) {
     checkResponseHeader(o.header);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed3477(o.managedZones);
+    checkUnnamed3482(o.managedZones);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterManagedZonesListResponse--;
@@ -563,14 +563,14 @@ checkProject(api.Project o) {
   buildCounterProject--;
 }
 
-buildUnnamed3478() {
+buildUnnamed3483() {
   var o = new core.List<api.DnsKeySpec>();
   o.add(buildDnsKeySpec());
   o.add(buildDnsKeySpec());
   return o;
 }
 
-checkUnnamed3478(core.List<api.DnsKeySpec> o) {
+checkUnnamed3483(core.List<api.DnsKeySpec> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDnsKeySpec(o[0]);
   checkDnsKeySpec(o[1]);
@@ -589,7 +589,7 @@ buildQuota() {
     o.rrsetDeletionsPerChange = 42;
     o.rrsetsPerManagedZone = 42;
     o.totalRrdataSizePerChange = 42;
-    o.whitelistedKeySpecs = buildUnnamed3478();
+    o.whitelistedKeySpecs = buildUnnamed3483();
   }
   buildCounterQuota--;
   return o;
@@ -606,32 +606,32 @@ checkQuota(api.Quota o) {
     unittest.expect(o.rrsetDeletionsPerChange, unittest.equals(42));
     unittest.expect(o.rrsetsPerManagedZone, unittest.equals(42));
     unittest.expect(o.totalRrdataSizePerChange, unittest.equals(42));
-    checkUnnamed3478(o.whitelistedKeySpecs);
+    checkUnnamed3483(o.whitelistedKeySpecs);
   }
   buildCounterQuota--;
 }
 
-buildUnnamed3479() {
+buildUnnamed3484() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3479(core.List<core.String> o) {
+checkUnnamed3484(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3480() {
+buildUnnamed3485() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3480(core.List<core.String> o) {
+checkUnnamed3485(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -644,8 +644,8 @@ buildResourceRecordSet() {
   if (buildCounterResourceRecordSet < 3) {
     o.kind = "foo";
     o.name = "foo";
-    o.rrdatas = buildUnnamed3479();
-    o.signatureRrdatas = buildUnnamed3480();
+    o.rrdatas = buildUnnamed3484();
+    o.signatureRrdatas = buildUnnamed3485();
     o.ttl = 42;
     o.type = "foo";
   }
@@ -658,22 +658,22 @@ checkResourceRecordSet(api.ResourceRecordSet o) {
   if (buildCounterResourceRecordSet < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed3479(o.rrdatas);
-    checkUnnamed3480(o.signatureRrdatas);
+    checkUnnamed3484(o.rrdatas);
+    checkUnnamed3485(o.signatureRrdatas);
     unittest.expect(o.ttl, unittest.equals(42));
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterResourceRecordSet--;
 }
 
-buildUnnamed3481() {
+buildUnnamed3486() {
   var o = new core.List<api.ResourceRecordSet>();
   o.add(buildResourceRecordSet());
   o.add(buildResourceRecordSet());
   return o;
 }
 
-checkUnnamed3481(core.List<api.ResourceRecordSet> o) {
+checkUnnamed3486(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceRecordSet(o[0]);
   checkResourceRecordSet(o[1]);
@@ -687,7 +687,7 @@ buildResourceRecordSetsListResponse() {
     o.header = buildResponseHeader();
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.rrsets = buildUnnamed3481();
+    o.rrsets = buildUnnamed3486();
   }
   buildCounterResourceRecordSetsListResponse--;
   return o;
@@ -699,7 +699,7 @@ checkResourceRecordSetsListResponse(api.ResourceRecordSetsListResponse o) {
     checkResponseHeader(o.header);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3481(o.rrsets);
+    checkUnnamed3486(o.rrsets);
   }
   buildCounterResourceRecordSetsListResponse--;
 }
@@ -723,7 +723,6 @@ checkResponseHeader(api.ResponseHeader o) {
   buildCounterResponseHeader--;
 }
 
-
 main() {
   unittest.group("obj-schema-Change", () {
     unittest.test("to-json--from-json", () {
@@ -733,7 +732,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ChangesListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildChangesListResponse();
@@ -741,7 +739,6 @@ main() {
       checkChangesListResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-DnsKey", () {
     unittest.test("to-json--from-json", () {
@@ -751,7 +748,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-DnsKeyDigest", () {
     unittest.test("to-json--from-json", () {
       var o = buildDnsKeyDigest();
@@ -759,7 +755,6 @@ main() {
       checkDnsKeyDigest(od);
     });
   });
-
 
   unittest.group("obj-schema-DnsKeySpec", () {
     unittest.test("to-json--from-json", () {
@@ -769,7 +764,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-DnsKeysListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildDnsKeysListResponse();
@@ -777,7 +771,6 @@ main() {
       checkDnsKeysListResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-ManagedZone", () {
     unittest.test("to-json--from-json", () {
@@ -787,7 +780,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ManagedZoneDnsSecConfig", () {
     unittest.test("to-json--from-json", () {
       var o = buildManagedZoneDnsSecConfig();
@@ -795,7 +787,6 @@ main() {
       checkManagedZoneDnsSecConfig(od);
     });
   });
-
 
   unittest.group("obj-schema-ManagedZoneOperationsListResponse", () {
     unittest.test("to-json--from-json", () {
@@ -805,7 +796,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ManagedZonesDeleteResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildManagedZonesDeleteResponse();
@@ -813,7 +803,6 @@ main() {
       checkManagedZonesDeleteResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-ManagedZonesListResponse", () {
     unittest.test("to-json--from-json", () {
@@ -823,7 +812,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Operation", () {
     unittest.test("to-json--from-json", () {
       var o = buildOperation();
@@ -831,7 +819,6 @@ main() {
       checkOperation(od);
     });
   });
-
 
   unittest.group("obj-schema-OperationDnsKeyContext", () {
     unittest.test("to-json--from-json", () {
@@ -841,7 +828,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-OperationManagedZoneContext", () {
     unittest.test("to-json--from-json", () {
       var o = buildOperationManagedZoneContext();
@@ -849,7 +835,6 @@ main() {
       checkOperationManagedZoneContext(od);
     });
   });
-
 
   unittest.group("obj-schema-Project", () {
     unittest.test("to-json--from-json", () {
@@ -859,7 +844,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Quota", () {
     unittest.test("to-json--from-json", () {
       var o = buildQuota();
@@ -867,7 +851,6 @@ main() {
       checkQuota(od);
     });
   });
-
 
   unittest.group("obj-schema-ResourceRecordSet", () {
     unittest.test("to-json--from-json", () {
@@ -877,7 +860,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ResourceRecordSetsListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildResourceRecordSetsListResponse();
@@ -885,7 +867,6 @@ main() {
       checkResourceRecordSetsListResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-ResponseHeader", () {
     unittest.test("to-json--from-json", () {
@@ -895,10 +876,8 @@ main() {
     });
   });
 
-
   unittest.group("resource-ChangesResourceApi", () {
     unittest.test("method--create", () {
-
       var mock = new HttpServerMock();
       api.ChangesResourceApi res = new api.DnsApi(mock).changes;
       var arg_request = buildChange();
@@ -913,7 +892,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -926,28 +906,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["clientOperationId"].first, unittest.equals(arg_clientOperationId));
-
+        unittest.expect(queryMap["clientOperationId"].first,
+            unittest.equals(arg_clientOperationId));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildChange());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.create(arg_request, arg_project, arg_managedZone, clientOperationId: arg_clientOperationId).then(unittest.expectAsync1(((api.Change response) {
+      res
+          .create(arg_request, arg_project, arg_managedZone,
+              clientOperationId: arg_clientOperationId)
+          .then(unittest.expectAsync1(((api.Change response) {
         checkChange(response);
       })));
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
       api.ChangesResourceApi res = new api.DnsApi(mock).changes;
       var arg_project = "foo";
@@ -959,7 +943,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -972,28 +957,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["clientOperationId"].first, unittest.equals(arg_clientOperationId));
-
+        unittest.expect(queryMap["clientOperationId"].first,
+            unittest.equals(arg_clientOperationId));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildChange());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_project, arg_managedZone, arg_changeId, clientOperationId: arg_clientOperationId).then(unittest.expectAsync1(((api.Change response) {
+      res
+          .get(arg_project, arg_managedZone, arg_changeId,
+              clientOperationId: arg_clientOperationId)
+          .then(unittest.expectAsync1(((api.Change response) {
         checkChange(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
       api.ChangesResourceApi res = new api.DnsApi(mock).changes;
       var arg_project = "foo";
@@ -1007,7 +996,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -1020,35 +1010,42 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["sortBy"].first, unittest.equals(arg_sortBy));
-        unittest.expect(queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-
+        unittest.expect(
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildChangesListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_project, arg_managedZone, maxResults: arg_maxResults, pageToken: arg_pageToken, sortBy: arg_sortBy, sortOrder: arg_sortOrder).then(unittest.expectAsync1(((api.ChangesListResponse response) {
+      res
+          .list(arg_project, arg_managedZone,
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              sortBy: arg_sortBy,
+              sortOrder: arg_sortOrder)
+          .then(unittest.expectAsync1(((api.ChangesListResponse response) {
         checkChangesListResponse(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-DnsKeysResourceApi", () {
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
       api.DnsKeysResourceApi res = new api.DnsApi(mock).dnsKeys;
       var arg_project = "foo";
@@ -1061,7 +1058,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -1074,29 +1072,35 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["clientOperationId"].first, unittest.equals(arg_clientOperationId));
-        unittest.expect(queryMap["digestType"].first, unittest.equals(arg_digestType));
-
+        unittest.expect(queryMap["clientOperationId"].first,
+            unittest.equals(arg_clientOperationId));
+        unittest.expect(
+            queryMap["digestType"].first, unittest.equals(arg_digestType));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildDnsKey());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_project, arg_managedZone, arg_dnsKeyId, clientOperationId: arg_clientOperationId, digestType: arg_digestType).then(unittest.expectAsync1(((api.DnsKey response) {
+      res
+          .get(arg_project, arg_managedZone, arg_dnsKeyId,
+              clientOperationId: arg_clientOperationId,
+              digestType: arg_digestType)
+          .then(unittest.expectAsync1(((api.DnsKey response) {
         checkDnsKey(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
       api.DnsKeysResourceApi res = new api.DnsApi(mock).dnsKeys;
       var arg_project = "foo";
@@ -1109,7 +1113,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -1122,36 +1127,43 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["digestType"].first, unittest.equals(arg_digestType));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
+        unittest.expect(
+            queryMap["digestType"].first, unittest.equals(arg_digestType));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildDnsKeysListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_project, arg_managedZone, digestType: arg_digestType, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.DnsKeysListResponse response) {
+      res
+          .list(arg_project, arg_managedZone,
+              digestType: arg_digestType,
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken)
+          .then(unittest.expectAsync1(((api.DnsKeysListResponse response) {
         checkDnsKeysListResponse(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-ManagedZoneOperationsResourceApi", () {
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.ManagedZoneOperationsResourceApi res = new api.DnsApi(mock).managedZoneOperations;
+      api.ManagedZoneOperationsResourceApi res =
+          new api.DnsApi(mock).managedZoneOperations;
       var arg_project = "foo";
       var arg_managedZone = "foo";
       var arg_operation = "foo";
@@ -1161,7 +1173,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -1174,30 +1187,35 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["clientOperationId"].first, unittest.equals(arg_clientOperationId));
-
+        unittest.expect(queryMap["clientOperationId"].first,
+            unittest.equals(arg_clientOperationId));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_project, arg_managedZone, arg_operation, clientOperationId: arg_clientOperationId).then(unittest.expectAsync1(((api.Operation response) {
+      res
+          .get(arg_project, arg_managedZone, arg_operation,
+              clientOperationId: arg_clientOperationId)
+          .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.ManagedZoneOperationsResourceApi res = new api.DnsApi(mock).managedZoneOperations;
+      api.ManagedZoneOperationsResourceApi res =
+          new api.DnsApi(mock).managedZoneOperations;
       var arg_project = "foo";
       var arg_managedZone = "foo";
       var arg_maxResults = 42;
@@ -1208,7 +1226,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -1221,34 +1240,41 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["sortBy"].first, unittest.equals(arg_sortBy));
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildManagedZoneOperationsListResponse());
+        var resp =
+            convert.JSON.encode(buildManagedZoneOperationsListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_project, arg_managedZone, maxResults: arg_maxResults, pageToken: arg_pageToken, sortBy: arg_sortBy).then(unittest.expectAsync1(((api.ManagedZoneOperationsListResponse response) {
+      res
+          .list(arg_project, arg_managedZone,
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              sortBy: arg_sortBy)
+          .then(unittest
+              .expectAsync1(((api.ManagedZoneOperationsListResponse response) {
         checkManagedZoneOperationsListResponse(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-ManagedZonesResourceApi", () {
     unittest.test("method--create", () {
-
       var mock = new HttpServerMock();
       api.ManagedZonesResourceApi res = new api.DnsApi(mock).managedZones;
       var arg_request = buildManagedZone();
@@ -1262,7 +1288,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -1275,28 +1302,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["clientOperationId"].first, unittest.equals(arg_clientOperationId));
-
+        unittest.expect(queryMap["clientOperationId"].first,
+            unittest.equals(arg_clientOperationId));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildManagedZone());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.create(arg_request, arg_project, clientOperationId: arg_clientOperationId).then(unittest.expectAsync1(((api.ManagedZone response) {
+      res
+          .create(arg_request, arg_project,
+              clientOperationId: arg_clientOperationId)
+          .then(unittest.expectAsync1(((api.ManagedZone response) {
         checkManagedZone(response);
       })));
     });
 
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
       api.ManagedZonesResourceApi res = new api.DnsApi(mock).managedZones;
       var arg_project = "foo";
@@ -1307,7 +1338,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -1320,28 +1352,33 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["clientOperationId"].first, unittest.equals(arg_clientOperationId));
-
+        unittest.expect(queryMap["clientOperationId"].first,
+            unittest.equals(arg_clientOperationId));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildManagedZonesDeleteResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_project, arg_managedZone, clientOperationId: arg_clientOperationId).then(unittest.expectAsync1(((api.ManagedZonesDeleteResponse response) {
+      res
+          .delete(arg_project, arg_managedZone,
+              clientOperationId: arg_clientOperationId)
+          .then(
+              unittest.expectAsync1(((api.ManagedZonesDeleteResponse response) {
         checkManagedZonesDeleteResponse(response);
       })));
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
       api.ManagedZonesResourceApi res = new api.DnsApi(mock).managedZones;
       var arg_project = "foo";
@@ -1352,7 +1389,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -1365,28 +1403,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["clientOperationId"].first, unittest.equals(arg_clientOperationId));
-
+        unittest.expect(queryMap["clientOperationId"].first,
+            unittest.equals(arg_clientOperationId));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildManagedZone());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_project, arg_managedZone, clientOperationId: arg_clientOperationId).then(unittest.expectAsync1(((api.ManagedZone response) {
+      res
+          .get(arg_project, arg_managedZone,
+              clientOperationId: arg_clientOperationId)
+          .then(unittest.expectAsync1(((api.ManagedZone response) {
         checkManagedZone(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
       api.ManagedZonesResourceApi res = new api.DnsApi(mock).managedZones;
       var arg_project = "foo";
@@ -1398,7 +1440,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -1411,30 +1454,38 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["dnsName"].first, unittest.equals(arg_dnsName));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
+        unittest.expect(
+            queryMap["dnsName"].first, unittest.equals(arg_dnsName));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildManagedZonesListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_project, dnsName: arg_dnsName, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.ManagedZonesListResponse response) {
+      res
+          .list(arg_project,
+              dnsName: arg_dnsName,
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken)
+          .then(unittest.expectAsync1(((api.ManagedZonesListResponse response) {
         checkManagedZonesListResponse(response);
       })));
     });
 
     unittest.test("method--patch", () {
-
       var mock = new HttpServerMock();
       api.ManagedZonesResourceApi res = new api.DnsApi(mock).managedZones;
       var arg_request = buildManagedZone();
@@ -1449,7 +1500,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -1462,28 +1514,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["clientOperationId"].first, unittest.equals(arg_clientOperationId));
-
+        unittest.expect(queryMap["clientOperationId"].first,
+            unittest.equals(arg_clientOperationId));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_project, arg_managedZone, clientOperationId: arg_clientOperationId).then(unittest.expectAsync1(((api.Operation response) {
+      res
+          .patch(arg_request, arg_project, arg_managedZone,
+              clientOperationId: arg_clientOperationId)
+          .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
       api.ManagedZonesResourceApi res = new api.DnsApi(mock).managedZones;
       var arg_request = buildManagedZone();
@@ -1498,7 +1554,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -1511,32 +1568,34 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["clientOperationId"].first, unittest.equals(arg_clientOperationId));
-
+        unittest.expect(queryMap["clientOperationId"].first,
+            unittest.equals(arg_clientOperationId));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_project, arg_managedZone, clientOperationId: arg_clientOperationId).then(unittest.expectAsync1(((api.Operation response) {
+      res
+          .update(arg_request, arg_project, arg_managedZone,
+              clientOperationId: arg_clientOperationId)
+          .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-ProjectsResourceApi", () {
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
       api.ProjectsResourceApi res = new api.DnsApi(mock).projects;
       var arg_project = "foo";
@@ -1546,7 +1605,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -1559,34 +1619,36 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["clientOperationId"].first, unittest.equals(arg_clientOperationId));
-
+        unittest.expect(queryMap["clientOperationId"].first,
+            unittest.equals(arg_clientOperationId));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildProject());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_project, clientOperationId: arg_clientOperationId).then(unittest.expectAsync1(((api.Project response) {
+      res
+          .get(arg_project, clientOperationId: arg_clientOperationId)
+          .then(unittest.expectAsync1(((api.Project response) {
         checkProject(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-ResourceRecordSetsResourceApi", () {
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.ResourceRecordSetsResourceApi res = new api.DnsApi(mock).resourceRecordSets;
+      api.ResourceRecordSetsResourceApi res =
+          new api.DnsApi(mock).resourceRecordSets;
       var arg_project = "foo";
       var arg_managedZone = "foo";
       var arg_maxResults = 42;
@@ -1598,7 +1660,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -1611,31 +1674,37 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["name"].first, unittest.equals(arg_name));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["type"].first, unittest.equals(arg_type));
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildResourceRecordSetsListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_project, arg_managedZone, maxResults: arg_maxResults, name: arg_name, pageToken: arg_pageToken, type: arg_type).then(unittest.expectAsync1(((api.ResourceRecordSetsListResponse response) {
+      res
+          .list(arg_project, arg_managedZone,
+              maxResults: arg_maxResults,
+              name: arg_name,
+              pageToken: arg_pageToken,
+              type: arg_type)
+          .then(unittest
+              .expectAsync1(((api.ResourceRecordSetsListResponse response) {
         checkResourceRecordSetsListResponse(response);
       })));
     });
-
   });
-
-
 }
-

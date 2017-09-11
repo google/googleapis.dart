@@ -16,7 +16,7 @@
     },
     "basePath": "/surveys/v2/",
     "baseUrl": "https://www.googleapis.com/surveys/v2/",
-    "batchPath": "batch",
+    "batchPath": "batch/surveys/v2",
     "canonicalName": "Surveys",
     "description": "Creates and conducts surveys, lists the surveys that an authenticated user owns, and retrieves survey results and information about specified surveys.",
     "discoveryVersion": "v1",

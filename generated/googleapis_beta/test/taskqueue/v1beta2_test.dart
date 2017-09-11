@@ -1,12 +1,10 @@
 library googleapis_beta.taskqueue.v1beta2.test;
 
 import "dart:core" as core;
-import "dart:collection" as collection;
 import "dart:async" as async;
 import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
-import 'package:http/testing.dart' as http_testing;
 import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis_beta/taskqueue/v1beta2.dart' as api;
@@ -22,7 +20,8 @@ class HttpServerMock extends http.BaseClient {
 
   async.Future<http.StreamedResponse> send(http.BaseRequest request) {
     if (_expectJson) {
-      return request.finalize()
+      return request
+          .finalize()
           .transform(convert.UTF8.decoder)
           .join('')
           .then((core.String jsonString) {
@@ -45,8 +44,8 @@ class HttpServerMock extends http.BaseClient {
   }
 }
 
-http.StreamedResponse stringResponse(
-    core.int status, core.Map<core.String, core.String> headers, core.String body) {
+http.StreamedResponse stringResponse(core.int status,
+    core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -84,40 +83,40 @@ checkTask(api.Task o) {
   buildCounterTask--;
 }
 
-buildUnnamed3335() {
+buildUnnamed3328() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3335(core.List<core.String> o) {
+checkUnnamed3328(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3336() {
+buildUnnamed3329() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3336(core.List<core.String> o) {
+checkUnnamed3329(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3337() {
+buildUnnamed3330() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3337(core.List<core.String> o) {
+checkUnnamed3330(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -128,9 +127,9 @@ buildTaskQueueAcl() {
   var o = new api.TaskQueueAcl();
   buildCounterTaskQueueAcl++;
   if (buildCounterTaskQueueAcl < 3) {
-    o.adminEmails = buildUnnamed3335();
-    o.consumerEmails = buildUnnamed3336();
-    o.producerEmails = buildUnnamed3337();
+    o.adminEmails = buildUnnamed3328();
+    o.consumerEmails = buildUnnamed3329();
+    o.producerEmails = buildUnnamed3330();
   }
   buildCounterTaskQueueAcl--;
   return o;
@@ -139,9 +138,9 @@ buildTaskQueueAcl() {
 checkTaskQueueAcl(api.TaskQueueAcl o) {
   buildCounterTaskQueueAcl++;
   if (buildCounterTaskQueueAcl < 3) {
-    checkUnnamed3335(o.adminEmails);
-    checkUnnamed3336(o.consumerEmails);
-    checkUnnamed3337(o.producerEmails);
+    checkUnnamed3328(o.adminEmails);
+    checkUnnamed3329(o.consumerEmails);
+    checkUnnamed3330(o.producerEmails);
   }
   buildCounterTaskQueueAcl--;
 }
@@ -198,14 +197,14 @@ checkTaskQueue(api.TaskQueue o) {
   buildCounterTaskQueue--;
 }
 
-buildUnnamed3338() {
+buildUnnamed3331() {
   var o = new core.List<api.Task>();
   o.add(buildTask());
   o.add(buildTask());
   return o;
 }
 
-checkUnnamed3338(core.List<api.Task> o) {
+checkUnnamed3331(core.List<api.Task> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTask(o[0]);
   checkTask(o[1]);
@@ -216,7 +215,7 @@ buildTasks() {
   var o = new api.Tasks();
   buildCounterTasks++;
   if (buildCounterTasks < 3) {
-    o.items = buildUnnamed3338();
+    o.items = buildUnnamed3331();
     o.kind = "foo";
   }
   buildCounterTasks--;
@@ -226,20 +225,20 @@ buildTasks() {
 checkTasks(api.Tasks o) {
   buildCounterTasks++;
   if (buildCounterTasks < 3) {
-    checkUnnamed3338(o.items);
+    checkUnnamed3331(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterTasks--;
 }
 
-buildUnnamed3339() {
+buildUnnamed3332() {
   var o = new core.List<api.Task>();
   o.add(buildTask());
   o.add(buildTask());
   return o;
 }
 
-checkUnnamed3339(core.List<api.Task> o) {
+checkUnnamed3332(core.List<api.Task> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTask(o[0]);
   checkTask(o[1]);
@@ -250,7 +249,7 @@ buildTasks2() {
   var o = new api.Tasks2();
   buildCounterTasks2++;
   if (buildCounterTasks2 < 3) {
-    o.items = buildUnnamed3339();
+    o.items = buildUnnamed3332();
     o.kind = "foo";
   }
   buildCounterTasks2--;
@@ -260,12 +259,11 @@ buildTasks2() {
 checkTasks2(api.Tasks2 o) {
   buildCounterTasks2++;
   if (buildCounterTasks2 < 3) {
-    checkUnnamed3339(o.items);
+    checkUnnamed3332(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterTasks2--;
 }
-
 
 main() {
   unittest.group("obj-schema-Task", () {
@@ -276,7 +274,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-TaskQueueAcl", () {
     unittest.test("to-json--from-json", () {
       var o = buildTaskQueueAcl();
@@ -284,7 +281,6 @@ main() {
       checkTaskQueueAcl(od);
     });
   });
-
 
   unittest.group("obj-schema-TaskQueueStats", () {
     unittest.test("to-json--from-json", () {
@@ -294,7 +290,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-TaskQueue", () {
     unittest.test("to-json--from-json", () {
       var o = buildTaskQueue();
@@ -302,7 +297,6 @@ main() {
       checkTaskQueue(od);
     });
   });
-
 
   unittest.group("obj-schema-Tasks", () {
     unittest.test("to-json--from-json", () {
@@ -312,7 +306,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Tasks2", () {
     unittest.test("to-json--from-json", () {
       var o = buildTasks2();
@@ -321,10 +314,8 @@ main() {
     });
   });
 
-
   unittest.group("resource-TaskqueuesResourceApi", () {
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
       api.TaskqueuesResourceApi res = new api.TaskqueueApi(mock).taskqueues;
       var arg_project = "foo";
@@ -335,7 +326,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -348,32 +340,33 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["getStats"].first, unittest.equals("$arg_getStats"));
-
+        unittest.expect(
+            queryMap["getStats"].first, unittest.equals("$arg_getStats"));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTaskQueue());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_project, arg_taskqueue, getStats: arg_getStats).then(unittest.expectAsync1(((api.TaskQueue response) {
+      res
+          .get(arg_project, arg_taskqueue, getStats: arg_getStats)
+          .then(unittest.expectAsync1(((api.TaskQueue response) {
         checkTaskQueue(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-TasksResourceApi", () {
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
       api.TasksResourceApi res = new api.TaskqueueApi(mock).tasks;
       var arg_project = "foo";
@@ -384,7 +377,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -397,25 +391,27 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_project, arg_taskqueue, arg_task).then(unittest.expectAsync1((_) {}));
+      res
+          .delete(arg_project, arg_taskqueue, arg_task)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
       api.TasksResourceApi res = new api.TaskqueueApi(mock).tasks;
       var arg_project = "foo";
@@ -426,7 +422,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -439,27 +436,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTask());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_project, arg_taskqueue, arg_task).then(unittest.expectAsync1(((api.Task response) {
+      res
+          .get(arg_project, arg_taskqueue, arg_task)
+          .then(unittest.expectAsync1(((api.Task response) {
         checkTask(response);
       })));
     });
 
     unittest.test("method--insert", () {
-
       var mock = new HttpServerMock();
       api.TasksResourceApi res = new api.TaskqueueApi(mock).tasks;
       var arg_request = buildTask();
@@ -473,7 +472,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -486,27 +486,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTask());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_project, arg_taskqueue).then(unittest.expectAsync1(((api.Task response) {
+      res
+          .insert(arg_request, arg_project, arg_taskqueue)
+          .then(unittest.expectAsync1(((api.Task response) {
         checkTask(response);
       })));
     });
 
     unittest.test("method--lease", () {
-
       var mock = new HttpServerMock();
       api.TasksResourceApi res = new api.TaskqueueApi(mock).tasks;
       var arg_project = "foo";
@@ -520,7 +522,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -533,31 +536,37 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["numTasks"].first), unittest.equals(arg_numTasks));
-        unittest.expect(core.int.parse(queryMap["leaseSecs"].first), unittest.equals(arg_leaseSecs));
-        unittest.expect(queryMap["groupByTag"].first, unittest.equals("$arg_groupByTag"));
+        unittest.expect(core.int.parse(queryMap["numTasks"].first),
+            unittest.equals(arg_numTasks));
+        unittest.expect(core.int.parse(queryMap["leaseSecs"].first),
+            unittest.equals(arg_leaseSecs));
+        unittest.expect(
+            queryMap["groupByTag"].first, unittest.equals("$arg_groupByTag"));
         unittest.expect(queryMap["tag"].first, unittest.equals(arg_tag));
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTasks());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.lease(arg_project, arg_taskqueue, arg_numTasks, arg_leaseSecs, groupByTag: arg_groupByTag, tag: arg_tag).then(unittest.expectAsync1(((api.Tasks response) {
+      res
+          .lease(arg_project, arg_taskqueue, arg_numTasks, arg_leaseSecs,
+              groupByTag: arg_groupByTag, tag: arg_tag)
+          .then(unittest.expectAsync1(((api.Tasks response) {
         checkTasks(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
       api.TasksResourceApi res = new api.TaskqueueApi(mock).tasks;
       var arg_project = "foo";
@@ -567,7 +576,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -580,27 +590,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTasks2());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_project, arg_taskqueue).then(unittest.expectAsync1(((api.Tasks2 response) {
+      res
+          .list(arg_project, arg_taskqueue)
+          .then(unittest.expectAsync1(((api.Tasks2 response) {
         checkTasks2(response);
       })));
     });
 
     unittest.test("method--patch", () {
-
       var mock = new HttpServerMock();
       api.TasksResourceApi res = new api.TaskqueueApi(mock).tasks;
       var arg_request = buildTask();
@@ -616,7 +628,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -629,28 +642,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["newLeaseSeconds"].first), unittest.equals(arg_newLeaseSeconds));
-
+        unittest.expect(core.int.parse(queryMap["newLeaseSeconds"].first),
+            unittest.equals(arg_newLeaseSeconds));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTask());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_project, arg_taskqueue, arg_task, arg_newLeaseSeconds).then(unittest.expectAsync1(((api.Task response) {
+      res
+          .patch(arg_request, arg_project, arg_taskqueue, arg_task,
+              arg_newLeaseSeconds)
+          .then(unittest.expectAsync1(((api.Task response) {
         checkTask(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
       api.TasksResourceApi res = new api.TaskqueueApi(mock).tasks;
       var arg_request = buildTask();
@@ -666,7 +683,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -679,28 +697,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["newLeaseSeconds"].first), unittest.equals(arg_newLeaseSeconds));
-
+        unittest.expect(core.int.parse(queryMap["newLeaseSeconds"].first),
+            unittest.equals(arg_newLeaseSeconds));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTask());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_project, arg_taskqueue, arg_task, arg_newLeaseSeconds).then(unittest.expectAsync1(((api.Task response) {
+      res
+          .update(arg_request, arg_project, arg_taskqueue, arg_task,
+              arg_newLeaseSeconds)
+          .then(unittest.expectAsync1(((api.Task response) {
         checkTask(response);
       })));
     });
-
   });
-
-
 }
-

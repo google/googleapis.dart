@@ -9,70 +9,70 @@ import 'dart:convert' as convert;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
-    ApiRequestError, DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
+    show ApiRequestError, DetailedApiRequestError;
 
 const core.String USER_AGENT = 'dart-api-client sourcerepo/v1';
 
-/** Access source code repositories hosted by Google. */
+/// Access source code repositories hosted by Google.
 class SourcerepoApi {
-  /** View and manage your data across Google Cloud Platform services */
-  static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
+  /// View and manage your data across Google Cloud Platform services
+  static const CloudPlatformScope =
+      "https://www.googleapis.com/auth/cloud-platform";
 
-  /** View the contents of your source code repositories */
-  static const SourceReadOnlyScope = "https://www.googleapis.com/auth/source.read_only";
+  /// View the contents of your source code repositories
+  static const SourceReadOnlyScope =
+      "https://www.googleapis.com/auth/source.read_only";
 
-  /** Manage the contents of your source code repositories */
-  static const SourceReadWriteScope = "https://www.googleapis.com/auth/source.read_write";
-
+  /// Manage the contents of your source code repositories
+  static const SourceReadWriteScope =
+      "https://www.googleapis.com/auth/source.read_write";
 
   final commons.ApiRequester _requester;
 
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
 
-  SourcerepoApi(http.Client client, {core.String rootUrl: "https://sourcerepo.googleapis.com/", core.String servicePath: ""}) :
-      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+  SourcerepoApi(http.Client client,
+      {core.String rootUrl: "https://sourcerepo.googleapis.com/",
+      core.String servicePath: ""})
+      : _requester =
+            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
-
 
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsReposResourceApi get repos => new ProjectsReposResourceApi(_requester);
+  ProjectsReposResourceApi get repos =>
+      new ProjectsReposResourceApi(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
-
 
 class ProjectsReposResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsReposResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  ProjectsReposResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Creates a repo in the given project with the given name.
-   *
-   * If the named repository already exists, `CreateRepo` returns
-   * `ALREADY_EXISTS`.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [parent] - The project in which to create the repo. Values are of the form
-   * `projects/<project>`.
-   * Value must have pattern "^projects/[^/]+$".
-   *
-   * Completes with a [Repo].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Creates a repo in the given project with the given name.
+  ///
+  /// If the named repository already exists, `CreateRepo` returns
+  /// `ALREADY_EXISTS`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The project in which to create the repo. Values are of the form
+  /// `projects/<project>`.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// Completes with a [Repo].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Repo> create(Repo request, core.String parent) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -90,33 +90,30 @@ class ProjectsReposResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/repos';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Repo.fromJson(data));
   }
 
-  /**
-   * Deletes a repo.
-   *
-   * Request parameters:
-   *
-   * [name] - The name of the repo to delete. Values are of the form
-   * `projects/<project>/repos/<repo>`.
-   * Value must have pattern "^projects/[^/]+/repos/.+$".
-   *
-   * Completes with a [Empty].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Deletes a repo.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the repo to delete. Values are of the form
+  /// `projects/<project>/repos/<repo>`.
+  /// Value must have pattern "^projects/[^/]+/repos/.+$".
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -131,33 +128,30 @@ class ProjectsReposResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /**
-   * Returns information about a repo.
-   *
-   * Request parameters:
-   *
-   * [name] - The name of the requested repository. Values are of the form
-   * `projects/<project>/repos/<repo>`.
-   * Value must have pattern "^projects/[^/]+/repos/.+$".
-   *
-   * Completes with a [Repo].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Returns information about a repo.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the requested repository. Values are of the form
+  /// `projects/<project>/repos/<repo>`.
+  /// Value must have pattern "^projects/[^/]+/repos/.+$".
+  ///
+  /// Completes with a [Repo].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Repo> get(core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -172,36 +166,33 @@ class ProjectsReposResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Repo.fromJson(data));
   }
 
-  /**
-   * Gets the access control policy for a resource.
-   * Returns an empty policy if the resource exists and does not have a policy
-   * set.
-   *
-   * Request parameters:
-   *
-   * [resource] - REQUIRED: The resource for which the policy is being
-   * requested.
-   * See the operation documentation for the appropriate value for this field.
-   * Value must have pattern "^projects/[^/]+/repos/.+$".
-   *
-   * Completes with a [Policy].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Gets the access control policy for a resource.
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested.
+  /// See the operation documentation for the appropriate value for this field.
+  /// Value must have pattern "^projects/[^/]+/repos/.+$".
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String resource) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -214,45 +205,45 @@ class ProjectsReposResourceApi {
       throw new core.ArgumentError("Parameter resource is required.");
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':getIamPolicy';
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':getIamPolicy';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Policy.fromJson(data));
   }
 
-  /**
-   * Returns all repos belonging to a project. The sizes of the repos are
-   * not set by ListRepos.  To get the size of a repo, use GetRepo.
-   *
-   * Request parameters:
-   *
-   * [name] - The project ID whose repos should be listed. Values are of the
-   * form
-   * `projects/<project>`.
-   * Value must have pattern "^projects/[^/]+$".
-   *
-   * [pageToken] - Resume listing repositories where a prior ListReposResponse
-   * left off. This is an opaque token that must be obtained from
-   * a recent, prior ListReposResponse's next_page_token field.
-   *
-   * [pageSize] - Maximum number of repositories to return; between 1 and 500.
-   * If not set or zero, defaults to 100 at the server.
-   *
-   * Completes with a [ListReposResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ListReposResponse> list(core.String name, {core.String pageToken, core.int pageSize}) {
+  /// Returns all repos belonging to a project. The sizes of the repos are
+  /// not set by ListRepos.  To get the size of a repo, use GetRepo.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The project ID whose repos should be listed. Values are of the
+  /// form
+  /// `projects/<project>`.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [pageToken] - Resume listing repositories where a prior ListReposResponse
+  /// left off. This is an opaque token that must be obtained from
+  /// a recent, prior ListReposResponse's next_page_token field.
+  ///
+  /// [pageSize] - Maximum number of repositories to return; between 1 and 500.
+  /// If not set or zero, defaults to 100 at the server.
+  ///
+  /// Completes with a [ListReposResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListReposResponse> list(core.String name,
+      {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -272,38 +263,36 @@ class ProjectsReposResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/repos';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ListReposResponse.fromJson(data));
   }
 
-  /**
-   * Sets the access control policy on the specified resource. Replaces any
-   * existing policy.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [resource] - REQUIRED: The resource for which the policy is being
-   * specified.
-   * See the operation documentation for the appropriate value for this field.
-   * Value must have pattern "^projects/[^/]+/repos/.+$".
-   *
-   * Completes with a [Policy].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Policy> setIamPolicy(SetIamPolicyRequest request, core.String resource) {
+  /// Sets the access control policy on the specified resource. Replaces any
+  /// existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified.
+  /// See the operation documentation for the appropriate value for this field.
+  /// Value must have pattern "^projects/[^/]+/repos/.+$".
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+      SetIamPolicyRequest request, core.String resource) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -318,41 +307,41 @@ class ProjectsReposResourceApi {
       throw new core.ArgumentError("Parameter resource is required.");
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':setIamPolicy';
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':setIamPolicy';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Policy.fromJson(data));
   }
 
-  /**
-   * Returns permissions that a caller has on the specified resource.
-   * If the resource does not exist, this will return an empty set of
-   * permissions, not a NOT_FOUND error.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [resource] - REQUIRED: The resource for which the policy detail is being
-   * requested.
-   * See the operation documentation for the appropriate value for this field.
-   * Value must have pattern "^projects/[^/]+/repos/.+$".
-   *
-   * Completes with a [TestIamPermissionsResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<TestIamPermissionsResponse> testIamPermissions(TestIamPermissionsRequest request, core.String resource) {
+  /// Returns permissions that a caller has on the specified resource.
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a NOT_FOUND error.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested.
+  /// See the operation documentation for the appropriate value for this field.
+  /// Value must have pattern "^projects/[^/]+/repos/.+$".
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+      TestIamPermissionsRequest request, core.String resource) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -367,94 +356,90 @@ class ProjectsReposResourceApi {
       throw new core.ArgumentError("Parameter resource is required.");
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':testIamPermissions';
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':testIamPermissions';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new TestIamPermissionsResponse.fromJson(data));
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new TestIamPermissionsResponse.fromJson(data));
   }
-
 }
 
-
-
-/**
- * Specifies the audit configuration for a service.
- * The configuration determines which permission types are logged, and what
- * identities, if any, are exempted from logging.
- * An AuditConfig must have one or more AuditLogConfigs.
- *
- * If there are AuditConfigs for both `allServices` and a specific service,
- * the union of the two AuditConfigs is used for that service: the log_types
- * specified in each AuditConfig are enabled, and the exempted_members in each
- * AuditConfig are exempted.
- *
- * Example Policy with multiple AuditConfigs:
- *
- *     {
- *       "audit_configs": [
- *         {
- *           "service": "allServices"
- *           "audit_log_configs": [
- *             {
- *               "log_type": "DATA_READ",
- *               "exempted_members": [
- *                 "user:foo@gmail.com"
- *               ]
- *             },
- *             {
- *               "log_type": "DATA_WRITE",
- *             },
- *             {
- *               "log_type": "ADMIN_READ",
- *             }
- *           ]
- *         },
- *         {
- *           "service": "fooservice.googleapis.com"
- *           "audit_log_configs": [
- *             {
- *               "log_type": "DATA_READ",
- *             },
- *             {
- *               "log_type": "DATA_WRITE",
- *               "exempted_members": [
- *                 "user:bar@gmail.com"
- *               ]
- *             }
- *           ]
- *         }
- *       ]
- *     }
- *
- * For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
- * logging. It also exempts foo@gmail.com from DATA_READ logging, and
- * bar@gmail.com from DATA_WRITE logging.
- */
+/// Specifies the audit configuration for a service.
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging.
+/// An AuditConfig must have one or more AuditLogConfigs.
+///
+/// If there are AuditConfigs for both `allServices` and a specific service,
+/// the union of the two AuditConfigs is used for that service: the log_types
+/// specified in each AuditConfig are enabled, and the exempted_members in each
+/// AuditConfig are exempted.
+///
+/// Example Policy with multiple AuditConfigs:
+///
+///     {
+///       "audit_configs": [
+///         {
+///           "service": "allServices"
+///           "audit_log_configs": [
+///             {
+///               "log_type": "DATA_READ",
+///               "exempted_members": [
+///                 "user:foo@gmail.com"
+///               ]
+///             },
+///             {
+///               "log_type": "DATA_WRITE",
+///             },
+///             {
+///               "log_type": "ADMIN_READ",
+///             }
+///           ]
+///         },
+///         {
+///           "service": "fooservice.googleapis.com"
+///           "audit_log_configs": [
+///             {
+///               "log_type": "DATA_READ",
+///             },
+///             {
+///               "log_type": "DATA_WRITE",
+///               "exempted_members": [
+///                 "user:bar@gmail.com"
+///               ]
+///             }
+///           ]
+///         }
+///       ]
+///     }
+///
+/// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// logging. It also exempts foo@gmail.com from DATA_READ logging, and
+/// bar@gmail.com from DATA_WRITE logging.
 class AuditConfig {
-  /**
-   * The configuration for logging of each type of permission.
-   * Next ID: 4
-   */
+  /// The configuration for logging of each type of permission.
+  /// Next ID: 4
   core.List<AuditLogConfig> auditLogConfigs;
   core.List<core.String> exemptedMembers;
-  /**
-   * Specifies a service that will be enabled for audit logging.
-   * For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
-   * `allServices` is a special value that covers all services.
-   */
+
+  /// Specifies a service that will be enabled for audit logging.
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
   core.String service;
 
   AuditConfig();
 
   AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey("auditLogConfigs")) {
-      auditLogConfigs = _json["auditLogConfigs"].map((value) => new AuditLogConfig.fromJson(value)).toList();
+      auditLogConfigs = _json["auditLogConfigs"]
+          .map((value) => new AuditLogConfig.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("exemptedMembers")) {
       exemptedMembers = _json["exemptedMembers"];
@@ -465,9 +450,11 @@ class AuditConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (auditLogConfigs != null) {
-      _json["auditLogConfigs"] = auditLogConfigs.map((value) => (value).toJson()).toList();
+      _json["auditLogConfigs"] =
+          auditLogConfigs.map((value) => (value).toJson()).toList();
     }
     if (exemptedMembers != null) {
       _json["exemptedMembers"] = exemptedMembers;
@@ -479,42 +466,37 @@ class AuditConfig {
   }
 }
 
-/**
- * Provides the configuration for logging a type of permissions.
- * Example:
- *
- *     {
- *       "audit_log_configs": [
- *         {
- *           "log_type": "DATA_READ",
- *           "exempted_members": [
- *             "user:foo@gmail.com"
- *           ]
- *         },
- *         {
- *           "log_type": "DATA_WRITE",
- *         }
- *       ]
- *     }
- *
- * This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
- * foo@gmail.com from DATA_READ logging.
- */
+/// Provides the configuration for logging a type of permissions.
+/// Example:
+///
+///     {
+///       "audit_log_configs": [
+///         {
+///           "log_type": "DATA_READ",
+///           "exempted_members": [
+///             "user:foo@gmail.com"
+///           ]
+///         },
+///         {
+///           "log_type": "DATA_WRITE",
+///         }
+///       ]
+///     }
+///
+/// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
+/// foo@gmail.com from DATA_READ logging.
 class AuditLogConfig {
-  /**
-   * Specifies the identities that do not cause logging for this type of
-   * permission.
-   * Follows the same format of Binding.members.
-   */
+  /// Specifies the identities that do not cause logging for this type of
+  /// permission.
+  /// Follows the same format of Binding.members.
   core.List<core.String> exemptedMembers;
-  /**
-   * The log type that this config enables.
-   * Possible string values are:
-   * - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
-   * - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
-   * - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
-   * - "DATA_READ" : Data reads. Example: CloudSQL Users list
-   */
+
+  /// The log type that this config enables.
+  /// Possible string values are:
+  /// - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
+  /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
+  /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
+  /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
   core.String logType;
 
   AuditLogConfig();
@@ -529,7 +511,8 @@ class AuditLogConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (exemptedMembers != null) {
       _json["exemptedMembers"] = exemptedMembers;
     }
@@ -540,38 +523,35 @@ class AuditLogConfig {
   }
 }
 
-/** Associates `members` with a `role`. */
+/// Associates `members` with a `role`.
 class Binding {
-  /**
-   * Specifies the identities requesting access for a Cloud Platform resource.
-   * `members` can have the following values:
-   *
-   * * `allUsers`: A special identifier that represents anyone who is
-   *    on the internet; with or without a Google account.
-   *
-   * * `allAuthenticatedUsers`: A special identifier that represents anyone
-   *    who is authenticated with a Google account or a service account.
-   *
-   * * `user:{emailid}`: An email address that represents a specific Google
-   *    account. For example, `alice@gmail.com` or `joe@example.com`.
-   *
-   *
-   * * `serviceAccount:{emailid}`: An email address that represents a service
-   *    account. For example, `my-other-app@appspot.gserviceaccount.com`.
-   *
-   * * `group:{emailid}`: An email address that represents a Google group.
-   *    For example, `admins@example.com`.
-   *
-   *
-   * * `domain:{domain}`: A Google Apps domain name that represents all the
-   *    users of that domain. For example, `google.com` or `example.com`.
-   */
+  /// Specifies the identities requesting access for a Cloud Platform resource.
+  /// `members` can have the following values:
+  ///
+  /// * `allUsers`: A special identifier that represents anyone who is
+  ///    on the internet; with or without a Google account.
+  ///
+  /// * `allAuthenticatedUsers`: A special identifier that represents anyone
+  ///    who is authenticated with a Google account or a service account.
+  ///
+  /// * `user:{emailid}`: An email address that represents a specific Google
+  ///    account. For example, `alice@gmail.com` or `joe@example.com`.
+  ///
+  ///
+  /// * `serviceAccount:{emailid}`: An email address that represents a service
+  ///    account. For example, `my-other-app@appspot.gserviceaccount.com`.
+  ///
+  /// * `group:{emailid}`: An email address that represents a Google group.
+  ///    For example, `admins@example.com`.
+  ///
+  ///
+  /// * `domain:{domain}`: A Google Apps domain name that represents all the
+  ///    users of that domain. For example, `google.com` or `example.com`.
   core.List<core.String> members;
-  /**
-   * Role that is assigned to `members`.
-   * For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-   * Required
-   */
+
+  /// Role that is assigned to `members`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// Required
   core.String role;
 
   Binding();
@@ -586,7 +566,8 @@ class Binding {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (members != null) {
       _json["members"] = members;
     }
@@ -597,15 +578,13 @@ class Binding {
   }
 }
 
-/** Write a Cloud Audit log */
+/// Write a Cloud Audit log
 class CloudAuditOptions {
-  /**
-   * The log_name to populate in the Cloud Audit Record.
-   * Possible string values are:
-   * - "UNSPECIFIED_LOG_NAME" : Default. Should not be used.
-   * - "ADMIN_ACTIVITY" : Corresponds to "cloudaudit.googleapis.com/activity"
-   * - "DATA_ACCESS" : Corresponds to "cloudaudit.googleapis.com/data_access"
-   */
+  /// The log_name to populate in the Cloud Audit Record.
+  /// Possible string values are:
+  /// - "UNSPECIFIED_LOG_NAME" : Default. Should not be used.
+  /// - "ADMIN_ACTIVITY" : Corresponds to "cloudaudit.googleapis.com/activity"
+  /// - "DATA_ACCESS" : Corresponds to "cloudaudit.googleapis.com/data_access"
   core.String logName;
 
   CloudAuditOptions();
@@ -617,7 +596,8 @@ class CloudAuditOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (logName != null) {
       _json["logName"] = logName;
     }
@@ -625,67 +605,66 @@ class CloudAuditOptions {
   }
 }
 
-/** A condition to be met. */
+/// A condition to be met.
 class Condition {
-  /**
-   * Trusted attributes supplied by the IAM system.
-   * Possible string values are:
-   * - "NO_ATTR" : Default non-attribute.
-   * - "AUTHORITY" : Either principal or (if present) authority selector.
-   * - "ATTRIBUTION" : The principal (even if an authority selector is present),
-   * which
-   * must only be used for attribution, not authorization.
-   * - "APPROVER" : An approver (distinct from the requester) that has
-   * authorized this
-   * request.
-   * When used with IN, the condition indicates that one of the approvers
-   * associated with the request matches the specified principal, or is a
-   * member of the specified group. Approvers can only grant additional
-   * access, and are thus only used in a strictly positive context
-   * (e.g. ALLOW/IN or DENY/NOT_IN).
-   * See: go/rpc-security-policy-dynamicauth.
-   * - "JUSTIFICATION_TYPE" : What types of justifications have been supplied
-   * with this request.
-   * String values should match enum names from tech.iam.JustificationType,
-   * e.g. "MANUAL_STRING". It is not permitted to grant access based on
-   * the *absence* of a justification, so justification conditions can only
-   * be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN).
-   *
-   * Multiple justifications, e.g., a Buganizer ID and a manually-entered
-   * reason, are normal and supported.
-   */
+  /// Trusted attributes supplied by the IAM system.
+  /// Possible string values are:
+  /// - "NO_ATTR" : Default non-attribute.
+  /// - "AUTHORITY" : Either principal or (if present) authority selector.
+  /// - "ATTRIBUTION" : The principal (even if an authority selector is
+  /// present), which
+  /// must only be used for attribution, not authorization.
+  /// - "APPROVER" : An approver (distinct from the requester) that has
+  /// authorized this
+  /// request.
+  /// When used with IN, the condition indicates that one of the approvers
+  /// associated with the request matches the specified principal, or is a
+  /// member of the specified group. Approvers can only grant additional
+  /// access, and are thus only used in a strictly positive context
+  /// (e.g. ALLOW/IN or DENY/NOT_IN).
+  /// See: go/rpc-security-policy-dynamicauth.
+  /// - "JUSTIFICATION_TYPE" : What types of justifications have been supplied
+  /// with this request.
+  /// String values should match enum names from tech.iam.JustificationType,
+  /// e.g. "MANUAL_STRING". It is not permitted to grant access based on
+  /// the *absence* of a justification, so justification conditions can only
+  /// be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN).
+  ///
+  /// Multiple justifications, e.g., a Buganizer ID and a manually-entered
+  /// reason, are normal and supported.
   core.String iam;
-  /**
-   * An operator to apply the subject with.
-   * Possible string values are:
-   * - "NO_OP" : Default no-op.
-   * - "EQUALS" : DEPRECATED. Use IN instead.
-   * - "NOT_EQUALS" : DEPRECATED. Use NOT_IN instead.
-   * - "IN" : The condition is true if the subject (or any element of it if it
-   * is
-   * a set) matches any of the supplied values.
-   * - "NOT_IN" : The condition is true if the subject (or every element of it
-   * if it is
-   * a set) matches none of the supplied values.
-   * - "DISCHARGED" : Subject is discharged
-   */
+
+  /// An operator to apply the subject with.
+  /// Possible string values are:
+  /// - "NO_OP" : Default no-op.
+  /// - "EQUALS" : DEPRECATED. Use IN instead.
+  /// - "NOT_EQUALS" : DEPRECATED. Use NOT_IN instead.
+  /// - "IN" : The condition is true if the subject (or any element of it if it
+  /// is
+  /// a set) matches any of the supplied values.
+  /// - "NOT_IN" : The condition is true if the subject (or every element of it
+  /// if it is
+  /// a set) matches none of the supplied values.
+  /// - "DISCHARGED" : Subject is discharged
   core.String op;
-  /** Trusted attributes discharged by the service. */
+
+  /// Trusted attributes discharged by the service.
   core.String svc;
-  /**
-   * Trusted attributes supplied by any service that owns resources and uses
-   * the IAM system for access control.
-   * Possible string values are:
-   * - "NO_ATTR" : Default non-attribute type
-   * - "REGION" : Region of the resource
-   * - "SERVICE" : Service name
-   * - "NAME" : Resource name
-   * - "IP" : IP address of the caller
-   */
+
+  /// Trusted attributes supplied by any service that owns resources and uses
+  /// the IAM system for access control.
+  /// Possible string values are:
+  /// - "NO_ATTR" : Default non-attribute type
+  /// - "REGION" : Region of the resource
+  /// - "SERVICE" : Service name
+  /// - "NAME" : Resource name
+  /// - "IP" : IP address of the caller
   core.String sys;
-  /** DEPRECATED. Use 'values' instead. */
+
+  /// DEPRECATED. Use 'values' instead.
   core.String value;
-  /** The objects of the condition. This is mutually exclusive with 'value'. */
+
+  /// The objects of the condition. This is mutually exclusive with 'value'.
   core.List<core.String> values;
 
   Condition();
@@ -712,7 +691,8 @@ class Condition {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (iam != null) {
       _json["iam"] = iam;
     }
@@ -735,11 +715,12 @@ class Condition {
   }
 }
 
-/** Options for counters */
+/// Options for counters
 class CounterOptions {
-  /** The field value to attribute. */
+  /// The field value to attribute.
   core.String field;
-  /** The metric to update. */
+
+  /// The metric to update.
   core.String metric;
 
   CounterOptions();
@@ -754,7 +735,8 @@ class CounterOptions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (field != null) {
       _json["field"] = field;
     }
@@ -765,55 +747,48 @@ class CounterOptions {
   }
 }
 
-/** Write a Data Access (Gin) log */
+/// Write a Data Access (Gin) log
 class DataAccessOptions {
-
   DataAccessOptions();
 
-  DataAccessOptions.fromJson(core.Map _json) {
-  }
+  DataAccessOptions.fromJson(core.Map _json) {}
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }
 
-/**
- * A generic empty message that you can re-use to avoid defining duplicated
- * empty messages in your APIs. A typical example is to use it as the request
- * or the response type of an API method. For instance:
- *
- *     service Foo {
- *       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
- *     }
- *
- * The JSON representation for `Empty` is empty JSON object `{}`.
- */
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs. A typical example is to use it as the request
+/// or the response type of an API method. For instance:
+///
+///     service Foo {
+///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+///     }
+///
+/// The JSON representation for `Empty` is empty JSON object `{}`.
 class Empty {
-
   Empty();
 
-  Empty.fromJson(core.Map _json) {
-  }
+  Empty.fromJson(core.Map _json) {}
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }
 
-/**
- * Response for ListRepos.  The size is not set in the returned repositories.
- */
+/// Response for ListRepos.  The size is not set in the returned repositories.
 class ListReposResponse {
-  /**
-   * If non-empty, additional repositories exist within the project. These
-   * can be retrieved by including this value in the next ListReposRequest's
-   * page_token field.
-   */
+  /// If non-empty, additional repositories exist within the project. These
+  /// can be retrieved by including this value in the next ListReposRequest's
+  /// page_token field.
   core.String nextPageToken;
-  /** The listed repos. */
+
+  /// The listed repos.
   core.List<Repo> repos;
 
   ListReposResponse();
@@ -828,7 +803,8 @@ class ListReposResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -839,13 +815,15 @@ class ListReposResponse {
   }
 }
 
-/** Specifies what kind of log the caller must write */
+/// Specifies what kind of log the caller must write
 class LogConfig {
-  /** Cloud audit options. */
+  /// Cloud audit options.
   CloudAuditOptions cloudAudit;
-  /** Counter options. */
+
+  /// Counter options.
   CounterOptions counter;
-  /** Data access options. */
+
+  /// Data access options.
   DataAccessOptions dataAccess;
 
   LogConfig();
@@ -863,7 +841,8 @@ class LogConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (cloudAudit != null) {
       _json["cloudAudit"] = (cloudAudit).toJson();
     }
@@ -877,25 +856,21 @@ class LogConfig {
   }
 }
 
-/**
- * Configuration to automatically mirror a repository from another
- * hosting service, for example GitHub or BitBucket.
- */
+/// Configuration to automatically mirror a repository from another
+/// hosting service, for example GitHub or BitBucket.
 class MirrorConfig {
-  /**
-   * ID of the SSH deploy key at the other hosting service.
-   * Removing this key from the other service would deauthorize
-   * Google Cloud Source Repositories from mirroring.
-   */
+  /// ID of the SSH deploy key at the other hosting service.
+  /// Removing this key from the other service would deauthorize
+  /// Google Cloud Source Repositories from mirroring.
   core.String deployKeyId;
-  /** URL of the main repository at the other hosting service. */
+
+  /// URL of the main repository at the other hosting service.
   core.String url;
-  /**
-   * ID of the webhook listening to updates to trigger mirroring.
-   * Removing this webook from the other hosting service will stop
-   * Google Cloud Source Repositories from receiving notifications,
-   * and thereby disabling mirroring.
-   */
+
+  /// ID of the webhook listening to updates to trigger mirroring.
+  /// Removing this webook from the other hosting service will stop
+  /// Google Cloud Source Repositories from receiving notifications,
+  /// and thereby disabling mirroring.
   core.String webhookId;
 
   MirrorConfig();
@@ -913,7 +888,8 @@ class MirrorConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (deployKeyId != null) {
       _json["deployKeyId"] = deployKeyId;
     }
@@ -927,92 +903,97 @@ class MirrorConfig {
   }
 }
 
-/**
- * Defines an Identity and Access Management (IAM) policy. It is used to
- * specify access control policies for Cloud Platform resources.
- *
- *
- * A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
- * `members` to a `role`, where the members can be user accounts, Google groups,
- * Google domains, and service accounts. A `role` is a named list of permissions
- * defined by IAM.
- *
- * **Example**
- *
- *     {
- *       "bindings": [
- *         {
- *           "role": "roles/owner",
- *           "members": [
- *             "user:mike@example.com",
- *             "group:admins@example.com",
- *             "domain:google.com",
- *             "serviceAccount:my-other-app@appspot.gserviceaccount.com",
- *           ]
- *         },
- *         {
- *           "role": "roles/viewer",
- *           "members": ["user:sean@example.com"]
- *         }
- *       ]
- *     }
- *
- * For a description of IAM and its features, see the
- * [IAM developer's guide](https://cloud.google.com/iam).
- */
+/// Defines an Identity and Access Management (IAM) policy. It is used to
+/// specify access control policies for Cloud Platform resources.
+///
+///
+/// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+/// `members` to a `role`, where the members can be user accounts, Google
+/// groups,
+/// Google domains, and service accounts. A `role` is a named list of
+/// permissions
+/// defined by IAM.
+///
+/// **Example**
+///
+///     {
+///       "bindings": [
+///         {
+///           "role": "roles/owner",
+///           "members": [
+///             "user:mike@example.com",
+///             "group:admins@example.com",
+///             "domain:google.com",
+///             "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+///           ]
+///         },
+///         {
+///           "role": "roles/viewer",
+///           "members": ["user:sean@example.com"]
+///         }
+///       ]
+///     }
+///
+/// For a description of IAM and its features, see the
+/// [IAM developer's guide](https://cloud.google.com/iam).
 class Policy {
-  /** Specifies cloud audit logging configuration for this policy. */
+  /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
-  /**
-   * Associates a list of `members` to a `role`.
-   * Multiple `bindings` must not be specified for the same `role`.
-   * `bindings` with no members will result in an error.
-   */
+
+  /// Associates a list of `members` to a `role`.
+  /// Multiple `bindings` must not be specified for the same `role`.
+  /// `bindings` with no members will result in an error.
   core.List<Binding> bindings;
-  /**
-   * `etag` is used for optimistic concurrency control as a way to help
-   * prevent simultaneous updates of a policy from overwriting each other.
-   * It is strongly suggested that systems make use of the `etag` in the
-   * read-modify-write cycle to perform policy updates in order to avoid race
-   * conditions: An `etag` is returned in the response to `getIamPolicy`, and
-   * systems are expected to put that etag in the request to `setIamPolicy` to
-   * ensure that their change will be applied to the same version of the policy.
-   *
-   * If no `etag` is provided in the call to `setIamPolicy`, then the existing
-   * policy is overwritten blindly.
-   */
+
+  /// `etag` is used for optimistic concurrency control as a way to help
+  /// prevent simultaneous updates of a policy from overwriting each other.
+  /// It is strongly suggested that systems make use of the `etag` in the
+  /// read-modify-write cycle to perform policy updates in order to avoid race
+  /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
+  /// systems are expected to put that etag in the request to `setIamPolicy` to
+  /// ensure that their change will be applied to the same version of the
+  /// policy.
+  ///
+  /// If no `etag` is provided in the call to `setIamPolicy`, then the existing
+  /// policy is overwritten blindly.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.BASE64.decode(etag);
   }
 
   void set etagAsBytes(core.List<core.int> _bytes) {
-    etag = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    etag =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
+
   core.bool iamOwned;
-  /**
-   * If more than one rule is specified, the rules are applied in the following
-   * manner:
-   * - All matching LOG rules are always applied.
-   * - If any DENY/DENY_WITH_LOG rule matches, permission is denied.
-   *   Logging will be applied if one or more matching rule requires logging.
-   * - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is
-   *   granted.
-   *   Logging will be applied if one or more matching rule requires logging.
-   * - Otherwise, if no rule applies, permission is denied.
-   */
+
+  /// If more than one rule is specified, the rules are applied in the following
+  /// manner:
+  /// - All matching LOG rules are always applied.
+  /// - If any DENY/DENY_WITH_LOG rule matches, permission is denied.
+  ///   Logging will be applied if one or more matching rule requires logging.
+  /// - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is
+  ///   granted.
+  ///   Logging will be applied if one or more matching rule requires logging.
+  /// - Otherwise, if no rule applies, permission is denied.
   core.List<Rule> rules;
-  /** Version of the `Policy`. The default version is 0. */
+
+  /// Version of the `Policy`. The default version is 0.
   core.int version;
 
   Policy();
 
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("auditConfigs")) {
-      auditConfigs = _json["auditConfigs"].map((value) => new AuditConfig.fromJson(value)).toList();
+      auditConfigs = _json["auditConfigs"]
+          .map((value) => new AuditConfig.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("bindings")) {
-      bindings = _json["bindings"].map((value) => new Binding.fromJson(value)).toList();
+      bindings = _json["bindings"]
+          .map((value) => new Binding.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -1029,9 +1010,11 @@ class Policy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (auditConfigs != null) {
-      _json["auditConfigs"] = auditConfigs.map((value) => (value).toJson()).toList();
+      _json["auditConfigs"] =
+          auditConfigs.map((value) => (value).toJson()).toList();
     }
     if (bindings != null) {
       _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
@@ -1052,24 +1035,21 @@ class Policy {
   }
 }
 
-/**
- * A repository (or repo) is a Git repository storing versioned source content.
- */
+/// A repository (or repo) is a Git repository storing versioned source content.
 class Repo {
-  /** How this repository mirrors a repository managed by another service. */
+  /// How this repository mirrors a repository managed by another service.
   MirrorConfig mirrorConfig;
-  /**
-   * Resource name of the repository, of the form
-   * `projects/<project>/repos/<repo>`.  The repo name may contain slashes.
-   * eg, `projects/myproject/repos/name/with/slash`
-   */
+
+  /// Resource name of the repository, of the form
+  /// `projects/<project>/repos/<repo>`.  The repo name may contain slashes.
+  /// eg, `projects/myproject/repos/name/with/slash`
   core.String name;
-  /**
-   * The disk usage of the repo, in bytes.
-   * Only returned by GetRepo.
-   */
+
+  /// The disk usage of the repo, in bytes.
+  /// Only returned by GetRepo.
   core.String size;
-  /** URL to clone the repository from Google Cloud Source Repositories. */
+
+  /// URL to clone the repository from Google Cloud Source Repositories.
   core.String url;
 
   Repo();
@@ -1090,7 +1070,8 @@ class Repo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (mirrorConfig != null) {
       _json["mirrorConfig"] = (mirrorConfig).toJson();
     }
@@ -1107,49 +1088,45 @@ class Repo {
   }
 }
 
-/** A rule to be applied in a Policy. */
+/// A rule to be applied in a Policy.
 class Rule {
-  /**
-   * Required
-   * Possible string values are:
-   * - "NO_ACTION" : Default no action.
-   * - "ALLOW" : Matching 'Entries' grant access.
-   * - "ALLOW_WITH_LOG" : Matching 'Entries' grant access and the caller
-   * promises to log
-   * the request per the returned log_configs.
-   * - "DENY" : Matching 'Entries' deny access.
-   * - "DENY_WITH_LOG" : Matching 'Entries' deny access and the caller promises
-   * to log
-   * the request per the returned log_configs.
-   * - "LOG" : Matching 'Entries' tell IAM.Check callers to generate logs.
-   */
+  /// Required
+  /// Possible string values are:
+  /// - "NO_ACTION" : Default no action.
+  /// - "ALLOW" : Matching 'Entries' grant access.
+  /// - "ALLOW_WITH_LOG" : Matching 'Entries' grant access and the caller
+  /// promises to log
+  /// the request per the returned log_configs.
+  /// - "DENY" : Matching 'Entries' deny access.
+  /// - "DENY_WITH_LOG" : Matching 'Entries' deny access and the caller promises
+  /// to log
+  /// the request per the returned log_configs.
+  /// - "LOG" : Matching 'Entries' tell IAM.Check callers to generate logs.
   core.String action;
-  /** Additional restrictions that must be met */
+
+  /// Additional restrictions that must be met
   core.List<Condition> conditions;
-  /** Human-readable description of the rule. */
+
+  /// Human-readable description of the rule.
   core.String description;
-  /**
-   * If one or more 'in' clauses are specified, the rule matches if
-   * the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
-   */
+
+  /// If one or more 'in' clauses are specified, the rule matches if
+  /// the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
   core.List<core.String> in_;
-  /**
-   * The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
-   * that match the LOG action.
-   */
+
+  /// The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
+  /// that match the LOG action.
   core.List<LogConfig> logConfig;
-  /**
-   * If one or more 'not_in' clauses are specified, the rule matches
-   * if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.
-   * The format for in and not_in entries is the same as for members in a
-   * Binding (see google/iam/v1/policy.proto).
-   */
+
+  /// If one or more 'not_in' clauses are specified, the rule matches
+  /// if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.
+  /// The format for in and not_in entries is the same as for members in a
+  /// Binding (see google/iam/v1/policy.proto).
   core.List<core.String> notIn;
-  /**
-   * A permission is a string of form '<service>.<resource type>.<verb>'
-   * (e.g., 'storage.buckets.list'). A value of '*' matches all permissions,
-   * and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.
-   */
+
+  /// A permission is a string of form '<service>.<resource type>.<verb>'
+  /// (e.g., 'storage.buckets.list'). A value of '*' matches all permissions,
+  /// and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.
   core.List<core.String> permissions;
 
   Rule();
@@ -1159,7 +1136,9 @@ class Rule {
       action = _json["action"];
     }
     if (_json.containsKey("conditions")) {
-      conditions = _json["conditions"].map((value) => new Condition.fromJson(value)).toList();
+      conditions = _json["conditions"]
+          .map((value) => new Condition.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -1168,7 +1147,9 @@ class Rule {
       in_ = _json["in"];
     }
     if (_json.containsKey("logConfig")) {
-      logConfig = _json["logConfig"].map((value) => new LogConfig.fromJson(value)).toList();
+      logConfig = _json["logConfig"]
+          .map((value) => new LogConfig.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("notIn")) {
       notIn = _json["notIn"];
@@ -1179,12 +1160,14 @@ class Rule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (action != null) {
       _json["action"] = action;
     }
     if (conditions != null) {
-      _json["conditions"] = conditions.map((value) => (value).toJson()).toList();
+      _json["conditions"] =
+          conditions.map((value) => (value).toJson()).toList();
     }
     if (description != null) {
       _json["description"] = description;
@@ -1205,22 +1188,20 @@ class Rule {
   }
 }
 
-/** Request message for `SetIamPolicy` method. */
+/// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
-  /**
-   * REQUIRED: The complete policy to be applied to the `resource`. The size of
-   * the policy is limited to a few 10s of KB. An empty policy is a
-   * valid policy but certain Cloud Platform services (such as Projects)
-   * might reject them.
-   */
+  /// REQUIRED: The complete policy to be applied to the `resource`. The size of
+  /// the policy is limited to a few 10s of KB. An empty policy is a
+  /// valid policy but certain Cloud Platform services (such as Projects)
+  /// might reject them.
   Policy policy;
-  /**
-   * OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only
-   * the fields in the mask will be modified. If no mask is provided, the
-   * following default mask is used:
-   * paths: "bindings, etag"
-   * This field is only used by Cloud IAM.
-   */
+
+  /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
+  /// Only
+  /// the fields in the mask will be modified. If no mask is provided, the
+  /// following default mask is used:
+  /// paths: "bindings, etag"
+  /// This field is only used by Cloud IAM.
   core.String updateMask;
 
   SetIamPolicyRequest();
@@ -1235,7 +1216,8 @@ class SetIamPolicyRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (policy != null) {
       _json["policy"] = (policy).toJson();
     }
@@ -1246,14 +1228,12 @@ class SetIamPolicyRequest {
   }
 }
 
-/** Request message for `TestIamPermissions` method. */
+/// Request message for `TestIamPermissions` method.
 class TestIamPermissionsRequest {
-  /**
-   * The set of permissions to check for the `resource`. Permissions with
-   * wildcards (such as '*' or 'storage.*') are not allowed. For more
-   * information see
-   * [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-   */
+  /// The set of permissions to check for the `resource`. Permissions with
+  /// wildcards (such as '*' or 'storage.*') are not allowed. For more
+  /// information see
+  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
   TestIamPermissionsRequest();
@@ -1265,7 +1245,8 @@ class TestIamPermissionsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -1273,12 +1254,10 @@ class TestIamPermissionsRequest {
   }
 }
 
-/** Response message for `TestIamPermissions` method. */
+/// Response message for `TestIamPermissions` method.
 class TestIamPermissionsResponse {
-  /**
-   * A subset of `TestPermissionsRequest.permissions` that the caller is
-   * allowed.
-   */
+  /// A subset of `TestPermissionsRequest.permissions` that the caller is
+  /// allowed.
   core.List<core.String> permissions;
 
   TestIamPermissionsResponse();
@@ -1290,7 +1269,8 @@ class TestIamPermissionsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (permissions != null) {
       _json["permissions"] = permissions;
     }

@@ -9,49 +9,48 @@ import 'dart:convert' as convert;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
-    ApiRequestError, DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
+    show ApiRequestError, DetailedApiRequestError;
 
 const core.String USER_AGENT = 'dart-api-client tasks/v1';
 
-/** Lets you manage your tasks and task lists. */
+/// Lets you manage your tasks and task lists.
 class TasksApi {
-  /** Manage your tasks */
+  /// Manage your tasks
   static const TasksScope = "https://www.googleapis.com/auth/tasks";
 
-  /** View your tasks */
-  static const TasksReadonlyScope = "https://www.googleapis.com/auth/tasks.readonly";
-
+  /// View your tasks
+  static const TasksReadonlyScope =
+      "https://www.googleapis.com/auth/tasks.readonly";
 
   final commons.ApiRequester _requester;
 
   TasklistsResourceApi get tasklists => new TasklistsResourceApi(_requester);
   TasksResourceApi get tasks => new TasksResourceApi(_requester);
 
-  TasksApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "tasks/v1/"}) :
-      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+  TasksApi(http.Client client,
+      {core.String rootUrl: "https://www.googleapis.com/",
+      core.String servicePath: "tasks/v1/"})
+      : _requester =
+            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
-
 
 class TasklistsResourceApi {
   final commons.ApiRequester _requester;
 
-  TasklistsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  TasklistsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Deletes the authenticated user's specified task list.
-   *
-   * Request parameters:
-   *
-   * [tasklist] - Task list identifier.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Deletes the authenticated user's specified task list.
+  ///
+  /// Request parameters:
+  ///
+  /// [tasklist] - Task list identifier.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future delete(core.String tasklist) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -68,31 +67,28 @@ class TasklistsResourceApi {
 
     _url = 'users/@me/lists/' + commons.Escaper.ecapeVariable('$tasklist');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Returns the authenticated user's specified task list.
-   *
-   * Request parameters:
-   *
-   * [tasklist] - Task list identifier.
-   *
-   * Completes with a [TaskList].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Returns the authenticated user's specified task list.
+  ///
+  /// Request parameters:
+  ///
+  /// [tasklist] - Task list identifier.
+  ///
+  /// Completes with a [TaskList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<TaskList> get(core.String tasklist) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -107,31 +103,29 @@ class TasklistsResourceApi {
 
     _url = 'users/@me/lists/' + commons.Escaper.ecapeVariable('$tasklist');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new TaskList.fromJson(data));
   }
 
-  /**
-   * Creates a new task list and adds it to the authenticated user's task lists.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [TaskList].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Creates a new task list and adds it to the authenticated user's task
+  /// lists.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [TaskList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<TaskList> insert(TaskList request) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -146,35 +140,33 @@ class TasklistsResourceApi {
 
     _url = 'users/@me/lists';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new TaskList.fromJson(data));
   }
 
-  /**
-   * Returns all the authenticated user's task lists.
-   *
-   * Request parameters:
-   *
-   * [maxResults] - Maximum number of task lists returned on one page. Optional.
-   * The default is 100.
-   *
-   * [pageToken] - Token specifying the result page to return. Optional.
-   *
-   * Completes with a [TaskLists].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<TaskLists> list({core.String maxResults, core.String pageToken}) {
+  /// Returns all the authenticated user's task lists.
+  ///
+  /// Request parameters:
+  ///
+  /// [maxResults] - Maximum number of task lists returned on one page.
+  /// Optional. The default is 100.
+  ///
+  /// [pageToken] - Token specifying the result page to return. Optional.
+  ///
+  /// Completes with a [TaskLists].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TaskLists> list(
+      {core.String maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -191,34 +183,31 @@ class TasklistsResourceApi {
 
     _url = 'users/@me/lists';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new TaskLists.fromJson(data));
   }
 
-  /**
-   * Updates the authenticated user's specified task list. This method supports
-   * patch semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [tasklist] - Task list identifier.
-   *
-   * Completes with a [TaskList].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Updates the authenticated user's specified task list. This method supports
+  /// patch semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [tasklist] - Task list identifier.
+  ///
+  /// Completes with a [TaskList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<TaskList> patch(TaskList request, core.String tasklist) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -236,33 +225,30 @@ class TasklistsResourceApi {
 
     _url = 'users/@me/lists/' + commons.Escaper.ecapeVariable('$tasklist');
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new TaskList.fromJson(data));
   }
 
-  /**
-   * Updates the authenticated user's specified task list.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [tasklist] - Task list identifier.
-   *
-   * Completes with a [TaskList].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Updates the authenticated user's specified task list.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [tasklist] - Task list identifier.
+  ///
+  /// Completes with a [TaskList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<TaskList> update(TaskList request, core.String tasklist) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -280,40 +266,34 @@ class TasklistsResourceApi {
 
     _url = 'users/@me/lists/' + commons.Escaper.ecapeVariable('$tasklist');
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new TaskList.fromJson(data));
   }
-
 }
-
 
 class TasksResourceApi {
   final commons.ApiRequester _requester;
 
-  TasksResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  TasksResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Clears all completed tasks from the specified task list. The affected tasks
-   * will be marked as 'hidden' and no longer be returned by default when
-   * retrieving all tasks for a task list.
-   *
-   * Request parameters:
-   *
-   * [tasklist] - Task list identifier.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Clears all completed tasks from the specified task list. The affected
+  /// tasks will be marked as 'hidden' and no longer be returned by default when
+  /// retrieving all tasks for a task list.
+  ///
+  /// Request parameters:
+  ///
+  /// [tasklist] - Task list identifier.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future clear(core.String tasklist) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -330,31 +310,28 @@ class TasksResourceApi {
 
     _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/clear';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Deletes the specified task from the task list.
-   *
-   * Request parameters:
-   *
-   * [tasklist] - Task list identifier.
-   *
-   * [task] - Task identifier.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Deletes the specified task from the task list.
+  ///
+  /// Request parameters:
+  ///
+  /// [tasklist] - Task list identifier.
+  ///
+  /// [task] - Task identifier.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future delete(core.String tasklist, core.String task) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -372,35 +349,35 @@ class TasksResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/tasks/' + commons.Escaper.ecapeVariable('$task');
+    _url = 'lists/' +
+        commons.Escaper.ecapeVariable('$tasklist') +
+        '/tasks/' +
+        commons.Escaper.ecapeVariable('$task');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Returns the specified task.
-   *
-   * Request parameters:
-   *
-   * [tasklist] - Task list identifier.
-   *
-   * [task] - Task identifier.
-   *
-   * Completes with a [Task].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Returns the specified task.
+  ///
+  /// Request parameters:
+  ///
+  /// [tasklist] - Task list identifier.
+  ///
+  /// [task] - Task identifier.
+  ///
+  /// Completes with a [Task].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Task> get(core.String tasklist, core.String task) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -416,42 +393,44 @@ class TasksResourceApi {
       throw new core.ArgumentError("Parameter task is required.");
     }
 
-    _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/tasks/' + commons.Escaper.ecapeVariable('$task');
+    _url = 'lists/' +
+        commons.Escaper.ecapeVariable('$tasklist') +
+        '/tasks/' +
+        commons.Escaper.ecapeVariable('$task');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Task.fromJson(data));
   }
 
-  /**
-   * Creates a new task on the specified task list.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [tasklist] - Task list identifier.
-   *
-   * [parent] - Parent task identifier. If the task is created at the top level,
-   * this parameter is omitted. Optional.
-   *
-   * [previous] - Previous sibling task identifier. If the task is created at
-   * the first position among its siblings, this parameter is omitted. Optional.
-   *
-   * Completes with a [Task].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Task> insert(Task request, core.String tasklist, {core.String parent, core.String previous}) {
+  /// Creates a new task on the specified task list.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [tasklist] - Task list identifier.
+  ///
+  /// [parent] - Parent task identifier. If the task is created at the top
+  /// level, this parameter is omitted. Optional.
+  ///
+  /// [previous] - Previous sibling task identifier. If the task is created at
+  /// the first position among its siblings, this parameter is omitted.
+  /// Optional.
+  ///
+  /// Completes with a [Task].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Task> insert(Task request, core.String tasklist,
+      {core.String parent, core.String previous}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -474,64 +453,71 @@ class TasksResourceApi {
 
     _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/tasks';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Task.fromJson(data));
   }
 
-  /**
-   * Returns all tasks in the specified task list.
-   *
-   * Request parameters:
-   *
-   * [tasklist] - Task list identifier.
-   *
-   * [completedMax] - Upper bound for a task's completion date (as a RFC 3339
-   * timestamp) to filter by. Optional. The default is not to filter by
-   * completion date.
-   *
-   * [completedMin] - Lower bound for a task's completion date (as a RFC 3339
-   * timestamp) to filter by. Optional. The default is not to filter by
-   * completion date.
-   *
-   * [dueMax] - Upper bound for a task's due date (as a RFC 3339 timestamp) to
-   * filter by. Optional. The default is not to filter by due date.
-   *
-   * [dueMin] - Lower bound for a task's due date (as a RFC 3339 timestamp) to
-   * filter by. Optional. The default is not to filter by due date.
-   *
-   * [maxResults] - Maximum number of task lists returned on one page. Optional.
-   * The default is 100.
-   *
-   * [pageToken] - Token specifying the result page to return. Optional.
-   *
-   * [showCompleted] - Flag indicating whether completed tasks are returned in
-   * the result. Optional. The default is True.
-   *
-   * [showDeleted] - Flag indicating whether deleted tasks are returned in the
-   * result. Optional. The default is False.
-   *
-   * [showHidden] - Flag indicating whether hidden tasks are returned in the
-   * result. Optional. The default is False.
-   *
-   * [updatedMin] - Lower bound for a task's last modification time (as a RFC
-   * 3339 timestamp) to filter by. Optional. The default is not to filter by
-   * last modification time.
-   *
-   * Completes with a [Tasks].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Tasks> list(core.String tasklist, {core.String completedMax, core.String completedMin, core.String dueMax, core.String dueMin, core.String maxResults, core.String pageToken, core.bool showCompleted, core.bool showDeleted, core.bool showHidden, core.String updatedMin}) {
+  /// Returns all tasks in the specified task list.
+  ///
+  /// Request parameters:
+  ///
+  /// [tasklist] - Task list identifier.
+  ///
+  /// [completedMax] - Upper bound for a task's completion date (as a RFC 3339
+  /// timestamp) to filter by. Optional. The default is not to filter by
+  /// completion date.
+  ///
+  /// [completedMin] - Lower bound for a task's completion date (as a RFC 3339
+  /// timestamp) to filter by. Optional. The default is not to filter by
+  /// completion date.
+  ///
+  /// [dueMax] - Upper bound for a task's due date (as a RFC 3339 timestamp) to
+  /// filter by. Optional. The default is not to filter by due date.
+  ///
+  /// [dueMin] - Lower bound for a task's due date (as a RFC 3339 timestamp) to
+  /// filter by. Optional. The default is not to filter by due date.
+  ///
+  /// [maxResults] - Maximum number of task lists returned on one page.
+  /// Optional. The default is 100.
+  ///
+  /// [pageToken] - Token specifying the result page to return. Optional.
+  ///
+  /// [showCompleted] - Flag indicating whether completed tasks are returned in
+  /// the result. Optional. The default is True.
+  ///
+  /// [showDeleted] - Flag indicating whether deleted tasks are returned in the
+  /// result. Optional. The default is False.
+  ///
+  /// [showHidden] - Flag indicating whether hidden tasks are returned in the
+  /// result. Optional. The default is False.
+  ///
+  /// [updatedMin] - Lower bound for a task's last modification time (as a RFC
+  /// 3339 timestamp) to filter by. Optional. The default is not to filter by
+  /// last modification time.
+  ///
+  /// Completes with a [Tasks].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Tasks> list(core.String tasklist,
+      {core.String completedMax,
+      core.String completedMin,
+      core.String dueMax,
+      core.String dueMin,
+      core.String maxResults,
+      core.String pageToken,
+      core.bool showCompleted,
+      core.bool showDeleted,
+      core.bool showHidden,
+      core.String updatedMin}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -575,42 +561,41 @@ class TasksResourceApi {
 
     _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/tasks';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Tasks.fromJson(data));
   }
 
-  /**
-   * Moves the specified task to another position in the task list. This can
-   * include putting it as a child task under a new parent and/or move it to a
-   * different position among its sibling tasks.
-   *
-   * Request parameters:
-   *
-   * [tasklist] - Task list identifier.
-   *
-   * [task] - Task identifier.
-   *
-   * [parent] - New parent task identifier. If the task is moved to the top
-   * level, this parameter is omitted. Optional.
-   *
-   * [previous] - New previous sibling task identifier. If the task is moved to
-   * the first position among its siblings, this parameter is omitted. Optional.
-   *
-   * Completes with a [Task].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Task> move(core.String tasklist, core.String task, {core.String parent, core.String previous}) {
+  /// Moves the specified task to another position in the task list. This can
+  /// include putting it as a child task under a new parent and/or move it to a
+  /// different position among its sibling tasks.
+  ///
+  /// Request parameters:
+  ///
+  /// [tasklist] - Task list identifier.
+  ///
+  /// [task] - Task identifier.
+  ///
+  /// [parent] - New parent task identifier. If the task is moved to the top
+  /// level, this parameter is omitted. Optional.
+  ///
+  /// [previous] - New previous sibling task identifier. If the task is moved to
+  /// the first position among its siblings, this parameter is omitted.
+  /// Optional.
+  ///
+  /// Completes with a [Task].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Task> move(core.String tasklist, core.String task,
+      {core.String parent, core.String previous}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -631,38 +616,40 @@ class TasksResourceApi {
       _queryParams["previous"] = [previous];
     }
 
-    _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/tasks/' + commons.Escaper.ecapeVariable('$task') + '/move';
+    _url = 'lists/' +
+        commons.Escaper.ecapeVariable('$tasklist') +
+        '/tasks/' +
+        commons.Escaper.ecapeVariable('$task') +
+        '/move';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Task.fromJson(data));
   }
 
-  /**
-   * Updates the specified task. This method supports patch semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [tasklist] - Task list identifier.
-   *
-   * [task] - Task identifier.
-   *
-   * Completes with a [Task].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Task> patch(Task request, core.String tasklist, core.String task) {
+  /// Updates the specified task. This method supports patch semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [tasklist] - Task list identifier.
+  ///
+  /// [task] - Task identifier.
+  ///
+  /// Completes with a [Task].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Task> patch(
+      Task request, core.String tasklist, core.String task) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -680,38 +667,39 @@ class TasksResourceApi {
       throw new core.ArgumentError("Parameter task is required.");
     }
 
-    _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/tasks/' + commons.Escaper.ecapeVariable('$task');
+    _url = 'lists/' +
+        commons.Escaper.ecapeVariable('$tasklist') +
+        '/tasks/' +
+        commons.Escaper.ecapeVariable('$task');
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Task.fromJson(data));
   }
 
-  /**
-   * Updates the specified task.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [tasklist] - Task list identifier.
-   *
-   * [task] - Task identifier.
-   *
-   * Completes with a [Task].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Task> update(Task request, core.String tasklist, core.String task) {
+  /// Updates the specified task.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [tasklist] - Task list identifier.
+  ///
+  /// [task] - Task identifier.
+  ///
+  /// Completes with a [Task].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Task> update(
+      Task request, core.String tasklist, core.String task) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -729,28 +717,29 @@ class TasksResourceApi {
       throw new core.ArgumentError("Parameter task is required.");
     }
 
-    _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/tasks/' + commons.Escaper.ecapeVariable('$task');
+    _url = 'lists/' +
+        commons.Escaper.ecapeVariable('$tasklist') +
+        '/tasks/' +
+        commons.Escaper.ecapeVariable('$task');
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Task.fromJson(data));
   }
-
 }
 
-
-
 class TaskLinks {
-  /** The description. In HTML speak: Everything between <a> and </a>. */
+  /// The description. In HTML speak: Everything between <a> and </a>.
   core.String description;
-  /** The URL. */
+
+  /// The URL.
   core.String link;
-  /** Type of the link, e.g. "email". */
+
+  /// Type of the link, e.g. "email".
   core.String type;
 
   TaskLinks();
@@ -768,7 +757,8 @@ class TaskLinks {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -783,57 +773,59 @@ class TaskLinks {
 }
 
 class Task {
-  /**
-   * Completion date of the task (as a RFC 3339 timestamp). This field is
-   * omitted if the task has not been completed.
-   */
+  /// Completion date of the task (as a RFC 3339 timestamp). This field is
+  /// omitted if the task has not been completed.
   core.DateTime completed;
-  /**
-   * Flag indicating whether the task has been deleted. The default if False.
-   */
+
+  /// Flag indicating whether the task has been deleted. The default if False.
   core.bool deleted;
-  /** Due date of the task (as a RFC 3339 timestamp). Optional. */
+
+  /// Due date of the task (as a RFC 3339 timestamp). Optional.
   core.DateTime due;
-  /** ETag of the resource. */
+
+  /// ETag of the resource.
   core.String etag;
-  /**
-   * Flag indicating whether the task is hidden. This is the case if the task
-   * had been marked completed when the task list was last cleared. The default
-   * is False. This field is read-only.
-   */
+
+  /// Flag indicating whether the task is hidden. This is the case if the task
+  /// had been marked completed when the task list was last cleared. The default
+  /// is False. This field is read-only.
   core.bool hidden;
-  /** Task identifier. */
+
+  /// Task identifier.
   core.String id;
-  /** Type of the resource. This is always "tasks#task". */
+
+  /// Type of the resource. This is always "tasks#task".
   core.String kind;
-  /** Collection of links. This collection is read-only. */
+
+  /// Collection of links. This collection is read-only.
   core.List<TaskLinks> links;
-  /** Notes describing the task. Optional. */
+
+  /// Notes describing the task. Optional.
   core.String notes;
-  /**
-   * Parent task identifier. This field is omitted if it is a top-level task.
-   * This field is read-only. Use the "move" method to move the task under a
-   * different parent or to the top level.
-   */
+
+  /// Parent task identifier. This field is omitted if it is a top-level task.
+  /// This field is read-only. Use the "move" method to move the task under a
+  /// different parent or to the top level.
   core.String parent;
-  /**
-   * String indicating the position of the task among its sibling tasks under
-   * the same parent task or at the top level. If this string is greater than
-   * another task's corresponding position string according to lexicographical
-   * ordering, the task is positioned after the other task under the same parent
-   * task (or at the top level). This field is read-only. Use the "move" method
-   * to move the task to another position.
-   */
+
+  /// String indicating the position of the task among its sibling tasks under
+  /// the same parent task or at the top level. If this string is greater than
+  /// another task's corresponding position string according to lexicographical
+  /// ordering, the task is positioned after the other task under the same
+  /// parent task (or at the top level). This field is read-only. Use the "move"
+  /// method to move the task to another position.
   core.String position;
-  /**
-   * URL pointing to this task. Used to retrieve, update, or delete this task.
-   */
+
+  /// URL pointing to this task. Used to retrieve, update, or delete this task.
   core.String selfLink;
-  /** Status of the task. This is either "needsAction" or "completed". */
+
+  /// Status of the task. This is either "needsAction" or "completed".
   core.String status;
-  /** Title of the task. */
+
+  /// Title of the task.
   core.String title;
-  /** Last modification time of the task (as a RFC 3339 timestamp). */
+
+  /// Last modification time of the task (as a RFC 3339 timestamp).
   core.DateTime updated;
 
   Task();
@@ -861,7 +853,8 @@ class Task {
       kind = _json["kind"];
     }
     if (_json.containsKey("links")) {
-      links = _json["links"].map((value) => new TaskLinks.fromJson(value)).toList();
+      links =
+          _json["links"].map((value) => new TaskLinks.fromJson(value)).toList();
     }
     if (_json.containsKey("notes")) {
       notes = _json["notes"];
@@ -887,7 +880,8 @@ class Task {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (completed != null) {
       _json["completed"] = (completed).toIso8601String();
     }
@@ -938,20 +932,23 @@ class Task {
 }
 
 class TaskList {
-  /** ETag of the resource. */
+  /// ETag of the resource.
   core.String etag;
-  /** Task list identifier. */
+
+  /// Task list identifier.
   core.String id;
-  /** Type of the resource. This is always "tasks#taskList". */
+
+  /// Type of the resource. This is always "tasks#taskList".
   core.String kind;
-  /**
-   * URL pointing to this task list. Used to retrieve, update, or delete this
-   * task list.
-   */
+
+  /// URL pointing to this task list. Used to retrieve, update, or delete this
+  /// task list.
   core.String selfLink;
-  /** Title of the task list. */
+
+  /// Title of the task list.
   core.String title;
-  /** Last modification time of the task list (as a RFC 3339 timestamp). */
+
+  /// Last modification time of the task list (as a RFC 3339 timestamp).
   core.DateTime updated;
 
   TaskList();
@@ -978,7 +975,8 @@ class TaskList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -1002,13 +1000,16 @@ class TaskList {
 }
 
 class TaskLists {
-  /** ETag of the resource. */
+  /// ETag of the resource.
   core.String etag;
-  /** Collection of task lists. */
+
+  /// Collection of task lists.
   core.List<TaskList> items;
-  /** Type of the resource. This is always "tasks#taskLists". */
+
+  /// Type of the resource. This is always "tasks#taskLists".
   core.String kind;
-  /** Token that can be used to request the next page of this result. */
+
+  /// Token that can be used to request the next page of this result.
   core.String nextPageToken;
 
   TaskLists();
@@ -1018,7 +1019,8 @@ class TaskLists {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new TaskList.fromJson(value)).toList();
+      items =
+          _json["items"].map((value) => new TaskList.fromJson(value)).toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -1029,7 +1031,8 @@ class TaskLists {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
     }
@@ -1047,13 +1050,16 @@ class TaskLists {
 }
 
 class Tasks {
-  /** ETag of the resource. */
+  /// ETag of the resource.
   core.String etag;
-  /** Collection of tasks. */
+
+  /// Collection of tasks.
   core.List<Task> items;
-  /** Type of the resource. This is always "tasks#tasks". */
+
+  /// Type of the resource. This is always "tasks#tasks".
   core.String kind;
-  /** Token used to access the next page of this result. */
+
+  /// Token used to access the next page of this result.
   core.String nextPageToken;
 
   Tasks();
@@ -1074,7 +1080,8 @@ class Tasks {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
     }

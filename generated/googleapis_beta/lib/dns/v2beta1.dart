@@ -9,71 +9,78 @@ import 'dart:convert' as convert;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
-    ApiRequestError, DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
+    show ApiRequestError, DetailedApiRequestError;
 
 const core.String USER_AGENT = 'dart-api-client dns/v2beta1';
 
-/** Configures and serves authoritative DNS records. */
+/// Configures and serves authoritative DNS records.
 class DnsApi {
-  /** View and manage your data across Google Cloud Platform services */
-  static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
+  /// View and manage your data across Google Cloud Platform services
+  static const CloudPlatformScope =
+      "https://www.googleapis.com/auth/cloud-platform";
 
-  /** View your data across Google Cloud Platform services */
-  static const CloudPlatformReadOnlyScope = "https://www.googleapis.com/auth/cloud-platform.read-only";
+  /// View your data across Google Cloud Platform services
+  static const CloudPlatformReadOnlyScope =
+      "https://www.googleapis.com/auth/cloud-platform.read-only";
 
-  /** View your DNS records hosted by Google Cloud DNS */
-  static const NdevClouddnsReadonlyScope = "https://www.googleapis.com/auth/ndev.clouddns.readonly";
+  /// View your DNS records hosted by Google Cloud DNS
+  static const NdevClouddnsReadonlyScope =
+      "https://www.googleapis.com/auth/ndev.clouddns.readonly";
 
-  /** View and manage your DNS records hosted by Google Cloud DNS */
-  static const NdevClouddnsReadwriteScope = "https://www.googleapis.com/auth/ndev.clouddns.readwrite";
-
+  /// View and manage your DNS records hosted by Google Cloud DNS
+  static const NdevClouddnsReadwriteScope =
+      "https://www.googleapis.com/auth/ndev.clouddns.readwrite";
 
   final commons.ApiRequester _requester;
 
   ChangesResourceApi get changes => new ChangesResourceApi(_requester);
   DnsKeysResourceApi get dnsKeys => new DnsKeysResourceApi(_requester);
-  ManagedZoneOperationsResourceApi get managedZoneOperations => new ManagedZoneOperationsResourceApi(_requester);
-  ManagedZonesResourceApi get managedZones => new ManagedZonesResourceApi(_requester);
+  ManagedZoneOperationsResourceApi get managedZoneOperations =>
+      new ManagedZoneOperationsResourceApi(_requester);
+  ManagedZonesResourceApi get managedZones =>
+      new ManagedZonesResourceApi(_requester);
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
-  ResourceRecordSetsResourceApi get resourceRecordSets => new ResourceRecordSetsResourceApi(_requester);
+  ResourceRecordSetsResourceApi get resourceRecordSets =>
+      new ResourceRecordSetsResourceApi(_requester);
 
-  DnsApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "dns/v2beta1/projects/"}) :
-      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+  DnsApi(http.Client client,
+      {core.String rootUrl: "https://www.googleapis.com/",
+      core.String servicePath: "dns/v2beta1/projects/"})
+      : _requester =
+            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
-
 
 class ChangesResourceApi {
   final commons.ApiRequester _requester;
 
-  ChangesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  ChangesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Atomically update the ResourceRecordSet collection.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [project] - Identifies the project addressed by this request.
-   *
-   * [managedZone] - Identifies the managed zone addressed by this request. Can
-   * be the managed zone name or id.
-   *
-   * [clientOperationId] - For mutating operation requests only. An optional
-   * identifier specified by the client. Must be unique for operation resources
-   * in the Operations collection.
-   *
-   * Completes with a [Change].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Change> create(Change request, core.String project, core.String managedZone, {core.String clientOperationId}) {
+  /// Atomically update the ResourceRecordSet collection.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [managedZone] - Identifies the managed zone addressed by this request. Can
+  /// be the managed zone name or id.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// Completes with a [Change].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Change> create(
+      Change request, core.String project, core.String managedZone,
+      {core.String clientOperationId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -94,44 +101,46 @@ class ChangesResourceApi {
       _queryParams["clientOperationId"] = [clientOperationId];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/managedZones/' + commons.Escaper.ecapeVariable('$managedZone') + '/changes';
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/managedZones/' +
+        commons.Escaper.ecapeVariable('$managedZone') +
+        '/changes';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Change.fromJson(data));
   }
 
-  /**
-   * Fetch the representation of an existing Change.
-   *
-   * Request parameters:
-   *
-   * [project] - Identifies the project addressed by this request.
-   *
-   * [managedZone] - Identifies the managed zone addressed by this request. Can
-   * be the managed zone name or id.
-   *
-   * [changeId] - The identifier of the requested change, from a previous
-   * ResourceRecordSetsChangeResponse.
-   *
-   * [clientOperationId] - For mutating operation requests only. An optional
-   * identifier specified by the client. Must be unique for operation resources
-   * in the Operations collection.
-   *
-   * Completes with a [Change].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Change> get(core.String project, core.String managedZone, core.String changeId, {core.String clientOperationId}) {
+  /// Fetch the representation of an existing Change.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [managedZone] - Identifies the managed zone addressed by this request. Can
+  /// be the managed zone name or id.
+  ///
+  /// [changeId] - The identifier of the requested change, from a previous
+  /// ResourceRecordSetsChangeResponse.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// Completes with a [Change].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Change> get(
+      core.String project, core.String managedZone, core.String changeId,
+      {core.String clientOperationId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -152,49 +161,55 @@ class ChangesResourceApi {
       _queryParams["clientOperationId"] = [clientOperationId];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/managedZones/' + commons.Escaper.ecapeVariable('$managedZone') + '/changes/' + commons.Escaper.ecapeVariable('$changeId');
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/managedZones/' +
+        commons.Escaper.ecapeVariable('$managedZone') +
+        '/changes/' +
+        commons.Escaper.ecapeVariable('$changeId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Change.fromJson(data));
   }
 
-  /**
-   * Enumerate Changes to a ResourceRecordSet collection.
-   *
-   * Request parameters:
-   *
-   * [project] - Identifies the project addressed by this request.
-   *
-   * [managedZone] - Identifies the managed zone addressed by this request. Can
-   * be the managed zone name or id.
-   *
-   * [maxResults] - Optional. Maximum number of results to be returned. If
-   * unspecified, the server will decide how many results to return.
-   *
-   * [pageToken] - Optional. A tag returned by a previous list request that was
-   * truncated. Use this parameter to continue a previous list request.
-   *
-   * [sortBy] - Sorting criterion. The only supported value is change sequence.
-   * Possible string values are:
-   * - "CHANGE_SEQUENCE"
-   *
-   * [sortOrder] - Sorting order direction: 'ascending' or 'descending'.
-   *
-   * Completes with a [ChangesListResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ChangesListResponse> list(core.String project, core.String managedZone, {core.int maxResults, core.String pageToken, core.String sortBy, core.String sortOrder}) {
+  /// Enumerate Changes to a ResourceRecordSet collection.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [managedZone] - Identifies the managed zone addressed by this request. Can
+  /// be the managed zone name or id.
+  ///
+  /// [maxResults] - Optional. Maximum number of results to be returned. If
+  /// unspecified, the server will decide how many results to return.
+  ///
+  /// [pageToken] - Optional. A tag returned by a previous list request that was
+  /// truncated. Use this parameter to continue a previous list request.
+  ///
+  /// [sortBy] - Sorting criterion. The only supported value is change sequence.
+  /// Possible string values are:
+  /// - "CHANGE_SEQUENCE"
+  ///
+  /// [sortOrder] - Sorting order direction: 'ascending' or 'descending'.
+  ///
+  /// Completes with a [ChangesListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ChangesListResponse> list(
+      core.String project, core.String managedZone,
+      {core.int maxResults,
+      core.String pageToken,
+      core.String sortBy,
+      core.String sortOrder}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -221,56 +236,55 @@ class ChangesResourceApi {
       _queryParams["sortOrder"] = [sortOrder];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/managedZones/' + commons.Escaper.ecapeVariable('$managedZone') + '/changes';
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/managedZones/' +
+        commons.Escaper.ecapeVariable('$managedZone') +
+        '/changes';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ChangesListResponse.fromJson(data));
   }
-
 }
-
 
 class DnsKeysResourceApi {
   final commons.ApiRequester _requester;
 
-  DnsKeysResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  DnsKeysResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Fetch the representation of an existing DnsKey.
-   *
-   * Request parameters:
-   *
-   * [project] - Identifies the project addressed by this request.
-   *
-   * [managedZone] - Identifies the managed zone addressed by this request. Can
-   * be the managed zone name or id.
-   *
-   * [dnsKeyId] - The identifier of the requested DnsKey.
-   *
-   * [clientOperationId] - For mutating operation requests only. An optional
-   * identifier specified by the client. Must be unique for operation resources
-   * in the Operations collection.
-   *
-   * [digestType] - An optional comma-separated list of digest types to compute
-   * and display for key signing keys. If omitted, the recommended digest type
-   * will be computed and displayed.
-   *
-   * Completes with a [DnsKey].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<DnsKey> get(core.String project, core.String managedZone, core.String dnsKeyId, {core.String clientOperationId, core.String digestType}) {
+  /// Fetch the representation of an existing DnsKey.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [managedZone] - Identifies the managed zone addressed by this request. Can
+  /// be the managed zone name or id.
+  ///
+  /// [dnsKeyId] - The identifier of the requested DnsKey.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// [digestType] - An optional comma-separated list of digest types to compute
+  /// and display for key signing keys. If omitted, the recommended digest type
+  /// will be computed and displayed.
+  ///
+  /// Completes with a [DnsKey].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DnsKey> get(
+      core.String project, core.String managedZone, core.String dnsKeyId,
+      {core.String clientOperationId, core.String digestType}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -294,47 +308,50 @@ class DnsKeysResourceApi {
       _queryParams["digestType"] = [digestType];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/managedZones/' + commons.Escaper.ecapeVariable('$managedZone') + '/dnsKeys/' + commons.Escaper.ecapeVariable('$dnsKeyId');
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/managedZones/' +
+        commons.Escaper.ecapeVariable('$managedZone') +
+        '/dnsKeys/' +
+        commons.Escaper.ecapeVariable('$dnsKeyId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new DnsKey.fromJson(data));
   }
 
-  /**
-   * Enumerate DnsKeys to a ResourceRecordSet collection.
-   *
-   * Request parameters:
-   *
-   * [project] - Identifies the project addressed by this request.
-   *
-   * [managedZone] - Identifies the managed zone addressed by this request. Can
-   * be the managed zone name or id.
-   *
-   * [digestType] - An optional comma-separated list of digest types to compute
-   * and display for key signing keys. If omitted, the recommended digest type
-   * will be computed and displayed.
-   *
-   * [maxResults] - Optional. Maximum number of results to be returned. If
-   * unspecified, the server will decide how many results to return.
-   *
-   * [pageToken] - Optional. A tag returned by a previous list request that was
-   * truncated. Use this parameter to continue a previous list request.
-   *
-   * Completes with a [DnsKeysListResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<DnsKeysListResponse> list(core.String project, core.String managedZone, {core.String digestType, core.int maxResults, core.String pageToken}) {
+  /// Enumerate DnsKeys to a ResourceRecordSet collection.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [managedZone] - Identifies the managed zone addressed by this request. Can
+  /// be the managed zone name or id.
+  ///
+  /// [digestType] - An optional comma-separated list of digest types to compute
+  /// and display for key signing keys. If omitted, the recommended digest type
+  /// will be computed and displayed.
+  ///
+  /// [maxResults] - Optional. Maximum number of results to be returned. If
+  /// unspecified, the server will decide how many results to return.
+  ///
+  /// [pageToken] - Optional. A tag returned by a previous list request that was
+  /// truncated. Use this parameter to continue a previous list request.
+  ///
+  /// Completes with a [DnsKeysListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DnsKeysListResponse> list(
+      core.String project, core.String managedZone,
+      {core.String digestType, core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -358,51 +375,51 @@ class DnsKeysResourceApi {
       _queryParams["pageToken"] = [pageToken];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/managedZones/' + commons.Escaper.ecapeVariable('$managedZone') + '/dnsKeys';
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/managedZones/' +
+        commons.Escaper.ecapeVariable('$managedZone') +
+        '/dnsKeys';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new DnsKeysListResponse.fromJson(data));
   }
-
 }
-
 
 class ManagedZoneOperationsResourceApi {
   final commons.ApiRequester _requester;
 
-  ManagedZoneOperationsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  ManagedZoneOperationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Fetch the representation of an existing Operation.
-   *
-   * Request parameters:
-   *
-   * [project] - Identifies the project addressed by this request.
-   *
-   * [managedZone] - Identifies the managed zone addressed by this request.
-   *
-   * [operation] - Identifies the operation addressed by this request.
-   *
-   * [clientOperationId] - For mutating operation requests only. An optional
-   * identifier specified by the client. Must be unique for operation resources
-   * in the Operations collection.
-   *
-   * Completes with a [Operation].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Operation> get(core.String project, core.String managedZone, core.String operation, {core.String clientOperationId}) {
+  /// Fetch the representation of an existing Operation.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [managedZone] - Identifies the managed zone addressed by this request.
+  ///
+  /// [operation] - Identifies the operation addressed by this request.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+      core.String project, core.String managedZone, core.String operation,
+      {core.String clientOperationId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -423,48 +440,51 @@ class ManagedZoneOperationsResourceApi {
       _queryParams["clientOperationId"] = [clientOperationId];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/managedZones/' + commons.Escaper.ecapeVariable('$managedZone') + '/operations/' + commons.Escaper.ecapeVariable('$operation');
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/managedZones/' +
+        commons.Escaper.ecapeVariable('$managedZone') +
+        '/operations/' +
+        commons.Escaper.ecapeVariable('$operation');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /**
-   * Enumerate Operations for the given ManagedZone.
-   *
-   * Request parameters:
-   *
-   * [project] - Identifies the project addressed by this request.
-   *
-   * [managedZone] - Identifies the managed zone addressed by this request.
-   *
-   * [maxResults] - Optional. Maximum number of results to be returned. If
-   * unspecified, the server will decide how many results to return.
-   *
-   * [pageToken] - Optional. A tag returned by a previous list request that was
-   * truncated. Use this parameter to continue a previous list request.
-   *
-   * [sortBy] - Sorting criterion. The only supported values are START_TIME and
-   * ID.
-   * Possible string values are:
-   * - "ID"
-   * - "START_TIME"
-   *
-   * Completes with a [ManagedZoneOperationsListResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ManagedZoneOperationsListResponse> list(core.String project, core.String managedZone, {core.int maxResults, core.String pageToken, core.String sortBy}) {
+  /// Enumerate Operations for the given ManagedZone.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [managedZone] - Identifies the managed zone addressed by this request.
+  ///
+  /// [maxResults] - Optional. Maximum number of results to be returned. If
+  /// unspecified, the server will decide how many results to return.
+  ///
+  /// [pageToken] - Optional. A tag returned by a previous list request that was
+  /// truncated. Use this parameter to continue a previous list request.
+  ///
+  /// [sortBy] - Sorting criterion. The only supported values are START_TIME and
+  /// ID.
+  /// Possible string values are:
+  /// - "ID"
+  /// - "START_TIME"
+  ///
+  /// Completes with a [ManagedZoneOperationsListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ManagedZoneOperationsListResponse> list(
+      core.String project, core.String managedZone,
+      {core.int maxResults, core.String pageToken, core.String sortBy}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -488,49 +508,48 @@ class ManagedZoneOperationsResourceApi {
       _queryParams["sortBy"] = [sortBy];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/managedZones/' + commons.Escaper.ecapeVariable('$managedZone') + '/operations';
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/managedZones/' +
+        commons.Escaper.ecapeVariable('$managedZone') +
+        '/operations';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new ManagedZoneOperationsListResponse.fromJson(data));
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ManagedZoneOperationsListResponse.fromJson(data));
   }
-
 }
-
 
 class ManagedZonesResourceApi {
   final commons.ApiRequester _requester;
 
-  ManagedZonesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  ManagedZonesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Create a new ManagedZone.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [project] - Identifies the project addressed by this request.
-   *
-   * [clientOperationId] - For mutating operation requests only. An optional
-   * identifier specified by the client. Must be unique for operation resources
-   * in the Operations collection.
-   *
-   * Completes with a [ManagedZone].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ManagedZone> create(ManagedZone request, core.String project, {core.String clientOperationId}) {
+  /// Create a new ManagedZone.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// Completes with a [ManagedZone].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ManagedZone> create(ManagedZone request, core.String project,
+      {core.String clientOperationId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -550,39 +569,38 @@ class ManagedZonesResourceApi {
 
     _url = commons.Escaper.ecapeVariable('$project') + '/managedZones';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ManagedZone.fromJson(data));
   }
 
-  /**
-   * Delete a previously created ManagedZone.
-   *
-   * Request parameters:
-   *
-   * [project] - Identifies the project addressed by this request.
-   *
-   * [managedZone] - Identifies the managed zone addressed by this request. Can
-   * be the managed zone name or id.
-   *
-   * [clientOperationId] - For mutating operation requests only. An optional
-   * identifier specified by the client. Must be unique for operation resources
-   * in the Operations collection.
-   *
-   * Completes with a [ManagedZonesDeleteResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ManagedZonesDeleteResponse> delete(core.String project, core.String managedZone, {core.String clientOperationId}) {
+  /// Delete a previously created ManagedZone.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [managedZone] - Identifies the managed zone addressed by this request. Can
+  /// be the managed zone name or id.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// Completes with a [ManagedZonesDeleteResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ManagedZonesDeleteResponse> delete(
+      core.String project, core.String managedZone,
+      {core.String clientOperationId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -600,41 +618,42 @@ class ManagedZonesResourceApi {
       _queryParams["clientOperationId"] = [clientOperationId];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/managedZones/' + commons.Escaper.ecapeVariable('$managedZone');
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/managedZones/' +
+        commons.Escaper.ecapeVariable('$managedZone');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new ManagedZonesDeleteResponse.fromJson(data));
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ManagedZonesDeleteResponse.fromJson(data));
   }
 
-  /**
-   * Fetch the representation of an existing ManagedZone.
-   *
-   * Request parameters:
-   *
-   * [project] - Identifies the project addressed by this request.
-   *
-   * [managedZone] - Identifies the managed zone addressed by this request. Can
-   * be the managed zone name or id.
-   *
-   * [clientOperationId] - For mutating operation requests only. An optional
-   * identifier specified by the client. Must be unique for operation resources
-   * in the Operations collection.
-   *
-   * Completes with a [ManagedZone].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ManagedZone> get(core.String project, core.String managedZone, {core.String clientOperationId}) {
+  /// Fetch the representation of an existing ManagedZone.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [managedZone] - Identifies the managed zone addressed by this request. Can
+  /// be the managed zone name or id.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// Completes with a [ManagedZone].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ManagedZone> get(core.String project, core.String managedZone,
+      {core.String clientOperationId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -652,42 +671,42 @@ class ManagedZonesResourceApi {
       _queryParams["clientOperationId"] = [clientOperationId];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/managedZones/' + commons.Escaper.ecapeVariable('$managedZone');
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/managedZones/' +
+        commons.Escaper.ecapeVariable('$managedZone');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ManagedZone.fromJson(data));
   }
 
-  /**
-   * Enumerate ManagedZones that have been created but not yet deleted.
-   *
-   * Request parameters:
-   *
-   * [project] - Identifies the project addressed by this request.
-   *
-   * [dnsName] - Restricts the list to return only zones with this domain name.
-   *
-   * [maxResults] - Optional. Maximum number of results to be returned. If
-   * unspecified, the server will decide how many results to return.
-   *
-   * [pageToken] - Optional. A tag returned by a previous list request that was
-   * truncated. Use this parameter to continue a previous list request.
-   *
-   * Completes with a [ManagedZonesListResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ManagedZonesListResponse> list(core.String project, {core.String dnsName, core.int maxResults, core.String pageToken}) {
+  /// Enumerate ManagedZones that have been created but not yet deleted.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [dnsName] - Restricts the list to return only zones with this domain name.
+  ///
+  /// [maxResults] - Optional. Maximum number of results to be returned. If
+  /// unspecified, the server will decide how many results to return.
+  ///
+  /// [pageToken] - Optional. A tag returned by a previous list request that was
+  /// truncated. Use this parameter to continue a previous list request.
+  ///
+  /// Completes with a [ManagedZonesListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ManagedZonesListResponse> list(core.String project,
+      {core.String dnsName, core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -710,41 +729,41 @@ class ManagedZonesResourceApi {
 
     _url = commons.Escaper.ecapeVariable('$project') + '/managedZones';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new ManagedZonesListResponse.fromJson(data));
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ManagedZonesListResponse.fromJson(data));
   }
 
-  /**
-   * Update an existing ManagedZone. This method supports patch semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [project] - Identifies the project addressed by this request.
-   *
-   * [managedZone] - Identifies the managed zone addressed by this request. Can
-   * be the managed zone name or id.
-   *
-   * [clientOperationId] - For mutating operation requests only. An optional
-   * identifier specified by the client. Must be unique for operation resources
-   * in the Operations collection.
-   *
-   * Completes with a [Operation].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Operation> patch(ManagedZone request, core.String project, core.String managedZone, {core.String clientOperationId}) {
+  /// Update an existing ManagedZone. This method supports patch semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [managedZone] - Identifies the managed zone addressed by this request. Can
+  /// be the managed zone name or id.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+      ManagedZone request, core.String project, core.String managedZone,
+      {core.String clientOperationId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -765,43 +784,44 @@ class ManagedZonesResourceApi {
       _queryParams["clientOperationId"] = [clientOperationId];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/managedZones/' + commons.Escaper.ecapeVariable('$managedZone');
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/managedZones/' +
+        commons.Escaper.ecapeVariable('$managedZone');
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /**
-   * Update an existing ManagedZone.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [project] - Identifies the project addressed by this request.
-   *
-   * [managedZone] - Identifies the managed zone addressed by this request. Can
-   * be the managed zone name or id.
-   *
-   * [clientOperationId] - For mutating operation requests only. An optional
-   * identifier specified by the client. Must be unique for operation resources
-   * in the Operations collection.
-   *
-   * Completes with a [Operation].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Operation> update(ManagedZone request, core.String project, core.String managedZone, {core.String clientOperationId}) {
+  /// Update an existing ManagedZone.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [managedZone] - Identifies the managed zone addressed by this request. Can
+  /// be the managed zone name or id.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> update(
+      ManagedZone request, core.String project, core.String managedZone,
+      {core.String clientOperationId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -822,47 +842,44 @@ class ManagedZonesResourceApi {
       _queryParams["clientOperationId"] = [clientOperationId];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/managedZones/' + commons.Escaper.ecapeVariable('$managedZone');
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/managedZones/' +
+        commons.Escaper.ecapeVariable('$managedZone');
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Operation.fromJson(data));
   }
-
 }
-
 
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Fetch the representation of an existing Project.
-   *
-   * Request parameters:
-   *
-   * [project] - Identifies the project addressed by this request.
-   *
-   * [clientOperationId] - For mutating operation requests only. An optional
-   * identifier specified by the client. Must be unique for operation resources
-   * in the Operations collection.
-   *
-   * Completes with a [Project].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Project> get(core.String project, {core.String clientOperationId}) {
+  /// Fetch the representation of an existing Project.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [clientOperationId] - For mutating operation requests only. An optional
+  /// identifier specified by the client. Must be unique for operation resources
+  /// in the Operations collection.
+  ///
+  /// Completes with a [Project].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Project> get(core.String project,
+      {core.String clientOperationId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -879,56 +896,56 @@ class ProjectsResourceApi {
 
     _url = commons.Escaper.ecapeVariable('$project');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Project.fromJson(data));
   }
-
 }
-
 
 class ResourceRecordSetsResourceApi {
   final commons.ApiRequester _requester;
 
-  ResourceRecordSetsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  ResourceRecordSetsResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Enumerate ResourceRecordSets that have been created but not yet deleted.
-   *
-   * Request parameters:
-   *
-   * [project] - Identifies the project addressed by this request.
-   *
-   * [managedZone] - Identifies the managed zone addressed by this request. Can
-   * be the managed zone name or id.
-   *
-   * [maxResults] - Optional. Maximum number of results to be returned. If
-   * unspecified, the server will decide how many results to return.
-   *
-   * [name] - Restricts the list to return only records with this fully
-   * qualified domain name.
-   *
-   * [pageToken] - Optional. A tag returned by a previous list request that was
-   * truncated. Use this parameter to continue a previous list request.
-   *
-   * [type] - Restricts the list to return only records of this type. If
-   * present, the "name" parameter must also be present.
-   *
-   * Completes with a [ResourceRecordSetsListResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ResourceRecordSetsListResponse> list(core.String project, core.String managedZone, {core.int maxResults, core.String name, core.String pageToken, core.String type}) {
+  /// Enumerate ResourceRecordSets that have been created but not yet deleted.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Identifies the project addressed by this request.
+  ///
+  /// [managedZone] - Identifies the managed zone addressed by this request. Can
+  /// be the managed zone name or id.
+  ///
+  /// [maxResults] - Optional. Maximum number of results to be returned. If
+  /// unspecified, the server will decide how many results to return.
+  ///
+  /// [name] - Restricts the list to return only records with this fully
+  /// qualified domain name.
+  ///
+  /// [pageToken] - Optional. A tag returned by a previous list request that was
+  /// truncated. Use this parameter to continue a previous list request.
+  ///
+  /// [type] - Restricts the list to return only records of this type. If
+  /// present, the "name" parameter must also be present.
+  ///
+  /// Completes with a [ResourceRecordSetsListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ResourceRecordSetsListResponse> list(
+      core.String project, core.String managedZone,
+      {core.int maxResults,
+      core.String name,
+      core.String pageToken,
+      core.String type}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -955,60 +972,62 @@ class ResourceRecordSetsResourceApi {
       _queryParams["type"] = [type];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/managedZones/' + commons.Escaper.ecapeVariable('$managedZone') + '/rrsets';
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/managedZones/' +
+        commons.Escaper.ecapeVariable('$managedZone') +
+        '/rrsets';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new ResourceRecordSetsListResponse.fromJson(data));
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ResourceRecordSetsListResponse.fromJson(data));
   }
-
 }
 
-
-
-/** An atomic update to a collection of ResourceRecordSets. */
+/// An atomic update to a collection of ResourceRecordSets.
 class Change {
-  /** Which ResourceRecordSets to add? */
+  /// Which ResourceRecordSets to add?
   core.List<ResourceRecordSet> additions;
-  /** Which ResourceRecordSets to remove? Must match existing data exactly. */
+
+  /// Which ResourceRecordSets to remove? Must match existing data exactly.
   core.List<ResourceRecordSet> deletions;
-  /**
-   * Unique identifier for the resource; defined by the server (output only).
-   */
+
+  /// Unique identifier for the resource; defined by the server (output only).
   core.String id;
-  /** If the DNS queries for the zone will be served. */
+
+  /// If the DNS queries for the zone will be served.
   core.bool isServing;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "dns#change".
-   */
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "dns#change".
   core.String kind;
-  /**
-   * The time that this operation was started by the server (output only). This
-   * is in RFC3339 text format.
-   */
+
+  /// The time that this operation was started by the server (output only). This
+  /// is in RFC3339 text format.
   core.String startTime;
-  /**
-   * Status of the operation (output only).
-   * Possible string values are:
-   * - "DONE"
-   * - "PENDING"
-   */
+
+  /// Status of the operation (output only).
+  /// Possible string values are:
+  /// - "DONE"
+  /// - "PENDING"
   core.String status;
 
   Change();
 
   Change.fromJson(core.Map _json) {
     if (_json.containsKey("additions")) {
-      additions = _json["additions"].map((value) => new ResourceRecordSet.fromJson(value)).toList();
+      additions = _json["additions"]
+          .map((value) => new ResourceRecordSet.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("deletions")) {
-      deletions = _json["deletions"].map((value) => new ResourceRecordSet.fromJson(value)).toList();
+      deletions = _json["deletions"]
+          .map((value) => new ResourceRecordSet.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -1028,7 +1047,8 @@ class Change {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (additions != null) {
       _json["additions"] = additions.map((value) => (value).toJson()).toList();
     }
@@ -1054,35 +1074,34 @@ class Change {
   }
 }
 
-/**
- * The response to a request to enumerate Changes to a ResourceRecordSets
- * collection.
- */
+/// The response to a request to enumerate Changes to a ResourceRecordSets
+/// collection.
 class ChangesListResponse {
-  /** The requested changes. */
+  /// The requested changes.
   core.List<Change> changes;
   ResponseHeader header;
-  /** Type of resource. */
+
+  /// Type of resource.
   core.String kind;
-  /**
-   * The presence of this field indicates that there exist more results
-   * following your last page of results in pagination order. To fetch them,
-   * make another list request using this value as your pagination token.
-   *
-   * In this way you can retrieve the complete contents of even very large
-   * collections one page at a time. However, if the contents of the collection
-   * change between the first and last paginated list request, the set of all
-   * elements returned will be an inconsistent view of the collection. There is
-   * no way to retrieve a "snapshot" of collections larger than the maximum page
-   * size.
-   */
+
+  /// The presence of this field indicates that there exist more results
+  /// following your last page of results in pagination order. To fetch them,
+  /// make another list request using this value as your pagination token.
+  ///
+  /// In this way you can retrieve the complete contents of even very large
+  /// collections one page at a time. However, if the contents of the collection
+  /// change between the first and last paginated list request, the set of all
+  /// elements returned will be an inconsistent view of the collection. There is
+  /// no way to retrieve a "snapshot" of collections larger than the maximum
+  /// page size.
   core.String nextPageToken;
 
   ChangesListResponse();
 
   ChangesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("changes")) {
-      changes = _json["changes"].map((value) => new Change.fromJson(value)).toList();
+      changes =
+          _json["changes"].map((value) => new Change.fromJson(value)).toList();
     }
     if (_json.containsKey("header")) {
       header = new ResponseHeader.fromJson(_json["header"]);
@@ -1096,7 +1115,8 @@ class ChangesListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (changes != null) {
       _json["changes"] = changes.map((value) => (value).toJson()).toList();
     }
@@ -1113,73 +1133,65 @@ class ChangesListResponse {
   }
 }
 
-/** A DNSSEC key pair. */
+/// A DNSSEC key pair.
 class DnsKey {
-  /**
-   * String mnemonic specifying the DNSSEC algorithm of this key. Immutable
-   * after creation time.
-   * Possible string values are:
-   * - "ECDSAP256SHA256"
-   * - "ECDSAP384SHA384"
-   * - "RSASHA1"
-   * - "RSASHA256"
-   * - "RSASHA512"
-   */
+  /// String mnemonic specifying the DNSSEC algorithm of this key. Immutable
+  /// after creation time.
+  /// Possible string values are:
+  /// - "ECDSAP256SHA256"
+  /// - "ECDSAP384SHA384"
+  /// - "RSASHA1"
+  /// - "RSASHA256"
+  /// - "RSASHA512"
   core.String algorithm;
-  /**
-   * The time that this resource was created in the control plane. This is in
-   * RFC3339 text format. Output only.
-   */
+
+  /// The time that this resource was created in the control plane. This is in
+  /// RFC3339 text format. Output only.
   core.String creationTime;
-  /**
-   * A mutable string of at most 1024 characters associated with this resource
-   * for the user's convenience. Has no effect on the resource's function.
-   */
+
+  /// A mutable string of at most 1024 characters associated with this resource
+  /// for the user's convenience. Has no effect on the resource's function.
   core.String description;
-  /**
-   * Cryptographic hashes of the DNSKEY resource record associated with this
-   * DnsKey. These digests are needed to construct a DS record that points at
-   * this DNS key. Output only.
-   */
+
+  /// Cryptographic hashes of the DNSKEY resource record associated with this
+  /// DnsKey. These digests are needed to construct a DS record that points at
+  /// this DNS key. Output only.
   core.List<DnsKeyDigest> digests;
-  /**
-   * Unique identifier for the resource; defined by the server (output only).
-   */
+
+  /// Unique identifier for the resource; defined by the server (output only).
   core.String id;
-  /**
-   * Active keys will be used to sign subsequent changes to the ManagedZone.
-   * Inactive keys will still be present as DNSKEY Resource Records for the use
-   * of resolvers validating existing signatures.
-   */
+
+  /// Active keys will be used to sign subsequent changes to the ManagedZone.
+  /// Inactive keys will still be present as DNSKEY Resource Records for the use
+  /// of resolvers validating existing signatures.
   core.bool isActive;
-  /** Length of the key in bits. Specified at creation time then immutable. */
+
+  /// Length of the key in bits. Specified at creation time then immutable.
   core.int keyLength;
-  /**
-   * The key tag is a non-cryptographic hash of the a DNSKEY resource record
-   * associated with this DnsKey. The key tag can be used to identify a DNSKEY
-   * more quickly (but it is not a unique identifier). In particular, the key
-   * tag is used in a parent zone's DS record to point at the DNSKEY in this
-   * child ManagedZone. The key tag is a number in the range [0, 65535] and the
-   * algorithm to calculate it is specified in RFC4034 Appendix B. Output only.
-   */
+
+  /// The key tag is a non-cryptographic hash of the a DNSKEY resource record
+  /// associated with this DnsKey. The key tag can be used to identify a DNSKEY
+  /// more quickly (but it is not a unique identifier). In particular, the key
+  /// tag is used in a parent zone's DS record to point at the DNSKEY in this
+  /// child ManagedZone. The key tag is a number in the range [0, 65535] and the
+  /// algorithm to calculate it is specified in RFC4034 Appendix B. Output only.
   core.int keyTag;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "dns#dnsKey".
-   */
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "dns#dnsKey".
   core.String kind;
-  /** Base64 encoded public half of this key. Output only. */
+
+  /// Base64 encoded public half of this key. Output only.
   core.String publicKey;
-  /**
-   * One of "KEY_SIGNING" or "ZONE_SIGNING". Keys of type KEY_SIGNING have the
-   * Secure Entry Point flag set and, when active, will be used to sign only
-   * resource record sets of type DNSKEY. Otherwise, the Secure Entry Point flag
-   * will be cleared and this key will be used to sign only resource record sets
-   * of other types. Immutable after creation time.
-   * Possible string values are:
-   * - "KEY_SIGNING"
-   * - "ZONE_SIGNING"
-   */
+
+  /// One of "KEY_SIGNING" or "ZONE_SIGNING". Keys of type KEY_SIGNING have the
+  /// Secure Entry Point flag set and, when active, will be used to sign only
+  /// resource record sets of type DNSKEY. Otherwise, the Secure Entry Point
+  /// flag will be cleared and this key will be used to sign only resource
+  /// record sets of other types. Immutable after creation time.
+  /// Possible string values are:
+  /// - "KEY_SIGNING"
+  /// - "ZONE_SIGNING"
   core.String type;
 
   DnsKey();
@@ -1195,7 +1207,9 @@ class DnsKey {
       description = _json["description"];
     }
     if (_json.containsKey("digests")) {
-      digests = _json["digests"].map((value) => new DnsKeyDigest.fromJson(value)).toList();
+      digests = _json["digests"]
+          .map((value) => new DnsKeyDigest.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -1221,7 +1235,8 @@ class DnsKey {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (algorithm != null) {
       _json["algorithm"] = algorithm;
     }
@@ -1260,18 +1275,15 @@ class DnsKey {
 }
 
 class DnsKeyDigest {
-  /**
-   * The base-16 encoded bytes of this digest. Suitable for use in a DS resource
-   * record.
-   */
+  /// The base-16 encoded bytes of this digest. Suitable for use in a DS
+  /// resource record.
   core.String digest;
-  /**
-   * Specifies the algorithm used to calculate this digest.
-   * Possible string values are:
-   * - "SHA1"
-   * - "SHA256"
-   * - "SHA384"
-   */
+
+  /// Specifies the algorithm used to calculate this digest.
+  /// Possible string values are:
+  /// - "SHA1"
+  /// - "SHA256"
+  /// - "SHA384"
   core.String type;
 
   DnsKeyDigest();
@@ -1286,7 +1298,8 @@ class DnsKeyDigest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (digest != null) {
       _json["digest"] = digest;
     }
@@ -1297,38 +1310,33 @@ class DnsKeyDigest {
   }
 }
 
-/**
- * Parameters for DnsKey key generation. Used for generating initial keys for a
- * new ManagedZone and as default when adding a new DnsKey.
- */
+/// Parameters for DnsKey key generation. Used for generating initial keys for a
+/// new ManagedZone and as default when adding a new DnsKey.
 class DnsKeySpec {
-  /**
-   * String mnemonic specifying the DNSSEC algorithm of this key.
-   * Possible string values are:
-   * - "ECDSAP256SHA256"
-   * - "ECDSAP384SHA384"
-   * - "RSASHA1"
-   * - "RSASHA256"
-   * - "RSASHA512"
-   */
+  /// String mnemonic specifying the DNSSEC algorithm of this key.
+  /// Possible string values are:
+  /// - "ECDSAP256SHA256"
+  /// - "ECDSAP384SHA384"
+  /// - "RSASHA1"
+  /// - "RSASHA256"
+  /// - "RSASHA512"
   core.String algorithm;
-  /** Length of the keys in bits. */
+
+  /// Length of the keys in bits.
   core.int keyLength;
-  /**
-   * One of "KEY_SIGNING" or "ZONE_SIGNING". Keys of type KEY_SIGNING have the
-   * Secure Entry Point flag set and, when active, will be used to sign only
-   * resource record sets of type DNSKEY. Otherwise, the Secure Entry Point flag
-   * will be cleared and this key will be used to sign only resource record sets
-   * of other types.
-   * Possible string values are:
-   * - "KEY_SIGNING"
-   * - "ZONE_SIGNING"
-   */
+
+  /// One of "KEY_SIGNING" or "ZONE_SIGNING". Keys of type KEY_SIGNING have the
+  /// Secure Entry Point flag set and, when active, will be used to sign only
+  /// resource record sets of type DNSKEY. Otherwise, the Secure Entry Point
+  /// flag will be cleared and this key will be used to sign only resource
+  /// record sets of other types.
+  /// Possible string values are:
+  /// - "KEY_SIGNING"
+  /// - "ZONE_SIGNING"
   core.String keyType;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "dns#dnsKeySpec".
-   */
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "dns#dnsKeySpec".
   core.String kind;
 
   DnsKeySpec();
@@ -1349,7 +1357,8 @@ class DnsKeySpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (algorithm != null) {
       _json["algorithm"] = algorithm;
     }
@@ -1366,32 +1375,33 @@ class DnsKeySpec {
   }
 }
 
-/** The response to a request to enumerate DnsKeys in a ManagedZone. */
+/// The response to a request to enumerate DnsKeys in a ManagedZone.
 class DnsKeysListResponse {
-  /** The requested resources. */
+  /// The requested resources.
   core.List<DnsKey> dnsKeys;
   ResponseHeader header;
-  /** Type of resource. */
+
+  /// Type of resource.
   core.String kind;
-  /**
-   * The presence of this field indicates that there exist more results
-   * following your last page of results in pagination order. To fetch them,
-   * make another list request using this value as your pagination token.
-   *
-   * In this way you can retrieve the complete contents of even very large
-   * collections one page at a time. However, if the contents of the collection
-   * change between the first and last paginated list request, the set of all
-   * elements returned will be an inconsistent view of the collection. There is
-   * no way to retrieve a "snapshot" of collections larger than the maximum page
-   * size.
-   */
+
+  /// The presence of this field indicates that there exist more results
+  /// following your last page of results in pagination order. To fetch them,
+  /// make another list request using this value as your pagination token.
+  ///
+  /// In this way you can retrieve the complete contents of even very large
+  /// collections one page at a time. However, if the contents of the collection
+  /// change between the first and last paginated list request, the set of all
+  /// elements returned will be an inconsistent view of the collection. There is
+  /// no way to retrieve a "snapshot" of collections larger than the maximum
+  /// page size.
   core.String nextPageToken;
 
   DnsKeysListResponse();
 
   DnsKeysListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("dnsKeys")) {
-      dnsKeys = _json["dnsKeys"].map((value) => new DnsKey.fromJson(value)).toList();
+      dnsKeys =
+          _json["dnsKeys"].map((value) => new DnsKey.fromJson(value)).toList();
     }
     if (_json.containsKey("header")) {
       header = new ResponseHeader.fromJson(_json["header"]);
@@ -1405,7 +1415,8 @@ class DnsKeysListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (dnsKeys != null) {
       _json["dnsKeys"] = dnsKeys.map((value) => (value).toJson()).toList();
     }
@@ -1422,51 +1433,43 @@ class DnsKeysListResponse {
   }
 }
 
-/**
- * A zone is a subtree of the DNS namespace under one administrative
- * responsibility. A ManagedZone is a resource that represents a DNS zone hosted
- * by the Cloud DNS service.
- */
+/// A zone is a subtree of the DNS namespace under one administrative
+/// responsibility. A ManagedZone is a resource that represents a DNS zone
+/// hosted by the Cloud DNS service.
 class ManagedZone {
-  /**
-   * The time that this resource was created on the server. This is in RFC3339
-   * text format. Output only.
-   */
+  /// The time that this resource was created on the server. This is in RFC3339
+  /// text format. Output only.
   core.String creationTime;
-  /**
-   * A mutable string of at most 1024 characters associated with this resource
-   * for the user's convenience. Has no effect on the managed zone's function.
-   */
+
+  /// A mutable string of at most 1024 characters associated with this resource
+  /// for the user's convenience. Has no effect on the managed zone's function.
   core.String description;
-  /** The DNS name of this managed zone, for instance "example.com.". */
+
+  /// The DNS name of this managed zone, for instance "example.com.".
   core.String dnsName;
-  /** DNSSEC configuration. */
+
+  /// DNSSEC configuration.
   ManagedZoneDnsSecConfig dnssecConfig;
-  /**
-   * Unique identifier for the resource; defined by the server (output only)
-   */
+
+  /// Unique identifier for the resource; defined by the server (output only)
   core.String id;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "dns#managedZone".
-   */
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "dns#managedZone".
   core.String kind;
-  /**
-   * User assigned name for this resource. Must be unique within the project.
-   * The name must be 1-63 characters long, must begin with a letter, end with a
-   * letter or digit, and only contain lowercase letters, digits or dashes.
-   */
+
+  /// User assigned name for this resource. Must be unique within the project.
+  /// The name must be 1-63 characters long, must begin with a letter, end with
+  /// a letter or digit, and only contain lowercase letters, digits or dashes.
   core.String name;
-  /**
-   * Optionally specifies the NameServerSet for this ManagedZone. A
-   * NameServerSet is a set of DNS name servers that all host the same
-   * ManagedZones. Most users will leave this field unset.
-   */
+
+  /// Optionally specifies the NameServerSet for this ManagedZone. A
+  /// NameServerSet is a set of DNS name servers that all host the same
+  /// ManagedZones. Most users will leave this field unset.
   core.String nameServerSet;
-  /**
-   * Delegate your managed_zone to these virtual name servers; defined by the
-   * server (output only)
-   */
+
+  /// Delegate your managed_zone to these virtual name servers; defined by the
+  /// server (output only)
   core.List<core.String> nameServers;
 
   ManagedZone();
@@ -1482,7 +1485,8 @@ class ManagedZone {
       dnsName = _json["dnsName"];
     }
     if (_json.containsKey("dnssecConfig")) {
-      dnssecConfig = new ManagedZoneDnsSecConfig.fromJson(_json["dnssecConfig"]);
+      dnssecConfig =
+          new ManagedZoneDnsSecConfig.fromJson(_json["dnssecConfig"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -1502,7 +1506,8 @@ class ManagedZone {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (creationTime != null) {
       _json["creationTime"] = creationTime;
     }
@@ -1535,38 +1540,35 @@ class ManagedZone {
 }
 
 class ManagedZoneDnsSecConfig {
-  /**
-   * Specifies parameters that will be used for generating initial DnsKeys for
-   * this ManagedZone. Output only while state is not OFF.
-   */
+  /// Specifies parameters that will be used for generating initial DnsKeys for
+  /// this ManagedZone. Output only while state is not OFF.
   core.List<DnsKeySpec> defaultKeySpecs;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "dns#managedZoneDnsSecConfig".
-   */
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "dns#managedZoneDnsSecConfig".
   core.String kind;
-  /**
-   * Specifies the mechanism used to provide authenticated denial-of-existence
-   * responses. Output only while state is not OFF.
-   * Possible string values are:
-   * - "NSEC"
-   * - "NSEC3"
-   */
+
+  /// Specifies the mechanism used to provide authenticated denial-of-existence
+  /// responses. Output only while state is not OFF.
+  /// Possible string values are:
+  /// - "NSEC"
+  /// - "NSEC3"
   core.String nonExistence;
-  /**
-   * Specifies whether DNSSEC is enabled, and what mode it is in.
-   * Possible string values are:
-   * - "OFF"
-   * - "ON"
-   * - "TRANSFER"
-   */
+
+  /// Specifies whether DNSSEC is enabled, and what mode it is in.
+  /// Possible string values are:
+  /// - "OFF"
+  /// - "ON"
+  /// - "TRANSFER"
   core.String state;
 
   ManagedZoneDnsSecConfig();
 
   ManagedZoneDnsSecConfig.fromJson(core.Map _json) {
     if (_json.containsKey("defaultKeySpecs")) {
-      defaultKeySpecs = _json["defaultKeySpecs"].map((value) => new DnsKeySpec.fromJson(value)).toList();
+      defaultKeySpecs = _json["defaultKeySpecs"]
+          .map((value) => new DnsKeySpec.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -1580,9 +1582,11 @@ class ManagedZoneDnsSecConfig {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (defaultKeySpecs != null) {
-      _json["defaultKeySpecs"] = defaultKeySpecs.map((value) => (value).toJson()).toList();
+      _json["defaultKeySpecs"] =
+          defaultKeySpecs.map((value) => (value).toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -1599,22 +1603,23 @@ class ManagedZoneDnsSecConfig {
 
 class ManagedZoneOperationsListResponse {
   ResponseHeader header;
-  /** Type of resource. */
+
+  /// Type of resource.
   core.String kind;
-  /**
-   * The presence of this field indicates that there exist more results
-   * following your last page of results in pagination order. To fetch them,
-   * make another list request using this value as your page token.
-   *
-   * In this way you can retrieve the complete contents of even very large
-   * collections one page at a time. However, if the contents of the collection
-   * change between the first and last paginated list request, the set of all
-   * elements returned will be an inconsistent view of the collection. There is
-   * no way to retrieve a consistent snapshot of a collection larger than the
-   * maximum page size.
-   */
+
+  /// The presence of this field indicates that there exist more results
+  /// following your last page of results in pagination order. To fetch them,
+  /// make another list request using this value as your page token.
+  ///
+  /// In this way you can retrieve the complete contents of even very large
+  /// collections one page at a time. However, if the contents of the collection
+  /// change between the first and last paginated list request, the set of all
+  /// elements returned will be an inconsistent view of the collection. There is
+  /// no way to retrieve a consistent snapshot of a collection larger than the
+  /// maximum page size.
   core.String nextPageToken;
-  /** The operation resources. */
+
+  /// The operation resources.
   core.List<Operation> operations;
 
   ManagedZoneOperationsListResponse();
@@ -1630,12 +1635,15 @@ class ManagedZoneOperationsListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("operations")) {
-      operations = _json["operations"].map((value) => new Operation.fromJson(value)).toList();
+      operations = _json["operations"]
+          .map((value) => new Operation.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (header != null) {
       _json["header"] = (header).toJson();
     }
@@ -1646,7 +1654,8 @@ class ManagedZoneOperationsListResponse {
       _json["nextPageToken"] = nextPageToken;
     }
     if (operations != null) {
-      _json["operations"] = operations.map((value) => (value).toJson()).toList();
+      _json["operations"] =
+          operations.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -1664,7 +1673,8 @@ class ManagedZonesDeleteResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (header != null) {
       _json["header"] = (header).toJson();
     }
@@ -1674,22 +1684,23 @@ class ManagedZonesDeleteResponse {
 
 class ManagedZonesListResponse {
   ResponseHeader header;
-  /** Type of resource. */
+
+  /// Type of resource.
   core.String kind;
-  /** The managed zone resources. */
+
+  /// The managed zone resources.
   core.List<ManagedZone> managedZones;
-  /**
-   * The presence of this field indicates that there exist more results
-   * following your last page of results in pagination order. To fetch them,
-   * make another list request using this value as your page token.
-   *
-   * In this way you can retrieve the complete contents of even very large
-   * collections one page at a time. However, if the contents of the collection
-   * change between the first and last paginated list request, the set of all
-   * elements returned will be an inconsistent view of the collection. There is
-   * no way to retrieve a consistent snapshot of a collection larger than the
-   * maximum page size.
-   */
+
+  /// The presence of this field indicates that there exist more results
+  /// following your last page of results in pagination order. To fetch them,
+  /// make another list request using this value as your page token.
+  ///
+  /// In this way you can retrieve the complete contents of even very large
+  /// collections one page at a time. However, if the contents of the collection
+  /// change between the first and last paginated list request, the set of all
+  /// elements returned will be an inconsistent view of the collection. There is
+  /// no way to retrieve a consistent snapshot of a collection larger than the
+  /// maximum page size.
   core.String nextPageToken;
 
   ManagedZonesListResponse();
@@ -1702,7 +1713,9 @@ class ManagedZonesListResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("managedZones")) {
-      managedZones = _json["managedZones"].map((value) => new ManagedZone.fromJson(value)).toList();
+      managedZones = _json["managedZones"]
+          .map((value) => new ManagedZone.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -1710,7 +1723,8 @@ class ManagedZonesListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (header != null) {
       _json["header"] = (header).toJson();
     }
@@ -1718,7 +1732,8 @@ class ManagedZonesListResponse {
       _json["kind"] = kind;
     }
     if (managedZones != null) {
-      _json["managedZones"] = managedZones.map((value) => (value).toJson()).toList();
+      _json["managedZones"] =
+          managedZones.map((value) => (value).toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
@@ -1727,59 +1742,53 @@ class ManagedZonesListResponse {
   }
 }
 
-/**
- * An operation represents a successful mutation performed on a Cloud DNS
- * resource. Operations provide: - An audit log of server resource mutations. -
- * A way to recover/retry API calls in the case where the response is never
- * received by the caller. Use the caller specified client_operation_id.
- */
+/// An operation represents a successful mutation performed on a Cloud DNS
+/// resource. Operations provide: - An audit log of server resource mutations. -
+/// A way to recover/retry API calls in the case where the response is never
+/// received by the caller. Use the caller specified client_operation_id.
 class Operation {
-  /** Only populated if the operation targeted a DnsKey (output only). */
+  /// Only populated if the operation targeted a DnsKey (output only).
   OperationDnsKeyContext dnsKeyContext;
-  /**
-   * Unique identifier for the resource. This is the client_operation_id if the
-   * client specified it when the mutation was initiated, otherwise, it is
-   * generated by the server. The name must be 1-63 characters long and match
-   * the regular expression [-a-z0-9]? (output only)
-   */
+
+  /// Unique identifier for the resource. This is the client_operation_id if the
+  /// client specified it when the mutation was initiated, otherwise, it is
+  /// generated by the server. The name must be 1-63 characters long and match
+  /// the regular expression [-a-z0-9]? (output only)
   core.String id;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "dns#operation".
-   */
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "dns#operation".
   core.String kind;
-  /**
-   * The time that this operation was started by the server. This is in RFC3339
-   * text format (output only).
-   */
+
+  /// The time that this operation was started by the server. This is in RFC3339
+  /// text format (output only).
   core.String startTime;
-  /**
-   * Status of the operation. Can be one of the following: "PENDING" or "DONE"
-   * (output only).
-   * Possible string values are:
-   * - "DONE"
-   * - "PENDING"
-   */
+
+  /// Status of the operation. Can be one of the following: "PENDING" or "DONE"
+  /// (output only).
+  /// Possible string values are:
+  /// - "DONE"
+  /// - "PENDING"
   core.String status;
-  /**
-   * Type of the operation. Operations include insert, update, and delete
-   * (output only).
-   */
+
+  /// Type of the operation. Operations include insert, update, and delete
+  /// (output only).
   core.String type;
-  /**
-   * User who requested the operation, for example: user@example.com.
-   * cloud-dns-system for operations automatically done by the system. (output
-   * only)
-   */
+
+  /// User who requested the operation, for example: user@example.com.
+  /// cloud-dns-system for operations automatically done by the system. (output
+  /// only)
   core.String user;
-  /** Only populated if the operation targeted a ManagedZone (output only). */
+
+  /// Only populated if the operation targeted a ManagedZone (output only).
   OperationManagedZoneContext zoneContext;
 
   Operation();
 
   Operation.fromJson(core.Map _json) {
     if (_json.containsKey("dnsKeyContext")) {
-      dnsKeyContext = new OperationDnsKeyContext.fromJson(_json["dnsKeyContext"]);
+      dnsKeyContext =
+          new OperationDnsKeyContext.fromJson(_json["dnsKeyContext"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -1800,12 +1809,14 @@ class Operation {
       user = _json["user"];
     }
     if (_json.containsKey("zoneContext")) {
-      zoneContext = new OperationManagedZoneContext.fromJson(_json["zoneContext"]);
+      zoneContext =
+          new OperationManagedZoneContext.fromJson(_json["zoneContext"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (dnsKeyContext != null) {
       _json["dnsKeyContext"] = (dnsKeyContext).toJson();
     }
@@ -1835,9 +1846,10 @@ class Operation {
 }
 
 class OperationDnsKeyContext {
-  /** The post-operation DnsKey resource. */
+  /// The post-operation DnsKey resource.
   DnsKey newValue;
-  /** The pre-operation DnsKey resource. */
+
+  /// The pre-operation DnsKey resource.
   DnsKey oldValue;
 
   OperationDnsKeyContext();
@@ -1852,7 +1864,8 @@ class OperationDnsKeyContext {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (newValue != null) {
       _json["newValue"] = (newValue).toJson();
     }
@@ -1864,9 +1877,10 @@ class OperationDnsKeyContext {
 }
 
 class OperationManagedZoneContext {
-  /** The post-operation ManagedZone resource. */
+  /// The post-operation ManagedZone resource.
   ManagedZone newValue;
-  /** The pre-operation ManagedZone resource. */
+
+  /// The pre-operation ManagedZone resource.
   ManagedZone oldValue;
 
   OperationManagedZoneContext();
@@ -1881,7 +1895,8 @@ class OperationManagedZoneContext {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (newValue != null) {
       _json["newValue"] = (newValue).toJson();
     }
@@ -1892,25 +1907,22 @@ class OperationManagedZoneContext {
   }
 }
 
-/**
- * A project resource. The project is a top level container for resources
- * including Cloud DNS ManagedZones. Projects can be created only in the APIs
- * console.
- */
+/// A project resource. The project is a top level container for resources
+/// including Cloud DNS ManagedZones. Projects can be created only in the APIs
+/// console.
 class Project {
-  /** User assigned unique identifier for the resource (output only). */
+  /// User assigned unique identifier for the resource (output only).
   core.String id;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "dns#project".
-   */
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "dns#project".
   core.String kind;
-  /**
-   * Unique numeric identifier for the resource; defined by the server (output
-   * only).
-   */
+
+  /// Unique numeric identifier for the resource; defined by the server (output
+  /// only).
   core.String number;
-  /** Quotas assigned to this project (output only). */
+
+  /// Quotas assigned to this project (output only).
   Quota quota;
 
   Project();
@@ -1931,7 +1943,8 @@ class Project {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -1948,36 +1961,37 @@ class Project {
   }
 }
 
-/** Limits associated with a Project. */
+/// Limits associated with a Project.
 class Quota {
-  /** Maximum allowed number of DnsKeys per ManagedZone. */
+  /// Maximum allowed number of DnsKeys per ManagedZone.
   core.int dnsKeysPerManagedZone;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "dns#quota".
-   */
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "dns#quota".
   core.String kind;
-  /** Maximum allowed number of managed zones in the project. */
+
+  /// Maximum allowed number of managed zones in the project.
   core.int managedZones;
-  /** Maximum allowed number of ResourceRecords per ResourceRecordSet. */
+
+  /// Maximum allowed number of ResourceRecords per ResourceRecordSet.
   core.int resourceRecordsPerRrset;
-  /**
-   * Maximum allowed number of ResourceRecordSets to add per
-   * ChangesCreateRequest.
-   */
+
+  /// Maximum allowed number of ResourceRecordSets to add per
+  /// ChangesCreateRequest.
   core.int rrsetAdditionsPerChange;
-  /**
-   * Maximum allowed number of ResourceRecordSets to delete per
-   * ChangesCreateRequest.
-   */
+
+  /// Maximum allowed number of ResourceRecordSets to delete per
+  /// ChangesCreateRequest.
   core.int rrsetDeletionsPerChange;
-  /** Maximum allowed number of ResourceRecordSets per zone in the project. */
+
+  /// Maximum allowed number of ResourceRecordSets per zone in the project.
   core.int rrsetsPerManagedZone;
-  /**
-   * Maximum allowed size for total rrdata in one ChangesCreateRequest in bytes.
-   */
+
+  /// Maximum allowed size for total rrdata in one ChangesCreateRequest in
+  /// bytes.
   core.int totalRrdataSizePerChange;
-  /** DNSSEC algorithm and key length types that can be used for DnsKeys. */
+
+  /// DNSSEC algorithm and key length types that can be used for DnsKeys.
   core.List<DnsKeySpec> whitelistedKeySpecs;
 
   Quota();
@@ -2008,12 +2022,15 @@ class Quota {
       totalRrdataSizePerChange = _json["totalRrdataSizePerChange"];
     }
     if (_json.containsKey("whitelistedKeySpecs")) {
-      whitelistedKeySpecs = _json["whitelistedKeySpecs"].map((value) => new DnsKeySpec.fromJson(value)).toList();
+      whitelistedKeySpecs = _json["whitelistedKeySpecs"]
+          .map((value) => new DnsKeySpec.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (dnsKeysPerManagedZone != null) {
       _json["dnsKeysPerManagedZone"] = dnsKeysPerManagedZone;
     }
@@ -2039,33 +2056,33 @@ class Quota {
       _json["totalRrdataSizePerChange"] = totalRrdataSizePerChange;
     }
     if (whitelistedKeySpecs != null) {
-      _json["whitelistedKeySpecs"] = whitelistedKeySpecs.map((value) => (value).toJson()).toList();
+      _json["whitelistedKeySpecs"] =
+          whitelistedKeySpecs.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
 }
 
-/** A unit of data that will be returned by the DNS servers. */
+/// A unit of data that will be returned by the DNS servers.
 class ResourceRecordSet {
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "dns#resourceRecordSet".
-   */
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "dns#resourceRecordSet".
   core.String kind;
-  /** For example, www.example.com. */
+
+  /// For example, www.example.com.
   core.String name;
-  /** As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1). */
+
+  /// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
   core.List<core.String> rrdatas;
-  /** As defined in RFC 4034 (section 3.2). */
+
+  /// As defined in RFC 4034 (section 3.2).
   core.List<core.String> signatureRrdatas;
-  /**
-   * Number of seconds that this ResourceRecordSet can be cached by resolvers.
-   */
+
+  /// Number of seconds that this ResourceRecordSet can be cached by resolvers.
   core.int ttl;
-  /**
-   * The identifier of a supported record type, for example, A, AAAA, MX, TXT,
-   * and so on.
-   */
+
+  /// The identifier of a supported record type, for example, A, AAAA, MX, TXT,
+  /// and so on.
   core.String type;
 
   ResourceRecordSet();
@@ -2092,7 +2109,8 @@ class ResourceRecordSet {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -2117,22 +2135,23 @@ class ResourceRecordSet {
 
 class ResourceRecordSetsListResponse {
   ResponseHeader header;
-  /** Type of resource. */
+
+  /// Type of resource.
   core.String kind;
-  /**
-   * The presence of this field indicates that there exist more results
-   * following your last page of results in pagination order. To fetch them,
-   * make another list request using this value as your pagination token.
-   *
-   * In this way you can retrieve the complete contents of even very large
-   * collections one page at a time. However, if the contents of the collection
-   * change between the first and last paginated list request, the set of all
-   * elements returned will be an inconsistent view of the collection. There is
-   * no way to retrieve a consistent snapshot of a collection larger than the
-   * maximum page size.
-   */
+
+  /// The presence of this field indicates that there exist more results
+  /// following your last page of results in pagination order. To fetch them,
+  /// make another list request using this value as your pagination token.
+  ///
+  /// In this way you can retrieve the complete contents of even very large
+  /// collections one page at a time. However, if the contents of the collection
+  /// change between the first and last paginated list request, the set of all
+  /// elements returned will be an inconsistent view of the collection. There is
+  /// no way to retrieve a consistent snapshot of a collection larger than the
+  /// maximum page size.
   core.String nextPageToken;
-  /** The resource record set resources. */
+
+  /// The resource record set resources.
   core.List<ResourceRecordSet> rrsets;
 
   ResourceRecordSetsListResponse();
@@ -2148,12 +2167,15 @@ class ResourceRecordSetsListResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("rrsets")) {
-      rrsets = _json["rrsets"].map((value) => new ResourceRecordSet.fromJson(value)).toList();
+      rrsets = _json["rrsets"]
+          .map((value) => new ResourceRecordSet.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (header != null) {
       _json["header"] = (header).toJson();
     }
@@ -2170,13 +2192,11 @@ class ResourceRecordSetsListResponse {
   }
 }
 
-/** Elements common to every response. */
+/// Elements common to every response.
 class ResponseHeader {
-  /**
-   * For mutating operation requests that completed successfully. This is the
-   * client_operation_id if the client specified it, otherwise it is generated
-   * by the server (output only).
-   */
+  /// For mutating operation requests that completed successfully. This is the
+  /// client_operation_id if the client specified it, otherwise it is generated
+  /// by the server (output only).
   core.String operationId;
 
   ResponseHeader();
@@ -2188,7 +2208,8 @@ class ResponseHeader {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (operationId != null) {
       _json["operationId"] = operationId;
     }

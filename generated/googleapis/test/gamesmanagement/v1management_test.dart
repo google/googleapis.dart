@@ -1,12 +1,10 @@
 library googleapis.gamesManagement.v1management.test;
 
 import "dart:core" as core;
-import "dart:collection" as collection;
 import "dart:async" as async;
 import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
-import 'package:http/testing.dart' as http_testing;
 import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/gamesmanagement/v1management.dart' as api;
@@ -22,7 +20,8 @@ class HttpServerMock extends http.BaseClient {
 
   async.Future<http.StreamedResponse> send(http.BaseRequest request) {
     if (_expectJson) {
-      return request.finalize()
+      return request
+          .finalize()
           .transform(convert.UTF8.decoder)
           .join('')
           .then((core.String jsonString) {
@@ -45,8 +44,8 @@ class HttpServerMock extends http.BaseClient {
   }
 }
 
-http.StreamedResponse stringResponse(
-    core.int status, core.Map<core.String, core.String> headers, core.String body) {
+http.StreamedResponse stringResponse(core.int status,
+    core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -110,7 +109,8 @@ buildAchievementResetMultipleForAllRequest() {
   return o;
 }
 
-checkAchievementResetMultipleForAllRequest(api.AchievementResetMultipleForAllRequest o) {
+checkAchievementResetMultipleForAllRequest(
+    api.AchievementResetMultipleForAllRequest o) {
   buildCounterAchievementResetMultipleForAllRequest++;
   if (buildCounterAchievementResetMultipleForAllRequest < 3) {
     checkUnnamed748(o.achievementIds);
@@ -213,7 +213,8 @@ buildGamesPlayerExperienceInfoResource() {
   return o;
 }
 
-checkGamesPlayerExperienceInfoResource(api.GamesPlayerExperienceInfoResource o) {
+checkGamesPlayerExperienceInfoResource(
+    api.GamesPlayerExperienceInfoResource o) {
   buildCounterGamesPlayerExperienceInfoResource++;
   if (buildCounterGamesPlayerExperienceInfoResource < 3) {
     unittest.expect(o.currentExperiencePoints, unittest.equals('foo'));
@@ -527,7 +528,6 @@ checkScoresResetMultipleForAllRequest(api.ScoresResetMultipleForAllRequest o) {
   buildCounterScoresResetMultipleForAllRequest--;
 }
 
-
 main() {
   unittest.group("obj-schema-AchievementResetAllResponse", () {
     unittest.test("to-json--from-json", () {
@@ -537,15 +537,14 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-AchievementResetMultipleForAllRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildAchievementResetMultipleForAllRequest();
-      var od = new api.AchievementResetMultipleForAllRequest.fromJson(o.toJson());
+      var od =
+          new api.AchievementResetMultipleForAllRequest.fromJson(o.toJson());
       checkAchievementResetMultipleForAllRequest(od);
     });
   });
-
 
   unittest.group("obj-schema-AchievementResetResponse", () {
     unittest.test("to-json--from-json", () {
@@ -555,7 +554,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-EventsResetMultipleForAllRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildEventsResetMultipleForAllRequest();
@@ -563,7 +561,6 @@ main() {
       checkEventsResetMultipleForAllRequest(od);
     });
   });
-
 
   unittest.group("obj-schema-GamesPlayedResource", () {
     unittest.test("to-json--from-json", () {
@@ -573,7 +570,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-GamesPlayerExperienceInfoResource", () {
     unittest.test("to-json--from-json", () {
       var o = buildGamesPlayerExperienceInfoResource();
@@ -581,7 +577,6 @@ main() {
       checkGamesPlayerExperienceInfoResource(od);
     });
   });
-
 
   unittest.group("obj-schema-GamesPlayerLevelResource", () {
     unittest.test("to-json--from-json", () {
@@ -591,7 +586,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-HiddenPlayer", () {
     unittest.test("to-json--from-json", () {
       var o = buildHiddenPlayer();
@@ -599,7 +593,6 @@ main() {
       checkHiddenPlayer(od);
     });
   });
-
 
   unittest.group("obj-schema-HiddenPlayerList", () {
     unittest.test("to-json--from-json", () {
@@ -609,7 +602,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-PlayerName", () {
     unittest.test("to-json--from-json", () {
       var o = buildPlayerName();
@@ -617,7 +609,6 @@ main() {
       checkPlayerName(od);
     });
   });
-
 
   unittest.group("obj-schema-Player", () {
     unittest.test("to-json--from-json", () {
@@ -627,7 +618,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-PlayerScoreResetAllResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildPlayerScoreResetAllResponse();
@@ -635,7 +625,6 @@ main() {
       checkPlayerScoreResetAllResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-PlayerScoreResetResponse", () {
     unittest.test("to-json--from-json", () {
@@ -645,7 +634,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ProfileSettings", () {
     unittest.test("to-json--from-json", () {
       var o = buildProfileSettings();
@@ -653,7 +641,6 @@ main() {
       checkProfileSettings(od);
     });
   });
-
 
   unittest.group("obj-schema-QuestsResetMultipleForAllRequest", () {
     unittest.test("to-json--from-json", () {
@@ -663,7 +650,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ScoresResetMultipleForAllRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildScoresResetMultipleForAllRequest();
@@ -672,30 +658,34 @@ main() {
     });
   });
 
-
   unittest.group("resource-AchievementsResourceApi", () {
     unittest.test("method--reset", () {
-
       var mock = new HttpServerMock();
-      api.AchievementsResourceApi res = new api.GamesManagementApi(mock).achievements;
+      api.AchievementsResourceApi res =
+          new api.GamesManagementApi(mock).achievements;
       var arg_achievementId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("achievements/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("achievements/"));
         pathOffset += 13;
         index = path.indexOf("/reset", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_achievementId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("/reset"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("/reset"));
         pathOffset += 6;
 
         var query = (req.url).query;
@@ -708,39 +698,45 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAchievementResetResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.reset(arg_achievementId).then(unittest.expectAsync1(((api.AchievementResetResponse response) {
+      res
+          .reset(arg_achievementId)
+          .then(unittest.expectAsync1(((api.AchievementResetResponse response) {
         checkAchievementResetResponse(response);
       })));
     });
 
     unittest.test("method--resetAll", () {
-
       var mock = new HttpServerMock();
-      api.AchievementsResourceApi res = new api.GamesManagementApi(mock).achievements;
+      api.AchievementsResourceApi res =
+          new api.GamesManagementApi(mock).achievements;
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("achievements/reset"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 18),
+            unittest.equals("achievements/reset"));
         pathOffset += 18;
 
         var query = (req.url).query;
@@ -753,39 +749,44 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAchievementResetAllResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetAll().then(unittest.expectAsync1(((api.AchievementResetAllResponse response) {
+      res.resetAll().then(
+          unittest.expectAsync1(((api.AchievementResetAllResponse response) {
         checkAchievementResetAllResponse(response);
       })));
     });
 
     unittest.test("method--resetAllForAllPlayers", () {
-
       var mock = new HttpServerMock();
-      api.AchievementsResourceApi res = new api.GamesManagementApi(mock).achievements;
+      api.AchievementsResourceApi res =
+          new api.GamesManagementApi(mock).achievements;
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 34), unittest.equals("achievements/resetAllForAllPlayers"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 34),
+            unittest.equals("achievements/resetAllForAllPlayers"));
         pathOffset += 34;
 
         var query = (req.url).query;
@@ -798,16 +799,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
@@ -816,27 +818,32 @@ main() {
     });
 
     unittest.test("method--resetForAllPlayers", () {
-
       var mock = new HttpServerMock();
-      api.AchievementsResourceApi res = new api.GamesManagementApi(mock).achievements;
+      api.AchievementsResourceApi res =
+          new api.GamesManagementApi(mock).achievements;
       var arg_achievementId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("achievements/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("achievements/"));
         pathOffset += 13;
         index = path.indexOf("/resetForAllPlayers", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_achievementId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/resetForAllPlayers"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("/resetForAllPlayers"));
         pathOffset += 19;
 
         var query = (req.url).query;
@@ -849,27 +856,30 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetForAllPlayers(arg_achievementId).then(unittest.expectAsync1((_) {}));
+      res
+          .resetForAllPlayers(arg_achievementId)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--resetMultipleForAllPlayers", () {
-
       var mock = new HttpServerMock();
-      api.AchievementsResourceApi res = new api.GamesManagementApi(mock).achievements;
+      api.AchievementsResourceApi res =
+          new api.GamesManagementApi(mock).achievements;
       var arg_request = buildAchievementResetMultipleForAllRequest();
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.AchievementResetMultipleForAllRequest.fromJson(json);
@@ -879,11 +889,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 39), unittest.equals("achievements/resetMultipleForAllPlayers"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 39),
+            unittest.equals("achievements/resetMultipleForAllPlayers"));
         pathOffset += 39;
 
         var query = (req.url).query;
@@ -896,31 +909,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetMultipleForAllPlayers(arg_request).then(unittest.expectAsync1((_) {}));
+      res
+          .resetMultipleForAllPlayers(arg_request)
+          .then(unittest.expectAsync1((_) {}));
     });
-
   });
-
 
   unittest.group("resource-ApplicationsResourceApi", () {
     unittest.test("method--listHidden", () {
-
       var mock = new HttpServerMock();
-      api.ApplicationsResourceApi res = new api.GamesManagementApi(mock).applications;
+      api.ApplicationsResourceApi res =
+          new api.GamesManagementApi(mock).applications;
       var arg_applicationId = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
@@ -929,18 +943,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("applications/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("applications/"));
         pathOffset += 13;
         index = path.indexOf("/players/hidden", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_applicationId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/players/hidden"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 15),
+            unittest.equals("/players/hidden"));
         pathOffset += 15;
 
         var query = (req.url).query;
@@ -953,33 +972,36 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildHiddenPlayerList());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.listHidden(arg_applicationId, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.HiddenPlayerList response) {
+      res
+          .listHidden(arg_applicationId,
+              maxResults: arg_maxResults, pageToken: arg_pageToken)
+          .then(unittest.expectAsync1(((api.HiddenPlayerList response) {
         checkHiddenPlayerList(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-EventsResourceApi", () {
     unittest.test("method--reset", () {
-
       var mock = new HttpServerMock();
       api.EventsResourceApi res = new api.GamesManagementApi(mock).events;
       var arg_eventId = "foo";
@@ -988,18 +1010,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("events/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("events/"));
         pathOffset += 7;
         index = path.indexOf("/reset", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_eventId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("/reset"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("/reset"));
         pathOffset += 6;
 
         var query = (req.url).query;
@@ -1012,16 +1039,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
@@ -1030,7 +1058,6 @@ main() {
     });
 
     unittest.test("method--resetAll", () {
-
       var mock = new HttpServerMock();
       api.EventsResourceApi res = new api.GamesManagementApi(mock).events;
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1038,11 +1065,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("events/reset"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("events/reset"));
         pathOffset += 12;
 
         var query = (req.url).query;
@@ -1055,16 +1085,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
@@ -1073,7 +1104,6 @@ main() {
     });
 
     unittest.test("method--resetAllForAllPlayers", () {
-
       var mock = new HttpServerMock();
       api.EventsResourceApi res = new api.GamesManagementApi(mock).events;
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1081,11 +1111,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 28), unittest.equals("events/resetAllForAllPlayers"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 28),
+            unittest.equals("events/resetAllForAllPlayers"));
         pathOffset += 28;
 
         var query = (req.url).query;
@@ -1098,16 +1131,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
@@ -1116,7 +1150,6 @@ main() {
     });
 
     unittest.test("method--resetForAllPlayers", () {
-
       var mock = new HttpServerMock();
       api.EventsResourceApi res = new api.GamesManagementApi(mock).events;
       var arg_eventId = "foo";
@@ -1125,18 +1158,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("events/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("events/"));
         pathOffset += 7;
         index = path.indexOf("/resetForAllPlayers", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_eventId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/resetForAllPlayers"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("/resetForAllPlayers"));
         pathOffset += 19;
 
         var query = (req.url).query;
@@ -1149,16 +1187,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
@@ -1167,7 +1206,6 @@ main() {
     });
 
     unittest.test("method--resetMultipleForAllPlayers", () {
-
       var mock = new HttpServerMock();
       api.EventsResourceApi res = new api.GamesManagementApi(mock).events;
       var arg_request = buildEventsResetMultipleForAllRequest();
@@ -1179,11 +1217,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 33), unittest.equals("events/resetMultipleForAllPlayers"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("events/resetMultipleForAllPlayers"));
         pathOffset += 33;
 
         var query = (req.url).query;
@@ -1196,29 +1237,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetMultipleForAllPlayers(arg_request).then(unittest.expectAsync1((_) {}));
+      res
+          .resetMultipleForAllPlayers(arg_request)
+          .then(unittest.expectAsync1((_) {}));
     });
-
   });
-
 
   unittest.group("resource-PlayersResourceApi", () {
     unittest.test("method--hide", () {
-
       var mock = new HttpServerMock();
       api.PlayersResourceApi res = new api.GamesManagementApi(mock).players;
       var arg_applicationId = "foo";
@@ -1228,18 +1269,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("applications/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("applications/"));
         pathOffset += 13;
         index = path.indexOf("/players/hidden/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_applicationId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/players/hidden/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("/players/hidden/"));
         pathOffset += 16;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -1255,25 +1301,27 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.hide(arg_applicationId, arg_playerId).then(unittest.expectAsync1((_) {}));
+      res
+          .hide(arg_applicationId, arg_playerId)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--unhide", () {
-
       var mock = new HttpServerMock();
       api.PlayersResourceApi res = new api.GamesManagementApi(mock).players;
       var arg_applicationId = "foo";
@@ -1283,18 +1331,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("applications/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("applications/"));
         pathOffset += 13;
         index = path.indexOf("/players/hidden/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_applicationId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("/players/hidden/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("/players/hidden/"));
         pathOffset += 16;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -1310,29 +1363,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.unhide(arg_applicationId, arg_playerId).then(unittest.expectAsync1((_) {}));
+      res
+          .unhide(arg_applicationId, arg_playerId)
+          .then(unittest.expectAsync1((_) {}));
     });
-
   });
-
 
   unittest.group("resource-QuestsResourceApi", () {
     unittest.test("method--reset", () {
-
       var mock = new HttpServerMock();
       api.QuestsResourceApi res = new api.GamesManagementApi(mock).quests;
       var arg_questId = "foo";
@@ -1341,18 +1394,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("quests/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("quests/"));
         pathOffset += 7;
         index = path.indexOf("/reset", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_questId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("/reset"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("/reset"));
         pathOffset += 6;
 
         var query = (req.url).query;
@@ -1365,16 +1423,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
@@ -1383,7 +1442,6 @@ main() {
     });
 
     unittest.test("method--resetAll", () {
-
       var mock = new HttpServerMock();
       api.QuestsResourceApi res = new api.GamesManagementApi(mock).quests;
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1391,11 +1449,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("quests/reset"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("quests/reset"));
         pathOffset += 12;
 
         var query = (req.url).query;
@@ -1408,16 +1469,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
@@ -1426,7 +1488,6 @@ main() {
     });
 
     unittest.test("method--resetAllForAllPlayers", () {
-
       var mock = new HttpServerMock();
       api.QuestsResourceApi res = new api.GamesManagementApi(mock).quests;
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1434,11 +1495,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 28), unittest.equals("quests/resetAllForAllPlayers"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 28),
+            unittest.equals("quests/resetAllForAllPlayers"));
         pathOffset += 28;
 
         var query = (req.url).query;
@@ -1451,16 +1515,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
@@ -1469,7 +1534,6 @@ main() {
     });
 
     unittest.test("method--resetForAllPlayers", () {
-
       var mock = new HttpServerMock();
       api.QuestsResourceApi res = new api.GamesManagementApi(mock).quests;
       var arg_questId = "foo";
@@ -1478,18 +1542,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("quests/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("quests/"));
         pathOffset += 7;
         index = path.indexOf("/resetForAllPlayers", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_questId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/resetForAllPlayers"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("/resetForAllPlayers"));
         pathOffset += 19;
 
         var query = (req.url).query;
@@ -1502,16 +1571,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
@@ -1520,7 +1590,6 @@ main() {
     });
 
     unittest.test("method--resetMultipleForAllPlayers", () {
-
       var mock = new HttpServerMock();
       api.QuestsResourceApi res = new api.GamesManagementApi(mock).quests;
       var arg_request = buildQuestsResetMultipleForAllRequest();
@@ -1532,11 +1601,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 33), unittest.equals("quests/resetMultipleForAllPlayers"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("quests/resetMultipleForAllPlayers"));
         pathOffset += 33;
 
         var query = (req.url).query;
@@ -1549,29 +1621,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetMultipleForAllPlayers(arg_request).then(unittest.expectAsync1((_) {}));
+      res
+          .resetMultipleForAllPlayers(arg_request)
+          .then(unittest.expectAsync1((_) {}));
     });
-
   });
-
 
   unittest.group("resource-RoomsResourceApi", () {
     unittest.test("method--reset", () {
-
       var mock = new HttpServerMock();
       api.RoomsResourceApi res = new api.GamesManagementApi(mock).rooms;
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1579,11 +1651,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("rooms/reset"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("rooms/reset"));
         pathOffset += 11;
 
         var query = (req.url).query;
@@ -1596,16 +1671,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
@@ -1614,7 +1690,6 @@ main() {
     });
 
     unittest.test("method--resetForAllPlayers", () {
-
       var mock = new HttpServerMock();
       api.RoomsResourceApi res = new api.GamesManagementApi(mock).rooms;
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1622,11 +1697,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 24), unittest.equals("rooms/resetForAllPlayers"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 24),
+            unittest.equals("rooms/resetForAllPlayers"));
         pathOffset += 24;
 
         var query = (req.url).query;
@@ -1639,29 +1717,27 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.resetForAllPlayers().then(unittest.expectAsync1((_) {}));
     });
-
   });
-
 
   unittest.group("resource-ScoresResourceApi", () {
     unittest.test("method--reset", () {
-
       var mock = new HttpServerMock();
       api.ScoresResourceApi res = new api.GamesManagementApi(mock).scores;
       var arg_leaderboardId = "foo";
@@ -1670,18 +1746,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("leaderboards/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("leaderboards/"));
         pathOffset += 13;
         index = path.indexOf("/scores/reset", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_leaderboardId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/scores/reset"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("/scores/reset"));
         pathOffset += 13;
 
         var query = (req.url).query;
@@ -1694,27 +1775,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPlayerScoreResetResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.reset(arg_leaderboardId).then(unittest.expectAsync1(((api.PlayerScoreResetResponse response) {
+      res
+          .reset(arg_leaderboardId)
+          .then(unittest.expectAsync1(((api.PlayerScoreResetResponse response) {
         checkPlayerScoreResetResponse(response);
       })));
     });
 
     unittest.test("method--resetAll", () {
-
       var mock = new HttpServerMock();
       api.ScoresResourceApi res = new api.GamesManagementApi(mock).scores;
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1722,11 +1805,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("scores/reset"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("scores/reset"));
         pathOffset += 12;
 
         var query = (req.url).query;
@@ -1739,27 +1825,28 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPlayerScoreResetAllResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetAll().then(unittest.expectAsync1(((api.PlayerScoreResetAllResponse response) {
+      res.resetAll().then(
+          unittest.expectAsync1(((api.PlayerScoreResetAllResponse response) {
         checkPlayerScoreResetAllResponse(response);
       })));
     });
 
     unittest.test("method--resetAllForAllPlayers", () {
-
       var mock = new HttpServerMock();
       api.ScoresResourceApi res = new api.GamesManagementApi(mock).scores;
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1767,11 +1854,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 28), unittest.equals("scores/resetAllForAllPlayers"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 28),
+            unittest.equals("scores/resetAllForAllPlayers"));
         pathOffset += 28;
 
         var query = (req.url).query;
@@ -1784,16 +1874,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
@@ -1802,7 +1893,6 @@ main() {
     });
 
     unittest.test("method--resetForAllPlayers", () {
-
       var mock = new HttpServerMock();
       api.ScoresResourceApi res = new api.GamesManagementApi(mock).scores;
       var arg_leaderboardId = "foo";
@@ -1811,18 +1901,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("leaderboards/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("leaderboards/"));
         pathOffset += 13;
         index = path.indexOf("/scores/resetForAllPlayers", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_leaderboardId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 26), unittest.equals("/scores/resetForAllPlayers"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 26),
+            unittest.equals("/scores/resetForAllPlayers"));
         pathOffset += 26;
 
         var query = (req.url).query;
@@ -1835,25 +1930,27 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetForAllPlayers(arg_leaderboardId).then(unittest.expectAsync1((_) {}));
+      res
+          .resetForAllPlayers(arg_leaderboardId)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--resetMultipleForAllPlayers", () {
-
       var mock = new HttpServerMock();
       api.ScoresResourceApi res = new api.GamesManagementApi(mock).scores;
       var arg_request = buildScoresResetMultipleForAllRequest();
@@ -1865,11 +1962,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 33), unittest.equals("scores/resetMultipleForAllPlayers"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("scores/resetMultipleForAllPlayers"));
         pathOffset += 33;
 
         var query = (req.url).query;
@@ -1882,41 +1982,45 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetMultipleForAllPlayers(arg_request).then(unittest.expectAsync1((_) {}));
+      res
+          .resetMultipleForAllPlayers(arg_request)
+          .then(unittest.expectAsync1((_) {}));
     });
-
   });
-
 
   unittest.group("resource-TurnBasedMatchesResourceApi", () {
     unittest.test("method--reset", () {
-
       var mock = new HttpServerMock();
-      api.TurnBasedMatchesResourceApi res = new api.GamesManagementApi(mock).turnBasedMatches;
+      api.TurnBasedMatchesResourceApi res =
+          new api.GamesManagementApi(mock).turnBasedMatches;
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("turnbasedmatches/reset"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 22),
+            unittest.equals("turnbasedmatches/reset"));
         pathOffset += 22;
 
         var query = (req.url).query;
@@ -1929,16 +2033,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
@@ -1947,19 +2052,22 @@ main() {
     });
 
     unittest.test("method--resetForAllPlayers", () {
-
       var mock = new HttpServerMock();
-      api.TurnBasedMatchesResourceApi res = new api.GamesManagementApi(mock).turnBasedMatches;
+      api.TurnBasedMatchesResourceApi res =
+          new api.GamesManagementApi(mock).turnBasedMatches;
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("games/v1management/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("games/v1management/"));
         pathOffset += 19;
-        unittest.expect(path.substring(pathOffset, pathOffset + 35), unittest.equals("turnbasedmatches/resetForAllPlayers"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 35),
+            unittest.equals("turnbasedmatches/resetForAllPlayers"));
         pathOffset += 35;
 
         var query = (req.url).query;
@@ -1972,25 +2080,22 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.resetForAllPlayers().then(unittest.expectAsync1((_) {}));
     });
-
   });
-
-
 }
-

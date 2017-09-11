@@ -19,7 +19,7 @@
     },
     "basePath": "/",
     "baseUrl": "https://www.googleapis.com/",
-    "batchPath": "batch",
+    "batchPath": "batch/oauth2/v2",
     "description": "Obtains end-user authorization grants for use with other Google APIs.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/accounts/docs/OAuth2",

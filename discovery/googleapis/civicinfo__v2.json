@@ -1,7 +1,7 @@
 {
     "basePath": "/civicinfo/v2/",
     "baseUrl": "https://www.googleapis.com/civicinfo/v2/",
-    "batchPath": "batch",
+    "batchPath": "batch/civicinfo/v2",
     "canonicalName": "Civic Info",
     "description": "Provides polling places, early vote locations, contest data, election officials, and government representatives for U.S. residential addresses.",
     "discoveryVersion": "v1",

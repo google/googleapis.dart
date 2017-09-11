@@ -10,12 +10,12 @@
     },
     "basePath": "/games/v1configuration/",
     "baseUrl": "https://www.googleapis.com/games/v1configuration/",
-    "batchPath": "batch",
+    "batchPath": "batch/gamesConfiguration/v1configuration",
     "canonicalName": "Games Configuration",
     "description": "The Publishing API for Google Play Game Services.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/games/services",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/JKm_TJYeri7qrUXwhsYSNvsIuWY\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/_7vulfAaATzvUDcyDfxHJGsHwZo\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -454,7 +454,7 @@
             }
         }
     },
-    "revision": "20170815",
+    "revision": "20170831",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AchievementConfiguration": {

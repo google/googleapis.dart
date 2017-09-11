@@ -1,12 +1,10 @@
 library googleapis.androidpublisher.v2.test;
 
 import "dart:core" as core;
-import "dart:collection" as collection;
 import "dart:async" as async;
 import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
-import 'package:http/testing.dart' as http_testing;
 import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/androidpublisher/v2.dart' as api;
@@ -22,7 +20,8 @@ class HttpServerMock extends http.BaseClient {
 
   async.Future<http.StreamedResponse> send(http.BaseRequest request) {
     if (_expectJson) {
-      return request.finalize()
+      return request
+          .finalize()
           .transform(convert.UTF8.decoder)
           .join('')
           .then((core.String jsonString) {
@@ -45,8 +44,8 @@ class HttpServerMock extends http.BaseClient {
   }
 }
 
-http.StreamedResponse stringResponse(
-    core.int status, core.Map<core.String, core.String> headers, core.String body) {
+http.StreamedResponse stringResponse(core.int status,
+    core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -114,14 +113,14 @@ checkApkListing(api.ApkListing o) {
   buildCounterApkListing--;
 }
 
-buildUnnamed2526() {
+buildUnnamed2513() {
   var o = new core.List<api.ApkListing>();
   o.add(buildApkListing());
   o.add(buildApkListing());
   return o;
 }
 
-checkUnnamed2526(core.List<api.ApkListing> o) {
+checkUnnamed2513(core.List<api.ApkListing> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApkListing(o[0]);
   checkApkListing(o[1]);
@@ -133,7 +132,7 @@ buildApkListingsListResponse() {
   buildCounterApkListingsListResponse++;
   if (buildCounterApkListingsListResponse < 3) {
     o.kind = "foo";
-    o.listings = buildUnnamed2526();
+    o.listings = buildUnnamed2513();
   }
   buildCounterApkListingsListResponse--;
   return o;
@@ -143,7 +142,7 @@ checkApkListingsListResponse(api.ApkListingsListResponse o) {
   buildCounterApkListingsListResponse++;
   if (buildCounterApkListingsListResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2526(o.listings);
+    checkUnnamed2513(o.listings);
   }
   buildCounterApkListingsListResponse--;
 }
@@ -186,14 +185,14 @@ checkApksAddExternallyHostedResponse(api.ApksAddExternallyHostedResponse o) {
   buildCounterApksAddExternallyHostedResponse--;
 }
 
-buildUnnamed2527() {
+buildUnnamed2514() {
   var o = new core.List<api.Apk>();
   o.add(buildApk());
   o.add(buildApk());
   return o;
 }
 
-checkUnnamed2527(core.List<api.Apk> o) {
+checkUnnamed2514(core.List<api.Apk> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApk(o[0]);
   checkApk(o[1]);
@@ -204,7 +203,7 @@ buildApksListResponse() {
   var o = new api.ApksListResponse();
   buildCounterApksListResponse++;
   if (buildCounterApksListResponse < 3) {
-    o.apks = buildUnnamed2527();
+    o.apks = buildUnnamed2514();
     o.kind = "foo";
   }
   buildCounterApksListResponse--;
@@ -214,7 +213,7 @@ buildApksListResponse() {
 checkApksListResponse(api.ApksListResponse o) {
   buildCounterApksListResponse++;
   if (buildCounterApksListResponse < 3) {
-    checkUnnamed2527(o.apks);
+    checkUnnamed2514(o.apks);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterApksListResponse--;
@@ -410,14 +409,14 @@ checkEntitlement(api.Entitlement o) {
   buildCounterEntitlement--;
 }
 
-buildUnnamed2528() {
+buildUnnamed2515() {
   var o = new core.List<api.Entitlement>();
   o.add(buildEntitlement());
   o.add(buildEntitlement());
   return o;
 }
 
-checkUnnamed2528(core.List<api.Entitlement> o) {
+checkUnnamed2515(core.List<api.Entitlement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntitlement(o[0]);
   checkEntitlement(o[1]);
@@ -429,7 +428,7 @@ buildEntitlementsListResponse() {
   buildCounterEntitlementsListResponse++;
   if (buildCounterEntitlementsListResponse < 3) {
     o.pageInfo = buildPageInfo();
-    o.resources = buildUnnamed2528();
+    o.resources = buildUnnamed2515();
     o.tokenPagination = buildTokenPagination();
   }
   buildCounterEntitlementsListResponse--;
@@ -440,7 +439,7 @@ checkEntitlementsListResponse(api.EntitlementsListResponse o) {
   buildCounterEntitlementsListResponse++;
   if (buildCounterEntitlementsListResponse < 3) {
     checkPageInfo(o.pageInfo);
-    checkUnnamed2528(o.resources);
+    checkUnnamed2515(o.resources);
     checkTokenPagination(o.tokenPagination);
   }
   buildCounterEntitlementsListResponse--;
@@ -486,53 +485,53 @@ checkExpansionFilesUploadResponse(api.ExpansionFilesUploadResponse o) {
   buildCounterExpansionFilesUploadResponse--;
 }
 
-buildUnnamed2529() {
+buildUnnamed2516() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2529(core.List<core.String> o) {
+checkUnnamed2516(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2530() {
+buildUnnamed2517() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2530(core.List<core.String> o) {
+checkUnnamed2517(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2531() {
+buildUnnamed2518() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2531(core.List<core.String> o) {
+checkUnnamed2518(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2532() {
+buildUnnamed2519() {
   var o = new core.List<api.ExternallyHostedApkUsesPermission>();
   o.add(buildExternallyHostedApkUsesPermission());
   o.add(buildExternallyHostedApkUsesPermission());
   return o;
 }
 
-checkUnnamed2532(core.List<api.ExternallyHostedApkUsesPermission> o) {
+checkUnnamed2519(core.List<api.ExternallyHostedApkUsesPermission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkExternallyHostedApkUsesPermission(o[0]);
   checkExternallyHostedApkUsesPermission(o[1]);
@@ -544,7 +543,7 @@ buildExternallyHostedApk() {
   buildCounterExternallyHostedApk++;
   if (buildCounterExternallyHostedApk < 3) {
     o.applicationLabel = "foo";
-    o.certificateBase64s = buildUnnamed2529();
+    o.certificateBase64s = buildUnnamed2516();
     o.externallyHostedUrl = "foo";
     o.fileSha1Base64 = "foo";
     o.fileSha256Base64 = "foo";
@@ -552,10 +551,10 @@ buildExternallyHostedApk() {
     o.iconBase64 = "foo";
     o.maximumSdk = 42;
     o.minimumSdk = 42;
-    o.nativeCodes = buildUnnamed2530();
+    o.nativeCodes = buildUnnamed2517();
     o.packageName = "foo";
-    o.usesFeatures = buildUnnamed2531();
-    o.usesPermissions = buildUnnamed2532();
+    o.usesFeatures = buildUnnamed2518();
+    o.usesPermissions = buildUnnamed2519();
     o.versionCode = 42;
     o.versionName = "foo";
   }
@@ -567,7 +566,7 @@ checkExternallyHostedApk(api.ExternallyHostedApk o) {
   buildCounterExternallyHostedApk++;
   if (buildCounterExternallyHostedApk < 3) {
     unittest.expect(o.applicationLabel, unittest.equals('foo'));
-    checkUnnamed2529(o.certificateBase64s);
+    checkUnnamed2516(o.certificateBase64s);
     unittest.expect(o.externallyHostedUrl, unittest.equals('foo'));
     unittest.expect(o.fileSha1Base64, unittest.equals('foo'));
     unittest.expect(o.fileSha256Base64, unittest.equals('foo'));
@@ -575,10 +574,10 @@ checkExternallyHostedApk(api.ExternallyHostedApk o) {
     unittest.expect(o.iconBase64, unittest.equals('foo'));
     unittest.expect(o.maximumSdk, unittest.equals(42));
     unittest.expect(o.minimumSdk, unittest.equals(42));
-    checkUnnamed2530(o.nativeCodes);
+    checkUnnamed2517(o.nativeCodes);
     unittest.expect(o.packageName, unittest.equals('foo'));
-    checkUnnamed2531(o.usesFeatures);
-    checkUnnamed2532(o.usesPermissions);
+    checkUnnamed2518(o.usesFeatures);
+    checkUnnamed2519(o.usesPermissions);
     unittest.expect(o.versionCode, unittest.equals(42));
     unittest.expect(o.versionName, unittest.equals('foo'));
   }
@@ -597,7 +596,8 @@ buildExternallyHostedApkUsesPermission() {
   return o;
 }
 
-checkExternallyHostedApkUsesPermission(api.ExternallyHostedApkUsesPermission o) {
+checkExternallyHostedApkUsesPermission(
+    api.ExternallyHostedApkUsesPermission o) {
   buildCounterExternallyHostedApkUsesPermission++;
   if (buildCounterExternallyHostedApkUsesPermission < 3) {
     unittest.expect(o.maxSdkVersion, unittest.equals(42));
@@ -629,14 +629,14 @@ checkImage(api.Image o) {
   buildCounterImage--;
 }
 
-buildUnnamed2533() {
+buildUnnamed2520() {
   var o = new core.List<api.Image>();
   o.add(buildImage());
   o.add(buildImage());
   return o;
 }
 
-checkUnnamed2533(core.List<api.Image> o) {
+checkUnnamed2520(core.List<api.Image> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImage(o[0]);
   checkImage(o[1]);
@@ -647,7 +647,7 @@ buildImagesDeleteAllResponse() {
   var o = new api.ImagesDeleteAllResponse();
   buildCounterImagesDeleteAllResponse++;
   if (buildCounterImagesDeleteAllResponse < 3) {
-    o.deleted = buildUnnamed2533();
+    o.deleted = buildUnnamed2520();
   }
   buildCounterImagesDeleteAllResponse--;
   return o;
@@ -656,19 +656,19 @@ buildImagesDeleteAllResponse() {
 checkImagesDeleteAllResponse(api.ImagesDeleteAllResponse o) {
   buildCounterImagesDeleteAllResponse++;
   if (buildCounterImagesDeleteAllResponse < 3) {
-    checkUnnamed2533(o.deleted);
+    checkUnnamed2520(o.deleted);
   }
   buildCounterImagesDeleteAllResponse--;
 }
 
-buildUnnamed2534() {
+buildUnnamed2521() {
   var o = new core.List<api.Image>();
   o.add(buildImage());
   o.add(buildImage());
   return o;
 }
 
-checkUnnamed2534(core.List<api.Image> o) {
+checkUnnamed2521(core.List<api.Image> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImage(o[0]);
   checkImage(o[1]);
@@ -679,7 +679,7 @@ buildImagesListResponse() {
   var o = new api.ImagesListResponse();
   buildCounterImagesListResponse++;
   if (buildCounterImagesListResponse < 3) {
-    o.images = buildUnnamed2534();
+    o.images = buildUnnamed2521();
   }
   buildCounterImagesListResponse--;
   return o;
@@ -688,7 +688,7 @@ buildImagesListResponse() {
 checkImagesListResponse(api.ImagesListResponse o) {
   buildCounterImagesListResponse++;
   if (buildCounterImagesListResponse < 3) {
-    checkUnnamed2534(o.images);
+    checkUnnamed2521(o.images);
   }
   buildCounterImagesListResponse--;
 }
@@ -712,27 +712,27 @@ checkImagesUploadResponse(api.ImagesUploadResponse o) {
   buildCounterImagesUploadResponse--;
 }
 
-buildUnnamed2535() {
+buildUnnamed2522() {
   var o = new core.Map<core.String, api.InAppProductListing>();
   o["x"] = buildInAppProductListing();
   o["y"] = buildInAppProductListing();
   return o;
 }
 
-checkUnnamed2535(core.Map<core.String, api.InAppProductListing> o) {
+checkUnnamed2522(core.Map<core.String, api.InAppProductListing> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInAppProductListing(o["x"]);
   checkInAppProductListing(o["y"]);
 }
 
-buildUnnamed2536() {
+buildUnnamed2523() {
   var o = new core.Map<core.String, api.Price>();
   o["x"] = buildPrice();
   o["y"] = buildPrice();
   return o;
 }
 
-checkUnnamed2536(core.Map<core.String, api.Price> o) {
+checkUnnamed2523(core.Map<core.String, api.Price> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPrice(o["x"]);
   checkPrice(o["y"]);
@@ -745,9 +745,9 @@ buildInAppProduct() {
   if (buildCounterInAppProduct < 3) {
     o.defaultLanguage = "foo";
     o.defaultPrice = buildPrice();
-    o.listings = buildUnnamed2535();
+    o.listings = buildUnnamed2522();
     o.packageName = "foo";
-    o.prices = buildUnnamed2536();
+    o.prices = buildUnnamed2523();
     o.purchaseType = "foo";
     o.season = buildSeason();
     o.sku = "foo";
@@ -764,9 +764,9 @@ checkInAppProduct(api.InAppProduct o) {
   if (buildCounterInAppProduct < 3) {
     unittest.expect(o.defaultLanguage, unittest.equals('foo'));
     checkPrice(o.defaultPrice);
-    checkUnnamed2535(o.listings);
+    checkUnnamed2522(o.listings);
     unittest.expect(o.packageName, unittest.equals('foo'));
-    checkUnnamed2536(o.prices);
+    checkUnnamed2523(o.prices);
     unittest.expect(o.purchaseType, unittest.equals('foo'));
     checkSeason(o.season);
     unittest.expect(o.sku, unittest.equals('foo'));
@@ -798,14 +798,14 @@ checkInAppProductListing(api.InAppProductListing o) {
   buildCounterInAppProductListing--;
 }
 
-buildUnnamed2537() {
+buildUnnamed2524() {
   var o = new core.List<api.InappproductsBatchRequestEntry>();
   o.add(buildInappproductsBatchRequestEntry());
   o.add(buildInappproductsBatchRequestEntry());
   return o;
 }
 
-checkUnnamed2537(core.List<api.InappproductsBatchRequestEntry> o) {
+checkUnnamed2524(core.List<api.InappproductsBatchRequestEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInappproductsBatchRequestEntry(o[0]);
   checkInappproductsBatchRequestEntry(o[1]);
@@ -816,7 +816,7 @@ buildInappproductsBatchRequest() {
   var o = new api.InappproductsBatchRequest();
   buildCounterInappproductsBatchRequest++;
   if (buildCounterInappproductsBatchRequest < 3) {
-    o.entrys = buildUnnamed2537();
+    o.entrys = buildUnnamed2524();
   }
   buildCounterInappproductsBatchRequest--;
   return o;
@@ -825,7 +825,7 @@ buildInappproductsBatchRequest() {
 checkInappproductsBatchRequest(api.InappproductsBatchRequest o) {
   buildCounterInappproductsBatchRequest++;
   if (buildCounterInappproductsBatchRequest < 3) {
-    checkUnnamed2537(o.entrys);
+    checkUnnamed2524(o.entrys);
   }
   buildCounterInappproductsBatchRequest--;
 }
@@ -855,14 +855,14 @@ checkInappproductsBatchRequestEntry(api.InappproductsBatchRequestEntry o) {
   buildCounterInappproductsBatchRequestEntry--;
 }
 
-buildUnnamed2538() {
+buildUnnamed2525() {
   var o = new core.List<api.InappproductsBatchResponseEntry>();
   o.add(buildInappproductsBatchResponseEntry());
   o.add(buildInappproductsBatchResponseEntry());
   return o;
 }
 
-checkUnnamed2538(core.List<api.InappproductsBatchResponseEntry> o) {
+checkUnnamed2525(core.List<api.InappproductsBatchResponseEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInappproductsBatchResponseEntry(o[0]);
   checkInappproductsBatchResponseEntry(o[1]);
@@ -873,7 +873,7 @@ buildInappproductsBatchResponse() {
   var o = new api.InappproductsBatchResponse();
   buildCounterInappproductsBatchResponse++;
   if (buildCounterInappproductsBatchResponse < 3) {
-    o.entrys = buildUnnamed2538();
+    o.entrys = buildUnnamed2525();
     o.kind = "foo";
   }
   buildCounterInappproductsBatchResponse--;
@@ -883,7 +883,7 @@ buildInappproductsBatchResponse() {
 checkInappproductsBatchResponse(api.InappproductsBatchResponse o) {
   buildCounterInappproductsBatchResponse++;
   if (buildCounterInappproductsBatchResponse < 3) {
-    checkUnnamed2538(o.entrys);
+    checkUnnamed2525(o.entrys);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterInappproductsBatchResponse--;
@@ -950,14 +950,14 @@ checkInappproductsInsertResponse(api.InappproductsInsertResponse o) {
   buildCounterInappproductsInsertResponse--;
 }
 
-buildUnnamed2539() {
+buildUnnamed2526() {
   var o = new core.List<api.InAppProduct>();
   o.add(buildInAppProduct());
   o.add(buildInAppProduct());
   return o;
 }
 
-checkUnnamed2539(core.List<api.InAppProduct> o) {
+checkUnnamed2526(core.List<api.InAppProduct> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInAppProduct(o[0]);
   checkInAppProduct(o[1]);
@@ -968,7 +968,7 @@ buildInappproductsListResponse() {
   var o = new api.InappproductsListResponse();
   buildCounterInappproductsListResponse++;
   if (buildCounterInappproductsListResponse < 3) {
-    o.inappproduct = buildUnnamed2539();
+    o.inappproduct = buildUnnamed2526();
     o.kind = "foo";
     o.pageInfo = buildPageInfo();
     o.tokenPagination = buildTokenPagination();
@@ -980,7 +980,7 @@ buildInappproductsListResponse() {
 checkInappproductsListResponse(api.InappproductsListResponse o) {
   buildCounterInappproductsListResponse++;
   if (buildCounterInappproductsListResponse < 3) {
-    checkUnnamed2539(o.inappproduct);
+    checkUnnamed2526(o.inappproduct);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkPageInfo(o.pageInfo);
     checkTokenPagination(o.tokenPagination);
@@ -1053,14 +1053,14 @@ checkListing(api.Listing o) {
   buildCounterListing--;
 }
 
-buildUnnamed2540() {
+buildUnnamed2527() {
   var o = new core.List<api.Listing>();
   o.add(buildListing());
   o.add(buildListing());
   return o;
 }
 
-checkUnnamed2540(core.List<api.Listing> o) {
+checkUnnamed2527(core.List<api.Listing> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkListing(o[0]);
   checkListing(o[1]);
@@ -1072,7 +1072,7 @@ buildListingsListResponse() {
   buildCounterListingsListResponse++;
   if (buildCounterListingsListResponse < 3) {
     o.kind = "foo";
-    o.listings = buildUnnamed2540();
+    o.listings = buildUnnamed2527();
   }
   buildCounterListingsListResponse--;
   return o;
@@ -1082,7 +1082,7 @@ checkListingsListResponse(api.ListingsListResponse o) {
   buildCounterListingsListResponse++;
   if (buildCounterListingsListResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2540(o.listings);
+    checkUnnamed2527(o.listings);
   }
   buildCounterListingsListResponse--;
 }
@@ -1202,14 +1202,14 @@ checkProrate(api.Prorate o) {
   buildCounterProrate--;
 }
 
-buildUnnamed2541() {
+buildUnnamed2528() {
   var o = new core.List<api.Comment>();
   o.add(buildComment());
   o.add(buildComment());
   return o;
 }
 
-checkUnnamed2541(core.List<api.Comment> o) {
+checkUnnamed2528(core.List<api.Comment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkComment(o[0]);
   checkComment(o[1]);
@@ -1221,7 +1221,7 @@ buildReview() {
   buildCounterReview++;
   if (buildCounterReview < 3) {
     o.authorName = "foo";
-    o.comments = buildUnnamed2541();
+    o.comments = buildUnnamed2528();
     o.reviewId = "foo";
   }
   buildCounterReview--;
@@ -1232,7 +1232,7 @@ checkReview(api.Review o) {
   buildCounterReview++;
   if (buildCounterReview < 3) {
     unittest.expect(o.authorName, unittest.equals('foo'));
-    checkUnnamed2541(o.comments);
+    checkUnnamed2528(o.comments);
     unittest.expect(o.reviewId, unittest.equals('foo'));
   }
   buildCounterReview--;
@@ -1259,14 +1259,14 @@ checkReviewReplyResult(api.ReviewReplyResult o) {
   buildCounterReviewReplyResult--;
 }
 
-buildUnnamed2542() {
+buildUnnamed2529() {
   var o = new core.List<api.Review>();
   o.add(buildReview());
   o.add(buildReview());
   return o;
 }
 
-checkUnnamed2542(core.List<api.Review> o) {
+checkUnnamed2529(core.List<api.Review> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReview(o[0]);
   checkReview(o[1]);
@@ -1278,7 +1278,7 @@ buildReviewsListResponse() {
   buildCounterReviewsListResponse++;
   if (buildCounterReviewsListResponse < 3) {
     o.pageInfo = buildPageInfo();
-    o.reviews = buildUnnamed2542();
+    o.reviews = buildUnnamed2529();
     o.tokenPagination = buildTokenPagination();
   }
   buildCounterReviewsListResponse--;
@@ -1289,7 +1289,7 @@ checkReviewsListResponse(api.ReviewsListResponse o) {
   buildCounterReviewsListResponse++;
   if (buildCounterReviewsListResponse < 3) {
     checkPageInfo(o.pageInfo);
-    checkUnnamed2542(o.reviews);
+    checkUnnamed2529(o.reviews);
     checkTokenPagination(o.tokenPagination);
   }
   buildCounterReviewsListResponse--;
@@ -1333,14 +1333,14 @@ checkReviewsReplyResponse(api.ReviewsReplyResponse o) {
   buildCounterReviewsReplyResponse--;
 }
 
-buildUnnamed2543() {
+buildUnnamed2530() {
   var o = new core.List<api.Prorate>();
   o.add(buildProrate());
   o.add(buildProrate());
   return o;
 }
 
-checkUnnamed2543(core.List<api.Prorate> o) {
+checkUnnamed2530(core.List<api.Prorate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProrate(o[0]);
   checkProrate(o[1]);
@@ -1352,7 +1352,7 @@ buildSeason() {
   buildCounterSeason++;
   if (buildCounterSeason < 3) {
     o.end = buildMonthDay();
-    o.prorations = buildUnnamed2543();
+    o.prorations = buildUnnamed2530();
     o.start = buildMonthDay();
   }
   buildCounterSeason--;
@@ -1363,7 +1363,7 @@ checkSeason(api.Season o) {
   buildCounterSeason++;
   if (buildCounterSeason < 3) {
     checkMonthDay(o.end);
-    checkUnnamed2543(o.prorations);
+    checkUnnamed2530(o.prorations);
     checkMonthDay(o.start);
   }
   buildCounterSeason--;
@@ -1442,7 +1442,8 @@ buildSubscriptionPurchasesDeferRequest() {
   return o;
 }
 
-checkSubscriptionPurchasesDeferRequest(api.SubscriptionPurchasesDeferRequest o) {
+checkSubscriptionPurchasesDeferRequest(
+    api.SubscriptionPurchasesDeferRequest o) {
   buildCounterSubscriptionPurchasesDeferRequest++;
   if (buildCounterSubscriptionPurchasesDeferRequest < 3) {
     checkSubscriptionDeferralInfo(o.deferralInfo);
@@ -1461,7 +1462,8 @@ buildSubscriptionPurchasesDeferResponse() {
   return o;
 }
 
-checkSubscriptionPurchasesDeferResponse(api.SubscriptionPurchasesDeferResponse o) {
+checkSubscriptionPurchasesDeferResponse(
+    api.SubscriptionPurchasesDeferResponse o) {
   buildCounterSubscriptionPurchasesDeferResponse++;
   if (buildCounterSubscriptionPurchasesDeferResponse < 3) {
     unittest.expect(o.newExpiryTimeMillis, unittest.equals('foo'));
@@ -1469,27 +1471,27 @@ checkSubscriptionPurchasesDeferResponse(api.SubscriptionPurchasesDeferResponse o
   buildCounterSubscriptionPurchasesDeferResponse--;
 }
 
-buildUnnamed2544() {
+buildUnnamed2531() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2544(core.List<core.String> o) {
+checkUnnamed2531(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2545() {
+buildUnnamed2532() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2545(core.List<core.String> o) {
+checkUnnamed2532(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1500,8 +1502,8 @@ buildTesters() {
   var o = new api.Testers();
   buildCounterTesters++;
   if (buildCounterTesters < 3) {
-    o.googleGroups = buildUnnamed2544();
-    o.googlePlusCommunities = buildUnnamed2545();
+    o.googleGroups = buildUnnamed2531();
+    o.googlePlusCommunities = buildUnnamed2532();
   }
   buildCounterTesters--;
   return o;
@@ -1510,8 +1512,8 @@ buildTesters() {
 checkTesters(api.Testers o) {
   buildCounterTesters++;
   if (buildCounterTesters < 3) {
-    checkUnnamed2544(o.googleGroups);
-    checkUnnamed2545(o.googlePlusCommunities);
+    checkUnnamed2531(o.googleGroups);
+    checkUnnamed2532(o.googlePlusCommunities);
   }
   buildCounterTesters--;
 }
@@ -1558,14 +1560,14 @@ checkTokenPagination(api.TokenPagination o) {
   buildCounterTokenPagination--;
 }
 
-buildUnnamed2546() {
+buildUnnamed2533() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed2546(core.List<core.int> o) {
+checkUnnamed2533(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
@@ -1578,7 +1580,7 @@ buildTrack() {
   if (buildCounterTrack < 3) {
     o.track = "foo";
     o.userFraction = 42.0;
-    o.versionCodes = buildUnnamed2546();
+    o.versionCodes = buildUnnamed2533();
   }
   buildCounterTrack--;
   return o;
@@ -1589,19 +1591,19 @@ checkTrack(api.Track o) {
   if (buildCounterTrack < 3) {
     unittest.expect(o.track, unittest.equals('foo'));
     unittest.expect(o.userFraction, unittest.equals(42.0));
-    checkUnnamed2546(o.versionCodes);
+    checkUnnamed2533(o.versionCodes);
   }
   buildCounterTrack--;
 }
 
-buildUnnamed2547() {
+buildUnnamed2534() {
   var o = new core.List<api.Track>();
   o.add(buildTrack());
   o.add(buildTrack());
   return o;
 }
 
-checkUnnamed2547(core.List<api.Track> o) {
+checkUnnamed2534(core.List<api.Track> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrack(o[0]);
   checkTrack(o[1]);
@@ -1613,7 +1615,7 @@ buildTracksListResponse() {
   buildCounterTracksListResponse++;
   if (buildCounterTracksListResponse < 3) {
     o.kind = "foo";
-    o.tracks = buildUnnamed2547();
+    o.tracks = buildUnnamed2534();
   }
   buildCounterTracksListResponse--;
   return o;
@@ -1623,7 +1625,7 @@ checkTracksListResponse(api.TracksListResponse o) {
   buildCounterTracksListResponse++;
   if (buildCounterTracksListResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2547(o.tracks);
+    checkUnnamed2534(o.tracks);
   }
   buildCounterTracksListResponse--;
 }
@@ -1694,14 +1696,14 @@ checkVoidedPurchase(api.VoidedPurchase o) {
   buildCounterVoidedPurchase--;
 }
 
-buildUnnamed2548() {
+buildUnnamed2535() {
   var o = new core.List<api.VoidedPurchase>();
   o.add(buildVoidedPurchase());
   o.add(buildVoidedPurchase());
   return o;
 }
 
-checkUnnamed2548(core.List<api.VoidedPurchase> o) {
+checkUnnamed2535(core.List<api.VoidedPurchase> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkVoidedPurchase(o[0]);
   checkVoidedPurchase(o[1]);
@@ -1714,7 +1716,7 @@ buildVoidedPurchasesListResponse() {
   if (buildCounterVoidedPurchasesListResponse < 3) {
     o.pageInfo = buildPageInfo();
     o.tokenPagination = buildTokenPagination();
-    o.voidedPurchases = buildUnnamed2548();
+    o.voidedPurchases = buildUnnamed2535();
   }
   buildCounterVoidedPurchasesListResponse--;
   return o;
@@ -1725,11 +1727,10 @@ checkVoidedPurchasesListResponse(api.VoidedPurchasesListResponse o) {
   if (buildCounterVoidedPurchasesListResponse < 3) {
     checkPageInfo(o.pageInfo);
     checkTokenPagination(o.tokenPagination);
-    checkUnnamed2548(o.voidedPurchases);
+    checkUnnamed2535(o.voidedPurchases);
   }
   buildCounterVoidedPurchasesListResponse--;
 }
-
 
 main() {
   unittest.group("obj-schema-Apk", () {
@@ -1740,7 +1741,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ApkBinary", () {
     unittest.test("to-json--from-json", () {
       var o = buildApkBinary();
@@ -1748,7 +1748,6 @@ main() {
       checkApkBinary(od);
     });
   });
-
 
   unittest.group("obj-schema-ApkListing", () {
     unittest.test("to-json--from-json", () {
@@ -1758,7 +1757,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ApkListingsListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildApkListingsListResponse();
@@ -1766,7 +1764,6 @@ main() {
       checkApkListingsListResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-ApksAddExternallyHostedRequest", () {
     unittest.test("to-json--from-json", () {
@@ -1776,7 +1773,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ApksAddExternallyHostedResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildApksAddExternallyHostedResponse();
@@ -1784,7 +1780,6 @@ main() {
       checkApksAddExternallyHostedResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-ApksListResponse", () {
     unittest.test("to-json--from-json", () {
@@ -1794,7 +1789,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-AppDetails", () {
     unittest.test("to-json--from-json", () {
       var o = buildAppDetails();
@@ -1802,7 +1796,6 @@ main() {
       checkAppDetails(od);
     });
   });
-
 
   unittest.group("obj-schema-AppEdit", () {
     unittest.test("to-json--from-json", () {
@@ -1812,7 +1805,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Comment", () {
     unittest.test("to-json--from-json", () {
       var o = buildComment();
@@ -1820,7 +1812,6 @@ main() {
       checkComment(od);
     });
   });
-
 
   unittest.group("obj-schema-DeobfuscationFile", () {
     unittest.test("to-json--from-json", () {
@@ -1830,7 +1821,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-DeobfuscationFilesUploadResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildDeobfuscationFilesUploadResponse();
@@ -1838,7 +1828,6 @@ main() {
       checkDeobfuscationFilesUploadResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-DeveloperComment", () {
     unittest.test("to-json--from-json", () {
@@ -1848,7 +1837,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-DeviceMetadata", () {
     unittest.test("to-json--from-json", () {
       var o = buildDeviceMetadata();
@@ -1856,7 +1844,6 @@ main() {
       checkDeviceMetadata(od);
     });
   });
-
 
   unittest.group("obj-schema-Entitlement", () {
     unittest.test("to-json--from-json", () {
@@ -1866,7 +1853,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-EntitlementsListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildEntitlementsListResponse();
@@ -1874,7 +1860,6 @@ main() {
       checkEntitlementsListResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-ExpansionFile", () {
     unittest.test("to-json--from-json", () {
@@ -1884,7 +1869,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ExpansionFilesUploadResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildExpansionFilesUploadResponse();
@@ -1892,7 +1876,6 @@ main() {
       checkExpansionFilesUploadResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-ExternallyHostedApk", () {
     unittest.test("to-json--from-json", () {
@@ -1902,7 +1885,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ExternallyHostedApkUsesPermission", () {
     unittest.test("to-json--from-json", () {
       var o = buildExternallyHostedApkUsesPermission();
@@ -1910,7 +1892,6 @@ main() {
       checkExternallyHostedApkUsesPermission(od);
     });
   });
-
 
   unittest.group("obj-schema-Image", () {
     unittest.test("to-json--from-json", () {
@@ -1920,7 +1901,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ImagesDeleteAllResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildImagesDeleteAllResponse();
@@ -1928,7 +1908,6 @@ main() {
       checkImagesDeleteAllResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-ImagesListResponse", () {
     unittest.test("to-json--from-json", () {
@@ -1938,7 +1917,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ImagesUploadResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildImagesUploadResponse();
@@ -1946,7 +1924,6 @@ main() {
       checkImagesUploadResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-InAppProduct", () {
     unittest.test("to-json--from-json", () {
@@ -1956,7 +1933,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-InAppProductListing", () {
     unittest.test("to-json--from-json", () {
       var o = buildInAppProductListing();
@@ -1964,7 +1940,6 @@ main() {
       checkInAppProductListing(od);
     });
   });
-
 
   unittest.group("obj-schema-InappproductsBatchRequest", () {
     unittest.test("to-json--from-json", () {
@@ -1974,7 +1949,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-InappproductsBatchRequestEntry", () {
     unittest.test("to-json--from-json", () {
       var o = buildInappproductsBatchRequestEntry();
@@ -1982,7 +1956,6 @@ main() {
       checkInappproductsBatchRequestEntry(od);
     });
   });
-
 
   unittest.group("obj-schema-InappproductsBatchResponse", () {
     unittest.test("to-json--from-json", () {
@@ -1992,7 +1965,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-InappproductsBatchResponseEntry", () {
     unittest.test("to-json--from-json", () {
       var o = buildInappproductsBatchResponseEntry();
@@ -2000,7 +1972,6 @@ main() {
       checkInappproductsBatchResponseEntry(od);
     });
   });
-
 
   unittest.group("obj-schema-InappproductsInsertRequest", () {
     unittest.test("to-json--from-json", () {
@@ -2010,7 +1981,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-InappproductsInsertResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildInappproductsInsertResponse();
@@ -2018,7 +1988,6 @@ main() {
       checkInappproductsInsertResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-InappproductsListResponse", () {
     unittest.test("to-json--from-json", () {
@@ -2028,7 +1997,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-InappproductsUpdateRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildInappproductsUpdateRequest();
@@ -2036,7 +2004,6 @@ main() {
       checkInappproductsUpdateRequest(od);
     });
   });
-
 
   unittest.group("obj-schema-InappproductsUpdateResponse", () {
     unittest.test("to-json--from-json", () {
@@ -2046,7 +2013,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Listing", () {
     unittest.test("to-json--from-json", () {
       var o = buildListing();
@@ -2054,7 +2020,6 @@ main() {
       checkListing(od);
     });
   });
-
 
   unittest.group("obj-schema-ListingsListResponse", () {
     unittest.test("to-json--from-json", () {
@@ -2064,7 +2029,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-MonthDay", () {
     unittest.test("to-json--from-json", () {
       var o = buildMonthDay();
@@ -2072,7 +2036,6 @@ main() {
       checkMonthDay(od);
     });
   });
-
 
   unittest.group("obj-schema-PageInfo", () {
     unittest.test("to-json--from-json", () {
@@ -2082,7 +2045,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Price", () {
     unittest.test("to-json--from-json", () {
       var o = buildPrice();
@@ -2090,7 +2052,6 @@ main() {
       checkPrice(od);
     });
   });
-
 
   unittest.group("obj-schema-ProductPurchase", () {
     unittest.test("to-json--from-json", () {
@@ -2100,7 +2061,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Prorate", () {
     unittest.test("to-json--from-json", () {
       var o = buildProrate();
@@ -2108,7 +2068,6 @@ main() {
       checkProrate(od);
     });
   });
-
 
   unittest.group("obj-schema-Review", () {
     unittest.test("to-json--from-json", () {
@@ -2118,7 +2077,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ReviewReplyResult", () {
     unittest.test("to-json--from-json", () {
       var o = buildReviewReplyResult();
@@ -2126,7 +2084,6 @@ main() {
       checkReviewReplyResult(od);
     });
   });
-
 
   unittest.group("obj-schema-ReviewsListResponse", () {
     unittest.test("to-json--from-json", () {
@@ -2136,7 +2093,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ReviewsReplyRequest", () {
     unittest.test("to-json--from-json", () {
       var o = buildReviewsReplyRequest();
@@ -2144,7 +2100,6 @@ main() {
       checkReviewsReplyRequest(od);
     });
   });
-
 
   unittest.group("obj-schema-ReviewsReplyResponse", () {
     unittest.test("to-json--from-json", () {
@@ -2154,7 +2109,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Season", () {
     unittest.test("to-json--from-json", () {
       var o = buildSeason();
@@ -2162,7 +2116,6 @@ main() {
       checkSeason(od);
     });
   });
-
 
   unittest.group("obj-schema-SubscriptionDeferralInfo", () {
     unittest.test("to-json--from-json", () {
@@ -2172,7 +2125,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-SubscriptionPurchase", () {
     unittest.test("to-json--from-json", () {
       var o = buildSubscriptionPurchase();
@@ -2180,7 +2132,6 @@ main() {
       checkSubscriptionPurchase(od);
     });
   });
-
 
   unittest.group("obj-schema-SubscriptionPurchasesDeferRequest", () {
     unittest.test("to-json--from-json", () {
@@ -2190,7 +2141,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-SubscriptionPurchasesDeferResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildSubscriptionPurchasesDeferResponse();
@@ -2198,7 +2148,6 @@ main() {
       checkSubscriptionPurchasesDeferResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-Testers", () {
     unittest.test("to-json--from-json", () {
@@ -2208,7 +2157,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Timestamp", () {
     unittest.test("to-json--from-json", () {
       var o = buildTimestamp();
@@ -2216,7 +2164,6 @@ main() {
       checkTimestamp(od);
     });
   });
-
 
   unittest.group("obj-schema-TokenPagination", () {
     unittest.test("to-json--from-json", () {
@@ -2226,7 +2173,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Track", () {
     unittest.test("to-json--from-json", () {
       var o = buildTrack();
@@ -2234,7 +2180,6 @@ main() {
       checkTrack(od);
     });
   });
-
 
   unittest.group("obj-schema-TracksListResponse", () {
     unittest.test("to-json--from-json", () {
@@ -2244,7 +2189,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-UserComment", () {
     unittest.test("to-json--from-json", () {
       var o = buildUserComment();
@@ -2252,7 +2196,6 @@ main() {
       checkUserComment(od);
     });
   });
-
 
   unittest.group("obj-schema-VoidedPurchase", () {
     unittest.test("to-json--from-json", () {
@@ -2262,7 +2205,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-VoidedPurchasesListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildVoidedPurchasesListResponse();
@@ -2271,10 +2213,8 @@ main() {
     });
   });
 
-
   unittest.group("resource-EditsResourceApi", () {
     unittest.test("method--commit", () {
-
       var mock = new HttpServerMock();
       api.EditsResourceApi res = new api.AndroidpublisherApi(mock).edits;
       var arg_packageName = "foo";
@@ -2284,7 +2224,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2297,27 +2238,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAppEdit());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.commit(arg_packageName, arg_editId).then(unittest.expectAsync1(((api.AppEdit response) {
+      res
+          .commit(arg_packageName, arg_editId)
+          .then(unittest.expectAsync1(((api.AppEdit response) {
         checkAppEdit(response);
       })));
     });
 
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
       api.EditsResourceApi res = new api.AndroidpublisherApi(mock).edits;
       var arg_packageName = "foo";
@@ -2327,7 +2270,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2340,25 +2284,27 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_packageName, arg_editId).then(unittest.expectAsync1((_) {}));
+      res
+          .delete(arg_packageName, arg_editId)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
       api.EditsResourceApi res = new api.AndroidpublisherApi(mock).edits;
       var arg_packageName = "foo";
@@ -2368,7 +2314,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2381,27 +2328,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAppEdit());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_packageName, arg_editId).then(unittest.expectAsync1(((api.AppEdit response) {
+      res
+          .get(arg_packageName, arg_editId)
+          .then(unittest.expectAsync1(((api.AppEdit response) {
         checkAppEdit(response);
       })));
     });
 
     unittest.test("method--insert", () {
-
       var mock = new HttpServerMock();
       api.EditsResourceApi res = new api.AndroidpublisherApi(mock).edits;
       var arg_request = buildAppEdit();
@@ -2414,7 +2363,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2427,27 +2377,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAppEdit());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_packageName).then(unittest.expectAsync1(((api.AppEdit response) {
+      res
+          .insert(arg_request, arg_packageName)
+          .then(unittest.expectAsync1(((api.AppEdit response) {
         checkAppEdit(response);
       })));
     });
 
     unittest.test("method--validate", () {
-
       var mock = new HttpServerMock();
       api.EditsResourceApi res = new api.AndroidpublisherApi(mock).edits;
       var arg_packageName = "foo";
@@ -2457,7 +2409,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2470,33 +2423,34 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAppEdit());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.validate(arg_packageName, arg_editId).then(unittest.expectAsync1(((api.AppEdit response) {
+      res
+          .validate(arg_packageName, arg_editId)
+          .then(unittest.expectAsync1(((api.AppEdit response) {
         checkAppEdit(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-EditsApklistingsResourceApi", () {
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
-      api.EditsApklistingsResourceApi res = new api.AndroidpublisherApi(mock).edits.apklistings;
+      api.EditsApklistingsResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.apklistings;
       var arg_packageName = "foo";
       var arg_editId = "foo";
       var arg_apkVersionCode = 42;
@@ -2506,7 +2460,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2519,27 +2474,30 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_packageName, arg_editId, arg_apkVersionCode, arg_language).then(unittest.expectAsync1((_) {}));
+      res
+          .delete(arg_packageName, arg_editId, arg_apkVersionCode, arg_language)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--deleteall", () {
-
       var mock = new HttpServerMock();
-      api.EditsApklistingsResourceApi res = new api.AndroidpublisherApi(mock).edits.apklistings;
+      api.EditsApklistingsResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.apklistings;
       var arg_packageName = "foo";
       var arg_editId = "foo";
       var arg_apkVersionCode = 42;
@@ -2548,7 +2506,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2561,27 +2520,30 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.deleteall(arg_packageName, arg_editId, arg_apkVersionCode).then(unittest.expectAsync1((_) {}));
+      res
+          .deleteall(arg_packageName, arg_editId, arg_apkVersionCode)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.EditsApklistingsResourceApi res = new api.AndroidpublisherApi(mock).edits.apklistings;
+      api.EditsApklistingsResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.apklistings;
       var arg_packageName = "foo";
       var arg_editId = "foo";
       var arg_apkVersionCode = 42;
@@ -2591,7 +2553,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2604,29 +2567,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildApkListing());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_packageName, arg_editId, arg_apkVersionCode, arg_language).then(unittest.expectAsync1(((api.ApkListing response) {
+      res
+          .get(arg_packageName, arg_editId, arg_apkVersionCode, arg_language)
+          .then(unittest.expectAsync1(((api.ApkListing response) {
         checkApkListing(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.EditsApklistingsResourceApi res = new api.AndroidpublisherApi(mock).edits.apklistings;
+      api.EditsApklistingsResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.apklistings;
       var arg_packageName = "foo";
       var arg_editId = "foo";
       var arg_apkVersionCode = 42;
@@ -2635,7 +2601,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2648,29 +2615,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildApkListingsListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_packageName, arg_editId, arg_apkVersionCode).then(unittest.expectAsync1(((api.ApkListingsListResponse response) {
+      res
+          .list(arg_packageName, arg_editId, arg_apkVersionCode)
+          .then(unittest.expectAsync1(((api.ApkListingsListResponse response) {
         checkApkListingsListResponse(response);
       })));
     });
 
     unittest.test("method--patch", () {
-
       var mock = new HttpServerMock();
-      api.EditsApklistingsResourceApi res = new api.AndroidpublisherApi(mock).edits.apklistings;
+      api.EditsApklistingsResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.apklistings;
       var arg_request = buildApkListing();
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -2684,7 +2654,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2697,29 +2668,33 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildApkListing());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_packageName, arg_editId, arg_apkVersionCode, arg_language).then(unittest.expectAsync1(((api.ApkListing response) {
+      res
+          .patch(arg_request, arg_packageName, arg_editId, arg_apkVersionCode,
+              arg_language)
+          .then(unittest.expectAsync1(((api.ApkListing response) {
         checkApkListing(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
-      api.EditsApklistingsResourceApi res = new api.AndroidpublisherApi(mock).edits.apklistings;
+      api.EditsApklistingsResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.apklistings;
       var arg_request = buildApkListing();
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -2733,7 +2708,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2746,33 +2722,35 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildApkListing());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_packageName, arg_editId, arg_apkVersionCode, arg_language).then(unittest.expectAsync1(((api.ApkListing response) {
+      res
+          .update(arg_request, arg_packageName, arg_editId, arg_apkVersionCode,
+              arg_language)
+          .then(unittest.expectAsync1(((api.ApkListing response) {
         checkApkListing(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-EditsApksResourceApi", () {
     unittest.test("method--addexternallyhosted", () {
-
       var mock = new HttpServerMock();
-      api.EditsApksResourceApi res = new api.AndroidpublisherApi(mock).edits.apks;
+      api.EditsApksResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.apks;
       var arg_request = buildApksAddExternallyHostedRequest();
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -2784,7 +2762,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2797,29 +2776,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildApksAddExternallyHostedResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.addexternallyhosted(arg_request, arg_packageName, arg_editId).then(unittest.expectAsync1(((api.ApksAddExternallyHostedResponse response) {
+      res.addexternallyhosted(arg_request, arg_packageName, arg_editId).then(
+          unittest
+              .expectAsync1(((api.ApksAddExternallyHostedResponse response) {
         checkApksAddExternallyHostedResponse(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.EditsApksResourceApi res = new api.AndroidpublisherApi(mock).edits.apks;
+      api.EditsApksResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.apks;
       var arg_packageName = "foo";
       var arg_editId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2827,7 +2809,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2840,21 +2823,24 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildApksListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_packageName, arg_editId).then(unittest.expectAsync1(((api.ApksListResponse response) {
+      res
+          .list(arg_packageName, arg_editId)
+          .then(unittest.expectAsync1(((api.ApksListResponse response) {
         checkApksListResponse(response);
       })));
     });
@@ -2864,7 +2850,8 @@ main() {
       // TODO: Implement tests for media download;
 
       var mock = new HttpServerMock();
-      api.EditsApksResourceApi res = new api.AndroidpublisherApi(mock).edits.apks;
+      api.EditsApksResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.apks;
       var arg_packageName = "foo";
       var arg_editId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2872,7 +2859,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2885,27 +2873,28 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildApk());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.upload(arg_packageName, arg_editId).then(unittest.expectAsync1(((api.Apk response) {
+      res
+          .upload(arg_packageName, arg_editId)
+          .then(unittest.expectAsync1(((api.Apk response) {
         checkApk(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-EditsDeobfuscationfilesResourceApi", () {
     unittest.test("method--upload", () {
@@ -2913,7 +2902,8 @@ main() {
       // TODO: Implement tests for media download;
 
       var mock = new HttpServerMock();
-      api.EditsDeobfuscationfilesResourceApi res = new api.AndroidpublisherApi(mock).edits.deobfuscationfiles;
+      api.EditsDeobfuscationfilesResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.deobfuscationfiles;
       var arg_packageName = "foo";
       var arg_editId = "foo";
       var arg_apkVersionCode = 42;
@@ -2923,7 +2913,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2936,33 +2927,36 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildDeobfuscationFilesUploadResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.upload(arg_packageName, arg_editId, arg_apkVersionCode, arg_deobfuscationFileType).then(unittest.expectAsync1(((api.DeobfuscationFilesUploadResponse response) {
+      res
+          .upload(arg_packageName, arg_editId, arg_apkVersionCode,
+              arg_deobfuscationFileType)
+          .then(unittest
+              .expectAsync1(((api.DeobfuscationFilesUploadResponse response) {
         checkDeobfuscationFilesUploadResponse(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-EditsDetailsResourceApi", () {
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.EditsDetailsResourceApi res = new api.AndroidpublisherApi(mock).edits.details;
+      api.EditsDetailsResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.details;
       var arg_packageName = "foo";
       var arg_editId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2970,7 +2964,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2983,29 +2978,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAppDetails());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_packageName, arg_editId).then(unittest.expectAsync1(((api.AppDetails response) {
+      res
+          .get(arg_packageName, arg_editId)
+          .then(unittest.expectAsync1(((api.AppDetails response) {
         checkAppDetails(response);
       })));
     });
 
     unittest.test("method--patch", () {
-
       var mock = new HttpServerMock();
-      api.EditsDetailsResourceApi res = new api.AndroidpublisherApi(mock).edits.details;
+      api.EditsDetailsResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.details;
       var arg_request = buildAppDetails();
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -3017,7 +3015,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -3030,29 +3029,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAppDetails());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_packageName, arg_editId).then(unittest.expectAsync1(((api.AppDetails response) {
+      res
+          .patch(arg_request, arg_packageName, arg_editId)
+          .then(unittest.expectAsync1(((api.AppDetails response) {
         checkAppDetails(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
-      api.EditsDetailsResourceApi res = new api.AndroidpublisherApi(mock).edits.details;
+      api.EditsDetailsResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.details;
       var arg_request = buildAppDetails();
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -3064,7 +3066,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -3077,33 +3080,34 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAppDetails());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_packageName, arg_editId).then(unittest.expectAsync1(((api.AppDetails response) {
+      res
+          .update(arg_request, arg_packageName, arg_editId)
+          .then(unittest.expectAsync1(((api.AppDetails response) {
         checkAppDetails(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-EditsExpansionfilesResourceApi", () {
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.EditsExpansionfilesResourceApi res = new api.AndroidpublisherApi(mock).edits.expansionfiles;
+      api.EditsExpansionfilesResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.expansionfiles;
       var arg_packageName = "foo";
       var arg_editId = "foo";
       var arg_apkVersionCode = 42;
@@ -3113,7 +3117,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -3126,29 +3131,33 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildExpansionFile());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_packageName, arg_editId, arg_apkVersionCode, arg_expansionFileType).then(unittest.expectAsync1(((api.ExpansionFile response) {
+      res
+          .get(arg_packageName, arg_editId, arg_apkVersionCode,
+              arg_expansionFileType)
+          .then(unittest.expectAsync1(((api.ExpansionFile response) {
         checkExpansionFile(response);
       })));
     });
 
     unittest.test("method--patch", () {
-
       var mock = new HttpServerMock();
-      api.EditsExpansionfilesResourceApi res = new api.AndroidpublisherApi(mock).edits.expansionfiles;
+      api.EditsExpansionfilesResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.expansionfiles;
       var arg_request = buildExpansionFile();
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -3162,7 +3171,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -3175,29 +3185,33 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildExpansionFile());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_packageName, arg_editId, arg_apkVersionCode, arg_expansionFileType).then(unittest.expectAsync1(((api.ExpansionFile response) {
+      res
+          .patch(arg_request, arg_packageName, arg_editId, arg_apkVersionCode,
+              arg_expansionFileType)
+          .then(unittest.expectAsync1(((api.ExpansionFile response) {
         checkExpansionFile(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
-      api.EditsExpansionfilesResourceApi res = new api.AndroidpublisherApi(mock).edits.expansionfiles;
+      api.EditsExpansionfilesResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.expansionfiles;
       var arg_request = buildExpansionFile();
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -3211,7 +3225,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -3224,21 +3239,25 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildExpansionFile());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_packageName, arg_editId, arg_apkVersionCode, arg_expansionFileType).then(unittest.expectAsync1(((api.ExpansionFile response) {
+      res
+          .update(arg_request, arg_packageName, arg_editId, arg_apkVersionCode,
+              arg_expansionFileType)
+          .then(unittest.expectAsync1(((api.ExpansionFile response) {
         checkExpansionFile(response);
       })));
     });
@@ -3248,7 +3267,8 @@ main() {
       // TODO: Implement tests for media download;
 
       var mock = new HttpServerMock();
-      api.EditsExpansionfilesResourceApi res = new api.AndroidpublisherApi(mock).edits.expansionfiles;
+      api.EditsExpansionfilesResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.expansionfiles;
       var arg_packageName = "foo";
       var arg_editId = "foo";
       var arg_apkVersionCode = 42;
@@ -3258,7 +3278,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -3271,33 +3292,36 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildExpansionFilesUploadResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.upload(arg_packageName, arg_editId, arg_apkVersionCode, arg_expansionFileType).then(unittest.expectAsync1(((api.ExpansionFilesUploadResponse response) {
+      res
+          .upload(arg_packageName, arg_editId, arg_apkVersionCode,
+              arg_expansionFileType)
+          .then(unittest
+              .expectAsync1(((api.ExpansionFilesUploadResponse response) {
         checkExpansionFilesUploadResponse(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-EditsImagesResourceApi", () {
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
-      api.EditsImagesResourceApi res = new api.AndroidpublisherApi(mock).edits.images;
+      api.EditsImagesResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.images;
       var arg_packageName = "foo";
       var arg_editId = "foo";
       var arg_language = "foo";
@@ -3308,7 +3332,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -3321,27 +3346,31 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_packageName, arg_editId, arg_language, arg_imageType, arg_imageId).then(unittest.expectAsync1((_) {}));
+      res
+          .delete(arg_packageName, arg_editId, arg_language, arg_imageType,
+              arg_imageId)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--deleteall", () {
-
       var mock = new HttpServerMock();
-      api.EditsImagesResourceApi res = new api.AndroidpublisherApi(mock).edits.images;
+      api.EditsImagesResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.images;
       var arg_packageName = "foo";
       var arg_editId = "foo";
       var arg_language = "foo";
@@ -3351,7 +3380,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -3364,29 +3394,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildImagesDeleteAllResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.deleteall(arg_packageName, arg_editId, arg_language, arg_imageType).then(unittest.expectAsync1(((api.ImagesDeleteAllResponse response) {
+      res
+          .deleteall(arg_packageName, arg_editId, arg_language, arg_imageType)
+          .then(unittest.expectAsync1(((api.ImagesDeleteAllResponse response) {
         checkImagesDeleteAllResponse(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.EditsImagesResourceApi res = new api.AndroidpublisherApi(mock).edits.images;
+      api.EditsImagesResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.images;
       var arg_packageName = "foo";
       var arg_editId = "foo";
       var arg_language = "foo";
@@ -3396,7 +3429,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -3409,21 +3443,24 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildImagesListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_packageName, arg_editId, arg_language, arg_imageType).then(unittest.expectAsync1(((api.ImagesListResponse response) {
+      res
+          .list(arg_packageName, arg_editId, arg_language, arg_imageType)
+          .then(unittest.expectAsync1(((api.ImagesListResponse response) {
         checkImagesListResponse(response);
       })));
     });
@@ -3433,7 +3470,8 @@ main() {
       // TODO: Implement tests for media download;
 
       var mock = new HttpServerMock();
-      api.EditsImagesResourceApi res = new api.AndroidpublisherApi(mock).edits.images;
+      api.EditsImagesResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.images;
       var arg_packageName = "foo";
       var arg_editId = "foo";
       var arg_language = "foo";
@@ -3443,7 +3481,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -3456,33 +3495,34 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildImagesUploadResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.upload(arg_packageName, arg_editId, arg_language, arg_imageType).then(unittest.expectAsync1(((api.ImagesUploadResponse response) {
+      res
+          .upload(arg_packageName, arg_editId, arg_language, arg_imageType)
+          .then(unittest.expectAsync1(((api.ImagesUploadResponse response) {
         checkImagesUploadResponse(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-EditsListingsResourceApi", () {
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
-      api.EditsListingsResourceApi res = new api.AndroidpublisherApi(mock).edits.listings;
+      api.EditsListingsResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.listings;
       var arg_packageName = "foo";
       var arg_editId = "foo";
       var arg_language = "foo";
@@ -3491,7 +3531,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -3504,27 +3545,30 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_packageName, arg_editId, arg_language).then(unittest.expectAsync1((_) {}));
+      res
+          .delete(arg_packageName, arg_editId, arg_language)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--deleteall", () {
-
       var mock = new HttpServerMock();
-      api.EditsListingsResourceApi res = new api.AndroidpublisherApi(mock).edits.listings;
+      api.EditsListingsResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.listings;
       var arg_packageName = "foo";
       var arg_editId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3532,7 +3576,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -3545,27 +3590,30 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.deleteall(arg_packageName, arg_editId).then(unittest.expectAsync1((_) {}));
+      res
+          .deleteall(arg_packageName, arg_editId)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.EditsListingsResourceApi res = new api.AndroidpublisherApi(mock).edits.listings;
+      api.EditsListingsResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.listings;
       var arg_packageName = "foo";
       var arg_editId = "foo";
       var arg_language = "foo";
@@ -3574,7 +3622,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -3587,29 +3636,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListing());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_packageName, arg_editId, arg_language).then(unittest.expectAsync1(((api.Listing response) {
+      res
+          .get(arg_packageName, arg_editId, arg_language)
+          .then(unittest.expectAsync1(((api.Listing response) {
         checkListing(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.EditsListingsResourceApi res = new api.AndroidpublisherApi(mock).edits.listings;
+      api.EditsListingsResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.listings;
       var arg_packageName = "foo";
       var arg_editId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3617,7 +3669,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -3630,29 +3683,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListingsListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_packageName, arg_editId).then(unittest.expectAsync1(((api.ListingsListResponse response) {
+      res
+          .list(arg_packageName, arg_editId)
+          .then(unittest.expectAsync1(((api.ListingsListResponse response) {
         checkListingsListResponse(response);
       })));
     });
 
     unittest.test("method--patch", () {
-
       var mock = new HttpServerMock();
-      api.EditsListingsResourceApi res = new api.AndroidpublisherApi(mock).edits.listings;
+      api.EditsListingsResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.listings;
       var arg_request = buildListing();
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -3665,7 +3721,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -3678,29 +3735,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListing());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_packageName, arg_editId, arg_language).then(unittest.expectAsync1(((api.Listing response) {
+      res
+          .patch(arg_request, arg_packageName, arg_editId, arg_language)
+          .then(unittest.expectAsync1(((api.Listing response) {
         checkListing(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
-      api.EditsListingsResourceApi res = new api.AndroidpublisherApi(mock).edits.listings;
+      api.EditsListingsResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.listings;
       var arg_request = buildListing();
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -3713,7 +3773,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -3726,33 +3787,34 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildListing());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_packageName, arg_editId, arg_language).then(unittest.expectAsync1(((api.Listing response) {
+      res
+          .update(arg_request, arg_packageName, arg_editId, arg_language)
+          .then(unittest.expectAsync1(((api.Listing response) {
         checkListing(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-EditsTestersResourceApi", () {
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.EditsTestersResourceApi res = new api.AndroidpublisherApi(mock).edits.testers;
+      api.EditsTestersResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.testers;
       var arg_packageName = "foo";
       var arg_editId = "foo";
       var arg_track = "foo";
@@ -3761,7 +3823,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -3774,29 +3837,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTesters());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_packageName, arg_editId, arg_track).then(unittest.expectAsync1(((api.Testers response) {
+      res
+          .get(arg_packageName, arg_editId, arg_track)
+          .then(unittest.expectAsync1(((api.Testers response) {
         checkTesters(response);
       })));
     });
 
     unittest.test("method--patch", () {
-
       var mock = new HttpServerMock();
-      api.EditsTestersResourceApi res = new api.AndroidpublisherApi(mock).edits.testers;
+      api.EditsTestersResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.testers;
       var arg_request = buildTesters();
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -3809,7 +3875,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -3822,29 +3889,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTesters());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_packageName, arg_editId, arg_track).then(unittest.expectAsync1(((api.Testers response) {
+      res
+          .patch(arg_request, arg_packageName, arg_editId, arg_track)
+          .then(unittest.expectAsync1(((api.Testers response) {
         checkTesters(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
-      api.EditsTestersResourceApi res = new api.AndroidpublisherApi(mock).edits.testers;
+      api.EditsTestersResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.testers;
       var arg_request = buildTesters();
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -3857,7 +3927,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -3870,33 +3941,34 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTesters());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_packageName, arg_editId, arg_track).then(unittest.expectAsync1(((api.Testers response) {
+      res
+          .update(arg_request, arg_packageName, arg_editId, arg_track)
+          .then(unittest.expectAsync1(((api.Testers response) {
         checkTesters(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-EditsTracksResourceApi", () {
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.EditsTracksResourceApi res = new api.AndroidpublisherApi(mock).edits.tracks;
+      api.EditsTracksResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.tracks;
       var arg_packageName = "foo";
       var arg_editId = "foo";
       var arg_track = "foo";
@@ -3905,7 +3977,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -3918,29 +3991,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTrack());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_packageName, arg_editId, arg_track).then(unittest.expectAsync1(((api.Track response) {
+      res
+          .get(arg_packageName, arg_editId, arg_track)
+          .then(unittest.expectAsync1(((api.Track response) {
         checkTrack(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.EditsTracksResourceApi res = new api.AndroidpublisherApi(mock).edits.tracks;
+      api.EditsTracksResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.tracks;
       var arg_packageName = "foo";
       var arg_editId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3948,7 +4024,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -3961,29 +4038,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTracksListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_packageName, arg_editId).then(unittest.expectAsync1(((api.TracksListResponse response) {
+      res
+          .list(arg_packageName, arg_editId)
+          .then(unittest.expectAsync1(((api.TracksListResponse response) {
         checkTracksListResponse(response);
       })));
     });
 
     unittest.test("method--patch", () {
-
       var mock = new HttpServerMock();
-      api.EditsTracksResourceApi res = new api.AndroidpublisherApi(mock).edits.tracks;
+      api.EditsTracksResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.tracks;
       var arg_request = buildTrack();
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -3996,7 +4076,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -4009,29 +4090,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTrack());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_packageName, arg_editId, arg_track).then(unittest.expectAsync1(((api.Track response) {
+      res
+          .patch(arg_request, arg_packageName, arg_editId, arg_track)
+          .then(unittest.expectAsync1(((api.Track response) {
         checkTrack(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
-      api.EditsTracksResourceApi res = new api.AndroidpublisherApi(mock).edits.tracks;
+      api.EditsTracksResourceApi res =
+          new api.AndroidpublisherApi(mock).edits.tracks;
       var arg_request = buildTrack();
       var arg_packageName = "foo";
       var arg_editId = "foo";
@@ -4044,7 +4128,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -4057,33 +4142,34 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTrack());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_packageName, arg_editId, arg_track).then(unittest.expectAsync1(((api.Track response) {
+      res
+          .update(arg_request, arg_packageName, arg_editId, arg_track)
+          .then(unittest.expectAsync1(((api.Track response) {
         checkTrack(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-EntitlementsResourceApi", () {
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.EntitlementsResourceApi res = new api.AndroidpublisherApi(mock).entitlements;
+      api.EntitlementsResourceApi res =
+          new api.AndroidpublisherApi(mock).entitlements;
       var arg_packageName = "foo";
       var arg_maxResults = 42;
       var arg_productId = "foo";
@@ -4094,7 +4180,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -4107,37 +4194,45 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["productId"].first, unittest.equals(arg_productId));
-        unittest.expect(core.int.parse(queryMap["startIndex"].first), unittest.equals(arg_startIndex));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["productId"].first, unittest.equals(arg_productId));
+        unittest.expect(core.int.parse(queryMap["startIndex"].first),
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["token"].first, unittest.equals(arg_token));
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildEntitlementsListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_packageName, maxResults: arg_maxResults, productId: arg_productId, startIndex: arg_startIndex, token: arg_token).then(unittest.expectAsync1(((api.EntitlementsListResponse response) {
+      res
+          .list(arg_packageName,
+              maxResults: arg_maxResults,
+              productId: arg_productId,
+              startIndex: arg_startIndex,
+              token: arg_token)
+          .then(unittest.expectAsync1(((api.EntitlementsListResponse response) {
         checkEntitlementsListResponse(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-InappproductsResourceApi", () {
     unittest.test("method--batch", () {
-
       var mock = new HttpServerMock();
-      api.InappproductsResourceApi res = new api.AndroidpublisherApi(mock).inappproducts;
+      api.InappproductsResourceApi res =
+          new api.AndroidpublisherApi(mock).inappproducts;
       var arg_request = buildInappproductsBatchRequest();
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.InappproductsBatchRequest.fromJson(json);
@@ -4147,11 +4242,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 33), unittest.equals("androidpublisher/v2/applications/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("androidpublisher/v2/applications/"));
         pathOffset += 33;
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("inappproducts/batch"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("inappproducts/batch"));
         pathOffset += 19;
 
         var query = (req.url).query;
@@ -4164,29 +4262,31 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildInappproductsBatchResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.batch(arg_request).then(unittest.expectAsync1(((api.InappproductsBatchResponse response) {
+      res.batch(arg_request).then(
+          unittest.expectAsync1(((api.InappproductsBatchResponse response) {
         checkInappproductsBatchResponse(response);
       })));
     });
 
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
-      api.InappproductsResourceApi res = new api.AndroidpublisherApi(mock).inappproducts;
+      api.InappproductsResourceApi res =
+          new api.AndroidpublisherApi(mock).inappproducts;
       var arg_packageName = "foo";
       var arg_sku = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4194,7 +4294,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -4207,16 +4308,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
@@ -4225,9 +4327,9 @@ main() {
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.InappproductsResourceApi res = new api.AndroidpublisherApi(mock).inappproducts;
+      api.InappproductsResourceApi res =
+          new api.AndroidpublisherApi(mock).inappproducts;
       var arg_packageName = "foo";
       var arg_sku = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4235,7 +4337,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -4248,29 +4351,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildInAppProduct());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_packageName, arg_sku).then(unittest.expectAsync1(((api.InAppProduct response) {
+      res
+          .get(arg_packageName, arg_sku)
+          .then(unittest.expectAsync1(((api.InAppProduct response) {
         checkInAppProduct(response);
       })));
     });
 
     unittest.test("method--insert", () {
-
       var mock = new HttpServerMock();
-      api.InappproductsResourceApi res = new api.AndroidpublisherApi(mock).inappproducts;
+      api.InappproductsResourceApi res =
+          new api.AndroidpublisherApi(mock).inappproducts;
       var arg_request = buildInAppProduct();
       var arg_packageName = "foo";
       var arg_autoConvertMissingPrices = true;
@@ -4282,7 +4388,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -4295,30 +4402,35 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["autoConvertMissingPrices"].first, unittest.equals("$arg_autoConvertMissingPrices"));
-
+        unittest.expect(queryMap["autoConvertMissingPrices"].first,
+            unittest.equals("$arg_autoConvertMissingPrices"));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildInAppProduct());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_packageName, autoConvertMissingPrices: arg_autoConvertMissingPrices).then(unittest.expectAsync1(((api.InAppProduct response) {
+      res
+          .insert(arg_request, arg_packageName,
+              autoConvertMissingPrices: arg_autoConvertMissingPrices)
+          .then(unittest.expectAsync1(((api.InAppProduct response) {
         checkInAppProduct(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.InappproductsResourceApi res = new api.AndroidpublisherApi(mock).inappproducts;
+      api.InappproductsResourceApi res =
+          new api.AndroidpublisherApi(mock).inappproducts;
       var arg_packageName = "foo";
       var arg_maxResults = 42;
       var arg_startIndex = 42;
@@ -4328,7 +4440,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -4341,32 +4454,41 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(core.int.parse(queryMap["startIndex"].first), unittest.equals(arg_startIndex));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(core.int.parse(queryMap["startIndex"].first),
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["token"].first, unittest.equals(arg_token));
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildInappproductsListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_packageName, maxResults: arg_maxResults, startIndex: arg_startIndex, token: arg_token).then(unittest.expectAsync1(((api.InappproductsListResponse response) {
+      res
+          .list(arg_packageName,
+              maxResults: arg_maxResults,
+              startIndex: arg_startIndex,
+              token: arg_token)
+          .then(
+              unittest.expectAsync1(((api.InappproductsListResponse response) {
         checkInappproductsListResponse(response);
       })));
     });
 
     unittest.test("method--patch", () {
-
       var mock = new HttpServerMock();
-      api.InappproductsResourceApi res = new api.AndroidpublisherApi(mock).inappproducts;
+      api.InappproductsResourceApi res =
+          new api.AndroidpublisherApi(mock).inappproducts;
       var arg_request = buildInAppProduct();
       var arg_packageName = "foo";
       var arg_sku = "foo";
@@ -4379,7 +4501,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -4392,30 +4515,35 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["autoConvertMissingPrices"].first, unittest.equals("$arg_autoConvertMissingPrices"));
-
+        unittest.expect(queryMap["autoConvertMissingPrices"].first,
+            unittest.equals("$arg_autoConvertMissingPrices"));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildInAppProduct());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_packageName, arg_sku, autoConvertMissingPrices: arg_autoConvertMissingPrices).then(unittest.expectAsync1(((api.InAppProduct response) {
+      res
+          .patch(arg_request, arg_packageName, arg_sku,
+              autoConvertMissingPrices: arg_autoConvertMissingPrices)
+          .then(unittest.expectAsync1(((api.InAppProduct response) {
         checkInAppProduct(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
-      api.InappproductsResourceApi res = new api.AndroidpublisherApi(mock).inappproducts;
+      api.InappproductsResourceApi res =
+          new api.AndroidpublisherApi(mock).inappproducts;
       var arg_request = buildInAppProduct();
       var arg_packageName = "foo";
       var arg_sku = "foo";
@@ -4428,7 +4556,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -4441,34 +4570,37 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["autoConvertMissingPrices"].first, unittest.equals("$arg_autoConvertMissingPrices"));
-
+        unittest.expect(queryMap["autoConvertMissingPrices"].first,
+            unittest.equals("$arg_autoConvertMissingPrices"));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildInAppProduct());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_packageName, arg_sku, autoConvertMissingPrices: arg_autoConvertMissingPrices).then(unittest.expectAsync1(((api.InAppProduct response) {
+      res
+          .update(arg_request, arg_packageName, arg_sku,
+              autoConvertMissingPrices: arg_autoConvertMissingPrices)
+          .then(unittest.expectAsync1(((api.InAppProduct response) {
         checkInAppProduct(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-PurchasesProductsResourceApi", () {
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.PurchasesProductsResourceApi res = new api.AndroidpublisherApi(mock).purchases.products;
+      api.PurchasesProductsResourceApi res =
+          new api.AndroidpublisherApi(mock).purchases.products;
       var arg_packageName = "foo";
       var arg_productId = "foo";
       var arg_token = "foo";
@@ -4477,7 +4609,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -4490,33 +4623,34 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildProductPurchase());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_packageName, arg_productId, arg_token).then(unittest.expectAsync1(((api.ProductPurchase response) {
+      res
+          .get(arg_packageName, arg_productId, arg_token)
+          .then(unittest.expectAsync1(((api.ProductPurchase response) {
         checkProductPurchase(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-PurchasesSubscriptionsResourceApi", () {
     unittest.test("method--cancel", () {
-
       var mock = new HttpServerMock();
-      api.PurchasesSubscriptionsResourceApi res = new api.AndroidpublisherApi(mock).purchases.subscriptions;
+      api.PurchasesSubscriptionsResourceApi res =
+          new api.AndroidpublisherApi(mock).purchases.subscriptions;
       var arg_packageName = "foo";
       var arg_subscriptionId = "foo";
       var arg_token = "foo";
@@ -4525,7 +4659,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -4538,27 +4673,30 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.cancel(arg_packageName, arg_subscriptionId, arg_token).then(unittest.expectAsync1((_) {}));
+      res
+          .cancel(arg_packageName, arg_subscriptionId, arg_token)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--defer", () {
-
       var mock = new HttpServerMock();
-      api.PurchasesSubscriptionsResourceApi res = new api.AndroidpublisherApi(mock).purchases.subscriptions;
+      api.PurchasesSubscriptionsResourceApi res =
+          new api.AndroidpublisherApi(mock).purchases.subscriptions;
       var arg_request = buildSubscriptionPurchasesDeferRequest();
       var arg_packageName = "foo";
       var arg_subscriptionId = "foo";
@@ -4571,7 +4709,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -4584,29 +4723,34 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildSubscriptionPurchasesDeferResponse());
+        var resp =
+            convert.JSON.encode(buildSubscriptionPurchasesDeferResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.defer(arg_request, arg_packageName, arg_subscriptionId, arg_token).then(unittest.expectAsync1(((api.SubscriptionPurchasesDeferResponse response) {
+      res
+          .defer(arg_request, arg_packageName, arg_subscriptionId, arg_token)
+          .then(unittest
+              .expectAsync1(((api.SubscriptionPurchasesDeferResponse response) {
         checkSubscriptionPurchasesDeferResponse(response);
       })));
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.PurchasesSubscriptionsResourceApi res = new api.AndroidpublisherApi(mock).purchases.subscriptions;
+      api.PurchasesSubscriptionsResourceApi res =
+          new api.AndroidpublisherApi(mock).purchases.subscriptions;
       var arg_packageName = "foo";
       var arg_subscriptionId = "foo";
       var arg_token = "foo";
@@ -4615,7 +4759,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -4628,29 +4773,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSubscriptionPurchase());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_packageName, arg_subscriptionId, arg_token).then(unittest.expectAsync1(((api.SubscriptionPurchase response) {
+      res
+          .get(arg_packageName, arg_subscriptionId, arg_token)
+          .then(unittest.expectAsync1(((api.SubscriptionPurchase response) {
         checkSubscriptionPurchase(response);
       })));
     });
 
     unittest.test("method--refund", () {
-
       var mock = new HttpServerMock();
-      api.PurchasesSubscriptionsResourceApi res = new api.AndroidpublisherApi(mock).purchases.subscriptions;
+      api.PurchasesSubscriptionsResourceApi res =
+          new api.AndroidpublisherApi(mock).purchases.subscriptions;
       var arg_packageName = "foo";
       var arg_subscriptionId = "foo";
       var arg_token = "foo";
@@ -4659,7 +4807,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -4672,27 +4821,30 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.refund(arg_packageName, arg_subscriptionId, arg_token).then(unittest.expectAsync1((_) {}));
+      res
+          .refund(arg_packageName, arg_subscriptionId, arg_token)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--revoke", () {
-
       var mock = new HttpServerMock();
-      api.PurchasesSubscriptionsResourceApi res = new api.AndroidpublisherApi(mock).purchases.subscriptions;
+      api.PurchasesSubscriptionsResourceApi res =
+          new api.AndroidpublisherApi(mock).purchases.subscriptions;
       var arg_packageName = "foo";
       var arg_subscriptionId = "foo";
       var arg_token = "foo";
@@ -4701,7 +4853,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -4714,31 +4867,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.revoke(arg_packageName, arg_subscriptionId, arg_token).then(unittest.expectAsync1((_) {}));
+      res
+          .revoke(arg_packageName, arg_subscriptionId, arg_token)
+          .then(unittest.expectAsync1((_) {}));
     });
-
   });
-
 
   unittest.group("resource-PurchasesVoidedpurchasesResourceApi", () {
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.PurchasesVoidedpurchasesResourceApi res = new api.AndroidpublisherApi(mock).purchases.voidedpurchases;
+      api.PurchasesVoidedpurchasesResourceApi res =
+          new api.AndroidpublisherApi(mock).purchases.voidedpurchases;
       var arg_packageName = "foo";
       var arg_endTime = "foo";
       var arg_maxResults = 42;
@@ -4750,7 +4904,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -4763,36 +4918,46 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["endTime"].first, unittest.equals(arg_endTime));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(core.int.parse(queryMap["startIndex"].first), unittest.equals(arg_startIndex));
-        unittest.expect(queryMap["startTime"].first, unittest.equals(arg_startTime));
+        unittest.expect(
+            queryMap["endTime"].first, unittest.equals(arg_endTime));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(core.int.parse(queryMap["startIndex"].first),
+            unittest.equals(arg_startIndex));
+        unittest.expect(
+            queryMap["startTime"].first, unittest.equals(arg_startTime));
         unittest.expect(queryMap["token"].first, unittest.equals(arg_token));
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildVoidedPurchasesListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_packageName, endTime: arg_endTime, maxResults: arg_maxResults, startIndex: arg_startIndex, startTime: arg_startTime, token: arg_token).then(unittest.expectAsync1(((api.VoidedPurchasesListResponse response) {
+      res
+          .list(arg_packageName,
+              endTime: arg_endTime,
+              maxResults: arg_maxResults,
+              startIndex: arg_startIndex,
+              startTime: arg_startTime,
+              token: arg_token)
+          .then(unittest
+              .expectAsync1(((api.VoidedPurchasesListResponse response) {
         checkVoidedPurchasesListResponse(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-ReviewsResourceApi", () {
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
       api.ReviewsResourceApi res = new api.AndroidpublisherApi(mock).reviews;
       var arg_packageName = "foo";
@@ -4803,7 +4968,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -4816,28 +4982,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["translationLanguage"].first, unittest.equals(arg_translationLanguage));
-
+        unittest.expect(queryMap["translationLanguage"].first,
+            unittest.equals(arg_translationLanguage));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildReview());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_packageName, arg_reviewId, translationLanguage: arg_translationLanguage).then(unittest.expectAsync1(((api.Review response) {
+      res
+          .get(arg_packageName, arg_reviewId,
+              translationLanguage: arg_translationLanguage)
+          .then(unittest.expectAsync1(((api.Review response) {
         checkReview(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
       api.ReviewsResourceApi res = new api.AndroidpublisherApi(mock).reviews;
       var arg_packageName = "foo";
@@ -4850,7 +5020,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -4863,31 +5034,40 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(core.int.parse(queryMap["startIndex"].first), unittest.equals(arg_startIndex));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(core.int.parse(queryMap["startIndex"].first),
+            unittest.equals(arg_startIndex));
         unittest.expect(queryMap["token"].first, unittest.equals(arg_token));
-        unittest.expect(queryMap["translationLanguage"].first, unittest.equals(arg_translationLanguage));
-
+        unittest.expect(queryMap["translationLanguage"].first,
+            unittest.equals(arg_translationLanguage));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildReviewsListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_packageName, maxResults: arg_maxResults, startIndex: arg_startIndex, token: arg_token, translationLanguage: arg_translationLanguage).then(unittest.expectAsync1(((api.ReviewsListResponse response) {
+      res
+          .list(arg_packageName,
+              maxResults: arg_maxResults,
+              startIndex: arg_startIndex,
+              token: arg_token,
+              translationLanguage: arg_translationLanguage)
+          .then(unittest.expectAsync1(((api.ReviewsListResponse response) {
         checkReviewsListResponse(response);
       })));
     });
 
     unittest.test("method--reply", () {
-
       var mock = new HttpServerMock();
       api.ReviewsResourceApi res = new api.AndroidpublisherApi(mock).reviews;
       var arg_request = buildReviewsReplyRequest();
@@ -4901,7 +5081,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -4914,27 +5095,26 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildReviewsReplyResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.reply(arg_request, arg_packageName, arg_reviewId).then(unittest.expectAsync1(((api.ReviewsReplyResponse response) {
+      res
+          .reply(arg_request, arg_packageName, arg_reviewId)
+          .then(unittest.expectAsync1(((api.ReviewsReplyResponse response) {
         checkReviewsReplyResponse(response);
       })));
     });
-
   });
-
-
 }
-

@@ -15,11 +15,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
         "prettyPrint": {
             "default": "true",
             "description": "Returns response with indentations and line breaks.",
@@ -70,13 +65,13 @@
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "description": "OAuth access token.",
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
@@ -100,6 +95,11 @@
             "description": "OAuth bearer token.",
             "location": "query",
             "type": "string"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
         }
     },
     "protocol": "rest",
@@ -112,12 +112,6 @@
                     "id": "kgsearch.entities.search",
                     "parameterOrder": [],
                     "parameters": {
-                        "limit": {
-                            "description": "Limits the number of entities to be returned.",
-                            "format": "int32",
-                            "location": "query",
-                            "type": "integer"
-                        },
                         "prefix": {
                             "description": "Enables prefix match against names and aliases of entities",
                             "location": "query",
@@ -150,6 +144,12 @@
                             "location": "query",
                             "repeated": true,
                             "type": "string"
+                        },
+                        "limit": {
+                            "description": "Limits the number of entities to be returned.",
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
                         }
                     },
                     "path": "v1/entities:search",

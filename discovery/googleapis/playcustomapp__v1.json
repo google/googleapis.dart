@@ -10,7 +10,7 @@
     },
     "basePath": "/playcustomapp/v1/accounts/",
     "baseUrl": "https://www.googleapis.com/playcustomapp/v1/accounts/",
-    "batchPath": "batch",
+    "batchPath": "batch/playcustomapp/v1",
     "description": "An API to publish custom Android apps.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/android/work/play/custom-app-api",

@@ -19,7 +19,7 @@
     },
     "basePath": "/replicapool/v1beta2/projects/",
     "baseUrl": "https://www.googleapis.com/replicapool/v1beta2/projects/",
-    "batchPath": "batch",
+    "batchPath": "batch/replicapool/v1beta2",
     "description": "[Deprecated. Please use Instance Group Manager in Compute API] Provides groups of homogenous Compute Engine instances.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/instance-groups/manager/v1beta2",

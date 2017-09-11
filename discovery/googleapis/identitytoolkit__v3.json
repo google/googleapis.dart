@@ -13,12 +13,12 @@
     },
     "basePath": "/identitytoolkit/v3/relyingparty/",
     "baseUrl": "https://www.googleapis.com/identitytoolkit/v3/relyingparty/",
-    "batchPath": "batch",
+    "batchPath": "batch/identitytoolkit/v3",
     "canonicalName": "Identity Toolkit",
     "description": "Help the third party sites to implement federated login.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/identity-toolkit/v3/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/lY4purhHKClSF7bHp4Xq20FjMmM\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/YDuUtEWk-s4RoFmU1uyfiL_piZ0\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -216,6 +216,21 @@
                         "https://www.googleapis.com/auth/cloud-platform"
                     ]
                 },
+                "sendVerificationCode": {
+                    "description": "Send SMS verification code.",
+                    "httpMethod": "POST",
+                    "id": "identitytoolkit.relyingparty.sendVerificationCode",
+                    "path": "sendVerificationCode",
+                    "request": {
+                        "$ref": "IdentitytoolkitRelyingpartySendVerificationCodeRequest"
+                    },
+                    "response": {
+                        "$ref": "IdentitytoolkitRelyingpartySendVerificationCodeResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
                 "setAccountInfo": {
                     "description": "Set account info for a user.",
                     "httpMethod": "POST",
@@ -336,11 +351,26 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform"
                     ]
+                },
+                "verifyPhoneNumber": {
+                    "description": "Verifies ownership of a phone number and creates/updates the user account accordingly.",
+                    "httpMethod": "POST",
+                    "id": "identitytoolkit.relyingparty.verifyPhoneNumber",
+                    "path": "verifyPhoneNumber",
+                    "request": {
+                        "$ref": "IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest"
+                    },
+                    "response": {
+                        "$ref": "IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
                 }
             }
         }
     },
-    "revision": "20170803",
+    "revision": "20170828",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CreateAuthUriResponse": {
@@ -751,6 +781,40 @@
             },
             "type": "object"
         },
+        "IdentitytoolkitRelyingpartySendVerificationCodeRequest": {
+            "description": "Request for Identitytoolkit-SendVerificationCode",
+            "id": "IdentitytoolkitRelyingpartySendVerificationCodeRequest",
+            "properties": {
+                "iosReceipt": {
+                    "description": "Receipt of successful app token validation with APNS.",
+                    "type": "string"
+                },
+                "iosSecret": {
+                    "description": "Secret delivered to iOS app via APNS.",
+                    "type": "string"
+                },
+                "phoneNumber": {
+                    "description": "The phone number to send the verification code to in E.164 format.",
+                    "type": "string"
+                },
+                "recaptchaToken": {
+                    "description": "Recaptcha solution.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "IdentitytoolkitRelyingpartySendVerificationCodeResponse": {
+            "description": "Response for Identitytoolkit-SendVerificationCode",
+            "id": "IdentitytoolkitRelyingpartySendVerificationCodeResponse",
+            "properties": {
+                "sessionInfo": {
+                    "description": "Encrypted session information",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "IdentitytoolkitRelyingpartySetAccountInfoRequest": {
             "description": "Request to set the account information.",
             "id": "IdentitytoolkitRelyingpartySetAccountInfoRequest",
@@ -766,6 +830,10 @@
                 "createdAt": {
                     "description": "The timestamp when the account is created.",
                     "format": "int64",
+                    "type": "string"
+                },
+                "customAttributes": {
+                    "description": "The custom attributes to be set in the user's id token.",
                     "type": "string"
                 },
                 "delegatedProjectNumber": {
@@ -1017,10 +1085,23 @@
                     "description": "Whether allow overwrite existing account when user local_id exists.",
                     "type": "boolean"
                 },
+                "blockSize": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "cpuMemCost": {
+                    "description": "The following 4 fields are for standard scrypt algorithm.",
+                    "format": "int32",
+                    "type": "integer"
+                },
                 "delegatedProjectNumber": {
                     "description": "GCP project number of the requesting delegated app. Currently only intended for Firebase V1 migration.",
                     "format": "int64",
                     "type": "string"
+                },
+                "dkLen": {
+                    "format": "int32",
+                    "type": "integer"
                 },
                 "hashAlgorithm": {
                     "description": "The password hash algorithm.",
@@ -1028,6 +1109,10 @@
                 },
                 "memoryCost": {
                     "description": "Memory cost for hash calculation. Used by scrypt similar algorithms.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "parallelization": {
                     "format": "int32",
                     "type": "integer"
                 },
@@ -1180,6 +1265,75 @@
                 "returnSecureToken": {
                     "description": "Whether return sts id token and refresh token instead of gitkit token.",
                     "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest": {
+            "description": "Request for Identitytoolkit-VerifyPhoneNumber",
+            "id": "IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest",
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "idToken": {
+                    "type": "string"
+                },
+                "operation": {
+                    "type": "string"
+                },
+                "phoneNumber": {
+                    "type": "string"
+                },
+                "sessionInfo": {
+                    "description": "The session info previously returned by IdentityToolkit-SendVerificationCode.",
+                    "type": "string"
+                },
+                "temporaryProof": {
+                    "type": "string"
+                },
+                "verificationProof": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse": {
+            "description": "Response for Identitytoolkit-VerifyPhoneNumber",
+            "id": "IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse",
+            "properties": {
+                "expiresIn": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "idToken": {
+                    "type": "string"
+                },
+                "isNewUser": {
+                    "type": "boolean"
+                },
+                "localId": {
+                    "type": "string"
+                },
+                "phoneNumber": {
+                    "type": "string"
+                },
+                "refreshToken": {
+                    "type": "string"
+                },
+                "temporaryProof": {
+                    "type": "string"
+                },
+                "temporaryProofExpiresIn": {
+                    "format": "int64",
+                    "type": "string"
+                },
+                "verificationProof": {
+                    "type": "string"
+                },
+                "verificationProofExpiresIn": {
+                    "format": "int64",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1464,6 +1618,10 @@
                 "createdAt": {
                     "description": "User creation timestamp.",
                     "format": "int64",
+                    "type": "string"
+                },
+                "customAttributes": {
+                    "description": "The custom attributes to be set in the user's id token.",
                     "type": "string"
                 },
                 "customAuth": {
@@ -1761,6 +1919,10 @@
                 "idToken": {
                     "description": "The GITKit token for authenticated user.",
                     "type": "string"
+                },
+                "isNewUser": {
+                    "description": "True if it's a new user sign-in, false if it's a returning user.",
+                    "type": "boolean"
                 },
                 "kind": {
                     "default": "identitytoolkit#VerifyCustomTokenResponse",

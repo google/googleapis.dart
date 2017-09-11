@@ -22,12 +22,12 @@
     },
     "basePath": "/youtube/analytics/v1/",
     "baseUrl": "https://www.googleapis.com/youtube/analytics/v1/",
-    "batchPath": "batch",
+    "batchPath": "batch/youtubeAnalytics/v1",
     "canonicalName": "YouTube Analytics",
     "description": "Retrieves your YouTube Analytics data.",
     "discoveryVersion": "v1",
     "documentationLink": "http://developers.google.com/youtube/analytics/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/TvevO0i85_AzdiS9MU7EZdRtGY0\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/N9vV6VF7DwgP1MckVMg5KM5Qccs\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/youtube-16.png",
         "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -381,7 +381,7 @@
             }
         }
     },
-    "revision": "20170816",
+    "revision": "20170906",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Group": {

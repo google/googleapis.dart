@@ -25,7 +25,7 @@
     },
     "basePath": "/youtube/v3/",
     "baseUrl": "https://www.googleapis.com/youtube/v3/",
-    "batchPath": "batch",
+    "batchPath": "batch/youtube/v3",
     "canonicalName": "YouTube",
     "description": "Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.",
     "discoveryVersion": "v1",

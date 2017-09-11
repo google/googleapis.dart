@@ -9,65 +9,69 @@ import 'dart:convert' as convert;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
-    ApiRequestError, DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
+    show ApiRequestError, DetailedApiRequestError;
 
 const core.String USER_AGENT = 'dart-api-client books/v1';
 
-/** Searches for books and manages your Google Books library. */
+/// Searches for books and manages your Google Books library.
 class BooksApi {
-  /** Manage your books */
+  /// Manage your books
   static const BooksScope = "https://www.googleapis.com/auth/books";
-
 
   final commons.ApiRequester _requester;
 
-  BookshelvesResourceApi get bookshelves => new BookshelvesResourceApi(_requester);
-  CloudloadingResourceApi get cloudloading => new CloudloadingResourceApi(_requester);
+  BookshelvesResourceApi get bookshelves =>
+      new BookshelvesResourceApi(_requester);
+  CloudloadingResourceApi get cloudloading =>
+      new CloudloadingResourceApi(_requester);
   DictionaryResourceApi get dictionary => new DictionaryResourceApi(_requester);
   LayersResourceApi get layers => new LayersResourceApi(_requester);
   MyconfigResourceApi get myconfig => new MyconfigResourceApi(_requester);
   MylibraryResourceApi get mylibrary => new MylibraryResourceApi(_requester);
-  NotificationResourceApi get notification => new NotificationResourceApi(_requester);
+  NotificationResourceApi get notification =>
+      new NotificationResourceApi(_requester);
   OnboardingResourceApi get onboarding => new OnboardingResourceApi(_requester);
-  PersonalizedstreamResourceApi get personalizedstream => new PersonalizedstreamResourceApi(_requester);
+  PersonalizedstreamResourceApi get personalizedstream =>
+      new PersonalizedstreamResourceApi(_requester);
   PromoofferResourceApi get promooffer => new PromoofferResourceApi(_requester);
   SeriesResourceApi get series => new SeriesResourceApi(_requester);
   VolumesResourceApi get volumes => new VolumesResourceApi(_requester);
 
-  BooksApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "books/v1/"}) :
-      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+  BooksApi(http.Client client,
+      {core.String rootUrl: "https://www.googleapis.com/",
+      core.String servicePath: "books/v1/"})
+      : _requester =
+            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
-
 
 class BookshelvesResourceApi {
   final commons.ApiRequester _requester;
 
-  BookshelvesVolumesResourceApi get volumes => new BookshelvesVolumesResourceApi(_requester);
+  BookshelvesVolumesResourceApi get volumes =>
+      new BookshelvesVolumesResourceApi(_requester);
 
-  BookshelvesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  BookshelvesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Retrieves metadata for a specific bookshelf for the specified user.
-   *
-   * Request parameters:
-   *
-   * [userId] - ID of user for whom to retrieve bookshelves.
-   *
-   * [shelf] - ID of bookshelf to retrieve.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * Completes with a [Bookshelf].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Bookshelf> get(core.String userId, core.String shelf, {core.String source}) {
+  /// Retrieves metadata for a specific bookshelf for the specified user.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - ID of user for whom to retrieve bookshelves.
+  ///
+  /// [shelf] - ID of bookshelf to retrieve.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// Completes with a [Bookshelf].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Bookshelf> get(core.String userId, core.String shelf,
+      {core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -85,35 +89,35 @@ class BookshelvesResourceApi {
       _queryParams["source"] = [source];
     }
 
-    _url = 'users/' + commons.Escaper.ecapeVariable('$userId') + '/bookshelves/' + commons.Escaper.ecapeVariable('$shelf');
+    _url = 'users/' +
+        commons.Escaper.ecapeVariable('$userId') +
+        '/bookshelves/' +
+        commons.Escaper.ecapeVariable('$shelf');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Bookshelf.fromJson(data));
   }
 
-  /**
-   * Retrieves a list of public bookshelves for the specified user.
-   *
-   * Request parameters:
-   *
-   * [userId] - ID of user for whom to retrieve bookshelves.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * Completes with a [Bookshelves].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Retrieves a list of public bookshelves for the specified user.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - ID of user for whom to retrieve bookshelves.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// Completes with a [Bookshelves].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Bookshelves> list(core.String userId, {core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -131,51 +135,51 @@ class BookshelvesResourceApi {
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userId') + '/bookshelves';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Bookshelves.fromJson(data));
   }
-
 }
-
 
 class BookshelvesVolumesResourceApi {
   final commons.ApiRequester _requester;
 
-  BookshelvesVolumesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  BookshelvesVolumesResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Retrieves volumes in a specific bookshelf for the specified user.
-   *
-   * Request parameters:
-   *
-   * [userId] - ID of user for whom to retrieve bookshelf volumes.
-   *
-   * [shelf] - ID of bookshelf to retrieve volumes.
-   *
-   * [maxResults] - Maximum number of results to return
-   *
-   * [showPreorders] - Set to true to show pre-ordered books. Defaults to false.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * [startIndex] - Index of the first element to return (starts at 0)
-   *
-   * Completes with a [Volumes].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Volumes> list(core.String userId, core.String shelf, {core.int maxResults, core.bool showPreorders, core.String source, core.int startIndex}) {
+  /// Retrieves volumes in a specific bookshelf for the specified user.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - ID of user for whom to retrieve bookshelf volumes.
+  ///
+  /// [shelf] - ID of bookshelf to retrieve volumes.
+  ///
+  /// [maxResults] - Maximum number of results to return
+  ///
+  /// [showPreorders] - Set to true to show pre-ordered books. Defaults to
+  /// false.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// [startIndex] - Index of the first element to return (starts at 0)
+  ///
+  /// Completes with a [Volumes].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Volumes> list(core.String userId, core.String shelf,
+      {core.int maxResults,
+      core.bool showPreorders,
+      core.String source,
+      core.int startIndex}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -202,50 +206,52 @@ class BookshelvesVolumesResourceApi {
       _queryParams["startIndex"] = ["${startIndex}"];
     }
 
-    _url = 'users/' + commons.Escaper.ecapeVariable('$userId') + '/bookshelves/' + commons.Escaper.ecapeVariable('$shelf') + '/volumes';
+    _url = 'users/' +
+        commons.Escaper.ecapeVariable('$userId') +
+        '/bookshelves/' +
+        commons.Escaper.ecapeVariable('$shelf') +
+        '/volumes';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Volumes.fromJson(data));
   }
-
 }
-
 
 class CloudloadingResourceApi {
   final commons.ApiRequester _requester;
 
-  CloudloadingResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  CloudloadingResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Request parameters:
-   *
-   * [driveDocumentId] - A drive document id. The upload_client_token must not
-   * be set.
-   *
-   * [mimeType] - The document MIME type. It can be set only if the
-   * drive_document_id is set.
-   *
-   * [name] - The document name. It can be set only if the drive_document_id is
-   * set.
-   *
-   * [uploadClientToken] - null
-   *
-   * Completes with a [BooksCloudloadingResource].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<BooksCloudloadingResource> addBook({core.String driveDocumentId, core.String mimeType, core.String name, core.String uploadClientToken}) {
+  /// Request parameters:
+  ///
+  /// [driveDocumentId] - A drive document id. The upload_client_token must not
+  /// be set.
+  ///
+  /// [mimeType] - The document MIME type. It can be set only if the
+  /// drive_document_id is set.
+  ///
+  /// [name] - The document name. It can be set only if the drive_document_id is
+  /// set.
+  ///
+  /// [uploadClientToken] - null
+  ///
+  /// Completes with a [BooksCloudloadingResource].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BooksCloudloadingResource> addBook(
+      {core.String driveDocumentId,
+      core.String mimeType,
+      core.String name,
+      core.String uploadClientToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -268,29 +274,27 @@ class CloudloadingResourceApi {
 
     _url = 'cloudloading/addBook';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new BooksCloudloadingResource.fromJson(data));
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new BooksCloudloadingResource.fromJson(data));
   }
 
-  /**
-   * Remove the book and its contents
-   *
-   * Request parameters:
-   *
-   * [volumeId] - The id of the book to be removed.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Remove the book and its contents
+  ///
+  /// Request parameters:
+  ///
+  /// [volumeId] - The id of the book to be removed.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future deleteBook(core.String volumeId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -308,30 +312,28 @@ class CloudloadingResourceApi {
 
     _url = 'cloudloading/deleteBook';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [BooksCloudloadingResource].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<BooksCloudloadingResource> updateBook(BooksCloudloadingResource request) {
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [BooksCloudloadingResource].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BooksCloudloadingResource> updateBook(
+      BooksCloudloadingResource request) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -345,40 +347,35 @@ class CloudloadingResourceApi {
 
     _url = 'cloudloading/updateBook';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new BooksCloudloadingResource.fromJson(data));
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new BooksCloudloadingResource.fromJson(data));
   }
-
 }
-
 
 class DictionaryResourceApi {
   final commons.ApiRequester _requester;
 
-  DictionaryResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  DictionaryResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Returns a list of offline dictionary metadata available
-   *
-   * Request parameters:
-   *
-   * [cpksver] - The device/version ID from which to request the data.
-   *
-   * Completes with a [Metadata].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Returns a list of offline dictionary metadata available
+  ///
+  /// Request parameters:
+  ///
+  /// [cpksver] - The device/version ID from which to request the data.
+  ///
+  /// Completes with a [Metadata].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Metadata> listOfflineMetadata(core.String cpksver) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -394,50 +391,47 @@ class DictionaryResourceApi {
 
     _url = 'dictionary/listOfflineMetadata';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Metadata.fromJson(data));
   }
-
 }
-
 
 class LayersResourceApi {
   final commons.ApiRequester _requester;
 
-  LayersAnnotationDataResourceApi get annotationData => new LayersAnnotationDataResourceApi(_requester);
-  LayersVolumeAnnotationsResourceApi get volumeAnnotations => new LayersVolumeAnnotationsResourceApi(_requester);
+  LayersAnnotationDataResourceApi get annotationData =>
+      new LayersAnnotationDataResourceApi(_requester);
+  LayersVolumeAnnotationsResourceApi get volumeAnnotations =>
+      new LayersVolumeAnnotationsResourceApi(_requester);
 
-  LayersResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  LayersResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Gets the layer summary for a volume.
-   *
-   * Request parameters:
-   *
-   * [volumeId] - The volume to retrieve layers for.
-   *
-   * [summaryId] - The ID for the layer to get the summary for.
-   *
-   * [contentVersion] - The content version for the requested volume.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * Completes with a [Layersummary].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Layersummary> get(core.String volumeId, core.String summaryId, {core.String contentVersion, core.String source}) {
+  /// Gets the layer summary for a volume.
+  ///
+  /// Request parameters:
+  ///
+  /// [volumeId] - The volume to retrieve layers for.
+  ///
+  /// [summaryId] - The ID for the layer to get the summary for.
+  ///
+  /// [contentVersion] - The content version for the requested volume.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// Completes with a [Layersummary].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Layersummary> get(core.String volumeId, core.String summaryId,
+      {core.String contentVersion, core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -458,43 +452,47 @@ class LayersResourceApi {
       _queryParams["source"] = [source];
     }
 
-    _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId') + '/layersummary/' + commons.Escaper.ecapeVariable('$summaryId');
+    _url = 'volumes/' +
+        commons.Escaper.ecapeVariable('$volumeId') +
+        '/layersummary/' +
+        commons.Escaper.ecapeVariable('$summaryId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Layersummary.fromJson(data));
   }
 
-  /**
-   * List the layer summaries for a volume.
-   *
-   * Request parameters:
-   *
-   * [volumeId] - The volume to retrieve layers for.
-   *
-   * [contentVersion] - The content version for the requested volume.
-   *
-   * [maxResults] - Maximum number of results to return
-   * Value must be between "0" and "200".
-   *
-   * [pageToken] - The value of the nextToken from the previous page.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * Completes with a [Layersummaries].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Layersummaries> list(core.String volumeId, {core.String contentVersion, core.int maxResults, core.String pageToken, core.String source}) {
+  /// List the layer summaries for a volume.
+  ///
+  /// Request parameters:
+  ///
+  /// [volumeId] - The volume to retrieve layers for.
+  ///
+  /// [contentVersion] - The content version for the requested volume.
+  ///
+  /// [maxResults] - Maximum number of results to return
+  /// Value must be between "0" and "200".
+  ///
+  /// [pageToken] - The value of the nextToken from the previous page.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// Completes with a [Layersummaries].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Layersummaries> list(core.String volumeId,
+      {core.String contentVersion,
+      core.int maxResults,
+      core.String pageToken,
+      core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -518,66 +516,70 @@ class LayersResourceApi {
       _queryParams["source"] = [source];
     }
 
-    _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId') + '/layersummary';
+    _url = 'volumes/' +
+        commons.Escaper.ecapeVariable('$volumeId') +
+        '/layersummary';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Layersummaries.fromJson(data));
   }
-
 }
-
 
 class LayersAnnotationDataResourceApi {
   final commons.ApiRequester _requester;
 
-  LayersAnnotationDataResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  LayersAnnotationDataResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Gets the annotation data.
-   *
-   * Request parameters:
-   *
-   * [volumeId] - The volume to retrieve annotations for.
-   *
-   * [layerId] - The ID for the layer to get the annotations.
-   *
-   * [annotationDataId] - The ID of the annotation data to retrieve.
-   *
-   * [contentVersion] - The content version for the volume you are trying to
-   * retrieve.
-   *
-   * [allowWebDefinitions] - For the dictionary layer. Whether or not to allow
-   * web definitions.
-   *
-   * [h] - The requested pixel height for any images. If height is provided
-   * width must also be provided.
-   *
-   * [locale] - The locale information for the data. ISO-639-1 language and
-   * ISO-3166-1 country code. Ex: 'en_US'.
-   *
-   * [scale] - The requested scale for the image.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * [w] - The requested pixel width for any images. If width is provided height
-   * must also be provided.
-   *
-   * Completes with a [Annotationdata].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Annotationdata> get(core.String volumeId, core.String layerId, core.String annotationDataId, core.String contentVersion, {core.bool allowWebDefinitions, core.int h, core.String locale, core.int scale, core.String source, core.int w}) {
+  /// Gets the annotation data.
+  ///
+  /// Request parameters:
+  ///
+  /// [volumeId] - The volume to retrieve annotations for.
+  ///
+  /// [layerId] - The ID for the layer to get the annotations.
+  ///
+  /// [annotationDataId] - The ID of the annotation data to retrieve.
+  ///
+  /// [contentVersion] - The content version for the volume you are trying to
+  /// retrieve.
+  ///
+  /// [allowWebDefinitions] - For the dictionary layer. Whether or not to allow
+  /// web definitions.
+  ///
+  /// [h] - The requested pixel height for any images. If height is provided
+  /// width must also be provided.
+  ///
+  /// [locale] - The locale information for the data. ISO-639-1 language and
+  /// ISO-3166-1 country code. Ex: 'en_US'.
+  ///
+  /// [scale] - The requested scale for the image.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// [w] - The requested pixel width for any images. If width is provided
+  /// height must also be provided.
+  ///
+  /// Completes with a [Annotationdata].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Annotationdata> get(core.String volumeId, core.String layerId,
+      core.String annotationDataId, core.String contentVersion,
+      {core.bool allowWebDefinitions,
+      core.int h,
+      core.String locale,
+      core.int scale,
+      core.String source,
+      core.int w}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -617,65 +619,78 @@ class LayersAnnotationDataResourceApi {
       _queryParams["w"] = ["${w}"];
     }
 
-    _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId') + '/layers/' + commons.Escaper.ecapeVariable('$layerId') + '/data/' + commons.Escaper.ecapeVariable('$annotationDataId');
+    _url = 'volumes/' +
+        commons.Escaper.ecapeVariable('$volumeId') +
+        '/layers/' +
+        commons.Escaper.ecapeVariable('$layerId') +
+        '/data/' +
+        commons.Escaper.ecapeVariable('$annotationDataId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Annotationdata.fromJson(data));
   }
 
-  /**
-   * Gets the annotation data for a volume and layer.
-   *
-   * Request parameters:
-   *
-   * [volumeId] - The volume to retrieve annotation data for.
-   *
-   * [layerId] - The ID for the layer to get the annotation data.
-   *
-   * [contentVersion] - The content version for the requested volume.
-   *
-   * [annotationDataId] - The list of Annotation Data Ids to retrieve.
-   * Pagination is ignored if this is set.
-   *
-   * [h] - The requested pixel height for any images. If height is provided
-   * width must also be provided.
-   *
-   * [locale] - The locale information for the data. ISO-639-1 language and
-   * ISO-3166-1 country code. Ex: 'en_US'.
-   *
-   * [maxResults] - Maximum number of results to return
-   * Value must be between "0" and "200".
-   *
-   * [pageToken] - The value of the nextToken from the previous page.
-   *
-   * [scale] - The requested scale for the image.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * [updatedMax] - RFC 3339 timestamp to restrict to items updated prior to
-   * this timestamp (exclusive).
-   *
-   * [updatedMin] - RFC 3339 timestamp to restrict to items updated since this
-   * timestamp (inclusive).
-   *
-   * [w] - The requested pixel width for any images. If width is provided height
-   * must also be provided.
-   *
-   * Completes with a [Annotationsdata].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Annotationsdata> list(core.String volumeId, core.String layerId, core.String contentVersion, {core.List<core.String> annotationDataId, core.int h, core.String locale, core.int maxResults, core.String pageToken, core.int scale, core.String source, core.String updatedMax, core.String updatedMin, core.int w}) {
+  /// Gets the annotation data for a volume and layer.
+  ///
+  /// Request parameters:
+  ///
+  /// [volumeId] - The volume to retrieve annotation data for.
+  ///
+  /// [layerId] - The ID for the layer to get the annotation data.
+  ///
+  /// [contentVersion] - The content version for the requested volume.
+  ///
+  /// [annotationDataId] - The list of Annotation Data Ids to retrieve.
+  /// Pagination is ignored if this is set.
+  ///
+  /// [h] - The requested pixel height for any images. If height is provided
+  /// width must also be provided.
+  ///
+  /// [locale] - The locale information for the data. ISO-639-1 language and
+  /// ISO-3166-1 country code. Ex: 'en_US'.
+  ///
+  /// [maxResults] - Maximum number of results to return
+  /// Value must be between "0" and "200".
+  ///
+  /// [pageToken] - The value of the nextToken from the previous page.
+  ///
+  /// [scale] - The requested scale for the image.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// [updatedMax] - RFC 3339 timestamp to restrict to items updated prior to
+  /// this timestamp (exclusive).
+  ///
+  /// [updatedMin] - RFC 3339 timestamp to restrict to items updated since this
+  /// timestamp (inclusive).
+  ///
+  /// [w] - The requested pixel width for any images. If width is provided
+  /// height must also be provided.
+  ///
+  /// Completes with a [Annotationsdata].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Annotationsdata> list(
+      core.String volumeId, core.String layerId, core.String contentVersion,
+      {core.List<core.String> annotationDataId,
+      core.int h,
+      core.String locale,
+      core.int maxResults,
+      core.String pageToken,
+      core.int scale,
+      core.String source,
+      core.String updatedMax,
+      core.String updatedMin,
+      core.int w}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -724,52 +739,53 @@ class LayersAnnotationDataResourceApi {
       _queryParams["w"] = ["${w}"];
     }
 
-    _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId') + '/layers/' + commons.Escaper.ecapeVariable('$layerId') + '/data';
+    _url = 'volumes/' +
+        commons.Escaper.ecapeVariable('$volumeId') +
+        '/layers/' +
+        commons.Escaper.ecapeVariable('$layerId') +
+        '/data';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Annotationsdata.fromJson(data));
   }
-
 }
-
 
 class LayersVolumeAnnotationsResourceApi {
   final commons.ApiRequester _requester;
 
-  LayersVolumeAnnotationsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  LayersVolumeAnnotationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Gets the volume annotation.
-   *
-   * Request parameters:
-   *
-   * [volumeId] - The volume to retrieve annotations for.
-   *
-   * [layerId] - The ID for the layer to get the annotations.
-   *
-   * [annotationId] - The ID of the volume annotation to retrieve.
-   *
-   * [locale] - The locale information for the data. ISO-639-1 language and
-   * ISO-3166-1 country code. Ex: 'en_US'.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * Completes with a [Volumeannotation].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Volumeannotation> get(core.String volumeId, core.String layerId, core.String annotationId, {core.String locale, core.String source}) {
+  /// Gets the volume annotation.
+  ///
+  /// Request parameters:
+  ///
+  /// [volumeId] - The volume to retrieve annotations for.
+  ///
+  /// [layerId] - The ID for the layer to get the annotations.
+  ///
+  /// [annotationId] - The ID of the volume annotation to retrieve.
+  ///
+  /// [locale] - The locale information for the data. ISO-639-1 language and
+  /// ISO-3166-1 country code. Ex: 'en_US'.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// Completes with a [Volumeannotation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Volumeannotation> get(
+      core.String volumeId, core.String layerId, core.String annotationId,
+      {core.String locale, core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -793,68 +809,83 @@ class LayersVolumeAnnotationsResourceApi {
       _queryParams["source"] = [source];
     }
 
-    _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId') + '/layers/' + commons.Escaper.ecapeVariable('$layerId') + '/annotations/' + commons.Escaper.ecapeVariable('$annotationId');
+    _url = 'volumes/' +
+        commons.Escaper.ecapeVariable('$volumeId') +
+        '/layers/' +
+        commons.Escaper.ecapeVariable('$layerId') +
+        '/annotations/' +
+        commons.Escaper.ecapeVariable('$annotationId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Volumeannotation.fromJson(data));
   }
 
-  /**
-   * Gets the volume annotations for a volume and layer.
-   *
-   * Request parameters:
-   *
-   * [volumeId] - The volume to retrieve annotations for.
-   *
-   * [layerId] - The ID for the layer to get the annotations.
-   *
-   * [contentVersion] - The content version for the requested volume.
-   *
-   * [endOffset] - The end offset to end retrieving data from.
-   *
-   * [endPosition] - The end position to end retrieving data from.
-   *
-   * [locale] - The locale information for the data. ISO-639-1 language and
-   * ISO-3166-1 country code. Ex: 'en_US'.
-   *
-   * [maxResults] - Maximum number of results to return
-   * Value must be between "0" and "200".
-   *
-   * [pageToken] - The value of the nextToken from the previous page.
-   *
-   * [showDeleted] - Set to true to return deleted annotations. updatedMin must
-   * be in the request to use this. Defaults to false.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * [startOffset] - The start offset to start retrieving data from.
-   *
-   * [startPosition] - The start position to start retrieving data from.
-   *
-   * [updatedMax] - RFC 3339 timestamp to restrict to items updated prior to
-   * this timestamp (exclusive).
-   *
-   * [updatedMin] - RFC 3339 timestamp to restrict to items updated since this
-   * timestamp (inclusive).
-   *
-   * [volumeAnnotationsVersion] - The version of the volume annotations that you
-   * are requesting.
-   *
-   * Completes with a [Volumeannotations].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Volumeannotations> list(core.String volumeId, core.String layerId, core.String contentVersion, {core.String endOffset, core.String endPosition, core.String locale, core.int maxResults, core.String pageToken, core.bool showDeleted, core.String source, core.String startOffset, core.String startPosition, core.String updatedMax, core.String updatedMin, core.String volumeAnnotationsVersion}) {
+  /// Gets the volume annotations for a volume and layer.
+  ///
+  /// Request parameters:
+  ///
+  /// [volumeId] - The volume to retrieve annotations for.
+  ///
+  /// [layerId] - The ID for the layer to get the annotations.
+  ///
+  /// [contentVersion] - The content version for the requested volume.
+  ///
+  /// [endOffset] - The end offset to end retrieving data from.
+  ///
+  /// [endPosition] - The end position to end retrieving data from.
+  ///
+  /// [locale] - The locale information for the data. ISO-639-1 language and
+  /// ISO-3166-1 country code. Ex: 'en_US'.
+  ///
+  /// [maxResults] - Maximum number of results to return
+  /// Value must be between "0" and "200".
+  ///
+  /// [pageToken] - The value of the nextToken from the previous page.
+  ///
+  /// [showDeleted] - Set to true to return deleted annotations. updatedMin must
+  /// be in the request to use this. Defaults to false.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// [startOffset] - The start offset to start retrieving data from.
+  ///
+  /// [startPosition] - The start position to start retrieving data from.
+  ///
+  /// [updatedMax] - RFC 3339 timestamp to restrict to items updated prior to
+  /// this timestamp (exclusive).
+  ///
+  /// [updatedMin] - RFC 3339 timestamp to restrict to items updated since this
+  /// timestamp (inclusive).
+  ///
+  /// [volumeAnnotationsVersion] - The version of the volume annotations that
+  /// you are requesting.
+  ///
+  /// Completes with a [Volumeannotations].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Volumeannotations> list(
+      core.String volumeId, core.String layerId, core.String contentVersion,
+      {core.String endOffset,
+      core.String endPosition,
+      core.String locale,
+      core.int maxResults,
+      core.String pageToken,
+      core.bool showDeleted,
+      core.String source,
+      core.String startOffset,
+      core.String startPosition,
+      core.String updatedMax,
+      core.String updatedMin,
+      core.String volumeAnnotationsVersion}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -909,40 +940,37 @@ class LayersVolumeAnnotationsResourceApi {
       _queryParams["volumeAnnotationsVersion"] = [volumeAnnotationsVersion];
     }
 
-    _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId') + '/layers/' + commons.Escaper.ecapeVariable('$layerId');
+    _url = 'volumes/' +
+        commons.Escaper.ecapeVariable('$volumeId') +
+        '/layers/' +
+        commons.Escaper.ecapeVariable('$layerId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Volumeannotations.fromJson(data));
   }
-
 }
-
 
 class MyconfigResourceApi {
   final commons.ApiRequester _requester;
 
-  MyconfigResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  MyconfigResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Gets the current settings for the user.
-   *
-   * Request parameters:
-   *
-   * Completes with a [Usersettings].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Gets the current settings for the user.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [Usersettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Usersettings> getUserSettings() {
     var _url = null;
     var _queryParams = new core.Map();
@@ -951,42 +979,40 @@ class MyconfigResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-
     _url = 'myconfig/getUserSettings';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Usersettings.fromJson(data));
   }
 
-  /**
-   * Release downloaded content access restriction.
-   *
-   * Request parameters:
-   *
-   * [volumeIds] - The volume(s) to release restrictions for.
-   *
-   * [cpksver] - The device/version ID from which to release the restriction.
-   *
-   * [locale] - ISO-639-1, ISO-3166-1 codes for message localization, i.e.
-   * en_US.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * Completes with a [DownloadAccesses].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<DownloadAccesses> releaseDownloadAccess(core.List<core.String> volumeIds, core.String cpksver, {core.String locale, core.String source}) {
+  /// Release downloaded content access restriction.
+  ///
+  /// Request parameters:
+  ///
+  /// [volumeIds] - The volume(s) to release restrictions for.
+  ///
+  /// [cpksver] - The device/version ID from which to release the restriction.
+  ///
+  /// [locale] - ISO-639-1, ISO-3166-1 codes for message localization, i.e.
+  /// en_US.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// Completes with a [DownloadAccesses].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DownloadAccesses> releaseDownloadAccess(
+      core.List<core.String> volumeIds, core.String cpksver,
+      {core.String locale, core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1011,48 +1037,47 @@ class MyconfigResourceApi {
 
     _url = 'myconfig/releaseDownloadAccess';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new DownloadAccesses.fromJson(data));
   }
 
-  /**
-   * Request concurrent and download access restrictions.
-   *
-   * Request parameters:
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * [volumeId] - The volume to request concurrent/download restrictions for.
-   *
-   * [nonce] - The client nonce value.
-   *
-   * [cpksver] - The device/version ID from which to request the restrictions.
-   *
-   * [licenseTypes] - The type of access license to request. If not specified,
-   * the default is BOTH.
-   * Possible string values are:
-   * - "BOTH" : Both concurrent and download licenses.
-   * - "CONCURRENT" : Concurrent access license.
-   * - "DOWNLOAD" : Offline download access license.
-   *
-   * [locale] - ISO-639-1, ISO-3166-1 codes for message localization, i.e.
-   * en_US.
-   *
-   * Completes with a [RequestAccess].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<RequestAccess> requestAccess(core.String source, core.String volumeId, core.String nonce, core.String cpksver, {core.String licenseTypes, core.String locale}) {
+  /// Request concurrent and download access restrictions.
+  ///
+  /// Request parameters:
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// [volumeId] - The volume to request concurrent/download restrictions for.
+  ///
+  /// [nonce] - The client nonce value.
+  ///
+  /// [cpksver] - The device/version ID from which to request the restrictions.
+  ///
+  /// [licenseTypes] - The type of access license to request. If not specified,
+  /// the default is BOTH.
+  /// Possible string values are:
+  /// - "BOTH" : Both concurrent and download licenses.
+  /// - "CONCURRENT" : Concurrent access license.
+  /// - "DOWNLOAD" : Offline download access license.
+  ///
+  /// [locale] - ISO-639-1, ISO-3166-1 codes for message localization, i.e.
+  /// en_US.
+  ///
+  /// Completes with a [RequestAccess].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RequestAccess> requestAccess(core.String source,
+      core.String volumeId, core.String nonce, core.String cpksver,
+      {core.String licenseTypes, core.String locale}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1085,49 +1110,53 @@ class MyconfigResourceApi {
 
     _url = 'myconfig/requestAccess';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new RequestAccess.fromJson(data));
   }
 
-  /**
-   * Request downloaded content access for specified volumes on the My eBooks
-   * shelf.
-   *
-   * Request parameters:
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * [nonce] - The client nonce value.
-   *
-   * [cpksver] - The device/version ID from which to release the restriction.
-   *
-   * [features] - List of features supported by the client, i.e., 'RENTALS'
-   *
-   * [includeNonComicsSeries] - Set to true to include non-comics series.
-   * Defaults to false.
-   *
-   * [locale] - ISO-639-1, ISO-3166-1 codes for message localization, i.e.
-   * en_US.
-   *
-   * [showPreorders] - Set to true to show pre-ordered books. Defaults to false.
-   *
-   * [volumeIds] - The volume(s) to request download restrictions for.
-   *
-   * Completes with a [Volumes].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Volumes> syncVolumeLicenses(core.String source, core.String nonce, core.String cpksver, {core.List<core.String> features, core.bool includeNonComicsSeries, core.String locale, core.bool showPreorders, core.List<core.String> volumeIds}) {
+  /// Request downloaded content access for specified volumes on the My eBooks
+  /// shelf.
+  ///
+  /// Request parameters:
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// [nonce] - The client nonce value.
+  ///
+  /// [cpksver] - The device/version ID from which to release the restriction.
+  ///
+  /// [features] - List of features supported by the client, i.e., 'RENTALS'
+  ///
+  /// [includeNonComicsSeries] - Set to true to include non-comics series.
+  /// Defaults to false.
+  ///
+  /// [locale] - ISO-639-1, ISO-3166-1 codes for message localization, i.e.
+  /// en_US.
+  ///
+  /// [showPreorders] - Set to true to show pre-ordered books. Defaults to
+  /// false.
+  ///
+  /// [volumeIds] - The volume(s) to request download restrictions for.
+  ///
+  /// Completes with a [Volumes].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Volumes> syncVolumeLicenses(
+      core.String source, core.String nonce, core.String cpksver,
+      {core.List<core.String> features,
+      core.bool includeNonComicsSeries,
+      core.String locale,
+      core.bool showPreorders,
+      core.List<core.String> volumeIds}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1165,33 +1194,30 @@ class MyconfigResourceApi {
 
     _url = 'myconfig/syncVolumeLicenses';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Volumes.fromJson(data));
   }
 
-  /**
-   * Sets the settings for the user. If a sub-object is specified, it will
-   * overwrite the existing sub-object stored in the server. Unspecified
-   * sub-objects will retain the existing value.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [Usersettings].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Sets the settings for the user. If a sub-object is specified, it will
+  /// overwrite the existing sub-object stored in the server. Unspecified
+  /// sub-objects will retain the existing value.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [Usersettings].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Usersettings> updateUserSettings(Usersettings request) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1206,52 +1232,48 @@ class MyconfigResourceApi {
 
     _url = 'myconfig/updateUserSettings';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Usersettings.fromJson(data));
   }
-
 }
-
 
 class MylibraryResourceApi {
   final commons.ApiRequester _requester;
 
-  MylibraryAnnotationsResourceApi get annotations => new MylibraryAnnotationsResourceApi(_requester);
-  MylibraryBookshelvesResourceApi get bookshelves => new MylibraryBookshelvesResourceApi(_requester);
-  MylibraryReadingpositionsResourceApi get readingpositions => new MylibraryReadingpositionsResourceApi(_requester);
+  MylibraryAnnotationsResourceApi get annotations =>
+      new MylibraryAnnotationsResourceApi(_requester);
+  MylibraryBookshelvesResourceApi get bookshelves =>
+      new MylibraryBookshelvesResourceApi(_requester);
+  MylibraryReadingpositionsResourceApi get readingpositions =>
+      new MylibraryReadingpositionsResourceApi(_requester);
 
-  MylibraryResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  MylibraryResourceApi(commons.ApiRequester client) : _requester = client;
 }
-
 
 class MylibraryAnnotationsResourceApi {
   final commons.ApiRequester _requester;
 
-  MylibraryAnnotationsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  MylibraryAnnotationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Deletes an annotation.
-   *
-   * Request parameters:
-   *
-   * [annotationId] - The ID for the annotation to delete.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Deletes an annotation.
+  ///
+  /// Request parameters:
+  ///
+  /// [annotationId] - The ID for the annotation to delete.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future delete(core.String annotationId, {core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1269,43 +1291,45 @@ class MylibraryAnnotationsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'mylibrary/annotations/' + commons.Escaper.ecapeVariable('$annotationId');
+    _url = 'mylibrary/annotations/' +
+        commons.Escaper.ecapeVariable('$annotationId');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Inserts a new annotation.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [annotationId] - The ID for the annotation to insert.
-   *
-   * [country] - ISO-3166-1 code to override the IP-based location.
-   *
-   * [showOnlySummaryInResponse] - Requests that only the summary of the
-   * specified layer be provided in the response.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * Completes with a [Annotation].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Annotation> insert(Annotation request, {core.String annotationId, core.String country, core.bool showOnlySummaryInResponse, core.String source}) {
+  /// Inserts a new annotation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [annotationId] - The ID for the annotation to insert.
+  ///
+  /// [country] - ISO-3166-1 code to override the IP-based location.
+  ///
+  /// [showOnlySummaryInResponse] - Requests that only the summary of the
+  /// specified layer be provided in the response.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// Completes with a [Annotation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Annotation> insert(Annotation request,
+      {core.String annotationId,
+      core.String country,
+      core.bool showOnlySummaryInResponse,
+      core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1323,7 +1347,9 @@ class MylibraryAnnotationsResourceApi {
       _queryParams["country"] = [country];
     }
     if (showOnlySummaryInResponse != null) {
-      _queryParams["showOnlySummaryInResponse"] = ["${showOnlySummaryInResponse}"];
+      _queryParams["showOnlySummaryInResponse"] = [
+        "${showOnlySummaryInResponse}"
+      ];
     }
     if (source != null) {
       _queryParams["source"] = [source];
@@ -1331,54 +1357,61 @@ class MylibraryAnnotationsResourceApi {
 
     _url = 'mylibrary/annotations';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Annotation.fromJson(data));
   }
 
-  /**
-   * Retrieves a list of annotations, possibly filtered.
-   *
-   * Request parameters:
-   *
-   * [contentVersion] - The content version for the requested volume.
-   *
-   * [layerId] - The layer ID to limit annotation by.
-   *
-   * [layerIds] - The layer ID(s) to limit annotation by.
-   *
-   * [maxResults] - Maximum number of results to return
-   * Value must be between "0" and "40".
-   *
-   * [pageToken] - The value of the nextToken from the previous page.
-   *
-   * [showDeleted] - Set to true to return deleted annotations. updatedMin must
-   * be in the request to use this. Defaults to false.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * [updatedMax] - RFC 3339 timestamp to restrict to items updated prior to
-   * this timestamp (exclusive).
-   *
-   * [updatedMin] - RFC 3339 timestamp to restrict to items updated since this
-   * timestamp (inclusive).
-   *
-   * [volumeId] - The volume to restrict annotations to.
-   *
-   * Completes with a [Annotations].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Annotations> list({core.String contentVersion, core.String layerId, core.List<core.String> layerIds, core.int maxResults, core.String pageToken, core.bool showDeleted, core.String source, core.String updatedMax, core.String updatedMin, core.String volumeId}) {
+  /// Retrieves a list of annotations, possibly filtered.
+  ///
+  /// Request parameters:
+  ///
+  /// [contentVersion] - The content version for the requested volume.
+  ///
+  /// [layerId] - The layer ID to limit annotation by.
+  ///
+  /// [layerIds] - The layer ID(s) to limit annotation by.
+  ///
+  /// [maxResults] - Maximum number of results to return
+  /// Value must be between "0" and "40".
+  ///
+  /// [pageToken] - The value of the nextToken from the previous page.
+  ///
+  /// [showDeleted] - Set to true to return deleted annotations. updatedMin must
+  /// be in the request to use this. Defaults to false.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// [updatedMax] - RFC 3339 timestamp to restrict to items updated prior to
+  /// this timestamp (exclusive).
+  ///
+  /// [updatedMin] - RFC 3339 timestamp to restrict to items updated since this
+  /// timestamp (inclusive).
+  ///
+  /// [volumeId] - The volume to restrict annotations to.
+  ///
+  /// Completes with a [Annotations].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Annotations> list(
+      {core.String contentVersion,
+      core.String layerId,
+      core.List<core.String> layerIds,
+      core.int maxResults,
+      core.String pageToken,
+      core.bool showDeleted,
+      core.String source,
+      core.String updatedMax,
+      core.String updatedMin,
+      core.String volumeId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1419,34 +1452,32 @@ class MylibraryAnnotationsResourceApi {
 
     _url = 'mylibrary/annotations';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Annotations.fromJson(data));
   }
 
-  /**
-   * Gets the summary of specified layers.
-   *
-   * Request parameters:
-   *
-   * [layerIds] - Array of layer IDs to get the summary for.
-   *
-   * [volumeId] - Volume id to get the summary for.
-   *
-   * Completes with a [AnnotationsSummary].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<AnnotationsSummary> summary(core.List<core.String> layerIds, core.String volumeId) {
+  /// Gets the summary of specified layers.
+  ///
+  /// Request parameters:
+  ///
+  /// [layerIds] - Array of layer IDs to get the summary for.
+  ///
+  /// [volumeId] - Volume id to get the summary for.
+  ///
+  /// Completes with a [AnnotationsSummary].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AnnotationsSummary> summary(
+      core.List<core.String> layerIds, core.String volumeId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1465,36 +1496,34 @@ class MylibraryAnnotationsResourceApi {
 
     _url = 'mylibrary/annotations/summary';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new AnnotationsSummary.fromJson(data));
   }
 
-  /**
-   * Updates an existing annotation.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [annotationId] - The ID for the annotation to update.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * Completes with a [Annotation].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Annotation> update(Annotation request, core.String annotationId, {core.String source}) {
+  /// Updates an existing annotation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [annotationId] - The ID for the annotation to update.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// Completes with a [Annotation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Annotation> update(Annotation request, core.String annotationId,
+      {core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1512,53 +1541,51 @@ class MylibraryAnnotationsResourceApi {
       _queryParams["source"] = [source];
     }
 
-    _url = 'mylibrary/annotations/' + commons.Escaper.ecapeVariable('$annotationId');
+    _url = 'mylibrary/annotations/' +
+        commons.Escaper.ecapeVariable('$annotationId');
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Annotation.fromJson(data));
   }
-
 }
-
 
 class MylibraryBookshelvesResourceApi {
   final commons.ApiRequester _requester;
 
-  MylibraryBookshelvesVolumesResourceApi get volumes => new MylibraryBookshelvesVolumesResourceApi(_requester);
+  MylibraryBookshelvesVolumesResourceApi get volumes =>
+      new MylibraryBookshelvesVolumesResourceApi(_requester);
 
-  MylibraryBookshelvesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  MylibraryBookshelvesResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Adds a volume to a bookshelf.
-   *
-   * Request parameters:
-   *
-   * [shelf] - ID of bookshelf to which to add a volume.
-   *
-   * [volumeId] - ID of volume to add.
-   *
-   * [reason] - The reason for which the book is added to the library.
-   * Possible string values are:
-   * - "IOS_PREX" : Volumes added from the PREX flow on iOS.
-   * - "IOS_SEARCH" : Volumes added from the Search flow on iOS.
-   * - "ONBOARDING" : Volumes added from the Onboarding flow.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future addVolume(core.String shelf, core.String volumeId, {core.String reason, core.String source}) {
+  /// Adds a volume to a bookshelf.
+  ///
+  /// Request parameters:
+  ///
+  /// [shelf] - ID of bookshelf to which to add a volume.
+  ///
+  /// [volumeId] - ID of volume to add.
+  ///
+  /// [reason] - The reason for which the book is added to the library.
+  /// Possible string values are:
+  /// - "IOS_PREX" : Volumes added from the PREX flow on iOS.
+  /// - "IOS_SEARCH" : Volumes added from the Search flow on iOS.
+  /// - "ONBOARDING" : Volumes added from the Onboarding flow.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future addVolume(core.String shelf, core.String volumeId,
+      {core.String reason, core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1582,33 +1609,32 @@ class MylibraryBookshelvesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'mylibrary/bookshelves/' + commons.Escaper.ecapeVariable('$shelf') + '/addVolume';
+    _url = 'mylibrary/bookshelves/' +
+        commons.Escaper.ecapeVariable('$shelf') +
+        '/addVolume';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Clears all volumes from a bookshelf.
-   *
-   * Request parameters:
-   *
-   * [shelf] - ID of bookshelf from which to remove a volume.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Clears all volumes from a bookshelf.
+  ///
+  /// Request parameters:
+  ///
+  /// [shelf] - ID of bookshelf from which to remove a volume.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future clearVolumes(core.String shelf, {core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1626,36 +1652,35 @@ class MylibraryBookshelvesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'mylibrary/bookshelves/' + commons.Escaper.ecapeVariable('$shelf') + '/clearVolumes';
+    _url = 'mylibrary/bookshelves/' +
+        commons.Escaper.ecapeVariable('$shelf') +
+        '/clearVolumes';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Retrieves metadata for a specific bookshelf belonging to the authenticated
-   * user.
-   *
-   * Request parameters:
-   *
-   * [shelf] - ID of bookshelf to retrieve.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * Completes with a [Bookshelf].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Retrieves metadata for a specific bookshelf belonging to the authenticated
+  /// user.
+  ///
+  /// Request parameters:
+  ///
+  /// [shelf] - ID of bookshelf to retrieve.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// Completes with a [Bookshelf].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Bookshelf> get(core.String shelf, {core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1673,31 +1698,28 @@ class MylibraryBookshelvesResourceApi {
 
     _url = 'mylibrary/bookshelves/' + commons.Escaper.ecapeVariable('$shelf');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Bookshelf.fromJson(data));
   }
 
-  /**
-   * Retrieves a list of bookshelves belonging to the authenticated user.
-   *
-   * Request parameters:
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * Completes with a [Bookshelves].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Retrieves a list of bookshelves belonging to the authenticated user.
+  ///
+  /// Request parameters:
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// Completes with a [Bookshelves].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Bookshelves> list({core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1712,38 +1734,37 @@ class MylibraryBookshelvesResourceApi {
 
     _url = 'mylibrary/bookshelves';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Bookshelves.fromJson(data));
   }
 
-  /**
-   * Moves a volume within a bookshelf.
-   *
-   * Request parameters:
-   *
-   * [shelf] - ID of bookshelf with the volume.
-   *
-   * [volumeId] - ID of volume to move.
-   *
-   * [volumePosition] - Position on shelf to move the item (0 puts the item
-   * before the current first item, 1 puts it between the first and the second
-   * and so on.)
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future moveVolume(core.String shelf, core.String volumeId, core.int volumePosition, {core.String source}) {
+  /// Moves a volume within a bookshelf.
+  ///
+  /// Request parameters:
+  ///
+  /// [shelf] - ID of bookshelf with the volume.
+  ///
+  /// [volumeId] - ID of volume to move.
+  ///
+  /// [volumePosition] - Position on shelf to move the item (0 puts the item
+  /// before the current first item, 1 puts it between the first and the second
+  /// and so on.)
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future moveVolume(
+      core.String shelf, core.String volumeId, core.int volumePosition,
+      {core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1768,40 +1789,40 @@ class MylibraryBookshelvesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'mylibrary/bookshelves/' + commons.Escaper.ecapeVariable('$shelf') + '/moveVolume';
+    _url = 'mylibrary/bookshelves/' +
+        commons.Escaper.ecapeVariable('$shelf') +
+        '/moveVolume';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Removes a volume from a bookshelf.
-   *
-   * Request parameters:
-   *
-   * [shelf] - ID of bookshelf from which to remove a volume.
-   *
-   * [volumeId] - ID of volume to remove.
-   *
-   * [reason] - The reason for which the book is removed from the library.
-   * Possible string values are:
-   * - "ONBOARDING" : Samples removed from the Onboarding flow.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future removeVolume(core.String shelf, core.String volumeId, {core.String reason, core.String source}) {
+  /// Removes a volume from a bookshelf.
+  ///
+  /// Request parameters:
+  ///
+  /// [shelf] - ID of bookshelf from which to remove a volume.
+  ///
+  /// [volumeId] - ID of volume to remove.
+  ///
+  /// [reason] - The reason for which the book is removed from the library.
+  /// Possible string values are:
+  /// - "ONBOARDING" : Samples removed from the Onboarding flow.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future removeVolume(core.String shelf, core.String volumeId,
+      {core.String reason, core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1825,60 +1846,65 @@ class MylibraryBookshelvesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'mylibrary/bookshelves/' + commons.Escaper.ecapeVariable('$shelf') + '/removeVolume';
+    _url = 'mylibrary/bookshelves/' +
+        commons.Escaper.ecapeVariable('$shelf') +
+        '/removeVolume';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
-
 }
-
 
 class MylibraryBookshelvesVolumesResourceApi {
   final commons.ApiRequester _requester;
 
-  MylibraryBookshelvesVolumesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  MylibraryBookshelvesVolumesResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Gets volume information for volumes on a bookshelf.
-   *
-   * Request parameters:
-   *
-   * [shelf] - The bookshelf ID or name retrieve volumes for.
-   *
-   * [country] - ISO-3166-1 code to override the IP-based location.
-   *
-   * [maxResults] - Maximum number of results to return
-   *
-   * [projection] - Restrict information returned to a set of selected fields.
-   * Possible string values are:
-   * - "full" : Includes all volume data.
-   * - "lite" : Includes a subset of fields in volumeInfo and accessInfo.
-   *
-   * [q] - Full-text search query string in this bookshelf.
-   *
-   * [showPreorders] - Set to true to show pre-ordered books. Defaults to false.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * [startIndex] - Index of the first element to return (starts at 0)
-   *
-   * Completes with a [Volumes].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Volumes> list(core.String shelf, {core.String country, core.int maxResults, core.String projection, core.String q, core.bool showPreorders, core.String source, core.int startIndex}) {
+  /// Gets volume information for volumes on a bookshelf.
+  ///
+  /// Request parameters:
+  ///
+  /// [shelf] - The bookshelf ID or name retrieve volumes for.
+  ///
+  /// [country] - ISO-3166-1 code to override the IP-based location.
+  ///
+  /// [maxResults] - Maximum number of results to return
+  ///
+  /// [projection] - Restrict information returned to a set of selected fields.
+  /// Possible string values are:
+  /// - "full" : Includes all volume data.
+  /// - "lite" : Includes a subset of fields in volumeInfo and accessInfo.
+  ///
+  /// [q] - Full-text search query string in this bookshelf.
+  ///
+  /// [showPreorders] - Set to true to show pre-ordered books. Defaults to
+  /// false.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// [startIndex] - Index of the first element to return (starts at 0)
+  ///
+  /// Completes with a [Volumes].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Volumes> list(core.String shelf,
+      {core.String country,
+      core.int maxResults,
+      core.String projection,
+      core.String q,
+      core.bool showPreorders,
+      core.String source,
+      core.int startIndex}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1911,48 +1937,46 @@ class MylibraryBookshelvesVolumesResourceApi {
       _queryParams["startIndex"] = ["${startIndex}"];
     }
 
-    _url = 'mylibrary/bookshelves/' + commons.Escaper.ecapeVariable('$shelf') + '/volumes';
+    _url = 'mylibrary/bookshelves/' +
+        commons.Escaper.ecapeVariable('$shelf') +
+        '/volumes';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Volumes.fromJson(data));
   }
-
 }
-
 
 class MylibraryReadingpositionsResourceApi {
   final commons.ApiRequester _requester;
 
-  MylibraryReadingpositionsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  MylibraryReadingpositionsResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Retrieves my reading position information for a volume.
-   *
-   * Request parameters:
-   *
-   * [volumeId] - ID of volume for which to retrieve a reading position.
-   *
-   * [contentVersion] - Volume content version for which this reading position
-   * is requested.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * Completes with a [ReadingPosition].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ReadingPosition> get(core.String volumeId, {core.String contentVersion, core.String source}) {
+  /// Retrieves my reading position information for a volume.
+  ///
+  /// Request parameters:
+  ///
+  /// [volumeId] - ID of volume for which to retrieve a reading position.
+  ///
+  /// [contentVersion] - Volume content version for which this reading position
+  /// is requested.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// Completes with a [ReadingPosition].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ReadingPosition> get(core.String volumeId,
+      {core.String contentVersion, core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1970,53 +1994,56 @@ class MylibraryReadingpositionsResourceApi {
       _queryParams["source"] = [source];
     }
 
-    _url = 'mylibrary/readingpositions/' + commons.Escaper.ecapeVariable('$volumeId');
+    _url = 'mylibrary/readingpositions/' +
+        commons.Escaper.ecapeVariable('$volumeId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ReadingPosition.fromJson(data));
   }
 
-  /**
-   * Sets my reading position information for a volume.
-   *
-   * Request parameters:
-   *
-   * [volumeId] - ID of volume for which to update the reading position.
-   *
-   * [timestamp] - RFC 3339 UTC format timestamp associated with this reading
-   * position.
-   *
-   * [position] - Position string for the new volume reading position.
-   *
-   * [action] - Action that caused this reading position to be set.
-   * Possible string values are:
-   * - "bookmark" : User chose bookmark within volume.
-   * - "chapter" : User selected chapter from list.
-   * - "next-page" : Next page event.
-   * - "prev-page" : Previous page event.
-   * - "scroll" : User navigated to page.
-   * - "search" : User chose search results within volume.
-   *
-   * [contentVersion] - Volume content version for which this reading position
-   * applies.
-   *
-   * [deviceCookie] - Random persistent device cookie optional on set position.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future setPosition(core.String volumeId, core.String timestamp, core.String position, {core.String action, core.String contentVersion, core.String deviceCookie, core.String source}) {
+  /// Sets my reading position information for a volume.
+  ///
+  /// Request parameters:
+  ///
+  /// [volumeId] - ID of volume for which to update the reading position.
+  ///
+  /// [timestamp] - RFC 3339 UTC format timestamp associated with this reading
+  /// position.
+  ///
+  /// [position] - Position string for the new volume reading position.
+  ///
+  /// [action] - Action that caused this reading position to be set.
+  /// Possible string values are:
+  /// - "bookmark" : User chose bookmark within volume.
+  /// - "chapter" : User selected chapter from list.
+  /// - "next-page" : Next page event.
+  /// - "prev-page" : Previous page event.
+  /// - "scroll" : User navigated to page.
+  /// - "search" : User chose search results within volume.
+  ///
+  /// [contentVersion] - Volume content version for which this reading position
+  /// applies.
+  ///
+  /// [deviceCookie] - Random persistent device cookie optional on set position.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future setPosition(
+      core.String volumeId, core.String timestamp, core.String position,
+      {core.String action,
+      core.String contentVersion,
+      core.String deviceCookie,
+      core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2050,48 +2077,45 @@ class MylibraryReadingpositionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'mylibrary/readingpositions/' + commons.Escaper.ecapeVariable('$volumeId') + '/setPosition';
+    _url = 'mylibrary/readingpositions/' +
+        commons.Escaper.ecapeVariable('$volumeId') +
+        '/setPosition';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
-
 }
-
 
 class NotificationResourceApi {
   final commons.ApiRequester _requester;
 
-  NotificationResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  NotificationResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Returns notification details for a given notification id.
-   *
-   * Request parameters:
-   *
-   * [notificationId] - String to identify the notification.
-   *
-   * [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
-   * Used for generating notification title and body.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * Completes with a [Notification].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Notification> get(core.String notificationId, {core.String locale, core.String source}) {
+  /// Returns notification details for a given notification id.
+  ///
+  /// Request parameters:
+  ///
+  /// [notificationId] - String to identify the notification.
+  ///
+  /// [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
+  /// Used for generating notification title and body.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// Completes with a [Notification].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Notification> get(core.String notificationId,
+      {core.String locale, core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2112,41 +2136,35 @@ class NotificationResourceApi {
 
     _url = 'notification/get';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Notification.fromJson(data));
   }
-
 }
-
 
 class OnboardingResourceApi {
   final commons.ApiRequester _requester;
 
-  OnboardingResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  OnboardingResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * List categories for onboarding experience.
-   *
-   * Request parameters:
-   *
-   * [locale] - ISO-639-1 language and ISO-3166-1 country code. Default is en-US
-   * if unset.
-   *
-   * Completes with a [Category].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// List categories for onboarding experience.
+  ///
+  /// Request parameters:
+  ///
+  /// [locale] - ISO-639-1 language and ISO-3166-1 country code. Default is
+  /// en-US if unset.
+  ///
+  /// Completes with a [Category].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Category> listCategories({core.String locale}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -2161,46 +2179,48 @@ class OnboardingResourceApi {
 
     _url = 'onboarding/listCategories';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Category.fromJson(data));
   }
 
-  /**
-   * List available volumes under categories for onboarding experience.
-   *
-   * Request parameters:
-   *
-   * [categoryId] - List of category ids requested.
-   *
-   * [locale] - ISO-639-1 language and ISO-3166-1 country code. Default is en-US
-   * if unset.
-   *
-   * [maxAllowedMaturityRating] - The maximum allowed maturity rating of
-   * returned volumes. Books with a higher maturity rating are filtered out.
-   * Possible string values are:
-   * - "mature" : Show books which are rated mature or lower.
-   * - "not-mature" : Show books which are rated not mature.
-   *
-   * [pageSize] - Number of maximum results per page to be included in the
-   * response.
-   *
-   * [pageToken] - The value of the nextToken from the previous page.
-   *
-   * Completes with a [Volume2].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Volume2> listCategoryVolumes({core.List<core.String> categoryId, core.String locale, core.String maxAllowedMaturityRating, core.int pageSize, core.String pageToken}) {
+  /// List available volumes under categories for onboarding experience.
+  ///
+  /// Request parameters:
+  ///
+  /// [categoryId] - List of category ids requested.
+  ///
+  /// [locale] - ISO-639-1 language and ISO-3166-1 country code. Default is
+  /// en-US if unset.
+  ///
+  /// [maxAllowedMaturityRating] - The maximum allowed maturity rating of
+  /// returned volumes. Books with a higher maturity rating are filtered out.
+  /// Possible string values are:
+  /// - "mature" : Show books which are rated mature or lower.
+  /// - "not-mature" : Show books which are rated not mature.
+  ///
+  /// [pageSize] - Number of maximum results per page to be included in the
+  /// response.
+  ///
+  /// [pageToken] - The value of the nextToken from the previous page.
+  ///
+  /// Completes with a [Volume2].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Volume2> listCategoryVolumes(
+      {core.List<core.String> categoryId,
+      core.String locale,
+      core.String maxAllowedMaturityRating,
+      core.int pageSize,
+      core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2226,51 +2246,49 @@ class OnboardingResourceApi {
 
     _url = 'onboarding/listCategoryVolumes';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Volume2.fromJson(data));
   }
-
 }
-
 
 class PersonalizedstreamResourceApi {
   final commons.ApiRequester _requester;
 
-  PersonalizedstreamResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  PersonalizedstreamResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Returns a stream of personalized book clusters
-   *
-   * Request parameters:
-   *
-   * [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
-   * Used for generating recommendations.
-   *
-   * [maxAllowedMaturityRating] - The maximum allowed maturity rating of
-   * returned recommendations. Books with a higher maturity rating are filtered
-   * out.
-   * Possible string values are:
-   * - "mature" : Show books which are rated mature or lower.
-   * - "not-mature" : Show books which are rated not mature.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * Completes with a [Discoveryclusters].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Discoveryclusters> get({core.String locale, core.String maxAllowedMaturityRating, core.String source}) {
+  /// Returns a stream of personalized book clusters
+  ///
+  /// Request parameters:
+  ///
+  /// [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
+  /// Used for generating recommendations.
+  ///
+  /// [maxAllowedMaturityRating] - The maximum allowed maturity rating of
+  /// returned recommendations. Books with a higher maturity rating are filtered
+  /// out.
+  /// Possible string values are:
+  /// - "mature" : Show books which are rated mature or lower.
+  /// - "not-mature" : Show books which are rated not mature.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// Completes with a [Discoveryclusters].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Discoveryclusters> get(
+      {core.String locale,
+      core.String maxAllowedMaturityRating,
+      core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2290,51 +2308,53 @@ class PersonalizedstreamResourceApi {
 
     _url = 'personalizedstream/get';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Discoveryclusters.fromJson(data));
   }
-
 }
-
 
 class PromoofferResourceApi {
   final commons.ApiRequester _requester;
 
-  PromoofferResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  PromoofferResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Request parameters:
-   *
-   * [androidId] - device android_id
-   *
-   * [device] - device device
-   *
-   * [manufacturer] - device manufacturer
-   *
-   * [model] - device model
-   *
-   * [offerId] - null
-   *
-   * [product] - device product
-   *
-   * [serial] - device serial
-   *
-   * [volumeId] - Volume id to exercise the offer
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future accept({core.String androidId, core.String device, core.String manufacturer, core.String model, core.String offerId, core.String product, core.String serial, core.String volumeId}) {
+  /// Request parameters:
+  ///
+  /// [androidId] - device android_id
+  ///
+  /// [device] - device device
+  ///
+  /// [manufacturer] - device manufacturer
+  ///
+  /// [model] - device model
+  ///
+  /// [offerId] - null
+  ///
+  /// [product] - device product
+  ///
+  /// [serial] - device serial
+  ///
+  /// [volumeId] - Volume id to exercise the offer
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future accept(
+      {core.String androidId,
+      core.String device,
+      core.String manufacturer,
+      core.String model,
+      core.String offerId,
+      core.String product,
+      core.String serial,
+      core.String volumeId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2371,40 +2391,44 @@ class PromoofferResourceApi {
 
     _url = 'promooffer/accept';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Request parameters:
-   *
-   * [androidId] - device android_id
-   *
-   * [device] - device device
-   *
-   * [manufacturer] - device manufacturer
-   *
-   * [model] - device model
-   *
-   * [offerId] - Offer to dimiss
-   *
-   * [product] - device product
-   *
-   * [serial] - device serial
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future dismiss({core.String androidId, core.String device, core.String manufacturer, core.String model, core.String offerId, core.String product, core.String serial}) {
+  /// Request parameters:
+  ///
+  /// [androidId] - device android_id
+  ///
+  /// [device] - device device
+  ///
+  /// [manufacturer] - device manufacturer
+  ///
+  /// [model] - device model
+  ///
+  /// [offerId] - Offer to dimiss
+  ///
+  /// [product] - device product
+  ///
+  /// [serial] - device serial
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future dismiss(
+      {core.String androidId,
+      core.String device,
+      core.String manufacturer,
+      core.String model,
+      core.String offerId,
+      core.String product,
+      core.String serial}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2438,42 +2462,45 @@ class PromoofferResourceApi {
 
     _url = 'promooffer/dismiss';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Returns a list of promo offers available to the user
-   *
-   * Request parameters:
-   *
-   * [androidId] - device android_id
-   *
-   * [device] - device device
-   *
-   * [manufacturer] - device manufacturer
-   *
-   * [model] - device model
-   *
-   * [product] - device product
-   *
-   * [serial] - device serial
-   *
-   * Completes with a [Offers].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Offers> get({core.String androidId, core.String device, core.String manufacturer, core.String model, core.String product, core.String serial}) {
+  /// Returns a list of promo offers available to the user
+  ///
+  /// Request parameters:
+  ///
+  /// [androidId] - device android_id
+  ///
+  /// [device] - device device
+  ///
+  /// [manufacturer] - device manufacturer
+  ///
+  /// [model] - device model
+  ///
+  /// [product] - device product
+  ///
+  /// [serial] - device serial
+  ///
+  /// Completes with a [Offers].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Offers> get(
+      {core.String androidId,
+      core.String device,
+      core.String manufacturer,
+      core.String model,
+      core.String product,
+      core.String serial}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2502,42 +2529,37 @@ class PromoofferResourceApi {
 
     _url = 'promooffer/get';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Offers.fromJson(data));
   }
-
 }
-
 
 class SeriesResourceApi {
   final commons.ApiRequester _requester;
 
-  SeriesMembershipResourceApi get membership => new SeriesMembershipResourceApi(_requester);
+  SeriesMembershipResourceApi get membership =>
+      new SeriesMembershipResourceApi(_requester);
 
-  SeriesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  SeriesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Returns Series metadata for the given series ids.
-   *
-   * Request parameters:
-   *
-   * [seriesId] - String that identifies the series
-   *
-   * Completes with a [Series].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Returns Series metadata for the given series ids.
+  ///
+  /// Request parameters:
+  ///
+  /// [seriesId] - String that identifies the series
+  ///
+  /// Completes with a [Series].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Series> get(core.List<core.String> seriesId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -2553,46 +2575,42 @@ class SeriesResourceApi {
 
     _url = 'series/get';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Series.fromJson(data));
   }
-
 }
-
 
 class SeriesMembershipResourceApi {
   final commons.ApiRequester _requester;
 
-  SeriesMembershipResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  SeriesMembershipResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Returns Series membership data given the series id.
-   *
-   * Request parameters:
-   *
-   * [seriesId] - String that identifies the series
-   *
-   * [pageSize] - Number of maximum results per page to be included in the
-   * response.
-   *
-   * [pageToken] - The value of the nextToken from the previous page.
-   *
-   * Completes with a [Seriesmembership].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Seriesmembership> get(core.String seriesId, {core.int pageSize, core.String pageToken}) {
+  /// Returns Series membership data given the series id.
+  ///
+  /// Request parameters:
+  ///
+  /// [seriesId] - String that identifies the series
+  ///
+  /// [pageSize] - Number of maximum results per page to be included in the
+  /// response.
+  ///
+  /// [pageToken] - The value of the nextToken from the previous page.
+  ///
+  /// Completes with a [Seriesmembership].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Seriesmembership> get(core.String seriesId,
+      {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2613,62 +2631,66 @@ class SeriesMembershipResourceApi {
 
     _url = 'series/membership/get';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Seriesmembership.fromJson(data));
   }
-
 }
-
 
 class VolumesResourceApi {
   final commons.ApiRequester _requester;
 
-  VolumesAssociatedResourceApi get associated => new VolumesAssociatedResourceApi(_requester);
-  VolumesMybooksResourceApi get mybooks => new VolumesMybooksResourceApi(_requester);
-  VolumesRecommendedResourceApi get recommended => new VolumesRecommendedResourceApi(_requester);
-  VolumesUseruploadedResourceApi get useruploaded => new VolumesUseruploadedResourceApi(_requester);
+  VolumesAssociatedResourceApi get associated =>
+      new VolumesAssociatedResourceApi(_requester);
+  VolumesMybooksResourceApi get mybooks =>
+      new VolumesMybooksResourceApi(_requester);
+  VolumesRecommendedResourceApi get recommended =>
+      new VolumesRecommendedResourceApi(_requester);
+  VolumesUseruploadedResourceApi get useruploaded =>
+      new VolumesUseruploadedResourceApi(_requester);
 
-  VolumesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  VolumesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Gets volume information for a single volume.
-   *
-   * Request parameters:
-   *
-   * [volumeId] - ID of volume to retrieve.
-   *
-   * [country] - ISO-3166-1 code to override the IP-based location.
-   *
-   * [includeNonComicsSeries] - Set to true to include non-comics series.
-   * Defaults to false.
-   *
-   * [partner] - Brand results for partner ID.
-   *
-   * [projection] - Restrict information returned to a set of selected fields.
-   * Possible string values are:
-   * - "full" : Includes all volume data.
-   * - "lite" : Includes a subset of fields in volumeInfo and accessInfo.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * [userLibraryConsistentRead] - null
-   *
-   * Completes with a [Volume].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Volume> get(core.String volumeId, {core.String country, core.bool includeNonComicsSeries, core.String partner, core.String projection, core.String source, core.bool userLibraryConsistentRead}) {
+  /// Gets volume information for a single volume.
+  ///
+  /// Request parameters:
+  ///
+  /// [volumeId] - ID of volume to retrieve.
+  ///
+  /// [country] - ISO-3166-1 code to override the IP-based location.
+  ///
+  /// [includeNonComicsSeries] - Set to true to include non-comics series.
+  /// Defaults to false.
+  ///
+  /// [partner] - Brand results for partner ID.
+  ///
+  /// [projection] - Restrict information returned to a set of selected fields.
+  /// Possible string values are:
+  /// - "full" : Includes all volume data.
+  /// - "lite" : Includes a subset of fields in volumeInfo and accessInfo.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// [userLibraryConsistentRead] - null
+  ///
+  /// Completes with a [Volume].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Volume> get(core.String volumeId,
+      {core.String country,
+      core.bool includeNonComicsSeries,
+      core.String partner,
+      core.String projection,
+      core.String source,
+      core.bool userLibraryConsistentRead}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2695,91 +2717,103 @@ class VolumesResourceApi {
       _queryParams["source"] = [source];
     }
     if (userLibraryConsistentRead != null) {
-      _queryParams["user_library_consistent_read"] = ["${userLibraryConsistentRead}"];
+      _queryParams["user_library_consistent_read"] = [
+        "${userLibraryConsistentRead}"
+      ];
     }
 
     _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Volume.fromJson(data));
   }
 
-  /**
-   * Performs a book search.
-   *
-   * Request parameters:
-   *
-   * [q] - Full-text search query string.
-   *
-   * [download] - Restrict to volumes by download availability.
-   * Possible string values are:
-   * - "epub" : All volumes with epub.
-   *
-   * [filter] - Filter search results.
-   * Possible string values are:
-   * - "ebooks" : All Google eBooks.
-   * - "free-ebooks" : Google eBook with full volume text viewability.
-   * - "full" : Public can view entire volume text.
-   * - "paid-ebooks" : Google eBook with a price.
-   * - "partial" : Public able to see parts of text.
-   *
-   * [langRestrict] - Restrict results to books with this language code.
-   *
-   * [libraryRestrict] - Restrict search to this user's library.
-   * Possible string values are:
-   * - "my-library" : Restrict to the user's library, any shelf.
-   * - "no-restrict" : Do not restrict based on user's library.
-   *
-   * [maxAllowedMaturityRating] - The maximum allowed maturity rating of
-   * returned recommendations. Books with a higher maturity rating are filtered
-   * out.
-   * Possible string values are:
-   * - "mature" : Show books which are rated mature or lower.
-   * - "not-mature" : Show books which are rated not mature.
-   *
-   * [maxResults] - Maximum number of results to return.
-   * Value must be between "0" and "40".
-   *
-   * [orderBy] - Sort search results.
-   * Possible string values are:
-   * - "newest" : Most recently published.
-   * - "relevance" : Relevance to search terms.
-   *
-   * [partner] - Restrict and brand results for partner ID.
-   *
-   * [printType] - Restrict to books or magazines.
-   * Possible string values are:
-   * - "all" : All volume content types.
-   * - "books" : Just books.
-   * - "magazines" : Just magazines.
-   *
-   * [projection] - Restrict information returned to a set of selected fields.
-   * Possible string values are:
-   * - "full" : Includes all volume data.
-   * - "lite" : Includes a subset of fields in volumeInfo and accessInfo.
-   *
-   * [showPreorders] - Set to true to show books available for preorder.
-   * Defaults to false.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * [startIndex] - Index of the first result to return (starts at 0)
-   *
-   * Completes with a [Volumes].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Volumes> list(core.String q, {core.String download, core.String filter, core.String langRestrict, core.String libraryRestrict, core.String maxAllowedMaturityRating, core.int maxResults, core.String orderBy, core.String partner, core.String printType, core.String projection, core.bool showPreorders, core.String source, core.int startIndex}) {
+  /// Performs a book search.
+  ///
+  /// Request parameters:
+  ///
+  /// [q] - Full-text search query string.
+  ///
+  /// [download] - Restrict to volumes by download availability.
+  /// Possible string values are:
+  /// - "epub" : All volumes with epub.
+  ///
+  /// [filter] - Filter search results.
+  /// Possible string values are:
+  /// - "ebooks" : All Google eBooks.
+  /// - "free-ebooks" : Google eBook with full volume text viewability.
+  /// - "full" : Public can view entire volume text.
+  /// - "paid-ebooks" : Google eBook with a price.
+  /// - "partial" : Public able to see parts of text.
+  ///
+  /// [langRestrict] - Restrict results to books with this language code.
+  ///
+  /// [libraryRestrict] - Restrict search to this user's library.
+  /// Possible string values are:
+  /// - "my-library" : Restrict to the user's library, any shelf.
+  /// - "no-restrict" : Do not restrict based on user's library.
+  ///
+  /// [maxAllowedMaturityRating] - The maximum allowed maturity rating of
+  /// returned recommendations. Books with a higher maturity rating are filtered
+  /// out.
+  /// Possible string values are:
+  /// - "mature" : Show books which are rated mature or lower.
+  /// - "not-mature" : Show books which are rated not mature.
+  ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "40".
+  ///
+  /// [orderBy] - Sort search results.
+  /// Possible string values are:
+  /// - "newest" : Most recently published.
+  /// - "relevance" : Relevance to search terms.
+  ///
+  /// [partner] - Restrict and brand results for partner ID.
+  ///
+  /// [printType] - Restrict to books or magazines.
+  /// Possible string values are:
+  /// - "all" : All volume content types.
+  /// - "books" : Just books.
+  /// - "magazines" : Just magazines.
+  ///
+  /// [projection] - Restrict information returned to a set of selected fields.
+  /// Possible string values are:
+  /// - "full" : Includes all volume data.
+  /// - "lite" : Includes a subset of fields in volumeInfo and accessInfo.
+  ///
+  /// [showPreorders] - Set to true to show books available for preorder.
+  /// Defaults to false.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// [startIndex] - Index of the first result to return (starts at 0)
+  ///
+  /// Completes with a [Volumes].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Volumes> list(core.String q,
+      {core.String download,
+      core.String filter,
+      core.String langRestrict,
+      core.String libraryRestrict,
+      core.String maxAllowedMaturityRating,
+      core.int maxResults,
+      core.String orderBy,
+      core.String partner,
+      core.String printType,
+      core.String projection,
+      core.bool showPreorders,
+      core.String source,
+      core.int startIndex}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2833,59 +2867,58 @@ class VolumesResourceApi {
 
     _url = 'volumes';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Volumes.fromJson(data));
   }
-
 }
-
 
 class VolumesAssociatedResourceApi {
   final commons.ApiRequester _requester;
 
-  VolumesAssociatedResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  VolumesAssociatedResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Return a list of associated books.
-   *
-   * Request parameters:
-   *
-   * [volumeId] - ID of the source volume.
-   *
-   * [association] - Association type.
-   * Possible string values are:
-   * - "end-of-sample" : Recommendations for display end-of-sample.
-   * - "end-of-volume" : Recommendations for display end-of-volume.
-   * - "related-for-play" : Related volumes for Play Store.
-   *
-   * [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
-   * Used for generating recommendations.
-   *
-   * [maxAllowedMaturityRating] - The maximum allowed maturity rating of
-   * returned recommendations. Books with a higher maturity rating are filtered
-   * out.
-   * Possible string values are:
-   * - "mature" : Show books which are rated mature or lower.
-   * - "not-mature" : Show books which are rated not mature.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * Completes with a [Volumes].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Volumes> list(core.String volumeId, {core.String association, core.String locale, core.String maxAllowedMaturityRating, core.String source}) {
+  /// Return a list of associated books.
+  ///
+  /// Request parameters:
+  ///
+  /// [volumeId] - ID of the source volume.
+  ///
+  /// [association] - Association type.
+  /// Possible string values are:
+  /// - "end-of-sample" : Recommendations for display end-of-sample.
+  /// - "end-of-volume" : Recommendations for display end-of-volume.
+  /// - "related-for-play" : Related volumes for Play Store.
+  ///
+  /// [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
+  /// Used for generating recommendations.
+  ///
+  /// [maxAllowedMaturityRating] - The maximum allowed maturity rating of
+  /// returned recommendations. Books with a higher maturity rating are filtered
+  /// out.
+  /// Possible string values are:
+  /// - "mature" : Show books which are rated mature or lower.
+  /// - "not-mature" : Show books which are rated not mature.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// Completes with a [Volumes].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Volumes> list(core.String volumeId,
+      {core.String association,
+      core.String locale,
+      core.String maxAllowedMaturityRating,
+      core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2909,59 +2942,61 @@ class VolumesAssociatedResourceApi {
       _queryParams["source"] = [source];
     }
 
-    _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId') + '/associated';
+    _url =
+        'volumes/' + commons.Escaper.ecapeVariable('$volumeId') + '/associated';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Volumes.fromJson(data));
   }
-
 }
-
 
 class VolumesMybooksResourceApi {
   final commons.ApiRequester _requester;
 
-  VolumesMybooksResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  VolumesMybooksResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Return a list of books in My Library.
-   *
-   * Request parameters:
-   *
-   * [acquireMethod] - How the book was acquired
-   *
-   * [country] - ISO-3166-1 code to override the IP-based location.
-   *
-   * [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex:'en_US'. Used
-   * for generating recommendations.
-   *
-   * [maxResults] - Maximum number of results to return.
-   * Value must be between "0" and "100".
-   *
-   * [processingState] - The processing state of the user uploaded volumes to be
-   * returned. Applicable only if the UPLOADED is specified in the
-   * acquireMethod.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * [startIndex] - Index of the first result to return (starts at 0)
-   *
-   * Completes with a [Volumes].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Volumes> list({core.List<core.String> acquireMethod, core.String country, core.String locale, core.int maxResults, core.List<core.String> processingState, core.String source, core.int startIndex}) {
+  /// Return a list of books in My Library.
+  ///
+  /// Request parameters:
+  ///
+  /// [acquireMethod] - How the book was acquired
+  ///
+  /// [country] - ISO-3166-1 code to override the IP-based location.
+  ///
+  /// [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex:'en_US'.
+  /// Used for generating recommendations.
+  ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "100".
+  ///
+  /// [processingState] - The processing state of the user uploaded volumes to
+  /// be returned. Applicable only if the UPLOADED is specified in the
+  /// acquireMethod.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// [startIndex] - Index of the first result to return (starts at 0)
+  ///
+  /// Completes with a [Volumes].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Volumes> list(
+      {core.List<core.String> acquireMethod,
+      core.String country,
+      core.String locale,
+      core.int maxResults,
+      core.List<core.String> processingState,
+      core.String source,
+      core.int startIndex}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2993,51 +3028,49 @@ class VolumesMybooksResourceApi {
 
     _url = 'volumes/mybooks';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Volumes.fromJson(data));
   }
-
 }
-
 
 class VolumesRecommendedResourceApi {
   final commons.ApiRequester _requester;
 
-  VolumesRecommendedResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  VolumesRecommendedResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Return a list of recommended books for the current user.
-   *
-   * Request parameters:
-   *
-   * [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
-   * Used for generating recommendations.
-   *
-   * [maxAllowedMaturityRating] - The maximum allowed maturity rating of
-   * returned recommendations. Books with a higher maturity rating are filtered
-   * out.
-   * Possible string values are:
-   * - "mature" : Show books which are rated mature or lower.
-   * - "not-mature" : Show books which are rated not mature.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * Completes with a [Volumes].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Volumes> list({core.String locale, core.String maxAllowedMaturityRating, core.String source}) {
+  /// Return a list of recommended books for the current user.
+  ///
+  /// Request parameters:
+  ///
+  /// [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
+  /// Used for generating recommendations.
+  ///
+  /// [maxAllowedMaturityRating] - The maximum allowed maturity rating of
+  /// returned recommendations. Books with a higher maturity rating are filtered
+  /// out.
+  /// Possible string values are:
+  /// - "mature" : Show books which are rated mature or lower.
+  /// - "not-mature" : Show books which are rated not mature.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// Completes with a [Volumes].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Volumes> list(
+      {core.String locale,
+      core.String maxAllowedMaturityRating,
+      core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3057,42 +3090,41 @@ class VolumesRecommendedResourceApi {
 
     _url = 'volumes/recommended';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Volumes.fromJson(data));
   }
 
-  /**
-   * Rate a recommended book for the current user.
-   *
-   * Request parameters:
-   *
-   * [rating] - Rating to be given to the volume.
-   * Possible string values are:
-   * - "HAVE_IT" : Rating indicating a dismissal due to ownership.
-   * - "NOT_INTERESTED" : Rating indicating a negative dismissal of a volume.
-   *
-   * [volumeId] - ID of the source volume.
-   *
-   * [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
-   * Used for generating recommendations.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * Completes with a [BooksVolumesRecommendedRateResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<BooksVolumesRecommendedRateResponse> rate(core.String rating, core.String volumeId, {core.String locale, core.String source}) {
+  /// Rate a recommended book for the current user.
+  ///
+  /// Request parameters:
+  ///
+  /// [rating] - Rating to be given to the volume.
+  /// Possible string values are:
+  /// - "HAVE_IT" : Rating indicating a dismissal due to ownership.
+  /// - "NOT_INTERESTED" : Rating indicating a negative dismissal of a volume.
+  ///
+  /// [volumeId] - ID of the source volume.
+  ///
+  /// [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
+  /// Used for generating recommendations.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// Completes with a [BooksVolumesRecommendedRateResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BooksVolumesRecommendedRateResponse> rate(
+      core.String rating, core.String volumeId,
+      {core.String locale, core.String source}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3117,55 +3149,57 @@ class VolumesRecommendedResourceApi {
 
     _url = 'volumes/recommended/rate';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new BooksVolumesRecommendedRateResponse.fromJson(data));
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new BooksVolumesRecommendedRateResponse.fromJson(data));
   }
-
 }
-
 
 class VolumesUseruploadedResourceApi {
   final commons.ApiRequester _requester;
 
-  VolumesUseruploadedResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  VolumesUseruploadedResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Return a list of books uploaded by the current user.
-   *
-   * Request parameters:
-   *
-   * [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
-   * Used for generating recommendations.
-   *
-   * [maxResults] - Maximum number of results to return.
-   * Value must be between "0" and "40".
-   *
-   * [processingState] - The processing state of the user uploaded volumes to be
-   * returned.
-   *
-   * [source] - String to identify the originator of this request.
-   *
-   * [startIndex] - Index of the first result to return (starts at 0)
-   *
-   * [volumeId] - The ids of the volumes to be returned. If not specified all
-   * that match the processingState are returned.
-   *
-   * Completes with a [Volumes].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Volumes> list({core.String locale, core.int maxResults, core.List<core.String> processingState, core.String source, core.int startIndex, core.List<core.String> volumeId}) {
+  /// Return a list of books uploaded by the current user.
+  ///
+  /// Request parameters:
+  ///
+  /// [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
+  /// Used for generating recommendations.
+  ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "40".
+  ///
+  /// [processingState] - The processing state of the user uploaded volumes to
+  /// be returned.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// [startIndex] - Index of the first result to return (starts at 0)
+  ///
+  /// [volumeId] - The ids of the volumes to be returned. If not specified all
+  /// that match the processingState are returned.
+  ///
+  /// Completes with a [Volumes].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Volumes> list(
+      {core.String locale,
+      core.int maxResults,
+      core.List<core.String> processingState,
+      core.String source,
+      core.int startIndex,
+      core.List<core.String> volumeId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3194,31 +3228,31 @@ class VolumesUseruploadedResourceApi {
 
     _url = 'volumes/useruploaded';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Volumes.fromJson(data));
   }
-
 }
 
-
-
-/** Selection ranges sent from the client. */
+/// Selection ranges sent from the client.
 class AnnotationClientVersionRanges {
-  /** Range in CFI format for this annotation sent by client. */
+  /// Range in CFI format for this annotation sent by client.
   BooksAnnotationsRange cfiRange;
-  /** Content version the client sent in. */
+
+  /// Content version the client sent in.
   core.String contentVersion;
-  /** Range in GB image format for this annotation sent by client. */
+
+  /// Range in GB image format for this annotation sent by client.
   BooksAnnotationsRange gbImageRange;
-  /** Range in GB text format for this annotation sent by client. */
+
+  /// Range in GB text format for this annotation sent by client.
   BooksAnnotationsRange gbTextRange;
-  /** Range in image CFI format for this annotation sent by client. */
+
+  /// Range in image CFI format for this annotation sent by client.
   BooksAnnotationsRange imageCfiRange;
 
   AnnotationClientVersionRanges();
@@ -3237,12 +3271,14 @@ class AnnotationClientVersionRanges {
       gbTextRange = new BooksAnnotationsRange.fromJson(_json["gbTextRange"]);
     }
     if (_json.containsKey("imageCfiRange")) {
-      imageCfiRange = new BooksAnnotationsRange.fromJson(_json["imageCfiRange"]);
+      imageCfiRange =
+          new BooksAnnotationsRange.fromJson(_json["imageCfiRange"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (cfiRange != null) {
       _json["cfiRange"] = (cfiRange).toJson();
     }
@@ -3262,17 +3298,21 @@ class AnnotationClientVersionRanges {
   }
 }
 
-/** Selection ranges for the most recent content version. */
+/// Selection ranges for the most recent content version.
 class AnnotationCurrentVersionRanges {
-  /** Range in CFI format for this annotation for version above. */
+  /// Range in CFI format for this annotation for version above.
   BooksAnnotationsRange cfiRange;
-  /** Content version applicable to ranges below. */
+
+  /// Content version applicable to ranges below.
   core.String contentVersion;
-  /** Range in GB image format for this annotation for version above. */
+
+  /// Range in GB image format for this annotation for version above.
   BooksAnnotationsRange gbImageRange;
-  /** Range in GB text format for this annotation for version above. */
+
+  /// Range in GB text format for this annotation for version above.
   BooksAnnotationsRange gbTextRange;
-  /** Range in image CFI format for this annotation for version above. */
+
+  /// Range in image CFI format for this annotation for version above.
   BooksAnnotationsRange imageCfiRange;
 
   AnnotationCurrentVersionRanges();
@@ -3291,12 +3331,14 @@ class AnnotationCurrentVersionRanges {
       gbTextRange = new BooksAnnotationsRange.fromJson(_json["gbTextRange"]);
     }
     if (_json.containsKey("imageCfiRange")) {
-      imageCfiRange = new BooksAnnotationsRange.fromJson(_json["imageCfiRange"]);
+      imageCfiRange =
+          new BooksAnnotationsRange.fromJson(_json["imageCfiRange"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (cfiRange != null) {
       _json["cfiRange"] = (cfiRange).toJson();
     }
@@ -3317,19 +3359,15 @@ class AnnotationCurrentVersionRanges {
 }
 
 class AnnotationLayerSummary {
-  /**
-   * Maximum allowed characters on this layer, especially for the "copy" layer.
-   */
+  /// Maximum allowed characters on this layer, especially for the "copy" layer.
   core.int allowedCharacterCount;
-  /**
-   * Type of limitation on this layer. "limited" or "unlimited" for the "copy"
-   * layer.
-   */
+
+  /// Type of limitation on this layer. "limited" or "unlimited" for the "copy"
+  /// layer.
   core.String limitType;
-  /**
-   * Remaining allowed characters on this layer, especially for the "copy"
-   * layer.
-   */
+
+  /// Remaining allowed characters on this layer, especially for the "copy"
+  /// layer.
   core.int remainingCharacterCount;
 
   AnnotationLayerSummary();
@@ -3347,7 +3385,8 @@ class AnnotationLayerSummary {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (allowedCharacterCount != null) {
       _json["allowedCharacterCount"] = allowedCharacterCount;
     }
@@ -3362,44 +3401,55 @@ class AnnotationLayerSummary {
 }
 
 class Annotation {
-  /**
-   * Anchor text after excerpt. For requests, if the user bookmarked a screen
-   * that has no flowing text on it, then this field should be empty.
-   */
+  /// Anchor text after excerpt. For requests, if the user bookmarked a screen
+  /// that has no flowing text on it, then this field should be empty.
   core.String afterSelectedText;
-  /**
-   * Anchor text before excerpt. For requests, if the user bookmarked a screen
-   * that has no flowing text on it, then this field should be empty.
-   */
+
+  /// Anchor text before excerpt. For requests, if the user bookmarked a screen
+  /// that has no flowing text on it, then this field should be empty.
   core.String beforeSelectedText;
-  /** Selection ranges sent from the client. */
+
+  /// Selection ranges sent from the client.
   AnnotationClientVersionRanges clientVersionRanges;
-  /** Timestamp for the created time of this annotation. */
+
+  /// Timestamp for the created time of this annotation.
   core.DateTime created;
-  /** Selection ranges for the most recent content version. */
+
+  /// Selection ranges for the most recent content version.
   AnnotationCurrentVersionRanges currentVersionRanges;
-  /** User-created data for this annotation. */
+
+  /// User-created data for this annotation.
   core.String data;
-  /** Indicates that this annotation is deleted. */
+
+  /// Indicates that this annotation is deleted.
   core.bool deleted;
-  /** The highlight style for this annotation. */
+
+  /// The highlight style for this annotation.
   core.String highlightStyle;
-  /** Id of this annotation, in the form of a GUID. */
+
+  /// Id of this annotation, in the form of a GUID.
   core.String id;
-  /** Resource type. */
+
+  /// Resource type.
   core.String kind;
-  /** The layer this annotation is for. */
+
+  /// The layer this annotation is for.
   core.String layerId;
   AnnotationLayerSummary layerSummary;
-  /** Pages that this annotation spans. */
+
+  /// Pages that this annotation spans.
   core.List<core.String> pageIds;
-  /** Excerpt from the volume. */
+
+  /// Excerpt from the volume.
   core.String selectedText;
-  /** URL to this resource. */
+
+  /// URL to this resource.
   core.String selfLink;
-  /** Timestamp for the last time this annotation was modified. */
+
+  /// Timestamp for the last time this annotation was modified.
   core.DateTime updated;
-  /** The volume that this annotation belongs to. */
+
+  /// The volume that this annotation belongs to.
   core.String volumeId;
 
   Annotation();
@@ -3412,13 +3462,15 @@ class Annotation {
       beforeSelectedText = _json["beforeSelectedText"];
     }
     if (_json.containsKey("clientVersionRanges")) {
-      clientVersionRanges = new AnnotationClientVersionRanges.fromJson(_json["clientVersionRanges"]);
+      clientVersionRanges = new AnnotationClientVersionRanges.fromJson(
+          _json["clientVersionRanges"]);
     }
     if (_json.containsKey("created")) {
       created = core.DateTime.parse(_json["created"]);
     }
     if (_json.containsKey("currentVersionRanges")) {
-      currentVersionRanges = new AnnotationCurrentVersionRanges.fromJson(_json["currentVersionRanges"]);
+      currentVersionRanges = new AnnotationCurrentVersionRanges.fromJson(
+          _json["currentVersionRanges"]);
     }
     if (_json.containsKey("data")) {
       data = _json["data"];
@@ -3459,7 +3511,8 @@ class Annotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (afterSelectedText != null) {
       _json["afterSelectedText"] = afterSelectedText;
     }
@@ -3516,38 +3569,43 @@ class Annotation {
 }
 
 class Annotationdata {
-  /** The type of annotation this data is for. */
+  /// The type of annotation this data is for.
   core.String annotationType;
-  /**
-   *
-   *
-   * The values for Object must be JSON objects. It can consist of `num`,
-   * `String`, `bool` and `null` as well as `Map` and `List` values.
-   */
+
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object data;
-  /** Base64 encoded data for this annotation data. */
+
+  /// Base64 encoded data for this annotation data.
   core.String encodedData;
   core.List<core.int> get encodedDataAsBytes {
     return convert.BASE64.decode(encodedData);
   }
 
   void set encodedDataAsBytes(core.List<core.int> _bytes) {
-    encodedData = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    encodedData =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
-  /** Unique id for this annotation data. */
+
+  /// Unique id for this annotation data.
   core.String id;
-  /** Resource Type */
+
+  /// Resource Type
   core.String kind;
-  /** The Layer id for this data. * */
+
+  /// The Layer id for this data. *
   core.String layerId;
-  /** URL for this resource. * */
+
+  /// URL for this resource. *
   core.String selfLink;
-  /**
-   * Timestamp for the last time this data was updated. (RFC 3339 UTC date-time
-   * format).
-   */
+
+  /// Timestamp for the last time this data was updated. (RFC 3339 UTC date-time
+  /// format).
   core.DateTime updated;
-  /** The volume id for this data. * */
+
+  /// The volume id for this data. *
   core.String volumeId;
 
   Annotationdata();
@@ -3583,7 +3641,8 @@ class Annotationdata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (annotationType != null) {
       _json["annotationType"] = annotationType;
     }
@@ -3616,26 +3675,27 @@ class Annotationdata {
 }
 
 class Annotations {
-  /** A list of annotations. */
+  /// A list of annotations.
   core.List<Annotation> items;
-  /** Resource type. */
+
+  /// Resource type.
   core.String kind;
-  /**
-   * Token to pass in for pagination for the next page. This will not be present
-   * if this request does not have more results.
-   */
+
+  /// Token to pass in for pagination for the next page. This will not be
+  /// present if this request does not have more results.
   core.String nextPageToken;
-  /**
-   * Total number of annotations found. This may be greater than the number of
-   * notes returned in this response if results have been paginated.
-   */
+
+  /// Total number of annotations found. This may be greater than the number of
+  /// notes returned in this response if results have been paginated.
   core.int totalItems;
 
   Annotations();
 
   Annotations.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Annotation.fromJson(value)).toList();
+      items = _json["items"]
+          .map((value) => new Annotation.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -3649,7 +3709,8 @@ class Annotations {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -3694,7 +3755,8 @@ class AnnotationsSummaryLayers {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (allowedCharacterCount != null) {
       _json["allowedCharacterCount"] = allowedCharacterCount;
     }
@@ -3725,12 +3787,15 @@ class AnnotationsSummary {
       kind = _json["kind"];
     }
     if (_json.containsKey("layers")) {
-      layers = _json["layers"].map((value) => new AnnotationsSummaryLayers.fromJson(value)).toList();
+      layers = _json["layers"]
+          .map((value) => new AnnotationsSummaryLayers.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -3742,23 +3807,26 @@ class AnnotationsSummary {
 }
 
 class Annotationsdata {
-  /** A list of Annotation Data. */
+  /// A list of Annotation Data.
   core.List<Annotationdata> items;
-  /** Resource type */
+
+  /// Resource type
   core.String kind;
-  /**
-   * Token to pass in for pagination for the next page. This will not be present
-   * if this request does not have more results.
-   */
+
+  /// Token to pass in for pagination for the next page. This will not be
+  /// present if this request does not have more results.
   core.String nextPageToken;
-  /** The total number of volume annotations found. */
+
+  /// The total number of volume annotations found.
   core.int totalItems;
 
   Annotationsdata();
 
   Annotationsdata.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Annotationdata.fromJson(value)).toList();
+      items = _json["items"]
+          .map((value) => new Annotationdata.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -3772,7 +3840,8 @@ class Annotationsdata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -3790,13 +3859,16 @@ class Annotationsdata {
 }
 
 class BooksAnnotationsRange {
-  /** The offset from the ending position. */
+  /// The offset from the ending position.
   core.String endOffset;
-  /** The ending position for the range. */
+
+  /// The ending position for the range.
   core.String endPosition;
-  /** The offset from the starting position. */
+
+  /// The offset from the starting position.
   core.String startOffset;
-  /** The starting position for the range. */
+
+  /// The starting position for the range.
   core.String startPosition;
 
   BooksAnnotationsRange();
@@ -3817,7 +3889,8 @@ class BooksAnnotationsRange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (endOffset != null) {
       _json["endOffset"] = endOffset;
     }
@@ -3858,7 +3931,8 @@ class BooksCloudloadingResource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (author != null) {
       _json["author"] = author;
     }
@@ -3887,7 +3961,8 @@ class BooksVolumesRecommendedRateResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (consistencyToken != null) {
       _json["consistency_token"] = consistencyToken;
     }
@@ -3896,34 +3971,37 @@ class BooksVolumesRecommendedRateResponse {
 }
 
 class Bookshelf {
-  /** Whether this bookshelf is PUBLIC or PRIVATE. */
+  /// Whether this bookshelf is PUBLIC or PRIVATE.
   core.String access;
-  /**
-   * Created time for this bookshelf (formatted UTC timestamp with millisecond
-   * resolution).
-   */
+
+  /// Created time for this bookshelf (formatted UTC timestamp with millisecond
+  /// resolution).
   core.DateTime created;
-  /** Description of this bookshelf. */
+
+  /// Description of this bookshelf.
   core.String description;
-  /** Id of this bookshelf, only unique by user. */
+
+  /// Id of this bookshelf, only unique by user.
   core.int id;
-  /** Resource type for bookshelf metadata. */
+
+  /// Resource type for bookshelf metadata.
   core.String kind;
-  /** URL to this resource. */
+
+  /// URL to this resource.
   core.String selfLink;
-  /** Title of this bookshelf. */
+
+  /// Title of this bookshelf.
   core.String title;
-  /**
-   * Last modified time of this bookshelf (formatted UTC timestamp with
-   * millisecond resolution).
-   */
+
+  /// Last modified time of this bookshelf (formatted UTC timestamp with
+  /// millisecond resolution).
   core.DateTime updated;
-  /** Number of volumes in this bookshelf. */
+
+  /// Number of volumes in this bookshelf.
   core.int volumeCount;
-  /**
-   * Last time a volume was added or removed from this bookshelf (formatted UTC
-   * timestamp with millisecond resolution).
-   */
+
+  /// Last time a volume was added or removed from this bookshelf (formatted UTC
+  /// timestamp with millisecond resolution).
   core.DateTime volumesLastUpdated;
 
   Bookshelf();
@@ -3962,7 +4040,8 @@ class Bookshelf {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (access != null) {
       _json["access"] = access;
     }
@@ -3998,16 +4077,18 @@ class Bookshelf {
 }
 
 class Bookshelves {
-  /** A list of bookshelves. */
+  /// A list of bookshelves.
   core.List<Bookshelf> items;
-  /** Resource type. */
+
+  /// Resource type.
   core.String kind;
 
   Bookshelves();
 
   Bookshelves.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Bookshelf.fromJson(value)).toList();
+      items =
+          _json["items"].map((value) => new Bookshelf.fromJson(value)).toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -4015,7 +4096,8 @@ class Bookshelves {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -4046,7 +4128,8 @@ class CategoryItems {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (badgeUrl != null) {
       _json["badgeUrl"] = badgeUrl;
     }
@@ -4061,16 +4144,19 @@ class CategoryItems {
 }
 
 class Category {
-  /** A list of onboarding categories. */
+  /// A list of onboarding categories.
   core.List<CategoryItems> items;
-  /** Resource type. */
+
+  /// Resource type.
   core.String kind;
 
   Category();
 
   Category.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new CategoryItems.fromJson(value)).toList();
+      items = _json["items"]
+          .map((value) => new CategoryItems.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -4078,7 +4164,8 @@ class Category {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -4090,32 +4177,38 @@ class Category {
 }
 
 class ConcurrentAccessRestriction {
-  /** Whether access is granted for this (user, device, volume). */
+  /// Whether access is granted for this (user, device, volume).
   core.bool deviceAllowed;
-  /** Resource type. */
+
+  /// Resource type.
   core.String kind;
-  /** The maximum number of concurrent access licenses for this volume. */
+
+  /// The maximum number of concurrent access licenses for this volume.
   core.int maxConcurrentDevices;
-  /** Error/warning message. */
+
+  /// Error/warning message.
   core.String message;
-  /**
-   * Client nonce for verification. Download access and client-validation only.
-   */
+
+  /// Client nonce for verification. Download access and client-validation only.
   core.String nonce;
-  /** Error/warning reason code. */
+
+  /// Error/warning reason code.
   core.String reasonCode;
-  /** Whether this volume has any concurrent access restrictions. */
+
+  /// Whether this volume has any concurrent access restrictions.
   core.bool restricted;
-  /** Response signature. */
+
+  /// Response signature.
   core.String signature;
-  /**
-   * Client app identifier for verification. Download access and
-   * client-validation only.
-   */
+
+  /// Client app identifier for verification. Download access and
+  /// client-validation only.
   core.String source;
-  /** Time in seconds for license auto-expiration. */
+
+  /// Time in seconds for license auto-expiration.
   core.int timeWindowSeconds;
-  /** Identifies the volume for which this entry applies. */
+
+  /// Identifies the volume for which this entry applies.
   core.String volumeId;
 
   ConcurrentAccessRestriction();
@@ -4157,7 +4250,8 @@ class ConcurrentAccessRestriction {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (deviceAllowed != null) {
       _json["deviceAllowed"] = deviceAllowed;
     }
@@ -4196,10 +4290,8 @@ class ConcurrentAccessRestriction {
 }
 
 class DictlayerdataCommon {
-  /**
-   * The display title and localized canonical name to use when searching for
-   * this entity on Google search.
-   */
+  /// The display title and localized canonical name to use when searching for
+  /// this entity on Google search.
   core.String title;
 
   DictlayerdataCommon();
@@ -4211,7 +4303,8 @@ class DictlayerdataCommon {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (title != null) {
       _json["title"] = title;
     }
@@ -4219,7 +4312,7 @@ class DictlayerdataCommon {
   }
 }
 
-/** The source, url and attribution for this dictionary data. */
+/// The source, url and attribution for this dictionary data.
 class DictlayerdataDictSource {
   core.String attribution;
   core.String url;
@@ -4236,7 +4329,8 @@ class DictlayerdataDictSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (attribution != null) {
       _json["attribution"] = attribution;
     }
@@ -4263,7 +4357,8 @@ class DictlayerdataDictWordsDerivativesSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (attribution != null) {
       _json["attribution"] = attribution;
     }
@@ -4282,7 +4377,8 @@ class DictlayerdataDictWordsDerivatives {
 
   DictlayerdataDictWordsDerivatives.fromJson(core.Map _json) {
     if (_json.containsKey("source")) {
-      source = new DictlayerdataDictWordsDerivativesSource.fromJson(_json["source"]);
+      source =
+          new DictlayerdataDictWordsDerivativesSource.fromJson(_json["source"]);
     }
     if (_json.containsKey("text")) {
       text = _json["text"];
@@ -4290,7 +4386,8 @@ class DictlayerdataDictWordsDerivatives {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (source != null) {
       _json["source"] = (source).toJson();
     }
@@ -4317,7 +4414,8 @@ class DictlayerdataDictWordsExamplesSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (attribution != null) {
       _json["attribution"] = attribution;
     }
@@ -4336,7 +4434,8 @@ class DictlayerdataDictWordsExamples {
 
   DictlayerdataDictWordsExamples.fromJson(core.Map _json) {
     if (_json.containsKey("source")) {
-      source = new DictlayerdataDictWordsExamplesSource.fromJson(_json["source"]);
+      source =
+          new DictlayerdataDictWordsExamplesSource.fromJson(_json["source"]);
     }
     if (_json.containsKey("text")) {
       text = _json["text"];
@@ -4344,7 +4443,8 @@ class DictlayerdataDictWordsExamples {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (source != null) {
       _json["source"] = (source).toJson();
     }
@@ -4371,7 +4471,8 @@ class DictlayerdataDictWordsSensesConjugations {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (type != null) {
       _json["type"] = type;
     }
@@ -4388,7 +4489,8 @@ class DictlayerdataDictWordsSensesDefinitionsExamplesSource {
 
   DictlayerdataDictWordsSensesDefinitionsExamplesSource();
 
-  DictlayerdataDictWordsSensesDefinitionsExamplesSource.fromJson(core.Map _json) {
+  DictlayerdataDictWordsSensesDefinitionsExamplesSource.fromJson(
+      core.Map _json) {
     if (_json.containsKey("attribution")) {
       attribution = _json["attribution"];
     }
@@ -4398,7 +4500,8 @@ class DictlayerdataDictWordsSensesDefinitionsExamplesSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (attribution != null) {
       _json["attribution"] = attribution;
     }
@@ -4417,7 +4520,9 @@ class DictlayerdataDictWordsSensesDefinitionsExamples {
 
   DictlayerdataDictWordsSensesDefinitionsExamples.fromJson(core.Map _json) {
     if (_json.containsKey("source")) {
-      source = new DictlayerdataDictWordsSensesDefinitionsExamplesSource.fromJson(_json["source"]);
+      source =
+          new DictlayerdataDictWordsSensesDefinitionsExamplesSource.fromJson(
+              _json["source"]);
     }
     if (_json.containsKey("text")) {
       text = _json["text"];
@@ -4425,7 +4530,8 @@ class DictlayerdataDictWordsSensesDefinitionsExamples {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (source != null) {
       _json["source"] = (source).toJson();
     }
@@ -4447,12 +4553,17 @@ class DictlayerdataDictWordsSensesDefinitions {
       definition = _json["definition"];
     }
     if (_json.containsKey("examples")) {
-      examples = _json["examples"].map((value) => new DictlayerdataDictWordsSensesDefinitionsExamples.fromJson(value)).toList();
+      examples = _json["examples"]
+          .map((value) =>
+              new DictlayerdataDictWordsSensesDefinitionsExamples.fromJson(
+                  value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (definition != null) {
       _json["definition"] = definition;
     }
@@ -4479,7 +4590,8 @@ class DictlayerdataDictWordsSensesSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (attribution != null) {
       _json["attribution"] = attribution;
     }
@@ -4506,7 +4618,8 @@ class DictlayerdataDictWordsSensesSynonymsSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (attribution != null) {
       _json["attribution"] = attribution;
     }
@@ -4525,7 +4638,8 @@ class DictlayerdataDictWordsSensesSynonyms {
 
   DictlayerdataDictWordsSensesSynonyms.fromJson(core.Map _json) {
     if (_json.containsKey("source")) {
-      source = new DictlayerdataDictWordsSensesSynonymsSource.fromJson(_json["source"]);
+      source = new DictlayerdataDictWordsSensesSynonymsSource.fromJson(
+          _json["source"]);
     }
     if (_json.containsKey("text")) {
       text = _json["text"];
@@ -4533,7 +4647,8 @@ class DictlayerdataDictWordsSensesSynonyms {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (source != null) {
       _json["source"] = (source).toJson();
     }
@@ -4558,10 +4673,16 @@ class DictlayerdataDictWordsSenses {
 
   DictlayerdataDictWordsSenses.fromJson(core.Map _json) {
     if (_json.containsKey("conjugations")) {
-      conjugations = _json["conjugations"].map((value) => new DictlayerdataDictWordsSensesConjugations.fromJson(value)).toList();
+      conjugations = _json["conjugations"]
+          .map((value) =>
+              new DictlayerdataDictWordsSensesConjugations.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("definitions")) {
-      definitions = _json["definitions"].map((value) => new DictlayerdataDictWordsSensesDefinitions.fromJson(value)).toList();
+      definitions = _json["definitions"]
+          .map((value) =>
+              new DictlayerdataDictWordsSensesDefinitions.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("partOfSpeech")) {
       partOfSpeech = _json["partOfSpeech"];
@@ -4579,17 +4700,23 @@ class DictlayerdataDictWordsSenses {
       syllabification = _json["syllabification"];
     }
     if (_json.containsKey("synonyms")) {
-      synonyms = _json["synonyms"].map((value) => new DictlayerdataDictWordsSensesSynonyms.fromJson(value)).toList();
+      synonyms = _json["synonyms"]
+          .map((value) =>
+              new DictlayerdataDictWordsSensesSynonyms.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (conjugations != null) {
-      _json["conjugations"] = conjugations.map((value) => (value).toJson()).toList();
+      _json["conjugations"] =
+          conjugations.map((value) => (value).toJson()).toList();
     }
     if (definitions != null) {
-      _json["definitions"] = definitions.map((value) => (value).toJson()).toList();
+      _json["definitions"] =
+          definitions.map((value) => (value).toJson()).toList();
     }
     if (partOfSpeech != null) {
       _json["partOfSpeech"] = partOfSpeech;
@@ -4613,10 +4740,8 @@ class DictlayerdataDictWordsSenses {
   }
 }
 
-/**
- * The words with different meanings but not related words, e.g. "go" (game) and
- * "go" (verb).
- */
+/// The words with different meanings but not related words, e.g. "go" (game)
+/// and "go" (verb).
 class DictlayerdataDictWordsSource {
   core.String attribution;
   core.String url;
@@ -4633,7 +4758,8 @@ class DictlayerdataDictWordsSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (attribution != null) {
       _json["attribution"] = attribution;
     }
@@ -4648,23 +4774,28 @@ class DictlayerdataDictWords {
   core.List<DictlayerdataDictWordsDerivatives> derivatives;
   core.List<DictlayerdataDictWordsExamples> examples;
   core.List<DictlayerdataDictWordsSenses> senses;
-  /**
-   * The words with different meanings but not related words, e.g. "go" (game)
-   * and "go" (verb).
-   */
+
+  /// The words with different meanings but not related words, e.g. "go" (game)
+  /// and "go" (verb).
   DictlayerdataDictWordsSource source;
 
   DictlayerdataDictWords();
 
   DictlayerdataDictWords.fromJson(core.Map _json) {
     if (_json.containsKey("derivatives")) {
-      derivatives = _json["derivatives"].map((value) => new DictlayerdataDictWordsDerivatives.fromJson(value)).toList();
+      derivatives = _json["derivatives"]
+          .map((value) => new DictlayerdataDictWordsDerivatives.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("examples")) {
-      examples = _json["examples"].map((value) => new DictlayerdataDictWordsExamples.fromJson(value)).toList();
+      examples = _json["examples"]
+          .map((value) => new DictlayerdataDictWordsExamples.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("senses")) {
-      senses = _json["senses"].map((value) => new DictlayerdataDictWordsSenses.fromJson(value)).toList();
+      senses = _json["senses"]
+          .map((value) => new DictlayerdataDictWordsSenses.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("source")) {
       source = new DictlayerdataDictWordsSource.fromJson(_json["source"]);
@@ -4672,9 +4803,11 @@ class DictlayerdataDictWords {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (derivatives != null) {
-      _json["derivatives"] = derivatives.map((value) => (value).toJson()).toList();
+      _json["derivatives"] =
+          derivatives.map((value) => (value).toJson()).toList();
     }
     if (examples != null) {
       _json["examples"] = examples.map((value) => (value).toJson()).toList();
@@ -4690,7 +4823,7 @@ class DictlayerdataDictWords {
 }
 
 class DictlayerdataDict {
-  /** The source, url and attribution for this dictionary data. */
+  /// The source, url and attribution for this dictionary data.
   DictlayerdataDictSource source;
   core.List<DictlayerdataDictWords> words;
 
@@ -4701,12 +4834,15 @@ class DictlayerdataDict {
       source = new DictlayerdataDictSource.fromJson(_json["source"]);
     }
     if (_json.containsKey("words")) {
-      words = _json["words"].map((value) => new DictlayerdataDictWords.fromJson(value)).toList();
+      words = _json["words"]
+          .map((value) => new DictlayerdataDictWords.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (source != null) {
       _json["source"] = (source).toJson();
     }
@@ -4737,7 +4873,8 @@ class Dictlayerdata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (common != null) {
       _json["common"] = (common).toJson();
     }
@@ -4783,7 +4920,8 @@ class DiscoveryclustersClustersBannerWithContentContainer {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (fillColorArgb != null) {
       _json["fillColorArgb"] = fillColorArgb;
     }
@@ -4807,7 +4945,8 @@ class DiscoveryclustersClustersBannerWithContentContainer {
 }
 
 class DiscoveryclustersClusters {
-  DiscoveryclustersClustersBannerWithContentContainer bannerWithContentContainer;
+  DiscoveryclustersClustersBannerWithContentContainer
+      bannerWithContentContainer;
   core.String subTitle;
   core.String title;
   core.int totalVolumes;
@@ -4818,7 +4957,9 @@ class DiscoveryclustersClusters {
 
   DiscoveryclustersClusters.fromJson(core.Map _json) {
     if (_json.containsKey("banner_with_content_container")) {
-      bannerWithContentContainer = new DiscoveryclustersClustersBannerWithContentContainer.fromJson(_json["banner_with_content_container"]);
+      bannerWithContentContainer =
+          new DiscoveryclustersClustersBannerWithContentContainer.fromJson(
+              _json["banner_with_content_container"]);
     }
     if (_json.containsKey("subTitle")) {
       subTitle = _json["subTitle"];
@@ -4833,14 +4974,17 @@ class DiscoveryclustersClusters {
       uid = _json["uid"];
     }
     if (_json.containsKey("volumes")) {
-      volumes = _json["volumes"].map((value) => new Volume.fromJson(value)).toList();
+      volumes =
+          _json["volumes"].map((value) => new Volume.fromJson(value)).toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (bannerWithContentContainer != null) {
-      _json["banner_with_content_container"] = (bannerWithContentContainer).toJson();
+      _json["banner_with_content_container"] =
+          (bannerWithContentContainer).toJson();
     }
     if (subTitle != null) {
       _json["subTitle"] = subTitle;
@@ -4863,7 +5007,8 @@ class DiscoveryclustersClusters {
 
 class Discoveryclusters {
   core.List<DiscoveryclustersClusters> clusters;
-  /** Resorce type. */
+
+  /// Resorce type.
   core.String kind;
   core.int totalClusters;
 
@@ -4871,7 +5016,9 @@ class Discoveryclusters {
 
   Discoveryclusters.fromJson(core.Map _json) {
     if (_json.containsKey("clusters")) {
-      clusters = _json["clusters"].map((value) => new DiscoveryclustersClusters.fromJson(value)).toList();
+      clusters = _json["clusters"]
+          .map((value) => new DiscoveryclustersClusters.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -4882,7 +5029,8 @@ class Discoveryclusters {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (clusters != null) {
       _json["clusters"] = clusters.map((value) => (value).toJson()).toList();
     }
@@ -4897,46 +5045,45 @@ class Discoveryclusters {
 }
 
 class DownloadAccessRestriction {
-  /**
-   * If restricted, whether access is granted for this (user, device, volume).
-   */
+  /// If restricted, whether access is granted for this (user, device, volume).
   core.bool deviceAllowed;
-  /**
-   * If restricted, the number of content download licenses already acquired
-   * (including the requesting client, if licensed).
-   */
+
+  /// If restricted, the number of content download licenses already acquired
+  /// (including the requesting client, if licensed).
   core.int downloadsAcquired;
-  /** If deviceAllowed, whether access was just acquired with this request. */
+
+  /// If deviceAllowed, whether access was just acquired with this request.
   core.bool justAcquired;
-  /** Resource type. */
+
+  /// Resource type.
   core.String kind;
-  /**
-   * If restricted, the maximum number of content download licenses for this
-   * volume.
-   */
+
+  /// If restricted, the maximum number of content download licenses for this
+  /// volume.
   core.int maxDownloadDevices;
-  /** Error/warning message. */
+
+  /// Error/warning message.
   core.String message;
-  /**
-   * Client nonce for verification. Download access and client-validation only.
-   */
+
+  /// Client nonce for verification. Download access and client-validation only.
   core.String nonce;
-  /**
-   * Error/warning reason code. Additional codes may be added in the future. 0
-   * OK 100 ACCESS_DENIED_PUBLISHER_LIMIT 101 ACCESS_DENIED_LIMIT 200
-   * WARNING_USED_LAST_ACCESS
-   */
+
+  /// Error/warning reason code. Additional codes may be added in the future. 0
+  /// OK 100 ACCESS_DENIED_PUBLISHER_LIMIT 101 ACCESS_DENIED_LIMIT 200
+  /// WARNING_USED_LAST_ACCESS
   core.String reasonCode;
-  /** Whether this volume has any download access restrictions. */
+
+  /// Whether this volume has any download access restrictions.
   core.bool restricted;
-  /** Response signature. */
+
+  /// Response signature.
   core.String signature;
-  /**
-   * Client app identifier for verification. Download access and
-   * client-validation only.
-   */
+
+  /// Client app identifier for verification. Download access and
+  /// client-validation only.
   core.String source;
-  /** Identifies the volume for which this entry applies. */
+
+  /// Identifies the volume for which this entry applies.
   core.String volumeId;
 
   DownloadAccessRestriction();
@@ -4981,7 +5128,8 @@ class DownloadAccessRestriction {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (deviceAllowed != null) {
       _json["deviceAllowed"] = deviceAllowed;
     }
@@ -5023,16 +5171,19 @@ class DownloadAccessRestriction {
 }
 
 class DownloadAccesses {
-  /** A list of download access responses. */
+  /// A list of download access responses.
   core.List<DownloadAccessRestriction> downloadAccessList;
-  /** Resource type. */
+
+  /// Resource type.
   core.String kind;
 
   DownloadAccesses();
 
   DownloadAccesses.fromJson(core.Map _json) {
     if (_json.containsKey("downloadAccessList")) {
-      downloadAccessList = _json["downloadAccessList"].map((value) => new DownloadAccessRestriction.fromJson(value)).toList();
+      downloadAccessList = _json["downloadAccessList"]
+          .map((value) => new DownloadAccessRestriction.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -5040,9 +5191,11 @@ class DownloadAccesses {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (downloadAccessList != null) {
-      _json["downloadAccessList"] = downloadAccessList.map((value) => (value).toJson()).toList();
+      _json["downloadAccessList"] =
+          downloadAccessList.map((value) => (value).toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -5052,18 +5205,20 @@ class DownloadAccesses {
 }
 
 class GeolayerdataCommon {
-  /** The language of the information url and description. */
+  /// The language of the information url and description.
   core.String lang;
-  /** The URL for the preview image information. */
+
+  /// The URL for the preview image information.
   core.String previewImageUrl;
-  /** The description for this location. */
+
+  /// The description for this location.
   core.String snippet;
-  /** The URL for information for this location. Ex: wikipedia link. */
+
+  /// The URL for information for this location. Ex: wikipedia link.
   core.String snippetUrl;
-  /**
-   * The display title and localized canonical name to use when searching for
-   * this entity on Google search.
-   */
+
+  /// The display title and localized canonical name to use when searching for
+  /// this entity on Google search.
   core.String title;
 
   GeolayerdataCommon();
@@ -5087,7 +5242,8 @@ class GeolayerdataCommon {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (lang != null) {
       _json["lang"] = lang;
     }
@@ -5123,7 +5279,8 @@ class GeolayerdataGeoBoundary {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (latitude != null) {
       _json["latitude"] = latitude;
     }
@@ -5150,7 +5307,8 @@ class GeolayerdataGeoViewportHi {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (latitude != null) {
       _json["latitude"] = latitude;
     }
@@ -5177,7 +5335,8 @@ class GeolayerdataGeoViewportLo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (latitude != null) {
       _json["latitude"] = latitude;
     }
@@ -5188,10 +5347,8 @@ class GeolayerdataGeoViewportLo {
   }
 }
 
-/**
- * The viewport for showing this location. This is a latitude, longitude
- * rectangle.
- */
+/// The viewport for showing this location. This is a latitude, longitude
+/// rectangle.
 class GeolayerdataGeoViewport {
   GeolayerdataGeoViewportHi hi;
   GeolayerdataGeoViewportLo lo;
@@ -5208,7 +5365,8 @@ class GeolayerdataGeoViewport {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (hi != null) {
       _json["hi"] = (hi).toJson();
     }
@@ -5220,44 +5378,45 @@ class GeolayerdataGeoViewport {
 }
 
 class GeolayerdataGeo {
-  /**
-   * The boundary of the location as a set of loops containing pairs of
-   * latitude, longitude coordinates.
-   */
+  /// The boundary of the location as a set of loops containing pairs of
+  /// latitude, longitude coordinates.
   core.List<core.List<GeolayerdataGeoBoundary>> boundary;
-  /**
-   * The cache policy active for this data. EX: UNRESTRICTED, RESTRICTED, NEVER
-   */
+
+  /// The cache policy active for this data. EX: UNRESTRICTED, RESTRICTED, NEVER
   core.String cachePolicy;
-  /** The country code of the location. */
+
+  /// The country code of the location.
   core.String countryCode;
-  /** The latitude of the location. */
+
+  /// The latitude of the location.
   core.double latitude;
-  /** The longitude of the location. */
+
+  /// The longitude of the location.
   core.double longitude;
-  /**
-   * The type of map that should be used for this location. EX: HYBRID, ROADMAP,
-   * SATELLITE, TERRAIN
-   */
+
+  /// The type of map that should be used for this location. EX: HYBRID,
+  /// ROADMAP, SATELLITE, TERRAIN
   core.String mapType;
-  /**
-   * The viewport for showing this location. This is a latitude, longitude
-   * rectangle.
-   */
+
+  /// The viewport for showing this location. This is a latitude, longitude
+  /// rectangle.
   GeolayerdataGeoViewport viewport;
-  /**
-   * The Zoom level to use for the map. Zoom levels between 0 (the lowest zoom
-   * level, in which the entire world can be seen on one map) to 21+ (down to
-   * individual buildings). See:
-   * https://developers.google.com/maps/documentation/staticmaps/#Zoomlevels
-   */
+
+  /// The Zoom level to use for the map. Zoom levels between 0 (the lowest zoom
+  /// level, in which the entire world can be seen on one map) to 21+ (down to
+  /// individual buildings). See:
+  /// https://developers.google.com/maps/documentation/staticmaps/#Zoomlevels
   core.int zoom;
 
   GeolayerdataGeo();
 
   GeolayerdataGeo.fromJson(core.Map _json) {
     if (_json.containsKey("boundary")) {
-      boundary = _json["boundary"].map((value) => value.map((value) => new GeolayerdataGeoBoundary.fromJson(value)).toList()).toList();
+      boundary = _json["boundary"]
+          .map((value) => value
+              .map((value) => new GeolayerdataGeoBoundary.fromJson(value))
+              .toList())
+          .toList();
     }
     if (_json.containsKey("cachePolicy")) {
       cachePolicy = _json["cachePolicy"];
@@ -5283,9 +5442,12 @@ class GeolayerdataGeo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (boundary != null) {
-      _json["boundary"] = boundary.map((value) => value.map((value) => (value).toJson()).toList()).toList();
+      _json["boundary"] = boundary
+          .map((value) => value.map((value) => (value).toJson()).toList())
+          .toList();
     }
     if (cachePolicy != null) {
       _json["cachePolicy"] = cachePolicy;
@@ -5332,7 +5494,8 @@ class Geolayerdata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (common != null) {
       _json["common"] = (common).toJson();
     }
@@ -5347,18 +5510,22 @@ class Geolayerdata {
 }
 
 class Layersummaries {
-  /** A list of layer summary items. */
+  /// A list of layer summary items.
   core.List<Layersummary> items;
-  /** Resource type. */
+
+  /// Resource type.
   core.String kind;
-  /** The total number of layer summaries found. */
+
+  /// The total number of layer summaries found.
   core.int totalItems;
 
   Layersummaries();
 
   Layersummaries.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Layersummary.fromJson(value)).toList();
+      items = _json["items"]
+          .map((value) => new Layersummary.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -5369,7 +5536,8 @@ class Layersummaries {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -5384,38 +5552,46 @@ class Layersummaries {
 }
 
 class Layersummary {
-  /** The number of annotations for this layer. */
+  /// The number of annotations for this layer.
   core.int annotationCount;
-  /** The list of annotation types contained for this layer. */
+
+  /// The list of annotation types contained for this layer.
   core.List<core.String> annotationTypes;
-  /** Link to get data for this annotation. */
+
+  /// Link to get data for this annotation.
   core.String annotationsDataLink;
-  /** The link to get the annotations for this layer. */
+
+  /// The link to get the annotations for this layer.
   core.String annotationsLink;
-  /** The content version this resource is for. */
+
+  /// The content version this resource is for.
   core.String contentVersion;
-  /** The number of data items for this layer. */
+
+  /// The number of data items for this layer.
   core.int dataCount;
-  /** Unique id of this layer summary. */
+
+  /// Unique id of this layer summary.
   core.String id;
-  /** Resource Type */
+
+  /// Resource Type
   core.String kind;
-  /** The layer id for this summary. */
+
+  /// The layer id for this summary.
   core.String layerId;
-  /** URL to this resource. */
+
+  /// URL to this resource.
   core.String selfLink;
-  /**
-   * Timestamp for the last time an item in this layer was updated. (RFC 3339
-   * UTC date-time format).
-   */
+
+  /// Timestamp for the last time an item in this layer was updated. (RFC 3339
+  /// UTC date-time format).
   core.DateTime updated;
-  /**
-   * The current version of this layer's volume annotations. Note that this
-   * version applies only to the data in the books.layers.volumeAnnotations.*
-   * responses. The actual annotation data is versioned separately.
-   */
+
+  /// The current version of this layer's volume annotations. Note that this
+  /// version applies only to the data in the books.layers.volumeAnnotations.*
+  /// responses. The actual annotation data is versioned separately.
   core.String volumeAnnotationsVersion;
-  /** The volume id this resource is for. */
+
+  /// The volume id this resource is for.
   core.String volumeId;
 
   Layersummary();
@@ -5463,7 +5639,8 @@ class Layersummary {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (annotationCount != null) {
       _json["annotationCount"] = annotationCount;
     }
@@ -5535,7 +5712,8 @@ class MetadataItems {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (downloadUrl != null) {
       _json["download_url"] = downloadUrl;
     }
@@ -5556,16 +5734,19 @@ class MetadataItems {
 }
 
 class Metadata {
-  /** A list of offline dictionary metadata. */
+  /// A list of offline dictionary metadata.
   core.List<MetadataItems> items;
-  /** Resource type. */
+
+  /// Resource type.
   core.String kind;
 
   Metadata();
 
   Metadata.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new MetadataItems.fromJson(value)).toList();
+      items = _json["items"]
+          .map((value) => new MetadataItems.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -5573,7 +5754,8 @@ class Metadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -5586,13 +5768,15 @@ class Metadata {
 
 class Notification {
   core.String body;
-  /** The list of crm experiment ids. */
+
+  /// The list of crm experiment ids.
   core.List<core.String> crmExperimentIds;
   core.String docId;
   core.String docType;
   core.bool dontShowNotification;
   core.String iconUrl;
-  /** Resource type. */
+
+  /// Resource type.
   core.String kind;
   core.String notificationGroup;
   core.String notificationType;
@@ -5639,7 +5823,8 @@ class Notification {
       reason = _json["reason"];
     }
     if (_json.containsKey("show_notification_settings_action")) {
-      showNotificationSettingsAction = _json["show_notification_settings_action"];
+      showNotificationSettingsAction =
+          _json["show_notification_settings_action"];
     }
     if (_json.containsKey("targetUrl")) {
       targetUrl = _json["targetUrl"];
@@ -5650,7 +5835,8 @@ class Notification {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (body != null) {
       _json["body"] = body;
     }
@@ -5685,7 +5871,8 @@ class Notification {
       _json["reason"] = reason;
     }
     if (showNotificationSettingsAction != null) {
-      _json["show_notification_settings_action"] = showNotificationSettingsAction;
+      _json["show_notification_settings_action"] =
+          showNotificationSettingsAction;
     }
     if (targetUrl != null) {
       _json["targetUrl"] = targetUrl;
@@ -5729,7 +5916,8 @@ class OffersItemsItems {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (author != null) {
       _json["author"] = author;
     }
@@ -5771,12 +5959,15 @@ class OffersItems {
       id = _json["id"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new OffersItemsItems.fromJson(value)).toList();
+      items = _json["items"]
+          .map((value) => new OffersItemsItems.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (artUrl != null) {
       _json["artUrl"] = artUrl;
     }
@@ -5794,16 +5985,19 @@ class OffersItems {
 }
 
 class Offers {
-  /** A list of offers. */
+  /// A list of offers.
   core.List<OffersItems> items;
-  /** Resource type. */
+
+  /// Resource type.
   core.String kind;
 
   Offers();
 
   Offers.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new OffersItems.fromJson(value)).toList();
+      items = _json["items"]
+          .map((value) => new OffersItems.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -5811,7 +6005,8 @@ class Offers {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -5823,22 +6018,26 @@ class Offers {
 }
 
 class ReadingPosition {
-  /** Position in an EPUB as a CFI. */
+  /// Position in an EPUB as a CFI.
   core.String epubCfiPosition;
-  /** Position in a volume for image-based content. */
+
+  /// Position in a volume for image-based content.
   core.String gbImagePosition;
-  /** Position in a volume for text-based content. */
+
+  /// Position in a volume for text-based content.
   core.String gbTextPosition;
-  /** Resource type for a reading position. */
+
+  /// Resource type for a reading position.
   core.String kind;
-  /** Position in a PDF file. */
+
+  /// Position in a PDF file.
   core.String pdfPosition;
-  /**
-   * Timestamp when this reading position was last updated (formatted UTC
-   * timestamp with millisecond resolution).
-   */
+
+  /// Timestamp when this reading position was last updated (formatted UTC
+  /// timestamp with millisecond resolution).
   core.DateTime updated;
-  /** Volume id associated with this reading position. */
+
+  /// Volume id associated with this reading position.
   core.String volumeId;
 
   ReadingPosition();
@@ -5868,7 +6067,8 @@ class ReadingPosition {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (epubCfiPosition != null) {
       _json["epubCfiPosition"] = epubCfiPosition;
     }
@@ -5895,21 +6095,25 @@ class ReadingPosition {
 }
 
 class RequestAccess {
-  /** A concurrent access response. */
+  /// A concurrent access response.
   ConcurrentAccessRestriction concurrentAccess;
-  /** A download access response. */
+
+  /// A download access response.
   DownloadAccessRestriction downloadAccess;
-  /** Resource type. */
+
+  /// Resource type.
   core.String kind;
 
   RequestAccess();
 
   RequestAccess.fromJson(core.Map _json) {
     if (_json.containsKey("concurrentAccess")) {
-      concurrentAccess = new ConcurrentAccessRestriction.fromJson(_json["concurrentAccess"]);
+      concurrentAccess =
+          new ConcurrentAccessRestriction.fromJson(_json["concurrentAccess"]);
     }
     if (_json.containsKey("downloadAccess")) {
-      downloadAccess = new DownloadAccessRestriction.fromJson(_json["downloadAccess"]);
+      downloadAccess =
+          new DownloadAccessRestriction.fromJson(_json["downloadAccess"]);
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -5917,7 +6121,8 @@ class RequestAccess {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (concurrentAccess != null) {
       _json["concurrentAccess"] = (concurrentAccess).toJson();
     }
@@ -5931,9 +6136,9 @@ class RequestAccess {
   }
 }
 
-/** Author of this review. */
+/// Author of this review.
 class ReviewAuthor {
-  /** Name of this person. */
+  /// Name of this person.
   core.String displayName;
 
   ReviewAuthor();
@@ -5945,7 +6150,8 @@ class ReviewAuthor {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -5953,16 +6159,16 @@ class ReviewAuthor {
   }
 }
 
-/**
- * Information regarding the source of this review, when the review is not from
- * a Google Books user.
- */
+/// Information regarding the source of this review, when the review is not from
+/// a Google Books user.
 class ReviewSource {
-  /** Name of the source. */
+  /// Name of the source.
   core.String description;
-  /** Extra text about the source of the review. */
+
+  /// Extra text about the source of the review.
   core.String extraDescription;
-  /** URL of the source of the review. */
+
+  /// URL of the source of the review.
   core.String url;
 
   ReviewSource();
@@ -5980,7 +6186,8 @@ class ReviewSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -5995,34 +6202,37 @@ class ReviewSource {
 }
 
 class Review {
-  /** Author of this review. */
+  /// Author of this review.
   ReviewAuthor author;
-  /** Review text. */
+
+  /// Review text.
   core.String content;
-  /** Date of this review. */
+
+  /// Date of this review.
   core.String date;
-  /** URL for the full review text, for reviews gathered from the web. */
+
+  /// URL for the full review text, for reviews gathered from the web.
   core.String fullTextUrl;
-  /** Resource type for a review. */
+
+  /// Resource type for a review.
   core.String kind;
-  /**
-   * Star rating for this review. Possible values are ONE, TWO, THREE, FOUR,
-   * FIVE or NOT_RATED.
-   */
+
+  /// Star rating for this review. Possible values are ONE, TWO, THREE, FOUR,
+  /// FIVE or NOT_RATED.
   core.String rating;
-  /**
-   * Information regarding the source of this review, when the review is not
-   * from a Google Books user.
-   */
+
+  /// Information regarding the source of this review, when the review is not
+  /// from a Google Books user.
   ReviewSource source;
-  /** Title for this review. */
+
+  /// Title for this review.
   core.String title;
-  /**
-   * Source type for this review. Possible values are EDITORIAL, WEB_USER or
-   * GOOGLE_USER.
-   */
+
+  /// Source type for this review. Possible values are EDITORIAL, WEB_USER or
+  /// GOOGLE_USER.
   core.String type;
-  /** Volume that this review is for. */
+
+  /// Volume that this review is for.
   core.String volumeId;
 
   Review();
@@ -6061,7 +6271,8 @@ class Review {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (author != null) {
       _json["author"] = (author).toJson();
     }
@@ -6124,7 +6335,8 @@ class SeriesSeries {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (bannerImageUrl != null) {
       _json["bannerImageUrl"] = bannerImageUrl;
     }
@@ -6145,7 +6357,7 @@ class SeriesSeries {
 }
 
 class Series {
-  /** Resource type. */
+  /// Resource type.
   core.String kind;
   core.List<SeriesSeries> series;
 
@@ -6156,12 +6368,15 @@ class Series {
       kind = _json["kind"];
     }
     if (_json.containsKey("series")) {
-      series = _json["series"].map((value) => new SeriesSeries.fromJson(value)).toList();
+      series = _json["series"]
+          .map((value) => new SeriesSeries.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -6173,7 +6388,7 @@ class Series {
 }
 
 class Seriesmembership {
-  /** Resorce type. */
+  /// Resorce type.
   core.String kind;
   core.List<Volume> member;
   core.String nextPageToken;
@@ -6185,7 +6400,8 @@ class Seriesmembership {
       kind = _json["kind"];
     }
     if (_json.containsKey("member")) {
-      member = _json["member"].map((value) => new Volume.fromJson(value)).toList();
+      member =
+          _json["member"].map((value) => new Volume.fromJson(value)).toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -6193,7 +6409,8 @@ class Seriesmembership {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -6207,7 +6424,7 @@ class Seriesmembership {
   }
 }
 
-/** User settings in sub-objects, each for different purposes. */
+/// User settings in sub-objects, each for different purposes.
 class UsersettingsNotesExport {
   core.String folderName;
   core.bool isEnabled;
@@ -6224,7 +6441,8 @@ class UsersettingsNotesExport {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (folderName != null) {
       _json["folderName"] = folderName;
     }
@@ -6247,7 +6465,8 @@ class UsersettingsNotificationMoreFromAuthors {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (optedState != null) {
       _json["opted_state"] = optedState;
     }
@@ -6267,7 +6486,8 @@ class UsersettingsNotificationMoreFromSeries {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (optedState != null) {
       _json["opted_state"] = optedState;
     }
@@ -6287,7 +6507,8 @@ class UsersettingsNotificationRewardExpirations {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (optedState != null) {
       _json["opted_state"] = optedState;
     }
@@ -6304,18 +6525,23 @@ class UsersettingsNotification {
 
   UsersettingsNotification.fromJson(core.Map _json) {
     if (_json.containsKey("moreFromAuthors")) {
-      moreFromAuthors = new UsersettingsNotificationMoreFromAuthors.fromJson(_json["moreFromAuthors"]);
+      moreFromAuthors = new UsersettingsNotificationMoreFromAuthors.fromJson(
+          _json["moreFromAuthors"]);
     }
     if (_json.containsKey("moreFromSeries")) {
-      moreFromSeries = new UsersettingsNotificationMoreFromSeries.fromJson(_json["moreFromSeries"]);
+      moreFromSeries = new UsersettingsNotificationMoreFromSeries.fromJson(
+          _json["moreFromSeries"]);
     }
     if (_json.containsKey("rewardExpirations")) {
-      rewardExpirations = new UsersettingsNotificationRewardExpirations.fromJson(_json["rewardExpirations"]);
+      rewardExpirations =
+          new UsersettingsNotificationRewardExpirations.fromJson(
+              _json["rewardExpirations"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (moreFromAuthors != null) {
       _json["moreFromAuthors"] = (moreFromAuthors).toJson();
     }
@@ -6330,9 +6556,10 @@ class UsersettingsNotification {
 }
 
 class Usersettings {
-  /** Resource type. */
+  /// Resource type.
   core.String kind;
-  /** User settings in sub-objects, each for different purposes. */
+
+  /// User settings in sub-objects, each for different purposes.
   UsersettingsNotesExport notesExport;
   UsersettingsNotification notification;
 
@@ -6346,12 +6573,14 @@ class Usersettings {
       notesExport = new UsersettingsNotesExport.fromJson(_json["notesExport"]);
     }
     if (_json.containsKey("notification")) {
-      notification = new UsersettingsNotification.fromJson(_json["notification"]);
+      notification =
+          new UsersettingsNotification.fromJson(_json["notification"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -6365,16 +6594,16 @@ class Usersettings {
   }
 }
 
-/** Information about epub content. (In LITE projection.) */
+/// Information about epub content. (In LITE projection.)
 class VolumeAccessInfoEpub {
-  /** URL to retrieve ACS token for epub download. (In LITE projection.) */
+  /// URL to retrieve ACS token for epub download. (In LITE projection.)
   core.String acsTokenLink;
-  /** URL to download epub. (In LITE projection.) */
+
+  /// URL to download epub. (In LITE projection.)
   core.String downloadLink;
-  /**
-   * Is a flowing text epub available either as public domain or for purchase.
-   * (In LITE projection.)
-   */
+
+  /// Is a flowing text epub available either as public domain or for purchase.
+  /// (In LITE projection.)
   core.bool isAvailable;
 
   VolumeAccessInfoEpub();
@@ -6392,7 +6621,8 @@ class VolumeAccessInfoEpub {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (acsTokenLink != null) {
       _json["acsTokenLink"] = acsTokenLink;
     }
@@ -6406,16 +6636,16 @@ class VolumeAccessInfoEpub {
   }
 }
 
-/** Information about pdf content. (In LITE projection.) */
+/// Information about pdf content. (In LITE projection.)
 class VolumeAccessInfoPdf {
-  /** URL to retrieve ACS token for pdf download. (In LITE projection.) */
+  /// URL to retrieve ACS token for pdf download. (In LITE projection.)
   core.String acsTokenLink;
-  /** URL to download pdf. (In LITE projection.) */
+
+  /// URL to download pdf. (In LITE projection.)
   core.String downloadLink;
-  /**
-   * Is a scanned image pdf available either as public domain or for purchase.
-   * (In LITE projection.)
-   */
+
+  /// Is a scanned image pdf available either as public domain or for purchase.
+  /// (In LITE projection.)
   core.bool isAvailable;
 
   VolumeAccessInfoPdf();
@@ -6433,7 +6663,8 @@ class VolumeAccessInfoPdf {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (acsTokenLink != null) {
       _json["acsTokenLink"] = acsTokenLink;
     }
@@ -6447,72 +6678,65 @@ class VolumeAccessInfoPdf {
   }
 }
 
-/**
- * Any information about a volume related to reading or obtaining that volume
- * text. This information can depend on country (books may be public domain in
- * one country but not in another, e.g.).
- */
+/// Any information about a volume related to reading or obtaining that volume
+/// text. This information can depend on country (books may be public domain in
+/// one country but not in another, e.g.).
 class VolumeAccessInfo {
-  /**
-   * Combines the access and viewability of this volume into a single status
-   * field for this user. Values can be FULL_PURCHASED, FULL_PUBLIC_DOMAIN,
-   * SAMPLE or NONE. (In LITE projection.)
-   */
+  /// Combines the access and viewability of this volume into a single status
+  /// field for this user. Values can be FULL_PURCHASED, FULL_PUBLIC_DOMAIN,
+  /// SAMPLE or NONE. (In LITE projection.)
   core.String accessViewStatus;
-  /**
-   * The two-letter ISO_3166-1 country code for which this access information is
-   * valid. (In LITE projection.)
-   */
+
+  /// The two-letter ISO_3166-1 country code for which this access information
+  /// is valid. (In LITE projection.)
   core.String country;
-  /** Information about a volume's download license access restrictions. */
+
+  /// Information about a volume's download license access restrictions.
   DownloadAccessRestriction downloadAccess;
-  /**
-   * URL to the Google Drive viewer if this volume is uploaded by the user by
-   * selecting the file from Google Drive.
-   */
+
+  /// URL to the Google Drive viewer if this volume is uploaded by the user by
+  /// selecting the file from Google Drive.
   core.String driveImportedContentLink;
-  /**
-   * Whether this volume can be embedded in a viewport using the Embedded Viewer
-   * API.
-   */
+
+  /// Whether this volume can be embedded in a viewport using the Embedded
+  /// Viewer API.
   core.bool embeddable;
-  /** Information about epub content. (In LITE projection.) */
+
+  /// Information about epub content. (In LITE projection.)
   VolumeAccessInfoEpub epub;
-  /**
-   * Whether this volume requires that the client explicitly request offline
-   * download license rather than have it done automatically when loading the
-   * content, if the client supports it.
-   */
+
+  /// Whether this volume requires that the client explicitly request offline
+  /// download license rather than have it done automatically when loading the
+  /// content, if the client supports it.
   core.bool explicitOfflineLicenseManagement;
-  /** Information about pdf content. (In LITE projection.) */
+
+  /// Information about pdf content. (In LITE projection.)
   VolumeAccessInfoPdf pdf;
-  /** Whether or not this book is public domain in the country listed above. */
+
+  /// Whether or not this book is public domain in the country listed above.
   core.bool publicDomain;
-  /** Whether quote sharing is allowed for this volume. */
+
+  /// Whether quote sharing is allowed for this volume.
   core.bool quoteSharingAllowed;
-  /**
-   * Whether text-to-speech is permitted for this volume. Values can be ALLOWED,
-   * ALLOWED_FOR_ACCESSIBILITY, or NOT_ALLOWED.
-   */
+
+  /// Whether text-to-speech is permitted for this volume. Values can be
+  /// ALLOWED, ALLOWED_FOR_ACCESSIBILITY, or NOT_ALLOWED.
   core.String textToSpeechPermission;
-  /**
-   * For ordered but not yet processed orders, we give a URL that can be used to
-   * go to the appropriate Google Wallet page.
-   */
+
+  /// For ordered but not yet processed orders, we give a URL that can be used
+  /// to go to the appropriate Google Wallet page.
   core.String viewOrderUrl;
-  /**
-   * The read access of a volume. Possible values are PARTIAL, ALL_PAGES,
-   * NO_PAGES or UNKNOWN. This value depends on the country listed above. A
-   * value of PARTIAL means that the publisher has allowed some portion of the
-   * volume to be viewed publicly, without purchase. This can apply to eBooks as
-   * well as non-eBooks. Public domain books will always have a value of
-   * ALL_PAGES.
-   */
+
+  /// The read access of a volume. Possible values are PARTIAL, ALL_PAGES,
+  /// NO_PAGES or UNKNOWN. This value depends on the country listed above. A
+  /// value of PARTIAL means that the publisher has allowed some portion of the
+  /// volume to be viewed publicly, without purchase. This can apply to eBooks
+  /// as well as non-eBooks. Public domain books will always have a value of
+  /// ALL_PAGES.
   core.String viewability;
-  /**
-   * URL to read this volume on the Google Books site. Link will not allow users
-   * to read non-viewable volumes.
-   */
+
+  /// URL to read this volume on the Google Books site. Link will not allow
+  /// users to read non-viewable volumes.
   core.String webReaderLink;
 
   VolumeAccessInfo();
@@ -6525,7 +6749,8 @@ class VolumeAccessInfo {
       country = _json["country"];
     }
     if (_json.containsKey("downloadAccess")) {
-      downloadAccess = new DownloadAccessRestriction.fromJson(_json["downloadAccess"]);
+      downloadAccess =
+          new DownloadAccessRestriction.fromJson(_json["downloadAccess"]);
     }
     if (_json.containsKey("driveImportedContentLink")) {
       driveImportedContentLink = _json["driveImportedContentLink"];
@@ -6537,7 +6762,8 @@ class VolumeAccessInfo {
       epub = new VolumeAccessInfoEpub.fromJson(_json["epub"]);
     }
     if (_json.containsKey("explicitOfflineLicenseManagement")) {
-      explicitOfflineLicenseManagement = _json["explicitOfflineLicenseManagement"];
+      explicitOfflineLicenseManagement =
+          _json["explicitOfflineLicenseManagement"];
     }
     if (_json.containsKey("pdf")) {
       pdf = new VolumeAccessInfoPdf.fromJson(_json["pdf"]);
@@ -6563,7 +6789,8 @@ class VolumeAccessInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (accessViewStatus != null) {
       _json["accessViewStatus"] = accessViewStatus;
     }
@@ -6583,7 +6810,8 @@ class VolumeAccessInfo {
       _json["epub"] = (epub).toJson();
     }
     if (explicitOfflineLicenseManagement != null) {
-      _json["explicitOfflineLicenseManagement"] = explicitOfflineLicenseManagement;
+      _json["explicitOfflineLicenseManagement"] =
+          explicitOfflineLicenseManagement;
     }
     if (pdf != null) {
       _json["pdf"] = (pdf).toJson();
@@ -6611,13 +6839,12 @@ class VolumeAccessInfo {
 }
 
 class VolumeLayerInfoLayers {
-  /** The layer id of this layer (e.g. "geo"). */
+  /// The layer id of this layer (e.g. "geo").
   core.String layerId;
-  /**
-   * The current version of this layer's volume annotations. Note that this
-   * version applies only to the data in the books.layers.volumeAnnotations.*
-   * responses. The actual annotation data is versioned separately.
-   */
+
+  /// The current version of this layer's volume annotations. Note that this
+  /// version applies only to the data in the books.layers.volumeAnnotations.*
+  /// responses. The actual annotation data is versioned separately.
   core.String volumeAnnotationsVersion;
 
   VolumeLayerInfoLayers();
@@ -6632,7 +6859,8 @@ class VolumeLayerInfoLayers {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (layerId != null) {
       _json["layerId"] = layerId;
     }
@@ -6643,23 +6871,24 @@ class VolumeLayerInfoLayers {
   }
 }
 
-/** What layers exist in this volume and high level information about them. */
+/// What layers exist in this volume and high level information about them.
 class VolumeLayerInfo {
-  /**
-   * A layer should appear here if and only if the layer exists for this book.
-   */
+  /// A layer should appear here if and only if the layer exists for this book.
   core.List<VolumeLayerInfoLayers> layers;
 
   VolumeLayerInfo();
 
   VolumeLayerInfo.fromJson(core.Map _json) {
     if (_json.containsKey("layers")) {
-      layers = _json["layers"].map((value) => new VolumeLayerInfoLayers.fromJson(value)).toList();
+      layers = _json["layers"]
+          .map((value) => new VolumeLayerInfoLayers.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (layers != null) {
       _json["layers"] = layers.map((value) => (value).toJson()).toList();
     }
@@ -6667,9 +6896,9 @@ class VolumeLayerInfo {
   }
 }
 
-/** Recommendation related information for this volume. */
+/// Recommendation related information for this volume.
 class VolumeRecommendedInfo {
-  /** A text explaining why this volume is recommended. */
+  /// A text explaining why this volume is recommended.
   core.String explanation;
 
   VolumeRecommendedInfo();
@@ -6681,7 +6910,8 @@ class VolumeRecommendedInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (explanation != null) {
       _json["explanation"] = explanation;
     }
@@ -6689,11 +6919,12 @@ class VolumeRecommendedInfo {
   }
 }
 
-/** Suggested retail price. (In LITE projection.) */
+/// Suggested retail price. (In LITE projection.)
 class VolumeSaleInfoListPrice {
-  /** Amount in the currency listed below. (In LITE projection.) */
+  /// Amount in the currency listed below. (In LITE projection.)
   core.double amount;
-  /** An ISO 4217, three-letter currency code. (In LITE projection.) */
+
+  /// An ISO 4217, three-letter currency code. (In LITE projection.)
   core.String currencyCode;
 
   VolumeSaleInfoListPrice();
@@ -6708,7 +6939,8 @@ class VolumeSaleInfoListPrice {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (amount != null) {
       _json["amount"] = amount;
     }
@@ -6719,7 +6951,7 @@ class VolumeSaleInfoListPrice {
   }
 }
 
-/** Offer list (=undiscounted) price in Micros. */
+/// Offer list (=undiscounted) price in Micros.
 class VolumeSaleInfoOffersListPrice {
   core.double amountInMicros;
   core.String currencyCode;
@@ -6736,7 +6968,8 @@ class VolumeSaleInfoOffersListPrice {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (amountInMicros != null) {
       _json["amountInMicros"] = amountInMicros;
     }
@@ -6747,7 +6980,7 @@ class VolumeSaleInfoOffersListPrice {
   }
 }
 
-/** The rental duration (for rental offers only). */
+/// The rental duration (for rental offers only).
 class VolumeSaleInfoOffersRentalDuration {
   core.double count;
   core.String unit;
@@ -6764,7 +6997,8 @@ class VolumeSaleInfoOffersRentalDuration {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (count != null) {
       _json["count"] = count;
     }
@@ -6775,7 +7009,7 @@ class VolumeSaleInfoOffersRentalDuration {
   }
 }
 
-/** Offer retail (=discounted) price in Micros */
+/// Offer retail (=discounted) price in Micros
 class VolumeSaleInfoOffersRetailPrice {
   core.double amountInMicros;
   core.String currencyCode;
@@ -6792,7 +7026,8 @@ class VolumeSaleInfoOffersRetailPrice {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (amountInMicros != null) {
       _json["amountInMicros"] = amountInMicros;
     }
@@ -6804,15 +7039,19 @@ class VolumeSaleInfoOffersRetailPrice {
 }
 
 class VolumeSaleInfoOffers {
-  /** The finsky offer type (e.g., PURCHASE=0 RENTAL=3) */
+  /// The finsky offer type (e.g., PURCHASE=0 RENTAL=3)
   core.int finskyOfferType;
-  /** Indicates whether the offer is giftable. */
+
+  /// Indicates whether the offer is giftable.
   core.bool giftable;
-  /** Offer list (=undiscounted) price in Micros. */
+
+  /// Offer list (=undiscounted) price in Micros.
   VolumeSaleInfoOffersListPrice listPrice;
-  /** The rental duration (for rental offers only). */
+
+  /// The rental duration (for rental offers only).
   VolumeSaleInfoOffersRentalDuration rentalDuration;
-  /** Offer retail (=discounted) price in Micros */
+
+  /// Offer retail (=discounted) price in Micros
   VolumeSaleInfoOffersRetailPrice retailPrice;
 
   VolumeSaleInfoOffers();
@@ -6825,18 +7064,22 @@ class VolumeSaleInfoOffers {
       giftable = _json["giftable"];
     }
     if (_json.containsKey("listPrice")) {
-      listPrice = new VolumeSaleInfoOffersListPrice.fromJson(_json["listPrice"]);
+      listPrice =
+          new VolumeSaleInfoOffersListPrice.fromJson(_json["listPrice"]);
     }
     if (_json.containsKey("rentalDuration")) {
-      rentalDuration = new VolumeSaleInfoOffersRentalDuration.fromJson(_json["rentalDuration"]);
+      rentalDuration = new VolumeSaleInfoOffersRentalDuration.fromJson(
+          _json["rentalDuration"]);
     }
     if (_json.containsKey("retailPrice")) {
-      retailPrice = new VolumeSaleInfoOffersRetailPrice.fromJson(_json["retailPrice"]);
+      retailPrice =
+          new VolumeSaleInfoOffersRetailPrice.fromJson(_json["retailPrice"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (finskyOfferType != null) {
       _json["finskyOfferType"] = finskyOfferType;
     }
@@ -6856,15 +7099,14 @@ class VolumeSaleInfoOffers {
   }
 }
 
-/**
- * The actual selling price of the book. This is the same as the suggested
- * retail or list price unless there are offers or discounts on this volume. (In
- * LITE projection.)
- */
+/// The actual selling price of the book. This is the same as the suggested
+/// retail or list price unless there are offers or discounts on this volume.
+/// (In LITE projection.)
 class VolumeSaleInfoRetailPrice {
-  /** Amount in the currency listed below. (In LITE projection.) */
+  /// Amount in the currency listed below. (In LITE projection.)
   core.double amount;
-  /** An ISO 4217, three-letter currency code. (In LITE projection.) */
+
+  /// An ISO 4217, three-letter currency code. (In LITE projection.)
   core.String currencyCode;
 
   VolumeSaleInfoRetailPrice();
@@ -6879,7 +7121,8 @@ class VolumeSaleInfoRetailPrice {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (amount != null) {
       _json["amount"] = amount;
     }
@@ -6890,44 +7133,40 @@ class VolumeSaleInfoRetailPrice {
   }
 }
 
-/**
- * Any information about a volume related to the eBookstore and/or
- * purchaseability. This information can depend on the country where the request
- * originates from (i.e. books may not be for sale in certain countries).
- */
+/// Any information about a volume related to the eBookstore and/or
+/// purchaseability. This information can depend on the country where the
+/// request originates from (i.e. books may not be for sale in certain
+/// countries).
 class VolumeSaleInfo {
-  /**
-   * URL to purchase this volume on the Google Books site. (In LITE projection)
-   */
+  /// URL to purchase this volume on the Google Books site. (In LITE projection)
   core.String buyLink;
-  /**
-   * The two-letter ISO_3166-1 country code for which this sale information is
-   * valid. (In LITE projection.)
-   */
+
+  /// The two-letter ISO_3166-1 country code for which this sale information is
+  /// valid. (In LITE projection.)
   core.String country;
-  /**
-   * Whether or not this volume is an eBook (can be added to the My eBooks
-   * shelf).
-   */
+
+  /// Whether or not this volume is an eBook (can be added to the My eBooks
+  /// shelf).
   core.bool isEbook;
-  /** Suggested retail price. (In LITE projection.) */
+
+  /// Suggested retail price. (In LITE projection.)
   VolumeSaleInfoListPrice listPrice;
-  /** Offers available for this volume (sales and rentals). */
+
+  /// Offers available for this volume (sales and rentals).
   core.List<VolumeSaleInfoOffers> offers;
-  /** The date on which this book is available for sale. */
+
+  /// The date on which this book is available for sale.
   core.DateTime onSaleDate;
-  /**
-   * The actual selling price of the book. This is the same as the suggested
-   * retail or list price unless there are offers or discounts on this volume.
-   * (In LITE projection.)
-   */
+
+  /// The actual selling price of the book. This is the same as the suggested
+  /// retail or list price unless there are offers or discounts on this volume.
+  /// (In LITE projection.)
   VolumeSaleInfoRetailPrice retailPrice;
-  /**
-   * Whether or not this book is available for sale or offered for free in the
-   * Google eBookstore for the country listed above. Possible values are
-   * FOR_SALE, FOR_RENTAL_ONLY, FOR_SALE_AND_RENTAL, FREE, NOT_FOR_SALE, or
-   * FOR_PREORDER.
-   */
+
+  /// Whether or not this book is available for sale or offered for free in the
+  /// Google eBookstore for the country listed above. Possible values are
+  /// FOR_SALE, FOR_RENTAL_ONLY, FOR_SALE_AND_RENTAL, FREE, NOT_FOR_SALE, or
+  /// FOR_PREORDER.
   core.String saleability;
 
   VolumeSaleInfo();
@@ -6946,13 +7185,16 @@ class VolumeSaleInfo {
       listPrice = new VolumeSaleInfoListPrice.fromJson(_json["listPrice"]);
     }
     if (_json.containsKey("offers")) {
-      offers = _json["offers"].map((value) => new VolumeSaleInfoOffers.fromJson(value)).toList();
+      offers = _json["offers"]
+          .map((value) => new VolumeSaleInfoOffers.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("onSaleDate")) {
       onSaleDate = core.DateTime.parse(_json["onSaleDate"]);
     }
     if (_json.containsKey("retailPrice")) {
-      retailPrice = new VolumeSaleInfoRetailPrice.fromJson(_json["retailPrice"]);
+      retailPrice =
+          new VolumeSaleInfoRetailPrice.fromJson(_json["retailPrice"]);
     }
     if (_json.containsKey("saleability")) {
       saleability = _json["saleability"];
@@ -6960,7 +7202,8 @@ class VolumeSaleInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (buyLink != null) {
       _json["buyLink"] = buyLink;
     }
@@ -6989,9 +7232,9 @@ class VolumeSaleInfo {
   }
 }
 
-/** Search result information related to this volume. */
+/// Search result information related to this volume.
 class VolumeSearchInfo {
-  /** A text snippet containing the search query. */
+  /// A text snippet containing the search query.
   core.String textSnippet;
 
   VolumeSearchInfo();
@@ -7003,7 +7246,8 @@ class VolumeSearchInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (textSnippet != null) {
       _json["textSnippet"] = textSnippet;
     }
@@ -7011,7 +7255,7 @@ class VolumeSearchInfo {
   }
 }
 
-/** Copy/Paste accounting information. */
+/// Copy/Paste accounting information.
 class VolumeUserInfoCopy {
   core.int allowedCharacterCount;
   core.String limitType;
@@ -7036,7 +7280,8 @@ class VolumeUserInfoCopy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (allowedCharacterCount != null) {
       _json["allowedCharacterCount"] = allowedCharacterCount;
     }
@@ -7053,20 +7298,18 @@ class VolumeUserInfoCopy {
   }
 }
 
-/** Information on the ability to share with the family. */
+/// Information on the ability to share with the family.
 class VolumeUserInfoFamilySharing {
-  /** The role of the user in the family. */
+  /// The role of the user in the family.
   core.String familyRole;
-  /**
-   * Whether or not this volume can be shared with the family by the user. This
-   * includes sharing eligibility of both the volume and the user. If the value
-   * is true, the user can initiate a family sharing action.
-   */
+
+  /// Whether or not this volume can be shared with the family by the user. This
+  /// includes sharing eligibility of both the volume and the user. If the value
+  /// is true, the user can initiate a family sharing action.
   core.bool isSharingAllowed;
-  /**
-   * Whether or not sharing this volume is temporarily disabled due to issues
-   * with the Family Wallet.
-   */
+
+  /// Whether or not sharing this volume is temporarily disabled due to issues
+  /// with the Family Wallet.
   core.bool isSharingDisabledByFop;
 
   VolumeUserInfoFamilySharing();
@@ -7084,7 +7327,8 @@ class VolumeUserInfoFamilySharing {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (familyRole != null) {
       _json["familyRole"] = familyRole;
     }
@@ -7098,7 +7342,7 @@ class VolumeUserInfoFamilySharing {
   }
 }
 
-/** Period during this book is/was a valid rental. */
+/// Period during this book is/was a valid rental.
 class VolumeUserInfoRentalPeriod {
   core.String endUtcSec;
   core.String startUtcSec;
@@ -7115,7 +7359,8 @@ class VolumeUserInfoRentalPeriod {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (endUtcSec != null) {
       _json["endUtcSec"] = endUtcSec;
     }
@@ -7138,7 +7383,8 @@ class VolumeUserInfoUserUploadedVolumeInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (processingState != null) {
       _json["processingState"] = processingState;
     }
@@ -7146,63 +7392,68 @@ class VolumeUserInfoUserUploadedVolumeInfo {
   }
 }
 
-/**
- * User specific information related to this volume. (e.g. page this user last
- * read or whether they purchased this book)
- */
+/// User specific information related to this volume. (e.g. page this user last
+/// read or whether they purchased this book)
 class VolumeUserInfo {
-  /**
-   * Timestamp when this volume was acquired by the user. (RFC 3339 UTC
-   * date-time format) Acquiring includes purchase, user upload, receiving
-   * family sharing, etc.
-   */
+  /// Timestamp when this volume was acquired by the user. (RFC 3339 UTC
+  /// date-time format) Acquiring includes purchase, user upload, receiving
+  /// family sharing, etc.
   core.DateTime acquiredTime;
-  /** How this volume was acquired. */
+
+  /// How this volume was acquired.
   core.int acquisitionType;
-  /** Copy/Paste accounting information. */
+
+  /// Copy/Paste accounting information.
   VolumeUserInfoCopy copy;
-  /** Whether this volume is purchased, sample, pd download etc. */
+
+  /// Whether this volume is purchased, sample, pd download etc.
   core.int entitlementType;
-  /** Information on the ability to share with the family. */
+
+  /// Information on the ability to share with the family.
   VolumeUserInfoFamilySharing familySharing;
-  /** Whether or not the user shared this volume with the family. */
+
+  /// Whether or not the user shared this volume with the family.
   core.bool isFamilySharedFromUser;
-  /** Whether or not the user received this volume through family sharing. */
+
+  /// Whether or not the user received this volume through family sharing.
   core.bool isFamilySharedToUser;
-  /** Deprecated: Replaced by familySharing. */
+
+  /// Deprecated: Replaced by familySharing.
   core.bool isFamilySharingAllowed;
-  /** Deprecated: Replaced by familySharing. */
+
+  /// Deprecated: Replaced by familySharing.
   core.bool isFamilySharingDisabledByFop;
-  /** Whether or not this volume is currently in "my books." */
+
+  /// Whether or not this volume is currently in "my books."
   core.bool isInMyBooks;
-  /**
-   * Whether or not this volume was pre-ordered by the authenticated user making
-   * the request. (In LITE projection.)
-   */
+
+  /// Whether or not this volume was pre-ordered by the authenticated user
+  /// making the request. (In LITE projection.)
   core.bool isPreordered;
-  /**
-   * Whether or not this volume was purchased by the authenticated user making
-   * the request. (In LITE projection.)
-   */
+
+  /// Whether or not this volume was purchased by the authenticated user making
+  /// the request. (In LITE projection.)
   core.bool isPurchased;
-  /** Whether or not this volume was user uploaded. */
+
+  /// Whether or not this volume was user uploaded.
   core.bool isUploaded;
-  /**
-   * The user's current reading position in the volume, if one is available. (In
-   * LITE projection.)
-   */
+
+  /// The user's current reading position in the volume, if one is available.
+  /// (In LITE projection.)
   ReadingPosition readingPosition;
-  /** Period during this book is/was a valid rental. */
+
+  /// Period during this book is/was a valid rental.
   VolumeUserInfoRentalPeriod rentalPeriod;
-  /** Whether this book is an active or an expired rental. */
+
+  /// Whether this book is an active or an expired rental.
   core.String rentalState;
-  /** This user's review of this volume, if one exists. */
+
+  /// This user's review of this volume, if one exists.
   Review review;
-  /**
-   * Timestamp when this volume was last modified by a user action, such as a
-   * reading position update, volume purchase or writing a review. (RFC 3339 UTC
-   * date-time format).
-   */
+
+  /// Timestamp when this volume was last modified by a user action, such as a
+  /// reading position update, volume purchase or writing a review. (RFC 3339
+  /// UTC date-time format).
   core.DateTime updated;
   VolumeUserInfoUserUploadedVolumeInfo userUploadedVolumeInfo;
 
@@ -7222,7 +7473,8 @@ class VolumeUserInfo {
       entitlementType = _json["entitlementType"];
     }
     if (_json.containsKey("familySharing")) {
-      familySharing = new VolumeUserInfoFamilySharing.fromJson(_json["familySharing"]);
+      familySharing =
+          new VolumeUserInfoFamilySharing.fromJson(_json["familySharing"]);
     }
     if (_json.containsKey("isFamilySharedFromUser")) {
       isFamilySharedFromUser = _json["isFamilySharedFromUser"];
@@ -7252,7 +7504,8 @@ class VolumeUserInfo {
       readingPosition = new ReadingPosition.fromJson(_json["readingPosition"]);
     }
     if (_json.containsKey("rentalPeriod")) {
-      rentalPeriod = new VolumeUserInfoRentalPeriod.fromJson(_json["rentalPeriod"]);
+      rentalPeriod =
+          new VolumeUserInfoRentalPeriod.fromJson(_json["rentalPeriod"]);
     }
     if (_json.containsKey("rentalState")) {
       rentalState = _json["rentalState"];
@@ -7264,12 +7517,15 @@ class VolumeUserInfo {
       updated = core.DateTime.parse(_json["updated"]);
     }
     if (_json.containsKey("userUploadedVolumeInfo")) {
-      userUploadedVolumeInfo = new VolumeUserInfoUserUploadedVolumeInfo.fromJson(_json["userUploadedVolumeInfo"]);
+      userUploadedVolumeInfo =
+          new VolumeUserInfoUserUploadedVolumeInfo.fromJson(
+              _json["userUploadedVolumeInfo"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (acquiredTime != null) {
       _json["acquiredTime"] = (acquiredTime).toIso8601String();
     }
@@ -7331,13 +7587,15 @@ class VolumeUserInfo {
   }
 }
 
-/** Physical dimensions of this volume. */
+/// Physical dimensions of this volume.
 class VolumeVolumeInfoDimensions {
-  /** Height or length of this volume (in cm). */
+  /// Height or length of this volume (in cm).
   core.String height;
-  /** Thickness of this volume (in cm). */
+
+  /// Thickness of this volume (in cm).
   core.String thickness;
-  /** Width of this volume (in cm). */
+
+  /// Width of this volume (in cm).
   core.String width;
 
   VolumeVolumeInfoDimensions();
@@ -7355,7 +7613,8 @@ class VolumeVolumeInfoDimensions {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (height != null) {
       _json["height"] = height;
     }
@@ -7369,32 +7628,27 @@ class VolumeVolumeInfoDimensions {
   }
 }
 
-/**
- * A list of image links for all the sizes that are available. (In LITE
- * projection.)
- */
+/// A list of image links for all the sizes that are available. (In LITE
+/// projection.)
 class VolumeVolumeInfoImageLinks {
-  /**
-   * Image link for extra large size (width of ~1280 pixels). (In LITE
-   * projection)
-   */
+  /// Image link for extra large size (width of ~1280 pixels). (In LITE
+  /// projection)
   core.String extraLarge;
-  /** Image link for large size (width of ~800 pixels). (In LITE projection) */
+
+  /// Image link for large size (width of ~800 pixels). (In LITE projection)
   core.String large;
-  /**
-   * Image link for medium size (width of ~575 pixels). (In LITE projection)
-   */
+
+  /// Image link for medium size (width of ~575 pixels). (In LITE projection)
   core.String medium;
-  /** Image link for small size (width of ~300 pixels). (In LITE projection) */
+
+  /// Image link for small size (width of ~300 pixels). (In LITE projection)
   core.String small;
-  /**
-   * Image link for small thumbnail size (width of ~80 pixels). (In LITE
-   * projection)
-   */
+
+  /// Image link for small thumbnail size (width of ~80 pixels). (In LITE
+  /// projection)
   core.String smallThumbnail;
-  /**
-   * Image link for thumbnail size (width of ~128 pixels). (In LITE projection)
-   */
+
+  /// Image link for thumbnail size (width of ~128 pixels). (In LITE projection)
   core.String thumbnail;
 
   VolumeVolumeInfoImageLinks();
@@ -7421,7 +7675,8 @@ class VolumeVolumeInfoImageLinks {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (extraLarge != null) {
       _json["extraLarge"] = extraLarge;
     }
@@ -7445,9 +7700,10 @@ class VolumeVolumeInfoImageLinks {
 }
 
 class VolumeVolumeInfoIndustryIdentifiers {
-  /** Industry specific volume identifier. */
+  /// Industry specific volume identifier.
   core.String identifier;
-  /** Identifier type. Possible values are ISBN_10, ISBN_13, ISSN and OTHER. */
+
+  /// Identifier type. Possible values are ISBN_10, ISBN_13, ISSN and OTHER.
   core.String type;
 
   VolumeVolumeInfoIndustryIdentifiers();
@@ -7462,7 +7718,8 @@ class VolumeVolumeInfoIndustryIdentifiers {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (identifier != null) {
       _json["identifier"] = identifier;
     }
@@ -7473,7 +7730,7 @@ class VolumeVolumeInfoIndustryIdentifiers {
   }
 }
 
-/** A top-level summary of the panelization info in this volume. */
+/// A top-level summary of the panelization info in this volume.
 class VolumeVolumeInfoPanelizationSummary {
   core.bool containsEpubBubbles;
   core.bool containsImageBubbles;
@@ -7498,7 +7755,8 @@ class VolumeVolumeInfoPanelizationSummary {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (containsEpubBubbles != null) {
       _json["containsEpubBubbles"] = containsEpubBubbles;
     }
@@ -7515,88 +7773,94 @@ class VolumeVolumeInfoPanelizationSummary {
   }
 }
 
-/** General volume information. */
+/// General volume information.
 class VolumeVolumeInfo {
-  /** Whether anonymous logging should be allowed. */
+  /// Whether anonymous logging should be allowed.
   core.bool allowAnonLogging;
-  /**
-   * The names of the authors and/or editors for this volume. (In LITE
-   * projection)
-   */
+
+  /// The names of the authors and/or editors for this volume. (In LITE
+  /// projection)
   core.List<core.String> authors;
-  /** The mean review rating for this volume. (min = 1.0, max = 5.0) */
+
+  /// The mean review rating for this volume. (min = 1.0, max = 5.0)
   core.double averageRating;
-  /** Canonical URL for a volume. (In LITE projection.) */
+
+  /// Canonical URL for a volume. (In LITE projection.)
   core.String canonicalVolumeLink;
-  /** A list of subject categories, such as "Fiction", "Suspense", etc. */
+
+  /// A list of subject categories, such as "Fiction", "Suspense", etc.
   core.List<core.String> categories;
-  /**
-   * An identifier for the version of the volume content (text & images). (In
-   * LITE projection)
-   */
+
+  /// An identifier for the version of the volume content (text & images). (In
+  /// LITE projection)
   core.String contentVersion;
-  /**
-   * A synopsis of the volume. The text of the description is formatted in HTML
-   * and includes simple formatting elements, such as b, i, and br tags. (In
-   * LITE projection.)
-   */
+
+  /// A synopsis of the volume. The text of the description is formatted in HTML
+  /// and includes simple formatting elements, such as b, i, and br tags. (In
+  /// LITE projection.)
   core.String description;
-  /** Physical dimensions of this volume. */
+
+  /// Physical dimensions of this volume.
   VolumeVolumeInfoDimensions dimensions;
-  /**
-   * A list of image links for all the sizes that are available. (In LITE
-   * projection.)
-   */
+
+  /// A list of image links for all the sizes that are available. (In LITE
+  /// projection.)
   VolumeVolumeInfoImageLinks imageLinks;
-  /** Industry standard identifiers for this volume. */
+
+  /// Industry standard identifiers for this volume.
   core.List<VolumeVolumeInfoIndustryIdentifiers> industryIdentifiers;
-  /**
-   * URL to view information about this volume on the Google Books site. (In
-   * LITE projection)
-   */
+
+  /// URL to view information about this volume on the Google Books site. (In
+  /// LITE projection)
   core.String infoLink;
-  /**
-   * Best language for this volume (based on content). It is the two-letter ISO
-   * 639-1 code such as 'fr', 'en', etc.
-   */
+
+  /// Best language for this volume (based on content). It is the two-letter ISO
+  /// 639-1 code such as 'fr', 'en', etc.
   core.String language;
-  /**
-   * The main category to which this volume belongs. It will be the category
-   * from the categories list returned below that has the highest weight.
-   */
+
+  /// The main category to which this volume belongs. It will be the category
+  /// from the categories list returned below that has the highest weight.
   core.String mainCategory;
   core.String maturityRating;
-  /** Total number of pages as per publisher metadata. */
+
+  /// Total number of pages as per publisher metadata.
   core.int pageCount;
-  /** A top-level summary of the panelization info in this volume. */
+
+  /// A top-level summary of the panelization info in this volume.
   VolumeVolumeInfoPanelizationSummary panelizationSummary;
-  /** URL to preview this volume on the Google Books site. */
+
+  /// URL to preview this volume on the Google Books site.
   core.String previewLink;
-  /**
-   * Type of publication of this volume. Possible values are BOOK or MAGAZINE.
-   */
+
+  /// Type of publication of this volume. Possible values are BOOK or MAGAZINE.
   core.String printType;
-  /** Total number of printed pages in generated pdf representation. */
+
+  /// Total number of printed pages in generated pdf representation.
   core.int printedPageCount;
-  /** Date of publication. (In LITE projection.) */
+
+  /// Date of publication. (In LITE projection.)
   core.String publishedDate;
-  /** Publisher of this volume. (In LITE projection.) */
+
+  /// Publisher of this volume. (In LITE projection.)
   core.String publisher;
-  /** The number of review ratings for this volume. */
+
+  /// The number of review ratings for this volume.
   core.int ratingsCount;
-  /**
-   * The reading modes available for this volume.
-   *
-   * The values for Object must be JSON objects. It can consist of `num`,
-   * `String`, `bool` and `null` as well as `Map` and `List` values.
-   */
+
+  /// The reading modes available for this volume.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object readingModes;
-  /** Total number of sample pages as per publisher metadata. */
+
+  /// Total number of sample pages as per publisher metadata.
   core.int samplePageCount;
   Volumeseriesinfo seriesInfo;
-  /** Volume subtitle. (In LITE projection.) */
+
+  /// Volume subtitle. (In LITE projection.)
   core.String subtitle;
-  /** Volume title. (In LITE projection.) */
+
+  /// Volume title. (In LITE projection.)
   core.String title;
 
   VolumeVolumeInfo();
@@ -7630,7 +7894,10 @@ class VolumeVolumeInfo {
       imageLinks = new VolumeVolumeInfoImageLinks.fromJson(_json["imageLinks"]);
     }
     if (_json.containsKey("industryIdentifiers")) {
-      industryIdentifiers = _json["industryIdentifiers"].map((value) => new VolumeVolumeInfoIndustryIdentifiers.fromJson(value)).toList();
+      industryIdentifiers = _json["industryIdentifiers"]
+          .map((value) =>
+              new VolumeVolumeInfoIndustryIdentifiers.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("infoLink")) {
       infoLink = _json["infoLink"];
@@ -7648,7 +7915,8 @@ class VolumeVolumeInfo {
       pageCount = _json["pageCount"];
     }
     if (_json.containsKey("panelizationSummary")) {
-      panelizationSummary = new VolumeVolumeInfoPanelizationSummary.fromJson(_json["panelizationSummary"]);
+      panelizationSummary = new VolumeVolumeInfoPanelizationSummary.fromJson(
+          _json["panelizationSummary"]);
     }
     if (_json.containsKey("previewLink")) {
       previewLink = _json["previewLink"];
@@ -7686,7 +7954,8 @@ class VolumeVolumeInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (allowAnonLogging != null) {
       _json["allowAnonLogging"] = allowAnonLogging;
     }
@@ -7715,7 +7984,8 @@ class VolumeVolumeInfo {
       _json["imageLinks"] = (imageLinks).toJson();
     }
     if (industryIdentifiers != null) {
-      _json["industryIdentifiers"] = industryIdentifiers.map((value) => (value).toJson()).toList();
+      _json["industryIdentifiers"] =
+          industryIdentifiers.map((value) => (value).toJson()).toList();
     }
     if (infoLink != null) {
       _json["infoLink"] = infoLink;
@@ -7773,44 +8043,44 @@ class VolumeVolumeInfo {
 }
 
 class Volume {
-  /**
-   * Any information about a volume related to reading or obtaining that volume
-   * text. This information can depend on country (books may be public domain in
-   * one country but not in another, e.g.).
-   */
+  /// Any information about a volume related to reading or obtaining that volume
+  /// text. This information can depend on country (books may be public domain
+  /// in one country but not in another, e.g.).
   VolumeAccessInfo accessInfo;
-  /**
-   * Opaque identifier for a specific version of a volume resource. (In LITE
-   * projection)
-   */
+
+  /// Opaque identifier for a specific version of a volume resource. (In LITE
+  /// projection)
   core.String etag;
-  /** Unique identifier for a volume. (In LITE projection.) */
+
+  /// Unique identifier for a volume. (In LITE projection.)
   core.String id;
-  /** Resource type for a volume. (In LITE projection.) */
+
+  /// Resource type for a volume. (In LITE projection.)
   core.String kind;
-  /**
-   * What layers exist in this volume and high level information about them.
-   */
+
+  /// What layers exist in this volume and high level information about them.
   VolumeLayerInfo layerInfo;
-  /** Recommendation related information for this volume. */
+
+  /// Recommendation related information for this volume.
   VolumeRecommendedInfo recommendedInfo;
-  /**
-   * Any information about a volume related to the eBookstore and/or
-   * purchaseability. This information can depend on the country where the
-   * request originates from (i.e. books may not be for sale in certain
-   * countries).
-   */
+
+  /// Any information about a volume related to the eBookstore and/or
+  /// purchaseability. This information can depend on the country where the
+  /// request originates from (i.e. books may not be for sale in certain
+  /// countries).
   VolumeSaleInfo saleInfo;
-  /** Search result information related to this volume. */
+
+  /// Search result information related to this volume.
   VolumeSearchInfo searchInfo;
-  /** URL to this resource. (In LITE projection.) */
+
+  /// URL to this resource. (In LITE projection.)
   core.String selfLink;
-  /**
-   * User specific information related to this volume. (e.g. page this user last
-   * read or whether they purchased this book)
-   */
+
+  /// User specific information related to this volume. (e.g. page this user
+  /// last read or whether they purchased this book)
   VolumeUserInfo userInfo;
-  /** General volume information. */
+
+  /// General volume information.
   VolumeVolumeInfo volumeInfo;
 
   Volume();
@@ -7832,7 +8102,8 @@ class Volume {
       layerInfo = new VolumeLayerInfo.fromJson(_json["layerInfo"]);
     }
     if (_json.containsKey("recommendedInfo")) {
-      recommendedInfo = new VolumeRecommendedInfo.fromJson(_json["recommendedInfo"]);
+      recommendedInfo =
+          new VolumeRecommendedInfo.fromJson(_json["recommendedInfo"]);
     }
     if (_json.containsKey("saleInfo")) {
       saleInfo = new VolumeSaleInfo.fromJson(_json["saleInfo"]);
@@ -7852,7 +8123,8 @@ class Volume {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (accessInfo != null) {
       _json["accessInfo"] = (accessInfo).toJson();
     }
@@ -7891,9 +8163,10 @@ class Volume {
 }
 
 class Volume2 {
-  /** A list of volumes. */
+  /// A list of volumes.
   core.List<Volume> items;
-  /** Resource type. */
+
+  /// Resource type.
   core.String kind;
   core.String nextPageToken;
 
@@ -7901,7 +8174,8 @@ class Volume2 {
 
   Volume2.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Volume.fromJson(value)).toList();
+      items =
+          _json["items"].map((value) => new Volume.fromJson(value)).toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -7912,7 +8186,8 @@ class Volume2 {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -7926,15 +8201,18 @@ class Volume2 {
   }
 }
 
-/** The content ranges to identify the selected text. */
+/// The content ranges to identify the selected text.
 class VolumeannotationContentRanges {
-  /** Range in CFI format for this annotation for version above. */
+  /// Range in CFI format for this annotation for version above.
   BooksAnnotationsRange cfiRange;
-  /** Content version applicable to ranges below. */
+
+  /// Content version applicable to ranges below.
   core.String contentVersion;
-  /** Range in GB image format for this annotation for version above. */
+
+  /// Range in GB image format for this annotation for version above.
   BooksAnnotationsRange gbImageRange;
-  /** Range in GB text format for this annotation for version above. */
+
+  /// Range in GB text format for this annotation for version above.
   BooksAnnotationsRange gbTextRange;
 
   VolumeannotationContentRanges();
@@ -7955,7 +8233,8 @@ class VolumeannotationContentRanges {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (cfiRange != null) {
       _json["cfiRange"] = (cfiRange).toJson();
     }
@@ -7973,36 +8252,47 @@ class VolumeannotationContentRanges {
 }
 
 class Volumeannotation {
-  /** The annotation data id for this volume annotation. */
+  /// The annotation data id for this volume annotation.
   core.String annotationDataId;
-  /** Link to get data for this annotation. */
+
+  /// Link to get data for this annotation.
   core.String annotationDataLink;
-  /** The type of annotation this is. */
+
+  /// The type of annotation this is.
   core.String annotationType;
-  /** The content ranges to identify the selected text. */
+
+  /// The content ranges to identify the selected text.
   VolumeannotationContentRanges contentRanges;
-  /** Data for this annotation. */
+
+  /// Data for this annotation.
   core.String data;
-  /** Indicates that this annotation is deleted. */
+
+  /// Indicates that this annotation is deleted.
   core.bool deleted;
-  /** Unique id of this volume annotation. */
+
+  /// Unique id of this volume annotation.
   core.String id;
-  /** Resource Type */
+
+  /// Resource Type
   core.String kind;
-  /** The Layer this annotation is for. */
+
+  /// The Layer this annotation is for.
   core.String layerId;
-  /** Pages the annotation spans. */
+
+  /// Pages the annotation spans.
   core.List<core.String> pageIds;
-  /** Excerpt from the volume. */
+
+  /// Excerpt from the volume.
   core.String selectedText;
-  /** URL to this resource. */
+
+  /// URL to this resource.
   core.String selfLink;
-  /**
-   * Timestamp for the last time this anntoation was updated. (RFC 3339 UTC
-   * date-time format).
-   */
+
+  /// Timestamp for the last time this anntoation was updated. (RFC 3339 UTC
+  /// date-time format).
   core.DateTime updated;
-  /** The Volume this annotation is for. */
+
+  /// The Volume this annotation is for.
   core.String volumeId;
 
   Volumeannotation();
@@ -8018,7 +8308,8 @@ class Volumeannotation {
       annotationType = _json["annotationType"];
     }
     if (_json.containsKey("contentRanges")) {
-      contentRanges = new VolumeannotationContentRanges.fromJson(_json["contentRanges"]);
+      contentRanges =
+          new VolumeannotationContentRanges.fromJson(_json["contentRanges"]);
     }
     if (_json.containsKey("data")) {
       data = _json["data"];
@@ -8053,7 +8344,8 @@ class Volumeannotation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (annotationDataId != null) {
       _json["annotationDataId"] = annotationDataId;
     }
@@ -8101,30 +8393,32 @@ class Volumeannotation {
 }
 
 class Volumeannotations {
-  /** A list of volume annotations. */
+  /// A list of volume annotations.
   core.List<Volumeannotation> items;
-  /** Resource type */
+
+  /// Resource type
   core.String kind;
-  /**
-   * Token to pass in for pagination for the next page. This will not be present
-   * if this request does not have more results.
-   */
+
+  /// Token to pass in for pagination for the next page. This will not be
+  /// present if this request does not have more results.
   core.String nextPageToken;
-  /** The total number of volume annotations found. */
+
+  /// The total number of volume annotations found.
   core.int totalItems;
-  /**
-   * The version string for all of the volume annotations in this layer (not
-   * just the ones in this response). Note: the version string doesn't apply to
-   * the annotation data, just the information in this response (e.g. the
-   * location of annotations in the book).
-   */
+
+  /// The version string for all of the volume annotations in this layer (not
+  /// just the ones in this response). Note: the version string doesn't apply to
+  /// the annotation data, just the information in this response (e.g. the
+  /// location of annotations in the book).
   core.String version;
 
   Volumeannotations();
 
   Volumeannotations.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Volumeannotation.fromJson(value)).toList();
+      items = _json["items"]
+          .map((value) => new Volumeannotation.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -8141,7 +8435,8 @@ class Volumeannotations {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -8162,21 +8457,22 @@ class Volumeannotations {
 }
 
 class Volumes {
-  /** A list of volumes. */
+  /// A list of volumes.
   core.List<Volume> items;
-  /** Resource type. */
+
+  /// Resource type.
   core.String kind;
-  /**
-   * Total number of volumes found. This might be greater than the number of
-   * volumes returned in this response if results have been paginated.
-   */
+
+  /// Total number of volumes found. This might be greater than the number of
+  /// volumes returned in this response if results have been paginated.
   core.int totalItems;
 
   Volumes();
 
   Volumes.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new Volume.fromJson(value)).toList();
+      items =
+          _json["items"].map((value) => new Volume.fromJson(value)).toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -8187,7 +8483,8 @@ class Volumes {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -8217,7 +8514,8 @@ class VolumeseriesinfoVolumeSeriesIssue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (issueDisplayNumber != null) {
       _json["issueDisplayNumber"] = issueDisplayNumber;
     }
@@ -8229,23 +8527,26 @@ class VolumeseriesinfoVolumeSeriesIssue {
 }
 
 class VolumeseriesinfoVolumeSeries {
-  /** List of issues. Applicable only for Collection Edition and Omnibus. */
+  /// List of issues. Applicable only for Collection Edition and Omnibus.
   core.List<VolumeseriesinfoVolumeSeriesIssue> issue;
-  /** The book order number in the series. */
+
+  /// The book order number in the series.
   core.int orderNumber;
-  /**
-   * The book type in the context of series. Examples - Single Issue, Collection
-   * Edition, etc.
-   */
+
+  /// The book type in the context of series. Examples - Single Issue,
+  /// Collection Edition, etc.
   core.String seriesBookType;
-  /** The series id. */
+
+  /// The series id.
   core.String seriesId;
 
   VolumeseriesinfoVolumeSeries();
 
   VolumeseriesinfoVolumeSeries.fromJson(core.Map _json) {
     if (_json.containsKey("issue")) {
-      issue = _json["issue"].map((value) => new VolumeseriesinfoVolumeSeriesIssue.fromJson(value)).toList();
+      issue = _json["issue"]
+          .map((value) => new VolumeseriesinfoVolumeSeriesIssue.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("orderNumber")) {
       orderNumber = _json["orderNumber"];
@@ -8259,7 +8560,8 @@ class VolumeseriesinfoVolumeSeries {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (issue != null) {
       _json["issue"] = issue.map((value) => (value).toJson()).toList();
     }
@@ -8277,14 +8579,14 @@ class VolumeseriesinfoVolumeSeries {
 }
 
 class Volumeseriesinfo {
-  /**
-   * The display number string. This should be used only for display purposes
-   * and the actual sequence should be inferred from the below orderNumber.
-   */
+  /// The display number string. This should be used only for display purposes
+  /// and the actual sequence should be inferred from the below orderNumber.
   core.String bookDisplayNumber;
-  /** Resource type. */
+
+  /// Resource type.
   core.String kind;
-  /** Short book title in the context of the series. */
+
+  /// Short book title in the context of the series.
   core.String shortSeriesBookTitle;
   core.List<VolumeseriesinfoVolumeSeries> volumeSeries;
 
@@ -8301,12 +8603,15 @@ class Volumeseriesinfo {
       shortSeriesBookTitle = _json["shortSeriesBookTitle"];
     }
     if (_json.containsKey("volumeSeries")) {
-      volumeSeries = _json["volumeSeries"].map((value) => new VolumeseriesinfoVolumeSeries.fromJson(value)).toList();
+      volumeSeries = _json["volumeSeries"]
+          .map((value) => new VolumeseriesinfoVolumeSeries.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (bookDisplayNumber != null) {
       _json["bookDisplayNumber"] = bookDisplayNumber;
     }
@@ -8317,7 +8622,8 @@ class Volumeseriesinfo {
       _json["shortSeriesBookTitle"] = shortSeriesBookTitle;
     }
     if (volumeSeries != null) {
-      _json["volumeSeries"] = volumeSeries.map((value) => (value).toJson()).toList();
+      _json["volumeSeries"] =
+          volumeSeries.map((value) => (value).toJson()).toList();
     }
     return _json;
   }

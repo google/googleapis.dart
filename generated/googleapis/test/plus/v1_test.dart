@@ -1,12 +1,10 @@
 library googleapis.plus.v1.test;
 
 import "dart:core" as core;
-import "dart:collection" as collection;
 import "dart:async" as async;
 import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
-import 'package:http/testing.dart' as http_testing;
 import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/plus/v1.dart' as api;
@@ -22,7 +20,8 @@ class HttpServerMock extends http.BaseClient {
 
   async.Future<http.StreamedResponse> send(http.BaseRequest request) {
     if (_expectJson) {
-      return request.finalize()
+      return request
+          .finalize()
           .transform(convert.UTF8.decoder)
           .join('')
           .then((core.String jsonString) {
@@ -45,20 +44,20 @@ class HttpServerMock extends http.BaseClient {
   }
 }
 
-http.StreamedResponse stringResponse(
-    core.int status, core.Map<core.String, core.String> headers, core.String body) {
+http.StreamedResponse stringResponse(core.int status,
+    core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed155() {
+buildUnnamed150() {
   var o = new core.List<api.PlusAclentryResource>();
   o.add(buildPlusAclentryResource());
   o.add(buildPlusAclentryResource());
   return o;
 }
 
-checkUnnamed155(core.List<api.PlusAclentryResource> o) {
+checkUnnamed150(core.List<api.PlusAclentryResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPlusAclentryResource(o[0]);
   checkPlusAclentryResource(o[1]);
@@ -70,7 +69,7 @@ buildAcl() {
   buildCounterAcl++;
   if (buildCounterAcl < 3) {
     o.description = "foo";
-    o.items = buildUnnamed155();
+    o.items = buildUnnamed150();
     o.kind = "foo";
   }
   buildCounterAcl--;
@@ -81,7 +80,7 @@ checkAcl(api.Acl o) {
   buildCounterAcl++;
   if (buildCounterAcl < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed155(o.items);
+    checkUnnamed150(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterAcl--;
@@ -98,7 +97,8 @@ buildActivityActorClientSpecificActorInfoYoutubeActorInfo() {
   return o;
 }
 
-checkActivityActorClientSpecificActorInfoYoutubeActorInfo(api.ActivityActorClientSpecificActorInfoYoutubeActorInfo o) {
+checkActivityActorClientSpecificActorInfoYoutubeActorInfo(
+    api.ActivityActorClientSpecificActorInfoYoutubeActorInfo o) {
   buildCounterActivityActorClientSpecificActorInfoYoutubeActorInfo++;
   if (buildCounterActivityActorClientSpecificActorInfoYoutubeActorInfo < 3) {
     unittest.expect(o.channelId, unittest.equals('foo'));
@@ -111,16 +111,19 @@ buildActivityActorClientSpecificActorInfo() {
   var o = new api.ActivityActorClientSpecificActorInfo();
   buildCounterActivityActorClientSpecificActorInfo++;
   if (buildCounterActivityActorClientSpecificActorInfo < 3) {
-    o.youtubeActorInfo = buildActivityActorClientSpecificActorInfoYoutubeActorInfo();
+    o.youtubeActorInfo =
+        buildActivityActorClientSpecificActorInfoYoutubeActorInfo();
   }
   buildCounterActivityActorClientSpecificActorInfo--;
   return o;
 }
 
-checkActivityActorClientSpecificActorInfo(api.ActivityActorClientSpecificActorInfo o) {
+checkActivityActorClientSpecificActorInfo(
+    api.ActivityActorClientSpecificActorInfo o) {
   buildCounterActivityActorClientSpecificActorInfo++;
   if (buildCounterActivityActorClientSpecificActorInfo < 3) {
-    checkActivityActorClientSpecificActorInfoYoutubeActorInfo(o.youtubeActorInfo);
+    checkActivityActorClientSpecificActorInfoYoutubeActorInfo(
+        o.youtubeActorInfo);
   }
   buildCounterActivityActorClientSpecificActorInfo--;
 }
@@ -215,20 +218,24 @@ checkActivityActor(api.ActivityActor o) {
   buildCounterActivityActor--;
 }
 
-core.int buildCounterActivityObjectActorClientSpecificActorInfoYoutubeActorInfo = 0;
+core.int
+    buildCounterActivityObjectActorClientSpecificActorInfoYoutubeActorInfo = 0;
 buildActivityObjectActorClientSpecificActorInfoYoutubeActorInfo() {
   var o = new api.ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo();
   buildCounterActivityObjectActorClientSpecificActorInfoYoutubeActorInfo++;
-  if (buildCounterActivityObjectActorClientSpecificActorInfoYoutubeActorInfo < 3) {
+  if (buildCounterActivityObjectActorClientSpecificActorInfoYoutubeActorInfo <
+      3) {
     o.channelId = "foo";
   }
   buildCounterActivityObjectActorClientSpecificActorInfoYoutubeActorInfo--;
   return o;
 }
 
-checkActivityObjectActorClientSpecificActorInfoYoutubeActorInfo(api.ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo o) {
+checkActivityObjectActorClientSpecificActorInfoYoutubeActorInfo(
+    api.ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo o) {
   buildCounterActivityObjectActorClientSpecificActorInfoYoutubeActorInfo++;
-  if (buildCounterActivityObjectActorClientSpecificActorInfoYoutubeActorInfo < 3) {
+  if (buildCounterActivityObjectActorClientSpecificActorInfoYoutubeActorInfo <
+      3) {
     unittest.expect(o.channelId, unittest.equals('foo'));
   }
   buildCounterActivityObjectActorClientSpecificActorInfoYoutubeActorInfo--;
@@ -239,16 +246,19 @@ buildActivityObjectActorClientSpecificActorInfo() {
   var o = new api.ActivityObjectActorClientSpecificActorInfo();
   buildCounterActivityObjectActorClientSpecificActorInfo++;
   if (buildCounterActivityObjectActorClientSpecificActorInfo < 3) {
-    o.youtubeActorInfo = buildActivityObjectActorClientSpecificActorInfoYoutubeActorInfo();
+    o.youtubeActorInfo =
+        buildActivityObjectActorClientSpecificActorInfoYoutubeActorInfo();
   }
   buildCounterActivityObjectActorClientSpecificActorInfo--;
   return o;
 }
 
-checkActivityObjectActorClientSpecificActorInfo(api.ActivityObjectActorClientSpecificActorInfo o) {
+checkActivityObjectActorClientSpecificActorInfo(
+    api.ActivityObjectActorClientSpecificActorInfo o) {
   buildCounterActivityObjectActorClientSpecificActorInfo++;
   if (buildCounterActivityObjectActorClientSpecificActorInfo < 3) {
-    checkActivityObjectActorClientSpecificActorInfoYoutubeActorInfo(o.youtubeActorInfo);
+    checkActivityObjectActorClientSpecificActorInfoYoutubeActorInfo(
+        o.youtubeActorInfo);
   }
   buildCounterActivityObjectActorClientSpecificActorInfo--;
 }
@@ -296,7 +306,8 @@ buildActivityObjectActor() {
   var o = new api.ActivityObjectActor();
   buildCounterActivityObjectActor++;
   if (buildCounterActivityObjectActor < 3) {
-    o.clientSpecificActorInfo = buildActivityObjectActorClientSpecificActorInfo();
+    o.clientSpecificActorInfo =
+        buildActivityObjectActorClientSpecificActorInfo();
     o.displayName = "foo";
     o.id = "foo";
     o.image = buildActivityObjectActorImage();
@@ -355,7 +366,8 @@ buildActivityObjectAttachmentsFullImage() {
   return o;
 }
 
-checkActivityObjectAttachmentsFullImage(api.ActivityObjectAttachmentsFullImage o) {
+checkActivityObjectAttachmentsFullImage(
+    api.ActivityObjectAttachmentsFullImage o) {
   buildCounterActivityObjectAttachmentsFullImage++;
   if (buildCounterActivityObjectAttachmentsFullImage < 3) {
     unittest.expect(o.height, unittest.equals(42));
@@ -405,7 +417,8 @@ buildActivityObjectAttachmentsThumbnailsImage() {
   return o;
 }
 
-checkActivityObjectAttachmentsThumbnailsImage(api.ActivityObjectAttachmentsThumbnailsImage o) {
+checkActivityObjectAttachmentsThumbnailsImage(
+    api.ActivityObjectAttachmentsThumbnailsImage o) {
   buildCounterActivityObjectAttachmentsThumbnailsImage++;
   if (buildCounterActivityObjectAttachmentsThumbnailsImage < 3) {
     unittest.expect(o.height, unittest.equals(42));
@@ -429,7 +442,8 @@ buildActivityObjectAttachmentsThumbnails() {
   return o;
 }
 
-checkActivityObjectAttachmentsThumbnails(api.ActivityObjectAttachmentsThumbnails o) {
+checkActivityObjectAttachmentsThumbnails(
+    api.ActivityObjectAttachmentsThumbnails o) {
   buildCounterActivityObjectAttachmentsThumbnails++;
   if (buildCounterActivityObjectAttachmentsThumbnails < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
@@ -439,14 +453,14 @@ checkActivityObjectAttachmentsThumbnails(api.ActivityObjectAttachmentsThumbnails
   buildCounterActivityObjectAttachmentsThumbnails--;
 }
 
-buildUnnamed156() {
+buildUnnamed151() {
   var o = new core.List<api.ActivityObjectAttachmentsThumbnails>();
   o.add(buildActivityObjectAttachmentsThumbnails());
   o.add(buildActivityObjectAttachmentsThumbnails());
   return o;
 }
 
-checkUnnamed156(core.List<api.ActivityObjectAttachmentsThumbnails> o) {
+checkUnnamed151(core.List<api.ActivityObjectAttachmentsThumbnails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActivityObjectAttachmentsThumbnails(o[0]);
   checkActivityObjectAttachmentsThumbnails(o[1]);
@@ -464,7 +478,7 @@ buildActivityObjectAttachments() {
     o.id = "foo";
     o.image = buildActivityObjectAttachmentsImage();
     o.objectType = "foo";
-    o.thumbnails = buildUnnamed156();
+    o.thumbnails = buildUnnamed151();
     o.url = "foo";
   }
   buildCounterActivityObjectAttachments--;
@@ -481,20 +495,20 @@ checkActivityObjectAttachments(api.ActivityObjectAttachments o) {
     unittest.expect(o.id, unittest.equals('foo'));
     checkActivityObjectAttachmentsImage(o.image);
     unittest.expect(o.objectType, unittest.equals('foo'));
-    checkUnnamed156(o.thumbnails);
+    checkUnnamed151(o.thumbnails);
     unittest.expect(o.url, unittest.equals('foo'));
   }
   buildCounterActivityObjectAttachments--;
 }
 
-buildUnnamed157() {
+buildUnnamed152() {
   var o = new core.List<api.ActivityObjectAttachments>();
   o.add(buildActivityObjectAttachments());
   o.add(buildActivityObjectAttachments());
   return o;
 }
 
-checkUnnamed157(core.List<api.ActivityObjectAttachments> o) {
+checkUnnamed152(core.List<api.ActivityObjectAttachments> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActivityObjectAttachments(o[0]);
   checkActivityObjectAttachments(o[1]);
@@ -569,7 +583,7 @@ buildActivityObject() {
   buildCounterActivityObject++;
   if (buildCounterActivityObject < 3) {
     o.actor = buildActivityObjectActor();
-    o.attachments = buildUnnamed157();
+    o.attachments = buildUnnamed152();
     o.content = "foo";
     o.id = "foo";
     o.objectType = "foo";
@@ -587,7 +601,7 @@ checkActivityObject(api.ActivityObject o) {
   buildCounterActivityObject++;
   if (buildCounterActivityObject < 3) {
     checkActivityObjectActor(o.actor);
-    checkUnnamed157(o.attachments);
+    checkUnnamed152(o.attachments);
     unittest.expect(o.content, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.objectType, unittest.equals('foo'));
@@ -666,24 +680,26 @@ checkActivity(api.Activity o) {
     unittest.expect(o.placeId, unittest.equals('foo'));
     unittest.expect(o.placeName, unittest.equals('foo'));
     checkActivityProvider(o.provider);
-    unittest.expect(o.published, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(o.published,
+        unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.radius, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
-    unittest.expect(o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(
+        o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.url, unittest.equals('foo'));
     unittest.expect(o.verb, unittest.equals('foo'));
   }
   buildCounterActivity--;
 }
 
-buildUnnamed158() {
+buildUnnamed153() {
   var o = new core.List<api.Activity>();
   o.add(buildActivity());
   o.add(buildActivity());
   return o;
 }
 
-checkUnnamed158(core.List<api.Activity> o) {
+checkUnnamed153(core.List<api.Activity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActivity(o[0]);
   checkActivity(o[1]);
@@ -696,7 +712,7 @@ buildActivityFeed() {
   if (buildCounterActivityFeed < 3) {
     o.etag = "foo";
     o.id = "foo";
-    o.items = buildUnnamed158();
+    o.items = buildUnnamed153();
     o.kind = "foo";
     o.nextLink = "foo";
     o.nextPageToken = "foo";
@@ -713,13 +729,14 @@ checkActivityFeed(api.ActivityFeed o) {
   if (buildCounterActivityFeed < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed158(o.items);
+    checkUnnamed153(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextLink, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
-    unittest.expect(o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(
+        o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
   }
   buildCounterActivityFeed--;
 }
@@ -735,7 +752,8 @@ buildCommentActorClientSpecificActorInfoYoutubeActorInfo() {
   return o;
 }
 
-checkCommentActorClientSpecificActorInfoYoutubeActorInfo(api.CommentActorClientSpecificActorInfoYoutubeActorInfo o) {
+checkCommentActorClientSpecificActorInfoYoutubeActorInfo(
+    api.CommentActorClientSpecificActorInfoYoutubeActorInfo o) {
   buildCounterCommentActorClientSpecificActorInfoYoutubeActorInfo++;
   if (buildCounterCommentActorClientSpecificActorInfoYoutubeActorInfo < 3) {
     unittest.expect(o.channelId, unittest.equals('foo'));
@@ -748,16 +766,19 @@ buildCommentActorClientSpecificActorInfo() {
   var o = new api.CommentActorClientSpecificActorInfo();
   buildCounterCommentActorClientSpecificActorInfo++;
   if (buildCounterCommentActorClientSpecificActorInfo < 3) {
-    o.youtubeActorInfo = buildCommentActorClientSpecificActorInfoYoutubeActorInfo();
+    o.youtubeActorInfo =
+        buildCommentActorClientSpecificActorInfoYoutubeActorInfo();
   }
   buildCounterCommentActorClientSpecificActorInfo--;
   return o;
 }
 
-checkCommentActorClientSpecificActorInfo(api.CommentActorClientSpecificActorInfo o) {
+checkCommentActorClientSpecificActorInfo(
+    api.CommentActorClientSpecificActorInfo o) {
   buildCounterCommentActorClientSpecificActorInfo++;
   if (buildCounterCommentActorClientSpecificActorInfo < 3) {
-    checkCommentActorClientSpecificActorInfoYoutubeActorInfo(o.youtubeActorInfo);
+    checkCommentActorClientSpecificActorInfoYoutubeActorInfo(
+        o.youtubeActorInfo);
   }
   buildCounterCommentActorClientSpecificActorInfo--;
 }
@@ -850,14 +871,14 @@ checkCommentInReplyTo(api.CommentInReplyTo o) {
   buildCounterCommentInReplyTo--;
 }
 
-buildUnnamed159() {
+buildUnnamed154() {
   var o = new core.List<api.CommentInReplyTo>();
   o.add(buildCommentInReplyTo());
   o.add(buildCommentInReplyTo());
   return o;
 }
 
-checkUnnamed159(core.List<api.CommentInReplyTo> o) {
+checkUnnamed154(core.List<api.CommentInReplyTo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCommentInReplyTo(o[0]);
   checkCommentInReplyTo(o[1]);
@@ -913,7 +934,7 @@ buildComment() {
     o.actor = buildCommentActor();
     o.etag = "foo";
     o.id = "foo";
-    o.inReplyTo = buildUnnamed159();
+    o.inReplyTo = buildUnnamed154();
     o.kind = "foo";
     o.object = buildCommentObject();
     o.plusoners = buildCommentPlusoners();
@@ -932,26 +953,28 @@ checkComment(api.Comment o) {
     checkCommentActor(o.actor);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed159(o.inReplyTo);
+    checkUnnamed154(o.inReplyTo);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkCommentObject(o.object);
     checkCommentPlusoners(o.plusoners);
-    unittest.expect(o.published, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(o.published,
+        unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.selfLink, unittest.equals('foo'));
-    unittest.expect(o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(
+        o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.verb, unittest.equals('foo'));
   }
   buildCounterComment--;
 }
 
-buildUnnamed160() {
+buildUnnamed155() {
   var o = new core.List<api.Comment>();
   o.add(buildComment());
   o.add(buildComment());
   return o;
 }
 
-checkUnnamed160(core.List<api.Comment> o) {
+checkUnnamed155(core.List<api.Comment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkComment(o[0]);
   checkComment(o[1]);
@@ -964,7 +987,7 @@ buildCommentFeed() {
   if (buildCounterCommentFeed < 3) {
     o.etag = "foo";
     o.id = "foo";
-    o.items = buildUnnamed160();
+    o.items = buildUnnamed155();
     o.kind = "foo";
     o.nextLink = "foo";
     o.nextPageToken = "foo";
@@ -980,24 +1003,25 @@ checkCommentFeed(api.CommentFeed o) {
   if (buildCounterCommentFeed < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed160(o.items);
+    checkUnnamed155(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextLink, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
-    unittest.expect(o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
+    unittest.expect(
+        o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
   }
   buildCounterCommentFeed--;
 }
 
-buildUnnamed161() {
+buildUnnamed156() {
   var o = new core.List<api.Person>();
   o.add(buildPerson());
   o.add(buildPerson());
   return o;
 }
 
-checkUnnamed161(core.List<api.Person> o) {
+checkUnnamed156(core.List<api.Person> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPerson(o[0]);
   checkPerson(o[1]);
@@ -1009,7 +1033,7 @@ buildPeopleFeed() {
   buildCounterPeopleFeed++;
   if (buildCounterPeopleFeed < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed161();
+    o.items = buildUnnamed156();
     o.kind = "foo";
     o.nextPageToken = "foo";
     o.selfLink = "foo";
@@ -1024,7 +1048,7 @@ checkPeopleFeed(api.PeopleFeed o) {
   buildCounterPeopleFeed++;
   if (buildCounterPeopleFeed < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed161(o.items);
+    checkUnnamed156(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -1143,14 +1167,14 @@ checkPersonEmails(api.PersonEmails o) {
   buildCounterPersonEmails--;
 }
 
-buildUnnamed162() {
+buildUnnamed157() {
   var o = new core.List<api.PersonEmails>();
   o.add(buildPersonEmails());
   o.add(buildPersonEmails());
   return o;
 }
 
-checkUnnamed162(core.List<api.PersonEmails> o) {
+checkUnnamed157(core.List<api.PersonEmails> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPersonEmails(o[0]);
   checkPersonEmails(o[1]);
@@ -1241,14 +1265,14 @@ checkPersonOrganizations(api.PersonOrganizations o) {
   buildCounterPersonOrganizations--;
 }
 
-buildUnnamed163() {
+buildUnnamed158() {
   var o = new core.List<api.PersonOrganizations>();
   o.add(buildPersonOrganizations());
   o.add(buildPersonOrganizations());
   return o;
 }
 
-checkUnnamed163(core.List<api.PersonOrganizations> o) {
+checkUnnamed158(core.List<api.PersonOrganizations> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPersonOrganizations(o[0]);
   checkPersonOrganizations(o[1]);
@@ -1275,14 +1299,14 @@ checkPersonPlacesLived(api.PersonPlacesLived o) {
   buildCounterPersonPlacesLived--;
 }
 
-buildUnnamed164() {
+buildUnnamed159() {
   var o = new core.List<api.PersonPlacesLived>();
   o.add(buildPersonPlacesLived());
   o.add(buildPersonPlacesLived());
   return o;
 }
 
-checkUnnamed164(core.List<api.PersonPlacesLived> o) {
+checkUnnamed159(core.List<api.PersonPlacesLived> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPersonPlacesLived(o[0]);
   checkPersonPlacesLived(o[1]);
@@ -1311,14 +1335,14 @@ checkPersonUrls(api.PersonUrls o) {
   buildCounterPersonUrls--;
 }
 
-buildUnnamed165() {
+buildUnnamed160() {
   var o = new core.List<api.PersonUrls>();
   o.add(buildPersonUrls());
   o.add(buildPersonUrls());
   return o;
 }
 
-checkUnnamed165(core.List<api.PersonUrls> o) {
+checkUnnamed160(core.List<api.PersonUrls> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPersonUrls(o[0]);
   checkPersonUrls(o[1]);
@@ -1338,7 +1362,7 @@ buildPerson() {
     o.currentLocation = "foo";
     o.displayName = "foo";
     o.domain = "foo";
-    o.emails = buildUnnamed162();
+    o.emails = buildUnnamed157();
     o.etag = "foo";
     o.gender = "foo";
     o.id = "foo";
@@ -1350,14 +1374,14 @@ buildPerson() {
     o.nickname = "foo";
     o.objectType = "foo";
     o.occupation = "foo";
-    o.organizations = buildUnnamed163();
-    o.placesLived = buildUnnamed164();
+    o.organizations = buildUnnamed158();
+    o.placesLived = buildUnnamed159();
     o.plusOneCount = 42;
     o.relationshipStatus = "foo";
     o.skills = "foo";
     o.tagline = "foo";
     o.url = "foo";
-    o.urls = buildUnnamed165();
+    o.urls = buildUnnamed160();
     o.verified = true;
   }
   buildCounterPerson--;
@@ -1376,7 +1400,7 @@ checkPerson(api.Person o) {
     unittest.expect(o.currentLocation, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.domain, unittest.equals('foo'));
-    checkUnnamed162(o.emails);
+    checkUnnamed157(o.emails);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.gender, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
@@ -1388,14 +1412,14 @@ checkPerson(api.Person o) {
     unittest.expect(o.nickname, unittest.equals('foo'));
     unittest.expect(o.objectType, unittest.equals('foo'));
     unittest.expect(o.occupation, unittest.equals('foo'));
-    checkUnnamed163(o.organizations);
-    checkUnnamed164(o.placesLived);
+    checkUnnamed158(o.organizations);
+    checkUnnamed159(o.placesLived);
     unittest.expect(o.plusOneCount, unittest.equals(42));
     unittest.expect(o.relationshipStatus, unittest.equals('foo'));
     unittest.expect(o.skills, unittest.equals('foo'));
     unittest.expect(o.tagline, unittest.equals('foo'));
     unittest.expect(o.url, unittest.equals('foo'));
-    checkUnnamed165(o.urls);
+    checkUnnamed160(o.urls);
     unittest.expect(o.verified, unittest.isTrue);
   }
   buildCounterPerson--;
@@ -1491,7 +1515,6 @@ checkPlusAclentryResource(api.PlusAclentryResource o) {
   buildCounterPlusAclentryResource--;
 }
 
-
 main() {
   unittest.group("obj-schema-Acl", () {
     unittest.test("to-json--from-json", () {
@@ -1501,24 +1524,25 @@ main() {
     });
   });
 
-
-  unittest.group("obj-schema-ActivityActorClientSpecificActorInfoYoutubeActorInfo", () {
+  unittest.group(
+      "obj-schema-ActivityActorClientSpecificActorInfoYoutubeActorInfo", () {
     unittest.test("to-json--from-json", () {
       var o = buildActivityActorClientSpecificActorInfoYoutubeActorInfo();
-      var od = new api.ActivityActorClientSpecificActorInfoYoutubeActorInfo.fromJson(o.toJson());
+      var od =
+          new api.ActivityActorClientSpecificActorInfoYoutubeActorInfo.fromJson(
+              o.toJson());
       checkActivityActorClientSpecificActorInfoYoutubeActorInfo(od);
     });
   });
 
-
   unittest.group("obj-schema-ActivityActorClientSpecificActorInfo", () {
     unittest.test("to-json--from-json", () {
       var o = buildActivityActorClientSpecificActorInfo();
-      var od = new api.ActivityActorClientSpecificActorInfo.fromJson(o.toJson());
+      var od =
+          new api.ActivityActorClientSpecificActorInfo.fromJson(o.toJson());
       checkActivityActorClientSpecificActorInfo(od);
     });
   });
-
 
   unittest.group("obj-schema-ActivityActorImage", () {
     unittest.test("to-json--from-json", () {
@@ -1528,7 +1552,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ActivityActorName", () {
     unittest.test("to-json--from-json", () {
       var o = buildActivityActorName();
@@ -1536,7 +1559,6 @@ main() {
       checkActivityActorName(od);
     });
   });
-
 
   unittest.group("obj-schema-ActivityActorVerification", () {
     unittest.test("to-json--from-json", () {
@@ -1546,7 +1568,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ActivityActor", () {
     unittest.test("to-json--from-json", () {
       var o = buildActivityActor();
@@ -1555,24 +1576,26 @@ main() {
     });
   });
 
-
-  unittest.group("obj-schema-ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo", () {
+  unittest.group(
+      "obj-schema-ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo",
+      () {
     unittest.test("to-json--from-json", () {
       var o = buildActivityObjectActorClientSpecificActorInfoYoutubeActorInfo();
-      var od = new api.ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo.fromJson(o.toJson());
+      var od = new api
+              .ActivityObjectActorClientSpecificActorInfoYoutubeActorInfo.fromJson(
+          o.toJson());
       checkActivityObjectActorClientSpecificActorInfoYoutubeActorInfo(od);
     });
   });
 
-
   unittest.group("obj-schema-ActivityObjectActorClientSpecificActorInfo", () {
     unittest.test("to-json--from-json", () {
       var o = buildActivityObjectActorClientSpecificActorInfo();
-      var od = new api.ActivityObjectActorClientSpecificActorInfo.fromJson(o.toJson());
+      var od = new api.ActivityObjectActorClientSpecificActorInfo.fromJson(
+          o.toJson());
       checkActivityObjectActorClientSpecificActorInfo(od);
     });
   });
-
 
   unittest.group("obj-schema-ActivityObjectActorImage", () {
     unittest.test("to-json--from-json", () {
@@ -1582,7 +1605,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ActivityObjectActorVerification", () {
     unittest.test("to-json--from-json", () {
       var o = buildActivityObjectActorVerification();
@@ -1590,7 +1612,6 @@ main() {
       checkActivityObjectActorVerification(od);
     });
   });
-
 
   unittest.group("obj-schema-ActivityObjectActor", () {
     unittest.test("to-json--from-json", () {
@@ -1600,7 +1621,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ActivityObjectAttachmentsEmbed", () {
     unittest.test("to-json--from-json", () {
       var o = buildActivityObjectAttachmentsEmbed();
@@ -1608,7 +1628,6 @@ main() {
       checkActivityObjectAttachmentsEmbed(od);
     });
   });
-
 
   unittest.group("obj-schema-ActivityObjectAttachmentsFullImage", () {
     unittest.test("to-json--from-json", () {
@@ -1618,7 +1637,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ActivityObjectAttachmentsImage", () {
     unittest.test("to-json--from-json", () {
       var o = buildActivityObjectAttachmentsImage();
@@ -1627,15 +1645,14 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ActivityObjectAttachmentsThumbnailsImage", () {
     unittest.test("to-json--from-json", () {
       var o = buildActivityObjectAttachmentsThumbnailsImage();
-      var od = new api.ActivityObjectAttachmentsThumbnailsImage.fromJson(o.toJson());
+      var od =
+          new api.ActivityObjectAttachmentsThumbnailsImage.fromJson(o.toJson());
       checkActivityObjectAttachmentsThumbnailsImage(od);
     });
   });
-
 
   unittest.group("obj-schema-ActivityObjectAttachmentsThumbnails", () {
     unittest.test("to-json--from-json", () {
@@ -1645,7 +1662,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ActivityObjectAttachments", () {
     unittest.test("to-json--from-json", () {
       var o = buildActivityObjectAttachments();
@@ -1653,7 +1669,6 @@ main() {
       checkActivityObjectAttachments(od);
     });
   });
-
 
   unittest.group("obj-schema-ActivityObjectPlusoners", () {
     unittest.test("to-json--from-json", () {
@@ -1663,7 +1678,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ActivityObjectReplies", () {
     unittest.test("to-json--from-json", () {
       var o = buildActivityObjectReplies();
@@ -1671,7 +1685,6 @@ main() {
       checkActivityObjectReplies(od);
     });
   });
-
 
   unittest.group("obj-schema-ActivityObjectResharers", () {
     unittest.test("to-json--from-json", () {
@@ -1681,7 +1694,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ActivityObject", () {
     unittest.test("to-json--from-json", () {
       var o = buildActivityObject();
@@ -1689,7 +1701,6 @@ main() {
       checkActivityObject(od);
     });
   });
-
 
   unittest.group("obj-schema-ActivityProvider", () {
     unittest.test("to-json--from-json", () {
@@ -1699,7 +1710,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Activity", () {
     unittest.test("to-json--from-json", () {
       var o = buildActivity();
@@ -1707,7 +1717,6 @@ main() {
       checkActivity(od);
     });
   });
-
 
   unittest.group("obj-schema-ActivityFeed", () {
     unittest.test("to-json--from-json", () {
@@ -1717,15 +1726,16 @@ main() {
     });
   });
 
-
-  unittest.group("obj-schema-CommentActorClientSpecificActorInfoYoutubeActorInfo", () {
+  unittest.group(
+      "obj-schema-CommentActorClientSpecificActorInfoYoutubeActorInfo", () {
     unittest.test("to-json--from-json", () {
       var o = buildCommentActorClientSpecificActorInfoYoutubeActorInfo();
-      var od = new api.CommentActorClientSpecificActorInfoYoutubeActorInfo.fromJson(o.toJson());
+      var od =
+          new api.CommentActorClientSpecificActorInfoYoutubeActorInfo.fromJson(
+              o.toJson());
       checkCommentActorClientSpecificActorInfoYoutubeActorInfo(od);
     });
   });
-
 
   unittest.group("obj-schema-CommentActorClientSpecificActorInfo", () {
     unittest.test("to-json--from-json", () {
@@ -1735,7 +1745,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-CommentActorImage", () {
     unittest.test("to-json--from-json", () {
       var o = buildCommentActorImage();
@@ -1743,7 +1752,6 @@ main() {
       checkCommentActorImage(od);
     });
   });
-
 
   unittest.group("obj-schema-CommentActorVerification", () {
     unittest.test("to-json--from-json", () {
@@ -1753,7 +1761,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-CommentActor", () {
     unittest.test("to-json--from-json", () {
       var o = buildCommentActor();
@@ -1761,7 +1768,6 @@ main() {
       checkCommentActor(od);
     });
   });
-
 
   unittest.group("obj-schema-CommentInReplyTo", () {
     unittest.test("to-json--from-json", () {
@@ -1771,7 +1777,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-CommentObject", () {
     unittest.test("to-json--from-json", () {
       var o = buildCommentObject();
@@ -1779,7 +1784,6 @@ main() {
       checkCommentObject(od);
     });
   });
-
 
   unittest.group("obj-schema-CommentPlusoners", () {
     unittest.test("to-json--from-json", () {
@@ -1789,7 +1793,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Comment", () {
     unittest.test("to-json--from-json", () {
       var o = buildComment();
@@ -1797,7 +1800,6 @@ main() {
       checkComment(od);
     });
   });
-
 
   unittest.group("obj-schema-CommentFeed", () {
     unittest.test("to-json--from-json", () {
@@ -1807,7 +1809,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-PeopleFeed", () {
     unittest.test("to-json--from-json", () {
       var o = buildPeopleFeed();
@@ -1815,7 +1816,6 @@ main() {
       checkPeopleFeed(od);
     });
   });
-
 
   unittest.group("obj-schema-PersonAgeRange", () {
     unittest.test("to-json--from-json", () {
@@ -1825,7 +1825,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-PersonCoverCoverInfo", () {
     unittest.test("to-json--from-json", () {
       var o = buildPersonCoverCoverInfo();
@@ -1833,7 +1832,6 @@ main() {
       checkPersonCoverCoverInfo(od);
     });
   });
-
 
   unittest.group("obj-schema-PersonCoverCoverPhoto", () {
     unittest.test("to-json--from-json", () {
@@ -1843,7 +1841,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-PersonCover", () {
     unittest.test("to-json--from-json", () {
       var o = buildPersonCover();
@@ -1851,7 +1848,6 @@ main() {
       checkPersonCover(od);
     });
   });
-
 
   unittest.group("obj-schema-PersonEmails", () {
     unittest.test("to-json--from-json", () {
@@ -1861,7 +1857,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-PersonImage", () {
     unittest.test("to-json--from-json", () {
       var o = buildPersonImage();
@@ -1869,7 +1864,6 @@ main() {
       checkPersonImage(od);
     });
   });
-
 
   unittest.group("obj-schema-PersonName", () {
     unittest.test("to-json--from-json", () {
@@ -1879,7 +1873,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-PersonOrganizations", () {
     unittest.test("to-json--from-json", () {
       var o = buildPersonOrganizations();
@@ -1887,7 +1880,6 @@ main() {
       checkPersonOrganizations(od);
     });
   });
-
 
   unittest.group("obj-schema-PersonPlacesLived", () {
     unittest.test("to-json--from-json", () {
@@ -1897,7 +1889,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-PersonUrls", () {
     unittest.test("to-json--from-json", () {
       var o = buildPersonUrls();
@@ -1905,7 +1896,6 @@ main() {
       checkPersonUrls(od);
     });
   });
-
 
   unittest.group("obj-schema-Person", () {
     unittest.test("to-json--from-json", () {
@@ -1915,7 +1905,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-PlaceAddress", () {
     unittest.test("to-json--from-json", () {
       var o = buildPlaceAddress();
@@ -1923,7 +1912,6 @@ main() {
       checkPlaceAddress(od);
     });
   });
-
 
   unittest.group("obj-schema-PlacePosition", () {
     unittest.test("to-json--from-json", () {
@@ -1933,7 +1921,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Place", () {
     unittest.test("to-json--from-json", () {
       var o = buildPlace();
@@ -1941,7 +1928,6 @@ main() {
       checkPlace(od);
     });
   });
-
 
   unittest.group("obj-schema-PlusAclentryResource", () {
     unittest.test("to-json--from-json", () {
@@ -1951,10 +1937,8 @@ main() {
     });
   });
 
-
   unittest.group("resource-ActivitiesResourceApi", () {
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
       api.ActivitiesResourceApi res = new api.PlusApi(mock).activities;
       var arg_activityId = "foo";
@@ -1963,11 +1947,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("plus/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("plus/v1/"));
         pathOffset += 8;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("activities/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("activities/"));
         pathOffset += 11;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -1983,27 +1970,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildActivity());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_activityId).then(unittest.expectAsync1(((api.Activity response) {
+      res
+          .get(arg_activityId)
+          .then(unittest.expectAsync1(((api.Activity response) {
         checkActivity(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
       api.ActivitiesResourceApi res = new api.PlusApi(mock).activities;
       var arg_userId = "foo";
@@ -2015,18 +2004,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("plus/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("plus/v1/"));
         pathOffset += 8;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("people/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("people/"));
         pathOffset += 7;
         index = path.indexOf("/activities/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/activities/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("/activities/"));
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -2042,29 +2036,34 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildActivityFeed());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_userId, arg_collection, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.ActivityFeed response) {
+      res
+          .list(arg_userId, arg_collection,
+              maxResults: arg_maxResults, pageToken: arg_pageToken)
+          .then(unittest.expectAsync1(((api.ActivityFeed response) {
         checkActivityFeed(response);
       })));
     });
 
     unittest.test("method--search", () {
-
       var mock = new HttpServerMock();
       api.ActivitiesResourceApi res = new api.PlusApi(mock).activities;
       var arg_query = "foo";
@@ -2077,11 +2076,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("plus/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("plus/v1/"));
         pathOffset += 8;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("activities"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("activities"));
         pathOffset += 10;
 
         var query = (req.url).query;
@@ -2094,36 +2096,44 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
         unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
-        unittest.expect(queryMap["language"].first, unittest.equals(arg_language));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
+        unittest.expect(
+            queryMap["language"].first, unittest.equals(arg_language));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildActivityFeed());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.search(arg_query, language: arg_language, maxResults: arg_maxResults, orderBy: arg_orderBy, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.ActivityFeed response) {
+      res
+          .search(arg_query,
+              language: arg_language,
+              maxResults: arg_maxResults,
+              orderBy: arg_orderBy,
+              pageToken: arg_pageToken)
+          .then(unittest.expectAsync1(((api.ActivityFeed response) {
         checkActivityFeed(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-CommentsResourceApi", () {
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
       api.CommentsResourceApi res = new api.PlusApi(mock).comments;
       var arg_commentId = "foo";
@@ -2132,11 +2142,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("plus/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("plus/v1/"));
         pathOffset += 8;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("comments/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("comments/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -2152,27 +2165,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildComment());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_commentId).then(unittest.expectAsync1(((api.Comment response) {
+      res
+          .get(arg_commentId)
+          .then(unittest.expectAsync1(((api.Comment response) {
         checkComment(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
       api.CommentsResourceApi res = new api.PlusApi(mock).comments;
       var arg_activityId = "foo";
@@ -2184,18 +2199,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("plus/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("plus/v1/"));
         pathOffset += 8;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("activities/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("activities/"));
         pathOffset += 11;
         index = path.indexOf("/comments", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_activityId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/comments"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/comments"));
         pathOffset += 9;
 
         var query = (req.url).query;
@@ -2208,34 +2228,40 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
-
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["sortOrder"].first, unittest.equals(arg_sortOrder));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildCommentFeed());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_activityId, maxResults: arg_maxResults, pageToken: arg_pageToken, sortOrder: arg_sortOrder).then(unittest.expectAsync1(((api.CommentFeed response) {
+      res
+          .list(arg_activityId,
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              sortOrder: arg_sortOrder)
+          .then(unittest.expectAsync1(((api.CommentFeed response) {
         checkCommentFeed(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-PeopleResourceApi", () {
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
       api.PeopleResourceApi res = new api.PlusApi(mock).people;
       var arg_userId = "foo";
@@ -2244,11 +2270,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("plus/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("plus/v1/"));
         pathOffset += 8;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("people/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("people/"));
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -2264,16 +2293,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPerson());
         return new async.Future.value(stringResponse(200, h, resp));
@@ -2284,7 +2314,6 @@ main() {
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
       api.PeopleResourceApi res = new api.PlusApi(mock).people;
       var arg_userId = "foo";
@@ -2297,18 +2326,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("plus/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("plus/v1/"));
         pathOffset += 8;
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("people/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("people/"));
         pathOffset += 7;
         index = path.indexOf("/people/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("/people/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/people/"));
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -2324,30 +2358,38 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPeopleFeed());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_userId, arg_collection, maxResults: arg_maxResults, orderBy: arg_orderBy, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.PeopleFeed response) {
+      res
+          .list(arg_userId, arg_collection,
+              maxResults: arg_maxResults,
+              orderBy: arg_orderBy,
+              pageToken: arg_pageToken)
+          .then(unittest.expectAsync1(((api.PeopleFeed response) {
         checkPeopleFeed(response);
       })));
     });
 
     unittest.test("method--listByActivity", () {
-
       var mock = new HttpServerMock();
       api.PeopleResourceApi res = new api.PlusApi(mock).people;
       var arg_activityId = "foo";
@@ -2359,18 +2401,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("plus/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("plus/v1/"));
         pathOffset += 8;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("activities/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("activities/"));
         pathOffset += 11;
         index = path.indexOf("/people/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_activityId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("/people/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/people/"));
         pathOffset += 8;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -2386,29 +2433,34 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPeopleFeed());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.listByActivity(arg_activityId, arg_collection, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.PeopleFeed response) {
+      res
+          .listByActivity(arg_activityId, arg_collection,
+              maxResults: arg_maxResults, pageToken: arg_pageToken)
+          .then(unittest.expectAsync1(((api.PeopleFeed response) {
         checkPeopleFeed(response);
       })));
     });
 
     unittest.test("method--search", () {
-
       var mock = new HttpServerMock();
       api.PeopleResourceApi res = new api.PlusApi(mock).people;
       var arg_query = "foo";
@@ -2420,11 +2472,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("plus/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("plus/v1/"));
         pathOffset += 8;
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("people"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("people"));
         pathOffset += 6;
 
         var query = (req.url).query;
@@ -2437,31 +2492,36 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
         unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
-        unittest.expect(queryMap["language"].first, unittest.equals(arg_language));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
+        unittest.expect(
+            queryMap["language"].first, unittest.equals(arg_language));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPeopleFeed());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.search(arg_query, language: arg_language, maxResults: arg_maxResults, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.PeopleFeed response) {
+      res
+          .search(arg_query,
+              language: arg_language,
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken)
+          .then(unittest.expectAsync1(((api.PeopleFeed response) {
         checkPeopleFeed(response);
       })));
     });
-
   });
-
-
 }
-

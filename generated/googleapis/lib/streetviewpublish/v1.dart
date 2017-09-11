@@ -9,63 +9,60 @@ import 'dart:convert' as convert;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
-    ApiRequestError, DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
+    show ApiRequestError, DetailedApiRequestError;
 
 const core.String USER_AGENT = 'dart-api-client streetviewpublish/v1';
 
-/**
- * Publishes 360 photos to Google Maps, along with position, orientation, and
- * connectivity metadata. Apps can offer an interface for positioning,
- * connecting, and uploading user-generated Street View images.
- */
+/// Publishes 360 photos to Google Maps, along with position, orientation, and
+/// connectivity metadata. Apps can offer an interface for positioning,
+/// connecting, and uploading user-generated Street View images.
 class StreetviewpublishApi {
-  /** Publish and manage your 360 photos on Google Street View */
-  static const StreetviewpublishScope = "https://www.googleapis.com/auth/streetviewpublish";
-
+  /// Publish and manage your 360 photos on Google Street View
+  static const StreetviewpublishScope =
+      "https://www.googleapis.com/auth/streetviewpublish";
 
   final commons.ApiRequester _requester;
 
   PhotoResourceApi get photo => new PhotoResourceApi(_requester);
   PhotosResourceApi get photos => new PhotosResourceApi(_requester);
 
-  StreetviewpublishApi(http.Client client, {core.String rootUrl: "https://streetviewpublish.googleapis.com/", core.String servicePath: ""}) :
-      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+  StreetviewpublishApi(http.Client client,
+      {core.String rootUrl: "https://streetviewpublish.googleapis.com/",
+      core.String servicePath: ""})
+      : _requester =
+            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
-
 
 class PhotoResourceApi {
   final commons.ApiRequester _requester;
 
-  PhotoResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  PhotoResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * After the client finishes uploading the photo with the returned
-   * UploadRef,
-   * CreatePhoto
-   * publishes the uploaded Photo to
-   * Street View on Google Maps.
-   *
-   * This method returns the following error codes:
-   *
-   * * google.rpc.Code.INVALID_ARGUMENT if the request is malformed.
-   * * google.rpc.Code.NOT_FOUND if the upload reference does not exist.
-   * * google.rpc.Code.RESOURCE_EXHAUSTED if the account has reached the
-   * storage limit.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [Photo].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// After the client finishes uploading the photo with the returned
+  /// UploadRef,
+  /// CreatePhoto
+  /// publishes the uploaded Photo to
+  /// Street View on Google Maps.
+  ///
+  /// This method returns the following error codes:
+  ///
+  /// * google.rpc.Code.INVALID_ARGUMENT if the request is malformed.
+  /// * google.rpc.Code.NOT_FOUND if the upload reference does not exist.
+  /// * google.rpc.Code.RESOURCE_EXHAUSTED if the account has reached the
+  /// storage limit.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [Photo].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Photo> create(Photo request) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -80,37 +77,34 @@ class PhotoResourceApi {
 
     _url = 'v1/photo';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Photo.fromJson(data));
   }
 
-  /**
-   * Deletes a Photo and its metadata.
-   *
-   * This method returns the following error codes:
-   *
-   * * google.rpc.Code.PERMISSION_DENIED if the requesting user did not
-   * create the requested photo.
-   * * google.rpc.Code.NOT_FOUND if the photo ID does not exist.
-   *
-   * Request parameters:
-   *
-   * [photoId] - Required. ID of the Photo.
-   *
-   * Completes with a [Empty].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Deletes a Photo and its metadata.
+  ///
+  /// This method returns the following error codes:
+  ///
+  /// * google.rpc.Code.PERMISSION_DENIED if the requesting user did not
+  /// create the requested photo.
+  /// * google.rpc.Code.NOT_FOUND if the photo ID does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [photoId] - Required. ID of the Photo.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Empty> delete(core.String photoId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -125,46 +119,43 @@ class PhotoResourceApi {
 
     _url = 'v1/photo/' + commons.Escaper.ecapeVariable('$photoId');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /**
-   * Gets the metadata of the specified
-   * Photo.
-   *
-   * This method returns the following error codes:
-   *
-   * * google.rpc.Code.PERMISSION_DENIED if the requesting user did not
-   * create the requested Photo.
-   * * google.rpc.Code.NOT_FOUND if the requested
-   * Photo does not exist.
-   *
-   * Request parameters:
-   *
-   * [photoId] - Required. ID of the Photo.
-   *
-   * [view] - Specifies if a download URL for the photo bytes should be returned
-   * in the
-   * Photo response.
-   * Possible string values are:
-   * - "BASIC" : A BASIC.
-   * - "INCLUDE_DOWNLOAD_URL" : A INCLUDE_DOWNLOAD_URL.
-   *
-   * Completes with a [Photo].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Gets the metadata of the specified
+  /// Photo.
+  ///
+  /// This method returns the following error codes:
+  ///
+  /// * google.rpc.Code.PERMISSION_DENIED if the requesting user did not
+  /// create the requested Photo.
+  /// * google.rpc.Code.NOT_FOUND if the requested
+  /// Photo does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [photoId] - Required. ID of the Photo.
+  ///
+  /// [view] - Specifies if a download URL for the photo bytes should be
+  /// returned in the
+  /// Photo response.
+  /// Possible string values are:
+  /// - "BASIC" : A BASIC.
+  /// - "INCLUDE_DOWNLOAD_URL" : A INCLUDE_DOWNLOAD_URL.
+  ///
+  /// Completes with a [Photo].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Photo> get(core.String photoId, {core.String view}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -182,49 +173,48 @@ class PhotoResourceApi {
 
     _url = 'v1/photo/' + commons.Escaper.ecapeVariable('$photoId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Photo.fromJson(data));
   }
 
-  /**
-   * Creates an upload session to start uploading photo bytes. The upload URL of
-   * the returned UploadRef is used to
-   * upload the bytes for the Photo.
-   *
-   * In addition to the photo requirements shown in
-   * https://support.google.com/maps/answer/7012050?hl=en&ref_topic=6275604,
-   * the photo must also meet the following requirements:
-   *
-   * * Photo Sphere XMP metadata must be included in the photo medadata. See
-   * https://developers.google.com/streetview/spherical-metadata for the
-   * required fields.
-   * * The pixel size of the photo must meet the size requirements listed in
-   * https://support.google.com/maps/answer/7012050?hl=en&ref_topic=6275604, and
-   * the photo must be a full 360 horizontally.
-   *
-   * After the upload is complete, the
-   * UploadRef is used with
-   * CreatePhoto
-   * to create the Photo object entry.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [UploadRef].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Creates an upload session to start uploading photo bytes. The upload URL
+  /// of
+  /// the returned UploadRef is used to
+  /// upload the bytes for the Photo.
+  ///
+  /// In addition to the photo requirements shown in
+  /// https://support.google.com/maps/answer/7012050?hl=en&ref_topic=6275604,
+  /// the photo must also meet the following requirements:
+  ///
+  /// * Photo Sphere XMP metadata must be included in the photo medadata. See
+  /// https://developers.google.com/streetview/spherical-metadata for the
+  /// required fields.
+  /// * The pixel size of the photo must meet the size requirements listed in
+  /// https://support.google.com/maps/answer/7012050?hl=en&ref_topic=6275604,
+  /// and
+  /// the photo must be a full 360 horizontally.
+  ///
+  /// After the upload is complete, the
+  /// UploadRef is used with
+  /// CreatePhoto
+  /// to create the Photo object entry.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [UploadRef].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<UploadRef> startUpload(Empty request) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -239,69 +229,78 @@ class PhotoResourceApi {
 
     _url = 'v1/photo:startUpload';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new UploadRef.fromJson(data));
   }
 
-  /**
-   * Updates the metadata of a Photo, such
-   * as pose, place association, connections, etc. Changing the pixels of a
-   * photo is not supported.
-   *
-   * This method returns the following error codes:
-   *
-   * * google.rpc.Code.PERMISSION_DENIED if the requesting user did not
-   * create the requested photo.
-   * * google.rpc.Code.INVALID_ARGUMENT if the request is malformed.
-   * * google.rpc.Code.NOT_FOUND if the requested photo does not exist.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [id] - Required. A base64 encoded identifier.
-   *
-   * [updateMask] - Mask that identifies fields on the photo metadata to update.
-   * If not present, the old Photo metadata will be entirely replaced with the
-   * new Photo metadata in this request. The update fails if invalid fields are
-   * specified. Multiple fields can be specified in a comma-delimited list.
-   *
-   * The following fields are valid:
-   *
-   * * `pose.heading`
-   * * `pose.latlngpair`
-   * * `pose.pitch`
-   * * `pose.roll`
-   * * `pose.level`
-   * * `pose.altitude`
-   * * `connections`
-   * * `places`
-   *
-   *
-   * <aside class="note"><b>Note:</b> Repeated fields in
-   * updateMask
-   * mean the entire set of repeated values will be replaced with the new
-   * contents. For example, if
-   * updateMask
-   * contains `connections` and
-   * google.streetview.publish.v1.UpdatePhotoRequest.photo.connections is
-   * empty, all connections will be removed.</aside>
-   *
-   * Completes with a [Photo].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Photo> update(Photo request, core.String id, {core.String updateMask}) {
+  /// Updates the metadata of a Photo, such
+  /// as pose, place association, connections, etc. Changing the pixels of a
+  /// photo is not supported.
+  ///
+  /// Only the fields specified in
+  /// updateMask
+  /// field are used. If `updateMask` is not present, the update applies to all
+  /// fields.
+  ///
+  /// <aside class="note"><b>Note:</b> To update
+  /// Pose.altitude,
+  /// Pose.latLngPair has to be
+  /// filled as well. Otherwise, the request will fail.</aside>
+  ///
+  /// This method returns the following error codes:
+  ///
+  /// * google.rpc.Code.PERMISSION_DENIED if the requesting user did not
+  /// create the requested photo.
+  /// * google.rpc.Code.INVALID_ARGUMENT if the request is malformed.
+  /// * google.rpc.Code.NOT_FOUND if the requested photo does not exist.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [id] - Required. A unique identifier for a photo.
+  ///
+  /// [updateMask] - Mask that identifies fields on the photo metadata to
+  /// update.
+  /// If not present, the old Photo metadata will be entirely replaced with the
+  /// new Photo metadata in this request. The update fails if invalid fields are
+  /// specified. Multiple fields can be specified in a comma-delimited list.
+  ///
+  /// The following fields are valid:
+  ///
+  /// * `pose.heading`
+  /// * `pose.latLngPair`
+  /// * `pose.pitch`
+  /// * `pose.roll`
+  /// * `pose.level`
+  /// * `pose.altitude`
+  /// * `connections`
+  /// * `places`
+  ///
+  ///
+  /// <aside class="note"><b>Note:</b> Repeated fields in
+  /// updateMask
+  /// mean the entire set of repeated values will be replaced with the new
+  /// contents. For example, if
+  /// updateMask
+  /// contains `connections` and `UpdatePhotoRequest.photo.connections` is
+  /// empty,
+  /// all connections will be removed.</aside>
+  ///
+  /// Completes with a [Photo].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Photo> update(Photo request, core.String id,
+      {core.String updateMask}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -321,55 +320,51 @@ class PhotoResourceApi {
 
     _url = 'v1/photo/' + commons.Escaper.ecapeVariable('$id');
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Photo.fromJson(data));
   }
-
 }
-
 
 class PhotosResourceApi {
   final commons.ApiRequester _requester;
 
-  PhotosResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  PhotosResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Deletes a list of Photos and their metadata.
-   *
-   * Note that if
-   * BatchDeletePhotos
-   * fails, either critical fields are missing or there was an authentication
-   * error. Even if
-   * BatchDeletePhotos
-   * succeeds, there may have been failures for single photos in the batch.
-   * These failures will be specified in each
-   * PhotoResponse.status
-   * in
-   * BatchDeletePhotosResponse.results.
-   * See
-   * DeletePhoto
-   * for specific failures that can occur per photo.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [BatchDeletePhotosResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<BatchDeletePhotosResponse> batchDelete(BatchDeletePhotosRequest request) {
+  /// Deletes a list of Photos and their
+  /// metadata.
+  ///
+  /// Note that if
+  /// BatchDeletePhotos
+  /// fails, either critical fields are missing or there was an authentication
+  /// error. Even if
+  /// BatchDeletePhotos
+  /// succeeds, there may have been failures for single photos in the batch.
+  /// These failures will be specified in each
+  /// PhotoResponse.status
+  /// in
+  /// BatchDeletePhotosResponse.results.
+  /// See
+  /// DeletePhoto
+  /// for specific failures that can occur per photo.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [BatchDeletePhotosResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchDeletePhotosResponse> batchDelete(
+      BatchDeletePhotosRequest request) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -383,56 +378,55 @@ class PhotosResourceApi {
 
     _url = 'v1/photos:batchDelete';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new BatchDeletePhotosResponse.fromJson(data));
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new BatchDeletePhotosResponse.fromJson(data));
   }
 
-  /**
-   * Gets the metadata of the specified
-   * Photo batch.
-   *
-   * Note that if
-   * BatchGetPhotos
-   * fails, either critical fields are missing or there was an authentication
-   * error. Even if
-   * BatchGetPhotos
-   * succeeds, there may have been failures for single photos in the batch.
-   * These failures will be specified in each
-   * PhotoResponse.status
-   * in
-   * BatchGetPhotosResponse.results.
-   * See
-   * GetPhoto
-   * for specific failures that can occur per photo.
-   *
-   * Request parameters:
-   *
-   * [view] - Specifies if a download URL for the photo bytes should be returned
-   * in the
-   * Photo response.
-   * Possible string values are:
-   * - "BASIC" : A BASIC.
-   * - "INCLUDE_DOWNLOAD_URL" : A INCLUDE_DOWNLOAD_URL.
-   *
-   * [photoIds] - Required. IDs of the Photos. For HTTP
-   * GET requests, the URL query parameter should be
-   * `photoIds=<id1>&photoIds=<id2>&...`.
-   *
-   * Completes with a [BatchGetPhotosResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<BatchGetPhotosResponse> batchGet({core.String view, core.List<core.String> photoIds}) {
+  /// Gets the metadata of the specified
+  /// Photo batch.
+  ///
+  /// Note that if
+  /// BatchGetPhotos
+  /// fails, either critical fields are missing or there was an authentication
+  /// error. Even if
+  /// BatchGetPhotos
+  /// succeeds, there may have been failures for single photos in the batch.
+  /// These failures will be specified in each
+  /// PhotoResponse.status
+  /// in
+  /// BatchGetPhotosResponse.results.
+  /// See
+  /// GetPhoto
+  /// for specific failures that can occur per photo.
+  ///
+  /// Request parameters:
+  ///
+  /// [photoIds] - Required. IDs of the Photos. For HTTP
+  /// GET requests, the URL query parameter should be
+  /// `photoIds=<id1>&photoIds=<id2>&...`.
+  ///
+  /// [view] - Specifies if a download URL for the photo bytes should be
+  /// returned in the
+  /// Photo response.
+  /// Possible string values are:
+  /// - "BASIC" : A BASIC.
+  /// - "INCLUDE_DOWNLOAD_URL" : A INCLUDE_DOWNLOAD_URL.
+  ///
+  /// Completes with a [BatchGetPhotosResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchGetPhotosResponse> batchGet(
+      {core.List<core.String> photoIds, core.String view}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -440,57 +434,66 @@ class PhotosResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (photoIds != null) {
       _queryParams["photoIds"] = photoIds;
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
 
     _url = 'v1/photos:batchGet';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new BatchGetPhotosResponse.fromJson(data));
   }
 
-  /**
-   * Updates the metadata of Photos, such
-   * as pose, place association, connections, etc. Changing the pixels of photos
-   * is not supported.
-   *
-   * Note that if
-   * BatchUpdatePhotos
-   * fails, either critical fields are missing or there was an authentication
-   * error. Even if
-   * BatchUpdatePhotos
-   * succeeds, there may have been failures for single photos in the batch.
-   * These failures will be specified in each
-   * PhotoResponse.status
-   * in
-   * BatchUpdatePhotosResponse.results.
-   * See
-   * UpdatePhoto
-   * for specific failures that can occur per photo.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [BatchUpdatePhotosResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<BatchUpdatePhotosResponse> batchUpdate(BatchUpdatePhotosRequest request) {
+  /// Updates the metadata of Photos, such
+  /// as pose, place association, connections, etc. Changing the pixels of
+  /// photos
+  /// is not supported.
+  ///
+  /// Note that if
+  /// BatchUpdatePhotos
+  /// fails, either critical fields are missing or there was an authentication
+  /// error. Even if
+  /// BatchUpdatePhotos
+  /// succeeds, there may have been failures for single photos in the batch.
+  /// These failures will be specified in each
+  /// PhotoResponse.status
+  /// in
+  /// BatchUpdatePhotosResponse.results.
+  /// See
+  /// UpdatePhoto
+  /// for specific failures that can occur per photo.
+  ///
+  /// Only the fields specified in
+  /// updateMask
+  /// field are used. If `updateMask` is not present, the update applies to all
+  /// fields.
+  ///
+  /// <aside class="note"><b>Note:</b> To update
+  /// Pose.altitude,
+  /// Pose.latLngPair has to be
+  /// filled as well. Otherwise, the request will fail.</aside>
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [BatchUpdatePhotosResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchUpdatePhotosResponse> batchUpdate(
+      BatchUpdatePhotosRequest request) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -504,52 +507,55 @@ class PhotosResourceApi {
 
     _url = 'v1/photos:batchUpdate';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new BatchUpdatePhotosResponse.fromJson(data));
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new BatchUpdatePhotosResponse.fromJson(data));
   }
 
-  /**
-   * Lists all the Photos that belong to the user.
-   *
-   * Request parameters:
-   *
-   * [filter] - The filter expression. For example:
-   * `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.
-   *
-   * [pageToken] - The
-   * nextPageToken
-   * value returned from a previous
-   * ListPhotos
-   * request, if any.
-   *
-   * [pageSize] - The maximum number of photos to return.
-   * `pageSize` must be non-negative. If `pageSize` is zero or is not provided,
-   * the default page size of 100 will be used.
-   * The number of photos returned in the response may be less than `pageSize`
-   * if the number of photos that belong to the user is less than `pageSize`.
-   *
-   * [view] - Specifies if a download URL for the photos bytes should be
-   * returned in the
-   * Photos response.
-   * Possible string values are:
-   * - "BASIC" : A BASIC.
-   * - "INCLUDE_DOWNLOAD_URL" : A INCLUDE_DOWNLOAD_URL.
-   *
-   * Completes with a [ListPhotosResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ListPhotosResponse> list({core.String filter, core.String pageToken, core.int pageSize, core.String view}) {
+  /// Lists all the Photos that belong to
+  /// the user.
+  ///
+  /// Request parameters:
+  ///
+  /// [filter] - The filter expression. For example:
+  /// `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.
+  ///
+  /// [pageToken] - The
+  /// nextPageToken
+  /// value returned from a previous
+  /// ListPhotos
+  /// request, if any.
+  ///
+  /// [pageSize] - The maximum number of photos to return.
+  /// `pageSize` must be non-negative. If `pageSize` is zero or is not provided,
+  /// the default page size of 100 will be used.
+  /// The number of photos returned in the response may be less than `pageSize`
+  /// if the number of photos that belong to the user is less than `pageSize`.
+  ///
+  /// [view] - Specifies if a download URL for the photos bytes should be
+  /// returned in the
+  /// Photos response.
+  /// Possible string values are:
+  /// - "BASIC" : A BASIC.
+  /// - "INCLUDE_DOWNLOAD_URL" : A INCLUDE_DOWNLOAD_URL.
+  ///
+  /// Completes with a [ListPhotosResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListPhotosResponse> list(
+      {core.String filter,
+      core.String pageToken,
+      core.int pageSize,
+      core.String view}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -572,27 +578,21 @@ class PhotosResourceApi {
 
     _url = 'v1/photos';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ListPhotosResponse.fromJson(data));
   }
-
 }
 
-
-
-/** Request to delete multiple Photos. */
+/// Request to delete multiple Photos.
 class BatchDeletePhotosRequest {
-  /**
-   * Required. IDs of the Photos. For HTTP
-   * GET requests, the URL query parameter should be
-   * `photoIds=<id1>&photoIds=<id2>&...`.
-   */
+  /// Required. IDs of the Photos. For HTTP
+  /// GET requests, the URL query parameter should be
+  /// `photoIds=<id1>&photoIds=<id2>&...`.
   core.List<core.String> photoIds;
 
   BatchDeletePhotosRequest();
@@ -604,7 +604,8 @@ class BatchDeletePhotosRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (photoIds != null) {
       _json["photoIds"] = photoIds;
     }
@@ -612,27 +613,25 @@ class BatchDeletePhotosRequest {
   }
 }
 
-/**
- * Response to batch delete of one or more
- * Photos.
- */
+/// Response to batch delete of one or more
+/// Photos.
 class BatchDeletePhotosResponse {
-  /**
-   * The status for the operation to delete a single
-   * Photo in the batch request.
-   */
+  /// The status for the operation to delete a single
+  /// Photo in the batch request.
   core.List<Status> status;
 
   BatchDeletePhotosResponse();
 
   BatchDeletePhotosResponse.fromJson(core.Map _json) {
     if (_json.containsKey("status")) {
-      status = _json["status"].map((value) => new Status.fromJson(value)).toList();
+      status =
+          _json["status"].map((value) => new Status.fromJson(value)).toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (status != null) {
       _json["status"] = status.map((value) => (value).toJson()).toList();
     }
@@ -640,26 +639,27 @@ class BatchDeletePhotosResponse {
   }
 }
 
-/** Response to batch get of Photos. */
+/// Response to batch get of Photos.
 class BatchGetPhotosResponse {
-  /**
-   * List of results for each individual
-   * Photo requested, in the same order as
-   * the requests in
-   * BatchGetPhotos.
-   */
+  /// List of results for each individual
+  /// Photo requested, in the same order as
+  /// the requests in
+  /// BatchGetPhotos.
   core.List<PhotoResponse> results;
 
   BatchGetPhotosResponse();
 
   BatchGetPhotosResponse.fromJson(core.Map _json) {
     if (_json.containsKey("results")) {
-      results = _json["results"].map((value) => new PhotoResponse.fromJson(value)).toList();
+      results = _json["results"]
+          .map((value) => new PhotoResponse.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (results != null) {
       _json["results"] = results.map((value) => (value).toJson()).toList();
     }
@@ -667,56 +667,55 @@ class BatchGetPhotosResponse {
   }
 }
 
-/**
- * Request to update the metadata of photos.
- * Updating the pixels of photos is not supported.
- */
+/// Request to update the metadata of photos.
+/// Updating the pixels of photos is not supported.
 class BatchUpdatePhotosRequest {
-  /**
-   * Required. List of
-   * UpdatePhotoRequests.
-   */
+  /// Required. List of
+  /// UpdatePhotoRequests.
   core.List<UpdatePhotoRequest> updatePhotoRequests;
 
   BatchUpdatePhotosRequest();
 
   BatchUpdatePhotosRequest.fromJson(core.Map _json) {
     if (_json.containsKey("updatePhotoRequests")) {
-      updatePhotoRequests = _json["updatePhotoRequests"].map((value) => new UpdatePhotoRequest.fromJson(value)).toList();
+      updatePhotoRequests = _json["updatePhotoRequests"]
+          .map((value) => new UpdatePhotoRequest.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (updatePhotoRequests != null) {
-      _json["updatePhotoRequests"] = updatePhotoRequests.map((value) => (value).toJson()).toList();
+      _json["updatePhotoRequests"] =
+          updatePhotoRequests.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
 }
 
-/**
- * Response to batch update of metadata of one or more
- * Photos.
- */
+/// Response to batch update of metadata of one or more
+/// Photos.
 class BatchUpdatePhotosResponse {
-  /**
-   * List of results for each individual
-   * Photo updated, in the same order as
-   * the request.
-   */
+  /// List of results for each individual
+  /// Photo updated, in the same order as
+  /// the request.
   core.List<PhotoResponse> results;
 
   BatchUpdatePhotosResponse();
 
   BatchUpdatePhotosResponse.fromJson(core.Map _json) {
     if (_json.containsKey("results")) {
-      results = _json["results"].map((value) => new PhotoResponse.fromJson(value)).toList();
+      results = _json["results"]
+          .map((value) => new PhotoResponse.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (results != null) {
       _json["results"] = results.map((value) => (value).toJson()).toList();
     }
@@ -724,12 +723,10 @@ class BatchUpdatePhotosResponse {
   }
 }
 
-/** A connection is the link from a source photo to a destination photo. */
+/// A connection is the link from a source photo to a destination photo.
 class Connection {
-  /**
-   * Required. The destination of the connection from the containing photo to
-   * another photo.
-   */
+  /// Required. The destination of the connection from the containing photo to
+  /// another photo.
   PhotoId target;
 
   Connection();
@@ -741,7 +738,8 @@ class Connection {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (target != null) {
       _json["target"] = (target).toJson();
     }
@@ -749,75 +747,72 @@ class Connection {
   }
 }
 
-/**
- * A generic empty message that you can re-use to avoid defining duplicated
- * empty messages in your APIs. A typical example is to use it as the request
- * or the response type of an API method. For instance:
- *
- *     service Foo {
- *       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
- *     }
- *
- * The JSON representation for `Empty` is empty JSON object `{}`.
- */
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs. A typical example is to use it as the request
+/// or the response type of an API method. For instance:
+///
+///     service Foo {
+///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+///     }
+///
+/// The JSON representation for `Empty` is empty JSON object `{}`.
 class Empty {
-
   Empty();
 
-  Empty.fromJson(core.Map _json) {
-  }
+  Empty.fromJson(core.Map _json) {}
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }
 
-/**
- * An object representing a latitude/longitude pair. This is expressed as a pair
- * of doubles representing degrees latitude and degrees longitude. Unless
- * specified otherwise, this must conform to the
- * <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
- * standard</a>. Values must be within normalized ranges.
- *
- * Example of normalization code in Python:
- *
- *     def NormalizeLongitude(longitude):
- *       """Wraps decimal degrees longitude to [-180.0, 180.0]."""
- *       q, r = divmod(longitude, 360.0)
- *       if r > 180.0 or (r == 180.0 and q <= -1.0):
- *         return r - 360.0
- *       return r
- *
- *     def NormalizeLatLng(latitude, longitude):
- *       """Wraps decimal degrees latitude and longitude to
- *       [-90.0, 90.0] and [-180.0, 180.0], respectively."""
- *       r = latitude % 360.0
- *       if r <= 90.0:
- *         return r, NormalizeLongitude(longitude)
- *       elif r >= 270.0:
- *         return r - 360, NormalizeLongitude(longitude)
- *       else:
- *         return 180 - r, NormalizeLongitude(longitude + 180.0)
- *
- *     assert 180.0 == NormalizeLongitude(180.0)
- *     assert -180.0 == NormalizeLongitude(-180.0)
- *     assert -179.0 == NormalizeLongitude(181.0)
- *     assert (0.0, 0.0) == NormalizeLatLng(360.0, 0.0)
- *     assert (0.0, 0.0) == NormalizeLatLng(-360.0, 0.0)
- *     assert (85.0, 180.0) == NormalizeLatLng(95.0, 0.0)
- *     assert (-85.0, -170.0) == NormalizeLatLng(-95.0, 10.0)
- *     assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0)
- *     assert (-90.0, -10.0) == NormalizeLatLng(-90.0, -10.0)
- *     assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0)
- *     assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
- *     assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
- *     assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
- */
+/// An object representing a latitude/longitude pair. This is expressed as a
+/// pair
+/// of doubles representing degrees latitude and degrees longitude. Unless
+/// specified otherwise, this must conform to the
+/// <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
+/// standard</a>. Values must be within normalized ranges.
+///
+/// Example of normalization code in Python:
+///
+///     def NormalizeLongitude(longitude):
+///       """Wraps decimal degrees longitude to [-180.0, 180.0]."""
+///       q, r = divmod(longitude, 360.0)
+///       if r > 180.0 or (r == 180.0 and q <= -1.0):
+///         return r - 360.0
+///       return r
+///
+///     def NormalizeLatLng(latitude, longitude):
+///       """Wraps decimal degrees latitude and longitude to
+///       [-90.0, 90.0] and [-180.0, 180.0], respectively."""
+///       r = latitude % 360.0
+///       if r <= 90.0:
+///         return r, NormalizeLongitude(longitude)
+///       elif r >= 270.0:
+///         return r - 360, NormalizeLongitude(longitude)
+///       else:
+///         return 180 - r, NormalizeLongitude(longitude + 180.0)
+///
+///     assert 180.0 == NormalizeLongitude(180.0)
+///     assert -180.0 == NormalizeLongitude(-180.0)
+///     assert -179.0 == NormalizeLongitude(181.0)
+///     assert (0.0, 0.0) == NormalizeLatLng(360.0, 0.0)
+///     assert (0.0, 0.0) == NormalizeLatLng(-360.0, 0.0)
+///     assert (85.0, 180.0) == NormalizeLatLng(95.0, 0.0)
+///     assert (-85.0, -170.0) == NormalizeLatLng(-95.0, 10.0)
+///     assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0)
+///     assert (-90.0, -10.0) == NormalizeLatLng(-90.0, -10.0)
+///     assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0)
+///     assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
+///     assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
+///     assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
 class LatLng {
-  /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
+  /// The latitude in degrees. It must be in the range [-90.0, +90.0].
   core.double latitude;
-  /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
+
+  /// The longitude in degrees. It must be in the range [-180.0, +180.0].
   core.double longitude;
 
   LatLng();
@@ -832,7 +827,8 @@ class LatLng {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (latitude != null) {
       _json["latitude"] = latitude;
     }
@@ -843,19 +839,16 @@ class LatLng {
   }
 }
 
-/** Level information containing level number and its corresponding name. */
+/// Level information containing level number and its corresponding name.
 class Level {
-  /**
-   * Required. A name assigned to this Level, restricted to 3 characters.
-   * Consider how the elevator buttons would be labeled for this level if there
-   * was an elevator.
-   */
+  /// Required. A name assigned to this Level, restricted to 3 characters.
+  /// Consider how the elevator buttons would be labeled for this level if there
+  /// was an elevator.
   core.String name;
-  /**
-   * Floor number, used for ordering. 0 indicates the ground level, 1 indicates
-   * the first level above ground level, -1 indicates the first level under
-   * ground level. Non-integer values are OK.
-   */
+
+  /// Floor number, used for ordering. 0 indicates the ground level, 1 indicates
+  /// the first level above ground level, -1 indicates the first level under
+  /// ground level. Non-integer values are OK.
   core.double number;
 
   Level();
@@ -870,7 +863,8 @@ class Level {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -881,18 +875,15 @@ class Level {
   }
 }
 
-/** Response to list all photos that belong to a user. */
+/// Response to list all photos that belong to a user.
 class ListPhotosResponse {
-  /**
-   * Token to retrieve the next page of results, or empty if there are no more
-   * results in the list.
-   */
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results in the list.
   core.String nextPageToken;
-  /**
-   * List of photos. The maximum number of items returned is based on the
-   * pageSize field
-   * in the request.
-   */
+
+  /// List of photos. The maximum number of items returned is based on the
+  /// pageSize field
+  /// in the request.
   core.List<Photo> photos;
 
   ListPhotosResponse();
@@ -902,12 +893,14 @@ class ListPhotosResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("photos")) {
-      photos = _json["photos"].map((value) => new Photo.fromJson(value)).toList();
+      photos =
+          _json["photos"].map((value) => new Photo.fromJson(value)).toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -918,49 +911,46 @@ class ListPhotosResponse {
   }
 }
 
-/** Photo is used to store 360 photos along with photo metadata. */
+/// Photo is used to store 360 photos along with photo metadata.
 class Photo {
-  /**
-   * Absolute time when the photo was captured.
-   * When the photo has no exif timestamp, this is used to set a timestamp in
-   * the photo metadata.
-   */
+  /// Absolute time when the photo was captured.
+  /// When the photo has no exif timestamp, this is used to set a timestamp in
+  /// the photo metadata.
   core.String captureTime;
-  /**
-   * Connections to other photos. A connection represents the link from this
-   * photo to another photo.
-   */
+
+  /// Connections to other photos. A connection represents the link from this
+  /// photo to another photo.
   core.List<Connection> connections;
-  /**
-   * Output only. The download URL for the photo bytes. This field is set only
-   * when
-   * GetPhotoRequest.view
-   * is set to
-   * PhotoView.INCLUDE_DOWNLOAD_URL.
-   */
+
+  /// Output only. The download URL for the photo bytes. This field is set only
+  /// when
+  /// GetPhotoRequest.view
+  /// is set to
+  /// PhotoView.INCLUDE_DOWNLOAD_URL.
   core.String downloadUrl;
-  /**
-   * Required when updating photo. Output only when creating photo.
-   * Identifier for the photo, which is unique among all photos in
-   * Google.
-   */
+
+  /// Required when updating photo. Output only when creating photo.
+  /// Identifier for the photo, which is unique among all photos in
+  /// Google.
   PhotoId photoId;
-  /** Places where this photo belongs. */
+
+  /// Places where this photo belongs.
   core.List<Place> places;
-  /** Pose of the photo. */
+
+  /// Pose of the photo.
   Pose pose;
-  /** Output only. The share link for the photo. */
+
+  /// Output only. The share link for the photo.
   core.String shareLink;
-  /**
-   * Output only. The thumbnail URL for showing a preview of the given photo.
-   */
+
+  /// Output only. The thumbnail URL for showing a preview of the given photo.
   core.String thumbnailUrl;
-  /**
-   * Required when creating photo. Input only. The resource URL where the photo
-   * bytes are uploaded to.
-   */
+
+  /// Required when creating photo. Input only. The resource URL where the photo
+  /// bytes are uploaded to.
   UploadRef uploadReference;
-  /** Output only. View count of the photo. */
+
+  /// Output only. View count of the photo.
   core.String viewCount;
 
   Photo();
@@ -970,7 +960,9 @@ class Photo {
       captureTime = _json["captureTime"];
     }
     if (_json.containsKey("connections")) {
-      connections = _json["connections"].map((value) => new Connection.fromJson(value)).toList();
+      connections = _json["connections"]
+          .map((value) => new Connection.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("downloadUrl")) {
       downloadUrl = _json["downloadUrl"];
@@ -979,7 +971,8 @@ class Photo {
       photoId = new PhotoId.fromJson(_json["photoId"]);
     }
     if (_json.containsKey("places")) {
-      places = _json["places"].map((value) => new Place.fromJson(value)).toList();
+      places =
+          _json["places"].map((value) => new Place.fromJson(value)).toList();
     }
     if (_json.containsKey("pose")) {
       pose = new Pose.fromJson(_json["pose"]);
@@ -999,12 +992,14 @@ class Photo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (captureTime != null) {
       _json["captureTime"] = captureTime;
     }
     if (connections != null) {
-      _json["connections"] = connections.map((value) => (value).toJson()).toList();
+      _json["connections"] =
+          connections.map((value) => (value).toJson()).toList();
     }
     if (downloadUrl != null) {
       _json["downloadUrl"] = downloadUrl;
@@ -1034,9 +1029,9 @@ class Photo {
   }
 }
 
-/** Identifier for a Photo. */
+/// Identifier for a Photo.
 class PhotoId {
-  /** Required. A base64 encoded identifier. */
+  /// Required. A unique identifier for a photo.
   core.String id;
 
   PhotoId();
@@ -1048,7 +1043,8 @@ class PhotoId {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -1056,24 +1052,19 @@ class PhotoId {
   }
 }
 
-/**
- * Response payload for a single
- * Photo
- * in batch operations including
- * BatchGetPhotos
- * and
- * BatchUpdatePhotos.
- */
+/// Response payload for a single
+/// Photo
+/// in batch operations including
+/// BatchGetPhotos
+/// and
+/// BatchUpdatePhotos.
 class PhotoResponse {
-  /**
-   * The Photo resource, if the request
-   * was successful.
-   */
+  /// The Photo resource, if the request
+  /// was successful.
   Photo photo;
-  /**
-   * The status for the operation to get or update a single photo in the batch
-   * request.
-   */
+
+  /// The status for the operation to get or update a single photo in the batch
+  /// request.
   Status status;
 
   PhotoResponse();
@@ -1088,7 +1079,8 @@ class PhotoResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (photo != null) {
       _json["photo"] = (photo).toJson();
     }
@@ -1099,12 +1091,10 @@ class PhotoResponse {
   }
 }
 
-/** Place metadata for an entity. */
+/// Place metadata for an entity.
 class Place {
-  /**
-   * Required. Place identifier, as described in
-   * https://developers.google.com/places/place-id.
-   */
+  /// Required. Place identifier, as described in
+  /// https://developers.google.com/places/place-id.
   core.String placeId;
 
   Place();
@@ -1116,7 +1106,8 @@ class Place {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (placeId != null) {
       _json["placeId"] = placeId;
     }
@@ -1124,43 +1115,39 @@ class Place {
   }
 }
 
-/** Raw pose measurement for an entity. */
+/// Raw pose measurement for an entity.
 class Pose {
-  /**
-   * Altitude of the pose in meters above ground level (as defined by WGS84).
-   * NaN indicates an unmeasured quantity.
-   */
+  /// Altitude of the pose in meters above ground level (as defined by WGS84).
+  /// NaN indicates an unmeasured quantity.
   core.double altitude;
-  /**
-   * Compass heading, measured at the center of the photo in degrees clockwise
-   * from North. Value must be >=0 and <360.
-   * NaN indicates an unmeasured quantity.
-   */
+
+  /// Compass heading, measured at the center of the photo in degrees clockwise
+  /// from North. Value must be >=0 and <360.
+  /// NaN indicates an unmeasured quantity.
   core.double heading;
-  /**
-   * Latitude and longitude pair of the pose, as explained here:
-   * https://cloud.google.com/datastore/docs/reference/rest/Shared.Types/LatLng
-   * When creating a Photo, if the
-   * latitude and longitude pair are not provided here, the geolocation from the
-   * exif header will be used. If the latitude and longitude pair is not
-   * provided and cannot be found in the exif header, the create photo process
-   * will fail.
-   */
+
+  /// Latitude and longitude pair of the pose, as explained here:
+  /// https://cloud.google.com/datastore/docs/reference/rest/Shared.Types/LatLng
+  /// When creating a Photo, if the
+  /// latitude and longitude pair are not provided here, the geolocation from
+  /// the
+  /// exif header will be used. If the latitude and longitude pair is not
+  /// provided and cannot be found in the exif header, the create photo process
+  /// will fail.
   LatLng latLngPair;
-  /** Level (the floor in a building) used to configure vertical navigation. */
+
+  /// Level (the floor in a building) used to configure vertical navigation.
   Level level;
-  /**
-   * Pitch, measured at the center of the photo in degrees. Value must be >=-90
-   * and <= 90. A value of -90 means looking directly down, and a value of 90
-   * means looking directly up.
-   * NaN indicates an unmeasured quantity.
-   */
+
+  /// Pitch, measured at the center of the photo in degrees. Value must be >=-90
+  /// and <= 90. A value of -90 means looking directly down, and a value of 90
+  /// means looking directly up.
+  /// NaN indicates an unmeasured quantity.
   core.double pitch;
-  /**
-   * Roll, measured in degrees. Value must be >= 0 and <360. A value of 0
-   * means level with the horizon.
-   * NaN indicates an unmeasured quantity.
-   */
+
+  /// Roll, measured in degrees. Value must be >= 0 and <360. A value of 0
+  /// means level with the horizon.
+  /// NaN indicates an unmeasured quantity.
   core.double roll;
 
   Pose();
@@ -1187,7 +1174,8 @@ class Pose {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (altitude != null) {
       _json["altitude"] = altitude;
     }
@@ -1210,78 +1198,76 @@ class Pose {
   }
 }
 
-/**
- * The `Status` type defines a logical error model that is suitable for
- * different
- * programming environments, including REST APIs and RPC APIs. It is used by
- * [gRPC](https://github.com/grpc). The error model is designed to be:
- *
- * - Simple to use and understand for most users
- * - Flexible enough to meet unexpected needs
- *
- * # Overview
- *
- * The `Status` message contains three pieces of data: error code, error
- * message,
- * and error details. The error code should be an enum value of
- * google.rpc.Code, but it may accept additional error codes if needed.  The
- * error message should be a developer-facing English message that helps
- * developers *understand* and *resolve* the error. If a localized user-facing
- * error message is needed, put the localized message in the error details or
- * localize it in the client. The optional error details may contain arbitrary
- * information about the error. There is a predefined set of error detail types
- * in the package `google.rpc` that can be used for common error conditions.
- *
- * # Language mapping
- *
- * The `Status` message is the logical representation of the error model, but it
- * is not necessarily the actual wire format. When the `Status` message is
- * exposed in different client libraries and different wire protocols, it can be
- * mapped differently. For example, it will likely be mapped to some exceptions
- * in Java, but more likely mapped to some error codes in C.
- *
- * # Other uses
- *
- * The error model and the `Status` message can be used in a variety of
- * environments, either with or without APIs, to provide a
- * consistent developer experience across different environments.
- *
- * Example uses of this error model include:
- *
- * - Partial errors. If a service needs to return partial errors to the client,
- *     it may embed the `Status` in the normal response to indicate the partial
- *     errors.
- *
- * - Workflow errors. A typical workflow has multiple steps. Each step may
- *     have a `Status` message for error reporting.
- *
- * - Batch operations. If a client uses batch request and batch response, the
- *     `Status` message should be used directly inside batch response, one for
- *     each error sub-response.
- *
- * - Asynchronous operations. If an API call embeds asynchronous operation
- *     results in its response, the status of those operations should be
- *     represented directly using the `Status` message.
- *
- * - Logging. If some API errors are stored in logs, the message `Status` could
- * be used directly after any stripping needed for security/privacy reasons.
- */
+/// The `Status` type defines a logical error model that is suitable for
+/// different
+/// programming environments, including REST APIs and RPC APIs. It is used by
+/// [gRPC](https://github.com/grpc). The error model is designed to be:
+///
+/// - Simple to use and understand for most users
+/// - Flexible enough to meet unexpected needs
+///
+/// # Overview
+///
+/// The `Status` message contains three pieces of data: error code, error
+/// message,
+/// and error details. The error code should be an enum value of
+/// google.rpc.Code, but it may accept additional error codes if needed.  The
+/// error message should be a developer-facing English message that helps
+/// developers *understand* and *resolve* the error. If a localized user-facing
+/// error message is needed, put the localized message in the error details or
+/// localize it in the client. The optional error details may contain arbitrary
+/// information about the error. There is a predefined set of error detail types
+/// in the package `google.rpc` that can be used for common error conditions.
+///
+/// # Language mapping
+///
+/// The `Status` message is the logical representation of the error model, but
+/// it
+/// is not necessarily the actual wire format. When the `Status` message is
+/// exposed in different client libraries and different wire protocols, it can
+/// be
+/// mapped differently. For example, it will likely be mapped to some exceptions
+/// in Java, but more likely mapped to some error codes in C.
+///
+/// # Other uses
+///
+/// The error model and the `Status` message can be used in a variety of
+/// environments, either with or without APIs, to provide a
+/// consistent developer experience across different environments.
+///
+/// Example uses of this error model include:
+///
+/// - Partial errors. If a service needs to return partial errors to the client,
+/// it may embed the `Status` in the normal response to indicate the partial
+///     errors.
+///
+/// - Workflow errors. A typical workflow has multiple steps. Each step may
+///     have a `Status` message for error reporting.
+///
+/// - Batch operations. If a client uses batch request and batch response, the
+///     `Status` message should be used directly inside batch response, one for
+///     each error sub-response.
+///
+/// - Asynchronous operations. If an API call embeds asynchronous operation
+///     results in its response, the status of those operations should be
+///     represented directly using the `Status` message.
+///
+/// - Logging. If some API errors are stored in logs, the message `Status` could
+/// be used directly after any stripping needed for security/privacy reasons.
 class Status {
-  /** The status code, which should be an enum value of google.rpc.Code. */
+  /// The status code, which should be an enum value of google.rpc.Code.
   core.int code;
-  /**
-   * A list of messages that carry the error details.  There is a common set of
-   * message types for APIs to use.
-   *
-   * The values for Object must be JSON objects. It can consist of `num`,
-   * `String`, `bool` and `null` as well as `Map` and `List` values.
-   */
+
+  /// A list of messages that carry the error details.  There is a common set of
+  /// message types for APIs to use.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> details;
-  /**
-   * A developer-facing error message, which should be in English. Any
-   * user-facing error message should be localized and sent in the
-   * google.rpc.Status.details field, or localized by the client.
-   */
+
+  /// A developer-facing error message, which should be in English. Any
+  /// user-facing error message should be localized and sent in the
+  /// google.rpc.Status.details field, or localized by the client.
   core.String message;
 
   Status();
@@ -1299,7 +1285,8 @@ class Status {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (code != null) {
       _json["code"] = code;
     }
@@ -1313,50 +1300,39 @@ class Status {
   }
 }
 
-/**
- * Request to update the metadata of a
- * Photo. Updating the pixels of a photo
- * is not supported.
- */
+/// Request to update the metadata of a
+/// Photo. Updating the pixels of a photo
+/// is not supported.
 class UpdatePhotoRequest {
-  /**
-   * Required. Photo object containing the
-   * new metadata. Only the fields specified in
-   * updateMask
-   * field are used. If `updateMask` is not present, the update applies to all
-   * fields. <aside class="note"><b>Note:</b> To update
-   * Pose.altitude,
-   * Pose.latLngPair has to be
-   * filled as well. Otherwise, the request will fail.
-   */
+  /// Required. Photo object containing the
+  /// new metadata.
   Photo photo;
-  /**
-   * Mask that identifies fields on the photo metadata to update.
-   * If not present, the old Photo metadata will be entirely replaced with the
-   * new Photo metadata in this request. The update fails if invalid fields are
-   * specified. Multiple fields can be specified in a comma-delimited list.
-   *
-   * The following fields are valid:
-   *
-   * * `pose.heading`
-   * * `pose.latlngpair`
-   * * `pose.pitch`
-   * * `pose.roll`
-   * * `pose.level`
-   * * `pose.altitude`
-   * * `connections`
-   * * `places`
-   *
-   *
-   * <aside class="note"><b>Note:</b> Repeated fields in
-   * updateMask
-   * mean the entire set of repeated values will be replaced with the new
-   * contents. For example, if
-   * updateMask
-   * contains `connections` and
-   * google.streetview.publish.v1.UpdatePhotoRequest.photo.connections is
-   * empty, all connections will be removed.</aside>
-   */
+
+  /// Mask that identifies fields on the photo metadata to update.
+  /// If not present, the old Photo metadata will be entirely replaced with the
+  /// new Photo metadata in this request. The update fails if invalid fields are
+  /// specified. Multiple fields can be specified in a comma-delimited list.
+  ///
+  /// The following fields are valid:
+  ///
+  /// * `pose.heading`
+  /// * `pose.latLngPair`
+  /// * `pose.pitch`
+  /// * `pose.roll`
+  /// * `pose.level`
+  /// * `pose.altitude`
+  /// * `connections`
+  /// * `places`
+  ///
+  ///
+  /// <aside class="note"><b>Note:</b> Repeated fields in
+  /// updateMask
+  /// mean the entire set of repeated values will be replaced with the new
+  /// contents. For example, if
+  /// updateMask
+  /// contains `connections` and `UpdatePhotoRequest.photo.connections` is
+  /// empty,
+  /// all connections will be removed.</aside>
   core.String updateMask;
 
   UpdatePhotoRequest();
@@ -1371,7 +1347,8 @@ class UpdatePhotoRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (photo != null) {
       _json["photo"] = (photo).toJson();
     }
@@ -1382,13 +1359,11 @@ class UpdatePhotoRequest {
   }
 }
 
-/** Upload reference for media files. */
+/// Upload reference for media files.
 class UploadRef {
-  /**
-   * Required. An upload reference should be unique for each user. It follows
-   * the form:
-   * "https://streetviewpublish.googleapis.com/media/user/{account_id}/photo/{upload_reference}"
-   */
+  /// Required. An upload reference should be unique for each user. It follows
+  /// the form:
+  /// "https://streetviewpublish.googleapis.com/media/user/{account_id}/photo/{upload_reference}"
   core.String uploadUrl;
 
   UploadRef();
@@ -1400,7 +1375,8 @@ class UploadRef {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (uploadUrl != null) {
       _json["uploadUrl"] = uploadUrl;
     }

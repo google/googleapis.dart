@@ -1,12 +1,10 @@
 library googleapis.searchconsole.v1.test;
 
 import "dart:core" as core;
-import "dart:collection" as collection;
 import "dart:async" as async;
 import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
-import 'package:http/testing.dart' as http_testing;
 import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/searchconsole/v1.dart' as api;
@@ -22,7 +20,8 @@ class HttpServerMock extends http.BaseClient {
 
   async.Future<http.StreamedResponse> send(http.BaseRequest request) {
     if (_expectJson) {
-      return request.finalize()
+      return request
+          .finalize()
           .transform(convert.UTF8.decoder)
           .join('')
           .then((core.String jsonString) {
@@ -45,8 +44,8 @@ class HttpServerMock extends http.BaseClient {
   }
 }
 
-http.StreamedResponse stringResponse(
-    core.int status, core.Map<core.String, core.String> headers, core.String body) {
+http.StreamedResponse stringResponse(core.int status,
+    core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -150,27 +149,27 @@ checkRunMobileFriendlyTestRequest(api.RunMobileFriendlyTestRequest o) {
   buildCounterRunMobileFriendlyTestRequest--;
 }
 
-buildUnnamed1233() {
+buildUnnamed1229() {
   var o = new core.List<api.MobileFriendlyIssue>();
   o.add(buildMobileFriendlyIssue());
   o.add(buildMobileFriendlyIssue());
   return o;
 }
 
-checkUnnamed1233(core.List<api.MobileFriendlyIssue> o) {
+checkUnnamed1229(core.List<api.MobileFriendlyIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMobileFriendlyIssue(o[0]);
   checkMobileFriendlyIssue(o[1]);
 }
 
-buildUnnamed1234() {
+buildUnnamed1230() {
   var o = new core.List<api.ResourceIssue>();
   o.add(buildResourceIssue());
   o.add(buildResourceIssue());
   return o;
 }
 
-checkUnnamed1234(core.List<api.ResourceIssue> o) {
+checkUnnamed1230(core.List<api.ResourceIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceIssue(o[0]);
   checkResourceIssue(o[1]);
@@ -182,8 +181,8 @@ buildRunMobileFriendlyTestResponse() {
   buildCounterRunMobileFriendlyTestResponse++;
   if (buildCounterRunMobileFriendlyTestResponse < 3) {
     o.mobileFriendliness = "foo";
-    o.mobileFriendlyIssues = buildUnnamed1233();
-    o.resourceIssues = buildUnnamed1234();
+    o.mobileFriendlyIssues = buildUnnamed1229();
+    o.resourceIssues = buildUnnamed1230();
     o.screenshot = buildImage();
     o.testStatus = buildTestStatus();
   }
@@ -195,8 +194,8 @@ checkRunMobileFriendlyTestResponse(api.RunMobileFriendlyTestResponse o) {
   buildCounterRunMobileFriendlyTestResponse++;
   if (buildCounterRunMobileFriendlyTestResponse < 3) {
     unittest.expect(o.mobileFriendliness, unittest.equals('foo'));
-    checkUnnamed1233(o.mobileFriendlyIssues);
-    checkUnnamed1234(o.resourceIssues);
+    checkUnnamed1229(o.mobileFriendlyIssues);
+    checkUnnamed1230(o.resourceIssues);
     checkImage(o.screenshot);
     checkTestStatus(o.testStatus);
   }
@@ -224,7 +223,6 @@ checkTestStatus(api.TestStatus o) {
   buildCounterTestStatus--;
 }
 
-
 main() {
   unittest.group("obj-schema-BlockedResource", () {
     unittest.test("to-json--from-json", () {
@@ -234,7 +232,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Image", () {
     unittest.test("to-json--from-json", () {
       var o = buildImage();
@@ -242,7 +239,6 @@ main() {
       checkImage(od);
     });
   });
-
 
   unittest.group("obj-schema-MobileFriendlyIssue", () {
     unittest.test("to-json--from-json", () {
@@ -252,7 +248,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ResourceIssue", () {
     unittest.test("to-json--from-json", () {
       var o = buildResourceIssue();
@@ -260,7 +255,6 @@ main() {
       checkResourceIssue(od);
     });
   });
-
 
   unittest.group("obj-schema-RunMobileFriendlyTestRequest", () {
     unittest.test("to-json--from-json", () {
@@ -270,7 +264,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-RunMobileFriendlyTestResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildRunMobileFriendlyTestResponse();
@@ -278,7 +271,6 @@ main() {
       checkRunMobileFriendlyTestResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-TestStatus", () {
     unittest.test("to-json--from-json", () {
@@ -288,12 +280,11 @@ main() {
     });
   });
 
-
   unittest.group("resource-UrlTestingToolsMobileFriendlyTestResourceApi", () {
     unittest.test("method--run", () {
-
       var mock = new HttpServerMock();
-      api.UrlTestingToolsMobileFriendlyTestResourceApi res = new api.SearchconsoleApi(mock).urlTestingTools.mobileFriendlyTest;
+      api.UrlTestingToolsMobileFriendlyTestResourceApi res =
+          new api.SearchconsoleApi(mock).urlTestingTools.mobileFriendlyTest;
       var arg_request = buildRunMobileFriendlyTestRequest();
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.RunMobileFriendlyTestRequest.fromJson(json);
@@ -303,9 +294,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 41), unittest.equals("v1/urlTestingTools/mobileFriendlyTest:run"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 41),
+            unittest.equals("v1/urlTestingTools/mobileFriendlyTest:run"));
         pathOffset += 41;
 
         var query = (req.url).query;
@@ -318,27 +311,25 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildRunMobileFriendlyTestResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.run(arg_request).then(unittest.expectAsync1(((api.RunMobileFriendlyTestResponse response) {
+      res.run(arg_request).then(
+          unittest.expectAsync1(((api.RunMobileFriendlyTestResponse response) {
         checkRunMobileFriendlyTestResponse(response);
       })));
     });
-
   });
-
-
 }
-

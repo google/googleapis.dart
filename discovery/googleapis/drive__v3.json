@@ -31,11 +31,11 @@
     },
     "basePath": "/drive/v3/",
     "baseUrl": "https://www.googleapis.com/drive/v3/",
-    "batchPath": "batch",
+    "batchPath": "batch/drive/v3",
     "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/54w9sW_MBOG7UQrKw2OpvPrAYNI\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/4lSDxYnFTkLYmJZsTikGDh17fVo\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -808,7 +808,7 @@
                             "type": "boolean"
                         },
                         "orderBy": {
-                            "description": "A comma-separated list of sort keys. Valid keys are 'createdTime', 'folder', 'modifiedByMeTime', 'modifiedTime', 'name', 'quotaBytesUsed', 'recency', 'sharedWithMeTime', 'starred', and 'viewedByMeTime'. Each key sorts ascending by default, but may be reversed with the 'desc' modifier. Example usage: ?orderBy=folder,modifiedTime desc,name. Please note that there is a current limitation for users with approximately one million files in which the requested sort order is ignored.",
+                            "description": "A comma-separated list of sort keys. Valid keys are 'createdTime', 'folder', 'modifiedByMeTime', 'modifiedTime', 'name', 'name_natural', 'quotaBytesUsed', 'recency', 'sharedWithMeTime', 'starred', and 'viewedByMeTime'. Each key sorts ascending by default, but may be reversed with the 'desc' modifier. Example usage: ?orderBy=folder,modifiedTime desc,name. Please note that there is a current limitation for users with approximately one million files in which the requested sort order is ignored.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1714,7 +1714,7 @@
             }
         }
     },
-    "revision": "20170811",
+    "revision": "20170825",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -2373,6 +2373,13 @@
                 },
                 "parents": {
                     "description": "The IDs of the parent folders which contain the file.\nIf not specified as part of a create request, the file will be placed directly in the My Drive folder. Update requests must use the addParents and removeParents parameters to modify the values.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "permissionIds": {
+                    "description": "List of permission IDs for users with access to this file.",
                     "items": {
                         "type": "string"
                     },

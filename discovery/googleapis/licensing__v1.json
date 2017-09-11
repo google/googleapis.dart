@@ -10,7 +10,7 @@
     },
     "basePath": "/apps/licensing/v1/product/",
     "baseUrl": "https://www.googleapis.com/apps/licensing/v1/product/",
-    "batchPath": "batch",
+    "batchPath": "batch/licensing/v1",
     "description": "Views and manages licenses for your domain.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/licensing/",

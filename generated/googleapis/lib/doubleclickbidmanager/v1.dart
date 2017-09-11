@@ -9,16 +9,16 @@ import 'dart:convert' as convert;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
-    ApiRequestError, DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
+    show ApiRequestError, DetailedApiRequestError;
 
 const core.String USER_AGENT = 'dart-api-client doubleclickbidmanager/v1';
 
-/** API for viewing and managing your reports in DoubleClick Bid Manager. */
+/// API for viewing and managing your reports in DoubleClick Bid Manager.
 class DoubleclickbidmanagerApi {
-  /** View and manage your reports in DoubleClick Bid Manager */
-  static const DoubleclickbidmanagerScope = "https://www.googleapis.com/auth/doubleclickbidmanager";
-
+  /// View and manage your reports in DoubleClick Bid Manager
+  static const DoubleclickbidmanagerScope =
+      "https://www.googleapis.com/auth/doubleclickbidmanager";
 
   final commons.ApiRequester _requester;
 
@@ -27,33 +27,33 @@ class DoubleclickbidmanagerApi {
   ReportsResourceApi get reports => new ReportsResourceApi(_requester);
   SdfResourceApi get sdf => new SdfResourceApi(_requester);
 
-  DoubleclickbidmanagerApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "doubleclickbidmanager/v1/"}) :
-      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+  DoubleclickbidmanagerApi(http.Client client,
+      {core.String rootUrl: "https://www.googleapis.com/",
+      core.String servicePath: "doubleclickbidmanager/v1/"})
+      : _requester =
+            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
-
 
 class LineitemsResourceApi {
   final commons.ApiRequester _requester;
 
-  LineitemsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  LineitemsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Retrieves line items in CSV format.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [DownloadLineItemsResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<DownloadLineItemsResponse> downloadlineitems(DownloadLineItemsRequest request) {
+  /// Retrieves line items in CSV format.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [DownloadLineItemsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DownloadLineItemsResponse> downloadlineitems(
+      DownloadLineItemsRequest request) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -67,32 +67,31 @@ class LineitemsResourceApi {
 
     _url = 'lineitems/downloadlineitems';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new DownloadLineItemsResponse.fromJson(data));
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new DownloadLineItemsResponse.fromJson(data));
   }
 
-  /**
-   * Uploads line items in CSV format.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [UploadLineItemsResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<UploadLineItemsResponse> uploadlineitems(UploadLineItemsRequest request) {
+  /// Uploads line items in CSV format.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [UploadLineItemsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UploadLineItemsResponse> uploadlineitems(
+      UploadLineItemsRequest request) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -106,40 +105,34 @@ class LineitemsResourceApi {
 
     _url = 'lineitems/uploadlineitems';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new UploadLineItemsResponse.fromJson(data));
   }
-
 }
-
 
 class QueriesResourceApi {
   final commons.ApiRequester _requester;
 
-  QueriesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  QueriesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Creates a query.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [Query].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Creates a query.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [Query].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Query> createquery(Query request) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -154,29 +147,26 @@ class QueriesResourceApi {
 
     _url = 'query';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Query.fromJson(data));
   }
 
-  /**
-   * Deletes a stored query as well as the associated stored reports.
-   *
-   * Request parameters:
-   *
-   * [queryId] - Query ID to delete.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Deletes a stored query as well as the associated stored reports.
+  ///
+  /// Request parameters:
+  ///
+  /// [queryId] - Query ID to delete.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future deletequery(core.String queryId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -193,31 +183,28 @@ class QueriesResourceApi {
 
     _url = 'query/' + commons.Escaper.ecapeVariable('$queryId');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Retrieves a stored query.
-   *
-   * Request parameters:
-   *
-   * [queryId] - Query ID to retrieve.
-   *
-   * Completes with a [Query].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Retrieves a stored query.
+  ///
+  /// Request parameters:
+  ///
+  /// [queryId] - Query ID to retrieve.
+  ///
+  /// Completes with a [Query].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Query> getquery(core.String queryId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -232,29 +219,26 @@ class QueriesResourceApi {
 
     _url = 'query/' + commons.Escaper.ecapeVariable('$queryId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Query.fromJson(data));
   }
 
-  /**
-   * Retrieves stored queries.
-   *
-   * Request parameters:
-   *
-   * Completes with a [ListQueriesResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Retrieves stored queries.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [ListQueriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<ListQueriesResponse> listqueries() {
     var _url = null;
     var _queryParams = new core.Map();
@@ -263,34 +247,30 @@ class QueriesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-
     _url = 'queries';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ListQueriesResponse.fromJson(data));
   }
 
-  /**
-   * Runs a stored query to generate a report.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [queryId] - Query ID to run.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Runs a stored query to generate a report.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [queryId] - Query ID to run.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future runquery(RunQueryRequest request, core.String queryId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -310,40 +290,34 @@ class QueriesResourceApi {
 
     _url = 'query/' + commons.Escaper.ecapeVariable('$queryId');
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
-
 }
-
 
 class ReportsResourceApi {
   final commons.ApiRequester _requester;
 
-  ReportsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  ReportsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Retrieves stored reports.
-   *
-   * Request parameters:
-   *
-   * [queryId] - Query ID with which the reports are associated.
-   *
-   * Completes with a [ListReportsResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Retrieves stored reports.
+  ///
+  /// Request parameters:
+  ///
+  /// [queryId] - Query ID with which the reports are associated.
+  ///
+  /// Completes with a [ListReportsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<ListReportsResponse> listreports(core.String queryId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -358,40 +332,34 @@ class ReportsResourceApi {
 
     _url = 'queries/' + commons.Escaper.ecapeVariable('$queryId') + '/reports';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ListReportsResponse.fromJson(data));
   }
-
 }
-
 
 class SdfResourceApi {
   final commons.ApiRequester _requester;
 
-  SdfResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  SdfResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Retrieves entities in SDF format.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [DownloadResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Retrieves entities in SDF format.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [DownloadResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<DownloadResponse> download(DownloadRequest request) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -406,47 +374,38 @@ class SdfResourceApi {
 
     _url = 'sdf/download';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new DownloadResponse.fromJson(data));
   }
-
 }
 
-
-
-/** Request to fetch stored line items. */
+/// Request to fetch stored line items.
 class DownloadLineItemsRequest {
-  /**
-   * File specification (column names, types, order) in which the line items
-   * will be returned. Default to EWF.
-   * Possible string values are:
-   * - "EWF"
-   */
+  /// File specification (column names, types, order) in which the line items
+  /// will be returned. Default to EWF.
+  /// Possible string values are:
+  /// - "EWF"
   core.String fileSpec;
-  /**
-   * Ids of the specified filter type used to filter line items to fetch. If
-   * omitted, all the line items will be returned.
-   */
+
+  /// Ids of the specified filter type used to filter line items to fetch. If
+  /// omitted, all the line items will be returned.
   core.List<core.String> filterIds;
-  /**
-   * Filter type used to filter line items to fetch.
-   * Possible string values are:
-   * - "ADVERTISER_ID"
-   * - "INSERTION_ORDER_ID"
-   * - "LINE_ITEM_ID"
-   */
+
+  /// Filter type used to filter line items to fetch.
+  /// Possible string values are:
+  /// - "ADVERTISER_ID"
+  /// - "INSERTION_ORDER_ID"
+  /// - "LINE_ITEM_ID"
   core.String filterType;
-  /**
-   * Format in which the line items will be returned. Default to CSV.
-   * Possible string values are:
-   * - "CSV"
-   */
+
+  /// Format in which the line items will be returned. Default to CSV.
+  /// Possible string values are:
+  /// - "CSV"
   core.String format;
 
   DownloadLineItemsRequest();
@@ -467,7 +426,8 @@ class DownloadLineItemsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (fileSpec != null) {
       _json["fileSpec"] = fileSpec;
     }
@@ -484,12 +444,10 @@ class DownloadLineItemsRequest {
   }
 }
 
-/** Download line items response. */
+/// Download line items response.
 class DownloadLineItemsResponse {
-  /**
-   * Retrieved line items in CSV format. For more information about file
-   * formats, see  Entity Write File Format.
-   */
+  /// Retrieved line items in CSV format. For more information about file
+  /// formats, see  Entity Write File Format.
   core.String lineItems;
 
   DownloadLineItemsResponse();
@@ -501,7 +459,8 @@ class DownloadLineItemsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (lineItems != null) {
       _json["lineItems"] = lineItems;
     }
@@ -509,32 +468,27 @@ class DownloadLineItemsResponse {
   }
 }
 
-/**
- * Request to fetch stored insertion orders, line items, TrueView ad groups and
- * ads.
- */
+/// Request to fetch stored insertion orders, line items, TrueView ad groups and
+/// ads.
 class DownloadRequest {
-  /** File types that will be returned. */
+  /// File types that will be returned.
   core.List<core.String> fileTypes;
-  /**
-   * The IDs of the specified filter type. This is used to filter entities to
-   * fetch. At least one ID must be specified. Only one ID is allowed for the
-   * ADVERTISER_ID filter type. For INSERTION_ORDER_ID or LINE_ITEM_ID filter
-   * types, all IDs must be from the same Advertiser.
-   */
+
+  /// The IDs of the specified filter type. This is used to filter entities to
+  /// fetch. At least one ID must be specified. Only one ID is allowed for the
+  /// ADVERTISER_ID filter type. For INSERTION_ORDER_ID or LINE_ITEM_ID filter
+  /// types, all IDs must be from the same Advertiser.
   core.List<core.String> filterIds;
-  /**
-   * Filter type used to filter line items to fetch.
-   * Possible string values are:
-   * - "ADVERTISER_ID"
-   * - "INSERTION_ORDER_ID"
-   * - "LINE_ITEM_ID"
-   */
+
+  /// Filter type used to filter line items to fetch.
+  /// Possible string values are:
+  /// - "ADVERTISER_ID"
+  /// - "INSERTION_ORDER_ID"
+  /// - "LINE_ITEM_ID"
   core.String filterType;
-  /**
-   * SDF Version (column names, types, order) in which the entities will be
-   * returned. Default to 3.
-   */
+
+  /// SDF Version (column names, types, order) in which the entities will be
+  /// returned. Default to 3.
   core.String version;
 
   DownloadRequest();
@@ -555,7 +509,8 @@ class DownloadRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (fileTypes != null) {
       _json["fileTypes"] = fileTypes;
     }
@@ -572,15 +527,18 @@ class DownloadRequest {
   }
 }
 
-/** Download response. */
+/// Download response.
 class DownloadResponse {
-  /** Retrieved ad groups in SDF format. */
+  /// Retrieved ad groups in SDF format.
   core.String adGroups;
-  /** Retrieved ads in SDF format. */
+
+  /// Retrieved ads in SDF format.
   core.String ads;
-  /** Retrieved insertion orders in SDF format. */
+
+  /// Retrieved insertion orders in SDF format.
   core.String insertionOrders;
-  /** Retrieved line items in SDF format. */
+
+  /// Retrieved line items in SDF format.
   core.String lineItems;
 
   DownloadResponse();
@@ -601,7 +559,8 @@ class DownloadResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (adGroups != null) {
       _json["adGroups"] = adGroups;
     }
@@ -618,132 +577,131 @@ class DownloadResponse {
   }
 }
 
-/** Filter used to match traffic data in your report. */
+/// Filter used to match traffic data in your report.
 class FilterPair {
-  /**
-   * Filter type.
-   * Possible string values are:
-   * - "FILTER_ACTIVE_VIEW_EXPECTED_VIEWABILITY"
-   * - "FILTER_ACTIVITY_ID"
-   * - "FILTER_ADVERTISER"
-   * - "FILTER_ADVERTISER_CURRENCY"
-   * - "FILTER_ADVERTISER_TIMEZONE"
-   * - "FILTER_AD_POSITION"
-   * - "FILTER_AGE"
-   * - "FILTER_BRANDSAFE_CHANNEL_ID"
-   * - "FILTER_BROWSER"
-   * - "FILTER_BUDGET_SEGMENT_DESCRIPTION"
-   * - "FILTER_CAMPAIGN_DAILY_FREQUENCY"
-   * - "FILTER_CARRIER"
-   * - "FILTER_CHANNEL_ID"
-   * - "FILTER_CITY"
-   * - "FILTER_COMPANION_CREATIVE_ID"
-   * - "FILTER_CONVERSION_DELAY"
-   * - "FILTER_COUNTRY"
-   * - "FILTER_CREATIVE_HEIGHT"
-   * - "FILTER_CREATIVE_ID"
-   * - "FILTER_CREATIVE_SIZE"
-   * - "FILTER_CREATIVE_TYPE"
-   * - "FILTER_CREATIVE_WIDTH"
-   * - "FILTER_DATA_PROVIDER"
-   * - "FILTER_DATE"
-   * - "FILTER_DAY_OF_WEEK"
-   * - "FILTER_DFP_ORDER_ID"
-   * - "FILTER_DMA"
-   * - "FILTER_EXCHANGE_ID"
-   * - "FILTER_FLOODLIGHT_PIXEL_ID"
-   * - "FILTER_GENDER"
-   * - "FILTER_INSERTION_ORDER"
-   * - "FILTER_INVENTORY_FORMAT"
-   * - "FILTER_INVENTORY_SOURCE"
-   * - "FILTER_INVENTORY_SOURCE_TYPE"
-   * - "FILTER_KEYWORD"
-   * - "FILTER_LINE_ITEM"
-   * - "FILTER_LINE_ITEM_DAILY_FREQUENCY"
-   * - "FILTER_LINE_ITEM_LIFETIME_FREQUENCY"
-   * - "FILTER_LINE_ITEM_TYPE"
-   * - "FILTER_MEDIA_PLAN"
-   * - "FILTER_MOBILE_DEVICE_MAKE"
-   * - "FILTER_MOBILE_DEVICE_MAKE_MODEL"
-   * - "FILTER_MOBILE_DEVICE_TYPE"
-   * - "FILTER_MOBILE_GEO"
-   * - "FILTER_MONTH"
-   * - "FILTER_MRAID_SUPPORT"
-   * - "FILTER_NIELSEN_AGE"
-   * - "FILTER_NIELSEN_COUNTRY_CODE"
-   * - "FILTER_NIELSEN_DEVICE_ID"
-   * - "FILTER_NIELSEN_GENDER"
-   * - "FILTER_NOT_SUPPORTED"
-   * - "FILTER_ORDER_ID"
-   * - "FILTER_OS"
-   * - "FILTER_PAGE_CATEGORY"
-   * - "FILTER_PAGE_LAYOUT"
-   * - "FILTER_PARTNER"
-   * - "FILTER_PARTNER_CURRENCY"
-   * - "FILTER_PUBLIC_INVENTORY"
-   * - "FILTER_QUARTER"
-   * - "FILTER_REGION"
-   * - "FILTER_REGULAR_CHANNEL_ID"
-   * - "FILTER_SITE_ID"
-   * - "FILTER_SITE_LANGUAGE"
-   * - "FILTER_SKIPPABLE_SUPPORT"
-   * - "FILTER_TARGETED_USER_LIST"
-   * - "FILTER_TIME_OF_DAY"
-   * - "FILTER_TRUEVIEW_AD_GROUP_AD_ID"
-   * - "FILTER_TRUEVIEW_AD_GROUP_ID"
-   * - "FILTER_TRUEVIEW_AGE"
-   * - "FILTER_TRUEVIEW_CATEGORY"
-   * - "FILTER_TRUEVIEW_CITY"
-   * - "FILTER_TRUEVIEW_CONVERSION_TYPE"
-   * - "FILTER_TRUEVIEW_COUNTRY"
-   * - "FILTER_TRUEVIEW_CUSTOM_AFFINITY"
-   * - "FILTER_TRUEVIEW_DMA"
-   * - "FILTER_TRUEVIEW_GENDER"
-   * - "FILTER_TRUEVIEW_IAR_AGE"
-   * - "FILTER_TRUEVIEW_IAR_CATEGORY"
-   * - "FILTER_TRUEVIEW_IAR_CITY"
-   * - "FILTER_TRUEVIEW_IAR_COUNTRY"
-   * - "FILTER_TRUEVIEW_IAR_GENDER"
-   * - "FILTER_TRUEVIEW_IAR_INTEREST"
-   * - "FILTER_TRUEVIEW_IAR_LANGUAGE"
-   * - "FILTER_TRUEVIEW_IAR_PARENTAL_STATUS"
-   * - "FILTER_TRUEVIEW_IAR_REGION"
-   * - "FILTER_TRUEVIEW_IAR_REMARKETING_LIST"
-   * - "FILTER_TRUEVIEW_IAR_TIME_OF_DAY"
-   * - "FILTER_TRUEVIEW_IAR_YOUTUBE_CHANNEL"
-   * - "FILTER_TRUEVIEW_IAR_YOUTUBE_VIDEO"
-   * - "FILTER_TRUEVIEW_IAR_ZIPCODE"
-   * - "FILTER_TRUEVIEW_INTEREST"
-   * - "FILTER_TRUEVIEW_KEYWORD"
-   * - "FILTER_TRUEVIEW_PARENTAL_STATUS"
-   * - "FILTER_TRUEVIEW_PLACEMENT"
-   * - "FILTER_TRUEVIEW_REGION"
-   * - "FILTER_TRUEVIEW_REMARKETING_LIST"
-   * - "FILTER_TRUEVIEW_URL"
-   * - "FILTER_TRUEVIEW_ZIPCODE"
-   * - "FILTER_UNKNOWN"
-   * - "FILTER_USER_LIST"
-   * - "FILTER_USER_LIST_FIRST_PARTY"
-   * - "FILTER_USER_LIST_THIRD_PARTY"
-   * - "FILTER_VIDEO_AD_POSITION_IN_STREAM"
-   * - "FILTER_VIDEO_COMPANION_SIZE"
-   * - "FILTER_VIDEO_COMPANION_TYPE"
-   * - "FILTER_VIDEO_CREATIVE_DURATION"
-   * - "FILTER_VIDEO_CREATIVE_DURATION_SKIPPABLE"
-   * - "FILTER_VIDEO_DURATION_SECONDS"
-   * - "FILTER_VIDEO_FORMAT_SUPPORT"
-   * - "FILTER_VIDEO_INVENTORY_TYPE"
-   * - "FILTER_VIDEO_PLAYER_SIZE"
-   * - "FILTER_VIDEO_RATING_TIER"
-   * - "FILTER_VIDEO_SKIPPABLE_SUPPORT"
-   * - "FILTER_VIDEO_VPAID_SUPPORT"
-   * - "FILTER_WEEK"
-   * - "FILTER_YEAR"
-   * - "FILTER_YOUTUBE_VERTICAL"
-   * - "FILTER_ZIP_CODE"
-   */
+  /// Filter type.
+  /// Possible string values are:
+  /// - "FILTER_ACTIVE_VIEW_EXPECTED_VIEWABILITY"
+  /// - "FILTER_ACTIVITY_ID"
+  /// - "FILTER_ADVERTISER"
+  /// - "FILTER_ADVERTISER_CURRENCY"
+  /// - "FILTER_ADVERTISER_TIMEZONE"
+  /// - "FILTER_AD_POSITION"
+  /// - "FILTER_AGE"
+  /// - "FILTER_BRANDSAFE_CHANNEL_ID"
+  /// - "FILTER_BROWSER"
+  /// - "FILTER_BUDGET_SEGMENT_DESCRIPTION"
+  /// - "FILTER_CAMPAIGN_DAILY_FREQUENCY"
+  /// - "FILTER_CARRIER"
+  /// - "FILTER_CHANNEL_ID"
+  /// - "FILTER_CITY"
+  /// - "FILTER_COMPANION_CREATIVE_ID"
+  /// - "FILTER_CONVERSION_DELAY"
+  /// - "FILTER_COUNTRY"
+  /// - "FILTER_CREATIVE_HEIGHT"
+  /// - "FILTER_CREATIVE_ID"
+  /// - "FILTER_CREATIVE_SIZE"
+  /// - "FILTER_CREATIVE_TYPE"
+  /// - "FILTER_CREATIVE_WIDTH"
+  /// - "FILTER_DATA_PROVIDER"
+  /// - "FILTER_DATE"
+  /// - "FILTER_DAY_OF_WEEK"
+  /// - "FILTER_DFP_ORDER_ID"
+  /// - "FILTER_DMA"
+  /// - "FILTER_EXCHANGE_ID"
+  /// - "FILTER_FLOODLIGHT_PIXEL_ID"
+  /// - "FILTER_GENDER"
+  /// - "FILTER_INSERTION_ORDER"
+  /// - "FILTER_INVENTORY_FORMAT"
+  /// - "FILTER_INVENTORY_SOURCE"
+  /// - "FILTER_INVENTORY_SOURCE_TYPE"
+  /// - "FILTER_KEYWORD"
+  /// - "FILTER_LINE_ITEM"
+  /// - "FILTER_LINE_ITEM_DAILY_FREQUENCY"
+  /// - "FILTER_LINE_ITEM_LIFETIME_FREQUENCY"
+  /// - "FILTER_LINE_ITEM_TYPE"
+  /// - "FILTER_MEDIA_PLAN"
+  /// - "FILTER_MOBILE_DEVICE_MAKE"
+  /// - "FILTER_MOBILE_DEVICE_MAKE_MODEL"
+  /// - "FILTER_MOBILE_DEVICE_TYPE"
+  /// - "FILTER_MOBILE_GEO"
+  /// - "FILTER_MONTH"
+  /// - "FILTER_MRAID_SUPPORT"
+  /// - "FILTER_NIELSEN_AGE"
+  /// - "FILTER_NIELSEN_COUNTRY_CODE"
+  /// - "FILTER_NIELSEN_DEVICE_ID"
+  /// - "FILTER_NIELSEN_GENDER"
+  /// - "FILTER_NOT_SUPPORTED"
+  /// - "FILTER_ORDER_ID"
+  /// - "FILTER_OS"
+  /// - "FILTER_PAGE_CATEGORY"
+  /// - "FILTER_PAGE_LAYOUT"
+  /// - "FILTER_PARTNER"
+  /// - "FILTER_PARTNER_CURRENCY"
+  /// - "FILTER_PUBLIC_INVENTORY"
+  /// - "FILTER_QUARTER"
+  /// - "FILTER_REGION"
+  /// - "FILTER_REGULAR_CHANNEL_ID"
+  /// - "FILTER_SITE_ID"
+  /// - "FILTER_SITE_LANGUAGE"
+  /// - "FILTER_SKIPPABLE_SUPPORT"
+  /// - "FILTER_TARGETED_USER_LIST"
+  /// - "FILTER_TIME_OF_DAY"
+  /// - "FILTER_TRUEVIEW_AD_GROUP_AD_ID"
+  /// - "FILTER_TRUEVIEW_AD_GROUP_ID"
+  /// - "FILTER_TRUEVIEW_AGE"
+  /// - "FILTER_TRUEVIEW_CATEGORY"
+  /// - "FILTER_TRUEVIEW_CITY"
+  /// - "FILTER_TRUEVIEW_CONVERSION_TYPE"
+  /// - "FILTER_TRUEVIEW_COUNTRY"
+  /// - "FILTER_TRUEVIEW_CUSTOM_AFFINITY"
+  /// - "FILTER_TRUEVIEW_DMA"
+  /// - "FILTER_TRUEVIEW_GENDER"
+  /// - "FILTER_TRUEVIEW_IAR_AGE"
+  /// - "FILTER_TRUEVIEW_IAR_CATEGORY"
+  /// - "FILTER_TRUEVIEW_IAR_CITY"
+  /// - "FILTER_TRUEVIEW_IAR_COUNTRY"
+  /// - "FILTER_TRUEVIEW_IAR_GENDER"
+  /// - "FILTER_TRUEVIEW_IAR_INTEREST"
+  /// - "FILTER_TRUEVIEW_IAR_LANGUAGE"
+  /// - "FILTER_TRUEVIEW_IAR_PARENTAL_STATUS"
+  /// - "FILTER_TRUEVIEW_IAR_REGION"
+  /// - "FILTER_TRUEVIEW_IAR_REMARKETING_LIST"
+  /// - "FILTER_TRUEVIEW_IAR_TIME_OF_DAY"
+  /// - "FILTER_TRUEVIEW_IAR_YOUTUBE_CHANNEL"
+  /// - "FILTER_TRUEVIEW_IAR_YOUTUBE_VIDEO"
+  /// - "FILTER_TRUEVIEW_IAR_ZIPCODE"
+  /// - "FILTER_TRUEVIEW_INTEREST"
+  /// - "FILTER_TRUEVIEW_KEYWORD"
+  /// - "FILTER_TRUEVIEW_PARENTAL_STATUS"
+  /// - "FILTER_TRUEVIEW_PLACEMENT"
+  /// - "FILTER_TRUEVIEW_REGION"
+  /// - "FILTER_TRUEVIEW_REMARKETING_LIST"
+  /// - "FILTER_TRUEVIEW_URL"
+  /// - "FILTER_TRUEVIEW_ZIPCODE"
+  /// - "FILTER_UNKNOWN"
+  /// - "FILTER_USER_LIST"
+  /// - "FILTER_USER_LIST_FIRST_PARTY"
+  /// - "FILTER_USER_LIST_THIRD_PARTY"
+  /// - "FILTER_VIDEO_AD_POSITION_IN_STREAM"
+  /// - "FILTER_VIDEO_COMPANION_SIZE"
+  /// - "FILTER_VIDEO_COMPANION_TYPE"
+  /// - "FILTER_VIDEO_CREATIVE_DURATION"
+  /// - "FILTER_VIDEO_CREATIVE_DURATION_SKIPPABLE"
+  /// - "FILTER_VIDEO_DURATION_SECONDS"
+  /// - "FILTER_VIDEO_FORMAT_SUPPORT"
+  /// - "FILTER_VIDEO_INVENTORY_TYPE"
+  /// - "FILTER_VIDEO_PLAYER_SIZE"
+  /// - "FILTER_VIDEO_RATING_TIER"
+  /// - "FILTER_VIDEO_SKIPPABLE_SUPPORT"
+  /// - "FILTER_VIDEO_VPAID_SUPPORT"
+  /// - "FILTER_WEEK"
+  /// - "FILTER_YEAR"
+  /// - "FILTER_YOUTUBE_VERTICAL"
+  /// - "FILTER_ZIP_CODE"
   core.String type;
-  /** Filter value. */
+
+  /// Filter value.
   core.String value;
 
   FilterPair();
@@ -758,7 +716,8 @@ class FilterPair {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (type != null) {
       _json["type"] = type;
     }
@@ -769,14 +728,13 @@ class FilterPair {
   }
 }
 
-/** List queries response. */
+/// List queries response.
 class ListQueriesResponse {
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "doubleclickbidmanager#listQueriesResponse".
-   */
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "doubleclickbidmanager#listQueriesResponse".
   core.String kind;
-  /** Retrieved queries. */
+
+  /// Retrieved queries.
   core.List<Query> queries;
 
   ListQueriesResponse();
@@ -786,12 +744,14 @@ class ListQueriesResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("queries")) {
-      queries = _json["queries"].map((value) => new Query.fromJson(value)).toList();
+      queries =
+          _json["queries"].map((value) => new Query.fromJson(value)).toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -802,14 +762,13 @@ class ListQueriesResponse {
   }
 }
 
-/** List reports response. */
+/// List reports response.
 class ListReportsResponse {
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "doubleclickbidmanager#listReportsResponse".
-   */
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "doubleclickbidmanager#listReportsResponse".
   core.String kind;
-  /** Retrieved reports. */
+
+  /// Retrieved reports.
   core.List<Report> reports;
 
   ListReportsResponse();
@@ -819,12 +778,14 @@ class ListReportsResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("reports")) {
-      reports = _json["reports"].map((value) => new Report.fromJson(value)).toList();
+      reports =
+          _json["reports"].map((value) => new Report.fromJson(value)).toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -835,58 +796,62 @@ class ListReportsResponse {
   }
 }
 
-/** Parameters of a query or report. */
+/// Parameters of a query or report.
 class Parameters {
-  /** Filters used to match traffic data in your report. */
+  /// Filters used to match traffic data in your report.
   core.List<FilterPair> filters;
-  /** Data is grouped by the filters listed in this field. */
+
+  /// Data is grouped by the filters listed in this field.
   core.List<core.String> groupBys;
-  /** Whether to include data from Invite Media. */
+
+  /// Whether to include data from Invite Media.
   core.bool includeInviteData;
-  /** Metrics to include as columns in your report. */
+
+  /// Metrics to include as columns in your report.
   core.List<core.String> metrics;
-  /**
-   * Report type.
-   * Possible string values are:
-   * - "TYPE_ACTIVE_GRP"
-   * - "TYPE_AUDIENCE_COMPOSITION"
-   * - "TYPE_AUDIENCE_PERFORMANCE"
-   * - "TYPE_CLIENT_SAFE"
-   * - "TYPE_COMSCORE_VCE"
-   * - "TYPE_CROSS_FEE"
-   * - "TYPE_CROSS_PARTNER"
-   * - "TYPE_CROSS_PARTNER_THIRD_PARTY_DATA_PROVIDER"
-   * - "TYPE_ESTIMATED_CONVERSION"
-   * - "TYPE_FEE"
-   * - "TYPE_GENERAL"
-   * - "TYPE_INVENTORY_AVAILABILITY"
-   * - "TYPE_KEYWORD"
-   * - "TYPE_NIELSEN_AUDIENCE_PROFILE"
-   * - "TYPE_NIELSEN_DAILY_REACH_BUILD"
-   * - "TYPE_NIELSEN_ONLINE_GLOBAL_MARKET"
-   * - "TYPE_NIELSEN_SITE"
-   * - "TYPE_NOT_SUPPORTED"
-   * - "TYPE_ORDER_ID"
-   * - "TYPE_PAGE_CATEGORY"
-   * - "TYPE_PETRA_NIELSEN_AUDIENCE_PROFILE"
-   * - "TYPE_PETRA_NIELSEN_DAILY_REACH_BUILD"
-   * - "TYPE_PETRA_NIELSEN_ONLINE_GLOBAL_MARKET"
-   * - "TYPE_PIXEL_LOAD"
-   * - "TYPE_REACH_AND_FREQUENCY"
-   * - "TYPE_REACH_AUDIENCE"
-   * - "TYPE_THIRD_PARTY_DATA_PROVIDER"
-   * - "TYPE_TRUEVIEW"
-   * - "TYPE_TRUEVIEW_IAR"
-   * - "TYPE_VERIFICATION"
-   * - "TYPE_YOUTUBE_VERTICAL"
-   */
+
+  /// Report type.
+  /// Possible string values are:
+  /// - "TYPE_ACTIVE_GRP"
+  /// - "TYPE_AUDIENCE_COMPOSITION"
+  /// - "TYPE_AUDIENCE_PERFORMANCE"
+  /// - "TYPE_CLIENT_SAFE"
+  /// - "TYPE_COMSCORE_VCE"
+  /// - "TYPE_CROSS_FEE"
+  /// - "TYPE_CROSS_PARTNER"
+  /// - "TYPE_CROSS_PARTNER_THIRD_PARTY_DATA_PROVIDER"
+  /// - "TYPE_ESTIMATED_CONVERSION"
+  /// - "TYPE_FEE"
+  /// - "TYPE_GENERAL"
+  /// - "TYPE_INVENTORY_AVAILABILITY"
+  /// - "TYPE_KEYWORD"
+  /// - "TYPE_NIELSEN_AUDIENCE_PROFILE"
+  /// - "TYPE_NIELSEN_DAILY_REACH_BUILD"
+  /// - "TYPE_NIELSEN_ONLINE_GLOBAL_MARKET"
+  /// - "TYPE_NIELSEN_SITE"
+  /// - "TYPE_NOT_SUPPORTED"
+  /// - "TYPE_ORDER_ID"
+  /// - "TYPE_PAGE_CATEGORY"
+  /// - "TYPE_PETRA_NIELSEN_AUDIENCE_PROFILE"
+  /// - "TYPE_PETRA_NIELSEN_DAILY_REACH_BUILD"
+  /// - "TYPE_PETRA_NIELSEN_ONLINE_GLOBAL_MARKET"
+  /// - "TYPE_PIXEL_LOAD"
+  /// - "TYPE_REACH_AND_FREQUENCY"
+  /// - "TYPE_REACH_AUDIENCE"
+  /// - "TYPE_THIRD_PARTY_DATA_PROVIDER"
+  /// - "TYPE_TRUEVIEW"
+  /// - "TYPE_TRUEVIEW_IAR"
+  /// - "TYPE_VERIFICATION"
+  /// - "TYPE_YOUTUBE_VERTICAL"
   core.String type;
 
   Parameters();
 
   Parameters.fromJson(core.Map _json) {
     if (_json.containsKey("filters")) {
-      filters = _json["filters"].map((value) => new FilterPair.fromJson(value)).toList();
+      filters = _json["filters"]
+          .map((value) => new FilterPair.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("groupBys")) {
       groupBys = _json["groupBys"];
@@ -903,7 +868,8 @@ class Parameters {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (filters != null) {
       _json["filters"] = filters.map((value) => (value).toJson()).toList();
     }
@@ -923,36 +889,36 @@ class Parameters {
   }
 }
 
-/** Represents a query. */
+/// Represents a query.
 class Query {
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "doubleclickbidmanager#query".
-   */
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "doubleclickbidmanager#query".
   core.String kind;
-  /** Query metadata. */
+
+  /// Query metadata.
   QueryMetadata metadata;
-  /** Query parameters. */
+
+  /// Query parameters.
   Parameters params;
-  /** Query ID. */
+
+  /// Query ID.
   core.String queryId;
-  /**
-   * The ending time for the data that is shown in the report. Note,
-   * reportDataEndTimeMs is required if metadata.dataRange is CUSTOM_DATES and
-   * ignored otherwise.
-   */
+
+  /// The ending time for the data that is shown in the report. Note,
+  /// reportDataEndTimeMs is required if metadata.dataRange is CUSTOM_DATES and
+  /// ignored otherwise.
   core.String reportDataEndTimeMs;
-  /**
-   * The starting time for the data that is shown in the report. Note,
-   * reportDataStartTimeMs is required if metadata.dataRange is CUSTOM_DATES and
-   * ignored otherwise.
-   */
+
+  /// The starting time for the data that is shown in the report. Note,
+  /// reportDataStartTimeMs is required if metadata.dataRange is CUSTOM_DATES
+  /// and ignored otherwise.
   core.String reportDataStartTimeMs;
-  /** Information on how often and when to run a query. */
+
+  /// Information on how often and when to run a query.
   QuerySchedule schedule;
-  /**
-   * Canonical timezone code for report data time. Defaults to America/New_York.
-   */
+
+  /// Canonical timezone code for report data time. Defaults to
+  /// America/New_York.
   core.String timezoneCode;
 
   Query();
@@ -985,7 +951,8 @@ class Query {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -1014,73 +981,71 @@ class Query {
   }
 }
 
-/** Query metadata. */
+/// Query metadata.
 class QueryMetadata {
-  /**
-   * Range of report data.
-   * Possible string values are:
-   * - "ALL_TIME"
-   * - "CURRENT_DAY"
-   * - "CUSTOM_DATES"
-   * - "LAST_14_DAYS"
-   * - "LAST_30_DAYS"
-   * - "LAST_365_DAYS"
-   * - "LAST_7_DAYS"
-   * - "LAST_90_DAYS"
-   * - "MONTH_TO_DATE"
-   * - "PREVIOUS_DAY"
-   * - "PREVIOUS_HALF_MONTH"
-   * - "PREVIOUS_MONTH"
-   * - "PREVIOUS_QUARTER"
-   * - "PREVIOUS_WEEK"
-   * - "PREVIOUS_YEAR"
-   * - "QUARTER_TO_DATE"
-   * - "TYPE_NOT_SUPPORTED"
-   * - "WEEK_TO_DATE"
-   * - "YEAR_TO_DATE"
-   */
+  /// Range of report data.
+  /// Possible string values are:
+  /// - "ALL_TIME"
+  /// - "CURRENT_DAY"
+  /// - "CUSTOM_DATES"
+  /// - "LAST_14_DAYS"
+  /// - "LAST_30_DAYS"
+  /// - "LAST_365_DAYS"
+  /// - "LAST_7_DAYS"
+  /// - "LAST_90_DAYS"
+  /// - "MONTH_TO_DATE"
+  /// - "PREVIOUS_DAY"
+  /// - "PREVIOUS_HALF_MONTH"
+  /// - "PREVIOUS_MONTH"
+  /// - "PREVIOUS_QUARTER"
+  /// - "PREVIOUS_WEEK"
+  /// - "PREVIOUS_YEAR"
+  /// - "QUARTER_TO_DATE"
+  /// - "TYPE_NOT_SUPPORTED"
+  /// - "WEEK_TO_DATE"
+  /// - "YEAR_TO_DATE"
   core.String dataRange;
-  /**
-   * Format of the generated report.
-   * Possible string values are:
-   * - "CSV"
-   * - "EXCEL_CSV"
-   * - "XLSX"
-   */
+
+  /// Format of the generated report.
+  /// Possible string values are:
+  /// - "CSV"
+  /// - "EXCEL_CSV"
+  /// - "XLSX"
   core.String format;
-  /**
-   * The path to the location in Google Cloud Storage where the latest report is
-   * stored.
-   */
+
+  /// The path to the location in Google Cloud Storage where the latest report
+  /// is stored.
   core.String googleCloudStoragePathForLatestReport;
-  /** The path in Google Drive for the latest report. */
+
+  /// The path in Google Drive for the latest report.
   core.String googleDrivePathForLatestReport;
-  /** The time when the latest report started to run. */
+
+  /// The time when the latest report started to run.
   core.String latestReportRunTimeMs;
-  /**
-   * Locale of the generated reports. Valid values are cs CZECH de GERMAN en
-   * ENGLISH es SPANISH fr FRENCH it ITALIAN ja JAPANESE ko KOREAN pl POLISH
-   * pt-BR BRAZILIAN_PORTUGUESE ru RUSSIAN tr TURKISH uk UKRAINIAN zh-CN
-   * CHINA_CHINESE zh-TW TAIWAN_CHINESE
-   *
-   * An locale string not in the list above will generate reports in English.
-   */
+
+  /// Locale of the generated reports. Valid values are cs CZECH de GERMAN en
+  /// ENGLISH es SPANISH fr FRENCH it ITALIAN ja JAPANESE ko KOREAN pl POLISH
+  /// pt-BR BRAZILIAN_PORTUGUESE ru RUSSIAN tr TURKISH uk UKRAINIAN zh-CN
+  /// CHINA_CHINESE zh-TW TAIWAN_CHINESE
+  ///
+  /// An locale string not in the list above will generate reports in English.
   core.String locale;
-  /** Number of reports that have been generated for the query. */
+
+  /// Number of reports that have been generated for the query.
   core.int reportCount;
-  /** Whether the latest report is currently running. */
+
+  /// Whether the latest report is currently running.
   core.bool running;
-  /**
-   * Whether to send an email notification when a report is ready. Default to
-   * false.
-   */
+
+  /// Whether to send an email notification when a report is ready. Default to
+  /// false.
   core.bool sendNotification;
-  /**
-   * List of email addresses which are sent email notifications when the report
-   * is finished. Separate from sendNotification.
-   */
+
+  /// List of email addresses which are sent email notifications when the report
+  /// is finished. Separate from sendNotification.
   core.List<core.String> shareEmailAddress;
-  /** Query title. It is used to name the reports generated from this query. */
+
+  /// Query title. It is used to name the reports generated from this query.
   core.String title;
 
   QueryMetadata();
@@ -1093,7 +1058,8 @@ class QueryMetadata {
       format = _json["format"];
     }
     if (_json.containsKey("googleCloudStoragePathForLatestReport")) {
-      googleCloudStoragePathForLatestReport = _json["googleCloudStoragePathForLatestReport"];
+      googleCloudStoragePathForLatestReport =
+          _json["googleCloudStoragePathForLatestReport"];
     }
     if (_json.containsKey("googleDrivePathForLatestReport")) {
       googleDrivePathForLatestReport = _json["googleDrivePathForLatestReport"];
@@ -1122,7 +1088,8 @@ class QueryMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (dataRange != null) {
       _json["dataRange"] = dataRange;
     }
@@ -1130,7 +1097,8 @@ class QueryMetadata {
       _json["format"] = format;
     }
     if (googleCloudStoragePathForLatestReport != null) {
-      _json["googleCloudStoragePathForLatestReport"] = googleCloudStoragePathForLatestReport;
+      _json["googleCloudStoragePathForLatestReport"] =
+          googleCloudStoragePathForLatestReport;
     }
     if (googleDrivePathForLatestReport != null) {
       _json["googleDrivePathForLatestReport"] = googleDrivePathForLatestReport;
@@ -1160,30 +1128,28 @@ class QueryMetadata {
   }
 }
 
-/** Information on how frequently and when to run a query. */
+/// Information on how frequently and when to run a query.
 class QuerySchedule {
-  /** Datetime to periodically run the query until. */
+  /// Datetime to periodically run the query until.
   core.String endTimeMs;
-  /**
-   * How often the query is run.
-   * Possible string values are:
-   * - "DAILY"
-   * - "MONTHLY"
-   * - "ONE_TIME"
-   * - "QUARTERLY"
-   * - "SEMI_MONTHLY"
-   * - "WEEKLY"
-   */
+
+  /// How often the query is run.
+  /// Possible string values are:
+  /// - "DAILY"
+  /// - "MONTHLY"
+  /// - "ONE_TIME"
+  /// - "QUARTERLY"
+  /// - "SEMI_MONTHLY"
+  /// - "WEEKLY"
   core.String frequency;
-  /**
-   * Time of day at which a new report will be generated, represented as minutes
-   * past midnight. Range is 0 to 1439. Only applies to scheduled reports.
-   */
+
+  /// Time of day at which a new report will be generated, represented as
+  /// minutes past midnight. Range is 0 to 1439. Only applies to scheduled
+  /// reports.
   core.int nextRunMinuteOfDay;
-  /**
-   * Canonical timezone code for report generation time. Defaults to
-   * America/New_York.
-   */
+
+  /// Canonical timezone code for report generation time. Defaults to
+  /// America/New_York.
   core.String nextRunTimezoneCode;
 
   QuerySchedule();
@@ -1204,7 +1170,8 @@ class QuerySchedule {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (endTimeMs != null) {
       _json["endTimeMs"] = endTimeMs;
     }
@@ -1221,13 +1188,15 @@ class QuerySchedule {
   }
 }
 
-/** Represents a report. */
+/// Represents a report.
 class Report {
-  /** Key used to identify a report. */
+  /// Key used to identify a report.
   ReportKey key;
-  /** Report metadata. */
+
+  /// Report metadata.
   ReportMetadata metadata;
-  /** Report parameters. */
+
+  /// Report parameters.
   Parameters params;
 
   Report();
@@ -1245,7 +1214,8 @@ class Report {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = (key).toJson();
     }
@@ -1259,30 +1229,28 @@ class Report {
   }
 }
 
-/** An explanation of a report failure. */
+/// An explanation of a report failure.
 class ReportFailure {
-  /**
-   * Error code that shows why the report was not created.
-   * Possible string values are:
-   * - "AUTHENTICATION_ERROR"
-   * - "DEPRECATED_REPORTING_INVALID_QUERY"
-   * - "REPORTING_BUCKET_NOT_FOUND"
-   * - "REPORTING_CREATE_BUCKET_FAILED"
-   * - "REPORTING_DELETE_BUCKET_FAILED"
-   * - "REPORTING_FATAL_ERROR"
-   * - "REPORTING_ILLEGAL_FILENAME"
-   * - "REPORTING_IMCOMPATIBLE_METRICS"
-   * - "REPORTING_INVALID_QUERY_MISSING_PARTNER_AND_ADVERTISER_FILTERS"
-   * - "REPORTING_INVALID_QUERY_TITLE_MISSING"
-   * - "REPORTING_INVALID_QUERY_TOO_MANY_UNFILTERED_LARGE_GROUP_BYS"
-   * - "REPORTING_QUERY_NOT_FOUND"
-   * - "REPORTING_TRANSIENT_ERROR"
-   * - "REPORTING_UPDATE_BUCKET_PERMISSION_FAILED"
-   * - "REPORTING_WRITE_BUCKET_OBJECT_FAILED"
-   * - "SERVER_ERROR"
-   * - "UNAUTHORIZED_API_ACCESS"
-   * - "VALIDATION_ERROR"
-   */
+  /// Error code that shows why the report was not created.
+  /// Possible string values are:
+  /// - "AUTHENTICATION_ERROR"
+  /// - "DEPRECATED_REPORTING_INVALID_QUERY"
+  /// - "REPORTING_BUCKET_NOT_FOUND"
+  /// - "REPORTING_CREATE_BUCKET_FAILED"
+  /// - "REPORTING_DELETE_BUCKET_FAILED"
+  /// - "REPORTING_FATAL_ERROR"
+  /// - "REPORTING_ILLEGAL_FILENAME"
+  /// - "REPORTING_IMCOMPATIBLE_METRICS"
+  /// - "REPORTING_INVALID_QUERY_MISSING_PARTNER_AND_ADVERTISER_FILTERS"
+  /// - "REPORTING_INVALID_QUERY_TITLE_MISSING"
+  /// - "REPORTING_INVALID_QUERY_TOO_MANY_UNFILTERED_LARGE_GROUP_BYS"
+  /// - "REPORTING_QUERY_NOT_FOUND"
+  /// - "REPORTING_TRANSIENT_ERROR"
+  /// - "REPORTING_UPDATE_BUCKET_PERMISSION_FAILED"
+  /// - "REPORTING_WRITE_BUCKET_OBJECT_FAILED"
+  /// - "SERVER_ERROR"
+  /// - "UNAUTHORIZED_API_ACCESS"
+  /// - "VALIDATION_ERROR"
   core.String errorCode;
 
   ReportFailure();
@@ -1294,7 +1262,8 @@ class ReportFailure {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (errorCode != null) {
       _json["errorCode"] = errorCode;
     }
@@ -1302,11 +1271,12 @@ class ReportFailure {
   }
 }
 
-/** Key used to identify a report. */
+/// Key used to identify a report.
 class ReportKey {
-  /** Query ID. */
+  /// Query ID.
   core.String queryId;
-  /** Report ID. */
+
+  /// Report ID.
   core.String reportId;
 
   ReportKey();
@@ -1321,7 +1291,8 @@ class ReportKey {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (queryId != null) {
       _json["queryId"] = queryId;
     }
@@ -1332,18 +1303,19 @@ class ReportKey {
   }
 }
 
-/** Report metadata. */
+/// Report metadata.
 class ReportMetadata {
-  /**
-   * The path to the location in Google Cloud Storage where the report is
-   * stored.
-   */
+  /// The path to the location in Google Cloud Storage where the report is
+  /// stored.
   core.String googleCloudStoragePath;
-  /** The ending time for the data that is shown in the report. */
+
+  /// The ending time for the data that is shown in the report.
   core.String reportDataEndTimeMs;
-  /** The starting time for the data that is shown in the report. */
+
+  /// The starting time for the data that is shown in the report.
   core.String reportDataStartTimeMs;
-  /** Report status. */
+
+  /// Report status.
   ReportStatus status;
 
   ReportMetadata();
@@ -1364,7 +1336,8 @@ class ReportMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (googleCloudStoragePath != null) {
       _json["googleCloudStoragePath"] = googleCloudStoragePath;
     }
@@ -1381,27 +1354,26 @@ class ReportMetadata {
   }
 }
 
-/** Report status. */
+/// Report status.
 class ReportStatus {
-  /** If the report failed, this records the cause. */
+  /// If the report failed, this records the cause.
   ReportFailure failure;
-  /** The time when this report either completed successfully or failed. */
+
+  /// The time when this report either completed successfully or failed.
   core.String finishTimeMs;
-  /**
-   * The file type of the report.
-   * Possible string values are:
-   * - "CSV"
-   * - "EXCEL_CSV"
-   * - "XLSX"
-   */
+
+  /// The file type of the report.
+  /// Possible string values are:
+  /// - "CSV"
+  /// - "EXCEL_CSV"
+  /// - "XLSX"
   core.String format;
-  /**
-   * The state of the report.
-   * Possible string values are:
-   * - "DONE"
-   * - "FAILED"
-   * - "RUNNING"
-   */
+
+  /// The state of the report.
+  /// Possible string values are:
+  /// - "DONE"
+  /// - "FAILED"
+  /// - "RUNNING"
   core.String state;
 
   ReportStatus();
@@ -1422,7 +1394,8 @@ class ReportStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (failure != null) {
       _json["failure"] = (failure).toJson();
     }
@@ -1439,19 +1412,24 @@ class ReportStatus {
   }
 }
 
-/** Represents the upload status of a row in the request. */
+/// Represents the upload status of a row in the request.
 class RowStatus {
-  /** Whether the stored entity is changed as a result of upload. */
+  /// Whether the stored entity is changed as a result of upload.
   core.bool changed;
-  /** Entity Id. */
+
+  /// Entity Id.
   core.String entityId;
-  /** Entity name. */
+
+  /// Entity name.
   core.String entityName;
-  /** Reasons why the entity can't be uploaded. */
+
+  /// Reasons why the entity can't be uploaded.
   core.List<core.String> errors;
-  /** Whether the entity is persisted. */
+
+  /// Whether the entity is persisted.
   core.bool persisted;
-  /** Row number. */
+
+  /// Row number.
   core.int rowNumber;
 
   RowStatus();
@@ -1478,7 +1456,8 @@ class RowStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (changed != null) {
       _json["changed"] = changed;
     }
@@ -1501,47 +1480,43 @@ class RowStatus {
   }
 }
 
-/** Request to run a stored query to generate a report. */
+/// Request to run a stored query to generate a report.
 class RunQueryRequest {
-  /**
-   * Report data range used to generate the report.
-   * Possible string values are:
-   * - "ALL_TIME"
-   * - "CURRENT_DAY"
-   * - "CUSTOM_DATES"
-   * - "LAST_14_DAYS"
-   * - "LAST_30_DAYS"
-   * - "LAST_365_DAYS"
-   * - "LAST_7_DAYS"
-   * - "LAST_90_DAYS"
-   * - "MONTH_TO_DATE"
-   * - "PREVIOUS_DAY"
-   * - "PREVIOUS_HALF_MONTH"
-   * - "PREVIOUS_MONTH"
-   * - "PREVIOUS_QUARTER"
-   * - "PREVIOUS_WEEK"
-   * - "PREVIOUS_YEAR"
-   * - "QUARTER_TO_DATE"
-   * - "TYPE_NOT_SUPPORTED"
-   * - "WEEK_TO_DATE"
-   * - "YEAR_TO_DATE"
-   */
+  /// Report data range used to generate the report.
+  /// Possible string values are:
+  /// - "ALL_TIME"
+  /// - "CURRENT_DAY"
+  /// - "CUSTOM_DATES"
+  /// - "LAST_14_DAYS"
+  /// - "LAST_30_DAYS"
+  /// - "LAST_365_DAYS"
+  /// - "LAST_7_DAYS"
+  /// - "LAST_90_DAYS"
+  /// - "MONTH_TO_DATE"
+  /// - "PREVIOUS_DAY"
+  /// - "PREVIOUS_HALF_MONTH"
+  /// - "PREVIOUS_MONTH"
+  /// - "PREVIOUS_QUARTER"
+  /// - "PREVIOUS_WEEK"
+  /// - "PREVIOUS_YEAR"
+  /// - "QUARTER_TO_DATE"
+  /// - "TYPE_NOT_SUPPORTED"
+  /// - "WEEK_TO_DATE"
+  /// - "YEAR_TO_DATE"
   core.String dataRange;
-  /**
-   * The ending time for the data that is shown in the report. Note,
-   * reportDataEndTimeMs is required if dataRange is CUSTOM_DATES and ignored
-   * otherwise.
-   */
+
+  /// The ending time for the data that is shown in the report. Note,
+  /// reportDataEndTimeMs is required if dataRange is CUSTOM_DATES and ignored
+  /// otherwise.
   core.String reportDataEndTimeMs;
-  /**
-   * The starting time for the data that is shown in the report. Note,
-   * reportDataStartTimeMs is required if dataRange is CUSTOM_DATES and ignored
-   * otherwise.
-   */
+
+  /// The starting time for the data that is shown in the report. Note,
+  /// reportDataStartTimeMs is required if dataRange is CUSTOM_DATES and ignored
+  /// otherwise.
   core.String reportDataStartTimeMs;
-  /**
-   * Canonical timezone code for report data time. Defaults to America/New_York.
-   */
+
+  /// Canonical timezone code for report data time. Defaults to
+  /// America/New_York.
   core.String timezoneCode;
 
   RunQueryRequest();
@@ -1562,7 +1537,8 @@ class RunQueryRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (dataRange != null) {
       _json["dataRange"] = dataRange;
     }
@@ -1579,23 +1555,19 @@ class RunQueryRequest {
   }
 }
 
-/** Request to upload line items. */
+/// Request to upload line items.
 class UploadLineItemsRequest {
-  /**
-   * Set to true to get upload status without actually persisting the line
-   * items.
-   */
+  /// Set to true to get upload status without actually persisting the line
+  /// items.
   core.bool dryRun;
-  /**
-   * Format the line items are in. Default to CSV.
-   * Possible string values are:
-   * - "CSV"
-   */
+
+  /// Format the line items are in. Default to CSV.
+  /// Possible string values are:
+  /// - "CSV"
   core.String format;
-  /**
-   * Line items in CSV to upload. Refer to  Entity Write File Format for more
-   * information on file format.
-   */
+
+  /// Line items in CSV to upload. Refer to  Entity Write File Format for more
+  /// information on file format.
   core.String lineItems;
 
   UploadLineItemsRequest();
@@ -1613,7 +1585,8 @@ class UploadLineItemsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (dryRun != null) {
       _json["dryRun"] = dryRun;
     }
@@ -1627,9 +1600,9 @@ class UploadLineItemsRequest {
   }
 }
 
-/** Upload line items response. */
+/// Upload line items response.
 class UploadLineItemsResponse {
-  /** Status of upload. */
+  /// Status of upload.
   UploadStatus uploadStatus;
 
   UploadLineItemsResponse();
@@ -1641,7 +1614,8 @@ class UploadLineItemsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (uploadStatus != null) {
       _json["uploadStatus"] = (uploadStatus).toJson();
     }
@@ -1649,11 +1623,12 @@ class UploadLineItemsResponse {
   }
 }
 
-/** Represents the status of upload. */
+/// Represents the status of upload.
 class UploadStatus {
-  /** Reasons why upload can't be completed. */
+  /// Reasons why upload can't be completed.
   core.List<core.String> errors;
-  /** Per-row upload status. */
+
+  /// Per-row upload status.
   core.List<RowStatus> rowStatus;
 
   UploadStatus();
@@ -1663,12 +1638,15 @@ class UploadStatus {
       errors = _json["errors"];
     }
     if (_json.containsKey("rowStatus")) {
-      rowStatus = _json["rowStatus"].map((value) => new RowStatus.fromJson(value)).toList();
+      rowStatus = _json["rowStatus"]
+          .map((value) => new RowStatus.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (errors != null) {
       _json["errors"] = errors;
     }

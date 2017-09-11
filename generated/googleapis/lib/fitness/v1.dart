@@ -9,124 +9,142 @@ import 'dart:convert' as convert;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
-    ApiRequestError, DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
+    show ApiRequestError, DetailedApiRequestError;
 
 const core.String USER_AGENT = 'dart-api-client fitness/v1';
 
-/**
- * Stores and accesses user data in the fitness store from apps on any platform.
- */
+/// Stores and accesses user data in the fitness store from apps on any
+/// platform.
 class FitnessApi {
-  /** View your activity information in Google Fit */
-  static const FitnessActivityReadScope = "https://www.googleapis.com/auth/fitness.activity.read";
+  /// View your activity information in Google Fit
+  static const FitnessActivityReadScope =
+      "https://www.googleapis.com/auth/fitness.activity.read";
 
-  /** View and store your activity information in Google Fit */
-  static const FitnessActivityWriteScope = "https://www.googleapis.com/auth/fitness.activity.write";
+  /// View and store your activity information in Google Fit
+  static const FitnessActivityWriteScope =
+      "https://www.googleapis.com/auth/fitness.activity.write";
 
-  /** View blood glucose data in Google Fit */
-  static const FitnessBloodGlucoseReadScope = "https://www.googleapis.com/auth/fitness.blood_glucose.read";
+  /// View blood glucose data in Google Fit
+  static const FitnessBloodGlucoseReadScope =
+      "https://www.googleapis.com/auth/fitness.blood_glucose.read";
 
-  /** View and store blood glucose data in Google Fit */
-  static const FitnessBloodGlucoseWriteScope = "https://www.googleapis.com/auth/fitness.blood_glucose.write";
+  /// View and store blood glucose data in Google Fit
+  static const FitnessBloodGlucoseWriteScope =
+      "https://www.googleapis.com/auth/fitness.blood_glucose.write";
 
-  /** View blood pressure data in Google Fit */
-  static const FitnessBloodPressureReadScope = "https://www.googleapis.com/auth/fitness.blood_pressure.read";
+  /// View blood pressure data in Google Fit
+  static const FitnessBloodPressureReadScope =
+      "https://www.googleapis.com/auth/fitness.blood_pressure.read";
 
-  /** View and store blood pressure data in Google Fit */
-  static const FitnessBloodPressureWriteScope = "https://www.googleapis.com/auth/fitness.blood_pressure.write";
+  /// View and store blood pressure data in Google Fit
+  static const FitnessBloodPressureWriteScope =
+      "https://www.googleapis.com/auth/fitness.blood_pressure.write";
 
-  /** View body sensor information in Google Fit */
-  static const FitnessBodyReadScope = "https://www.googleapis.com/auth/fitness.body.read";
+  /// View body sensor information in Google Fit
+  static const FitnessBodyReadScope =
+      "https://www.googleapis.com/auth/fitness.body.read";
 
-  /** View and store body sensor data in Google Fit */
-  static const FitnessBodyWriteScope = "https://www.googleapis.com/auth/fitness.body.write";
+  /// View and store body sensor data in Google Fit
+  static const FitnessBodyWriteScope =
+      "https://www.googleapis.com/auth/fitness.body.write";
 
-  /** View body temperature data in Google Fit */
-  static const FitnessBodyTemperatureReadScope = "https://www.googleapis.com/auth/fitness.body_temperature.read";
+  /// View body temperature data in Google Fit
+  static const FitnessBodyTemperatureReadScope =
+      "https://www.googleapis.com/auth/fitness.body_temperature.read";
 
-  /** View and store body temperature data in Google Fit */
-  static const FitnessBodyTemperatureWriteScope = "https://www.googleapis.com/auth/fitness.body_temperature.write";
+  /// View and store body temperature data in Google Fit
+  static const FitnessBodyTemperatureWriteScope =
+      "https://www.googleapis.com/auth/fitness.body_temperature.write";
 
-  /** View your stored location data in Google Fit */
-  static const FitnessLocationReadScope = "https://www.googleapis.com/auth/fitness.location.read";
+  /// View your stored location data in Google Fit
+  static const FitnessLocationReadScope =
+      "https://www.googleapis.com/auth/fitness.location.read";
 
-  /** View and store your location data in Google Fit */
-  static const FitnessLocationWriteScope = "https://www.googleapis.com/auth/fitness.location.write";
+  /// View and store your location data in Google Fit
+  static const FitnessLocationWriteScope =
+      "https://www.googleapis.com/auth/fitness.location.write";
 
-  /** View nutrition information in Google Fit */
-  static const FitnessNutritionReadScope = "https://www.googleapis.com/auth/fitness.nutrition.read";
+  /// View nutrition information in Google Fit
+  static const FitnessNutritionReadScope =
+      "https://www.googleapis.com/auth/fitness.nutrition.read";
 
-  /** View and store nutrition information in Google Fit */
-  static const FitnessNutritionWriteScope = "https://www.googleapis.com/auth/fitness.nutrition.write";
+  /// View and store nutrition information in Google Fit
+  static const FitnessNutritionWriteScope =
+      "https://www.googleapis.com/auth/fitness.nutrition.write";
 
-  /** View oxygen saturation data in Google Fit */
-  static const FitnessOxygenSaturationReadScope = "https://www.googleapis.com/auth/fitness.oxygen_saturation.read";
+  /// View oxygen saturation data in Google Fit
+  static const FitnessOxygenSaturationReadScope =
+      "https://www.googleapis.com/auth/fitness.oxygen_saturation.read";
 
-  /** View and store oxygen saturation data in Google Fit */
-  static const FitnessOxygenSaturationWriteScope = "https://www.googleapis.com/auth/fitness.oxygen_saturation.write";
+  /// View and store oxygen saturation data in Google Fit
+  static const FitnessOxygenSaturationWriteScope =
+      "https://www.googleapis.com/auth/fitness.oxygen_saturation.write";
 
-  /** View reproductive health data in Google Fit */
-  static const FitnessReproductiveHealthReadScope = "https://www.googleapis.com/auth/fitness.reproductive_health.read";
+  /// View reproductive health data in Google Fit
+  static const FitnessReproductiveHealthReadScope =
+      "https://www.googleapis.com/auth/fitness.reproductive_health.read";
 
-  /** View and store reproductive health data in Google Fit */
-  static const FitnessReproductiveHealthWriteScope = "https://www.googleapis.com/auth/fitness.reproductive_health.write";
-
+  /// View and store reproductive health data in Google Fit
+  static const FitnessReproductiveHealthWriteScope =
+      "https://www.googleapis.com/auth/fitness.reproductive_health.write";
 
   final commons.ApiRequester _requester;
 
   UsersResourceApi get users => new UsersResourceApi(_requester);
 
-  FitnessApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "fitness/v1/users/"}) :
-      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+  FitnessApi(http.Client client,
+      {core.String rootUrl: "https://www.googleapis.com/",
+      core.String servicePath: "fitness/v1/users/"})
+      : _requester =
+            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
-
 
 class UsersResourceApi {
   final commons.ApiRequester _requester;
 
-  UsersDataSourcesResourceApi get dataSources => new UsersDataSourcesResourceApi(_requester);
-  UsersDatasetResourceApi get dataset => new UsersDatasetResourceApi(_requester);
-  UsersSessionsResourceApi get sessions => new UsersSessionsResourceApi(_requester);
+  UsersDataSourcesResourceApi get dataSources =>
+      new UsersDataSourcesResourceApi(_requester);
+  UsersDatasetResourceApi get dataset =>
+      new UsersDatasetResourceApi(_requester);
+  UsersSessionsResourceApi get sessions =>
+      new UsersSessionsResourceApi(_requester);
 
-  UsersResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  UsersResourceApi(commons.ApiRequester client) : _requester = client;
 }
-
 
 class UsersDataSourcesResourceApi {
   final commons.ApiRequester _requester;
 
-  UsersDataSourcesDatasetsResourceApi get datasets => new UsersDataSourcesDatasetsResourceApi(_requester);
+  UsersDataSourcesDatasetsResourceApi get datasets =>
+      new UsersDataSourcesDatasetsResourceApi(_requester);
 
-  UsersDataSourcesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  UsersDataSourcesResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Creates a new data source that is unique across all data sources belonging
-   * to this user. The data stream ID field can be omitted and will be generated
-   * by the server with the correct format. The data stream ID is an ordered
-   * combination of some fields from the data source. In addition to the data
-   * source fields reflected into the data source ID, the developer project
-   * number that is authenticated when creating the data source is included.
-   * This developer project number is obfuscated when read by any other
-   * developer reading public data types.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [userId] - Create the data source for the person identified. Use me to
-   * indicate the authenticated user. Only me is supported at this time.
-   *
-   * Completes with a [DataSource].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Creates a new data source that is unique across all data sources belonging
+  /// to this user. The data stream ID field can be omitted and will be
+  /// generated by the server with the correct format. The data stream ID is an
+  /// ordered combination of some fields from the data source. In addition to
+  /// the data source fields reflected into the data source ID, the developer
+  /// project number that is authenticated when creating the data source is
+  /// included. This developer project number is obfuscated when read by any
+  /// other developer reading public data types.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - Create the data source for the person identified. Use me to
+  /// indicate the authenticated user. Only me is supported at this time.
+  ///
+  /// Completes with a [DataSource].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<DataSource> create(DataSource request, core.String userId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -144,36 +162,34 @@ class UsersDataSourcesResourceApi {
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new DataSource.fromJson(data));
   }
 
-  /**
-   * Deletes the specified data source. The request will fail if the data source
-   * contains any data points.
-   *
-   * Request parameters:
-   *
-   * [userId] - Retrieve a data source for the person identified. Use me to
-   * indicate the authenticated user. Only me is supported at this time.
-   *
-   * [dataSourceId] - The data stream ID of the data source to delete.
-   *
-   * Completes with a [DataSource].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<DataSource> delete(core.String userId, core.String dataSourceId) {
+  /// Deletes the specified data source. The request will fail if the data
+  /// source contains any data points.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - Retrieve a data source for the person identified. Use me to
+  /// indicate the authenticated user. Only me is supported at this time.
+  ///
+  /// [dataSourceId] - The data stream ID of the data source to delete.
+  ///
+  /// Completes with a [DataSource].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DataSource> delete(
+      core.String userId, core.String dataSourceId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -188,36 +204,35 @@ class UsersDataSourcesResourceApi {
       throw new core.ArgumentError("Parameter dataSourceId is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources/' + commons.Escaper.ecapeVariable('$dataSourceId');
+    _url = commons.Escaper.ecapeVariable('$userId') +
+        '/dataSources/' +
+        commons.Escaper.ecapeVariable('$dataSourceId');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new DataSource.fromJson(data));
   }
 
-  /**
-   * Returns the specified data source.
-   *
-   * Request parameters:
-   *
-   * [userId] - Retrieve a data source for the person identified. Use me to
-   * indicate the authenticated user. Only me is supported at this time.
-   *
-   * [dataSourceId] - The data stream ID of the data source to retrieve.
-   *
-   * Completes with a [DataSource].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Returns the specified data source.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - Retrieve a data source for the person identified. Use me to
+  /// indicate the authenticated user. Only me is supported at this time.
+  ///
+  /// [dataSourceId] - The data stream ID of the data source to retrieve.
+  ///
+  /// Completes with a [DataSource].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<DataSource> get(core.String userId, core.String dataSourceId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -233,41 +248,41 @@ class UsersDataSourcesResourceApi {
       throw new core.ArgumentError("Parameter dataSourceId is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources/' + commons.Escaper.ecapeVariable('$dataSourceId');
+    _url = commons.Escaper.ecapeVariable('$userId') +
+        '/dataSources/' +
+        commons.Escaper.ecapeVariable('$dataSourceId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new DataSource.fromJson(data));
   }
 
-  /**
-   * Lists all data sources that are visible to the developer, using the OAuth
-   * scopes provided. The list is not exhaustive; the user may have private data
-   * sources that are only visible to other developers, or calls using other
-   * scopes.
-   *
-   * Request parameters:
-   *
-   * [userId] - List data sources for the person identified. Use me to indicate
-   * the authenticated user. Only me is supported at this time.
-   *
-   * [dataTypeName] - The names of data types to include in the list. If not
-   * specified, all data sources will be returned.
-   *
-   * Completes with a [ListDataSourcesResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ListDataSourcesResponse> list(core.String userId, {core.List<core.String> dataTypeName}) {
+  /// Lists all data sources that are visible to the developer, using the OAuth
+  /// scopes provided. The list is not exhaustive; the user may have private
+  /// data sources that are only visible to other developers, or calls using
+  /// other scopes.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - List data sources for the person identified. Use me to indicate
+  /// the authenticated user. Only me is supported at this time.
+  ///
+  /// [dataTypeName] - The names of data types to include in the list. If not
+  /// specified, all data sources will be returned.
+  ///
+  /// Completes with a [ListDataSourcesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDataSourcesResponse> list(core.String userId,
+      {core.List<core.String> dataTypeName}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -284,42 +299,40 @@ class UsersDataSourcesResourceApi {
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ListDataSourcesResponse.fromJson(data));
   }
 
-  /**
-   * Updates the specified data source. The dataStreamId, dataType, type,
-   * dataStreamName, and device properties with the exception of version, cannot
-   * be modified.
-   *
-   * Data sources are identified by their dataStreamId. This method supports
-   * patch semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [userId] - Update the data source for the person identified. Use me to
-   * indicate the authenticated user. Only me is supported at this time.
-   *
-   * [dataSourceId] - The data stream ID of the data source to update.
-   *
-   * Completes with a [DataSource].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<DataSource> patch(DataSource request, core.String userId, core.String dataSourceId) {
+  /// Updates the specified data source. The dataStreamId, dataType, type,
+  /// dataStreamName, and device properties with the exception of version,
+  /// cannot be modified.
+  ///
+  /// Data sources are identified by their dataStreamId. This method supports
+  /// patch semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - Update the data source for the person identified. Use me to
+  /// indicate the authenticated user. Only me is supported at this time.
+  ///
+  /// [dataSourceId] - The data stream ID of the data source to update.
+  ///
+  /// Completes with a [DataSource].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DataSource> patch(
+      DataSource request, core.String userId, core.String dataSourceId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -337,43 +350,43 @@ class UsersDataSourcesResourceApi {
       throw new core.ArgumentError("Parameter dataSourceId is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources/' + commons.Escaper.ecapeVariable('$dataSourceId');
+    _url = commons.Escaper.ecapeVariable('$userId') +
+        '/dataSources/' +
+        commons.Escaper.ecapeVariable('$dataSourceId');
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new DataSource.fromJson(data));
   }
 
-  /**
-   * Updates the specified data source. The dataStreamId, dataType, type,
-   * dataStreamName, and device properties with the exception of version, cannot
-   * be modified.
-   *
-   * Data sources are identified by their dataStreamId.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [userId] - Update the data source for the person identified. Use me to
-   * indicate the authenticated user. Only me is supported at this time.
-   *
-   * [dataSourceId] - The data stream ID of the data source to update.
-   *
-   * Completes with a [DataSource].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<DataSource> update(DataSource request, core.String userId, core.String dataSourceId) {
+  /// Updates the specified data source. The dataStreamId, dataType, type,
+  /// dataStreamName, and device properties with the exception of version,
+  /// cannot be modified.
+  ///
+  /// Data sources are identified by their dataStreamId.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - Update the data source for the person identified. Use me to
+  /// indicate the authenticated user. Only me is supported at this time.
+  ///
+  /// [dataSourceId] - The data stream ID of the data source to update.
+  ///
+  /// Completes with a [DataSource].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DataSource> update(
+      DataSource request, core.String userId, core.String dataSourceId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -391,61 +404,60 @@ class UsersDataSourcesResourceApi {
       throw new core.ArgumentError("Parameter dataSourceId is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources/' + commons.Escaper.ecapeVariable('$dataSourceId');
+    _url = commons.Escaper.ecapeVariable('$userId') +
+        '/dataSources/' +
+        commons.Escaper.ecapeVariable('$dataSourceId');
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new DataSource.fromJson(data));
   }
-
 }
-
 
 class UsersDataSourcesDatasetsResourceApi {
   final commons.ApiRequester _requester;
 
-  UsersDataSourcesDatasetsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  UsersDataSourcesDatasetsResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Performs an inclusive delete of all data points whose start and end times
-   * have any overlap with the time range specified by the dataset ID. For most
-   * data types, the entire data point will be deleted. For data types where the
-   * time span represents a consistent value (such as
-   * com.google.activity.segment), and a data point straddles either end point
-   * of the dataset, only the overlapping portion of the data point will be
-   * deleted.
-   *
-   * Request parameters:
-   *
-   * [userId] - Delete a dataset for the person identified. Use me to indicate
-   * the authenticated user. Only me is supported at this time.
-   *
-   * [dataSourceId] - The data stream ID of the data source that created the
-   * dataset.
-   *
-   * [datasetId] - Dataset identifier that is a composite of the minimum data
-   * point start time and maximum data point end time represented as nanoseconds
-   * from the epoch. The ID is formatted like: "startTime-endTime" where
-   * startTime and endTime are 64 bit integers.
-   *
-   * [currentTimeMillis] - The client's current time in milliseconds since
-   * epoch.
-   *
-   * [modifiedTimeMillis] - When the operation was performed on the client.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future delete(core.String userId, core.String dataSourceId, core.String datasetId, {core.String currentTimeMillis, core.String modifiedTimeMillis}) {
+  /// Performs an inclusive delete of all data points whose start and end times
+  /// have any overlap with the time range specified by the dataset ID. For most
+  /// data types, the entire data point will be deleted. For data types where
+  /// the time span represents a consistent value (such as
+  /// com.google.activity.segment), and a data point straddles either end point
+  /// of the dataset, only the overlapping portion of the data point will be
+  /// deleted.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - Delete a dataset for the person identified. Use me to indicate
+  /// the authenticated user. Only me is supported at this time.
+  ///
+  /// [dataSourceId] - The data stream ID of the data source that created the
+  /// dataset.
+  ///
+  /// [datasetId] - Dataset identifier that is a composite of the minimum data
+  /// point start time and maximum data point end time represented as
+  /// nanoseconds from the epoch. The ID is formatted like: "startTime-endTime"
+  /// where startTime and endTime are 64 bit integers.
+  ///
+  /// [currentTimeMillis] - The client's current time in milliseconds since
+  /// epoch.
+  ///
+  /// [modifiedTimeMillis] - When the operation was performed on the client.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future delete(
+      core.String userId, core.String dataSourceId, core.String datasetId,
+      {core.String currentTimeMillis, core.String modifiedTimeMillis}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -471,57 +483,60 @@ class UsersDataSourcesDatasetsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources/' + commons.Escaper.ecapeVariable('$dataSourceId') + '/datasets/' + commons.Escaper.ecapeVariable('$datasetId');
+    _url = commons.Escaper.ecapeVariable('$userId') +
+        '/dataSources/' +
+        commons.Escaper.ecapeVariable('$dataSourceId') +
+        '/datasets/' +
+        commons.Escaper.ecapeVariable('$datasetId');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Returns a dataset containing all data points whose start and end times
-   * overlap with the specified range of the dataset minimum start time and
-   * maximum end time. Specifically, any data point whose start time is less
-   * than or equal to the dataset end time and whose end time is greater than or
-   * equal to the dataset start time.
-   *
-   * Request parameters:
-   *
-   * [userId] - Retrieve a dataset for the person identified. Use me to indicate
-   * the authenticated user. Only me is supported at this time.
-   *
-   * [dataSourceId] - The data stream ID of the data source that created the
-   * dataset.
-   *
-   * [datasetId] - Dataset identifier that is a composite of the minimum data
-   * point start time and maximum data point end time represented as nanoseconds
-   * from the epoch. The ID is formatted like: "startTime-endTime" where
-   * startTime and endTime are 64 bit integers.
-   *
-   * [limit] - If specified, no more than this many data points will be included
-   * in the dataset. If there are more data points in the dataset, nextPageToken
-   * will be set in the dataset response.
-   *
-   * [pageToken] - The continuation token, which is used to page through large
-   * datasets. To get the next page of a dataset, set this parameter to the
-   * value of nextPageToken from the previous response. Each subsequent call
-   * will yield a partial dataset with data point end timestamps that are
-   * strictly smaller than those in the previous partial response.
-   *
-   * Completes with a [Dataset].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Dataset> get(core.String userId, core.String dataSourceId, core.String datasetId, {core.int limit, core.String pageToken}) {
+  /// Returns a dataset containing all data points whose start and end times
+  /// overlap with the specified range of the dataset minimum start time and
+  /// maximum end time. Specifically, any data point whose start time is less
+  /// than or equal to the dataset end time and whose end time is greater than
+  /// or equal to the dataset start time.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - Retrieve a dataset for the person identified. Use me to
+  /// indicate the authenticated user. Only me is supported at this time.
+  ///
+  /// [dataSourceId] - The data stream ID of the data source that created the
+  /// dataset.
+  ///
+  /// [datasetId] - Dataset identifier that is a composite of the minimum data
+  /// point start time and maximum data point end time represented as
+  /// nanoseconds from the epoch. The ID is formatted like: "startTime-endTime"
+  /// where startTime and endTime are 64 bit integers.
+  ///
+  /// [limit] - If specified, no more than this many data points will be
+  /// included in the dataset. If there are more data points in the dataset,
+  /// nextPageToken will be set in the dataset response.
+  ///
+  /// [pageToken] - The continuation token, which is used to page through large
+  /// datasets. To get the next page of a dataset, set this parameter to the
+  /// value of nextPageToken from the previous response. Each subsequent call
+  /// will yield a partial dataset with data point end timestamps that are
+  /// strictly smaller than those in the previous partial response.
+  ///
+  /// Completes with a [Dataset].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Dataset> get(
+      core.String userId, core.String dataSourceId, core.String datasetId,
+      {core.int limit, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -545,52 +560,55 @@ class UsersDataSourcesDatasetsResourceApi {
       _queryParams["pageToken"] = [pageToken];
     }
 
-    _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources/' + commons.Escaper.ecapeVariable('$dataSourceId') + '/datasets/' + commons.Escaper.ecapeVariable('$datasetId');
+    _url = commons.Escaper.ecapeVariable('$userId') +
+        '/dataSources/' +
+        commons.Escaper.ecapeVariable('$dataSourceId') +
+        '/datasets/' +
+        commons.Escaper.ecapeVariable('$datasetId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Dataset.fromJson(data));
   }
 
-  /**
-   * Adds data points to a dataset. The dataset need not be previously created.
-   * All points within the given dataset will be returned with subsquent calls
-   * to retrieve this dataset. Data points can belong to more than one dataset.
-   * This method does not use patch semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [userId] - Patch a dataset for the person identified. Use me to indicate
-   * the authenticated user. Only me is supported at this time.
-   *
-   * [dataSourceId] - The data stream ID of the data source that created the
-   * dataset.
-   *
-   * [datasetId] - Dataset identifier that is a composite of the minimum data
-   * point start time and maximum data point end time represented as nanoseconds
-   * from the epoch. The ID is formatted like: "startTime-endTime" where
-   * startTime and endTime are 64 bit integers.
-   *
-   * [currentTimeMillis] - The client's current time in milliseconds since
-   * epoch. Note that the minStartTimeNs and maxEndTimeNs properties in the
-   * request body are in nanoseconds instead of milliseconds.
-   *
-   * Completes with a [Dataset].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Dataset> patch(Dataset request, core.String userId, core.String dataSourceId, core.String datasetId, {core.String currentTimeMillis}) {
+  /// Adds data points to a dataset. The dataset need not be previously created.
+  /// All points within the given dataset will be returned with subsquent calls
+  /// to retrieve this dataset. Data points can belong to more than one dataset.
+  /// This method does not use patch semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - Patch a dataset for the person identified. Use me to indicate
+  /// the authenticated user. Only me is supported at this time.
+  ///
+  /// [dataSourceId] - The data stream ID of the data source that created the
+  /// dataset.
+  ///
+  /// [datasetId] - Dataset identifier that is a composite of the minimum data
+  /// point start time and maximum data point end time represented as
+  /// nanoseconds from the epoch. The ID is formatted like: "startTime-endTime"
+  /// where startTime and endTime are 64 bit integers.
+  ///
+  /// [currentTimeMillis] - The client's current time in milliseconds since
+  /// epoch. Note that the minStartTimeNs and maxEndTimeNs properties in the
+  /// request body are in nanoseconds instead of milliseconds.
+  ///
+  /// Completes with a [Dataset].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Dataset> patch(Dataset request, core.String userId,
+      core.String dataSourceId, core.String datasetId,
+      {core.String currentTimeMillis}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -614,48 +632,48 @@ class UsersDataSourcesDatasetsResourceApi {
       _queryParams["currentTimeMillis"] = [currentTimeMillis];
     }
 
-    _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources/' + commons.Escaper.ecapeVariable('$dataSourceId') + '/datasets/' + commons.Escaper.ecapeVariable('$datasetId');
+    _url = commons.Escaper.ecapeVariable('$userId') +
+        '/dataSources/' +
+        commons.Escaper.ecapeVariable('$dataSourceId') +
+        '/datasets/' +
+        commons.Escaper.ecapeVariable('$datasetId');
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Dataset.fromJson(data));
   }
-
 }
-
 
 class UsersDatasetResourceApi {
   final commons.ApiRequester _requester;
 
-  UsersDatasetResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  UsersDatasetResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Aggregates data of a certain type or stream into buckets divided by a given
-   * type of boundary. Multiple data sets of multiple types and from multiple
-   * sources can be aggreated into exactly one bucket type per request.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [userId] - Aggregate data for the person identified. Use me to indicate the
-   * authenticated user. Only me is supported at this time.
-   *
-   * Completes with a [AggregateResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<AggregateResponse> aggregate(AggregateRequest request, core.String userId) {
+  /// Aggregates data of a certain type or stream into buckets divided by a
+  /// given type of boundary. Multiple data sets of multiple types and from
+  /// multiple sources can be aggreated into exactly one bucket type per
+  /// request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - Aggregate data for the person identified. Use me to indicate
+  /// the authenticated user. Only me is supported at this time.
+  ///
+  /// Completes with a [AggregateResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AggregateResponse> aggregate(
+      AggregateRequest request, core.String userId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -672,45 +690,40 @@ class UsersDatasetResourceApi {
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/dataset:aggregate';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new AggregateResponse.fromJson(data));
   }
-
 }
-
 
 class UsersSessionsResourceApi {
   final commons.ApiRequester _requester;
 
-  UsersSessionsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  UsersSessionsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Deletes a session specified by the given session ID.
-   *
-   * Request parameters:
-   *
-   * [userId] - Delete a session for the person identified. Use me to indicate
-   * the authenticated user. Only me is supported at this time.
-   *
-   * [sessionId] - The ID of the session to be deleted.
-   *
-   * [currentTimeMillis] - The client's current time in milliseconds since
-   * epoch.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future delete(core.String userId, core.String sessionId, {core.String currentTimeMillis}) {
+  /// Deletes a session specified by the given session ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - Delete a session for the person identified. Use me to indicate
+  /// the authenticated user. Only me is supported at this time.
+  ///
+  /// [sessionId] - The ID of the session to be deleted.
+  ///
+  /// [currentTimeMillis] - The client's current time in milliseconds since
+  /// epoch.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future delete(core.String userId, core.String sessionId,
+      {core.String currentTimeMillis}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -730,49 +743,52 @@ class UsersSessionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$userId') + '/sessions/' + commons.Escaper.ecapeVariable('$sessionId');
+    _url = commons.Escaper.ecapeVariable('$userId') +
+        '/sessions/' +
+        commons.Escaper.ecapeVariable('$sessionId');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Lists sessions previously created.
-   *
-   * Request parameters:
-   *
-   * [userId] - List sessions for the person identified. Use me to indicate the
-   * authenticated user. Only me is supported at this time.
-   *
-   * [endTime] - An RFC3339 timestamp. Only sessions ending between the start
-   * and end times will be included in the response.
-   *
-   * [includeDeleted] - If true, deleted sessions will be returned. When set to
-   * true, sessions returned in this response will only have an ID and will not
-   * have any other fields.
-   *
-   * [pageToken] - The continuation token, which is used to page through large
-   * result sets. To get the next page of results, set this parameter to the
-   * value of nextPageToken from the previous response.
-   *
-   * [startTime] - An RFC3339 timestamp. Only sessions ending between the start
-   * and end times will be included in the response.
-   *
-   * Completes with a [ListSessionsResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ListSessionsResponse> list(core.String userId, {core.String endTime, core.bool includeDeleted, core.String pageToken, core.String startTime}) {
+  /// Lists sessions previously created.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - List sessions for the person identified. Use me to indicate the
+  /// authenticated user. Only me is supported at this time.
+  ///
+  /// [endTime] - An RFC3339 timestamp. Only sessions ending between the start
+  /// and end times will be included in the response.
+  ///
+  /// [includeDeleted] - If true, deleted sessions will be returned. When set to
+  /// true, sessions returned in this response will only have an ID and will not
+  /// have any other fields.
+  ///
+  /// [pageToken] - The continuation token, which is used to page through large
+  /// result sets. To get the next page of results, set this parameter to the
+  /// value of nextPageToken from the previous response.
+  ///
+  /// [startTime] - An RFC3339 timestamp. Only sessions ending between the start
+  /// and end times will be included in the response.
+  ///
+  /// Completes with a [ListSessionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSessionsResponse> list(core.String userId,
+      {core.String endTime,
+      core.bool includeDeleted,
+      core.String pageToken,
+      core.String startTime}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -798,40 +814,39 @@ class UsersSessionsResourceApi {
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/sessions';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ListSessionsResponse.fromJson(data));
   }
 
-  /**
-   * Updates or insert a given session.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [userId] - Create sessions for the person identified. Use me to indicate
-   * the authenticated user. Only me is supported at this time.
-   *
-   * [sessionId] - The ID of the session to be created.
-   *
-   * [currentTimeMillis] - The client's current time in milliseconds since
-   * epoch.
-   *
-   * Completes with a [Session].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Session> update(Session request, core.String userId, core.String sessionId, {core.String currentTimeMillis}) {
+  /// Updates or insert a given session.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - Create sessions for the person identified. Use me to indicate
+  /// the authenticated user. Only me is supported at this time.
+  ///
+  /// [sessionId] - The ID of the session to be created.
+  ///
+  /// [currentTimeMillis] - The client's current time in milliseconds since
+  /// epoch.
+  ///
+  /// Completes with a [Session].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Session> update(
+      Session request, core.String userId, core.String sessionId,
+      {core.String currentTimeMillis}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -852,49 +867,46 @@ class UsersSessionsResourceApi {
       _queryParams["currentTimeMillis"] = [currentTimeMillis];
     }
 
-    _url = commons.Escaper.ecapeVariable('$userId') + '/sessions/' + commons.Escaper.ecapeVariable('$sessionId');
+    _url = commons.Escaper.ecapeVariable('$userId') +
+        '/sessions/' +
+        commons.Escaper.ecapeVariable('$sessionId');
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Session.fromJson(data));
   }
-
 }
 
-
-
 class AggregateBucket {
-  /** Available for Bucket.Type.ACTIVITY_TYPE, Bucket.Type.ACTIVITY_SEGMENT */
+  /// Available for Bucket.Type.ACTIVITY_TYPE, Bucket.Type.ACTIVITY_SEGMENT
   core.int activity;
-  /** There will be one dataset per AggregateBy in the request. */
+
+  /// There will be one dataset per AggregateBy in the request.
   core.List<Dataset> dataset;
-  /**
-   * The end time for the aggregated data, in milliseconds since epoch,
-   * inclusive.
-   */
+
+  /// The end time for the aggregated data, in milliseconds since epoch,
+  /// inclusive.
   core.String endTimeMillis;
-  /** Available for Bucket.Type.SESSION */
+
+  /// Available for Bucket.Type.SESSION
   Session session;
-  /**
-   * The start time for the aggregated data, in milliseconds since epoch,
-   * inclusive.
-   */
+
+  /// The start time for the aggregated data, in milliseconds since epoch,
+  /// inclusive.
   core.String startTimeMillis;
-  /**
-   * The type of a bucket signifies how the data aggregation is performed in the
-   * bucket.
-   * Possible string values are:
-   * - "activitySegment"
-   * - "activityType"
-   * - "session"
-   * - "time"
-   * - "unknown"
-   */
+
+  /// The type of a bucket signifies how the data aggregation is performed in
+  /// the bucket.
+  /// Possible string values are:
+  /// - "activitySegment"
+  /// - "activityType"
+  /// - "session"
+  /// - "time"
+  /// - "unknown"
   core.String type;
 
   AggregateBucket();
@@ -904,7 +916,8 @@ class AggregateBucket {
       activity = _json["activity"];
     }
     if (_json.containsKey("dataset")) {
-      dataset = _json["dataset"].map((value) => new Dataset.fromJson(value)).toList();
+      dataset =
+          _json["dataset"].map((value) => new Dataset.fromJson(value)).toList();
     }
     if (_json.containsKey("endTimeMillis")) {
       endTimeMillis = _json["endTimeMillis"];
@@ -921,7 +934,8 @@ class AggregateBucket {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (activity != null) {
       _json["activity"] = activity;
     }
@@ -944,20 +958,18 @@ class AggregateBucket {
   }
 }
 
-/** The specification of which data to aggregate. */
+/// The specification of which data to aggregate.
 class AggregateBy {
-  /**
-   * A data source ID to aggregate. Mutually exclusive of dataTypeName. Only
-   * data from the specified data source ID will be included in the aggregation.
-   * The dataset in the response will have the same data source ID.
-   */
+  /// A data source ID to aggregate. Mutually exclusive of dataTypeName. Only
+  /// data from the specified data source ID will be included in the
+  /// aggregation. The dataset in the response will have the same data source
+  /// ID.
   core.String dataSourceId;
-  /**
-   * The data type to aggregate. All data sources providing this data type will
-   * contribute data to the aggregation. The response will contain a single
-   * dataset for this data type name. The dataset will have a data source ID of
-   * derived:com.google.:com.google.android.gms:aggregated
-   */
+
+  /// The data type to aggregate. All data sources providing this data type will
+  /// contribute data to the aggregation. The response will contain a single
+  /// dataset for this data type name. The dataset will have a data source ID of
+  /// derived:com.google.:com.google.android.gms:aggregated
   core.String dataTypeName;
 
   AggregateBy();
@@ -972,7 +984,8 @@ class AggregateBy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (dataSourceId != null) {
       _json["dataSourceId"] = dataSourceId;
     }
@@ -983,70 +996,65 @@ class AggregateBy {
   }
 }
 
-/** Next id: 10 */
+/// Next id: 10
 class AggregateRequest {
-  /**
-   * The specification of data to be aggregated. At least one aggregateBy spec
-   * must be provided. All data that is specified will be aggregated using the
-   * same bucketing criteria. There will be one dataset in the response for
-   * every aggregateBy spec.
-   */
+  /// The specification of data to be aggregated. At least one aggregateBy spec
+  /// must be provided. All data that is specified will be aggregated using the
+  /// same bucketing criteria. There will be one dataset in the response for
+  /// every aggregateBy spec.
   core.List<AggregateBy> aggregateBy;
-  /**
-   * Specifies that data be aggregated each activity segment recored for a user.
-   * Similar to bucketByActivitySegment, but bucketing is done for each activity
-   * segment rather than all segments of the same type. Mutually exclusive of
-   * other bucketing specifications.
-   */
+
+  /// Specifies that data be aggregated each activity segment recored for a
+  /// user. Similar to bucketByActivitySegment, but bucketing is done for each
+  /// activity segment rather than all segments of the same type. Mutually
+  /// exclusive of other bucketing specifications.
   BucketByActivity bucketByActivitySegment;
-  /**
-   * Specifies that data be aggregated by the type of activity being performed
-   * when the data was recorded. All data that was recorded during a certain
-   * activity type (for the given time range) will be aggregated into the same
-   * bucket. Data that was recorded while the user was not active will not be
-   * included in the response. Mutually exclusive of other bucketing
-   * specifications.
-   */
+
+  /// Specifies that data be aggregated by the type of activity being performed
+  /// when the data was recorded. All data that was recorded during a certain
+  /// activity type (for the given time range) will be aggregated into the same
+  /// bucket. Data that was recorded while the user was not active will not be
+  /// included in the response. Mutually exclusive of other bucketing
+  /// specifications.
   BucketByActivity bucketByActivityType;
-  /**
-   * Specifies that data be aggregated by user sessions. Data that does not fall
-   * within the time range of a session will not be included in the response.
-   * Mutually exclusive of other bucketing specifications.
-   */
+
+  /// Specifies that data be aggregated by user sessions. Data that does not
+  /// fall within the time range of a session will not be included in the
+  /// response. Mutually exclusive of other bucketing specifications.
   BucketBySession bucketBySession;
-  /**
-   * Specifies that data be aggregated by a single time interval. Mutually
-   * exclusive of other bucketing specifications.
-   */
+
+  /// Specifies that data be aggregated by a single time interval. Mutually
+  /// exclusive of other bucketing specifications.
   BucketByTime bucketByTime;
-  /**
-   * The end of a window of time. Data that intersects with this time window
-   * will be aggregated. The time is in milliseconds since epoch, inclusive.
-   */
+
+  /// The end of a window of time. Data that intersects with this time window
+  /// will be aggregated. The time is in milliseconds since epoch, inclusive.
   core.String endTimeMillis;
-  /**
-   * A list of acceptable data quality standards. Only data points which conform
-   * to at least one of the specified data quality standards will be returned.
-   * If the list is empty, all data points are returned.
-   */
+
+  /// A list of acceptable data quality standards. Only data points which
+  /// conform to at least one of the specified data quality standards will be
+  /// returned. If the list is empty, all data points are returned.
   core.List<core.String> filteredDataQualityStandard;
-  /**
-   * The start of a window of time. Data that intersects with this time window
-   * will be aggregated. The time is in milliseconds since epoch, inclusive.
-   */
+
+  /// The start of a window of time. Data that intersects with this time window
+  /// will be aggregated. The time is in milliseconds since epoch, inclusive.
   core.String startTimeMillis;
 
   AggregateRequest();
 
   AggregateRequest.fromJson(core.Map _json) {
     if (_json.containsKey("aggregateBy")) {
-      aggregateBy = _json["aggregateBy"].map((value) => new AggregateBy.fromJson(value)).toList();
+      aggregateBy = _json["aggregateBy"]
+          .map((value) => new AggregateBy.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("bucketByActivitySegment")) {
-      bucketByActivitySegment = new BucketByActivity.fromJson(_json["bucketByActivitySegment"]);
+      bucketByActivitySegment =
+          new BucketByActivity.fromJson(_json["bucketByActivitySegment"]);
     }
     if (_json.containsKey("bucketByActivityType")) {
-      bucketByActivityType = new BucketByActivity.fromJson(_json["bucketByActivityType"]);
+      bucketByActivityType =
+          new BucketByActivity.fromJson(_json["bucketByActivityType"]);
     }
     if (_json.containsKey("bucketBySession")) {
       bucketBySession = new BucketBySession.fromJson(_json["bucketBySession"]);
@@ -1066,9 +1074,11 @@ class AggregateRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (aggregateBy != null) {
-      _json["aggregateBy"] = aggregateBy.map((value) => (value).toJson()).toList();
+      _json["aggregateBy"] =
+          aggregateBy.map((value) => (value).toJson()).toList();
     }
     if (bucketByActivitySegment != null) {
       _json["bucketByActivitySegment"] = (bucketByActivitySegment).toJson();
@@ -1096,19 +1106,22 @@ class AggregateRequest {
 }
 
 class AggregateResponse {
-  /** A list of buckets containing the aggregated data. */
+  /// A list of buckets containing the aggregated data.
   core.List<AggregateBucket> bucket;
 
   AggregateResponse();
 
   AggregateResponse.fromJson(core.Map _json) {
     if (_json.containsKey("bucket")) {
-      bucket = _json["bucket"].map((value) => new AggregateBucket.fromJson(value)).toList();
+      bucket = _json["bucket"]
+          .map((value) => new AggregateBucket.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (bucket != null) {
       _json["bucket"] = bucket.map((value) => (value).toJson()).toList();
     }
@@ -1117,26 +1130,23 @@ class AggregateResponse {
 }
 
 class Application {
-  /** An optional URI that can be used to link back to the application. */
+  /// An optional URI that can be used to link back to the application.
   core.String detailsUrl;
-  /**
-   * The name of this application. This is required for REST clients, but we do
-   * not enforce uniqueness of this name. It is provided as a matter of
-   * convenience for other developers who would like to identify which REST
-   * created an Application or Data Source.
-   */
+
+  /// The name of this application. This is required for REST clients, but we do
+  /// not enforce uniqueness of this name. It is provided as a matter of
+  /// convenience for other developers who would like to identify which REST
+  /// created an Application or Data Source.
   core.String name;
-  /**
-   * Package name for this application. This is used as a unique identifier when
-   * created by Android applications, but cannot be specified by REST clients.
-   * REST clients will have their developer project number reflected into the
-   * Data Source data stream IDs, instead of the packageName.
-   */
+
+  /// Package name for this application. This is used as a unique identifier
+  /// when created by Android applications, but cannot be specified by REST
+  /// clients. REST clients will have their developer project number reflected
+  /// into the Data Source data stream IDs, instead of the packageName.
   core.String packageName;
-  /**
-   * Version of the application. You should update this field whenever the
-   * application changes in a way that affects the computation of the data.
-   */
+
+  /// Version of the application. You should update this field whenever the
+  /// application changes in a way that affects the computation of the data.
   core.String version;
 
   Application();
@@ -1157,7 +1167,8 @@ class Application {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (detailsUrl != null) {
       _json["detailsUrl"] = detailsUrl;
     }
@@ -1175,16 +1186,13 @@ class Application {
 }
 
 class BucketByActivity {
-  /**
-   * The default activity stream will be used if a specific activityDataSourceId
-   * is not specified.
-   */
+  /// The default activity stream will be used if a specific
+  /// activityDataSourceId is not specified.
   core.String activityDataSourceId;
-  /**
-   * Specifies that only activity segments of duration longer than
-   * minDurationMillis are considered and used as a container for aggregated
-   * data.
-   */
+
+  /// Specifies that only activity segments of duration longer than
+  /// minDurationMillis are considered and used as a container for aggregated
+  /// data.
   core.String minDurationMillis;
 
   BucketByActivity();
@@ -1199,7 +1207,8 @@ class BucketByActivity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (activityDataSourceId != null) {
       _json["activityDataSourceId"] = activityDataSourceId;
     }
@@ -1211,10 +1220,8 @@ class BucketByActivity {
 }
 
 class BucketBySession {
-  /**
-   * Specifies that only sessions of duration longer than minDurationMillis are
-   * considered and used as a container for aggregated data.
-   */
+  /// Specifies that only sessions of duration longer than minDurationMillis are
+  /// considered and used as a container for aggregated data.
   core.String minDurationMillis;
 
   BucketBySession();
@@ -1226,7 +1233,8 @@ class BucketBySession {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (minDurationMillis != null) {
       _json["minDurationMillis"] = minDurationMillis;
     }
@@ -1235,11 +1243,9 @@ class BucketBySession {
 }
 
 class BucketByTime {
-  /**
-   * Specifies that result buckets aggregate data by exactly durationMillis time
-   * frames. Time frames that contain no data will be included in the response
-   * with an empty dataset.
-   */
+  /// Specifies that result buckets aggregate data by exactly durationMillis
+  /// time frames. Time frames that contain no data will be included in the
+  /// response with an empty dataset.
   core.String durationMillis;
   BucketByTimePeriod period;
 
@@ -1255,7 +1261,8 @@ class BucketByTime {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (durationMillis != null) {
       _json["durationMillis"] = durationMillis;
     }
@@ -1267,15 +1274,14 @@ class BucketByTime {
 }
 
 class BucketByTimePeriod {
-  /** org.joda.timezone.DateTimeZone */
+  /// org.joda.timezone.DateTimeZone
   core.String timeZoneId;
-  /**
-   *
-   * Possible string values are:
-   * - "day"
-   * - "month"
-   * - "week"
-   */
+
+  ///
+  /// Possible string values are:
+  /// - "day"
+  /// - "month"
+  /// - "week"
   core.String type;
   core.int value;
 
@@ -1294,7 +1300,8 @@ class BucketByTimePeriod {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (timeZoneId != null) {
       _json["timeZoneId"] = timeZoneId;
     }
@@ -1308,59 +1315,52 @@ class BucketByTimePeriod {
   }
 }
 
-/**
- * Represents a single data point, generated by a particular data source. A data
- * point holds a value for each field, an end timestamp and an optional start
- * time. The exact semantics of each of these attributes are specified in the
- * documentation for the particular data type.
- *
- * A data point can represent an instantaneous measurement, reading or input
- * observation, as well as averages or aggregates over a time interval. Check
- * the data type documentation to determine which is the case for a particular
- * data type.
- *
- * Data points always contain one value for each field of the data type.
- */
+/// Represents a single data point, generated by a particular data source. A
+/// data point holds a value for each field, an end timestamp and an optional
+/// start time. The exact semantics of each of these attributes are specified in
+/// the documentation for the particular data type.
+///
+/// A data point can represent an instantaneous measurement, reading or input
+/// observation, as well as averages or aggregates over a time interval. Check
+/// the data type documentation to determine which is the case for a particular
+/// data type.
+///
+/// Data points always contain one value for each field of the data type.
 class DataPoint {
-  /**
-   * Used for version checking during transformation; that is, a datapoint can
-   * only replace another datapoint that has an older computation time stamp.
-   */
+  /// Used for version checking during transformation; that is, a datapoint can
+  /// only replace another datapoint that has an older computation time stamp.
   core.String computationTimeMillis;
-  /** The data type defining the format of the values in this data point. */
+
+  /// The data type defining the format of the values in this data point.
   core.String dataTypeName;
-  /**
-   * The end time of the interval represented by this data point, in nanoseconds
-   * since epoch.
-   */
+
+  /// The end time of the interval represented by this data point, in
+  /// nanoseconds since epoch.
   core.String endTimeNanos;
-  /**
-   * Indicates the last time this data point was modified. Useful only in
-   * contexts where we are listing the data changes, rather than representing
-   * the current state of the data.
-   */
+
+  /// Indicates the last time this data point was modified. Useful only in
+  /// contexts where we are listing the data changes, rather than representing
+  /// the current state of the data.
   core.String modifiedTimeMillis;
-  /**
-   * If the data point is contained in a dataset for a derived data source, this
-   * field will be populated with the data source stream ID that created the
-   * data point originally.
-   */
+
+  /// If the data point is contained in a dataset for a derived data source,
+  /// this field will be populated with the data source stream ID that created
+  /// the data point originally.
   core.String originDataSourceId;
-  /** The raw timestamp from the original SensorEvent. */
+
+  /// The raw timestamp from the original SensorEvent.
   core.String rawTimestampNanos;
-  /**
-   * The start time of the interval represented by this data point, in
-   * nanoseconds since epoch.
-   */
+
+  /// The start time of the interval represented by this data point, in
+  /// nanoseconds since epoch.
   core.String startTimeNanos;
-  /**
-   * Values of each data type field for the data point. It is expected that each
-   * value corresponding to a data type field will occur in the same order that
-   * the field is listed with in the data type specified in a data source.
-   *
-   * Only one of integer and floating point fields will be populated, depending
-   * on the format enum value within data source's type field.
-   */
+
+  /// Values of each data type field for the data point. It is expected that
+  /// each value corresponding to a data type field will occur in the same order
+  /// that the field is listed with in the data type specified in a data source.
+  ///
+  /// Only one of integer and floating point fields will be populated, depending
+  /// on the format enum value within data source's type field.
   core.List<Value> value;
 
   DataPoint();
@@ -1393,7 +1393,8 @@ class DataPoint {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (computationTimeMillis != null) {
       _json["computationTimeMillis"] = computationTimeMillis;
     }
@@ -1422,90 +1423,84 @@ class DataPoint {
   }
 }
 
-/**
- * Definition of a unique source of sensor data. Data sources can expose raw
- * data coming from hardware sensors on local or companion devices. They can
- * also expose derived data, created by transforming or merging other data
- * sources. Multiple data sources can exist for the same data type. Every data
- * point inserted into or read from this service has an associated data source.
- *
- * The data source contains enough information to uniquely identify its data,
- * including the hardware device and the application that collected and/or
- * transformed the data. It also holds useful metadata, such as the hardware and
- * application versions, and the device type.
- *
- * Each data source produces a unique stream of data, with a unique identifier.
- * Not all changes to data source affect the stream identifier, so that data
- * collected by updated versions of the same application/device can still be
- * considered to belong to the same data stream.
- */
+/// Definition of a unique source of sensor data. Data sources can expose raw
+/// data coming from hardware sensors on local or companion devices. They can
+/// also expose derived data, created by transforming or merging other data
+/// sources. Multiple data sources can exist for the same data type. Every data
+/// point inserted into or read from this service has an associated data source.
+///
+/// The data source contains enough information to uniquely identify its data,
+/// including the hardware device and the application that collected and/or
+/// transformed the data. It also holds useful metadata, such as the hardware
+/// and application versions, and the device type.
+///
+/// Each data source produces a unique stream of data, with a unique identifier.
+/// Not all changes to data source affect the stream identifier, so that data
+/// collected by updated versions of the same application/device can still be
+/// considered to belong to the same data stream.
 class DataSource {
-  /**
-   * Information about an application which feeds sensor data into the platform.
-   */
+  /// Information about an application which feeds sensor data into the
+  /// platform.
   Application application;
   core.List<core.String> dataQualityStandard;
-  /**
-   * A unique identifier for the data stream produced by this data source. The
-   * identifier includes:
-   *
-   *
-   * - The physical device's manufacturer, model, and serial number (UID).
-   * - The application's package name or name. Package name is used when the
-   * data source was created by an Android application. The developer project
-   * number is used when the data source was created by a REST client.
-   * - The data source's type.
-   * - The data source's stream name.  Note that not all attributes of the data
-   * source are used as part of the stream identifier. In particular, the
-   * version of the hardware/the application isn't used. This allows us to
-   * preserve the same stream through version updates. This also means that two
-   * DataSource objects may represent the same data stream even if they're not
-   * equal.
-   *
-   * The exact format of the data stream ID created by an Android application
-   * is:
-   * type:dataType.name:application.packageName:device.manufacturer:device.model:device.uid:dataStreamName
-   *
-   * The exact format of the data stream ID created by a REST client is:
-   * type:dataType.name:developer project
-   * number:device.manufacturer:device.model:device.uid:dataStreamName
-   *
-   * When any of the optional fields that comprise of the data stream ID are
-   * blank, they will be omitted from the data stream ID. The minimum viable
-   * data stream ID would be: type:dataType.name:developer project number
-   *
-   * Finally, the developer project number is obfuscated when read by any REST
-   * or Android client that did not create the data source. Only the data source
-   * creator will see the developer project number in clear and normal form.
-   */
+
+  /// A unique identifier for the data stream produced by this data source. The
+  /// identifier includes:
+  ///
+  ///
+  /// - The physical device's manufacturer, model, and serial number (UID).
+  /// - The application's package name or name. Package name is used when the
+  /// data source was created by an Android application. The developer project
+  /// number is used when the data source was created by a REST client.
+  /// - The data source's type.
+  /// - The data source's stream name.  Note that not all attributes of the data
+  /// source are used as part of the stream identifier. In particular, the
+  /// version of the hardware/the application isn't used. This allows us to
+  /// preserve the same stream through version updates. This also means that two
+  /// DataSource objects may represent the same data stream even if they're not
+  /// equal.
+  ///
+  /// The exact format of the data stream ID created by an Android application
+  /// is:
+  /// type:dataType.name:application.packageName:device.manufacturer:device.model:device.uid:dataStreamName
+  ///
+  /// The exact format of the data stream ID created by a REST client is:
+  /// type:dataType.name:developer project
+  /// number:device.manufacturer:device.model:device.uid:dataStreamName
+  ///
+  /// When any of the optional fields that comprise of the data stream ID are
+  /// blank, they will be omitted from the data stream ID. The minimum viable
+  /// data stream ID would be: type:dataType.name:developer project number
+  ///
+  /// Finally, the developer project number is obfuscated when read by any REST
+  /// or Android client that did not create the data source. Only the data
+  /// source creator will see the developer project number in clear and normal
+  /// form.
   core.String dataStreamId;
-  /**
-   * The stream name uniquely identifies this particular data source among other
-   * data sources of the same type from the same underlying producer. Setting
-   * the stream name is optional, but should be done whenever an application
-   * exposes two streams for the same data type, or when a device has two
-   * equivalent sensors.
-   */
+
+  /// The stream name uniquely identifies this particular data source among
+  /// other data sources of the same type from the same underlying producer.
+  /// Setting the stream name is optional, but should be done whenever an
+  /// application exposes two streams for the same data type, or when a device
+  /// has two equivalent sensors.
   core.String dataStreamName;
-  /**
-   * The data type defines the schema for a stream of data being collected by,
-   * inserted into, or queried from the Fitness API.
-   */
+
+  /// The data type defines the schema for a stream of data being collected by,
+  /// inserted into, or queried from the Fitness API.
   DataType dataType;
-  /**
-   * Representation of an integrated device (such as a phone or a wearable) that
-   * can hold sensors.
-   */
+
+  /// Representation of an integrated device (such as a phone or a wearable)
+  /// that can hold sensors.
   Device device;
-  /** An end-user visible name for this data source. */
+
+  /// An end-user visible name for this data source.
   core.String name;
-  /**
-   * A constant describing the type of this data source. Indicates whether this
-   * data source produces raw or derived data.
-   * Possible string values are:
-   * - "derived"
-   * - "raw"
-   */
+
+  /// A constant describing the type of this data source. Indicates whether this
+  /// data source produces raw or derived data.
+  /// Possible string values are:
+  /// - "derived"
+  /// - "raw"
   core.String type;
 
   DataSource();
@@ -1538,7 +1533,8 @@ class DataSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (application != null) {
       _json["application"] = (application).toJson();
     }
@@ -1568,19 +1564,20 @@ class DataSource {
 }
 
 class DataType {
-  /** A field represents one dimension of a data type. */
+  /// A field represents one dimension of a data type.
   core.List<DataTypeField> field;
-  /**
-   * Each data type has a unique, namespaced, name. All data types in the
-   * com.google namespace are shared as part of the platform.
-   */
+
+  /// Each data type has a unique, namespaced, name. All data types in the
+  /// com.google namespace are shared as part of the platform.
   core.String name;
 
   DataType();
 
   DataType.fromJson(core.Map _json) {
     if (_json.containsKey("field")) {
-      field = _json["field"].map((value) => new DataTypeField.fromJson(value)).toList();
+      field = _json["field"]
+          .map((value) => new DataTypeField.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -1588,7 +1585,8 @@ class DataType {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (field != null) {
       _json["field"] = field.map((value) => (value).toJson()).toList();
     }
@@ -1599,32 +1597,27 @@ class DataType {
   }
 }
 
-/**
- * In case of multi-dimensional data (such as an accelerometer with x, y, and z
- * axes) each field represents one dimension. Each data type field has a unique
- * name which identifies it. The field also defines the format of the data (int,
- * float, etc.).
- *
- * This message is only instantiated in code and not used for wire comms or
- * stored in any way.
- */
+/// In case of multi-dimensional data (such as an accelerometer with x, y, and z
+/// axes) each field represents one dimension. Each data type field has a unique
+/// name which identifies it. The field also defines the format of the data
+/// (int, float, etc.).
+///
+/// This message is only instantiated in code and not used for wire comms or
+/// stored in any way.
 class DataTypeField {
-  /**
-   * The different supported formats for each field in a data type.
-   * Possible string values are:
-   * - "blob"
-   * - "floatList"
-   * - "floatPoint"
-   * - "integer"
-   * - "integerList"
-   * - "map"
-   * - "string"
-   */
+  /// The different supported formats for each field in a data type.
+  /// Possible string values are:
+  /// - "blob"
+  /// - "floatList"
+  /// - "floatPoint"
+  /// - "integer"
+  /// - "integerList"
+  /// - "map"
+  /// - "string"
   core.String format;
-  /**
-   * Defines the name and format of data. Unlike data type names, field names
-   * are not namespaced, and only need to be unique within the data type.
-   */
+
+  /// Defines the name and format of data. Unlike data type names, field names
+  /// are not namespaced, and only need to be unique within the data type.
   core.String name;
   core.bool optional;
 
@@ -1643,7 +1636,8 @@ class DataTypeField {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (format != null) {
       _json["format"] = format;
     }
@@ -1657,42 +1651,34 @@ class DataTypeField {
   }
 }
 
-/**
- * A dataset represents a projection container for data points. They do not
- * carry any info of their own. Datasets represent a set of data points from a
- * particular data source. A data point can be found in more than one dataset.
- */
+/// A dataset represents a projection container for data points. They do not
+/// carry any info of their own. Datasets represent a set of data points from a
+/// particular data source. A data point can be found in more than one dataset.
 class Dataset {
-  /**
-   * The data stream ID of the data source that created the points in this
-   * dataset.
-   */
+  /// The data stream ID of the data source that created the points in this
+  /// dataset.
   core.String dataSourceId;
-  /**
-   * The largest end time of all data points in this possibly partial
-   * representation of the dataset. Time is in nanoseconds from epoch. This
-   * should also match the first part of the dataset identifier.
-   */
+
+  /// The largest end time of all data points in this possibly partial
+  /// representation of the dataset. Time is in nanoseconds from epoch. This
+  /// should also match the first part of the dataset identifier.
   core.String maxEndTimeNs;
-  /**
-   * The smallest start time of all data points in this possibly partial
-   * representation of the dataset. Time is in nanoseconds from epoch. This
-   * should also match the first part of the dataset identifier.
-   */
+
+  /// The smallest start time of all data points in this possibly partial
+  /// representation of the dataset. Time is in nanoseconds from epoch. This
+  /// should also match the first part of the dataset identifier.
   core.String minStartTimeNs;
-  /**
-   * This token will be set when a dataset is received in response to a GET
-   * request and the dataset is too large to be included in a single response.
-   * Provide this value in a subsequent GET request to return the next page of
-   * data points within this dataset.
-   */
+
+  /// This token will be set when a dataset is received in response to a GET
+  /// request and the dataset is too large to be included in a single response.
+  /// Provide this value in a subsequent GET request to return the next page of
+  /// data points within this dataset.
   core.String nextPageToken;
-  /**
-   * A partial list of data points contained in the dataset, ordered by largest
-   * endTimeNanos first. This list is considered complete when retrieving a
-   * small dataset and partial when patching a dataset or retrieving a dataset
-   * that is too large to include in a single response.
-   */
+
+  /// A partial list of data points contained in the dataset, ordered by largest
+  /// endTimeNanos first. This list is considered complete when retrieving a
+  /// small dataset and partial when patching a dataset or retrieving a dataset
+  /// that is too large to include in a single response.
   core.List<DataPoint> point;
 
   Dataset();
@@ -1711,12 +1697,14 @@ class Dataset {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("point")) {
-      point = _json["point"].map((value) => new DataPoint.fromJson(value)).toList();
+      point =
+          _json["point"].map((value) => new DataPoint.fromJson(value)).toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (dataSourceId != null) {
       _json["dataSourceId"] = dataSourceId;
     }
@@ -1736,45 +1724,43 @@ class Dataset {
   }
 }
 
-/**
- * Representation of an integrated device (such as a phone or a wearable) that
- * can hold sensors. Each sensor is exposed as a data source.
- *
- * The main purpose of the device information contained in this class is to
- * identify the hardware of a particular data source. This can be useful in
- * different ways, including:
- * - Distinguishing two similar sensors on different devices (the step counter
- * on two nexus 5 phones, for instance)
- * - Display the source of data to the user (by using the device make / model)
- * - Treat data differently depending on sensor type (accelerometers on a watch
- * may give different patterns than those on a phone)
- * - Build different analysis models for each device/version.
- */
+/// Representation of an integrated device (such as a phone or a wearable) that
+/// can hold sensors. Each sensor is exposed as a data source.
+///
+/// The main purpose of the device information contained in this class is to
+/// identify the hardware of a particular data source. This can be useful in
+/// different ways, including:
+/// - Distinguishing two similar sensors on different devices (the step counter
+/// on two nexus 5 phones, for instance)
+/// - Display the source of data to the user (by using the device make / model)
+/// - Treat data differently depending on sensor type (accelerometers on a watch
+/// may give different patterns than those on a phone)
+/// - Build different analysis models for each device/version.
 class Device {
-  /** Manufacturer of the product/hardware. */
+  /// Manufacturer of the product/hardware.
   core.String manufacturer;
-  /** End-user visible model name for the device. */
+
+  /// End-user visible model name for the device.
   core.String model;
-  /**
-   * A constant representing the type of the device.
-   * Possible string values are:
-   * - "chestStrap"
-   * - "headMounted"
-   * - "phone"
-   * - "scale"
-   * - "tablet"
-   * - "unknown"
-   * - "watch"
-   */
+
+  /// A constant representing the type of the device.
+  /// Possible string values are:
+  /// - "chestStrap"
+  /// - "headMounted"
+  /// - "phone"
+  /// - "scale"
+  /// - "tablet"
+  /// - "unknown"
+  /// - "watch"
   core.String type;
-  /**
-   * The serial number or other unique ID for the hardware. This field is
-   * obfuscated when read by any REST or Android client that did not create the
-   * data source. Only the data source creator will see the uid field in clear
-   * and normal form.
-   */
+
+  /// The serial number or other unique ID for the hardware. This field is
+  /// obfuscated when read by any REST or Android client that did not create the
+  /// data source. Only the data source creator will see the uid field in clear
+  /// and normal form.
   core.String uid;
-  /** Version string for the device hardware/software. */
+
+  /// Version string for the device hardware/software.
   core.String version;
 
   Device();
@@ -1798,7 +1784,8 @@ class Device {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (manufacturer != null) {
       _json["manufacturer"] = manufacturer;
     }
@@ -1819,52 +1806,55 @@ class Device {
 }
 
 class ListDataSourcesResponse {
-  /** A previously created data source. */
+  /// A previously created data source.
   core.List<DataSource> dataSource;
 
   ListDataSourcesResponse();
 
   ListDataSourcesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("dataSource")) {
-      dataSource = _json["dataSource"].map((value) => new DataSource.fromJson(value)).toList();
+      dataSource = _json["dataSource"]
+          .map((value) => new DataSource.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (dataSource != null) {
-      _json["dataSource"] = dataSource.map((value) => (value).toJson()).toList();
+      _json["dataSource"] =
+          dataSource.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
 }
 
 class ListSessionsResponse {
-  /**
-   * If includeDeleted is set to true in the request, this list will contain
-   * sessions deleted with original end times that are within the startTime and
-   * endTime frame.
-   */
+  /// If includeDeleted is set to true in the request, this list will contain
+  /// sessions deleted with original end times that are within the startTime and
+  /// endTime frame.
   core.List<Session> deletedSession;
-  /** Flag to indicate server has more data to transfer */
+
+  /// Flag to indicate server has more data to transfer
   core.bool hasMoreData;
-  /**
-   * The continuation token, which is used to page through large result sets.
-   * Provide this value in a subsequent request to return the next page of
-   * results.
-   */
+
+  /// The continuation token, which is used to page through large result sets.
+  /// Provide this value in a subsequent request to return the next page of
+  /// results.
   core.String nextPageToken;
-  /**
-   * Sessions with an end time that is between startTime and endTime of the
-   * request.
-   */
+
+  /// Sessions with an end time that is between startTime and endTime of the
+  /// request.
   core.List<Session> session;
 
   ListSessionsResponse();
 
   ListSessionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deletedSession")) {
-      deletedSession = _json["deletedSession"].map((value) => new Session.fromJson(value)).toList();
+      deletedSession = _json["deletedSession"]
+          .map((value) => new Session.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("hasMoreData")) {
       hasMoreData = _json["hasMoreData"];
@@ -1873,14 +1863,17 @@ class ListSessionsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("session")) {
-      session = _json["session"].map((value) => new Session.fromJson(value)).toList();
+      session =
+          _json["session"].map((value) => new Session.fromJson(value)).toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (deletedSession != null) {
-      _json["deletedSession"] = deletedSession.map((value) => (value).toJson()).toList();
+      _json["deletedSession"] =
+          deletedSession.map((value) => (value).toJson()).toList();
     }
     if (hasMoreData != null) {
       _json["hasMoreData"] = hasMoreData;
@@ -1895,13 +1888,12 @@ class ListSessionsResponse {
   }
 }
 
-/**
- * Holder object for the value of an entry in a map field of a data point.
- *
- * A map value supports a subset of the formats that the regular Value supports.
- */
+/// Holder object for the value of an entry in a map field of a data point.
+///
+/// A map value supports a subset of the formats that the regular Value
+/// supports.
 class MapValue {
-  /** Floating point value. */
+  /// Floating point value.
   core.double fpVal;
 
   MapValue();
@@ -1913,7 +1905,8 @@ class MapValue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (fpVal != null) {
       _json["fpVal"] = fpVal;
     }
@@ -1921,37 +1914,39 @@ class MapValue {
   }
 }
 
-/**
- * Sessions contain metadata, such as a user-friendly name and time interval
- * information.
- */
+/// Sessions contain metadata, such as a user-friendly name and time interval
+/// information.
 class Session {
-  /**
-   * Session active time. While start_time_millis and end_time_millis define the
-   * full session time, the active time can be shorter and specified by
-   * active_time_millis. If the inactive time during the session is known, it
-   * should also be inserted via a com.google.activity.segment data point with a
-   * STILL activity value
-   */
+  /// Session active time. While start_time_millis and end_time_millis define
+  /// the full session time, the active time can be shorter and specified by
+  /// active_time_millis. If the inactive time during the session is known, it
+  /// should also be inserted via a com.google.activity.segment data point with
+  /// a STILL activity value
   core.String activeTimeMillis;
-  /** The type of activity this session represents. */
+
+  /// The type of activity this session represents.
   core.int activityType;
-  /** The application that created the session. */
+
+  /// The application that created the session.
   Application application;
-  /** A description for this session. */
+
+  /// A description for this session.
   core.String description;
-  /** An end time, in milliseconds since epoch, inclusive. */
+
+  /// An end time, in milliseconds since epoch, inclusive.
   core.String endTimeMillis;
-  /**
-   * A client-generated identifier that is unique across all sessions owned by
-   * this particular user.
-   */
+
+  /// A client-generated identifier that is unique across all sessions owned by
+  /// this particular user.
   core.String id;
-  /** A timestamp that indicates when the session was last modified. */
+
+  /// A timestamp that indicates when the session was last modified.
   core.String modifiedTimeMillis;
-  /** A human readable name of the session. */
+
+  /// A human readable name of the session.
   core.String name;
-  /** A start time, in milliseconds since epoch, inclusive. */
+
+  /// A start time, in milliseconds since epoch, inclusive.
   core.String startTimeMillis;
 
   Session();
@@ -1987,7 +1982,8 @@ class Session {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (activeTimeMillis != null) {
       _json["activeTimeMillis"] = activeTimeMillis;
     }
@@ -2019,29 +2015,26 @@ class Session {
   }
 }
 
-/**
- * Holder object for the value of a single field in a data point.
- *
- * A field value has a particular format and is only ever set to one of an
- * integer or a floating point value. LINT.IfChange
- */
+/// Holder object for the value of a single field in a data point.
+///
+/// A field value has a particular format and is only ever set to one of an
+/// integer or a floating point value. LINT.IfChange
 class Value {
-  /** Floating point value. When this is set, other values must not be set. */
+  /// Floating point value. When this is set, other values must not be set.
   core.double fpVal;
-  /** Integer value. When this is set, other values must not be set. */
+
+  /// Integer value. When this is set, other values must not be set.
   core.int intVal;
-  /**
-   * Map value. The valid key space and units for the corresponding value of
-   * each entry should be documented as part of the data type definition. Keys
-   * should be kept small whenever possible. Data streams with large keys and
-   * high data frequency may be down sampled.
-   */
+
+  /// Map value. The valid key space and units for the corresponding value of
+  /// each entry should be documented as part of the data type definition. Keys
+  /// should be kept small whenever possible. Data streams with large keys and
+  /// high data frequency may be down sampled.
   core.List<ValueMapValEntry> mapVal;
-  /**
-   * String value. When this is set, other values must not be set. Strings
-   * should be kept small whenever possible. Data streams with large string
-   * values and high data frequency may be down sampled.
-   */
+
+  /// String value. When this is set, other values must not be set. Strings
+  /// should be kept small whenever possible. Data streams with large string
+  /// values and high data frequency may be down sampled.
   core.String stringVal;
 
   Value();
@@ -2054,7 +2047,9 @@ class Value {
       intVal = _json["intVal"];
     }
     if (_json.containsKey("mapVal")) {
-      mapVal = _json["mapVal"].map((value) => new ValueMapValEntry.fromJson(value)).toList();
+      mapVal = _json["mapVal"]
+          .map((value) => new ValueMapValEntry.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("stringVal")) {
       stringVal = _json["stringVal"];
@@ -2062,7 +2057,8 @@ class Value {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (fpVal != null) {
       _json["fpVal"] = fpVal;
     }
@@ -2095,7 +2091,8 @@ class ValueMapValEntry {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }

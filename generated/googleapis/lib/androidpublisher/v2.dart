@@ -9,66 +9,79 @@ import 'dart:convert' as convert;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
-    ApiRequestError, DetailedApiRequestError, Media, UploadOptions,
-    ResumableUploadOptions, DownloadOptions, PartialDownloadOptions,
-    ByteRange;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
+    show
+        ApiRequestError,
+        DetailedApiRequestError,
+        Media,
+        UploadOptions,
+        ResumableUploadOptions,
+        DownloadOptions,
+        PartialDownloadOptions,
+        ByteRange;
 
 const core.String USER_AGENT = 'dart-api-client androidpublisher/v2';
 
-/** Lets Android application developers access their Google Play accounts. */
+/// Lets Android application developers access their Google Play accounts.
 class AndroidpublisherApi {
-  /** View and manage your Google Play Developer account */
-  static const AndroidpublisherScope = "https://www.googleapis.com/auth/androidpublisher";
-
+  /// View and manage your Google Play Developer account
+  static const AndroidpublisherScope =
+      "https://www.googleapis.com/auth/androidpublisher";
 
   final commons.ApiRequester _requester;
 
   EditsResourceApi get edits => new EditsResourceApi(_requester);
-  EntitlementsResourceApi get entitlements => new EntitlementsResourceApi(_requester);
-  InappproductsResourceApi get inappproducts => new InappproductsResourceApi(_requester);
+  EntitlementsResourceApi get entitlements =>
+      new EntitlementsResourceApi(_requester);
+  InappproductsResourceApi get inappproducts =>
+      new InappproductsResourceApi(_requester);
   PurchasesResourceApi get purchases => new PurchasesResourceApi(_requester);
   ReviewsResourceApi get reviews => new ReviewsResourceApi(_requester);
 
-  AndroidpublisherApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "androidpublisher/v2/applications/"}) :
-      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+  AndroidpublisherApi(http.Client client,
+      {core.String rootUrl: "https://www.googleapis.com/",
+      core.String servicePath: "androidpublisher/v2/applications/"})
+      : _requester =
+            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
-
 
 class EditsResourceApi {
   final commons.ApiRequester _requester;
 
-  EditsApklistingsResourceApi get apklistings => new EditsApklistingsResourceApi(_requester);
+  EditsApklistingsResourceApi get apklistings =>
+      new EditsApklistingsResourceApi(_requester);
   EditsApksResourceApi get apks => new EditsApksResourceApi(_requester);
-  EditsDeobfuscationfilesResourceApi get deobfuscationfiles => new EditsDeobfuscationfilesResourceApi(_requester);
-  EditsDetailsResourceApi get details => new EditsDetailsResourceApi(_requester);
-  EditsExpansionfilesResourceApi get expansionfiles => new EditsExpansionfilesResourceApi(_requester);
+  EditsDeobfuscationfilesResourceApi get deobfuscationfiles =>
+      new EditsDeobfuscationfilesResourceApi(_requester);
+  EditsDetailsResourceApi get details =>
+      new EditsDetailsResourceApi(_requester);
+  EditsExpansionfilesResourceApi get expansionfiles =>
+      new EditsExpansionfilesResourceApi(_requester);
   EditsImagesResourceApi get images => new EditsImagesResourceApi(_requester);
-  EditsListingsResourceApi get listings => new EditsListingsResourceApi(_requester);
-  EditsTestersResourceApi get testers => new EditsTestersResourceApi(_requester);
+  EditsListingsResourceApi get listings =>
+      new EditsListingsResourceApi(_requester);
+  EditsTestersResourceApi get testers =>
+      new EditsTestersResourceApi(_requester);
   EditsTracksResourceApi get tracks => new EditsTracksResourceApi(_requester);
 
-  EditsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  EditsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Commits/applies the changes made in this edit back to the app.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * Completes with a [AppEdit].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Commits/applies the changes made in this edit back to the app.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// Completes with a [AppEdit].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<AppEdit> commit(core.String packageName, core.String editId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -84,36 +97,36 @@ class EditsResourceApi {
       throw new core.ArgumentError("Parameter editId is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + ':commit';
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        ':commit';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new AppEdit.fromJson(data));
   }
 
-  /**
-   * Deletes an edit for an app. Creating a new edit will automatically delete
-   * any of your previous edits so this method need only be called if you want
-   * to preemptively abandon an edit.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Deletes an edit for an app. Creating a new edit will automatically delete
+  /// any of your previous edits so this method need only be called if you want
+  /// to preemptively abandon an edit.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future delete(core.String packageName, core.String editId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -131,37 +144,36 @@ class EditsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Returns information about the edit specified. Calls will fail if the edit
-   * is no long active (e.g. has been deleted, superseded or expired).
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * Completes with a [AppEdit].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Returns information about the edit specified. Calls will fail if the edit
+  /// is no long active (e.g. has been deleted, superseded or expired).
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// Completes with a [AppEdit].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<AppEdit> get(core.String packageName, core.String editId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -177,36 +189,35 @@ class EditsResourceApi {
       throw new core.ArgumentError("Parameter editId is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new AppEdit.fromJson(data));
   }
 
-  /**
-   * Creates a new edit for an app, populated with the app's current state.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * Completes with a [AppEdit].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Creates a new edit for an app, populated with the app's current state.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// Completes with a [AppEdit].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<AppEdit> insert(AppEdit request, core.String packageName) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -224,35 +235,32 @@ class EditsResourceApi {
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new AppEdit.fromJson(data));
   }
 
-  /**
-   * Checks that the edit can be successfully committed. The edit's changes are
-   * not applied to the live app.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * Completes with a [AppEdit].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Checks that the edit can be successfully committed. The edit's changes are
+  /// not applied to the live app.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// Completes with a [AppEdit].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<AppEdit> validate(core.String packageName, core.String editId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -268,52 +276,51 @@ class EditsResourceApi {
       throw new core.ArgumentError("Parameter editId is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + ':validate';
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        ':validate';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new AppEdit.fromJson(data));
   }
-
 }
-
 
 class EditsApklistingsResourceApi {
   final commons.ApiRequester _requester;
 
-  EditsApklistingsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  EditsApklistingsResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Deletes the APK-specific localized listing for a specified APK and language
-   * code.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [apkVersionCode] - The APK version code whose APK-specific listings should
-   * be read or modified.
-   *
-   * [language] - The language code (a BCP-47 language tag) of the APK-specific
-   * localized listing to read or modify. For example, to select Austrian
-   * German, pass "de-AT".
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future delete(core.String packageName, core.String editId, core.int apkVersionCode, core.String language) {
+  /// Deletes the APK-specific localized listing for a specified APK and
+  /// language code.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [apkVersionCode] - The APK version code whose APK-specific listings should
+  /// be read or modified.
+  ///
+  /// [language] - The language code (a BCP-47 language tag) of the APK-specific
+  /// localized listing to read or modify. For example, to select Austrian
+  /// German, pass "de-AT".
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future delete(core.String packageName, core.String editId,
+      core.int apkVersionCode, core.String language) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -336,38 +343,42 @@ class EditsApklistingsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/listings/' + commons.Escaper.ecapeVariable('$language');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/apks/' +
+        commons.Escaper.ecapeVariable('$apkVersionCode') +
+        '/listings/' +
+        commons.Escaper.ecapeVariable('$language');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Deletes all the APK-specific localized listings for a specified APK.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [apkVersionCode] - The APK version code whose APK-specific listings should
-   * be read or modified.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future deleteall(core.String packageName, core.String editId, core.int apkVersionCode) {
+  /// Deletes all the APK-specific localized listings for a specified APK.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [apkVersionCode] - The APK version code whose APK-specific listings should
+  /// be read or modified.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future deleteall(
+      core.String packageName, core.String editId, core.int apkVersionCode) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -387,45 +398,48 @@ class EditsApklistingsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/listings';
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/apks/' +
+        commons.Escaper.ecapeVariable('$apkVersionCode') +
+        '/listings';
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Fetches the APK-specific localized listing for a specified APK and language
-   * code.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [apkVersionCode] - The APK version code whose APK-specific listings should
-   * be read or modified.
-   *
-   * [language] - The language code (a BCP-47 language tag) of the APK-specific
-   * localized listing to read or modify. For example, to select Austrian
-   * German, pass "de-AT".
-   *
-   * Completes with a [ApkListing].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ApkListing> get(core.String packageName, core.String editId, core.int apkVersionCode, core.String language) {
+  /// Fetches the APK-specific localized listing for a specified APK and
+  /// language code.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [apkVersionCode] - The APK version code whose APK-specific listings should
+  /// be read or modified.
+  ///
+  /// [language] - The language code (a BCP-47 language tag) of the APK-specific
+  /// localized listing to read or modify. For example, to select Austrian
+  /// German, pass "de-AT".
+  ///
+  /// Completes with a [ApkListing].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ApkListing> get(core.String packageName, core.String editId,
+      core.int apkVersionCode, core.String language) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -446,40 +460,44 @@ class EditsApklistingsResourceApi {
       throw new core.ArgumentError("Parameter language is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/listings/' + commons.Escaper.ecapeVariable('$language');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/apks/' +
+        commons.Escaper.ecapeVariable('$apkVersionCode') +
+        '/listings/' +
+        commons.Escaper.ecapeVariable('$language');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ApkListing.fromJson(data));
   }
 
-  /**
-   * Lists all the APK-specific localized listings for a specified APK.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [apkVersionCode] - The APK version code whose APK-specific listings should
-   * be read or modified.
-   *
-   * Completes with a [ApkListingsListResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ApkListingsListResponse> list(core.String packageName, core.String editId, core.int apkVersionCode) {
+  /// Lists all the APK-specific localized listings for a specified APK.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [apkVersionCode] - The APK version code whose APK-specific listings should
+  /// be read or modified.
+  ///
+  /// Completes with a [ApkListingsListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ApkListingsListResponse> list(
+      core.String packageName, core.String editId, core.int apkVersionCode) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -497,47 +515,50 @@ class EditsApklistingsResourceApi {
       throw new core.ArgumentError("Parameter apkVersionCode is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/listings';
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/apks/' +
+        commons.Escaper.ecapeVariable('$apkVersionCode') +
+        '/listings';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ApkListingsListResponse.fromJson(data));
   }
 
-  /**
-   * Updates or creates the APK-specific localized listing for a specified APK
-   * and language code. This method supports patch semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [apkVersionCode] - The APK version code whose APK-specific listings should
-   * be read or modified.
-   *
-   * [language] - The language code (a BCP-47 language tag) of the APK-specific
-   * localized listing to read or modify. For example, to select Austrian
-   * German, pass "de-AT".
-   *
-   * Completes with a [ApkListing].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ApkListing> patch(ApkListing request, core.String packageName, core.String editId, core.int apkVersionCode, core.String language) {
+  /// Updates or creates the APK-specific localized listing for a specified APK
+  /// and language code. This method supports patch semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [apkVersionCode] - The APK version code whose APK-specific listings should
+  /// be read or modified.
+  ///
+  /// [language] - The language code (a BCP-47 language tag) of the APK-specific
+  /// localized listing to read or modify. For example, to select Austrian
+  /// German, pass "de-AT".
+  ///
+  /// Completes with a [ApkListing].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ApkListing> patch(ApkListing request, core.String packageName,
+      core.String editId, core.int apkVersionCode, core.String language) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -561,47 +582,51 @@ class EditsApklistingsResourceApi {
       throw new core.ArgumentError("Parameter language is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/listings/' + commons.Escaper.ecapeVariable('$language');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/apks/' +
+        commons.Escaper.ecapeVariable('$apkVersionCode') +
+        '/listings/' +
+        commons.Escaper.ecapeVariable('$language');
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ApkListing.fromJson(data));
   }
 
-  /**
-   * Updates or creates the APK-specific localized listing for a specified APK
-   * and language code.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [apkVersionCode] - The APK version code whose APK-specific listings should
-   * be read or modified.
-   *
-   * [language] - The language code (a BCP-47 language tag) of the APK-specific
-   * localized listing to read or modify. For example, to select Austrian
-   * German, pass "de-AT".
-   *
-   * Completes with a [ApkListing].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ApkListing> update(ApkListing request, core.String packageName, core.String editId, core.int apkVersionCode, core.String language) {
+  /// Updates or creates the APK-specific localized listing for a specified APK
+  /// and language code.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [apkVersionCode] - The APK version code whose APK-specific listings should
+  /// be read or modified.
+  ///
+  /// [language] - The language code (a BCP-47 language tag) of the APK-specific
+  /// localized listing to read or modify. For example, to select Austrian
+  /// German, pass "de-AT".
+  ///
+  /// Completes with a [ApkListing].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ApkListing> update(ApkListing request, core.String packageName,
+      core.String editId, core.int apkVersionCode, core.String language) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -625,51 +650,54 @@ class EditsApklistingsResourceApi {
       throw new core.ArgumentError("Parameter language is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/listings/' + commons.Escaper.ecapeVariable('$language');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/apks/' +
+        commons.Escaper.ecapeVariable('$apkVersionCode') +
+        '/listings/' +
+        commons.Escaper.ecapeVariable('$language');
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ApkListing.fromJson(data));
   }
-
 }
-
 
 class EditsApksResourceApi {
   final commons.ApiRequester _requester;
 
-  EditsApksResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  EditsApksResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Creates a new APK without uploading the APK itself to Google Play, instead
-   * hosting the APK at a specified URL. This function is only available to
-   * enterprises using Google Play for Work whose application is configured to
-   * restrict distribution to the enterprise domain.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * Completes with a [ApksAddExternallyHostedResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ApksAddExternallyHostedResponse> addexternallyhosted(ApksAddExternallyHostedRequest request, core.String packageName, core.String editId) {
+  /// Creates a new APK without uploading the APK itself to Google Play, instead
+  /// hosting the APK at a specified URL. This function is only available to
+  /// enterprises using Google Play for Work whose application is configured to
+  /// restrict distribution to the enterprise domain.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// Completes with a [ApksAddExternallyHostedResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ApksAddExternallyHostedResponse> addexternallyhosted(
+      ApksAddExternallyHostedRequest request,
+      core.String packageName,
+      core.String editId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -687,35 +715,37 @@ class EditsApksResourceApi {
       throw new core.ArgumentError("Parameter editId is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/externallyHosted';
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/apks/externallyHosted';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new ApksAddExternallyHostedResponse.fromJson(data));
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ApksAddExternallyHostedResponse.fromJson(data));
   }
 
-  /**
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * Completes with a [ApksListResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ApksListResponse> list(core.String packageName, core.String editId) {
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// Completes with a [ApksListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ApksListResponse> list(
+      core.String packageName, core.String editId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -730,40 +760,43 @@ class EditsApksResourceApi {
       throw new core.ArgumentError("Parameter editId is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks';
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/apks';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ApksListResponse.fromJson(data));
   }
 
-  /**
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [uploadMedia] - The media to upload.
-   *
-   * [uploadOptions] - Options for the media upload. Streaming Media without the
-   * length being known ahead of time is only supported via resumable uploads.
-   *
-   * Completes with a [Apk].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Apk> upload(core.String packageName, core.String editId, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// [uploadOptions] - Options for the media upload. Streaming Media without
+  /// the length being known ahead of time is only supported via resumable
+  /// uploads.
+  ///
+  /// Completes with a [Apk].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Apk> upload(core.String packageName, core.String editId,
+      {commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -778,69 +811,81 @@ class EditsApksResourceApi {
       throw new core.ArgumentError("Parameter editId is required.");
     }
 
-    _uploadMedia =  uploadMedia;
-    _uploadOptions =  uploadOptions;
+    _uploadMedia = uploadMedia;
+    _uploadOptions = uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks';
+      _url = commons.Escaper.ecapeVariable('$packageName') +
+          '/edits/' +
+          commons.Escaper.ecapeVariable('$editId') +
+          '/apks';
     } else if (_uploadOptions is commons.ResumableUploadOptions) {
-      _url = '/resumable/upload/androidpublisher/v2/applications/' + commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks';
+      _url = '/resumable/upload/androidpublisher/v2/applications/' +
+          commons.Escaper.ecapeVariable('$packageName') +
+          '/edits/' +
+          commons.Escaper.ecapeVariable('$editId') +
+          '/apks';
     } else {
-      _url = '/upload/androidpublisher/v2/applications/' + commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks';
+      _url = '/upload/androidpublisher/v2/applications/' +
+          commons.Escaper.ecapeVariable('$packageName') +
+          '/edits/' +
+          commons.Escaper.ecapeVariable('$editId') +
+          '/apks';
     }
 
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Apk.fromJson(data));
   }
-
 }
-
 
 class EditsDeobfuscationfilesResourceApi {
   final commons.ApiRequester _requester;
 
-  EditsDeobfuscationfilesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  EditsDeobfuscationfilesResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Uploads the deobfuscation file of the specified APK. If a deobfuscation
-   * file already exists, it will be replaced.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier of the Android app for which the
-   * deobfuscatiuon files are being uploaded; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [apkVersionCode] - The version code of the APK whose deobfuscation file is
-   * being uploaded.
-   *
-   * [deobfuscationFileType] - null
-   * Possible string values are:
-   * - "proguard"
-   *
-   * [uploadMedia] - The media to upload.
-   *
-   * [uploadOptions] - Options for the media upload. Streaming Media without the
-   * length being known ahead of time is only supported via resumable uploads.
-   *
-   * Completes with a [DeobfuscationFilesUploadResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<DeobfuscationFilesUploadResponse> upload(core.String packageName, core.String editId, core.int apkVersionCode, core.String deobfuscationFileType, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
+  /// Uploads the deobfuscation file of the specified APK. If a deobfuscation
+  /// file already exists, it will be replaced.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier of the Android app for which the
+  /// deobfuscatiuon files are being uploaded; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [apkVersionCode] - The version code of the APK whose deobfuscation file is
+  /// being uploaded.
+  ///
+  /// [deobfuscationFileType] - null
+  /// Possible string values are:
+  /// - "proguard"
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// [uploadOptions] - Options for the media upload. Streaming Media without
+  /// the length being known ahead of time is only supported via resumable
+  /// uploads.
+  ///
+  /// Completes with a [DeobfuscationFilesUploadResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DeobfuscationFilesUploadResponse> upload(
+      core.String packageName,
+      core.String editId,
+      core.int apkVersionCode,
+      core.String deobfuscationFileType,
+      {commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -858,59 +903,74 @@ class EditsDeobfuscationfilesResourceApi {
       throw new core.ArgumentError("Parameter apkVersionCode is required.");
     }
     if (deobfuscationFileType == null) {
-      throw new core.ArgumentError("Parameter deobfuscationFileType is required.");
+      throw new core.ArgumentError(
+          "Parameter deobfuscationFileType is required.");
     }
 
-    _uploadMedia =  uploadMedia;
-    _uploadOptions =  uploadOptions;
+    _uploadMedia = uploadMedia;
+    _uploadOptions = uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/deobfuscationFiles/' + commons.Escaper.ecapeVariable('$deobfuscationFileType');
+      _url = commons.Escaper.ecapeVariable('$packageName') +
+          '/edits/' +
+          commons.Escaper.ecapeVariable('$editId') +
+          '/apks/' +
+          commons.Escaper.ecapeVariable('$apkVersionCode') +
+          '/deobfuscationFiles/' +
+          commons.Escaper.ecapeVariable('$deobfuscationFileType');
     } else if (_uploadOptions is commons.ResumableUploadOptions) {
-      _url = '/resumable/upload/androidpublisher/v2/applications/' + commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/deobfuscationFiles/' + commons.Escaper.ecapeVariable('$deobfuscationFileType');
+      _url = '/resumable/upload/androidpublisher/v2/applications/' +
+          commons.Escaper.ecapeVariable('$packageName') +
+          '/edits/' +
+          commons.Escaper.ecapeVariable('$editId') +
+          '/apks/' +
+          commons.Escaper.ecapeVariable('$apkVersionCode') +
+          '/deobfuscationFiles/' +
+          commons.Escaper.ecapeVariable('$deobfuscationFileType');
     } else {
-      _url = '/upload/androidpublisher/v2/applications/' + commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/deobfuscationFiles/' + commons.Escaper.ecapeVariable('$deobfuscationFileType');
+      _url = '/upload/androidpublisher/v2/applications/' +
+          commons.Escaper.ecapeVariable('$packageName') +
+          '/edits/' +
+          commons.Escaper.ecapeVariable('$editId') +
+          '/apks/' +
+          commons.Escaper.ecapeVariable('$apkVersionCode') +
+          '/deobfuscationFiles/' +
+          commons.Escaper.ecapeVariable('$deobfuscationFileType');
     }
 
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new DeobfuscationFilesUploadResponse.fromJson(data));
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new DeobfuscationFilesUploadResponse.fromJson(data));
   }
-
 }
-
 
 class EditsDetailsResourceApi {
   final commons.ApiRequester _requester;
 
-  EditsDetailsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  EditsDetailsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Fetches app details for this edit. This includes the default language and
-   * developer support contact information.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * Completes with a [AppDetails].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Fetches app details for this edit. This includes the default language and
+  /// developer support contact information.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// Completes with a [AppDetails].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<AppDetails> get(core.String packageName, core.String editId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -926,39 +986,40 @@ class EditsDetailsResourceApi {
       throw new core.ArgumentError("Parameter editId is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/details';
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/details';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new AppDetails.fromJson(data));
   }
 
-  /**
-   * Updates app details for this edit. This method supports patch semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * Completes with a [AppDetails].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<AppDetails> patch(AppDetails request, core.String packageName, core.String editId) {
+  /// Updates app details for this edit. This method supports patch semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// Completes with a [AppDetails].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AppDetails> patch(
+      AppDetails request, core.String packageName, core.String editId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -976,39 +1037,40 @@ class EditsDetailsResourceApi {
       throw new core.ArgumentError("Parameter editId is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/details';
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/details';
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new AppDetails.fromJson(data));
   }
 
-  /**
-   * Updates app details for this edit.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * Completes with a [AppDetails].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<AppDetails> update(AppDetails request, core.String packageName, core.String editId) {
+  /// Updates app details for this edit.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// Completes with a [AppDetails].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AppDetails> update(
+      AppDetails request, core.String packageName, core.String editId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1026,54 +1088,53 @@ class EditsDetailsResourceApi {
       throw new core.ArgumentError("Parameter editId is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/details';
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/details';
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new AppDetails.fromJson(data));
   }
-
 }
-
 
 class EditsExpansionfilesResourceApi {
   final commons.ApiRequester _requester;
 
-  EditsExpansionfilesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  EditsExpansionfilesResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Fetches the Expansion File configuration for the APK specified.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [apkVersionCode] - The version code of the APK whose Expansion File
-   * configuration is being read or modified.
-   *
-   * [expansionFileType] - null
-   * Possible string values are:
-   * - "main"
-   * - "patch"
-   *
-   * Completes with a [ExpansionFile].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ExpansionFile> get(core.String packageName, core.String editId, core.int apkVersionCode, core.String expansionFileType) {
+  /// Fetches the Expansion File configuration for the APK specified.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [apkVersionCode] - The version code of the APK whose Expansion File
+  /// configuration is being read or modified.
+  ///
+  /// [expansionFileType] - null
+  /// Possible string values are:
+  /// - "main"
+  /// - "patch"
+  ///
+  /// Completes with a [ExpansionFile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExpansionFile> get(core.String packageName, core.String editId,
+      core.int apkVersionCode, core.String expansionFileType) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1094,49 +1155,57 @@ class EditsExpansionfilesResourceApi {
       throw new core.ArgumentError("Parameter expansionFileType is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/expansionFiles/' + commons.Escaper.ecapeVariable('$expansionFileType');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/apks/' +
+        commons.Escaper.ecapeVariable('$apkVersionCode') +
+        '/expansionFiles/' +
+        commons.Escaper.ecapeVariable('$expansionFileType');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ExpansionFile.fromJson(data));
   }
 
-  /**
-   * Updates the APK's Expansion File configuration to reference another APK's
-   * Expansion Files. To add a new Expansion File use the Upload method. This
-   * method supports patch semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [apkVersionCode] - The version code of the APK whose Expansion File
-   * configuration is being read or modified.
-   *
-   * [expansionFileType] - null
-   * Possible string values are:
-   * - "main"
-   * - "patch"
-   *
-   * Completes with a [ExpansionFile].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ExpansionFile> patch(ExpansionFile request, core.String packageName, core.String editId, core.int apkVersionCode, core.String expansionFileType) {
+  /// Updates the APK's Expansion File configuration to reference another APK's
+  /// Expansion Files. To add a new Expansion File use the Upload method. This
+  /// method supports patch semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [apkVersionCode] - The version code of the APK whose Expansion File
+  /// configuration is being read or modified.
+  ///
+  /// [expansionFileType] - null
+  /// Possible string values are:
+  /// - "main"
+  /// - "patch"
+  ///
+  /// Completes with a [ExpansionFile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExpansionFile> patch(
+      ExpansionFile request,
+      core.String packageName,
+      core.String editId,
+      core.int apkVersionCode,
+      core.String expansionFileType) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1160,48 +1229,56 @@ class EditsExpansionfilesResourceApi {
       throw new core.ArgumentError("Parameter expansionFileType is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/expansionFiles/' + commons.Escaper.ecapeVariable('$expansionFileType');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/apks/' +
+        commons.Escaper.ecapeVariable('$apkVersionCode') +
+        '/expansionFiles/' +
+        commons.Escaper.ecapeVariable('$expansionFileType');
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ExpansionFile.fromJson(data));
   }
 
-  /**
-   * Updates the APK's Expansion File configuration to reference another APK's
-   * Expansion Files. To add a new Expansion File use the Upload method.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [apkVersionCode] - The version code of the APK whose Expansion File
-   * configuration is being read or modified.
-   *
-   * [expansionFileType] - null
-   * Possible string values are:
-   * - "main"
-   * - "patch"
-   *
-   * Completes with a [ExpansionFile].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ExpansionFile> update(ExpansionFile request, core.String packageName, core.String editId, core.int apkVersionCode, core.String expansionFileType) {
+  /// Updates the APK's Expansion File configuration to reference another APK's
+  /// Expansion Files. To add a new Expansion File use the Upload method.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [apkVersionCode] - The version code of the APK whose Expansion File
+  /// configuration is being read or modified.
+  ///
+  /// [expansionFileType] - null
+  /// Possible string values are:
+  /// - "main"
+  /// - "patch"
+  ///
+  /// Completes with a [ExpansionFile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExpansionFile> update(
+      ExpansionFile request,
+      core.String packageName,
+      core.String editId,
+      core.int apkVersionCode,
+      core.String expansionFileType) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1225,50 +1302,60 @@ class EditsExpansionfilesResourceApi {
       throw new core.ArgumentError("Parameter expansionFileType is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/expansionFiles/' + commons.Escaper.ecapeVariable('$expansionFileType');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/apks/' +
+        commons.Escaper.ecapeVariable('$apkVersionCode') +
+        '/expansionFiles/' +
+        commons.Escaper.ecapeVariable('$expansionFileType');
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ExpansionFile.fromJson(data));
   }
 
-  /**
-   * Uploads and attaches a new Expansion File to the APK specified.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [apkVersionCode] - The version code of the APK whose Expansion File
-   * configuration is being read or modified.
-   *
-   * [expansionFileType] - null
-   * Possible string values are:
-   * - "main"
-   * - "patch"
-   *
-   * [uploadMedia] - The media to upload.
-   *
-   * [uploadOptions] - Options for the media upload. Streaming Media without the
-   * length being known ahead of time is only supported via resumable uploads.
-   *
-   * Completes with a [ExpansionFilesUploadResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ExpansionFilesUploadResponse> upload(core.String packageName, core.String editId, core.int apkVersionCode, core.String expansionFileType, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
+  /// Uploads and attaches a new Expansion File to the APK specified.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [apkVersionCode] - The version code of the APK whose Expansion File
+  /// configuration is being read or modified.
+  ///
+  /// [expansionFileType] - null
+  /// Possible string values are:
+  /// - "main"
+  /// - "patch"
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// [uploadOptions] - Options for the media upload. Streaming Media without
+  /// the length being known ahead of time is only supported via resumable
+  /// uploads.
+  ///
+  /// Completes with a [ExpansionFilesUploadResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExpansionFilesUploadResponse> upload(
+      core.String packageName,
+      core.String editId,
+      core.int apkVersionCode,
+      core.String expansionFileType,
+      {commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1289,73 +1376,88 @@ class EditsExpansionfilesResourceApi {
       throw new core.ArgumentError("Parameter expansionFileType is required.");
     }
 
-    _uploadMedia =  uploadMedia;
-    _uploadOptions =  uploadOptions;
+    _uploadMedia = uploadMedia;
+    _uploadOptions = uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/expansionFiles/' + commons.Escaper.ecapeVariable('$expansionFileType');
+      _url = commons.Escaper.ecapeVariable('$packageName') +
+          '/edits/' +
+          commons.Escaper.ecapeVariable('$editId') +
+          '/apks/' +
+          commons.Escaper.ecapeVariable('$apkVersionCode') +
+          '/expansionFiles/' +
+          commons.Escaper.ecapeVariable('$expansionFileType');
     } else if (_uploadOptions is commons.ResumableUploadOptions) {
-      _url = '/resumable/upload/androidpublisher/v2/applications/' + commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/expansionFiles/' + commons.Escaper.ecapeVariable('$expansionFileType');
+      _url = '/resumable/upload/androidpublisher/v2/applications/' +
+          commons.Escaper.ecapeVariable('$packageName') +
+          '/edits/' +
+          commons.Escaper.ecapeVariable('$editId') +
+          '/apks/' +
+          commons.Escaper.ecapeVariable('$apkVersionCode') +
+          '/expansionFiles/' +
+          commons.Escaper.ecapeVariable('$expansionFileType');
     } else {
-      _url = '/upload/androidpublisher/v2/applications/' + commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/apks/' + commons.Escaper.ecapeVariable('$apkVersionCode') + '/expansionFiles/' + commons.Escaper.ecapeVariable('$expansionFileType');
+      _url = '/upload/androidpublisher/v2/applications/' +
+          commons.Escaper.ecapeVariable('$packageName') +
+          '/edits/' +
+          commons.Escaper.ecapeVariable('$editId') +
+          '/apks/' +
+          commons.Escaper.ecapeVariable('$apkVersionCode') +
+          '/expansionFiles/' +
+          commons.Escaper.ecapeVariable('$expansionFileType');
     }
 
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new ExpansionFilesUploadResponse.fromJson(data));
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ExpansionFilesUploadResponse.fromJson(data));
   }
-
 }
-
 
 class EditsImagesResourceApi {
   final commons.ApiRequester _requester;
 
-  EditsImagesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  EditsImagesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Deletes the image (specified by id) from the edit.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [language] - The language code (a BCP-47 language tag) of the localized
-   * listing whose images are to read or modified. For example, to select
-   * Austrian German, pass "de-AT".
-   *
-   * [imageType] - null
-   * Possible string values are:
-   * - "featureGraphic"
-   * - "icon"
-   * - "phoneScreenshots"
-   * - "promoGraphic"
-   * - "sevenInchScreenshots"
-   * - "tenInchScreenshots"
-   * - "tvBanner"
-   * - "tvScreenshots"
-   * - "wearScreenshots"
-   *
-   * [imageId] - Unique identifier an image within the set of images attached to
-   * this edit.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future delete(core.String packageName, core.String editId, core.String language, core.String imageType, core.String imageId) {
+  /// Deletes the image (specified by id) from the edit.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [language] - The language code (a BCP-47 language tag) of the localized
+  /// listing whose images are to read or modified. For example, to select
+  /// Austrian German, pass "de-AT".
+  ///
+  /// [imageType] - null
+  /// Possible string values are:
+  /// - "featureGraphic"
+  /// - "icon"
+  /// - "phoneScreenshots"
+  /// - "promoGraphic"
+  /// - "sevenInchScreenshots"
+  /// - "tenInchScreenshots"
+  /// - "tvBanner"
+  /// - "tvScreenshots"
+  /// - "wearScreenshots"
+  ///
+  /// [imageId] - Unique identifier an image within the set of images attached
+  /// to this edit.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future delete(core.String packageName, core.String editId,
+      core.String language, core.String imageType, core.String imageId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1381,53 +1483,59 @@ class EditsImagesResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings/' + commons.Escaper.ecapeVariable('$language') + '/' + commons.Escaper.ecapeVariable('$imageType') + '/' + commons.Escaper.ecapeVariable('$imageId');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/listings/' +
+        commons.Escaper.ecapeVariable('$language') +
+        '/' +
+        commons.Escaper.ecapeVariable('$imageType') +
+        '/' +
+        commons.Escaper.ecapeVariable('$imageId');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Deletes all images for the specified language and image type.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [language] - The language code (a BCP-47 language tag) of the localized
-   * listing whose images are to read or modified. For example, to select
-   * Austrian German, pass "de-AT".
-   *
-   * [imageType] - null
-   * Possible string values are:
-   * - "featureGraphic"
-   * - "icon"
-   * - "phoneScreenshots"
-   * - "promoGraphic"
-   * - "sevenInchScreenshots"
-   * - "tenInchScreenshots"
-   * - "tvBanner"
-   * - "tvScreenshots"
-   * - "wearScreenshots"
-   *
-   * Completes with a [ImagesDeleteAllResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ImagesDeleteAllResponse> deleteall(core.String packageName, core.String editId, core.String language, core.String imageType) {
+  /// Deletes all images for the specified language and image type.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [language] - The language code (a BCP-47 language tag) of the localized
+  /// listing whose images are to read or modified. For example, to select
+  /// Austrian German, pass "de-AT".
+  ///
+  /// [imageType] - null
+  /// Possible string values are:
+  /// - "featureGraphic"
+  /// - "icon"
+  /// - "phoneScreenshots"
+  /// - "promoGraphic"
+  /// - "sevenInchScreenshots"
+  /// - "tenInchScreenshots"
+  /// - "tvBanner"
+  /// - "tvScreenshots"
+  /// - "wearScreenshots"
+  ///
+  /// Completes with a [ImagesDeleteAllResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ImagesDeleteAllResponse> deleteall(core.String packageName,
+      core.String editId, core.String language, core.String imageType) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1448,53 +1556,57 @@ class EditsImagesResourceApi {
       throw new core.ArgumentError("Parameter imageType is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings/' + commons.Escaper.ecapeVariable('$language') + '/' + commons.Escaper.ecapeVariable('$imageType');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/listings/' +
+        commons.Escaper.ecapeVariable('$language') +
+        '/' +
+        commons.Escaper.ecapeVariable('$imageType');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ImagesDeleteAllResponse.fromJson(data));
   }
 
-  /**
-   * Lists all images for the specified language and image type.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [language] - The language code (a BCP-47 language tag) of the localized
-   * listing whose images are to read or modified. For example, to select
-   * Austrian German, pass "de-AT".
-   *
-   * [imageType] - null
-   * Possible string values are:
-   * - "featureGraphic"
-   * - "icon"
-   * - "phoneScreenshots"
-   * - "promoGraphic"
-   * - "sevenInchScreenshots"
-   * - "tenInchScreenshots"
-   * - "tvBanner"
-   * - "tvScreenshots"
-   * - "wearScreenshots"
-   *
-   * Completes with a [ImagesListResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ImagesListResponse> list(core.String packageName, core.String editId, core.String language, core.String imageType) {
+  /// Lists all images for the specified language and image type.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [language] - The language code (a BCP-47 language tag) of the localized
+  /// listing whose images are to read or modified. For example, to select
+  /// Austrian German, pass "de-AT".
+  ///
+  /// [imageType] - null
+  /// Possible string values are:
+  /// - "featureGraphic"
+  /// - "icon"
+  /// - "phoneScreenshots"
+  /// - "promoGraphic"
+  /// - "sevenInchScreenshots"
+  /// - "tenInchScreenshots"
+  /// - "tvBanner"
+  /// - "tvScreenshots"
+  /// - "wearScreenshots"
+  ///
+  /// Completes with a [ImagesListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ImagesListResponse> list(core.String packageName,
+      core.String editId, core.String language, core.String imageType) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1515,59 +1627,66 @@ class EditsImagesResourceApi {
       throw new core.ArgumentError("Parameter imageType is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings/' + commons.Escaper.ecapeVariable('$language') + '/' + commons.Escaper.ecapeVariable('$imageType');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/listings/' +
+        commons.Escaper.ecapeVariable('$language') +
+        '/' +
+        commons.Escaper.ecapeVariable('$imageType');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ImagesListResponse.fromJson(data));
   }
 
-  /**
-   * Uploads a new image and adds it to the list of images for the specified
-   * language and image type.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [language] - The language code (a BCP-47 language tag) of the localized
-   * listing whose images are to read or modified. For example, to select
-   * Austrian German, pass "de-AT".
-   *
-   * [imageType] - null
-   * Possible string values are:
-   * - "featureGraphic"
-   * - "icon"
-   * - "phoneScreenshots"
-   * - "promoGraphic"
-   * - "sevenInchScreenshots"
-   * - "tenInchScreenshots"
-   * - "tvBanner"
-   * - "tvScreenshots"
-   * - "wearScreenshots"
-   *
-   * [uploadMedia] - The media to upload.
-   *
-   * [uploadOptions] - Options for the media upload. Streaming Media without the
-   * length being known ahead of time is only supported via resumable uploads.
-   *
-   * Completes with a [ImagesUploadResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ImagesUploadResponse> upload(core.String packageName, core.String editId, core.String language, core.String imageType, {commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
+  /// Uploads a new image and adds it to the list of images for the specified
+  /// language and image type.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [language] - The language code (a BCP-47 language tag) of the localized
+  /// listing whose images are to read or modified. For example, to select
+  /// Austrian German, pass "de-AT".
+  ///
+  /// [imageType] - null
+  /// Possible string values are:
+  /// - "featureGraphic"
+  /// - "icon"
+  /// - "phoneScreenshots"
+  /// - "promoGraphic"
+  /// - "sevenInchScreenshots"
+  /// - "tenInchScreenshots"
+  /// - "tvBanner"
+  /// - "tvScreenshots"
+  /// - "wearScreenshots"
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// [uploadOptions] - Options for the media upload. Streaming Media without
+  /// the length being known ahead of time is only supported via resumable
+  /// uploads.
+  ///
+  /// Completes with a [ImagesUploadResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ImagesUploadResponse> upload(core.String packageName,
+      core.String editId, core.String language, core.String imageType,
+      {commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1588,58 +1707,72 @@ class EditsImagesResourceApi {
       throw new core.ArgumentError("Parameter imageType is required.");
     }
 
-    _uploadMedia =  uploadMedia;
-    _uploadOptions =  uploadOptions;
+    _uploadMedia = uploadMedia;
+    _uploadOptions = uploadOptions;
 
     if (_uploadMedia == null) {
-      _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings/' + commons.Escaper.ecapeVariable('$language') + '/' + commons.Escaper.ecapeVariable('$imageType');
+      _url = commons.Escaper.ecapeVariable('$packageName') +
+          '/edits/' +
+          commons.Escaper.ecapeVariable('$editId') +
+          '/listings/' +
+          commons.Escaper.ecapeVariable('$language') +
+          '/' +
+          commons.Escaper.ecapeVariable('$imageType');
     } else if (_uploadOptions is commons.ResumableUploadOptions) {
-      _url = '/resumable/upload/androidpublisher/v2/applications/' + commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings/' + commons.Escaper.ecapeVariable('$language') + '/' + commons.Escaper.ecapeVariable('$imageType');
+      _url = '/resumable/upload/androidpublisher/v2/applications/' +
+          commons.Escaper.ecapeVariable('$packageName') +
+          '/edits/' +
+          commons.Escaper.ecapeVariable('$editId') +
+          '/listings/' +
+          commons.Escaper.ecapeVariable('$language') +
+          '/' +
+          commons.Escaper.ecapeVariable('$imageType');
     } else {
-      _url = '/upload/androidpublisher/v2/applications/' + commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings/' + commons.Escaper.ecapeVariable('$language') + '/' + commons.Escaper.ecapeVariable('$imageType');
+      _url = '/upload/androidpublisher/v2/applications/' +
+          commons.Escaper.ecapeVariable('$packageName') +
+          '/edits/' +
+          commons.Escaper.ecapeVariable('$editId') +
+          '/listings/' +
+          commons.Escaper.ecapeVariable('$language') +
+          '/' +
+          commons.Escaper.ecapeVariable('$imageType');
     }
 
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ImagesUploadResponse.fromJson(data));
   }
-
 }
-
 
 class EditsListingsResourceApi {
   final commons.ApiRequester _requester;
 
-  EditsListingsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  EditsListingsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Deletes the specified localized store listing from an edit.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [language] - The language code (a BCP-47 language tag) of the localized
-   * listing to read or modify. For example, to select Austrian German, pass
-   * "de-AT".
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future delete(core.String packageName, core.String editId, core.String language) {
+  /// Deletes the specified localized store listing from an edit.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [language] - The language code (a BCP-47 language tag) of the localized
+  /// listing to read or modify. For example, to select Austrian German, pass
+  /// "de-AT".
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future delete(
+      core.String packageName, core.String editId, core.String language) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1659,34 +1792,35 @@ class EditsListingsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings/' + commons.Escaper.ecapeVariable('$language');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/listings/' +
+        commons.Escaper.ecapeVariable('$language');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Deletes all localized listings from an edit.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Deletes all localized listings from an edit.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future deleteall(core.String packageName, core.String editId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1704,41 +1838,42 @@ class EditsListingsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings';
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/listings';
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Fetches information about a localized store listing.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [language] - The language code (a BCP-47 language tag) of the localized
-   * listing to read or modify. For example, to select Austrian German, pass
-   * "de-AT".
-   *
-   * Completes with a [Listing].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Listing> get(core.String packageName, core.String editId, core.String language) {
+  /// Fetches information about a localized store listing.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [language] - The language code (a BCP-47 language tag) of the localized
+  /// listing to read or modify. For example, to select Austrian German, pass
+  /// "de-AT".
+  ///
+  /// Completes with a [Listing].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Listing> get(
+      core.String packageName, core.String editId, core.String language) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1756,37 +1891,39 @@ class EditsListingsResourceApi {
       throw new core.ArgumentError("Parameter language is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings/' + commons.Escaper.ecapeVariable('$language');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/listings/' +
+        commons.Escaper.ecapeVariable('$language');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Listing.fromJson(data));
   }
 
-  /**
-   * Returns all of the localized store listings attached to this edit.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * Completes with a [ListingsListResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ListingsListResponse> list(core.String packageName, core.String editId) {
+  /// Returns all of the localized store listings attached to this edit.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// Completes with a [ListingsListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListingsListResponse> list(
+      core.String packageName, core.String editId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1801,44 +1938,45 @@ class EditsListingsResourceApi {
       throw new core.ArgumentError("Parameter editId is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings';
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/listings';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ListingsListResponse.fromJson(data));
   }
 
-  /**
-   * Creates or updates a localized store listing. This method supports patch
-   * semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [language] - The language code (a BCP-47 language tag) of the localized
-   * listing to read or modify. For example, to select Austrian German, pass
-   * "de-AT".
-   *
-   * Completes with a [Listing].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Listing> patch(Listing request, core.String packageName, core.String editId, core.String language) {
+  /// Creates or updates a localized store listing. This method supports patch
+  /// semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [language] - The language code (a BCP-47 language tag) of the localized
+  /// listing to read or modify. For example, to select Austrian German, pass
+  /// "de-AT".
+  ///
+  /// Completes with a [Listing].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Listing> patch(Listing request, core.String packageName,
+      core.String editId, core.String language) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1859,43 +1997,45 @@ class EditsListingsResourceApi {
       throw new core.ArgumentError("Parameter language is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings/' + commons.Escaper.ecapeVariable('$language');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/listings/' +
+        commons.Escaper.ecapeVariable('$language');
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Listing.fromJson(data));
   }
 
-  /**
-   * Creates or updates a localized store listing.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [language] - The language code (a BCP-47 language tag) of the localized
-   * listing to read or modify. For example, to select Austrian German, pass
-   * "de-AT".
-   *
-   * Completes with a [Listing].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Listing> update(Listing request, core.String packageName, core.String editId, core.String language) {
+  /// Creates or updates a localized store listing.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [language] - The language code (a BCP-47 language tag) of the localized
+  /// listing to read or modify. For example, to select Austrian German, pass
+  /// "de-AT".
+  ///
+  /// Completes with a [Listing].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Listing> update(Listing request, core.String packageName,
+      core.String editId, core.String language) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1916,51 +2056,50 @@ class EditsListingsResourceApi {
       throw new core.ArgumentError("Parameter language is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/listings/' + commons.Escaper.ecapeVariable('$language');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/listings/' +
+        commons.Escaper.ecapeVariable('$language');
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Listing.fromJson(data));
   }
-
 }
-
 
 class EditsTestersResourceApi {
   final commons.ApiRequester _requester;
 
-  EditsTestersResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  EditsTestersResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [track] - null
-   * Possible string values are:
-   * - "alpha"
-   * - "beta"
-   * - "production"
-   * - "rollout"
-   *
-   * Completes with a [Testers].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Testers> get(core.String packageName, core.String editId, core.String track) {
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [track] - null
+  /// Possible string values are:
+  /// - "alpha"
+  /// - "beta"
+  /// - "production"
+  /// - "rollout"
+  ///
+  /// Completes with a [Testers].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Testers> get(
+      core.String packageName, core.String editId, core.String track) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1978,102 +2117,46 @@ class EditsTestersResourceApi {
       throw new core.ArgumentError("Parameter track is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/testers/' + commons.Escaper.ecapeVariable('$track');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/testers/' +
+        commons.Escaper.ecapeVariable('$track');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Testers.fromJson(data));
   }
 
-  /**
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [track] - null
-   * Possible string values are:
-   * - "alpha"
-   * - "beta"
-   * - "production"
-   * - "rollout"
-   *
-   * Completes with a [Testers].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Testers> patch(Testers request, core.String packageName, core.String editId, core.String track) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (packageName == null) {
-      throw new core.ArgumentError("Parameter packageName is required.");
-    }
-    if (editId == null) {
-      throw new core.ArgumentError("Parameter editId is required.");
-    }
-    if (track == null) {
-      throw new core.ArgumentError("Parameter track is required.");
-    }
-
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/testers/' + commons.Escaper.ecapeVariable('$track');
-
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new Testers.fromJson(data));
-  }
-
-  /**
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [track] - null
-   * Possible string values are:
-   * - "alpha"
-   * - "beta"
-   * - "production"
-   * - "rollout"
-   *
-   * Completes with a [Testers].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Testers> update(Testers request, core.String packageName, core.String editId, core.String track) {
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [track] - null
+  /// Possible string values are:
+  /// - "alpha"
+  /// - "beta"
+  /// - "production"
+  /// - "rollout"
+  ///
+  /// Completes with a [Testers].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Testers> patch(Testers request, core.String packageName,
+      core.String editId, core.String track) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2094,54 +2177,113 @@ class EditsTestersResourceApi {
       throw new core.ArgumentError("Parameter track is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/testers/' + commons.Escaper.ecapeVariable('$track');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/testers/' +
+        commons.Escaper.ecapeVariable('$track');
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Testers.fromJson(data));
   }
 
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [track] - null
+  /// Possible string values are:
+  /// - "alpha"
+  /// - "beta"
+  /// - "production"
+  /// - "rollout"
+  ///
+  /// Completes with a [Testers].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Testers> update(Testers request, core.String packageName,
+      core.String editId, core.String track) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (packageName == null) {
+      throw new core.ArgumentError("Parameter packageName is required.");
+    }
+    if (editId == null) {
+      throw new core.ArgumentError("Parameter editId is required.");
+    }
+    if (track == null) {
+      throw new core.ArgumentError("Parameter track is required.");
+    }
+
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/testers/' +
+        commons.Escaper.ecapeVariable('$track');
+
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Testers.fromJson(data));
+  }
 }
-
 
 class EditsTracksResourceApi {
   final commons.ApiRequester _requester;
 
-  EditsTracksResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  EditsTracksResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Fetches the track configuration for the specified track type. Includes the
-   * APK version codes that are in this track.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [track] - The track type to read or modify.
-   * Possible string values are:
-   * - "alpha"
-   * - "beta"
-   * - "production"
-   * - "rollout"
-   *
-   * Completes with a [Track].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Track> get(core.String packageName, core.String editId, core.String track) {
+  /// Fetches the track configuration for the specified track type. Includes the
+  /// APK version codes that are in this track.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [track] - The track type to read or modify.
+  /// Possible string values are:
+  /// - "alpha"
+  /// - "beta"
+  /// - "production"
+  /// - "rollout"
+  ///
+  /// Completes with a [Track].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Track> get(
+      core.String packageName, core.String editId, core.String track) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2159,37 +2301,39 @@ class EditsTracksResourceApi {
       throw new core.ArgumentError("Parameter track is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/tracks/' + commons.Escaper.ecapeVariable('$track');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/tracks/' +
+        commons.Escaper.ecapeVariable('$track');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Track.fromJson(data));
   }
 
-  /**
-   * Lists all the track configurations for this edit.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * Completes with a [TracksListResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<TracksListResponse> list(core.String packageName, core.String editId) {
+  /// Lists all the track configurations for this edit.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// Completes with a [TracksListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TracksListResponse> list(
+      core.String packageName, core.String editId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2204,48 +2348,49 @@ class EditsTracksResourceApi {
       throw new core.ArgumentError("Parameter editId is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/tracks';
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/tracks';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new TracksListResponse.fromJson(data));
   }
 
-  /**
-   * Updates the track configuration for the specified track type. When halted,
-   * the rollout track cannot be updated without adding new APKs, and adding new
-   * APKs will cause it to resume. This method supports patch semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [track] - The track type to read or modify.
-   * Possible string values are:
-   * - "alpha"
-   * - "beta"
-   * - "production"
-   * - "rollout"
-   *
-   * Completes with a [Track].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Track> patch(Track request, core.String packageName, core.String editId, core.String track) {
+  /// Updates the track configuration for the specified track type. When halted,
+  /// the rollout track cannot be updated without adding new APKs, and adding
+  /// new APKs will cause it to resume. This method supports patch semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [track] - The track type to read or modify.
+  /// Possible string values are:
+  /// - "alpha"
+  /// - "beta"
+  /// - "production"
+  /// - "rollout"
+  ///
+  /// Completes with a [Track].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Track> patch(Track request, core.String packageName,
+      core.String editId, core.String track) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2266,48 +2411,50 @@ class EditsTracksResourceApi {
       throw new core.ArgumentError("Parameter track is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/tracks/' + commons.Escaper.ecapeVariable('$track');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/tracks/' +
+        commons.Escaper.ecapeVariable('$track');
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Track.fromJson(data));
   }
 
-  /**
-   * Updates the track configuration for the specified track type. When halted,
-   * the rollout track cannot be updated without adding new APKs, and adding new
-   * APKs will cause it to resume.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app that is being
-   * updated; for example, "com.spiffygame".
-   *
-   * [editId] - Unique identifier for this edit.
-   *
-   * [track] - The track type to read or modify.
-   * Possible string values are:
-   * - "alpha"
-   * - "beta"
-   * - "production"
-   * - "rollout"
-   *
-   * Completes with a [Track].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Track> update(Track request, core.String packageName, core.String editId, core.String track) {
+  /// Updates the track configuration for the specified track type. When halted,
+  /// the rollout track cannot be updated without adding new APKs, and adding
+  /// new APKs will cause it to resume.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app that is being
+  /// updated; for example, "com.spiffygame".
+  ///
+  /// [editId] - Unique identifier for this edit.
+  ///
+  /// [track] - The track type to read or modify.
+  /// Possible string values are:
+  /// - "alpha"
+  /// - "beta"
+  /// - "production"
+  /// - "rollout"
+  ///
+  /// Completes with a [Track].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Track> update(Track request, core.String packageName,
+      core.String editId, core.String track) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2328,53 +2475,55 @@ class EditsTracksResourceApi {
       throw new core.ArgumentError("Parameter track is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/edits/' + commons.Escaper.ecapeVariable('$editId') + '/tracks/' + commons.Escaper.ecapeVariable('$track');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/edits/' +
+        commons.Escaper.ecapeVariable('$editId') +
+        '/tracks/' +
+        commons.Escaper.ecapeVariable('$track');
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Track.fromJson(data));
   }
-
 }
-
 
 class EntitlementsResourceApi {
   final commons.ApiRequester _requester;
 
-  EntitlementsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  EntitlementsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Lists the user's current inapp item or subscription entitlements
-   *
-   * Request parameters:
-   *
-   * [packageName] - The package name of the application the inapp product was
-   * sold in (for example, 'com.some.thing').
-   *
-   * [maxResults] - null
-   *
-   * [productId] - The product id of the inapp product (for example, 'sku1').
-   * This can be used to restrict the result set.
-   *
-   * [startIndex] - null
-   *
-   * [token] - null
-   *
-   * Completes with a [EntitlementsListResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<EntitlementsListResponse> list(core.String packageName, {core.int maxResults, core.String productId, core.int startIndex, core.String token}) {
+  /// Lists the user's current inapp item or subscription entitlements
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - The package name of the application the inapp product was
+  /// sold in (for example, 'com.some.thing').
+  ///
+  /// [maxResults] - null
+  ///
+  /// [productId] - The product id of the inapp product (for example, 'sku1').
+  /// This can be used to restrict the result set.
+  ///
+  /// [startIndex] - null
+  ///
+  /// [token] - null
+  ///
+  /// Completes with a [EntitlementsListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EntitlementsListResponse> list(core.String packageName,
+      {core.int maxResults,
+      core.String productId,
+      core.int startIndex,
+      core.String token}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2400,39 +2549,35 @@ class EntitlementsResourceApi {
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/entitlements';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new EntitlementsListResponse.fromJson(data));
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new EntitlementsListResponse.fromJson(data));
   }
-
 }
-
 
 class InappproductsResourceApi {
   final commons.ApiRequester _requester;
 
-  InappproductsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  InappproductsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [InappproductsBatchResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<InappproductsBatchResponse> batch(InappproductsBatchRequest request) {
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [InappproductsBatchResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InappproductsBatchResponse> batch(
+      InappproductsBatchRequest request) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2446,32 +2591,30 @@ class InappproductsResourceApi {
 
     _url = 'inappproducts/batch';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new InappproductsBatchResponse.fromJson(data));
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new InappproductsBatchResponse.fromJson(data));
   }
 
-  /**
-   * Delete an in-app product for an app.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app with the in-app
-   * product; for example, "com.spiffygame".
-   *
-   * [sku] - Unique identifier for the in-app product.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Delete an in-app product for an app.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app with the in-app
+  /// product; for example, "com.spiffygame".
+  ///
+  /// [sku] - Unique identifier for the in-app product.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future delete(core.String packageName, core.String sku) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -2489,35 +2632,34 @@ class InappproductsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/inappproducts/' + commons.Escaper.ecapeVariable('$sku');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/inappproducts/' +
+        commons.Escaper.ecapeVariable('$sku');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Returns information about the in-app product specified.
-   *
-   * Request parameters:
-   *
-   * [packageName] - null
-   *
-   * [sku] - Unique identifier for the in-app product.
-   *
-   * Completes with a [InAppProduct].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Returns information about the in-app product specified.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - null
+  ///
+  /// [sku] - Unique identifier for the in-app product.
+  ///
+  /// Completes with a [InAppProduct].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<InAppProduct> get(core.String packageName, core.String sku) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -2533,42 +2675,43 @@ class InappproductsResourceApi {
       throw new core.ArgumentError("Parameter sku is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/inappproducts/' + commons.Escaper.ecapeVariable('$sku');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/inappproducts/' +
+        commons.Escaper.ecapeVariable('$sku');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new InAppProduct.fromJson(data));
   }
 
-  /**
-   * Creates a new in-app product for an app.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app; for example,
-   * "com.spiffygame".
-   *
-   * [autoConvertMissingPrices] - If true the prices for all regions targeted by
-   * the parent app that don't have a price specified for this in-app product
-   * will be auto converted to the target currency based on the default price.
-   * Defaults to false.
-   *
-   * Completes with a [InAppProduct].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<InAppProduct> insert(InAppProduct request, core.String packageName, {core.bool autoConvertMissingPrices}) {
+  /// Creates a new in-app product for an app.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app; for example,
+  /// "com.spiffygame".
+  ///
+  /// [autoConvertMissingPrices] - If true the prices for all regions targeted
+  /// by the parent app that don't have a price specified for this in-app
+  /// product will be auto converted to the target currency based on the default
+  /// price. Defaults to false.
+  ///
+  /// Completes with a [InAppProduct].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InAppProduct> insert(
+      InAppProduct request, core.String packageName,
+      {core.bool autoConvertMissingPrices}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2583,45 +2726,45 @@ class InappproductsResourceApi {
       throw new core.ArgumentError("Parameter packageName is required.");
     }
     if (autoConvertMissingPrices != null) {
-      _queryParams["autoConvertMissingPrices"] = ["${autoConvertMissingPrices}"];
+      _queryParams["autoConvertMissingPrices"] = [
+        "${autoConvertMissingPrices}"
+      ];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/inappproducts';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new InAppProduct.fromJson(data));
   }
 
-  /**
-   * List all the in-app products for an Android app, both subscriptions and
-   * managed in-app products..
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app with in-app products;
-   * for example, "com.spiffygame".
-   *
-   * [maxResults] - null
-   *
-   * [startIndex] - null
-   *
-   * [token] - null
-   *
-   * Completes with a [InappproductsListResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<InappproductsListResponse> list(core.String packageName, {core.int maxResults, core.int startIndex, core.String token}) {
+  /// List all the in-app products for an Android app, both subscriptions and
+  /// managed in-app products..
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app with in-app
+  /// products; for example, "com.spiffygame".
+  ///
+  /// [maxResults] - null
+  ///
+  /// [startIndex] - null
+  ///
+  /// [token] - null
+  ///
+  /// Completes with a [InappproductsListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InappproductsListResponse> list(core.String packageName,
+      {core.int maxResults, core.int startIndex, core.String token}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2644,43 +2787,43 @@ class InappproductsResourceApi {
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/inappproducts';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new InappproductsListResponse.fromJson(data));
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new InappproductsListResponse.fromJson(data));
   }
 
-  /**
-   * Updates the details of an in-app product. This method supports patch
-   * semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app with the in-app
-   * product; for example, "com.spiffygame".
-   *
-   * [sku] - Unique identifier for the in-app product.
-   *
-   * [autoConvertMissingPrices] - If true the prices for all regions targeted by
-   * the parent app that don't have a price specified for this in-app product
-   * will be auto converted to the target currency based on the default price.
-   * Defaults to false.
-   *
-   * Completes with a [InAppProduct].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<InAppProduct> patch(InAppProduct request, core.String packageName, core.String sku, {core.bool autoConvertMissingPrices}) {
+  /// Updates the details of an in-app product. This method supports patch
+  /// semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app with the in-app
+  /// product; for example, "com.spiffygame".
+  ///
+  /// [sku] - Unique identifier for the in-app product.
+  ///
+  /// [autoConvertMissingPrices] - If true the prices for all regions targeted
+  /// by the parent app that don't have a price specified for this in-app
+  /// product will be auto converted to the target currency based on the default
+  /// price. Defaults to false.
+  ///
+  /// Completes with a [InAppProduct].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InAppProduct> patch(
+      InAppProduct request, core.String packageName, core.String sku,
+      {core.bool autoConvertMissingPrices}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2698,47 +2841,50 @@ class InappproductsResourceApi {
       throw new core.ArgumentError("Parameter sku is required.");
     }
     if (autoConvertMissingPrices != null) {
-      _queryParams["autoConvertMissingPrices"] = ["${autoConvertMissingPrices}"];
+      _queryParams["autoConvertMissingPrices"] = [
+        "${autoConvertMissingPrices}"
+      ];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/inappproducts/' + commons.Escaper.ecapeVariable('$sku');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/inappproducts/' +
+        commons.Escaper.ecapeVariable('$sku');
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new InAppProduct.fromJson(data));
   }
 
-  /**
-   * Updates the details of an in-app product.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app with the in-app
-   * product; for example, "com.spiffygame".
-   *
-   * [sku] - Unique identifier for the in-app product.
-   *
-   * [autoConvertMissingPrices] - If true the prices for all regions targeted by
-   * the parent app that don't have a price specified for this in-app product
-   * will be auto converted to the target currency based on the default price.
-   * Defaults to false.
-   *
-   * Completes with a [InAppProduct].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<InAppProduct> update(InAppProduct request, core.String packageName, core.String sku, {core.bool autoConvertMissingPrices}) {
+  /// Updates the details of an in-app product.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app with the in-app
+  /// product; for example, "com.spiffygame".
+  ///
+  /// [sku] - Unique identifier for the in-app product.
+  ///
+  /// [autoConvertMissingPrices] - If true the prices for all regions targeted
+  /// by the parent app that don't have a price specified for this in-app
+  /// product will be auto converted to the target currency based on the default
+  /// price. Defaults to false.
+  ///
+  /// Completes with a [InAppProduct].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InAppProduct> update(
+      InAppProduct request, core.String packageName, core.String sku,
+      {core.bool autoConvertMissingPrices}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2756,64 +2902,66 @@ class InappproductsResourceApi {
       throw new core.ArgumentError("Parameter sku is required.");
     }
     if (autoConvertMissingPrices != null) {
-      _queryParams["autoConvertMissingPrices"] = ["${autoConvertMissingPrices}"];
+      _queryParams["autoConvertMissingPrices"] = [
+        "${autoConvertMissingPrices}"
+      ];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/inappproducts/' + commons.Escaper.ecapeVariable('$sku');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/inappproducts/' +
+        commons.Escaper.ecapeVariable('$sku');
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new InAppProduct.fromJson(data));
   }
-
 }
-
 
 class PurchasesResourceApi {
   final commons.ApiRequester _requester;
 
-  PurchasesProductsResourceApi get products => new PurchasesProductsResourceApi(_requester);
-  PurchasesSubscriptionsResourceApi get subscriptions => new PurchasesSubscriptionsResourceApi(_requester);
-  PurchasesVoidedpurchasesResourceApi get voidedpurchases => new PurchasesVoidedpurchasesResourceApi(_requester);
+  PurchasesProductsResourceApi get products =>
+      new PurchasesProductsResourceApi(_requester);
+  PurchasesSubscriptionsResourceApi get subscriptions =>
+      new PurchasesSubscriptionsResourceApi(_requester);
+  PurchasesVoidedpurchasesResourceApi get voidedpurchases =>
+      new PurchasesVoidedpurchasesResourceApi(_requester);
 
-  PurchasesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  PurchasesResourceApi(commons.ApiRequester client) : _requester = client;
 }
-
 
 class PurchasesProductsResourceApi {
   final commons.ApiRequester _requester;
 
-  PurchasesProductsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  PurchasesProductsResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Checks the purchase and consumption status of an inapp item.
-   *
-   * Request parameters:
-   *
-   * [packageName] - The package name of the application the inapp product was
-   * sold in (for example, 'com.some.thing').
-   *
-   * [productId] - The inapp product SKU (for example, 'com.some.thing.inapp1').
-   *
-   * [token] - The token provided to the user's device when the inapp product
-   * was purchased.
-   *
-   * Completes with a [ProductPurchase].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ProductPurchase> get(core.String packageName, core.String productId, core.String token) {
+  /// Checks the purchase and consumption status of an inapp item.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - The package name of the application the inapp product was
+  /// sold in (for example, 'com.some.thing').
+  ///
+  /// [productId] - The inapp product SKU (for example,
+  /// 'com.some.thing.inapp1').
+  ///
+  /// [token] - The token provided to the user's device when the inapp product
+  /// was purchased.
+  ///
+  /// Completes with a [ProductPurchase].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ProductPurchase> get(
+      core.String packageName, core.String productId, core.String token) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2831,49 +2979,49 @@ class PurchasesProductsResourceApi {
       throw new core.ArgumentError("Parameter token is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/purchases/products/' + commons.Escaper.ecapeVariable('$productId') + '/tokens/' + commons.Escaper.ecapeVariable('$token');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/purchases/products/' +
+        commons.Escaper.ecapeVariable('$productId') +
+        '/tokens/' +
+        commons.Escaper.ecapeVariable('$token');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ProductPurchase.fromJson(data));
   }
-
 }
-
 
 class PurchasesSubscriptionsResourceApi {
   final commons.ApiRequester _requester;
 
-  PurchasesSubscriptionsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  PurchasesSubscriptionsResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Cancels a user's subscription purchase. The subscription remains valid
-   * until its expiration time.
-   *
-   * Request parameters:
-   *
-   * [packageName] - The package name of the application for which this
-   * subscription was purchased (for example, 'com.some.thing').
-   *
-   * [subscriptionId] - The purchased subscription ID (for example,
-   * 'monthly001').
-   *
-   * [token] - The token provided to the user's device when the subscription was
-   * purchased.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future cancel(core.String packageName, core.String subscriptionId, core.String token) {
+  /// Cancels a user's subscription purchase. The subscription remains valid
+  /// until its expiration time.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - The package name of the application for which this
+  /// subscription was purchased (for example, 'com.some.thing').
+  ///
+  /// [subscriptionId] - The purchased subscription ID (for example,
+  /// 'monthly001').
+  ///
+  /// [token] - The token provided to the user's device when the subscription
+  /// was purchased.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future cancel(
+      core.String packageName, core.String subscriptionId, core.String token) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2893,44 +3041,50 @@ class PurchasesSubscriptionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/purchases/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId') + '/tokens/' + commons.Escaper.ecapeVariable('$token') + ':cancel';
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/purchases/subscriptions/' +
+        commons.Escaper.ecapeVariable('$subscriptionId') +
+        '/tokens/' +
+        commons.Escaper.ecapeVariable('$token') +
+        ':cancel';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Defers a user's subscription purchase until a specified future expiration
-   * time.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [packageName] - The package name of the application for which this
-   * subscription was purchased (for example, 'com.some.thing').
-   *
-   * [subscriptionId] - The purchased subscription ID (for example,
-   * 'monthly001').
-   *
-   * [token] - The token provided to the user's device when the subscription was
-   * purchased.
-   *
-   * Completes with a [SubscriptionPurchasesDeferResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<SubscriptionPurchasesDeferResponse> defer(SubscriptionPurchasesDeferRequest request, core.String packageName, core.String subscriptionId, core.String token) {
+  /// Defers a user's subscription purchase until a specified future expiration
+  /// time.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - The package name of the application for which this
+  /// subscription was purchased (for example, 'com.some.thing').
+  ///
+  /// [subscriptionId] - The purchased subscription ID (for example,
+  /// 'monthly001').
+  ///
+  /// [token] - The token provided to the user's device when the subscription
+  /// was purchased.
+  ///
+  /// Completes with a [SubscriptionPurchasesDeferResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SubscriptionPurchasesDeferResponse> defer(
+      SubscriptionPurchasesDeferRequest request,
+      core.String packageName,
+      core.String subscriptionId,
+      core.String token) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2951,42 +3105,46 @@ class PurchasesSubscriptionsResourceApi {
       throw new core.ArgumentError("Parameter token is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/purchases/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId') + '/tokens/' + commons.Escaper.ecapeVariable('$token') + ':defer';
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/purchases/subscriptions/' +
+        commons.Escaper.ecapeVariable('$subscriptionId') +
+        '/tokens/' +
+        commons.Escaper.ecapeVariable('$token') +
+        ':defer';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new SubscriptionPurchasesDeferResponse.fromJson(data));
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new SubscriptionPurchasesDeferResponse.fromJson(data));
   }
 
-  /**
-   * Checks whether a user's subscription purchase is valid and returns its
-   * expiry time.
-   *
-   * Request parameters:
-   *
-   * [packageName] - The package name of the application for which this
-   * subscription was purchased (for example, 'com.some.thing').
-   *
-   * [subscriptionId] - The purchased subscription ID (for example,
-   * 'monthly001').
-   *
-   * [token] - The token provided to the user's device when the subscription was
-   * purchased.
-   *
-   * Completes with a [SubscriptionPurchase].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<SubscriptionPurchase> get(core.String packageName, core.String subscriptionId, core.String token) {
+  /// Checks whether a user's subscription purchase is valid and returns its
+  /// expiry time.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - The package name of the application for which this
+  /// subscription was purchased (for example, 'com.some.thing').
+  ///
+  /// [subscriptionId] - The purchased subscription ID (for example,
+  /// 'monthly001').
+  ///
+  /// [token] - The token provided to the user's device when the subscription
+  /// was purchased.
+  ///
+  /// Completes with a [SubscriptionPurchase].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SubscriptionPurchase> get(
+      core.String packageName, core.String subscriptionId, core.String token) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3004,40 +3162,42 @@ class PurchasesSubscriptionsResourceApi {
       throw new core.ArgumentError("Parameter token is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/purchases/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId') + '/tokens/' + commons.Escaper.ecapeVariable('$token');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/purchases/subscriptions/' +
+        commons.Escaper.ecapeVariable('$subscriptionId') +
+        '/tokens/' +
+        commons.Escaper.ecapeVariable('$token');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new SubscriptionPurchase.fromJson(data));
   }
 
-  /**
-   * Refunds a user's subscription purchase, but the subscription remains valid
-   * until its expiration time and it will continue to recur.
-   *
-   * Request parameters:
-   *
-   * [packageName] - The package name of the application for which this
-   * subscription was purchased (for example, 'com.some.thing').
-   *
-   * [subscriptionId] - The purchased subscription ID (for example,
-   * 'monthly001').
-   *
-   * [token] - The token provided to the user's device when the subscription was
-   * purchased.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future refund(core.String packageName, core.String subscriptionId, core.String token) {
+  /// Refunds a user's subscription purchase, but the subscription remains valid
+  /// until its expiration time and it will continue to recur.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - The package name of the application for which this
+  /// subscription was purchased (for example, 'com.some.thing').
+  ///
+  /// [subscriptionId] - The purchased subscription ID (for example,
+  /// 'monthly001').
+  ///
+  /// [token] - The token provided to the user's device when the subscription
+  /// was purchased.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future refund(
+      core.String packageName, core.String subscriptionId, core.String token) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3057,40 +3217,44 @@ class PurchasesSubscriptionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/purchases/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId') + '/tokens/' + commons.Escaper.ecapeVariable('$token') + ':refund';
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/purchases/subscriptions/' +
+        commons.Escaper.ecapeVariable('$subscriptionId') +
+        '/tokens/' +
+        commons.Escaper.ecapeVariable('$token') +
+        ':refund';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Refunds and immediately revokes a user's subscription purchase. Access to
-   * the subscription will be terminated immediately and it will stop recurring.
-   *
-   * Request parameters:
-   *
-   * [packageName] - The package name of the application for which this
-   * subscription was purchased (for example, 'com.some.thing').
-   *
-   * [subscriptionId] - The purchased subscription ID (for example,
-   * 'monthly001').
-   *
-   * [token] - The token provided to the user's device when the subscription was
-   * purchased.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future revoke(core.String packageName, core.String subscriptionId, core.String token) {
+  /// Refunds and immediately revokes a user's subscription purchase. Access to
+  /// the subscription will be terminated immediately and it will stop
+  /// recurring.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - The package name of the application for which this
+  /// subscription was purchased (for example, 'com.some.thing').
+  ///
+  /// [subscriptionId] - The purchased subscription ID (for example,
+  /// 'monthly001').
+  ///
+  /// [token] - The token provided to the user's device when the subscription
+  /// was purchased.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future revoke(
+      core.String packageName, core.String subscriptionId, core.String token) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3110,64 +3274,70 @@ class PurchasesSubscriptionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/purchases/subscriptions/' + commons.Escaper.ecapeVariable('$subscriptionId') + '/tokens/' + commons.Escaper.ecapeVariable('$token') + ':revoke';
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/purchases/subscriptions/' +
+        commons.Escaper.ecapeVariable('$subscriptionId') +
+        '/tokens/' +
+        commons.Escaper.ecapeVariable('$token') +
+        ':revoke';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
-
 }
-
 
 class PurchasesVoidedpurchasesResourceApi {
   final commons.ApiRequester _requester;
 
-  PurchasesVoidedpurchasesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  PurchasesVoidedpurchasesResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Lists the purchases that were cancelled, refunded or charged-back.
-   *
-   * Request parameters:
-   *
-   * [packageName] - The package name of the application for which voided
-   * purchases need to be returned (for example, 'com.some.thing').
-   *
-   * [endTime] - The time, in milliseconds since the Epoch, of the newest voided
-   * in-app product purchase that you want to see in the response. The value of
-   * this parameter cannot be greater than the current time and is ignored if a
-   * pagination token is set. Default value is current time. Note: This filter
-   * is applied on the time at which the record is seen as voided by our systems
-   * and not the actual voided time returned in the response.
-   *
-   * [maxResults] - null
-   *
-   * [startIndex] - null
-   *
-   * [startTime] - The time, in milliseconds since the Epoch, of the oldest
-   * voided in-app product purchase that you want to see in the response. The
-   * value of this parameter cannot be older than 30 days and is ignored if a
-   * pagination token is set. Default value is current time minus 30 days. Note:
-   * This filter is applied on the time at which the record is seen as voided by
-   * our systems and not the actual voided time returned in the response.
-   *
-   * [token] - null
-   *
-   * Completes with a [VoidedPurchasesListResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<VoidedPurchasesListResponse> list(core.String packageName, {core.String endTime, core.int maxResults, core.int startIndex, core.String startTime, core.String token}) {
+  /// Lists the purchases that were cancelled, refunded or charged-back.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - The package name of the application for which voided
+  /// purchases need to be returned (for example, 'com.some.thing').
+  ///
+  /// [endTime] - The time, in milliseconds since the Epoch, of the newest
+  /// voided in-app product purchase that you want to see in the response. The
+  /// value of this parameter cannot be greater than the current time and is
+  /// ignored if a pagination token is set. Default value is current time. Note:
+  /// This filter is applied on the time at which the record is seen as voided
+  /// by our systems and not the actual voided time returned in the response.
+  ///
+  /// [maxResults] - null
+  ///
+  /// [startIndex] - null
+  ///
+  /// [startTime] - The time, in milliseconds since the Epoch, of the oldest
+  /// voided in-app product purchase that you want to see in the response. The
+  /// value of this parameter cannot be older than 30 days and is ignored if a
+  /// pagination token is set. Default value is current time minus 30 days.
+  /// Note: This filter is applied on the time at which the record is seen as
+  /// voided by our systems and not the actual voided time returned in the
+  /// response.
+  ///
+  /// [token] - null
+  ///
+  /// Completes with a [VoidedPurchasesListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<VoidedPurchasesListResponse> list(core.String packageName,
+      {core.String endTime,
+      core.int maxResults,
+      core.int startIndex,
+      core.String startTime,
+      core.String token}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3194,48 +3364,45 @@ class PurchasesVoidedpurchasesResourceApi {
       _queryParams["token"] = [token];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/purchases/voidedpurchases';
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/purchases/voidedpurchases';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new VoidedPurchasesListResponse.fromJson(data));
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new VoidedPurchasesListResponse.fromJson(data));
   }
-
 }
-
 
 class ReviewsResourceApi {
   final commons.ApiRequester _requester;
 
-  ReviewsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  ReviewsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Returns a single review.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app for which we want
-   * reviews; for example, "com.spiffygame".
-   *
-   * [reviewId] - null
-   *
-   * [translationLanguage] - null
-   *
-   * Completes with a [Review].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Review> get(core.String packageName, core.String reviewId, {core.String translationLanguage}) {
+  /// Returns a single review.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app for which we want
+  /// reviews; for example, "com.spiffygame".
+  ///
+  /// [reviewId] - null
+  ///
+  /// [translationLanguage] - null
+  ///
+  /// Completes with a [Review].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Review> get(core.String packageName, core.String reviewId,
+      {core.String translationLanguage}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3253,43 +3420,46 @@ class ReviewsResourceApi {
       _queryParams["translationLanguage"] = [translationLanguage];
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/reviews/' + commons.Escaper.ecapeVariable('$reviewId');
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/reviews/' +
+        commons.Escaper.ecapeVariable('$reviewId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Review.fromJson(data));
   }
 
-  /**
-   * Returns a list of reviews. Only reviews from last week will be returned.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app for which we want
-   * reviews; for example, "com.spiffygame".
-   *
-   * [maxResults] - null
-   *
-   * [startIndex] - null
-   *
-   * [token] - null
-   *
-   * [translationLanguage] - null
-   *
-   * Completes with a [ReviewsListResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ReviewsListResponse> list(core.String packageName, {core.int maxResults, core.int startIndex, core.String token, core.String translationLanguage}) {
+  /// Returns a list of reviews. Only reviews from last week will be returned.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app for which we want
+  /// reviews; for example, "com.spiffygame".
+  ///
+  /// [maxResults] - null
+  ///
+  /// [startIndex] - null
+  ///
+  /// [token] - null
+  ///
+  /// [translationLanguage] - null
+  ///
+  /// Completes with a [ReviewsListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ReviewsListResponse> list(core.String packageName,
+      {core.int maxResults,
+      core.int startIndex,
+      core.String token,
+      core.String translationLanguage}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3315,37 +3485,35 @@ class ReviewsResourceApi {
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/reviews';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ReviewsListResponse.fromJson(data));
   }
 
-  /**
-   * Reply to a single review, or update an existing reply.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [packageName] - Unique identifier for the Android app for which we want
-   * reviews; for example, "com.spiffygame".
-   *
-   * [reviewId] - null
-   *
-   * Completes with a [ReviewsReplyResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ReviewsReplyResponse> reply(ReviewsReplyRequest request, core.String packageName, core.String reviewId) {
+  /// Reply to a single review, or update an existing reply.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Unique identifier for the Android app for which we want
+  /// reviews; for example, "com.spiffygame".
+  ///
+  /// [reviewId] - null
+  ///
+  /// Completes with a [ReviewsReplyResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ReviewsReplyResponse> reply(ReviewsReplyRequest request,
+      core.String packageName, core.String reviewId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3363,26 +3531,26 @@ class ReviewsResourceApi {
       throw new core.ArgumentError("Parameter reviewId is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$packageName') + '/reviews/' + commons.Escaper.ecapeVariable('$reviewId') + ':reply';
+    _url = commons.Escaper.ecapeVariable('$packageName') +
+        '/reviews/' +
+        commons.Escaper.ecapeVariable('$reviewId') +
+        ':reply';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ReviewsReplyResponse.fromJson(data));
   }
-
 }
 
-
-
 class Apk {
-  /** Information about the binary payload of this APK. */
+  /// Information about the binary payload of this APK.
   ApkBinary binary;
-  /** The version code of the APK, as specified in the APK's manifest file. */
+
+  /// The version code of the APK, as specified in the APK's manifest file.
   core.int versionCode;
 
   Apk();
@@ -3397,7 +3565,8 @@ class Apk {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (binary != null) {
       _json["binary"] = (binary).toJson();
     }
@@ -3408,17 +3577,14 @@ class Apk {
   }
 }
 
-/** Represents the binary payload of an APK. */
+/// Represents the binary payload of an APK.
 class ApkBinary {
-  /**
-   * A sha1 hash of the APK payload, encoded as a hex string and matching the
-   * output of the sha1sum command.
-   */
+  /// A sha1 hash of the APK payload, encoded as a hex string and matching the
+  /// output of the sha1sum command.
   core.String sha1;
-  /**
-   * A sha256 hash of the APK payload, encoded as a hex string and matching the
-   * output of the sha256sum command.
-   */
+
+  /// A sha256 hash of the APK payload, encoded as a hex string and matching the
+  /// output of the sha256sum command.
   core.String sha256;
 
   ApkBinary();
@@ -3433,7 +3599,8 @@ class ApkBinary {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (sha1 != null) {
       _json["sha1"] = sha1;
     }
@@ -3445,9 +3612,10 @@ class ApkBinary {
 }
 
 class ApkListing {
-  /** The language code, in BCP 47 format (eg "en-US"). */
+  /// The language code, in BCP 47 format (eg "en-US").
   core.String language;
-  /** Describe what's new in your APK. */
+
+  /// Describe what's new in your APK.
   core.String recentChanges;
 
   ApkListing();
@@ -3462,7 +3630,8 @@ class ApkListing {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (language != null) {
       _json["language"] = language;
     }
@@ -3474,10 +3643,8 @@ class ApkListing {
 }
 
 class ApkListingsListResponse {
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "androidpublisher#apkListingsListResponse".
-   */
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "androidpublisher#apkListingsListResponse".
   core.String kind;
   core.List<ApkListing> listings;
 
@@ -3488,12 +3655,15 @@ class ApkListingsListResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("listings")) {
-      listings = _json["listings"].map((value) => new ApkListing.fromJson(value)).toList();
+      listings = _json["listings"]
+          .map((value) => new ApkListing.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -3505,19 +3675,21 @@ class ApkListingsListResponse {
 }
 
 class ApksAddExternallyHostedRequest {
-  /** The definition of the externally-hosted APK and where it is located. */
+  /// The definition of the externally-hosted APK and where it is located.
   ExternallyHostedApk externallyHostedApk;
 
   ApksAddExternallyHostedRequest();
 
   ApksAddExternallyHostedRequest.fromJson(core.Map _json) {
     if (_json.containsKey("externallyHostedApk")) {
-      externallyHostedApk = new ExternallyHostedApk.fromJson(_json["externallyHostedApk"]);
+      externallyHostedApk =
+          new ExternallyHostedApk.fromJson(_json["externallyHostedApk"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (externallyHostedApk != null) {
       _json["externallyHostedApk"] = (externallyHostedApk).toJson();
     }
@@ -3526,19 +3698,21 @@ class ApksAddExternallyHostedRequest {
 }
 
 class ApksAddExternallyHostedResponse {
-  /** The definition of the externally-hosted APK and where it is located. */
+  /// The definition of the externally-hosted APK and where it is located.
   ExternallyHostedApk externallyHostedApk;
 
   ApksAddExternallyHostedResponse();
 
   ApksAddExternallyHostedResponse.fromJson(core.Map _json) {
     if (_json.containsKey("externallyHostedApk")) {
-      externallyHostedApk = new ExternallyHostedApk.fromJson(_json["externallyHostedApk"]);
+      externallyHostedApk =
+          new ExternallyHostedApk.fromJson(_json["externallyHostedApk"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (externallyHostedApk != null) {
       _json["externallyHostedApk"] = (externallyHostedApk).toJson();
     }
@@ -3548,10 +3722,9 @@ class ApksAddExternallyHostedResponse {
 
 class ApksListResponse {
   core.List<Apk> apks;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "androidpublisher#apksListResponse".
-   */
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "androidpublisher#apksListResponse".
   core.String kind;
 
   ApksListResponse();
@@ -3566,7 +3739,8 @@ class ApksListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (apks != null) {
       _json["apks"] = apks.map((value) => (value).toJson()).toList();
     }
@@ -3578,13 +3752,16 @@ class ApksListResponse {
 }
 
 class AppDetails {
-  /** The user-visible support email for this app. */
+  /// The user-visible support email for this app.
   core.String contactEmail;
-  /** The user-visible support telephone number for this app. */
+
+  /// The user-visible support telephone number for this app.
   core.String contactPhone;
-  /** The user-visible website for this app. */
+
+  /// The user-visible website for this app.
   core.String contactWebsite;
-  /** Default language code, in BCP 47 format (eg "en-US"). */
+
+  /// Default language code, in BCP 47 format (eg "en-US").
   core.String defaultLanguage;
 
   AppDetails();
@@ -3605,7 +3782,8 @@ class AppDetails {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (contactEmail != null) {
       _json["contactEmail"] = contactEmail;
     }
@@ -3622,17 +3800,14 @@ class AppDetails {
   }
 }
 
-/**
- * Represents an edit of an app. An edit allows clients to make multiple changes
- * before committing them in one operation.
- */
+/// Represents an edit of an app. An edit allows clients to make multiple
+/// changes before committing them in one operation.
 class AppEdit {
-  /**
-   * The time at which the edit will expire and will be no longer valid for use
-   * in any subsequent API calls (encoded as seconds since the Epoch).
-   */
+  /// The time at which the edit will expire and will be no longer valid for use
+  /// in any subsequent API calls (encoded as seconds since the Epoch).
   core.String expiryTimeSeconds;
-  /** The ID of the edit that can be used in subsequent API calls. */
+
+  /// The ID of the edit that can be used in subsequent API calls.
   core.String id;
 
   AppEdit();
@@ -3647,7 +3822,8 @@ class AppEdit {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (expiryTimeSeconds != null) {
       _json["expiryTimeSeconds"] = expiryTimeSeconds;
     }
@@ -3659,16 +3835,18 @@ class AppEdit {
 }
 
 class Comment {
-  /** A comment from a developer. */
+  /// A comment from a developer.
   DeveloperComment developerComment;
-  /** A comment from a user. */
+
+  /// A comment from a user.
   UserComment userComment;
 
   Comment();
 
   Comment.fromJson(core.Map _json) {
     if (_json.containsKey("developerComment")) {
-      developerComment = new DeveloperComment.fromJson(_json["developerComment"]);
+      developerComment =
+          new DeveloperComment.fromJson(_json["developerComment"]);
     }
     if (_json.containsKey("userComment")) {
       userComment = new UserComment.fromJson(_json["userComment"]);
@@ -3676,7 +3854,8 @@ class Comment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (developerComment != null) {
       _json["developerComment"] = (developerComment).toJson();
     }
@@ -3687,9 +3866,9 @@ class Comment {
   }
 }
 
-/** Represents a deobfuscation file. */
+/// Represents a deobfuscation file.
 class DeobfuscationFile {
-  /** The type of the deobfuscation file. */
+  /// The type of the deobfuscation file.
   core.String symbolType;
 
   DeobfuscationFile();
@@ -3701,7 +3880,8 @@ class DeobfuscationFile {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (symbolType != null) {
       _json["symbolType"] = symbolType;
     }
@@ -3716,12 +3896,14 @@ class DeobfuscationFilesUploadResponse {
 
   DeobfuscationFilesUploadResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deobfuscationFile")) {
-      deobfuscationFile = new DeobfuscationFile.fromJson(_json["deobfuscationFile"]);
+      deobfuscationFile =
+          new DeobfuscationFile.fromJson(_json["deobfuscationFile"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (deobfuscationFile != null) {
       _json["deobfuscationFile"] = (deobfuscationFile).toJson();
     }
@@ -3730,9 +3912,10 @@ class DeobfuscationFilesUploadResponse {
 }
 
 class DeveloperComment {
-  /** The last time at which this comment was updated. */
+  /// The last time at which this comment was updated.
   Timestamp lastModified;
-  /** The content of the comment, i.e. reply body. */
+
+  /// The content of the comment, i.e. reply body.
   core.String text;
 
   DeveloperComment();
@@ -3747,7 +3930,8 @@ class DeveloperComment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (lastModified != null) {
       _json["lastModified"] = (lastModified).toJson();
     }
@@ -3759,27 +3943,37 @@ class DeveloperComment {
 }
 
 class DeviceMetadata {
-  /** Device CPU make e.g. "Qualcomm" */
+  /// Device CPU make e.g. "Qualcomm"
   core.String cpuMake;
-  /** Device CPU model e.g. "MSM8974" */
+
+  /// Device CPU model e.g. "MSM8974"
   core.String cpuModel;
-  /** Device class (e.g. tablet) */
+
+  /// Device class (e.g. tablet)
   core.String deviceClass;
-  /** OpenGL version */
+
+  /// OpenGL version
   core.int glEsVersion;
-  /** Device manufacturer (e.g. Motorola) */
+
+  /// Device manufacturer (e.g. Motorola)
   core.String manufacturer;
-  /** Comma separated list of native platforms (e.g. "arm", "arm7") */
+
+  /// Comma separated list of native platforms (e.g. "arm", "arm7")
   core.String nativePlatform;
-  /** Device model name (e.g. Droid) */
+
+  /// Device model name (e.g. Droid)
   core.String productName;
-  /** Device RAM in Megabytes e.g. "2048" */
+
+  /// Device RAM in Megabytes e.g. "2048"
   core.int ramMb;
-  /** Screen density in DPI */
+
+  /// Screen density in DPI
   core.int screenDensityDpi;
-  /** Screen height in pixels */
+
+  /// Screen height in pixels
   core.int screenHeightPx;
-  /** Screen width in pixels */
+
+  /// Screen width in pixels
   core.int screenWidthPx;
 
   DeviceMetadata();
@@ -3821,7 +4015,8 @@ class DeviceMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (cpuMake != null) {
       _json["cpuMake"] = cpuMake;
     }
@@ -3859,26 +4054,22 @@ class DeviceMetadata {
   }
 }
 
-/**
- * An Entitlement resource indicates a user's current entitlement to an inapp
- * item or subscription.
- */
+/// An Entitlement resource indicates a user's current entitlement to an inapp
+/// item or subscription.
 class Entitlement {
-  /**
-   * This kind represents an entitlement object in the androidpublisher service.
-   */
+  /// This kind represents an entitlement object in the androidpublisher
+  /// service.
   core.String kind;
-  /** The SKU of the product. */
+
+  /// The SKU of the product.
   core.String productId;
-  /**
-   * The type of the inapp product. Possible values are:
-   * - In-app item: "inapp"
-   * - Subscription: "subs"
-   */
+
+  /// The type of the inapp product. Possible values are:
+  /// - In-app item: "inapp"
+  /// - Subscription: "subs"
   core.String productType;
-  /**
-   * The token which can be verified using the subscriptions or products API.
-   */
+
+  /// The token which can be verified using the subscriptions or products API.
   core.String token;
 
   Entitlement();
@@ -3899,7 +4090,8 @@ class Entitlement {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -3928,7 +4120,9 @@ class EntitlementsListResponse {
       pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
     }
     if (_json.containsKey("resources")) {
-      resources = _json["resources"].map((value) => new Entitlement.fromJson(value)).toList();
+      resources = _json["resources"]
+          .map((value) => new Entitlement.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("tokenPagination")) {
       tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
@@ -3936,7 +4130,8 @@ class EntitlementsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (pageInfo != null) {
       _json["pageInfo"] = (pageInfo).toJson();
     }
@@ -3951,16 +4146,13 @@ class EntitlementsListResponse {
 }
 
 class ExpansionFile {
-  /**
-   * If set this field indicates that this APK has an Expansion File uploaded to
-   * it: this APK does not reference another APK's Expansion File. The field's
-   * value is the size of the uploaded Expansion File in bytes.
-   */
+  /// If set this field indicates that this APK has an Expansion File uploaded
+  /// to it: this APK does not reference another APK's Expansion File. The
+  /// field's value is the size of the uploaded Expansion File in bytes.
   core.String fileSize;
-  /**
-   * If set this APK's Expansion File references another APK's Expansion File.
-   * The file_size field will not be set.
-   */
+
+  /// If set this APK's Expansion File references another APK's Expansion File.
+  /// The file_size field will not be set.
   core.int referencesVersion;
 
   ExpansionFile();
@@ -3975,7 +4167,8 @@ class ExpansionFile {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (fileSize != null) {
       _json["fileSize"] = fileSize;
     }
@@ -3998,7 +4191,8 @@ class ExpansionFilesUploadResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (expansionFile != null) {
       _json["expansionFile"] = (expansionFile).toJson();
     }
@@ -4006,50 +4200,56 @@ class ExpansionFilesUploadResponse {
   }
 }
 
-/**
- * Defines an APK available for this application that is hosted externally and
- * not uploaded to Google Play. This function is only available to enterprises
- * who are using Google Play for Work, and whos application is restricted to the
- * enterprise private channel
- */
+/// Defines an APK available for this application that is hosted externally and
+/// not uploaded to Google Play. This function is only available to enterprises
+/// who are using Google Play for Work, and whos application is restricted to
+/// the enterprise private channel
 class ExternallyHostedApk {
-  /** The application label. */
+  /// The application label.
   core.String applicationLabel;
-  /**
-   * A certificate (or array of certificates if a certificate-chain is used)
-   * used to signed this APK, represented as a base64 encoded byte array.
-   */
+
+  /// A certificate (or array of certificates if a certificate-chain is used)
+  /// used to signed this APK, represented as a base64 encoded byte array.
   core.List<core.String> certificateBase64s;
-  /** The URL at which the APK is hosted. This must be an https URL. */
+
+  /// The URL at which the APK is hosted. This must be an https URL.
   core.String externallyHostedUrl;
-  /**
-   * The SHA1 checksum of this APK, represented as a base64 encoded byte array.
-   */
+
+  /// The SHA1 checksum of this APK, represented as a base64 encoded byte array.
   core.String fileSha1Base64;
-  /**
-   * The SHA256 checksum of this APK, represented as a base64 encoded byte
-   * array.
-   */
+
+  /// The SHA256 checksum of this APK, represented as a base64 encoded byte
+  /// array.
   core.String fileSha256Base64;
-  /** The file size in bytes of this APK. */
+
+  /// The file size in bytes of this APK.
   core.String fileSize;
-  /** The icon image from the APK, as a base64 encoded byte array. */
+
+  /// The icon image from the APK, as a base64 encoded byte array.
   core.String iconBase64;
-  /** The maximum SDK supported by this APK (optional). */
+
+  /// The maximum SDK supported by this APK (optional).
   core.int maximumSdk;
-  /** The minimum SDK targeted by this APK. */
+
+  /// The minimum SDK targeted by this APK.
   core.int minimumSdk;
-  /** The native code environments supported by this APK (optional). */
+
+  /// The native code environments supported by this APK (optional).
   core.List<core.String> nativeCodes;
-  /** The package name. */
+
+  /// The package name.
   core.String packageName;
-  /** The features required by this APK (optional). */
+
+  /// The features required by this APK (optional).
   core.List<core.String> usesFeatures;
-  /** The permissions requested by this APK. */
+
+  /// The permissions requested by this APK.
   core.List<ExternallyHostedApkUsesPermission> usesPermissions;
-  /** The version code of this APK. */
+
+  /// The version code of this APK.
   core.int versionCode;
-  /** The version name of this APK. */
+
+  /// The version name of this APK.
   core.String versionName;
 
   ExternallyHostedApk();
@@ -4092,7 +4292,9 @@ class ExternallyHostedApk {
       usesFeatures = _json["usesFeatures"];
     }
     if (_json.containsKey("usesPermissions")) {
-      usesPermissions = _json["usesPermissions"].map((value) => new ExternallyHostedApkUsesPermission.fromJson(value)).toList();
+      usesPermissions = _json["usesPermissions"]
+          .map((value) => new ExternallyHostedApkUsesPermission.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("versionCode")) {
       versionCode = _json["versionCode"];
@@ -4103,7 +4305,8 @@ class ExternallyHostedApk {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (applicationLabel != null) {
       _json["applicationLabel"] = applicationLabel;
     }
@@ -4141,7 +4344,8 @@ class ExternallyHostedApk {
       _json["usesFeatures"] = usesFeatures;
     }
     if (usesPermissions != null) {
-      _json["usesPermissions"] = usesPermissions.map((value) => (value).toJson()).toList();
+      _json["usesPermissions"] =
+          usesPermissions.map((value) => (value).toJson()).toList();
     }
     if (versionCode != null) {
       _json["versionCode"] = versionCode;
@@ -4153,13 +4357,12 @@ class ExternallyHostedApk {
   }
 }
 
-/** A permission used by this APK. */
+/// A permission used by this APK.
 class ExternallyHostedApkUsesPermission {
-  /**
-   * Optionally, the maximum SDK version for which the permission is required.
-   */
+  /// Optionally, the maximum SDK version for which the permission is required.
   core.int maxSdkVersion;
-  /** The name of the permission requested. */
+
+  /// The name of the permission requested.
   core.String name;
 
   ExternallyHostedApkUsesPermission();
@@ -4174,7 +4377,8 @@ class ExternallyHostedApkUsesPermission {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (maxSdkVersion != null) {
       _json["maxSdkVersion"] = maxSdkVersion;
     }
@@ -4186,11 +4390,13 @@ class ExternallyHostedApkUsesPermission {
 }
 
 class Image {
-  /** A unique id representing this image. */
+  /// A unique id representing this image.
   core.String id;
-  /** A sha1 hash of the image that was uploaded. */
+
+  /// A sha1 hash of the image that was uploaded.
   core.String sha1;
-  /** A URL that will serve a preview of the image. */
+
+  /// A URL that will serve a preview of the image.
   core.String url;
 
   Image();
@@ -4208,7 +4414,8 @@ class Image {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -4229,12 +4436,14 @@ class ImagesDeleteAllResponse {
 
   ImagesDeleteAllResponse.fromJson(core.Map _json) {
     if (_json.containsKey("deleted")) {
-      deleted = _json["deleted"].map((value) => new Image.fromJson(value)).toList();
+      deleted =
+          _json["deleted"].map((value) => new Image.fromJson(value)).toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (deleted != null) {
       _json["deleted"] = deleted.map((value) => (value).toJson()).toList();
     }
@@ -4249,12 +4458,14 @@ class ImagesListResponse {
 
   ImagesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("images")) {
-      images = _json["images"].map((value) => new Image.fromJson(value)).toList();
+      images =
+          _json["images"].map((value) => new Image.fromJson(value)).toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (images != null) {
       _json["images"] = images.map((value) => (value).toJson()).toList();
     }
@@ -4274,7 +4485,8 @@ class ImagesUploadResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (image != null) {
       _json["image"] = (image).toJson();
     }
@@ -4283,46 +4495,43 @@ class ImagesUploadResponse {
 }
 
 class InAppProduct {
-  /**
-   * The default language of the localized data, as defined by BCP 47. e.g.
-   * "en-US", "en-GB".
-   */
+  /// The default language of the localized data, as defined by BCP 47. e.g.
+  /// "en-US", "en-GB".
   core.String defaultLanguage;
-  /**
-   * Default price cannot be zero. In-app products can never be free. Default
-   * price is always in the developer's Checkout merchant currency.
-   */
+
+  /// Default price cannot be zero. In-app products can never be free. Default
+  /// price is always in the developer's Checkout merchant currency.
   Price defaultPrice;
-  /** List of localized title and description data. */
+
+  /// List of localized title and description data.
   core.Map<core.String, InAppProductListing> listings;
-  /** The package name of the parent app. */
+
+  /// The package name of the parent app.
   core.String packageName;
-  /**
-   * Prices per buyer region. None of these prices should be zero. In-app
-   * products can never be free.
-   */
+
+  /// Prices per buyer region. None of these prices should be zero. In-app
+  /// products can never be free.
   core.Map<core.String, Price> prices;
-  /** Purchase type enum value. Unmodifiable after creation. */
+
+  /// Purchase type enum value. Unmodifiable after creation.
   core.String purchaseType;
-  /**
-   * Definition of a season for a seasonal subscription. Can be defined only for
-   * yearly subscriptions.
-   */
+
+  /// Definition of a season for a seasonal subscription. Can be defined only
+  /// for yearly subscriptions.
   Season season;
-  /** The stock-keeping-unit (SKU) of the product, unique within an app. */
+
+  /// The stock-keeping-unit (SKU) of the product, unique within an app.
   core.String sku;
   core.String status;
-  /**
-   * Subscription period, specified in ISO 8601 format. Acceptable values are
-   * "P1W" (one week), "P1M" (one month), "P3M" (three months), "P6M" (six
-   * months), and "P1Y" (one year).
-   */
+
+  /// Subscription period, specified in ISO 8601 format. Acceptable values are
+  /// "P1W" (one week), "P1M" (one month), "P3M" (three months), "P6M" (six
+  /// months), and "P1Y" (one year).
   core.String subscriptionPeriod;
-  /**
-   * Trial period, specified in ISO 8601 format. Acceptable values are anything
-   * between "P7D" (seven days) and "P999D" (999 days). Seasonal subscriptions
-   * cannot have a trial period.
-   */
+
+  /// Trial period, specified in ISO 8601 format. Acceptable values are anything
+  /// between "P7D" (seven days) and "P999D" (999 days). Seasonal subscriptions
+  /// cannot have a trial period.
   core.String trialPeriod;
 
   InAppProduct();
@@ -4335,13 +4544,20 @@ class InAppProduct {
       defaultPrice = new Price.fromJson(_json["defaultPrice"]);
     }
     if (_json.containsKey("listings")) {
-      listings = commons.mapMap<core.Map<core.String, core.Object>, InAppProductListing>(_json["listings"], (core.Map<core.String, core.Object> item) => new InAppProductListing.fromJson(item));
+      listings = commons
+          .mapMap<core.Map<core.String, core.Object>, InAppProductListing>(
+              _json["listings"],
+              (core.Map<core.String, core.Object> item) =>
+                  new InAppProductListing.fromJson(item));
     }
     if (_json.containsKey("packageName")) {
       packageName = _json["packageName"];
     }
     if (_json.containsKey("prices")) {
-      prices = commons.mapMap<core.Map<core.String, core.Object>, Price>(_json["prices"], (core.Map<core.String, core.Object> item) => new Price.fromJson(item));
+      prices = commons.mapMap<core.Map<core.String, core.Object>, Price>(
+          _json["prices"],
+          (core.Map<core.String, core.Object> item) =>
+              new Price.fromJson(item));
     }
     if (_json.containsKey("purchaseType")) {
       purchaseType = _json["purchaseType"];
@@ -4364,7 +4580,8 @@ class InAppProduct {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (defaultLanguage != null) {
       _json["defaultLanguage"] = defaultLanguage;
     }
@@ -4372,13 +4589,17 @@ class InAppProduct {
       _json["defaultPrice"] = (defaultPrice).toJson();
     }
     if (listings != null) {
-      _json["listings"] = commons.mapMap<InAppProductListing, core.Map<core.String, core.Object>>(listings, (InAppProductListing item) => (item).toJson());
+      _json["listings"] = commons
+          .mapMap<InAppProductListing, core.Map<core.String, core.Object>>(
+              listings, (InAppProductListing item) => (item).toJson());
     }
     if (packageName != null) {
       _json["packageName"] = packageName;
     }
     if (prices != null) {
-      _json["prices"] = commons.mapMap<Price, core.Map<core.String, core.Object>>(prices, (Price item) => (item).toJson());
+      _json["prices"] =
+          commons.mapMap<Price, core.Map<core.String, core.Object>>(
+              prices, (Price item) => (item).toJson());
     }
     if (purchaseType != null) {
       _json["purchaseType"] = purchaseType;
@@ -4418,7 +4639,8 @@ class InAppProductListing {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -4436,12 +4658,15 @@ class InappproductsBatchRequest {
 
   InappproductsBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey("entrys")) {
-      entrys = _json["entrys"].map((value) => new InappproductsBatchRequestEntry.fromJson(value)).toList();
+      entrys = _json["entrys"]
+          .map((value) => new InappproductsBatchRequestEntry.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (entrys != null) {
       _json["entrys"] = entrys.map((value) => (value).toJson()).toList();
     }
@@ -4462,10 +4687,12 @@ class InappproductsBatchRequestEntry {
       batchId = _json["batchId"];
     }
     if (_json.containsKey("inappproductsinsertrequest")) {
-      inappproductsinsertrequest = new InappproductsInsertRequest.fromJson(_json["inappproductsinsertrequest"]);
+      inappproductsinsertrequest = new InappproductsInsertRequest.fromJson(
+          _json["inappproductsinsertrequest"]);
     }
     if (_json.containsKey("inappproductsupdaterequest")) {
-      inappproductsupdaterequest = new InappproductsUpdateRequest.fromJson(_json["inappproductsupdaterequest"]);
+      inappproductsupdaterequest = new InappproductsUpdateRequest.fromJson(
+          _json["inappproductsupdaterequest"]);
     }
     if (_json.containsKey("methodName")) {
       methodName = _json["methodName"];
@@ -4473,15 +4700,18 @@ class InappproductsBatchRequestEntry {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (batchId != null) {
       _json["batchId"] = batchId;
     }
     if (inappproductsinsertrequest != null) {
-      _json["inappproductsinsertrequest"] = (inappproductsinsertrequest).toJson();
+      _json["inappproductsinsertrequest"] =
+          (inappproductsinsertrequest).toJson();
     }
     if (inappproductsupdaterequest != null) {
-      _json["inappproductsupdaterequest"] = (inappproductsupdaterequest).toJson();
+      _json["inappproductsupdaterequest"] =
+          (inappproductsupdaterequest).toJson();
     }
     if (methodName != null) {
       _json["methodName"] = methodName;
@@ -4492,17 +4722,18 @@ class InappproductsBatchRequestEntry {
 
 class InappproductsBatchResponse {
   core.List<InappproductsBatchResponseEntry> entrys;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "androidpublisher#inappproductsBatchResponse".
-   */
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "androidpublisher#inappproductsBatchResponse".
   core.String kind;
 
   InappproductsBatchResponse();
 
   InappproductsBatchResponse.fromJson(core.Map _json) {
     if (_json.containsKey("entrys")) {
-      entrys = _json["entrys"].map((value) => new InappproductsBatchResponseEntry.fromJson(value)).toList();
+      entrys = _json["entrys"]
+          .map((value) => new InappproductsBatchResponseEntry.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -4510,7 +4741,8 @@ class InappproductsBatchResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (entrys != null) {
       _json["entrys"] = entrys.map((value) => (value).toJson()).toList();
     }
@@ -4533,23 +4765,28 @@ class InappproductsBatchResponseEntry {
       batchId = _json["batchId"];
     }
     if (_json.containsKey("inappproductsinsertresponse")) {
-      inappproductsinsertresponse = new InappproductsInsertResponse.fromJson(_json["inappproductsinsertresponse"]);
+      inappproductsinsertresponse = new InappproductsInsertResponse.fromJson(
+          _json["inappproductsinsertresponse"]);
     }
     if (_json.containsKey("inappproductsupdateresponse")) {
-      inappproductsupdateresponse = new InappproductsUpdateResponse.fromJson(_json["inappproductsupdateresponse"]);
+      inappproductsupdateresponse = new InappproductsUpdateResponse.fromJson(
+          _json["inappproductsupdateresponse"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (batchId != null) {
       _json["batchId"] = batchId;
     }
     if (inappproductsinsertresponse != null) {
-      _json["inappproductsinsertresponse"] = (inappproductsinsertresponse).toJson();
+      _json["inappproductsinsertresponse"] =
+          (inappproductsinsertresponse).toJson();
     }
     if (inappproductsupdateresponse != null) {
-      _json["inappproductsupdateresponse"] = (inappproductsupdateresponse).toJson();
+      _json["inappproductsupdateresponse"] =
+          (inappproductsupdateresponse).toJson();
     }
     return _json;
   }
@@ -4567,7 +4804,8 @@ class InappproductsInsertRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (inappproduct != null) {
       _json["inappproduct"] = (inappproduct).toJson();
     }
@@ -4587,7 +4825,8 @@ class InappproductsInsertResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (inappproduct != null) {
       _json["inappproduct"] = (inappproduct).toJson();
     }
@@ -4597,10 +4836,9 @@ class InappproductsInsertResponse {
 
 class InappproductsListResponse {
   core.List<InAppProduct> inappproduct;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "androidpublisher#inappproductsListResponse".
-   */
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "androidpublisher#inappproductsListResponse".
   core.String kind;
   PageInfo pageInfo;
   TokenPagination tokenPagination;
@@ -4609,7 +4847,9 @@ class InappproductsListResponse {
 
   InappproductsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey("inappproduct")) {
-      inappproduct = _json["inappproduct"].map((value) => new InAppProduct.fromJson(value)).toList();
+      inappproduct = _json["inappproduct"]
+          .map((value) => new InAppProduct.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -4623,9 +4863,11 @@ class InappproductsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (inappproduct != null) {
-      _json["inappproduct"] = inappproduct.map((value) => (value).toJson()).toList();
+      _json["inappproduct"] =
+          inappproduct.map((value) => (value).toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -4652,7 +4894,8 @@ class InappproductsUpdateRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (inappproduct != null) {
       _json["inappproduct"] = (inappproduct).toJson();
     }
@@ -4672,7 +4915,8 @@ class InappproductsUpdateResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (inappproduct != null) {
       _json["inappproduct"] = (inappproduct).toJson();
     }
@@ -4681,20 +4925,20 @@ class InappproductsUpdateResponse {
 }
 
 class Listing {
-  /**
-   * Full description of the app; this may be up to 4000 characters in length.
-   */
+  /// Full description of the app; this may be up to 4000 characters in length.
   core.String fullDescription;
-  /** Language localization code (for example, "de-AT" for Austrian German). */
+
+  /// Language localization code (for example, "de-AT" for Austrian German).
   core.String language;
-  /**
-   * Short description of the app (previously known as promo text); this may be
-   * up to 80 characters in length.
-   */
+
+  /// Short description of the app (previously known as promo text); this may be
+  /// up to 80 characters in length.
   core.String shortDescription;
-  /** App's localized title. */
+
+  /// App's localized title.
   core.String title;
-  /** URL of a promotional YouTube video for the app. */
+
+  /// URL of a promotional YouTube video for the app.
   core.String video;
 
   Listing();
@@ -4718,7 +4962,8 @@ class Listing {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (fullDescription != null) {
       _json["fullDescription"] = fullDescription;
     }
@@ -4739,10 +4984,8 @@ class Listing {
 }
 
 class ListingsListResponse {
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "androidpublisher#listingsListResponse".
-   */
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "androidpublisher#listingsListResponse".
   core.String kind;
   core.List<Listing> listings;
 
@@ -4753,12 +4996,15 @@ class ListingsListResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("listings")) {
-      listings = _json["listings"].map((value) => new Listing.fromJson(value)).toList();
+      listings = _json["listings"]
+          .map((value) => new Listing.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -4770,12 +5016,11 @@ class ListingsListResponse {
 }
 
 class MonthDay {
-  /**
-   * Day of a month, value in [1, 31] range. Valid range depends on the
-   * specified month.
-   */
+  /// Day of a month, value in [1, 31] range. Valid range depends on the
+  /// specified month.
   core.int day;
-  /** Month of a year. e.g. 1 = JAN, 2 = FEB etc. */
+
+  /// Month of a year. e.g. 1 = JAN, 2 = FEB etc.
   core.int month;
 
   MonthDay();
@@ -4790,7 +5035,8 @@ class MonthDay {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (day != null) {
       _json["day"] = day;
     }
@@ -4821,7 +5067,8 @@ class PageInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (resultPerPage != null) {
       _json["resultPerPage"] = resultPerPage;
     }
@@ -4836,11 +5083,10 @@ class PageInfo {
 }
 
 class Price {
-  /** 3 letter Currency code, as defined by ISO 4217. */
+  /// 3 letter Currency code, as defined by ISO 4217.
   core.String currency;
-  /**
-   * The price in millionths of the currency base unit represented as a string.
-   */
+
+  /// The price in millionths of the currency base unit represented as a string.
   core.String priceMicros;
 
   Price();
@@ -4855,7 +5101,8 @@ class Price {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (currency != null) {
       _json["currency"] = currency;
     }
@@ -4866,39 +5113,32 @@ class Price {
   }
 }
 
-/**
- * A ProductPurchase resource indicates the status of a user's inapp product
- * purchase.
- */
+/// A ProductPurchase resource indicates the status of a user's inapp product
+/// purchase.
 class ProductPurchase {
-  /**
-   * The consumption state of the inapp product. Possible values are:
-   * - Yet to be consumed
-   * - Consumed
-   */
+  /// The consumption state of the inapp product. Possible values are:
+  /// - Yet to be consumed
+  /// - Consumed
   core.int consumptionState;
-  /**
-   * A developer-specified string that contains supplemental information about
-   * an order.
-   */
+
+  /// A developer-specified string that contains supplemental information about
+  /// an order.
   core.String developerPayload;
-  /**
-   * This kind represents an inappPurchase object in the androidpublisher
-   * service.
-   */
+
+  /// This kind represents an inappPurchase object in the androidpublisher
+  /// service.
   core.String kind;
-  /** The order id associated with the purchase of the inapp product. */
+
+  /// The order id associated with the purchase of the inapp product.
   core.String orderId;
-  /**
-   * The purchase state of the order. Possible values are:
-   * - Purchased
-   * - Cancelled
-   */
+
+  /// The purchase state of the order. Possible values are:
+  /// - Purchased
+  /// - Cancelled
   core.int purchaseState;
-  /**
-   * The time the product was purchased, in milliseconds since the epoch (Jan 1,
-   * 1970).
-   */
+
+  /// The time the product was purchased, in milliseconds since the epoch (Jan
+  /// 1, 1970).
   core.String purchaseTimeMillis;
 
   ProductPurchase();
@@ -4925,7 +5165,8 @@ class ProductPurchase {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (consumptionState != null) {
       _json["consumptionState"] = consumptionState;
     }
@@ -4949,14 +5190,13 @@ class ProductPurchase {
 }
 
 class Prorate {
-  /**
-   * Default price cannot be zero and must be less than the full subscription
-   * price. Default price is always in the developer's Checkout merchant
-   * currency. Targeted countries have their prices set automatically based on
-   * the default_price.
-   */
+  /// Default price cannot be zero and must be less than the full subscription
+  /// price. Default price is always in the developer's Checkout merchant
+  /// currency. Targeted countries have their prices set automatically based on
+  /// the default_price.
   Price defaultPrice;
-  /** Defines the first day on which the price takes effect. */
+
+  /// Defines the first day on which the price takes effect.
   MonthDay start;
 
   Prorate();
@@ -4971,7 +5211,8 @@ class Prorate {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (defaultPrice != null) {
       _json["defaultPrice"] = (defaultPrice).toJson();
     }
@@ -4983,11 +5224,13 @@ class Prorate {
 }
 
 class Review {
-  /** The name of the user who wrote the review. */
+  /// The name of the user who wrote the review.
   core.String authorName;
-  /** A repeated field containing comments for the review. */
+
+  /// A repeated field containing comments for the review.
   core.List<Comment> comments;
-  /** Unique identifier for this review. */
+
+  /// Unique identifier for this review.
   core.String reviewId;
 
   Review();
@@ -4997,7 +5240,9 @@ class Review {
       authorName = _json["authorName"];
     }
     if (_json.containsKey("comments")) {
-      comments = _json["comments"].map((value) => new Comment.fromJson(value)).toList();
+      comments = _json["comments"]
+          .map((value) => new Comment.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("reviewId")) {
       reviewId = _json["reviewId"];
@@ -5005,7 +5250,8 @@ class Review {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (authorName != null) {
       _json["authorName"] = authorName;
     }
@@ -5020,9 +5266,10 @@ class Review {
 }
 
 class ReviewReplyResult {
-  /** The time at which the reply took effect. */
+  /// The time at which the reply took effect.
   Timestamp lastEdited;
-  /** The reply text that was applied. */
+
+  /// The reply text that was applied.
   core.String replyText;
 
   ReviewReplyResult();
@@ -5037,7 +5284,8 @@ class ReviewReplyResult {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (lastEdited != null) {
       _json["lastEdited"] = (lastEdited).toJson();
     }
@@ -5060,7 +5308,8 @@ class ReviewsListResponse {
       pageInfo = new PageInfo.fromJson(_json["pageInfo"]);
     }
     if (_json.containsKey("reviews")) {
-      reviews = _json["reviews"].map((value) => new Review.fromJson(value)).toList();
+      reviews =
+          _json["reviews"].map((value) => new Review.fromJson(value)).toList();
     }
     if (_json.containsKey("tokenPagination")) {
       tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
@@ -5068,7 +5317,8 @@ class ReviewsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (pageInfo != null) {
       _json["pageInfo"] = (pageInfo).toJson();
     }
@@ -5083,10 +5333,8 @@ class ReviewsListResponse {
 }
 
 class ReviewsReplyRequest {
-  /**
-   * The text to set as the reply. Replies of more than approximately 350
-   * characters will be rejected. HTML tags will be stripped.
-   */
+  /// The text to set as the reply. Replies of more than approximately 350
+  /// characters will be rejected. HTML tags will be stripped.
   core.String replyText;
 
   ReviewsReplyRequest();
@@ -5098,7 +5346,8 @@ class ReviewsReplyRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (replyText != null) {
       _json["replyText"] = replyText;
     }
@@ -5118,7 +5367,8 @@ class ReviewsReplyResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (result != null) {
       _json["result"] = (result).toJson();
     }
@@ -5127,16 +5377,16 @@ class ReviewsReplyResponse {
 }
 
 class Season {
-  /** Inclusive end date of the recurrence period. */
+  /// Inclusive end date of the recurrence period.
   MonthDay end;
-  /**
-   * Optionally present list of prorations for the season. Each proration is a
-   * one-off discounted entry into a subscription. Each proration contains the
-   * first date on which the discount is available and the new pricing
-   * information.
-   */
+
+  /// Optionally present list of prorations for the season. Each proration is a
+  /// one-off discounted entry into a subscription. Each proration contains the
+  /// first date on which the discount is available and the new pricing
+  /// information.
   core.List<Prorate> prorations;
-  /** Inclusive start date of the recurrence period. */
+
+  /// Inclusive start date of the recurrence period.
   MonthDay start;
 
   Season();
@@ -5146,7 +5396,9 @@ class Season {
       end = new MonthDay.fromJson(_json["end"]);
     }
     if (_json.containsKey("prorations")) {
-      prorations = _json["prorations"].map((value) => new Prorate.fromJson(value)).toList();
+      prorations = _json["prorations"]
+          .map((value) => new Prorate.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("start")) {
       start = new MonthDay.fromJson(_json["start"]);
@@ -5154,12 +5406,14 @@ class Season {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (end != null) {
       _json["end"] = (end).toJson();
     }
     if (prorations != null) {
-      _json["prorations"] = prorations.map((value) => (value).toJson()).toList();
+      _json["prorations"] =
+          prorations.map((value) => (value).toJson()).toList();
     }
     if (start != null) {
       _json["start"] = (start).toJson();
@@ -5168,22 +5422,17 @@ class Season {
   }
 }
 
-/**
- * A SubscriptionDeferralInfo contains the data needed to defer a subscription
- * purchase to a future expiry time.
- */
+/// A SubscriptionDeferralInfo contains the data needed to defer a subscription
+/// purchase to a future expiry time.
 class SubscriptionDeferralInfo {
-  /**
-   * The desired next expiry time to assign to the subscription, in milliseconds
-   * since the Epoch. The given time must be later/greater than the current
-   * expiry time for the subscription.
-   */
+  /// The desired next expiry time to assign to the subscription, in
+  /// milliseconds since the Epoch. The given time must be later/greater than
+  /// the current expiry time for the subscription.
   core.String desiredExpiryTimeMillis;
-  /**
-   * The expected expiry time for the subscription. If the current expiry time
-   * for the subscription is not the value specified here, the deferral will not
-   * occur.
-   */
+
+  /// The expected expiry time for the subscription. If the current expiry time
+  /// for the subscription is not the value specified here, the deferral will
+  /// not occur.
   core.String expectedExpiryTimeMillis;
 
   SubscriptionDeferralInfo();
@@ -5198,7 +5447,8 @@ class SubscriptionDeferralInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (desiredExpiryTimeMillis != null) {
       _json["desiredExpiryTimeMillis"] = desiredExpiryTimeMillis;
     }
@@ -5209,78 +5459,63 @@ class SubscriptionDeferralInfo {
   }
 }
 
-/**
- * A SubscriptionPurchase resource indicates the status of a user's subscription
- * purchase.
- */
+/// A SubscriptionPurchase resource indicates the status of a user's
+/// subscription purchase.
 class SubscriptionPurchase {
-  /**
-   * Whether the subscription will automatically be renewed when it reaches its
-   * current expiry time.
-   */
+  /// Whether the subscription will automatically be renewed when it reaches its
+  /// current expiry time.
   core.bool autoRenewing;
-  /**
-   * The reason why a subscription was cancelled or is not auto-renewing.
-   * Possible values are:
-   * - User cancelled the subscription
-   * - Subscription was cancelled by the system, for example because of a
-   * billing problem
-   */
+
+  /// The reason why a subscription was cancelled or is not auto-renewing.
+  /// Possible values are:
+  /// - User cancelled the subscription
+  /// - Subscription was cancelled by the system, for example because of a
+  /// billing problem
   core.int cancelReason;
-  /**
-   * ISO 3166-1 alpha-2 billing country/region code of the user at the time the
-   * subscription was granted.
-   */
+
+  /// ISO 3166-1 alpha-2 billing country/region code of the user at the time the
+  /// subscription was granted.
   core.String countryCode;
-  /**
-   * A developer-specified string that contains supplemental information about
-   * an order.
-   */
+
+  /// A developer-specified string that contains supplemental information about
+  /// an order.
   core.String developerPayload;
-  /**
-   * Time at which the subscription will expire, in milliseconds since the
-   * Epoch.
-   */
+
+  /// Time at which the subscription will expire, in milliseconds since the
+  /// Epoch.
   core.String expiryTimeMillis;
-  /**
-   * This kind represents a subscriptionPurchase object in the androidpublisher
-   * service.
-   */
+
+  /// This kind represents a subscriptionPurchase object in the androidpublisher
+  /// service.
   core.String kind;
-  /**
-   * The order id of the latest recurring order associated with the purchase of
-   * the subscription.
-   */
+
+  /// The order id of the latest recurring order associated with the purchase of
+  /// the subscription.
   core.String orderId;
-  /**
-   * The payment state of the subscription. Possible values are:
-   * - Payment pending
-   * - Payment received
-   * - Free trial
-   */
+
+  /// The payment state of the subscription. Possible values are:
+  /// - Payment pending
+  /// - Payment received
+  /// - Free trial
   core.int paymentState;
-  /**
-   * Price of the subscription, not including tax. Price is expressed in
-   * micro-units, where 1,000,000 micro-units represents one unit of the
-   * currency. For example, if the subscription price is €1.99,
-   * price_amount_micros is 1990000.
-   */
+
+  /// Price of the subscription, not including tax. Price is expressed in
+  /// micro-units, where 1,000,000 micro-units represents one unit of the
+  /// currency. For example, if the subscription price is €1.99,
+  /// price_amount_micros is 1990000.
   core.String priceAmountMicros;
-  /**
-   * ISO 4217 currency code for the subscription price. For example, if the
-   * price is specified in British pounds sterling, price_currency_code is
-   * "GBP".
-   */
+
+  /// ISO 4217 currency code for the subscription price. For example, if the
+  /// price is specified in British pounds sterling, price_currency_code is
+  /// "GBP".
   core.String priceCurrencyCode;
-  /**
-   * Time at which the subscription was granted, in milliseconds since the
-   * Epoch.
-   */
+
+  /// Time at which the subscription was granted, in milliseconds since the
+  /// Epoch.
   core.String startTimeMillis;
-  /**
-   * The time at which the subscription was canceled by the user, in
-   * milliseconds since the epoch. Only present if cancelReason is 0.
-   */
+
+  /// The time at which the subscription was canceled by the user, in
+  /// milliseconds since the epoch. Only present if cancelReason is 0.
   core.String userCancellationTimeMillis;
 
   SubscriptionPurchase();
@@ -5325,7 +5560,8 @@ class SubscriptionPurchase {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (autoRenewing != null) {
       _json["autoRenewing"] = autoRenewing;
     }
@@ -5367,21 +5603,21 @@ class SubscriptionPurchase {
 }
 
 class SubscriptionPurchasesDeferRequest {
-  /**
-   * The information about the new desired expiry time for the subscription.
-   */
+  /// The information about the new desired expiry time for the subscription.
   SubscriptionDeferralInfo deferralInfo;
 
   SubscriptionPurchasesDeferRequest();
 
   SubscriptionPurchasesDeferRequest.fromJson(core.Map _json) {
     if (_json.containsKey("deferralInfo")) {
-      deferralInfo = new SubscriptionDeferralInfo.fromJson(_json["deferralInfo"]);
+      deferralInfo =
+          new SubscriptionDeferralInfo.fromJson(_json["deferralInfo"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (deferralInfo != null) {
       _json["deferralInfo"] = (deferralInfo).toJson();
     }
@@ -5390,9 +5626,7 @@ class SubscriptionPurchasesDeferRequest {
 }
 
 class SubscriptionPurchasesDeferResponse {
-  /**
-   * The new expiry time for the subscription in milliseconds since the Epoch.
-   */
+  /// The new expiry time for the subscription in milliseconds since the Epoch.
   core.String newExpiryTimeMillis;
 
   SubscriptionPurchasesDeferResponse();
@@ -5404,7 +5638,8 @@ class SubscriptionPurchasesDeferResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (newExpiryTimeMillis != null) {
       _json["newExpiryTimeMillis"] = newExpiryTimeMillis;
     }
@@ -5428,7 +5663,8 @@ class Testers {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (googleGroups != null) {
       _json["googleGroups"] = googleGroups;
     }
@@ -5455,7 +5691,8 @@ class Timestamp {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (nanos != null) {
       _json["nanos"] = nanos;
     }
@@ -5482,7 +5719,8 @@ class TokenPagination {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -5513,7 +5751,8 @@ class Track {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (track != null) {
       _json["track"] = track;
     }
@@ -5528,10 +5767,8 @@ class Track {
 }
 
 class TracksListResponse {
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "androidpublisher#tracksListResponse".
-   */
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "androidpublisher#tracksListResponse".
   core.String kind;
   core.List<Track> tracks;
 
@@ -5542,12 +5779,14 @@ class TracksListResponse {
       kind = _json["kind"];
     }
     if (_json.containsKey("tracks")) {
-      tracks = _json["tracks"].map((value) => new Track.fromJson(value)).toList();
+      tracks =
+          _json["tracks"].map((value) => new Track.fromJson(value)).toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -5559,51 +5798,48 @@ class TracksListResponse {
 }
 
 class UserComment {
-  /**
-   * Integer Android SDK version of the user's device at the time the review was
-   * written, e.g. 23 is Marshmallow. May be absent.
-   */
+  /// Integer Android SDK version of the user's device at the time the review
+  /// was written, e.g. 23 is Marshmallow. May be absent.
   core.int androidOsVersion;
-  /**
-   * Integer version code of the app as installed at the time the review was
-   * written. May be absent.
-   */
+
+  /// Integer version code of the app as installed at the time the review was
+  /// written. May be absent.
   core.int appVersionCode;
-  /**
-   * String version name of the app as installed at the time the review was
-   * written. May be absent.
-   */
+
+  /// String version name of the app as installed at the time the review was
+  /// written. May be absent.
   core.String appVersionName;
-  /**
-   * Codename for the reviewer's device, e.g. klte, flounder. May be absent.
-   */
+
+  /// Codename for the reviewer's device, e.g. klte, flounder. May be absent.
   core.String device;
-  /** Some information about the characteristics of the user's device */
+
+  /// Some information about the characteristics of the user's device
   DeviceMetadata deviceMetadata;
-  /** The last time at which this comment was updated. */
+
+  /// The last time at which this comment was updated.
   Timestamp lastModified;
-  /**
-   * Untranslated text of the review, in the case where the review has been
-   * translated. If the review has not been translated this is left blank.
-   */
+
+  /// Untranslated text of the review, in the case where the review has been
+  /// translated. If the review has not been translated this is left blank.
   core.String originalText;
-  /**
-   * Language code for the reviewer. This is taken from the device settings so
-   * is not guaranteed to match the language the review is written in. May be
-   * absent.
-   */
+
+  /// Language code for the reviewer. This is taken from the device settings so
+  /// is not guaranteed to match the language the review is written in. May be
+  /// absent.
   core.String reviewerLanguage;
-  /** The star rating associated with the review, from 1 to 5. */
+
+  /// The star rating associated with the review, from 1 to 5.
   core.int starRating;
-  /**
-   * The content of the comment, i.e. review body. In some cases users have been
-   * able to write a review with separate title and body; in those cases the
-   * title and body are concatenated and separated by a tab character.
-   */
+
+  /// The content of the comment, i.e. review body. In some cases users have
+  /// been able to write a review with separate title and body; in those cases
+  /// the title and body are concatenated and separated by a tab character.
   core.String text;
-  /** Number of users who have given this review a thumbs down */
+
+  /// Number of users who have given this review a thumbs down
   core.int thumbsDownCount;
-  /** Number of users who have given this review a thumbs up */
+
+  /// Number of users who have given this review a thumbs up
   core.int thumbsUpCount;
 
   UserComment();
@@ -5648,7 +5884,8 @@ class UserComment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (androidOsVersion != null) {
       _json["androidOsVersion"] = androidOsVersion;
     }
@@ -5689,30 +5926,23 @@ class UserComment {
   }
 }
 
-/**
- * A VoidedPurchase resource indicates a purchase that was either
- * cancelled/refunded/charged-back.
- */
+/// A VoidedPurchase resource indicates a purchase that was either
+/// cancelled/refunded/charged-back.
 class VoidedPurchase {
-  /**
-   * This kind represents a voided purchase object in the androidpublisher
-   * service.
-   */
+  /// This kind represents a voided purchase object in the androidpublisher
+  /// service.
   core.String kind;
-  /**
-   * The time at which the purchase was made, in milliseconds since the epoch
-   * (Jan 1, 1970).
-   */
+
+  /// The time at which the purchase was made, in milliseconds since the epoch
+  /// (Jan 1, 1970).
   core.String purchaseTimeMillis;
-  /**
-   * The token that was generated when a purchase was made. This uniquely
-   * identifies a purchase.
-   */
+
+  /// The token that was generated when a purchase was made. This uniquely
+  /// identifies a purchase.
   core.String purchaseToken;
-  /**
-   * The time at which the purchase was cancelled/refunded/charged-back, in
-   * milliseconds since the epoch (Jan 1, 1970).
-   */
+
+  /// The time at which the purchase was cancelled/refunded/charged-back, in
+  /// milliseconds since the epoch (Jan 1, 1970).
   core.String voidedTimeMillis;
 
   VoidedPurchase();
@@ -5733,7 +5963,8 @@ class VoidedPurchase {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -5765,12 +5996,15 @@ class VoidedPurchasesListResponse {
       tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
     }
     if (_json.containsKey("voidedPurchases")) {
-      voidedPurchases = _json["voidedPurchases"].map((value) => new VoidedPurchase.fromJson(value)).toList();
+      voidedPurchases = _json["voidedPurchases"]
+          .map((value) => new VoidedPurchase.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (pageInfo != null) {
       _json["pageInfo"] = (pageInfo).toJson();
     }
@@ -5778,7 +6012,8 @@ class VoidedPurchasesListResponse {
       _json["tokenPagination"] = (tokenPagination).toJson();
     }
     if (voidedPurchases != null) {
-      _json["voidedPurchases"] = voidedPurchases.map((value) => (value).toJson()).toList();
+      _json["voidedPurchases"] =
+          voidedPurchases.map((value) => (value).toJson()).toList();
     }
     return _json;
   }

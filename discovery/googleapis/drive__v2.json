@@ -34,11 +34,11 @@
     },
     "basePath": "/drive/v2/",
     "baseUrl": "https://www.googleapis.com/drive/v2/",
-    "batchPath": "batch",
+    "batchPath": "batch/drive/v2",
     "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/qmWmGL8KMF_u3tBIUB8jIslHffs\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/DCrAVU-W3UzljIhuRMkT-kOc_P8\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -1223,7 +1223,7 @@
                             "type": "integer"
                         },
                         "orderBy": {
-                            "description": "A comma-separated list of sort keys. Valid keys are 'createdDate', 'folder', 'lastViewedByMeDate', 'modifiedByMeDate', 'modifiedDate', 'quotaBytesUsed', 'recency', 'sharedWithMeDate', 'starred', and 'title'. Each key sorts ascending by default, but may be reversed with the 'desc' modifier. Example usage: ?orderBy=folder,modifiedDate desc,title. Please note that there is a current limitation for users with approximately one million files in which the requested sort order is ignored.",
+                            "description": "A comma-separated list of sort keys. Valid keys are 'createdDate', 'folder', 'lastViewedByMeDate', 'modifiedByMeDate', 'modifiedDate', 'quotaBytesUsed', 'recency', 'sharedWithMeDate', 'starred', 'title', and 'title_natural'. Each key sorts ascending by default, but may be reversed with the 'desc' modifier. Example usage: ?orderBy=folder,modifiedDate desc,title. Please note that there is a current limitation for users with approximately one million files in which the requested sort order is ignored.",
                             "location": "query",
                             "type": "string"
                         },
@@ -3019,7 +3019,7 @@
             }
         }
     },
-    "revision": "20170811",
+    "revision": "20170825",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -4250,6 +4250,13 @@
                     "description": "Collection of parent folders which contain this file.\nSetting this field will put the file in all of the provided folders. On insert, if no folders are provided, the file will be placed in the default root folder.",
                     "items": {
                         "$ref": "ParentReference"
+                    },
+                    "type": "array"
+                },
+                "permissionIds": {
+                    "description": "List of permission IDs for users with access to this file.",
+                    "items": {
+                        "type": "string"
                     },
                     "type": "array"
                 },

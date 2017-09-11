@@ -13,7 +13,7 @@
     },
     "basePath": "/tasks/v1/",
     "baseUrl": "https://www.googleapis.com/tasks/v1/",
-    "batchPath": "batch",
+    "batchPath": "batch/tasks/v1",
     "description": "Lets you manage your tasks and task lists.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/tasks/firstapp",

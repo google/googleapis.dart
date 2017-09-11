@@ -9,21 +9,19 @@ import 'dart:convert' as convert;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
-    ApiRequestError, DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
+    show ApiRequestError, DetailedApiRequestError;
 
 const core.String USER_AGENT = 'dart-api-client partners/v2';
 
-/**
- * Searches certified companies and creates contact leads with them, and also
- * audits the usage of clients.
- */
+/// Searches certified companies and creates contact leads with them, and also
+/// audits the usage of clients.
 class PartnersApi {
-
   final commons.ApiRequester _requester;
 
   AnalyticsResourceApi get analytics => new AnalyticsResourceApi(_requester);
-  ClientMessagesResourceApi get clientMessages => new ClientMessagesResourceApi(_requester);
+  ClientMessagesResourceApi get clientMessages =>
+      new ClientMessagesResourceApi(_requester);
   CompaniesResourceApi get companies => new CompaniesResourceApi(_requester);
   ExamsResourceApi get exams => new ExamsResourceApi(_requester);
   LeadsResourceApi get leads => new LeadsResourceApi(_requester);
@@ -33,73 +31,81 @@ class PartnersApi {
   UsersResourceApi get users => new UsersResourceApi(_requester);
   V2ResourceApi get v2 => new V2ResourceApi(_requester);
 
-  PartnersApi(http.Client client, {core.String rootUrl: "https://partners.googleapis.com/", core.String servicePath: ""}) :
-      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+  PartnersApi(http.Client client,
+      {core.String rootUrl: "https://partners.googleapis.com/",
+      core.String servicePath: ""})
+      : _requester =
+            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
-
 
 class AnalyticsResourceApi {
   final commons.ApiRequester _requester;
 
-  AnalyticsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  AnalyticsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Lists analytics data for a user's associated company.
-   * Should only be called within the context of an authorized logged in user.
-   *
-   * Request parameters:
-   *
-   * [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
-   * instead of the user's ID.
-   *
-   * [requestMetadata_partnersSessionId] - Google Partners session ID.
-   *
-   * [pageToken] - A token identifying a page of results that the server
-   * returns.
-   * Typically, this is the value of `ListAnalyticsResponse.next_page_token`
-   * returned from the previous call to
-   * ListAnalytics.
-   * Will be a date string in `YYYY-MM-DD` format representing the end date
-   * of the date range of results to return.
-   * If unspecified or set to "", default value is the current date.
-   *
-   * [pageSize] - Requested page size. Server may return fewer analytics than
-   * requested.
-   * If unspecified or set to 0, default value is 30.
-   * Specifies the number of days in the date range when querying analytics.
-   * The `page_token` represents the end date of the date range
-   * and the start date is calculated using the `page_size` as the number
-   * of days BEFORE the end date.
-   * Must be a non-negative integer.
-   *
-   * [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
-   * where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * [requestMetadata_locale] - Locale to use for the current request.
-   *
-   * [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
-   * the user's geo-located IP address.
-   *
-   * [requestMetadata_experimentIds] - Experiment IDs the current request
-   * belongs to.
-   *
-   * [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
-   * indicate where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * Completes with a [ListAnalyticsResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ListAnalyticsResponse> list({core.String requestMetadata_userOverrides_userId, core.String requestMetadata_partnersSessionId, core.String pageToken, core.int pageSize, core.String requestMetadata_trafficSource_trafficSourceId, core.String requestMetadata_locale, core.String requestMetadata_userOverrides_ipAddress, core.List<core.String> requestMetadata_experimentIds, core.String requestMetadata_trafficSource_trafficSubId}) {
+  /// Lists analytics data for a user's associated company.
+  /// Should only be called within the context of an authorized logged in user.
+  ///
+  /// Request parameters:
+  ///
+  /// [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
+  /// instead of the user's ID.
+  ///
+  /// [requestMetadata_partnersSessionId] - Google Partners session ID.
+  ///
+  /// [pageToken] - A token identifying a page of results that the server
+  /// returns.
+  /// Typically, this is the value of `ListAnalyticsResponse.next_page_token`
+  /// returned from the previous call to
+  /// ListAnalytics.
+  /// Will be a date string in `YYYY-MM-DD` format representing the end date
+  /// of the date range of results to return.
+  /// If unspecified or set to "", default value is the current date.
+  ///
+  /// [pageSize] - Requested page size. Server may return fewer analytics than
+  /// requested.
+  /// If unspecified or set to 0, default value is 30.
+  /// Specifies the number of days in the date range when querying analytics.
+  /// The `page_token` represents the end date of the date range
+  /// and the start date is calculated using the `page_size` as the number
+  /// of days BEFORE the end date.
+  /// Must be a non-negative integer.
+  ///
+  /// [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
+  /// where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// [requestMetadata_locale] - Locale to use for the current request.
+  ///
+  /// [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
+  /// the user's geo-located IP address.
+  ///
+  /// [requestMetadata_experimentIds] - Experiment IDs the current request
+  /// belongs to.
+  ///
+  /// [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
+  /// indicate where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// Completes with a [ListAnalyticsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAnalyticsResponse> list(
+      {core.String requestMetadata_userOverrides_userId,
+      core.String requestMetadata_partnersSessionId,
+      core.String pageToken,
+      core.int pageSize,
+      core.String requestMetadata_trafficSource_trafficSourceId,
+      core.String requestMetadata_locale,
+      core.String requestMetadata_userOverrides_ipAddress,
+      core.List<core.String> requestMetadata_experimentIds,
+      core.String requestMetadata_trafficSource_trafficSubId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -108,10 +114,14 @@ class AnalyticsResourceApi {
     var _body = null;
 
     if (requestMetadata_userOverrides_userId != null) {
-      _queryParams["requestMetadata.userOverrides.userId"] = [requestMetadata_userOverrides_userId];
+      _queryParams["requestMetadata.userOverrides.userId"] = [
+        requestMetadata_userOverrides_userId
+      ];
     }
     if (requestMetadata_partnersSessionId != null) {
-      _queryParams["requestMetadata.partnersSessionId"] = [requestMetadata_partnersSessionId];
+      _queryParams["requestMetadata.partnersSessionId"] = [
+        requestMetadata_partnersSessionId
+      ];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -120,59 +130,60 @@ class AnalyticsResourceApi {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (requestMetadata_trafficSource_trafficSourceId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [requestMetadata_trafficSource_trafficSourceId];
+      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [
+        requestMetadata_trafficSource_trafficSourceId
+      ];
     }
     if (requestMetadata_locale != null) {
       _queryParams["requestMetadata.locale"] = [requestMetadata_locale];
     }
     if (requestMetadata_userOverrides_ipAddress != null) {
-      _queryParams["requestMetadata.userOverrides.ipAddress"] = [requestMetadata_userOverrides_ipAddress];
+      _queryParams["requestMetadata.userOverrides.ipAddress"] = [
+        requestMetadata_userOverrides_ipAddress
+      ];
     }
     if (requestMetadata_experimentIds != null) {
-      _queryParams["requestMetadata.experimentIds"] = requestMetadata_experimentIds;
+      _queryParams["requestMetadata.experimentIds"] =
+          requestMetadata_experimentIds;
     }
     if (requestMetadata_trafficSource_trafficSubId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [requestMetadata_trafficSource_trafficSubId];
+      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [
+        requestMetadata_trafficSource_trafficSubId
+      ];
     }
 
     _url = 'v2/analytics';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ListAnalyticsResponse.fromJson(data));
   }
-
 }
-
 
 class ClientMessagesResourceApi {
   final commons.ApiRequester _requester;
 
-  ClientMessagesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  ClientMessagesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Logs a generic message from the client, such as
-   * `Failed to render component`, `Profile page is running slow`,
-   * `More than 500 users have accessed this result.`, etc.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [LogMessageResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Logs a generic message from the client, such as
+  /// `Failed to render component`, `Profile page is running slow`,
+  /// `More than 500 users have accessed this result.`, etc.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [LogMessageResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<LogMessageResponse> log(LogMessageRequest request) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -187,87 +198,93 @@ class ClientMessagesResourceApi {
 
     _url = 'v2/clientMessages:log';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new LogMessageResponse.fromJson(data));
   }
-
 }
-
 
 class CompaniesResourceApi {
   final commons.ApiRequester _requester;
 
-  CompaniesLeadsResourceApi get leads => new CompaniesLeadsResourceApi(_requester);
+  CompaniesLeadsResourceApi get leads =>
+      new CompaniesLeadsResourceApi(_requester);
 
-  CompaniesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  CompaniesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Gets a company.
-   *
-   * Request parameters:
-   *
-   * [companyId] - The ID of the company to retrieve.
-   *
-   * [orderBy] - How to order addresses within the returned company. Currently,
-   * only
-   * `address` and `address desc` is supported which will sorted by closest to
-   * farthest in distance from given address and farthest to closest distance
-   * from given address respectively.
-   *
-   * [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
-   * indicate where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * [requestMetadata_partnersSessionId] - Google Partners session ID.
-   *
-   * [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
-   * instead of the user's ID.
-   *
-   * [view] - The view of `Company` resource to be returned. This must not be
-   * `COMPANY_VIEW_UNSPECIFIED`.
-   * Possible string values are:
-   * - "COMPANY_VIEW_UNSPECIFIED" : A COMPANY_VIEW_UNSPECIFIED.
-   * - "CV_GOOGLE_PARTNER_SEARCH" : A CV_GOOGLE_PARTNER_SEARCH.
-   *
-   * [requestMetadata_locale] - Locale to use for the current request.
-   *
-   * [address] - The address to use for sorting the company's addresses by
-   * proximity.
-   * If not given, the geo-located address of the request is used.
-   * Used when order_by is set.
-   *
-   * [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
-   * where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
-   * the user's geo-located IP address.
-   *
-   * [requestMetadata_experimentIds] - Experiment IDs the current request
-   * belongs to.
-   *
-   * [currencyCode] - If the company's budget is in a different currency code
-   * than this one, then
-   * the converted budget is converted to this currency code.
-   *
-   * Completes with a [GetCompanyResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<GetCompanyResponse> get(core.String companyId, {core.String orderBy, core.String requestMetadata_trafficSource_trafficSubId, core.String requestMetadata_partnersSessionId, core.String requestMetadata_userOverrides_userId, core.String view, core.String requestMetadata_locale, core.String address, core.String requestMetadata_trafficSource_trafficSourceId, core.String requestMetadata_userOverrides_ipAddress, core.List<core.String> requestMetadata_experimentIds, core.String currencyCode}) {
+  /// Gets a company.
+  ///
+  /// Request parameters:
+  ///
+  /// [companyId] - The ID of the company to retrieve.
+  ///
+  /// [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
+  /// where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
+  /// the user's geo-located IP address.
+  ///
+  /// [requestMetadata_experimentIds] - Experiment IDs the current request
+  /// belongs to.
+  ///
+  /// [currencyCode] - If the company's budget is in a different currency code
+  /// than this one, then
+  /// the converted budget is converted to this currency code.
+  ///
+  /// [orderBy] - How to order addresses within the returned company. Currently,
+  /// only
+  /// `address` and `address desc` is supported which will sorted by closest to
+  /// farthest in distance from given address and farthest to closest distance
+  /// from given address respectively.
+  ///
+  /// [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
+  /// indicate where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
+  /// instead of the user's ID.
+  ///
+  /// [requestMetadata_partnersSessionId] - Google Partners session ID.
+  ///
+  /// [view] - The view of `Company` resource to be returned. This must not be
+  /// `COMPANY_VIEW_UNSPECIFIED`.
+  /// Possible string values are:
+  /// - "COMPANY_VIEW_UNSPECIFIED" : A COMPANY_VIEW_UNSPECIFIED.
+  /// - "CV_GOOGLE_PARTNER_SEARCH" : A CV_GOOGLE_PARTNER_SEARCH.
+  ///
+  /// [address] - The address to use for sorting the company's addresses by
+  /// proximity.
+  /// If not given, the geo-located address of the request is used.
+  /// Used when order_by is set.
+  ///
+  /// [requestMetadata_locale] - Locale to use for the current request.
+  ///
+  /// Completes with a [GetCompanyResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GetCompanyResponse> get(core.String companyId,
+      {core.String requestMetadata_trafficSource_trafficSourceId,
+      core.String requestMetadata_userOverrides_ipAddress,
+      core.List<core.String> requestMetadata_experimentIds,
+      core.String currencyCode,
+      core.String orderBy,
+      core.String requestMetadata_trafficSource_trafficSubId,
+      core.String requestMetadata_userOverrides_userId,
+      core.String requestMetadata_partnersSessionId,
+      core.String view,
+      core.String address,
+      core.String requestMetadata_locale}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -278,167 +295,201 @@ class CompaniesResourceApi {
     if (companyId == null) {
       throw new core.ArgumentError("Parameter companyId is required.");
     }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
-    if (requestMetadata_trafficSource_trafficSubId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [requestMetadata_trafficSource_trafficSubId];
-    }
-    if (requestMetadata_partnersSessionId != null) {
-      _queryParams["requestMetadata.partnersSessionId"] = [requestMetadata_partnersSessionId];
-    }
-    if (requestMetadata_userOverrides_userId != null) {
-      _queryParams["requestMetadata.userOverrides.userId"] = [requestMetadata_userOverrides_userId];
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
-    if (requestMetadata_locale != null) {
-      _queryParams["requestMetadata.locale"] = [requestMetadata_locale];
-    }
-    if (address != null) {
-      _queryParams["address"] = [address];
-    }
     if (requestMetadata_trafficSource_trafficSourceId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [requestMetadata_trafficSource_trafficSourceId];
+      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [
+        requestMetadata_trafficSource_trafficSourceId
+      ];
     }
     if (requestMetadata_userOverrides_ipAddress != null) {
-      _queryParams["requestMetadata.userOverrides.ipAddress"] = [requestMetadata_userOverrides_ipAddress];
+      _queryParams["requestMetadata.userOverrides.ipAddress"] = [
+        requestMetadata_userOverrides_ipAddress
+      ];
     }
     if (requestMetadata_experimentIds != null) {
-      _queryParams["requestMetadata.experimentIds"] = requestMetadata_experimentIds;
+      _queryParams["requestMetadata.experimentIds"] =
+          requestMetadata_experimentIds;
     }
     if (currencyCode != null) {
       _queryParams["currencyCode"] = [currencyCode];
     }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (requestMetadata_trafficSource_trafficSubId != null) {
+      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [
+        requestMetadata_trafficSource_trafficSubId
+      ];
+    }
+    if (requestMetadata_userOverrides_userId != null) {
+      _queryParams["requestMetadata.userOverrides.userId"] = [
+        requestMetadata_userOverrides_userId
+      ];
+    }
+    if (requestMetadata_partnersSessionId != null) {
+      _queryParams["requestMetadata.partnersSessionId"] = [
+        requestMetadata_partnersSessionId
+      ];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
+    if (address != null) {
+      _queryParams["address"] = [address];
+    }
+    if (requestMetadata_locale != null) {
+      _queryParams["requestMetadata.locale"] = [requestMetadata_locale];
+    }
 
     _url = 'v2/companies/' + commons.Escaper.ecapeVariable('$companyId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new GetCompanyResponse.fromJson(data));
   }
 
-  /**
-   * Lists companies.
-   *
-   * Request parameters:
-   *
-   * [languageCodes] - List of language codes that company can support. Only
-   * primary language
-   * subtags are accepted as defined by
-   * <a href="https://tools.ietf.org/html/bcp47">BCP 47</a>
-   * (IETF BCP 47, "Tags for Identifying Languages").
-   *
-   * [pageSize] - Requested page size. Server may return fewer companies than
-   * requested.
-   * If unspecified, server picks an appropriate default.
-   *
-   * [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
-   * the user's geo-located IP address.
-   *
-   * [requestMetadata_experimentIds] - Experiment IDs the current request
-   * belongs to.
-   *
-   * [orderBy] - How to order addresses within the returned companies.
-   * Currently, only
-   * `address` and `address desc` is supported which will sorted by closest to
-   * farthest in distance from given address and farthest to closest distance
-   * from given address respectively.
-   *
-   * [specializations] - List of specializations that the returned agencies
-   * should provide. If this
-   * is not empty, any returned agency must have at least one of these
-   * specializations, or one of the services in the "services" field.
-   *
-   * [maxMonthlyBudget_currencyCode] - The 3-letter currency code defined in ISO
-   * 4217.
-   *
-   * [minMonthlyBudget_currencyCode] - The 3-letter currency code defined in ISO
-   * 4217.
-   *
-   * [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
-   * instead of the user's ID.
-   *
-   * [view] - The view of the `Company` resource to be returned. This must not
-   * be
-   * `COMPANY_VIEW_UNSPECIFIED`.
-   * Possible string values are:
-   * - "COMPANY_VIEW_UNSPECIFIED" : A COMPANY_VIEW_UNSPECIFIED.
-   * - "CV_GOOGLE_PARTNER_SEARCH" : A CV_GOOGLE_PARTNER_SEARCH.
-   *
-   * [address] - The address to use when searching for companies.
-   * If not given, the geo-located address of the request is used.
-   *
-   * [requestMetadata_locale] - Locale to use for the current request.
-   *
-   * [minMonthlyBudget_units] - The whole units of the amount.
-   * For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
-   *
-   * [maxMonthlyBudget_nanos] - Number of nano (10^-9) units of the amount.
-   * The value must be between -999,999,999 and +999,999,999 inclusive.
-   * If `units` is positive, `nanos` must be positive or zero.
-   * If `units` is zero, `nanos` can be positive, zero, or negative.
-   * If `units` is negative, `nanos` must be negative or zero.
-   * For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
-   *
-   * [services] - List of services that the returned agencies should provide. If
-   * this is
-   * not empty, any returned agency must have at least one of these services,
-   * or one of the specializations in the "specializations" field.
-   *
-   * [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
-   * where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * [maxMonthlyBudget_units] - The whole units of the amount.
-   * For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
-   *
-   * [minMonthlyBudget_nanos] - Number of nano (10^-9) units of the amount.
-   * The value must be between -999,999,999 and +999,999,999 inclusive.
-   * If `units` is positive, `nanos` must be positive or zero.
-   * If `units` is zero, `nanos` can be positive, zero, or negative.
-   * If `units` is negative, `nanos` must be negative or zero.
-   * For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
-   *
-   * [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
-   * indicate where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * [requestMetadata_partnersSessionId] - Google Partners session ID.
-   *
-   * [companyName] - Company name to search for.
-   *
-   * [pageToken] - A token identifying a page of results that the server
-   * returns.
-   * Typically, this is the value of `ListCompaniesResponse.next_page_token`
-   * returned from the previous call to
-   * ListCompanies.
-   *
-   * [industries] - List of industries the company can help with.
-   *
-   * [websiteUrl] - Website URL that will help to find a better matched company.
-   * .
-   *
-   * [gpsMotivations] - List of reasons for using Google Partner Search to get
-   * companies.
-   *
-   * Completes with a [ListCompaniesResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ListCompaniesResponse> list({core.List<core.String> languageCodes, core.int pageSize, core.String requestMetadata_userOverrides_ipAddress, core.List<core.String> requestMetadata_experimentIds, core.String orderBy, core.List<core.String> specializations, core.String maxMonthlyBudget_currencyCode, core.String minMonthlyBudget_currencyCode, core.String requestMetadata_userOverrides_userId, core.String view, core.String address, core.String requestMetadata_locale, core.String minMonthlyBudget_units, core.int maxMonthlyBudget_nanos, core.List<core.String> services, core.String requestMetadata_trafficSource_trafficSourceId, core.String maxMonthlyBudget_units, core.int minMonthlyBudget_nanos, core.String requestMetadata_trafficSource_trafficSubId, core.String requestMetadata_partnersSessionId, core.String companyName, core.String pageToken, core.List<core.String> industries, core.String websiteUrl, core.List<core.String> gpsMotivations}) {
+  /// Lists companies.
+  ///
+  /// Request parameters:
+  ///
+  /// [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
+  /// where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// [maxMonthlyBudget_units] - The whole units of the amount.
+  /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+  ///
+  /// [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
+  /// indicate where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// [minMonthlyBudget_nanos] - Number of nano (10^-9) units of the amount.
+  /// The value must be between -999,999,999 and +999,999,999 inclusive.
+  /// If `units` is positive, `nanos` must be positive or zero.
+  /// If `units` is zero, `nanos` can be positive, zero, or negative.
+  /// If `units` is negative, `nanos` must be negative or zero.
+  /// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+  ///
+  /// [requestMetadata_partnersSessionId] - Google Partners session ID.
+  ///
+  /// [companyName] - Company name to search for.
+  ///
+  /// [pageToken] - A token identifying a page of results that the server
+  /// returns.
+  /// Typically, this is the value of `ListCompaniesResponse.next_page_token`
+  /// returned from the previous call to
+  /// ListCompanies.
+  ///
+  /// [industries] - List of industries the company can help with.
+  ///
+  /// [websiteUrl] - Website URL that will help to find a better matched
+  /// company.
+  /// .
+  ///
+  /// [gpsMotivations] - List of reasons for using Google Partner Search to get
+  /// companies.
+  ///
+  /// [languageCodes] - List of language codes that company can support. Only
+  /// primary language
+  /// subtags are accepted as defined by
+  /// <a href="https://tools.ietf.org/html/bcp47">BCP 47</a>
+  /// (IETF BCP 47, "Tags for Identifying Languages").
+  ///
+  /// [pageSize] - Requested page size. Server may return fewer companies than
+  /// requested.
+  /// If unspecified, server picks an appropriate default.
+  ///
+  /// [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
+  /// the user's geo-located IP address.
+  ///
+  /// [requestMetadata_experimentIds] - Experiment IDs the current request
+  /// belongs to.
+  ///
+  /// [orderBy] - How to order addresses within the returned companies.
+  /// Currently, only
+  /// `address` and `address desc` is supported which will sorted by closest to
+  /// farthest in distance from given address and farthest to closest distance
+  /// from given address respectively.
+  ///
+  /// [specializations] - List of specializations that the returned agencies
+  /// should provide. If this
+  /// is not empty, any returned agency must have at least one of these
+  /// specializations, or one of the services in the "services" field.
+  ///
+  /// [maxMonthlyBudget_currencyCode] - The 3-letter currency code defined in
+  /// ISO 4217.
+  ///
+  /// [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
+  /// instead of the user's ID.
+  ///
+  /// [minMonthlyBudget_currencyCode] - The 3-letter currency code defined in
+  /// ISO 4217.
+  ///
+  /// [view] - The view of the `Company` resource to be returned. This must not
+  /// be
+  /// `COMPANY_VIEW_UNSPECIFIED`.
+  /// Possible string values are:
+  /// - "COMPANY_VIEW_UNSPECIFIED" : A COMPANY_VIEW_UNSPECIFIED.
+  /// - "CV_GOOGLE_PARTNER_SEARCH" : A CV_GOOGLE_PARTNER_SEARCH.
+  ///
+  /// [requestMetadata_locale] - Locale to use for the current request.
+  ///
+  /// [address] - The address to use when searching for companies.
+  /// If not given, the geo-located address of the request is used.
+  ///
+  /// [minMonthlyBudget_units] - The whole units of the amount.
+  /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+  ///
+  /// [maxMonthlyBudget_nanos] - Number of nano (10^-9) units of the amount.
+  /// The value must be between -999,999,999 and +999,999,999 inclusive.
+  /// If `units` is positive, `nanos` must be positive or zero.
+  /// If `units` is zero, `nanos` can be positive, zero, or negative.
+  /// If `units` is negative, `nanos` must be negative or zero.
+  /// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+  ///
+  /// [services] - List of services that the returned agencies should provide.
+  /// If this is
+  /// not empty, any returned agency must have at least one of these services,
+  /// or one of the specializations in the "specializations" field.
+  ///
+  /// Completes with a [ListCompaniesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListCompaniesResponse> list(
+      {core.String requestMetadata_trafficSource_trafficSourceId,
+      core.String maxMonthlyBudget_units,
+      core.String requestMetadata_trafficSource_trafficSubId,
+      core.int minMonthlyBudget_nanos,
+      core.String requestMetadata_partnersSessionId,
+      core.String companyName,
+      core.String pageToken,
+      core.List<core.String> industries,
+      core.String websiteUrl,
+      core.List<core.String> gpsMotivations,
+      core.List<core.String> languageCodes,
+      core.int pageSize,
+      core.String requestMetadata_userOverrides_ipAddress,
+      core.List<core.String> requestMetadata_experimentIds,
+      core.String orderBy,
+      core.List<core.String> specializations,
+      core.String maxMonthlyBudget_currencyCode,
+      core.String requestMetadata_userOverrides_userId,
+      core.String minMonthlyBudget_currencyCode,
+      core.String view,
+      core.String requestMetadata_locale,
+      core.String address,
+      core.String minMonthlyBudget_units,
+      core.int maxMonthlyBudget_nanos,
+      core.List<core.String> services}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -446,65 +497,26 @@ class CompaniesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (languageCodes != null) {
-      _queryParams["languageCodes"] = languageCodes;
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (requestMetadata_userOverrides_ipAddress != null) {
-      _queryParams["requestMetadata.userOverrides.ipAddress"] = [requestMetadata_userOverrides_ipAddress];
-    }
-    if (requestMetadata_experimentIds != null) {
-      _queryParams["requestMetadata.experimentIds"] = requestMetadata_experimentIds;
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
-    if (specializations != null) {
-      _queryParams["specializations"] = specializations;
-    }
-    if (maxMonthlyBudget_currencyCode != null) {
-      _queryParams["maxMonthlyBudget.currencyCode"] = [maxMonthlyBudget_currencyCode];
-    }
-    if (minMonthlyBudget_currencyCode != null) {
-      _queryParams["minMonthlyBudget.currencyCode"] = [minMonthlyBudget_currencyCode];
-    }
-    if (requestMetadata_userOverrides_userId != null) {
-      _queryParams["requestMetadata.userOverrides.userId"] = [requestMetadata_userOverrides_userId];
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
-    if (address != null) {
-      _queryParams["address"] = [address];
-    }
-    if (requestMetadata_locale != null) {
-      _queryParams["requestMetadata.locale"] = [requestMetadata_locale];
-    }
-    if (minMonthlyBudget_units != null) {
-      _queryParams["minMonthlyBudget.units"] = [minMonthlyBudget_units];
-    }
-    if (maxMonthlyBudget_nanos != null) {
-      _queryParams["maxMonthlyBudget.nanos"] = ["${maxMonthlyBudget_nanos}"];
-    }
-    if (services != null) {
-      _queryParams["services"] = services;
-    }
     if (requestMetadata_trafficSource_trafficSourceId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [requestMetadata_trafficSource_trafficSourceId];
+      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [
+        requestMetadata_trafficSource_trafficSourceId
+      ];
     }
     if (maxMonthlyBudget_units != null) {
       _queryParams["maxMonthlyBudget.units"] = [maxMonthlyBudget_units];
     }
+    if (requestMetadata_trafficSource_trafficSubId != null) {
+      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [
+        requestMetadata_trafficSource_trafficSubId
+      ];
+    }
     if (minMonthlyBudget_nanos != null) {
       _queryParams["minMonthlyBudget.nanos"] = ["${minMonthlyBudget_nanos}"];
     }
-    if (requestMetadata_trafficSource_trafficSubId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [requestMetadata_trafficSource_trafficSubId];
-    }
     if (requestMetadata_partnersSessionId != null) {
-      _queryParams["requestMetadata.partnersSessionId"] = [requestMetadata_partnersSessionId];
+      _queryParams["requestMetadata.partnersSessionId"] = [
+        requestMetadata_partnersSessionId
+      ];
     }
     if (companyName != null) {
       _queryParams["companyName"] = [companyName];
@@ -521,46 +533,95 @@ class CompaniesResourceApi {
     if (gpsMotivations != null) {
       _queryParams["gpsMotivations"] = gpsMotivations;
     }
+    if (languageCodes != null) {
+      _queryParams["languageCodes"] = languageCodes;
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (requestMetadata_userOverrides_ipAddress != null) {
+      _queryParams["requestMetadata.userOverrides.ipAddress"] = [
+        requestMetadata_userOverrides_ipAddress
+      ];
+    }
+    if (requestMetadata_experimentIds != null) {
+      _queryParams["requestMetadata.experimentIds"] =
+          requestMetadata_experimentIds;
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (specializations != null) {
+      _queryParams["specializations"] = specializations;
+    }
+    if (maxMonthlyBudget_currencyCode != null) {
+      _queryParams["maxMonthlyBudget.currencyCode"] = [
+        maxMonthlyBudget_currencyCode
+      ];
+    }
+    if (requestMetadata_userOverrides_userId != null) {
+      _queryParams["requestMetadata.userOverrides.userId"] = [
+        requestMetadata_userOverrides_userId
+      ];
+    }
+    if (minMonthlyBudget_currencyCode != null) {
+      _queryParams["minMonthlyBudget.currencyCode"] = [
+        minMonthlyBudget_currencyCode
+      ];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
+    if (requestMetadata_locale != null) {
+      _queryParams["requestMetadata.locale"] = [requestMetadata_locale];
+    }
+    if (address != null) {
+      _queryParams["address"] = [address];
+    }
+    if (minMonthlyBudget_units != null) {
+      _queryParams["minMonthlyBudget.units"] = [minMonthlyBudget_units];
+    }
+    if (maxMonthlyBudget_nanos != null) {
+      _queryParams["maxMonthlyBudget.nanos"] = ["${maxMonthlyBudget_nanos}"];
+    }
+    if (services != null) {
+      _queryParams["services"] = services;
+    }
 
     _url = 'v2/companies';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ListCompaniesResponse.fromJson(data));
   }
-
 }
-
 
 class CompaniesLeadsResourceApi {
   final commons.ApiRequester _requester;
 
-  CompaniesLeadsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  CompaniesLeadsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Creates an advertiser lead for the given company ID.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [companyId] - The ID of the company to contact.
-   *
-   * Completes with a [CreateLeadResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<CreateLeadResponse> create(CreateLeadRequest request, core.String companyId) {
+  /// Creates an advertiser lead for the given company ID.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [companyId] - The ID of the company to contact.
+  ///
+  /// Completes with a [CreateLeadResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CreateLeadResponse> create(
+      CreateLeadRequest request, core.String companyId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -575,79 +636,83 @@ class CompaniesLeadsResourceApi {
       throw new core.ArgumentError("Parameter companyId is required.");
     }
 
-    _url = 'v2/companies/' + commons.Escaper.ecapeVariable('$companyId') + '/leads';
+    _url = 'v2/companies/' +
+        commons.Escaper.ecapeVariable('$companyId') +
+        '/leads';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new CreateLeadResponse.fromJson(data));
   }
-
 }
-
 
 class ExamsResourceApi {
   final commons.ApiRequester _requester;
 
-  ExamsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  ExamsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Gets an Exam Token for a Partner's user to take an exam in the Exams System
-   *
-   * Request parameters:
-   *
-   * [examType] - The exam type we are requesting a token for.
-   * Possible string values are:
-   * - "CERTIFICATION_EXAM_TYPE_UNSPECIFIED" : A
-   * CERTIFICATION_EXAM_TYPE_UNSPECIFIED.
-   * - "CET_ADWORDS_FUNDAMENTALS" : A CET_ADWORDS_FUNDAMENTALS.
-   * - "CET_ADWORDS_ADVANCED_SEARCH" : A CET_ADWORDS_ADVANCED_SEARCH.
-   * - "CET_ADWORDS_ADVANCED_DISPLAY" : A CET_ADWORDS_ADVANCED_DISPLAY.
-   * - "CET_VIDEO_ADS" : A CET_VIDEO_ADS.
-   * - "CET_DOUBLECLICK" : A CET_DOUBLECLICK.
-   * - "CET_ANALYTICS" : A CET_ANALYTICS.
-   * - "CET_SHOPPING" : A CET_SHOPPING.
-   * - "CET_MOBILE" : A CET_MOBILE.
-   * - "CET_DIGITAL_SALES" : A CET_DIGITAL_SALES.
-   * - "CET_MOBILE_SITES" : A CET_MOBILE_SITES.
-   *
-   * [requestMetadata_partnersSessionId] - Google Partners session ID.
-   *
-   * [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
-   * instead of the user's ID.
-   *
-   * [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
-   * where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * [requestMetadata_locale] - Locale to use for the current request.
-   *
-   * [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
-   * the user's geo-located IP address.
-   *
-   * [requestMetadata_experimentIds] - Experiment IDs the current request
-   * belongs to.
-   *
-   * [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
-   * indicate where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * Completes with a [ExamToken].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ExamToken> getToken(core.String examType, {core.String requestMetadata_partnersSessionId, core.String requestMetadata_userOverrides_userId, core.String requestMetadata_trafficSource_trafficSourceId, core.String requestMetadata_locale, core.String requestMetadata_userOverrides_ipAddress, core.List<core.String> requestMetadata_experimentIds, core.String requestMetadata_trafficSource_trafficSubId}) {
+  /// Gets an Exam Token for a Partner's user to take an exam in the Exams
+  /// System
+  ///
+  /// Request parameters:
+  ///
+  /// [examType] - The exam type we are requesting a token for.
+  /// Possible string values are:
+  /// - "CERTIFICATION_EXAM_TYPE_UNSPECIFIED" : A
+  /// CERTIFICATION_EXAM_TYPE_UNSPECIFIED.
+  /// - "CET_ADWORDS_FUNDAMENTALS" : A CET_ADWORDS_FUNDAMENTALS.
+  /// - "CET_ADWORDS_ADVANCED_SEARCH" : A CET_ADWORDS_ADVANCED_SEARCH.
+  /// - "CET_ADWORDS_ADVANCED_DISPLAY" : A CET_ADWORDS_ADVANCED_DISPLAY.
+  /// - "CET_VIDEO_ADS" : A CET_VIDEO_ADS.
+  /// - "CET_DOUBLECLICK" : A CET_DOUBLECLICK.
+  /// - "CET_ANALYTICS" : A CET_ANALYTICS.
+  /// - "CET_SHOPPING" : A CET_SHOPPING.
+  /// - "CET_MOBILE" : A CET_MOBILE.
+  /// - "CET_DIGITAL_SALES" : A CET_DIGITAL_SALES.
+  /// - "CET_MOBILE_SITES" : A CET_MOBILE_SITES.
+  ///
+  /// [requestMetadata_experimentIds] - Experiment IDs the current request
+  /// belongs to.
+  ///
+  /// [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
+  /// indicate where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
+  /// instead of the user's ID.
+  ///
+  /// [requestMetadata_partnersSessionId] - Google Partners session ID.
+  ///
+  /// [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
+  /// where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// [requestMetadata_locale] - Locale to use for the current request.
+  ///
+  /// [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
+  /// the user's geo-located IP address.
+  ///
+  /// Completes with a [ExamToken].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExamToken> getToken(core.String examType,
+      {core.List<core.String> requestMetadata_experimentIds,
+      core.String requestMetadata_trafficSource_trafficSubId,
+      core.String requestMetadata_userOverrides_userId,
+      core.String requestMetadata_partnersSessionId,
+      core.String requestMetadata_trafficSource_trafficSourceId,
+      core.String requestMetadata_locale,
+      core.String requestMetadata_userOverrides_ipAddress}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -658,100 +723,115 @@ class ExamsResourceApi {
     if (examType == null) {
       throw new core.ArgumentError("Parameter examType is required.");
     }
-    if (requestMetadata_partnersSessionId != null) {
-      _queryParams["requestMetadata.partnersSessionId"] = [requestMetadata_partnersSessionId];
+    if (requestMetadata_experimentIds != null) {
+      _queryParams["requestMetadata.experimentIds"] =
+          requestMetadata_experimentIds;
+    }
+    if (requestMetadata_trafficSource_trafficSubId != null) {
+      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [
+        requestMetadata_trafficSource_trafficSubId
+      ];
     }
     if (requestMetadata_userOverrides_userId != null) {
-      _queryParams["requestMetadata.userOverrides.userId"] = [requestMetadata_userOverrides_userId];
+      _queryParams["requestMetadata.userOverrides.userId"] = [
+        requestMetadata_userOverrides_userId
+      ];
+    }
+    if (requestMetadata_partnersSessionId != null) {
+      _queryParams["requestMetadata.partnersSessionId"] = [
+        requestMetadata_partnersSessionId
+      ];
     }
     if (requestMetadata_trafficSource_trafficSourceId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [requestMetadata_trafficSource_trafficSourceId];
+      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [
+        requestMetadata_trafficSource_trafficSourceId
+      ];
     }
     if (requestMetadata_locale != null) {
       _queryParams["requestMetadata.locale"] = [requestMetadata_locale];
     }
     if (requestMetadata_userOverrides_ipAddress != null) {
-      _queryParams["requestMetadata.userOverrides.ipAddress"] = [requestMetadata_userOverrides_ipAddress];
-    }
-    if (requestMetadata_experimentIds != null) {
-      _queryParams["requestMetadata.experimentIds"] = requestMetadata_experimentIds;
-    }
-    if (requestMetadata_trafficSource_trafficSubId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [requestMetadata_trafficSource_trafficSubId];
+      _queryParams["requestMetadata.userOverrides.ipAddress"] = [
+        requestMetadata_userOverrides_ipAddress
+      ];
     }
 
     _url = 'v2/exams/' + commons.Escaper.ecapeVariable('$examType') + '/token';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ExamToken.fromJson(data));
   }
-
 }
-
 
 class LeadsResourceApi {
   final commons.ApiRequester _requester;
 
-  LeadsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  LeadsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Lists advertiser leads for a user's associated company.
-   * Should only be called within the context of an authorized logged in user.
-   *
-   * Request parameters:
-   *
-   * [requestMetadata_locale] - Locale to use for the current request.
-   *
-   * [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
-   * the user's geo-located IP address.
-   *
-   * [requestMetadata_experimentIds] - Experiment IDs the current request
-   * belongs to.
-   *
-   * [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
-   * indicate where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * [orderBy] - How to order Leads. Currently, only `create_time`
-   * and `create_time desc` are supported
-   *
-   * [requestMetadata_partnersSessionId] - Google Partners session ID.
-   *
-   * [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
-   * instead of the user's ID.
-   *
-   * [pageToken] - A token identifying a page of results that the server
-   * returns.
-   * Typically, this is the value of `ListLeadsResponse.next_page_token`
-   * returned from the previous call to
-   * ListLeads.
-   *
-   * [pageSize] - Requested page size. Server may return fewer leads than
-   * requested.
-   * If unspecified, server picks an appropriate default.
-   *
-   * [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
-   * where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * Completes with a [ListLeadsResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ListLeadsResponse> list({core.String requestMetadata_locale, core.String requestMetadata_userOverrides_ipAddress, core.List<core.String> requestMetadata_experimentIds, core.String requestMetadata_trafficSource_trafficSubId, core.String orderBy, core.String requestMetadata_partnersSessionId, core.String requestMetadata_userOverrides_userId, core.String pageToken, core.int pageSize, core.String requestMetadata_trafficSource_trafficSourceId}) {
+  /// Lists advertiser leads for a user's associated company.
+  /// Should only be called within the context of an authorized logged in user.
+  ///
+  /// Request parameters:
+  ///
+  /// [pageToken] - A token identifying a page of results that the server
+  /// returns.
+  /// Typically, this is the value of `ListLeadsResponse.next_page_token`
+  /// returned from the previous call to
+  /// ListLeads.
+  ///
+  /// [pageSize] - Requested page size. Server may return fewer leads than
+  /// requested.
+  /// If unspecified, server picks an appropriate default.
+  ///
+  /// [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
+  /// where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// [requestMetadata_locale] - Locale to use for the current request.
+  ///
+  /// [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
+  /// the user's geo-located IP address.
+  ///
+  /// [requestMetadata_experimentIds] - Experiment IDs the current request
+  /// belongs to.
+  ///
+  /// [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
+  /// indicate where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// [orderBy] - How to order Leads. Currently, only `create_time`
+  /// and `create_time desc` are supported
+  ///
+  /// [requestMetadata_partnersSessionId] - Google Partners session ID.
+  ///
+  /// [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
+  /// instead of the user's ID.
+  ///
+  /// Completes with a [ListLeadsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLeadsResponse> list(
+      {core.String pageToken,
+      core.int pageSize,
+      core.String requestMetadata_trafficSource_trafficSourceId,
+      core.String requestMetadata_locale,
+      core.String requestMetadata_userOverrides_ipAddress,
+      core.List<core.String> requestMetadata_experimentIds,
+      core.String requestMetadata_trafficSource_trafficSubId,
+      core.String orderBy,
+      core.String requestMetadata_partnersSessionId,
+      core.String requestMetadata_userOverrides_userId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -759,27 +839,6 @@ class LeadsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (requestMetadata_locale != null) {
-      _queryParams["requestMetadata.locale"] = [requestMetadata_locale];
-    }
-    if (requestMetadata_userOverrides_ipAddress != null) {
-      _queryParams["requestMetadata.userOverrides.ipAddress"] = [requestMetadata_userOverrides_ipAddress];
-    }
-    if (requestMetadata_experimentIds != null) {
-      _queryParams["requestMetadata.experimentIds"] = requestMetadata_experimentIds;
-    }
-    if (requestMetadata_trafficSource_trafficSubId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [requestMetadata_trafficSource_trafficSubId];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
-    if (requestMetadata_partnersSessionId != null) {
-      _queryParams["requestMetadata.partnersSessionId"] = [requestMetadata_partnersSessionId];
-    }
-    if (requestMetadata_userOverrides_userId != null) {
-      _queryParams["requestMetadata.userOverrides.userId"] = [requestMetadata_userOverrides_userId];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -787,69 +846,103 @@ class LeadsResourceApi {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (requestMetadata_trafficSource_trafficSourceId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [requestMetadata_trafficSource_trafficSourceId];
+      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [
+        requestMetadata_trafficSource_trafficSourceId
+      ];
+    }
+    if (requestMetadata_locale != null) {
+      _queryParams["requestMetadata.locale"] = [requestMetadata_locale];
+    }
+    if (requestMetadata_userOverrides_ipAddress != null) {
+      _queryParams["requestMetadata.userOverrides.ipAddress"] = [
+        requestMetadata_userOverrides_ipAddress
+      ];
+    }
+    if (requestMetadata_experimentIds != null) {
+      _queryParams["requestMetadata.experimentIds"] =
+          requestMetadata_experimentIds;
+    }
+    if (requestMetadata_trafficSource_trafficSubId != null) {
+      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [
+        requestMetadata_trafficSource_trafficSubId
+      ];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (requestMetadata_partnersSessionId != null) {
+      _queryParams["requestMetadata.partnersSessionId"] = [
+        requestMetadata_partnersSessionId
+      ];
+    }
+    if (requestMetadata_userOverrides_userId != null) {
+      _queryParams["requestMetadata.userOverrides.userId"] = [
+        requestMetadata_userOverrides_userId
+      ];
     }
 
     _url = 'v2/leads';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ListLeadsResponse.fromJson(data));
   }
-
 }
-
 
 class OffersResourceApi {
   final commons.ApiRequester _requester;
 
-  OffersHistoryResourceApi get history => new OffersHistoryResourceApi(_requester);
+  OffersHistoryResourceApi get history =>
+      new OffersHistoryResourceApi(_requester);
 
-  OffersResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  OffersResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Lists the Offers available for the current user
-   *
-   * Request parameters:
-   *
-   * [requestMetadata_partnersSessionId] - Google Partners session ID.
-   *
-   * [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
-   * instead of the user's ID.
-   *
-   * [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
-   * where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * [requestMetadata_locale] - Locale to use for the current request.
-   *
-   * [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
-   * the user's geo-located IP address.
-   *
-   * [requestMetadata_experimentIds] - Experiment IDs the current request
-   * belongs to.
-   *
-   * [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
-   * indicate where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * Completes with a [ListOffersResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ListOffersResponse> list({core.String requestMetadata_partnersSessionId, core.String requestMetadata_userOverrides_userId, core.String requestMetadata_trafficSource_trafficSourceId, core.String requestMetadata_locale, core.String requestMetadata_userOverrides_ipAddress, core.List<core.String> requestMetadata_experimentIds, core.String requestMetadata_trafficSource_trafficSubId}) {
+  /// Lists the Offers available for the current user
+  ///
+  /// Request parameters:
+  ///
+  /// [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
+  /// where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// [requestMetadata_locale] - Locale to use for the current request.
+  ///
+  /// [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
+  /// the user's geo-located IP address.
+  ///
+  /// [requestMetadata_experimentIds] - Experiment IDs the current request
+  /// belongs to.
+  ///
+  /// [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
+  /// indicate where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
+  /// instead of the user's ID.
+  ///
+  /// [requestMetadata_partnersSessionId] - Google Partners session ID.
+  ///
+  /// Completes with a [ListOffersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOffersResponse> list(
+      {core.String requestMetadata_trafficSource_trafficSourceId,
+      core.String requestMetadata_locale,
+      core.String requestMetadata_userOverrides_ipAddress,
+      core.List<core.String> requestMetadata_experimentIds,
+      core.String requestMetadata_trafficSource_trafficSubId,
+      core.String requestMetadata_userOverrides_userId,
+      core.String requestMetadata_partnersSessionId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -857,100 +950,117 @@ class OffersResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (requestMetadata_partnersSessionId != null) {
-      _queryParams["requestMetadata.partnersSessionId"] = [requestMetadata_partnersSessionId];
-    }
-    if (requestMetadata_userOverrides_userId != null) {
-      _queryParams["requestMetadata.userOverrides.userId"] = [requestMetadata_userOverrides_userId];
-    }
     if (requestMetadata_trafficSource_trafficSourceId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [requestMetadata_trafficSource_trafficSourceId];
+      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [
+        requestMetadata_trafficSource_trafficSourceId
+      ];
     }
     if (requestMetadata_locale != null) {
       _queryParams["requestMetadata.locale"] = [requestMetadata_locale];
     }
     if (requestMetadata_userOverrides_ipAddress != null) {
-      _queryParams["requestMetadata.userOverrides.ipAddress"] = [requestMetadata_userOverrides_ipAddress];
+      _queryParams["requestMetadata.userOverrides.ipAddress"] = [
+        requestMetadata_userOverrides_ipAddress
+      ];
     }
     if (requestMetadata_experimentIds != null) {
-      _queryParams["requestMetadata.experimentIds"] = requestMetadata_experimentIds;
+      _queryParams["requestMetadata.experimentIds"] =
+          requestMetadata_experimentIds;
     }
     if (requestMetadata_trafficSource_trafficSubId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [requestMetadata_trafficSource_trafficSubId];
+      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [
+        requestMetadata_trafficSource_trafficSubId
+      ];
+    }
+    if (requestMetadata_userOverrides_userId != null) {
+      _queryParams["requestMetadata.userOverrides.userId"] = [
+        requestMetadata_userOverrides_userId
+      ];
+    }
+    if (requestMetadata_partnersSessionId != null) {
+      _queryParams["requestMetadata.partnersSessionId"] = [
+        requestMetadata_partnersSessionId
+      ];
     }
 
     _url = 'v2/offers';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ListOffersResponse.fromJson(data));
   }
-
 }
-
 
 class OffersHistoryResourceApi {
   final commons.ApiRequester _requester;
 
-  OffersHistoryResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  OffersHistoryResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Lists the Historical Offers for the current user (or user's entire company)
-   *
-   * Request parameters:
-   *
-   * [requestMetadata_experimentIds] - Experiment IDs the current request
-   * belongs to.
-   *
-   * [entireCompany] - if true, show history for the entire company.  Requires
-   * user to be admin.
-   *
-   * [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
-   * indicate where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * [orderBy] - Comma-separated list of fields to order by, e.g.:
-   * "foo,bar,baz".
-   * Use "foo desc" to sort descending.
-   * List of valid field names is: name, offer_code, expiration_time, status,
-   *     last_modified_time, sender_name, creation_time, country_code,
-   *     offer_type.
-   *
-   * [requestMetadata_partnersSessionId] - Google Partners session ID.
-   *
-   * [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
-   * instead of the user's ID.
-   *
-   * [pageToken] - Token to retrieve a specific page.
-   *
-   * [pageSize] - Maximum number of rows to return per page.
-   *
-   * [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
-   * where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * [requestMetadata_locale] - Locale to use for the current request.
-   *
-   * [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
-   * the user's geo-located IP address.
-   *
-   * Completes with a [ListOffersHistoryResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ListOffersHistoryResponse> list({core.List<core.String> requestMetadata_experimentIds, core.bool entireCompany, core.String requestMetadata_trafficSource_trafficSubId, core.String orderBy, core.String requestMetadata_partnersSessionId, core.String requestMetadata_userOverrides_userId, core.String pageToken, core.int pageSize, core.String requestMetadata_trafficSource_trafficSourceId, core.String requestMetadata_locale, core.String requestMetadata_userOverrides_ipAddress}) {
+  /// Lists the Historical Offers for the current user (or user's entire
+  /// company)
+  ///
+  /// Request parameters:
+  ///
+  /// [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
+  /// instead of the user's ID.
+  ///
+  /// [requestMetadata_partnersSessionId] - Google Partners session ID.
+  ///
+  /// [pageToken] - Token to retrieve a specific page.
+  ///
+  /// [pageSize] - Maximum number of rows to return per page.
+  ///
+  /// [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
+  /// where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// [requestMetadata_locale] - Locale to use for the current request.
+  ///
+  /// [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
+  /// the user's geo-located IP address.
+  ///
+  /// [entireCompany] - if true, show history for the entire company.  Requires
+  /// user to be admin.
+  ///
+  /// [requestMetadata_experimentIds] - Experiment IDs the current request
+  /// belongs to.
+  ///
+  /// [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
+  /// indicate where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// [orderBy] - Comma-separated list of fields to order by, e.g.:
+  /// "foo,bar,baz".
+  /// Use "foo desc" to sort descending.
+  /// List of valid field names is: name, offer_code, expiration_time, status,
+  ///     last_modified_time, sender_name, creation_time, country_code,
+  ///     offer_type.
+  ///
+  /// Completes with a [ListOffersHistoryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOffersHistoryResponse> list(
+      {core.String requestMetadata_userOverrides_userId,
+      core.String requestMetadata_partnersSessionId,
+      core.String pageToken,
+      core.int pageSize,
+      core.String requestMetadata_trafficSource_trafficSourceId,
+      core.String requestMetadata_locale,
+      core.String requestMetadata_userOverrides_ipAddress,
+      core.bool entireCompany,
+      core.List<core.String> requestMetadata_experimentIds,
+      core.String requestMetadata_trafficSource_trafficSubId,
+      core.String orderBy}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -958,23 +1068,15 @@ class OffersHistoryResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (requestMetadata_experimentIds != null) {
-      _queryParams["requestMetadata.experimentIds"] = requestMetadata_experimentIds;
-    }
-    if (entireCompany != null) {
-      _queryParams["entireCompany"] = ["${entireCompany}"];
-    }
-    if (requestMetadata_trafficSource_trafficSubId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [requestMetadata_trafficSource_trafficSubId];
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
+    if (requestMetadata_userOverrides_userId != null) {
+      _queryParams["requestMetadata.userOverrides.userId"] = [
+        requestMetadata_userOverrides_userId
+      ];
     }
     if (requestMetadata_partnersSessionId != null) {
-      _queryParams["requestMetadata.partnersSessionId"] = [requestMetadata_partnersSessionId];
-    }
-    if (requestMetadata_userOverrides_userId != null) {
-      _queryParams["requestMetadata.userOverrides.userId"] = [requestMetadata_userOverrides_userId];
+      _queryParams["requestMetadata.partnersSessionId"] = [
+        requestMetadata_partnersSessionId
+      ];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -983,51 +1085,65 @@ class OffersHistoryResourceApi {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (requestMetadata_trafficSource_trafficSourceId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [requestMetadata_trafficSource_trafficSourceId];
+      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [
+        requestMetadata_trafficSource_trafficSourceId
+      ];
     }
     if (requestMetadata_locale != null) {
       _queryParams["requestMetadata.locale"] = [requestMetadata_locale];
     }
     if (requestMetadata_userOverrides_ipAddress != null) {
-      _queryParams["requestMetadata.userOverrides.ipAddress"] = [requestMetadata_userOverrides_ipAddress];
+      _queryParams["requestMetadata.userOverrides.ipAddress"] = [
+        requestMetadata_userOverrides_ipAddress
+      ];
+    }
+    if (entireCompany != null) {
+      _queryParams["entireCompany"] = ["${entireCompany}"];
+    }
+    if (requestMetadata_experimentIds != null) {
+      _queryParams["requestMetadata.experimentIds"] =
+          requestMetadata_experimentIds;
+    }
+    if (requestMetadata_trafficSource_trafficSubId != null) {
+      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [
+        requestMetadata_trafficSource_trafficSubId
+      ];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
     }
 
     _url = 'v2/offers/history';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListOffersHistoryResponse.fromJson(data));
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListOffersHistoryResponse.fromJson(data));
   }
-
 }
-
 
 class UserEventsResourceApi {
   final commons.ApiRequester _requester;
 
-  UserEventsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  UserEventsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Logs a user event.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [LogUserEventResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Logs a user event.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [LogUserEventResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<LogUserEventResponse> log(LogUserEventRequest request) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1042,62 +1158,63 @@ class UserEventsResourceApi {
 
     _url = 'v2/userEvents:log';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new LogUserEventResponse.fromJson(data));
   }
-
 }
-
 
 class UserStatesResourceApi {
   final commons.ApiRequester _requester;
 
-  UserStatesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  UserStatesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Lists states for current user.
-   *
-   * Request parameters:
-   *
-   * [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
-   * instead of the user's ID.
-   *
-   * [requestMetadata_partnersSessionId] - Google Partners session ID.
-   *
-   * [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
-   * where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * [requestMetadata_locale] - Locale to use for the current request.
-   *
-   * [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
-   * the user's geo-located IP address.
-   *
-   * [requestMetadata_experimentIds] - Experiment IDs the current request
-   * belongs to.
-   *
-   * [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
-   * indicate where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * Completes with a [ListUserStatesResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ListUserStatesResponse> list({core.String requestMetadata_userOverrides_userId, core.String requestMetadata_partnersSessionId, core.String requestMetadata_trafficSource_trafficSourceId, core.String requestMetadata_locale, core.String requestMetadata_userOverrides_ipAddress, core.List<core.String> requestMetadata_experimentIds, core.String requestMetadata_trafficSource_trafficSubId}) {
+  /// Lists states for current user.
+  ///
+  /// Request parameters:
+  ///
+  /// [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
+  /// instead of the user's ID.
+  ///
+  /// [requestMetadata_partnersSessionId] - Google Partners session ID.
+  ///
+  /// [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
+  /// where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// [requestMetadata_locale] - Locale to use for the current request.
+  ///
+  /// [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
+  /// the user's geo-located IP address.
+  ///
+  /// [requestMetadata_experimentIds] - Experiment IDs the current request
+  /// belongs to.
+  ///
+  /// [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
+  /// indicate where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// Completes with a [ListUserStatesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListUserStatesResponse> list(
+      {core.String requestMetadata_userOverrides_userId,
+      core.String requestMetadata_partnersSessionId,
+      core.String requestMetadata_trafficSource_trafficSourceId,
+      core.String requestMetadata_locale,
+      core.String requestMetadata_userOverrides_ipAddress,
+      core.List<core.String> requestMetadata_experimentIds,
+      core.String requestMetadata_trafficSource_trafficSubId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1106,90 +1223,103 @@ class UserStatesResourceApi {
     var _body = null;
 
     if (requestMetadata_userOverrides_userId != null) {
-      _queryParams["requestMetadata.userOverrides.userId"] = [requestMetadata_userOverrides_userId];
+      _queryParams["requestMetadata.userOverrides.userId"] = [
+        requestMetadata_userOverrides_userId
+      ];
     }
     if (requestMetadata_partnersSessionId != null) {
-      _queryParams["requestMetadata.partnersSessionId"] = [requestMetadata_partnersSessionId];
+      _queryParams["requestMetadata.partnersSessionId"] = [
+        requestMetadata_partnersSessionId
+      ];
     }
     if (requestMetadata_trafficSource_trafficSourceId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [requestMetadata_trafficSource_trafficSourceId];
+      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [
+        requestMetadata_trafficSource_trafficSourceId
+      ];
     }
     if (requestMetadata_locale != null) {
       _queryParams["requestMetadata.locale"] = [requestMetadata_locale];
     }
     if (requestMetadata_userOverrides_ipAddress != null) {
-      _queryParams["requestMetadata.userOverrides.ipAddress"] = [requestMetadata_userOverrides_ipAddress];
+      _queryParams["requestMetadata.userOverrides.ipAddress"] = [
+        requestMetadata_userOverrides_ipAddress
+      ];
     }
     if (requestMetadata_experimentIds != null) {
-      _queryParams["requestMetadata.experimentIds"] = requestMetadata_experimentIds;
+      _queryParams["requestMetadata.experimentIds"] =
+          requestMetadata_experimentIds;
     }
     if (requestMetadata_trafficSource_trafficSubId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [requestMetadata_trafficSource_trafficSubId];
+      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [
+        requestMetadata_trafficSource_trafficSubId
+      ];
     }
 
     _url = 'v2/userStates';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ListUserStatesResponse.fromJson(data));
   }
-
 }
-
 
 class UsersResourceApi {
   final commons.ApiRequester _requester;
 
-  UsersResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  UsersResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Creates a user's company relation. Affiliates the user to a company.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [userId] - The ID of the user. Can be set to <code>me</code> to mean
-   * the currently authenticated user.
-   *
-   * [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
-   * instead of the user's ID.
-   *
-   * [requestMetadata_partnersSessionId] - Google Partners session ID.
-   *
-   * [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
-   * where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * [requestMetadata_locale] - Locale to use for the current request.
-   *
-   * [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
-   * the user's geo-located IP address.
-   *
-   * [requestMetadata_experimentIds] - Experiment IDs the current request
-   * belongs to.
-   *
-   * [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
-   * indicate where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * Completes with a [CompanyRelation].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<CompanyRelation> createCompanyRelation(CompanyRelation request, core.String userId, {core.String requestMetadata_userOverrides_userId, core.String requestMetadata_partnersSessionId, core.String requestMetadata_trafficSource_trafficSourceId, core.String requestMetadata_locale, core.String requestMetadata_userOverrides_ipAddress, core.List<core.String> requestMetadata_experimentIds, core.String requestMetadata_trafficSource_trafficSubId}) {
+  /// Creates a user's company relation. Affiliates the user to a company.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - The ID of the user. Can be set to <code>me</code> to mean
+  /// the currently authenticated user.
+  ///
+  /// [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
+  /// where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// [requestMetadata_locale] - Locale to use for the current request.
+  ///
+  /// [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
+  /// the user's geo-located IP address.
+  ///
+  /// [requestMetadata_experimentIds] - Experiment IDs the current request
+  /// belongs to.
+  ///
+  /// [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
+  /// indicate where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
+  /// instead of the user's ID.
+  ///
+  /// [requestMetadata_partnersSessionId] - Google Partners session ID.
+  ///
+  /// Completes with a [CompanyRelation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CompanyRelation> createCompanyRelation(
+      CompanyRelation request, core.String userId,
+      {core.String requestMetadata_trafficSource_trafficSourceId,
+      core.String requestMetadata_locale,
+      core.String requestMetadata_userOverrides_ipAddress,
+      core.List<core.String> requestMetadata_experimentIds,
+      core.String requestMetadata_trafficSource_trafficSubId,
+      core.String requestMetadata_userOverrides_userId,
+      core.String requestMetadata_partnersSessionId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1203,80 +1333,97 @@ class UsersResourceApi {
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
     }
-    if (requestMetadata_userOverrides_userId != null) {
-      _queryParams["requestMetadata.userOverrides.userId"] = [requestMetadata_userOverrides_userId];
-    }
-    if (requestMetadata_partnersSessionId != null) {
-      _queryParams["requestMetadata.partnersSessionId"] = [requestMetadata_partnersSessionId];
-    }
     if (requestMetadata_trafficSource_trafficSourceId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [requestMetadata_trafficSource_trafficSourceId];
+      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [
+        requestMetadata_trafficSource_trafficSourceId
+      ];
     }
     if (requestMetadata_locale != null) {
       _queryParams["requestMetadata.locale"] = [requestMetadata_locale];
     }
     if (requestMetadata_userOverrides_ipAddress != null) {
-      _queryParams["requestMetadata.userOverrides.ipAddress"] = [requestMetadata_userOverrides_ipAddress];
+      _queryParams["requestMetadata.userOverrides.ipAddress"] = [
+        requestMetadata_userOverrides_ipAddress
+      ];
     }
     if (requestMetadata_experimentIds != null) {
-      _queryParams["requestMetadata.experimentIds"] = requestMetadata_experimentIds;
+      _queryParams["requestMetadata.experimentIds"] =
+          requestMetadata_experimentIds;
     }
     if (requestMetadata_trafficSource_trafficSubId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [requestMetadata_trafficSource_trafficSubId];
+      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [
+        requestMetadata_trafficSource_trafficSubId
+      ];
+    }
+    if (requestMetadata_userOverrides_userId != null) {
+      _queryParams["requestMetadata.userOverrides.userId"] = [
+        requestMetadata_userOverrides_userId
+      ];
+    }
+    if (requestMetadata_partnersSessionId != null) {
+      _queryParams["requestMetadata.partnersSessionId"] = [
+        requestMetadata_partnersSessionId
+      ];
     }
 
-    _url = 'v2/users/' + commons.Escaper.ecapeVariable('$userId') + '/companyRelation';
+    _url = 'v2/users/' +
+        commons.Escaper.ecapeVariable('$userId') +
+        '/companyRelation';
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new CompanyRelation.fromJson(data));
   }
 
-  /**
-   * Deletes a user's company relation. Unaffiliaites the user from a company.
-   *
-   * Request parameters:
-   *
-   * [userId] - The ID of the user. Can be set to <code>me</code> to mean
-   * the currently authenticated user.
-   *
-   * [requestMetadata_experimentIds] - Experiment IDs the current request
-   * belongs to.
-   *
-   * [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
-   * indicate where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * [requestMetadata_partnersSessionId] - Google Partners session ID.
-   *
-   * [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
-   * instead of the user's ID.
-   *
-   * [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
-   * where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * [requestMetadata_locale] - Locale to use for the current request.
-   *
-   * [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
-   * the user's geo-located IP address.
-   *
-   * Completes with a [Empty].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Empty> deleteCompanyRelation(core.String userId, {core.List<core.String> requestMetadata_experimentIds, core.String requestMetadata_trafficSource_trafficSubId, core.String requestMetadata_partnersSessionId, core.String requestMetadata_userOverrides_userId, core.String requestMetadata_trafficSource_trafficSourceId, core.String requestMetadata_locale, core.String requestMetadata_userOverrides_ipAddress}) {
+  /// Deletes a user's company relation. Unaffiliaites the user from a company.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - The ID of the user. Can be set to <code>me</code> to mean
+  /// the currently authenticated user.
+  ///
+  /// [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
+  /// instead of the user's ID.
+  ///
+  /// [requestMetadata_partnersSessionId] - Google Partners session ID.
+  ///
+  /// [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
+  /// where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// [requestMetadata_locale] - Locale to use for the current request.
+  ///
+  /// [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
+  /// the user's geo-located IP address.
+  ///
+  /// [requestMetadata_experimentIds] - Experiment IDs the current request
+  /// belongs to.
+  ///
+  /// [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
+  /// indicate where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> deleteCompanyRelation(core.String userId,
+      {core.String requestMetadata_userOverrides_userId,
+      core.String requestMetadata_partnersSessionId,
+      core.String requestMetadata_trafficSource_trafficSourceId,
+      core.String requestMetadata_locale,
+      core.String requestMetadata_userOverrides_ipAddress,
+      core.List<core.String> requestMetadata_experimentIds,
+      core.String requestMetadata_trafficSource_trafficSubId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1287,87 +1434,105 @@ class UsersResourceApi {
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
     }
-    if (requestMetadata_experimentIds != null) {
-      _queryParams["requestMetadata.experimentIds"] = requestMetadata_experimentIds;
-    }
-    if (requestMetadata_trafficSource_trafficSubId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [requestMetadata_trafficSource_trafficSubId];
+    if (requestMetadata_userOverrides_userId != null) {
+      _queryParams["requestMetadata.userOverrides.userId"] = [
+        requestMetadata_userOverrides_userId
+      ];
     }
     if (requestMetadata_partnersSessionId != null) {
-      _queryParams["requestMetadata.partnersSessionId"] = [requestMetadata_partnersSessionId];
-    }
-    if (requestMetadata_userOverrides_userId != null) {
-      _queryParams["requestMetadata.userOverrides.userId"] = [requestMetadata_userOverrides_userId];
+      _queryParams["requestMetadata.partnersSessionId"] = [
+        requestMetadata_partnersSessionId
+      ];
     }
     if (requestMetadata_trafficSource_trafficSourceId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [requestMetadata_trafficSource_trafficSourceId];
+      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [
+        requestMetadata_trafficSource_trafficSourceId
+      ];
     }
     if (requestMetadata_locale != null) {
       _queryParams["requestMetadata.locale"] = [requestMetadata_locale];
     }
     if (requestMetadata_userOverrides_ipAddress != null) {
-      _queryParams["requestMetadata.userOverrides.ipAddress"] = [requestMetadata_userOverrides_ipAddress];
+      _queryParams["requestMetadata.userOverrides.ipAddress"] = [
+        requestMetadata_userOverrides_ipAddress
+      ];
+    }
+    if (requestMetadata_experimentIds != null) {
+      _queryParams["requestMetadata.experimentIds"] =
+          requestMetadata_experimentIds;
+    }
+    if (requestMetadata_trafficSource_trafficSubId != null) {
+      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [
+        requestMetadata_trafficSource_trafficSubId
+      ];
     }
 
-    _url = 'v2/users/' + commons.Escaper.ecapeVariable('$userId') + '/companyRelation';
+    _url = 'v2/users/' +
+        commons.Escaper.ecapeVariable('$userId') +
+        '/companyRelation';
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /**
-   * Gets a user.
-   *
-   * Request parameters:
-   *
-   * [userId] - Identifier of the user. Can be set to <code>me</code> to mean
-   * the currently
-   * authenticated user.
-   *
-   * [requestMetadata_experimentIds] - Experiment IDs the current request
-   * belongs to.
-   *
-   * [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
-   * indicate where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * [requestMetadata_partnersSessionId] - Google Partners session ID.
-   *
-   * [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
-   * instead of the user's ID.
-   *
-   * [userView] - Specifies what parts of the user information to return.
-   * Possible string values are:
-   * - "BASIC" : A BASIC.
-   * - "PROFILE" : A PROFILE.
-   * - "PUBLIC_PROFILE" : A PUBLIC_PROFILE.
-   *
-   * [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
-   * where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * [requestMetadata_locale] - Locale to use for the current request.
-   *
-   * [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
-   * the user's geo-located IP address.
-   *
-   * Completes with a [User].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<User> get(core.String userId, {core.List<core.String> requestMetadata_experimentIds, core.String requestMetadata_trafficSource_trafficSubId, core.String requestMetadata_partnersSessionId, core.String requestMetadata_userOverrides_userId, core.String userView, core.String requestMetadata_trafficSource_trafficSourceId, core.String requestMetadata_locale, core.String requestMetadata_userOverrides_ipAddress}) {
+  /// Gets a user.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - Identifier of the user. Can be set to <code>me</code> to mean
+  /// the currently
+  /// authenticated user.
+  ///
+  /// [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
+  /// instead of the user's ID.
+  ///
+  /// [requestMetadata_partnersSessionId] - Google Partners session ID.
+  ///
+  /// [userView] - Specifies what parts of the user information to return.
+  /// Possible string values are:
+  /// - "BASIC" : A BASIC.
+  /// - "PROFILE" : A PROFILE.
+  /// - "PUBLIC_PROFILE" : A PUBLIC_PROFILE.
+  ///
+  /// [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
+  /// where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// [requestMetadata_locale] - Locale to use for the current request.
+  ///
+  /// [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
+  /// the user's geo-located IP address.
+  ///
+  /// [requestMetadata_experimentIds] - Experiment IDs the current request
+  /// belongs to.
+  ///
+  /// [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
+  /// indicate where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// Completes with a [User].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<User> get(core.String userId,
+      {core.String requestMetadata_userOverrides_userId,
+      core.String requestMetadata_partnersSessionId,
+      core.String userView,
+      core.String requestMetadata_trafficSource_trafficSourceId,
+      core.String requestMetadata_locale,
+      core.String requestMetadata_userOverrides_ipAddress,
+      core.List<core.String> requestMetadata_experimentIds,
+      core.String requestMetadata_trafficSource_trafficSubId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1378,83 +1543,98 @@ class UsersResourceApi {
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
     }
-    if (requestMetadata_experimentIds != null) {
-      _queryParams["requestMetadata.experimentIds"] = requestMetadata_experimentIds;
-    }
-    if (requestMetadata_trafficSource_trafficSubId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [requestMetadata_trafficSource_trafficSubId];
+    if (requestMetadata_userOverrides_userId != null) {
+      _queryParams["requestMetadata.userOverrides.userId"] = [
+        requestMetadata_userOverrides_userId
+      ];
     }
     if (requestMetadata_partnersSessionId != null) {
-      _queryParams["requestMetadata.partnersSessionId"] = [requestMetadata_partnersSessionId];
-    }
-    if (requestMetadata_userOverrides_userId != null) {
-      _queryParams["requestMetadata.userOverrides.userId"] = [requestMetadata_userOverrides_userId];
+      _queryParams["requestMetadata.partnersSessionId"] = [
+        requestMetadata_partnersSessionId
+      ];
     }
     if (userView != null) {
       _queryParams["userView"] = [userView];
     }
     if (requestMetadata_trafficSource_trafficSourceId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [requestMetadata_trafficSource_trafficSourceId];
+      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [
+        requestMetadata_trafficSource_trafficSourceId
+      ];
     }
     if (requestMetadata_locale != null) {
       _queryParams["requestMetadata.locale"] = [requestMetadata_locale];
     }
     if (requestMetadata_userOverrides_ipAddress != null) {
-      _queryParams["requestMetadata.userOverrides.ipAddress"] = [requestMetadata_userOverrides_ipAddress];
+      _queryParams["requestMetadata.userOverrides.ipAddress"] = [
+        requestMetadata_userOverrides_ipAddress
+      ];
+    }
+    if (requestMetadata_experimentIds != null) {
+      _queryParams["requestMetadata.experimentIds"] =
+          requestMetadata_experimentIds;
+    }
+    if (requestMetadata_trafficSource_trafficSubId != null) {
+      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [
+        requestMetadata_trafficSource_trafficSubId
+      ];
     }
 
     _url = 'v2/users/' + commons.Escaper.ecapeVariable('$userId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new User.fromJson(data));
   }
 
-  /**
-   * Updates a user's profile. A user can only update their own profile and
-   * should only be called within the context of a logged in user.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [requestMetadata_partnersSessionId] - Google Partners session ID.
-   *
-   * [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
-   * instead of the user's ID.
-   *
-   * [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
-   * where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * [requestMetadata_locale] - Locale to use for the current request.
-   *
-   * [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
-   * the user's geo-located IP address.
-   *
-   * [requestMetadata_experimentIds] - Experiment IDs the current request
-   * belongs to.
-   *
-   * [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
-   * indicate where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * Completes with a [UserProfile].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<UserProfile> updateProfile(UserProfile request, {core.String requestMetadata_partnersSessionId, core.String requestMetadata_userOverrides_userId, core.String requestMetadata_trafficSource_trafficSourceId, core.String requestMetadata_locale, core.String requestMetadata_userOverrides_ipAddress, core.List<core.String> requestMetadata_experimentIds, core.String requestMetadata_trafficSource_trafficSubId}) {
+  /// Updates a user's profile. A user can only update their own profile and
+  /// should only be called within the context of a logged in user.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [requestMetadata_partnersSessionId] - Google Partners session ID.
+  ///
+  /// [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
+  /// instead of the user's ID.
+  ///
+  /// [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
+  /// where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// [requestMetadata_locale] - Locale to use for the current request.
+  ///
+  /// [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
+  /// the user's geo-located IP address.
+  ///
+  /// [requestMetadata_experimentIds] - Experiment IDs the current request
+  /// belongs to.
+  ///
+  /// [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
+  /// indicate where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// Completes with a [UserProfile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UserProfile> updateProfile(UserProfile request,
+      {core.String requestMetadata_partnersSessionId,
+      core.String requestMetadata_userOverrides_userId,
+      core.String requestMetadata_trafficSource_trafficSourceId,
+      core.String requestMetadata_locale,
+      core.String requestMetadata_userOverrides_ipAddress,
+      core.List<core.String> requestMetadata_experimentIds,
+      core.String requestMetadata_trafficSource_trafficSubId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1466,86 +1646,98 @@ class UsersResourceApi {
       _body = convert.JSON.encode((request).toJson());
     }
     if (requestMetadata_partnersSessionId != null) {
-      _queryParams["requestMetadata.partnersSessionId"] = [requestMetadata_partnersSessionId];
+      _queryParams["requestMetadata.partnersSessionId"] = [
+        requestMetadata_partnersSessionId
+      ];
     }
     if (requestMetadata_userOverrides_userId != null) {
-      _queryParams["requestMetadata.userOverrides.userId"] = [requestMetadata_userOverrides_userId];
+      _queryParams["requestMetadata.userOverrides.userId"] = [
+        requestMetadata_userOverrides_userId
+      ];
     }
     if (requestMetadata_trafficSource_trafficSourceId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [requestMetadata_trafficSource_trafficSourceId];
+      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [
+        requestMetadata_trafficSource_trafficSourceId
+      ];
     }
     if (requestMetadata_locale != null) {
       _queryParams["requestMetadata.locale"] = [requestMetadata_locale];
     }
     if (requestMetadata_userOverrides_ipAddress != null) {
-      _queryParams["requestMetadata.userOverrides.ipAddress"] = [requestMetadata_userOverrides_ipAddress];
+      _queryParams["requestMetadata.userOverrides.ipAddress"] = [
+        requestMetadata_userOverrides_ipAddress
+      ];
     }
     if (requestMetadata_experimentIds != null) {
-      _queryParams["requestMetadata.experimentIds"] = requestMetadata_experimentIds;
+      _queryParams["requestMetadata.experimentIds"] =
+          requestMetadata_experimentIds;
     }
     if (requestMetadata_trafficSource_trafficSubId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [requestMetadata_trafficSource_trafficSubId];
+      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [
+        requestMetadata_trafficSource_trafficSubId
+      ];
     }
 
     _url = 'v2/users/profile';
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new UserProfile.fromJson(data));
   }
-
 }
-
 
 class V2ResourceApi {
   final commons.ApiRequester _requester;
 
-  V2ResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  V2ResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Gets Partners Status of the logged in user's agency.
-   * Should only be called if the logged in user is the admin of the agency.
-   *
-   * Request parameters:
-   *
-   * [requestMetadata_partnersSessionId] - Google Partners session ID.
-   *
-   * [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
-   * instead of the user's ID.
-   *
-   * [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
-   * where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * [requestMetadata_locale] - Locale to use for the current request.
-   *
-   * [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
-   * the user's geo-located IP address.
-   *
-   * [requestMetadata_experimentIds] - Experiment IDs the current request
-   * belongs to.
-   *
-   * [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
-   * indicate where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * Completes with a [GetPartnersStatusResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<GetPartnersStatusResponse> getPartnersstatus({core.String requestMetadata_partnersSessionId, core.String requestMetadata_userOverrides_userId, core.String requestMetadata_trafficSource_trafficSourceId, core.String requestMetadata_locale, core.String requestMetadata_userOverrides_ipAddress, core.List<core.String> requestMetadata_experimentIds, core.String requestMetadata_trafficSource_trafficSubId}) {
+  /// Gets Partners Status of the logged in user's agency.
+  /// Should only be called if the logged in user is the admin of the agency.
+  ///
+  /// Request parameters:
+  ///
+  /// [requestMetadata_partnersSessionId] - Google Partners session ID.
+  ///
+  /// [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
+  /// instead of the user's ID.
+  ///
+  /// [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
+  /// where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// [requestMetadata_locale] - Locale to use for the current request.
+  ///
+  /// [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
+  /// the user's geo-located IP address.
+  ///
+  /// [requestMetadata_experimentIds] - Experiment IDs the current request
+  /// belongs to.
+  ///
+  /// [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
+  /// indicate where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// Completes with a [GetPartnersStatusResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GetPartnersStatusResponse> getPartnersstatus(
+      {core.String requestMetadata_partnersSessionId,
+      core.String requestMetadata_userOverrides_userId,
+      core.String requestMetadata_trafficSource_trafficSourceId,
+      core.String requestMetadata_locale,
+      core.String requestMetadata_userOverrides_ipAddress,
+      core.List<core.String> requestMetadata_experimentIds,
+      core.String requestMetadata_trafficSource_trafficSubId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1554,82 +1746,99 @@ class V2ResourceApi {
     var _body = null;
 
     if (requestMetadata_partnersSessionId != null) {
-      _queryParams["requestMetadata.partnersSessionId"] = [requestMetadata_partnersSessionId];
+      _queryParams["requestMetadata.partnersSessionId"] = [
+        requestMetadata_partnersSessionId
+      ];
     }
     if (requestMetadata_userOverrides_userId != null) {
-      _queryParams["requestMetadata.userOverrides.userId"] = [requestMetadata_userOverrides_userId];
+      _queryParams["requestMetadata.userOverrides.userId"] = [
+        requestMetadata_userOverrides_userId
+      ];
     }
     if (requestMetadata_trafficSource_trafficSourceId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [requestMetadata_trafficSource_trafficSourceId];
+      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [
+        requestMetadata_trafficSource_trafficSourceId
+      ];
     }
     if (requestMetadata_locale != null) {
       _queryParams["requestMetadata.locale"] = [requestMetadata_locale];
     }
     if (requestMetadata_userOverrides_ipAddress != null) {
-      _queryParams["requestMetadata.userOverrides.ipAddress"] = [requestMetadata_userOverrides_ipAddress];
+      _queryParams["requestMetadata.userOverrides.ipAddress"] = [
+        requestMetadata_userOverrides_ipAddress
+      ];
     }
     if (requestMetadata_experimentIds != null) {
-      _queryParams["requestMetadata.experimentIds"] = requestMetadata_experimentIds;
+      _queryParams["requestMetadata.experimentIds"] =
+          requestMetadata_experimentIds;
     }
     if (requestMetadata_trafficSource_trafficSubId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [requestMetadata_trafficSource_trafficSubId];
+      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [
+        requestMetadata_trafficSource_trafficSubId
+      ];
     }
 
     _url = 'v2/partnersstatus';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new GetPartnersStatusResponse.fromJson(data));
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GetPartnersStatusResponse.fromJson(data));
   }
 
-  /**
-   * Update company.
-   * Should only be called within the context of an authorized logged in user.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [requestMetadata_partnersSessionId] - Google Partners session ID.
-   *
-   * [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
-   * instead of the user's ID.
-   *
-   * [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
-   * where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * [requestMetadata_locale] - Locale to use for the current request.
-   *
-   * [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
-   * the user's geo-located IP address.
-   *
-   * [updateMask] - Standard field mask for the set of fields to be updated.
-   * Required with at least 1 value in FieldMask's paths.
-   *
-   * [requestMetadata_experimentIds] - Experiment IDs the current request
-   * belongs to.
-   *
-   * [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
-   * indicate where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * Completes with a [Company].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Company> updateCompanies(Company request, {core.String requestMetadata_partnersSessionId, core.String requestMetadata_userOverrides_userId, core.String requestMetadata_trafficSource_trafficSourceId, core.String requestMetadata_locale, core.String requestMetadata_userOverrides_ipAddress, core.String updateMask, core.List<core.String> requestMetadata_experimentIds, core.String requestMetadata_trafficSource_trafficSubId}) {
+  /// Update company.
+  /// Should only be called within the context of an authorized logged in user.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [requestMetadata_experimentIds] - Experiment IDs the current request
+  /// belongs to.
+  ///
+  /// [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
+  /// indicate where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
+  /// instead of the user's ID.
+  ///
+  /// [requestMetadata_partnersSessionId] - Google Partners session ID.
+  ///
+  /// [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
+  /// where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// [requestMetadata_locale] - Locale to use for the current request.
+  ///
+  /// [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
+  /// the user's geo-located IP address.
+  ///
+  /// [updateMask] - Standard field mask for the set of fields to be updated.
+  /// Required with at least 1 value in FieldMask's paths.
+  ///
+  /// Completes with a [Company].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Company> updateCompanies(Company request,
+      {core.List<core.String> requestMetadata_experimentIds,
+      core.String requestMetadata_trafficSource_trafficSubId,
+      core.String requestMetadata_userOverrides_userId,
+      core.String requestMetadata_partnersSessionId,
+      core.String requestMetadata_trafficSource_trafficSourceId,
+      core.String requestMetadata_locale,
+      core.String requestMetadata_userOverrides_ipAddress,
+      core.String updateMask}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1640,86 +1849,102 @@ class V2ResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-    if (requestMetadata_partnersSessionId != null) {
-      _queryParams["requestMetadata.partnersSessionId"] = [requestMetadata_partnersSessionId];
+    if (requestMetadata_experimentIds != null) {
+      _queryParams["requestMetadata.experimentIds"] =
+          requestMetadata_experimentIds;
+    }
+    if (requestMetadata_trafficSource_trafficSubId != null) {
+      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [
+        requestMetadata_trafficSource_trafficSubId
+      ];
     }
     if (requestMetadata_userOverrides_userId != null) {
-      _queryParams["requestMetadata.userOverrides.userId"] = [requestMetadata_userOverrides_userId];
+      _queryParams["requestMetadata.userOverrides.userId"] = [
+        requestMetadata_userOverrides_userId
+      ];
+    }
+    if (requestMetadata_partnersSessionId != null) {
+      _queryParams["requestMetadata.partnersSessionId"] = [
+        requestMetadata_partnersSessionId
+      ];
     }
     if (requestMetadata_trafficSource_trafficSourceId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [requestMetadata_trafficSource_trafficSourceId];
+      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [
+        requestMetadata_trafficSource_trafficSourceId
+      ];
     }
     if (requestMetadata_locale != null) {
       _queryParams["requestMetadata.locale"] = [requestMetadata_locale];
     }
     if (requestMetadata_userOverrides_ipAddress != null) {
-      _queryParams["requestMetadata.userOverrides.ipAddress"] = [requestMetadata_userOverrides_ipAddress];
+      _queryParams["requestMetadata.userOverrides.ipAddress"] = [
+        requestMetadata_userOverrides_ipAddress
+      ];
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
-    }
-    if (requestMetadata_experimentIds != null) {
-      _queryParams["requestMetadata.experimentIds"] = requestMetadata_experimentIds;
-    }
-    if (requestMetadata_trafficSource_trafficSubId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [requestMetadata_trafficSource_trafficSubId];
     }
 
     _url = 'v2/companies';
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Company.fromJson(data));
   }
 
-  /**
-   * Updates the specified lead.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [requestMetadata_partnersSessionId] - Google Partners session ID.
-   *
-   * [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
-   * instead of the user's ID.
-   *
-   * [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
-   * where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * [requestMetadata_locale] - Locale to use for the current request.
-   *
-   * [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
-   * the user's geo-located IP address.
-   *
-   * [updateMask] - Standard field mask for the set of fields to be updated.
-   * Required with at least 1 value in FieldMask's paths.
-   * Only `state` and `adwords_customer_id` are currently supported.
-   *
-   * [requestMetadata_experimentIds] - Experiment IDs the current request
-   * belongs to.
-   *
-   * [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
-   * indicate where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   *
-   * Completes with a [Lead].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Lead> updateLeads(Lead request, {core.String requestMetadata_partnersSessionId, core.String requestMetadata_userOverrides_userId, core.String requestMetadata_trafficSource_trafficSourceId, core.String requestMetadata_locale, core.String requestMetadata_userOverrides_ipAddress, core.String updateMask, core.List<core.String> requestMetadata_experimentIds, core.String requestMetadata_trafficSource_trafficSubId}) {
+  /// Updates the specified lead.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [requestMetadata_partnersSessionId] - Google Partners session ID.
+  ///
+  /// [requestMetadata_userOverrides_userId] - Logged-in user ID to impersonate
+  /// instead of the user's ID.
+  ///
+  /// [requestMetadata_trafficSource_trafficSourceId] - Identifier to indicate
+  /// where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// [requestMetadata_locale] - Locale to use for the current request.
+  ///
+  /// [requestMetadata_userOverrides_ipAddress] - IP address to use instead of
+  /// the user's geo-located IP address.
+  ///
+  /// [updateMask] - Standard field mask for the set of fields to be updated.
+  /// Required with at least 1 value in FieldMask's paths.
+  /// Only `state` and `adwords_customer_id` are currently supported.
+  ///
+  /// [requestMetadata_experimentIds] - Experiment IDs the current request
+  /// belongs to.
+  ///
+  /// [requestMetadata_trafficSource_trafficSubId] - Second level identifier to
+  /// indicate where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
+  ///
+  /// Completes with a [Lead].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Lead> updateLeads(Lead request,
+      {core.String requestMetadata_partnersSessionId,
+      core.String requestMetadata_userOverrides_userId,
+      core.String requestMetadata_trafficSource_trafficSourceId,
+      core.String requestMetadata_locale,
+      core.String requestMetadata_userOverrides_ipAddress,
+      core.String updateMask,
+      core.List<core.String> requestMetadata_experimentIds,
+      core.String requestMetadata_trafficSource_trafficSubId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1731,54 +1956,60 @@ class V2ResourceApi {
       _body = convert.JSON.encode((request).toJson());
     }
     if (requestMetadata_partnersSessionId != null) {
-      _queryParams["requestMetadata.partnersSessionId"] = [requestMetadata_partnersSessionId];
+      _queryParams["requestMetadata.partnersSessionId"] = [
+        requestMetadata_partnersSessionId
+      ];
     }
     if (requestMetadata_userOverrides_userId != null) {
-      _queryParams["requestMetadata.userOverrides.userId"] = [requestMetadata_userOverrides_userId];
+      _queryParams["requestMetadata.userOverrides.userId"] = [
+        requestMetadata_userOverrides_userId
+      ];
     }
     if (requestMetadata_trafficSource_trafficSourceId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [requestMetadata_trafficSource_trafficSourceId];
+      _queryParams["requestMetadata.trafficSource.trafficSourceId"] = [
+        requestMetadata_trafficSource_trafficSourceId
+      ];
     }
     if (requestMetadata_locale != null) {
       _queryParams["requestMetadata.locale"] = [requestMetadata_locale];
     }
     if (requestMetadata_userOverrides_ipAddress != null) {
-      _queryParams["requestMetadata.userOverrides.ipAddress"] = [requestMetadata_userOverrides_ipAddress];
+      _queryParams["requestMetadata.userOverrides.ipAddress"] = [
+        requestMetadata_userOverrides_ipAddress
+      ];
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
     }
     if (requestMetadata_experimentIds != null) {
-      _queryParams["requestMetadata.experimentIds"] = requestMetadata_experimentIds;
+      _queryParams["requestMetadata.experimentIds"] =
+          requestMetadata_experimentIds;
     }
     if (requestMetadata_trafficSource_trafficSubId != null) {
-      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [requestMetadata_trafficSource_trafficSubId];
+      _queryParams["requestMetadata.trafficSource.trafficSubId"] = [
+        requestMetadata_trafficSource_trafficSubId
+      ];
     }
 
     _url = 'v2/leads';
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Lead.fromJson(data));
   }
-
 }
 
-
-
-/**
- * Information about a particular AdWords Manager Account.
- * Read more at https://support.google.com/adwords/answer/6139186
- */
+/// Information about a particular AdWords Manager Account.
+/// Read more at https://support.google.com/adwords/answer/6139186
 class AdWordsManagerAccountInfo {
-  /** Name of the customer this account represents. */
+  /// Name of the customer this account represents.
   core.String customerName;
-  /** The AdWords Manager Account id. */
+
+  /// The AdWords Manager Account id.
   core.String id;
 
   AdWordsManagerAccountInfo();
@@ -1793,7 +2024,8 @@ class AdWordsManagerAccountInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (customerName != null) {
       _json["customerName"] = customerName;
     }
@@ -1804,24 +2036,21 @@ class AdWordsManagerAccountInfo {
   }
 }
 
-/** Analytics data for a `Company` within a single day. */
+/// Analytics data for a `Company` within a single day.
 class Analytics {
-  /**
-   * Instances of users contacting the `Company`
-   * on the specified date.
-   */
+  /// Instances of users contacting the `Company`
+  /// on the specified date.
   AnalyticsDataPoint contacts;
-  /** Date on which these events occurred. */
+
+  /// Date on which these events occurred.
   Date eventDate;
-  /**
-   * Instances of users viewing the `Company` profile
-   * on the specified date.
-   */
+
+  /// Instances of users viewing the `Company` profile
+  /// on the specified date.
   AnalyticsDataPoint profileViews;
-  /**
-   * Instances of users seeing the `Company` in Google Partners Search results
-   * on the specified date.
-   */
+
+  /// Instances of users seeing the `Company` in Google Partners Search results
+  /// on the specified date.
   AnalyticsDataPoint searchViews;
 
   Analytics();
@@ -1842,7 +2071,8 @@ class Analytics {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (contacts != null) {
       _json["contacts"] = (contacts).toJson();
     }
@@ -1859,14 +2089,13 @@ class Analytics {
   }
 }
 
-/** Details of the analytics events for a `Company` within a single day. */
+/// Details of the analytics events for a `Company` within a single day.
 class AnalyticsDataPoint {
-  /**
-   * Number of times the type of event occurred.
-   * Meaning depends on context (e.g. profile views, contacts, etc.).
-   */
+  /// Number of times the type of event occurred.
+  /// Meaning depends on context (e.g. profile views, contacts, etc.).
   core.int eventCount;
-  /** Location information of where these events occurred. */
+
+  /// Location information of where these events occurred.
   core.List<LatLng> eventLocations;
 
   AnalyticsDataPoint();
@@ -1876,37 +2105,37 @@ class AnalyticsDataPoint {
       eventCount = _json["eventCount"];
     }
     if (_json.containsKey("eventLocations")) {
-      eventLocations = _json["eventLocations"].map((value) => new LatLng.fromJson(value)).toList();
+      eventLocations = _json["eventLocations"]
+          .map((value) => new LatLng.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (eventCount != null) {
       _json["eventCount"] = eventCount;
     }
     if (eventLocations != null) {
-      _json["eventLocations"] = eventLocations.map((value) => (value).toJson()).toList();
+      _json["eventLocations"] =
+          eventLocations.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
 }
 
-/** Analytics aggregated data for a `Company` for a given date range. */
+/// Analytics aggregated data for a `Company` for a given date range.
 class AnalyticsSummary {
-  /**
-   * Aggregated number of times users contacted the `Company`
-   * for given date range.
-   */
+  /// Aggregated number of times users contacted the `Company`
+  /// for given date range.
   core.int contactsCount;
-  /**
-   * Aggregated number of profile views for the `Company` for given date range.
-   */
+
+  /// Aggregated number of profile views for the `Company` for given date range.
   core.int profileViewsCount;
-  /**
-   * Aggregated number of times users saw the `Company`
-   * in Google Partners Search results for given date range.
-   */
+
+  /// Aggregated number of times users saw the `Company`
+  /// in Google Partners Search results for given date range.
   core.int searchViewsCount;
 
   AnalyticsSummary();
@@ -1924,7 +2153,8 @@ class AnalyticsSummary {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (contactsCount != null) {
       _json["contactsCount"] = contactsCount;
     }
@@ -1938,56 +2168,61 @@ class AnalyticsSummary {
   }
 }
 
-/** Available Offers to be distributed. */
+/// Available Offers to be distributed.
 class AvailableOffer {
-  /**
-   * The number of codes for this offer that are available for distribution.
-   */
+  /// The number of codes for this offer that are available for distribution.
   core.int available;
-  /** Offer info by country. */
+
+  /// Offer info by country.
   core.List<CountryOfferInfo> countryOfferInfos;
-  /** Description of the offer. */
+
+  /// Description of the offer.
   core.String description;
-  /** ID of this offer. */
+
+  /// ID of this offer.
   core.String id;
-  /** The maximum age of an account [in days] to be eligible. */
+
+  /// The maximum age of an account [in days] to be eligible.
   core.int maxAccountAge;
-  /** Name of the offer. */
+
+  /// Name of the offer.
   core.String name;
-  /**
-   * Level of this offer.
-   * Possible string values are:
-   * - "OFFER_LEVEL_UNSPECIFIED" : Unset.
-   * - "OFFER_LEVEL_DENY_PROBLEM" : Users/Agencies that have no offers because
-   * of a problem.
-   * - "OFFER_LEVEL_DENY_CONTRACT" : Users/Agencies that have no offers due to
-   * contractural agreements.
-   * - "OFFER_LEVEL_MANUAL" : Users/Agencies that have a manually-configured
-   * limit.
-   * - "OFFER_LEVEL_LIMIT_0" : Some Agencies don't get any offers.
-   * - "OFFER_LEVEL_LIMIT_5" : Basic level gets 5 per month.
-   * - "OFFER_LEVEL_LIMIT_15" : Agencies with adequate AHI and spend get
-   * 15/month.
-   * - "OFFER_LEVEL_LIMIT_50" : Badged partners (even in grace) get 50 per
-   * month.
-   */
+
+  /// Level of this offer.
+  /// Possible string values are:
+  /// - "OFFER_LEVEL_UNSPECIFIED" : Unset.
+  /// - "OFFER_LEVEL_DENY_PROBLEM" : Users/Agencies that have no offers because
+  /// of a problem.
+  /// - "OFFER_LEVEL_DENY_CONTRACT" : Users/Agencies that have no offers due to
+  /// contractural agreements.
+  /// - "OFFER_LEVEL_MANUAL" : Users/Agencies that have a manually-configured
+  /// limit.
+  /// - "OFFER_LEVEL_LIMIT_0" : Some Agencies don't get any offers.
+  /// - "OFFER_LEVEL_LIMIT_5" : Basic level gets 5 per month.
+  /// - "OFFER_LEVEL_LIMIT_15" : Agencies with adequate AHI and spend get
+  /// 15/month.
+  /// - "OFFER_LEVEL_LIMIT_50" : Badged partners (even in grace) get 50 per
+  /// month.
   core.String offerLevel;
-  /**
-   * Type of offer.
-   * Possible string values are:
-   * - "OFFER_TYPE_UNSPECIFIED" : Unset.
-   * - "OFFER_TYPE_SPEND_X_GET_Y" : AdWords spend X get Y.
-   * - "OFFER_TYPE_VIDEO" : Youtube video.
-   * - "OFFER_TYPE_SPEND_MATCH" : Spend Match up to Y.
-   */
+
+  /// Type of offer.
+  /// Possible string values are:
+  /// - "OFFER_TYPE_UNSPECIFIED" : Unset.
+  /// - "OFFER_TYPE_SPEND_X_GET_Y" : AdWords spend X get Y.
+  /// - "OFFER_TYPE_VIDEO" : Youtube video.
+  /// - "OFFER_TYPE_SPEND_MATCH" : Spend Match up to Y.
   core.String offerType;
-  /** Customers who qualify for this offer. */
+
+  /// Customers who qualify for this offer.
   core.List<OfferCustomer> qualifiedCustomer;
-  /** Whether or not the list of qualified customers is definitely complete. */
+
+  /// Whether or not the list of qualified customers is definitely complete.
   core.bool qualifiedCustomersComplete;
-  /** Should special text be shown on the offers page. */
+
+  /// Should special text be shown on the offers page.
   core.bool showSpecialOfferCopy;
-  /** Terms of the offer. */
+
+  /// Terms of the offer.
   core.String terms;
 
   AvailableOffer();
@@ -1997,7 +2232,9 @@ class AvailableOffer {
       available = _json["available"];
     }
     if (_json.containsKey("countryOfferInfos")) {
-      countryOfferInfos = _json["countryOfferInfos"].map((value) => new CountryOfferInfo.fromJson(value)).toList();
+      countryOfferInfos = _json["countryOfferInfos"]
+          .map((value) => new CountryOfferInfo.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("description")) {
       description = _json["description"];
@@ -2018,7 +2255,9 @@ class AvailableOffer {
       offerType = _json["offerType"];
     }
     if (_json.containsKey("qualifiedCustomer")) {
-      qualifiedCustomer = _json["qualifiedCustomer"].map((value) => new OfferCustomer.fromJson(value)).toList();
+      qualifiedCustomer = _json["qualifiedCustomer"]
+          .map((value) => new OfferCustomer.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("qualifiedCustomersComplete")) {
       qualifiedCustomersComplete = _json["qualifiedCustomersComplete"];
@@ -2032,12 +2271,14 @@ class AvailableOffer {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (available != null) {
       _json["available"] = available;
     }
     if (countryOfferInfos != null) {
-      _json["countryOfferInfos"] = countryOfferInfos.map((value) => (value).toJson()).toList();
+      _json["countryOfferInfos"] =
+          countryOfferInfos.map((value) => (value).toJson()).toList();
     }
     if (description != null) {
       _json["description"] = description;
@@ -2058,7 +2299,8 @@ class AvailableOffer {
       _json["offerType"] = offerType;
     }
     if (qualifiedCustomer != null) {
-      _json["qualifiedCustomer"] = qualifiedCustomer.map((value) => (value).toJson()).toList();
+      _json["qualifiedCustomer"] =
+          qualifiedCustomer.map((value) => (value).toJson()).toList();
     }
     if (qualifiedCustomersComplete != null) {
       _json["qualifiedCustomersComplete"] = qualifiedCustomersComplete;
@@ -2073,32 +2315,34 @@ class AvailableOffer {
   }
 }
 
-/** A user's information on a specific certification. */
+/// A user's information on a specific certification.
 class Certification {
-  /** Whether this certification has been achieved. */
+  /// Whether this certification has been achieved.
   core.bool achieved;
-  /**
-   * The type of certification, the area of expertise.
-   * Possible string values are:
-   * - "CERTIFICATION_TYPE_UNSPECIFIED" : Unchosen.
-   * - "CT_ADWORDS" : AdWords certified.
-   * - "CT_YOUTUBE" : YouTube certified.
-   * - "CT_VIDEOADS" : VideoAds certified.
-   * - "CT_ANALYTICS" : Analytics certified.
-   * - "CT_DOUBLECLICK" : DoubleClick certified.
-   * - "CT_SHOPPING" : Shopping certified.
-   * - "CT_MOBILE" : Mobile certified.
-   * - "CT_DIGITAL_SALES" : Digital sales certified.
-   * - "CT_ADWORDS_SEARCH" : AdWords Search certified.
-   * - "CT_ADWORDS_DISPLAY" : AdWords Display certified.
-   * - "CT_MOBILE_SITES" : Mobile Sites certified.
-   */
+
+  /// The type of certification, the area of expertise.
+  /// Possible string values are:
+  /// - "CERTIFICATION_TYPE_UNSPECIFIED" : Unchosen.
+  /// - "CT_ADWORDS" : AdWords certified.
+  /// - "CT_YOUTUBE" : YouTube certified.
+  /// - "CT_VIDEOADS" : VideoAds certified.
+  /// - "CT_ANALYTICS" : Analytics certified.
+  /// - "CT_DOUBLECLICK" : DoubleClick certified.
+  /// - "CT_SHOPPING" : Shopping certified.
+  /// - "CT_MOBILE" : Mobile certified.
+  /// - "CT_DIGITAL_SALES" : Digital sales certified.
+  /// - "CT_ADWORDS_SEARCH" : AdWords Search certified.
+  /// - "CT_ADWORDS_DISPLAY" : AdWords Display certified.
+  /// - "CT_MOBILE_SITES" : Mobile Sites certified.
   core.String certificationType;
-  /** Date this certification is due to expire. */
+
+  /// Date this certification is due to expire.
   core.String expiration;
-  /** The date the user last achieved certification. */
+
+  /// The date the user last achieved certification.
   core.String lastAchieved;
-  /** Whether this certification is in the state of warning. */
+
+  /// Whether this certification is in the state of warning.
   core.bool warning;
 
   Certification();
@@ -2122,7 +2366,8 @@ class Certification {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (achieved != null) {
       _json["achieved"] = achieved;
     }
@@ -2142,25 +2387,24 @@ class Certification {
   }
 }
 
-/** Status for a Google Partners certification exam. */
+/// Status for a Google Partners certification exam.
 class CertificationExamStatus {
-  /** The number of people who have passed the certification exam. */
+  /// The number of people who have passed the certification exam.
   core.int numberUsersPass;
-  /**
-   * The type of certification exam.
-   * Possible string values are:
-   * - "CERTIFICATION_EXAM_TYPE_UNSPECIFIED" : Unchosen.
-   * - "CET_ADWORDS_FUNDAMENTALS" : Adwords Fundamentals exam.
-   * - "CET_ADWORDS_ADVANCED_SEARCH" : AdWords advanced search exam.
-   * - "CET_ADWORDS_ADVANCED_DISPLAY" : AdWords advanced display exam.
-   * - "CET_VIDEO_ADS" : VideoAds exam.
-   * - "CET_DOUBLECLICK" : DoubleClick exam.
-   * - "CET_ANALYTICS" : Analytics exam.
-   * - "CET_SHOPPING" : Shopping exam.
-   * - "CET_MOBILE" : Mobile exam.
-   * - "CET_DIGITAL_SALES" : Digital Sales exam.
-   * - "CET_MOBILE_SITES" : Mobile Sites exam.
-   */
+
+  /// The type of certification exam.
+  /// Possible string values are:
+  /// - "CERTIFICATION_EXAM_TYPE_UNSPECIFIED" : Unchosen.
+  /// - "CET_ADWORDS_FUNDAMENTALS" : Adwords Fundamentals exam.
+  /// - "CET_ADWORDS_ADVANCED_SEARCH" : AdWords advanced search exam.
+  /// - "CET_ADWORDS_ADVANCED_DISPLAY" : AdWords advanced display exam.
+  /// - "CET_VIDEO_ADS" : VideoAds exam.
+  /// - "CET_DOUBLECLICK" : DoubleClick exam.
+  /// - "CET_ANALYTICS" : Analytics exam.
+  /// - "CET_SHOPPING" : Shopping exam.
+  /// - "CET_MOBILE" : Mobile exam.
+  /// - "CET_DIGITAL_SALES" : Digital Sales exam.
+  /// - "CET_MOBILE_SITES" : Mobile Sites exam.
   core.String type;
 
   CertificationExamStatus();
@@ -2175,7 +2419,8 @@ class CertificationExamStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (numberUsersPass != null) {
       _json["numberUsersPass"] = numberUsersPass;
     }
@@ -2186,37 +2431,40 @@ class CertificationExamStatus {
   }
 }
 
-/** Google Partners certification status. */
+/// Google Partners certification status.
 class CertificationStatus {
-  /** List of certification exam statuses. */
+  /// List of certification exam statuses.
   core.List<CertificationExamStatus> examStatuses;
-  /** Whether certification is passing. */
+
+  /// Whether certification is passing.
   core.bool isCertified;
-  /**
-   * The type of the certification.
-   * Possible string values are:
-   * - "CERTIFICATION_TYPE_UNSPECIFIED" : Unchosen.
-   * - "CT_ADWORDS" : AdWords certified.
-   * - "CT_YOUTUBE" : YouTube certified.
-   * - "CT_VIDEOADS" : VideoAds certified.
-   * - "CT_ANALYTICS" : Analytics certified.
-   * - "CT_DOUBLECLICK" : DoubleClick certified.
-   * - "CT_SHOPPING" : Shopping certified.
-   * - "CT_MOBILE" : Mobile certified.
-   * - "CT_DIGITAL_SALES" : Digital sales certified.
-   * - "CT_ADWORDS_SEARCH" : AdWords Search certified.
-   * - "CT_ADWORDS_DISPLAY" : AdWords Display certified.
-   * - "CT_MOBILE_SITES" : Mobile Sites certified.
-   */
+
+  /// The type of the certification.
+  /// Possible string values are:
+  /// - "CERTIFICATION_TYPE_UNSPECIFIED" : Unchosen.
+  /// - "CT_ADWORDS" : AdWords certified.
+  /// - "CT_YOUTUBE" : YouTube certified.
+  /// - "CT_VIDEOADS" : VideoAds certified.
+  /// - "CT_ANALYTICS" : Analytics certified.
+  /// - "CT_DOUBLECLICK" : DoubleClick certified.
+  /// - "CT_SHOPPING" : Shopping certified.
+  /// - "CT_MOBILE" : Mobile certified.
+  /// - "CT_DIGITAL_SALES" : Digital sales certified.
+  /// - "CT_ADWORDS_SEARCH" : AdWords Search certified.
+  /// - "CT_ADWORDS_DISPLAY" : AdWords Display certified.
+  /// - "CT_MOBILE_SITES" : Mobile Sites certified.
   core.String type;
-  /** Number of people who are certified, */
+
+  /// Number of people who are certified,
   core.int userCount;
 
   CertificationStatus();
 
   CertificationStatus.fromJson(core.Map _json) {
     if (_json.containsKey("examStatuses")) {
-      examStatuses = _json["examStatuses"].map((value) => new CertificationExamStatus.fromJson(value)).toList();
+      examStatuses = _json["examStatuses"]
+          .map((value) => new CertificationExamStatus.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("isCertified")) {
       isCertified = _json["isCertified"];
@@ -2230,9 +2478,11 @@ class CertificationStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (examStatuses != null) {
-      _json["examStatuses"] = examStatuses.map((value) => (value).toJson()).toList();
+      _json["examStatuses"] =
+          examStatuses.map((value) => (value).toJson()).toList();
     }
     if (isCertified != null) {
       _json["isCertified"] = isCertified;
@@ -2247,92 +2497,95 @@ class CertificationStatus {
   }
 }
 
-/**
- * A company resource in the Google Partners API. Once certified, it qualifies
- * for being searched by advertisers.
- */
+/// A company resource in the Google Partners API. Once certified, it qualifies
+/// for being searched by advertisers.
 class Company {
-  /**
-   * URL of the company's additional websites used to verify the dynamic badges.
-   * These are stored as full URLs as entered by the user, but only the TLD will
-   * be used for the actual verification.
-   */
+  /// URL of the company's additional websites used to verify the dynamic
+  /// badges.
+  /// These are stored as full URLs as entered by the user, but only the TLD
+  /// will
+  /// be used for the actual verification.
   core.List<core.String> additionalWebsites;
-  /**
-   * Email domains that allow users with a matching email address to get
-   * auto-approved for associating with this company.
-   */
+
+  /// Email domains that allow users with a matching email address to get
+  /// auto-approved for associating with this company.
   core.List<core.String> autoApprovalEmailDomains;
-  /**
-   * Partner badge tier
-   * Possible string values are:
-   * - "BADGE_TIER_NONE" : Tier badge is not set.
-   * - "BADGE_TIER_REGULAR" : Agency has regular partner badge.
-   * - "BADGE_TIER_PREMIER" : Agency has premier badge.
-   */
+
+  /// Partner badge tier
+  /// Possible string values are:
+  /// - "BADGE_TIER_NONE" : Tier badge is not set.
+  /// - "BADGE_TIER_REGULAR" : Agency has regular partner badge.
+  /// - "BADGE_TIER_PREMIER" : Agency has premier badge.
   core.String badgeTier;
-  /** The list of Google Partners certification statuses for the company. */
+
+  /// The list of Google Partners certification statuses for the company.
   core.List<CertificationStatus> certificationStatuses;
-  /** Company type labels listed on the company's profile. */
+
+  /// Company type labels listed on the company's profile.
   core.List<core.String> companyTypes;
-  /**
-   * The minimum monthly budget that the company accepts for partner business,
-   * converted to the requested currency code.
-   */
+
+  /// The minimum monthly budget that the company accepts for partner business,
+  /// converted to the requested currency code.
   Money convertedMinMonthlyBudget;
-  /** The ID of the company. */
+
+  /// The ID of the company.
   core.String id;
-  /** Industries the company can help with. */
+
+  /// Industries the company can help with.
   core.List<core.String> industries;
-  /** The list of localized info for the company. */
+
+  /// The list of localized info for the company.
   core.List<LocalizedCompanyInfo> localizedInfos;
-  /**
-   * The list of all company locations.
-   * If set, must include the
-   * primary_location
-   * in the list.
-   */
+
+  /// The list of all company locations.
+  /// If set, must include the
+  /// primary_location
+  /// in the list.
   core.List<Location> locations;
-  /** The name of the company. */
+
+  /// The name of the company.
   core.String name;
-  /**
-   * The unconverted minimum monthly budget that the company accepts for partner
-   * business.
-   */
+
+  /// The unconverted minimum monthly budget that the company accepts for
+  /// partner
+  /// business.
   Money originalMinMonthlyBudget;
-  /** The Primary AdWords Manager Account id. */
+
+  /// The Primary AdWords Manager Account id.
   core.String primaryAdwordsManagerAccountId;
-  /**
-   * The primary language code of the company, as defined by
-   * <a href="https://tools.ietf.org/html/bcp47">BCP 47</a>
-   * (IETF BCP 47, "Tags for Identifying Languages").
-   */
+
+  /// The primary language code of the company, as defined by
+  /// <a href="https://tools.ietf.org/html/bcp47">BCP 47</a>
+  /// (IETF BCP 47, "Tags for Identifying Languages").
   core.String primaryLanguageCode;
-  /** The primary location of the company. */
+
+  /// The primary location of the company.
   Location primaryLocation;
-  /**
-   * The public viewability status of the company's profile.
-   * Possible string values are:
-   * - "COMPANY_PROFILE_STATUS_UNSPECIFIED" : Unchosen.
-   * - "HIDDEN" : Company profile does not show up publicly.
-   * - "PUBLISHED" : Company profile can only be viewed by the profile's URL
-   * and not by Google Partner Search.
-   * - "SEARCHABLE" : Company profile can be viewed by the profile's URL
-   * and by Google Partner Search.
-   */
+
+  /// The public viewability status of the company's profile.
+  /// Possible string values are:
+  /// - "COMPANY_PROFILE_STATUS_UNSPECIFIED" : Unchosen.
+  /// - "HIDDEN" : Company profile does not show up publicly.
+  /// - "PUBLISHED" : Company profile can only be viewed by the profile's URL
+  /// and not by Google Partner Search.
+  /// - "SEARCHABLE" : Company profile can be viewed by the profile's URL
+  /// and by Google Partner Search.
   core.String profileStatus;
-  /** Basic information from the company's public profile. */
+
+  /// Basic information from the company's public profile.
   PublicProfile publicProfile;
-  /**
-   * Information related to the ranking of the company within the list of
-   * companies.
-   */
+
+  /// Information related to the ranking of the company within the list of
+  /// companies.
   core.List<Rank> ranks;
-  /** Services the company can help with. */
+
+  /// Services the company can help with.
   core.List<core.String> services;
-  /** The list of Google Partners specialization statuses for the company. */
+
+  /// The list of Google Partners specialization statuses for the company.
   core.List<SpecializationStatus> specializationStatus;
-  /** URL of the company's website. */
+
+  /// URL of the company's website.
   core.String websiteUrl;
 
   Company();
@@ -2348,13 +2601,16 @@ class Company {
       badgeTier = _json["badgeTier"];
     }
     if (_json.containsKey("certificationStatuses")) {
-      certificationStatuses = _json["certificationStatuses"].map((value) => new CertificationStatus.fromJson(value)).toList();
+      certificationStatuses = _json["certificationStatuses"]
+          .map((value) => new CertificationStatus.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("companyTypes")) {
       companyTypes = _json["companyTypes"];
     }
     if (_json.containsKey("convertedMinMonthlyBudget")) {
-      convertedMinMonthlyBudget = new Money.fromJson(_json["convertedMinMonthlyBudget"]);
+      convertedMinMonthlyBudget =
+          new Money.fromJson(_json["convertedMinMonthlyBudget"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -2363,16 +2619,21 @@ class Company {
       industries = _json["industries"];
     }
     if (_json.containsKey("localizedInfos")) {
-      localizedInfos = _json["localizedInfos"].map((value) => new LocalizedCompanyInfo.fromJson(value)).toList();
+      localizedInfos = _json["localizedInfos"]
+          .map((value) => new LocalizedCompanyInfo.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("locations")) {
-      locations = _json["locations"].map((value) => new Location.fromJson(value)).toList();
+      locations = _json["locations"]
+          .map((value) => new Location.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
     if (_json.containsKey("originalMinMonthlyBudget")) {
-      originalMinMonthlyBudget = new Money.fromJson(_json["originalMinMonthlyBudget"]);
+      originalMinMonthlyBudget =
+          new Money.fromJson(_json["originalMinMonthlyBudget"]);
     }
     if (_json.containsKey("primaryAdwordsManagerAccountId")) {
       primaryAdwordsManagerAccountId = _json["primaryAdwordsManagerAccountId"];
@@ -2396,7 +2657,9 @@ class Company {
       services = _json["services"];
     }
     if (_json.containsKey("specializationStatus")) {
-      specializationStatus = _json["specializationStatus"].map((value) => new SpecializationStatus.fromJson(value)).toList();
+      specializationStatus = _json["specializationStatus"]
+          .map((value) => new SpecializationStatus.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("websiteUrl")) {
       websiteUrl = _json["websiteUrl"];
@@ -2404,7 +2667,8 @@ class Company {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (additionalWebsites != null) {
       _json["additionalWebsites"] = additionalWebsites;
     }
@@ -2415,7 +2679,8 @@ class Company {
       _json["badgeTier"] = badgeTier;
     }
     if (certificationStatuses != null) {
-      _json["certificationStatuses"] = certificationStatuses.map((value) => (value).toJson()).toList();
+      _json["certificationStatuses"] =
+          certificationStatuses.map((value) => (value).toJson()).toList();
     }
     if (companyTypes != null) {
       _json["companyTypes"] = companyTypes;
@@ -2430,7 +2695,8 @@ class Company {
       _json["industries"] = industries;
     }
     if (localizedInfos != null) {
-      _json["localizedInfos"] = localizedInfos.map((value) => (value).toJson()).toList();
+      _json["localizedInfos"] =
+          localizedInfos.map((value) => (value).toJson()).toList();
     }
     if (locations != null) {
       _json["locations"] = locations.map((value) => (value).toJson()).toList();
@@ -2463,7 +2729,8 @@ class Company {
       _json["services"] = services;
     }
     if (specializationStatus != null) {
-      _json["specializationStatus"] = specializationStatus.map((value) => (value).toJson()).toList();
+      _json["specializationStatus"] =
+          specializationStatus.map((value) => (value).toJson()).toList();
     }
     if (websiteUrl != null) {
       _json["websiteUrl"] = websiteUrl;
@@ -2472,77 +2739,81 @@ class Company {
   }
 }
 
-/**
- * A CompanyRelation resource representing information about a user's
- * affiliation and standing with a company in Partners.
- */
+/// A CompanyRelation resource representing information about a user's
+/// affiliation and standing with a company in Partners.
 class CompanyRelation {
-  /** The primary address for this company. */
+  /// The primary address for this company.
   core.String address;
-  /**
-   * Whether the company is a Partner.
-   * Possible string values are:
-   * - "BADGE_TIER_NONE" : Tier badge is not set.
-   * - "BADGE_TIER_REGULAR" : Agency has regular partner badge.
-   * - "BADGE_TIER_PREMIER" : Agency has premier badge.
-   */
+
+  /// Whether the company is a Partner.
+  /// Possible string values are:
+  /// - "BADGE_TIER_NONE" : Tier badge is not set.
+  /// - "BADGE_TIER_REGULAR" : Agency has regular partner badge.
+  /// - "BADGE_TIER_PREMIER" : Agency has premier badge.
   core.String badgeTier;
-  /** Indicates if the user is an admin for this company. */
+
+  /// Indicates if the user is an admin for this company.
   core.bool companyAdmin;
-  /**
-   * The ID of the company. There may be no id if this is a
-   * pending company.5
-   */
+
+  /// The ID of the company. There may be no id if this is a
+  /// pending company.5
   core.String companyId;
-  /**
-   * The timestamp of when affiliation was requested.
-   * @OutputOnly
-   */
+
+  /// The timestamp of when affiliation was requested.
+  /// @OutputOnly
   core.String creationTime;
-  /**
-   * The internal company ID.
-   * Only available for a whitelisted set of api clients.
-   */
+
+  /// The internal company ID.
+  /// Only available for a whitelisted set of api clients.
   core.String internalCompanyId;
-  /** The flag that indicates if the company is pending verification. */
+
+  /// The flag that indicates if the company is pending verification.
   core.bool isPending;
-  /** A URL to a profile photo, e.g. a G+ profile photo. */
+
+  /// A URL to a profile photo, e.g. a G+ profile photo.
   core.String logoUrl;
-  /** The AdWords manager account # associated this company. */
+
+  /// The AdWords manager account # associated this company.
   core.String managerAccount;
-  /** The name (in the company's primary language) for the company. */
+
+  /// The name (in the company's primary language) for the company.
   core.String name;
-  /** The phone number for the company's primary address. */
+
+  /// The phone number for the company's primary address.
   core.String phoneNumber;
-  /** The primary location of the company. */
+
+  /// The primary location of the company.
   Location primaryAddress;
-  /** The primary country code of the company. */
+
+  /// The primary country code of the company.
   core.String primaryCountryCode;
-  /** The primary language code of the company. */
+
+  /// The primary language code of the company.
   core.String primaryLanguageCode;
-  /**
-   * The timestamp when the user was approved.
-   * @OutputOnly
-   */
+
+  /// The timestamp when the user was approved.
+  /// @OutputOnly
   core.String resolvedTimestamp;
-  /** The segment the company is classified as. */
+
+  /// The segment the company is classified as.
   core.List<core.String> segment;
-  /** The list of Google Partners specialization statuses for the company. */
+
+  /// The list of Google Partners specialization statuses for the company.
   core.List<SpecializationStatus> specializationStatus;
-  /**
-   * The state of relationship, in terms of approvals.
-   * Possible string values are:
-   * - "USER_COMPANY_REATION_STATE_NONE_SPECIFIED" : Default unspecified value.
-   * - "USER_COMPANY_RELATION_STATE_AWAIT_EMAIL" : User has filled in a request
-   * to be associated with an company.
-   * Now waiting email confirmation.
-   * - "USER_COMPANY_RELATION_STATE_AWAIT_ADMIN" : Pending approval from
-   * company.
-   * Email confirmation will not approve this one.
-   * - "USER_COMPANY_RELATION_STATE_APPROVED" : Approved by company.
-   */
+
+  /// The state of relationship, in terms of approvals.
+  /// Possible string values are:
+  /// - "USER_COMPANY_REATION_STATE_NONE_SPECIFIED" : Default unspecified value.
+  /// - "USER_COMPANY_RELATION_STATE_AWAIT_EMAIL" : User has filled in a request
+  /// to be associated with an company.
+  /// Now waiting email confirmation.
+  /// - "USER_COMPANY_RELATION_STATE_AWAIT_ADMIN" : Pending approval from
+  /// company.
+  /// Email confirmation will not approve this one.
+  /// - "USER_COMPANY_RELATION_STATE_APPROVED" : Approved by company.
   core.String state;
-  /** The website URL for this company. */
+
+  /// The website URL for this company.
   core.String website;
 
   CompanyRelation();
@@ -2597,7 +2868,9 @@ class CompanyRelation {
       segment = _json["segment"];
     }
     if (_json.containsKey("specializationStatus")) {
-      specializationStatus = _json["specializationStatus"].map((value) => new SpecializationStatus.fromJson(value)).toList();
+      specializationStatus = _json["specializationStatus"]
+          .map((value) => new SpecializationStatus.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("state")) {
       state = _json["state"];
@@ -2608,7 +2881,8 @@ class CompanyRelation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (address != null) {
       _json["address"] = address;
     }
@@ -2658,7 +2932,8 @@ class CompanyRelation {
       _json["segment"] = segment;
     }
     if (specializationStatus != null) {
-      _json["specializationStatus"] = specializationStatus.map((value) => (value).toJson()).toList();
+      _json["specializationStatus"] =
+          specializationStatus.map((value) => (value).toJson()).toList();
     }
     if (state != null) {
       _json["state"] = state;
@@ -2670,22 +2945,23 @@ class CompanyRelation {
   }
 }
 
-/** Offer info by country. */
+/// Offer info by country.
 class CountryOfferInfo {
-  /** (localized) Get Y amount for that country's offer. */
+  /// (localized) Get Y amount for that country's offer.
   core.String getYAmount;
-  /** Country code for which offer codes may be requested. */
+
+  /// Country code for which offer codes may be requested.
   core.String offerCountryCode;
-  /**
-   * Type of offer country is eligible for.
-   * Possible string values are:
-   * - "OFFER_TYPE_UNSPECIFIED" : Unset.
-   * - "OFFER_TYPE_SPEND_X_GET_Y" : AdWords spend X get Y.
-   * - "OFFER_TYPE_VIDEO" : Youtube video.
-   * - "OFFER_TYPE_SPEND_MATCH" : Spend Match up to Y.
-   */
+
+  /// Type of offer country is eligible for.
+  /// Possible string values are:
+  /// - "OFFER_TYPE_UNSPECIFIED" : Unset.
+  /// - "OFFER_TYPE_SPEND_X_GET_Y" : AdWords spend X get Y.
+  /// - "OFFER_TYPE_VIDEO" : Youtube video.
+  /// - "OFFER_TYPE_SPEND_MATCH" : Spend Match up to Y.
   core.String offerType;
-  /** (localized) Spend X amount for that country's offer. */
+
+  /// (localized) Spend X amount for that country's offer.
   core.String spendXAmount;
 
   CountryOfferInfo();
@@ -2706,7 +2982,8 @@ class CountryOfferInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (getYAmount != null) {
       _json["getYAmount"] = getYAmount;
     }
@@ -2723,18 +3000,16 @@ class CountryOfferInfo {
   }
 }
 
-/** Request message for CreateLead. */
+/// Request message for CreateLead.
 class CreateLeadRequest {
-  /**
-   * The lead resource. The `LeadType` must not be `LEAD_TYPE_UNSPECIFIED`
-   * and either `email` or `phone_number` must be provided.
-   */
+  /// The lead resource. The `LeadType` must not be `LEAD_TYPE_UNSPECIFIED`
+  /// and either `email` or `phone_number` must be provided.
   Lead lead;
-  /**
-   * <a href="https://www.google.com/recaptcha/">reCaptcha</a> challenge info.
-   */
+
+  /// <a href="https://www.google.com/recaptcha/">reCaptcha</a> challenge info.
   RecaptchaChallenge recaptchaChallenge;
-  /** Current request metadata. */
+
+  /// Current request metadata.
   RequestMetadata requestMetadata;
 
   CreateLeadRequest();
@@ -2744,7 +3019,8 @@ class CreateLeadRequest {
       lead = new Lead.fromJson(_json["lead"]);
     }
     if (_json.containsKey("recaptchaChallenge")) {
-      recaptchaChallenge = new RecaptchaChallenge.fromJson(_json["recaptchaChallenge"]);
+      recaptchaChallenge =
+          new RecaptchaChallenge.fromJson(_json["recaptchaChallenge"]);
     }
     if (_json.containsKey("requestMetadata")) {
       requestMetadata = new RequestMetadata.fromJson(_json["requestMetadata"]);
@@ -2752,7 +3028,8 @@ class CreateLeadRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (lead != null) {
       _json["lead"] = (lead).toJson();
     }
@@ -2766,24 +3043,22 @@ class CreateLeadRequest {
   }
 }
 
-/** Response message for CreateLead. */
+/// Response message for CreateLead.
 class CreateLeadResponse {
-  /**
-   * Lead that was created depending on the outcome of
-   * <a href="https://www.google.com/recaptcha/">reCaptcha</a> validation.
-   */
+  /// Lead that was created depending on the outcome of
+  /// <a href="https://www.google.com/recaptcha/">reCaptcha</a> validation.
   Lead lead;
-  /**
-   * The outcome of <a href="https://www.google.com/recaptcha/">reCaptcha</a>
-   * validation.
-   * Possible string values are:
-   * - "RECAPTCHA_STATUS_UNSPECIFIED" : Unchosen.
-   * - "RS_NOT_NEEDED" : No reCaptcha validation needed.
-   * - "RS_PASSED" : reCaptcha challenge passed.
-   * - "RS_FAILED" : reCaptcha challenge failed.
-   */
+
+  /// The outcome of <a href="https://www.google.com/recaptcha/">reCaptcha</a>
+  /// validation.
+  /// Possible string values are:
+  /// - "RECAPTCHA_STATUS_UNSPECIFIED" : Unchosen.
+  /// - "RS_NOT_NEEDED" : No reCaptcha validation needed.
+  /// - "RS_PASSED" : reCaptcha challenge passed.
+  /// - "RS_FAILED" : reCaptcha challenge failed.
   core.String recaptchaStatus;
-  /** Current response metadata. */
+
+  /// Current response metadata.
   ResponseMetadata responseMetadata;
 
   CreateLeadResponse();
@@ -2796,12 +3071,14 @@ class CreateLeadResponse {
       recaptchaStatus = _json["recaptchaStatus"];
     }
     if (_json.containsKey("responseMetadata")) {
-      responseMetadata = new ResponseMetadata.fromJson(_json["responseMetadata"]);
+      responseMetadata =
+          new ResponseMetadata.fromJson(_json["responseMetadata"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (lead != null) {
       _json["lead"] = (lead).toJson();
     }
@@ -2815,27 +3092,24 @@ class CreateLeadResponse {
   }
 }
 
-/**
- * Represents a whole calendar date, e.g. date of birth. The time of day and
- * time zone are either specified elsewhere or are not significant. The date
- * is relative to the Proleptic Gregorian Calendar. The day may be 0 to
- * represent a year and month where the day is not significant, e.g. credit card
- * expiration date. The year may be 0 to represent a month and day independent
- * of year, e.g. anniversary date. Related types are google.type.TimeOfDay
- * and `google.protobuf.Timestamp`.
- */
+/// Represents a whole calendar date, e.g. date of birth. The time of day and
+/// time zone are either specified elsewhere or are not significant. The date
+/// is relative to the Proleptic Gregorian Calendar. The day may be 0 to
+/// represent a year and month where the day is not significant, e.g. credit
+/// card
+/// expiration date. The year may be 0 to represent a month and day independent
+/// of year, e.g. anniversary date. Related types are google.type.TimeOfDay
+/// and `google.protobuf.Timestamp`.
 class Date {
-  /**
-   * Day of month. Must be from 1 to 31 and valid for the year and month, or 0
-   * if specifying a year/month where the day is not significant.
-   */
+  /// Day of month. Must be from 1 to 31 and valid for the year and month, or 0
+  /// if specifying a year/month where the day is not significant.
   core.int day;
-  /** Month of year. Must be from 1 to 12. */
+
+  /// Month of year. Must be from 1 to 12.
   core.int month;
-  /**
-   * Year of date. Must be from 1 to 9999, or 0 if specifying a date without
-   * a year.
-   */
+
+  /// Year of date. Must be from 1 to 9999, or 0 if specifying a date without
+  /// a year.
   core.int year;
 
   Date();
@@ -2853,7 +3127,8 @@ class Date {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (day != null) {
       _json["day"] = day;
     }
@@ -2867,13 +3142,15 @@ class Date {
   }
 }
 
-/** Debug information about this request. */
+/// Debug information about this request.
 class DebugInfo {
-  /** Info about the server that serviced this request. */
+  /// Info about the server that serviced this request.
   core.String serverInfo;
-  /** Server-side debug stack trace. */
+
+  /// Server-side debug stack trace.
   core.String serverTraceInfo;
-  /** URL of the service that handled this request. */
+
+  /// URL of the service that handled this request.
   core.String serviceUrl;
 
   DebugInfo();
@@ -2891,7 +3168,8 @@ class DebugInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (serverInfo != null) {
       _json["serverInfo"] = serverInfo;
     }
@@ -2905,76 +3183,72 @@ class DebugInfo {
   }
 }
 
-/**
- * A generic empty message that you can re-use to avoid defining duplicated
- * empty messages in your APIs. A typical example is to use it as the request
- * or the response type of an API method. For instance:
- *
- *     service Foo {
- *       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
- *     }
- *
- * The JSON representation for `Empty` is empty JSON object `{}`.
- */
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs. A typical example is to use it as the request
+/// or the response type of an API method. For instance:
+///
+///     service Foo {
+///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+///     }
+///
+/// The JSON representation for `Empty` is empty JSON object `{}`.
 class Empty {
-
   Empty();
 
-  Empty.fromJson(core.Map _json) {
-  }
+  Empty.fromJson(core.Map _json) {}
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }
 
-/** Key value data pair for an event. */
+/// Key value data pair for an event.
 class EventData {
-  /**
-   * Data type.
-   * Possible string values are:
-   * - "EVENT_DATA_TYPE_UNSPECIFIED" : Unchosen.
-   * - "ACTION" : Action data.
-   * - "AGENCY_ID" : Agency ID data.
-   * - "AGENCY_NAME" : Agency name data.
-   * - "AGENCY_PHONE_NUMBER" : Agency phone number data.
-   * - "AGENCY_WEBSITE" : Agency website data.
-   * - "BUDGET" : Budget data.
-   * - "CENTER_POINT" : Center-point data.
-   * - "CERTIFICATION" : Certification data.
-   * - "COMMENT" : Comment data.
-   * - "COUNTRY" : Country data.
-   * - "CURRENCY" : Currency data.
-   * - "CURRENTLY_VIEWED_AGENCY_ID" : Currently viewed agency ID data.
-   * - "DISTANCE" : Distance data.
-   * - "DISTANCE_TYPE" : Distance type data.
-   * - "EXAM" : Exam data.
-   * - "HISTORY_TOKEN" : History token data.
-   * - "ID" : Identifier data.
-   * - "INDUSTRY" : Industry data.
-   * - "INSIGHT_TAG" : Insight tag data.
-   * - "LANGUAGE" : Language data.
-   * - "LOCATION" : Location  data.
-   * - "MARKETING_OPT_IN" : Marketing opt-in data.
-   * - "QUERY" : Query data.
-   * - "SEARCH_START_INDEX" : Search start index data.
-   * - "SERVICE" : Service data.
-   * - "SHOW_VOW" : Show vow data.
-   * - "SOLUTION" : Solution data.
-   * - "TRAFFIC_SOURCE_ID" : Traffic source ID data.
-   * - "TRAFFIC_SUB_ID" : Traffic sub ID data.
-   * - "VIEW_PORT" : Viewport data.
-   * - "WEBSITE" : Website data.
-   * - "DETAILS" : Details data.
-   * - "EXPERIMENT_ID" : Experiment ID data.
-   * - "GPS_MOTIVATION" : Google Partner Search motivation data.
-   * - "URL" : URL data.
-   * - "ELEMENT_FOCUS" : Element we wanted user to focus on.
-   * - "PROGRESS" : Progress when viewing an item \[0-100\].
-   */
+  /// Data type.
+  /// Possible string values are:
+  /// - "EVENT_DATA_TYPE_UNSPECIFIED" : Unchosen.
+  /// - "ACTION" : Action data.
+  /// - "AGENCY_ID" : Agency ID data.
+  /// - "AGENCY_NAME" : Agency name data.
+  /// - "AGENCY_PHONE_NUMBER" : Agency phone number data.
+  /// - "AGENCY_WEBSITE" : Agency website data.
+  /// - "BUDGET" : Budget data.
+  /// - "CENTER_POINT" : Center-point data.
+  /// - "CERTIFICATION" : Certification data.
+  /// - "COMMENT" : Comment data.
+  /// - "COUNTRY" : Country data.
+  /// - "CURRENCY" : Currency data.
+  /// - "CURRENTLY_VIEWED_AGENCY_ID" : Currently viewed agency ID data.
+  /// - "DISTANCE" : Distance data.
+  /// - "DISTANCE_TYPE" : Distance type data.
+  /// - "EXAM" : Exam data.
+  /// - "HISTORY_TOKEN" : History token data.
+  /// - "ID" : Identifier data.
+  /// - "INDUSTRY" : Industry data.
+  /// - "INSIGHT_TAG" : Insight tag data.
+  /// - "LANGUAGE" : Language data.
+  /// - "LOCATION" : Location  data.
+  /// - "MARKETING_OPT_IN" : Marketing opt-in data.
+  /// - "QUERY" : Query data.
+  /// - "SEARCH_START_INDEX" : Search start index data.
+  /// - "SERVICE" : Service data.
+  /// - "SHOW_VOW" : Show vow data.
+  /// - "SOLUTION" : Solution data.
+  /// - "TRAFFIC_SOURCE_ID" : Traffic source ID data.
+  /// - "TRAFFIC_SUB_ID" : Traffic sub ID data.
+  /// - "VIEW_PORT" : Viewport data.
+  /// - "WEBSITE" : Website data.
+  /// - "DETAILS" : Details data.
+  /// - "EXPERIMENT_ID" : Experiment ID data.
+  /// - "GPS_MOTIVATION" : Google Partner Search motivation data.
+  /// - "URL" : URL data.
+  /// - "ELEMENT_FOCUS" : Element we wanted user to focus on.
+  /// - "PROGRESS" : Progress when viewing an item \[0-100\].
   core.String key;
-  /** Data values. */
+
+  /// Data values.
   core.List<core.String> values;
 
   EventData();
@@ -2989,7 +3263,8 @@ class EventData {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (key != null) {
       _json["key"] = key;
     }
@@ -3000,33 +3275,36 @@ class EventData {
   }
 }
 
-/** A user's information on a specific exam. */
+/// A user's information on a specific exam.
 class ExamStatus {
-  /**
-   * The type of the exam.
-   * Possible string values are:
-   * - "CERTIFICATION_EXAM_TYPE_UNSPECIFIED" : Unchosen.
-   * - "CET_ADWORDS_FUNDAMENTALS" : Adwords Fundamentals exam.
-   * - "CET_ADWORDS_ADVANCED_SEARCH" : AdWords advanced search exam.
-   * - "CET_ADWORDS_ADVANCED_DISPLAY" : AdWords advanced display exam.
-   * - "CET_VIDEO_ADS" : VideoAds exam.
-   * - "CET_DOUBLECLICK" : DoubleClick exam.
-   * - "CET_ANALYTICS" : Analytics exam.
-   * - "CET_SHOPPING" : Shopping exam.
-   * - "CET_MOBILE" : Mobile exam.
-   * - "CET_DIGITAL_SALES" : Digital Sales exam.
-   * - "CET_MOBILE_SITES" : Mobile Sites exam.
-   */
+  /// The type of the exam.
+  /// Possible string values are:
+  /// - "CERTIFICATION_EXAM_TYPE_UNSPECIFIED" : Unchosen.
+  /// - "CET_ADWORDS_FUNDAMENTALS" : Adwords Fundamentals exam.
+  /// - "CET_ADWORDS_ADVANCED_SEARCH" : AdWords advanced search exam.
+  /// - "CET_ADWORDS_ADVANCED_DISPLAY" : AdWords advanced display exam.
+  /// - "CET_VIDEO_ADS" : VideoAds exam.
+  /// - "CET_DOUBLECLICK" : DoubleClick exam.
+  /// - "CET_ANALYTICS" : Analytics exam.
+  /// - "CET_SHOPPING" : Shopping exam.
+  /// - "CET_MOBILE" : Mobile exam.
+  /// - "CET_DIGITAL_SALES" : Digital Sales exam.
+  /// - "CET_MOBILE_SITES" : Mobile Sites exam.
   core.String examType;
-  /** Date this exam is due to expire. */
+
+  /// Date this exam is due to expire.
   core.String expiration;
-  /** The date the user last passed this exam. */
+
+  /// The date the user last passed this exam.
   core.String lastPassed;
-  /** Whether this exam has been passed and not expired. */
+
+  /// Whether this exam has been passed and not expired.
   core.bool passed;
-  /** The date the user last taken this exam. */
+
+  /// The date the user last taken this exam.
   core.String taken;
-  /** Whether this exam is in the state of warning. */
+
+  /// Whether this exam is in the state of warning.
   core.bool warning;
 
   ExamStatus();
@@ -3053,7 +3331,8 @@ class ExamStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (examType != null) {
       _json["examType"] = examType;
     }
@@ -3076,27 +3355,27 @@ class ExamStatus {
   }
 }
 
-/** A token that allows a user to take an exam. */
+/// A token that allows a user to take an exam.
 class ExamToken {
-  /** The id of the exam the token is for. */
+  /// The id of the exam the token is for.
   core.String examId;
-  /**
-   * The type of the exam the token belongs to.
-   * Possible string values are:
-   * - "CERTIFICATION_EXAM_TYPE_UNSPECIFIED" : Unchosen.
-   * - "CET_ADWORDS_FUNDAMENTALS" : Adwords Fundamentals exam.
-   * - "CET_ADWORDS_ADVANCED_SEARCH" : AdWords advanced search exam.
-   * - "CET_ADWORDS_ADVANCED_DISPLAY" : AdWords advanced display exam.
-   * - "CET_VIDEO_ADS" : VideoAds exam.
-   * - "CET_DOUBLECLICK" : DoubleClick exam.
-   * - "CET_ANALYTICS" : Analytics exam.
-   * - "CET_SHOPPING" : Shopping exam.
-   * - "CET_MOBILE" : Mobile exam.
-   * - "CET_DIGITAL_SALES" : Digital Sales exam.
-   * - "CET_MOBILE_SITES" : Mobile Sites exam.
-   */
+
+  /// The type of the exam the token belongs to.
+  /// Possible string values are:
+  /// - "CERTIFICATION_EXAM_TYPE_UNSPECIFIED" : Unchosen.
+  /// - "CET_ADWORDS_FUNDAMENTALS" : Adwords Fundamentals exam.
+  /// - "CET_ADWORDS_ADVANCED_SEARCH" : AdWords advanced search exam.
+  /// - "CET_ADWORDS_ADVANCED_DISPLAY" : AdWords advanced display exam.
+  /// - "CET_VIDEO_ADS" : VideoAds exam.
+  /// - "CET_DOUBLECLICK" : DoubleClick exam.
+  /// - "CET_ANALYTICS" : Analytics exam.
+  /// - "CET_SHOPPING" : Shopping exam.
+  /// - "CET_MOBILE" : Mobile exam.
+  /// - "CET_DIGITAL_SALES" : Digital Sales exam.
+  /// - "CET_MOBILE_SITES" : Mobile Sites exam.
   core.String examType;
-  /** The token, only present if the user has access to the exam. */
+
+  /// The token, only present if the user has access to the exam.
   core.String token;
 
   ExamToken();
@@ -3114,7 +3393,8 @@ class ExamToken {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (examId != null) {
       _json["examId"] = examId;
     }
@@ -3128,11 +3408,12 @@ class ExamToken {
   }
 }
 
-/** Response message for GetCompany. */
+/// Response message for GetCompany.
 class GetCompanyResponse {
-  /** The company. */
+  /// The company.
   Company company;
-  /** Current response metadata. */
+
+  /// Current response metadata.
   ResponseMetadata responseMetadata;
 
   GetCompanyResponse();
@@ -3142,12 +3423,14 @@ class GetCompanyResponse {
       company = new Company.fromJson(_json["company"]);
     }
     if (_json.containsKey("responseMetadata")) {
-      responseMetadata = new ResponseMetadata.fromJson(_json["responseMetadata"]);
+      responseMetadata =
+          new ResponseMetadata.fromJson(_json["responseMetadata"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (company != null) {
       _json["company"] = (company).toJson();
     }
@@ -3158,24 +3441,24 @@ class GetCompanyResponse {
   }
 }
 
-/**
- * Response message for
- * GetPartnersStatus.
- */
+/// Response message for
+/// GetPartnersStatus.
 class GetPartnersStatusResponse {
-  /** Current response metadata. */
+  /// Current response metadata.
   ResponseMetadata responseMetadata;
 
   GetPartnersStatusResponse();
 
   GetPartnersStatusResponse.fromJson(core.Map _json) {
     if (_json.containsKey("responseMetadata")) {
-      responseMetadata = new ResponseMetadata.fromJson(_json["responseMetadata"]);
+      responseMetadata =
+          new ResponseMetadata.fromJson(_json["responseMetadata"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (responseMetadata != null) {
       _json["responseMetadata"] = (responseMetadata).toJson();
     }
@@ -3183,49 +3466,54 @@ class GetPartnersStatusResponse {
   }
 }
 
-/** Historical information about a Google Partners Offer. */
+/// Historical information about a Google Partners Offer.
 class HistoricalOffer {
-  /** Client's AdWords page URL. */
+  /// Client's AdWords page URL.
   core.String adwordsUrl;
-  /** Email address for client. */
+
+  /// Email address for client.
   core.String clientEmail;
-  /** ID of client. */
+
+  /// ID of client.
   core.String clientId;
-  /** Name of the client. */
+
+  /// Name of the client.
   core.String clientName;
-  /** Time offer was first created. */
+
+  /// Time offer was first created.
   core.String creationTime;
-  /** Time this offer expires. */
+
+  /// Time this offer expires.
   core.String expirationTime;
-  /** Time last action was taken. */
+
+  /// Time last action was taken.
   core.String lastModifiedTime;
-  /** Offer code. */
+
+  /// Offer code.
   core.String offerCode;
-  /** Country Code for the offer country. */
+
+  /// Country Code for the offer country.
   core.String offerCountryCode;
-  /**
-   * Type of offer.
-   * Possible string values are:
-   * - "OFFER_TYPE_UNSPECIFIED" : Unset.
-   * - "OFFER_TYPE_SPEND_X_GET_Y" : AdWords spend X get Y.
-   * - "OFFER_TYPE_VIDEO" : Youtube video.
-   * - "OFFER_TYPE_SPEND_MATCH" : Spend Match up to Y.
-   */
+
+  /// Type of offer.
+  /// Possible string values are:
+  /// - "OFFER_TYPE_UNSPECIFIED" : Unset.
+  /// - "OFFER_TYPE_SPEND_X_GET_Y" : AdWords spend X get Y.
+  /// - "OFFER_TYPE_VIDEO" : Youtube video.
+  /// - "OFFER_TYPE_SPEND_MATCH" : Spend Match up to Y.
   core.String offerType;
-  /**
-   * Name (First + Last) of the partners user to whom the incentive is
-   * allocated.
-   */
+
+  /// Name (First + Last) of the partners user to whom the incentive is
+  /// allocated.
   core.String senderName;
-  /**
-   * Status of the offer.
-   * Possible string values are:
-   * - "OFFER_STATUS_UNSPECIFIED" : Unset.
-   * - "OFFER_STATUS_DISTRIBUTED" : Offer distributed.
-   * - "OFFER_STATUS_REDEEMED" : Offer redeemed.
-   * - "OFFER_STATUS_AWARDED" : Offer awarded.
-   * - "OFFER_STATUS_EXPIRED" : Offer expired.
-   */
+
+  /// Status of the offer.
+  /// Possible string values are:
+  /// - "OFFER_STATUS_UNSPECIFIED" : Unset.
+  /// - "OFFER_STATUS_DISTRIBUTED" : Offer distributed.
+  /// - "OFFER_STATUS_REDEEMED" : Offer redeemed.
+  /// - "OFFER_STATUS_AWARDED" : Offer awarded.
+  /// - "OFFER_STATUS_EXPIRED" : Offer expired.
   core.String status;
 
   HistoricalOffer();
@@ -3270,7 +3558,8 @@ class HistoricalOffer {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (adwordsUrl != null) {
       _json["adwordsUrl"] = adwordsUrl;
     }
@@ -3311,51 +3600,51 @@ class HistoricalOffer {
   }
 }
 
-/**
- * An object representing a latitude/longitude pair. This is expressed as a pair
- * of doubles representing degrees latitude and degrees longitude. Unless
- * specified otherwise, this must conform to the
- * <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
- * standard</a>. Values must be within normalized ranges.
- *
- * Example of normalization code in Python:
- *
- *     def NormalizeLongitude(longitude):
- *       """Wraps decimal degrees longitude to [-180.0, 180.0]."""
- *       q, r = divmod(longitude, 360.0)
- *       if r > 180.0 or (r == 180.0 and q <= -1.0):
- *         return r - 360.0
- *       return r
- *
- *     def NormalizeLatLng(latitude, longitude):
- *       """Wraps decimal degrees latitude and longitude to
- *       [-90.0, 90.0] and [-180.0, 180.0], respectively."""
- *       r = latitude % 360.0
- *       if r <= 90.0:
- *         return r, NormalizeLongitude(longitude)
- *       elif r >= 270.0:
- *         return r - 360, NormalizeLongitude(longitude)
- *       else:
- *         return 180 - r, NormalizeLongitude(longitude + 180.0)
- *
- *     assert 180.0 == NormalizeLongitude(180.0)
- *     assert -180.0 == NormalizeLongitude(-180.0)
- *     assert -179.0 == NormalizeLongitude(181.0)
- *     assert (0.0, 0.0) == NormalizeLatLng(360.0, 0.0)
- *     assert (0.0, 0.0) == NormalizeLatLng(-360.0, 0.0)
- *     assert (85.0, 180.0) == NormalizeLatLng(95.0, 0.0)
- *     assert (-85.0, -170.0) == NormalizeLatLng(-95.0, 10.0)
- *     assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0)
- *     assert (-90.0, -10.0) == NormalizeLatLng(-90.0, -10.0)
- *     assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0)
- *     assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
- *     assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
- *     assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
- */
+/// An object representing a latitude/longitude pair. This is expressed as a
+/// pair
+/// of doubles representing degrees latitude and degrees longitude. Unless
+/// specified otherwise, this must conform to the
+/// <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
+/// standard</a>. Values must be within normalized ranges.
+///
+/// Example of normalization code in Python:
+///
+///     def NormalizeLongitude(longitude):
+///       """Wraps decimal degrees longitude to [-180.0, 180.0]."""
+///       q, r = divmod(longitude, 360.0)
+///       if r > 180.0 or (r == 180.0 and q <= -1.0):
+///         return r - 360.0
+///       return r
+///
+///     def NormalizeLatLng(latitude, longitude):
+///       """Wraps decimal degrees latitude and longitude to
+///       [-90.0, 90.0] and [-180.0, 180.0], respectively."""
+///       r = latitude % 360.0
+///       if r <= 90.0:
+///         return r, NormalizeLongitude(longitude)
+///       elif r >= 270.0:
+///         return r - 360, NormalizeLongitude(longitude)
+///       else:
+///         return 180 - r, NormalizeLongitude(longitude + 180.0)
+///
+///     assert 180.0 == NormalizeLongitude(180.0)
+///     assert -180.0 == NormalizeLongitude(-180.0)
+///     assert -179.0 == NormalizeLongitude(181.0)
+///     assert (0.0, 0.0) == NormalizeLatLng(360.0, 0.0)
+///     assert (0.0, 0.0) == NormalizeLatLng(-360.0, 0.0)
+///     assert (85.0, 180.0) == NormalizeLatLng(95.0, 0.0)
+///     assert (-85.0, -170.0) == NormalizeLatLng(-95.0, 10.0)
+///     assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0)
+///     assert (-90.0, -10.0) == NormalizeLatLng(-90.0, -10.0)
+///     assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0)
+///     assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
+///     assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
+///     assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
 class LatLng {
-  /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
+  /// The latitude in degrees. It must be in the range [-90.0, +90.0].
   core.double latitude;
-  /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
+
+  /// The longitude in degrees. It must be in the range [-180.0, +180.0].
   core.double longitude;
 
   LatLng();
@@ -3370,7 +3659,8 @@ class LatLng {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (latitude != null) {
       _json["latitude"] = latitude;
     }
@@ -3381,57 +3671,63 @@ class LatLng {
   }
 }
 
-/**
- * A lead resource that represents an advertiser contact for a `Company`. These
- * are usually generated via Google Partner Search (the advertiser portal).
- */
+/// A lead resource that represents an advertiser contact for a `Company`. These
+/// are usually generated via Google Partner Search (the advertiser portal).
 class Lead {
-  /** The AdWords Customer ID of the lead. */
+  /// The AdWords Customer ID of the lead.
   core.String adwordsCustomerId;
-  /** Comments lead source gave. */
+
+  /// Comments lead source gave.
   core.String comments;
-  /** Timestamp of when this lead was created. */
+
+  /// Timestamp of when this lead was created.
   core.String createTime;
-  /** Email address of lead source. */
+
+  /// Email address of lead source.
   core.String email;
-  /** Last name of lead source. */
+
+  /// Last name of lead source.
   core.String familyName;
-  /** First name of lead source. */
+
+  /// First name of lead source.
   core.String givenName;
-  /** List of reasons for using Google Partner Search and creating a lead. */
+
+  /// List of reasons for using Google Partner Search and creating a lead.
   core.List<core.String> gpsMotivations;
-  /** ID of the lead. */
+
+  /// ID of the lead.
   core.String id;
-  /**
-   * Language code of the lead's language preference, as defined by
-   * <a href="https://tools.ietf.org/html/bcp47">BCP 47</a>
-   * (IETF BCP 47, "Tags for Identifying Languages").
-   */
+
+  /// Language code of the lead's language preference, as defined by
+  /// <a href="https://tools.ietf.org/html/bcp47">BCP 47</a>
+  /// (IETF BCP 47, "Tags for Identifying Languages").
   core.String languageCode;
-  /** Whether or not the lead signed up for marketing emails */
+
+  /// Whether or not the lead signed up for marketing emails
   core.bool marketingOptIn;
-  /** The minimum monthly budget lead source is willing to spend. */
+
+  /// The minimum monthly budget lead source is willing to spend.
   Money minMonthlyBudget;
-  /** Phone number of lead source. */
+
+  /// Phone number of lead source.
   core.String phoneNumber;
-  /**
-   * The lead's state in relation to the company.
-   * Possible string values are:
-   * - "LEAD_STATE_UNSPECIFIED" : Unchosen.
-   * - "LEAD" : Lead not yet contacted.
-   * - "CONTACTED" : Lead has been contacted.
-   * - "CLIENT" : Lead has become a client.
-   * - "OTHER" : Lead in a state not covered by other options.
-   */
+
+  /// The lead's state in relation to the company.
+  /// Possible string values are:
+  /// - "LEAD_STATE_UNSPECIFIED" : Unchosen.
+  /// - "LEAD" : Lead not yet contacted.
+  /// - "CONTACTED" : Lead has been contacted.
+  /// - "CLIENT" : Lead has become a client.
+  /// - "OTHER" : Lead in a state not covered by other options.
   core.String state;
-  /**
-   * Type of lead.
-   * Possible string values are:
-   * - "LEAD_TYPE_UNSPECIFIED" : Unchosen.
-   * - "LT_GPS" : Google Partner Search.
-   */
+
+  /// Type of lead.
+  /// Possible string values are:
+  /// - "LEAD_TYPE_UNSPECIFIED" : Unchosen.
+  /// - "LT_GPS" : Google Partner Search.
   core.String type;
-  /** Website URL of lead source. */
+
+  /// Website URL of lead source.
   core.String websiteUrl;
 
   Lead();
@@ -3485,7 +3781,8 @@ class Lead {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (adwordsCustomerId != null) {
       _json["adwordsCustomerId"] = adwordsCustomerId;
     }
@@ -3535,52 +3832,52 @@ class Lead {
   }
 }
 
-/**
- * Response message for
- * ListAnalytics.
- */
+/// Response message for
+/// ListAnalytics.
 class ListAnalyticsResponse {
-  /**
-   * The list of analytics.
-   * Sorted in ascending order of
-   * Analytics.event_date.
-   */
+  /// The list of analytics.
+  /// Sorted in ascending order of
+  /// Analytics.event_date.
   core.List<Analytics> analytics;
-  /**
-   * Aggregated information across the response's
-   * analytics.
-   */
+
+  /// Aggregated information across the response's
+  /// analytics.
   AnalyticsSummary analyticsSummary;
-  /**
-   * A token to retrieve next page of results.
-   * Pass this value in the `ListAnalyticsRequest.page_token` field in the
-   * subsequent call to
-   * ListAnalytics to retrieve the
-   * next page of results.
-   */
+
+  /// A token to retrieve next page of results.
+  /// Pass this value in the `ListAnalyticsRequest.page_token` field in the
+  /// subsequent call to
+  /// ListAnalytics to retrieve the
+  /// next page of results.
   core.String nextPageToken;
-  /** Current response metadata. */
+
+  /// Current response metadata.
   ResponseMetadata responseMetadata;
 
   ListAnalyticsResponse();
 
   ListAnalyticsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("analytics")) {
-      analytics = _json["analytics"].map((value) => new Analytics.fromJson(value)).toList();
+      analytics = _json["analytics"]
+          .map((value) => new Analytics.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("analyticsSummary")) {
-      analyticsSummary = new AnalyticsSummary.fromJson(_json["analyticsSummary"]);
+      analyticsSummary =
+          new AnalyticsSummary.fromJson(_json["analyticsSummary"]);
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("responseMetadata")) {
-      responseMetadata = new ResponseMetadata.fromJson(_json["responseMetadata"]);
+      responseMetadata =
+          new ResponseMetadata.fromJson(_json["responseMetadata"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (analytics != null) {
       _json["analytics"] = analytics.map((value) => (value).toJson()).toList();
     }
@@ -3597,40 +3894,42 @@ class ListAnalyticsResponse {
   }
 }
 
-/**
- * Response message for
- * ListCompanies.
- */
+/// Response message for
+/// ListCompanies.
 class ListCompaniesResponse {
-  /** The list of companies. */
+  /// The list of companies.
   core.List<Company> companies;
-  /**
-   * A token to retrieve next page of results.
-   * Pass this value in the `ListCompaniesRequest.page_token` field in the
-   * subsequent call to
-   * ListCompanies to retrieve the
-   * next page of results.
-   */
+
+  /// A token to retrieve next page of results.
+  /// Pass this value in the `ListCompaniesRequest.page_token` field in the
+  /// subsequent call to
+  /// ListCompanies to retrieve the
+  /// next page of results.
   core.String nextPageToken;
-  /** Current response metadata. */
+
+  /// Current response metadata.
   ResponseMetadata responseMetadata;
 
   ListCompaniesResponse();
 
   ListCompaniesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("companies")) {
-      companies = _json["companies"].map((value) => new Company.fromJson(value)).toList();
+      companies = _json["companies"]
+          .map((value) => new Company.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("responseMetadata")) {
-      responseMetadata = new ResponseMetadata.fromJson(_json["responseMetadata"]);
+      responseMetadata =
+          new ResponseMetadata.fromJson(_json["responseMetadata"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (companies != null) {
       _json["companies"] = companies.map((value) => (value).toJson()).toList();
     }
@@ -3644,21 +3943,22 @@ class ListCompaniesResponse {
   }
 }
 
-/** Response message for ListLeads. */
+/// Response message for ListLeads.
 class ListLeadsResponse {
-  /** The list of leads. */
+  /// The list of leads.
   core.List<Lead> leads;
-  /**
-   * A token to retrieve next page of results.
-   * Pass this value in the `ListLeadsRequest.page_token` field in the
-   * subsequent call to
-   * ListLeads to retrieve the
-   * next page of results.
-   */
+
+  /// A token to retrieve next page of results.
+  /// Pass this value in the `ListLeadsRequest.page_token` field in the
+  /// subsequent call to
+  /// ListLeads to retrieve the
+  /// next page of results.
   core.String nextPageToken;
-  /** Current response metadata. */
+
+  /// Current response metadata.
   ResponseMetadata responseMetadata;
-  /** The total count of leads for the given company. */
+
+  /// The total count of leads for the given company.
   core.int totalSize;
 
   ListLeadsResponse();
@@ -3671,7 +3971,8 @@ class ListLeadsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("responseMetadata")) {
-      responseMetadata = new ResponseMetadata.fromJson(_json["responseMetadata"]);
+      responseMetadata =
+          new ResponseMetadata.fromJson(_json["responseMetadata"]);
     }
     if (_json.containsKey("totalSize")) {
       totalSize = _json["totalSize"];
@@ -3679,7 +3980,8 @@ class ListLeadsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (leads != null) {
       _json["leads"] = leads.map((value) => (value).toJson()).toList();
     }
@@ -3696,21 +3998,24 @@ class ListLeadsResponse {
   }
 }
 
-/** Response for ListOfferHistory. */
+/// Response for ListOfferHistory.
 class ListOffersHistoryResponse {
-  /** True if the user has the option to show entire company history. */
+  /// True if the user has the option to show entire company history.
   core.bool canShowEntireCompany;
-  /**
-   * Supply this token in a ListOffersHistoryRequest to retrieve the next page.
-   */
+
+  /// Supply this token in a ListOffersHistoryRequest to retrieve the next page.
   core.String nextPageToken;
-  /** Historical offers meeting request. */
+
+  /// Historical offers meeting request.
   core.List<HistoricalOffer> offers;
-  /** Current response metadata. */
+
+  /// Current response metadata.
   ResponseMetadata responseMetadata;
-  /** True if this response is showing entire company history. */
+
+  /// True if this response is showing entire company history.
   core.bool showingEntireCompany;
-  /** Number of results across all pages. */
+
+  /// Number of results across all pages.
   core.int totalResults;
 
   ListOffersHistoryResponse();
@@ -3723,10 +4028,13 @@ class ListOffersHistoryResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("offers")) {
-      offers = _json["offers"].map((value) => new HistoricalOffer.fromJson(value)).toList();
+      offers = _json["offers"]
+          .map((value) => new HistoricalOffer.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("responseMetadata")) {
-      responseMetadata = new ResponseMetadata.fromJson(_json["responseMetadata"]);
+      responseMetadata =
+          new ResponseMetadata.fromJson(_json["responseMetadata"]);
     }
     if (_json.containsKey("showingEntireCompany")) {
       showingEntireCompany = _json["showingEntireCompany"];
@@ -3737,7 +4045,8 @@ class ListOffersHistoryResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (canShowEntireCompany != null) {
       _json["canShowEntireCompany"] = canShowEntireCompany;
     }
@@ -3760,40 +4069,45 @@ class ListOffersHistoryResponse {
   }
 }
 
-/** Response for ListOffer. */
+/// Response for ListOffer.
 class ListOffersResponse {
-  /** Available Offers to be distributed. */
+  /// Available Offers to be distributed.
   core.List<AvailableOffer> availableOffers;
-  /**
-   * Reason why no Offers are available.
-   * Possible string values are:
-   * - "NO_OFFER_REASON_UNSPECIFIED" : Unset.
-   * - "NO_OFFER_REASON_NO_MCC" : Not an MCC.
-   * - "NO_OFFER_REASON_LIMIT_REACHED" : Offer limit has been reached.
-   * - "NO_OFFER_REASON_INELIGIBLE" : Ineligible for offers.
-   */
+
+  /// Reason why no Offers are available.
+  /// Possible string values are:
+  /// - "NO_OFFER_REASON_UNSPECIFIED" : Unset.
+  /// - "NO_OFFER_REASON_NO_MCC" : Not an MCC.
+  /// - "NO_OFFER_REASON_LIMIT_REACHED" : Offer limit has been reached.
+  /// - "NO_OFFER_REASON_INELIGIBLE" : Ineligible for offers.
   core.String noOfferReason;
-  /** Current response metadata. */
+
+  /// Current response metadata.
   ResponseMetadata responseMetadata;
 
   ListOffersResponse();
 
   ListOffersResponse.fromJson(core.Map _json) {
     if (_json.containsKey("availableOffers")) {
-      availableOffers = _json["availableOffers"].map((value) => new AvailableOffer.fromJson(value)).toList();
+      availableOffers = _json["availableOffers"]
+          .map((value) => new AvailableOffer.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("noOfferReason")) {
       noOfferReason = _json["noOfferReason"];
     }
     if (_json.containsKey("responseMetadata")) {
-      responseMetadata = new ResponseMetadata.fromJson(_json["responseMetadata"]);
+      responseMetadata =
+          new ResponseMetadata.fromJson(_json["responseMetadata"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (availableOffers != null) {
-      _json["availableOffers"] = availableOffers.map((value) => (value).toJson()).toList();
+      _json["availableOffers"] =
+          availableOffers.map((value) => (value).toJson()).toList();
     }
     if (noOfferReason != null) {
       _json["noOfferReason"] = noOfferReason;
@@ -3805,21 +4119,21 @@ class ListOffersResponse {
   }
 }
 
-/**
- * Response message for
- * ListUserStates.
- */
+/// Response message for
+/// ListUserStates.
 class ListUserStatesResponse {
-  /** Current response metadata. */
+  /// Current response metadata.
   ResponseMetadata responseMetadata;
-  /** User's states. */
+
+  /// User's states.
   core.List<core.String> userStates;
 
   ListUserStatesResponse();
 
   ListUserStatesResponse.fromJson(core.Map _json) {
     if (_json.containsKey("responseMetadata")) {
-      responseMetadata = new ResponseMetadata.fromJson(_json["responseMetadata"]);
+      responseMetadata =
+          new ResponseMetadata.fromJson(_json["responseMetadata"]);
     }
     if (_json.containsKey("userStates")) {
       userStates = _json["userStates"];
@@ -3827,7 +4141,8 @@ class ListUserStatesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (responseMetadata != null) {
       _json["responseMetadata"] = (responseMetadata).toJson();
     }
@@ -3838,21 +4153,20 @@ class ListUserStatesResponse {
   }
 }
 
-/** The localized company information. */
+/// The localized company information.
 class LocalizedCompanyInfo {
-  /** List of country codes for the localized company info. */
+  /// List of country codes for the localized company info.
   core.List<core.String> countryCodes;
-  /** Localized display name. */
+
+  /// Localized display name.
   core.String displayName;
-  /**
-   * Language code of the localized company info, as defined by
-   * <a href="https://tools.ietf.org/html/bcp47">BCP 47</a>
-   * (IETF BCP 47, "Tags for Identifying Languages").
-   */
+
+  /// Language code of the localized company info, as defined by
+  /// <a href="https://tools.ietf.org/html/bcp47">BCP 47</a>
+  /// (IETF BCP 47, "Tags for Identifying Languages").
   core.String languageCode;
-  /**
-   * Localized brief description that the company uses to advertise themselves.
-   */
+
+  /// Localized brief description that the company uses to advertise themselves.
   core.String overview;
 
   LocalizedCompanyInfo();
@@ -3873,7 +4187,8 @@ class LocalizedCompanyInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (countryCodes != null) {
       _json["countryCodes"] = countryCodes;
     }
@@ -3890,39 +4205,40 @@ class LocalizedCompanyInfo {
   }
 }
 
-/**
- * A location with address and geographic coordinates. May optionally contain a
- * detailed (multi-field) version of the address.
- */
+/// A location with address and geographic coordinates. May optionally contain a
+/// detailed (multi-field) version of the address.
 class Location {
-  /** The single string version of the address. */
+  /// The single string version of the address.
   core.String address;
-  /**
-   * The following address lines represent the most specific part of any
-   * address.
-   */
+
+  /// The following address lines represent the most specific part of any
+  /// address.
   core.List<core.String> addressLine;
-  /** Top-level administrative subdivision of this country. */
+
+  /// Top-level administrative subdivision of this country.
   core.String administrativeArea;
-  /**
-   * Dependent locality or sublocality. Used for UK dependent localities, or
-   * neighborhoods or boroughs in other locations.
-   */
+
+  /// Dependent locality or sublocality. Used for UK dependent localities, or
+  /// neighborhoods or boroughs in other locations.
   core.String dependentLocality;
-  /** Language code of the address. Should be in BCP 47 format. */
+
+  /// Language code of the address. Should be in BCP 47 format.
   core.String languageCode;
-  /** The latitude and longitude of the location, in degrees. */
+
+  /// The latitude and longitude of the location, in degrees.
   LatLng latLng;
-  /** Generally refers to the city/town portion of an address. */
+
+  /// Generally refers to the city/town portion of an address.
   core.String locality;
-  /** Values are frequently alphanumeric. */
+
+  /// Values are frequently alphanumeric.
   core.String postalCode;
-  /** CLDR (Common Locale Data Repository) region code . */
+
+  /// CLDR (Common Locale Data Repository) region code .
   core.String regionCode;
-  /**
-   * Use of this code is very country-specific, but will refer to a secondary
-   * classification code for sorting mail.
-   */
+
+  /// Use of this code is very country-specific, but will refer to a secondary
+  /// classification code for sorting mail.
   core.String sortingCode;
 
   Location();
@@ -3961,7 +4277,8 @@ class Location {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (address != null) {
       _json["address"] = address;
     }
@@ -3996,28 +4313,25 @@ class Location {
   }
 }
 
-/**
- * Request message for
- * LogClientMessage.
- */
+/// Request message for
+/// LogClientMessage.
 class LogMessageRequest {
-  /**
-   * Map of client info, such as URL, browser navigator, browser platform, etc.
-   */
+  /// Map of client info, such as URL, browser navigator, browser platform, etc.
   core.Map<core.String, core.String> clientInfo;
-  /** Details about the client message. */
+
+  /// Details about the client message.
   core.String details;
-  /**
-   * Message level of client message.
-   * Possible string values are:
-   * - "MESSAGE_LEVEL_UNSPECIFIED" : Unchosen.
-   * - "ML_FINE" : Message level for tracing information.
-   * - "ML_INFO" : Message level for informational messages.
-   * - "ML_WARNING" : Message level for potential problems.
-   * - "ML_SEVERE" : Message level for serious failures.
-   */
+
+  /// Message level of client message.
+  /// Possible string values are:
+  /// - "MESSAGE_LEVEL_UNSPECIFIED" : Unchosen.
+  /// - "ML_FINE" : Message level for tracing information.
+  /// - "ML_INFO" : Message level for informational messages.
+  /// - "ML_WARNING" : Message level for potential problems.
+  /// - "ML_SEVERE" : Message level for serious failures.
   core.String level;
-  /** Current request metadata. */
+
+  /// Current request metadata.
   RequestMetadata requestMetadata;
 
   LogMessageRequest();
@@ -4038,7 +4352,8 @@ class LogMessageRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (clientInfo != null) {
       _json["clientInfo"] = clientInfo;
     }
@@ -4055,24 +4370,24 @@ class LogMessageRequest {
   }
 }
 
-/**
- * Response message for
- * LogClientMessage.
- */
+/// Response message for
+/// LogClientMessage.
 class LogMessageResponse {
-  /** Current response metadata. */
+  /// Current response metadata.
   ResponseMetadata responseMetadata;
 
   LogMessageResponse();
 
   LogMessageResponse.fromJson(core.Map _json) {
     if (_json.containsKey("responseMetadata")) {
-      responseMetadata = new ResponseMetadata.fromJson(_json["responseMetadata"]);
+      responseMetadata =
+          new ResponseMetadata.fromJson(_json["responseMetadata"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (responseMetadata != null) {
       _json["responseMetadata"] = (responseMetadata).toJson();
     }
@@ -4080,352 +4395,352 @@ class LogMessageResponse {
   }
 }
 
-/**
- * Request message for
- * LogUserEvent.
- */
+/// Request message for
+/// LogUserEvent.
 class LogUserEventRequest {
-  /**
-   * The action that occurred.
-   * Possible string values are:
-   * - "EVENT_ACTION_UNSPECIFIED" : Unchosen.
-   * - "SMB_CLICKED_FIND_A_PARTNER_BUTTON_BOTTOM" : Advertiser clicked `Find a
-   * partner` bottom button.
-   * - "SMB_CLICKED_FIND_A_PARTNER_BUTTON_TOP" : Advertiser clicked `Find a
-   * partner` top button.
-   * - "AGENCY_CLICKED_JOIN_NOW_BUTTON_BOTTOM" : Agency clicked `Join now`
-   * bottom button.
-   * - "AGENCY_CLICKED_JOIN_NOW_BUTTON_TOP" : Agency clicked `Join now` top
-   * button.
-   * - "SMB_CANCELED_PARTNER_CONTACT_FORM" : Advertiser canceled partner contact
-   * form.
-   * - "SMB_CLICKED_CONTACT_A_PARTNER" : Advertiser started partner contact
-   * form.
-   * - "SMB_COMPLETED_PARTNER_CONTACT_FORM" : Advertiser completed partner
-   * contact form.
-   * - "SMB_ENTERED_EMAIL_IN_CONTACT_PARTNER_FORM" : Advertiser entered email in
-   * contact form.
-   * - "SMB_ENTERED_NAME_IN_CONTACT_PARTNER_FORM" : Advertiser entered name in
-   * contact form.
-   * - "SMB_ENTERED_PHONE_IN_CONTACT_PARTNER_FORM" : Advertiser entered phone in
-   * contact form.
-   * - "SMB_FAILED_RECAPTCHA_IN_CONTACT_PARTNER_FORM" : Advertiser failed <a
-   * href="https://www.google.com/recaptcha/">reCaptcha</a>
-   * in contact form.
-   * - "PARTNER_VIEWED_BY_SMB" : Company viewed by advertiser.
-   * - "SMB_CANCELED_PARTNER_CONTACT_FORM_ON_GPS" : Advertiser canceled partner
-   * contact form on Google Partner Search.
-   * - "SMB_CHANGED_A_SEARCH_PARAMETER_TOP" : Advertiser changed a top search
-   * parameter.
-   * - "SMB_CLICKED_CONTACT_A_PARTNER_ON_GPS" : Advertiser started partner
-   * contact form on Google Partner Search.
-   * - "SMB_CLICKED_SHOW_MORE_PARTNERS_BUTTON_BOTTOM" : Advertiser clicked `Show
-   * more partners` bottom button.
-   * - "SMB_COMPLETED_PARTNER_CONTACT_FORM_ON_GPS" : Advertiser completed
-   * partner contact form on Google Partner Search.
-   * - "SMB_NO_PARTNERS_AVAILABLE_WITH_SEARCH_CRITERIA" : Advertiser saw no
-   * partners available with search criteria.
-   * - "SMB_PERFORMED_SEARCH_ON_GPS" : Advertiser performed search on Google
-   * Partner Search.
-   * - "SMB_VIEWED_A_PARTNER_ON_GPS" : Advertiser viewed a partner on Google
-   * Partner Search.
-   * - "SMB_CANCELED_PARTNER_CONTACT_FORM_ON_PROFILE_PAGE" : Advertiser canceled
-   * partner contact form on profile page.
-   * - "SMB_CLICKED_CONTACT_A_PARTNER_ON_PROFILE_PAGE" : Advertiser started
-   * partner contact form on profile page.
-   * - "SMB_CLICKED_PARTNER_WEBSITE" : Advertiser clicked partner website.
-   * - "SMB_COMPLETED_PARTNER_CONTACT_FORM_ON_PROFILE_PAGE" : Advertiser
-   * completed contact form on profile page.
-   * - "SMB_VIEWED_A_PARTNER_PROFILE" : Advertiser viewed a partner profile.
-   * - "AGENCY_CLICKED_ACCEPT_TOS_BUTTON" : Agency clicked `accept Terms Of
-   * Service` button.
-   * - "AGENCY_CHANGED_TOS_COUNTRY" : Agency changed Terms Of Service country.
-   * - "AGENCY_ADDED_ADDRESS_IN_MY_PROFILE_PORTAL" : Agency added address in
-   * profile portal.
-   * - "AGENCY_ADDED_PHONE_NUMBER_IN_MY_PROFILE_PORTAL" : Agency added phone
-   * number in profile portal.
-   * - "AGENCY_CHANGED_PRIMARY_ACCOUNT_ASSOCIATION" : Agency changed primary
-   * account association.
-   * - "AGENCY_CHANGED_PRIMARY_COUNTRY_ASSOCIATION" : Agency changed primary
-   * country association.
-   * - "AGENCY_CLICKED_AFFILIATE_BUTTON_IN_MY_PROFILE_IN_PORTAL" : Agency
-   * clicked `affiliate` button in profile portal.
-   * - "AGENCY_CLICKED_GIVE_EDIT_ACCESS_IN_MY_PROFILE_PORTAL" : Agency clicked
-   * `give edit access` in profile portal.
-   * - "AGENCY_CLICKED_LOG_OUT_IN_MY_PROFILE_PORTAL" : Agency clicked `log out`
-   * in profile portal.
-   * - "AGENCY_CLICKED_MY_PROFILE_LEFT_NAV_IN_PORTAL" : Agency clicked profile
-   * portal left nav.
-   * - "AGENCY_CLICKED_SAVE_AND_CONTINUE_AT_BOT_OF_COMPLETE_PROFILE" : Agency
-   * clicked `save and continue` at bottom of complete profile.
-   * - "AGENCY_CLICKED_UNAFFILIATE_IN_MY_PROFILE_PORTAL" : Agency clicked
-   * `unaffiliate` in profile portal.
-   * - "AGENCY_FILLED_OUT_COMP_AFFILIATION_IN_MY_PROFILE_PORTAL" : Agency filled
-   * out company affiliation in profile portal.
-   * - "AGENCY_SUCCESSFULLY_CONNECTED_WITH_COMPANY_IN_MY_PROFILE" : Agency
-   * successfully connected with company in profile portal.
-   * - "AGENCY_CLICKED_CREATE_MCC_IN_MY_PROFILE_PORTAL" : Agency clicked create
-   * MCC in profile portal.
-   * - "AGENCY_DIDNT_HAVE_AN_MCC_ASSOCIATED_ON_COMPLETE_PROFILE" : Agency did
-   * not have an MCC associated on profile portal.
-   * - "AGENCY_HAD_AN_MCC_ASSOCIATED_ON_COMPLETE_PROFILE" : Agency had an MCC
-   * associated on profile portal.
-   * - "AGENCY_ADDED_JOB_FUNCTION_IN_MY_PROFILE_PORTAL" : Agency added job
-   * function in profile portal.
-   * - "AGENCY_LOOKED_AT_JOB_FUNCTION_DROP_DOWN" : Agency looked at job function
-   * drop-down.
-   * - "AGENCY_SELECTED_ACCOUNT_MANAGER_AS_JOB_FUNCTION" : Agency selected
-   * `account manage` as job function.
-   * - "AGENCY_SELECTED_ACCOUNT_PLANNER_AS_JOB_FUNCTION" : Agency selected
-   * `account planner` as job function.
-   * - "AGENCY_SELECTED_ANALYTICS_AS_JOB_FUNCTION" : Agency selected `Analytics`
-   * as job function.
-   * - "AGENCY_SELECTED_CREATIVE_AS_JOB_FUNCTION" : Agency selected `creative`
-   * as job function.
-   * - "AGENCY_SELECTED_MEDIA_BUYER_AS_JOB_FUNCTION" : Agency selected `media
-   * buyer` as job function.
-   * - "AGENCY_SELECTED_MEDIA_PLANNER_AS_JOB_FUNCTION" : Agency selected `media
-   * planner` as job function.
-   * - "AGENCY_SELECTED_OTHER_AS_JOB_FUNCTION" : Agency selected `other` as job
-   * function.
-   * - "AGENCY_SELECTED_PRODUCTION_AS_JOB_FUNCTION" : Agency selected
-   * `production` as job function.
-   * - "AGENCY_SELECTED_SEO_AS_JOB_FUNCTION" : Agency selected `SEO` as job
-   * function.
-   * - "AGENCY_SELECTED_SALES_REP_AS_JOB_FUNCTION" : Agency selected `sales rep`
-   * as job function.
-   * - "AGENCY_SELECTED_SEARCH_SPECIALIST_AS_JOB_FUNCTION" : Agency selected
-   * `search specialist` as job function.
-   * - "AGENCY_ADDED_CHANNELS_IN_MY_PROFILE_PORTAL" : Agency added channels in
-   * profile portal.
-   * - "AGENCY_LOOKED_AT_ADD_CHANNEL_DROP_DOWN" : Agency looked at `add channel`
-   * drop-down.
-   * - "AGENCY_SELECTED_CROSS_CHANNEL_FROM_ADD_CHANNEL" : Agency selected `cross
-   * channel` from add channel drop-down.
-   * - "AGENCY_SELECTED_DISPLAY_FROM_ADD_CHANNEL" : Agency selected `display`
-   * from add channel drop-down.
-   * - "AGENCY_SELECTED_MOBILE_FROM_ADD_CHANNEL" : Agency selected `mobile` from
-   * add channel drop-down.
-   * - "AGENCY_SELECTED_SEARCH_FROM_ADD_CHANNEL" : Agency selected `search` from
-   * add channel drop-down.
-   * - "AGENCY_SELECTED_SOCIAL_FROM_ADD_CHANNEL" : Agency selected `social` from
-   * add channel drop-down.
-   * - "AGENCY_SELECTED_TOOLS_FROM_ADD_CHANNEL" : Agency selected `tools` from
-   * add channel drop-down.
-   * - "AGENCY_SELECTED_YOUTUBE_FROM_ADD_CHANNEL" : Agency selected `YouTube`
-   * from add channel drop-down.
-   * - "AGENCY_ADDED_INDUSTRIES_IN_MY_PROFILE_PORTAL" : Agency added industries
-   * in profile portal.
-   * - "AGENCY_CHANGED_ADD_INDUSTRIES_DROP_DOWN" : Agency changed `add
-   * industries` drop-down.
-   * - "AGENCY_ADDED_MARKETS_IN_MY_PROFILE_PORTAL" : Agency added markets in
-   * profile portal.
-   * - "AGENCY_CHANGED_ADD_MARKETS_DROP_DOWN" : Agency changed `add markets`
-   * drop-down.
-   * - "AGENCY_CHECKED_RECIEVE_MAIL_PROMOTIONS_MYPROFILE" : Agency checked
-   * `recieve mail promotions` in profile portal.
-   * - "AGENCY_CHECKED_RECIEVE_MAIL_PROMOTIONS_SIGNUP" : Agency checked `recieve
-   * mail promotions` in sign-up.
-   * - "AGENCY_SELECTED_OPT_IN_BETA_TESTS_AND_MKT_RESEARCH" : Agency selected
-   * `opt-in beta tests and market research`.
-   * - "AGENCY_SELECTED_OPT_IN_BETA_TESTS_IN_MY_PROFILE_PORTAL" : Agency
-   * selected `opt-in beta tests` in profile portal.
-   * - "AGENCY_SELECTED_OPT_IN_NEWS_IN_MY_PROFILE_PORTAL" : Agency selected
-   * `opt-in news` in profile portal.
-   * - "AGENCY_SELECTED_OPT_IN_NEWS_INVITATIONS_AND_PROMOS" : Agency selected
-   * `opt-in news invitations and promotions`.
-   * - "AGENCY_SELECTED_OPT_IN_PERFORMANCE_SUG_IN_MY_PROFILE_PORTAL" : Agency
-   * selected `opt-in performance SUG` in profile portal.
-   * - "AGENCY_SELECTED_OPT_IN_PERFORMANCE_SUGGESTIONS" : Agency selected
-   * `opt-in performance suggestions`.
-   * - "AGENCY_SELECTED_OPT_IN_SELECT_ALL_EMAIL_NOTIFICATIONS" : Agency selected
-   * `opt-in select all email notifications`.
-   * - "AGENCY_SELECTED_SELECT_ALL_OPT_INS_IN_MY_PROFILE_PORTAL" : Agency
-   * selected `select all opt-ins` in profile portal.
-   * - "AGENCY_CLICKED_BACK_BUTTON_ON_CONNECT_WITH_COMPANY" : Agency clicked
-   * back button on `connect with company`.
-   * - "AGENCY_CLICKED_CONTINUE_TO_OVERVIEW_ON_CONNECT_WITH_COMPANY" : Agency
-   * clicked continue to overview on `connect with company`.
-   * - "AGECNY_CLICKED_CREATE_MCC_CONNECT_WITH_COMPANY_NOT_FOUND" : Agency
-   * clicked `create MCC connect with company not found`.
-   * - "AGECNY_CLICKED_GIVE_EDIT_ACCESS_CONNECT_WITH_COMPANY_NOT_FOUND" : Agency
-   * clicked `give edit access connect with company not found`.
-   * - "AGECNY_CLICKED_LOG_OUT_CONNECT_WITH_COMPANY_NOT_FOUND" : Agency clicked
-   * `log out connect with company not found`.
-   * - "AGENCY_CLICKED_SKIP_FOR_NOW_ON_CONNECT_WITH_COMPANY_PAGE" : Agency
-   * clicked `skip for now on connect with company page`.
-   * - "AGENCY_CLOSED_CONNECTED_TO_COMPANY_X_BUTTON_WRONG_COMPANY" : Agency
-   * closed connection to company.
-   * - "AGENCY_COMPLETED_FIELD_CONNECT_WITH_COMPANY" : Agency completed field
-   * connect with company.
-   * - "AGECNY_FOUND_COMPANY_TO_CONNECT_WITH" : Agency found company to connect
-   * with.
-   * - "AGENCY_SUCCESSFULLY_CREATED_COMPANY" : Agency successfully created
-   * company.
-   * - "AGENCY_ADDED_NEW_COMPANY_LOCATION" : Agency added new company location.
-   * - "AGENCY_CLICKED_COMMUNITY_JOIN_NOW_LINK_IN_PORTAL_NOTIFICATIONS" : Agency
-   * clicked community `join now link` in portal notifications.
-   * - "AGENCY_CLICKED_CONNECT_TO_COMPANY_LINK_IN_PORTAL_NOTIFICATIONS" : Agency
-   * clicked `connect to company` link in portal notifications.
-   * - "AGENCY_CLICKED_GET_CERTIFIED_LINK_IN_PORTAL_NOTIFICATIONS" : Agency
-   * cliecked `get certified` link in portal notifications.
-   * - "AGENCY_CLICKED_GET_VIDEO_ADS_CERTIFIED_LINK_IN_PORTAL_NOTIFICATIONS" :
-   * Agency clicked `get VideoAds certified` link in portal notifications.
-   * - "AGENCY_CLICKED_LINK_TO_MCC_LINK_IN_PORTAL_NOTIFICATIONS" : Agency
-   * clicked `link to MCC` link in portal notifications.
-   * - "AGENCY_CLICKED_INSIGHT_CONTENT_IN_PORTAL" : Agency clicked `insight
-   * content` in portal.
-   * - "AGENCY_CLICKED_INSIGHTS_VIEW_NOW_PITCH_DECKS_IN_PORTAL" : Agency clicked
-   * `insights view now pitch decks` in portal.
-   * - "AGENCY_CLICKED_INSIGHTS_LEFT_NAV_IN_PORTAL" : Agency clicked `insights`
-   * left nav in portal.
-   * - "AGENCY_CLICKED_INSIGHTS_UPLOAD_CONTENT" : Agency clicked `insights
-   * upload content`.
-   * - "AGENCY_CLICKED_INSIGHTS_VIEWED_DEPRECATED" : Agency clicked `insights
-   * viewed deprecated`.
-   * - "AGENCY_CLICKED_COMMUNITY_LEFT_NAV_IN_PORTAL" : Agency clicked
-   * `community` left nav in portal.
-   * - "AGENCY_CLICKED_JOIN_COMMUNITY_BUTTON_COMMUNITY_PORTAL" : Agency clicked
-   * `join community` button in community portal.
-   * - "AGENCY_CLICKED_CERTIFICATIONS_LEFT_NAV_IN_PORTAL" : Agency clicked
-   * `certifications` left nav in portal.
-   * - "AGENCY_CLICKED_CERTIFICATIONS_PRODUCT_LEFT_NAV_IN_PORTAL" : Agency
-   * clicked `certifications product` left nav in portal.
-   * - "AGENCY_CLICKED_PARTNER_STATUS_LEFT_NAV_IN_PORTAL" : Agency clicked
-   * `partner status` left nav in portal.
-   * - "AGENCY_CLICKED_PARTNER_STATUS_PRODUCT_LEFT_NAV_IN_PORTAL" : Agency
-   * clicked `partner status product` left nav in portal.
-   * - "AGENCY_CLICKED_OFFERS_LEFT_NAV_IN_PORTAL" : Agency clicked `offers` left
-   * nav in portal.
-   * - "AGENCY_CLICKED_SEND_BUTTON_ON_OFFERS_PAGE" : Agency clicked `send`
-   * button on offers page.
-   * - "AGENCY_CLICKED_EXAM_DETAILS_ON_CERT_ADWORDS_PAGE" : Agency clicked `exam
-   * details` on certifications AdWords page.
-   * - "AGENCY_CLICKED_SEE_EXAMS_CERTIFICATION_MAIN_PAGE" : Agency clicked `see
-   * exams` certifications main page.
-   * - "AGENCY_CLICKED_TAKE_EXAM_ON_CERT_EXAM_PAGE" : Agency clicked `take exam`
-   * on certifications exam page.
-   * - "AGENCY_OPENED_LAST_ADMIN_DIALOG" : Agency opened `last admin` dialog.
-   * - "AGENCY_OPENED_DIALOG_WITH_NO_USERS" : Agency opened dialog with no
-   * users.
-   * - "AGENCY_PROMOTED_USER_TO_ADMIN" : Agency promoted user to admin.
-   * - "AGENCY_UNAFFILIATED" : Agency unaffiliated.
-   * - "AGENCY_CHANGED_ROLES" : Agency changed roles.
-   * - "SMB_CLICKED_COMPANY_NAME_LINK_TO_PROFILE" : Advertiser clicked `company
-   * name` link to profile.
-   * - "SMB_VIEWED_ADWORDS_CERTIFICATE" : Advertiser viewed AdWords certificate.
-   * - "SMB_VIEWED_ADWORDS_SEARCH_CERTIFICATE" : Advertiser viewed AdWords
-   * Search certificate.
-   * - "SMB_VIEWED_ADWORDS_DISPLAY_CERTIFICATE" : Advertiser viewed AdWords
-   * Display certificate.
-   * - "SMB_CLICKED_ADWORDS_CERTIFICATE_HELP_ICON" : Advertiser clicked AdWords
-   * certificate help icon.
-   * - "SMB_VIEWED_ANALYTICS_CERTIFICATE" : Advertiser viewed Analytics
-   * certificate.
-   * - "SMB_VIEWED_DOUBLECLICK_CERTIFICATE" : Advertiser viewed DoubleClick
-   * certificate.
-   * - "SMB_VIEWED_MOBILE_SITES_CERTIFICATE" : Advertiser viewed Mobile Sites
-   * certificate.
-   * - "SMB_VIEWED_VIDEO_ADS_CERTIFICATE" : Advertiser viewed VideoAds
-   * certificate.
-   * - "SMB_VIEWED_SHOPPING_CERTIFICATE" : Advertiser clicked Shopping
-   * certificate help icon.
-   * - "SMB_CLICKED_VIDEO_ADS_CERTIFICATE_HELP_ICON" : Advertiser clicked
-   * VideoAds certificate help icon.
-   * - "SMB_VIEWED_DIGITAL_SALES_CERTIFICATE" : Advertiser viewed Digital Sales
-   * certificate.
-   * - "CLICKED_HELP_AT_BOTTOM" : Clicked `help` at bottom.
-   * - "CLICKED_HELP_AT_TOP" : Clicked `help` at top.
-   * - "CLIENT_ERROR" : Client error occurred.
-   * - "AGENCY_CLICKED_LEFT_NAV_STORIES" : Agency clicked left nav `stories`.
-   * - "CLICKED" : Click occured.
-   * - "SMB_VIEWED_MOBILE_CERTIFICATE" : Advertiser clicked Mobile certificate
-   * help icon.
-   * - "AGENCY_FAILED_COMPANY_VERIFICATION" : Agency failed the company
-   * verification.
-   * - "VISITED_LANDING" : User visited the landing portion of Google Partners.
-   * - "VISITED_GPS" : User visited the Google Partner Search portion of Google
-   * Partners.
-   * - "VISITED_AGENCY_PORTAL" : User visited the agency portal portion of
-   * Google Partners.
-   * - "CANCELLED_INDIVIDUAL_SIGN_UP" : User cancelled signing up.
-   * - "CANCELLED_COMPANY_SIGN_UP" : User cancelled signing up their company.
-   * - "AGENCY_CLICKED_SIGN_IN_BUTTON_TOP" : Agency clicked `Sign in` top
-   * button.
-   * - "AGENCY_CLICKED_SAVE_AND_CONTINUE_AT_BOT_OF_INCOMPLETE_PROFILE" : Agency
-   * clicked `save and continue` at bottom of incomplete profile.
-   * - "AGENCY_UNSELECTED_OPT_IN_NEWS_INVITATIONS_AND_PROMOS" : Agency
-   * unselected `opt-in news invitations and promotions`.
-   * - "AGENCY_UNSELECTED_OPT_IN_BETA_TESTS_AND_MKT_RESEARCH" : Agency
-   * unselected `opt-in beta tests and market research`.
-   * - "AGENCY_UNSELECTED_OPT_IN_PERFORMANCE_SUGGESTIONS" : Agency unselected
-   * `opt-in performance suggestions`.
-   * - "AGENCY_SELECTED_OPT_OUT_UNSELECT_ALL_EMAIL_NOTIFICATIONS" : Agency
-   * selected `opt-out unselect all email notifications`.
-   * - "AGENCY_LINKED_INDIVIDUAL_MCC" : Agency linked their individual MCC.
-   * - "AGENCY_SUGGESTED_TO_USER" : Agency was suggested to user for
-   * affiliation.
-   * - "AGENCY_IGNORED_SUGGESTED_AGENCIES_AND_SEARCHED" : Agency ignored
-   * suggested agencies and begin searching.
-   * - "AGENCY_PICKED_SUGGESTED_AGENCY" : Agency picked a suggested agency.
-   * - "AGENCY_SEARCHED_FOR_AGENCIES" : Agency searched for agencies.
-   * - "AGENCY_PICKED_SEARCHED_AGENCY" : Agency picked a searched agency.
-   * - "AGENCY_DISMISSED_AFFILIATION_WIDGET" : Agency dismissed affiliation
-   * widget.
-   * - "AGENCY_CLICKED_INSIGHTS_DOWNLOAD_CONTENT" : Agency clicked on the
-   * download link for downloading content.
-   * - "AGENCY_PROGRESS_INSIGHTS_VIEW_CONTENT" : Agency user is maklingg
-   * progress viewing a content item.
-   * - "AGENCY_CLICKED_CANCEL_ACCEPT_TOS_BUTTON" : Agency clicked `cancel Terms
-   * Of Service` button.
-   * - "SMB_ENTERED_WEBSITE_IN_CONTACT_PARTNER_FORM" : Advertiser entered
-   * website in contact form.
-   */
+  /// The action that occurred.
+  /// Possible string values are:
+  /// - "EVENT_ACTION_UNSPECIFIED" : Unchosen.
+  /// - "SMB_CLICKED_FIND_A_PARTNER_BUTTON_BOTTOM" : Advertiser clicked `Find a
+  /// partner` bottom button.
+  /// - "SMB_CLICKED_FIND_A_PARTNER_BUTTON_TOP" : Advertiser clicked `Find a
+  /// partner` top button.
+  /// - "AGENCY_CLICKED_JOIN_NOW_BUTTON_BOTTOM" : Agency clicked `Join now`
+  /// bottom button.
+  /// - "AGENCY_CLICKED_JOIN_NOW_BUTTON_TOP" : Agency clicked `Join now` top
+  /// button.
+  /// - "SMB_CANCELED_PARTNER_CONTACT_FORM" : Advertiser canceled partner
+  /// contact form.
+  /// - "SMB_CLICKED_CONTACT_A_PARTNER" : Advertiser started partner contact
+  /// form.
+  /// - "SMB_COMPLETED_PARTNER_CONTACT_FORM" : Advertiser completed partner
+  /// contact form.
+  /// - "SMB_ENTERED_EMAIL_IN_CONTACT_PARTNER_FORM" : Advertiser entered email
+  /// in contact form.
+  /// - "SMB_ENTERED_NAME_IN_CONTACT_PARTNER_FORM" : Advertiser entered name in
+  /// contact form.
+  /// - "SMB_ENTERED_PHONE_IN_CONTACT_PARTNER_FORM" : Advertiser entered phone
+  /// in contact form.
+  /// - "SMB_FAILED_RECAPTCHA_IN_CONTACT_PARTNER_FORM" : Advertiser failed <a
+  /// href="https://www.google.com/recaptcha/">reCaptcha</a>
+  /// in contact form.
+  /// - "PARTNER_VIEWED_BY_SMB" : Company viewed by advertiser.
+  /// - "SMB_CANCELED_PARTNER_CONTACT_FORM_ON_GPS" : Advertiser canceled partner
+  /// contact form on Google Partner Search.
+  /// - "SMB_CHANGED_A_SEARCH_PARAMETER_TOP" : Advertiser changed a top search
+  /// parameter.
+  /// - "SMB_CLICKED_CONTACT_A_PARTNER_ON_GPS" : Advertiser started partner
+  /// contact form on Google Partner Search.
+  /// - "SMB_CLICKED_SHOW_MORE_PARTNERS_BUTTON_BOTTOM" : Advertiser clicked
+  /// `Show more partners` bottom button.
+  /// - "SMB_COMPLETED_PARTNER_CONTACT_FORM_ON_GPS" : Advertiser completed
+  /// partner contact form on Google Partner Search.
+  /// - "SMB_NO_PARTNERS_AVAILABLE_WITH_SEARCH_CRITERIA" : Advertiser saw no
+  /// partners available with search criteria.
+  /// - "SMB_PERFORMED_SEARCH_ON_GPS" : Advertiser performed search on Google
+  /// Partner Search.
+  /// - "SMB_VIEWED_A_PARTNER_ON_GPS" : Advertiser viewed a partner on Google
+  /// Partner Search.
+  /// - "SMB_CANCELED_PARTNER_CONTACT_FORM_ON_PROFILE_PAGE" : Advertiser
+  /// canceled partner contact form on profile page.
+  /// - "SMB_CLICKED_CONTACT_A_PARTNER_ON_PROFILE_PAGE" : Advertiser started
+  /// partner contact form on profile page.
+  /// - "SMB_CLICKED_PARTNER_WEBSITE" : Advertiser clicked partner website.
+  /// - "SMB_COMPLETED_PARTNER_CONTACT_FORM_ON_PROFILE_PAGE" : Advertiser
+  /// completed contact form on profile page.
+  /// - "SMB_VIEWED_A_PARTNER_PROFILE" : Advertiser viewed a partner profile.
+  /// - "AGENCY_CLICKED_ACCEPT_TOS_BUTTON" : Agency clicked `accept Terms Of
+  /// Service` button.
+  /// - "AGENCY_CHANGED_TOS_COUNTRY" : Agency changed Terms Of Service country.
+  /// - "AGENCY_ADDED_ADDRESS_IN_MY_PROFILE_PORTAL" : Agency added address in
+  /// profile portal.
+  /// - "AGENCY_ADDED_PHONE_NUMBER_IN_MY_PROFILE_PORTAL" : Agency added phone
+  /// number in profile portal.
+  /// - "AGENCY_CHANGED_PRIMARY_ACCOUNT_ASSOCIATION" : Agency changed primary
+  /// account association.
+  /// - "AGENCY_CHANGED_PRIMARY_COUNTRY_ASSOCIATION" : Agency changed primary
+  /// country association.
+  /// - "AGENCY_CLICKED_AFFILIATE_BUTTON_IN_MY_PROFILE_IN_PORTAL" : Agency
+  /// clicked `affiliate` button in profile portal.
+  /// - "AGENCY_CLICKED_GIVE_EDIT_ACCESS_IN_MY_PROFILE_PORTAL" : Agency clicked
+  /// `give edit access` in profile portal.
+  /// - "AGENCY_CLICKED_LOG_OUT_IN_MY_PROFILE_PORTAL" : Agency clicked `log out`
+  /// in profile portal.
+  /// - "AGENCY_CLICKED_MY_PROFILE_LEFT_NAV_IN_PORTAL" : Agency clicked profile
+  /// portal left nav.
+  /// - "AGENCY_CLICKED_SAVE_AND_CONTINUE_AT_BOT_OF_COMPLETE_PROFILE" : Agency
+  /// clicked `save and continue` at bottom of complete profile.
+  /// - "AGENCY_CLICKED_UNAFFILIATE_IN_MY_PROFILE_PORTAL" : Agency clicked
+  /// `unaffiliate` in profile portal.
+  /// - "AGENCY_FILLED_OUT_COMP_AFFILIATION_IN_MY_PROFILE_PORTAL" : Agency
+  /// filled out company affiliation in profile portal.
+  /// - "AGENCY_SUCCESSFULLY_CONNECTED_WITH_COMPANY_IN_MY_PROFILE" : Agency
+  /// successfully connected with company in profile portal.
+  /// - "AGENCY_CLICKED_CREATE_MCC_IN_MY_PROFILE_PORTAL" : Agency clicked create
+  /// MCC in profile portal.
+  /// - "AGENCY_DIDNT_HAVE_AN_MCC_ASSOCIATED_ON_COMPLETE_PROFILE" : Agency did
+  /// not have an MCC associated on profile portal.
+  /// - "AGENCY_HAD_AN_MCC_ASSOCIATED_ON_COMPLETE_PROFILE" : Agency had an MCC
+  /// associated on profile portal.
+  /// - "AGENCY_ADDED_JOB_FUNCTION_IN_MY_PROFILE_PORTAL" : Agency added job
+  /// function in profile portal.
+  /// - "AGENCY_LOOKED_AT_JOB_FUNCTION_DROP_DOWN" : Agency looked at job
+  /// function drop-down.
+  /// - "AGENCY_SELECTED_ACCOUNT_MANAGER_AS_JOB_FUNCTION" : Agency selected
+  /// `account manage` as job function.
+  /// - "AGENCY_SELECTED_ACCOUNT_PLANNER_AS_JOB_FUNCTION" : Agency selected
+  /// `account planner` as job function.
+  /// - "AGENCY_SELECTED_ANALYTICS_AS_JOB_FUNCTION" : Agency selected
+  /// `Analytics` as job function.
+  /// - "AGENCY_SELECTED_CREATIVE_AS_JOB_FUNCTION" : Agency selected `creative`
+  /// as job function.
+  /// - "AGENCY_SELECTED_MEDIA_BUYER_AS_JOB_FUNCTION" : Agency selected `media
+  /// buyer` as job function.
+  /// - "AGENCY_SELECTED_MEDIA_PLANNER_AS_JOB_FUNCTION" : Agency selected `media
+  /// planner` as job function.
+  /// - "AGENCY_SELECTED_OTHER_AS_JOB_FUNCTION" : Agency selected `other` as job
+  /// function.
+  /// - "AGENCY_SELECTED_PRODUCTION_AS_JOB_FUNCTION" : Agency selected
+  /// `production` as job function.
+  /// - "AGENCY_SELECTED_SEO_AS_JOB_FUNCTION" : Agency selected `SEO` as job
+  /// function.
+  /// - "AGENCY_SELECTED_SALES_REP_AS_JOB_FUNCTION" : Agency selected `sales
+  /// rep` as job function.
+  /// - "AGENCY_SELECTED_SEARCH_SPECIALIST_AS_JOB_FUNCTION" : Agency selected
+  /// `search specialist` as job function.
+  /// - "AGENCY_ADDED_CHANNELS_IN_MY_PROFILE_PORTAL" : Agency added channels in
+  /// profile portal.
+  /// - "AGENCY_LOOKED_AT_ADD_CHANNEL_DROP_DOWN" : Agency looked at `add
+  /// channel` drop-down.
+  /// - "AGENCY_SELECTED_CROSS_CHANNEL_FROM_ADD_CHANNEL" : Agency selected
+  /// `cross channel` from add channel drop-down.
+  /// - "AGENCY_SELECTED_DISPLAY_FROM_ADD_CHANNEL" : Agency selected `display`
+  /// from add channel drop-down.
+  /// - "AGENCY_SELECTED_MOBILE_FROM_ADD_CHANNEL" : Agency selected `mobile`
+  /// from add channel drop-down.
+  /// - "AGENCY_SELECTED_SEARCH_FROM_ADD_CHANNEL" : Agency selected `search`
+  /// from add channel drop-down.
+  /// - "AGENCY_SELECTED_SOCIAL_FROM_ADD_CHANNEL" : Agency selected `social`
+  /// from add channel drop-down.
+  /// - "AGENCY_SELECTED_TOOLS_FROM_ADD_CHANNEL" : Agency selected `tools` from
+  /// add channel drop-down.
+  /// - "AGENCY_SELECTED_YOUTUBE_FROM_ADD_CHANNEL" : Agency selected `YouTube`
+  /// from add channel drop-down.
+  /// - "AGENCY_ADDED_INDUSTRIES_IN_MY_PROFILE_PORTAL" : Agency added industries
+  /// in profile portal.
+  /// - "AGENCY_CHANGED_ADD_INDUSTRIES_DROP_DOWN" : Agency changed `add
+  /// industries` drop-down.
+  /// - "AGENCY_ADDED_MARKETS_IN_MY_PROFILE_PORTAL" : Agency added markets in
+  /// profile portal.
+  /// - "AGENCY_CHANGED_ADD_MARKETS_DROP_DOWN" : Agency changed `add markets`
+  /// drop-down.
+  /// - "AGENCY_CHECKED_RECIEVE_MAIL_PROMOTIONS_MYPROFILE" : Agency checked
+  /// `recieve mail promotions` in profile portal.
+  /// - "AGENCY_CHECKED_RECIEVE_MAIL_PROMOTIONS_SIGNUP" : Agency checked
+  /// `recieve mail promotions` in sign-up.
+  /// - "AGENCY_SELECTED_OPT_IN_BETA_TESTS_AND_MKT_RESEARCH" : Agency selected
+  /// `opt-in beta tests and market research`.
+  /// - "AGENCY_SELECTED_OPT_IN_BETA_TESTS_IN_MY_PROFILE_PORTAL" : Agency
+  /// selected `opt-in beta tests` in profile portal.
+  /// - "AGENCY_SELECTED_OPT_IN_NEWS_IN_MY_PROFILE_PORTAL" : Agency selected
+  /// `opt-in news` in profile portal.
+  /// - "AGENCY_SELECTED_OPT_IN_NEWS_INVITATIONS_AND_PROMOS" : Agency selected
+  /// `opt-in news invitations and promotions`.
+  /// - "AGENCY_SELECTED_OPT_IN_PERFORMANCE_SUG_IN_MY_PROFILE_PORTAL" : Agency
+  /// selected `opt-in performance SUG` in profile portal.
+  /// - "AGENCY_SELECTED_OPT_IN_PERFORMANCE_SUGGESTIONS" : Agency selected
+  /// `opt-in performance suggestions`.
+  /// - "AGENCY_SELECTED_OPT_IN_SELECT_ALL_EMAIL_NOTIFICATIONS" : Agency
+  /// selected `opt-in select all email notifications`.
+  /// - "AGENCY_SELECTED_SELECT_ALL_OPT_INS_IN_MY_PROFILE_PORTAL" : Agency
+  /// selected `select all opt-ins` in profile portal.
+  /// - "AGENCY_CLICKED_BACK_BUTTON_ON_CONNECT_WITH_COMPANY" : Agency clicked
+  /// back button on `connect with company`.
+  /// - "AGENCY_CLICKED_CONTINUE_TO_OVERVIEW_ON_CONNECT_WITH_COMPANY" : Agency
+  /// clicked continue to overview on `connect with company`.
+  /// - "AGECNY_CLICKED_CREATE_MCC_CONNECT_WITH_COMPANY_NOT_FOUND" : Agency
+  /// clicked `create MCC connect with company not found`.
+  /// - "AGECNY_CLICKED_GIVE_EDIT_ACCESS_CONNECT_WITH_COMPANY_NOT_FOUND" :
+  /// Agency clicked `give edit access connect with company not found`.
+  /// - "AGECNY_CLICKED_LOG_OUT_CONNECT_WITH_COMPANY_NOT_FOUND" : Agency clicked
+  /// `log out connect with company not found`.
+  /// - "AGENCY_CLICKED_SKIP_FOR_NOW_ON_CONNECT_WITH_COMPANY_PAGE" : Agency
+  /// clicked `skip for now on connect with company page`.
+  /// - "AGENCY_CLOSED_CONNECTED_TO_COMPANY_X_BUTTON_WRONG_COMPANY" : Agency
+  /// closed connection to company.
+  /// - "AGENCY_COMPLETED_FIELD_CONNECT_WITH_COMPANY" : Agency completed field
+  /// connect with company.
+  /// - "AGECNY_FOUND_COMPANY_TO_CONNECT_WITH" : Agency found company to connect
+  /// with.
+  /// - "AGENCY_SUCCESSFULLY_CREATED_COMPANY" : Agency successfully created
+  /// company.
+  /// - "AGENCY_ADDED_NEW_COMPANY_LOCATION" : Agency added new company location.
+  /// - "AGENCY_CLICKED_COMMUNITY_JOIN_NOW_LINK_IN_PORTAL_NOTIFICATIONS" :
+  /// Agency clicked community `join now link` in portal notifications.
+  /// - "AGENCY_CLICKED_CONNECT_TO_COMPANY_LINK_IN_PORTAL_NOTIFICATIONS" :
+  /// Agency clicked `connect to company` link in portal notifications.
+  /// - "AGENCY_CLICKED_GET_CERTIFIED_LINK_IN_PORTAL_NOTIFICATIONS" : Agency
+  /// cliecked `get certified` link in portal notifications.
+  /// - "AGENCY_CLICKED_GET_VIDEO_ADS_CERTIFIED_LINK_IN_PORTAL_NOTIFICATIONS" :
+  /// Agency clicked `get VideoAds certified` link in portal notifications.
+  /// - "AGENCY_CLICKED_LINK_TO_MCC_LINK_IN_PORTAL_NOTIFICATIONS" : Agency
+  /// clicked `link to MCC` link in portal notifications.
+  /// - "AGENCY_CLICKED_INSIGHT_CONTENT_IN_PORTAL" : Agency clicked `insight
+  /// content` in portal.
+  /// - "AGENCY_CLICKED_INSIGHTS_VIEW_NOW_PITCH_DECKS_IN_PORTAL" : Agency
+  /// clicked `insights view now pitch decks` in portal.
+  /// - "AGENCY_CLICKED_INSIGHTS_LEFT_NAV_IN_PORTAL" : Agency clicked `insights`
+  /// left nav in portal.
+  /// - "AGENCY_CLICKED_INSIGHTS_UPLOAD_CONTENT" : Agency clicked `insights
+  /// upload content`.
+  /// - "AGENCY_CLICKED_INSIGHTS_VIEWED_DEPRECATED" : Agency clicked `insights
+  /// viewed deprecated`.
+  /// - "AGENCY_CLICKED_COMMUNITY_LEFT_NAV_IN_PORTAL" : Agency clicked
+  /// `community` left nav in portal.
+  /// - "AGENCY_CLICKED_JOIN_COMMUNITY_BUTTON_COMMUNITY_PORTAL" : Agency clicked
+  /// `join community` button in community portal.
+  /// - "AGENCY_CLICKED_CERTIFICATIONS_LEFT_NAV_IN_PORTAL" : Agency clicked
+  /// `certifications` left nav in portal.
+  /// - "AGENCY_CLICKED_CERTIFICATIONS_PRODUCT_LEFT_NAV_IN_PORTAL" : Agency
+  /// clicked `certifications product` left nav in portal.
+  /// - "AGENCY_CLICKED_PARTNER_STATUS_LEFT_NAV_IN_PORTAL" : Agency clicked
+  /// `partner status` left nav in portal.
+  /// - "AGENCY_CLICKED_PARTNER_STATUS_PRODUCT_LEFT_NAV_IN_PORTAL" : Agency
+  /// clicked `partner status product` left nav in portal.
+  /// - "AGENCY_CLICKED_OFFERS_LEFT_NAV_IN_PORTAL" : Agency clicked `offers`
+  /// left nav in portal.
+  /// - "AGENCY_CLICKED_SEND_BUTTON_ON_OFFERS_PAGE" : Agency clicked `send`
+  /// button on offers page.
+  /// - "AGENCY_CLICKED_EXAM_DETAILS_ON_CERT_ADWORDS_PAGE" : Agency clicked
+  /// `exam details` on certifications AdWords page.
+  /// - "AGENCY_CLICKED_SEE_EXAMS_CERTIFICATION_MAIN_PAGE" : Agency clicked `see
+  /// exams` certifications main page.
+  /// - "AGENCY_CLICKED_TAKE_EXAM_ON_CERT_EXAM_PAGE" : Agency clicked `take
+  /// exam` on certifications exam page.
+  /// - "AGENCY_OPENED_LAST_ADMIN_DIALOG" : Agency opened `last admin` dialog.
+  /// - "AGENCY_OPENED_DIALOG_WITH_NO_USERS" : Agency opened dialog with no
+  /// users.
+  /// - "AGENCY_PROMOTED_USER_TO_ADMIN" : Agency promoted user to admin.
+  /// - "AGENCY_UNAFFILIATED" : Agency unaffiliated.
+  /// - "AGENCY_CHANGED_ROLES" : Agency changed roles.
+  /// - "SMB_CLICKED_COMPANY_NAME_LINK_TO_PROFILE" : Advertiser clicked `company
+  /// name` link to profile.
+  /// - "SMB_VIEWED_ADWORDS_CERTIFICATE" : Advertiser viewed AdWords
+  /// certificate.
+  /// - "SMB_VIEWED_ADWORDS_SEARCH_CERTIFICATE" : Advertiser viewed AdWords
+  /// Search certificate.
+  /// - "SMB_VIEWED_ADWORDS_DISPLAY_CERTIFICATE" : Advertiser viewed AdWords
+  /// Display certificate.
+  /// - "SMB_CLICKED_ADWORDS_CERTIFICATE_HELP_ICON" : Advertiser clicked AdWords
+  /// certificate help icon.
+  /// - "SMB_VIEWED_ANALYTICS_CERTIFICATE" : Advertiser viewed Analytics
+  /// certificate.
+  /// - "SMB_VIEWED_DOUBLECLICK_CERTIFICATE" : Advertiser viewed DoubleClick
+  /// certificate.
+  /// - "SMB_VIEWED_MOBILE_SITES_CERTIFICATE" : Advertiser viewed Mobile Sites
+  /// certificate.
+  /// - "SMB_VIEWED_VIDEO_ADS_CERTIFICATE" : Advertiser viewed VideoAds
+  /// certificate.
+  /// - "SMB_VIEWED_SHOPPING_CERTIFICATE" : Advertiser clicked Shopping
+  /// certificate help icon.
+  /// - "SMB_CLICKED_VIDEO_ADS_CERTIFICATE_HELP_ICON" : Advertiser clicked
+  /// VideoAds certificate help icon.
+  /// - "SMB_VIEWED_DIGITAL_SALES_CERTIFICATE" : Advertiser viewed Digital Sales
+  /// certificate.
+  /// - "CLICKED_HELP_AT_BOTTOM" : Clicked `help` at bottom.
+  /// - "CLICKED_HELP_AT_TOP" : Clicked `help` at top.
+  /// - "CLIENT_ERROR" : Client error occurred.
+  /// - "AGENCY_CLICKED_LEFT_NAV_STORIES" : Agency clicked left nav `stories`.
+  /// - "CLICKED" : Click occured.
+  /// - "SMB_VIEWED_MOBILE_CERTIFICATE" : Advertiser clicked Mobile certificate
+  /// help icon.
+  /// - "AGENCY_FAILED_COMPANY_VERIFICATION" : Agency failed the company
+  /// verification.
+  /// - "VISITED_LANDING" : User visited the landing portion of Google Partners.
+  /// - "VISITED_GPS" : User visited the Google Partner Search portion of Google
+  /// Partners.
+  /// - "VISITED_AGENCY_PORTAL" : User visited the agency portal portion of
+  /// Google Partners.
+  /// - "CANCELLED_INDIVIDUAL_SIGN_UP" : User cancelled signing up.
+  /// - "CANCELLED_COMPANY_SIGN_UP" : User cancelled signing up their company.
+  /// - "AGENCY_CLICKED_SIGN_IN_BUTTON_TOP" : Agency clicked `Sign in` top
+  /// button.
+  /// - "AGENCY_CLICKED_SAVE_AND_CONTINUE_AT_BOT_OF_INCOMPLETE_PROFILE" : Agency
+  /// clicked `save and continue` at bottom of incomplete profile.
+  /// - "AGENCY_UNSELECTED_OPT_IN_NEWS_INVITATIONS_AND_PROMOS" : Agency
+  /// unselected `opt-in news invitations and promotions`.
+  /// - "AGENCY_UNSELECTED_OPT_IN_BETA_TESTS_AND_MKT_RESEARCH" : Agency
+  /// unselected `opt-in beta tests and market research`.
+  /// - "AGENCY_UNSELECTED_OPT_IN_PERFORMANCE_SUGGESTIONS" : Agency unselected
+  /// `opt-in performance suggestions`.
+  /// - "AGENCY_SELECTED_OPT_OUT_UNSELECT_ALL_EMAIL_NOTIFICATIONS" : Agency
+  /// selected `opt-out unselect all email notifications`.
+  /// - "AGENCY_LINKED_INDIVIDUAL_MCC" : Agency linked their individual MCC.
+  /// - "AGENCY_SUGGESTED_TO_USER" : Agency was suggested to user for
+  /// affiliation.
+  /// - "AGENCY_IGNORED_SUGGESTED_AGENCIES_AND_SEARCHED" : Agency ignored
+  /// suggested agencies and begin searching.
+  /// - "AGENCY_PICKED_SUGGESTED_AGENCY" : Agency picked a suggested agency.
+  /// - "AGENCY_SEARCHED_FOR_AGENCIES" : Agency searched for agencies.
+  /// - "AGENCY_PICKED_SEARCHED_AGENCY" : Agency picked a searched agency.
+  /// - "AGENCY_DISMISSED_AFFILIATION_WIDGET" : Agency dismissed affiliation
+  /// widget.
+  /// - "AGENCY_CLICKED_INSIGHTS_DOWNLOAD_CONTENT" : Agency clicked on the
+  /// download link for downloading content.
+  /// - "AGENCY_PROGRESS_INSIGHTS_VIEW_CONTENT" : Agency user is maklingg
+  /// progress viewing a content item.
+  /// - "AGENCY_CLICKED_CANCEL_ACCEPT_TOS_BUTTON" : Agency clicked `cancel Terms
+  /// Of Service` button.
+  /// - "SMB_ENTERED_WEBSITE_IN_CONTACT_PARTNER_FORM" : Advertiser entered
+  /// website in contact form.
   core.String eventAction;
-  /**
-   * The category the action belongs to.
-   * Possible string values are:
-   * - "EVENT_CATEGORY_UNSPECIFIED" : Unchosen.
-   * - "GOOGLE_PARTNER_SEARCH" : Google Partner Search category.
-   * - "GOOGLE_PARTNER_SIGNUP_FLOW" : Google Partner sign-up flow category.
-   * - "GOOGLE_PARTNER_PORTAL" : Google Partner portal category.
-   * - "GOOGLE_PARTNER_PORTAL_MY_PROFILE" : Google Partner portal my-profile
-   * category.
-   * - "GOOGLE_PARTNER_PORTAL_CERTIFICATIONS" : Google Partner portal
-   * certifications category.
-   * - "GOOGLE_PARTNER_PORTAL_COMMUNITY" : Google Partner portal community
-   * category.
-   * - "GOOGLE_PARTNER_PORTAL_INSIGHTS" : Google Partner portal insights
-   * category.
-   * - "GOOGLE_PARTNER_PORTAL_CLIENTS" : Google Partner portal clients category.
-   * - "GOOGLE_PARTNER_PUBLIC_USER_PROFILE" : Google Partner portal public user
-   * profile category.
-   * - "GOOGLE_PARTNER_PANEL" : Google Partner panel category.
-   * - "GOOGLE_PARTNER_PORTAL_LAST_ADMIN_DIALOG" : Google Partner portal last
-   * admin dialog category.
-   * - "GOOGLE_PARTNER_CLIENT" : Google Partner client category.
-   * - "GOOGLE_PARTNER_PORTAL_COMPANY_PROFILE" : Google Partner portal company
-   * profile category.
-   * - "EXTERNAL_LINKS" : External links category.
-   * - "GOOGLE_PARTNER_LANDING" : Google Partner landing category.
-   */
+
+  /// The category the action belongs to.
+  /// Possible string values are:
+  /// - "EVENT_CATEGORY_UNSPECIFIED" : Unchosen.
+  /// - "GOOGLE_PARTNER_SEARCH" : Google Partner Search category.
+  /// - "GOOGLE_PARTNER_SIGNUP_FLOW" : Google Partner sign-up flow category.
+  /// - "GOOGLE_PARTNER_PORTAL" : Google Partner portal category.
+  /// - "GOOGLE_PARTNER_PORTAL_MY_PROFILE" : Google Partner portal my-profile
+  /// category.
+  /// - "GOOGLE_PARTNER_PORTAL_CERTIFICATIONS" : Google Partner portal
+  /// certifications category.
+  /// - "GOOGLE_PARTNER_PORTAL_COMMUNITY" : Google Partner portal community
+  /// category.
+  /// - "GOOGLE_PARTNER_PORTAL_INSIGHTS" : Google Partner portal insights
+  /// category.
+  /// - "GOOGLE_PARTNER_PORTAL_CLIENTS" : Google Partner portal clients
+  /// category.
+  /// - "GOOGLE_PARTNER_PUBLIC_USER_PROFILE" : Google Partner portal public user
+  /// profile category.
+  /// - "GOOGLE_PARTNER_PANEL" : Google Partner panel category.
+  /// - "GOOGLE_PARTNER_PORTAL_LAST_ADMIN_DIALOG" : Google Partner portal last
+  /// admin dialog category.
+  /// - "GOOGLE_PARTNER_CLIENT" : Google Partner client category.
+  /// - "GOOGLE_PARTNER_PORTAL_COMPANY_PROFILE" : Google Partner portal company
+  /// profile category.
+  /// - "EXTERNAL_LINKS" : External links category.
+  /// - "GOOGLE_PARTNER_LANDING" : Google Partner landing category.
   core.String eventCategory;
-  /** List of event data for the event. */
+
+  /// List of event data for the event.
   core.List<EventData> eventDatas;
-  /**
-   * The scope of the event.
-   * Possible string values are:
-   * - "EVENT_SCOPE_UNSPECIFIED" : Unchosen.
-   * - "VISITOR" : Based on visitor.
-   * - "SESSION" : Based on session.
-   * - "PAGE" : Based on page visit.
-   */
+
+  /// The scope of the event.
+  /// Possible string values are:
+  /// - "EVENT_SCOPE_UNSPECIFIED" : Unchosen.
+  /// - "VISITOR" : Based on visitor.
+  /// - "SESSION" : Based on session.
+  /// - "PAGE" : Based on page visit.
   core.String eventScope;
-  /** Advertiser lead information. */
+
+  /// Advertiser lead information.
   Lead lead;
-  /** Current request metadata. */
+
+  /// Current request metadata.
   RequestMetadata requestMetadata;
-  /** The URL where the event occurred. */
+
+  /// The URL where the event occurred.
   core.String url;
 
   LogUserEventRequest();
@@ -4438,7 +4753,9 @@ class LogUserEventRequest {
       eventCategory = _json["eventCategory"];
     }
     if (_json.containsKey("eventDatas")) {
-      eventDatas = _json["eventDatas"].map((value) => new EventData.fromJson(value)).toList();
+      eventDatas = _json["eventDatas"]
+          .map((value) => new EventData.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("eventScope")) {
       eventScope = _json["eventScope"];
@@ -4455,7 +4772,8 @@ class LogUserEventRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (eventAction != null) {
       _json["eventAction"] = eventAction;
     }
@@ -4463,7 +4781,8 @@ class LogUserEventRequest {
       _json["eventCategory"] = eventCategory;
     }
     if (eventDatas != null) {
-      _json["eventDatas"] = eventDatas.map((value) => (value).toJson()).toList();
+      _json["eventDatas"] =
+          eventDatas.map((value) => (value).toJson()).toList();
     }
     if (eventScope != null) {
       _json["eventScope"] = eventScope;
@@ -4481,24 +4800,24 @@ class LogUserEventRequest {
   }
 }
 
-/**
- * Response message for
- * LogUserEvent.
- */
+/// Response message for
+/// LogUserEvent.
 class LogUserEventResponse {
-  /** Current response metadata. */
+  /// Current response metadata.
   ResponseMetadata responseMetadata;
 
   LogUserEventResponse();
 
   LogUserEventResponse.fromJson(core.Map _json) {
     if (_json.containsKey("responseMetadata")) {
-      responseMetadata = new ResponseMetadata.fromJson(_json["responseMetadata"]);
+      responseMetadata =
+          new ResponseMetadata.fromJson(_json["responseMetadata"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (responseMetadata != null) {
       _json["responseMetadata"] = (responseMetadata).toJson();
     }
@@ -4506,23 +4825,21 @@ class LogUserEventResponse {
   }
 }
 
-/** Represents an amount of money with its currency type. */
+/// Represents an amount of money with its currency type.
 class Money {
-  /** The 3-letter currency code defined in ISO 4217. */
+  /// The 3-letter currency code defined in ISO 4217.
   core.String currencyCode;
-  /**
-   * Number of nano (10^-9) units of the amount.
-   * The value must be between -999,999,999 and +999,999,999 inclusive.
-   * If `units` is positive, `nanos` must be positive or zero.
-   * If `units` is zero, `nanos` can be positive, zero, or negative.
-   * If `units` is negative, `nanos` must be negative or zero.
-   * For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
-   */
+
+  /// Number of nano (10^-9) units of the amount.
+  /// The value must be between -999,999,999 and +999,999,999 inclusive.
+  /// If `units` is positive, `nanos` must be positive or zero.
+  /// If `units` is zero, `nanos` can be positive, zero, or negative.
+  /// If `units` is negative, `nanos` must be negative or zero.
+  /// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
   core.int nanos;
-  /**
-   * The whole units of the amount.
-   * For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
-   */
+
+  /// The whole units of the amount.
+  /// For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
   core.String units;
 
   Money();
@@ -4540,7 +4857,8 @@ class Money {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (currencyCode != null) {
       _json["currencyCode"] = currencyCode;
     }
@@ -4554,32 +4872,38 @@ class Money {
   }
 }
 
-/** Customers qualified for an offer. */
+/// Customers qualified for an offer.
 class OfferCustomer {
-  /** URL to the customer's AdWords page. */
+  /// URL to the customer's AdWords page.
   core.String adwordsUrl;
-  /** Country code of the customer. */
+
+  /// Country code of the customer.
   core.String countryCode;
-  /** Time the customer was created. */
+
+  /// Time the customer was created.
   core.String creationTime;
-  /** Days the customer is still eligible. */
+
+  /// Days the customer is still eligible.
   core.int eligibilityDaysLeft;
-  /** External CID for the customer. */
+
+  /// External CID for the customer.
   core.String externalCid;
-  /** Formatted Get Y amount with currency code. */
+
+  /// Formatted Get Y amount with currency code.
   core.String getYAmount;
-  /** Name of the customer. */
+
+  /// Name of the customer.
   core.String name;
-  /**
-   * Type of the offer
-   * Possible string values are:
-   * - "OFFER_TYPE_UNSPECIFIED" : Unset.
-   * - "OFFER_TYPE_SPEND_X_GET_Y" : AdWords spend X get Y.
-   * - "OFFER_TYPE_VIDEO" : Youtube video.
-   * - "OFFER_TYPE_SPEND_MATCH" : Spend Match up to Y.
-   */
+
+  /// Type of the offer
+  /// Possible string values are:
+  /// - "OFFER_TYPE_UNSPECIFIED" : Unset.
+  /// - "OFFER_TYPE_SPEND_X_GET_Y" : AdWords spend X get Y.
+  /// - "OFFER_TYPE_VIDEO" : Youtube video.
+  /// - "OFFER_TYPE_SPEND_MATCH" : Spend Match up to Y.
   core.String offerType;
-  /** Formatted Spend X amount with currency code. */
+
+  /// Formatted Spend X amount with currency code.
   core.String spendXAmount;
 
   OfferCustomer();
@@ -4615,7 +4939,8 @@ class OfferCustomer {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (adwordsUrl != null) {
       _json["adwordsUrl"] = adwordsUrl;
     }
@@ -4647,25 +4972,24 @@ class OfferCustomer {
   }
 }
 
-/** A set of opt-ins for a user. */
+/// A set of opt-ins for a user.
 class OptIns {
-  /**
-   * An opt-in about receiving email from Partners marketing teams. Includes
-   * member-only events and special promotional offers for Google products.
-   */
+  /// An opt-in about receiving email from Partners marketing teams. Includes
+  /// member-only events and special promotional offers for Google products.
   core.bool marketComm;
-  /**
-   * An opt-in about receiving email with customized AdWords campaign management
-   * tips.
-   */
+
+  /// An opt-in about receiving email with customized AdWords campaign
+  /// management
+  /// tips.
   core.bool performanceSuggestions;
-  /** An opt-in to allow recieivng phone calls about their Partners account. */
+
+  /// An opt-in to allow recieivng phone calls about their Partners account.
   core.bool phoneContact;
-  /**
-   * An opt-in to receive special promotional gifts and material in the mail.
-   */
+
+  /// An opt-in to receive special promotional gifts and material in the mail.
   core.bool physicalMail;
-  /** An opt-in about receiving email regarding new features and products. */
+
+  /// An opt-in about receiving email regarding new features and products.
   core.bool specialOffers;
 
   OptIns();
@@ -4689,7 +5013,8 @@ class OptIns {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (marketComm != null) {
       _json["marketComm"] = marketComm;
     }
@@ -4709,21 +5034,22 @@ class OptIns {
   }
 }
 
-/** Basic information from a public profile. */
+/// Basic information from a public profile.
 class PublicProfile {
-  /**
-   * The URL to the main display image of the public profile. Being deprecated.
-   */
+  /// The URL to the main display image of the public profile. Being deprecated.
   core.String displayImageUrl;
-  /** The display name of the public profile. */
+
+  /// The display name of the public profile.
   core.String displayName;
-  /**
-   * The ID which can be used to retrieve more details about the public profile.
-   */
+
+  /// The ID which can be used to retrieve more details about the public
+  /// profile.
   core.String id;
-  /** The URL to the main profile image of the public profile. */
+
+  /// The URL to the main profile image of the public profile.
   core.String profileImage;
-  /** The URL of the public profile. */
+
+  /// The URL of the public profile.
   core.String url;
 
   PublicProfile();
@@ -4747,7 +5073,8 @@ class PublicProfile {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (displayImageUrl != null) {
       _json["displayImageUrl"] = displayImageUrl;
     }
@@ -4767,16 +5094,15 @@ class PublicProfile {
   }
 }
 
-/** Information related to ranking of results. */
+/// Information related to ranking of results.
 class Rank {
-  /**
-   * The type of rank.
-   * Possible string values are:
-   * - "RANK_TYPE_UNSPECIFIED" : Unchosen.
-   * - "RT_FINAL_SCORE" : Total final score.
-   */
+  /// The type of rank.
+  /// Possible string values are:
+  /// - "RANK_TYPE_UNSPECIFIED" : Unchosen.
+  /// - "RT_FINAL_SCORE" : Total final score.
   core.String type;
-  /** The numerical value of the rank. */
+
+  /// The numerical value of the rank.
   core.double value;
 
   Rank();
@@ -4791,7 +5117,8 @@ class Rank {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (type != null) {
       _json["type"] = type;
     }
@@ -4802,13 +5129,12 @@ class Rank {
   }
 }
 
-/**
- * <a href="https://www.google.com/recaptcha/">reCaptcha</a> challenge info.
- */
+/// <a href="https://www.google.com/recaptcha/">reCaptcha</a> challenge info.
 class RecaptchaChallenge {
-  /** The ID of the reCaptcha challenge. */
+  /// The ID of the reCaptcha challenge.
   core.String id;
-  /** The response to the reCaptcha challenge. */
+
+  /// The response to the reCaptcha challenge.
   core.String response;
 
   RecaptchaChallenge();
@@ -4823,7 +5149,8 @@ class RecaptchaChallenge {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -4834,20 +5161,22 @@ class RecaptchaChallenge {
   }
 }
 
-/** Common data that is in each API request. */
+/// Common data that is in each API request.
 class RequestMetadata {
-  /** Experiment IDs the current request belongs to. */
+  /// Experiment IDs the current request belongs to.
   core.List<core.String> experimentIds;
-  /** Locale to use for the current request. */
+
+  /// Locale to use for the current request.
   core.String locale;
-  /** Google Partners session ID. */
+
+  /// Google Partners session ID.
   core.String partnersSessionId;
-  /** Source of traffic for the current request. */
+
+  /// Source of traffic for the current request.
   TrafficSource trafficSource;
-  /**
-   * Values to use instead of the user's respective defaults for the current
-   * request. These are only honored by whitelisted products.
-   */
+
+  /// Values to use instead of the user's respective defaults for the current
+  /// request. These are only honored by whitelisted products.
   UserOverrides userOverrides;
 
   RequestMetadata();
@@ -4871,7 +5200,8 @@ class RequestMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (experimentIds != null) {
       _json["experimentIds"] = experimentIds;
     }
@@ -4891,9 +5221,9 @@ class RequestMetadata {
   }
 }
 
-/** Common data that is in each API response. */
+/// Common data that is in each API response.
 class ResponseMetadata {
-  /** Debug information about this request. */
+  /// Debug information about this request.
   DebugInfo debugInfo;
 
   ResponseMetadata();
@@ -4905,7 +5235,8 @@ class ResponseMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (debugInfo != null) {
       _json["debugInfo"] = (debugInfo).toJson();
     }
@@ -4913,27 +5244,25 @@ class ResponseMetadata {
   }
 }
 
-/** Agency specialization status */
+/// Agency specialization status
 class SpecializationStatus {
-  /**
-   * The specialization this status is for.
-   * Possible string values are:
-   * - "BADGE_SPECIALIZATION_UNKNOWN" : Unknown specialization
-   * - "BADGE_SPECIALIZATION_ADWORDS_SEARCH" : AdWords Search specialization
-   * - "BADGE_SPECIALIZATION_ADWORDS_DISPLAY" : AdWords Display specialization
-   * - "BADGE_SPECIALIZATION_ADWORDS_MOBILE" : AdWords Mobile specialization
-   * - "BADGE_SPECIALIZATION_ADWORDS_VIDEO" : AdWords Video specialization
-   * - "BADGE_SPECIALIZATION_ADWORDS_SHOPPING" : AdWords Shopping specialization
-   */
+  /// The specialization this status is for.
+  /// Possible string values are:
+  /// - "BADGE_SPECIALIZATION_UNKNOWN" : Unknown specialization
+  /// - "BADGE_SPECIALIZATION_ADWORDS_SEARCH" : AdWords Search specialization
+  /// - "BADGE_SPECIALIZATION_ADWORDS_DISPLAY" : AdWords Display specialization
+  /// - "BADGE_SPECIALIZATION_ADWORDS_MOBILE" : AdWords Mobile specialization
+  /// - "BADGE_SPECIALIZATION_ADWORDS_VIDEO" : AdWords Video specialization
+  /// - "BADGE_SPECIALIZATION_ADWORDS_SHOPPING" : AdWords Shopping
+  /// specialization
   core.String badgeSpecialization;
-  /**
-   * State of agency specialization.
-   * Possible string values are:
-   * - "BADGE_SPECIALIZATION_STATE_UNKNOWN" : Unknown state
-   * - "BADGE_SPECIALIZATION_STATE_PASSED" : Specialization passed
-   * - "BADGE_SPECIALIZATION_STATE_NOT_PASSED" : Specialization not passed
-   * - "BADGE_SPECIALIZATION_STATE_IN_GRACE" : Specialization in grace
-   */
+
+  /// State of agency specialization.
+  /// Possible string values are:
+  /// - "BADGE_SPECIALIZATION_STATE_UNKNOWN" : Unknown state
+  /// - "BADGE_SPECIALIZATION_STATE_PASSED" : Specialization passed
+  /// - "BADGE_SPECIALIZATION_STATE_NOT_PASSED" : Specialization not passed
+  /// - "BADGE_SPECIALIZATION_STATE_IN_GRACE" : Specialization in grace
   core.String badgeSpecializationState;
 
   SpecializationStatus();
@@ -4948,7 +5277,8 @@ class SpecializationStatus {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (badgeSpecialization != null) {
       _json["badgeSpecialization"] = badgeSpecialization;
     }
@@ -4959,19 +5289,16 @@ class SpecializationStatus {
   }
 }
 
-/** Source of traffic for the current request. */
+/// Source of traffic for the current request.
 class TrafficSource {
-  /**
-   * Identifier to indicate where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   */
+  /// Identifier to indicate where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
   core.String trafficSourceId;
-  /**
-   * Second level identifier to indicate where the traffic comes from.
-   * An identifier has multiple letters created by a team which redirected the
-   * traffic to us.
-   */
+
+  /// Second level identifier to indicate where the traffic comes from.
+  /// An identifier has multiple letters created by a team which redirected the
+  /// traffic to us.
   core.String trafficSubId;
 
   TrafficSource();
@@ -4986,7 +5313,8 @@ class TrafficSource {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (trafficSourceId != null) {
       _json["trafficSourceId"] = trafficSourceId;
     }
@@ -4997,72 +5325,67 @@ class TrafficSource {
   }
 }
 
-/** A resource representing a user of the Partners platform. */
+/// A resource representing a user of the Partners platform.
 class User {
-  /**
-   * This is the list of AdWords Manager Accounts the user has edit access to.
-   * If the user has edit access to multiple accounts, the user can choose the
-   * preferred account and we use this when a personal account is needed. Can
-   * be empty meaning the user has access to no accounts.
-   * @OutputOnly
-   */
+  /// This is the list of AdWords Manager Accounts the user has edit access to.
+  /// If the user has edit access to multiple accounts, the user can choose the
+  /// preferred account and we use this when a personal account is needed. Can
+  /// be empty meaning the user has access to no accounts.
+  /// @OutputOnly
   core.List<AdWordsManagerAccountInfo> availableAdwordsManagerAccounts;
-  /**
-   * The list of achieved certifications. These are calculated based on exam
-   * results and other requirements.
-   * @OutputOnly
-   */
+
+  /// The list of achieved certifications. These are calculated based on exam
+  /// results and other requirements.
+  /// @OutputOnly
   core.List<Certification> certificationStatus;
-  /**
-   * The company that the user is associated with.
-   * If not present, the user is not associated with any company.
-   */
+
+  /// The company that the user is associated with.
+  /// If not present, the user is not associated with any company.
   CompanyRelation company;
-  /**
-   * The email address used by the user used for company verification.
-   * @OutputOnly
-   */
+
+  /// The email address used by the user used for company verification.
+  /// @OutputOnly
   core.String companyVerificationEmail;
-  /**
-   * The list of exams the user ever taken. For each type of exam, only one
-   * entry is listed.
-   */
+
+  /// The list of exams the user ever taken. For each type of exam, only one
+  /// entry is listed.
   core.List<ExamStatus> examStatus;
-  /** The ID of the user. */
+
+  /// The ID of the user.
   core.String id;
-  /**
-   * The internal user ID.
-   * Only available for a whitelisted set of api clients.
-   */
+
+  /// The internal user ID.
+  /// Only available for a whitelisted set of api clients.
   core.String internalId;
-  /**
-   * The most recent time the user interacted with the Partners site.
-   * @OutputOnly
-   */
+
+  /// The most recent time the user interacted with the Partners site.
+  /// @OutputOnly
   core.String lastAccessTime;
-  /**
-   * The list of emails the user has access to/can select as primary.
-   * @OutputOnly
-   */
+
+  /// The list of emails the user has access to/can select as primary.
+  /// @OutputOnly
   core.List<core.String> primaryEmails;
-  /**
-   * The profile information of a Partners user, contains all the directly
-   * editable user information.
-   */
+
+  /// The profile information of a Partners user, contains all the directly
+  /// editable user information.
   UserProfile profile;
-  /**
-   * Information about a user's external public profile outside Google Partners.
-   */
+
+  /// Information about a user's external public profile outside Google
+  /// Partners.
   PublicProfile publicProfile;
 
   User();
 
   User.fromJson(core.Map _json) {
     if (_json.containsKey("availableAdwordsManagerAccounts")) {
-      availableAdwordsManagerAccounts = _json["availableAdwordsManagerAccounts"].map((value) => new AdWordsManagerAccountInfo.fromJson(value)).toList();
+      availableAdwordsManagerAccounts = _json["availableAdwordsManagerAccounts"]
+          .map((value) => new AdWordsManagerAccountInfo.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("certificationStatus")) {
-      certificationStatus = _json["certificationStatus"].map((value) => new Certification.fromJson(value)).toList();
+      certificationStatus = _json["certificationStatus"]
+          .map((value) => new Certification.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("company")) {
       company = new CompanyRelation.fromJson(_json["company"]);
@@ -5071,7 +5394,9 @@ class User {
       companyVerificationEmail = _json["companyVerificationEmail"];
     }
     if (_json.containsKey("examStatus")) {
-      examStatus = _json["examStatus"].map((value) => new ExamStatus.fromJson(value)).toList();
+      examStatus = _json["examStatus"]
+          .map((value) => new ExamStatus.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -5094,12 +5419,16 @@ class User {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (availableAdwordsManagerAccounts != null) {
-      _json["availableAdwordsManagerAccounts"] = availableAdwordsManagerAccounts.map((value) => (value).toJson()).toList();
+      _json["availableAdwordsManagerAccounts"] = availableAdwordsManagerAccounts
+          .map((value) => (value).toJson())
+          .toList();
     }
     if (certificationStatus != null) {
-      _json["certificationStatus"] = certificationStatus.map((value) => (value).toJson()).toList();
+      _json["certificationStatus"] =
+          certificationStatus.map((value) => (value).toJson()).toList();
     }
     if (company != null) {
       _json["company"] = (company).toJson();
@@ -5108,7 +5437,8 @@ class User {
       _json["companyVerificationEmail"] = companyVerificationEmail;
     }
     if (examStatus != null) {
-      _json["examStatus"] = examStatus.map((value) => (value).toJson()).toList();
+      _json["examStatus"] =
+          examStatus.map((value) => (value).toJson()).toList();
     }
     if (id != null) {
       _json["id"] = id;
@@ -5132,14 +5462,13 @@ class User {
   }
 }
 
-/**
- * Values to use instead of the user's respective defaults. These are only
- * honored by whitelisted products.
- */
+/// Values to use instead of the user's respective defaults. These are only
+/// honored by whitelisted products.
 class UserOverrides {
-  /** IP address to use instead of the user's geo-located IP address. */
+  /// IP address to use instead of the user's geo-located IP address.
   core.String ipAddress;
-  /** Logged-in user ID to impersonate instead of the user's ID. */
+
+  /// Logged-in user ID to impersonate instead of the user's ID.
   core.String userId;
 
   UserOverrides();
@@ -5154,7 +5483,8 @@ class UserOverrides {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (ipAddress != null) {
       _json["ipAddress"] = ipAddress;
     }
@@ -5165,45 +5495,50 @@ class UserOverrides {
   }
 }
 
-/** The profile information of a Partners user. */
+/// The profile information of a Partners user.
 class UserProfile {
-  /** The user's mailing address, contains multiple fields. */
+  /// The user's mailing address, contains multiple fields.
   Location address;
-  /**
-   * If the user has edit access to multiple accounts, the user can choose the
-   * preferred account and it is used when a personal account is needed. Can
-   * be empty.
-   */
+
+  /// If the user has edit access to multiple accounts, the user can choose the
+  /// preferred account and it is used when a personal account is needed. Can
+  /// be empty.
   core.String adwordsManagerAccount;
-  /**
-   * A list of ids representing which channels the user selected they were in.
-   */
+
+  /// A list of ids representing which channels the user selected they were in.
   core.List<core.String> channels;
-  /**
-   * The email address the user has selected on the Partners site as primary.
-   */
+
+  /// The email address the user has selected on the Partners site as primary.
   core.String emailAddress;
-  /**
-   * The list of opt-ins for the user, related to communication preferences.
-   */
+
+  /// The list of opt-ins for the user, related to communication preferences.
   OptIns emailOptIns;
-  /** The user's family name. */
+
+  /// The user's family name.
   core.String familyName;
-  /** The user's given name. */
+
+  /// The user's given name.
   core.String givenName;
-  /** A list of ids representing which industries the user selected. */
+
+  /// A list of ids representing which industries the user selected.
   core.List<core.String> industries;
-  /** A list of ids represnting which job categories the user selected. */
+
+  /// A list of ids represnting which job categories the user selected.
   core.List<core.String> jobFunctions;
-  /** The list of languages this user understands. */
+
+  /// The list of languages this user understands.
   core.List<core.String> languages;
-  /** A list of ids representing which markets the user was interested in. */
+
+  /// A list of ids representing which markets the user was interested in.
   core.List<core.String> markets;
-  /** The user's phone number. */
+
+  /// The user's phone number.
   core.String phoneNumber;
-  /** The user's primary country, an ISO 2-character code. */
+
+  /// The user's primary country, an ISO 2-character code.
   core.String primaryCountryCode;
-  /** Whether the user's public profile is visible to anyone with the URL. */
+
+  /// Whether the user's public profile is visible to anyone with the URL.
   core.bool profilePublic;
 
   UserProfile();
@@ -5254,7 +5589,8 @@ class UserProfile {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (address != null) {
       _json["address"] = (address).toJson();
     }

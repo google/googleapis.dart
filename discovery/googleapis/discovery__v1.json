@@ -1,7 +1,7 @@
 {
     "basePath": "/discovery/v1/",
     "baseUrl": "https://www.googleapis.com/discovery/v1/",
-    "batchPath": "batch",
+    "batchPath": "batch/discovery/v1",
     "description": "Provides information about other Google APIs, such as what APIs are available, the resource, and method details for each API.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/discovery/",

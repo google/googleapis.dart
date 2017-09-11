@@ -1,12 +1,10 @@
 library googleapis.deploymentmanager.v2.test;
 
 import "dart:core" as core;
-import "dart:collection" as collection;
 import "dart:async" as async;
 import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
-import 'package:http/testing.dart' as http_testing;
 import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/deploymentmanager/v2.dart' as api;
@@ -22,7 +20,8 @@ class HttpServerMock extends http.BaseClient {
 
   async.Future<http.StreamedResponse> send(http.BaseRequest request) {
     if (_expectJson) {
-      return request.finalize()
+      return request
+          .finalize()
           .transform(convert.UTF8.decoder)
           .join('')
           .then((core.String jsonString) {
@@ -45,33 +44,33 @@ class HttpServerMock extends http.BaseClient {
   }
 }
 
-http.StreamedResponse stringResponse(
-    core.int status, core.Map<core.String, core.String> headers, core.String body) {
+http.StreamedResponse stringResponse(core.int status,
+    core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed2194() {
+buildUnnamed2181() {
   var o = new core.List<api.AuditLogConfig>();
   o.add(buildAuditLogConfig());
   o.add(buildAuditLogConfig());
   return o;
 }
 
-checkUnnamed2194(core.List<api.AuditLogConfig> o) {
+checkUnnamed2181(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditLogConfig(o[0]);
   checkAuditLogConfig(o[1]);
 }
 
-buildUnnamed2195() {
+buildUnnamed2182() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2195(core.List<core.String> o) {
+checkUnnamed2182(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -82,8 +81,8 @@ buildAuditConfig() {
   var o = new api.AuditConfig();
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    o.auditLogConfigs = buildUnnamed2194();
-    o.exemptedMembers = buildUnnamed2195();
+    o.auditLogConfigs = buildUnnamed2181();
+    o.exemptedMembers = buildUnnamed2182();
     o.service = "foo";
   }
   buildCounterAuditConfig--;
@@ -93,21 +92,21 @@ buildAuditConfig() {
 checkAuditConfig(api.AuditConfig o) {
   buildCounterAuditConfig++;
   if (buildCounterAuditConfig < 3) {
-    checkUnnamed2194(o.auditLogConfigs);
-    checkUnnamed2195(o.exemptedMembers);
+    checkUnnamed2181(o.auditLogConfigs);
+    checkUnnamed2182(o.exemptedMembers);
     unittest.expect(o.service, unittest.equals('foo'));
   }
   buildCounterAuditConfig--;
 }
 
-buildUnnamed2196() {
+buildUnnamed2183() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2196(core.List<core.String> o) {
+checkUnnamed2183(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -118,7 +117,7 @@ buildAuditLogConfig() {
   var o = new api.AuditLogConfig();
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    o.exemptedMembers = buildUnnamed2196();
+    o.exemptedMembers = buildUnnamed2183();
     o.logType = "foo";
   }
   buildCounterAuditLogConfig--;
@@ -128,7 +127,7 @@ buildAuditLogConfig() {
 checkAuditLogConfig(api.AuditLogConfig o) {
   buildCounterAuditLogConfig++;
   if (buildCounterAuditLogConfig < 3) {
-    checkUnnamed2196(o.exemptedMembers);
+    checkUnnamed2183(o.exemptedMembers);
     unittest.expect(o.logType, unittest.equals('foo'));
   }
   buildCounterAuditLogConfig--;
@@ -153,14 +152,14 @@ checkAuthorizationLoggingOptions(api.AuthorizationLoggingOptions o) {
   buildCounterAuthorizationLoggingOptions--;
 }
 
-buildUnnamed2197() {
+buildUnnamed2184() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2197(core.List<core.String> o) {
+checkUnnamed2184(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -172,7 +171,7 @@ buildBinding() {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     o.condition = buildExpr();
-    o.members = buildUnnamed2197();
+    o.members = buildUnnamed2184();
     o.role = "foo";
   }
   buildCounterBinding--;
@@ -183,20 +182,20 @@ checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     checkExpr(o.condition);
-    checkUnnamed2197(o.members);
+    checkUnnamed2184(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterBinding--;
 }
 
-buildUnnamed2198() {
+buildUnnamed2185() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2198(core.List<core.String> o) {
+checkUnnamed2185(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -212,7 +211,7 @@ buildCondition() {
     o.svc = "foo";
     o.sys = "foo";
     o.value = "foo";
-    o.values = buildUnnamed2198();
+    o.values = buildUnnamed2185();
   }
   buildCounterCondition--;
   return o;
@@ -226,7 +225,7 @@ checkCondition(api.Condition o) {
     unittest.expect(o.svc, unittest.equals('foo'));
     unittest.expect(o.sys, unittest.equals('foo'));
     unittest.expect(o.value, unittest.equals('foo'));
-    checkUnnamed2198(o.values);
+    checkUnnamed2185(o.values);
   }
   buildCounterCondition--;
 }
@@ -250,14 +249,14 @@ checkConfigFile(api.ConfigFile o) {
   buildCounterConfigFile--;
 }
 
-buildUnnamed2199() {
+buildUnnamed2186() {
   var o = new core.List<api.DeploymentLabelEntry>();
   o.add(buildDeploymentLabelEntry());
   o.add(buildDeploymentLabelEntry());
   return o;
 }
 
-checkUnnamed2199(core.List<api.DeploymentLabelEntry> o) {
+checkUnnamed2186(core.List<api.DeploymentLabelEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeploymentLabelEntry(o[0]);
   checkDeploymentLabelEntry(o[1]);
@@ -272,7 +271,7 @@ buildDeployment() {
     o.fingerprint = "foo";
     o.id = "foo";
     o.insertTime = "foo";
-    o.labels = buildUnnamed2199();
+    o.labels = buildUnnamed2186();
     o.manifest = "foo";
     o.name = "foo";
     o.operation = buildOperation();
@@ -291,7 +290,7 @@ checkDeployment(api.Deployment o) {
     unittest.expect(o.fingerprint, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.insertTime, unittest.equals('foo'));
-    checkUnnamed2199(o.labels);
+    checkUnnamed2186(o.labels);
     unittest.expect(o.manifest, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     checkOperation(o.operation);
@@ -323,14 +322,14 @@ checkDeploymentLabelEntry(api.DeploymentLabelEntry o) {
   buildCounterDeploymentLabelEntry--;
 }
 
-buildUnnamed2200() {
+buildUnnamed2187() {
   var o = new core.List<api.DeploymentUpdateLabelEntry>();
   o.add(buildDeploymentUpdateLabelEntry());
   o.add(buildDeploymentUpdateLabelEntry());
   return o;
 }
 
-checkUnnamed2200(core.List<api.DeploymentUpdateLabelEntry> o) {
+checkUnnamed2187(core.List<api.DeploymentUpdateLabelEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeploymentUpdateLabelEntry(o[0]);
   checkDeploymentUpdateLabelEntry(o[1]);
@@ -342,7 +341,7 @@ buildDeploymentUpdate() {
   buildCounterDeploymentUpdate++;
   if (buildCounterDeploymentUpdate < 3) {
     o.description = "foo";
-    o.labels = buildUnnamed2200();
+    o.labels = buildUnnamed2187();
     o.manifest = "foo";
   }
   buildCounterDeploymentUpdate--;
@@ -353,7 +352,7 @@ checkDeploymentUpdate(api.DeploymentUpdate o) {
   buildCounterDeploymentUpdate++;
   if (buildCounterDeploymentUpdate < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed2200(o.labels);
+    checkUnnamed2187(o.labels);
     unittest.expect(o.manifest, unittest.equals('foo'));
   }
   buildCounterDeploymentUpdate--;
@@ -399,14 +398,14 @@ checkDeploymentsCancelPreviewRequest(api.DeploymentsCancelPreviewRequest o) {
   buildCounterDeploymentsCancelPreviewRequest--;
 }
 
-buildUnnamed2201() {
+buildUnnamed2188() {
   var o = new core.List<api.Deployment>();
   o.add(buildDeployment());
   o.add(buildDeployment());
   return o;
 }
 
-checkUnnamed2201(core.List<api.Deployment> o) {
+checkUnnamed2188(core.List<api.Deployment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeployment(o[0]);
   checkDeployment(o[1]);
@@ -417,7 +416,7 @@ buildDeploymentsListResponse() {
   var o = new api.DeploymentsListResponse();
   buildCounterDeploymentsListResponse++;
   if (buildCounterDeploymentsListResponse < 3) {
-    o.deployments = buildUnnamed2201();
+    o.deployments = buildUnnamed2188();
     o.nextPageToken = "foo";
   }
   buildCounterDeploymentsListResponse--;
@@ -427,7 +426,7 @@ buildDeploymentsListResponse() {
 checkDeploymentsListResponse(api.DeploymentsListResponse o) {
   buildCounterDeploymentsListResponse++;
   if (buildCounterDeploymentsListResponse < 3) {
-    checkUnnamed2201(o.deployments);
+    checkUnnamed2188(o.deployments);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterDeploymentsListResponse--;
@@ -582,14 +581,14 @@ checkLogConfigDataAccessOptions(api.LogConfigDataAccessOptions o) {
   buildCounterLogConfigDataAccessOptions--;
 }
 
-buildUnnamed2202() {
+buildUnnamed2189() {
   var o = new core.List<api.ImportFile>();
   o.add(buildImportFile());
   o.add(buildImportFile());
   return o;
 }
 
-checkUnnamed2202(core.List<api.ImportFile> o) {
+checkUnnamed2189(core.List<api.ImportFile> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImportFile(o[0]);
   checkImportFile(o[1]);
@@ -603,7 +602,7 @@ buildManifest() {
     o.config = buildConfigFile();
     o.expandedConfig = "foo";
     o.id = "foo";
-    o.imports = buildUnnamed2202();
+    o.imports = buildUnnamed2189();
     o.insertTime = "foo";
     o.layout = "foo";
     o.name = "foo";
@@ -619,7 +618,7 @@ checkManifest(api.Manifest o) {
     checkConfigFile(o.config);
     unittest.expect(o.expandedConfig, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed2202(o.imports);
+    checkUnnamed2189(o.imports);
     unittest.expect(o.insertTime, unittest.equals('foo'));
     unittest.expect(o.layout, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -628,14 +627,14 @@ checkManifest(api.Manifest o) {
   buildCounterManifest--;
 }
 
-buildUnnamed2203() {
+buildUnnamed2190() {
   var o = new core.List<api.Manifest>();
   o.add(buildManifest());
   o.add(buildManifest());
   return o;
 }
 
-checkUnnamed2203(core.List<api.Manifest> o) {
+checkUnnamed2190(core.List<api.Manifest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManifest(o[0]);
   checkManifest(o[1]);
@@ -646,7 +645,7 @@ buildManifestsListResponse() {
   var o = new api.ManifestsListResponse();
   buildCounterManifestsListResponse++;
   if (buildCounterManifestsListResponse < 3) {
-    o.manifests = buildUnnamed2203();
+    o.manifests = buildUnnamed2190();
     o.nextPageToken = "foo";
   }
   buildCounterManifestsListResponse--;
@@ -656,7 +655,7 @@ buildManifestsListResponse() {
 checkManifestsListResponse(api.ManifestsListResponse o) {
   buildCounterManifestsListResponse++;
   if (buildCounterManifestsListResponse < 3) {
-    checkUnnamed2203(o.manifests);
+    checkUnnamed2190(o.manifests);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterManifestsListResponse--;
@@ -685,14 +684,14 @@ checkOperationErrorErrors(api.OperationErrorErrors o) {
   buildCounterOperationErrorErrors--;
 }
 
-buildUnnamed2204() {
+buildUnnamed2191() {
   var o = new core.List<api.OperationErrorErrors>();
   o.add(buildOperationErrorErrors());
   o.add(buildOperationErrorErrors());
   return o;
 }
 
-checkUnnamed2204(core.List<api.OperationErrorErrors> o) {
+checkUnnamed2191(core.List<api.OperationErrorErrors> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationErrorErrors(o[0]);
   checkOperationErrorErrors(o[1]);
@@ -703,7 +702,7 @@ buildOperationError() {
   var o = new api.OperationError();
   buildCounterOperationError++;
   if (buildCounterOperationError < 3) {
-    o.errors = buildUnnamed2204();
+    o.errors = buildUnnamed2191();
   }
   buildCounterOperationError--;
   return o;
@@ -712,7 +711,7 @@ buildOperationError() {
 checkOperationError(api.OperationError o) {
   buildCounterOperationError++;
   if (buildCounterOperationError < 3) {
-    checkUnnamed2204(o.errors);
+    checkUnnamed2191(o.errors);
   }
   buildCounterOperationError--;
 }
@@ -738,14 +737,14 @@ checkOperationWarningsData(api.OperationWarningsData o) {
   buildCounterOperationWarningsData--;
 }
 
-buildUnnamed2205() {
+buildUnnamed2192() {
   var o = new core.List<api.OperationWarningsData>();
   o.add(buildOperationWarningsData());
   o.add(buildOperationWarningsData());
   return o;
 }
 
-checkUnnamed2205(core.List<api.OperationWarningsData> o) {
+checkUnnamed2192(core.List<api.OperationWarningsData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationWarningsData(o[0]);
   checkOperationWarningsData(o[1]);
@@ -757,7 +756,7 @@ buildOperationWarnings() {
   buildCounterOperationWarnings++;
   if (buildCounterOperationWarnings < 3) {
     o.code = "foo";
-    o.data = buildUnnamed2205();
+    o.data = buildUnnamed2192();
     o.message = "foo";
   }
   buildCounterOperationWarnings--;
@@ -768,20 +767,20 @@ checkOperationWarnings(api.OperationWarnings o) {
   buildCounterOperationWarnings++;
   if (buildCounterOperationWarnings < 3) {
     unittest.expect(o.code, unittest.equals('foo'));
-    checkUnnamed2205(o.data);
+    checkUnnamed2192(o.data);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterOperationWarnings--;
 }
 
-buildUnnamed2206() {
+buildUnnamed2193() {
   var o = new core.List<api.OperationWarnings>();
   o.add(buildOperationWarnings());
   o.add(buildOperationWarnings());
   return o;
 }
 
-checkUnnamed2206(core.List<api.OperationWarnings> o) {
+checkUnnamed2193(core.List<api.OperationWarnings> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationWarnings(o[0]);
   checkOperationWarnings(o[1]);
@@ -813,7 +812,7 @@ buildOperation() {
     o.targetId = "foo";
     o.targetLink = "foo";
     o.user = "foo";
-    o.warnings = buildUnnamed2206();
+    o.warnings = buildUnnamed2193();
     o.zone = "foo";
   }
   buildCounterOperation--;
@@ -844,20 +843,20 @@ checkOperation(api.Operation o) {
     unittest.expect(o.targetId, unittest.equals('foo'));
     unittest.expect(o.targetLink, unittest.equals('foo'));
     unittest.expect(o.user, unittest.equals('foo'));
-    checkUnnamed2206(o.warnings);
+    checkUnnamed2193(o.warnings);
     unittest.expect(o.zone, unittest.equals('foo'));
   }
   buildCounterOperation--;
 }
 
-buildUnnamed2207() {
+buildUnnamed2194() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed2207(core.List<api.Operation> o) {
+checkUnnamed2194(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -869,7 +868,7 @@ buildOperationsListResponse() {
   buildCounterOperationsListResponse++;
   if (buildCounterOperationsListResponse < 3) {
     o.nextPageToken = "foo";
-    o.operations = buildUnnamed2207();
+    o.operations = buildUnnamed2194();
   }
   buildCounterOperationsListResponse--;
   return o;
@@ -879,45 +878,45 @@ checkOperationsListResponse(api.OperationsListResponse o) {
   buildCounterOperationsListResponse++;
   if (buildCounterOperationsListResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2207(o.operations);
+    checkUnnamed2194(o.operations);
   }
   buildCounterOperationsListResponse--;
 }
 
-buildUnnamed2208() {
+buildUnnamed2195() {
   var o = new core.List<api.AuditConfig>();
   o.add(buildAuditConfig());
   o.add(buildAuditConfig());
   return o;
 }
 
-checkUnnamed2208(core.List<api.AuditConfig> o) {
+checkUnnamed2195(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditConfig(o[0]);
   checkAuditConfig(o[1]);
 }
 
-buildUnnamed2209() {
+buildUnnamed2196() {
   var o = new core.List<api.Binding>();
   o.add(buildBinding());
   o.add(buildBinding());
   return o;
 }
 
-checkUnnamed2209(core.List<api.Binding> o) {
+checkUnnamed2196(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
 }
 
-buildUnnamed2210() {
+buildUnnamed2197() {
   var o = new core.List<api.Rule>();
   o.add(buildRule());
   o.add(buildRule());
   return o;
 }
 
-checkUnnamed2210(core.List<api.Rule> o) {
+checkUnnamed2197(core.List<api.Rule> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRule(o[0]);
   checkRule(o[1]);
@@ -928,11 +927,11 @@ buildPolicy() {
   var o = new api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.auditConfigs = buildUnnamed2208();
-    o.bindings = buildUnnamed2209();
+    o.auditConfigs = buildUnnamed2195();
+    o.bindings = buildUnnamed2196();
     o.etag = "foo";
     o.iamOwned = true;
-    o.rules = buildUnnamed2210();
+    o.rules = buildUnnamed2197();
     o.version = 42;
   }
   buildCounterPolicy--;
@@ -942,11 +941,11 @@ buildPolicy() {
 checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed2208(o.auditConfigs);
-    checkUnnamed2209(o.bindings);
+    checkUnnamed2195(o.auditConfigs);
+    checkUnnamed2196(o.bindings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.iamOwned, unittest.isTrue);
-    checkUnnamed2210(o.rules);
+    checkUnnamed2197(o.rules);
     unittest.expect(o.version, unittest.equals(42));
   }
   buildCounterPolicy--;
@@ -973,14 +972,14 @@ checkResourceWarningsData(api.ResourceWarningsData o) {
   buildCounterResourceWarningsData--;
 }
 
-buildUnnamed2211() {
+buildUnnamed2198() {
   var o = new core.List<api.ResourceWarningsData>();
   o.add(buildResourceWarningsData());
   o.add(buildResourceWarningsData());
   return o;
 }
 
-checkUnnamed2211(core.List<api.ResourceWarningsData> o) {
+checkUnnamed2198(core.List<api.ResourceWarningsData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceWarningsData(o[0]);
   checkResourceWarningsData(o[1]);
@@ -992,7 +991,7 @@ buildResourceWarnings() {
   buildCounterResourceWarnings++;
   if (buildCounterResourceWarnings < 3) {
     o.code = "foo";
-    o.data = buildUnnamed2211();
+    o.data = buildUnnamed2198();
     o.message = "foo";
   }
   buildCounterResourceWarnings--;
@@ -1003,20 +1002,20 @@ checkResourceWarnings(api.ResourceWarnings o) {
   buildCounterResourceWarnings++;
   if (buildCounterResourceWarnings < 3) {
     unittest.expect(o.code, unittest.equals('foo'));
-    checkUnnamed2211(o.data);
+    checkUnnamed2198(o.data);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterResourceWarnings--;
 }
 
-buildUnnamed2212() {
+buildUnnamed2199() {
   var o = new core.List<api.ResourceWarnings>();
   o.add(buildResourceWarnings());
   o.add(buildResourceWarnings());
   return o;
 }
 
-checkUnnamed2212(core.List<api.ResourceWarnings> o) {
+checkUnnamed2199(core.List<api.ResourceWarnings> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceWarnings(o[0]);
   checkResourceWarnings(o[1]);
@@ -1038,7 +1037,7 @@ buildResource() {
     o.update = buildResourceUpdate();
     o.updateTime = "foo";
     o.url = "foo";
-    o.warnings = buildUnnamed2212();
+    o.warnings = buildUnnamed2199();
   }
   buildCounterResource--;
   return o;
@@ -1058,7 +1057,7 @@ checkResource(api.Resource o) {
     checkResourceUpdate(o.update);
     unittest.expect(o.updateTime, unittest.equals('foo'));
     unittest.expect(o.url, unittest.equals('foo'));
-    checkUnnamed2212(o.warnings);
+    checkUnnamed2199(o.warnings);
   }
   buildCounterResource--;
 }
@@ -1105,14 +1104,14 @@ checkResourceUpdateErrorErrors(api.ResourceUpdateErrorErrors o) {
   buildCounterResourceUpdateErrorErrors--;
 }
 
-buildUnnamed2213() {
+buildUnnamed2200() {
   var o = new core.List<api.ResourceUpdateErrorErrors>();
   o.add(buildResourceUpdateErrorErrors());
   o.add(buildResourceUpdateErrorErrors());
   return o;
 }
 
-checkUnnamed2213(core.List<api.ResourceUpdateErrorErrors> o) {
+checkUnnamed2200(core.List<api.ResourceUpdateErrorErrors> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceUpdateErrorErrors(o[0]);
   checkResourceUpdateErrorErrors(o[1]);
@@ -1123,7 +1122,7 @@ buildResourceUpdateError() {
   var o = new api.ResourceUpdateError();
   buildCounterResourceUpdateError++;
   if (buildCounterResourceUpdateError < 3) {
-    o.errors = buildUnnamed2213();
+    o.errors = buildUnnamed2200();
   }
   buildCounterResourceUpdateError--;
   return o;
@@ -1132,7 +1131,7 @@ buildResourceUpdateError() {
 checkResourceUpdateError(api.ResourceUpdateError o) {
   buildCounterResourceUpdateError++;
   if (buildCounterResourceUpdateError < 3) {
-    checkUnnamed2213(o.errors);
+    checkUnnamed2200(o.errors);
   }
   buildCounterResourceUpdateError--;
 }
@@ -1158,14 +1157,14 @@ checkResourceUpdateWarningsData(api.ResourceUpdateWarningsData o) {
   buildCounterResourceUpdateWarningsData--;
 }
 
-buildUnnamed2214() {
+buildUnnamed2201() {
   var o = new core.List<api.ResourceUpdateWarningsData>();
   o.add(buildResourceUpdateWarningsData());
   o.add(buildResourceUpdateWarningsData());
   return o;
 }
 
-checkUnnamed2214(core.List<api.ResourceUpdateWarningsData> o) {
+checkUnnamed2201(core.List<api.ResourceUpdateWarningsData> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceUpdateWarningsData(o[0]);
   checkResourceUpdateWarningsData(o[1]);
@@ -1177,7 +1176,7 @@ buildResourceUpdateWarnings() {
   buildCounterResourceUpdateWarnings++;
   if (buildCounterResourceUpdateWarnings < 3) {
     o.code = "foo";
-    o.data = buildUnnamed2214();
+    o.data = buildUnnamed2201();
     o.message = "foo";
   }
   buildCounterResourceUpdateWarnings--;
@@ -1188,20 +1187,20 @@ checkResourceUpdateWarnings(api.ResourceUpdateWarnings o) {
   buildCounterResourceUpdateWarnings++;
   if (buildCounterResourceUpdateWarnings < 3) {
     unittest.expect(o.code, unittest.equals('foo'));
-    checkUnnamed2214(o.data);
+    checkUnnamed2201(o.data);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterResourceUpdateWarnings--;
 }
 
-buildUnnamed2215() {
+buildUnnamed2202() {
   var o = new core.List<api.ResourceUpdateWarnings>();
   o.add(buildResourceUpdateWarnings());
   o.add(buildResourceUpdateWarnings());
   return o;
 }
 
-checkUnnamed2215(core.List<api.ResourceUpdateWarnings> o) {
+checkUnnamed2202(core.List<api.ResourceUpdateWarnings> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceUpdateWarnings(o[0]);
   checkResourceUpdateWarnings(o[1]);
@@ -1219,7 +1218,7 @@ buildResourceUpdate() {
     o.manifest = "foo";
     o.properties = "foo";
     o.state = "foo";
-    o.warnings = buildUnnamed2215();
+    o.warnings = buildUnnamed2202();
   }
   buildCounterResourceUpdate--;
   return o;
@@ -1235,19 +1234,19 @@ checkResourceUpdate(api.ResourceUpdate o) {
     unittest.expect(o.manifest, unittest.equals('foo'));
     unittest.expect(o.properties, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
-    checkUnnamed2215(o.warnings);
+    checkUnnamed2202(o.warnings);
   }
   buildCounterResourceUpdate--;
 }
 
-buildUnnamed2216() {
+buildUnnamed2203() {
   var o = new core.List<api.Resource>();
   o.add(buildResource());
   o.add(buildResource());
   return o;
 }
 
-checkUnnamed2216(core.List<api.Resource> o) {
+checkUnnamed2203(core.List<api.Resource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResource(o[0]);
   checkResource(o[1]);
@@ -1259,7 +1258,7 @@ buildResourcesListResponse() {
   buildCounterResourcesListResponse++;
   if (buildCounterResourcesListResponse < 3) {
     o.nextPageToken = "foo";
-    o.resources = buildUnnamed2216();
+    o.resources = buildUnnamed2203();
   }
   buildCounterResourcesListResponse--;
   return o;
@@ -1269,71 +1268,71 @@ checkResourcesListResponse(api.ResourcesListResponse o) {
   buildCounterResourcesListResponse++;
   if (buildCounterResourcesListResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2216(o.resources);
+    checkUnnamed2203(o.resources);
   }
   buildCounterResourcesListResponse--;
 }
 
-buildUnnamed2217() {
+buildUnnamed2204() {
   var o = new core.List<api.Condition>();
   o.add(buildCondition());
   o.add(buildCondition());
   return o;
 }
 
-checkUnnamed2217(core.List<api.Condition> o) {
+checkUnnamed2204(core.List<api.Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCondition(o[0]);
   checkCondition(o[1]);
 }
 
-buildUnnamed2218() {
+buildUnnamed2205() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2218(core.List<core.String> o) {
+checkUnnamed2205(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2219() {
+buildUnnamed2206() {
   var o = new core.List<api.LogConfig>();
   o.add(buildLogConfig());
   o.add(buildLogConfig());
   return o;
 }
 
-checkUnnamed2219(core.List<api.LogConfig> o) {
+checkUnnamed2206(core.List<api.LogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLogConfig(o[0]);
   checkLogConfig(o[1]);
 }
 
-buildUnnamed2220() {
+buildUnnamed2207() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2220(core.List<core.String> o) {
+checkUnnamed2207(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2221() {
+buildUnnamed2208() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2221(core.List<core.String> o) {
+checkUnnamed2208(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1345,12 +1344,12 @@ buildRule() {
   buildCounterRule++;
   if (buildCounterRule < 3) {
     o.action = "foo";
-    o.conditions = buildUnnamed2217();
+    o.conditions = buildUnnamed2204();
     o.description = "foo";
-    o.ins = buildUnnamed2218();
-    o.logConfigs = buildUnnamed2219();
-    o.notIns = buildUnnamed2220();
-    o.permissions = buildUnnamed2221();
+    o.ins = buildUnnamed2205();
+    o.logConfigs = buildUnnamed2206();
+    o.notIns = buildUnnamed2207();
+    o.permissions = buildUnnamed2208();
   }
   buildCounterRule--;
   return o;
@@ -1360,24 +1359,24 @@ checkRule(api.Rule o) {
   buildCounterRule++;
   if (buildCounterRule < 3) {
     unittest.expect(o.action, unittest.equals('foo'));
-    checkUnnamed2217(o.conditions);
+    checkUnnamed2204(o.conditions);
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed2218(o.ins);
-    checkUnnamed2219(o.logConfigs);
-    checkUnnamed2220(o.notIns);
-    checkUnnamed2221(o.permissions);
+    checkUnnamed2205(o.ins);
+    checkUnnamed2206(o.logConfigs);
+    checkUnnamed2207(o.notIns);
+    checkUnnamed2208(o.permissions);
   }
   buildCounterRule--;
 }
 
-buildUnnamed2222() {
+buildUnnamed2209() {
   var o = new core.List<api.ImportFile>();
   o.add(buildImportFile());
   o.add(buildImportFile());
   return o;
 }
 
-checkUnnamed2222(core.List<api.ImportFile> o) {
+checkUnnamed2209(core.List<api.ImportFile> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkImportFile(o[0]);
   checkImportFile(o[1]);
@@ -1389,7 +1388,7 @@ buildTargetConfiguration() {
   buildCounterTargetConfiguration++;
   if (buildCounterTargetConfiguration < 3) {
     o.config = buildConfigFile();
-    o.imports = buildUnnamed2222();
+    o.imports = buildUnnamed2209();
   }
   buildCounterTargetConfiguration--;
   return o;
@@ -1399,19 +1398,19 @@ checkTargetConfiguration(api.TargetConfiguration o) {
   buildCounterTargetConfiguration++;
   if (buildCounterTargetConfiguration < 3) {
     checkConfigFile(o.config);
-    checkUnnamed2222(o.imports);
+    checkUnnamed2209(o.imports);
   }
   buildCounterTargetConfiguration--;
 }
 
-buildUnnamed2223() {
+buildUnnamed2210() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2223(core.List<core.String> o) {
+checkUnnamed2210(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1422,7 +1421,7 @@ buildTestPermissionsRequest() {
   var o = new api.TestPermissionsRequest();
   buildCounterTestPermissionsRequest++;
   if (buildCounterTestPermissionsRequest < 3) {
-    o.permissions = buildUnnamed2223();
+    o.permissions = buildUnnamed2210();
   }
   buildCounterTestPermissionsRequest--;
   return o;
@@ -1431,19 +1430,19 @@ buildTestPermissionsRequest() {
 checkTestPermissionsRequest(api.TestPermissionsRequest o) {
   buildCounterTestPermissionsRequest++;
   if (buildCounterTestPermissionsRequest < 3) {
-    checkUnnamed2223(o.permissions);
+    checkUnnamed2210(o.permissions);
   }
   buildCounterTestPermissionsRequest--;
 }
 
-buildUnnamed2224() {
+buildUnnamed2211() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2224(core.List<core.String> o) {
+checkUnnamed2211(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1454,7 +1453,7 @@ buildTestPermissionsResponse() {
   var o = new api.TestPermissionsResponse();
   buildCounterTestPermissionsResponse++;
   if (buildCounterTestPermissionsResponse < 3) {
-    o.permissions = buildUnnamed2224();
+    o.permissions = buildUnnamed2211();
   }
   buildCounterTestPermissionsResponse--;
   return o;
@@ -1463,7 +1462,7 @@ buildTestPermissionsResponse() {
 checkTestPermissionsResponse(api.TestPermissionsResponse o) {
   buildCounterTestPermissionsResponse++;
   if (buildCounterTestPermissionsResponse < 3) {
-    checkUnnamed2224(o.permissions);
+    checkUnnamed2211(o.permissions);
   }
   buildCounterTestPermissionsResponse--;
 }
@@ -1495,14 +1494,14 @@ checkType(api.Type o) {
   buildCounterType--;
 }
 
-buildUnnamed2225() {
+buildUnnamed2212() {
   var o = new core.List<api.Type>();
   o.add(buildType());
   o.add(buildType());
   return o;
 }
 
-checkUnnamed2225(core.List<api.Type> o) {
+checkUnnamed2212(core.List<api.Type> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkType(o[0]);
   checkType(o[1]);
@@ -1514,7 +1513,7 @@ buildTypesListResponse() {
   buildCounterTypesListResponse++;
   if (buildCounterTypesListResponse < 3) {
     o.nextPageToken = "foo";
-    o.types = buildUnnamed2225();
+    o.types = buildUnnamed2212();
   }
   buildCounterTypesListResponse--;
   return o;
@@ -1524,11 +1523,10 @@ checkTypesListResponse(api.TypesListResponse o) {
   buildCounterTypesListResponse++;
   if (buildCounterTypesListResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2225(o.types);
+    checkUnnamed2212(o.types);
   }
   buildCounterTypesListResponse--;
 }
-
 
 main() {
   unittest.group("obj-schema-AuditConfig", () {
@@ -1539,7 +1537,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-AuditLogConfig", () {
     unittest.test("to-json--from-json", () {
       var o = buildAuditLogConfig();
@@ -1547,7 +1544,6 @@ main() {
       checkAuditLogConfig(od);
     });
   });
-
 
   unittest.group("obj-schema-AuthorizationLoggingOptions", () {
     unittest.test("to-json--from-json", () {
@@ -1557,7 +1553,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Binding", () {
     unittest.test("to-json--from-json", () {
       var o = buildBinding();
@@ -1565,7 +1560,6 @@ main() {
       checkBinding(od);
     });
   });
-
 
   unittest.group("obj-schema-Condition", () {
     unittest.test("to-json--from-json", () {
@@ -1575,7 +1569,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ConfigFile", () {
     unittest.test("to-json--from-json", () {
       var o = buildConfigFile();
@@ -1583,7 +1576,6 @@ main() {
       checkConfigFile(od);
     });
   });
-
 
   unittest.group("obj-schema-Deployment", () {
     unittest.test("to-json--from-json", () {
@@ -1593,7 +1585,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-DeploymentLabelEntry", () {
     unittest.test("to-json--from-json", () {
       var o = buildDeploymentLabelEntry();
@@ -1601,7 +1592,6 @@ main() {
       checkDeploymentLabelEntry(od);
     });
   });
-
 
   unittest.group("obj-schema-DeploymentUpdate", () {
     unittest.test("to-json--from-json", () {
@@ -1611,7 +1601,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-DeploymentUpdateLabelEntry", () {
     unittest.test("to-json--from-json", () {
       var o = buildDeploymentUpdateLabelEntry();
@@ -1619,7 +1608,6 @@ main() {
       checkDeploymentUpdateLabelEntry(od);
     });
   });
-
 
   unittest.group("obj-schema-DeploymentsCancelPreviewRequest", () {
     unittest.test("to-json--from-json", () {
@@ -1629,7 +1617,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-DeploymentsListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildDeploymentsListResponse();
@@ -1637,7 +1624,6 @@ main() {
       checkDeploymentsListResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-DeploymentsStopRequest", () {
     unittest.test("to-json--from-json", () {
@@ -1647,7 +1633,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Expr", () {
     unittest.test("to-json--from-json", () {
       var o = buildExpr();
@@ -1655,7 +1640,6 @@ main() {
       checkExpr(od);
     });
   });
-
 
   unittest.group("obj-schema-ImportFile", () {
     unittest.test("to-json--from-json", () {
@@ -1665,7 +1649,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-LogConfig", () {
     unittest.test("to-json--from-json", () {
       var o = buildLogConfig();
@@ -1673,7 +1656,6 @@ main() {
       checkLogConfig(od);
     });
   });
-
 
   unittest.group("obj-schema-LogConfigCloudAuditOptions", () {
     unittest.test("to-json--from-json", () {
@@ -1683,7 +1665,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-LogConfigCounterOptions", () {
     unittest.test("to-json--from-json", () {
       var o = buildLogConfigCounterOptions();
@@ -1691,7 +1672,6 @@ main() {
       checkLogConfigCounterOptions(od);
     });
   });
-
 
   unittest.group("obj-schema-LogConfigDataAccessOptions", () {
     unittest.test("to-json--from-json", () {
@@ -1701,7 +1681,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Manifest", () {
     unittest.test("to-json--from-json", () {
       var o = buildManifest();
@@ -1709,7 +1688,6 @@ main() {
       checkManifest(od);
     });
   });
-
 
   unittest.group("obj-schema-ManifestsListResponse", () {
     unittest.test("to-json--from-json", () {
@@ -1719,7 +1697,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-OperationErrorErrors", () {
     unittest.test("to-json--from-json", () {
       var o = buildOperationErrorErrors();
@@ -1727,7 +1704,6 @@ main() {
       checkOperationErrorErrors(od);
     });
   });
-
 
   unittest.group("obj-schema-OperationError", () {
     unittest.test("to-json--from-json", () {
@@ -1737,7 +1713,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-OperationWarningsData", () {
     unittest.test("to-json--from-json", () {
       var o = buildOperationWarningsData();
@@ -1745,7 +1720,6 @@ main() {
       checkOperationWarningsData(od);
     });
   });
-
 
   unittest.group("obj-schema-OperationWarnings", () {
     unittest.test("to-json--from-json", () {
@@ -1755,7 +1729,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Operation", () {
     unittest.test("to-json--from-json", () {
       var o = buildOperation();
@@ -1763,7 +1736,6 @@ main() {
       checkOperation(od);
     });
   });
-
 
   unittest.group("obj-schema-OperationsListResponse", () {
     unittest.test("to-json--from-json", () {
@@ -1773,7 +1745,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Policy", () {
     unittest.test("to-json--from-json", () {
       var o = buildPolicy();
@@ -1781,7 +1752,6 @@ main() {
       checkPolicy(od);
     });
   });
-
 
   unittest.group("obj-schema-ResourceWarningsData", () {
     unittest.test("to-json--from-json", () {
@@ -1791,7 +1761,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ResourceWarnings", () {
     unittest.test("to-json--from-json", () {
       var o = buildResourceWarnings();
@@ -1799,7 +1768,6 @@ main() {
       checkResourceWarnings(od);
     });
   });
-
 
   unittest.group("obj-schema-Resource", () {
     unittest.test("to-json--from-json", () {
@@ -1809,7 +1777,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ResourceAccessControl", () {
     unittest.test("to-json--from-json", () {
       var o = buildResourceAccessControl();
@@ -1817,7 +1784,6 @@ main() {
       checkResourceAccessControl(od);
     });
   });
-
 
   unittest.group("obj-schema-ResourceUpdateErrorErrors", () {
     unittest.test("to-json--from-json", () {
@@ -1827,7 +1793,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ResourceUpdateError", () {
     unittest.test("to-json--from-json", () {
       var o = buildResourceUpdateError();
@@ -1835,7 +1800,6 @@ main() {
       checkResourceUpdateError(od);
     });
   });
-
 
   unittest.group("obj-schema-ResourceUpdateWarningsData", () {
     unittest.test("to-json--from-json", () {
@@ -1845,7 +1809,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ResourceUpdateWarnings", () {
     unittest.test("to-json--from-json", () {
       var o = buildResourceUpdateWarnings();
@@ -1853,7 +1816,6 @@ main() {
       checkResourceUpdateWarnings(od);
     });
   });
-
 
   unittest.group("obj-schema-ResourceUpdate", () {
     unittest.test("to-json--from-json", () {
@@ -1863,7 +1825,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ResourcesListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildResourcesListResponse();
@@ -1871,7 +1832,6 @@ main() {
       checkResourcesListResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-Rule", () {
     unittest.test("to-json--from-json", () {
@@ -1881,7 +1841,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-TargetConfiguration", () {
     unittest.test("to-json--from-json", () {
       var o = buildTargetConfiguration();
@@ -1889,7 +1848,6 @@ main() {
       checkTargetConfiguration(od);
     });
   });
-
 
   unittest.group("obj-schema-TestPermissionsRequest", () {
     unittest.test("to-json--from-json", () {
@@ -1899,7 +1857,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-TestPermissionsResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildTestPermissionsResponse();
@@ -1907,7 +1864,6 @@ main() {
       checkTestPermissionsResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-Type", () {
     unittest.test("to-json--from-json", () {
@@ -1917,7 +1873,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-TypesListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildTypesListResponse();
@@ -1926,12 +1881,11 @@ main() {
     });
   });
 
-
   unittest.group("resource-DeploymentsResourceApi", () {
     unittest.test("method--cancelPreview", () {
-
       var mock = new HttpServerMock();
-      api.DeploymentsResourceApi res = new api.DeploymentmanagerApi(mock).deployments;
+      api.DeploymentsResourceApi res =
+          new api.DeploymentmanagerApi(mock).deployments;
       var arg_request = buildDeploymentsCancelPreviewRequest();
       var arg_project = "foo";
       var arg_deployment = "foo";
@@ -1943,7 +1897,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -1956,29 +1911,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.cancelPreview(arg_request, arg_project, arg_deployment).then(unittest.expectAsync1(((api.Operation response) {
+      res
+          .cancelPreview(arg_request, arg_project, arg_deployment)
+          .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
 
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
-      api.DeploymentsResourceApi res = new api.DeploymentmanagerApi(mock).deployments;
+      api.DeploymentsResourceApi res =
+          new api.DeploymentmanagerApi(mock).deployments;
       var arg_project = "foo";
       var arg_deployment = "foo";
       var arg_deletePolicy = "foo";
@@ -1987,7 +1945,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2000,30 +1959,34 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["deletePolicy"].first, unittest.equals(arg_deletePolicy));
-
+        unittest.expect(
+            queryMap["deletePolicy"].first, unittest.equals(arg_deletePolicy));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_project, arg_deployment, deletePolicy: arg_deletePolicy).then(unittest.expectAsync1(((api.Operation response) {
+      res
+          .delete(arg_project, arg_deployment, deletePolicy: arg_deletePolicy)
+          .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.DeploymentsResourceApi res = new api.DeploymentmanagerApi(mock).deployments;
+      api.DeploymentsResourceApi res =
+          new api.DeploymentmanagerApi(mock).deployments;
       var arg_project = "foo";
       var arg_deployment = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2031,7 +1994,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2044,29 +2008,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildDeployment());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_project, arg_deployment).then(unittest.expectAsync1(((api.Deployment response) {
+      res
+          .get(arg_project, arg_deployment)
+          .then(unittest.expectAsync1(((api.Deployment response) {
         checkDeployment(response);
       })));
     });
 
     unittest.test("method--getIamPolicy", () {
-
       var mock = new HttpServerMock();
-      api.DeploymentsResourceApi res = new api.DeploymentmanagerApi(mock).deployments;
+      api.DeploymentsResourceApi res =
+          new api.DeploymentmanagerApi(mock).deployments;
       var arg_project = "foo";
       var arg_resource = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2074,7 +2041,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2087,29 +2055,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getIamPolicy(arg_project, arg_resource).then(unittest.expectAsync1(((api.Policy response) {
+      res
+          .getIamPolicy(arg_project, arg_resource)
+          .then(unittest.expectAsync1(((api.Policy response) {
         checkPolicy(response);
       })));
     });
 
     unittest.test("method--insert", () {
-
       var mock = new HttpServerMock();
-      api.DeploymentsResourceApi res = new api.DeploymentmanagerApi(mock).deployments;
+      api.DeploymentsResourceApi res =
+          new api.DeploymentmanagerApi(mock).deployments;
       var arg_request = buildDeployment();
       var arg_project = "foo";
       var arg_preview = true;
@@ -2121,7 +2092,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2134,30 +2106,34 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["preview"].first, unittest.equals("$arg_preview"));
-
+        unittest.expect(
+            queryMap["preview"].first, unittest.equals("$arg_preview"));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_project, preview: arg_preview).then(unittest.expectAsync1(((api.Operation response) {
+      res
+          .insert(arg_request, arg_project, preview: arg_preview)
+          .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.DeploymentsResourceApi res = new api.DeploymentmanagerApi(mock).deployments;
+      api.DeploymentsResourceApi res =
+          new api.DeploymentmanagerApi(mock).deployments;
       var arg_project = "foo";
       var arg_filter = "foo";
       var arg_maxResults = 42;
@@ -2168,7 +2144,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2181,33 +2158,43 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildDeploymentsListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_project, filter: arg_filter, maxResults: arg_maxResults, orderBy: arg_orderBy, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.DeploymentsListResponse response) {
+      res
+          .list(arg_project,
+              filter: arg_filter,
+              maxResults: arg_maxResults,
+              orderBy: arg_orderBy,
+              pageToken: arg_pageToken)
+          .then(unittest.expectAsync1(((api.DeploymentsListResponse response) {
         checkDeploymentsListResponse(response);
       })));
     });
 
     unittest.test("method--patch", () {
-
       var mock = new HttpServerMock();
-      api.DeploymentsResourceApi res = new api.DeploymentmanagerApi(mock).deployments;
+      api.DeploymentsResourceApi res =
+          new api.DeploymentmanagerApi(mock).deployments;
       var arg_request = buildDeployment();
       var arg_project = "foo";
       var arg_deployment = "foo";
@@ -2222,7 +2209,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2235,32 +2223,41 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["createPolicy"].first, unittest.equals(arg_createPolicy));
-        unittest.expect(queryMap["deletePolicy"].first, unittest.equals(arg_deletePolicy));
-        unittest.expect(queryMap["preview"].first, unittest.equals("$arg_preview"));
-
+        unittest.expect(
+            queryMap["createPolicy"].first, unittest.equals(arg_createPolicy));
+        unittest.expect(
+            queryMap["deletePolicy"].first, unittest.equals(arg_deletePolicy));
+        unittest.expect(
+            queryMap["preview"].first, unittest.equals("$arg_preview"));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_project, arg_deployment, createPolicy: arg_createPolicy, deletePolicy: arg_deletePolicy, preview: arg_preview).then(unittest.expectAsync1(((api.Operation response) {
+      res
+          .patch(arg_request, arg_project, arg_deployment,
+              createPolicy: arg_createPolicy,
+              deletePolicy: arg_deletePolicy,
+              preview: arg_preview)
+          .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
 
     unittest.test("method--setIamPolicy", () {
-
       var mock = new HttpServerMock();
-      api.DeploymentsResourceApi res = new api.DeploymentmanagerApi(mock).deployments;
+      api.DeploymentsResourceApi res =
+          new api.DeploymentmanagerApi(mock).deployments;
       var arg_request = buildPolicy();
       var arg_project = "foo";
       var arg_resource = "foo";
@@ -2272,7 +2269,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2285,29 +2283,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPolicy());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.setIamPolicy(arg_request, arg_project, arg_resource).then(unittest.expectAsync1(((api.Policy response) {
+      res
+          .setIamPolicy(arg_request, arg_project, arg_resource)
+          .then(unittest.expectAsync1(((api.Policy response) {
         checkPolicy(response);
       })));
     });
 
     unittest.test("method--stop", () {
-
       var mock = new HttpServerMock();
-      api.DeploymentsResourceApi res = new api.DeploymentmanagerApi(mock).deployments;
+      api.DeploymentsResourceApi res =
+          new api.DeploymentmanagerApi(mock).deployments;
       var arg_request = buildDeploymentsStopRequest();
       var arg_project = "foo";
       var arg_deployment = "foo";
@@ -2319,7 +2320,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2332,29 +2334,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.stop(arg_request, arg_project, arg_deployment).then(unittest.expectAsync1(((api.Operation response) {
+      res
+          .stop(arg_request, arg_project, arg_deployment)
+          .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
 
     unittest.test("method--testIamPermissions", () {
-
       var mock = new HttpServerMock();
-      api.DeploymentsResourceApi res = new api.DeploymentmanagerApi(mock).deployments;
+      api.DeploymentsResourceApi res =
+          new api.DeploymentmanagerApi(mock).deployments;
       var arg_request = buildTestPermissionsRequest();
       var arg_project = "foo";
       var arg_resource = "foo";
@@ -2366,7 +2371,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2379,29 +2385,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTestPermissionsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.testIamPermissions(arg_request, arg_project, arg_resource).then(unittest.expectAsync1(((api.TestPermissionsResponse response) {
+      res
+          .testIamPermissions(arg_request, arg_project, arg_resource)
+          .then(unittest.expectAsync1(((api.TestPermissionsResponse response) {
         checkTestPermissionsResponse(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
-      api.DeploymentsResourceApi res = new api.DeploymentmanagerApi(mock).deployments;
+      api.DeploymentsResourceApi res =
+          new api.DeploymentmanagerApi(mock).deployments;
       var arg_request = buildDeployment();
       var arg_project = "foo";
       var arg_deployment = "foo";
@@ -2416,7 +2425,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2429,36 +2439,43 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["createPolicy"].first, unittest.equals(arg_createPolicy));
-        unittest.expect(queryMap["deletePolicy"].first, unittest.equals(arg_deletePolicy));
-        unittest.expect(queryMap["preview"].first, unittest.equals("$arg_preview"));
-
+        unittest.expect(
+            queryMap["createPolicy"].first, unittest.equals(arg_createPolicy));
+        unittest.expect(
+            queryMap["deletePolicy"].first, unittest.equals(arg_deletePolicy));
+        unittest.expect(
+            queryMap["preview"].first, unittest.equals("$arg_preview"));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_project, arg_deployment, createPolicy: arg_createPolicy, deletePolicy: arg_deletePolicy, preview: arg_preview).then(unittest.expectAsync1(((api.Operation response) {
+      res
+          .update(arg_request, arg_project, arg_deployment,
+              createPolicy: arg_createPolicy,
+              deletePolicy: arg_deletePolicy,
+              preview: arg_preview)
+          .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-ManifestsResourceApi", () {
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.ManifestsResourceApi res = new api.DeploymentmanagerApi(mock).manifests;
+      api.ManifestsResourceApi res =
+          new api.DeploymentmanagerApi(mock).manifests;
       var arg_project = "foo";
       var arg_deployment = "foo";
       var arg_manifest = "foo";
@@ -2467,7 +2484,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2480,29 +2498,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildManifest());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_project, arg_deployment, arg_manifest).then(unittest.expectAsync1(((api.Manifest response) {
+      res
+          .get(arg_project, arg_deployment, arg_manifest)
+          .then(unittest.expectAsync1(((api.Manifest response) {
         checkManifest(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.ManifestsResourceApi res = new api.DeploymentmanagerApi(mock).manifests;
+      api.ManifestsResourceApi res =
+          new api.DeploymentmanagerApi(mock).manifests;
       var arg_project = "foo";
       var arg_deployment = "foo";
       var arg_filter = "foo";
@@ -2514,7 +2535,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2527,37 +2549,45 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildManifestsListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_project, arg_deployment, filter: arg_filter, maxResults: arg_maxResults, orderBy: arg_orderBy, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.ManifestsListResponse response) {
+      res
+          .list(arg_project, arg_deployment,
+              filter: arg_filter,
+              maxResults: arg_maxResults,
+              orderBy: arg_orderBy,
+              pageToken: arg_pageToken)
+          .then(unittest.expectAsync1(((api.ManifestsListResponse response) {
         checkManifestsListResponse(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-OperationsResourceApi", () {
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.OperationsResourceApi res = new api.DeploymentmanagerApi(mock).operations;
+      api.OperationsResourceApi res =
+          new api.DeploymentmanagerApi(mock).operations;
       var arg_project = "foo";
       var arg_operation = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2565,7 +2595,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2578,29 +2609,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_project, arg_operation).then(unittest.expectAsync1(((api.Operation response) {
+      res
+          .get(arg_project, arg_operation)
+          .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.OperationsResourceApi res = new api.DeploymentmanagerApi(mock).operations;
+      api.OperationsResourceApi res =
+          new api.DeploymentmanagerApi(mock).operations;
       var arg_project = "foo";
       var arg_filter = "foo";
       var arg_maxResults = 42;
@@ -2611,7 +2645,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2624,37 +2659,45 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildOperationsListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_project, filter: arg_filter, maxResults: arg_maxResults, orderBy: arg_orderBy, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.OperationsListResponse response) {
+      res
+          .list(arg_project,
+              filter: arg_filter,
+              maxResults: arg_maxResults,
+              orderBy: arg_orderBy,
+              pageToken: arg_pageToken)
+          .then(unittest.expectAsync1(((api.OperationsListResponse response) {
         checkOperationsListResponse(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-ResourcesResourceApi", () {
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.ResourcesResourceApi res = new api.DeploymentmanagerApi(mock).resources;
+      api.ResourcesResourceApi res =
+          new api.DeploymentmanagerApi(mock).resources;
       var arg_project = "foo";
       var arg_deployment = "foo";
       var arg_resource = "foo";
@@ -2663,7 +2706,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2676,29 +2720,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildResource());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_project, arg_deployment, arg_resource).then(unittest.expectAsync1(((api.Resource response) {
+      res
+          .get(arg_project, arg_deployment, arg_resource)
+          .then(unittest.expectAsync1(((api.Resource response) {
         checkResource(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.ResourcesResourceApi res = new api.DeploymentmanagerApi(mock).resources;
+      api.ResourcesResourceApi res =
+          new api.DeploymentmanagerApi(mock).resources;
       var arg_project = "foo";
       var arg_deployment = "foo";
       var arg_filter = "foo";
@@ -2710,7 +2757,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2723,35 +2771,42 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildResourcesListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_project, arg_deployment, filter: arg_filter, maxResults: arg_maxResults, orderBy: arg_orderBy, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.ResourcesListResponse response) {
+      res
+          .list(arg_project, arg_deployment,
+              filter: arg_filter,
+              maxResults: arg_maxResults,
+              orderBy: arg_orderBy,
+              pageToken: arg_pageToken)
+          .then(unittest.expectAsync1(((api.ResourcesListResponse response) {
         checkResourcesListResponse(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-TypesResourceApi", () {
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
       api.TypesResourceApi res = new api.DeploymentmanagerApi(mock).types;
       var arg_project = "foo";
@@ -2764,7 +2819,8 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
 
         var query = (req.url).query;
@@ -2777,31 +2833,37 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
-        unittest.expect(queryMap["orderBy"].first, unittest.equals(arg_orderBy));
-        unittest.expect(queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildTypesListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_project, filter: arg_filter, maxResults: arg_maxResults, orderBy: arg_orderBy, pageToken: arg_pageToken).then(unittest.expectAsync1(((api.TypesListResponse response) {
+      res
+          .list(arg_project,
+              filter: arg_filter,
+              maxResults: arg_maxResults,
+              orderBy: arg_orderBy,
+              pageToken: arg_pageToken)
+          .then(unittest.expectAsync1(((api.TypesListResponse response) {
         checkTypesListResponse(response);
       })));
     });
-
   });
-
-
 }
-

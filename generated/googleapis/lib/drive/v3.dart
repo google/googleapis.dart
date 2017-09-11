@@ -9,45 +9,52 @@ import 'dart:convert' as convert;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
-    ApiRequestError, DetailedApiRequestError, Media, UploadOptions,
-    ResumableUploadOptions, DownloadOptions, PartialDownloadOptions,
-    ByteRange;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
+    show
+        ApiRequestError,
+        DetailedApiRequestError,
+        Media,
+        UploadOptions,
+        ResumableUploadOptions,
+        DownloadOptions,
+        PartialDownloadOptions,
+        ByteRange;
 
 const core.String USER_AGENT = 'dart-api-client drive/v3';
 
-/**
- * Manages files in Drive including uploading, downloading, searching, detecting
- * changes, and updating sharing permissions.
- */
+/// Manages files in Drive including uploading, downloading, searching,
+/// detecting changes, and updating sharing permissions.
 class DriveApi {
-  /** View and manage the files in your Google Drive */
+  /// View and manage the files in your Google Drive
   static const DriveScope = "https://www.googleapis.com/auth/drive";
 
-  /** View and manage its own configuration data in your Google Drive */
-  static const DriveAppdataScope = "https://www.googleapis.com/auth/drive.appdata";
+  /// View and manage its own configuration data in your Google Drive
+  static const DriveAppdataScope =
+      "https://www.googleapis.com/auth/drive.appdata";
 
-  /**
-   * View and manage Google Drive files and folders that you have opened or
-   * created with this app
-   */
+  /// View and manage Google Drive files and folders that you have opened or
+  /// created with this app
   static const DriveFileScope = "https://www.googleapis.com/auth/drive.file";
 
-  /** View and manage metadata of files in your Google Drive */
-  static const DriveMetadataScope = "https://www.googleapis.com/auth/drive.metadata";
+  /// View and manage metadata of files in your Google Drive
+  static const DriveMetadataScope =
+      "https://www.googleapis.com/auth/drive.metadata";
 
-  /** View metadata for files in your Google Drive */
-  static const DriveMetadataReadonlyScope = "https://www.googleapis.com/auth/drive.metadata.readonly";
+  /// View metadata for files in your Google Drive
+  static const DriveMetadataReadonlyScope =
+      "https://www.googleapis.com/auth/drive.metadata.readonly";
 
-  /** View the photos, videos and albums in your Google Photos */
-  static const DrivePhotosReadonlyScope = "https://www.googleapis.com/auth/drive.photos.readonly";
+  /// View the photos, videos and albums in your Google Photos
+  static const DrivePhotosReadonlyScope =
+      "https://www.googleapis.com/auth/drive.photos.readonly";
 
-  /** View the files in your Google Drive */
-  static const DriveReadonlyScope = "https://www.googleapis.com/auth/drive.readonly";
+  /// View the files in your Google Drive
+  static const DriveReadonlyScope =
+      "https://www.googleapis.com/auth/drive.readonly";
 
-  /** Modify your Google Apps Script scripts' behavior */
-  static const DriveScriptsScope = "https://www.googleapis.com/auth/drive.scripts";
-
+  /// Modify your Google Apps Script scripts' behavior
+  static const DriveScriptsScope =
+      "https://www.googleapis.com/auth/drive.scripts";
 
   final commons.ApiRequester _requester;
 
@@ -56,35 +63,36 @@ class DriveApi {
   ChannelsResourceApi get channels => new ChannelsResourceApi(_requester);
   CommentsResourceApi get comments => new CommentsResourceApi(_requester);
   FilesResourceApi get files => new FilesResourceApi(_requester);
-  PermissionsResourceApi get permissions => new PermissionsResourceApi(_requester);
+  PermissionsResourceApi get permissions =>
+      new PermissionsResourceApi(_requester);
   RepliesResourceApi get replies => new RepliesResourceApi(_requester);
   RevisionsResourceApi get revisions => new RevisionsResourceApi(_requester);
   TeamdrivesResourceApi get teamdrives => new TeamdrivesResourceApi(_requester);
 
-  DriveApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "drive/v3/"}) :
-      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+  DriveApi(http.Client client,
+      {core.String rootUrl: "https://www.googleapis.com/",
+      core.String servicePath: "drive/v3/"})
+      : _requester =
+            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
-
 
 class AboutResourceApi {
   final commons.ApiRequester _requester;
 
-  AboutResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  AboutResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Gets information about the user, the user's Drive, and system capabilities.
-   *
-   * Request parameters:
-   *
-   * Completes with a [About].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Gets information about the user, the user's Drive, and system
+  /// capabilities.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [About].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<About> get() {
     var _url = null;
     var _queryParams = new core.Map();
@@ -93,48 +101,42 @@ class AboutResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-
     _url = 'about';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new About.fromJson(data));
   }
-
 }
-
 
 class ChangesResourceApi {
   final commons.ApiRequester _requester;
 
-  ChangesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  ChangesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Gets the starting pageToken for listing future changes.
-   *
-   * Request parameters:
-   *
-   * [supportsTeamDrives] - Whether the requesting application supports Team
-   * Drives.
-   *
-   * [teamDriveId] - The ID of the Team Drive for which the starting pageToken
-   * for listing future changes from that Team Drive will be returned.
-   *
-   * Completes with a [StartPageToken].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<StartPageToken> getStartPageToken({core.bool supportsTeamDrives, core.String teamDriveId}) {
+  /// Gets the starting pageToken for listing future changes.
+  ///
+  /// Request parameters:
+  ///
+  /// [supportsTeamDrives] - Whether the requesting application supports Team
+  /// Drives.
+  ///
+  /// [teamDriveId] - The ID of the Team Drive for which the starting pageToken
+  /// for listing future changes from that Team Drive will be returned.
+  ///
+  /// Completes with a [StartPageToken].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<StartPageToken> getStartPageToken(
+      {core.bool supportsTeamDrives, core.String teamDriveId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -151,64 +153,69 @@ class ChangesResourceApi {
 
     _url = 'changes/startPageToken';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new StartPageToken.fromJson(data));
   }
 
-  /**
-   * Lists the changes for a user or Team Drive.
-   *
-   * Request parameters:
-   *
-   * [pageToken] - The token for continuing a previous list request on the next
-   * page. This should be set to the value of 'nextPageToken' from the previous
-   * response or to the response from the getStartPageToken method.
-   *
-   * [includeCorpusRemovals] - Whether changes should include the file resource
-   * if the file is still accessible by the user at the time of the request,
-   * even when a file was removed from the list of changes and there will be no
-   * further change entries for this file.
-   *
-   * [includeRemoved] - Whether to include changes indicating that items have
-   * been removed from the list of changes, for example by deletion or loss of
-   * access.
-   *
-   * [includeTeamDriveItems] - Whether Team Drive files or changes should be
-   * included in results.
-   *
-   * [pageSize] - The maximum number of changes to return per page.
-   * Value must be between "1" and "1000".
-   *
-   * [restrictToMyDrive] - Whether to restrict the results to changes inside the
-   * My Drive hierarchy. This omits changes to files such as those in the
-   * Application Data folder or shared files which have not been added to My
-   * Drive.
-   *
-   * [spaces] - A comma-separated list of spaces to query within the user
-   * corpus. Supported values are 'drive', 'appDataFolder' and 'photos'.
-   *
-   * [supportsTeamDrives] - Whether the requesting application supports Team
-   * Drives.
-   *
-   * [teamDriveId] - The Team Drive from which changes will be returned. If
-   * specified the change IDs will be reflective of the Team Drive; use the
-   * combined Team Drive ID and change ID as an identifier.
-   *
-   * Completes with a [ChangeList].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ChangeList> list(core.String pageToken, {core.bool includeCorpusRemovals, core.bool includeRemoved, core.bool includeTeamDriveItems, core.int pageSize, core.bool restrictToMyDrive, core.String spaces, core.bool supportsTeamDrives, core.String teamDriveId}) {
+  /// Lists the changes for a user or Team Drive.
+  ///
+  /// Request parameters:
+  ///
+  /// [pageToken] - The token for continuing a previous list request on the next
+  /// page. This should be set to the value of 'nextPageToken' from the previous
+  /// response or to the response from the getStartPageToken method.
+  ///
+  /// [includeCorpusRemovals] - Whether changes should include the file resource
+  /// if the file is still accessible by the user at the time of the request,
+  /// even when a file was removed from the list of changes and there will be no
+  /// further change entries for this file.
+  ///
+  /// [includeRemoved] - Whether to include changes indicating that items have
+  /// been removed from the list of changes, for example by deletion or loss of
+  /// access.
+  ///
+  /// [includeTeamDriveItems] - Whether Team Drive files or changes should be
+  /// included in results.
+  ///
+  /// [pageSize] - The maximum number of changes to return per page.
+  /// Value must be between "1" and "1000".
+  ///
+  /// [restrictToMyDrive] - Whether to restrict the results to changes inside
+  /// the My Drive hierarchy. This omits changes to files such as those in the
+  /// Application Data folder or shared files which have not been added to My
+  /// Drive.
+  ///
+  /// [spaces] - A comma-separated list of spaces to query within the user
+  /// corpus. Supported values are 'drive', 'appDataFolder' and 'photos'.
+  ///
+  /// [supportsTeamDrives] - Whether the requesting application supports Team
+  /// Drives.
+  ///
+  /// [teamDriveId] - The Team Drive from which changes will be returned. If
+  /// specified the change IDs will be reflective of the Team Drive; use the
+  /// combined Team Drive ID and change ID as an identifier.
+  ///
+  /// Completes with a [ChangeList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ChangeList> list(core.String pageToken,
+      {core.bool includeCorpusRemovals,
+      core.bool includeRemoved,
+      core.bool includeTeamDriveItems,
+      core.int pageSize,
+      core.bool restrictToMyDrive,
+      core.String spaces,
+      core.bool supportsTeamDrives,
+      core.String teamDriveId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -247,66 +254,71 @@ class ChangesResourceApi {
 
     _url = 'changes';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ChangeList.fromJson(data));
   }
 
-  /**
-   * Subscribes to changes for a user.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [pageToken] - The token for continuing a previous list request on the next
-   * page. This should be set to the value of 'nextPageToken' from the previous
-   * response or to the response from the getStartPageToken method.
-   *
-   * [includeCorpusRemovals] - Whether changes should include the file resource
-   * if the file is still accessible by the user at the time of the request,
-   * even when a file was removed from the list of changes and there will be no
-   * further change entries for this file.
-   *
-   * [includeRemoved] - Whether to include changes indicating that items have
-   * been removed from the list of changes, for example by deletion or loss of
-   * access.
-   *
-   * [includeTeamDriveItems] - Whether Team Drive files or changes should be
-   * included in results.
-   *
-   * [pageSize] - The maximum number of changes to return per page.
-   * Value must be between "1" and "1000".
-   *
-   * [restrictToMyDrive] - Whether to restrict the results to changes inside the
-   * My Drive hierarchy. This omits changes to files such as those in the
-   * Application Data folder or shared files which have not been added to My
-   * Drive.
-   *
-   * [spaces] - A comma-separated list of spaces to query within the user
-   * corpus. Supported values are 'drive', 'appDataFolder' and 'photos'.
-   *
-   * [supportsTeamDrives] - Whether the requesting application supports Team
-   * Drives.
-   *
-   * [teamDriveId] - The Team Drive from which changes will be returned. If
-   * specified the change IDs will be reflective of the Team Drive; use the
-   * combined Team Drive ID and change ID as an identifier.
-   *
-   * Completes with a [Channel].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Channel> watch(Channel request, core.String pageToken, {core.bool includeCorpusRemovals, core.bool includeRemoved, core.bool includeTeamDriveItems, core.int pageSize, core.bool restrictToMyDrive, core.String spaces, core.bool supportsTeamDrives, core.String teamDriveId}) {
+  /// Subscribes to changes for a user.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [pageToken] - The token for continuing a previous list request on the next
+  /// page. This should be set to the value of 'nextPageToken' from the previous
+  /// response or to the response from the getStartPageToken method.
+  ///
+  /// [includeCorpusRemovals] - Whether changes should include the file resource
+  /// if the file is still accessible by the user at the time of the request,
+  /// even when a file was removed from the list of changes and there will be no
+  /// further change entries for this file.
+  ///
+  /// [includeRemoved] - Whether to include changes indicating that items have
+  /// been removed from the list of changes, for example by deletion or loss of
+  /// access.
+  ///
+  /// [includeTeamDriveItems] - Whether Team Drive files or changes should be
+  /// included in results.
+  ///
+  /// [pageSize] - The maximum number of changes to return per page.
+  /// Value must be between "1" and "1000".
+  ///
+  /// [restrictToMyDrive] - Whether to restrict the results to changes inside
+  /// the My Drive hierarchy. This omits changes to files such as those in the
+  /// Application Data folder or shared files which have not been added to My
+  /// Drive.
+  ///
+  /// [spaces] - A comma-separated list of spaces to query within the user
+  /// corpus. Supported values are 'drive', 'appDataFolder' and 'photos'.
+  ///
+  /// [supportsTeamDrives] - Whether the requesting application supports Team
+  /// Drives.
+  ///
+  /// [teamDriveId] - The Team Drive from which changes will be returned. If
+  /// specified the change IDs will be reflective of the Team Drive; use the
+  /// combined Team Drive ID and change ID as an identifier.
+  ///
+  /// Completes with a [Channel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Channel> watch(Channel request, core.String pageToken,
+      {core.bool includeCorpusRemovals,
+      core.bool includeRemoved,
+      core.bool includeTeamDriveItems,
+      core.int pageSize,
+      core.bool restrictToMyDrive,
+      core.String spaces,
+      core.bool supportsTeamDrives,
+      core.String teamDriveId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -348,38 +360,32 @@ class ChangesResourceApi {
 
     _url = 'changes/watch';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Channel.fromJson(data));
   }
-
 }
-
 
 class ChannelsResourceApi {
   final commons.ApiRequester _requester;
 
-  ChannelsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  ChannelsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Stop watching resources through this channel
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Stop watching resources through this channel
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future stop(Channel request) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -396,42 +402,36 @@ class ChannelsResourceApi {
 
     _url = 'channels/stop';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
-
 }
-
 
 class CommentsResourceApi {
   final commons.ApiRequester _requester;
 
-  CommentsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  CommentsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Creates a new comment on a file.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [fileId] - The ID of the file.
-   *
-   * Completes with a [Comment].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Creates a new comment on a file.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file.
+  ///
+  /// Completes with a [Comment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Comment> create(Comment request, core.String fileId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -449,31 +449,28 @@ class CommentsResourceApi {
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Comment.fromJson(data));
   }
 
-  /**
-   * Deletes a comment.
-   *
-   * Request parameters:
-   *
-   * [fileId] - The ID of the file.
-   *
-   * [commentId] - The ID of the comment.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Deletes a comment.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file.
+  ///
+  /// [commentId] - The ID of the comment.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future delete(core.String fileId, core.String commentId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -491,39 +488,40 @@ class CommentsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId');
+    _url = 'files/' +
+        commons.Escaper.ecapeVariable('$fileId') +
+        '/comments/' +
+        commons.Escaper.ecapeVariable('$commentId');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Gets a comment by ID.
-   *
-   * Request parameters:
-   *
-   * [fileId] - The ID of the file.
-   *
-   * [commentId] - The ID of the comment.
-   *
-   * [includeDeleted] - Whether to return deleted comments. Deleted comments
-   * will not include their original content.
-   *
-   * Completes with a [Comment].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Comment> get(core.String fileId, core.String commentId, {core.bool includeDeleted}) {
+  /// Gets a comment by ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file.
+  ///
+  /// [commentId] - The ID of the comment.
+  ///
+  /// [includeDeleted] - Whether to return deleted comments. Deleted comments
+  /// will not include their original content.
+  ///
+  /// Completes with a [Comment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Comment> get(core.String fileId, core.String commentId,
+      {core.bool includeDeleted}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -541,47 +539,51 @@ class CommentsResourceApi {
       _queryParams["includeDeleted"] = ["${includeDeleted}"];
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId');
+    _url = 'files/' +
+        commons.Escaper.ecapeVariable('$fileId') +
+        '/comments/' +
+        commons.Escaper.ecapeVariable('$commentId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Comment.fromJson(data));
   }
 
-  /**
-   * Lists a file's comments.
-   *
-   * Request parameters:
-   *
-   * [fileId] - The ID of the file.
-   *
-   * [includeDeleted] - Whether to include deleted comments. Deleted comments
-   * will not include their original content.
-   *
-   * [pageSize] - The maximum number of comments to return per page.
-   * Value must be between "1" and "100".
-   *
-   * [pageToken] - The token for continuing a previous list request on the next
-   * page. This should be set to the value of 'nextPageToken' from the previous
-   * response.
-   *
-   * [startModifiedTime] - The minimum value of 'modifiedTime' for the result
-   * comments (RFC 3339 date-time).
-   *
-   * Completes with a [CommentList].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<CommentList> list(core.String fileId, {core.bool includeDeleted, core.int pageSize, core.String pageToken, core.String startModifiedTime}) {
+  /// Lists a file's comments.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file.
+  ///
+  /// [includeDeleted] - Whether to include deleted comments. Deleted comments
+  /// will not include their original content.
+  ///
+  /// [pageSize] - The maximum number of comments to return per page.
+  /// Value must be between "1" and "100".
+  ///
+  /// [pageToken] - The token for continuing a previous list request on the next
+  /// page. This should be set to the value of 'nextPageToken' from the previous
+  /// response.
+  ///
+  /// [startModifiedTime] - The minimum value of 'modifiedTime' for the result
+  /// comments (RFC 3339 date-time).
+  ///
+  /// Completes with a [CommentList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CommentList> list(core.String fileId,
+      {core.bool includeDeleted,
+      core.int pageSize,
+      core.String pageToken,
+      core.String startModifiedTime}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -607,36 +609,34 @@ class CommentsResourceApi {
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new CommentList.fromJson(data));
   }
 
-  /**
-   * Updates a comment with patch semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [fileId] - The ID of the file.
-   *
-   * [commentId] - The ID of the comment.
-   *
-   * Completes with a [Comment].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Comment> update(Comment request, core.String fileId, core.String commentId) {
+  /// Updates a comment with patch semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file.
+  ///
+  /// [commentId] - The ID of the comment.
+  ///
+  /// Completes with a [Comment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Comment> update(
+      Comment request, core.String fileId, core.String commentId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -654,62 +654,63 @@ class CommentsResourceApi {
       throw new core.ArgumentError("Parameter commentId is required.");
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId');
+    _url = 'files/' +
+        commons.Escaper.ecapeVariable('$fileId') +
+        '/comments/' +
+        commons.Escaper.ecapeVariable('$commentId');
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Comment.fromJson(data));
   }
-
 }
-
 
 class FilesResourceApi {
   final commons.ApiRequester _requester;
 
-  FilesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  FilesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Creates a copy of a file and applies any requested updates with patch
-   * semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [fileId] - The ID of the file.
-   *
-   * [ignoreDefaultVisibility] - Whether to ignore the domain's default
-   * visibility settings for the created file. Domain administrators can choose
-   * to make all uploaded files visible to the domain by default; this parameter
-   * bypasses that behavior for the request. Permissions are still inherited
-   * from parent folders.
-   *
-   * [keepRevisionForever] - Whether to set the 'keepForever' field in the new
-   * head revision. This is only applicable to files with binary content in
-   * Drive.
-   *
-   * [ocrLanguage] - A language hint for OCR processing during image import (ISO
-   * 639-1 code).
-   *
-   * [supportsTeamDrives] - Whether the requesting application supports Team
-   * Drives.
-   *
-   * Completes with a [File].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<File> copy(File request, core.String fileId, {core.bool ignoreDefaultVisibility, core.bool keepRevisionForever, core.String ocrLanguage, core.bool supportsTeamDrives}) {
+  /// Creates a copy of a file and applies any requested updates with patch
+  /// semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file.
+  ///
+  /// [ignoreDefaultVisibility] - Whether to ignore the domain's default
+  /// visibility settings for the created file. Domain administrators can choose
+  /// to make all uploaded files visible to the domain by default; this
+  /// parameter bypasses that behavior for the request. Permissions are still
+  /// inherited from parent folders.
+  ///
+  /// [keepRevisionForever] - Whether to set the 'keepForever' field in the new
+  /// head revision. This is only applicable to files with binary content in
+  /// Drive.
+  ///
+  /// [ocrLanguage] - A language hint for OCR processing during image import
+  /// (ISO 639-1 code).
+  ///
+  /// [supportsTeamDrives] - Whether the requesting application supports Team
+  /// Drives.
+  ///
+  /// Completes with a [File].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<File> copy(File request, core.String fileId,
+      {core.bool ignoreDefaultVisibility,
+      core.bool keepRevisionForever,
+      core.String ocrLanguage,
+      core.bool supportsTeamDrives}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -738,56 +739,61 @@ class FilesResourceApi {
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/copy';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new File.fromJson(data));
   }
 
-  /**
-   * Creates a new file.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [ignoreDefaultVisibility] - Whether to ignore the domain's default
-   * visibility settings for the created file. Domain administrators can choose
-   * to make all uploaded files visible to the domain by default; this parameter
-   * bypasses that behavior for the request. Permissions are still inherited
-   * from parent folders.
-   *
-   * [keepRevisionForever] - Whether to set the 'keepForever' field in the new
-   * head revision. This is only applicable to files with binary content in
-   * Drive.
-   *
-   * [ocrLanguage] - A language hint for OCR processing during image import (ISO
-   * 639-1 code).
-   *
-   * [supportsTeamDrives] - Whether the requesting application supports Team
-   * Drives.
-   *
-   * [useContentAsIndexableText] - Whether to use the uploaded content as
-   * indexable text.
-   *
-   * [uploadMedia] - The media to upload.
-   *
-   * [uploadOptions] - Options for the media upload. Streaming Media without the
-   * length being known ahead of time is only supported via resumable uploads.
-   *
-   * Completes with a [File].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<File> create(File request, {core.bool ignoreDefaultVisibility, core.bool keepRevisionForever, core.String ocrLanguage, core.bool supportsTeamDrives, core.bool useContentAsIndexableText, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
+  /// Creates a new file.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [ignoreDefaultVisibility] - Whether to ignore the domain's default
+  /// visibility settings for the created file. Domain administrators can choose
+  /// to make all uploaded files visible to the domain by default; this
+  /// parameter bypasses that behavior for the request. Permissions are still
+  /// inherited from parent folders.
+  ///
+  /// [keepRevisionForever] - Whether to set the 'keepForever' field in the new
+  /// head revision. This is only applicable to files with binary content in
+  /// Drive.
+  ///
+  /// [ocrLanguage] - A language hint for OCR processing during image import
+  /// (ISO 639-1 code).
+  ///
+  /// [supportsTeamDrives] - Whether the requesting application supports Team
+  /// Drives.
+  ///
+  /// [useContentAsIndexableText] - Whether to use the uploaded content as
+  /// indexable text.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// [uploadOptions] - Options for the media upload. Streaming Media without
+  /// the length being known ahead of time is only supported via resumable
+  /// uploads.
+  ///
+  /// Completes with a [File].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<File> create(File request,
+      {core.bool ignoreDefaultVisibility,
+      core.bool keepRevisionForever,
+      core.String ocrLanguage,
+      core.bool supportsTeamDrives,
+      core.bool useContentAsIndexableText,
+      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -811,11 +817,13 @@ class FilesResourceApi {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
     }
     if (useContentAsIndexableText != null) {
-      _queryParams["useContentAsIndexableText"] = ["${useContentAsIndexableText}"];
+      _queryParams["useContentAsIndexableText"] = [
+        "${useContentAsIndexableText}"
+      ];
     }
 
-    _uploadMedia =  uploadMedia;
-    _uploadOptions =  uploadOptions;
+    _uploadMedia = uploadMedia;
+    _uploadOptions = uploadOptions;
 
     if (_uploadMedia == null) {
       _url = 'files';
@@ -825,36 +833,32 @@ class FilesResourceApi {
       _url = '/upload/drive/v3/files';
     }
 
-
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new File.fromJson(data));
   }
 
-  /**
-   * Permanently deletes a file owned by the user without moving it to the
-   * trash. If the file belongs to a Team Drive the user must be an organizer on
-   * the parent. If the target is a folder, all descendants owned by the user
-   * are also deleted.
-   *
-   * Request parameters:
-   *
-   * [fileId] - The ID of the file.
-   *
-   * [supportsTeamDrives] - Whether the requesting application supports Team
-   * Drives.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Permanently deletes a file owned by the user without moving it to the
+  /// trash. If the file belongs to a Team Drive the user must be an organizer
+  /// on the parent. If the target is a folder, all descendants owned by the
+  /// user are also deleted.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file.
+  ///
+  /// [supportsTeamDrives] - Whether the requesting application supports Team
+  /// Drives.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future delete(core.String fileId, {core.bool supportsTeamDrives}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -874,27 +878,24 @@ class FilesResourceApi {
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Permanently deletes all of the user's trashed files.
-   *
-   * Request parameters:
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Permanently deletes all of the user's trashed files.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future emptyTrash() {
     var _url = null;
     var _queryParams = new core.Map();
@@ -903,42 +904,40 @@ class FilesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-
     _downloadOptions = null;
 
     _url = 'files/trash';
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Exports a Google Doc to the requested MIME type and returns the exported
-   * content. Please note that the exported content is limited to 10MB.
-   *
-   * Request parameters:
-   *
-   * [fileId] - The ID of the file.
-   *
-   * [mimeType] - The MIME type of the format requested for this export.
-   *
-   * [downloadOptions] - Options for downloading. A download can be either a
-   * Metadata (default) or Media download. Partial Media downloads are possible
-   * as well.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future export(core.String fileId, core.String mimeType, {commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
+  /// Exports a Google Doc to the requested MIME type and returns the exported
+  /// content. Please note that the exported content is limited to 10MB.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file.
+  ///
+  /// [mimeType] - The MIME type of the format requested for this export.
+  ///
+  /// [downloadOptions] - Options for downloading. A download can be either a
+  /// Metadata (default) or Media download. Partial Media downloads are possible
+  /// as well.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future export(core.String fileId, core.String mimeType,
+      {commons.DownloadOptions downloadOptions:
+          commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -958,13 +957,12 @@ class FilesResourceApi {
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/export';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
       return _response.then((data) => null);
@@ -973,25 +971,23 @@ class FilesResourceApi {
     }
   }
 
-  /**
-   * Generates a set of file IDs which can be provided in create requests.
-   *
-   * Request parameters:
-   *
-   * [count] - The number of IDs to return.
-   * Value must be between "1" and "1000".
-   *
-   * [space] - The space in which the IDs can be used to create new files.
-   * Supported values are 'drive' and 'appDataFolder'.
-   *
-   * Completes with a [GeneratedIds].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Generates a set of file IDs which can be provided in create requests.
+  ///
+  /// Request parameters:
+  ///
+  /// [count] - The number of IDs to return.
+  /// Value must be between "1" and "1000".
+  ///
+  /// [space] - The space in which the IDs can be used to create new files.
+  /// Supported values are 'drive' and 'appDataFolder'.
+  ///
+  /// Completes with a [GeneratedIds].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<GeneratedIds> generateIds({core.int count, core.String space}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1009,47 +1005,48 @@ class FilesResourceApi {
 
     _url = 'files/generateIds';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new GeneratedIds.fromJson(data));
   }
 
-  /**
-   * Gets a file's metadata or content by ID.
-   *
-   * Request parameters:
-   *
-   * [fileId] - The ID of the file.
-   *
-   * [acknowledgeAbuse] - Whether the user is acknowledging the risk of
-   * downloading known malware or other abusive files. This is only applicable
-   * when alt=media.
-   *
-   * [supportsTeamDrives] - Whether the requesting application supports Team
-   * Drives.
-   *
-   * [downloadOptions] - Options for downloading. A download can be either a
-   * Metadata (default) or Media download. Partial Media downloads are possible
-   * as well.
-   *
-   * Completes with a
-   *
-   * - [File] for Metadata downloads (see [downloadOptions]).
-   *
-   * - [commons.Media] for Media downloads (see [downloadOptions]).
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future get(core.String fileId, {core.bool acknowledgeAbuse, core.bool supportsTeamDrives, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
+  /// Gets a file's metadata or content by ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file.
+  ///
+  /// [acknowledgeAbuse] - Whether the user is acknowledging the risk of
+  /// downloading known malware or other abusive files. This is only applicable
+  /// when alt=media.
+  ///
+  /// [supportsTeamDrives] - Whether the requesting application supports Team
+  /// Drives.
+  ///
+  /// [downloadOptions] - Options for downloading. A download can be either a
+  /// Metadata (default) or Media download. Partial Media downloads are possible
+  /// as well.
+  ///
+  /// Completes with a
+  ///
+  /// - [File] for Metadata downloads (see [downloadOptions]).
+  ///
+  /// - [commons.Media] for Media downloads (see [downloadOptions]).
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future get(core.String fileId,
+      {core.bool acknowledgeAbuse,
+      core.bool supportsTeamDrives,
+      commons.DownloadOptions downloadOptions:
+          commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1071,13 +1068,12 @@ class FilesResourceApi {
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
       return _response.then((data) => new File.fromJson(data));
@@ -1086,63 +1082,71 @@ class FilesResourceApi {
     }
   }
 
-  /**
-   * Lists or searches files.
-   *
-   * Request parameters:
-   *
-   * [corpora] - Comma-separated list of bodies of items (files/documents) to
-   * which the query applies. Supported bodies are 'user', 'domain', 'teamDrive'
-   * and 'allTeamDrives'. 'allTeamDrives' must be combined with 'user'; all
-   * other values must be used in isolation. Prefer 'user' or 'teamDrive' to
-   * 'allTeamDrives' for efficiency.
-   *
-   * [corpus] - The source of files to list. Deprecated: use 'corpora' instead.
-   * Possible string values are:
-   * - "domain" : Files shared to the user's domain.
-   * - "user" : Files owned by or shared to the user.
-   *
-   * [includeTeamDriveItems] - Whether Team Drive items should be included in
-   * results.
-   *
-   * [orderBy] - A comma-separated list of sort keys. Valid keys are
-   * 'createdTime', 'folder', 'modifiedByMeTime', 'modifiedTime', 'name',
-   * 'quotaBytesUsed', 'recency', 'sharedWithMeTime', 'starred', and
-   * 'viewedByMeTime'. Each key sorts ascending by default, but may be reversed
-   * with the 'desc' modifier. Example usage: ?orderBy=folder,modifiedTime
-   * desc,name. Please note that there is a current limitation for users with
-   * approximately one million files in which the requested sort order is
-   * ignored.
-   *
-   * [pageSize] - The maximum number of files to return per page. Partial or
-   * empty result pages are possible even before the end of the files list has
-   * been reached.
-   * Value must be between "1" and "1000".
-   *
-   * [pageToken] - The token for continuing a previous list request on the next
-   * page. This should be set to the value of 'nextPageToken' from the previous
-   * response.
-   *
-   * [q] - A query for filtering the file results. See the "Search for Files"
-   * guide for supported syntax.
-   *
-   * [spaces] - A comma-separated list of spaces to query within the corpus.
-   * Supported values are 'drive', 'appDataFolder' and 'photos'.
-   *
-   * [supportsTeamDrives] - Whether the requesting application supports Team
-   * Drives.
-   *
-   * [teamDriveId] - ID of Team Drive to search.
-   *
-   * Completes with a [FileList].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<FileList> list({core.String corpora, core.String corpus, core.bool includeTeamDriveItems, core.String orderBy, core.int pageSize, core.String pageToken, core.String q, core.String spaces, core.bool supportsTeamDrives, core.String teamDriveId}) {
+  /// Lists or searches files.
+  ///
+  /// Request parameters:
+  ///
+  /// [corpora] - Comma-separated list of bodies of items (files/documents) to
+  /// which the query applies. Supported bodies are 'user', 'domain',
+  /// 'teamDrive' and 'allTeamDrives'. 'allTeamDrives' must be combined with
+  /// 'user'; all other values must be used in isolation. Prefer 'user' or
+  /// 'teamDrive' to 'allTeamDrives' for efficiency.
+  ///
+  /// [corpus] - The source of files to list. Deprecated: use 'corpora' instead.
+  /// Possible string values are:
+  /// - "domain" : Files shared to the user's domain.
+  /// - "user" : Files owned by or shared to the user.
+  ///
+  /// [includeTeamDriveItems] - Whether Team Drive items should be included in
+  /// results.
+  ///
+  /// [orderBy] - A comma-separated list of sort keys. Valid keys are
+  /// 'createdTime', 'folder', 'modifiedByMeTime', 'modifiedTime', 'name',
+  /// 'name_natural', 'quotaBytesUsed', 'recency', 'sharedWithMeTime',
+  /// 'starred', and 'viewedByMeTime'. Each key sorts ascending by default, but
+  /// may be reversed with the 'desc' modifier. Example usage:
+  /// ?orderBy=folder,modifiedTime desc,name. Please note that there is a
+  /// current limitation for users with approximately one million files in which
+  /// the requested sort order is ignored.
+  ///
+  /// [pageSize] - The maximum number of files to return per page. Partial or
+  /// empty result pages are possible even before the end of the files list has
+  /// been reached.
+  /// Value must be between "1" and "1000".
+  ///
+  /// [pageToken] - The token for continuing a previous list request on the next
+  /// page. This should be set to the value of 'nextPageToken' from the previous
+  /// response.
+  ///
+  /// [q] - A query for filtering the file results. See the "Search for Files"
+  /// guide for supported syntax.
+  ///
+  /// [spaces] - A comma-separated list of spaces to query within the corpus.
+  /// Supported values are 'drive', 'appDataFolder' and 'photos'.
+  ///
+  /// [supportsTeamDrives] - Whether the requesting application supports Team
+  /// Drives.
+  ///
+  /// [teamDriveId] - ID of Team Drive to search.
+  ///
+  /// Completes with a [FileList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FileList> list(
+      {core.String corpora,
+      core.String corpus,
+      core.bool includeTeamDriveItems,
+      core.String orderBy,
+      core.int pageSize,
+      core.String pageToken,
+      core.String q,
+      core.String spaces,
+      core.bool supportsTeamDrives,
+      core.String teamDriveId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1183,56 +1187,62 @@ class FilesResourceApi {
 
     _url = 'files';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new FileList.fromJson(data));
   }
 
-  /**
-   * Updates a file's metadata and/or content with patch semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [fileId] - The ID of the file.
-   *
-   * [addParents] - A comma-separated list of parent IDs to add.
-   *
-   * [keepRevisionForever] - Whether to set the 'keepForever' field in the new
-   * head revision. This is only applicable to files with binary content in
-   * Drive.
-   *
-   * [ocrLanguage] - A language hint for OCR processing during image import (ISO
-   * 639-1 code).
-   *
-   * [removeParents] - A comma-separated list of parent IDs to remove.
-   *
-   * [supportsTeamDrives] - Whether the requesting application supports Team
-   * Drives.
-   *
-   * [useContentAsIndexableText] - Whether to use the uploaded content as
-   * indexable text.
-   *
-   * [uploadMedia] - The media to upload.
-   *
-   * [uploadOptions] - Options for the media upload. Streaming Media without the
-   * length being known ahead of time is only supported via resumable uploads.
-   *
-   * Completes with a [File].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<File> update(File request, core.String fileId, {core.String addParents, core.bool keepRevisionForever, core.String ocrLanguage, core.String removeParents, core.bool supportsTeamDrives, core.bool useContentAsIndexableText, commons.UploadOptions uploadOptions : commons.UploadOptions.Default, commons.Media uploadMedia}) {
+  /// Updates a file's metadata and/or content with patch semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file.
+  ///
+  /// [addParents] - A comma-separated list of parent IDs to add.
+  ///
+  /// [keepRevisionForever] - Whether to set the 'keepForever' field in the new
+  /// head revision. This is only applicable to files with binary content in
+  /// Drive.
+  ///
+  /// [ocrLanguage] - A language hint for OCR processing during image import
+  /// (ISO 639-1 code).
+  ///
+  /// [removeParents] - A comma-separated list of parent IDs to remove.
+  ///
+  /// [supportsTeamDrives] - Whether the requesting application supports Team
+  /// Drives.
+  ///
+  /// [useContentAsIndexableText] - Whether to use the uploaded content as
+  /// indexable text.
+  ///
+  /// [uploadMedia] - The media to upload.
+  ///
+  /// [uploadOptions] - Options for the media upload. Streaming Media without
+  /// the length being known ahead of time is only supported via resumable
+  /// uploads.
+  ///
+  /// Completes with a [File].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<File> update(File request, core.String fileId,
+      {core.String addParents,
+      core.bool keepRevisionForever,
+      core.String ocrLanguage,
+      core.String removeParents,
+      core.bool supportsTeamDrives,
+      core.bool useContentAsIndexableText,
+      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1262,64 +1272,68 @@ class FilesResourceApi {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
     }
     if (useContentAsIndexableText != null) {
-      _queryParams["useContentAsIndexableText"] = ["${useContentAsIndexableText}"];
+      _queryParams["useContentAsIndexableText"] = [
+        "${useContentAsIndexableText}"
+      ];
     }
 
-    _uploadMedia =  uploadMedia;
-    _uploadOptions =  uploadOptions;
+    _uploadMedia = uploadMedia;
+    _uploadOptions = uploadOptions;
 
     if (_uploadMedia == null) {
       _url = 'files/' + commons.Escaper.ecapeVariable('$fileId');
     } else if (_uploadOptions is commons.ResumableUploadOptions) {
-      _url = '/resumable/upload/drive/v3/files/' + commons.Escaper.ecapeVariable('$fileId');
+      _url = '/resumable/upload/drive/v3/files/' +
+          commons.Escaper.ecapeVariable('$fileId');
     } else {
-      _url = '/upload/drive/v3/files/' + commons.Escaper.ecapeVariable('$fileId');
+      _url =
+          '/upload/drive/v3/files/' + commons.Escaper.ecapeVariable('$fileId');
     }
 
-
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new File.fromJson(data));
   }
 
-  /**
-   * Subscribes to changes to a file
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [fileId] - The ID of the file.
-   *
-   * [acknowledgeAbuse] - Whether the user is acknowledging the risk of
-   * downloading known malware or other abusive files. This is only applicable
-   * when alt=media.
-   *
-   * [supportsTeamDrives] - Whether the requesting application supports Team
-   * Drives.
-   *
-   * [downloadOptions] - Options for downloading. A download can be either a
-   * Metadata (default) or Media download. Partial Media downloads are possible
-   * as well.
-   *
-   * Completes with a
-   *
-   * - [Channel] for Metadata downloads (see [downloadOptions]).
-   *
-   * - [commons.Media] for Media downloads (see [downloadOptions]).
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future watch(Channel request, core.String fileId, {core.bool acknowledgeAbuse, core.bool supportsTeamDrives, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
+  /// Subscribes to changes to a file
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file.
+  ///
+  /// [acknowledgeAbuse] - Whether the user is acknowledging the risk of
+  /// downloading known malware or other abusive files. This is only applicable
+  /// when alt=media.
+  ///
+  /// [supportsTeamDrives] - Whether the requesting application supports Team
+  /// Drives.
+  ///
+  /// [downloadOptions] - Options for downloading. A download can be either a
+  /// Metadata (default) or Media download. Partial Media downloads are possible
+  /// as well.
+  ///
+  /// Completes with a
+  ///
+  /// - [Channel] for Metadata downloads (see [downloadOptions]).
+  ///
+  /// - [commons.Media] for Media downloads (see [downloadOptions]).
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future watch(Channel request, core.String fileId,
+      {core.bool acknowledgeAbuse,
+      core.bool supportsTeamDrives,
+      commons.DownloadOptions downloadOptions:
+          commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1344,13 +1358,12 @@ class FilesResourceApi {
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/watch';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
       return _response.then((data) => new Channel.fromJson(data));
@@ -1358,48 +1371,47 @@ class FilesResourceApi {
       return _response;
     }
   }
-
 }
-
 
 class PermissionsResourceApi {
   final commons.ApiRequester _requester;
 
-  PermissionsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  PermissionsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Creates a permission for a file or Team Drive.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [fileId] - The ID of the file or Team Drive.
-   *
-   * [emailMessage] - A custom message to include in the notification email.
-   *
-   * [sendNotificationEmail] - Whether to send a notification email when sharing
-   * to users or groups. This defaults to true for users and groups, and is not
-   * allowed for other requests. It must not be disabled for ownership
-   * transfers.
-   *
-   * [supportsTeamDrives] - Whether the requesting application supports Team
-   * Drives.
-   *
-   * [transferOwnership] - Whether to transfer ownership to the specified user
-   * and downgrade the current owner to a writer. This parameter is required as
-   * an acknowledgement of the side effect.
-   *
-   * Completes with a [Permission].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Permission> create(Permission request, core.String fileId, {core.String emailMessage, core.bool sendNotificationEmail, core.bool supportsTeamDrives, core.bool transferOwnership}) {
+  /// Creates a permission for a file or Team Drive.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file or Team Drive.
+  ///
+  /// [emailMessage] - A custom message to include in the notification email.
+  ///
+  /// [sendNotificationEmail] - Whether to send a notification email when
+  /// sharing to users or groups. This defaults to true for users and groups,
+  /// and is not allowed for other requests. It must not be disabled for
+  /// ownership transfers.
+  ///
+  /// [supportsTeamDrives] - Whether the requesting application supports Team
+  /// Drives.
+  ///
+  /// [transferOwnership] - Whether to transfer ownership to the specified user
+  /// and downgrade the current owner to a writer. This parameter is required as
+  /// an acknowledgement of the side effect.
+  ///
+  /// Completes with a [Permission].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Permission> create(Permission request, core.String fileId,
+      {core.String emailMessage,
+      core.bool sendNotificationEmail,
+      core.bool supportsTeamDrives,
+      core.bool transferOwnership}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1428,35 +1440,33 @@ class PermissionsResourceApi {
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Permission.fromJson(data));
   }
 
-  /**
-   * Deletes a permission.
-   *
-   * Request parameters:
-   *
-   * [fileId] - The ID of the file or Team Drive.
-   *
-   * [permissionId] - The ID of the permission.
-   *
-   * [supportsTeamDrives] - Whether the requesting application supports Team
-   * Drives.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future delete(core.String fileId, core.String permissionId, {core.bool supportsTeamDrives}) {
+  /// Deletes a permission.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file or Team Drive.
+  ///
+  /// [permissionId] - The ID of the permission.
+  ///
+  /// [supportsTeamDrives] - Whether the requesting application supports Team
+  /// Drives.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future delete(core.String fileId, core.String permissionId,
+      {core.bool supportsTeamDrives}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1476,39 +1486,40 @@ class PermissionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions/' + commons.Escaper.ecapeVariable('$permissionId');
+    _url = 'files/' +
+        commons.Escaper.ecapeVariable('$fileId') +
+        '/permissions/' +
+        commons.Escaper.ecapeVariable('$permissionId');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Gets a permission by ID.
-   *
-   * Request parameters:
-   *
-   * [fileId] - The ID of the file.
-   *
-   * [permissionId] - The ID of the permission.
-   *
-   * [supportsTeamDrives] - Whether the requesting application supports Team
-   * Drives.
-   *
-   * Completes with a [Permission].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Permission> get(core.String fileId, core.String permissionId, {core.bool supportsTeamDrives}) {
+  /// Gets a permission by ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file.
+  ///
+  /// [permissionId] - The ID of the permission.
+  ///
+  /// [supportsTeamDrives] - Whether the requesting application supports Team
+  /// Drives.
+  ///
+  /// Completes with a [Permission].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Permission> get(core.String fileId, core.String permissionId,
+      {core.bool supportsTeamDrives}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1526,47 +1537,50 @@ class PermissionsResourceApi {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions/' + commons.Escaper.ecapeVariable('$permissionId');
+    _url = 'files/' +
+        commons.Escaper.ecapeVariable('$fileId') +
+        '/permissions/' +
+        commons.Escaper.ecapeVariable('$permissionId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Permission.fromJson(data));
   }
 
-  /**
-   * Lists a file's or Team Drive's permissions.
-   *
-   * Request parameters:
-   *
-   * [fileId] - The ID of the file or Team Drive.
-   *
-   * [pageSize] - The maximum number of permissions to return per page. When not
-   * set for files in a Team Drive, at most 100 results will be returned. When
-   * not set for files that are not in a Team Drive, the entire list will be
-   * returned.
-   * Value must be between "1" and "100".
-   *
-   * [pageToken] - The token for continuing a previous list request on the next
-   * page. This should be set to the value of 'nextPageToken' from the previous
-   * response.
-   *
-   * [supportsTeamDrives] - Whether the requesting application supports Team
-   * Drives.
-   *
-   * Completes with a [PermissionList].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<PermissionList> list(core.String fileId, {core.int pageSize, core.String pageToken, core.bool supportsTeamDrives}) {
+  /// Lists a file's or Team Drive's permissions.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file or Team Drive.
+  ///
+  /// [pageSize] - The maximum number of permissions to return per page. When
+  /// not set for files in a Team Drive, at most 100 results will be returned.
+  /// When not set for files that are not in a Team Drive, the entire list will
+  /// be returned.
+  /// Value must be between "1" and "100".
+  ///
+  /// [pageToken] - The token for continuing a previous list request on the next
+  /// page. This should be set to the value of 'nextPageToken' from the previous
+  /// response.
+  ///
+  /// [supportsTeamDrives] - Whether the requesting application supports Team
+  /// Drives.
+  ///
+  /// Completes with a [PermissionList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PermissionList> list(core.String fileId,
+      {core.int pageSize,
+      core.String pageToken,
+      core.bool supportsTeamDrives}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1589,45 +1603,46 @@ class PermissionsResourceApi {
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new PermissionList.fromJson(data));
   }
 
-  /**
-   * Updates a permission with patch semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [fileId] - The ID of the file or Team Drive.
-   *
-   * [permissionId] - The ID of the permission.
-   *
-   * [removeExpiration] - Whether to remove the expiration date.
-   *
-   * [supportsTeamDrives] - Whether the requesting application supports Team
-   * Drives.
-   *
-   * [transferOwnership] - Whether to transfer ownership to the specified user
-   * and downgrade the current owner to a writer. This parameter is required as
-   * an acknowledgement of the side effect.
-   *
-   * Completes with a [Permission].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Permission> update(Permission request, core.String fileId, core.String permissionId, {core.bool removeExpiration, core.bool supportsTeamDrives, core.bool transferOwnership}) {
+  /// Updates a permission with patch semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file or Team Drive.
+  ///
+  /// [permissionId] - The ID of the permission.
+  ///
+  /// [removeExpiration] - Whether to remove the expiration date.
+  ///
+  /// [supportsTeamDrives] - Whether the requesting application supports Team
+  /// Drives.
+  ///
+  /// [transferOwnership] - Whether to transfer ownership to the specified user
+  /// and downgrade the current owner to a writer. This parameter is required as
+  /// an acknowledgement of the side effect.
+  ///
+  /// Completes with a [Permission].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Permission> update(
+      Permission request, core.String fileId, core.String permissionId,
+      {core.bool removeExpiration,
+      core.bool supportsTeamDrives,
+      core.bool transferOwnership}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1654,47 +1669,45 @@ class PermissionsResourceApi {
       _queryParams["transferOwnership"] = ["${transferOwnership}"];
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions/' + commons.Escaper.ecapeVariable('$permissionId');
+    _url = 'files/' +
+        commons.Escaper.ecapeVariable('$fileId') +
+        '/permissions/' +
+        commons.Escaper.ecapeVariable('$permissionId');
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Permission.fromJson(data));
   }
-
 }
-
 
 class RepliesResourceApi {
   final commons.ApiRequester _requester;
 
-  RepliesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  RepliesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Creates a new reply to a comment.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [fileId] - The ID of the file.
-   *
-   * [commentId] - The ID of the comment.
-   *
-   * Completes with a [Reply].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Reply> create(Reply request, core.String fileId, core.String commentId) {
+  /// Creates a new reply to a comment.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file.
+  ///
+  /// [commentId] - The ID of the comment.
+  ///
+  /// Completes with a [Reply].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Reply> create(
+      Reply request, core.String fileId, core.String commentId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1712,36 +1725,38 @@ class RepliesResourceApi {
       throw new core.ArgumentError("Parameter commentId is required.");
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId') + '/replies';
+    _url = 'files/' +
+        commons.Escaper.ecapeVariable('$fileId') +
+        '/comments/' +
+        commons.Escaper.ecapeVariable('$commentId') +
+        '/replies';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Reply.fromJson(data));
   }
 
-  /**
-   * Deletes a reply.
-   *
-   * Request parameters:
-   *
-   * [fileId] - The ID of the file.
-   *
-   * [commentId] - The ID of the comment.
-   *
-   * [replyId] - The ID of the reply.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future delete(core.String fileId, core.String commentId, core.String replyId) {
+  /// Deletes a reply.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file.
+  ///
+  /// [commentId] - The ID of the comment.
+  ///
+  /// [replyId] - The ID of the reply.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future delete(
+      core.String fileId, core.String commentId, core.String replyId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1761,41 +1776,45 @@ class RepliesResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId') + '/replies/' + commons.Escaper.ecapeVariable('$replyId');
+    _url = 'files/' +
+        commons.Escaper.ecapeVariable('$fileId') +
+        '/comments/' +
+        commons.Escaper.ecapeVariable('$commentId') +
+        '/replies/' +
+        commons.Escaper.ecapeVariable('$replyId');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Gets a reply by ID.
-   *
-   * Request parameters:
-   *
-   * [fileId] - The ID of the file.
-   *
-   * [commentId] - The ID of the comment.
-   *
-   * [replyId] - The ID of the reply.
-   *
-   * [includeDeleted] - Whether to return deleted replies. Deleted replies will
-   * not include their original content.
-   *
-   * Completes with a [Reply].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Reply> get(core.String fileId, core.String commentId, core.String replyId, {core.bool includeDeleted}) {
+  /// Gets a reply by ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file.
+  ///
+  /// [commentId] - The ID of the comment.
+  ///
+  /// [replyId] - The ID of the reply.
+  ///
+  /// [includeDeleted] - Whether to return deleted replies. Deleted replies will
+  /// not include their original content.
+  ///
+  /// Completes with a [Reply].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Reply> get(
+      core.String fileId, core.String commentId, core.String replyId,
+      {core.bool includeDeleted}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1816,46 +1835,49 @@ class RepliesResourceApi {
       _queryParams["includeDeleted"] = ["${includeDeleted}"];
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId') + '/replies/' + commons.Escaper.ecapeVariable('$replyId');
+    _url = 'files/' +
+        commons.Escaper.ecapeVariable('$fileId') +
+        '/comments/' +
+        commons.Escaper.ecapeVariable('$commentId') +
+        '/replies/' +
+        commons.Escaper.ecapeVariable('$replyId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Reply.fromJson(data));
   }
 
-  /**
-   * Lists a comment's replies.
-   *
-   * Request parameters:
-   *
-   * [fileId] - The ID of the file.
-   *
-   * [commentId] - The ID of the comment.
-   *
-   * [includeDeleted] - Whether to include deleted replies. Deleted replies will
-   * not include their original content.
-   *
-   * [pageSize] - The maximum number of replies to return per page.
-   * Value must be between "1" and "100".
-   *
-   * [pageToken] - The token for continuing a previous list request on the next
-   * page. This should be set to the value of 'nextPageToken' from the previous
-   * response.
-   *
-   * Completes with a [ReplyList].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ReplyList> list(core.String fileId, core.String commentId, {core.bool includeDeleted, core.int pageSize, core.String pageToken}) {
+  /// Lists a comment's replies.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file.
+  ///
+  /// [commentId] - The ID of the comment.
+  ///
+  /// [includeDeleted] - Whether to include deleted replies. Deleted replies
+  /// will not include their original content.
+  ///
+  /// [pageSize] - The maximum number of replies to return per page.
+  /// Value must be between "1" and "100".
+  ///
+  /// [pageToken] - The token for continuing a previous list request on the next
+  /// page. This should be set to the value of 'nextPageToken' from the previous
+  /// response.
+  ///
+  /// Completes with a [ReplyList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ReplyList> list(core.String fileId, core.String commentId,
+      {core.bool includeDeleted, core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1879,40 +1901,42 @@ class RepliesResourceApi {
       _queryParams["pageToken"] = [pageToken];
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId') + '/replies';
+    _url = 'files/' +
+        commons.Escaper.ecapeVariable('$fileId') +
+        '/comments/' +
+        commons.Escaper.ecapeVariable('$commentId') +
+        '/replies';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ReplyList.fromJson(data));
   }
 
-  /**
-   * Updates a reply with patch semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [fileId] - The ID of the file.
-   *
-   * [commentId] - The ID of the comment.
-   *
-   * [replyId] - The ID of the reply.
-   *
-   * Completes with a [Reply].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Reply> update(Reply request, core.String fileId, core.String commentId, core.String replyId) {
+  /// Updates a reply with patch semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file.
+  ///
+  /// [commentId] - The ID of the comment.
+  ///
+  /// [replyId] - The ID of the reply.
+  ///
+  /// Completes with a [Reply].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Reply> update(Reply request, core.String fileId,
+      core.String commentId, core.String replyId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1933,43 +1957,42 @@ class RepliesResourceApi {
       throw new core.ArgumentError("Parameter replyId is required.");
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments/' + commons.Escaper.ecapeVariable('$commentId') + '/replies/' + commons.Escaper.ecapeVariable('$replyId');
+    _url = 'files/' +
+        commons.Escaper.ecapeVariable('$fileId') +
+        '/comments/' +
+        commons.Escaper.ecapeVariable('$commentId') +
+        '/replies/' +
+        commons.Escaper.ecapeVariable('$replyId');
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Reply.fromJson(data));
   }
-
 }
-
 
 class RevisionsResourceApi {
   final commons.ApiRequester _requester;
 
-  RevisionsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  RevisionsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Permanently deletes a revision. This method is only applicable to files
-   * with binary content in Drive.
-   *
-   * Request parameters:
-   *
-   * [fileId] - The ID of the file.
-   *
-   * [revisionId] - The ID of the revision.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Permanently deletes a revision. This method is only applicable to files
+  /// with binary content in Drive.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file.
+  ///
+  /// [revisionId] - The ID of the revision.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future delete(core.String fileId, core.String revisionId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1987,48 +2010,51 @@ class RevisionsResourceApi {
 
     _downloadOptions = null;
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/revisions/' + commons.Escaper.ecapeVariable('$revisionId');
+    _url = 'files/' +
+        commons.Escaper.ecapeVariable('$fileId') +
+        '/revisions/' +
+        commons.Escaper.ecapeVariable('$revisionId');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Gets a revision's metadata or content by ID.
-   *
-   * Request parameters:
-   *
-   * [fileId] - The ID of the file.
-   *
-   * [revisionId] - The ID of the revision.
-   *
-   * [acknowledgeAbuse] - Whether the user is acknowledging the risk of
-   * downloading known malware or other abusive files. This is only applicable
-   * when alt=media.
-   *
-   * [downloadOptions] - Options for downloading. A download can be either a
-   * Metadata (default) or Media download. Partial Media downloads are possible
-   * as well.
-   *
-   * Completes with a
-   *
-   * - [Revision] for Metadata downloads (see [downloadOptions]).
-   *
-   * - [commons.Media] for Media downloads (see [downloadOptions]).
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future get(core.String fileId, core.String revisionId, {core.bool acknowledgeAbuse, commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
+  /// Gets a revision's metadata or content by ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file.
+  ///
+  /// [revisionId] - The ID of the revision.
+  ///
+  /// [acknowledgeAbuse] - Whether the user is acknowledging the risk of
+  /// downloading known malware or other abusive files. This is only applicable
+  /// when alt=media.
+  ///
+  /// [downloadOptions] - Options for downloading. A download can be either a
+  /// Metadata (default) or Media download. Partial Media downloads are possible
+  /// as well.
+  ///
+  /// Completes with a
+  ///
+  /// - [Revision] for Metadata downloads (see [downloadOptions]).
+  ///
+  /// - [commons.Media] for Media downloads (see [downloadOptions]).
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future get(core.String fileId, core.String revisionId,
+      {core.bool acknowledgeAbuse,
+      commons.DownloadOptions downloadOptions:
+          commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2048,15 +2074,17 @@ class RevisionsResourceApi {
 
     _downloadOptions = downloadOptions;
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/revisions/' + commons.Escaper.ecapeVariable('$revisionId');
+    _url = 'files/' +
+        commons.Escaper.ecapeVariable('$fileId') +
+        '/revisions/' +
+        commons.Escaper.ecapeVariable('$revisionId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
       return _response.then((data) => new Revision.fromJson(data));
@@ -2065,29 +2093,28 @@ class RevisionsResourceApi {
     }
   }
 
-  /**
-   * Lists a file's revisions.
-   *
-   * Request parameters:
-   *
-   * [fileId] - The ID of the file.
-   *
-   * [pageSize] - The maximum number of revisions to return per page.
-   * Value must be between "1" and "1000".
-   *
-   * [pageToken] - The token for continuing a previous list request on the next
-   * page. This should be set to the value of 'nextPageToken' from the previous
-   * response.
-   *
-   * Completes with a [RevisionList].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<RevisionList> list(core.String fileId, {core.int pageSize, core.String pageToken}) {
+  /// Lists a file's revisions.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file.
+  ///
+  /// [pageSize] - The maximum number of revisions to return per page.
+  /// Value must be between "1" and "1000".
+  ///
+  /// [pageToken] - The token for continuing a previous list request on the next
+  /// page. This should be set to the value of 'nextPageToken' from the previous
+  /// response.
+  ///
+  /// Completes with a [RevisionList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RevisionList> list(core.String fileId,
+      {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2107,36 +2134,34 @@ class RevisionsResourceApi {
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/revisions';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new RevisionList.fromJson(data));
   }
 
-  /**
-   * Updates a revision with patch semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [fileId] - The ID of the file.
-   *
-   * [revisionId] - The ID of the revision.
-   *
-   * Completes with a [Revision].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Revision> update(Revision request, core.String fileId, core.String revisionId) {
+  /// Updates a revision with patch semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [fileId] - The ID of the file.
+  ///
+  /// [revisionId] - The ID of the revision.
+  ///
+  /// Completes with a [Revision].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Revision> update(
+      Revision request, core.String fileId, core.String revisionId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2154,48 +2179,45 @@ class RevisionsResourceApi {
       throw new core.ArgumentError("Parameter revisionId is required.");
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/revisions/' + commons.Escaper.ecapeVariable('$revisionId');
+    _url = 'files/' +
+        commons.Escaper.ecapeVariable('$fileId') +
+        '/revisions/' +
+        commons.Escaper.ecapeVariable('$revisionId');
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Revision.fromJson(data));
   }
-
 }
-
 
 class TeamdrivesResourceApi {
   final commons.ApiRequester _requester;
 
-  TeamdrivesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  TeamdrivesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Creates a new Team Drive.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [requestId] - An ID, such as a random UUID, which uniquely identifies this
-   * user's request for idempotent creation of a Team Drive. A repeated request
-   * by the same user and with the same request ID will avoid creating
-   * duplicates by attempting to create the same Team Drive. If the Team Drive
-   * already exists a 409 error will be returned.
-   *
-   * Completes with a [TeamDrive].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Creates a new Team Drive.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [requestId] - An ID, such as a random UUID, which uniquely identifies this
+  /// user's request for idempotent creation of a Team Drive. A repeated request
+  /// by the same user and with the same request ID will avoid creating
+  /// duplicates by attempting to create the same Team Drive. If the Team Drive
+  /// already exists a 409 error will be returned.
+  ///
+  /// Completes with a [TeamDrive].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<TeamDrive> create(TeamDrive request, core.String requestId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -2214,30 +2236,27 @@ class TeamdrivesResourceApi {
 
     _url = 'teamdrives';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new TeamDrive.fromJson(data));
   }
 
-  /**
-   * Permanently deletes a Team Drive for which the user is an organizer. The
-   * Team Drive cannot contain any untrashed items.
-   *
-   * Request parameters:
-   *
-   * [teamDriveId] - The ID of the Team Drive
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Permanently deletes a Team Drive for which the user is an organizer. The
+  /// Team Drive cannot contain any untrashed items.
+  ///
+  /// Request parameters:
+  ///
+  /// [teamDriveId] - The ID of the Team Drive
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future delete(core.String teamDriveId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -2254,31 +2273,28 @@ class TeamdrivesResourceApi {
 
     _url = 'teamdrives/' + commons.Escaper.ecapeVariable('$teamDriveId');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Gets a Team Drive's metadata by ID.
-   *
-   * Request parameters:
-   *
-   * [teamDriveId] - The ID of the Team Drive
-   *
-   * Completes with a [TeamDrive].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Gets a Team Drive's metadata by ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [teamDriveId] - The ID of the Team Drive
+  ///
+  /// Completes with a [TeamDrive].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<TeamDrive> get(core.String teamDriveId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -2293,34 +2309,31 @@ class TeamdrivesResourceApi {
 
     _url = 'teamdrives/' + commons.Escaper.ecapeVariable('$teamDriveId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new TeamDrive.fromJson(data));
   }
 
-  /**
-   * Lists the user's Team Drives.
-   *
-   * Request parameters:
-   *
-   * [pageSize] - Maximum number of Team Drives to return.
-   * Value must be between "1" and "100".
-   *
-   * [pageToken] - Page token for Team Drives.
-   *
-   * Completes with a [TeamDriveList].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Lists the user's Team Drives.
+  ///
+  /// Request parameters:
+  ///
+  /// [pageSize] - Maximum number of Team Drives to return.
+  /// Value must be between "1" and "100".
+  ///
+  /// [pageToken] - Page token for Team Drives.
+  ///
+  /// Completes with a [TeamDriveList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<TeamDriveList> list({core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -2338,33 +2351,30 @@ class TeamdrivesResourceApi {
 
     _url = 'teamdrives';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new TeamDriveList.fromJson(data));
   }
 
-  /**
-   * Updates a Team Drive's metadata
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [teamDriveId] - The ID of the Team Drive
-   *
-   * Completes with a [TeamDrive].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Updates a Team Drive's metadata
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [teamDriveId] - The ID of the Team Drive
+  ///
+  /// Completes with a [TeamDrive].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<TeamDrive> update(TeamDrive request, core.String teamDriveId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -2382,34 +2392,29 @@ class TeamdrivesResourceApi {
 
     _url = 'teamdrives/' + commons.Escaper.ecapeVariable('$teamDriveId');
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new TeamDrive.fromJson(data));
   }
-
 }
 
-
-
-/**
- * The user's storage quota limits and usage. All fields are measured in bytes.
- */
+/// The user's storage quota limits and usage. All fields are measured in bytes.
 class AboutStorageQuota {
-  /**
-   * The usage limit, if applicable. This will not be present if the user has
-   * unlimited storage.
-   */
+  /// The usage limit, if applicable. This will not be present if the user has
+  /// unlimited storage.
   core.String limit;
-  /** The total usage across all services. */
+
+  /// The total usage across all services.
   core.String usage;
-  /** The usage by all files in Google Drive. */
+
+  /// The usage by all files in Google Drive.
   core.String usageInDrive;
-  /** The usage by trashed files in Google Drive. */
+
+  /// The usage by trashed files in Google Drive.
   core.String usageInDriveTrash;
 
   AboutStorageQuota();
@@ -2430,7 +2435,8 @@ class AboutStorageQuota {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (limit != null) {
       _json["limit"] = limit;
     }
@@ -2448,11 +2454,13 @@ class AboutStorageQuota {
 }
 
 class AboutTeamDriveThemes {
-  /** A link to this Team Drive theme's background image. */
+  /// A link to this Team Drive theme's background image.
   core.String backgroundImageLink;
-  /** The color of this Team Drive theme as an RGB hex string. */
+
+  /// The color of this Team Drive theme as an RGB hex string.
   core.String colorRgb;
-  /** The ID of the theme. */
+
+  /// The ID of the theme.
   core.String id;
 
   AboutTeamDriveThemes();
@@ -2470,7 +2478,8 @@ class AboutTeamDriveThemes {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (backgroundImageLink != null) {
       _json["backgroundImageLink"] = backgroundImageLink;
     }
@@ -2484,37 +2493,38 @@ class AboutTeamDriveThemes {
   }
 }
 
-/** Information about the user, the user's Drive, and system capabilities. */
+/// Information about the user, the user's Drive, and system capabilities.
 class About {
-  /** Whether the user has installed the requesting app. */
+  /// Whether the user has installed the requesting app.
   core.bool appInstalled;
-  /**
-   * A map of source MIME type to possible targets for all supported exports.
-   */
+
+  /// A map of source MIME type to possible targets for all supported exports.
   core.Map<core.String, core.List<core.String>> exportFormats;
-  /** The currently supported folder colors as RGB hex strings. */
+
+  /// The currently supported folder colors as RGB hex strings.
   core.List<core.String> folderColorPalette;
-  /**
-   * A map of source MIME type to possible targets for all supported imports.
-   */
+
+  /// A map of source MIME type to possible targets for all supported imports.
   core.Map<core.String, core.List<core.String>> importFormats;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "drive#about".
-   */
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "drive#about".
   core.String kind;
-  /** A map of maximum import sizes by MIME type, in bytes. */
+
+  /// A map of maximum import sizes by MIME type, in bytes.
   core.Map<core.String, core.String> maxImportSizes;
-  /** The maximum upload size in bytes. */
+
+  /// The maximum upload size in bytes.
   core.String maxUploadSize;
-  /**
-   * The user's storage quota limits and usage. All fields are measured in
-   * bytes.
-   */
+
+  /// The user's storage quota limits and usage. All fields are measured in
+  /// bytes.
   AboutStorageQuota storageQuota;
-  /** A list of themes that are supported for Team Drives. */
+
+  /// A list of themes that are supported for Team Drives.
   core.List<AboutTeamDriveThemes> teamDriveThemes;
-  /** The authenticated user. */
+
+  /// The authenticated user.
   User user;
 
   About();
@@ -2545,7 +2555,9 @@ class About {
       storageQuota = new AboutStorageQuota.fromJson(_json["storageQuota"]);
     }
     if (_json.containsKey("teamDriveThemes")) {
-      teamDriveThemes = _json["teamDriveThemes"].map((value) => new AboutTeamDriveThemes.fromJson(value)).toList();
+      teamDriveThemes = _json["teamDriveThemes"]
+          .map((value) => new AboutTeamDriveThemes.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("user")) {
       user = new User.fromJson(_json["user"]);
@@ -2553,7 +2565,8 @@ class About {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (appInstalled != null) {
       _json["appInstalled"] = appInstalled;
     }
@@ -2579,7 +2592,8 @@ class About {
       _json["storageQuota"] = (storageQuota).toJson();
     }
     if (teamDriveThemes != null) {
-      _json["teamDriveThemes"] = teamDriveThemes.map((value) => (value).toJson()).toList();
+      _json["teamDriveThemes"] =
+          teamDriveThemes.map((value) => (value).toJson()).toList();
     }
     if (user != null) {
       _json["user"] = (user).toJson();
@@ -2588,36 +2602,35 @@ class About {
   }
 }
 
-/** A change to a file or Team Drive. */
+/// A change to a file or Team Drive.
 class Change {
-  /**
-   * The updated state of the file. Present if the type is file and the file has
-   * not been removed from this list of changes.
-   */
+  /// The updated state of the file. Present if the type is file and the file
+  /// has not been removed from this list of changes.
   File file;
-  /** The ID of the file which has changed. */
+
+  /// The ID of the file which has changed.
   core.String fileId;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "drive#change".
-   */
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "drive#change".
   core.String kind;
-  /**
-   * Whether the file or Team Drive has been removed from this list of changes,
-   * for example by deletion or loss of access.
-   */
+
+  /// Whether the file or Team Drive has been removed from this list of changes,
+  /// for example by deletion or loss of access.
   core.bool removed;
-  /**
-   * The updated state of the Team Drive. Present if the type is teamDrive, the
-   * user is still a member of the Team Drive, and the Team Drive has not been
-   * removed.
-   */
+
+  /// The updated state of the Team Drive. Present if the type is teamDrive, the
+  /// user is still a member of the Team Drive, and the Team Drive has not been
+  /// removed.
   TeamDrive teamDrive;
-  /** The ID of the Team Drive associated with this change. */
+
+  /// The ID of the Team Drive associated with this change.
   core.String teamDriveId;
-  /** The time of this change (RFC 3339 date-time). */
+
+  /// The time of this change (RFC 3339 date-time).
   core.DateTime time;
-  /** The type of the change. Possible values are file and teamDrive. */
+
+  /// The type of the change. Possible values are file and teamDrive.
   core.String type;
 
   Change();
@@ -2650,7 +2663,8 @@ class Change {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (file != null) {
       _json["file"] = (file).toJson();
     }
@@ -2679,36 +2693,32 @@ class Change {
   }
 }
 
-/** A list of changes for a user. */
+/// A list of changes for a user.
 class ChangeList {
-  /**
-   * The list of changes. If nextPageToken is populated, then this list may be
-   * incomplete and an additional page of results should be fetched.
-   */
+  /// The list of changes. If nextPageToken is populated, then this list may be
+  /// incomplete and an additional page of results should be fetched.
   core.List<Change> changes;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "drive#changeList".
-   */
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "drive#changeList".
   core.String kind;
-  /**
-   * The starting page token for future changes. This will be present only if
-   * the end of the current changes list has been reached.
-   */
+
+  /// The starting page token for future changes. This will be present only if
+  /// the end of the current changes list has been reached.
   core.String newStartPageToken;
-  /**
-   * The page token for the next page of changes. This will be absent if the end
-   * of the changes list has been reached. If the token is rejected for any
-   * reason, it should be discarded, and pagination should be restarted from the
-   * first page of results.
-   */
+
+  /// The page token for the next page of changes. This will be absent if the
+  /// end of the changes list has been reached. If the token is rejected for any
+  /// reason, it should be discarded, and pagination should be restarted from
+  /// the first page of results.
   core.String nextPageToken;
 
   ChangeList();
 
   ChangeList.fromJson(core.Map _json) {
     if (_json.containsKey("changes")) {
-      changes = _json["changes"].map((value) => new Change.fromJson(value)).toList();
+      changes =
+          _json["changes"].map((value) => new Change.fromJson(value)).toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -2722,7 +2732,8 @@ class ChangeList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (changes != null) {
       _json["changes"] = changes.map((value) => (value).toJson()).toList();
     }
@@ -2739,39 +2750,40 @@ class ChangeList {
   }
 }
 
-/** An notification channel used to watch for resource changes. */
+/// An notification channel used to watch for resource changes.
 class Channel {
-  /** The address where notifications are delivered for this channel. */
+  /// The address where notifications are delivered for this channel.
   core.String address;
-  /**
-   * Date and time of notification channel expiration, expressed as a Unix
-   * timestamp, in milliseconds. Optional.
-   */
+
+  /// Date and time of notification channel expiration, expressed as a Unix
+  /// timestamp, in milliseconds. Optional.
   core.String expiration;
-  /** A UUID or similar unique string that identifies this channel. */
+
+  /// A UUID or similar unique string that identifies this channel.
   core.String id;
-  /**
-   * Identifies this as a notification channel used to watch for changes to a
-   * resource. Value: the fixed string "api#channel".
-   */
+
+  /// Identifies this as a notification channel used to watch for changes to a
+  /// resource. Value: the fixed string "api#channel".
   core.String kind;
-  /** Additional parameters controlling delivery channel behavior. Optional. */
+
+  /// Additional parameters controlling delivery channel behavior. Optional.
   core.Map<core.String, core.String> params;
-  /** A Boolean value to indicate whether payload is wanted. Optional. */
+
+  /// A Boolean value to indicate whether payload is wanted. Optional.
   core.bool payload;
-  /**
-   * An opaque ID that identifies the resource being watched on this channel.
-   * Stable across different API versions.
-   */
+
+  /// An opaque ID that identifies the resource being watched on this channel.
+  /// Stable across different API versions.
   core.String resourceId;
-  /** A version-specific identifier for the watched resource. */
+
+  /// A version-specific identifier for the watched resource.
   core.String resourceUri;
-  /**
-   * An arbitrary string delivered to the target address with each notification
-   * delivered over this channel. Optional.
-   */
+
+  /// An arbitrary string delivered to the target address with each notification
+  /// delivered over this channel. Optional.
   core.String token;
-  /** The type of delivery mechanism used for this channel. */
+
+  /// The type of delivery mechanism used for this channel.
   core.String type;
 
   Channel();
@@ -2810,7 +2822,8 @@ class Channel {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (address != null) {
       _json["address"] = address;
     }
@@ -2845,18 +2858,15 @@ class Channel {
   }
 }
 
-/**
- * The file content to which the comment refers, typically within the anchor
- * region. For a text file, for example, this would be the text at the location
- * of the comment.
- */
+/// The file content to which the comment refers, typically within the anchor
+/// region. For a text file, for example, this would be the text at the location
+/// of the comment.
 class CommentQuotedFileContent {
-  /** The MIME type of the quoted content. */
+  /// The MIME type of the quoted content.
   core.String mimeType;
-  /**
-   * The quoted content itself. This is interpreted as plain text if set through
-   * the API.
-   */
+
+  /// The quoted content itself. This is interpreted as plain text if set
+  /// through the API.
   core.String value;
 
   CommentQuotedFileContent();
@@ -2871,7 +2881,8 @@ class CommentQuotedFileContent {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (mimeType != null) {
       _json["mimeType"] = mimeType;
     }
@@ -2882,49 +2893,49 @@ class CommentQuotedFileContent {
   }
 }
 
-/** A comment on a file. */
+/// A comment on a file.
 class Comment {
-  /**
-   * A region of the document represented as a JSON string. See anchor
-   * documentation for details on how to define and interpret anchor properties.
-   */
+  /// A region of the document represented as a JSON string. See anchor
+  /// documentation for details on how to define and interpret anchor
+  /// properties.
   core.String anchor;
-  /** The user who created the comment. */
+
+  /// The user who created the comment.
   User author;
-  /**
-   * The plain text content of the comment. This field is used for setting the
-   * content, while htmlContent should be displayed.
-   */
+
+  /// The plain text content of the comment. This field is used for setting the
+  /// content, while htmlContent should be displayed.
   core.String content;
-  /** The time at which the comment was created (RFC 3339 date-time). */
+
+  /// The time at which the comment was created (RFC 3339 date-time).
   core.DateTime createdTime;
-  /**
-   * Whether the comment has been deleted. A deleted comment has no content.
-   */
+
+  /// Whether the comment has been deleted. A deleted comment has no content.
   core.bool deleted;
-  /** The content of the comment with HTML formatting. */
+
+  /// The content of the comment with HTML formatting.
   core.String htmlContent;
-  /** The ID of the comment. */
+
+  /// The ID of the comment.
   core.String id;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "drive#comment".
-   */
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "drive#comment".
   core.String kind;
-  /**
-   * The last time the comment or any of its replies was modified (RFC 3339
-   * date-time).
-   */
+
+  /// The last time the comment or any of its replies was modified (RFC 3339
+  /// date-time).
   core.DateTime modifiedTime;
-  /**
-   * The file content to which the comment refers, typically within the anchor
-   * region. For a text file, for example, this would be the text at the
-   * location of the comment.
-   */
+
+  /// The file content to which the comment refers, typically within the anchor
+  /// region. For a text file, for example, this would be the text at the
+  /// location of the comment.
   CommentQuotedFileContent quotedFileContent;
-  /** The full list of replies to the comment in chronological order. */
+
+  /// The full list of replies to the comment in chronological order.
   core.List<Reply> replies;
-  /** Whether the comment has been resolved by one of its replies. */
+
+  /// Whether the comment has been resolved by one of its replies.
   core.bool resolved;
 
   Comment();
@@ -2958,10 +2969,12 @@ class Comment {
       modifiedTime = core.DateTime.parse(_json["modifiedTime"]);
     }
     if (_json.containsKey("quotedFileContent")) {
-      quotedFileContent = new CommentQuotedFileContent.fromJson(_json["quotedFileContent"]);
+      quotedFileContent =
+          new CommentQuotedFileContent.fromJson(_json["quotedFileContent"]);
     }
     if (_json.containsKey("replies")) {
-      replies = _json["replies"].map((value) => new Reply.fromJson(value)).toList();
+      replies =
+          _json["replies"].map((value) => new Reply.fromJson(value)).toList();
     }
     if (_json.containsKey("resolved")) {
       resolved = _json["resolved"];
@@ -2969,7 +2982,8 @@ class Comment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (anchor != null) {
       _json["anchor"] = anchor;
     }
@@ -3010,31 +3024,29 @@ class Comment {
   }
 }
 
-/** A list of comments on a file. */
+/// A list of comments on a file.
 class CommentList {
-  /**
-   * The list of comments. If nextPageToken is populated, then this list may be
-   * incomplete and an additional page of results should be fetched.
-   */
+  /// The list of comments. If nextPageToken is populated, then this list may be
+  /// incomplete and an additional page of results should be fetched.
   core.List<Comment> comments;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "drive#commentList".
-   */
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "drive#commentList".
   core.String kind;
-  /**
-   * The page token for the next page of comments. This will be absent if the
-   * end of the comments list has been reached. If the token is rejected for any
-   * reason, it should be discarded, and pagination should be restarted from the
-   * first page of results.
-   */
+
+  /// The page token for the next page of comments. This will be absent if the
+  /// end of the comments list has been reached. If the token is rejected for
+  /// any reason, it should be discarded, and pagination should be restarted
+  /// from the first page of results.
   core.String nextPageToken;
 
   CommentList();
 
   CommentList.fromJson(core.Map _json) {
     if (_json.containsKey("comments")) {
-      comments = _json["comments"].map((value) => new Comment.fromJson(value)).toList();
+      comments = _json["comments"]
+          .map((value) => new Comment.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -3045,7 +3057,8 @@ class CommentList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (comments != null) {
       _json["comments"] = comments.map((value) => (value).toJson()).toList();
     }
@@ -3059,77 +3072,71 @@ class CommentList {
   }
 }
 
-/**
- * Capabilities the current user has on this file. Each capability corresponds
- * to a fine-grained action that a user may take.
- */
+/// Capabilities the current user has on this file. Each capability corresponds
+/// to a fine-grained action that a user may take.
 class FileCapabilities {
-  /**
-   * Whether the current user can add children to this folder. This is always
-   * false when the item is not a folder.
-   */
+  /// Whether the current user can add children to this folder. This is always
+  /// false when the item is not a folder.
   core.bool canAddChildren;
-  /**
-   * Whether the current user can change whether viewers can copy the contents
-   * of this file.
-   */
+
+  /// Whether the current user can change whether viewers can copy the contents
+  /// of this file.
   core.bool canChangeViewersCanCopyContent;
-  /** Whether the current user can comment on this file. */
+
+  /// Whether the current user can comment on this file.
   core.bool canComment;
-  /**
-   * Whether the current user can copy this file. For a Team Drive item, whether
-   * the current user can copy non-folder descendants of this item, or this item
-   * itself if it is not a folder.
-   */
+
+  /// Whether the current user can copy this file. For a Team Drive item,
+  /// whether the current user can copy non-folder descendants of this item, or
+  /// this item itself if it is not a folder.
   core.bool canCopy;
-  /** Whether the current user can delete this file. */
+
+  /// Whether the current user can delete this file.
   core.bool canDelete;
-  /** Whether the current user can download this file. */
+
+  /// Whether the current user can download this file.
   core.bool canDownload;
-  /** Whether the current user can edit this file. */
+
+  /// Whether the current user can edit this file.
   core.bool canEdit;
-  /**
-   * Whether the current user can list the children of this folder. This is
-   * always false when the item is not a folder.
-   */
+
+  /// Whether the current user can list the children of this folder. This is
+  /// always false when the item is not a folder.
   core.bool canListChildren;
-  /**
-   * Whether the current user can move this item into a Team Drive. If the item
-   * is in a Team Drive, this field is equivalent to canMoveTeamDriveItem.
-   */
+
+  /// Whether the current user can move this item into a Team Drive. If the item
+  /// is in a Team Drive, this field is equivalent to canMoveTeamDriveItem.
   core.bool canMoveItemIntoTeamDrive;
-  /**
-   * Whether the current user can move this Team Drive item by changing its
-   * parent. Note that a request to change the parent for this item may still
-   * fail depending on the new parent that is being added. Only populated for
-   * Team Drive files.
-   */
+
+  /// Whether the current user can move this Team Drive item by changing its
+  /// parent. Note that a request to change the parent for this item may still
+  /// fail depending on the new parent that is being added. Only populated for
+  /// Team Drive files.
   core.bool canMoveTeamDriveItem;
-  /**
-   * Whether the current user can read the revisions resource of this file. For
-   * a Team Drive item, whether revisions of non-folder descendants of this
-   * item, or this item itself if it is not a folder, can be read.
-   */
+
+  /// Whether the current user can read the revisions resource of this file. For
+  /// a Team Drive item, whether revisions of non-folder descendants of this
+  /// item, or this item itself if it is not a folder, can be read.
   core.bool canReadRevisions;
-  /**
-   * Whether the current user can read the Team Drive to which this file
-   * belongs. Only populated for Team Drive files.
-   */
+
+  /// Whether the current user can read the Team Drive to which this file
+  /// belongs. Only populated for Team Drive files.
   core.bool canReadTeamDrive;
-  /**
-   * Whether the current user can remove children from this folder. This is
-   * always false when the item is not a folder.
-   */
+
+  /// Whether the current user can remove children from this folder. This is
+  /// always false when the item is not a folder.
   core.bool canRemoveChildren;
-  /** Whether the current user can rename this file. */
+
+  /// Whether the current user can rename this file.
   core.bool canRename;
-  /**
-   * Whether the current user can modify the sharing settings for this file.
-   */
+
+  /// Whether the current user can modify the sharing settings for this file.
   core.bool canShare;
-  /** Whether the current user can move this file to trash. */
+
+  /// Whether the current user can move this file to trash.
   core.bool canTrash;
-  /** Whether the current user can restore this file from trash. */
+
+  /// Whether the current user can restore this file from trash.
   core.bool canUntrash;
 
   FileCapabilities();
@@ -3189,7 +3196,8 @@ class FileCapabilities {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (canAddChildren != null) {
       _json["canAddChildren"] = canAddChildren;
     }
@@ -3245,21 +3253,21 @@ class FileCapabilities {
   }
 }
 
-/**
- * A thumbnail for the file. This will only be used if Drive cannot generate a
- * standard thumbnail.
- */
+/// A thumbnail for the file. This will only be used if Drive cannot generate a
+/// standard thumbnail.
 class FileContentHintsThumbnail {
-  /** The thumbnail data encoded with URL-safe Base64 (RFC 4648 section 5). */
+  /// The thumbnail data encoded with URL-safe Base64 (RFC 4648 section 5).
   core.String image;
   core.List<core.int> get imageAsBytes {
     return convert.BASE64.decode(image);
   }
 
   void set imageAsBytes(core.List<core.int> _bytes) {
-    image = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    image =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
-  /** The MIME type of the thumbnail. */
+
+  /// The MIME type of the thumbnail.
   core.String mimeType;
 
   FileContentHintsThumbnail();
@@ -3274,7 +3282,8 @@ class FileContentHintsThumbnail {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (image != null) {
       _json["image"] = image;
     }
@@ -3285,20 +3294,15 @@ class FileContentHintsThumbnail {
   }
 }
 
-/**
- * Additional information about the content of the file. These fields are never
- * populated in responses.
- */
+/// Additional information about the content of the file. These fields are never
+/// populated in responses.
 class FileContentHints {
-  /**
-   * Text to be indexed for the file to improve fullText queries. This is
-   * limited to 128KB in length and may contain HTML elements.
-   */
+  /// Text to be indexed for the file to improve fullText queries. This is
+  /// limited to 128KB in length and may contain HTML elements.
   core.String indexableText;
-  /**
-   * A thumbnail for the file. This will only be used if Drive cannot generate a
-   * standard thumbnail.
-   */
+
+  /// A thumbnail for the file. This will only be used if Drive cannot generate
+  /// a standard thumbnail.
   FileContentHintsThumbnail thumbnail;
 
   FileContentHints();
@@ -3313,7 +3317,8 @@ class FileContentHints {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (indexableText != null) {
       _json["indexableText"] = indexableText;
     }
@@ -3324,13 +3329,15 @@ class FileContentHints {
   }
 }
 
-/** Geographic location information stored in the image. */
+/// Geographic location information stored in the image.
 class FileImageMediaMetadataLocation {
-  /** The altitude stored in the image. */
+  /// The altitude stored in the image.
   core.double altitude;
-  /** The latitude stored in the image. */
+
+  /// The latitude stored in the image.
   core.double latitude;
-  /** The longitude stored in the image. */
+
+  /// The longitude stored in the image.
   core.double longitude;
 
   FileImageMediaMetadataLocation();
@@ -3348,7 +3355,8 @@ class FileImageMediaMetadataLocation {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (altitude != null) {
       _json["altitude"] = altitude;
     }
@@ -3362,54 +3370,70 @@ class FileImageMediaMetadataLocation {
   }
 }
 
-/** Additional metadata about image media, if available. */
+/// Additional metadata about image media, if available.
 class FileImageMediaMetadata {
-  /** The aperture used to create the photo (f-number). */
+  /// The aperture used to create the photo (f-number).
   core.double aperture;
-  /** The make of the camera used to create the photo. */
+
+  /// The make of the camera used to create the photo.
   core.String cameraMake;
-  /** The model of the camera used to create the photo. */
+
+  /// The model of the camera used to create the photo.
   core.String cameraModel;
-  /** The color space of the photo. */
+
+  /// The color space of the photo.
   core.String colorSpace;
-  /** The exposure bias of the photo (APEX value). */
+
+  /// The exposure bias of the photo (APEX value).
   core.double exposureBias;
-  /** The exposure mode used to create the photo. */
+
+  /// The exposure mode used to create the photo.
   core.String exposureMode;
-  /** The length of the exposure, in seconds. */
+
+  /// The length of the exposure, in seconds.
   core.double exposureTime;
-  /** Whether a flash was used to create the photo. */
+
+  /// Whether a flash was used to create the photo.
   core.bool flashUsed;
-  /** The focal length used to create the photo, in millimeters. */
+
+  /// The focal length used to create the photo, in millimeters.
   core.double focalLength;
-  /** The height of the image in pixels. */
+
+  /// The height of the image in pixels.
   core.int height;
-  /** The ISO speed used to create the photo. */
+
+  /// The ISO speed used to create the photo.
   core.int isoSpeed;
-  /** The lens used to create the photo. */
+
+  /// The lens used to create the photo.
   core.String lens;
-  /** Geographic location information stored in the image. */
+
+  /// Geographic location information stored in the image.
   FileImageMediaMetadataLocation location;
-  /**
-   * The smallest f-number of the lens at the focal length used to create the
-   * photo (APEX value).
-   */
+
+  /// The smallest f-number of the lens at the focal length used to create the
+  /// photo (APEX value).
   core.double maxApertureValue;
-  /** The metering mode used to create the photo. */
+
+  /// The metering mode used to create the photo.
   core.String meteringMode;
-  /**
-   * The rotation in clockwise degrees from the image's original orientation.
-   */
+
+  /// The rotation in clockwise degrees from the image's original orientation.
   core.int rotation;
-  /** The type of sensor used to create the photo. */
+
+  /// The type of sensor used to create the photo.
   core.String sensor;
-  /** The distance to the subject of the photo, in meters. */
+
+  /// The distance to the subject of the photo, in meters.
   core.int subjectDistance;
-  /** The date and time the photo was taken (EXIF DateTime). */
+
+  /// The date and time the photo was taken (EXIF DateTime).
   core.String time;
-  /** The white balance mode used to create the photo. */
+
+  /// The white balance mode used to create the photo.
   core.String whiteBalance;
-  /** The width of the image in pixels. */
+
+  /// The width of the image in pixels.
   core.int width;
 
   FileImageMediaMetadata();
@@ -3481,7 +3505,8 @@ class FileImageMediaMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (aperture != null) {
       _json["aperture"] = aperture;
     }
@@ -3549,16 +3574,16 @@ class FileImageMediaMetadata {
   }
 }
 
-/**
- * Additional metadata about video media. This may not be available immediately
- * upon upload.
- */
+/// Additional metadata about video media. This may not be available immediately
+/// upon upload.
 class FileVideoMediaMetadata {
-  /** The duration of the video in milliseconds. */
+  /// The duration of the video in milliseconds.
   core.String durationMillis;
-  /** The height of the video in pixels. */
+
+  /// The height of the video in pixels.
   core.int height;
-  /** The width of the video in pixels. */
+
+  /// The width of the video in pixels.
   core.int width;
 
   FileVideoMediaMetadata();
@@ -3576,7 +3601,8 @@ class FileVideoMediaMetadata {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (durationMillis != null) {
       _json["durationMillis"] = durationMillis;
     }
@@ -3590,230 +3616,216 @@ class FileVideoMediaMetadata {
   }
 }
 
-/** The metadata for a file. */
+/// The metadata for a file.
 class File {
-  /**
-   * A collection of arbitrary key-value pairs which are private to the
-   * requesting app.
-   * Entries with null values are cleared in update and copy requests.
-   */
+  /// A collection of arbitrary key-value pairs which are private to the
+  /// requesting app.
+  /// Entries with null values are cleared in update and copy requests.
   core.Map<core.String, core.String> appProperties;
-  /**
-   * Capabilities the current user has on this file. Each capability corresponds
-   * to a fine-grained action that a user may take.
-   */
+
+  /// Capabilities the current user has on this file. Each capability
+  /// corresponds to a fine-grained action that a user may take.
   FileCapabilities capabilities;
-  /**
-   * Additional information about the content of the file. These fields are
-   * never populated in responses.
-   */
+
+  /// Additional information about the content of the file. These fields are
+  /// never populated in responses.
   FileContentHints contentHints;
-  /** The time at which the file was created (RFC 3339 date-time). */
+
+  /// The time at which the file was created (RFC 3339 date-time).
   core.DateTime createdTime;
-  /** A short description of the file. */
+
+  /// A short description of the file.
   core.String description;
-  /**
-   * Whether the file has been explicitly trashed, as opposed to recursively
-   * trashed from a parent folder.
-   */
+
+  /// Whether the file has been explicitly trashed, as opposed to recursively
+  /// trashed from a parent folder.
   core.bool explicitlyTrashed;
-  /**
-   * The final component of fullFileExtension. This is only available for files
-   * with binary content in Drive.
-   */
+
+  /// The final component of fullFileExtension. This is only available for files
+  /// with binary content in Drive.
   core.String fileExtension;
-  /**
-   * The color for a folder as an RGB hex string. The supported colors are
-   * published in the folderColorPalette field of the About resource.
-   * If an unsupported color is specified, the closest color in the palette will
-   * be used instead.
-   */
+
+  /// The color for a folder as an RGB hex string. The supported colors are
+  /// published in the folderColorPalette field of the About resource.
+  /// If an unsupported color is specified, the closest color in the palette
+  /// will be used instead.
   core.String folderColorRgb;
-  /**
-   * The full file extension extracted from the name field. May contain multiple
-   * concatenated extensions, such as "tar.gz". This is only available for files
-   * with binary content in Drive.
-   * This is automatically updated when the name field changes, however it is
-   * not cleared if the new name does not contain a valid extension.
-   */
+
+  /// The full file extension extracted from the name field. May contain
+  /// multiple concatenated extensions, such as "tar.gz". This is only available
+  /// for files with binary content in Drive.
+  /// This is automatically updated when the name field changes, however it is
+  /// not cleared if the new name does not contain a valid extension.
   core.String fullFileExtension;
-  /**
-   * Whether any users are granted file access directly on this file. This field
-   * is only populated for Team Drive files.
-   */
+
+  /// Whether any users are granted file access directly on this file. This
+  /// field is only populated for Team Drive files.
   core.bool hasAugmentedPermissions;
-  /**
-   * Whether this file has a thumbnail. This does not indicate whether the
-   * requesting app has access to the thumbnail. To check access, look for the
-   * presence of the thumbnailLink field.
-   */
+
+  /// Whether this file has a thumbnail. This does not indicate whether the
+  /// requesting app has access to the thumbnail. To check access, look for the
+  /// presence of the thumbnailLink field.
   core.bool hasThumbnail;
-  /**
-   * The ID of the file's head revision. This is currently only available for
-   * files with binary content in Drive.
-   */
+
+  /// The ID of the file's head revision. This is currently only available for
+  /// files with binary content in Drive.
   core.String headRevisionId;
-  /** A static, unauthenticated link to the file's icon. */
+
+  /// A static, unauthenticated link to the file's icon.
   core.String iconLink;
-  /** The ID of the file. */
+
+  /// The ID of the file.
   core.String id;
-  /** Additional metadata about image media, if available. */
+
+  /// Additional metadata about image media, if available.
   FileImageMediaMetadata imageMediaMetadata;
-  /** Whether the file was created or opened by the requesting app. */
+
+  /// Whether the file was created or opened by the requesting app.
   core.bool isAppAuthorized;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "drive#file".
-   */
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "drive#file".
   core.String kind;
-  /** The last user to modify the file. */
+
+  /// The last user to modify the file.
   User lastModifyingUser;
-  /**
-   * The MD5 checksum for the content of the file. This is only applicable to
-   * files with binary content in Drive.
-   */
+
+  /// The MD5 checksum for the content of the file. This is only applicable to
+  /// files with binary content in Drive.
   core.String md5Checksum;
-  /**
-   * The MIME type of the file.
-   * Drive will attempt to automatically detect an appropriate value from
-   * uploaded content if no value is provided. The value cannot be changed
-   * unless a new revision is uploaded.
-   * If a file is created with a Google Doc MIME type, the uploaded content will
-   * be imported if possible. The supported import formats are published in the
-   * About resource.
-   */
+
+  /// The MIME type of the file.
+  /// Drive will attempt to automatically detect an appropriate value from
+  /// uploaded content if no value is provided. The value cannot be changed
+  /// unless a new revision is uploaded.
+  /// If a file is created with a Google Doc MIME type, the uploaded content
+  /// will be imported if possible. The supported import formats are published
+  /// in the About resource.
   core.String mimeType;
-  /** Whether the file has been modified by this user. */
+
+  /// Whether the file has been modified by this user.
   core.bool modifiedByMe;
-  /** The last time the file was modified by the user (RFC 3339 date-time). */
+
+  /// The last time the file was modified by the user (RFC 3339 date-time).
   core.DateTime modifiedByMeTime;
-  /**
-   * The last time the file was modified by anyone (RFC 3339 date-time).
-   * Note that setting modifiedTime will also update modifiedByMeTime for the
-   * user.
-   */
+
+  /// The last time the file was modified by anyone (RFC 3339 date-time).
+  /// Note that setting modifiedTime will also update modifiedByMeTime for the
+  /// user.
   core.DateTime modifiedTime;
-  /**
-   * The name of the file. This is not necessarily unique within a folder. Note
-   * that for immutable items such as the top level folders of Team Drives, My
-   * Drive root folder, and Application Data folder the name is constant.
-   */
+
+  /// The name of the file. This is not necessarily unique within a folder. Note
+  /// that for immutable items such as the top level folders of Team Drives, My
+  /// Drive root folder, and Application Data folder the name is constant.
   core.String name;
-  /**
-   * The original filename of the uploaded content if available, or else the
-   * original value of the name field. This is only available for files with
-   * binary content in Drive.
-   */
+
+  /// The original filename of the uploaded content if available, or else the
+  /// original value of the name field. This is only available for files with
+  /// binary content in Drive.
   core.String originalFilename;
-  /** Whether the user owns the file. Not populated for Team Drive files. */
+
+  /// Whether the user owns the file. Not populated for Team Drive files.
   core.bool ownedByMe;
-  /**
-   * The owners of the file. Currently, only certain legacy files may have more
-   * than one owner. Not populated for Team Drive files.
-   */
+
+  /// The owners of the file. Currently, only certain legacy files may have more
+  /// than one owner. Not populated for Team Drive files.
   core.List<User> owners;
-  /**
-   * The IDs of the parent folders which contain the file.
-   * If not specified as part of a create request, the file will be placed
-   * directly in the My Drive folder. Update requests must use the addParents
-   * and removeParents parameters to modify the values.
-   */
+
+  /// The IDs of the parent folders which contain the file.
+  /// If not specified as part of a create request, the file will be placed
+  /// directly in the My Drive folder. Update requests must use the addParents
+  /// and removeParents parameters to modify the values.
   core.List<core.String> parents;
-  /**
-   * The full list of permissions for the file. This is only available if the
-   * requesting user can share the file. Not populated for Team Drive files.
-   */
+
+  /// List of permission IDs for users with access to this file.
+  core.List<core.String> permissionIds;
+
+  /// The full list of permissions for the file. This is only available if the
+  /// requesting user can share the file. Not populated for Team Drive files.
   core.List<Permission> permissions;
-  /**
-   * A collection of arbitrary key-value pairs which are visible to all apps.
-   * Entries with null values are cleared in update and copy requests.
-   */
+
+  /// A collection of arbitrary key-value pairs which are visible to all apps.
+  /// Entries with null values are cleared in update and copy requests.
   core.Map<core.String, core.String> properties;
-  /**
-   * The number of storage quota bytes used by the file. This includes the head
-   * revision as well as previous revisions with keepForever enabled.
-   */
+
+  /// The number of storage quota bytes used by the file. This includes the head
+  /// revision as well as previous revisions with keepForever enabled.
   core.String quotaBytesUsed;
-  /** Whether the file has been shared. Not populated for Team Drive files. */
+
+  /// Whether the file has been shared. Not populated for Team Drive files.
   core.bool shared;
-  /**
-   * The time at which the file was shared with the user, if applicable (RFC
-   * 3339 date-time).
-   */
+
+  /// The time at which the file was shared with the user, if applicable (RFC
+  /// 3339 date-time).
   core.DateTime sharedWithMeTime;
-  /** The user who shared the file with the requesting user, if applicable. */
+
+  /// The user who shared the file with the requesting user, if applicable.
   User sharingUser;
-  /**
-   * The size of the file's content in bytes. This is only applicable to files
-   * with binary content in Drive.
-   */
+
+  /// The size of the file's content in bytes. This is only applicable to files
+  /// with binary content in Drive.
   core.String size;
-  /**
-   * The list of spaces which contain the file. The currently supported values
-   * are 'drive', 'appDataFolder' and 'photos'.
-   */
+
+  /// The list of spaces which contain the file. The currently supported values
+  /// are 'drive', 'appDataFolder' and 'photos'.
   core.List<core.String> spaces;
-  /** Whether the user has starred the file. */
+
+  /// Whether the user has starred the file.
   core.bool starred;
-  /** ID of the Team Drive the file resides in. */
+
+  /// ID of the Team Drive the file resides in.
   core.String teamDriveId;
-  /**
-   * A short-lived link to the file's thumbnail, if available. Typically lasts
-   * on the order of hours. Only populated when the requesting app can access
-   * the file's content.
-   */
+
+  /// A short-lived link to the file's thumbnail, if available. Typically lasts
+  /// on the order of hours. Only populated when the requesting app can access
+  /// the file's content.
   core.String thumbnailLink;
-  /** The thumbnail version for use in thumbnail cache invalidation. */
+
+  /// The thumbnail version for use in thumbnail cache invalidation.
   core.String thumbnailVersion;
-  /**
-   * Whether the file has been trashed, either explicitly or from a trashed
-   * parent folder. Only the owner may trash a file, and other users cannot see
-   * files in the owner's trash.
-   */
+
+  /// Whether the file has been trashed, either explicitly or from a trashed
+  /// parent folder. Only the owner may trash a file, and other users cannot see
+  /// files in the owner's trash.
   core.bool trashed;
-  /**
-   * The time that the item was trashed (RFC 3339 date-time). Only populated for
-   * Team Drive files.
-   */
+
+  /// The time that the item was trashed (RFC 3339 date-time). Only populated
+  /// for Team Drive files.
   core.DateTime trashedTime;
-  /**
-   * If the file has been explicitly trashed, the user who trashed it. Only
-   * populated for Team Drive files.
-   */
+
+  /// If the file has been explicitly trashed, the user who trashed it. Only
+  /// populated for Team Drive files.
   User trashingUser;
-  /**
-   * A monotonically increasing version number for the file. This reflects every
-   * change made to the file on the server, even those not visible to the user.
-   */
+
+  /// A monotonically increasing version number for the file. This reflects
+  /// every change made to the file on the server, even those not visible to the
+  /// user.
   core.String version;
-  /**
-   * Additional metadata about video media. This may not be available
-   * immediately upon upload.
-   */
+
+  /// Additional metadata about video media. This may not be available
+  /// immediately upon upload.
   FileVideoMediaMetadata videoMediaMetadata;
-  /** Whether the file has been viewed by this user. */
+
+  /// Whether the file has been viewed by this user.
   core.bool viewedByMe;
-  /** The last time the file was viewed by the user (RFC 3339 date-time). */
+
+  /// The last time the file was viewed by the user (RFC 3339 date-time).
   core.DateTime viewedByMeTime;
-  /**
-   * Whether users with only reader or commenter permission can copy the file's
-   * content. This affects copy, download, and print operations.
-   */
+
+  /// Whether users with only reader or commenter permission can copy the file's
+  /// content. This affects copy, download, and print operations.
   core.bool viewersCanCopyContent;
-  /**
-   * A link for downloading the content of the file in a browser. This is only
-   * available for files with binary content in Drive.
-   */
+
+  /// A link for downloading the content of the file in a browser. This is only
+  /// available for files with binary content in Drive.
   core.String webContentLink;
-  /**
-   * A link for opening the file in a relevant Google editor or viewer in a
-   * browser.
-   */
+
+  /// A link for opening the file in a relevant Google editor or viewer in a
+  /// browser.
   core.String webViewLink;
-  /**
-   * Whether users with only writer permission can modify the file's
-   * permissions. Not populated for Team Drive files.
-   */
+
+  /// Whether users with only writer permission can modify the file's
+  /// permissions. Not populated for Team Drive files.
   core.bool writersCanShare;
 
   File();
@@ -3862,7 +3874,8 @@ class File {
       id = _json["id"];
     }
     if (_json.containsKey("imageMediaMetadata")) {
-      imageMediaMetadata = new FileImageMediaMetadata.fromJson(_json["imageMediaMetadata"]);
+      imageMediaMetadata =
+          new FileImageMediaMetadata.fromJson(_json["imageMediaMetadata"]);
     }
     if (_json.containsKey("isAppAuthorized")) {
       isAppAuthorized = _json["isAppAuthorized"];
@@ -3898,13 +3911,19 @@ class File {
       ownedByMe = _json["ownedByMe"];
     }
     if (_json.containsKey("owners")) {
-      owners = _json["owners"].map((value) => new User.fromJson(value)).toList();
+      owners =
+          _json["owners"].map((value) => new User.fromJson(value)).toList();
     }
     if (_json.containsKey("parents")) {
       parents = _json["parents"];
     }
+    if (_json.containsKey("permissionIds")) {
+      permissionIds = _json["permissionIds"];
+    }
     if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"].map((value) => new Permission.fromJson(value)).toList();
+      permissions = _json["permissions"]
+          .map((value) => new Permission.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("properties")) {
       properties = _json["properties"];
@@ -3952,7 +3971,8 @@ class File {
       version = _json["version"];
     }
     if (_json.containsKey("videoMediaMetadata")) {
-      videoMediaMetadata = new FileVideoMediaMetadata.fromJson(_json["videoMediaMetadata"]);
+      videoMediaMetadata =
+          new FileVideoMediaMetadata.fromJson(_json["videoMediaMetadata"]);
     }
     if (_json.containsKey("viewedByMe")) {
       viewedByMe = _json["viewedByMe"];
@@ -3975,7 +3995,8 @@ class File {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (appProperties != null) {
       _json["appProperties"] = appProperties;
     }
@@ -4060,8 +4081,12 @@ class File {
     if (parents != null) {
       _json["parents"] = parents;
     }
+    if (permissionIds != null) {
+      _json["permissionIds"] = permissionIds;
+    }
     if (permissions != null) {
-      _json["permissions"] = permissions.map((value) => (value).toJson()).toList();
+      _json["permissions"] =
+          permissions.map((value) => (value).toJson()).toList();
     }
     if (properties != null) {
       _json["properties"] = properties;
@@ -4133,33 +4158,28 @@ class File {
   }
 }
 
-/** A list of files. */
+/// A list of files.
 class FileList {
-  /**
-   * The list of files. If nextPageToken is populated, then this list may be
-   * incomplete and an additional page of results should be fetched.
-   */
+  /// The list of files. If nextPageToken is populated, then this list may be
+  /// incomplete and an additional page of results should be fetched.
   core.List<File> files;
-  /**
-   * Whether the search process was incomplete. If true, then some search
-   * results may be missing, since all documents were not searched. This may
-   * occur when searching multiple Team Drives with the "user,allTeamDrives"
-   * corpora, but all corpora could not be searched. When this happens, it is
-   * suggested that clients narrow their query by choosing a different corpus
-   * such as "user" or "teamDrive".
-   */
+
+  /// Whether the search process was incomplete. If true, then some search
+  /// results may be missing, since all documents were not searched. This may
+  /// occur when searching multiple Team Drives with the "user,allTeamDrives"
+  /// corpora, but all corpora could not be searched. When this happens, it is
+  /// suggested that clients narrow their query by choosing a different corpus
+  /// such as "user" or "teamDrive".
   core.bool incompleteSearch;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "drive#fileList".
-   */
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "drive#fileList".
   core.String kind;
-  /**
-   * The page token for the next page of files. This will be absent if the end
-   * of the files list has been reached. If the token is rejected for any
-   * reason, it should be discarded, and pagination should be restarted from the
-   * first page of results.
-   */
+
+  /// The page token for the next page of files. This will be absent if the end
+  /// of the files list has been reached. If the token is rejected for any
+  /// reason, it should be discarded, and pagination should be restarted from
+  /// the first page of results.
   core.String nextPageToken;
 
   FileList();
@@ -4180,7 +4200,8 @@ class FileList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (files != null) {
       _json["files"] = files.map((value) => (value).toJson()).toList();
     }
@@ -4197,16 +4218,16 @@ class FileList {
   }
 }
 
-/** A list of generated file IDs which can be provided in create requests. */
+/// A list of generated file IDs which can be provided in create requests.
 class GeneratedIds {
-  /** The IDs generated for the requesting user in the specified space. */
+  /// The IDs generated for the requesting user in the specified space.
   core.List<core.String> ids;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "drive#generatedIds".
-   */
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "drive#generatedIds".
   core.String kind;
-  /** The type of file that can be created with these IDs. */
+
+  /// The type of file that can be created with these IDs.
   core.String space;
 
   GeneratedIds();
@@ -4224,7 +4245,8 @@ class GeneratedIds {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (ids != null) {
       _json["ids"] = ids;
     }
@@ -4239,31 +4261,26 @@ class GeneratedIds {
 }
 
 class PermissionTeamDrivePermissionDetails {
-  /**
-   * Whether this permission is inherited. This field is always populated. This
-   * is an output-only field.
-   */
+  /// Whether this permission is inherited. This field is always populated. This
+  /// is an output-only field.
   core.bool inherited;
-  /**
-   * The ID of the item from which this permission is inherited. This is an
-   * output-only field and is only populated for members of the Team Drive.
-   */
+
+  /// The ID of the item from which this permission is inherited. This is an
+  /// output-only field and is only populated for members of the Team Drive.
   core.String inheritedFrom;
-  /**
-   * The primary role for this user. While new values may be added in the
-   * future, the following are currently possible:
-   * - organizer
-   * - writer
-   * - commenter
-   * - reader
-   */
+
+  /// The primary role for this user. While new values may be added in the
+  /// future, the following are currently possible:
+  /// - organizer
+  /// - writer
+  /// - commenter
+  /// - reader
   core.String role;
-  /**
-   * The Team Drive permission type for this user. While new values may be added
-   * in future, the following are currently possible:
-   * - file
-   * - member
-   */
+
+  /// The Team Drive permission type for this user. While new values may be
+  /// added in future, the following are currently possible:
+  /// - file
+  /// - member
   core.String teamDrivePermissionType;
 
   PermissionTeamDrivePermissionDetails();
@@ -4284,7 +4301,8 @@ class PermissionTeamDrivePermissionDetails {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (inherited != null) {
       _json["inherited"] = inherited;
     }
@@ -4301,72 +4319,63 @@ class PermissionTeamDrivePermissionDetails {
   }
 }
 
-/**
- * A permission for a file. A permission grants a user, group, domain or the
- * world access to a file or a folder hierarchy.
- */
+/// A permission for a file. A permission grants a user, group, domain or the
+/// world access to a file or a folder hierarchy.
 class Permission {
-  /**
-   * Whether the permission allows the file to be discovered through search.
-   * This is only applicable for permissions of type domain or anyone.
-   */
+  /// Whether the permission allows the file to be discovered through search.
+  /// This is only applicable for permissions of type domain or anyone.
   core.bool allowFileDiscovery;
-  /**
-   * Whether the account associated with this permission has been deleted. This
-   * field only pertains to user and group permissions.
-   */
+
+  /// Whether the account associated with this permission has been deleted. This
+  /// field only pertains to user and group permissions.
   core.bool deleted;
-  /** A displayable name for users, groups or domains. */
+
+  /// A displayable name for users, groups or domains.
   core.String displayName;
-  /** The domain to which this permission refers. */
+
+  /// The domain to which this permission refers.
   core.String domain;
-  /**
-   * The email address of the user or group to which this permission refers.
-   */
+
+  /// The email address of the user or group to which this permission refers.
   core.String emailAddress;
-  /**
-   * The time at which this permission will expire (RFC 3339 date-time).
-   * Expiration times have the following restrictions:
-   * - They can only be set on user and group permissions
-   * - The time must be in the future
-   * - The time cannot be more than a year in the future
-   */
+
+  /// The time at which this permission will expire (RFC 3339 date-time).
+  /// Expiration times have the following restrictions:
+  /// - They can only be set on user and group permissions
+  /// - The time must be in the future
+  /// - The time cannot be more than a year in the future
   core.DateTime expirationTime;
-  /**
-   * The ID of this permission. This is a unique identifier for the grantee, and
-   * is published in User resources as permissionId.
-   */
+
+  /// The ID of this permission. This is a unique identifier for the grantee,
+  /// and is published in User resources as permissionId.
   core.String id;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "drive#permission".
-   */
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "drive#permission".
   core.String kind;
-  /** A link to the user's profile photo, if available. */
+
+  /// A link to the user's profile photo, if available.
   core.String photoLink;
-  /**
-   * The role granted by this permission. While new values may be supported in
-   * the future, the following are currently allowed:
-   * - organizer
-   * - owner
-   * - writer
-   * - commenter
-   * - reader
-   */
+
+  /// The role granted by this permission. While new values may be supported in
+  /// the future, the following are currently allowed:
+  /// - organizer
+  /// - owner
+  /// - writer
+  /// - commenter
+  /// - reader
   core.String role;
-  /**
-   * Details of whether the permissions on this Team Drive item are inherited or
-   * directly on this item. This is an output-only field which is present only
-   * for Team Drive items.
-   */
+
+  /// Details of whether the permissions on this Team Drive item are inherited
+  /// or directly on this item. This is an output-only field which is present
+  /// only for Team Drive items.
   core.List<PermissionTeamDrivePermissionDetails> teamDrivePermissionDetails;
-  /**
-   * The type of the grantee. Valid values are:
-   * - user
-   * - group
-   * - domain
-   * - anyone
-   */
+
+  /// The type of the grantee. Valid values are:
+  /// - user
+  /// - group
+  /// - domain
+  /// - anyone
   core.String type;
 
   Permission();
@@ -4403,7 +4412,10 @@ class Permission {
       role = _json["role"];
     }
     if (_json.containsKey("teamDrivePermissionDetails")) {
-      teamDrivePermissionDetails = _json["teamDrivePermissionDetails"].map((value) => new PermissionTeamDrivePermissionDetails.fromJson(value)).toList();
+      teamDrivePermissionDetails = _json["teamDrivePermissionDetails"]
+          .map((value) =>
+              new PermissionTeamDrivePermissionDetails.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
@@ -4411,7 +4423,8 @@ class Permission {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (allowFileDiscovery != null) {
       _json["allowFileDiscovery"] = allowFileDiscovery;
     }
@@ -4443,7 +4456,8 @@ class Permission {
       _json["role"] = role;
     }
     if (teamDrivePermissionDetails != null) {
-      _json["teamDrivePermissionDetails"] = teamDrivePermissionDetails.map((value) => (value).toJson()).toList();
+      _json["teamDrivePermissionDetails"] =
+          teamDrivePermissionDetails.map((value) => (value).toJson()).toList();
     }
     if (type != null) {
       _json["type"] = type;
@@ -4452,24 +4466,20 @@ class Permission {
   }
 }
 
-/** A list of permissions for a file. */
+/// A list of permissions for a file.
 class PermissionList {
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "drive#permissionList".
-   */
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "drive#permissionList".
   core.String kind;
-  /**
-   * The page token for the next page of permissions. This field will be absent
-   * if the end of the permissions list has been reached. If the token is
-   * rejected for any reason, it should be discarded, and pagination should be
-   * restarted from the first page of results.
-   */
+
+  /// The page token for the next page of permissions. This field will be absent
+  /// if the end of the permissions list has been reached. If the token is
+  /// rejected for any reason, it should be discarded, and pagination should be
+  /// restarted from the first page of results.
   core.String nextPageToken;
-  /**
-   * The list of permissions. If nextPageToken is populated, then this list may
-   * be incomplete and an additional page of results should be fetched.
-   */
+
+  /// The list of permissions. If nextPageToken is populated, then this list may
+  /// be incomplete and an additional page of results should be fetched.
   core.List<Permission> permissions;
 
   PermissionList();
@@ -4482,12 +4492,15 @@ class PermissionList {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"].map((value) => new Permission.fromJson(value)).toList();
+      permissions = _json["permissions"]
+          .map((value) => new Permission.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -4495,42 +4508,45 @@ class PermissionList {
       _json["nextPageToken"] = nextPageToken;
     }
     if (permissions != null) {
-      _json["permissions"] = permissions.map((value) => (value).toJson()).toList();
+      _json["permissions"] =
+          permissions.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
 }
 
-/** A reply to a comment on a file. */
+/// A reply to a comment on a file.
 class Reply {
-  /**
-   * The action the reply performed to the parent comment. Valid values are:
-   * - resolve
-   * - reopen
-   */
+  /// The action the reply performed to the parent comment. Valid values are:
+  /// - resolve
+  /// - reopen
   core.String action;
-  /** The user who created the reply. */
+
+  /// The user who created the reply.
   User author;
-  /**
-   * The plain text content of the reply. This field is used for setting the
-   * content, while htmlContent should be displayed. This is required on creates
-   * if no action is specified.
-   */
+
+  /// The plain text content of the reply. This field is used for setting the
+  /// content, while htmlContent should be displayed. This is required on
+  /// creates if no action is specified.
   core.String content;
-  /** The time at which the reply was created (RFC 3339 date-time). */
+
+  /// The time at which the reply was created (RFC 3339 date-time).
   core.DateTime createdTime;
-  /** Whether the reply has been deleted. A deleted reply has no content. */
+
+  /// Whether the reply has been deleted. A deleted reply has no content.
   core.bool deleted;
-  /** The content of the reply with HTML formatting. */
+
+  /// The content of the reply with HTML formatting.
   core.String htmlContent;
-  /** The ID of the reply. */
+
+  /// The ID of the reply.
   core.String id;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "drive#reply".
-   */
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "drive#reply".
   core.String kind;
-  /** The last time the reply was modified (RFC 3339 date-time). */
+
+  /// The last time the reply was modified (RFC 3339 date-time).
   core.DateTime modifiedTime;
 
   Reply();
@@ -4566,7 +4582,8 @@ class Reply {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (action != null) {
       _json["action"] = action;
     }
@@ -4598,24 +4615,20 @@ class Reply {
   }
 }
 
-/** A list of replies to a comment on a file. */
+/// A list of replies to a comment on a file.
 class ReplyList {
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "drive#replyList".
-   */
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "drive#replyList".
   core.String kind;
-  /**
-   * The page token for the next page of replies. This will be absent if the end
-   * of the replies list has been reached. If the token is rejected for any
-   * reason, it should be discarded, and pagination should be restarted from the
-   * first page of results.
-   */
+
+  /// The page token for the next page of replies. This will be absent if the
+  /// end of the replies list has been reached. If the token is rejected for any
+  /// reason, it should be discarded, and pagination should be restarted from
+  /// the first page of results.
   core.String nextPageToken;
-  /**
-   * The list of replies. If nextPageToken is populated, then this list may be
-   * incomplete and an additional page of results should be fetched.
-   */
+
+  /// The list of replies. If nextPageToken is populated, then this list may be
+  /// incomplete and an additional page of results should be fetched.
   core.List<Reply> replies;
 
   ReplyList();
@@ -4628,12 +4641,14 @@ class ReplyList {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("replies")) {
-      replies = _json["replies"].map((value) => new Reply.fromJson(value)).toList();
+      replies =
+          _json["replies"].map((value) => new Reply.fromJson(value)).toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -4647,57 +4662,53 @@ class ReplyList {
   }
 }
 
-/** The metadata for a revision to a file. */
+/// The metadata for a revision to a file.
 class Revision {
-  /** The ID of the revision. */
+  /// The ID of the revision.
   core.String id;
-  /**
-   * Whether to keep this revision forever, even if it is no longer the head
-   * revision. If not set, the revision will be automatically purged 30 days
-   * after newer content is uploaded. This can be set on a maximum of 200
-   * revisions for a file.
-   * This field is only applicable to files with binary content in Drive.
-   */
+
+  /// Whether to keep this revision forever, even if it is no longer the head
+  /// revision. If not set, the revision will be automatically purged 30 days
+  /// after newer content is uploaded. This can be set on a maximum of 200
+  /// revisions for a file.
+  /// This field is only applicable to files with binary content in Drive.
   core.bool keepForever;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "drive#revision".
-   */
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "drive#revision".
   core.String kind;
-  /** The last user to modify this revision. */
+
+  /// The last user to modify this revision.
   User lastModifyingUser;
-  /**
-   * The MD5 checksum of the revision's content. This is only applicable to
-   * files with binary content in Drive.
-   */
+
+  /// The MD5 checksum of the revision's content. This is only applicable to
+  /// files with binary content in Drive.
   core.String md5Checksum;
-  /** The MIME type of the revision. */
+
+  /// The MIME type of the revision.
   core.String mimeType;
-  /** The last time the revision was modified (RFC 3339 date-time). */
+
+  /// The last time the revision was modified (RFC 3339 date-time).
   core.DateTime modifiedTime;
-  /**
-   * The original filename used to create this revision. This is only applicable
-   * to files with binary content in Drive.
-   */
+
+  /// The original filename used to create this revision. This is only
+  /// applicable to files with binary content in Drive.
   core.String originalFilename;
-  /**
-   * Whether subsequent revisions will be automatically republished. This is
-   * only applicable to Google Docs.
-   */
+
+  /// Whether subsequent revisions will be automatically republished. This is
+  /// only applicable to Google Docs.
   core.bool publishAuto;
-  /**
-   * Whether this revision is published. This is only applicable to Google Docs.
-   */
+
+  /// Whether this revision is published. This is only applicable to Google
+  /// Docs.
   core.bool published;
-  /**
-   * Whether this revision is published outside the domain. This is only
-   * applicable to Google Docs.
-   */
+
+  /// Whether this revision is published outside the domain. This is only
+  /// applicable to Google Docs.
   core.bool publishedOutsideDomain;
-  /**
-   * The size of the revision's content in bytes. This is only applicable to
-   * files with binary content in Drive.
-   */
+
+  /// The size of the revision's content in bytes. This is only applicable to
+  /// files with binary content in Drive.
   core.String size;
 
   Revision();
@@ -4742,7 +4753,8 @@ class Revision {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -4783,24 +4795,20 @@ class Revision {
   }
 }
 
-/** A list of revisions of a file. */
+/// A list of revisions of a file.
 class RevisionList {
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "drive#revisionList".
-   */
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "drive#revisionList".
   core.String kind;
-  /**
-   * The page token for the next page of revisions. This will be absent if the
-   * end of the revisions list has been reached. If the token is rejected for
-   * any reason, it should be discarded, and pagination should be restarted from
-   * the first page of results.
-   */
+
+  /// The page token for the next page of revisions. This will be absent if the
+  /// end of the revisions list has been reached. If the token is rejected for
+  /// any reason, it should be discarded, and pagination should be restarted
+  /// from the first page of results.
   core.String nextPageToken;
-  /**
-   * The list of revisions. If nextPageToken is populated, then this list may be
-   * incomplete and an additional page of results should be fetched.
-   */
+
+  /// The list of revisions. If nextPageToken is populated, then this list may
+  /// be incomplete and an additional page of results should be fetched.
   core.List<Revision> revisions;
 
   RevisionList();
@@ -4813,12 +4821,15 @@ class RevisionList {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("revisions")) {
-      revisions = _json["revisions"].map((value) => new Revision.fromJson(value)).toList();
+      revisions = _json["revisions"]
+          .map((value) => new Revision.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -4833,12 +4844,11 @@ class RevisionList {
 }
 
 class StartPageToken {
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "drive#startPageToken".
-   */
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "drive#startPageToken".
   core.String kind;
-  /** The starting page token for listing changes. */
+
+  /// The starting page token for listing changes.
   core.String startPageToken;
 
   StartPageToken();
@@ -4853,7 +4863,8 @@ class StartPageToken {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -4864,38 +4875,33 @@ class StartPageToken {
   }
 }
 
-/**
- * An image file and cropping parameters from which a background image for this
- * Team Drive is set. This is a write only field; it can only be set on
- * drive.teamdrives.update requests that don't set themeId. When specified, all
- * fields of the backgroundImageFile must be set.
- */
+/// An image file and cropping parameters from which a background image for this
+/// Team Drive is set. This is a write only field; it can only be set on
+/// drive.teamdrives.update requests that don't set themeId. When specified, all
+/// fields of the backgroundImageFile must be set.
 class TeamDriveBackgroundImageFile {
-  /** The ID of an image file in Drive to use for the background image. */
+  /// The ID of an image file in Drive to use for the background image.
   core.String id;
-  /**
-   * The width of the cropped image in the closed range of 0 to 1. This value
-   * represents the width of the cropped image divided by the width of the
-   * entire image. The height is computed by applying a width to height aspect
-   * ratio of 80 to 9. The resulting image must be at least 1280 pixels wide and
-   * 144 pixels high.
-   */
+
+  /// The width of the cropped image in the closed range of 0 to 1. This value
+  /// represents the width of the cropped image divided by the width of the
+  /// entire image. The height is computed by applying a width to height aspect
+  /// ratio of 80 to 9. The resulting image must be at least 1280 pixels wide
+  /// and 144 pixels high.
   core.double width;
-  /**
-   * The X coordinate of the upper left corner of the cropping area in the
-   * background image. This is a value in the closed range of 0 to 1. This value
-   * represents the horizontal distance from the left side of the entire image
-   * to the left side of the cropping area divided by the width of the entire
-   * image.
-   */
+
+  /// The X coordinate of the upper left corner of the cropping area in the
+  /// background image. This is a value in the closed range of 0 to 1. This
+  /// value represents the horizontal distance from the left side of the entire
+  /// image to the left side of the cropping area divided by the width of the
+  /// entire image.
   core.double xCoordinate;
-  /**
-   * The Y coordinate of the upper left corner of the cropping area in the
-   * background image. This is a value in the closed range of 0 to 1. This value
-   * represents the vertical distance from the top side of the entire image to
-   * the top side of the cropping area divided by the height of the entire
-   * image.
-   */
+
+  /// The Y coordinate of the upper left corner of the cropping area in the
+  /// background image. This is a value in the closed range of 0 to 1. This
+  /// value represents the vertical distance from the top side of the entire
+  /// image to the top side of the cropping area divided by the height of the
+  /// entire image.
   core.double yCoordinate;
 
   TeamDriveBackgroundImageFile();
@@ -4916,7 +4922,8 @@ class TeamDriveBackgroundImageFile {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (id != null) {
       _json["id"] = id;
     }
@@ -4933,57 +4940,54 @@ class TeamDriveBackgroundImageFile {
   }
 }
 
-/** Capabilities the current user has on this Team Drive. */
+/// Capabilities the current user has on this Team Drive.
 class TeamDriveCapabilities {
-  /**
-   * Whether the current user can add children to folders in this Team Drive.
-   */
+  /// Whether the current user can add children to folders in this Team Drive.
   core.bool canAddChildren;
-  /** Whether the current user can change the background of this Team Drive. */
+
+  /// Whether the current user can change the background of this Team Drive.
   core.bool canChangeTeamDriveBackground;
-  /** Whether the current user can comment on files in this Team Drive. */
+
+  /// Whether the current user can comment on files in this Team Drive.
   core.bool canComment;
-  /** Whether the current user can copy files in this Team Drive. */
+
+  /// Whether the current user can copy files in this Team Drive.
   core.bool canCopy;
-  /**
-   * Whether the current user can delete this Team Drive. Attempting to delete
-   * the Team Drive may still fail if there are untrashed items inside the Team
-   * Drive.
-   */
+
+  /// Whether the current user can delete this Team Drive. Attempting to delete
+  /// the Team Drive may still fail if there are untrashed items inside the Team
+  /// Drive.
   core.bool canDeleteTeamDrive;
-  /** Whether the current user can download files in this Team Drive. */
+
+  /// Whether the current user can download files in this Team Drive.
   core.bool canDownload;
-  /** Whether the current user can edit files in this Team Drive */
+
+  /// Whether the current user can edit files in this Team Drive
   core.bool canEdit;
-  /**
-   * Whether the current user can list the children of folders in this Team
-   * Drive.
-   */
+
+  /// Whether the current user can list the children of folders in this Team
+  /// Drive.
   core.bool canListChildren;
-  /**
-   * Whether the current user can add members to this Team Drive or remove them
-   * or change their role.
-   */
+
+  /// Whether the current user can add members to this Team Drive or remove them
+  /// or change their role.
   core.bool canManageMembers;
-  /**
-   * Whether the current user can read the revisions resource of files in this
-   * Team Drive.
-   */
+
+  /// Whether the current user can read the revisions resource of files in this
+  /// Team Drive.
   core.bool canReadRevisions;
-  /**
-   * Whether the current user can remove children from folders in this Team
-   * Drive.
-   */
+
+  /// Whether the current user can remove children from folders in this Team
+  /// Drive.
   core.bool canRemoveChildren;
-  /**
-   * Whether the current user can rename files or folders in this Team Drive.
-   */
+
+  /// Whether the current user can rename files or folders in this Team Drive.
   core.bool canRename;
-  /** Whether the current user can rename this Team Drive. */
+
+  /// Whether the current user can rename this Team Drive.
   core.bool canRenameTeamDrive;
-  /**
-   * Whether the current user can share files or folders in this Team Drive.
-   */
+
+  /// Whether the current user can share files or folders in this Team Drive.
   core.bool canShare;
 
   TeamDriveCapabilities();
@@ -5034,7 +5038,8 @@ class TeamDriveCapabilities {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (canAddChildren != null) {
       _json["canAddChildren"] = canAddChildren;
     }
@@ -5081,51 +5086,49 @@ class TeamDriveCapabilities {
   }
 }
 
-/** Representation of a Team Drive. */
+/// Representation of a Team Drive.
 class TeamDrive {
-  /**
-   * An image file and cropping parameters from which a background image for
-   * this Team Drive is set. This is a write only field; it can only be set on
-   * drive.teamdrives.update requests that don't set themeId. When specified,
-   * all fields of the backgroundImageFile must be set.
-   */
+  /// An image file and cropping parameters from which a background image for
+  /// this Team Drive is set. This is a write only field; it can only be set on
+  /// drive.teamdrives.update requests that don't set themeId. When specified,
+  /// all fields of the backgroundImageFile must be set.
   TeamDriveBackgroundImageFile backgroundImageFile;
-  /** A short-lived link to this Team Drive's background image. */
+
+  /// A short-lived link to this Team Drive's background image.
   core.String backgroundImageLink;
-  /** Capabilities the current user has on this Team Drive. */
+
+  /// Capabilities the current user has on this Team Drive.
   TeamDriveCapabilities capabilities;
-  /**
-   * The color of this Team Drive as an RGB hex string. It can only be set on a
-   * drive.teamdrives.update request that does not set themeId.
-   */
+
+  /// The color of this Team Drive as an RGB hex string. It can only be set on a
+  /// drive.teamdrives.update request that does not set themeId.
   core.String colorRgb;
-  /**
-   * The ID of this Team Drive which is also the ID of the top level folder for
-   * this Team Drive.
-   */
+
+  /// The ID of this Team Drive which is also the ID of the top level folder for
+  /// this Team Drive.
   core.String id;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "drive#teamDrive".
-   */
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "drive#teamDrive".
   core.String kind;
-  /** The name of this Team Drive. */
+
+  /// The name of this Team Drive.
   core.String name;
-  /**
-   * The ID of the theme from which the background image and color will be set.
-   * The set of possible teamDriveThemes can be retrieved from a drive.about.get
-   * response. When not specified on a drive.teamdrives.create request, a random
-   * theme is chosen from which the background image and color are set. This is
-   * a write-only field; it can only be set on requests that don't set colorRgb
-   * or backgroundImageFile.
-   */
+
+  /// The ID of the theme from which the background image and color will be set.
+  /// The set of possible teamDriveThemes can be retrieved from a
+  /// drive.about.get response. When not specified on a drive.teamdrives.create
+  /// request, a random theme is chosen from which the background image and
+  /// color are set. This is a write-only field; it can only be set on requests
+  /// that don't set colorRgb or backgroundImageFile.
   core.String themeId;
 
   TeamDrive();
 
   TeamDrive.fromJson(core.Map _json) {
     if (_json.containsKey("backgroundImageFile")) {
-      backgroundImageFile = new TeamDriveBackgroundImageFile.fromJson(_json["backgroundImageFile"]);
+      backgroundImageFile = new TeamDriveBackgroundImageFile.fromJson(
+          _json["backgroundImageFile"]);
     }
     if (_json.containsKey("backgroundImageLink")) {
       backgroundImageLink = _json["backgroundImageLink"];
@@ -5151,7 +5154,8 @@ class TeamDrive {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (backgroundImageFile != null) {
       _json["backgroundImageFile"] = (backgroundImageFile).toJson();
     }
@@ -5180,24 +5184,20 @@ class TeamDrive {
   }
 }
 
-/** A list of Team Drives. */
+/// A list of Team Drives.
 class TeamDriveList {
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "drive#teamDriveList".
-   */
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "drive#teamDriveList".
   core.String kind;
-  /**
-   * The page token for the next page of Team Drives. This will be absent if the
-   * end of the Team Drives list has been reached. If the token is rejected for
-   * any reason, it should be discarded, and pagination should be restarted from
-   * the first page of results.
-   */
+
+  /// The page token for the next page of Team Drives. This will be absent if
+  /// the end of the Team Drives list has been reached. If the token is rejected
+  /// for any reason, it should be discarded, and pagination should be restarted
+  /// from the first page of results.
   core.String nextPageToken;
-  /**
-   * The list of Team Drives. If nextPageToken is populated, then this list may
-   * be incomplete and an additional page of results should be fetched.
-   */
+
+  /// The list of Team Drives. If nextPageToken is populated, then this list may
+  /// be incomplete and an additional page of results should be fetched.
   core.List<TeamDrive> teamDrives;
 
   TeamDriveList();
@@ -5210,12 +5210,15 @@ class TeamDriveList {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("teamDrives")) {
-      teamDrives = _json["teamDrives"].map((value) => new TeamDrive.fromJson(value)).toList();
+      teamDrives = _json["teamDrives"]
+          .map((value) => new TeamDrive.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -5223,31 +5226,33 @@ class TeamDriveList {
       _json["nextPageToken"] = nextPageToken;
     }
     if (teamDrives != null) {
-      _json["teamDrives"] = teamDrives.map((value) => (value).toJson()).toList();
+      _json["teamDrives"] =
+          teamDrives.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
 }
 
-/** Information about a Drive user. */
+/// Information about a Drive user.
 class User {
-  /** A plain text displayable name for this user. */
+  /// A plain text displayable name for this user.
   core.String displayName;
-  /**
-   * The email address of the user. This may not be present in certain contexts
-   * if the user has not made their email address visible to the requester.
-   */
+
+  /// The email address of the user. This may not be present in certain contexts
+  /// if the user has not made their email address visible to the requester.
   core.String emailAddress;
-  /**
-   * Identifies what kind of resource this is. Value: the fixed string
-   * "drive#user".
-   */
+
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "drive#user".
   core.String kind;
-  /** Whether this user is the requesting user. */
+
+  /// Whether this user is the requesting user.
   core.bool me;
-  /** The user's ID as visible in Permission resources. */
+
+  /// The user's ID as visible in Permission resources.
   core.String permissionId;
-  /** A link to the user's profile photo, if available. */
+
+  /// A link to the user's profile photo, if available.
   core.String photoLink;
 
   User();
@@ -5274,7 +5279,8 @@ class User {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (displayName != null) {
       _json["displayName"] = displayName;
     }

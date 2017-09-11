@@ -13,7 +13,7 @@
     },
     "basePath": "/cloudmonitoring/v2beta2/projects/",
     "baseUrl": "https://www.googleapis.com/cloudmonitoring/v2beta2/projects/",
-    "batchPath": "batch",
+    "batchPath": "batch/cloudmonitoring/v2beta2",
     "canonicalName": "Cloud Monitoring",
     "description": "Accesses Google Cloud Monitoring data.",
     "discoveryVersion": "v1",

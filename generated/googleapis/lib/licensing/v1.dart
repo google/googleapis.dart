@@ -9,50 +9,52 @@ import 'dart:convert' as convert;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
-    ApiRequestError, DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
+    show ApiRequestError, DetailedApiRequestError;
 
 const core.String USER_AGENT = 'dart-api-client licensing/v1';
 
-/** Views and manages licenses for your domain. */
+/// Views and manages licenses for your domain.
 class LicensingApi {
-  /** View and manage G Suite licenses for your domain */
-  static const AppsLicensingScope = "https://www.googleapis.com/auth/apps.licensing";
-
+  /// View and manage G Suite licenses for your domain
+  static const AppsLicensingScope =
+      "https://www.googleapis.com/auth/apps.licensing";
 
   final commons.ApiRequester _requester;
 
-  LicenseAssignmentsResourceApi get licenseAssignments => new LicenseAssignmentsResourceApi(_requester);
+  LicenseAssignmentsResourceApi get licenseAssignments =>
+      new LicenseAssignmentsResourceApi(_requester);
 
-  LicensingApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "apps/licensing/v1/product/"}) :
-      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+  LicensingApi(http.Client client,
+      {core.String rootUrl: "https://www.googleapis.com/",
+      core.String servicePath: "apps/licensing/v1/product/"})
+      : _requester =
+            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
-
 
 class LicenseAssignmentsResourceApi {
   final commons.ApiRequester _requester;
 
-  LicenseAssignmentsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  LicenseAssignmentsResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Revoke License.
-   *
-   * Request parameters:
-   *
-   * [productId] - Name for product
-   *
-   * [skuId] - Name for sku
-   *
-   * [userId] - email id or unique Id of the user
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future delete(core.String productId, core.String skuId, core.String userId) {
+  /// Revoke License.
+  ///
+  /// Request parameters:
+  ///
+  /// [productId] - Name for product
+  ///
+  /// [skuId] - Name for sku
+  ///
+  /// [userId] - email id or unique Id of the user
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future delete(
+      core.String productId, core.String skuId, core.String userId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -72,38 +74,40 @@ class LicenseAssignmentsResourceApi {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$productId') + '/sku/' + commons.Escaper.ecapeVariable('$skuId') + '/user/' + commons.Escaper.ecapeVariable('$userId');
+    _url = commons.Escaper.ecapeVariable('$productId') +
+        '/sku/' +
+        commons.Escaper.ecapeVariable('$skuId') +
+        '/user/' +
+        commons.Escaper.ecapeVariable('$userId');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => null);
   }
 
-  /**
-   * Get license assignment of a particular product and sku for a user
-   *
-   * Request parameters:
-   *
-   * [productId] - Name for product
-   *
-   * [skuId] - Name for sku
-   *
-   * [userId] - email id or unique Id of the user
-   *
-   * Completes with a [LicenseAssignment].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<LicenseAssignment> get(core.String productId, core.String skuId, core.String userId) {
+  /// Get license assignment of a particular product and sku for a user
+  ///
+  /// Request parameters:
+  ///
+  /// [productId] - Name for product
+  ///
+  /// [skuId] - Name for sku
+  ///
+  /// [userId] - email id or unique Id of the user
+  ///
+  /// Completes with a [LicenseAssignment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LicenseAssignment> get(
+      core.String productId, core.String skuId, core.String userId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -121,38 +125,40 @@ class LicenseAssignmentsResourceApi {
       throw new core.ArgumentError("Parameter userId is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$productId') + '/sku/' + commons.Escaper.ecapeVariable('$skuId') + '/user/' + commons.Escaper.ecapeVariable('$userId');
+    _url = commons.Escaper.ecapeVariable('$productId') +
+        '/sku/' +
+        commons.Escaper.ecapeVariable('$skuId') +
+        '/user/' +
+        commons.Escaper.ecapeVariable('$userId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new LicenseAssignment.fromJson(data));
   }
 
-  /**
-   * Assign License.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [productId] - Name for product
-   *
-   * [skuId] - Name for sku
-   *
-   * Completes with a [LicenseAssignment].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<LicenseAssignment> insert(LicenseAssignmentInsert request, core.String productId, core.String skuId) {
+  /// Assign License.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [productId] - Name for product
+  ///
+  /// [skuId] - Name for sku
+  ///
+  /// Completes with a [LicenseAssignment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LicenseAssignment> insert(LicenseAssignmentInsert request,
+      core.String productId, core.String skuId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -170,44 +176,46 @@ class LicenseAssignmentsResourceApi {
       throw new core.ArgumentError("Parameter skuId is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$productId') + '/sku/' + commons.Escaper.ecapeVariable('$skuId') + '/user';
+    _url = commons.Escaper.ecapeVariable('$productId') +
+        '/sku/' +
+        commons.Escaper.ecapeVariable('$skuId') +
+        '/user';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new LicenseAssignment.fromJson(data));
   }
 
-  /**
-   * List license assignments for given product of the customer.
-   *
-   * Request parameters:
-   *
-   * [productId] - Name for product
-   *
-   * [customerId] - CustomerId represents the customer for whom
-   * licenseassignments are queried
-   *
-   * [maxResults] - Maximum number of campaigns to return at one time. Must be
-   * positive. Optional. Default value is 100.
-   * Value must be between "1" and "1000".
-   *
-   * [pageToken] - Token to fetch the next page.Optional. By default server will
-   * return first page
-   *
-   * Completes with a [LicenseAssignmentList].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<LicenseAssignmentList> listForProduct(core.String productId, core.String customerId, {core.int maxResults, core.String pageToken}) {
+  /// List license assignments for given product of the customer.
+  ///
+  /// Request parameters:
+  ///
+  /// [productId] - Name for product
+  ///
+  /// [customerId] - CustomerId represents the customer for whom
+  /// licenseassignments are queried
+  ///
+  /// [maxResults] - Maximum number of campaigns to return at one time. Must be
+  /// positive. Optional. Default value is 100.
+  /// Value must be between "1" and "1000".
+  ///
+  /// [pageToken] - Token to fetch the next page.Optional. By default server
+  /// will return first page
+  ///
+  /// Completes with a [LicenseAssignmentList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LicenseAssignmentList> listForProduct(
+      core.String productId, core.String customerId,
+      {core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -231,44 +239,43 @@ class LicenseAssignmentsResourceApi {
 
     _url = commons.Escaper.ecapeVariable('$productId') + '/users';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new LicenseAssignmentList.fromJson(data));
   }
 
-  /**
-   * List license assignments for given product and sku of the customer.
-   *
-   * Request parameters:
-   *
-   * [productId] - Name for product
-   *
-   * [skuId] - Name for sku
-   *
-   * [customerId] - CustomerId represents the customer for whom
-   * licenseassignments are queried
-   *
-   * [maxResults] - Maximum number of campaigns to return at one time. Must be
-   * positive. Optional. Default value is 100.
-   * Value must be between "1" and "1000".
-   *
-   * [pageToken] - Token to fetch the next page.Optional. By default server will
-   * return first page
-   *
-   * Completes with a [LicenseAssignmentList].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<LicenseAssignmentList> listForProductAndSku(core.String productId, core.String skuId, core.String customerId, {core.int maxResults, core.String pageToken}) {
+  /// List license assignments for given product and sku of the customer.
+  ///
+  /// Request parameters:
+  ///
+  /// [productId] - Name for product
+  ///
+  /// [skuId] - Name for sku
+  ///
+  /// [customerId] - CustomerId represents the customer for whom
+  /// licenseassignments are queried
+  ///
+  /// [maxResults] - Maximum number of campaigns to return at one time. Must be
+  /// positive. Optional. Default value is 100.
+  /// Value must be between "1" and "1000".
+  ///
+  /// [pageToken] - Token to fetch the next page.Optional. By default server
+  /// will return first page
+  ///
+  /// Completes with a [LicenseAssignmentList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LicenseAssignmentList> listForProductAndSku(
+      core.String productId, core.String skuId, core.String customerId,
+      {core.int maxResults, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -293,40 +300,41 @@ class LicenseAssignmentsResourceApi {
       _queryParams["pageToken"] = [pageToken];
     }
 
-    _url = commons.Escaper.ecapeVariable('$productId') + '/sku/' + commons.Escaper.ecapeVariable('$skuId') + '/users';
+    _url = commons.Escaper.ecapeVariable('$productId') +
+        '/sku/' +
+        commons.Escaper.ecapeVariable('$skuId') +
+        '/users';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new LicenseAssignmentList.fromJson(data));
   }
 
-  /**
-   * Assign License. This method supports patch semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [productId] - Name for product
-   *
-   * [skuId] - Name for sku for which license would be revoked
-   *
-   * [userId] - email id or unique Id of the user
-   *
-   * Completes with a [LicenseAssignment].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<LicenseAssignment> patch(LicenseAssignment request, core.String productId, core.String skuId, core.String userId) {
+  /// Assign License. This method supports patch semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [productId] - Name for product
+  ///
+  /// [skuId] - Name for sku for which license would be revoked
+  ///
+  /// [userId] - email id or unique Id of the user
+  ///
+  /// Completes with a [LicenseAssignment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LicenseAssignment> patch(LicenseAssignment request,
+      core.String productId, core.String skuId, core.String userId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -347,40 +355,42 @@ class LicenseAssignmentsResourceApi {
       throw new core.ArgumentError("Parameter userId is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$productId') + '/sku/' + commons.Escaper.ecapeVariable('$skuId') + '/user/' + commons.Escaper.ecapeVariable('$userId');
+    _url = commons.Escaper.ecapeVariable('$productId') +
+        '/sku/' +
+        commons.Escaper.ecapeVariable('$skuId') +
+        '/user/' +
+        commons.Escaper.ecapeVariable('$userId');
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new LicenseAssignment.fromJson(data));
   }
 
-  /**
-   * Assign License.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [productId] - Name for product
-   *
-   * [skuId] - Name for sku for which license would be revoked
-   *
-   * [userId] - email id or unique Id of the user
-   *
-   * Completes with a [LicenseAssignment].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<LicenseAssignment> update(LicenseAssignment request, core.String productId, core.String skuId, core.String userId) {
+  /// Assign License.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [productId] - Name for product
+  ///
+  /// [skuId] - Name for sku for which license would be revoked
+  ///
+  /// [userId] - email id or unique Id of the user
+  ///
+  /// Completes with a [LicenseAssignment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LicenseAssignment> update(LicenseAssignment request,
+      core.String productId, core.String skuId, core.String userId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -401,39 +411,46 @@ class LicenseAssignmentsResourceApi {
       throw new core.ArgumentError("Parameter userId is required.");
     }
 
-    _url = commons.Escaper.ecapeVariable('$productId') + '/sku/' + commons.Escaper.ecapeVariable('$skuId') + '/user/' + commons.Escaper.ecapeVariable('$userId');
+    _url = commons.Escaper.ecapeVariable('$productId') +
+        '/sku/' +
+        commons.Escaper.ecapeVariable('$skuId') +
+        '/user/' +
+        commons.Escaper.ecapeVariable('$userId');
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new LicenseAssignment.fromJson(data));
   }
-
 }
 
-
-
-/** Template for LiscenseAssignment Resource */
+/// Template for LiscenseAssignment Resource
 class LicenseAssignment {
-  /** ETag of the resource. */
+  /// ETag of the resource.
   core.String etags;
-  /** Identifies the resource as a LicenseAssignment. */
+
+  /// Identifies the resource as a LicenseAssignment.
   core.String kind;
-  /** Id of the product. */
+
+  /// Id of the product.
   core.String productId;
-  /** Display Name of the product. */
+
+  /// Display Name of the product.
   core.String productName;
-  /** Link to this page. */
+
+  /// Link to this page.
   core.String selfLink;
-  /** Id of the sku of the product. */
+
+  /// Id of the sku of the product.
   core.String skuId;
-  /** Display Name of the sku of the product. */
+
+  /// Display Name of the sku of the product.
   core.String skuName;
-  /** Email id of the user. */
+
+  /// Email id of the user.
   core.String userId;
 
   LicenseAssignment();
@@ -466,7 +483,8 @@ class LicenseAssignment {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (etags != null) {
       _json["etags"] = etags;
     }
@@ -495,9 +513,9 @@ class LicenseAssignment {
   }
 }
 
-/** Template for LicenseAssignment Insert request */
+/// Template for LicenseAssignment Insert request
 class LicenseAssignmentInsert {
-  /** Email id of the user */
+  /// Email id of the user
   core.String userId;
 
   LicenseAssignmentInsert();
@@ -509,7 +527,8 @@ class LicenseAssignmentInsert {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (userId != null) {
       _json["userId"] = userId;
     }
@@ -517,18 +536,19 @@ class LicenseAssignmentInsert {
   }
 }
 
-/** LicesnseAssignment List for a given product/sku for a customer. */
+/// LicesnseAssignment List for a given product/sku for a customer.
 class LicenseAssignmentList {
-  /** ETag of the resource. */
+  /// ETag of the resource.
   core.String etag;
-  /** The LicenseAssignments in this page of results. */
+
+  /// The LicenseAssignments in this page of results.
   core.List<LicenseAssignment> items;
-  /** Identifies the resource as a collection of LicenseAssignments. */
+
+  /// Identifies the resource as a collection of LicenseAssignments.
   core.String kind;
-  /**
-   * The continuation token, used to page through large result sets. Provide
-   * this value in a subsequent request to return the next page of results.
-   */
+
+  /// The continuation token, used to page through large result sets. Provide
+  /// this value in a subsequent request to return the next page of results.
   core.String nextPageToken;
 
   LicenseAssignmentList();
@@ -538,7 +558,9 @@ class LicenseAssignmentList {
       etag = _json["etag"];
     }
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new LicenseAssignment.fromJson(value)).toList();
+      items = _json["items"]
+          .map((value) => new LicenseAssignment.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -549,7 +571,8 @@ class LicenseAssignmentList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
     }

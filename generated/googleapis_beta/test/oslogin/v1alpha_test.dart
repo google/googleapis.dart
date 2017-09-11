@@ -1,12 +1,10 @@
 library googleapis_beta.oslogin.v1alpha.test;
 
 import "dart:core" as core;
-import "dart:collection" as collection;
 import "dart:async" as async;
 import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
-import 'package:http/testing.dart' as http_testing;
 import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis_beta/oslogin/v1alpha.dart' as api;
@@ -22,7 +20,8 @@ class HttpServerMock extends http.BaseClient {
 
   async.Future<http.StreamedResponse> send(http.BaseRequest request) {
     if (_expectJson) {
-      return request.finalize()
+      return request
+          .finalize()
           .transform(convert.UTF8.decoder)
           .join('')
           .then((core.String jsonString) {
@@ -45,8 +44,8 @@ class HttpServerMock extends http.BaseClient {
   }
 }
 
-http.StreamedResponse stringResponse(
-    core.int status, core.Map<core.String, core.String> headers, core.String body) {
+http.StreamedResponse stringResponse(core.int status,
+    core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -55,16 +54,14 @@ core.int buildCounterEmpty = 0;
 buildEmpty() {
   var o = new api.Empty();
   buildCounterEmpty++;
-  if (buildCounterEmpty < 3) {
-  }
+  if (buildCounterEmpty < 3) {}
   buildCounterEmpty--;
   return o;
 }
 
 checkEmpty(api.Empty o) {
   buildCounterEmpty++;
-  if (buildCounterEmpty < 3) {
-  }
+  if (buildCounterEmpty < 3) {}
   buildCounterEmpty--;
 }
 
@@ -87,27 +84,27 @@ checkImportSshPublicKeyResponse(api.ImportSshPublicKeyResponse o) {
   buildCounterImportSshPublicKeyResponse--;
 }
 
-buildUnnamed3424() {
+buildUnnamed3429() {
   var o = new core.List<api.PosixAccount>();
   o.add(buildPosixAccount());
   o.add(buildPosixAccount());
   return o;
 }
 
-checkUnnamed3424(core.List<api.PosixAccount> o) {
+checkUnnamed3429(core.List<api.PosixAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPosixAccount(o[0]);
   checkPosixAccount(o[1]);
 }
 
-buildUnnamed3425() {
+buildUnnamed3430() {
   var o = new core.Map<core.String, api.SshPublicKey>();
   o["x"] = buildSshPublicKey();
   o["y"] = buildSshPublicKey();
   return o;
 }
 
-checkUnnamed3425(core.Map<core.String, api.SshPublicKey> o) {
+checkUnnamed3430(core.Map<core.String, api.SshPublicKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSshPublicKey(o["x"]);
   checkSshPublicKey(o["y"]);
@@ -119,8 +116,8 @@ buildLoginProfile() {
   buildCounterLoginProfile++;
   if (buildCounterLoginProfile < 3) {
     o.name = "foo";
-    o.posixAccounts = buildUnnamed3424();
-    o.sshPublicKeys = buildUnnamed3425();
+    o.posixAccounts = buildUnnamed3429();
+    o.sshPublicKeys = buildUnnamed3430();
     o.suspended = true;
   }
   buildCounterLoginProfile--;
@@ -131,8 +128,8 @@ checkLoginProfile(api.LoginProfile o) {
   buildCounterLoginProfile++;
   if (buildCounterLoginProfile < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed3424(o.posixAccounts);
-    checkUnnamed3425(o.sshPublicKeys);
+    checkUnnamed3429(o.posixAccounts);
+    checkUnnamed3430(o.sshPublicKeys);
     unittest.expect(o.suspended, unittest.isTrue);
   }
   buildCounterLoginProfile--;
@@ -194,7 +191,6 @@ checkSshPublicKey(api.SshPublicKey o) {
   buildCounterSshPublicKey--;
 }
 
-
 main() {
   unittest.group("obj-schema-Empty", () {
     unittest.test("to-json--from-json", () {
@@ -204,7 +200,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ImportSshPublicKeyResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildImportSshPublicKeyResponse();
@@ -212,7 +207,6 @@ main() {
       checkImportSshPublicKeyResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-LoginProfile", () {
     unittest.test("to-json--from-json", () {
@@ -222,7 +216,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-PosixAccount", () {
     unittest.test("to-json--from-json", () {
       var o = buildPosixAccount();
@@ -230,7 +223,6 @@ main() {
       checkPosixAccount(od);
     });
   });
-
 
   unittest.group("obj-schema-SshPublicKey", () {
     unittest.test("to-json--from-json", () {
@@ -240,10 +232,8 @@ main() {
     });
   });
 
-
   unittest.group("resource-UsersResourceApi", () {
     unittest.test("method--getLoginProfile", () {
-
       var mock = new HttpServerMock();
       api.UsersResourceApi res = new api.OsloginApi(mock).users;
       var arg_name = "foo";
@@ -252,9 +242,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("v1alpha/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v1alpha/"));
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -268,27 +260,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildLoginProfile());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getLoginProfile(arg_name).then(unittest.expectAsync1(((api.LoginProfile response) {
+      res
+          .getLoginProfile(arg_name)
+          .then(unittest.expectAsync1(((api.LoginProfile response) {
         checkLoginProfile(response);
       })));
     });
 
     unittest.test("method--importSshPublicKey", () {
-
       var mock = new HttpServerMock();
       api.UsersResourceApi res = new api.OsloginApi(mock).users;
       var arg_request = buildSshPublicKey();
@@ -301,9 +295,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("v1alpha/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v1alpha/"));
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -317,42 +313,44 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildImportSshPublicKeyResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.importSshPublicKey(arg_request, arg_parent).then(unittest.expectAsync1(((api.ImportSshPublicKeyResponse response) {
+      res.importSshPublicKey(arg_request, arg_parent).then(
+          unittest.expectAsync1(((api.ImportSshPublicKeyResponse response) {
         checkImportSshPublicKeyResponse(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-UsersSshPublicKeysResourceApi", () {
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
-      api.UsersSshPublicKeysResourceApi res = new api.OsloginApi(mock).users.sshPublicKeys;
+      api.UsersSshPublicKeysResourceApi res =
+          new api.OsloginApi(mock).users.sshPublicKeys;
       var arg_name = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("v1alpha/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v1alpha/"));
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -366,16 +364,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
@@ -386,18 +385,20 @@ main() {
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.UsersSshPublicKeysResourceApi res = new api.OsloginApi(mock).users.sshPublicKeys;
+      api.UsersSshPublicKeysResourceApi res =
+          new api.OsloginApi(mock).users.sshPublicKeys;
       var arg_name = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("v1alpha/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v1alpha/"));
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -411,29 +412,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSshPublicKey());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_name).then(unittest.expectAsync1(((api.SshPublicKey response) {
+      res
+          .get(arg_name)
+          .then(unittest.expectAsync1(((api.SshPublicKey response) {
         checkSshPublicKey(response);
       })));
     });
 
     unittest.test("method--patch", () {
-
       var mock = new HttpServerMock();
-      api.UsersSshPublicKeysResourceApi res = new api.OsloginApi(mock).users.sshPublicKeys;
+      api.UsersSshPublicKeysResourceApi res =
+          new api.OsloginApi(mock).users.sshPublicKeys;
       var arg_request = buildSshPublicKey();
       var arg_name = "foo";
       var arg_updateMask = "foo";
@@ -445,9 +449,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("v1alpha/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("v1alpha/"));
         pathOffset += 8;
         // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
 
@@ -461,28 +467,28 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["updateMask"].first, unittest.equals(arg_updateMask));
-
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSshPublicKey());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_name, updateMask: arg_updateMask).then(unittest.expectAsync1(((api.SshPublicKey response) {
+      res
+          .patch(arg_request, arg_name, updateMask: arg_updateMask)
+          .then(unittest.expectAsync1(((api.SshPublicKey response) {
         checkSshPublicKey(response);
       })));
     });
-
   });
-
-
 }
-

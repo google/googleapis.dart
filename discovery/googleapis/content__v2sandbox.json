@@ -10,12 +10,12 @@
     },
     "basePath": "/content/v2sandbox/",
     "baseUrl": "https://www.googleapis.com/content/v2sandbox/",
-    "batchPath": "batch",
+    "batchPath": "batch/content/v2sandbox",
     "canonicalName": "Shopping Content",
     "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/QLI1M7q1prH-C-6ZsfL_vaGQmBM\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/R4bc8bYIPV7Xpbth35g-aCtObI0\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -622,7 +622,7 @@
             }
         }
     },
-    "revision": "20170803",
+    "revision": "20170905",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Error": {

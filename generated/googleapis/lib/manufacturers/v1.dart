@@ -9,73 +9,72 @@ import 'dart:convert' as convert;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
-    ApiRequestError, DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
+    show ApiRequestError, DetailedApiRequestError;
 
 const core.String USER_AGENT = 'dart-api-client manufacturers/v1';
 
-/** Public API for managing Manufacturer Center related data. */
+/// Public API for managing Manufacturer Center related data.
 class ManufacturersApi {
-  /** Manage your product listings for Google Manufacturer Center */
-  static const ManufacturercenterScope = "https://www.googleapis.com/auth/manufacturercenter";
-
+  /// Manage your product listings for Google Manufacturer Center
+  static const ManufacturercenterScope =
+      "https://www.googleapis.com/auth/manufacturercenter";
 
   final commons.ApiRequester _requester;
 
   AccountsResourceApi get accounts => new AccountsResourceApi(_requester);
 
-  ManufacturersApi(http.Client client, {core.String rootUrl: "https://manufacturers.googleapis.com/", core.String servicePath: ""}) :
-      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+  ManufacturersApi(http.Client client,
+      {core.String rootUrl: "https://manufacturers.googleapis.com/",
+      core.String servicePath: ""})
+      : _requester =
+            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
-
 
 class AccountsResourceApi {
   final commons.ApiRequester _requester;
 
-  AccountsProductsResourceApi get products => new AccountsProductsResourceApi(_requester);
+  AccountsProductsResourceApi get products =>
+      new AccountsProductsResourceApi(_requester);
 
-  AccountsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  AccountsResourceApi(commons.ApiRequester client) : _requester = client;
 }
-
 
 class AccountsProductsResourceApi {
   final commons.ApiRequester _requester;
 
-  AccountsProductsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  AccountsProductsResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Deletes the product from a Manufacturer Center account.
-   *
-   * Request parameters:
-   *
-   * [parent] - Parent ID in the format `accounts/{account_id}`.
-   *
-   * `account_id` - The ID of the Manufacturer Center account.
-   * Value must have pattern "^accounts/[^/]+$".
-   *
-   * [name] - Name in the format
-   * `{target_country}:{content_language}:{product_id}`.
-   *
-   * `target_country`   - The target country of the product as a CLDR territory
-   *                      code (for example, US).
-   *
-   * `content_language` - The content language of the product as a two-letter
-   *                      ISO 639-1 language code (for example, en).
-   *
-   * `product_id`     -   The ID of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#id.
-   * Value must have pattern "^[^/]+$".
-   *
-   * Completes with a [Empty].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Deletes the product from a Manufacturer Center account.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Parent ID in the format `accounts/{account_id}`.
+  ///
+  /// `account_id` - The ID of the Manufacturer Center account.
+  /// Value must have pattern "^accounts/[^/]+$".
+  ///
+  /// [name] - Name in the format
+  /// `{target_country}:{content_language}:{product_id}`.
+  ///
+  /// `target_country`   - The target country of the product as a CLDR territory
+  ///                      code (for example, US).
+  ///
+  /// `content_language` - The content language of the product as a two-letter
+  ///                      ISO 639-1 language code (for example, en).
+  ///
+  /// `product_id`     -   The ID of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#id.
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Empty> delete(core.String parent, core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -91,55 +90,55 @@ class AccountsProductsResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/products/' + commons.Escaper.ecapeVariableReserved('$name');
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/products/' +
+        commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /**
-   * Gets the product from a Manufacturer Center account, including product
-   * issues.
-   *
-   * A recently updated product takes around 15 minutes to process. Changes are
-   * only visible after it has been processed. While some issues may be
-   * available once the product has been processed, other issues may take days
-   * to appear.
-   *
-   * Request parameters:
-   *
-   * [parent] - Parent ID in the format `accounts/{account_id}`.
-   *
-   * `account_id` - The ID of the Manufacturer Center account.
-   * Value must have pattern "^accounts/[^/]+$".
-   *
-   * [name] - Name in the format
-   * `{target_country}:{content_language}:{product_id}`.
-   *
-   * `target_country`   - The target country of the product as a CLDR territory
-   *                      code (for example, US).
-   *
-   * `content_language` - The content language of the product as a two-letter
-   *                      ISO 639-1 language code (for example, en).
-   *
-   * `product_id`     -   The ID of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#id.
-   * Value must have pattern "^[^/]+$".
-   *
-   * Completes with a [Product].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Gets the product from a Manufacturer Center account, including product
+  /// issues.
+  ///
+  /// A recently updated product takes around 15 minutes to process. Changes are
+  /// only visible after it has been processed. While some issues may be
+  /// available once the product has been processed, other issues may take days
+  /// to appear.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Parent ID in the format `accounts/{account_id}`.
+  ///
+  /// `account_id` - The ID of the Manufacturer Center account.
+  /// Value must have pattern "^accounts/[^/]+$".
+  ///
+  /// [name] - Name in the format
+  /// `{target_country}:{content_language}:{product_id}`.
+  ///
+  /// `target_country`   - The target country of the product as a CLDR territory
+  ///                      code (for example, US).
+  ///
+  /// `content_language` - The content language of the product as a two-letter
+  ///                      ISO 639-1 language code (for example, en).
+  ///
+  /// `product_id`     -   The ID of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#id.
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// Completes with a [Product].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Product> get(core.String parent, core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -155,43 +154,44 @@ class AccountsProductsResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/products/' + commons.Escaper.ecapeVariableReserved('$name');
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/products/' +
+        commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Product.fromJson(data));
   }
 
-  /**
-   * Lists all the products in a Manufacturer Center account.
-   *
-   * Request parameters:
-   *
-   * [parent] - Parent ID in the format `accounts/{account_id}`.
-   *
-   * `account_id` - The ID of the Manufacturer Center account.
-   * Value must have pattern "^accounts/[^/]+$".
-   *
-   * [pageToken] - The token returned by the previous request.
-   *
-   * [pageSize] - Maximum number of product statuses to return in the response,
-   * used for
-   * paging.
-   *
-   * Completes with a [ListProductsResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ListProductsResponse> list(core.String parent, {core.String pageToken, core.int pageSize}) {
+  /// Lists all the products in a Manufacturer Center account.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Parent ID in the format `accounts/{account_id}`.
+  ///
+  /// `account_id` - The ID of the Manufacturer Center account.
+  /// Value must have pattern "^accounts/[^/]+$".
+  ///
+  /// [pageToken] - The token returned by the previous request.
+  ///
+  /// [pageSize] - Maximum number of product statuses to return in the response,
+  /// used for
+  /// paging.
+  ///
+  /// Completes with a [ListProductsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListProductsResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -209,63 +209,62 @@ class AccountsProductsResourceApi {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/products';
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/products';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ListProductsResponse.fromJson(data));
   }
 
-  /**
-   * Inserts or updates the product in a Manufacturer Center account.
-   *
-   * The checks at upload time are minimal. All required attributes need to be
-   * present for a product to be valid. Issues may show up later
-   * after the API has accepted an update for a product and it is possible to
-   * overwrite an existing valid product with an invalid product. To detect
-   * this, you should retrieve the product and check it for issues once the
-   * updated version is available.
-   *
-   * Inserted or updated products first need to be processed before they can be
-   * retrieved. Until then, new products will be unavailable, and retrieval
-   * of updated products will return the original state of the product.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [parent] - Parent ID in the format `accounts/{account_id}`.
-   *
-   * `account_id` - The ID of the Manufacturer Center account.
-   * Value must have pattern "^accounts/[^/]+$".
-   *
-   * [name] - Name in the format
-   * `{target_country}:{content_language}:{product_id}`.
-   *
-   * `target_country`   - The target country of the product as a CLDR territory
-   *                      code (for example, US).
-   *
-   * `content_language` - The content language of the product as a two-letter
-   *                      ISO 639-1 language code (for example, en).
-   *
-   * `product_id`     -   The ID of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#id.
-   * Value must have pattern "^[^/]+$".
-   *
-   * Completes with a [Product].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Product> update(Product request, core.String parent, core.String name) {
+  /// Inserts or updates the product in a Manufacturer Center account.
+  ///
+  /// The checks at upload time are minimal. All required attributes need to be
+  /// present for a product to be valid. Issues may show up later
+  /// after the API has accepted an update for a product and it is possible to
+  /// overwrite an existing valid product with an invalid product. To detect
+  /// this, you should retrieve the product and check it for issues once the
+  /// updated version is available.
+  ///
+  /// Inserted or updated products first need to be processed before they can be
+  /// retrieved. Until then, new products will be unavailable, and retrieval
+  /// of updated products will return the original state of the product.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Parent ID in the format `accounts/{account_id}`.
+  ///
+  /// `account_id` - The ID of the Manufacturer Center account.
+  /// Value must have pattern "^accounts/[^/]+$".
+  ///
+  /// [name] - Name in the format
+  /// `{target_country}:{content_language}:{product_id}`.
+  ///
+  /// `target_country`   - The target country of the product as a CLDR territory
+  ///                      code (for example, US).
+  ///
+  /// `content_language` - The content language of the product as a two-letter
+  ///                      ISO 639-1 language code (for example, en).
+  ///
+  /// `product_id`     -   The ID of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#id.
+  /// Value must have pattern "^[^/]+$".
+  ///
+  /// Completes with a [Product].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Product> update(
+      Product request, core.String parent, core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -283,199 +282,164 @@ class AccountsProductsResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/products/' + commons.Escaper.ecapeVariableReserved('$name');
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/products/' +
+        commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Product.fromJson(data));
   }
-
 }
 
-
-
-/**
- * Attributes of the product. For more information, see
- * https://support.google.com/manufacturers/answer/6124116.
- */
+/// Attributes of the product. For more information, see
+/// https://support.google.com/manufacturers/answer/6124116.
 class Attributes {
-  /**
-   * The additional images of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#addlimage.
-   */
+  /// The additional images of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#addlimage.
   core.List<Image> additionalImageLink;
-  /**
-   * The target age group of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#agegroup.
-   */
+
+  /// The target age group of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#agegroup.
   core.String ageGroup;
-  /**
-   * The brand name of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#brand.
-   */
+
+  /// The brand name of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#brand.
   core.String brand;
-  /**
-   * The capacity of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#capacity.
-   */
+
+  /// The capacity of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#capacity.
   Capacity capacity;
-  /**
-   * The color of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#color.
-   */
+
+  /// The color of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#color.
   core.String color;
-  /**
-   * The count of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#count.
-   */
+
+  /// The count of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#count.
   Count count;
-  /**
-   * The description of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#description.
-   */
+
+  /// The description of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#description.
   core.String description;
-  /**
-   * The disclosure date of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#disclosure.
-   */
+
+  /// The disclosure date of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#disclosure.
   core.String disclosureDate;
-  /**
-   * The rich format description of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#featuredesc.
-   */
+
+  /// The rich format description of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#featuredesc.
   core.List<FeatureDescription> featureDescription;
-  /**
-   * The flavor of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#flavor.
-   */
+
+  /// The flavor of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#flavor.
   core.String flavor;
-  /**
-   * The format of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#format.
-   */
+
+  /// The format of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#format.
   core.String format;
-  /**
-   * The target gender of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#gender.
-   */
+
+  /// The target gender of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#gender.
   core.String gender;
-  /**
-   * The Global Trade Item Number (GTIN) of the product. For more information,
-   * see https://support.google.com/manufacturers/answer/6124116#gtin.
-   */
+
+  /// The Global Trade Item Number (GTIN) of the product. For more information,
+  /// see https://support.google.com/manufacturers/answer/6124116#gtin.
   core.List<core.String> gtin;
-  /**
-   * The image of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#image.
-   */
+
+  /// The image of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#image.
   Image imageLink;
-  /**
-   * The item group id of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#itemgroupid.
-   */
+
+  /// The item group id of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#itemgroupid.
   core.String itemGroupId;
-  /**
-   * The material of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#material.
-   */
+
+  /// The material of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#material.
   core.String material;
-  /**
-   * The Manufacturer Part Number (MPN) of the product. For more information,
-   * see https://support.google.com/manufacturers/answer/6124116#mpn.
-   */
+
+  /// The Manufacturer Part Number (MPN) of the product. For more information,
+  /// see https://support.google.com/manufacturers/answer/6124116#mpn.
   core.String mpn;
-  /**
-   * The pattern of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#pattern.
-   */
+
+  /// The pattern of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#pattern.
   core.String pattern;
-  /**
-   * The details of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#productdetail.
-   */
+
+  /// The details of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#productdetail.
   core.List<ProductDetail> productDetail;
-  /**
-   * The name of the group of products related to the product. For more
-   * information, see
-   * https://support.google.com/manufacturers/answer/6124116#productline.
-   */
+
+  /// The name of the group of products related to the product. For more
+  /// information, see
+  /// https://support.google.com/manufacturers/answer/6124116#productline.
   core.String productLine;
-  /**
-   * The canonical name of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#productname.
-   */
+
+  /// The canonical name of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#productname.
   core.String productName;
-  /**
-   * The URL of the detail page of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#productpage.
-   */
+
+  /// The URL of the detail page of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#productpage.
   core.String productPageUrl;
-  /**
-   * The category of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#producttype.
-   */
+
+  /// The category of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#producttype.
   core.List<core.String> productType;
-  /**
-   * The release date of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#release.
-   */
+
+  /// The release date of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#release.
   core.String releaseDate;
-  /**
-   * The scent of the product. For more information, see
-   *  https://support.google.com/manufacturers/answer/6124116#scent.
-   */
+
+  /// The scent of the product. For more information, see
+  ///  https://support.google.com/manufacturers/answer/6124116#scent.
   core.String scent;
-  /**
-   * The size of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#size.
-   */
+
+  /// The size of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#size.
   core.String size;
-  /**
-   * The size system of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#sizesystem.
-   */
+
+  /// The size system of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#sizesystem.
   core.String sizeSystem;
-  /**
-   * The size type of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#sizetype.
-   */
+
+  /// The size type of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#sizetype.
   core.String sizeType;
-  /**
-   * The suggested retail price (MSRP) of the product. For more information,
-   * see https://support.google.com/manufacturers/answer/6124116#price.
-   */
+
+  /// The suggested retail price (MSRP) of the product. For more information,
+  /// see https://support.google.com/manufacturers/answer/6124116#price.
   Price suggestedRetailPrice;
-  /**
-   * The target account id. Should only be used in the accounts of the data
-   * partners.
-   */
+
+  /// The target account id. Should only be used in the accounts of the data
+  /// partners.
   core.String targetAccountId;
-  /**
-   * The theme of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#theme.
-   */
+
+  /// The theme of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#theme.
   core.String theme;
-  /**
-   * The title of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#title.
-   */
+
+  /// The title of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#title.
   core.String title;
-  /**
-   * The videos of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#video.
-   */
+
+  /// The videos of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#video.
   core.List<core.String> videoLink;
 
   Attributes();
 
   Attributes.fromJson(core.Map _json) {
     if (_json.containsKey("additionalImageLink")) {
-      additionalImageLink = _json["additionalImageLink"].map((value) => new Image.fromJson(value)).toList();
+      additionalImageLink = _json["additionalImageLink"]
+          .map((value) => new Image.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("ageGroup")) {
       ageGroup = _json["ageGroup"];
@@ -499,7 +463,9 @@ class Attributes {
       disclosureDate = _json["disclosureDate"];
     }
     if (_json.containsKey("featureDescription")) {
-      featureDescription = _json["featureDescription"].map((value) => new FeatureDescription.fromJson(value)).toList();
+      featureDescription = _json["featureDescription"]
+          .map((value) => new FeatureDescription.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("flavor")) {
       flavor = _json["flavor"];
@@ -529,7 +495,9 @@ class Attributes {
       pattern = _json["pattern"];
     }
     if (_json.containsKey("productDetail")) {
-      productDetail = _json["productDetail"].map((value) => new ProductDetail.fromJson(value)).toList();
+      productDetail = _json["productDetail"]
+          .map((value) => new ProductDetail.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("productLine")) {
       productLine = _json["productLine"];
@@ -576,9 +544,11 @@ class Attributes {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (additionalImageLink != null) {
-      _json["additionalImageLink"] = additionalImageLink.map((value) => (value).toJson()).toList();
+      _json["additionalImageLink"] =
+          additionalImageLink.map((value) => (value).toJson()).toList();
     }
     if (ageGroup != null) {
       _json["ageGroup"] = ageGroup;
@@ -602,7 +572,8 @@ class Attributes {
       _json["disclosureDate"] = disclosureDate;
     }
     if (featureDescription != null) {
-      _json["featureDescription"] = featureDescription.map((value) => (value).toJson()).toList();
+      _json["featureDescription"] =
+          featureDescription.map((value) => (value).toJson()).toList();
     }
     if (flavor != null) {
       _json["flavor"] = flavor;
@@ -632,7 +603,8 @@ class Attributes {
       _json["pattern"] = pattern;
     }
     if (productDetail != null) {
-      _json["productDetail"] = productDetail.map((value) => (value).toJson()).toList();
+      _json["productDetail"] =
+          productDetail.map((value) => (value).toJson()).toList();
     }
     if (productLine != null) {
       _json["productLine"] = productLine;
@@ -680,14 +652,13 @@ class Attributes {
   }
 }
 
-/**
- * The capacity of a product. For more information, see
- * https://support.google.com/manufacturers/answer/6124116#capacity.
- */
+/// The capacity of a product. For more information, see
+/// https://support.google.com/manufacturers/answer/6124116#capacity.
 class Capacity {
-  /** The unit of the capacity, i.e., MB, GB, or TB. */
+  /// The unit of the capacity, i.e., MB, GB, or TB.
   core.String unit;
-  /** The numeric value of the capacity. */
+
+  /// The numeric value of the capacity.
   core.String value;
 
   Capacity();
@@ -702,7 +673,8 @@ class Capacity {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (unit != null) {
       _json["unit"] = unit;
     }
@@ -713,14 +685,13 @@ class Capacity {
   }
 }
 
-/**
- * The number of products in a single package. For more information, see
- * https://support.google.com/manufacturers/answer/6124116#count.
- */
+/// The number of products in a single package. For more information, see
+/// https://support.google.com/manufacturers/answer/6124116#count.
 class Count {
-  /** The unit in which these products are counted. */
+  /// The unit in which these products are counted.
   core.String unit;
-  /** The numeric value of the number of products in a package. */
+
+  /// The numeric value of the number of products in a package.
   core.String value;
 
   Count();
@@ -735,7 +706,8 @@ class Count {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (unit != null) {
       _json["unit"] = unit;
     }
@@ -746,40 +718,37 @@ class Count {
   }
 }
 
-/**
- * A generic empty message that you can re-use to avoid defining duplicated
- * empty messages in your APIs. A typical example is to use it as the request
- * or the response type of an API method. For instance:
- *
- *     service Foo {
- *       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
- *     }
- *
- * The JSON representation for `Empty` is empty JSON object `{}`.
- */
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs. A typical example is to use it as the request
+/// or the response type of an API method. For instance:
+///
+///     service Foo {
+///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+///     }
+///
+/// The JSON representation for `Empty` is empty JSON object `{}`.
 class Empty {
-
   Empty();
 
-  Empty.fromJson(core.Map _json) {
-  }
+  Empty.fromJson(core.Map _json) {}
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }
 
-/**
- * A feature description of the product. For more information, see
- * https://support.google.com/manufacturers/answer/6124116#featuredesc.
- */
+/// A feature description of the product. For more information, see
+/// https://support.google.com/manufacturers/answer/6124116#featuredesc.
 class FeatureDescription {
-  /** A short description of the feature. */
+  /// A short description of the feature.
   core.String headline;
-  /** An optional image describing the feature. */
+
+  /// An optional image describing the feature.
   Image image;
-  /** A detailed description of the feature. */
+
+  /// A detailed description of the feature.
   core.String text;
 
   FeatureDescription();
@@ -797,7 +766,8 @@ class FeatureDescription {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (headline != null) {
       _json["headline"] = headline;
     }
@@ -811,42 +781,38 @@ class FeatureDescription {
   }
 }
 
-/** An image. */
+/// An image.
 class Image {
-  /**
-   * The URL of the image. For crawled images, this is the provided URL. For
-   * uploaded images, this is a serving URL from Google if the image has been
-   * processed successfully.
-   */
+  /// The URL of the image. For crawled images, this is the provided URL. For
+  /// uploaded images, this is a serving URL from Google if the image has been
+  /// processed successfully.
   core.String imageUrl;
-  /**
-   * The status of the image.
-   * @OutputOnly
-   * Possible string values are:
-   * - "STATUS_UNSPECIFIED" : Status is unspecified. Should not be used.
-   * - "PENDING_PROCESSING" : Image was uploaded and is being processed.
-   * - "PENDING_CRAWL" : The image crawl is still pending.
-   * - "OK" : The image was processed and it meets the requirements.
-   * - "ROBOTED" : The image URL is protected by robots.txt file and cannot be
-   * crawled.
-   * - "XROBOTED" : The image URL is protected by X-Robots-Tag and cannot be
-   * crawled.
-   * - "CRAWL_ERROR" : There was an error while crawling the image.
-   * - "PROCESSING_ERROR" : The image cannot be processed.
-   * - "DECODING_ERROR" : The image cannot be decoded.
-   * - "TOO_BIG" : The image is too big.
-   * - "CRAWL_SKIPPED" : The image was manually overridden and will not be
-   * crawled.
-   */
+
+  /// The status of the image.
+  /// @OutputOnly
+  /// Possible string values are:
+  /// - "STATUS_UNSPECIFIED" : Status is unspecified. Should not be used.
+  /// - "PENDING_PROCESSING" : Image was uploaded and is being processed.
+  /// - "PENDING_CRAWL" : The image crawl is still pending.
+  /// - "OK" : The image was processed and it meets the requirements.
+  /// - "ROBOTED" : The image URL is protected by robots.txt file and cannot be
+  /// crawled.
+  /// - "XROBOTED" : The image URL is protected by X-Robots-Tag and cannot be
+  /// crawled.
+  /// - "CRAWL_ERROR" : There was an error while crawling the image.
+  /// - "PROCESSING_ERROR" : The image cannot be processed.
+  /// - "DECODING_ERROR" : The image cannot be decoded.
+  /// - "TOO_BIG" : The image is too big.
+  /// - "CRAWL_SKIPPED" : The image was manually overridden and will not be
+  /// crawled.
   core.String status;
-  /**
-   * The type of the image, i.e., crawled or uploaded.
-   * @OutputOnly
-   * Possible string values are:
-   * - "TYPE_UNSPECIFIED" : Type is unspecified. Should not be used.
-   * - "CRAWLED" : The image was crawled from a provided URL.
-   * - "UPLOADED" : The image was uploaded.
-   */
+
+  /// The type of the image, i.e., crawled or uploaded.
+  /// @OutputOnly
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Type is unspecified. Should not be used.
+  /// - "CRAWLED" : The image was crawled from a provided URL.
+  /// - "UPLOADED" : The image was uploaded.
   core.String type;
 
   Image();
@@ -864,7 +830,8 @@ class Image {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (imageUrl != null) {
       _json["imageUrl"] = imageUrl;
     }
@@ -878,37 +845,36 @@ class Image {
   }
 }
 
-/** Product issue. */
+/// Product issue.
 class Issue {
-  /**
-   * If present, the attribute that triggered the issue. For more information
-   * about attributes, see
-   * https://support.google.com/manufacturers/answer/6124116.
-   */
+  /// If present, the attribute that triggered the issue. For more information
+  /// about attributes, see
+  /// https://support.google.com/manufacturers/answer/6124116.
   core.String attribute;
-  /** Description of the issue. */
+
+  /// Description of the issue.
   core.String description;
-  /**
-   * The severity of the issue.
-   * Possible string values are:
-   * - "SEVERITY_UNSPECIFIED" : Unspecified severity, never used.
-   * - "ERROR" : Error severity. The issue prevents the usage of the whole item.
-   * - "WARNING" : Warning severity. The issue is either one that prevents the
-   * usage of the
-   * attribute that triggered it or one that will soon prevent the usage of
-   * the whole item.
-   * - "INFO" : Info severity. The issue is one that doesn't require immediate
-   * attention.
-   * It is, for example, used to communicate which attributes are still
-   * pending review.
-   */
+
+  /// The severity of the issue.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : Unspecified severity, never used.
+  /// - "ERROR" : Error severity. The issue prevents the usage of the whole
+  /// item.
+  /// - "WARNING" : Warning severity. The issue is either one that prevents the
+  /// usage of the
+  /// attribute that triggered it or one that will soon prevent the usage of
+  /// the whole item.
+  /// - "INFO" : Info severity. The issue is one that doesn't require immediate
+  /// attention.
+  /// It is, for example, used to communicate which attributes are still
+  /// pending review.
   core.String severity;
-  /** The timestamp when this issue appeared. */
+
+  /// The timestamp when this issue appeared.
   core.String timestamp;
-  /**
-   * The server-generated type of the issue, for example,
-   * “INCORRECT_TEXT_FORMATTING”, “IMAGE_NOT_SERVEABLE”, etc.
-   */
+
+  /// The server-generated type of the issue, for example,
+  /// “INCORRECT_TEXT_FORMATTING”, “IMAGE_NOT_SERVEABLE”, etc.
   core.String type;
 
   Issue();
@@ -932,7 +898,8 @@ class Issue {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (attribute != null) {
       _json["attribute"] = attribute;
     }
@@ -953,9 +920,10 @@ class Issue {
 }
 
 class ListProductsResponse {
-  /** The token for the retrieval of the next page of product statuses. */
+  /// The token for the retrieval of the next page of product statuses.
   core.String nextPageToken;
-  /** List of the products. */
+
+  /// List of the products.
   core.List<Product> products;
 
   ListProductsResponse();
@@ -965,12 +933,15 @@ class ListProductsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("products")) {
-      products = _json["products"].map((value) => new Product.fromJson(value)).toList();
+      products = _json["products"]
+          .map((value) => new Product.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -981,11 +952,12 @@ class ListProductsResponse {
   }
 }
 
-/** A price. */
+/// A price.
 class Price {
-  /** The numeric value of the price. */
+  /// The numeric value of the price.
   core.String amount;
-  /** The currency in which the price is denoted. */
+
+  /// The currency in which the price is denoted.
   core.String currency;
 
   Price();
@@ -1000,7 +972,8 @@ class Price {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (amount != null) {
       _json["amount"] = amount;
     }
@@ -1011,75 +984,67 @@ class Price {
   }
 }
 
-/** Product data. */
+/// Product data.
 class Product {
-  /**
-   * The content language of the product as a two-letter ISO 639-1 language code
-   * (for example, en).
-   * @OutputOnly
-   */
+  /// The content language of the product as a two-letter ISO 639-1 language
+  /// code
+  /// (for example, en).
+  /// @OutputOnly
   core.String contentLanguage;
-  /**
-   * Final attributes of the product. The final attributes are obtained by
-   * overriding the uploaded attributes with the manually provided and deleted
-   * attributes. Google systems only process, evaluate, review, and/or use final
-   * attributes.
-   * @OutputOnly
-   */
+
+  /// Final attributes of the product. The final attributes are obtained by
+  /// overriding the uploaded attributes with the manually provided and deleted
+  /// attributes. Google systems only process, evaluate, review, and/or use
+  /// final
+  /// attributes.
+  /// @OutputOnly
   Attributes finalAttributes;
-  /**
-   * A server-generated list of issues associated with the product.
-   * @OutputOnly
-   */
+
+  /// A server-generated list of issues associated with the product.
+  /// @OutputOnly
   core.List<Issue> issues;
-  /**
-   * Names of the attributes of the product deleted manually via the
-   * Manufacturer Center UI.
-   * @OutputOnly
-   */
+
+  /// Names of the attributes of the product deleted manually via the
+  /// Manufacturer Center UI.
+  /// @OutputOnly
   core.List<core.String> manuallyDeletedAttributes;
-  /**
-   * Attributes of the product provided manually via the Manufacturer Center UI.
-   * @OutputOnly
-   */
+
+  /// Attributes of the product provided manually via the Manufacturer Center
+  /// UI.
+  /// @OutputOnly
   Attributes manuallyProvidedAttributes;
-  /**
-   * Name in the format `{target_country}:{content_language}:{product_id}`.
-   *
-   * `target_country`   - The target country of the product as a CLDR territory
-   *                      code (for example, US).
-   *
-   * `content_language` - The content language of the product as a two-letter
-   *                      ISO 639-1 language code (for example, en).
-   *
-   * `product_id`     -   The ID of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#id.
-   * @OutputOnly
-   */
+
+  /// Name in the format `{target_country}:{content_language}:{product_id}`.
+  ///
+  /// `target_country`   - The target country of the product as a CLDR territory
+  ///                      code (for example, US).
+  ///
+  /// `content_language` - The content language of the product as a two-letter
+  ///                      ISO 639-1 language code (for example, en).
+  ///
+  /// `product_id`     -   The ID of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#id.
+  /// @OutputOnly
   core.String name;
-  /**
-   * Parent ID in the format `accounts/{account_id}`.
-   *
-   * `account_id` - The ID of the Manufacturer Center account.
-   * @OutputOnly
-   */
+
+  /// Parent ID in the format `accounts/{account_id}`.
+  ///
+  /// `account_id` - The ID of the Manufacturer Center account.
+  /// @OutputOnly
   core.String parent;
-  /**
-   * The ID of the product. For more information, see
-   * https://support.google.com/manufacturers/answer/6124116#id.
-   * @OutputOnly
-   */
+
+  /// The ID of the product. For more information, see
+  /// https://support.google.com/manufacturers/answer/6124116#id.
+  /// @OutputOnly
   core.String productId;
-  /**
-   * The target country of the product as a CLDR territory code (for example,
-   * US).
-   * @OutputOnly
-   */
+
+  /// The target country of the product as a CLDR territory code (for example,
+  /// US).
+  /// @OutputOnly
   core.String targetCountry;
-  /**
-   * Attributes of the product uploaded via the Manufacturer Center API or via
-   * feeds.
-   */
+
+  /// Attributes of the product uploaded via the Manufacturer Center API or via
+  /// feeds.
   Attributes uploadedAttributes;
 
   Product();
@@ -1092,13 +1057,15 @@ class Product {
       finalAttributes = new Attributes.fromJson(_json["finalAttributes"]);
     }
     if (_json.containsKey("issues")) {
-      issues = _json["issues"].map((value) => new Issue.fromJson(value)).toList();
+      issues =
+          _json["issues"].map((value) => new Issue.fromJson(value)).toList();
     }
     if (_json.containsKey("manuallyDeletedAttributes")) {
       manuallyDeletedAttributes = _json["manuallyDeletedAttributes"];
     }
     if (_json.containsKey("manuallyProvidedAttributes")) {
-      manuallyProvidedAttributes = new Attributes.fromJson(_json["manuallyProvidedAttributes"]);
+      manuallyProvidedAttributes =
+          new Attributes.fromJson(_json["manuallyProvidedAttributes"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -1118,7 +1085,8 @@ class Product {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (contentLanguage != null) {
       _json["contentLanguage"] = contentLanguage;
     }
@@ -1132,7 +1100,8 @@ class Product {
       _json["manuallyDeletedAttributes"] = manuallyDeletedAttributes;
     }
     if (manuallyProvidedAttributes != null) {
-      _json["manuallyProvidedAttributes"] = (manuallyProvidedAttributes).toJson();
+      _json["manuallyProvidedAttributes"] =
+          (manuallyProvidedAttributes).toJson();
     }
     if (name != null) {
       _json["name"] = name;
@@ -1153,18 +1122,16 @@ class Product {
   }
 }
 
-/**
- * A product detail of the product. For more information, see
- * https://support.google.com/manufacturers/answer/6124116#productdetail.
- */
+/// A product detail of the product. For more information, see
+/// https://support.google.com/manufacturers/answer/6124116#productdetail.
 class ProductDetail {
-  /** The name of the attribute. */
+  /// The name of the attribute.
   core.String attributeName;
-  /** The value of the attribute. */
+
+  /// The value of the attribute.
   core.String attributeValue;
-  /**
-   * A short section name that can be reused between multiple product details.
-   */
+
+  /// A short section name that can be reused between multiple product details.
   core.String sectionName;
 
   ProductDetail();
@@ -1182,7 +1149,8 @@ class ProductDetail {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (attributeName != null) {
       _json["attributeName"] = attributeName;
     }

@@ -31,6 +31,16 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
         "quotaUser": {
             "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
             "location": "query",
@@ -106,16 +116,6 @@
             ],
             "location": "query",
             "type": "string"
-        },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-            "location": "query",
-            "type": "string"
-        },
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
         }
     },
     "protocol": "rest",
@@ -163,6 +163,11 @@
                                 "name"
                             ],
                             "parameters": {
+                                "filter": {
+                                    "description": "`Ruleset` filter. The list method supports filters with restrictions on\n`Ruleset.name`.\n\nFilters on `Ruleset.create_time` should use the `date` function which\nparses strings that conform to the RFC 3339 date/time specifications.\n\nExample: `create_time > date(\"2017-01-01\") AND name=UUID-*`",
+                                    "location": "query",
+                                    "type": "string"
+                                },
                                 "pageToken": {
                                     "description": "Next page token for loading the next batch of `Ruleset` instances.",
                                     "location": "query",
@@ -180,11 +185,6 @@
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
-                                },
-                                "filter": {
-                                    "description": "`Ruleset` filter. The list method supports filters with restrictions on\n`Ruleset.name`.\n\nFilters on `Ruleset.create_time` should use the `date` function which\nparses strings that conform to the RFC 3339 date/time specifications.\n\nExample: `create_time > date(\"2017-01-01\") AND name=UUID-*`",
-                                    "location": "query",
-                                    "type": "string"
                                 }
                             },
                             "path": "v1/{+name}/rulesets",
@@ -437,71 +437,10 @@
     "revision": "20170807",
     "rootUrl": "https://firebaserules.googleapis.com/",
     "schemas": {
-        "FunctionCall": {
-            "description": "Represents a service-defined function call that was invoked during test\nexecution.",
-            "id": "FunctionCall",
-            "properties": {
-                "args": {
-                    "description": "The arguments that were provided to the function.",
-                    "items": {
-                        "type": "any"
-                    },
-                    "type": "array"
-                },
-                "function": {
-                    "description": "Name of the function invoked.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ListReleasesResponse": {
-            "description": "The response for FirebaseRulesService.ListReleases.",
-            "id": "ListReleasesResponse",
-            "properties": {
-                "releases": {
-                    "description": "List of `Release` instances.",
-                    "items": {
-                        "$ref": "Release"
-                    },
-                    "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "The pagination token to retrieve the next page of results. If the value is\nempty, no further results remain.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "File": {
-            "description": "`File` containing source content.",
-            "id": "File",
-            "properties": {
-                "content": {
-                    "description": "Textual Content.",
-                    "type": "string"
-                },
-                "fingerprint": {
-                    "description": "Fingerprint (e.g. github sha) associated with the `File`.",
-                    "format": "byte",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "File name.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "Release": {
             "description": "`Release` is a named reference to a `Ruleset`. Once a `Release` refers to a\n`Ruleset`, rules-enabled services will be able to enforce the `Ruleset`.",
             "id": "Release",
             "properties": {
-                "createTime": {
-                    "description": "Time the release was created.\nOutput only.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
                 "updateTime": {
                     "description": "Time the release was updated.\nOutput only.",
                     "format": "google-datetime",
@@ -513,6 +452,11 @@
                 },
                 "name": {
                     "description": "Resource name for the `Release`.\n\n`Release` names may be structured `app1/prod/v2` or flat `app1_prod_v2`\nwhich affords developers a great deal of flexibility in mapping the name\nto the style that best fits their existing development practices. For\nexample, a name could refer to an environment, an app, a version, or some\ncombination of three.\n\nIn the table below, for the project name `projects/foo`, the following\nrelative release paths show how flat and structured names might be chosen\nto match a desired development / deployment strategy.\n\nUse Case     | Flat Name           | Structured Name\n-------------|---------------------|----------------\nEnvironments | releases/qa         | releases/qa\nApps         | releases/app1_qa    | releases/app1/qa\nVersions     | releases/app1_v2_qa | releases/app1/v2/qa\n\nThe delimiter between the release name path elements can be almost anything\nand it should work equally well with the release name list filter, but in\nmany ways the structured paths provide a clearer picture of the\nrelationship between `Release` instances.\n\nFormat: `projects/{project_id}/releases/{release_id}`",
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "Time the release was created.\nOutput only.",
+                    "format": "google-datetime",
                     "type": "string"
                 }
             },
@@ -533,6 +477,24 @@
                     "description": "Syntactic and semantic `Source` issues of varying severity. Issues of\n`ERROR` severity will prevent tests from executing.",
                     "items": {
                         "$ref": "Issue"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "ListRulesetsResponse": {
+            "description": "The response for FirebaseRulesService.ListRulesets.",
+            "id": "ListRulesetsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "The pagination token to retrieve the next page of results. If the value is\nempty, no further results remain.",
+                    "type": "string"
+                },
+                "rulesets": {
+                    "description": "List of `Ruleset` instances.",
+                    "items": {
+                        "$ref": "Ruleset"
                     },
                     "type": "array"
                 }
@@ -578,24 +540,6 @@
             },
             "type": "object"
         },
-        "ListRulesetsResponse": {
-            "description": "The response for FirebaseRulesService.ListRulesets.",
-            "id": "ListRulesetsResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "The pagination token to retrieve the next page of results. If the value is\nempty, no further results remain.",
-                    "type": "string"
-                },
-                "rulesets": {
-                    "description": "List of `Ruleset` instances.",
-                    "items": {
-                        "$ref": "Ruleset"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
         "Arg": {
             "description": "Arg matchers for the mock function.",
             "id": "Arg",
@@ -635,6 +579,13 @@
             "description": "Mock function definition.\n\nMocks must refer to a function declared by the target service. The type of\nthe function args and result will be inferred at test time. If either the\narg or result values are not compatible with function type declaration, the\nrequest will be considered invalid.\n\nMore than one `FunctionMock` may be provided for a given function name so\nlong as the `Arg` matchers are distinct. There may be only one function\nfor a given overload where all `Arg` values are `Arg.any_value`.",
             "id": "FunctionMock",
             "properties": {
+                "args": {
+                    "description": "The list of `Arg` values to match. The order in which the arguments are\nprovided is the order in which they must appear in the function\ninvocation.",
+                    "items": {
+                        "$ref": "Arg"
+                    },
+                    "type": "array"
+                },
                 "function": {
                     "description": "The name of the function.\n\nThe function name must match one provided by a service declaration.",
                     "type": "string"
@@ -642,13 +593,6 @@
                 "result": {
                     "$ref": "Result",
                     "description": "The mock result of the function call."
-                },
-                "args": {
-                    "description": "The list of `Arg` values to match. The order in which the arguments are\nprovided is the order in which they must appear in the function\ninvocation.",
-                    "items": {
-                        "$ref": "Arg"
-                    },
-                    "type": "array"
                 }
             },
             "type": "object"
@@ -686,11 +630,6 @@
             "description": "Position in the `Source` content including its line, column number, and an\nindex of the `File` in the `Source` message. Used for debug purposes.",
             "id": "SourcePosition",
             "properties": {
-                "line": {
-                    "description": "Line number of the source fragment. 1-based.",
-                    "format": "int32",
-                    "type": "integer"
-                },
                 "column": {
                     "description": "First column on the source line associated with the source fragment.",
                     "format": "int32",
@@ -699,6 +638,11 @@
                 "fileName": {
                     "description": "Name of the `File`.",
                     "type": "string"
+                },
+                "line": {
+                    "description": "Line number of the source fragment. 1-based.",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -789,6 +733,10 @@
             "description": "`Ruleset` is an immutable copy of `Source` with a globally unique identifier\nand a creation time.",
             "id": "Ruleset",
             "properties": {
+                "name": {
+                    "description": "Name of the `Ruleset`. The ruleset_id is auto generated by the service.\nFormat: `projects/{project_id}/rulesets/{ruleset_id}`\nOutput only.",
+                    "type": "string"
+                },
                 "source": {
                     "$ref": "Source",
                     "description": "`Source` for the `Ruleset`."
@@ -797,9 +745,61 @@
                     "description": "Time the `Ruleset` was created.\nOutput only.",
                     "format": "google-datetime",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListReleasesResponse": {
+            "description": "The response for FirebaseRulesService.ListReleases.",
+            "id": "ListReleasesResponse",
+            "properties": {
+                "releases": {
+                    "description": "List of `Release` instances.",
+                    "items": {
+                        "$ref": "Release"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "The pagination token to retrieve the next page of results. If the value is\nempty, no further results remain.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "FunctionCall": {
+            "description": "Represents a service-defined function call that was invoked during test\nexecution.",
+            "id": "FunctionCall",
+            "properties": {
+                "args": {
+                    "description": "The arguments that were provided to the function.",
+                    "items": {
+                        "type": "any"
+                    },
+                    "type": "array"
+                },
+                "function": {
+                    "description": "Name of the function invoked.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "File": {
+            "description": "`File` containing source content.",
+            "id": "File",
+            "properties": {
+                "content": {
+                    "description": "Textual Content.",
+                    "type": "string"
+                },
+                "fingerprint": {
+                    "description": "Fingerprint (e.g. github sha) associated with the `File`.",
+                    "format": "byte",
+                    "type": "string"
                 },
                 "name": {
-                    "description": "Name of the `Ruleset`. The ruleset_id is auto generated by the service.\nFormat: `projects/{project_id}/rulesets/{ruleset_id}`\nOutput only.",
+                    "description": "File name.",
                     "type": "string"
                 }
             },

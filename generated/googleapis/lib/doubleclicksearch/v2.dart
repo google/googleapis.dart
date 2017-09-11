@@ -10,80 +10,96 @@ import 'dart:convert' as convert;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
-    ApiRequestError, DetailedApiRequestError, Media, UploadOptions,
-    ResumableUploadOptions, DownloadOptions, PartialDownloadOptions,
-    ByteRange;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
+    show
+        ApiRequestError,
+        DetailedApiRequestError,
+        Media,
+        UploadOptions,
+        ResumableUploadOptions,
+        DownloadOptions,
+        PartialDownloadOptions,
+        ByteRange;
 
 const core.String USER_AGENT = 'dart-api-client doubleclicksearch/v2';
 
-/**
- * Reports and modifies your advertising data in DoubleClick Search (for
- * example, campaigns, ad groups, keywords, and conversions).
- */
+/// Reports and modifies your advertising data in DoubleClick Search (for
+/// example, campaigns, ad groups, keywords, and conversions).
 class DoubleclicksearchApi {
-  /** View and manage your advertising data in DoubleClick Search */
-  static const DoubleclicksearchScope = "https://www.googleapis.com/auth/doubleclicksearch";
-
+  /// View and manage your advertising data in DoubleClick Search
+  static const DoubleclicksearchScope =
+      "https://www.googleapis.com/auth/doubleclicksearch";
 
   final commons.ApiRequester _requester;
 
   ConversionResourceApi get conversion => new ConversionResourceApi(_requester);
   ReportsResourceApi get reports => new ReportsResourceApi(_requester);
-  SavedColumnsResourceApi get savedColumns => new SavedColumnsResourceApi(_requester);
+  SavedColumnsResourceApi get savedColumns =>
+      new SavedColumnsResourceApi(_requester);
 
-  DoubleclicksearchApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "doubleclicksearch/v2/"}) :
-      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+  DoubleclicksearchApi(http.Client client,
+      {core.String rootUrl: "https://www.googleapis.com/",
+      core.String servicePath: "doubleclicksearch/v2/"})
+      : _requester =
+            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
-
 
 class ConversionResourceApi {
   final commons.ApiRequester _requester;
 
-  ConversionResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  ConversionResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Retrieves a list of conversions from a DoubleClick Search engine account.
-   *
-   * Request parameters:
-   *
-   * [agencyId] - Numeric ID of the agency.
-   *
-   * [advertiserId] - Numeric ID of the advertiser.
-   *
-   * [engineAccountId] - Numeric ID of the engine account.
-   *
-   * [endDate] - Last date (inclusive) on which to retrieve conversions. Format
-   * is yyyymmdd.
-   * Value must be between "20091101" and "99991231".
-   *
-   * [rowCount] - The number of conversions to return per call.
-   * Value must be between "1" and "1000".
-   *
-   * [startDate] - First date (inclusive) on which to retrieve conversions.
-   * Format is yyyymmdd.
-   * Value must be between "20091101" and "99991231".
-   *
-   * [startRow] - The 0-based starting index for retrieving conversions results.
-   *
-   * [adGroupId] - Numeric ID of the ad group.
-   *
-   * [adId] - Numeric ID of the ad.
-   *
-   * [campaignId] - Numeric ID of the campaign.
-   *
-   * [criterionId] - Numeric ID of the criterion.
-   *
-   * Completes with a [ConversionList].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ConversionList> get(core.String agencyId, core.String advertiserId, core.String engineAccountId, core.int endDate, core.int rowCount, core.int startDate, core.int startRow, {core.String adGroupId, core.String adId, core.String campaignId, core.String criterionId}) {
+  /// Retrieves a list of conversions from a DoubleClick Search engine account.
+  ///
+  /// Request parameters:
+  ///
+  /// [agencyId] - Numeric ID of the agency.
+  ///
+  /// [advertiserId] - Numeric ID of the advertiser.
+  ///
+  /// [engineAccountId] - Numeric ID of the engine account.
+  ///
+  /// [endDate] - Last date (inclusive) on which to retrieve conversions. Format
+  /// is yyyymmdd.
+  /// Value must be between "20091101" and "99991231".
+  ///
+  /// [rowCount] - The number of conversions to return per call.
+  /// Value must be between "1" and "1000".
+  ///
+  /// [startDate] - First date (inclusive) on which to retrieve conversions.
+  /// Format is yyyymmdd.
+  /// Value must be between "20091101" and "99991231".
+  ///
+  /// [startRow] - The 0-based starting index for retrieving conversions
+  /// results.
+  ///
+  /// [adGroupId] - Numeric ID of the ad group.
+  ///
+  /// [adId] - Numeric ID of the ad.
+  ///
+  /// [campaignId] - Numeric ID of the campaign.
+  ///
+  /// [criterionId] - Numeric ID of the criterion.
+  ///
+  /// Completes with a [ConversionList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ConversionList> get(
+      core.String agencyId,
+      core.String advertiserId,
+      core.String engineAccountId,
+      core.int endDate,
+      core.int rowCount,
+      core.int startDate,
+      core.int startRow,
+      {core.String adGroupId,
+      core.String adId,
+      core.String campaignId,
+      core.String criterionId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -129,33 +145,36 @@ class ConversionResourceApi {
       _queryParams["criterionId"] = [criterionId];
     }
 
-    _url = 'agency/' + commons.Escaper.ecapeVariable('$agencyId') + '/advertiser/' + commons.Escaper.ecapeVariable('$advertiserId') + '/engine/' + commons.Escaper.ecapeVariable('$engineAccountId') + '/conversion';
+    _url = 'agency/' +
+        commons.Escaper.ecapeVariable('$agencyId') +
+        '/advertiser/' +
+        commons.Escaper.ecapeVariable('$advertiserId') +
+        '/engine/' +
+        commons.Escaper.ecapeVariable('$engineAccountId') +
+        '/conversion';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ConversionList.fromJson(data));
   }
 
-  /**
-   * Inserts a batch of new conversions into DoubleClick Search.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [ConversionList].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Inserts a batch of new conversions into DoubleClick Search.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [ConversionList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<ConversionList> insert(ConversionList request) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -170,52 +189,58 @@ class ConversionResourceApi {
 
     _url = 'conversion';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ConversionList.fromJson(data));
   }
 
-  /**
-   * Updates a batch of conversions in DoubleClick Search. This method supports
-   * patch semantics.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [advertiserId] - Numeric ID of the advertiser.
-   *
-   * [agencyId] - Numeric ID of the agency.
-   *
-   * [endDate] - Last date (inclusive) on which to retrieve conversions. Format
-   * is yyyymmdd.
-   * Value must be between "20091101" and "99991231".
-   *
-   * [engineAccountId] - Numeric ID of the engine account.
-   *
-   * [rowCount] - The number of conversions to return per call.
-   * Value must be between "1" and "1000".
-   *
-   * [startDate] - First date (inclusive) on which to retrieve conversions.
-   * Format is yyyymmdd.
-   * Value must be between "20091101" and "99991231".
-   *
-   * [startRow] - The 0-based starting index for retrieving conversions results.
-   *
-   * Completes with a [ConversionList].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ConversionList> patch(ConversionList request, core.String advertiserId, core.String agencyId, core.int endDate, core.String engineAccountId, core.int rowCount, core.int startDate, core.int startRow) {
+  /// Updates a batch of conversions in DoubleClick Search. This method supports
+  /// patch semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Numeric ID of the advertiser.
+  ///
+  /// [agencyId] - Numeric ID of the agency.
+  ///
+  /// [endDate] - Last date (inclusive) on which to retrieve conversions. Format
+  /// is yyyymmdd.
+  /// Value must be between "20091101" and "99991231".
+  ///
+  /// [engineAccountId] - Numeric ID of the engine account.
+  ///
+  /// [rowCount] - The number of conversions to return per call.
+  /// Value must be between "1" and "1000".
+  ///
+  /// [startDate] - First date (inclusive) on which to retrieve conversions.
+  /// Format is yyyymmdd.
+  /// Value must be between "20091101" and "99991231".
+  ///
+  /// [startRow] - The 0-based starting index for retrieving conversions
+  /// results.
+  ///
+  /// Completes with a [ConversionList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ConversionList> patch(
+      ConversionList request,
+      core.String advertiserId,
+      core.String agencyId,
+      core.int endDate,
+      core.String engineAccountId,
+      core.int rowCount,
+      core.int startDate,
+      core.int startRow) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -257,31 +282,28 @@ class ConversionResourceApi {
 
     _url = 'conversion';
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ConversionList.fromJson(data));
   }
 
-  /**
-   * Updates a batch of conversions in DoubleClick Search.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [ConversionList].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Updates a batch of conversions in DoubleClick Search.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [ConversionList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<ConversionList> update(ConversionList request) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -296,33 +318,31 @@ class ConversionResourceApi {
 
     _url = 'conversion';
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ConversionList.fromJson(data));
   }
 
-  /**
-   * Updates the availabilities of a batch of floodlight activities in
-   * DoubleClick Search.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [UpdateAvailabilityResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<UpdateAvailabilityResponse> updateAvailability(UpdateAvailabilityRequest request) {
+  /// Updates the availabilities of a batch of floodlight activities in
+  /// DoubleClick Search.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [UpdateAvailabilityResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UpdateAvailabilityResponse> updateAvailability(
+      UpdateAvailabilityRequest request) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -336,40 +356,35 @@ class ConversionResourceApi {
 
     _url = 'conversion/updateAvailability';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new UpdateAvailabilityResponse.fromJson(data));
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new UpdateAvailabilityResponse.fromJson(data));
   }
-
 }
-
 
 class ReportsResourceApi {
   final commons.ApiRequester _requester;
 
-  ReportsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  ReportsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Generates and returns a report immediately.
-   *
-   * [request_1] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [Report].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Generates and returns a report immediately.
+  ///
+  /// [request_1] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [Report].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Report> generate(ReportRequest request_1) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -384,31 +399,28 @@ class ReportsResourceApi {
 
     _url = 'reports/generate';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Report.fromJson(data));
   }
 
-  /**
-   * Polls for the status of a report request.
-   *
-   * Request parameters:
-   *
-   * [reportId] - ID of the report request being polled.
-   *
-   * Completes with a [Report].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Polls for the status of a report request.
+  ///
+  /// Request parameters:
+  ///
+  /// [reportId] - ID of the report request being polled.
+  ///
+  /// Completes with a [Report].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Report> get(core.String reportId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -423,36 +435,35 @@ class ReportsResourceApi {
 
     _url = 'reports/' + commons.Escaper.ecapeVariable('$reportId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Report.fromJson(data));
   }
 
-  /**
-   * Downloads a report file encoded in UTF-8.
-   *
-   * Request parameters:
-   *
-   * [reportId] - ID of the report.
-   *
-   * [reportFragment] - The index of the report fragment to download.
-   *
-   * [downloadOptions] - Options for downloading. A download can be either a
-   * Metadata (default) or Media download. Partial Media downloads are possible
-   * as well.
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future getFile(core.String reportId, core.int reportFragment, {commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
+  /// Downloads a report file encoded in UTF-8.
+  ///
+  /// Request parameters:
+  ///
+  /// [reportId] - ID of the report.
+  ///
+  /// [reportFragment] - The index of the report fragment to download.
+  ///
+  /// [downloadOptions] - Options for downloading. A download can be either a
+  /// Metadata (default) or Media download. Partial Media downloads are possible
+  /// as well.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future getFile(core.String reportId, core.int reportFragment,
+      {commons.DownloadOptions downloadOptions:
+          commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -469,15 +480,17 @@ class ReportsResourceApi {
 
     _downloadOptions = downloadOptions;
 
-    _url = 'reports/' + commons.Escaper.ecapeVariable('$reportId') + '/files/' + commons.Escaper.ecapeVariable('$reportFragment');
+    _url = 'reports/' +
+        commons.Escaper.ecapeVariable('$reportId') +
+        '/files/' +
+        commons.Escaper.ecapeVariable('$reportFragment');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
       return _response.then((data) => null);
@@ -486,21 +499,19 @@ class ReportsResourceApi {
     }
   }
 
-  /**
-   * Inserts a report request into the reporting system.
-   *
-   * [request_1] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [Report].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Inserts a report request into the reporting system.
+  ///
+  /// [request_1] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [Report].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Report> request(ReportRequest request_1) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -515,43 +526,38 @@ class ReportsResourceApi {
 
     _url = 'reports';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Report.fromJson(data));
   }
-
 }
-
 
 class SavedColumnsResourceApi {
   final commons.ApiRequester _requester;
 
-  SavedColumnsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  SavedColumnsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Retrieve the list of saved columns for a specified advertiser.
-   *
-   * Request parameters:
-   *
-   * [agencyId] - DS ID of the agency.
-   *
-   * [advertiserId] - DS ID of the advertiser.
-   *
-   * Completes with a [SavedColumnList].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<SavedColumnList> list(core.String agencyId, core.String advertiserId) {
+  /// Retrieve the list of saved columns for a specified advertiser.
+  ///
+  /// Request parameters:
+  ///
+  /// [agencyId] - DS ID of the agency.
+  ///
+  /// [advertiserId] - DS ID of the advertiser.
+  ///
+  /// Completes with a [SavedColumnList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SavedColumnList> list(
+      core.String agencyId, core.String advertiserId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -566,46 +572,43 @@ class SavedColumnsResourceApi {
       throw new core.ArgumentError("Parameter advertiserId is required.");
     }
 
-    _url = 'agency/' + commons.Escaper.ecapeVariable('$agencyId') + '/advertiser/' + commons.Escaper.ecapeVariable('$advertiserId') + '/savedcolumns';
+    _url = 'agency/' +
+        commons.Escaper.ecapeVariable('$agencyId') +
+        '/advertiser/' +
+        commons.Escaper.ecapeVariable('$advertiserId') +
+        '/savedcolumns';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new SavedColumnList.fromJson(data));
   }
-
 }
 
-
-
-/** A message containing availability data relevant to DoubleClick Search. */
+/// A message containing availability data relevant to DoubleClick Search.
 class Availability {
-  /** DS advertiser ID. */
+  /// DS advertiser ID.
   core.String advertiserId;
-  /** DS agency ID. */
+
+  /// DS agency ID.
   core.String agencyId;
-  /**
-   * The time by which all conversions have been uploaded, in epoch millis UTC.
-   */
+
+  /// The time by which all conversions have been uploaded, in epoch millis UTC.
   core.String availabilityTimestamp;
-  /**
-   * The numeric segmentation identifier (for example, DoubleClick Search
-   * Floodlight activity ID).
-   */
+
+  /// The numeric segmentation identifier (for example, DoubleClick Search
+  /// Floodlight activity ID).
   core.String segmentationId;
-  /**
-   * The friendly segmentation identifier (for example, DoubleClick Search
-   * Floodlight activity name).
-   */
+
+  /// The friendly segmentation identifier (for example, DoubleClick Search
+  /// Floodlight activity name).
   core.String segmentationName;
-  /**
-   * The segmentation type that this availability is for (its default value is
-   * FLOODLIGHT).
-   */
+
+  /// The segmentation type that this availability is for (its default value is
+  /// FLOODLIGHT).
   core.String segmentationType;
 
   Availability();
@@ -632,7 +635,8 @@ class Availability {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (advertiserId != null) {
       _json["advertiserId"] = advertiserId;
     }
@@ -655,129 +659,129 @@ class Availability {
   }
 }
 
-/** A conversion containing data relevant to DoubleClick Search. */
+/// A conversion containing data relevant to DoubleClick Search.
 class Conversion {
-  /** DS ad group ID. */
+  /// DS ad group ID.
   core.String adGroupId;
-  /** DS ad ID. */
+
+  /// DS ad ID.
   core.String adId;
-  /** DS advertiser ID. */
+
+  /// DS advertiser ID.
   core.String advertiserId;
-  /** DS agency ID. */
+
+  /// DS agency ID.
   core.String agencyId;
-  /**
-   * Available to advertisers only after contacting DoubleClick Search customer
-   * support.
-   */
+
+  /// Available to advertisers only after contacting DoubleClick Search customer
+  /// support.
   core.String attributionModel;
-  /** DS campaign ID. */
+
+  /// DS campaign ID.
   core.String campaignId;
-  /**
-   * Sales channel for the product. Acceptable values are:
-   * - "local": a physical store
-   * - "online": an online store
-   */
+
+  /// Sales channel for the product. Acceptable values are:
+  /// - "local": a physical store
+  /// - "online": an online store
   core.String channel;
-  /** DS click ID for the conversion. */
+
+  /// DS click ID for the conversion.
   core.String clickId;
-  /**
-   * For offline conversions, advertisers provide this ID. Advertisers can
-   * specify any ID that is meaningful to them. Each conversion in a request
-   * must specify a unique ID, and the combination of ID and timestamp must be
-   * unique amongst all conversions within the advertiser.
-   * For online conversions, DS copies the dsConversionId or floodlightOrderId
-   * into this property depending on the advertiser's Floodlight instructions.
-   */
+
+  /// For offline conversions, advertisers provide this ID. Advertisers can
+  /// specify any ID that is meaningful to them. Each conversion in a request
+  /// must specify a unique ID, and the combination of ID and timestamp must be
+  /// unique amongst all conversions within the advertiser.
+  /// For online conversions, DS copies the dsConversionId or floodlightOrderId
+  /// into this property depending on the advertiser's Floodlight instructions.
   core.String conversionId;
-  /**
-   * The time at which the conversion was last modified, in epoch millis UTC.
-   */
+
+  /// The time at which the conversion was last modified, in epoch millis UTC.
   core.String conversionModifiedTimestamp;
-  /** The time at which the conversion took place, in epoch millis UTC. */
+
+  /// The time at which the conversion took place, in epoch millis UTC.
   core.String conversionTimestamp;
-  /**
-   * Available to advertisers only after contacting DoubleClick Search customer
-   * support.
-   */
+
+  /// Available to advertisers only after contacting DoubleClick Search customer
+  /// support.
   core.String countMillis;
-  /** DS criterion (keyword) ID. */
+
+  /// DS criterion (keyword) ID.
   core.String criterionId;
-  /**
-   * The currency code for the conversion's revenue. Should be in ISO 4217
-   * alphabetic (3-char) format.
-   */
+
+  /// The currency code for the conversion's revenue. Should be in ISO 4217
+  /// alphabetic (3-char) format.
   core.String currencyCode;
-  /**
-   * Custom dimensions for the conversion, which can be used to filter data in a
-   * report.
-   */
+
+  /// Custom dimensions for the conversion, which can be used to filter data in
+  /// a report.
   core.List<CustomDimension> customDimension;
-  /** Custom metrics for the conversion. */
+
+  /// Custom metrics for the conversion.
   core.List<CustomMetric> customMetric;
-  /** The type of device on which the conversion occurred. */
+
+  /// The type of device on which the conversion occurred.
   core.String deviceType;
-  /** ID that DoubleClick Search generates for each conversion. */
+
+  /// ID that DoubleClick Search generates for each conversion.
   core.String dsConversionId;
-  /** DS engine account ID. */
+
+  /// DS engine account ID.
   core.String engineAccountId;
-  /** The Floodlight order ID provided by the advertiser for the conversion. */
+
+  /// The Floodlight order ID provided by the advertiser for the conversion.
   core.String floodlightOrderId;
-  /**
-   * ID that DS generates and uses to uniquely identify the inventory account
-   * that contains the product.
-   */
+
+  /// ID that DS generates and uses to uniquely identify the inventory account
+  /// that contains the product.
   core.String inventoryAccountId;
-  /**
-   * The country registered for the Merchant Center feed that contains the
-   * product. Use an ISO 3166 code to specify a country.
-   */
+
+  /// The country registered for the Merchant Center feed that contains the
+  /// product. Use an ISO 3166 code to specify a country.
   core.String productCountry;
-  /** DS product group ID. */
+
+  /// DS product group ID.
   core.String productGroupId;
-  /** The product ID (SKU). */
+
+  /// The product ID (SKU).
   core.String productId;
-  /**
-   * The language registered for the Merchant Center feed that contains the
-   * product. Use an ISO 639 code to specify a language.
-   */
+
+  /// The language registered for the Merchant Center feed that contains the
+  /// product. Use an ISO 639 code to specify a language.
   core.String productLanguage;
-  /** The quantity of this conversion, in millis. */
+
+  /// The quantity of this conversion, in millis.
   core.String quantityMillis;
-  /**
-   * The revenue amount of this TRANSACTION conversion, in micros (value
-   * multiplied by 1000000, no decimal). For example, to specify a revenue value
-   * of "10" enter "10000000" (10 million) in your request.
-   */
+
+  /// The revenue amount of this TRANSACTION conversion, in micros (value
+  /// multiplied by 1000000, no decimal). For example, to specify a revenue
+  /// value of "10" enter "10000000" (10 million) in your request.
   core.String revenueMicros;
-  /**
-   * The numeric segmentation identifier (for example, DoubleClick Search
-   * Floodlight activity ID).
-   */
+
+  /// The numeric segmentation identifier (for example, DoubleClick Search
+  /// Floodlight activity ID).
   core.String segmentationId;
-  /**
-   * The friendly segmentation identifier (for example, DoubleClick Search
-   * Floodlight activity name).
-   */
+
+  /// The friendly segmentation identifier (for example, DoubleClick Search
+  /// Floodlight activity name).
   core.String segmentationName;
-  /** The segmentation type of this conversion (for example, FLOODLIGHT). */
+
+  /// The segmentation type of this conversion (for example, FLOODLIGHT).
   core.String segmentationType;
-  /**
-   * The state of the conversion, that is, either ACTIVE or REMOVED. Note: state
-   * DELETED is deprecated.
-   */
+
+  /// The state of the conversion, that is, either ACTIVE or REMOVED. Note:
+  /// state DELETED is deprecated.
   core.String state;
-  /**
-   * The ID of the local store for which the product was advertised. Applicable
-   * only when the channel is "local".
-   */
+
+  /// The ID of the local store for which the product was advertised. Applicable
+  /// only when the channel is "local".
   core.String storeId;
-  /**
-   * The type of the conversion, that is, either ACTION or TRANSACTION. An
-   * ACTION conversion is an action by the user that has no monetarily
-   * quantifiable value, while a TRANSACTION conversion is an action that does
-   * have a monetarily quantifiable value. Examples are email list signups
-   * (ACTION) versus ecommerce purchases (TRANSACTION).
-   */
+
+  /// The type of the conversion, that is, either ACTION or TRANSACTION. An
+  /// ACTION conversion is an action by the user that has no monetarily
+  /// quantifiable value, while a TRANSACTION conversion is an action that does
+  /// have a monetarily quantifiable value. Examples are email list signups
+  /// (ACTION) versus ecommerce purchases (TRANSACTION).
   core.String type;
 
   Conversion();
@@ -826,10 +830,14 @@ class Conversion {
       currencyCode = _json["currencyCode"];
     }
     if (_json.containsKey("customDimension")) {
-      customDimension = _json["customDimension"].map((value) => new CustomDimension.fromJson(value)).toList();
+      customDimension = _json["customDimension"]
+          .map((value) => new CustomDimension.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("customMetric")) {
-      customMetric = _json["customMetric"].map((value) => new CustomMetric.fromJson(value)).toList();
+      customMetric = _json["customMetric"]
+          .map((value) => new CustomMetric.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("deviceType")) {
       deviceType = _json["deviceType"];
@@ -885,7 +893,8 @@ class Conversion {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (adGroupId != null) {
       _json["adGroupId"] = adGroupId;
     }
@@ -929,10 +938,12 @@ class Conversion {
       _json["currencyCode"] = currencyCode;
     }
     if (customDimension != null) {
-      _json["customDimension"] = customDimension.map((value) => (value).toJson()).toList();
+      _json["customDimension"] =
+          customDimension.map((value) => (value).toJson()).toList();
     }
     if (customMetric != null) {
-      _json["customMetric"] = customMetric.map((value) => (value).toJson()).toList();
+      _json["customMetric"] =
+          customMetric.map((value) => (value).toJson()).toList();
     }
     if (deviceType != null) {
       _json["deviceType"] = deviceType;
@@ -989,21 +1000,22 @@ class Conversion {
   }
 }
 
-/** A list of conversions. */
+/// A list of conversions.
 class ConversionList {
-  /** The conversions being requested. */
+  /// The conversions being requested.
   core.List<Conversion> conversion;
-  /**
-   * Identifies this as a ConversionList resource. Value: the fixed string
-   * doubleclicksearch#conversionList.
-   */
+
+  /// Identifies this as a ConversionList resource. Value: the fixed string
+  /// doubleclicksearch#conversionList.
   core.String kind;
 
   ConversionList();
 
   ConversionList.fromJson(core.Map _json) {
     if (_json.containsKey("conversion")) {
-      conversion = _json["conversion"].map((value) => new Conversion.fromJson(value)).toList();
+      conversion = _json["conversion"]
+          .map((value) => new Conversion.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -1011,9 +1023,11 @@ class ConversionList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (conversion != null) {
-      _json["conversion"] = conversion.map((value) => (value).toJson()).toList();
+      _json["conversion"] =
+          conversion.map((value) => (value).toJson()).toList();
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -1022,11 +1036,12 @@ class ConversionList {
   }
 }
 
-/** A message containing the custome dimension. */
+/// A message containing the custome dimension.
 class CustomDimension {
-  /** Custom dimension name. */
+  /// Custom dimension name.
   core.String name;
-  /** Custom dimension value. */
+
+  /// Custom dimension value.
   core.String value;
 
   CustomDimension();
@@ -1041,7 +1056,8 @@ class CustomDimension {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -1052,11 +1068,12 @@ class CustomDimension {
   }
 }
 
-/** A message containing the custome metric. */
+/// A message containing the custome metric.
 class CustomMetric {
-  /** Custom metric name. */
+  /// Custom metric name.
   core.String name;
-  /** Custom metric numeric value. */
+
+  /// Custom metric numeric value.
   core.double value;
 
   CustomMetric();
@@ -1071,7 +1088,8 @@ class CustomMetric {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
     }
@@ -1083,9 +1101,10 @@ class CustomMetric {
 }
 
 class ReportFiles {
-  /** The size of this report file in bytes. */
+  /// The size of this report file in bytes.
   core.String byteCount;
-  /** Use this url to download the report file. */
+
+  /// Use this url to download the report file.
   core.String url;
 
   ReportFiles();
@@ -1100,7 +1119,8 @@ class ReportFiles {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (byteCount != null) {
       _json["byteCount"] = byteCount;
     }
@@ -1111,58 +1131,52 @@ class ReportFiles {
   }
 }
 
-/**
- * A DoubleClick Search report. This object contains the report request, some
- * report metadata such as currency code, and the generated report rows or
- * report files.
- */
+/// A DoubleClick Search report. This object contains the report request, some
+/// report metadata such as currency code, and the generated report rows or
+/// report files.
 class Report {
-  /**
-   * Asynchronous report only. Contains a list of generated report files once
-   * the report has succesfully completed.
-   */
+  /// Asynchronous report only. Contains a list of generated report files once
+  /// the report has succesfully completed.
   core.List<ReportFiles> files;
-  /** Asynchronous report only. Id of the report. */
+
+  /// Asynchronous report only. Id of the report.
   core.String id;
-  /**
-   * Asynchronous report only. True if and only if the report has completed
-   * successfully and the report files are ready to be downloaded.
-   */
+
+  /// Asynchronous report only. True if and only if the report has completed
+  /// successfully and the report files are ready to be downloaded.
   core.bool isReportReady;
-  /**
-   * Identifies this as a Report resource. Value: the fixed string
-   * doubleclicksearch#report.
-   */
+
+  /// Identifies this as a Report resource. Value: the fixed string
+  /// doubleclicksearch#report.
   core.String kind;
-  /**
-   * The request that created the report. Optional fields not specified in the
-   * original request are filled with default values.
-   */
+
+  /// The request that created the report. Optional fields not specified in the
+  /// original request are filled with default values.
   ReportRequest request;
-  /**
-   * The number of report rows generated by the report, not including headers.
-   */
+
+  /// The number of report rows generated by the report, not including headers.
   core.int rowCount;
-  /** Synchronous report only. Generated report rows. */
+
+  /// Synchronous report only. Generated report rows.
   core.List<ReportRow> rows;
-  /**
-   * The currency code of all monetary values produced in the report, including
-   * values that are set by users (e.g., keyword bid settings) and metrics
-   * (e.g., cost and revenue). The currency code of a report is determined by
-   * the statisticsCurrency field of the report request.
-   */
+
+  /// The currency code of all monetary values produced in the report, including
+  /// values that are set by users (e.g., keyword bid settings) and metrics
+  /// (e.g., cost and revenue). The currency code of a report is determined by
+  /// the statisticsCurrency field of the report request.
   core.String statisticsCurrencyCode;
-  /**
-   * If all statistics of the report are sourced from the same time zone, this
-   * would be it. Otherwise the field is unset.
-   */
+
+  /// If all statistics of the report are sourced from the same time zone, this
+  /// would be it. Otherwise the field is unset.
   core.String statisticsTimeZone;
 
   Report();
 
   Report.fromJson(core.Map _json) {
     if (_json.containsKey("files")) {
-      files = _json["files"].map((value) => new ReportFiles.fromJson(value)).toList();
+      files = _json["files"]
+          .map((value) => new ReportFiles.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -1180,7 +1194,8 @@ class Report {
       rowCount = _json["rowCount"];
     }
     if (_json.containsKey("rows")) {
-      rows = _json["rows"].map((value) => new ReportRow.fromJson(value)).toList();
+      rows =
+          _json["rows"].map((value) => new ReportRow.fromJson(value)).toList();
     }
     if (_json.containsKey("statisticsCurrencyCode")) {
       statisticsCurrencyCode = _json["statisticsCurrencyCode"];
@@ -1191,7 +1206,8 @@ class Report {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (files != null) {
       _json["files"] = files.map((value) => (value).toJson()).toList();
     }
@@ -1223,69 +1239,60 @@ class Report {
   }
 }
 
-/** A request object used to create a DoubleClick Search report. */
+/// A request object used to create a DoubleClick Search report.
 class ReportApiColumnSpec {
-  /** Name of a DoubleClick Search column to include in the report. */
+  /// Name of a DoubleClick Search column to include in the report.
   core.String columnName;
-  /**
-   * Segments a report by a custom dimension. The report must be scoped to an
-   * advertiser or lower, and the custom dimension must already be set up in
-   * DoubleClick Search. The custom dimension name, which appears in DoubleClick
-   * Search, is case sensitive.
-   * If used in a conversion report, returns the value of the specified custom
-   * dimension for the given conversion, if set. This column does not segment
-   * the conversion report.
-   */
+
+  /// Segments a report by a custom dimension. The report must be scoped to an
+  /// advertiser or lower, and the custom dimension must already be set up in
+  /// DoubleClick Search. The custom dimension name, which appears in
+  /// DoubleClick Search, is case sensitive.
+  /// If used in a conversion report, returns the value of the specified custom
+  /// dimension for the given conversion, if set. This column does not segment
+  /// the conversion report.
   core.String customDimensionName;
-  /**
-   * Name of a custom metric to include in the report. The report must be scoped
-   * to an advertiser or lower, and the custom metric must already be set up in
-   * DoubleClick Search. The custom metric name, which appears in DoubleClick
-   * Search, is case sensitive.
-   */
+
+  /// Name of a custom metric to include in the report. The report must be
+  /// scoped to an advertiser or lower, and the custom metric must already be
+  /// set up in DoubleClick Search. The custom metric name, which appears in
+  /// DoubleClick Search, is case sensitive.
   core.String customMetricName;
-  /**
-   * Inclusive day in YYYY-MM-DD format. When provided, this overrides the
-   * overall time range of the report for this column only. Must be provided
-   * together with startDate.
-   */
+
+  /// Inclusive day in YYYY-MM-DD format. When provided, this overrides the
+  /// overall time range of the report for this column only. Must be provided
+  /// together with startDate.
   core.String endDate;
-  /**
-   * Synchronous report only. Set to true to group by this column. Defaults to
-   * false.
-   */
+
+  /// Synchronous report only. Set to true to group by this column. Defaults to
+  /// false.
   core.bool groupByColumn;
-  /**
-   * Text used to identify this column in the report output; defaults to
-   * columnName or savedColumnName when not specified. This can be used to
-   * prevent collisions between DoubleClick Search columns and saved columns
-   * with the same name.
-   */
+
+  /// Text used to identify this column in the report output; defaults to
+  /// columnName or savedColumnName when not specified. This can be used to
+  /// prevent collisions between DoubleClick Search columns and saved columns
+  /// with the same name.
   core.String headerText;
-  /**
-   * The platform that is used to provide data for the custom dimension.
-   * Acceptable values are "floodlight".
-   */
+
+  /// The platform that is used to provide data for the custom dimension.
+  /// Acceptable values are "floodlight".
   core.String platformSource;
-  /**
-   * Returns metrics only for a specific type of product activity. Accepted
-   * values are:
-   * - "sold": returns metrics only for products that were sold
-   * - "advertised": returns metrics only for products that were advertised in a
-   * Shopping campaign, and that might or might not have been sold
-   */
+
+  /// Returns metrics only for a specific type of product activity. Accepted
+  /// values are:
+  /// - "sold": returns metrics only for products that were sold
+  /// - "advertised": returns metrics only for products that were advertised in
+  /// a Shopping campaign, and that might or might not have been sold
   core.String productReportPerspective;
-  /**
-   * Name of a saved column to include in the report. The report must be scoped
-   * at advertiser or lower, and this saved column must already be created in
-   * the DoubleClick Search UI.
-   */
+
+  /// Name of a saved column to include in the report. The report must be scoped
+  /// at advertiser or lower, and this saved column must already be created in
+  /// the DoubleClick Search UI.
   core.String savedColumnName;
-  /**
-   * Inclusive date in YYYY-MM-DD format. When provided, this overrides the
-   * overall time range of the report for this column only. Must be provided
-   * together with endDate.
-   */
+
+  /// Inclusive date in YYYY-MM-DD format. When provided, this overrides the
+  /// overall time range of the report for this column only. Must be provided
+  /// together with endDate.
   core.String startDate;
 
   ReportApiColumnSpec();
@@ -1324,7 +1331,8 @@ class ReportApiColumnSpec {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (columnName != null) {
       _json["columnName"] = columnName;
     }
@@ -1360,22 +1368,18 @@ class ReportApiColumnSpec {
 }
 
 class ReportRequestFilters {
-  /**
-   * Column to perform the filter on. This can be a DoubleClick Search column or
-   * a saved column.
-   */
+  /// Column to perform the filter on. This can be a DoubleClick Search column
+  /// or a saved column.
   ReportApiColumnSpec column;
-  /**
-   * Operator to use in the filter. See the filter reference for a list of
-   * available operators.
-   */
+
+  /// Operator to use in the filter. See the filter reference for a list of
+  /// available operators.
   core.String operator;
-  /**
-   * A list of values to filter the column value against.
-   *
-   * The values for Object must be JSON objects. It can consist of `num`,
-   * `String`, `bool` and `null` as well as `Map` and `List` values.
-   */
+
+  /// A list of values to filter the column value against.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Object> values;
 
   ReportRequestFilters();
@@ -1393,7 +1397,8 @@ class ReportRequestFilters {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (column != null) {
       _json["column"] = (column).toJson();
     }
@@ -1408,12 +1413,11 @@ class ReportRequestFilters {
 }
 
 class ReportRequestOrderBy {
-  /**
-   * Column to perform the sort on. This can be a DoubleClick Search-defined
-   * column or a saved column.
-   */
+  /// Column to perform the sort on. This can be a DoubleClick Search-defined
+  /// column or a saved column.
   ReportApiColumnSpec column;
-  /** The sort direction, which is either ascending or descending. */
+
+  /// The sort direction, which is either ascending or descending.
   core.String sortOrder;
 
   ReportRequestOrderBy();
@@ -1428,7 +1432,8 @@ class ReportRequestOrderBy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (column != null) {
       _json["column"] = (column).toJson();
     }
@@ -1439,25 +1444,29 @@ class ReportRequestOrderBy {
   }
 }
 
-/**
- * The reportScope is a set of IDs that are used to determine which subset of
- * entities will be returned in the report. The full lineage of IDs from the
- * lowest scoped level desired up through agency is required.
- */
+/// The reportScope is a set of IDs that are used to determine which subset of
+/// entities will be returned in the report. The full lineage of IDs from the
+/// lowest scoped level desired up through agency is required.
 class ReportRequestReportScope {
-  /** DS ad group ID. */
+  /// DS ad group ID.
   core.String adGroupId;
-  /** DS ad ID. */
+
+  /// DS ad ID.
   core.String adId;
-  /** DS advertiser ID. */
+
+  /// DS advertiser ID.
   core.String advertiserId;
-  /** DS agency ID. */
+
+  /// DS agency ID.
   core.String agencyId;
-  /** DS campaign ID. */
+
+  /// DS campaign ID.
   core.String campaignId;
-  /** DS engine account ID. */
+
+  /// DS engine account ID.
   core.String engineAccountId;
-  /** DS keyword ID. */
+
+  /// DS keyword ID.
   core.String keywordId;
 
   ReportRequestReportScope();
@@ -1487,7 +1496,8 @@ class ReportRequestReportScope {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (adGroupId != null) {
       _json["adGroupId"] = adGroupId;
     }
@@ -1513,34 +1523,33 @@ class ReportRequestReportScope {
   }
 }
 
-/**
- * If metrics are requested in a report, this argument will be used to restrict
- * the metrics to a specific time range.
- */
+/// If metrics are requested in a report, this argument will be used to restrict
+/// the metrics to a specific time range.
 class ReportRequestTimeRange {
-  /**
-   * Inclusive UTC timestamp in RFC format, e.g., 2013-07-16T10:16:23.555Z. See
-   * additional references on how changed attribute reports work.
-   */
+  /// Inclusive UTC timestamp in RFC format, e.g., 2013-07-16T10:16:23.555Z. See
+  /// additional references on how changed attribute reports work.
   core.DateTime changedAttributesSinceTimestamp;
-  /**
-   * Inclusive UTC timestamp in RFC format, e.g., 2013-07-16T10:16:23.555Z. See
-   * additional references on how changed metrics reports work.
-   */
+
+  /// Inclusive UTC timestamp in RFC format, e.g., 2013-07-16T10:16:23.555Z. See
+  /// additional references on how changed metrics reports work.
   core.DateTime changedMetricsSinceTimestamp;
-  /** Inclusive date in YYYY-MM-DD format. */
+
+  /// Inclusive date in YYYY-MM-DD format.
   core.String endDate;
-  /** Inclusive date in YYYY-MM-DD format. */
+
+  /// Inclusive date in YYYY-MM-DD format.
   core.String startDate;
 
   ReportRequestTimeRange();
 
   ReportRequestTimeRange.fromJson(core.Map _json) {
     if (_json.containsKey("changedAttributesSinceTimestamp")) {
-      changedAttributesSinceTimestamp = core.DateTime.parse(_json["changedAttributesSinceTimestamp"]);
+      changedAttributesSinceTimestamp =
+          core.DateTime.parse(_json["changedAttributesSinceTimestamp"]);
     }
     if (_json.containsKey("changedMetricsSinceTimestamp")) {
-      changedMetricsSinceTimestamp = core.DateTime.parse(_json["changedMetricsSinceTimestamp"]);
+      changedMetricsSinceTimestamp =
+          core.DateTime.parse(_json["changedMetricsSinceTimestamp"]);
     }
     if (_json.containsKey("endDate")) {
       endDate = _json["endDate"];
@@ -1551,12 +1560,15 @@ class ReportRequestTimeRange {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (changedAttributesSinceTimestamp != null) {
-      _json["changedAttributesSinceTimestamp"] = (changedAttributesSinceTimestamp).toIso8601String();
+      _json["changedAttributesSinceTimestamp"] =
+          (changedAttributesSinceTimestamp).toIso8601String();
     }
     if (changedMetricsSinceTimestamp != null) {
-      _json["changedMetricsSinceTimestamp"] = (changedMetricsSinceTimestamp).toIso8601String();
+      _json["changedMetricsSinceTimestamp"] =
+          (changedMetricsSinceTimestamp).toIso8601String();
     }
     if (endDate != null) {
       _json["endDate"] = endDate;
@@ -1568,97 +1580,88 @@ class ReportRequestTimeRange {
   }
 }
 
-/** A request object used to create a DoubleClick Search report. */
+/// A request object used to create a DoubleClick Search report.
 class ReportRequest {
-  /**
-   * The columns to include in the report. This includes both DoubleClick Search
-   * columns and saved columns. For DoubleClick Search columns, only the
-   * columnName parameter is required. For saved columns only the
-   * savedColumnName parameter is required. Both columnName and savedColumnName
-   * cannot be set in the same stanza.
-   */
+  /// The columns to include in the report. This includes both DoubleClick
+  /// Search columns and saved columns. For DoubleClick Search columns, only the
+  /// columnName parameter is required. For saved columns only the
+  /// savedColumnName parameter is required. Both columnName and savedColumnName
+  /// cannot be set in the same stanza.
   core.List<ReportApiColumnSpec> columns;
-  /**
-   * Format that the report should be returned in. Currently csv or tsv is
-   * supported.
-   */
+
+  /// Format that the report should be returned in. Currently csv or tsv is
+  /// supported.
   core.String downloadFormat;
-  /** A list of filters to be applied to the report. */
+
+  /// A list of filters to be applied to the report.
   core.List<ReportRequestFilters> filters;
-  /**
-   * Determines if removed entities should be included in the report. Defaults
-   * to false. Deprecated, please use includeRemovedEntities instead.
-   */
+
+  /// Determines if removed entities should be included in the report. Defaults
+  /// to false. Deprecated, please use includeRemovedEntities instead.
   core.bool includeDeletedEntities;
-  /**
-   * Determines if removed entities should be included in the report. Defaults
-   * to false.
-   */
+
+  /// Determines if removed entities should be included in the report. Defaults
+  /// to false.
   core.bool includeRemovedEntities;
-  /**
-   * Asynchronous report only. The maximum number of rows per report file. A
-   * large report is split into many files based on this field. Acceptable
-   * values are 1000000 to 100000000, inclusive.
-   */
+
+  /// Asynchronous report only. The maximum number of rows per report file. A
+  /// large report is split into many files based on this field. Acceptable
+  /// values are 1000000 to 100000000, inclusive.
   core.int maxRowsPerFile;
-  /**
-   * Synchronous report only. A list of columns and directions defining sorting
-   * to be performed on the report rows.
-   */
+
+  /// Synchronous report only. A list of columns and directions defining sorting
+  /// to be performed on the report rows.
   core.List<ReportRequestOrderBy> orderBy;
-  /**
-   * The reportScope is a set of IDs that are used to determine which subset of
-   * entities will be returned in the report. The full lineage of IDs from the
-   * lowest scoped level desired up through agency is required.
-   */
+
+  /// The reportScope is a set of IDs that are used to determine which subset of
+  /// entities will be returned in the report. The full lineage of IDs from the
+  /// lowest scoped level desired up through agency is required.
   ReportRequestReportScope reportScope;
-  /**
-   * Determines the type of rows that are returned in the report. For example,
-   * if you specify reportType: keyword, each row in the report will contain
-   * data about a keyword. See the Types of Reports reference for the columns
-   * that are available for each type.
-   */
+
+  /// Determines the type of rows that are returned in the report. For example,
+  /// if you specify reportType: keyword, each row in the report will contain
+  /// data about a keyword. See the Types of Reports reference for the columns
+  /// that are available for each type.
   core.String reportType;
-  /**
-   * Synchronous report only. The maxinum number of rows to return; additional
-   * rows are dropped. Acceptable values are 0 to 10000, inclusive. Defaults to
-   * 10000.
-   */
+
+  /// Synchronous report only. The maxinum number of rows to return; additional
+  /// rows are dropped. Acceptable values are 0 to 10000, inclusive. Defaults to
+  /// 10000.
   core.int rowCount;
-  /**
-   * Synchronous report only. Zero-based index of the first row to return.
-   * Acceptable values are 0 to 50000, inclusive. Defaults to 0.
-   */
+
+  /// Synchronous report only. Zero-based index of the first row to return.
+  /// Acceptable values are 0 to 50000, inclusive. Defaults to 0.
   core.int startRow;
-  /**
-   * Specifies the currency in which monetary will be returned. Possible values
-   * are: usd, agency (valid if the report is scoped to agency or lower),
-   * advertiser (valid if the report is scoped to * advertiser or lower), or
-   * account (valid if the report is scoped to engine account or lower).
-   */
+
+  /// Specifies the currency in which monetary will be returned. Possible values
+  /// are: usd, agency (valid if the report is scoped to agency or lower),
+  /// advertiser (valid if the report is scoped to * advertiser or lower), or
+  /// account (valid if the report is scoped to engine account or lower).
   core.String statisticsCurrency;
-  /**
-   * If metrics are requested in a report, this argument will be used to
-   * restrict the metrics to a specific time range.
-   */
+
+  /// If metrics are requested in a report, this argument will be used to
+  /// restrict the metrics to a specific time range.
   ReportRequestTimeRange timeRange;
-  /**
-   * If true, the report would only be created if all the requested stat data
-   * are sourced from a single timezone. Defaults to false.
-   */
+
+  /// If true, the report would only be created if all the requested stat data
+  /// are sourced from a single timezone. Defaults to false.
   core.bool verifySingleTimeZone;
 
   ReportRequest();
 
   ReportRequest.fromJson(core.Map _json) {
     if (_json.containsKey("columns")) {
-      columns = _json["columns"].map((value) => new ReportApiColumnSpec.fromJson(value)).toList();
+      columns = _json["columns"]
+          .map((value) => new ReportApiColumnSpec.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("downloadFormat")) {
       downloadFormat = _json["downloadFormat"];
     }
     if (_json.containsKey("filters")) {
-      filters = _json["filters"].map((value) => new ReportRequestFilters.fromJson(value)).toList();
+      filters = _json["filters"]
+          .map((value) => new ReportRequestFilters.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("includeDeletedEntities")) {
       includeDeletedEntities = _json["includeDeletedEntities"];
@@ -1670,7 +1673,9 @@ class ReportRequest {
       maxRowsPerFile = _json["maxRowsPerFile"];
     }
     if (_json.containsKey("orderBy")) {
-      orderBy = _json["orderBy"].map((value) => new ReportRequestOrderBy.fromJson(value)).toList();
+      orderBy = _json["orderBy"]
+          .map((value) => new ReportRequestOrderBy.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("reportScope")) {
       reportScope = new ReportRequestReportScope.fromJson(_json["reportScope"]);
@@ -1696,7 +1701,8 @@ class ReportRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (columns != null) {
       _json["columns"] = columns.map((value) => (value).toJson()).toList();
     }
@@ -1743,14 +1749,11 @@ class ReportRequest {
   }
 }
 
-/**
- * A row in a DoubleClick Search report.
- *
- * Indicates the columns that are represented in this row. That is, each key
- * corresponds to a column with a non-empty cell in this row.
- */
-class ReportRow
-    extends collection.MapBase<core.String, core.Object> {
+/// A row in a DoubleClick Search report.
+///
+/// Indicates the columns that are represented in this row. That is, each key
+/// corresponds to a column with a non-empty cell in this row.
+class ReportRow extends collection.MapBase<core.String, core.Object> {
   final core.Map _innerMap = {};
 
   ReportRow();
@@ -1762,15 +1765,15 @@ class ReportRow
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = <core.String, core.Object>{};
+    final core.Map<core.String, core.Object> _json =
+        <core.String, core.Object>{};
     this.forEach((core.String key, value) {
       _json[key] = value;
     });
     return _json;
   }
 
-  core.Object operator [](core.Object key)
-      => _innerMap[key];
+  core.Object operator [](core.Object key) => _innerMap[key];
 
   operator []=(core.String key, core.Object value) {
     _innerMap[key] = value;
@@ -1785,16 +1788,16 @@ class ReportRow
   core.Object remove(core.Object key) => _innerMap.remove(key);
 }
 
-/** A saved column */
+/// A saved column
 class SavedColumn {
-  /**
-   * Identifies this as a SavedColumn resource. Value: the fixed string
-   * doubleclicksearch#savedColumn.
-   */
+  /// Identifies this as a SavedColumn resource. Value: the fixed string
+  /// doubleclicksearch#savedColumn.
   core.String kind;
-  /** The name of the saved column. */
+
+  /// The name of the saved column.
   core.String savedColumnName;
-  /** The type of data this saved column will produce. */
+
+  /// The type of data this saved column will produce.
   core.String type;
 
   SavedColumn();
@@ -1812,7 +1815,8 @@ class SavedColumn {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -1826,26 +1830,25 @@ class SavedColumn {
   }
 }
 
-/**
- * A list of saved columns. Advertisers create saved columns to report on
- * Floodlight activities, Google Analytics goals, or custom KPIs. To request
- * reports with saved columns, you'll need the saved column names that are
- * available from this list.
- */
+/// A list of saved columns. Advertisers create saved columns to report on
+/// Floodlight activities, Google Analytics goals, or custom KPIs. To request
+/// reports with saved columns, you'll need the saved column names that are
+/// available from this list.
 class SavedColumnList {
-  /** The saved columns being requested. */
+  /// The saved columns being requested.
   core.List<SavedColumn> items;
-  /**
-   * Identifies this as a SavedColumnList resource. Value: the fixed string
-   * doubleclicksearch#savedColumnList.
-   */
+
+  /// Identifies this as a SavedColumnList resource. Value: the fixed string
+  /// doubleclicksearch#savedColumnList.
   core.String kind;
 
   SavedColumnList();
 
   SavedColumnList.fromJson(core.Map _json) {
     if (_json.containsKey("items")) {
-      items = _json["items"].map((value) => new SavedColumn.fromJson(value)).toList();
+      items = _json["items"]
+          .map((value) => new SavedColumn.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -1853,7 +1856,8 @@ class SavedColumnList {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (items != null) {
       _json["items"] = items.map((value) => (value).toJson()).toList();
     }
@@ -1864,45 +1868,53 @@ class SavedColumnList {
   }
 }
 
-/** The request to update availability. */
+/// The request to update availability.
 class UpdateAvailabilityRequest {
-  /** The availabilities being requested. */
+  /// The availabilities being requested.
   core.List<Availability> availabilities;
 
   UpdateAvailabilityRequest();
 
   UpdateAvailabilityRequest.fromJson(core.Map _json) {
     if (_json.containsKey("availabilities")) {
-      availabilities = _json["availabilities"].map((value) => new Availability.fromJson(value)).toList();
+      availabilities = _json["availabilities"]
+          .map((value) => new Availability.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (availabilities != null) {
-      _json["availabilities"] = availabilities.map((value) => (value).toJson()).toList();
+      _json["availabilities"] =
+          availabilities.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
 }
 
-/** The response to a update availability request. */
+/// The response to a update availability request.
 class UpdateAvailabilityResponse {
-  /** The availabilities being returned. */
+  /// The availabilities being returned.
   core.List<Availability> availabilities;
 
   UpdateAvailabilityResponse();
 
   UpdateAvailabilityResponse.fromJson(core.Map _json) {
     if (_json.containsKey("availabilities")) {
-      availabilities = _json["availabilities"].map((value) => new Availability.fromJson(value)).toList();
+      availabilities = _json["availabilities"]
+          .map((value) => new Availability.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (availabilities != null) {
-      _json["availabilities"] = availabilities.map((value) => (value).toJson()).toList();
+      _json["availabilities"] =
+          availabilities.map((value) => (value).toJson()).toList();
     }
     return _json;
   }

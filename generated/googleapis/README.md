@@ -390,6 +390,12 @@ Programmatically creates and manages Firebase Dynamic Links.
 
 Official API documentation: https://firebase.google.com/docs/dynamic-links/
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Firebase Remote Config API - firebaseremoteconfig v1
+
+Firebase Remote Config API allows the 3P clients to manage Remote Config conditions and parameters for Firebase applications.
+
+Official API documentation: https://firebase.google.com/docs/remote-config/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Firebase Rules API - firebaserules v1
 
 Creates and manages rules that determine when a Firebase Rules-enabled service should permit a request.

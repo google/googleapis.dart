@@ -88,7 +88,7 @@
     },
     "basePath": "/admin/directory/v1/",
     "baseUrl": "https://www.googleapis.com/admin/directory/v1/",
-    "batchPath": "batch",
+    "batchPath": "batch/admin/directory_v1",
     "canonicalName": "directory",
     "description": "The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.",
     "discoveryVersion": "v1",

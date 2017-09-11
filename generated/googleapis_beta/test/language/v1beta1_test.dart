@@ -1,12 +1,10 @@
 library googleapis_beta.language.v1beta1.test;
 
 import "dart:core" as core;
-import "dart:collection" as collection;
 import "dart:async" as async;
 import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
-import 'package:http/testing.dart' as http_testing;
 import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis_beta/language/v1beta1.dart' as api;
@@ -22,7 +20,8 @@ class HttpServerMock extends http.BaseClient {
 
   async.Future<http.StreamedResponse> send(http.BaseRequest request) {
     if (_expectJson) {
-      return request.finalize()
+      return request
+          .finalize()
           .transform(convert.UTF8.decoder)
           .join('')
           .then((core.String jsonString) {
@@ -45,8 +44,8 @@ class HttpServerMock extends http.BaseClient {
   }
 }
 
-http.StreamedResponse stringResponse(
-    core.int status, core.Map<core.String, core.String> headers, core.String body) {
+http.StreamedResponse stringResponse(core.int status,
+    core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -72,14 +71,14 @@ checkAnalyzeEntitiesRequest(api.AnalyzeEntitiesRequest o) {
   buildCounterAnalyzeEntitiesRequest--;
 }
 
-buildUnnamed3210() {
+buildUnnamed3203() {
   var o = new core.List<api.Entity>();
   o.add(buildEntity());
   o.add(buildEntity());
   return o;
 }
 
-checkUnnamed3210(core.List<api.Entity> o) {
+checkUnnamed3203(core.List<api.Entity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntity(o[0]);
   checkEntity(o[1]);
@@ -90,7 +89,7 @@ buildAnalyzeEntitiesResponse() {
   var o = new api.AnalyzeEntitiesResponse();
   buildCounterAnalyzeEntitiesResponse++;
   if (buildCounterAnalyzeEntitiesResponse < 3) {
-    o.entities = buildUnnamed3210();
+    o.entities = buildUnnamed3203();
     o.language = "foo";
   }
   buildCounterAnalyzeEntitiesResponse--;
@@ -100,7 +99,7 @@ buildAnalyzeEntitiesResponse() {
 checkAnalyzeEntitiesResponse(api.AnalyzeEntitiesResponse o) {
   buildCounterAnalyzeEntitiesResponse++;
   if (buildCounterAnalyzeEntitiesResponse < 3) {
-    checkUnnamed3210(o.entities);
+    checkUnnamed3203(o.entities);
     unittest.expect(o.language, unittest.equals('foo'));
   }
   buildCounterAnalyzeEntitiesResponse--;
@@ -127,14 +126,14 @@ checkAnalyzeSentimentRequest(api.AnalyzeSentimentRequest o) {
   buildCounterAnalyzeSentimentRequest--;
 }
 
-buildUnnamed3211() {
+buildUnnamed3204() {
   var o = new core.List<api.Sentence>();
   o.add(buildSentence());
   o.add(buildSentence());
   return o;
 }
 
-checkUnnamed3211(core.List<api.Sentence> o) {
+checkUnnamed3204(core.List<api.Sentence> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSentence(o[0]);
   checkSentence(o[1]);
@@ -147,7 +146,7 @@ buildAnalyzeSentimentResponse() {
   if (buildCounterAnalyzeSentimentResponse < 3) {
     o.documentSentiment = buildSentiment();
     o.language = "foo";
-    o.sentences = buildUnnamed3211();
+    o.sentences = buildUnnamed3204();
   }
   buildCounterAnalyzeSentimentResponse--;
   return o;
@@ -158,7 +157,7 @@ checkAnalyzeSentimentResponse(api.AnalyzeSentimentResponse o) {
   if (buildCounterAnalyzeSentimentResponse < 3) {
     checkSentiment(o.documentSentiment);
     unittest.expect(o.language, unittest.equals('foo'));
-    checkUnnamed3211(o.sentences);
+    checkUnnamed3204(o.sentences);
   }
   buildCounterAnalyzeSentimentResponse--;
 }
@@ -184,27 +183,27 @@ checkAnalyzeSyntaxRequest(api.AnalyzeSyntaxRequest o) {
   buildCounterAnalyzeSyntaxRequest--;
 }
 
-buildUnnamed3212() {
+buildUnnamed3205() {
   var o = new core.List<api.Sentence>();
   o.add(buildSentence());
   o.add(buildSentence());
   return o;
 }
 
-checkUnnamed3212(core.List<api.Sentence> o) {
+checkUnnamed3205(core.List<api.Sentence> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSentence(o[0]);
   checkSentence(o[1]);
 }
 
-buildUnnamed3213() {
+buildUnnamed3206() {
   var o = new core.List<api.Token>();
   o.add(buildToken());
   o.add(buildToken());
   return o;
 }
 
-checkUnnamed3213(core.List<api.Token> o) {
+checkUnnamed3206(core.List<api.Token> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkToken(o[0]);
   checkToken(o[1]);
@@ -216,8 +215,8 @@ buildAnalyzeSyntaxResponse() {
   buildCounterAnalyzeSyntaxResponse++;
   if (buildCounterAnalyzeSyntaxResponse < 3) {
     o.language = "foo";
-    o.sentences = buildUnnamed3212();
-    o.tokens = buildUnnamed3213();
+    o.sentences = buildUnnamed3205();
+    o.tokens = buildUnnamed3206();
   }
   buildCounterAnalyzeSyntaxResponse--;
   return o;
@@ -227,8 +226,8 @@ checkAnalyzeSyntaxResponse(api.AnalyzeSyntaxResponse o) {
   buildCounterAnalyzeSyntaxResponse++;
   if (buildCounterAnalyzeSyntaxResponse < 3) {
     unittest.expect(o.language, unittest.equals('foo'));
-    checkUnnamed3212(o.sentences);
-    checkUnnamed3213(o.tokens);
+    checkUnnamed3205(o.sentences);
+    checkUnnamed3206(o.tokens);
   }
   buildCounterAnalyzeSyntaxResponse--;
 }
@@ -256,40 +255,40 @@ checkAnnotateTextRequest(api.AnnotateTextRequest o) {
   buildCounterAnnotateTextRequest--;
 }
 
-buildUnnamed3214() {
+buildUnnamed3207() {
   var o = new core.List<api.Entity>();
   o.add(buildEntity());
   o.add(buildEntity());
   return o;
 }
 
-checkUnnamed3214(core.List<api.Entity> o) {
+checkUnnamed3207(core.List<api.Entity> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntity(o[0]);
   checkEntity(o[1]);
 }
 
-buildUnnamed3215() {
+buildUnnamed3208() {
   var o = new core.List<api.Sentence>();
   o.add(buildSentence());
   o.add(buildSentence());
   return o;
 }
 
-checkUnnamed3215(core.List<api.Sentence> o) {
+checkUnnamed3208(core.List<api.Sentence> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSentence(o[0]);
   checkSentence(o[1]);
 }
 
-buildUnnamed3216() {
+buildUnnamed3209() {
   var o = new core.List<api.Token>();
   o.add(buildToken());
   o.add(buildToken());
   return o;
 }
 
-checkUnnamed3216(core.List<api.Token> o) {
+checkUnnamed3209(core.List<api.Token> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkToken(o[0]);
   checkToken(o[1]);
@@ -301,10 +300,10 @@ buildAnnotateTextResponse() {
   buildCounterAnnotateTextResponse++;
   if (buildCounterAnnotateTextResponse < 3) {
     o.documentSentiment = buildSentiment();
-    o.entities = buildUnnamed3214();
+    o.entities = buildUnnamed3207();
     o.language = "foo";
-    o.sentences = buildUnnamed3215();
-    o.tokens = buildUnnamed3216();
+    o.sentences = buildUnnamed3208();
+    o.tokens = buildUnnamed3209();
   }
   buildCounterAnnotateTextResponse--;
   return o;
@@ -314,10 +313,10 @@ checkAnnotateTextResponse(api.AnnotateTextResponse o) {
   buildCounterAnnotateTextResponse++;
   if (buildCounterAnnotateTextResponse < 3) {
     checkSentiment(o.documentSentiment);
-    checkUnnamed3214(o.entities);
+    checkUnnamed3207(o.entities);
     unittest.expect(o.language, unittest.equals('foo'));
-    checkUnnamed3215(o.sentences);
-    checkUnnamed3216(o.tokens);
+    checkUnnamed3208(o.sentences);
+    checkUnnamed3209(o.tokens);
   }
   buildCounterAnnotateTextResponse--;
 }
@@ -368,27 +367,27 @@ checkDocument(api.Document o) {
   buildCounterDocument--;
 }
 
-buildUnnamed3217() {
+buildUnnamed3210() {
   var o = new core.List<api.EntityMention>();
   o.add(buildEntityMention());
   o.add(buildEntityMention());
   return o;
 }
 
-checkUnnamed3217(core.List<api.EntityMention> o) {
+checkUnnamed3210(core.List<api.EntityMention> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntityMention(o[0]);
   checkEntityMention(o[1]);
 }
 
-buildUnnamed3218() {
+buildUnnamed3211() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed3218(core.Map<core.String, core.String> o) {
+checkUnnamed3211(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -399,8 +398,8 @@ buildEntity() {
   var o = new api.Entity();
   buildCounterEntity++;
   if (buildCounterEntity < 3) {
-    o.mentions = buildUnnamed3217();
-    o.metadata = buildUnnamed3218();
+    o.mentions = buildUnnamed3210();
+    o.metadata = buildUnnamed3211();
     o.name = "foo";
     o.salience = 42.0;
     o.type = "foo";
@@ -412,8 +411,8 @@ buildEntity() {
 checkEntity(api.Entity o) {
   buildCounterEntity++;
   if (buildCounterEntity < 3) {
-    checkUnnamed3217(o.mentions);
-    checkUnnamed3218(o.metadata);
+    checkUnnamed3210(o.mentions);
+    checkUnnamed3211(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.salience, unittest.equals(42.0));
     unittest.expect(o.type, unittest.equals('foo'));
@@ -550,30 +549,46 @@ checkSentiment(api.Sentiment o) {
   buildCounterSentiment--;
 }
 
-buildUnnamed3219() {
+buildUnnamed3212() {
   var o = new core.Map<core.String, core.Object>();
-  o["x"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
-  o["y"] = {'list' : [1, 2, 3], 'bool' : true, 'string' : 'foo'};
+  o["x"] = {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  };
+  o["y"] = {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  };
   return o;
 }
 
-checkUnnamed3219(core.Map<core.String, core.Object> o) {
+checkUnnamed3212(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted1 = (o["x"]) as core.Map; unittest.expect(casted1, unittest.hasLength(3)); unittest.expect(casted1["list"], unittest.equals([1, 2, 3])); unittest.expect(casted1["bool"], unittest.equals(true)); unittest.expect(casted1["string"], unittest.equals('foo')); 
-  var casted2 = (o["y"]) as core.Map; unittest.expect(casted2, unittest.hasLength(3)); unittest.expect(casted2["list"], unittest.equals([1, 2, 3])); unittest.expect(casted2["bool"], unittest.equals(true)); unittest.expect(casted2["string"], unittest.equals('foo')); 
+  var casted1 = (o["x"]) as core.Map;
+  unittest.expect(casted1, unittest.hasLength(3));
+  unittest.expect(casted1["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted1["bool"], unittest.equals(true));
+  unittest.expect(casted1["string"], unittest.equals('foo'));
+  var casted2 = (o["y"]) as core.Map;
+  unittest.expect(casted2, unittest.hasLength(3));
+  unittest.expect(casted2["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted2["bool"], unittest.equals(true));
+  unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed3220() {
+buildUnnamed3213() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed3219());
-  o.add(buildUnnamed3219());
+  o.add(buildUnnamed3212());
+  o.add(buildUnnamed3212());
   return o;
 }
 
-checkUnnamed3220(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed3213(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed3219(o[0]);
-  checkUnnamed3219(o[1]);
+  checkUnnamed3212(o[0]);
+  checkUnnamed3212(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -582,7 +597,7 @@ buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed3220();
+    o.details = buildUnnamed3213();
     o.message = "foo";
   }
   buildCounterStatus--;
@@ -593,7 +608,7 @@ checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed3220(o.details);
+    checkUnnamed3213(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
@@ -645,7 +660,6 @@ checkToken(api.Token o) {
   buildCounterToken--;
 }
 
-
 main() {
   unittest.group("obj-schema-AnalyzeEntitiesRequest", () {
     unittest.test("to-json--from-json", () {
@@ -655,7 +669,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-AnalyzeEntitiesResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildAnalyzeEntitiesResponse();
@@ -663,7 +676,6 @@ main() {
       checkAnalyzeEntitiesResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-AnalyzeSentimentRequest", () {
     unittest.test("to-json--from-json", () {
@@ -673,7 +685,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-AnalyzeSentimentResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildAnalyzeSentimentResponse();
@@ -681,7 +692,6 @@ main() {
       checkAnalyzeSentimentResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-AnalyzeSyntaxRequest", () {
     unittest.test("to-json--from-json", () {
@@ -691,7 +701,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-AnalyzeSyntaxResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildAnalyzeSyntaxResponse();
@@ -699,7 +708,6 @@ main() {
       checkAnalyzeSyntaxResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-AnnotateTextRequest", () {
     unittest.test("to-json--from-json", () {
@@ -709,7 +717,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-AnnotateTextResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildAnnotateTextResponse();
@@ -717,7 +724,6 @@ main() {
       checkAnnotateTextResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-DependencyEdge", () {
     unittest.test("to-json--from-json", () {
@@ -727,7 +733,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Document", () {
     unittest.test("to-json--from-json", () {
       var o = buildDocument();
@@ -735,7 +740,6 @@ main() {
       checkDocument(od);
     });
   });
-
 
   unittest.group("obj-schema-Entity", () {
     unittest.test("to-json--from-json", () {
@@ -745,7 +749,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-EntityMention", () {
     unittest.test("to-json--from-json", () {
       var o = buildEntityMention();
@@ -753,7 +756,6 @@ main() {
       checkEntityMention(od);
     });
   });
-
 
   unittest.group("obj-schema-Features", () {
     unittest.test("to-json--from-json", () {
@@ -763,7 +765,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-PartOfSpeech", () {
     unittest.test("to-json--from-json", () {
       var o = buildPartOfSpeech();
@@ -771,7 +772,6 @@ main() {
       checkPartOfSpeech(od);
     });
   });
-
 
   unittest.group("obj-schema-Sentence", () {
     unittest.test("to-json--from-json", () {
@@ -781,7 +781,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Sentiment", () {
     unittest.test("to-json--from-json", () {
       var o = buildSentiment();
@@ -789,7 +788,6 @@ main() {
       checkSentiment(od);
     });
   });
-
 
   unittest.group("obj-schema-Status", () {
     unittest.test("to-json--from-json", () {
@@ -799,7 +797,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-TextSpan", () {
     unittest.test("to-json--from-json", () {
       var o = buildTextSpan();
@@ -807,7 +804,6 @@ main() {
       checkTextSpan(od);
     });
   });
-
 
   unittest.group("obj-schema-Token", () {
     unittest.test("to-json--from-json", () {
@@ -817,10 +813,8 @@ main() {
     });
   });
 
-
   unittest.group("resource-DocumentsResourceApi", () {
     unittest.test("method--analyzeEntities", () {
-
       var mock = new HttpServerMock();
       api.DocumentsResourceApi res = new api.LanguageApi(mock).documents;
       var arg_request = buildAnalyzeEntitiesRequest();
@@ -832,9 +826,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 33), unittest.equals("v1beta1/documents:analyzeEntities"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 33),
+            unittest.equals("v1beta1/documents:analyzeEntities"));
         pathOffset += 33;
 
         var query = (req.url).query;
@@ -847,27 +843,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAnalyzeEntitiesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.analyzeEntities(arg_request).then(unittest.expectAsync1(((api.AnalyzeEntitiesResponse response) {
+      res
+          .analyzeEntities(arg_request)
+          .then(unittest.expectAsync1(((api.AnalyzeEntitiesResponse response) {
         checkAnalyzeEntitiesResponse(response);
       })));
     });
 
     unittest.test("method--analyzeSentiment", () {
-
       var mock = new HttpServerMock();
       api.DocumentsResourceApi res = new api.LanguageApi(mock).documents;
       var arg_request = buildAnalyzeSentimentRequest();
@@ -879,9 +877,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 34), unittest.equals("v1beta1/documents:analyzeSentiment"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 34),
+            unittest.equals("v1beta1/documents:analyzeSentiment"));
         pathOffset += 34;
 
         var query = (req.url).query;
@@ -894,27 +894,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAnalyzeSentimentResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.analyzeSentiment(arg_request).then(unittest.expectAsync1(((api.AnalyzeSentimentResponse response) {
+      res
+          .analyzeSentiment(arg_request)
+          .then(unittest.expectAsync1(((api.AnalyzeSentimentResponse response) {
         checkAnalyzeSentimentResponse(response);
       })));
     });
 
     unittest.test("method--analyzeSyntax", () {
-
       var mock = new HttpServerMock();
       api.DocumentsResourceApi res = new api.LanguageApi(mock).documents;
       var arg_request = buildAnalyzeSyntaxRequest();
@@ -926,9 +928,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 31), unittest.equals("v1beta1/documents:analyzeSyntax"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 31),
+            unittest.equals("v1beta1/documents:analyzeSyntax"));
         pathOffset += 31;
 
         var query = (req.url).query;
@@ -941,27 +945,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAnalyzeSyntaxResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.analyzeSyntax(arg_request).then(unittest.expectAsync1(((api.AnalyzeSyntaxResponse response) {
+      res
+          .analyzeSyntax(arg_request)
+          .then(unittest.expectAsync1(((api.AnalyzeSyntaxResponse response) {
         checkAnalyzeSyntaxResponse(response);
       })));
     });
 
     unittest.test("method--annotateText", () {
-
       var mock = new HttpServerMock();
       api.DocumentsResourceApi res = new api.LanguageApi(mock).documents;
       var arg_request = buildAnnotateTextRequest();
@@ -973,9 +979,11 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30), unittest.equals("v1beta1/documents:annotateText"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 30),
+            unittest.equals("v1beta1/documents:annotateText"));
         pathOffset += 30;
 
         var query = (req.url).query;
@@ -988,27 +996,26 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAnnotateTextResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.annotateText(arg_request).then(unittest.expectAsync1(((api.AnnotateTextResponse response) {
+      res
+          .annotateText(arg_request)
+          .then(unittest.expectAsync1(((api.AnnotateTextResponse response) {
         checkAnnotateTextResponse(response);
       })));
     });
-
   });
-
-
 }
-

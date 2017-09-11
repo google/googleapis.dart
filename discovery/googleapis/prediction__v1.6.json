@@ -22,7 +22,7 @@
     },
     "basePath": "/prediction/v1.6/projects/",
     "baseUrl": "https://www.googleapis.com/prediction/v1.6/projects/",
-    "batchPath": "batch",
+    "batchPath": "batch/prediction/v1.6",
     "description": "Lets you access a cloud hosted machine learning service that makes it easy to build smart apps",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/prediction/docs/developer-guide",

@@ -1,3 +1,13 @@
+## 0.39.2
+* [api] appengine:v1beta
+* [api] dataflow:v1b3
+* [api] dlp:v2beta1
+* [api] language:v1beta2
+* [api] logging:v2beta1
+* [api] toolresults:v1beta3firstparty
+* [api] toolresults:v1beta3
+* [api] videointelligence:v1beta1
+
 ## 0.39.1
 
 * [api] dataflow:v1b3

@@ -10,12 +10,12 @@
     },
     "basePath": "/appstate/v1/",
     "baseUrl": "https://www.googleapis.com/appstate/v1/",
-    "batchPath": "batch",
+    "batchPath": "batch/appstate/v1",
     "canonicalName": "App State",
     "description": "The Google App State API.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/games/services/web/api/states",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/egZ5IkqCNZt-wrZxmMXccXZvOHw\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/mbrci8GXE-W50F0APQRstWksGH8\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -211,7 +211,7 @@
             }
         }
     },
-    "revision": "20170815",
+    "revision": "20170831",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "GetResponse": {

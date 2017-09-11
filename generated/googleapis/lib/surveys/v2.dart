@@ -9,60 +9,65 @@ import 'dart:convert' as convert;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
-    ApiRequestError, DetailedApiRequestError, Media, UploadOptions,
-    ResumableUploadOptions, DownloadOptions, PartialDownloadOptions,
-    ByteRange;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
+    show
+        ApiRequestError,
+        DetailedApiRequestError,
+        Media,
+        UploadOptions,
+        ResumableUploadOptions,
+        DownloadOptions,
+        PartialDownloadOptions,
+        ByteRange;
 
 const core.String USER_AGENT = 'dart-api-client surveys/v2';
 
-/**
- * Creates and conducts surveys, lists the surveys that an authenticated user
- * owns, and retrieves survey results and information about specified surveys.
- */
+/// Creates and conducts surveys, lists the surveys that an authenticated user
+/// owns, and retrieves survey results and information about specified surveys.
 class SurveysApi {
-  /** View and manage your surveys and results */
+  /// View and manage your surveys and results
   static const SurveysScope = "https://www.googleapis.com/auth/surveys";
 
-  /** View your surveys and survey results */
-  static const SurveysReadonlyScope = "https://www.googleapis.com/auth/surveys.readonly";
+  /// View your surveys and survey results
+  static const SurveysReadonlyScope =
+      "https://www.googleapis.com/auth/surveys.readonly";
 
-  /** View your email address */
-  static const UserinfoEmailScope = "https://www.googleapis.com/auth/userinfo.email";
-
+  /// View your email address
+  static const UserinfoEmailScope =
+      "https://www.googleapis.com/auth/userinfo.email";
 
   final commons.ApiRequester _requester;
 
-  MobileapppanelsResourceApi get mobileapppanels => new MobileapppanelsResourceApi(_requester);
+  MobileapppanelsResourceApi get mobileapppanels =>
+      new MobileapppanelsResourceApi(_requester);
   ResultsResourceApi get results => new ResultsResourceApi(_requester);
   SurveysResourceApi get surveys => new SurveysResourceApi(_requester);
 
-  SurveysApi(http.Client client, {core.String rootUrl: "https://www.googleapis.com/", core.String servicePath: "surveys/v2/"}) :
-      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+  SurveysApi(http.Client client,
+      {core.String rootUrl: "https://www.googleapis.com/",
+      core.String servicePath: "surveys/v2/"})
+      : _requester =
+            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
-
 
 class MobileapppanelsResourceApi {
   final commons.ApiRequester _requester;
 
-  MobileapppanelsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  MobileapppanelsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Retrieves a MobileAppPanel that is available to the authenticated user.
-   *
-   * Request parameters:
-   *
-   * [panelId] - External URL ID for the panel.
-   *
-   * Completes with a [MobileAppPanel].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Retrieves a MobileAppPanel that is available to the authenticated user.
+  ///
+  /// Request parameters:
+  ///
+  /// [panelId] - External URL ID for the panel.
+  ///
+  /// Completes with a [MobileAppPanel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<MobileAppPanel> get(core.String panelId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -77,36 +82,34 @@ class MobileapppanelsResourceApi {
 
     _url = 'mobileAppPanels/' + commons.Escaper.ecapeVariable('$panelId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new MobileAppPanel.fromJson(data));
   }
 
-  /**
-   * Lists the MobileAppPanels available to the authenticated user.
-   *
-   * Request parameters:
-   *
-   * [maxResults] - null
-   *
-   * [startIndex] - null
-   *
-   * [token] - null
-   *
-   * Completes with a [MobileAppPanelsListResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<MobileAppPanelsListResponse> list({core.int maxResults, core.int startIndex, core.String token}) {
+  /// Lists the MobileAppPanels available to the authenticated user.
+  ///
+  /// Request parameters:
+  ///
+  /// [maxResults] - null
+  ///
+  /// [startIndex] - null
+  ///
+  /// [token] - null
+  ///
+  /// Completes with a [MobileAppPanelsListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MobileAppPanelsListResponse> list(
+      {core.int maxResults, core.int startIndex, core.String token}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -126,35 +129,34 @@ class MobileapppanelsResourceApi {
 
     _url = 'mobileAppPanels';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new MobileAppPanelsListResponse.fromJson(data));
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new MobileAppPanelsListResponse.fromJson(data));
   }
 
-  /**
-   * Updates a MobileAppPanel. Currently the only property that can be updated
-   * is the owners property.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [panelId] - External URL ID for the panel.
-   *
-   * Completes with a [MobileAppPanel].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<MobileAppPanel> update(MobileAppPanel request, core.String panelId) {
+  /// Updates a MobileAppPanel. Currently the only property that can be updated
+  /// is the owners property.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [panelId] - External URL ID for the panel.
+  ///
+  /// Completes with a [MobileAppPanel].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MobileAppPanel> update(
+      MobileAppPanel request, core.String panelId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -171,53 +173,49 @@ class MobileapppanelsResourceApi {
 
     _url = 'mobileAppPanels/' + commons.Escaper.ecapeVariable('$panelId');
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new MobileAppPanel.fromJson(data));
   }
-
 }
-
 
 class ResultsResourceApi {
   final commons.ApiRequester _requester;
 
-  ResultsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  ResultsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Retrieves any survey results that have been produced so far. Results are
-   * formatted as an Excel file. You must add "?alt=media" to the URL as an
-   * argument to get results.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [surveyUrlId] - External URL ID for the survey.
-   *
-   * [downloadOptions] - Options for downloading. A download can be either a
-   * Metadata (default) or Media download. Partial Media downloads are possible
-   * as well.
-   *
-   * Completes with a
-   *
-   * - [SurveyResults] for Metadata downloads (see [downloadOptions]).
-   *
-   * - [commons.Media] for Media downloads (see [downloadOptions]).
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future get(ResultsGetRequest request, core.String surveyUrlId, {commons.DownloadOptions downloadOptions: commons.DownloadOptions.Metadata}) {
+  /// Retrieves any survey results that have been produced so far. Results are
+  /// formatted as an Excel file. You must add "?alt=media" to the URL as an
+  /// argument to get results.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [surveyUrlId] - External URL ID for the survey.
+  ///
+  /// [downloadOptions] - Options for downloading. A download can be either a
+  /// Metadata (default) or Media download. Partial Media downloads are possible
+  /// as well.
+  ///
+  /// Completes with a
+  ///
+  /// - [SurveyResults] for Metadata downloads (see [downloadOptions]).
+  ///
+  /// - [commons.Media] for Media downloads (see [downloadOptions]).
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future get(ResultsGetRequest request, core.String surveyUrlId,
+      {commons.DownloadOptions downloadOptions:
+          commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -234,15 +232,15 @@ class ResultsResourceApi {
 
     _downloadOptions = downloadOptions;
 
-    _url = 'surveys/' + commons.Escaper.ecapeVariable('$surveyUrlId') + '/results';
+    _url =
+        'surveys/' + commons.Escaper.ecapeVariable('$surveyUrlId') + '/results';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
       return _response.then((data) => new SurveyResults.fromJson(data));
@@ -250,31 +248,26 @@ class ResultsResourceApi {
       return _response;
     }
   }
-
 }
-
 
 class SurveysResourceApi {
   final commons.ApiRequester _requester;
 
-  SurveysResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  SurveysResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Removes a survey from view in all user GET requests.
-   *
-   * Request parameters:
-   *
-   * [surveyUrlId] - External URL ID for the survey.
-   *
-   * Completes with a [SurveysDeleteResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Removes a survey from view in all user GET requests.
+  ///
+  /// Request parameters:
+  ///
+  /// [surveyUrlId] - External URL ID for the survey.
+  ///
+  /// Completes with a [SurveysDeleteResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<SurveysDeleteResponse> delete(core.String surveyUrlId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -289,31 +282,28 @@ class SurveysResourceApi {
 
     _url = 'surveys/' + commons.Escaper.ecapeVariable('$surveyUrlId');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new SurveysDeleteResponse.fromJson(data));
   }
 
-  /**
-   * Retrieves information about the specified survey.
-   *
-   * Request parameters:
-   *
-   * [surveyUrlId] - External URL ID for the survey.
-   *
-   * Completes with a [Survey].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Retrieves information about the specified survey.
+  ///
+  /// Request parameters:
+  ///
+  /// [surveyUrlId] - External URL ID for the survey.
+  ///
+  /// Completes with a [Survey].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Survey> get(core.String surveyUrlId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -328,31 +318,28 @@ class SurveysResourceApi {
 
     _url = 'surveys/' + commons.Escaper.ecapeVariable('$surveyUrlId');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Survey.fromJson(data));
   }
 
-  /**
-   * Creates a survey.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [Survey].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Creates a survey.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [Survey].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Survey> insert(Survey request) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -367,36 +354,34 @@ class SurveysResourceApi {
 
     _url = 'surveys';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Survey.fromJson(data));
   }
 
-  /**
-   * Lists the surveys owned by the authenticated user.
-   *
-   * Request parameters:
-   *
-   * [maxResults] - null
-   *
-   * [startIndex] - null
-   *
-   * [token] - null
-   *
-   * Completes with a [SurveysListResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<SurveysListResponse> list({core.int maxResults, core.int startIndex, core.String token}) {
+  /// Lists the surveys owned by the authenticated user.
+  ///
+  /// Request parameters:
+  ///
+  /// [maxResults] - null
+  ///
+  /// [startIndex] - null
+  ///
+  /// [token] - null
+  ///
+  /// Completes with a [SurveysListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SurveysListResponse> list(
+      {core.int maxResults, core.int startIndex, core.String token}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -416,34 +401,32 @@ class SurveysResourceApi {
 
     _url = 'surveys';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new SurveysListResponse.fromJson(data));
   }
 
-  /**
-   * Begins running a survey.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [resourceId] - null
-   *
-   * Completes with a [SurveysStartResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<SurveysStartResponse> start(SurveysStartRequest request, core.String resourceId) {
+  /// Begins running a survey.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resourceId] - null
+  ///
+  /// Completes with a [SurveysStartResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SurveysStartResponse> start(
+      SurveysStartRequest request, core.String resourceId) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -460,31 +443,28 @@ class SurveysResourceApi {
 
     _url = 'surveys/' + commons.Escaper.ecapeVariable('$resourceId') + '/start';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new SurveysStartResponse.fromJson(data));
   }
 
-  /**
-   * Stops a running survey.
-   *
-   * Request parameters:
-   *
-   * [resourceId] - null
-   *
-   * Completes with a [SurveysStopResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Stops a running survey.
+  ///
+  /// Request parameters:
+  ///
+  /// [resourceId] - null
+  ///
+  /// Completes with a [SurveysStopResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<SurveysStopResponse> stop(core.String resourceId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -499,34 +479,31 @@ class SurveysResourceApi {
 
     _url = 'surveys/' + commons.Escaper.ecapeVariable('$resourceId') + '/stop';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new SurveysStopResponse.fromJson(data));
   }
 
-  /**
-   * Updates a survey. Currently the only property that can be updated is the
-   * owners property.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [surveyUrlId] - External URL ID for the survey.
-   *
-   * Completes with a [Survey].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Updates a survey. Currently the only property that can be updated is the
+  /// owners property.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [surveyUrlId] - External URL ID for the survey.
+  ///
+  /// Completes with a [Survey].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Survey> update(Survey request, core.String surveyUrlId) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -544,19 +521,15 @@ class SurveysResourceApi {
 
     _url = 'surveys/' + commons.Escaper.ecapeVariable('$surveyUrlId');
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Survey.fromJson(data));
   }
-
 }
-
-
 
 class FieldMask {
   core.List<FieldMask> fields;
@@ -566,7 +539,9 @@ class FieldMask {
 
   FieldMask.fromJson(core.Map _json) {
     if (_json.containsKey("fields")) {
-      fields = _json["fields"].map((value) => new FieldMask.fromJson(value)).toList();
+      fields = _json["fields"]
+          .map((value) => new FieldMask.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -574,7 +549,8 @@ class FieldMask {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (fields != null) {
       _json["fields"] = fields.map((value) => (value).toJson()).toList();
     }
@@ -585,38 +561,33 @@ class FieldMask {
   }
 }
 
-/**
- * Representation of an individual pre-defined panel object defining a targeted
- * audience of opinion rewards mobile app users.
- */
+/// Representation of an individual pre-defined panel object defining a targeted
+/// audience of opinion rewards mobile app users.
 class MobileAppPanel {
-  /**
-   * Country code for the country of the users that the panel contains. Uses
-   * standard ISO 3166-1 2-character language codes. For instance, 'US' for the
-   * United States, and 'GB' for the United Kingdom. Any survey created
-   * targeting this panel must also target the corresponding country.
-   */
+  /// Country code for the country of the users that the panel contains. Uses
+  /// standard ISO 3166-1 2-character language codes. For instance, 'US' for the
+  /// United States, and 'GB' for the United Kingdom. Any survey created
+  /// targeting this panel must also target the corresponding country.
   core.String country;
-  /** Whether or not the panel is accessible to all API users. */
+
+  /// Whether or not the panel is accessible to all API users.
   core.bool isPublicPanel;
-  /**
-   * Language code that the panel can target. For instance, 'en-US'. Uses
-   * standard BCP47 language codes. See specification. Any survey created
-   * targeting this panel must also target the corresponding language.
-   */
+
+  /// Language code that the panel can target. For instance, 'en-US'. Uses
+  /// standard BCP47 language codes. See specification. Any survey created
+  /// targeting this panel must also target the corresponding language.
   core.String language;
-  /**
-   * Unique panel ID string. This corresponds to the mobile_app_panel_id used in
-   * Survey Insert requests.
-   */
+
+  /// Unique panel ID string. This corresponds to the mobile_app_panel_id used
+  /// in Survey Insert requests.
   core.String mobileAppPanelId;
-  /** Human readable name of the audience panel. */
+
+  /// Human readable name of the audience panel.
   core.String name;
-  /**
-   * List of email addresses for users who can target members of this panel.
-   * Must contain at least the address of the user making the API call for
-   * panels that are not public. This field will be empty for public panels.
-   */
+
+  /// List of email addresses for users who can target members of this panel.
+  /// Must contain at least the address of the user making the API call for
+  /// panels that are not public. This field will be empty for public panels.
   core.List<core.String> owners;
 
   MobileAppPanel();
@@ -643,7 +614,8 @@ class MobileAppPanel {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (country != null) {
       _json["country"] = country;
     }
@@ -668,12 +640,12 @@ class MobileAppPanel {
 
 class MobileAppPanelsListResponse {
   PageInfo pageInfo;
-  /**
-   * Unique request ID used for logging and debugging. Please include in any
-   * error reporting or troubleshooting requests.
-   */
+
+  /// Unique request ID used for logging and debugging. Please include in any
+  /// error reporting or troubleshooting requests.
   core.String requestId;
-  /** An individual predefined panel of Opinion Rewards mobile users. */
+
+  /// An individual predefined panel of Opinion Rewards mobile users.
   core.List<MobileAppPanel> resources;
   TokenPagination tokenPagination;
 
@@ -687,7 +659,9 @@ class MobileAppPanelsListResponse {
       requestId = _json["requestId"];
     }
     if (_json.containsKey("resources")) {
-      resources = _json["resources"].map((value) => new MobileAppPanel.fromJson(value)).toList();
+      resources = _json["resources"]
+          .map((value) => new MobileAppPanel.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("tokenPagination")) {
       tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
@@ -695,7 +669,8 @@ class MobileAppPanelsListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (pageInfo != null) {
       _json["pageInfo"] = (pageInfo).toJson();
     }
@@ -732,7 +707,8 @@ class PageInfo {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (resultPerPage != null) {
       _json["resultPerPage"] = resultPerPage;
     }
@@ -758,7 +734,8 @@ class ResultsGetRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (resultMask != null) {
       _json["resultMask"] = (resultMask).toJson();
     }
@@ -774,7 +751,9 @@ class ResultsMask {
 
   ResultsMask.fromJson(core.Map _json) {
     if (_json.containsKey("fields")) {
-      fields = _json["fields"].map((value) => new FieldMask.fromJson(value)).toList();
+      fields = _json["fields"]
+          .map((value) => new FieldMask.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("projection")) {
       projection = _json["projection"];
@@ -782,7 +761,8 @@ class ResultsMask {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (fields != null) {
       _json["fields"] = fields.map((value) => (value).toJson()).toList();
     }
@@ -793,46 +773,51 @@ class ResultsMask {
   }
 }
 
-/** Representation of an individual survey object. */
+/// Representation of an individual survey object.
 class Survey {
-  /** Targeting-criteria message containing demographic information */
+  /// Targeting-criteria message containing demographic information
   SurveyAudience audience;
-  /** Cost to run the survey and collect the necessary number of responses. */
+
+  /// Cost to run the survey and collect the necessary number of responses.
   SurveyCost cost;
-  /**
-   * Additional information to store on behalf of the API consumer and associate
-   * with this question. This binary blob is treated as opaque. This field is
-   * limited to 64K bytes.
-   */
+
+  /// Additional information to store on behalf of the API consumer and
+  /// associate with this question. This binary blob is treated as opaque. This
+  /// field is limited to 64K bytes.
   core.String customerData;
   core.List<core.int> get customerDataAsBytes {
     return convert.BASE64.decode(customerData);
   }
 
   void set customerDataAsBytes(core.List<core.int> _bytes) {
-    customerData = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    customerData =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
-  /** Text description of the survey. */
+
+  /// Text description of the survey.
   core.String description;
-  /**
-   * List of email addresses for survey owners. Must contain at least the
-   * address of the user making the API call.
-   */
+
+  /// List of email addresses for survey owners. Must contain at least the
+  /// address of the user making the API call.
   core.List<core.String> owners;
-  /** List of questions defining the survey. */
+
+  /// List of questions defining the survey.
   core.List<SurveyQuestion> questions;
-  /**
-   * Reason for the survey being rejected. Only present if the survey state is
-   * rejected.
-   */
+
+  /// Reason for the survey being rejected. Only present if the survey state is
+  /// rejected.
   SurveyRejection rejectionReason;
-  /** State that the survey is in. */
+
+  /// State that the survey is in.
   core.String state;
-  /** Unique survey ID, that is viewable in the URL of the Survey Creator UI */
+
+  /// Unique survey ID, that is viewable in the URL of the Survey Creator UI
   core.String surveyUrlId;
-  /** Optional name that will be given to the survey. */
+
+  /// Optional name that will be given to the survey.
   core.String title;
-  /** Number of responses desired for the survey. */
+
+  /// Number of responses desired for the survey.
   core.int wantedResponseCount;
 
   Survey();
@@ -854,7 +839,9 @@ class Survey {
       owners = _json["owners"];
     }
     if (_json.containsKey("questions")) {
-      questions = _json["questions"].map((value) => new SurveyQuestion.fromJson(value)).toList();
+      questions = _json["questions"]
+          .map((value) => new SurveyQuestion.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("rejectionReason")) {
       rejectionReason = new SurveyRejection.fromJson(_json["rejectionReason"]);
@@ -874,7 +861,8 @@ class Survey {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (audience != null) {
       _json["audience"] = (audience).toJson();
     }
@@ -912,45 +900,41 @@ class Survey {
   }
 }
 
-/** Specifications for the target audience of a survey run through the API. */
+/// Specifications for the target audience of a survey run through the API.
 class SurveyAudience {
-  /**
-   * Optional list of age buckets to target. Supported age buckets are:
-   * ['18-24', '25-34', '35-44', '45-54', '55-64', '65+']
-   */
+  /// Optional list of age buckets to target. Supported age buckets are:
+  /// ['18-24', '25-34', '35-44', '45-54', '55-64', '65+']
   core.List<core.String> ages;
-  /**
-   * Required country code that surveys should be targeted to. Accepts standard
-   * ISO 3166-1 2 character language codes. For instance, 'US' for the United
-   * States, and 'GB' for the United Kingdom.
-   */
+
+  /// Required country code that surveys should be targeted to. Accepts standard
+  /// ISO 3166-1 2 character language codes. For instance, 'US' for the United
+  /// States, and 'GB' for the United Kingdom.
   core.String country;
-  /**
-   * Country subdivision (states/provinces/etc) that surveys should be targeted
-   * to. For all countries except GB, ISO-3166-2 subdivision code is required
-   * (eg. 'US-OH' for Ohio, United States). For GB, NUTS 1 statistical region
-   * codes for the United Kingdom is required (eg. 'UK-UKC' for North East
-   * England).
-   */
+
+  /// Country subdivision (states/provinces/etc) that surveys should be targeted
+  /// to. For all countries except GB, ISO-3166-2 subdivision code is required
+  /// (eg. 'US-OH' for Ohio, United States). For GB, NUTS 1 statistical region
+  /// codes for the United Kingdom is required (eg. 'UK-UKC' for North East
+  /// England).
   core.String countrySubdivision;
-  /** Optional gender to target. */
+
+  /// Optional gender to target.
   core.String gender;
-  /**
-   * Language code that surveys should be targeted to. For instance, 'en-US'.
-   * Surveys may target bilingual users by specifying a list of language codes
-   * (for example, 'de' and 'en-US'). In that case, all languages will be used
-   * for targeting users but the survey content (which is displayed) must match
-   * the first language listed. Accepts standard BCP47 language codes. See
-   * specification.
-   */
+
+  /// Language code that surveys should be targeted to. For instance, 'en-US'.
+  /// Surveys may target bilingual users by specifying a list of language codes
+  /// (for example, 'de' and 'en-US'). In that case, all languages will be used
+  /// for targeting users but the survey content (which is displayed) must match
+  /// the first language listed. Accepts standard BCP47 language codes. See
+  /// specification.
   core.List<core.String> languages;
-  /**
-   * Key for predefined panel that causes survey to be sent to a predefined set
-   * of Opinion Rewards App users. You must set PopulationSource to
-   * ANDROID_APP_PANEL to use this field.
-   */
+
+  /// Key for predefined panel that causes survey to be sent to a predefined set
+  /// of Opinion Rewards App users. You must set PopulationSource to
+  /// ANDROID_APP_PANEL to use this field.
   core.String mobileAppPanelId;
-  /** Online population source where the respondents are sampled from. */
+
+  /// Online population source where the respondents are sampled from.
   core.String populationSource;
 
   SurveyAudience();
@@ -980,7 +964,8 @@ class SurveyAudience {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (ages != null) {
       _json["ages"] = ages;
     }
@@ -1006,38 +991,35 @@ class SurveyAudience {
   }
 }
 
-/** Message defining the cost to run a given survey through API. */
+/// Message defining the cost to run a given survey through API.
 class SurveyCost {
-  /**
-   * Cost per survey response in nano units of the given currency. To get the
-   * total cost for a survey, multiply this value by wanted_response_count.
-   */
+  /// Cost per survey response in nano units of the given currency. To get the
+  /// total cost for a survey, multiply this value by wanted_response_count.
   core.String costPerResponseNanos;
-  /** Currency code that the cost is given in. */
+
+  /// Currency code that the cost is given in.
   core.String currencyCode;
-  /**
-   * Threshold to start a survey automatically if the quoted price is at most
-   * this value. When a survey has a Screener (threshold) question, it must go
-   * through an incidence pricing test to determine the final cost per response.
-   * Typically you will have to make a followup call to start the survey giving
-   * the final computed cost per response. If the survey has no
-   * threshold_answers, setting this property will return an error. By
-   * specifying this property, you indicate the max price per response you are
-   * willing to pay in advance of the incidence test. If the price turns out to
-   * be lower than the specified value, the survey will begin immediately and
-   * you will be charged at the rate determined by the incidence pricing test.
-   * If the price turns out to be greater than the specified value the survey
-   * will not be started and you will instead be notified what price was
-   * determined by the incidence test. At that point, you must raise the value
-   * of this property to be greater than or equal to that cost before attempting
-   * to start the survey again. This will immediately start the survey as long
-   * the incidence test was run within the last 21 days.
-   */
+
+  /// Threshold to start a survey automatically if the quoted price is at most
+  /// this value. When a survey has a Screener (threshold) question, it must go
+  /// through an incidence pricing test to determine the final cost per
+  /// response. Typically you will have to make a followup call to start the
+  /// survey giving the final computed cost per response. If the survey has no
+  /// threshold_answers, setting this property will return an error. By
+  /// specifying this property, you indicate the max price per response you are
+  /// willing to pay in advance of the incidence test. If the price turns out to
+  /// be lower than the specified value, the survey will begin immediately and
+  /// you will be charged at the rate determined by the incidence pricing test.
+  /// If the price turns out to be greater than the specified value the survey
+  /// will not be started and you will instead be notified what price was
+  /// determined by the incidence test. At that point, you must raise the value
+  /// of this property to be greater than or equal to that cost before
+  /// attempting to start the survey again. This will immediately start the
+  /// survey as long the incidence test was run within the last 21 days.
   core.String maxCostPerResponseNanos;
-  /**
-   * Cost of survey in nano units of the given currency. DEPRECATED in favor of
-   * cost_per_response_nanos
-   */
+
+  /// Cost of survey in nano units of the given currency. DEPRECATED in favor of
+  /// cost_per_response_nanos
   core.String nanos;
 
   SurveyCost();
@@ -1058,7 +1040,8 @@ class SurveyCost {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (costPerResponseNanos != null) {
       _json["costPerResponseNanos"] = costPerResponseNanos;
     }
@@ -1075,81 +1058,75 @@ class SurveyCost {
   }
 }
 
-/** Message defining the question specifications. */
+/// Message defining the question specifications.
 class SurveyQuestion {
-  /**
-   * The randomization option for multiple choice and multi-select questions. If
-   * not specified, this option defaults to randomize.
-   */
+  /// The randomization option for multiple choice and multi-select questions.
+  /// If not specified, this option defaults to randomize.
   core.String answerOrder;
-  /** Required list of answer options for a question. */
+
+  /// Required list of answer options for a question.
   core.List<core.String> answers;
-  /**
-   * Option to allow open-ended text box for Single Answer and Multiple Answer
-   * question types. This can be used with SINGLE_ANSWER,
-   * SINGLE_ANSWER_WITH_IMAGE, MULTIPLE_ANSWERS, and MULTIPLE_ANSWERS_WITH_IMAGE
-   * question types.
-   */
+
+  /// Option to allow open-ended text box for Single Answer and Multiple Answer
+  /// question types. This can be used with SINGLE_ANSWER,
+  /// SINGLE_ANSWER_WITH_IMAGE, MULTIPLE_ANSWERS, and
+  /// MULTIPLE_ANSWERS_WITH_IMAGE question types.
   core.bool hasOther;
-  /**
-   * For rating questions, the text for the higher end of the scale, such as
-   * 'Best'. For numeric questions, a string representing a floating-point that
-   * is the maximum allowed number for a response.
-   */
+
+  /// For rating questions, the text for the higher end of the scale, such as
+  /// 'Best'. For numeric questions, a string representing a floating-point that
+  /// is the maximum allowed number for a response.
   core.String highValueLabel;
   core.List<SurveyQuestionImage> images;
-  /** Currently only support pinning an answer option to the last position. */
+
+  /// Currently only support pinning an answer option to the last position.
   core.bool lastAnswerPositionPinned;
-  /**
-   * For rating questions, the text for the lower end of the scale, such as
-   * 'Worst'. For numeric questions, a string representing a floating-point that
-   * is the minimum allowed number for a response.
-   */
+
+  /// For rating questions, the text for the lower end of the scale, such as
+  /// 'Worst'. For numeric questions, a string representing a floating-point
+  /// that is the minimum allowed number for a response.
   core.String lowValueLabel;
-  /**
-   * Option to force the user to pick one of the open text suggestions. This
-   * requires that suggestions are provided for this question.
-   */
+
+  /// Option to force the user to pick one of the open text suggestions. This
+  /// requires that suggestions are provided for this question.
   core.bool mustPickSuggestion;
-  /** Number of stars to use for ratings questions. */
+
+  /// Number of stars to use for ratings questions.
   core.String numStars;
-  /** Placeholder text for an open text question. */
+
+  /// Placeholder text for an open text question.
   core.String openTextPlaceholder;
-  /**
-   * A list of suggested answers for open text question auto-complete. This is
-   * only valid if single_line_response is true.
-   */
+
+  /// A list of suggested answers for open text question auto-complete. This is
+  /// only valid if single_line_response is true.
   core.List<core.String> openTextSuggestions;
-  /** Required question text shown to the respondent. */
+
+  /// Required question text shown to the respondent.
   core.String question;
-  /**
-   * Used by the Rating Scale with Text question type. This text goes along with
-   * the question field that is presented to the respondent, and is the actual
-   * text that the respondent is asked to rate.
-   */
+
+  /// Used by the Rating Scale with Text question type. This text goes along
+  /// with the question field that is presented to the respondent, and is the
+  /// actual text that the respondent is asked to rate.
   core.String sentimentText;
-  /**
-   * Option to allow multiple line open text responses instead of a single line
-   * response. Note that we don't show auto-complete suggestions with multiple
-   * line responses.
-   */
+
+  /// Option to allow multiple line open text responses instead of a single line
+  /// response. Note that we don't show auto-complete suggestions with multiple
+  /// line responses.
   core.bool singleLineResponse;
-  /**
-   * The threshold/screener answer options, which will screen a user into the
-   * rest of the survey. These will be a subset of the answer option strings.
-   */
+
+  /// The threshold/screener answer options, which will screen a user into the
+  /// rest of the survey. These will be a subset of the answer option strings.
   core.List<core.String> thresholdAnswers;
-  /**
-   * Required field defining the question type. For details about configuring
-   * different type of questions, consult the question configuration guide.
-   */
+
+  /// Required field defining the question type. For details about configuring
+  /// different type of questions, consult the question configuration guide.
   core.String type;
-  /**
-   * Optional unit of measurement for display (for example: hours, people,
-   * miles).
-   */
+
+  /// Optional unit of measurement for display (for example: hours, people,
+  /// miles).
   core.String unitOfMeasurementLabel;
-  /** The YouTube video ID to be show in video questions. */
+
+  /// The YouTube video ID to be show in video questions.
   core.String videoId;
 
   SurveyQuestion();
@@ -1168,7 +1145,9 @@ class SurveyQuestion {
       highValueLabel = _json["highValueLabel"];
     }
     if (_json.containsKey("images")) {
-      images = _json["images"].map((value) => new SurveyQuestionImage.fromJson(value)).toList();
+      images = _json["images"]
+          .map((value) => new SurveyQuestionImage.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("lastAnswerPositionPinned")) {
       lastAnswerPositionPinned = _json["lastAnswerPositionPinned"];
@@ -1212,7 +1191,8 @@ class SurveyQuestion {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (answerOrder != null) {
       _json["answerOrder"] = answerOrder;
     }
@@ -1271,23 +1251,24 @@ class SurveyQuestion {
   }
 }
 
-/** Container object for image data and alt_text. */
+/// Container object for image data and alt_text.
 class SurveyQuestionImage {
-  /** The alt text property used in image tags is required for all images. */
+  /// The alt text property used in image tags is required for all images.
   core.String altText;
-  /**
-   * Inline jpeg, gif, tiff, bmp, or png image raw bytes for an image question
-   * types.
-   */
+
+  /// Inline jpeg, gif, tiff, bmp, or png image raw bytes for an image question
+  /// types.
   core.String data;
   core.List<core.int> get dataAsBytes {
     return convert.BASE64.decode(data);
   }
 
   void set dataAsBytes(core.List<core.int> _bytes) {
-    data = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    data =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
-  /** The read-only URL for the hosted images. */
+
+  /// The read-only URL for the hosted images.
   core.String url;
 
   SurveyQuestionImage();
@@ -1305,7 +1286,8 @@ class SurveyQuestionImage {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (altText != null) {
       _json["altText"] = altText;
     }
@@ -1319,14 +1301,13 @@ class SurveyQuestionImage {
   }
 }
 
-/** Message representing why the survey was rejected from review, if it was. */
+/// Message representing why the survey was rejected from review, if it was.
 class SurveyRejection {
-  /** A human-readable explanation of what was wrong with the survey. */
+  /// A human-readable explanation of what was wrong with the survey.
   core.String explanation;
-  /**
-   * Which category of rejection this was. See the  Google Surveys Help Center
-   * for additional details on each category.
-   */
+
+  /// Which category of rejection this was. See the  Google Surveys Help Center
+  /// for additional details on each category.
   core.String type;
 
   SurveyRejection();
@@ -1341,7 +1322,8 @@ class SurveyRejection {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (explanation != null) {
       _json["explanation"] = explanation;
     }
@@ -1352,11 +1334,12 @@ class SurveyRejection {
   }
 }
 
-/** Reference to the current results for a given survey. */
+/// Reference to the current results for a given survey.
 class SurveyResults {
-  /** Human readable string describing the status of the request. */
+  /// Human readable string describing the status of the request.
   core.String status;
-  /** External survey ID as viewable by survey owners in the editor view. */
+
+  /// External survey ID as viewable by survey owners in the editor view.
   core.String surveyUrlId;
 
   SurveyResults();
@@ -1371,7 +1354,8 @@ class SurveyResults {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (status != null) {
       _json["status"] = status;
     }
@@ -1383,10 +1367,8 @@ class SurveyResults {
 }
 
 class SurveysDeleteResponse {
-  /**
-   * Unique request ID used for logging and debugging. Please include in any
-   * error reporting or troubleshooting requests.
-   */
+  /// Unique request ID used for logging and debugging. Please include in any
+  /// error reporting or troubleshooting requests.
   core.String requestId;
 
   SurveysDeleteResponse();
@@ -1398,7 +1380,8 @@ class SurveysDeleteResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (requestId != null) {
       _json["requestId"] = requestId;
     }
@@ -1408,12 +1391,12 @@ class SurveysDeleteResponse {
 
 class SurveysListResponse {
   PageInfo pageInfo;
-  /**
-   * Unique request ID used for logging and debugging. Please include in any
-   * error reporting or troubleshooting requests.
-   */
+
+  /// Unique request ID used for logging and debugging. Please include in any
+  /// error reporting or troubleshooting requests.
   core.String requestId;
-  /** An individual survey resource. */
+
+  /// An individual survey resource.
   core.List<Survey> resources;
   TokenPagination tokenPagination;
 
@@ -1427,7 +1410,9 @@ class SurveysListResponse {
       requestId = _json["requestId"];
     }
     if (_json.containsKey("resources")) {
-      resources = _json["resources"].map((value) => new Survey.fromJson(value)).toList();
+      resources = _json["resources"]
+          .map((value) => new Survey.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("tokenPagination")) {
       tokenPagination = new TokenPagination.fromJson(_json["tokenPagination"]);
@@ -1435,7 +1420,8 @@ class SurveysListResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (pageInfo != null) {
       _json["pageInfo"] = (pageInfo).toJson();
     }
@@ -1453,10 +1439,8 @@ class SurveysListResponse {
 }
 
 class SurveysStartRequest {
-  /**
-   * Threshold to start a survey automically if the quoted prices is less than
-   * or equal to this value. See Survey.Cost for more details.
-   */
+  /// Threshold to start a survey automically if the quoted prices is less than
+  /// or equal to this value. See Survey.Cost for more details.
   core.String maxCostPerResponseNanos;
 
   SurveysStartRequest();
@@ -1468,7 +1452,8 @@ class SurveysStartRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (maxCostPerResponseNanos != null) {
       _json["maxCostPerResponseNanos"] = maxCostPerResponseNanos;
     }
@@ -1477,10 +1462,8 @@ class SurveysStartRequest {
 }
 
 class SurveysStartResponse {
-  /**
-   * Unique request ID used for logging and debugging. Please include in any
-   * error reporting or troubleshooting requests.
-   */
+  /// Unique request ID used for logging and debugging. Please include in any
+  /// error reporting or troubleshooting requests.
   core.String requestId;
 
   SurveysStartResponse();
@@ -1492,7 +1475,8 @@ class SurveysStartResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (requestId != null) {
       _json["requestId"] = requestId;
     }
@@ -1501,10 +1485,8 @@ class SurveysStartResponse {
 }
 
 class SurveysStopResponse {
-  /**
-   * Unique request ID used for logging and debugging. Please include in any
-   * error reporting or troubleshooting requests.
-   */
+  /// Unique request ID used for logging and debugging. Please include in any
+  /// error reporting or troubleshooting requests.
   core.String requestId;
 
   SurveysStopResponse();
@@ -1516,7 +1498,8 @@ class SurveysStopResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (requestId != null) {
       _json["requestId"] = requestId;
     }
@@ -1540,7 +1523,8 @@ class TokenPagination {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }

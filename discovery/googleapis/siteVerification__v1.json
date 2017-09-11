@@ -13,7 +13,7 @@
     },
     "basePath": "/siteVerification/v1/",
     "baseUrl": "https://www.googleapis.com/siteVerification/v1/",
-    "batchPath": "batch",
+    "batchPath": "batch/siteVerification/v1",
     "description": "Verifies ownership of websites or domains with Google.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/site-verification/",

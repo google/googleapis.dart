@@ -10,7 +10,7 @@
     },
     "basePath": "/androidpublisher/v2/applications/",
     "baseUrl": "https://www.googleapis.com/androidpublisher/v2/applications/",
-    "batchPath": "batch",
+    "batchPath": "batch/androidpublisher/v2",
     "canonicalName": "Android Publisher",
     "description": "Lets Android application developers access their Google Play accounts.",
     "discoveryVersion": "v1",

@@ -9,70 +9,69 @@ import 'dart:convert' as convert;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
-    ApiRequestError, DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
+    show ApiRequestError, DetailedApiRequestError;
 
 const core.String USER_AGENT = 'dart-api-client iam/v1';
 
-/**
- * Manages identity and access control for Google Cloud Platform resources,
- * including the creation of service accounts, which you can use to authenticate
- * to Google and make API calls.
- */
+/// Manages identity and access control for Google Cloud Platform resources,
+/// including the creation of service accounts, which you can use to
+/// authenticate to Google and make API calls.
 class IamApi {
-  /** View and manage your data across Google Cloud Platform services */
-  static const CloudPlatformScope = "https://www.googleapis.com/auth/cloud-platform";
-
+  /// View and manage your data across Google Cloud Platform services
+  static const CloudPlatformScope =
+      "https://www.googleapis.com/auth/cloud-platform";
 
   final commons.ApiRequester _requester;
 
-  OrganizationsResourceApi get organizations => new OrganizationsResourceApi(_requester);
-  PermissionsResourceApi get permissions => new PermissionsResourceApi(_requester);
+  OrganizationsResourceApi get organizations =>
+      new OrganizationsResourceApi(_requester);
+  PermissionsResourceApi get permissions =>
+      new PermissionsResourceApi(_requester);
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
   RolesResourceApi get roles => new RolesResourceApi(_requester);
 
-  IamApi(http.Client client, {core.String rootUrl: "https://iam.googleapis.com/", core.String servicePath: ""}) :
-      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+  IamApi(http.Client client,
+      {core.String rootUrl: "https://iam.googleapis.com/",
+      core.String servicePath: ""})
+      : _requester =
+            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
-
 
 class OrganizationsResourceApi {
   final commons.ApiRequester _requester;
 
-  OrganizationsRolesResourceApi get roles => new OrganizationsRolesResourceApi(_requester);
+  OrganizationsRolesResourceApi get roles =>
+      new OrganizationsRolesResourceApi(_requester);
 
-  OrganizationsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  OrganizationsResourceApi(commons.ApiRequester client) : _requester = client;
 }
-
 
 class OrganizationsRolesResourceApi {
   final commons.ApiRequester _requester;
 
-  OrganizationsRolesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  OrganizationsRolesResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Creates a new Role.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [parent] - The resource name of the parent resource in one of the following
-   * formats:
-   * `organizations/{ORGANIZATION_ID}`
-   * `projects/{PROJECT_ID}`
-   * Value must have pattern "^organizations/[^/]+$".
-   *
-   * Completes with a [Role].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Creates a new Role.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The resource name of the parent resource in one of the
+  /// following formats:
+  /// `organizations/{ORGANIZATION_ID}`
+  /// `projects/{PROJECT_ID}`
+  /// Value must have pattern "^organizations/[^/]+$".
+  ///
+  /// Completes with a [Role].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Role> create(CreateRoleRequest request, core.String parent) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -90,42 +89,42 @@ class OrganizationsRolesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Role.fromJson(data));
   }
 
-  /**
-   * Soft deletes a role. The role is suspended and cannot be used to create new
-   * IAM Policy Bindings.
-   * The Role will not be included in `ListRoles()` unless `show_deleted` is set
-   * in the `ListRolesRequest`. The Role contains the deleted boolean set.
-   * Existing Bindings remains, but are inactive. The Role can be undeleted
-   * within 7 days. After 7 days the Role is deleted and all Bindings associated
-   * with the role are removed.
-   *
-   * Request parameters:
-   *
-   * [name] - The resource name of the role in one of the following formats:
-   * `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
-   * `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
-   * Value must have pattern "^organizations/[^/]+/roles/[^/]+$".
-   *
-   * [etag] - Used to perform a consistent read-modify-write.
-   *
-   * Completes with a [Role].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Soft deletes a role. The role is suspended and cannot be used to create
+  /// new
+  /// IAM Policy Bindings.
+  /// The Role will not be included in `ListRoles()` unless `show_deleted` is
+  /// set
+  /// in the `ListRolesRequest`. The Role contains the deleted boolean set.
+  /// Existing Bindings remains, but are inactive. The Role can be undeleted
+  /// within 7 days. After 7 days the Role is deleted and all Bindings
+  /// associated
+  /// with the role are removed.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the role in one of the following formats:
+  /// `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
+  /// `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
+  /// Value must have pattern "^organizations/[^/]+/roles/[^/]+$".
+  ///
+  /// [etag] - Used to perform a consistent read-modify-write.
+  ///
+  /// Completes with a [Role].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Role> delete(core.String name, {core.String etag}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -143,35 +142,32 @@ class OrganizationsRolesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Role.fromJson(data));
   }
 
-  /**
-   * Gets a Role definition.
-   *
-   * Request parameters:
-   *
-   * [name] - The resource name of the role in one of the following formats:
-   * `roles/{ROLE_NAME}`
-   * `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
-   * `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
-   * Value must have pattern "^organizations/[^/]+/roles/[^/]+$".
-   *
-   * Completes with a [Role].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Gets a Role definition.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the role in one of the following formats:
+  /// `roles/{ROLE_NAME}`
+  /// `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
+  /// `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
+  /// Value must have pattern "^organizations/[^/]+/roles/[^/]+$".
+  ///
+  /// Completes with a [Role].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Role> get(core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -186,50 +182,51 @@ class OrganizationsRolesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Role.fromJson(data));
   }
 
-  /**
-   * Lists the Roles defined on a resource.
-   *
-   * Request parameters:
-   *
-   * [parent] - The resource name of the parent resource in one of the following
-   * formats:
-   * `` (empty string) -- this refers to curated roles.
-   * `organizations/{ORGANIZATION_ID}`
-   * `projects/{PROJECT_ID}`
-   * Value must have pattern "^organizations/[^/]+$".
-   *
-   * [showDeleted] - Include Roles that have been deleted.
-   *
-   * [pageToken] - Optional pagination token returned in an earlier
-   * ListRolesResponse.
-   *
-   * [pageSize] - Optional limit on the number of roles to include in the
-   * response.
-   *
-   * [view] - Optional view for the returned Role objects.
-   * Possible string values are:
-   * - "BASIC" : A BASIC.
-   * - "FULL" : A FULL.
-   *
-   * Completes with a [ListRolesResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ListRolesResponse> list(core.String parent, {core.bool showDeleted, core.String pageToken, core.int pageSize, core.String view}) {
+  /// Lists the Roles defined on a resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The resource name of the parent resource in one of the
+  /// following formats:
+  /// `` (empty string) -- this refers to curated roles.
+  /// `organizations/{ORGANIZATION_ID}`
+  /// `projects/{PROJECT_ID}`
+  /// Value must have pattern "^organizations/[^/]+$".
+  ///
+  /// [showDeleted] - Include Roles that have been deleted.
+  ///
+  /// [pageToken] - Optional pagination token returned in an earlier
+  /// ListRolesResponse.
+  ///
+  /// [pageSize] - Optional limit on the number of roles to include in the
+  /// response.
+  ///
+  /// [view] - Optional view for the returned Role objects.
+  /// Possible string values are:
+  /// - "BASIC" : A BASIC.
+  /// - "FULL" : A FULL.
+  ///
+  /// Completes with a [ListRolesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRolesResponse> list(core.String parent,
+      {core.bool showDeleted,
+      core.String pageToken,
+      core.int pageSize,
+      core.String view}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -255,40 +252,38 @@ class OrganizationsRolesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ListRolesResponse.fromJson(data));
   }
 
-  /**
-   * Updates a Role definition.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [name] - The resource name of the role in one of the following formats:
-   * `roles/{ROLE_NAME}`
-   * `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
-   * `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
-   * Value must have pattern "^organizations/[^/]+/roles/[^/]+$".
-   *
-   * [updateMask] - A mask describing which fields in the Role have changed.
-   *
-   * Completes with a [Role].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Role> patch(Role request, core.String name, {core.String updateMask}) {
+  /// Updates a Role definition.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the role in one of the following formats:
+  /// `roles/{ROLE_NAME}`
+  /// `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
+  /// `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
+  /// Value must have pattern "^organizations/[^/]+/roles/[^/]+$".
+  ///
+  /// [updateMask] - A mask describing which fields in the Role have changed.
+  ///
+  /// Completes with a [Role].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Role> patch(Role request, core.String name,
+      {core.String updateMask}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -308,36 +303,33 @@ class OrganizationsRolesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Role.fromJson(data));
   }
 
-  /**
-   * Undelete a Role, bringing it back in its previous state.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [name] - The resource name of the role in one of the following formats:
-   * `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
-   * `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
-   * Value must have pattern "^organizations/[^/]+/roles/[^/]+$".
-   *
-   * Completes with a [Role].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Undelete a Role, bringing it back in its previous state.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the role in one of the following formats:
+  /// `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
+  /// `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
+  /// Value must have pattern "^organizations/[^/]+/roles/[^/]+$".
+  ///
+  /// Completes with a [Role].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Role> undelete(UndeleteRoleRequest request, core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -355,42 +347,38 @@ class OrganizationsRolesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Role.fromJson(data));
   }
-
 }
-
 
 class PermissionsResourceApi {
   final commons.ApiRequester _requester;
 
-  PermissionsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  PermissionsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Lists the permissions testable on a resource.
-   * A permission is testable if it can be tested for an identity on a resource.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [QueryTestablePermissionsResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<QueryTestablePermissionsResponse> queryTestablePermissions(QueryTestablePermissionsRequest request) {
+  /// Lists the permissions testable on a resource.
+  /// A permission is testable if it can be tested for an identity on a
+  /// resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [QueryTestablePermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<QueryTestablePermissionsResponse> queryTestablePermissions(
+      QueryTestablePermissionsRequest request) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -404,57 +392,52 @@ class PermissionsResourceApi {
 
     _url = 'v1/permissions:queryTestablePermissions';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new QueryTestablePermissionsResponse.fromJson(data));
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new QueryTestablePermissionsResponse.fromJson(data));
   }
-
 }
-
 
 class ProjectsResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsRolesResourceApi get roles => new ProjectsRolesResourceApi(_requester);
-  ProjectsServiceAccountsResourceApi get serviceAccounts => new ProjectsServiceAccountsResourceApi(_requester);
+  ProjectsRolesResourceApi get roles =>
+      new ProjectsRolesResourceApi(_requester);
+  ProjectsServiceAccountsResourceApi get serviceAccounts =>
+      new ProjectsServiceAccountsResourceApi(_requester);
 
-  ProjectsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
-
 
 class ProjectsRolesResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsRolesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  ProjectsRolesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Creates a new Role.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [parent] - The resource name of the parent resource in one of the following
-   * formats:
-   * `organizations/{ORGANIZATION_ID}`
-   * `projects/{PROJECT_ID}`
-   * Value must have pattern "^projects/[^/]+$".
-   *
-   * Completes with a [Role].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Creates a new Role.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The resource name of the parent resource in one of the
+  /// following formats:
+  /// `organizations/{ORGANIZATION_ID}`
+  /// `projects/{PROJECT_ID}`
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// Completes with a [Role].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Role> create(CreateRoleRequest request, core.String parent) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -472,42 +455,42 @@ class ProjectsRolesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Role.fromJson(data));
   }
 
-  /**
-   * Soft deletes a role. The role is suspended and cannot be used to create new
-   * IAM Policy Bindings.
-   * The Role will not be included in `ListRoles()` unless `show_deleted` is set
-   * in the `ListRolesRequest`. The Role contains the deleted boolean set.
-   * Existing Bindings remains, but are inactive. The Role can be undeleted
-   * within 7 days. After 7 days the Role is deleted and all Bindings associated
-   * with the role are removed.
-   *
-   * Request parameters:
-   *
-   * [name] - The resource name of the role in one of the following formats:
-   * `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
-   * `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
-   * Value must have pattern "^projects/[^/]+/roles/[^/]+$".
-   *
-   * [etag] - Used to perform a consistent read-modify-write.
-   *
-   * Completes with a [Role].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Soft deletes a role. The role is suspended and cannot be used to create
+  /// new
+  /// IAM Policy Bindings.
+  /// The Role will not be included in `ListRoles()` unless `show_deleted` is
+  /// set
+  /// in the `ListRolesRequest`. The Role contains the deleted boolean set.
+  /// Existing Bindings remains, but are inactive. The Role can be undeleted
+  /// within 7 days. After 7 days the Role is deleted and all Bindings
+  /// associated
+  /// with the role are removed.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the role in one of the following formats:
+  /// `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
+  /// `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
+  /// Value must have pattern "^projects/[^/]+/roles/[^/]+$".
+  ///
+  /// [etag] - Used to perform a consistent read-modify-write.
+  ///
+  /// Completes with a [Role].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Role> delete(core.String name, {core.String etag}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -525,35 +508,32 @@ class ProjectsRolesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Role.fromJson(data));
   }
 
-  /**
-   * Gets a Role definition.
-   *
-   * Request parameters:
-   *
-   * [name] - The resource name of the role in one of the following formats:
-   * `roles/{ROLE_NAME}`
-   * `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
-   * `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
-   * Value must have pattern "^projects/[^/]+/roles/[^/]+$".
-   *
-   * Completes with a [Role].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Gets a Role definition.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the role in one of the following formats:
+  /// `roles/{ROLE_NAME}`
+  /// `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
+  /// `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
+  /// Value must have pattern "^projects/[^/]+/roles/[^/]+$".
+  ///
+  /// Completes with a [Role].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Role> get(core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -568,50 +548,51 @@ class ProjectsRolesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Role.fromJson(data));
   }
 
-  /**
-   * Lists the Roles defined on a resource.
-   *
-   * Request parameters:
-   *
-   * [parent] - The resource name of the parent resource in one of the following
-   * formats:
-   * `` (empty string) -- this refers to curated roles.
-   * `organizations/{ORGANIZATION_ID}`
-   * `projects/{PROJECT_ID}`
-   * Value must have pattern "^projects/[^/]+$".
-   *
-   * [showDeleted] - Include Roles that have been deleted.
-   *
-   * [pageToken] - Optional pagination token returned in an earlier
-   * ListRolesResponse.
-   *
-   * [pageSize] - Optional limit on the number of roles to include in the
-   * response.
-   *
-   * [view] - Optional view for the returned Role objects.
-   * Possible string values are:
-   * - "BASIC" : A BASIC.
-   * - "FULL" : A FULL.
-   *
-   * Completes with a [ListRolesResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ListRolesResponse> list(core.String parent, {core.bool showDeleted, core.String pageToken, core.int pageSize, core.String view}) {
+  /// Lists the Roles defined on a resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The resource name of the parent resource in one of the
+  /// following formats:
+  /// `` (empty string) -- this refers to curated roles.
+  /// `organizations/{ORGANIZATION_ID}`
+  /// `projects/{PROJECT_ID}`
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [pageToken] - Optional pagination token returned in an earlier
+  /// ListRolesResponse.
+  ///
+  /// [pageSize] - Optional limit on the number of roles to include in the
+  /// response.
+  ///
+  /// [view] - Optional view for the returned Role objects.
+  /// Possible string values are:
+  /// - "BASIC" : A BASIC.
+  /// - "FULL" : A FULL.
+  ///
+  /// [showDeleted] - Include Roles that have been deleted.
+  ///
+  /// Completes with a [ListRolesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRolesResponse> list(core.String parent,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String view,
+      core.bool showDeleted}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -622,9 +603,6 @@ class ProjectsRolesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -634,43 +612,44 @@ class ProjectsRolesResourceApi {
     if (view != null) {
       _queryParams["view"] = [view];
     }
+    if (showDeleted != null) {
+      _queryParams["showDeleted"] = ["${showDeleted}"];
+    }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ListRolesResponse.fromJson(data));
   }
 
-  /**
-   * Updates a Role definition.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [name] - The resource name of the role in one of the following formats:
-   * `roles/{ROLE_NAME}`
-   * `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
-   * `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
-   * Value must have pattern "^projects/[^/]+/roles/[^/]+$".
-   *
-   * [updateMask] - A mask describing which fields in the Role have changed.
-   *
-   * Completes with a [Role].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Role> patch(Role request, core.String name, {core.String updateMask}) {
+  /// Updates a Role definition.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the role in one of the following formats:
+  /// `roles/{ROLE_NAME}`
+  /// `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
+  /// `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
+  /// Value must have pattern "^projects/[^/]+/roles/[^/]+$".
+  ///
+  /// [updateMask] - A mask describing which fields in the Role have changed.
+  ///
+  /// Completes with a [Role].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Role> patch(Role request, core.String name,
+      {core.String updateMask}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -690,36 +669,33 @@ class ProjectsRolesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url,
-                                       "PATCH",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Role.fromJson(data));
   }
 
-  /**
-   * Undelete a Role, bringing it back in its previous state.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [name] - The resource name of the role in one of the following formats:
-   * `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
-   * `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
-   * Value must have pattern "^projects/[^/]+/roles/[^/]+$".
-   *
-   * Completes with a [Role].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Undelete a Role, bringing it back in its previous state.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the role in one of the following formats:
+  /// `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
+  /// `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
+  /// Value must have pattern "^projects/[^/]+/roles/[^/]+$".
+  ///
+  /// Completes with a [Role].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Role> undelete(UndeleteRoleRequest request, core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -737,49 +713,46 @@ class ProjectsRolesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Role.fromJson(data));
   }
-
 }
-
 
 class ProjectsServiceAccountsResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsServiceAccountsKeysResourceApi get keys => new ProjectsServiceAccountsKeysResourceApi(_requester);
+  ProjectsServiceAccountsKeysResourceApi get keys =>
+      new ProjectsServiceAccountsKeysResourceApi(_requester);
 
-  ProjectsServiceAccountsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  ProjectsServiceAccountsResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Creates a ServiceAccount
-   * and returns it.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [name] - Required. The resource name of the project associated with the
-   * service
-   * accounts, such as `projects/my-project-123`.
-   * Value must have pattern "^projects/[^/]+$".
-   *
-   * Completes with a [ServiceAccount].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ServiceAccount> create(CreateServiceAccountRequest request, core.String name) {
+  /// Creates a ServiceAccount
+  /// and returns it.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the project associated with the
+  /// service
+  /// accounts, such as `projects/my-project-123`.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// Completes with a [ServiceAccount].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ServiceAccount> create(
+      CreateServiceAccountRequest request, core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -794,38 +767,37 @@ class ProjectsServiceAccountsResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/serviceAccounts';
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        '/serviceAccounts';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ServiceAccount.fromJson(data));
   }
 
-  /**
-   * Deletes a ServiceAccount.
-   *
-   * Request parameters:
-   *
-   * [name] - The resource name of the service account in the following format:
-   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
-   * Using `-` as a wildcard for the project will infer the project from
-   * the account. The `account` value can be the `email` address or the
-   * `unique_id` of the service account.
-   * Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
-   *
-   * Completes with a [Empty].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Deletes a ServiceAccount.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the service account in the following format:
+  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+  /// Using `-` as a wildcard for the project will infer the project from
+  /// the account. The `account` value can be the `email` address or the
+  /// `unique_id` of the service account.
+  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -840,36 +812,33 @@ class ProjectsServiceAccountsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /**
-   * Gets a ServiceAccount.
-   *
-   * Request parameters:
-   *
-   * [name] - The resource name of the service account in the following format:
-   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
-   * Using `-` as a wildcard for the project will infer the project from
-   * the account. The `account` value can be the `email` address or the
-   * `unique_id` of the service account.
-   * Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
-   *
-   * Completes with a [ServiceAccount].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Gets a ServiceAccount.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the service account in the following format:
+  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+  /// Using `-` as a wildcard for the project will infer the project from
+  /// the account. The `account` value can be the `email` address or the
+  /// `unique_id` of the service account.
+  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  ///
+  /// Completes with a [ServiceAccount].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<ServiceAccount> get(core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -884,35 +853,32 @@ class ProjectsServiceAccountsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ServiceAccount.fromJson(data));
   }
 
-  /**
-   * Returns the IAM access control policy for a
-   * ServiceAccount.
-   *
-   * Request parameters:
-   *
-   * [resource] - REQUIRED: The resource for which the policy is being
-   * requested.
-   * See the operation documentation for the appropriate value for this field.
-   * Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
-   *
-   * Completes with a [Policy].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Returns the IAM access control policy for a
+  /// ServiceAccount.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested.
+  /// See the operation documentation for the appropriate value for this field.
+  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String resource) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -925,46 +891,46 @@ class ProjectsServiceAccountsResourceApi {
       throw new core.ArgumentError("Parameter resource is required.");
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':getIamPolicy';
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':getIamPolicy';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Policy.fromJson(data));
   }
 
-  /**
-   * Lists ServiceAccounts for a project.
-   *
-   * Request parameters:
-   *
-   * [name] - Required. The resource name of the project associated with the
-   * service
-   * accounts, such as `projects/my-project-123`.
-   * Value must have pattern "^projects/[^/]+$".
-   *
-   * [pageToken] - Optional pagination token returned in an earlier
-   * ListServiceAccountsResponse.next_page_token.
-   *
-   * [pageSize] - Optional limit on the number of service accounts to include in
-   * the
-   * response. Further accounts can subsequently be obtained by including the
-   * ListServiceAccountsResponse.next_page_token
-   * in a subsequent request.
-   *
-   * Completes with a [ListServiceAccountsResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ListServiceAccountsResponse> list(core.String name, {core.String pageToken, core.int pageSize}) {
+  /// Lists ServiceAccounts for a project.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the project associated with the
+  /// service
+  /// accounts, such as `projects/my-project-123`.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [pageToken] - Optional pagination token returned in an earlier
+  /// ListServiceAccountsResponse.next_page_token.
+  ///
+  /// [pageSize] - Optional limit on the number of service accounts to include
+  /// in the
+  /// response. Further accounts can subsequently be obtained by including the
+  /// ListServiceAccountsResponse.next_page_token
+  /// in a subsequent request.
+  ///
+  /// Completes with a [ListServiceAccountsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListServiceAccountsResponse> list(core.String name,
+      {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -982,40 +948,41 @@ class ProjectsServiceAccountsResourceApi {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/serviceAccounts';
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        '/serviceAccounts';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListServiceAccountsResponse.fromJson(data));
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListServiceAccountsResponse.fromJson(data));
   }
 
-  /**
-   * Sets the IAM access control policy for a
-   * ServiceAccount.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [resource] - REQUIRED: The resource for which the policy is being
-   * specified.
-   * See the operation documentation for the appropriate value for this field.
-   * Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
-   *
-   * Completes with a [Policy].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<Policy> setIamPolicy(SetIamPolicyRequest request, core.String resource) {
+  /// Sets the IAM access control policy for a
+  /// ServiceAccount.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified.
+  /// See the operation documentation for the appropriate value for this field.
+  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+      SetIamPolicyRequest request, core.String resource) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1030,41 +997,41 @@ class ProjectsServiceAccountsResourceApi {
       throw new core.ArgumentError("Parameter resource is required.");
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':setIamPolicy';
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':setIamPolicy';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Policy.fromJson(data));
   }
 
-  /**
-   * Signs a blob using a service account's system-managed private key.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [name] - The resource name of the service account in the following format:
-   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
-   * Using `-` as a wildcard for the project will infer the project from
-   * the account. The `account` value can be the `email` address or the
-   * `unique_id` of the service account.
-   * Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
-   *
-   * Completes with a [SignBlobResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<SignBlobResponse> signBlob(SignBlobRequest request, core.String name) {
+  /// Signs a blob using a service account's system-managed private key.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the service account in the following format:
+  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+  /// Using `-` as a wildcard for the project will infer the project from
+  /// the account. The `account` value can be the `email` address or the
+  /// `unique_id` of the service account.
+  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  ///
+  /// Completes with a [SignBlobResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SignBlobResponse> signBlob(
+      SignBlobRequest request, core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1081,43 +1048,41 @@ class ProjectsServiceAccountsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':signBlob';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new SignBlobResponse.fromJson(data));
   }
 
-  /**
-   * Signs a JWT using a service account's system-managed private key.
-   *
-   * If no expiry time (`exp`) is provided in the `SignJwtRequest`, IAM sets an
-   * an expiry time of one hour by default. If you request an expiry time of
-   * more than one hour, the request will fail.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [name] - The resource name of the service account in the following format:
-   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
-   * Using `-` as a wildcard for the project will infer the project from
-   * the account. The `account` value can be the `email` address or the
-   * `unique_id` of the service account.
-   * Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
-   *
-   * Completes with a [SignJwtResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<SignJwtResponse> signJwt(SignJwtRequest request, core.String name) {
+  /// Signs a JWT using a service account's system-managed private key.
+  ///
+  /// If no expiry time (`exp`) is provided in the `SignJwtRequest`, IAM sets an
+  /// an expiry time of one hour by default. If you request an expiry time of
+  /// more than one hour, the request will fail.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the service account in the following format:
+  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+  /// Using `-` as a wildcard for the project will infer the project from
+  /// the account. The `account` value can be the `email` address or the
+  /// `unique_id` of the service account.
+  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  ///
+  /// Completes with a [SignJwtResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SignJwtResponse> signJwt(
+      SignJwtRequest request, core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1134,38 +1099,36 @@ class ProjectsServiceAccountsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':signJwt';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new SignJwtResponse.fromJson(data));
   }
 
-  /**
-   * Tests the specified permissions against the IAM access control policy
-   * for a ServiceAccount.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [resource] - REQUIRED: The resource for which the policy detail is being
-   * requested.
-   * See the operation documentation for the appropriate value for this field.
-   * Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
-   *
-   * Completes with a [TestIamPermissionsResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<TestIamPermissionsResponse> testIamPermissions(TestIamPermissionsRequest request, core.String resource) {
+  /// Tests the specified permissions against the IAM access control policy
+  /// for a ServiceAccount.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested.
+  /// See the operation documentation for the appropriate value for this field.
+  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+      TestIamPermissionsRequest request, core.String resource) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1180,49 +1143,50 @@ class ProjectsServiceAccountsResourceApi {
       throw new core.ArgumentError("Parameter resource is required.");
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resource') + ':testIamPermissions';
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':testIamPermissions';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new TestIamPermissionsResponse.fromJson(data));
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new TestIamPermissionsResponse.fromJson(data));
   }
 
-  /**
-   * Updates a ServiceAccount.
-   *
-   * Currently, only the following fields are updatable:
-   * `display_name` .
-   * The `etag` is mandatory.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [name] - The resource name of the service account in the following format:
-   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
-   *
-   * Requests using `-` as a wildcard for the project will infer the project
-   * from the `account` and the `account` value can be the `email` address or
-   * the `unique_id` of the service account.
-   *
-   * In responses the resource name will always be in the format
-   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
-   * Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
-   *
-   * Completes with a [ServiceAccount].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ServiceAccount> update(ServiceAccount request, core.String name) {
+  /// Updates a ServiceAccount.
+  ///
+  /// Currently, only the following fields are updatable:
+  /// `display_name` .
+  /// The `etag` is mandatory.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the service account in the following format:
+  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+  ///
+  /// Requests using `-` as a wildcard for the project will infer the project
+  /// from the `account` and the `account` value can be the `email` address or
+  /// the `unique_id` of the service account.
+  ///
+  /// In responses the resource name will always be in the format
+  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  ///
+  /// Completes with a [ServiceAccount].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ServiceAccount> update(
+      ServiceAccount request, core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1239,49 +1203,45 @@ class ProjectsServiceAccountsResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url,
-                                       "PUT",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ServiceAccount.fromJson(data));
   }
-
 }
-
 
 class ProjectsServiceAccountsKeysResourceApi {
   final commons.ApiRequester _requester;
 
-  ProjectsServiceAccountsKeysResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  ProjectsServiceAccountsKeysResourceApi(commons.ApiRequester client)
+      : _requester = client;
 
-  /**
-   * Creates a ServiceAccountKey
-   * and returns it.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * [name] - The resource name of the service account in the following format:
-   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
-   * Using `-` as a wildcard for the project will infer the project from
-   * the account. The `account` value can be the `email` address or the
-   * `unique_id` of the service account.
-   * Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
-   *
-   * Completes with a [ServiceAccountKey].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ServiceAccountKey> create(CreateServiceAccountKeyRequest request, core.String name) {
+  /// Creates a ServiceAccountKey
+  /// and returns it.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the service account in the following format:
+  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+  /// Using `-` as a wildcard for the project will infer the project from
+  /// the account. The `account` value can be the `email` address or the
+  /// `unique_id` of the service account.
+  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  ///
+  /// Completes with a [ServiceAccountKey].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ServiceAccountKey> create(
+      CreateServiceAccountKeyRequest request, core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1298,38 +1258,35 @@ class ProjectsServiceAccountsKeysResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/keys';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ServiceAccountKey.fromJson(data));
   }
 
-  /**
-   * Deletes a ServiceAccountKey.
-   *
-   * Request parameters:
-   *
-   * [name] - The resource name of the service account key in the following
-   * format:
-   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}/keys/{key}`.
-   * Using `-` as a wildcard for the project will infer the project from
-   * the account. The `account` value can be the `email` address or the
-   * `unique_id` of the service account.
-   * Value must have pattern
-   * "^projects/[^/]+/serviceAccounts/[^/]+/keys/[^/]+$".
-   *
-   * Completes with a [Empty].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Deletes a ServiceAccountKey.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the service account key in the following
+  /// format:
+  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}/keys/{key}`.
+  /// Using `-` as a wildcard for the project will infer the project from
+  /// the account. The `account` value can be the `email` address or the
+  /// `unique_id` of the service account.
+  /// Value must have pattern
+  /// "^projects/[^/]+/serviceAccounts/[^/]+/keys/[^/]+$".
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1344,48 +1301,46 @@ class ProjectsServiceAccountsKeysResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url,
-                                       "DELETE",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Empty.fromJson(data));
   }
 
-  /**
-   * Gets the ServiceAccountKey
-   * by key id.
-   *
-   * Request parameters:
-   *
-   * [name] - The resource name of the service account key in the following
-   * format:
-   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}/keys/{key}`.
-   *
-   * Using `-` as a wildcard for the project will infer the project from
-   * the account. The `account` value can be the `email` address or the
-   * `unique_id` of the service account.
-   * Value must have pattern
-   * "^projects/[^/]+/serviceAccounts/[^/]+/keys/[^/]+$".
-   *
-   * [publicKeyType] - The output format of the public key requested.
-   * X509_PEM is the default output format.
-   * Possible string values are:
-   * - "TYPE_NONE" : A TYPE_NONE.
-   * - "TYPE_X509_PEM_FILE" : A TYPE_X509_PEM_FILE.
-   * - "TYPE_RAW_PUBLIC_KEY" : A TYPE_RAW_PUBLIC_KEY.
-   *
-   * Completes with a [ServiceAccountKey].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ServiceAccountKey> get(core.String name, {core.String publicKeyType}) {
+  /// Gets the ServiceAccountKey
+  /// by key id.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the service account key in the following
+  /// format:
+  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}/keys/{key}`.
+  ///
+  /// Using `-` as a wildcard for the project will infer the project from
+  /// the account. The `account` value can be the `email` address or the
+  /// `unique_id` of the service account.
+  /// Value must have pattern
+  /// "^projects/[^/]+/serviceAccounts/[^/]+/keys/[^/]+$".
+  ///
+  /// [publicKeyType] - The output format of the public key requested.
+  /// X509_PEM is the default output format.
+  /// Possible string values are:
+  /// - "TYPE_NONE" : A TYPE_NONE.
+  /// - "TYPE_X509_PEM_FILE" : A TYPE_X509_PEM_FILE.
+  /// - "TYPE_RAW_PUBLIC_KEY" : A TYPE_RAW_PUBLIC_KEY.
+  ///
+  /// Completes with a [ServiceAccountKey].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ServiceAccountKey> get(core.String name,
+      {core.String publicKeyType}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1402,43 +1357,41 @@ class ProjectsServiceAccountsKeysResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ServiceAccountKey.fromJson(data));
   }
 
-  /**
-   * Lists ServiceAccountKeys.
-   *
-   * Request parameters:
-   *
-   * [name] - The resource name of the service account in the following format:
-   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
-   *
-   * Using `-` as a wildcard for the project, will infer the project from
-   * the account. The `account` value can be the `email` address or the
-   * `unique_id` of the service account.
-   * Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
-   *
-   * [keyTypes] - Filters the types of keys the user wants to include in the
-   * list
-   * response. Duplicate key types are not allowed. If no key type
-   * is provided, all keys are returned.
-   *
-   * Completes with a [ListServiceAccountKeysResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ListServiceAccountKeysResponse> list(core.String name, {core.List<core.String> keyTypes}) {
+  /// Lists ServiceAccountKeys.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the service account in the following format:
+  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+  ///
+  /// Using `-` as a wildcard for the project, will infer the project from
+  /// the account. The `account` value can be the `email` address or the
+  /// `unique_id` of the service account.
+  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  ///
+  /// [keyTypes] - Filters the types of keys the user wants to include in the
+  /// list
+  /// response. Duplicate key types are not allowed. If no key type
+  /// is provided, all keys are returned.
+  ///
+  /// Completes with a [ListServiceAccountKeysResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListServiceAccountKeysResponse> list(core.String name,
+      {core.List<core.String> keyTypes}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1455,44 +1408,39 @@ class ProjectsServiceAccountsKeysResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/keys';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListServiceAccountKeysResponse.fromJson(data));
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListServiceAccountKeysResponse.fromJson(data));
   }
-
 }
-
 
 class RolesResourceApi {
   final commons.ApiRequester _requester;
 
-  RolesResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  RolesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Gets a Role definition.
-   *
-   * Request parameters:
-   *
-   * [name] - The resource name of the role in one of the following formats:
-   * `roles/{ROLE_NAME}`
-   * `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
-   * `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
-   * Value must have pattern "^roles/[^/]+$".
-   *
-   * Completes with a [Role].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
+  /// Gets a Role definition.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the role in one of the following formats:
+  /// `roles/{ROLE_NAME}`
+  /// `organizations/{ORGANIZATION_ID}/roles/{ROLE_NAME}`
+  /// `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
+  /// Value must have pattern "^roles/[^/]+$".
+  ///
+  /// Completes with a [Role].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
   async.Future<Role> get(core.String name) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1507,49 +1455,51 @@ class RolesResourceApi {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new Role.fromJson(data));
   }
 
-  /**
-   * Lists the Roles defined on a resource.
-   *
-   * Request parameters:
-   *
-   * [view] - Optional view for the returned Role objects.
-   * Possible string values are:
-   * - "BASIC" : A BASIC.
-   * - "FULL" : A FULL.
-   *
-   * [parent] - The resource name of the parent resource in one of the following
-   * formats:
-   * `` (empty string) -- this refers to curated roles.
-   * `organizations/{ORGANIZATION_ID}`
-   * `projects/{PROJECT_ID}`
-   *
-   * [showDeleted] - Include Roles that have been deleted.
-   *
-   * [pageToken] - Optional pagination token returned in an earlier
-   * ListRolesResponse.
-   *
-   * [pageSize] - Optional limit on the number of roles to include in the
-   * response.
-   *
-   * Completes with a [ListRolesResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<ListRolesResponse> list({core.String view, core.String parent, core.bool showDeleted, core.String pageToken, core.int pageSize}) {
+  /// Lists the Roles defined on a resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [pageToken] - Optional pagination token returned in an earlier
+  /// ListRolesResponse.
+  ///
+  /// [pageSize] - Optional limit on the number of roles to include in the
+  /// response.
+  ///
+  /// [view] - Optional view for the returned Role objects.
+  /// Possible string values are:
+  /// - "BASIC" : A BASIC.
+  /// - "FULL" : A FULL.
+  ///
+  /// [parent] - The resource name of the parent resource in one of the
+  /// following formats:
+  /// `` (empty string) -- this refers to curated roles.
+  /// `organizations/{ORGANIZATION_ID}`
+  /// `projects/{PROJECT_ID}`
+  ///
+  /// [showDeleted] - Include Roles that have been deleted.
+  ///
+  /// Completes with a [ListRolesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRolesResponse> list(
+      {core.String pageToken,
+      core.int pageSize,
+      core.String view,
+      core.String parent,
+      core.bool showDeleted}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1557,6 +1507,12 @@ class RolesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (view != null) {
       _queryParams["view"] = [view];
     }
@@ -1566,43 +1522,36 @@ class RolesResourceApi {
     if (showDeleted != null) {
       _queryParams["showDeleted"] = ["${showDeleted}"];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
 
     _url = 'v1/roles';
 
-    var _response = _requester.request(_url,
-                                       "GET",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new ListRolesResponse.fromJson(data));
   }
 
-  /**
-   * Queries roles that can be granted on a particular resource.
-   * A role is grantable if it can be used as the role in a binding for a policy
-   * for that resource.
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [QueryGrantableRolesResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<QueryGrantableRolesResponse> queryGrantableRoles(QueryGrantableRolesRequest request) {
+  /// Queries roles that can be granted on a particular resource.
+  /// A role is grantable if it can be used as the role in a binding for a
+  /// policy
+  /// for that resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [QueryGrantableRolesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<QueryGrantableRolesResponse> queryGrantableRoles(
+      QueryGrantableRolesRequest request) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1616,27 +1565,22 @@ class RolesResourceApi {
 
     _url = 'v1/roles:queryGrantableRoles';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
-    return _response.then((data) => new QueryGrantableRolesResponse.fromJson(data));
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new QueryGrantableRolesResponse.fromJson(data));
   }
-
 }
 
-
-
-/**
- * Audit log information specific to Cloud IAM. This message is serialized
- * as an `Any` type in the `ServiceData` message of an
- * `AuditLog` message.
- */
+/// Audit log information specific to Cloud IAM. This message is serialized
+/// as an `Any` type in the `ServiceData` message of an
+/// `AuditLog` message.
 class AuditData {
-  /** Policy delta between the original policy and the newly set policy. */
+  /// Policy delta between the original policy and the newly set policy.
   PolicyDelta policyDelta;
 
   AuditData();
@@ -1648,7 +1592,8 @@ class AuditData {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (policyDelta != null) {
       _json["policyDelta"] = (policyDelta).toJson();
     }
@@ -1656,38 +1601,35 @@ class AuditData {
   }
 }
 
-/** Associates `members` with a `role`. */
+/// Associates `members` with a `role`.
 class Binding {
-  /**
-   * Specifies the identities requesting access for a Cloud Platform resource.
-   * `members` can have the following values:
-   *
-   * * `allUsers`: A special identifier that represents anyone who is
-   *    on the internet; with or without a Google account.
-   *
-   * * `allAuthenticatedUsers`: A special identifier that represents anyone
-   *    who is authenticated with a Google account or a service account.
-   *
-   * * `user:{emailid}`: An email address that represents a specific Google
-   *    account. For example, `alice@gmail.com` or `joe@example.com`.
-   *
-   *
-   * * `serviceAccount:{emailid}`: An email address that represents a service
-   *    account. For example, `my-other-app@appspot.gserviceaccount.com`.
-   *
-   * * `group:{emailid}`: An email address that represents a Google group.
-   *    For example, `admins@example.com`.
-   *
-   *
-   * * `domain:{domain}`: A Google Apps domain name that represents all the
-   *    users of that domain. For example, `google.com` or `example.com`.
-   */
+  /// Specifies the identities requesting access for a Cloud Platform resource.
+  /// `members` can have the following values:
+  ///
+  /// * `allUsers`: A special identifier that represents anyone who is
+  ///    on the internet; with or without a Google account.
+  ///
+  /// * `allAuthenticatedUsers`: A special identifier that represents anyone
+  ///    who is authenticated with a Google account or a service account.
+  ///
+  /// * `user:{emailid}`: An email address that represents a specific Google
+  ///    account. For example, `alice@gmail.com` or `joe@example.com`.
+  ///
+  ///
+  /// * `serviceAccount:{emailid}`: An email address that represents a service
+  ///    account. For example, `my-other-app@appspot.gserviceaccount.com`.
+  ///
+  /// * `group:{emailid}`: An email address that represents a Google group.
+  ///    For example, `admins@example.com`.
+  ///
+  ///
+  /// * `domain:{domain}`: A Google Apps domain name that represents all the
+  ///    users of that domain. For example, `google.com` or `example.com`.
   core.List<core.String> members;
-  /**
-   * Role that is assigned to `members`.
-   * For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-   * Required
-   */
+
+  /// Role that is assigned to `members`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// Required
   core.String role;
 
   Binding();
@@ -1702,7 +1644,8 @@ class Binding {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (members != null) {
       _json["members"] = members;
     }
@@ -1713,38 +1656,31 @@ class Binding {
   }
 }
 
-/**
- * One delta entry for Binding. Each individual change (only one member in each
- * entry) to a binding will be a separate entry.
- */
+/// One delta entry for Binding. Each individual change (only one member in each
+/// entry) to a binding will be a separate entry.
 class BindingDelta {
-  /**
-   * The action that was performed on a Binding.
-   * Required
-   * Possible string values are:
-   * - "ACTION_UNSPECIFIED" : Unspecified.
-   * - "ADD" : Addition of a Binding.
-   * - "REMOVE" : Removal of a Binding.
-   */
+  /// The action that was performed on a Binding.
+  /// Required
+  /// Possible string values are:
+  /// - "ACTION_UNSPECIFIED" : Unspecified.
+  /// - "ADD" : Addition of a Binding.
+  /// - "REMOVE" : Removal of a Binding.
   core.String action;
-  /**
-   * The condition that is associated with this binding.
-   * This field is GOOGLE_INTERNAL.
-   * This field is not logged in IAM side because it's only for audit logging.
-   * Optional
-   */
+
+  /// The condition that is associated with this binding.
+  /// This field is GOOGLE_INTERNAL.
+  /// This field is not logged in IAM side because it's only for audit logging.
+  /// Optional
   Expr condition;
-  /**
-   * A single identity requesting access for a Cloud Platform resource.
-   * Follows the same format of Binding.members.
-   * Required
-   */
+
+  /// A single identity requesting access for a Cloud Platform resource.
+  /// Follows the same format of Binding.members.
+  /// Required
   core.String member;
-  /**
-   * Role that is assigned to `members`.
-   * For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-   * Required
-   */
+
+  /// Role that is assigned to `members`.
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+  /// Required
   core.String role;
 
   BindingDelta();
@@ -1765,7 +1701,8 @@ class BindingDelta {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (action != null) {
       _json["action"] = action;
     }
@@ -1782,11 +1719,12 @@ class BindingDelta {
   }
 }
 
-/** The request to create a new role. */
+/// The request to create a new role.
 class CreateRoleRequest {
-  /** The Role resource to create. */
+  /// The Role resource to create.
   Role role;
-  /** The role id to use for this role. */
+
+  /// The role id to use for this role.
   core.String roleId;
 
   CreateRoleRequest();
@@ -1801,7 +1739,8 @@ class CreateRoleRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (role != null) {
       _json["role"] = (role).toJson();
     }
@@ -1812,29 +1751,26 @@ class CreateRoleRequest {
   }
 }
 
-/** The service account key create request. */
+/// The service account key create request.
 class CreateServiceAccountKeyRequest {
-  /**
-   * Which type of key and algorithm to use for the key.
-   * The default is currently a 2K RSA key.  However this may change in the
-   * future.
-   * Possible string values are:
-   * - "KEY_ALG_UNSPECIFIED" : An unspecified key algorithm.
-   * - "KEY_ALG_RSA_1024" : 1k RSA Key.
-   * - "KEY_ALG_RSA_2048" : 2k RSA Key.
-   */
+  /// Which type of key and algorithm to use for the key.
+  /// The default is currently a 2K RSA key.  However this may change in the
+  /// future.
+  /// Possible string values are:
+  /// - "KEY_ALG_UNSPECIFIED" : An unspecified key algorithm.
+  /// - "KEY_ALG_RSA_1024" : 1k RSA Key.
+  /// - "KEY_ALG_RSA_2048" : 2k RSA Key.
   core.String keyAlgorithm;
-  /**
-   * The output format of the private key. `GOOGLE_CREDENTIALS_FILE` is the
-   * default output format.
-   * Possible string values are:
-   * - "TYPE_UNSPECIFIED" : Unspecified. Equivalent to
-   * `TYPE_GOOGLE_CREDENTIALS_FILE`.
-   * - "TYPE_PKCS12_FILE" : PKCS12 format.
-   * The password for the PKCS12 file is `notasecret`.
-   * For more information, see https://tools.ietf.org/html/rfc7292.
-   * - "TYPE_GOOGLE_CREDENTIALS_FILE" : Google Credentials File format.
-   */
+
+  /// The output format of the private key. `GOOGLE_CREDENTIALS_FILE` is the
+  /// default output format.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified. Equivalent to
+  /// `TYPE_GOOGLE_CREDENTIALS_FILE`.
+  /// - "TYPE_PKCS12_FILE" : PKCS12 format.
+  /// The password for the PKCS12 file is `notasecret`.
+  /// For more information, see https://tools.ietf.org/html/rfc7292.
+  /// - "TYPE_GOOGLE_CREDENTIALS_FILE" : Google Credentials File format.
   core.String privateKeyType;
 
   CreateServiceAccountKeyRequest();
@@ -1849,7 +1785,8 @@ class CreateServiceAccountKeyRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (keyAlgorithm != null) {
       _json["keyAlgorithm"] = keyAlgorithm;
     }
@@ -1860,20 +1797,17 @@ class CreateServiceAccountKeyRequest {
   }
 }
 
-/** The service account create request. */
+/// The service account create request.
 class CreateServiceAccountRequest {
-  /**
-   * Required. The account id that is used to generate the service account
-   * email address and a stable unique id. It is unique within a project,
-   * must be 6-30 characters long, and match the regular expression
-   * `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
-   */
+  /// Required. The account id that is used to generate the service account
+  /// email address and a stable unique id. It is unique within a project,
+  /// must be 6-30 characters long, and match the regular expression
+  /// `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
   core.String accountId;
-  /**
-   * The ServiceAccount resource to create.
-   * Currently, only the following values are user assignable:
-   * `display_name` .
-   */
+
+  /// The ServiceAccount resource to create.
+  /// Currently, only the following values are user assignable:
+  /// `display_name` .
   ServiceAccount serviceAccount;
 
   CreateServiceAccountRequest();
@@ -1888,7 +1822,8 @@ class CreateServiceAccountRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (accountId != null) {
       _json["accountId"] = accountId;
     }
@@ -1899,61 +1834,51 @@ class CreateServiceAccountRequest {
   }
 }
 
-/**
- * A generic empty message that you can re-use to avoid defining duplicated
- * empty messages in your APIs. A typical example is to use it as the request
- * or the response type of an API method. For instance:
- *
- *     service Foo {
- *       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
- *     }
- *
- * The JSON representation for `Empty` is empty JSON object `{}`.
- */
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs. A typical example is to use it as the request
+/// or the response type of an API method. For instance:
+///
+///     service Foo {
+///       rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);
+///     }
+///
+/// The JSON representation for `Empty` is empty JSON object `{}`.
 class Empty {
-
   Empty();
 
-  Empty.fromJson(core.Map _json) {
-  }
+  Empty.fromJson(core.Map _json) {}
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }
 
-/**
- * Represents an expression text. Example:
- *
- *     title: "User account presence"
- *     description: "Determines whether the request has a user account"
- *     expression: "size(request.user) > 0"
- */
+/// Represents an expression text. Example:
+///
+///     title: "User account presence"
+///     description: "Determines whether the request has a user account"
+///     expression: "size(request.user) > 0"
 class Expr {
-  /**
-   * An optional description of the expression. This is a longer text which
-   * describes the expression, e.g. when hovered over it in a UI.
-   */
+  /// An optional description of the expression. This is a longer text which
+  /// describes the expression, e.g. when hovered over it in a UI.
   core.String description;
-  /**
-   * Textual representation of an expression in
-   * Common Expression Language syntax.
-   *
-   * The application context of the containing message determines which
-   * well-known feature set of CEL is supported.
-   */
+
+  /// Textual representation of an expression in
+  /// Common Expression Language syntax.
+  ///
+  /// The application context of the containing message determines which
+  /// well-known feature set of CEL is supported.
   core.String expression;
-  /**
-   * An optional string indicating the location of the expression for error
-   * reporting, e.g. a file name and a position in the file.
-   */
+
+  /// An optional string indicating the location of the expression for error
+  /// reporting, e.g. a file name and a position in the file.
   core.String location;
-  /**
-   * An optional title for the expression, i.e. a short string describing
-   * its purpose. This can be used e.g. in UIs which allow to enter the
-   * expression.
-   */
+
+  /// An optional title for the expression, i.e. a short string describing
+  /// its purpose. This can be used e.g. in UIs which allow to enter the
+  /// expression.
   core.String title;
 
   Expr();
@@ -1974,7 +1899,8 @@ class Expr {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (description != null) {
       _json["description"] = description;
     }
@@ -1991,14 +1917,13 @@ class Expr {
   }
 }
 
-/** The response containing the roles defined under a resource. */
+/// The response containing the roles defined under a resource.
 class ListRolesResponse {
-  /**
-   * To retrieve the next page of results, set
-   * `ListRolesRequest.page_token` to this value.
-   */
+  /// To retrieve the next page of results, set
+  /// `ListRolesRequest.page_token` to this value.
   core.String nextPageToken;
-  /** The Roles defined on this resource. */
+
+  /// The Roles defined on this resource.
   core.List<Role> roles;
 
   ListRolesResponse();
@@ -2013,7 +1938,8 @@ class ListRolesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -2024,21 +1950,24 @@ class ListRolesResponse {
   }
 }
 
-/** The service account keys list response. */
+/// The service account keys list response.
 class ListServiceAccountKeysResponse {
-  /** The public keys for the service account. */
+  /// The public keys for the service account.
   core.List<ServiceAccountKey> keys;
 
   ListServiceAccountKeysResponse();
 
   ListServiceAccountKeysResponse.fromJson(core.Map _json) {
     if (_json.containsKey("keys")) {
-      keys = _json["keys"].map((value) => new ServiceAccountKey.fromJson(value)).toList();
+      keys = _json["keys"]
+          .map((value) => new ServiceAccountKey.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (keys != null) {
       _json["keys"] = keys.map((value) => (value).toJson()).toList();
     }
@@ -2046,22 +1975,23 @@ class ListServiceAccountKeysResponse {
   }
 }
 
-/** The service account list response. */
+/// The service account list response.
 class ListServiceAccountsResponse {
-  /** The list of matching service accounts. */
+  /// The list of matching service accounts.
   core.List<ServiceAccount> accounts;
-  /**
-   * To retrieve the next page of results, set
-   * ListServiceAccountsRequest.page_token
-   * to this value.
-   */
+
+  /// To retrieve the next page of results, set
+  /// ListServiceAccountsRequest.page_token
+  /// to this value.
   core.String nextPageToken;
 
   ListServiceAccountsResponse();
 
   ListServiceAccountsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("accounts")) {
-      accounts = _json["accounts"].map((value) => new ServiceAccount.fromJson(value)).toList();
+      accounts = _json["accounts"]
+          .map((value) => new ServiceAccount.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("nextPageToken")) {
       nextPageToken = _json["nextPageToken"];
@@ -2069,7 +1999,8 @@ class ListServiceAccountsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (accounts != null) {
       _json["accounts"] = accounts.map((value) => (value).toJson()).toList();
     }
@@ -2080,33 +2011,34 @@ class ListServiceAccountsResponse {
   }
 }
 
-/** A permission which can be included by a role. */
+/// A permission which can be included by a role.
 class Permission {
-  /**
-   * The current custom role support level.
-   * Possible string values are:
-   * - "SUPPORTED" : Permission is fully supported for custom role use.
-   * - "TESTING" : Permission is being tested to check custom role
-   * compatibility.
-   * - "NOT_SUPPORTED" : Permission is not supported for custom role use.
-   */
+  /// The current custom role support level.
+  /// Possible string values are:
+  /// - "SUPPORTED" : Permission is fully supported for custom role use.
+  /// - "TESTING" : Permission is being tested to check custom role
+  /// compatibility.
+  /// - "NOT_SUPPORTED" : Permission is not supported for custom role use.
   core.String customRolesSupportLevel;
-  /** A brief description of what this Permission is used for. */
+
+  /// A brief description of what this Permission is used for.
   core.String description;
-  /** The name of this Permission. */
+
+  /// The name of this Permission.
   core.String name;
-  /** This permission can ONLY be used in predefined roles. */
+
+  /// This permission can ONLY be used in predefined roles.
   core.bool onlyInPredefinedRoles;
-  /**
-   * The current launch stage of the permission.
-   * Possible string values are:
-   * - "ALPHA" : The permission is currently in an alpha phase.
-   * - "BETA" : The permission is currently in a beta phase.
-   * - "GA" : The permission is generally available.
-   * - "DEPRECATED" : The permission is being deprecated.
-   */
+
+  /// The current launch stage of the permission.
+  /// Possible string values are:
+  /// - "ALPHA" : The permission is currently in an alpha phase.
+  /// - "BETA" : The permission is currently in a beta phase.
+  /// - "GA" : The permission is generally available.
+  /// - "DEPRECATED" : The permission is being deprecated.
   core.String stage;
-  /** The title of this Permission. */
+
+  /// The title of this Permission.
   core.String title;
 
   Permission();
@@ -2133,7 +2065,8 @@ class Permission {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (customRolesSupportLevel != null) {
       _json["customRolesSupportLevel"] = customRolesSupportLevel;
     }
@@ -2156,73 +2089,75 @@ class Permission {
   }
 }
 
-/**
- * Defines an Identity and Access Management (IAM) policy. It is used to
- * specify access control policies for Cloud Platform resources.
- *
- *
- * A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
- * `members` to a `role`, where the members can be user accounts, Google groups,
- * Google domains, and service accounts. A `role` is a named list of permissions
- * defined by IAM.
- *
- * **Example**
- *
- *     {
- *       "bindings": [
- *         {
- *           "role": "roles/owner",
- *           "members": [
- *             "user:mike@example.com",
- *             "group:admins@example.com",
- *             "domain:google.com",
- *             "serviceAccount:my-other-app@appspot.gserviceaccount.com",
- *           ]
- *         },
- *         {
- *           "role": "roles/viewer",
- *           "members": ["user:sean@example.com"]
- *         }
- *       ]
- *     }
- *
- * For a description of IAM and its features, see the
- * [IAM developer's guide](https://cloud.google.com/iam).
- */
+/// Defines an Identity and Access Management (IAM) policy. It is used to
+/// specify access control policies for Cloud Platform resources.
+///
+///
+/// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of
+/// `members` to a `role`, where the members can be user accounts, Google
+/// groups,
+/// Google domains, and service accounts. A `role` is a named list of
+/// permissions
+/// defined by IAM.
+///
+/// **Example**
+///
+///     {
+///       "bindings": [
+///         {
+///           "role": "roles/owner",
+///           "members": [
+///             "user:mike@example.com",
+///             "group:admins@example.com",
+///             "domain:google.com",
+///             "serviceAccount:my-other-app@appspot.gserviceaccount.com",
+///           ]
+///         },
+///         {
+///           "role": "roles/viewer",
+///           "members": ["user:sean@example.com"]
+///         }
+///       ]
+///     }
+///
+/// For a description of IAM and its features, see the
+/// [IAM developer's guide](https://cloud.google.com/iam).
 class Policy {
-  /**
-   * Associates a list of `members` to a `role`.
-   * `bindings` with no members will result in an error.
-   */
+  /// Associates a list of `members` to a `role`.
+  /// `bindings` with no members will result in an error.
   core.List<Binding> bindings;
-  /**
-   * `etag` is used for optimistic concurrency control as a way to help
-   * prevent simultaneous updates of a policy from overwriting each other.
-   * It is strongly suggested that systems make use of the `etag` in the
-   * read-modify-write cycle to perform policy updates in order to avoid race
-   * conditions: An `etag` is returned in the response to `getIamPolicy`, and
-   * systems are expected to put that etag in the request to `setIamPolicy` to
-   * ensure that their change will be applied to the same version of the policy.
-   *
-   * If no `etag` is provided in the call to `setIamPolicy`, then the existing
-   * policy is overwritten blindly.
-   */
+
+  /// `etag` is used for optimistic concurrency control as a way to help
+  /// prevent simultaneous updates of a policy from overwriting each other.
+  /// It is strongly suggested that systems make use of the `etag` in the
+  /// read-modify-write cycle to perform policy updates in order to avoid race
+  /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
+  /// systems are expected to put that etag in the request to `setIamPolicy` to
+  /// ensure that their change will be applied to the same version of the
+  /// policy.
+  ///
+  /// If no `etag` is provided in the call to `setIamPolicy`, then the existing
+  /// policy is overwritten blindly.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.BASE64.decode(etag);
   }
 
   void set etagAsBytes(core.List<core.int> _bytes) {
-    etag = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    etag =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
-  /** Version of the `Policy`. The default version is 0. */
+
+  /// Version of the `Policy`. The default version is 0.
   core.int version;
 
   Policy();
 
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey("bindings")) {
-      bindings = _json["bindings"].map((value) => new Binding.fromJson(value)).toList();
+      bindings = _json["bindings"]
+          .map((value) => new Binding.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("etag")) {
       etag = _json["etag"];
@@ -2233,7 +2168,8 @@ class Policy {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (bindings != null) {
       _json["bindings"] = bindings.map((value) => (value).toJson()).toList();
     }
@@ -2247,52 +2183,54 @@ class Policy {
   }
 }
 
-/** The difference delta between two policies. */
+/// The difference delta between two policies.
 class PolicyDelta {
-  /** The delta for Bindings between two policies. */
+  /// The delta for Bindings between two policies.
   core.List<BindingDelta> bindingDeltas;
 
   PolicyDelta();
 
   PolicyDelta.fromJson(core.Map _json) {
     if (_json.containsKey("bindingDeltas")) {
-      bindingDeltas = _json["bindingDeltas"].map((value) => new BindingDelta.fromJson(value)).toList();
+      bindingDeltas = _json["bindingDeltas"]
+          .map((value) => new BindingDelta.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (bindingDeltas != null) {
-      _json["bindingDeltas"] = bindingDeltas.map((value) => (value).toJson()).toList();
+      _json["bindingDeltas"] =
+          bindingDeltas.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
 }
 
-/** The grantable role query request. */
+/// The grantable role query request.
 class QueryGrantableRolesRequest {
-  /**
-   * Required. The full resource name to query from the list of grantable roles.
-   *
-   * The name follows the Google Cloud Platform resource format.
-   * For example, a Cloud Platform project with id `my-project` will be named
-   * `//cloudresourcemanager.googleapis.com/projects/my-project`.
-   */
+  /// Required. The full resource name to query from the list of grantable
+  /// roles.
+  ///
+  /// The name follows the Google Cloud Platform resource format.
+  /// For example, a Cloud Platform project with id `my-project` will be named
+  /// `//cloudresourcemanager.googleapis.com/projects/my-project`.
   core.String fullResourceName;
-  /** Optional limit on the number of roles to include in the response. */
+
+  /// Optional limit on the number of roles to include in the response.
   core.int pageSize;
-  /**
-   * Optional pagination token returned in an earlier
-   * QueryGrantableRolesResponse.
-   */
+
+  /// Optional pagination token returned in an earlier
+  /// QueryGrantableRolesResponse.
   core.String pageToken;
-  /**
-   *
-   * Possible string values are:
-   * - "BASIC" : Omits the `included_permissions` field.
-   * This is the default value.
-   * - "FULL" : Returns all fields.
-   */
+
+  ///
+  /// Possible string values are:
+  /// - "BASIC" : Omits the `included_permissions` field.
+  /// This is the default value.
+  /// - "FULL" : Returns all fields.
   core.String view;
 
   QueryGrantableRolesRequest();
@@ -2313,7 +2251,8 @@ class QueryGrantableRolesRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (fullResourceName != null) {
       _json["fullResourceName"] = fullResourceName;
     }
@@ -2330,14 +2269,13 @@ class QueryGrantableRolesRequest {
   }
 }
 
-/** The grantable role query response. */
+/// The grantable role query response.
 class QueryGrantableRolesResponse {
-  /**
-   * To retrieve the next page of results, set
-   * `QueryGrantableRolesRequest.page_token` to this value.
-   */
+  /// To retrieve the next page of results, set
+  /// `QueryGrantableRolesRequest.page_token` to this value.
   core.String nextPageToken;
-  /** The list of matching roles. */
+
+  /// The list of matching roles.
   core.List<Role> roles;
 
   QueryGrantableRolesResponse();
@@ -2352,7 +2290,8 @@ class QueryGrantableRolesResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
@@ -2363,25 +2302,21 @@ class QueryGrantableRolesResponse {
   }
 }
 
-/** A request to get permissions which can be tested on a resource. */
+/// A request to get permissions which can be tested on a resource.
 class QueryTestablePermissionsRequest {
-  /**
-   * Required. The full resource name to query from the list of testable
-   * permissions.
-   *
-   * The name follows the Google Cloud Platform resource format.
-   * For example, a Cloud Platform project with id `my-project` will be named
-   * `//cloudresourcemanager.googleapis.com/projects/my-project`.
-   */
+  /// Required. The full resource name to query from the list of testable
+  /// permissions.
+  ///
+  /// The name follows the Google Cloud Platform resource format.
+  /// For example, a Cloud Platform project with id `my-project` will be named
+  /// `//cloudresourcemanager.googleapis.com/projects/my-project`.
   core.String fullResourceName;
-  /**
-   * Optional limit on the number of permissions to include in the response.
-   */
+
+  /// Optional limit on the number of permissions to include in the response.
   core.int pageSize;
-  /**
-   * Optional pagination token returned in an earlier
-   * QueryTestablePermissionsRequest.
-   */
+
+  /// Optional pagination token returned in an earlier
+  /// QueryTestablePermissionsRequest.
   core.String pageToken;
 
   QueryTestablePermissionsRequest();
@@ -2399,7 +2334,8 @@ class QueryTestablePermissionsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (fullResourceName != null) {
       _json["fullResourceName"] = fullResourceName;
     }
@@ -2413,14 +2349,13 @@ class QueryTestablePermissionsRequest {
   }
 }
 
-/** The response containing permissions which can be tested on a resource. */
+/// The response containing permissions which can be tested on a resource.
 class QueryTestablePermissionsResponse {
-  /**
-   * To retrieve the next page of results, set
-   * `QueryTestableRolesRequest.page_token` to this value.
-   */
+  /// To retrieve the next page of results, set
+  /// `QueryTestableRolesRequest.page_token` to this value.
   core.String nextPageToken;
-  /** The Permissions testable on the requested resource. */
+
+  /// The Permissions testable on the requested resource.
   core.List<Permission> permissions;
 
   QueryTestablePermissionsResponse();
@@ -2430,72 +2365,73 @@ class QueryTestablePermissionsResponse {
       nextPageToken = _json["nextPageToken"];
     }
     if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"].map((value) => new Permission.fromJson(value)).toList();
+      permissions = _json["permissions"]
+          .map((value) => new Permission.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
     }
     if (permissions != null) {
-      _json["permissions"] = permissions.map((value) => (value).toJson()).toList();
+      _json["permissions"] =
+          permissions.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
 }
 
-/** A role in the Identity and Access Management API. */
+/// A role in the Identity and Access Management API.
 class Role {
-  /**
-   * The current deleted state of the role. This field is read only.
-   * It will be ignored in calls to CreateRole and UpdateRole.
-   */
+  /// The current deleted state of the role. This field is read only.
+  /// It will be ignored in calls to CreateRole and UpdateRole.
   core.bool deleted;
-  /** Optional.  A human-readable description for the role. */
+
+  /// Optional.  A human-readable description for the role.
   core.String description;
-  /** Used to perform a consistent read-modify-write. */
+
+  /// Used to perform a consistent read-modify-write.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.BASE64.decode(etag);
   }
 
   void set etagAsBytes(core.List<core.int> _bytes) {
-    etag = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    etag =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
-  /**
-   * The names of the permissions this role grants when bound in an IAM policy.
-   */
+
+  /// The names of the permissions this role grants when bound in an IAM policy.
   core.List<core.String> includedPermissions;
-  /**
-   * The name of the role.
-   *
-   * When Role is used in CreateRole, the role name must not be set.
-   *
-   * When Role is used in output and other input such as UpdateRole, the role
-   * name is the complete path, e.g., roles/logging.viewer for curated roles
-   * and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
-   */
+
+  /// The name of the role.
+  ///
+  /// When Role is used in CreateRole, the role name must not be set.
+  ///
+  /// When Role is used in output and other input such as UpdateRole, the role
+  /// name is the complete path, e.g., roles/logging.viewer for curated roles
+  /// and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
   core.String name;
-  /**
-   * The current launch stage of the role.
-   * Possible string values are:
-   * - "ALPHA" : The user has indicated this role is currently in an alpha
-   * phase.
-   * - "BETA" : The user has indicated this role is currently in a beta phase.
-   * - "GA" : The user has indicated this role is generally available.
-   * - "DEPRECATED" : The user has indicated this role is being deprecated.
-   * - "DISABLED" : This role is disabled and will not contribute permissions to
-   * any members
-   * it is granted to in policies.
-   * - "EAP" : The user has indicated this role is currently in an eap phase.
-   */
+
+  /// The current launch stage of the role.
+  /// Possible string values are:
+  /// - "ALPHA" : The user has indicated this role is currently in an alpha
+  /// phase.
+  /// - "BETA" : The user has indicated this role is currently in a beta phase.
+  /// - "GA" : The user has indicated this role is generally available.
+  /// - "DEPRECATED" : The user has indicated this role is being deprecated.
+  /// - "DISABLED" : This role is disabled and will not contribute permissions
+  /// to any members
+  /// it is granted to in policies.
+  /// - "EAP" : The user has indicated this role is currently in an eap phase.
   core.String stage;
-  /**
-   * Optional.  A human-readable title for the role.  Typically this
-   * is limited to 100 UTF-8 bytes.
-   */
+
+  /// Optional.  A human-readable title for the role.  Typically this
+  /// is limited to 100 UTF-8 bytes.
   core.String title;
 
   Role();
@@ -2525,7 +2461,8 @@ class Role {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (deleted != null) {
       _json["deleted"] = deleted;
     }
@@ -2551,63 +2488,63 @@ class Role {
   }
 }
 
-/**
- * A service account in the Identity and Access Management API.
- *
- * To create a service account, specify the `project_id` and the `account_id`
- * for the account.  The `account_id` is unique within the project, and is used
- * to generate the service account email address and a stable
- * `unique_id`.
- *
- * If the account already exists, the account's resource name is returned
- * in util::Status's ResourceInfo.resource_name in the format of
- * projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}. The caller can
- * use the name in other methods to access the account.
- *
- * All other methods can identify the service account using the format
- * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
- * Using `-` as a wildcard for the project will infer the project from
- * the account. The `account` value can be the `email` address or the
- * `unique_id` of the service account.
- */
+/// A service account in the Identity and Access Management API.
+///
+/// To create a service account, specify the `project_id` and the `account_id`
+/// for the account.  The `account_id` is unique within the project, and is used
+/// to generate the service account email address and a stable
+/// `unique_id`.
+///
+/// If the account already exists, the account's resource name is returned
+/// in util::Status's ResourceInfo.resource_name in the format of
+/// projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}. The caller
+/// can
+/// use the name in other methods to access the account.
+///
+/// All other methods can identify the service account using the format
+/// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+/// Using `-` as a wildcard for the project will infer the project from
+/// the account. The `account` value can be the `email` address or the
+/// `unique_id` of the service account.
 class ServiceAccount {
-  /**
-   * Optional. A user-specified description of the service account.  Must be
-   * fewer than 100 UTF-8 bytes.
-   */
+  /// Optional. A user-specified description of the service account.  Must be
+  /// fewer than 100 UTF-8 bytes.
   core.String displayName;
-  /** @OutputOnly The email address of the service account. */
+
+  /// @OutputOnly The email address of the service account.
   core.String email;
-  /** Used to perform a consistent read-modify-write. */
+
+  /// Used to perform a consistent read-modify-write.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.BASE64.decode(etag);
   }
 
   void set etagAsBytes(core.List<core.int> _bytes) {
-    etag = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    etag =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
-  /**
-   * The resource name of the service account in the following format:
-   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
-   *
-   * Requests using `-` as a wildcard for the project will infer the project
-   * from the `account` and the `account` value can be the `email` address or
-   * the `unique_id` of the service account.
-   *
-   * In responses the resource name will always be in the format
-   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
-   */
+
+  /// The resource name of the service account in the following format:
+  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+  ///
+  /// Requests using `-` as a wildcard for the project will infer the project
+  /// from the `account` and the `account` value can be the `email` address or
+  /// the `unique_id` of the service account.
+  ///
+  /// In responses the resource name will always be in the format
+  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
   core.String name;
-  /**
-   * @OutputOnly. The OAuth2 client id for the service account.
-   * This is used in conjunction with the OAuth2 clientconfig API to make
-   * three legged OAuth2 (3LO) flows to access the data of Google users.
-   */
+
+  /// @OutputOnly. The OAuth2 client id for the service account.
+  /// This is used in conjunction with the OAuth2 clientconfig API to make
+  /// three legged OAuth2 (3LO) flows to access the data of Google users.
   core.String oauth2ClientId;
-  /** @OutputOnly The id of the project that owns the service account. */
+
+  /// @OutputOnly The id of the project that owns the service account.
   core.String projectId;
-  /** @OutputOnly The unique and stable id of the service account. */
+
+  /// @OutputOnly The unique and stable id of the service account.
   core.String uniqueId;
 
   ServiceAccount();
@@ -2637,7 +2574,8 @@ class ServiceAccount {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (displayName != null) {
       _json["displayName"] = displayName;
     }
@@ -2663,85 +2601,81 @@ class ServiceAccount {
   }
 }
 
-/**
- * Represents a service account key.
- *
- * A service account has two sets of key-pairs: user-managed, and
- * system-managed.
- *
- * User-managed key-pairs can be created and deleted by users.  Users are
- * responsible for rotating these keys periodically to ensure security of
- * their service accounts.  Users retain the private key of these key-pairs,
- * and Google retains ONLY the public key.
- *
- * System-managed key-pairs are managed automatically by Google, and rotated
- * daily without user intervention.  The private key never leaves Google's
- * servers to maximize security.
- *
- * Public keys for all service accounts are also published at the OAuth2
- * Service Account API.
- */
+/// Represents a service account key.
+///
+/// A service account has two sets of key-pairs: user-managed, and
+/// system-managed.
+///
+/// User-managed key-pairs can be created and deleted by users.  Users are
+/// responsible for rotating these keys periodically to ensure security of
+/// their service accounts.  Users retain the private key of these key-pairs,
+/// and Google retains ONLY the public key.
+///
+/// System-managed key-pairs are managed automatically by Google, and rotated
+/// daily without user intervention.  The private key never leaves Google's
+/// servers to maximize security.
+///
+/// Public keys for all service accounts are also published at the OAuth2
+/// Service Account API.
 class ServiceAccountKey {
-  /**
-   * Specifies the algorithm (and possibly key size) for the key.
-   * Possible string values are:
-   * - "KEY_ALG_UNSPECIFIED" : An unspecified key algorithm.
-   * - "KEY_ALG_RSA_1024" : 1k RSA Key.
-   * - "KEY_ALG_RSA_2048" : 2k RSA Key.
-   */
+  /// Specifies the algorithm (and possibly key size) for the key.
+  /// Possible string values are:
+  /// - "KEY_ALG_UNSPECIFIED" : An unspecified key algorithm.
+  /// - "KEY_ALG_RSA_1024" : 1k RSA Key.
+  /// - "KEY_ALG_RSA_2048" : 2k RSA Key.
   core.String keyAlgorithm;
-  /**
-   * The resource name of the service account key in the following format
-   * `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}/keys/{key}`.
-   */
+
+  /// The resource name of the service account key in the following format
+  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}/keys/{key}`.
   core.String name;
-  /**
-   * The private key data. Only provided in `CreateServiceAccountKey`
-   * responses. Make sure to keep the private key data secure because it
-   * allows for the assertion of the service account identity.
-   * When decoded, the private key data can be used to authenticate with
-   * Google API client libraries and with
-   * <a href="/sdk/gcloud/reference/auth/activate-service-account">gcloud
-   * auth activate-service-account</a>.
-   */
+
+  /// The private key data. Only provided in `CreateServiceAccountKey`
+  /// responses. Make sure to keep the private key data secure because it
+  /// allows for the assertion of the service account identity.
+  /// When decoded, the private key data can be used to authenticate with
+  /// Google API client libraries and with
+  /// <a href="/sdk/gcloud/reference/auth/activate-service-account">gcloud
+  /// auth activate-service-account</a>.
   core.String privateKeyData;
   core.List<core.int> get privateKeyDataAsBytes {
     return convert.BASE64.decode(privateKeyData);
   }
 
   void set privateKeyDataAsBytes(core.List<core.int> _bytes) {
-    privateKeyData = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    privateKeyData =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
-  /**
-   * The output format for the private key.
-   * Only provided in `CreateServiceAccountKey` responses, not
-   * in `GetServiceAccountKey` or `ListServiceAccountKey` responses.
-   *
-   * Google never exposes system-managed private keys, and never retains
-   * user-managed private keys.
-   * Possible string values are:
-   * - "TYPE_UNSPECIFIED" : Unspecified. Equivalent to
-   * `TYPE_GOOGLE_CREDENTIALS_FILE`.
-   * - "TYPE_PKCS12_FILE" : PKCS12 format.
-   * The password for the PKCS12 file is `notasecret`.
-   * For more information, see https://tools.ietf.org/html/rfc7292.
-   * - "TYPE_GOOGLE_CREDENTIALS_FILE" : Google Credentials File format.
-   */
+
+  /// The output format for the private key.
+  /// Only provided in `CreateServiceAccountKey` responses, not
+  /// in `GetServiceAccountKey` or `ListServiceAccountKey` responses.
+  ///
+  /// Google never exposes system-managed private keys, and never retains
+  /// user-managed private keys.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified. Equivalent to
+  /// `TYPE_GOOGLE_CREDENTIALS_FILE`.
+  /// - "TYPE_PKCS12_FILE" : PKCS12 format.
+  /// The password for the PKCS12 file is `notasecret`.
+  /// For more information, see https://tools.ietf.org/html/rfc7292.
+  /// - "TYPE_GOOGLE_CREDENTIALS_FILE" : Google Credentials File format.
   core.String privateKeyType;
-  /**
-   * The public key data. Only provided in `GetServiceAccountKey` responses.
-   */
+
+  /// The public key data. Only provided in `GetServiceAccountKey` responses.
   core.String publicKeyData;
   core.List<core.int> get publicKeyDataAsBytes {
     return convert.BASE64.decode(publicKeyData);
   }
 
   void set publicKeyDataAsBytes(core.List<core.int> _bytes) {
-    publicKeyData = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    publicKeyData =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
-  /** The key can be used after this timestamp. */
+
+  /// The key can be used after this timestamp.
   core.String validAfterTime;
-  /** The key can be used before this timestamp. */
+
+  /// The key can be used before this timestamp.
   core.String validBeforeTime;
 
   ServiceAccountKey();
@@ -2771,7 +2705,8 @@ class ServiceAccountKey {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (keyAlgorithm != null) {
       _json["keyAlgorithm"] = keyAlgorithm;
     }
@@ -2797,14 +2732,12 @@ class ServiceAccountKey {
   }
 }
 
-/** Request message for `SetIamPolicy` method. */
+/// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
-  /**
-   * REQUIRED: The complete policy to be applied to the `resource`. The size of
-   * the policy is limited to a few 10s of KB. An empty policy is a
-   * valid policy but certain Cloud Platform services (such as Projects)
-   * might reject them.
-   */
+  /// REQUIRED: The complete policy to be applied to the `resource`. The size of
+  /// the policy is limited to a few 10s of KB. An empty policy is a
+  /// valid policy but certain Cloud Platform services (such as Projects)
+  /// might reject them.
   Policy policy;
 
   SetIamPolicyRequest();
@@ -2816,7 +2749,8 @@ class SetIamPolicyRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (policy != null) {
       _json["policy"] = (policy).toJson();
     }
@@ -2824,16 +2758,17 @@ class SetIamPolicyRequest {
   }
 }
 
-/** The service account sign blob request. */
+/// The service account sign blob request.
 class SignBlobRequest {
-  /** The bytes to sign. */
+  /// The bytes to sign.
   core.String bytesToSign;
   core.List<core.int> get bytesToSignAsBytes {
     return convert.BASE64.decode(bytesToSign);
   }
 
   void set bytesToSignAsBytes(core.List<core.int> _bytes) {
-    bytesToSign = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    bytesToSign =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   SignBlobRequest();
@@ -2845,7 +2780,8 @@ class SignBlobRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (bytesToSign != null) {
       _json["bytesToSign"] = bytesToSign;
     }
@@ -2853,18 +2789,20 @@ class SignBlobRequest {
   }
 }
 
-/** The service account sign blob response. */
+/// The service account sign blob response.
 class SignBlobResponse {
-  /** The id of the key used to sign the blob. */
+  /// The id of the key used to sign the blob.
   core.String keyId;
-  /** The signed blob. */
+
+  /// The signed blob.
   core.String signature;
   core.List<core.int> get signatureAsBytes {
     return convert.BASE64.decode(signature);
   }
 
   void set signatureAsBytes(core.List<core.int> _bytes) {
-    signature = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    signature =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   SignBlobResponse();
@@ -2879,7 +2817,8 @@ class SignBlobResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (keyId != null) {
       _json["keyId"] = keyId;
     }
@@ -2890,9 +2829,9 @@ class SignBlobResponse {
   }
 }
 
-/** The service account sign JWT request. */
+/// The service account sign JWT request.
 class SignJwtRequest {
-  /** The JWT payload to sign, a JSON JWT Claim set. */
+  /// The JWT payload to sign, a JSON JWT Claim set.
   core.String payload;
 
   SignJwtRequest();
@@ -2904,7 +2843,8 @@ class SignJwtRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (payload != null) {
       _json["payload"] = payload;
     }
@@ -2912,11 +2852,12 @@ class SignJwtRequest {
   }
 }
 
-/** The service account sign JWT response. */
+/// The service account sign JWT response.
 class SignJwtResponse {
-  /** The id of the key used to sign the JWT. */
+  /// The id of the key used to sign the JWT.
   core.String keyId;
-  /** The signed JWT. */
+
+  /// The signed JWT.
   core.String signedJwt;
 
   SignJwtResponse();
@@ -2931,7 +2872,8 @@ class SignJwtResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (keyId != null) {
       _json["keyId"] = keyId;
     }
@@ -2942,14 +2884,12 @@ class SignJwtResponse {
   }
 }
 
-/** Request message for `TestIamPermissions` method. */
+/// Request message for `TestIamPermissions` method.
 class TestIamPermissionsRequest {
-  /**
-   * The set of permissions to check for the `resource`. Permissions with
-   * wildcards (such as '*' or 'storage.*') are not allowed. For more
-   * information see
-   * [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-   */
+  /// The set of permissions to check for the `resource`. Permissions with
+  /// wildcards (such as '*' or 'storage.*') are not allowed. For more
+  /// information see
+  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
   TestIamPermissionsRequest();
@@ -2961,7 +2901,8 @@ class TestIamPermissionsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -2969,12 +2910,10 @@ class TestIamPermissionsRequest {
   }
 }
 
-/** Response message for `TestIamPermissions` method. */
+/// Response message for `TestIamPermissions` method.
 class TestIamPermissionsResponse {
-  /**
-   * A subset of `TestPermissionsRequest.permissions` that the caller is
-   * allowed.
-   */
+  /// A subset of `TestPermissionsRequest.permissions` that the caller is
+  /// allowed.
   core.List<core.String> permissions;
 
   TestIamPermissionsResponse();
@@ -2986,7 +2925,8 @@ class TestIamPermissionsResponse {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (permissions != null) {
       _json["permissions"] = permissions;
     }
@@ -2994,16 +2934,17 @@ class TestIamPermissionsResponse {
   }
 }
 
-/** The request to undelete an existing role. */
+/// The request to undelete an existing role.
 class UndeleteRoleRequest {
-  /** Used to perform a consistent read-modify-write. */
+  /// Used to perform a consistent read-modify-write.
   core.String etag;
   core.List<core.int> get etagAsBytes {
     return convert.BASE64.decode(etag);
   }
 
   void set etagAsBytes(core.List<core.int> _bytes) {
-    etag = convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+    etag =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
   UndeleteRoleRequest();
@@ -3015,7 +2956,8 @@ class UndeleteRoleRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (etag != null) {
       _json["etag"] = etag;
     }

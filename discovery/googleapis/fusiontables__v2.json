@@ -13,7 +13,7 @@
     },
     "basePath": "/fusiontables/v2/",
     "baseUrl": "https://www.googleapis.com/fusiontables/v2/",
-    "batchPath": "batch",
+    "batchPath": "batch/fusiontables/v2",
     "description": "API for working with Fusion Tables data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/fusiontables",

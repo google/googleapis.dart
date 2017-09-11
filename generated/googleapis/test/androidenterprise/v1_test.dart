@@ -1,12 +1,10 @@
 library googleapis.androidenterprise.v1.test;
 
 import "dart:core" as core;
-import "dart:collection" as collection;
 import "dart:async" as async;
 import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
-import 'package:http/testing.dart' as http_testing;
 import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/androidenterprise/v1.dart' as api;
@@ -22,7 +20,8 @@ class HttpServerMock extends http.BaseClient {
 
   async.Future<http.StreamedResponse> send(http.BaseRequest request) {
     if (_expectJson) {
-      return request.finalize()
+      return request
+          .finalize()
           .transform(convert.UTF8.decoder)
           .join('')
           .then((core.String jsonString) {
@@ -45,8 +44,8 @@ class HttpServerMock extends http.BaseClient {
   }
 }
 
-http.StreamedResponse stringResponse(
-    core.int status, core.Map<core.String, core.String> headers, core.String body) {
+http.StreamedResponse stringResponse(core.int status,
+    core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
 }
@@ -91,14 +90,14 @@ checkAdministratorWebToken(api.AdministratorWebToken o) {
   buildCounterAdministratorWebToken--;
 }
 
-buildUnnamed2158() {
+buildUnnamed2145() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2158(core.List<core.String> o) {
+checkUnnamed2145(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -111,7 +110,7 @@ buildAdministratorWebTokenSpec() {
   if (buildCounterAdministratorWebTokenSpec < 3) {
     o.kind = "foo";
     o.parent = "foo";
-    o.permission = buildUnnamed2158();
+    o.permission = buildUnnamed2145();
   }
   buildCounterAdministratorWebTokenSpec--;
   return o;
@@ -122,7 +121,7 @@ checkAdministratorWebTokenSpec(api.AdministratorWebTokenSpec o) {
   if (buildCounterAdministratorWebTokenSpec < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.parent, unittest.equals('foo'));
-    checkUnnamed2158(o.permission);
+    checkUnnamed2145(o.permission);
   }
   buildCounterAdministratorWebTokenSpec--;
 }
@@ -148,14 +147,14 @@ checkAndroidDevicePolicyConfig(api.AndroidDevicePolicyConfig o) {
   buildCounterAndroidDevicePolicyConfig--;
 }
 
-buildUnnamed2159() {
+buildUnnamed2146() {
   var o = new core.List<api.AppRestrictionsSchemaRestriction>();
   o.add(buildAppRestrictionsSchemaRestriction());
   o.add(buildAppRestrictionsSchemaRestriction());
   return o;
 }
 
-checkUnnamed2159(core.List<api.AppRestrictionsSchemaRestriction> o) {
+checkUnnamed2146(core.List<api.AppRestrictionsSchemaRestriction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAppRestrictionsSchemaRestriction(o[0]);
   checkAppRestrictionsSchemaRestriction(o[1]);
@@ -167,7 +166,7 @@ buildAppRestrictionsSchema() {
   buildCounterAppRestrictionsSchema++;
   if (buildCounterAppRestrictionsSchema < 3) {
     o.kind = "foo";
-    o.restrictions = buildUnnamed2159();
+    o.restrictions = buildUnnamed2146();
   }
   buildCounterAppRestrictionsSchema--;
   return o;
@@ -177,7 +176,7 @@ checkAppRestrictionsSchema(api.AppRestrictionsSchema o) {
   buildCounterAppRestrictionsSchema++;
   if (buildCounterAppRestrictionsSchema < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2159(o.restrictions);
+    checkUnnamed2146(o.restrictions);
   }
   buildCounterAppRestrictionsSchema--;
 }
@@ -201,40 +200,40 @@ checkAppRestrictionsSchemaChangeEvent(api.AppRestrictionsSchemaChangeEvent o) {
   buildCounterAppRestrictionsSchemaChangeEvent--;
 }
 
-buildUnnamed2160() {
+buildUnnamed2147() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2160(core.List<core.String> o) {
+checkUnnamed2147(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2161() {
+buildUnnamed2148() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2161(core.List<core.String> o) {
+checkUnnamed2148(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2162() {
+buildUnnamed2149() {
   var o = new core.List<api.AppRestrictionsSchemaRestriction>();
   o.add(buildAppRestrictionsSchemaRestriction());
   o.add(buildAppRestrictionsSchemaRestriction());
   return o;
 }
 
-checkUnnamed2162(core.List<api.AppRestrictionsSchemaRestriction> o) {
+checkUnnamed2149(core.List<api.AppRestrictionsSchemaRestriction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAppRestrictionsSchemaRestriction(o[0]);
   checkAppRestrictionsSchemaRestriction(o[1]);
@@ -247,10 +246,10 @@ buildAppRestrictionsSchemaRestriction() {
   if (buildCounterAppRestrictionsSchemaRestriction < 3) {
     o.defaultValue = buildAppRestrictionsSchemaRestrictionRestrictionValue();
     o.description = "foo";
-    o.entry = buildUnnamed2160();
-    o.entryValue = buildUnnamed2161();
+    o.entry = buildUnnamed2147();
+    o.entryValue = buildUnnamed2148();
     o.key = "foo";
-    o.nestedRestriction = buildUnnamed2162();
+    o.nestedRestriction = buildUnnamed2149();
     o.restrictionType = "foo";
     o.title = "foo";
   }
@@ -263,24 +262,24 @@ checkAppRestrictionsSchemaRestriction(api.AppRestrictionsSchemaRestriction o) {
   if (buildCounterAppRestrictionsSchemaRestriction < 3) {
     checkAppRestrictionsSchemaRestrictionRestrictionValue(o.defaultValue);
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed2160(o.entry);
-    checkUnnamed2161(o.entryValue);
+    checkUnnamed2147(o.entry);
+    checkUnnamed2148(o.entryValue);
     unittest.expect(o.key, unittest.equals('foo'));
-    checkUnnamed2162(o.nestedRestriction);
+    checkUnnamed2149(o.nestedRestriction);
     unittest.expect(o.restrictionType, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterAppRestrictionsSchemaRestriction--;
 }
 
-buildUnnamed2163() {
+buildUnnamed2150() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2163(core.List<core.String> o) {
+checkUnnamed2150(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -294,20 +293,21 @@ buildAppRestrictionsSchemaRestrictionRestrictionValue() {
     o.type = "foo";
     o.valueBool = true;
     o.valueInteger = 42;
-    o.valueMultiselect = buildUnnamed2163();
+    o.valueMultiselect = buildUnnamed2150();
     o.valueString = "foo";
   }
   buildCounterAppRestrictionsSchemaRestrictionRestrictionValue--;
   return o;
 }
 
-checkAppRestrictionsSchemaRestrictionRestrictionValue(api.AppRestrictionsSchemaRestrictionRestrictionValue o) {
+checkAppRestrictionsSchemaRestrictionRestrictionValue(
+    api.AppRestrictionsSchemaRestrictionRestrictionValue o) {
   buildCounterAppRestrictionsSchemaRestrictionRestrictionValue++;
   if (buildCounterAppRestrictionsSchemaRestrictionRestrictionValue < 3) {
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.valueBool, unittest.isTrue);
     unittest.expect(o.valueInteger, unittest.equals(42));
-    checkUnnamed2163(o.valueMultiselect);
+    checkUnnamed2150(o.valueMultiselect);
     unittest.expect(o.valueString, unittest.equals('foo'));
   }
   buildCounterAppRestrictionsSchemaRestrictionRestrictionValue--;
@@ -439,14 +439,14 @@ checkDeviceState(api.DeviceState o) {
   buildCounterDeviceState--;
 }
 
-buildUnnamed2164() {
+buildUnnamed2151() {
   var o = new core.List<api.Device>();
   o.add(buildDevice());
   o.add(buildDevice());
   return o;
 }
 
-checkUnnamed2164(core.List<api.Device> o) {
+checkUnnamed2151(core.List<api.Device> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDevice(o[0]);
   checkDevice(o[1]);
@@ -457,7 +457,7 @@ buildDevicesListResponse() {
   var o = new api.DevicesListResponse();
   buildCounterDevicesListResponse++;
   if (buildCounterDevicesListResponse < 3) {
-    o.device = buildUnnamed2164();
+    o.device = buildUnnamed2151();
     o.kind = "foo";
   }
   buildCounterDevicesListResponse--;
@@ -467,20 +467,20 @@ buildDevicesListResponse() {
 checkDevicesListResponse(api.DevicesListResponse o) {
   buildCounterDevicesListResponse++;
   if (buildCounterDevicesListResponse < 3) {
-    checkUnnamed2164(o.device);
+    checkUnnamed2151(o.device);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterDevicesListResponse--;
 }
 
-buildUnnamed2165() {
+buildUnnamed2152() {
   var o = new core.List<api.Administrator>();
   o.add(buildAdministrator());
   o.add(buildAdministrator());
   return o;
 }
 
-checkUnnamed2165(core.List<api.Administrator> o) {
+checkUnnamed2152(core.List<api.Administrator> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAdministrator(o[0]);
   checkAdministrator(o[1]);
@@ -491,7 +491,7 @@ buildEnterprise() {
   var o = new api.Enterprise();
   buildCounterEnterprise++;
   if (buildCounterEnterprise < 3) {
-    o.administrator = buildUnnamed2165();
+    o.administrator = buildUnnamed2152();
     o.id = "foo";
     o.kind = "foo";
     o.name = "foo";
@@ -504,7 +504,7 @@ buildEnterprise() {
 checkEnterprise(api.Enterprise o) {
   buildCounterEnterprise++;
   if (buildCounterEnterprise < 3) {
-    checkUnnamed2165(o.administrator);
+    checkUnnamed2152(o.administrator);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -534,14 +534,14 @@ checkEnterpriseAccount(api.EnterpriseAccount o) {
   buildCounterEnterpriseAccount--;
 }
 
-buildUnnamed2166() {
+buildUnnamed2153() {
   var o = new core.List<api.Enterprise>();
   o.add(buildEnterprise());
   o.add(buildEnterprise());
   return o;
 }
 
-checkUnnamed2166(core.List<api.Enterprise> o) {
+checkUnnamed2153(core.List<api.Enterprise> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEnterprise(o[0]);
   checkEnterprise(o[1]);
@@ -552,7 +552,7 @@ buildEnterprisesListResponse() {
   var o = new api.EnterprisesListResponse();
   buildCounterEnterprisesListResponse++;
   if (buildCounterEnterprisesListResponse < 3) {
-    o.enterprise = buildUnnamed2166();
+    o.enterprise = buildUnnamed2153();
     o.kind = "foo";
   }
   buildCounterEnterprisesListResponse--;
@@ -562,7 +562,7 @@ buildEnterprisesListResponse() {
 checkEnterprisesListResponse(api.EnterprisesListResponse o) {
   buildCounterEnterprisesListResponse++;
   if (buildCounterEnterprisesListResponse < 3) {
-    checkUnnamed2166(o.enterprise);
+    checkUnnamed2153(o.enterprise);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterEnterprisesListResponse--;
@@ -580,7 +580,8 @@ buildEnterprisesSendTestPushNotificationResponse() {
   return o;
 }
 
-checkEnterprisesSendTestPushNotificationResponse(api.EnterprisesSendTestPushNotificationResponse o) {
+checkEnterprisesSendTestPushNotificationResponse(
+    api.EnterprisesSendTestPushNotificationResponse o) {
   buildCounterEnterprisesSendTestPushNotificationResponse++;
   if (buildCounterEnterprisesSendTestPushNotificationResponse < 3) {
     unittest.expect(o.messageId, unittest.equals('foo'));
@@ -612,14 +613,14 @@ checkEntitlement(api.Entitlement o) {
   buildCounterEntitlement--;
 }
 
-buildUnnamed2167() {
+buildUnnamed2154() {
   var o = new core.List<api.Entitlement>();
   o.add(buildEntitlement());
   o.add(buildEntitlement());
   return o;
 }
 
-checkUnnamed2167(core.List<api.Entitlement> o) {
+checkUnnamed2154(core.List<api.Entitlement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkEntitlement(o[0]);
   checkEntitlement(o[1]);
@@ -630,7 +631,7 @@ buildEntitlementsListResponse() {
   var o = new api.EntitlementsListResponse();
   buildCounterEntitlementsListResponse++;
   if (buildCounterEntitlementsListResponse < 3) {
-    o.entitlement = buildUnnamed2167();
+    o.entitlement = buildUnnamed2154();
     o.kind = "foo";
   }
   buildCounterEntitlementsListResponse--;
@@ -640,7 +641,7 @@ buildEntitlementsListResponse() {
 checkEntitlementsListResponse(api.EntitlementsListResponse o) {
   buildCounterEntitlementsListResponse++;
   if (buildCounterEntitlementsListResponse < 3) {
-    checkUnnamed2167(o.entitlement);
+    checkUnnamed2154(o.entitlement);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterEntitlementsListResponse--;
@@ -677,14 +678,14 @@ checkGroupLicense(api.GroupLicense o) {
   buildCounterGroupLicense--;
 }
 
-buildUnnamed2168() {
+buildUnnamed2155() {
   var o = new core.List<api.User>();
   o.add(buildUser());
   o.add(buildUser());
   return o;
 }
 
-checkUnnamed2168(core.List<api.User> o) {
+checkUnnamed2155(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUser(o[0]);
   checkUser(o[1]);
@@ -696,7 +697,7 @@ buildGroupLicenseUsersListResponse() {
   buildCounterGroupLicenseUsersListResponse++;
   if (buildCounterGroupLicenseUsersListResponse < 3) {
     o.kind = "foo";
-    o.user = buildUnnamed2168();
+    o.user = buildUnnamed2155();
   }
   buildCounterGroupLicenseUsersListResponse--;
   return o;
@@ -706,19 +707,19 @@ checkGroupLicenseUsersListResponse(api.GroupLicenseUsersListResponse o) {
   buildCounterGroupLicenseUsersListResponse++;
   if (buildCounterGroupLicenseUsersListResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2168(o.user);
+    checkUnnamed2155(o.user);
   }
   buildCounterGroupLicenseUsersListResponse--;
 }
 
-buildUnnamed2169() {
+buildUnnamed2156() {
   var o = new core.List<api.GroupLicense>();
   o.add(buildGroupLicense());
   o.add(buildGroupLicense());
   return o;
 }
 
-checkUnnamed2169(core.List<api.GroupLicense> o) {
+checkUnnamed2156(core.List<api.GroupLicense> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroupLicense(o[0]);
   checkGroupLicense(o[1]);
@@ -729,7 +730,7 @@ buildGroupLicensesListResponse() {
   var o = new api.GroupLicensesListResponse();
   buildCounterGroupLicensesListResponse++;
   if (buildCounterGroupLicensesListResponse < 3) {
-    o.groupLicense = buildUnnamed2169();
+    o.groupLicense = buildUnnamed2156();
     o.kind = "foo";
   }
   buildCounterGroupLicensesListResponse--;
@@ -739,7 +740,7 @@ buildGroupLicensesListResponse() {
 checkGroupLicensesListResponse(api.GroupLicensesListResponse o) {
   buildCounterGroupLicensesListResponse++;
   if (buildCounterGroupLicensesListResponse < 3) {
-    checkUnnamed2169(o.groupLicense);
+    checkUnnamed2156(o.groupLicense);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterGroupLicensesListResponse--;
@@ -797,14 +798,14 @@ checkInstallFailureEvent(api.InstallFailureEvent o) {
   buildCounterInstallFailureEvent--;
 }
 
-buildUnnamed2170() {
+buildUnnamed2157() {
   var o = new core.List<api.Install>();
   o.add(buildInstall());
   o.add(buildInstall());
   return o;
 }
 
-checkUnnamed2170(core.List<api.Install> o) {
+checkUnnamed2157(core.List<api.Install> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInstall(o[0]);
   checkInstall(o[1]);
@@ -815,7 +816,7 @@ buildInstallsListResponse() {
   var o = new api.InstallsListResponse();
   buildCounterInstallsListResponse++;
   if (buildCounterInstallsListResponse < 3) {
-    o.install = buildUnnamed2170();
+    o.install = buildUnnamed2157();
     o.kind = "foo";
   }
   buildCounterInstallsListResponse--;
@@ -825,7 +826,7 @@ buildInstallsListResponse() {
 checkInstallsListResponse(api.InstallsListResponse o) {
   buildCounterInstallsListResponse++;
   if (buildCounterInstallsListResponse < 3) {
-    checkUnnamed2170(o.install);
+    checkUnnamed2157(o.install);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterInstallsListResponse--;
@@ -852,14 +853,14 @@ checkLocalizedText(api.LocalizedText o) {
   buildCounterLocalizedText--;
 }
 
-buildUnnamed2171() {
+buildUnnamed2158() {
   var o = new core.List<api.ManagedProperty>();
   o.add(buildManagedProperty());
   o.add(buildManagedProperty());
   return o;
 }
 
-checkUnnamed2171(core.List<api.ManagedProperty> o) {
+checkUnnamed2158(core.List<api.ManagedProperty> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedProperty(o[0]);
   checkManagedProperty(o[1]);
@@ -871,7 +872,7 @@ buildManagedConfiguration() {
   buildCounterManagedConfiguration++;
   if (buildCounterManagedConfiguration < 3) {
     o.kind = "foo";
-    o.managedProperty = buildUnnamed2171();
+    o.managedProperty = buildUnnamed2158();
     o.productId = "foo";
   }
   buildCounterManagedConfiguration--;
@@ -882,20 +883,20 @@ checkManagedConfiguration(api.ManagedConfiguration o) {
   buildCounterManagedConfiguration++;
   if (buildCounterManagedConfiguration < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2171(o.managedProperty);
+    checkUnnamed2158(o.managedProperty);
     unittest.expect(o.productId, unittest.equals('foo'));
   }
   buildCounterManagedConfiguration--;
 }
 
-buildUnnamed2172() {
+buildUnnamed2159() {
   var o = new core.List<api.ManagedConfiguration>();
   o.add(buildManagedConfiguration());
   o.add(buildManagedConfiguration());
   return o;
 }
 
-checkUnnamed2172(core.List<api.ManagedConfiguration> o) {
+checkUnnamed2159(core.List<api.ManagedConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedConfiguration(o[0]);
   checkManagedConfiguration(o[1]);
@@ -907,29 +908,30 @@ buildManagedConfigurationsForDeviceListResponse() {
   buildCounterManagedConfigurationsForDeviceListResponse++;
   if (buildCounterManagedConfigurationsForDeviceListResponse < 3) {
     o.kind = "foo";
-    o.managedConfigurationForDevice = buildUnnamed2172();
+    o.managedConfigurationForDevice = buildUnnamed2159();
   }
   buildCounterManagedConfigurationsForDeviceListResponse--;
   return o;
 }
 
-checkManagedConfigurationsForDeviceListResponse(api.ManagedConfigurationsForDeviceListResponse o) {
+checkManagedConfigurationsForDeviceListResponse(
+    api.ManagedConfigurationsForDeviceListResponse o) {
   buildCounterManagedConfigurationsForDeviceListResponse++;
   if (buildCounterManagedConfigurationsForDeviceListResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2172(o.managedConfigurationForDevice);
+    checkUnnamed2159(o.managedConfigurationForDevice);
   }
   buildCounterManagedConfigurationsForDeviceListResponse--;
 }
 
-buildUnnamed2173() {
+buildUnnamed2160() {
   var o = new core.List<api.ManagedConfiguration>();
   o.add(buildManagedConfiguration());
   o.add(buildManagedConfiguration());
   return o;
 }
 
-checkUnnamed2173(core.List<api.ManagedConfiguration> o) {
+checkUnnamed2160(core.List<api.ManagedConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedConfiguration(o[0]);
   checkManagedConfiguration(o[1]);
@@ -941,42 +943,43 @@ buildManagedConfigurationsForUserListResponse() {
   buildCounterManagedConfigurationsForUserListResponse++;
   if (buildCounterManagedConfigurationsForUserListResponse < 3) {
     o.kind = "foo";
-    o.managedConfigurationForUser = buildUnnamed2173();
+    o.managedConfigurationForUser = buildUnnamed2160();
   }
   buildCounterManagedConfigurationsForUserListResponse--;
   return o;
 }
 
-checkManagedConfigurationsForUserListResponse(api.ManagedConfigurationsForUserListResponse o) {
+checkManagedConfigurationsForUserListResponse(
+    api.ManagedConfigurationsForUserListResponse o) {
   buildCounterManagedConfigurationsForUserListResponse++;
   if (buildCounterManagedConfigurationsForUserListResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2173(o.managedConfigurationForUser);
+    checkUnnamed2160(o.managedConfigurationForUser);
   }
   buildCounterManagedConfigurationsForUserListResponse--;
 }
 
-buildUnnamed2174() {
+buildUnnamed2161() {
   var o = new core.List<api.ManagedPropertyBundle>();
   o.add(buildManagedPropertyBundle());
   o.add(buildManagedPropertyBundle());
   return o;
 }
 
-checkUnnamed2174(core.List<api.ManagedPropertyBundle> o) {
+checkUnnamed2161(core.List<api.ManagedPropertyBundle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedPropertyBundle(o[0]);
   checkManagedPropertyBundle(o[1]);
 }
 
-buildUnnamed2175() {
+buildUnnamed2162() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2175(core.List<core.String> o) {
+checkUnnamed2162(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -990,10 +993,10 @@ buildManagedProperty() {
     o.key = "foo";
     o.valueBool = true;
     o.valueBundle = buildManagedPropertyBundle();
-    o.valueBundleArray = buildUnnamed2174();
+    o.valueBundleArray = buildUnnamed2161();
     o.valueInteger = 42;
     o.valueString = "foo";
-    o.valueStringArray = buildUnnamed2175();
+    o.valueStringArray = buildUnnamed2162();
   }
   buildCounterManagedProperty--;
   return o;
@@ -1005,22 +1008,22 @@ checkManagedProperty(api.ManagedProperty o) {
     unittest.expect(o.key, unittest.equals('foo'));
     unittest.expect(o.valueBool, unittest.isTrue);
     checkManagedPropertyBundle(o.valueBundle);
-    checkUnnamed2174(o.valueBundleArray);
+    checkUnnamed2161(o.valueBundleArray);
     unittest.expect(o.valueInteger, unittest.equals(42));
     unittest.expect(o.valueString, unittest.equals('foo'));
-    checkUnnamed2175(o.valueStringArray);
+    checkUnnamed2162(o.valueStringArray);
   }
   buildCounterManagedProperty--;
 }
 
-buildUnnamed2176() {
+buildUnnamed2163() {
   var o = new core.List<api.ManagedProperty>();
   o.add(buildManagedProperty());
   o.add(buildManagedProperty());
   return o;
 }
 
-checkUnnamed2176(core.List<api.ManagedProperty> o) {
+checkUnnamed2163(core.List<api.ManagedProperty> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedProperty(o[0]);
   checkManagedProperty(o[1]);
@@ -1031,7 +1034,7 @@ buildManagedPropertyBundle() {
   var o = new api.ManagedPropertyBundle();
   buildCounterManagedPropertyBundle++;
   if (buildCounterManagedPropertyBundle < 3) {
-    o.managedProperty = buildUnnamed2176();
+    o.managedProperty = buildUnnamed2163();
   }
   buildCounterManagedPropertyBundle--;
   return o;
@@ -1040,7 +1043,7 @@ buildManagedPropertyBundle() {
 checkManagedPropertyBundle(api.ManagedPropertyBundle o) {
   buildCounterManagedPropertyBundle++;
   if (buildCounterManagedPropertyBundle < 3) {
-    checkUnnamed2176(o.managedProperty);
+    checkUnnamed2163(o.managedProperty);
   }
   buildCounterManagedPropertyBundle--;
 }
@@ -1068,27 +1071,27 @@ checkNewDeviceEvent(api.NewDeviceEvent o) {
   buildCounterNewDeviceEvent--;
 }
 
-buildUnnamed2177() {
+buildUnnamed2164() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2177(core.List<core.String> o) {
+checkUnnamed2164(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2178() {
+buildUnnamed2165() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2178(core.List<core.String> o) {
+checkUnnamed2165(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1099,9 +1102,9 @@ buildNewPermissionsEvent() {
   var o = new api.NewPermissionsEvent();
   buildCounterNewPermissionsEvent++;
   if (buildCounterNewPermissionsEvent < 3) {
-    o.approvedPermissions = buildUnnamed2177();
+    o.approvedPermissions = buildUnnamed2164();
     o.productId = "foo";
-    o.requestedPermissions = buildUnnamed2178();
+    o.requestedPermissions = buildUnnamed2165();
   }
   buildCounterNewPermissionsEvent--;
   return o;
@@ -1110,9 +1113,9 @@ buildNewPermissionsEvent() {
 checkNewPermissionsEvent(api.NewPermissionsEvent o) {
   buildCounterNewPermissionsEvent++;
   if (buildCounterNewPermissionsEvent < 3) {
-    checkUnnamed2177(o.approvedPermissions);
+    checkUnnamed2164(o.approvedPermissions);
     unittest.expect(o.productId, unittest.equals('foo'));
-    checkUnnamed2178(o.requestedPermissions);
+    checkUnnamed2165(o.requestedPermissions);
   }
   buildCounterNewPermissionsEvent--;
 }
@@ -1122,7 +1125,8 @@ buildNotification() {
   var o = new api.Notification();
   buildCounterNotification++;
   if (buildCounterNotification < 3) {
-    o.appRestrictionsSchemaChangeEvent = buildAppRestrictionsSchemaChangeEvent();
+    o.appRestrictionsSchemaChangeEvent =
+        buildAppRestrictionsSchemaChangeEvent();
     o.appUpdateEvent = buildAppUpdateEvent();
     o.enterpriseId = "foo";
     o.installFailureEvent = buildInstallFailureEvent();
@@ -1154,14 +1158,14 @@ checkNotification(api.Notification o) {
   buildCounterNotification--;
 }
 
-buildUnnamed2179() {
+buildUnnamed2166() {
   var o = new core.List<api.Notification>();
   o.add(buildNotification());
   o.add(buildNotification());
   return o;
 }
 
-checkUnnamed2179(core.List<api.Notification> o) {
+checkUnnamed2166(core.List<api.Notification> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNotification(o[0]);
   checkNotification(o[1]);
@@ -1173,7 +1177,7 @@ buildNotificationSet() {
   buildCounterNotificationSet++;
   if (buildCounterNotificationSet < 3) {
     o.kind = "foo";
-    o.notification = buildUnnamed2179();
+    o.notification = buildUnnamed2166();
     o.notificationSetId = "foo";
   }
   buildCounterNotificationSet--;
@@ -1184,7 +1188,7 @@ checkNotificationSet(api.NotificationSet o) {
   buildCounterNotificationSet++;
   if (buildCounterNotificationSet < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2179(o.notification);
+    checkUnnamed2166(o.notification);
     unittest.expect(o.notificationSetId, unittest.equals('foo'));
   }
   buildCounterNotificationSet--;
@@ -1238,14 +1242,14 @@ checkPermission(api.Permission o) {
   buildCounterPermission--;
 }
 
-buildUnnamed2180() {
+buildUnnamed2167() {
   var o = new core.List<api.AppVersion>();
   o.add(buildAppVersion());
   o.add(buildAppVersion());
   return o;
 }
 
-checkUnnamed2180(core.List<api.AppVersion> o) {
+checkUnnamed2167(core.List<api.AppVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAppVersion(o[0]);
   checkAppVersion(o[1]);
@@ -1256,7 +1260,7 @@ buildProduct() {
   var o = new api.Product();
   buildCounterProduct++;
   if (buildCounterProduct < 3) {
-    o.appVersion = buildUnnamed2180();
+    o.appVersion = buildUnnamed2167();
     o.authorName = "foo";
     o.detailsUrl = "foo";
     o.distributionChannel = "foo";
@@ -1265,6 +1269,7 @@ buildProduct() {
     o.productId = "foo";
     o.productPricing = "foo";
     o.requiresContainerApp = true;
+    o.signingCertificate = buildProductSigningCertificate();
     o.smallIconUrl = "foo";
     o.title = "foo";
     o.workDetailsUrl = "foo";
@@ -1276,7 +1281,7 @@ buildProduct() {
 checkProduct(api.Product o) {
   buildCounterProduct++;
   if (buildCounterProduct < 3) {
-    checkUnnamed2180(o.appVersion);
+    checkUnnamed2167(o.appVersion);
     unittest.expect(o.authorName, unittest.equals('foo'));
     unittest.expect(o.detailsUrl, unittest.equals('foo'));
     unittest.expect(o.distributionChannel, unittest.equals('foo'));
@@ -1285,6 +1290,7 @@ checkProduct(api.Product o) {
     unittest.expect(o.productId, unittest.equals('foo'));
     unittest.expect(o.productPricing, unittest.equals('foo'));
     unittest.expect(o.requiresContainerApp, unittest.isTrue);
+    checkProductSigningCertificate(o.signingCertificate);
     unittest.expect(o.smallIconUrl, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
     unittest.expect(o.workDetailsUrl, unittest.equals('foo'));
@@ -1355,14 +1361,14 @@ checkProductPermission(api.ProductPermission o) {
   buildCounterProductPermission--;
 }
 
-buildUnnamed2181() {
+buildUnnamed2168() {
   var o = new core.List<api.ProductPermission>();
   o.add(buildProductPermission());
   o.add(buildProductPermission());
   return o;
 }
 
-checkUnnamed2181(core.List<api.ProductPermission> o) {
+checkUnnamed2168(core.List<api.ProductPermission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProductPermission(o[0]);
   checkProductPermission(o[1]);
@@ -1374,7 +1380,7 @@ buildProductPermissions() {
   buildCounterProductPermissions++;
   if (buildCounterProductPermissions < 3) {
     o.kind = "foo";
-    o.permission = buildUnnamed2181();
+    o.permission = buildUnnamed2168();
     o.productId = "foo";
   }
   buildCounterProductPermissions--;
@@ -1385,20 +1391,20 @@ checkProductPermissions(api.ProductPermissions o) {
   buildCounterProductPermissions++;
   if (buildCounterProductPermissions < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2181(o.permission);
+    checkUnnamed2168(o.permission);
     unittest.expect(o.productId, unittest.equals('foo'));
   }
   buildCounterProductPermissions--;
 }
 
-buildUnnamed2182() {
+buildUnnamed2169() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2182(core.List<core.String> o) {
+checkUnnamed2169(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1410,7 +1416,7 @@ buildProductSet() {
   buildCounterProductSet++;
   if (buildCounterProductSet < 3) {
     o.kind = "foo";
-    o.productId = buildUnnamed2182();
+    o.productId = buildUnnamed2169();
     o.productSetBehavior = "foo";
   }
   buildCounterProductSet--;
@@ -1421,10 +1427,31 @@ checkProductSet(api.ProductSet o) {
   buildCounterProductSet++;
   if (buildCounterProductSet < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2182(o.productId);
+    checkUnnamed2169(o.productId);
     unittest.expect(o.productSetBehavior, unittest.equals('foo'));
   }
   buildCounterProductSet--;
+}
+
+core.int buildCounterProductSigningCertificate = 0;
+buildProductSigningCertificate() {
+  var o = new api.ProductSigningCertificate();
+  buildCounterProductSigningCertificate++;
+  if (buildCounterProductSigningCertificate < 3) {
+    o.certificateHashSha1 = "foo";
+    o.certificateHashSha256 = "foo";
+  }
+  buildCounterProductSigningCertificate--;
+  return o;
+}
+
+checkProductSigningCertificate(api.ProductSigningCertificate o) {
+  buildCounterProductSigningCertificate++;
+  if (buildCounterProductSigningCertificate < 3) {
+    unittest.expect(o.certificateHashSha1, unittest.equals('foo'));
+    unittest.expect(o.certificateHashSha256, unittest.equals('foo'));
+  }
+  buildCounterProductSigningCertificate--;
 }
 
 core.int buildCounterProductsApproveRequest = 0;
@@ -1459,7 +1486,8 @@ buildProductsGenerateApprovalUrlResponse() {
   return o;
 }
 
-checkProductsGenerateApprovalUrlResponse(api.ProductsGenerateApprovalUrlResponse o) {
+checkProductsGenerateApprovalUrlResponse(
+    api.ProductsGenerateApprovalUrlResponse o) {
   buildCounterProductsGenerateApprovalUrlResponse++;
   if (buildCounterProductsGenerateApprovalUrlResponse < 3) {
     unittest.expect(o.url, unittest.equals('foo'));
@@ -1467,14 +1495,14 @@ checkProductsGenerateApprovalUrlResponse(api.ProductsGenerateApprovalUrlResponse
   buildCounterProductsGenerateApprovalUrlResponse--;
 }
 
-buildUnnamed2183() {
+buildUnnamed2170() {
   var o = new core.List<api.Product>();
   o.add(buildProduct());
   o.add(buildProduct());
   return o;
 }
 
-checkUnnamed2183(core.List<api.Product> o) {
+checkUnnamed2170(core.List<api.Product> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProduct(o[0]);
   checkProduct(o[1]);
@@ -1487,7 +1515,7 @@ buildProductsListResponse() {
   if (buildCounterProductsListResponse < 3) {
     o.kind = "foo";
     o.pageInfo = buildPageInfo();
-    o.product = buildUnnamed2183();
+    o.product = buildUnnamed2170();
     o.tokenPagination = buildTokenPagination();
   }
   buildCounterProductsListResponse--;
@@ -1499,7 +1527,7 @@ checkProductsListResponse(api.ProductsListResponse o) {
   if (buildCounterProductsListResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     checkPageInfo(o.pageInfo);
-    checkUnnamed2183(o.product);
+    checkUnnamed2170(o.product);
     checkTokenPagination(o.tokenPagination);
   }
   buildCounterProductsListResponse--;
@@ -1555,14 +1583,14 @@ checkServiceAccountKey(api.ServiceAccountKey o) {
   buildCounterServiceAccountKey--;
 }
 
-buildUnnamed2184() {
+buildUnnamed2171() {
   var o = new core.List<api.ServiceAccountKey>();
   o.add(buildServiceAccountKey());
   o.add(buildServiceAccountKey());
   return o;
 }
 
-checkUnnamed2184(core.List<api.ServiceAccountKey> o) {
+checkUnnamed2171(core.List<api.ServiceAccountKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkServiceAccountKey(o[0]);
   checkServiceAccountKey(o[1]);
@@ -1573,7 +1601,7 @@ buildServiceAccountKeysListResponse() {
   var o = new api.ServiceAccountKeysListResponse();
   buildCounterServiceAccountKeysListResponse++;
   if (buildCounterServiceAccountKeysListResponse < 3) {
-    o.serviceAccountKey = buildUnnamed2184();
+    o.serviceAccountKey = buildUnnamed2171();
   }
   buildCounterServiceAccountKeysListResponse--;
   return o;
@@ -1582,7 +1610,7 @@ buildServiceAccountKeysListResponse() {
 checkServiceAccountKeysListResponse(api.ServiceAccountKeysListResponse o) {
   buildCounterServiceAccountKeysListResponse++;
   if (buildCounterServiceAccountKeysListResponse < 3) {
-    checkUnnamed2184(o.serviceAccountKey);
+    checkUnnamed2171(o.serviceAccountKey);
   }
   buildCounterServiceAccountKeysListResponse--;
 }
@@ -1610,27 +1638,27 @@ checkSignupInfo(api.SignupInfo o) {
   buildCounterSignupInfo--;
 }
 
-buildUnnamed2185() {
+buildUnnamed2172() {
   var o = new core.List<api.LocalizedText>();
   o.add(buildLocalizedText());
   o.add(buildLocalizedText());
   return o;
 }
 
-checkUnnamed2185(core.List<api.LocalizedText> o) {
+checkUnnamed2172(core.List<api.LocalizedText> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocalizedText(o[0]);
   checkLocalizedText(o[1]);
 }
 
-buildUnnamed2186() {
+buildUnnamed2173() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2186(core.List<core.String> o) {
+checkUnnamed2173(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1643,9 +1671,9 @@ buildStoreCluster() {
   if (buildCounterStoreCluster < 3) {
     o.id = "foo";
     o.kind = "foo";
-    o.name = buildUnnamed2185();
+    o.name = buildUnnamed2172();
     o.orderInPage = "foo";
-    o.productId = buildUnnamed2186();
+    o.productId = buildUnnamed2173();
   }
   buildCounterStoreCluster--;
   return o;
@@ -1656,9 +1684,9 @@ checkStoreCluster(api.StoreCluster o) {
   if (buildCounterStoreCluster < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2185(o.name);
+    checkUnnamed2172(o.name);
     unittest.expect(o.orderInPage, unittest.equals('foo'));
-    checkUnnamed2186(o.productId);
+    checkUnnamed2173(o.productId);
   }
   buildCounterStoreCluster--;
 }
@@ -1686,14 +1714,14 @@ checkStoreLayout(api.StoreLayout o) {
   buildCounterStoreLayout--;
 }
 
-buildUnnamed2187() {
+buildUnnamed2174() {
   var o = new core.List<api.StoreCluster>();
   o.add(buildStoreCluster());
   o.add(buildStoreCluster());
   return o;
 }
 
-checkUnnamed2187(core.List<api.StoreCluster> o) {
+checkUnnamed2174(core.List<api.StoreCluster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStoreCluster(o[0]);
   checkStoreCluster(o[1]);
@@ -1704,7 +1732,7 @@ buildStoreLayoutClustersListResponse() {
   var o = new api.StoreLayoutClustersListResponse();
   buildCounterStoreLayoutClustersListResponse++;
   if (buildCounterStoreLayoutClustersListResponse < 3) {
-    o.cluster = buildUnnamed2187();
+    o.cluster = buildUnnamed2174();
     o.kind = "foo";
   }
   buildCounterStoreLayoutClustersListResponse--;
@@ -1714,20 +1742,20 @@ buildStoreLayoutClustersListResponse() {
 checkStoreLayoutClustersListResponse(api.StoreLayoutClustersListResponse o) {
   buildCounterStoreLayoutClustersListResponse++;
   if (buildCounterStoreLayoutClustersListResponse < 3) {
-    checkUnnamed2187(o.cluster);
+    checkUnnamed2174(o.cluster);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterStoreLayoutClustersListResponse--;
 }
 
-buildUnnamed2188() {
+buildUnnamed2175() {
   var o = new core.List<api.StorePage>();
   o.add(buildStorePage());
   o.add(buildStorePage());
   return o;
 }
 
-checkUnnamed2188(core.List<api.StorePage> o) {
+checkUnnamed2175(core.List<api.StorePage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStorePage(o[0]);
   checkStorePage(o[1]);
@@ -1739,7 +1767,7 @@ buildStoreLayoutPagesListResponse() {
   buildCounterStoreLayoutPagesListResponse++;
   if (buildCounterStoreLayoutPagesListResponse < 3) {
     o.kind = "foo";
-    o.page = buildUnnamed2188();
+    o.page = buildUnnamed2175();
   }
   buildCounterStoreLayoutPagesListResponse--;
   return o;
@@ -1749,32 +1777,32 @@ checkStoreLayoutPagesListResponse(api.StoreLayoutPagesListResponse o) {
   buildCounterStoreLayoutPagesListResponse++;
   if (buildCounterStoreLayoutPagesListResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2188(o.page);
+    checkUnnamed2175(o.page);
   }
   buildCounterStoreLayoutPagesListResponse--;
 }
 
-buildUnnamed2189() {
+buildUnnamed2176() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2189(core.List<core.String> o) {
+checkUnnamed2176(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed2190() {
+buildUnnamed2177() {
   var o = new core.List<api.LocalizedText>();
   o.add(buildLocalizedText());
   o.add(buildLocalizedText());
   return o;
 }
 
-checkUnnamed2190(core.List<api.LocalizedText> o) {
+checkUnnamed2177(core.List<api.LocalizedText> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocalizedText(o[0]);
   checkLocalizedText(o[1]);
@@ -1787,8 +1815,8 @@ buildStorePage() {
   if (buildCounterStorePage < 3) {
     o.id = "foo";
     o.kind = "foo";
-    o.link = buildUnnamed2189();
-    o.name = buildUnnamed2190();
+    o.link = buildUnnamed2176();
+    o.name = buildUnnamed2177();
   }
   buildCounterStorePage--;
   return o;
@@ -1799,8 +1827,8 @@ checkStorePage(api.StorePage o) {
   if (buildCounterStorePage < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2189(o.link);
-    checkUnnamed2190(o.name);
+    checkUnnamed2176(o.link);
+    checkUnnamed2177(o.name);
   }
   buildCounterStorePage--;
 }
@@ -1880,14 +1908,14 @@ checkUserToken(api.UserToken o) {
   buildCounterUserToken--;
 }
 
-buildUnnamed2191() {
+buildUnnamed2178() {
   var o = new core.List<api.User>();
   o.add(buildUser());
   o.add(buildUser());
   return o;
 }
 
-checkUnnamed2191(core.List<api.User> o) {
+checkUnnamed2178(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUser(o[0]);
   checkUser(o[1]);
@@ -1899,7 +1927,7 @@ buildUsersListResponse() {
   buildCounterUsersListResponse++;
   if (buildCounterUsersListResponse < 3) {
     o.kind = "foo";
-    o.user = buildUnnamed2191();
+    o.user = buildUnnamed2178();
   }
   buildCounterUsersListResponse--;
   return o;
@@ -1909,11 +1937,10 @@ checkUsersListResponse(api.UsersListResponse o) {
   buildCounterUsersListResponse++;
   if (buildCounterUsersListResponse < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2191(o.user);
+    checkUnnamed2178(o.user);
   }
   buildCounterUsersListResponse--;
 }
-
 
 main() {
   unittest.group("obj-schema-Administrator", () {
@@ -1924,7 +1951,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-AdministratorWebToken", () {
     unittest.test("to-json--from-json", () {
       var o = buildAdministratorWebToken();
@@ -1932,7 +1958,6 @@ main() {
       checkAdministratorWebToken(od);
     });
   });
-
 
   unittest.group("obj-schema-AdministratorWebTokenSpec", () {
     unittest.test("to-json--from-json", () {
@@ -1942,7 +1967,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-AndroidDevicePolicyConfig", () {
     unittest.test("to-json--from-json", () {
       var o = buildAndroidDevicePolicyConfig();
@@ -1950,7 +1974,6 @@ main() {
       checkAndroidDevicePolicyConfig(od);
     });
   });
-
 
   unittest.group("obj-schema-AppRestrictionsSchema", () {
     unittest.test("to-json--from-json", () {
@@ -1960,7 +1983,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-AppRestrictionsSchemaChangeEvent", () {
     unittest.test("to-json--from-json", () {
       var o = buildAppRestrictionsSchemaChangeEvent();
@@ -1968,7 +1990,6 @@ main() {
       checkAppRestrictionsSchemaChangeEvent(od);
     });
   });
-
 
   unittest.group("obj-schema-AppRestrictionsSchemaRestriction", () {
     unittest.test("to-json--from-json", () {
@@ -1978,15 +1999,16 @@ main() {
     });
   });
 
-
-  unittest.group("obj-schema-AppRestrictionsSchemaRestrictionRestrictionValue", () {
+  unittest.group("obj-schema-AppRestrictionsSchemaRestrictionRestrictionValue",
+      () {
     unittest.test("to-json--from-json", () {
       var o = buildAppRestrictionsSchemaRestrictionRestrictionValue();
-      var od = new api.AppRestrictionsSchemaRestrictionRestrictionValue.fromJson(o.toJson());
+      var od =
+          new api.AppRestrictionsSchemaRestrictionRestrictionValue.fromJson(
+              o.toJson());
       checkAppRestrictionsSchemaRestrictionRestrictionValue(od);
     });
   });
-
 
   unittest.group("obj-schema-AppUpdateEvent", () {
     unittest.test("to-json--from-json", () {
@@ -1996,7 +2018,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-AppVersion", () {
     unittest.test("to-json--from-json", () {
       var o = buildAppVersion();
@@ -2004,7 +2025,6 @@ main() {
       checkAppVersion(od);
     });
   });
-
 
   unittest.group("obj-schema-ApprovalUrlInfo", () {
     unittest.test("to-json--from-json", () {
@@ -2014,7 +2034,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-AuthenticationToken", () {
     unittest.test("to-json--from-json", () {
       var o = buildAuthenticationToken();
@@ -2022,7 +2041,6 @@ main() {
       checkAuthenticationToken(od);
     });
   });
-
 
   unittest.group("obj-schema-Device", () {
     unittest.test("to-json--from-json", () {
@@ -2032,7 +2050,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-DeviceState", () {
     unittest.test("to-json--from-json", () {
       var o = buildDeviceState();
@@ -2040,7 +2057,6 @@ main() {
       checkDeviceState(od);
     });
   });
-
 
   unittest.group("obj-schema-DevicesListResponse", () {
     unittest.test("to-json--from-json", () {
@@ -2050,7 +2066,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Enterprise", () {
     unittest.test("to-json--from-json", () {
       var o = buildEnterprise();
@@ -2058,7 +2073,6 @@ main() {
       checkEnterprise(od);
     });
   });
-
 
   unittest.group("obj-schema-EnterpriseAccount", () {
     unittest.test("to-json--from-json", () {
@@ -2068,7 +2082,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-EnterprisesListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildEnterprisesListResponse();
@@ -2077,15 +2090,14 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-EnterprisesSendTestPushNotificationResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildEnterprisesSendTestPushNotificationResponse();
-      var od = new api.EnterprisesSendTestPushNotificationResponse.fromJson(o.toJson());
+      var od = new api.EnterprisesSendTestPushNotificationResponse.fromJson(
+          o.toJson());
       checkEnterprisesSendTestPushNotificationResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-Entitlement", () {
     unittest.test("to-json--from-json", () {
@@ -2095,7 +2107,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-EntitlementsListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildEntitlementsListResponse();
@@ -2103,7 +2114,6 @@ main() {
       checkEntitlementsListResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-GroupLicense", () {
     unittest.test("to-json--from-json", () {
@@ -2113,7 +2123,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-GroupLicenseUsersListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildGroupLicenseUsersListResponse();
@@ -2121,7 +2130,6 @@ main() {
       checkGroupLicenseUsersListResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-GroupLicensesListResponse", () {
     unittest.test("to-json--from-json", () {
@@ -2131,7 +2139,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Install", () {
     unittest.test("to-json--from-json", () {
       var o = buildInstall();
@@ -2139,7 +2146,6 @@ main() {
       checkInstall(od);
     });
   });
-
 
   unittest.group("obj-schema-InstallFailureEvent", () {
     unittest.test("to-json--from-json", () {
@@ -2149,7 +2155,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-InstallsListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildInstallsListResponse();
@@ -2157,7 +2162,6 @@ main() {
       checkInstallsListResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-LocalizedText", () {
     unittest.test("to-json--from-json", () {
@@ -2167,7 +2171,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ManagedConfiguration", () {
     unittest.test("to-json--from-json", () {
       var o = buildManagedConfiguration();
@@ -2176,24 +2179,23 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ManagedConfigurationsForDeviceListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildManagedConfigurationsForDeviceListResponse();
-      var od = new api.ManagedConfigurationsForDeviceListResponse.fromJson(o.toJson());
+      var od = new api.ManagedConfigurationsForDeviceListResponse.fromJson(
+          o.toJson());
       checkManagedConfigurationsForDeviceListResponse(od);
     });
   });
 
-
   unittest.group("obj-schema-ManagedConfigurationsForUserListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildManagedConfigurationsForUserListResponse();
-      var od = new api.ManagedConfigurationsForUserListResponse.fromJson(o.toJson());
+      var od =
+          new api.ManagedConfigurationsForUserListResponse.fromJson(o.toJson());
       checkManagedConfigurationsForUserListResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-ManagedProperty", () {
     unittest.test("to-json--from-json", () {
@@ -2203,7 +2205,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ManagedPropertyBundle", () {
     unittest.test("to-json--from-json", () {
       var o = buildManagedPropertyBundle();
@@ -2211,7 +2212,6 @@ main() {
       checkManagedPropertyBundle(od);
     });
   });
-
 
   unittest.group("obj-schema-NewDeviceEvent", () {
     unittest.test("to-json--from-json", () {
@@ -2221,7 +2221,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-NewPermissionsEvent", () {
     unittest.test("to-json--from-json", () {
       var o = buildNewPermissionsEvent();
@@ -2229,7 +2228,6 @@ main() {
       checkNewPermissionsEvent(od);
     });
   });
-
 
   unittest.group("obj-schema-Notification", () {
     unittest.test("to-json--from-json", () {
@@ -2239,7 +2237,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-NotificationSet", () {
     unittest.test("to-json--from-json", () {
       var o = buildNotificationSet();
@@ -2247,7 +2244,6 @@ main() {
       checkNotificationSet(od);
     });
   });
-
 
   unittest.group("obj-schema-PageInfo", () {
     unittest.test("to-json--from-json", () {
@@ -2257,7 +2253,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Permission", () {
     unittest.test("to-json--from-json", () {
       var o = buildPermission();
@@ -2265,7 +2260,6 @@ main() {
       checkPermission(od);
     });
   });
-
 
   unittest.group("obj-schema-Product", () {
     unittest.test("to-json--from-json", () {
@@ -2275,7 +2269,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ProductApprovalEvent", () {
     unittest.test("to-json--from-json", () {
       var o = buildProductApprovalEvent();
@@ -2283,7 +2276,6 @@ main() {
       checkProductApprovalEvent(od);
     });
   });
-
 
   unittest.group("obj-schema-ProductAvailabilityChangeEvent", () {
     unittest.test("to-json--from-json", () {
@@ -2293,7 +2285,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ProductPermission", () {
     unittest.test("to-json--from-json", () {
       var o = buildProductPermission();
@@ -2301,7 +2292,6 @@ main() {
       checkProductPermission(od);
     });
   });
-
 
   unittest.group("obj-schema-ProductPermissions", () {
     unittest.test("to-json--from-json", () {
@@ -2311,7 +2301,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ProductSet", () {
     unittest.test("to-json--from-json", () {
       var o = buildProductSet();
@@ -2320,6 +2309,13 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-ProductSigningCertificate", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildProductSigningCertificate();
+      var od = new api.ProductSigningCertificate.fromJson(o.toJson());
+      checkProductSigningCertificate(od);
+    });
+  });
 
   unittest.group("obj-schema-ProductsApproveRequest", () {
     unittest.test("to-json--from-json", () {
@@ -2329,7 +2325,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ProductsGenerateApprovalUrlResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildProductsGenerateApprovalUrlResponse();
@@ -2337,7 +2332,6 @@ main() {
       checkProductsGenerateApprovalUrlResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-ProductsListResponse", () {
     unittest.test("to-json--from-json", () {
@@ -2347,7 +2341,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ServiceAccount", () {
     unittest.test("to-json--from-json", () {
       var o = buildServiceAccount();
@@ -2355,7 +2348,6 @@ main() {
       checkServiceAccount(od);
     });
   });
-
 
   unittest.group("obj-schema-ServiceAccountKey", () {
     unittest.test("to-json--from-json", () {
@@ -2365,7 +2357,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-ServiceAccountKeysListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildServiceAccountKeysListResponse();
@@ -2373,7 +2364,6 @@ main() {
       checkServiceAccountKeysListResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-SignupInfo", () {
     unittest.test("to-json--from-json", () {
@@ -2383,7 +2373,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-StoreCluster", () {
     unittest.test("to-json--from-json", () {
       var o = buildStoreCluster();
@@ -2391,7 +2380,6 @@ main() {
       checkStoreCluster(od);
     });
   });
-
 
   unittest.group("obj-schema-StoreLayout", () {
     unittest.test("to-json--from-json", () {
@@ -2401,7 +2389,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-StoreLayoutClustersListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildStoreLayoutClustersListResponse();
@@ -2409,7 +2396,6 @@ main() {
       checkStoreLayoutClustersListResponse(od);
     });
   });
-
 
   unittest.group("obj-schema-StoreLayoutPagesListResponse", () {
     unittest.test("to-json--from-json", () {
@@ -2419,7 +2405,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-StorePage", () {
     unittest.test("to-json--from-json", () {
       var o = buildStorePage();
@@ -2427,7 +2412,6 @@ main() {
       checkStorePage(od);
     });
   });
-
 
   unittest.group("obj-schema-TokenPagination", () {
     unittest.test("to-json--from-json", () {
@@ -2437,7 +2421,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-User", () {
     unittest.test("to-json--from-json", () {
       var o = buildUser();
@@ -2445,7 +2428,6 @@ main() {
       checkUser(od);
     });
   });
-
 
   unittest.group("obj-schema-UserToken", () {
     unittest.test("to-json--from-json", () {
@@ -2455,7 +2437,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-UsersListResponse", () {
     unittest.test("to-json--from-json", () {
       var o = buildUsersListResponse();
@@ -2464,10 +2445,8 @@ main() {
     });
   });
 
-
   unittest.group("resource-DevicesResourceApi", () {
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
       api.DevicesResourceApi res = new api.AndroidenterpriseApi(mock).devices;
       var arg_enterpriseId = "foo";
@@ -2478,25 +2457,32 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/devices/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/devices/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/devices/"));
         pathOffset += 9;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -2512,27 +2498,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildDevice());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_enterpriseId, arg_userId, arg_deviceId).then(unittest.expectAsync1(((api.Device response) {
+      res
+          .get(arg_enterpriseId, arg_userId, arg_deviceId)
+          .then(unittest.expectAsync1(((api.Device response) {
         checkDevice(response);
       })));
     });
 
     unittest.test("method--getState", () {
-
       var mock = new HttpServerMock();
       api.DevicesResourceApi res = new api.AndroidenterpriseApi(mock).devices;
       var arg_enterpriseId = "foo";
@@ -2543,32 +2531,41 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/devices/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/devices/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/devices/"));
         pathOffset += 9;
         index = path.indexOf("/state", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_deviceId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("/state"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("/state"));
         pathOffset += 6;
 
         var query = (req.url).query;
@@ -2581,27 +2578,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildDeviceState());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getState(arg_enterpriseId, arg_userId, arg_deviceId).then(unittest.expectAsync1(((api.DeviceState response) {
+      res
+          .getState(arg_enterpriseId, arg_userId, arg_deviceId)
+          .then(unittest.expectAsync1(((api.DeviceState response) {
         checkDeviceState(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
       api.DevicesResourceApi res = new api.AndroidenterpriseApi(mock).devices;
       var arg_enterpriseId = "foo";
@@ -2611,25 +2610,32 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/devices", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("/devices"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/devices"));
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -2642,27 +2648,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildDevicesListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_enterpriseId, arg_userId).then(unittest.expectAsync1(((api.DevicesListResponse response) {
+      res
+          .list(arg_enterpriseId, arg_userId)
+          .then(unittest.expectAsync1(((api.DevicesListResponse response) {
         checkDevicesListResponse(response);
       })));
     });
 
     unittest.test("method--setState", () {
-
       var mock = new HttpServerMock();
       api.DevicesResourceApi res = new api.AndroidenterpriseApi(mock).devices;
       var arg_request = buildDeviceState();
@@ -2677,32 +2685,41 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/devices/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/devices/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/devices/"));
         pathOffset += 9;
         index = path.indexOf("/state", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_deviceId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("/state"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("/state"));
         pathOffset += 6;
 
         var query = (req.url).query;
@@ -2715,44 +2732,48 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildDeviceState());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.setState(arg_request, arg_enterpriseId, arg_userId, arg_deviceId).then(unittest.expectAsync1(((api.DeviceState response) {
+      res
+          .setState(arg_request, arg_enterpriseId, arg_userId, arg_deviceId)
+          .then(unittest.expectAsync1(((api.DeviceState response) {
         checkDeviceState(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-EnterprisesResourceApi", () {
     unittest.test("method--acknowledgeNotificationSet", () {
-
       var mock = new HttpServerMock();
-      api.EnterprisesResourceApi res = new api.AndroidenterpriseApi(mock).enterprises;
+      api.EnterprisesResourceApi res =
+          new api.AndroidenterpriseApi(mock).enterprises;
       var arg_notificationSetId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 38), unittest.equals("enterprises/acknowledgeNotificationSet"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 38),
+            unittest.equals("enterprises/acknowledgeNotificationSet"));
         pathOffset += 38;
 
         var query = (req.url).query;
@@ -2765,28 +2786,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["notificationSetId"].first, unittest.equals(arg_notificationSetId));
-
+        unittest.expect(queryMap["notificationSetId"].first,
+            unittest.equals(arg_notificationSetId));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.acknowledgeNotificationSet(notificationSetId: arg_notificationSetId).then(unittest.expectAsync1((_) {}));
+      res
+          .acknowledgeNotificationSet(notificationSetId: arg_notificationSetId)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--completeSignup", () {
-
       var mock = new HttpServerMock();
-      api.EnterprisesResourceApi res = new api.AndroidenterpriseApi(mock).enterprises;
+      api.EnterprisesResourceApi res =
+          new api.AndroidenterpriseApi(mock).enterprises;
       var arg_completionToken = "foo";
       var arg_enterpriseToken = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2794,11 +2819,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 26), unittest.equals("enterprises/completeSignup"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 26),
+            unittest.equals("enterprises/completeSignup"));
         pathOffset += 26;
 
         var query = (req.url).query;
@@ -2811,31 +2839,38 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["completionToken"].first, unittest.equals(arg_completionToken));
-        unittest.expect(queryMap["enterpriseToken"].first, unittest.equals(arg_enterpriseToken));
-
+        unittest.expect(queryMap["completionToken"].first,
+            unittest.equals(arg_completionToken));
+        unittest.expect(queryMap["enterpriseToken"].first,
+            unittest.equals(arg_enterpriseToken));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildEnterprise());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.completeSignup(completionToken: arg_completionToken, enterpriseToken: arg_enterpriseToken).then(unittest.expectAsync1(((api.Enterprise response) {
+      res
+          .completeSignup(
+              completionToken: arg_completionToken,
+              enterpriseToken: arg_enterpriseToken)
+          .then(unittest.expectAsync1(((api.Enterprise response) {
         checkEnterprise(response);
       })));
     });
 
     unittest.test("method--createWebToken", () {
-
       var mock = new HttpServerMock();
-      api.EnterprisesResourceApi res = new api.AndroidenterpriseApi(mock).enterprises;
+      api.EnterprisesResourceApi res =
+          new api.AndroidenterpriseApi(mock).enterprises;
       var arg_request = buildAdministratorWebTokenSpec();
       var arg_enterpriseId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2846,18 +2881,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/createWebToken", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/createWebToken"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 15),
+            unittest.equals("/createWebToken"));
         pathOffset += 15;
 
         var query = (req.url).query;
@@ -2870,40 +2910,46 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAdministratorWebToken());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.createWebToken(arg_request, arg_enterpriseId).then(unittest.expectAsync1(((api.AdministratorWebToken response) {
+      res
+          .createWebToken(arg_request, arg_enterpriseId)
+          .then(unittest.expectAsync1(((api.AdministratorWebToken response) {
         checkAdministratorWebToken(response);
       })));
     });
 
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
-      api.EnterprisesResourceApi res = new api.AndroidenterpriseApi(mock).enterprises;
+      api.EnterprisesResourceApi res =
+          new api.AndroidenterpriseApi(mock).enterprises;
       var arg_enterpriseId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -2919,16 +2965,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
@@ -2937,9 +2984,9 @@ main() {
     });
 
     unittest.test("method--enroll", () {
-
       var mock = new HttpServerMock();
-      api.EnterprisesResourceApi res = new api.AndroidenterpriseApi(mock).enterprises;
+      api.EnterprisesResourceApi res =
+          new api.AndroidenterpriseApi(mock).enterprises;
       var arg_request = buildEnterprise();
       var arg_token = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2950,11 +2997,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("enterprises/enroll"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 18),
+            unittest.equals("enterprises/enroll"));
         pathOffset += 18;
 
         var query = (req.url).query;
@@ -2967,41 +3017,47 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
         unittest.expect(queryMap["token"].first, unittest.equals(arg_token));
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildEnterprise());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.enroll(arg_request, arg_token).then(unittest.expectAsync1(((api.Enterprise response) {
+      res
+          .enroll(arg_request, arg_token)
+          .then(unittest.expectAsync1(((api.Enterprise response) {
         checkEnterprise(response);
       })));
     });
 
     unittest.test("method--generateSignupUrl", () {
-
       var mock = new HttpServerMock();
-      api.EnterprisesResourceApi res = new api.AndroidenterpriseApi(mock).enterprises;
+      api.EnterprisesResourceApi res =
+          new api.AndroidenterpriseApi(mock).enterprises;
       var arg_callbackUrl = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("enterprises/signupUrl"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("enterprises/signupUrl"));
         pathOffset += 21;
 
         var query = (req.url).query;
@@ -3014,41 +3070,48 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["callbackUrl"].first, unittest.equals(arg_callbackUrl));
-
+        unittest.expect(
+            queryMap["callbackUrl"].first, unittest.equals(arg_callbackUrl));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildSignupInfo());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.generateSignupUrl(callbackUrl: arg_callbackUrl).then(unittest.expectAsync1(((api.SignupInfo response) {
+      res
+          .generateSignupUrl(callbackUrl: arg_callbackUrl)
+          .then(unittest.expectAsync1(((api.SignupInfo response) {
         checkSignupInfo(response);
       })));
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.EnterprisesResourceApi res = new api.AndroidenterpriseApi(mock).enterprises;
+      api.EnterprisesResourceApi res =
+          new api.AndroidenterpriseApi(mock).enterprises;
       var arg_enterpriseId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -3064,47 +3127,55 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildEnterprise());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_enterpriseId).then(unittest.expectAsync1(((api.Enterprise response) {
+      res
+          .get(arg_enterpriseId)
+          .then(unittest.expectAsync1(((api.Enterprise response) {
         checkEnterprise(response);
       })));
     });
 
     unittest.test("method--getAndroidDevicePolicyConfig", () {
-
       var mock = new HttpServerMock();
-      api.EnterprisesResourceApi res = new api.AndroidenterpriseApi(mock).enterprises;
+      api.EnterprisesResourceApi res =
+          new api.AndroidenterpriseApi(mock).enterprises;
       var arg_enterpriseId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/androidDevicePolicyConfig", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 26), unittest.equals("/androidDevicePolicyConfig"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 26),
+            unittest.equals("/androidDevicePolicyConfig"));
         pathOffset += 26;
 
         var query = (req.url).query;
@@ -3117,29 +3188,31 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAndroidDevicePolicyConfig());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getAndroidDevicePolicyConfig(arg_enterpriseId).then(unittest.expectAsync1(((api.AndroidDevicePolicyConfig response) {
+      res.getAndroidDevicePolicyConfig(arg_enterpriseId).then(
+          unittest.expectAsync1(((api.AndroidDevicePolicyConfig response) {
         checkAndroidDevicePolicyConfig(response);
       })));
     });
 
     unittest.test("method--getServiceAccount", () {
-
       var mock = new HttpServerMock();
-      api.EnterprisesResourceApi res = new api.AndroidenterpriseApi(mock).enterprises;
+      api.EnterprisesResourceApi res =
+          new api.AndroidenterpriseApi(mock).enterprises;
       var arg_enterpriseId = "foo";
       var arg_keyType = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3147,18 +3220,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/serviceAccount", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/serviceAccount"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 15),
+            unittest.equals("/serviceAccount"));
         pathOffset += 15;
 
         var query = (req.url).query;
@@ -3171,48 +3249,57 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["keyType"].first, unittest.equals(arg_keyType));
-
+        unittest.expect(
+            queryMap["keyType"].first, unittest.equals(arg_keyType));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildServiceAccount());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getServiceAccount(arg_enterpriseId, keyType: arg_keyType).then(unittest.expectAsync1(((api.ServiceAccount response) {
+      res
+          .getServiceAccount(arg_enterpriseId, keyType: arg_keyType)
+          .then(unittest.expectAsync1(((api.ServiceAccount response) {
         checkServiceAccount(response);
       })));
     });
 
     unittest.test("method--getStoreLayout", () {
-
       var mock = new HttpServerMock();
-      api.EnterprisesResourceApi res = new api.AndroidenterpriseApi(mock).enterprises;
+      api.EnterprisesResourceApi res =
+          new api.AndroidenterpriseApi(mock).enterprises;
       var arg_enterpriseId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/storeLayout", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/storeLayout"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("/storeLayout"));
         pathOffset += 12;
 
         var query = (req.url).query;
@@ -3225,29 +3312,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildStoreLayout());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getStoreLayout(arg_enterpriseId).then(unittest.expectAsync1(((api.StoreLayout response) {
+      res
+          .getStoreLayout(arg_enterpriseId)
+          .then(unittest.expectAsync1(((api.StoreLayout response) {
         checkStoreLayout(response);
       })));
     });
 
     unittest.test("method--insert", () {
-
       var mock = new HttpServerMock();
-      api.EnterprisesResourceApi res = new api.AndroidenterpriseApi(mock).enterprises;
+      api.EnterprisesResourceApi res =
+          new api.AndroidenterpriseApi(mock).enterprises;
       var arg_request = buildEnterprise();
       var arg_token = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3258,11 +3348,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("enterprises"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("enterprises"));
         pathOffset += 11;
 
         var query = (req.url).query;
@@ -3275,41 +3368,47 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
         unittest.expect(queryMap["token"].first, unittest.equals(arg_token));
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildEnterprise());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_token).then(unittest.expectAsync1(((api.Enterprise response) {
+      res
+          .insert(arg_request, arg_token)
+          .then(unittest.expectAsync1(((api.Enterprise response) {
         checkEnterprise(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.EnterprisesResourceApi res = new api.AndroidenterpriseApi(mock).enterprises;
+      api.EnterprisesResourceApi res =
+          new api.AndroidenterpriseApi(mock).enterprises;
       var arg_domain = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("enterprises"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("enterprises"));
         pathOffset += 11;
 
         var query = (req.url).query;
@@ -3322,41 +3421,47 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
         unittest.expect(queryMap["domain"].first, unittest.equals(arg_domain));
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildEnterprisesListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_domain).then(unittest.expectAsync1(((api.EnterprisesListResponse response) {
+      res
+          .list(arg_domain)
+          .then(unittest.expectAsync1(((api.EnterprisesListResponse response) {
         checkEnterprisesListResponse(response);
       })));
     });
 
     unittest.test("method--pullNotificationSet", () {
-
       var mock = new HttpServerMock();
-      api.EnterprisesResourceApi res = new api.AndroidenterpriseApi(mock).enterprises;
+      api.EnterprisesResourceApi res =
+          new api.AndroidenterpriseApi(mock).enterprises;
       var arg_requestMode = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 31), unittest.equals("enterprises/pullNotificationSet"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 31),
+            unittest.equals("enterprises/pullNotificationSet"));
         pathOffset += 31;
 
         var query = (req.url).query;
@@ -3369,48 +3474,57 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["requestMode"].first, unittest.equals(arg_requestMode));
-
+        unittest.expect(
+            queryMap["requestMode"].first, unittest.equals(arg_requestMode));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildNotificationSet());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.pullNotificationSet(requestMode: arg_requestMode).then(unittest.expectAsync1(((api.NotificationSet response) {
+      res
+          .pullNotificationSet(requestMode: arg_requestMode)
+          .then(unittest.expectAsync1(((api.NotificationSet response) {
         checkNotificationSet(response);
       })));
     });
 
     unittest.test("method--sendTestPushNotification", () {
-
       var mock = new HttpServerMock();
-      api.EnterprisesResourceApi res = new api.AndroidenterpriseApi(mock).enterprises;
+      api.EnterprisesResourceApi res =
+          new api.AndroidenterpriseApi(mock).enterprises;
       var arg_enterpriseId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/sendTestPushNotification", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 25), unittest.equals("/sendTestPushNotification"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 25),
+            unittest.equals("/sendTestPushNotification"));
         pathOffset += 25;
 
         var query = (req.url).query;
@@ -3423,29 +3537,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildEnterprisesSendTestPushNotificationResponse());
+        var resp = convert.JSON
+            .encode(buildEnterprisesSendTestPushNotificationResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.sendTestPushNotification(arg_enterpriseId).then(unittest.expectAsync1(((api.EnterprisesSendTestPushNotificationResponse response) {
+      res.sendTestPushNotification(arg_enterpriseId).then(unittest.expectAsync1(
+          ((api.EnterprisesSendTestPushNotificationResponse response) {
         checkEnterprisesSendTestPushNotificationResponse(response);
       })));
     });
 
     unittest.test("method--setAccount", () {
-
       var mock = new HttpServerMock();
-      api.EnterprisesResourceApi res = new api.AndroidenterpriseApi(mock).enterprises;
+      api.EnterprisesResourceApi res =
+          new api.AndroidenterpriseApi(mock).enterprises;
       var arg_request = buildEnterpriseAccount();
       var arg_enterpriseId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3456,18 +3573,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/account", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("/account"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/account"));
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -3480,29 +3602,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildEnterpriseAccount());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.setAccount(arg_request, arg_enterpriseId).then(unittest.expectAsync1(((api.EnterpriseAccount response) {
+      res
+          .setAccount(arg_request, arg_enterpriseId)
+          .then(unittest.expectAsync1(((api.EnterpriseAccount response) {
         checkEnterpriseAccount(response);
       })));
     });
 
     unittest.test("method--setAndroidDevicePolicyConfig", () {
-
       var mock = new HttpServerMock();
-      api.EnterprisesResourceApi res = new api.AndroidenterpriseApi(mock).enterprises;
+      api.EnterprisesResourceApi res =
+          new api.AndroidenterpriseApi(mock).enterprises;
       var arg_request = buildAndroidDevicePolicyConfig();
       var arg_enterpriseId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3513,18 +3638,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/androidDevicePolicyConfig", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 26), unittest.equals("/androidDevicePolicyConfig"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 26),
+            unittest.equals("/androidDevicePolicyConfig"));
         pathOffset += 26;
 
         var query = (req.url).query;
@@ -3537,29 +3667,31 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAndroidDevicePolicyConfig());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.setAndroidDevicePolicyConfig(arg_request, arg_enterpriseId).then(unittest.expectAsync1(((api.AndroidDevicePolicyConfig response) {
+      res.setAndroidDevicePolicyConfig(arg_request, arg_enterpriseId).then(
+          unittest.expectAsync1(((api.AndroidDevicePolicyConfig response) {
         checkAndroidDevicePolicyConfig(response);
       })));
     });
 
     unittest.test("method--setStoreLayout", () {
-
       var mock = new HttpServerMock();
-      api.EnterprisesResourceApi res = new api.AndroidenterpriseApi(mock).enterprises;
+      api.EnterprisesResourceApi res =
+          new api.AndroidenterpriseApi(mock).enterprises;
       var arg_request = buildStoreLayout();
       var arg_enterpriseId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3570,18 +3702,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/storeLayout", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/storeLayout"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("/storeLayout"));
         pathOffset += 12;
 
         var query = (req.url).query;
@@ -3594,47 +3731,55 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildStoreLayout());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.setStoreLayout(arg_request, arg_enterpriseId).then(unittest.expectAsync1(((api.StoreLayout response) {
+      res
+          .setStoreLayout(arg_request, arg_enterpriseId)
+          .then(unittest.expectAsync1(((api.StoreLayout response) {
         checkStoreLayout(response);
       })));
     });
 
     unittest.test("method--unenroll", () {
-
       var mock = new HttpServerMock();
-      api.EnterprisesResourceApi res = new api.AndroidenterpriseApi(mock).enterprises;
+      api.EnterprisesResourceApi res =
+          new api.AndroidenterpriseApi(mock).enterprises;
       var arg_enterpriseId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/unenroll", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/unenroll"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/unenroll"));
         pathOffset += 9;
 
         var query = (req.url).query;
@@ -3647,31 +3792,30 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.unenroll(arg_enterpriseId).then(unittest.expectAsync1((_) {}));
     });
-
   });
-
 
   unittest.group("resource-EntitlementsResourceApi", () {
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
-      api.EntitlementsResourceApi res = new api.AndroidenterpriseApi(mock).entitlements;
+      api.EntitlementsResourceApi res =
+          new api.AndroidenterpriseApi(mock).entitlements;
       var arg_enterpriseId = "foo";
       var arg_userId = "foo";
       var arg_entitlementId = "foo";
@@ -3680,25 +3824,32 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/entitlements/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/entitlements/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("/entitlements/"));
         pathOffset += 14;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -3714,27 +3865,30 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_enterpriseId, arg_userId, arg_entitlementId).then(unittest.expectAsync1((_) {}));
+      res
+          .delete(arg_enterpriseId, arg_userId, arg_entitlementId)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.EntitlementsResourceApi res = new api.AndroidenterpriseApi(mock).entitlements;
+      api.EntitlementsResourceApi res =
+          new api.AndroidenterpriseApi(mock).entitlements;
       var arg_enterpriseId = "foo";
       var arg_userId = "foo";
       var arg_entitlementId = "foo";
@@ -3743,25 +3897,32 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/entitlements/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/entitlements/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("/entitlements/"));
         pathOffset += 14;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -3777,29 +3938,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildEntitlement());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_enterpriseId, arg_userId, arg_entitlementId).then(unittest.expectAsync1(((api.Entitlement response) {
+      res
+          .get(arg_enterpriseId, arg_userId, arg_entitlementId)
+          .then(unittest.expectAsync1(((api.Entitlement response) {
         checkEntitlement(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.EntitlementsResourceApi res = new api.AndroidenterpriseApi(mock).entitlements;
+      api.EntitlementsResourceApi res =
+          new api.AndroidenterpriseApi(mock).entitlements;
       var arg_enterpriseId = "foo";
       var arg_userId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3807,25 +3971,32 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/entitlements", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 13), unittest.equals("/entitlements"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 13),
+            unittest.equals("/entitlements"));
         pathOffset += 13;
 
         var query = (req.url).query;
@@ -3838,29 +4009,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildEntitlementsListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_enterpriseId, arg_userId).then(unittest.expectAsync1(((api.EntitlementsListResponse response) {
+      res
+          .list(arg_enterpriseId, arg_userId)
+          .then(unittest.expectAsync1(((api.EntitlementsListResponse response) {
         checkEntitlementsListResponse(response);
       })));
     });
 
     unittest.test("method--patch", () {
-
       var mock = new HttpServerMock();
-      api.EntitlementsResourceApi res = new api.AndroidenterpriseApi(mock).entitlements;
+      api.EntitlementsResourceApi res =
+          new api.AndroidenterpriseApi(mock).entitlements;
       var arg_request = buildEntitlement();
       var arg_enterpriseId = "foo";
       var arg_userId = "foo";
@@ -3874,25 +4048,32 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/entitlements/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/entitlements/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("/entitlements/"));
         pathOffset += 14;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -3908,30 +4089,35 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["install"].first, unittest.equals("$arg_install"));
-
+        unittest.expect(
+            queryMap["install"].first, unittest.equals("$arg_install"));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildEntitlement());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_enterpriseId, arg_userId, arg_entitlementId, install: arg_install).then(unittest.expectAsync1(((api.Entitlement response) {
+      res
+          .patch(arg_request, arg_enterpriseId, arg_userId, arg_entitlementId,
+              install: arg_install)
+          .then(unittest.expectAsync1(((api.Entitlement response) {
         checkEntitlement(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
-      api.EntitlementsResourceApi res = new api.AndroidenterpriseApi(mock).entitlements;
+      api.EntitlementsResourceApi res =
+          new api.AndroidenterpriseApi(mock).entitlements;
       var arg_request = buildEntitlement();
       var arg_enterpriseId = "foo";
       var arg_userId = "foo";
@@ -3945,25 +4131,32 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/entitlements/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/entitlements/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("/entitlements/"));
         pathOffset += 14;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -3979,34 +4172,37 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["install"].first, unittest.equals("$arg_install"));
-
+        unittest.expect(
+            queryMap["install"].first, unittest.equals("$arg_install"));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildEntitlement());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_enterpriseId, arg_userId, arg_entitlementId, install: arg_install).then(unittest.expectAsync1(((api.Entitlement response) {
+      res
+          .update(arg_request, arg_enterpriseId, arg_userId, arg_entitlementId,
+              install: arg_install)
+          .then(unittest.expectAsync1(((api.Entitlement response) {
         checkEntitlement(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-GrouplicensesResourceApi", () {
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.GrouplicensesResourceApi res = new api.AndroidenterpriseApi(mock).grouplicenses;
+      api.GrouplicensesResourceApi res =
+          new api.AndroidenterpriseApi(mock).grouplicenses;
       var arg_enterpriseId = "foo";
       var arg_groupLicenseId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4014,18 +4210,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/groupLicenses/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/groupLicenses/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 15),
+            unittest.equals("/groupLicenses/"));
         pathOffset += 15;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -4041,47 +4242,55 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGroupLicense());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_enterpriseId, arg_groupLicenseId).then(unittest.expectAsync1(((api.GroupLicense response) {
+      res
+          .get(arg_enterpriseId, arg_groupLicenseId)
+          .then(unittest.expectAsync1(((api.GroupLicense response) {
         checkGroupLicense(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.GrouplicensesResourceApi res = new api.AndroidenterpriseApi(mock).grouplicenses;
+      api.GrouplicensesResourceApi res =
+          new api.AndroidenterpriseApi(mock).grouplicenses;
       var arg_enterpriseId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/groupLicenses", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 14), unittest.equals("/groupLicenses"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 14),
+            unittest.equals("/groupLicenses"));
         pathOffset += 14;
 
         var query = (req.url).query;
@@ -4094,33 +4303,33 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGroupLicensesListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_enterpriseId).then(unittest.expectAsync1(((api.GroupLicensesListResponse response) {
+      res.list(arg_enterpriseId).then(
+          unittest.expectAsync1(((api.GroupLicensesListResponse response) {
         checkGroupLicensesListResponse(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-GrouplicenseusersResourceApi", () {
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.GrouplicenseusersResourceApi res = new api.AndroidenterpriseApi(mock).grouplicenseusers;
+      api.GrouplicenseusersResourceApi res =
+          new api.AndroidenterpriseApi(mock).grouplicenseusers;
       var arg_enterpriseId = "foo";
       var arg_groupLicenseId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -4128,25 +4337,32 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/groupLicenses/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 15), unittest.equals("/groupLicenses/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 15),
+            unittest.equals("/groupLicenses/"));
         pathOffset += 15;
         index = path.indexOf("/users", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_groupLicenseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("/users"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("/users"));
         pathOffset += 6;
 
         var query = (req.url).query;
@@ -4159,31 +4375,30 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildGroupLicenseUsersListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_enterpriseId, arg_groupLicenseId).then(unittest.expectAsync1(((api.GroupLicenseUsersListResponse response) {
+      res.list(arg_enterpriseId, arg_groupLicenseId).then(
+          unittest.expectAsync1(((api.GroupLicenseUsersListResponse response) {
         checkGroupLicenseUsersListResponse(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-InstallsResourceApi", () {
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
       api.InstallsResourceApi res = new api.AndroidenterpriseApi(mock).installs;
       var arg_enterpriseId = "foo";
@@ -4195,32 +4410,41 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/devices/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/devices/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/devices/"));
         pathOffset += 9;
         index = path.indexOf("/installs/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_deviceId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/installs/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/installs/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -4236,25 +4460,27 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_enterpriseId, arg_userId, arg_deviceId, arg_installId).then(unittest.expectAsync1((_) {}));
+      res
+          .delete(arg_enterpriseId, arg_userId, arg_deviceId, arg_installId)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
       api.InstallsResourceApi res = new api.AndroidenterpriseApi(mock).installs;
       var arg_enterpriseId = "foo";
@@ -4266,32 +4492,41 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/devices/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/devices/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/devices/"));
         pathOffset += 9;
         index = path.indexOf("/installs/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_deviceId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/installs/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/installs/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -4307,27 +4542,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildInstall());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_enterpriseId, arg_userId, arg_deviceId, arg_installId).then(unittest.expectAsync1(((api.Install response) {
+      res
+          .get(arg_enterpriseId, arg_userId, arg_deviceId, arg_installId)
+          .then(unittest.expectAsync1(((api.Install response) {
         checkInstall(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
       api.InstallsResourceApi res = new api.AndroidenterpriseApi(mock).installs;
       var arg_enterpriseId = "foo";
@@ -4338,32 +4575,41 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/devices/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/devices/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/devices/"));
         pathOffset += 9;
         index = path.indexOf("/installs", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_deviceId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/installs"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/installs"));
         pathOffset += 9;
 
         var query = (req.url).query;
@@ -4376,27 +4622,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildInstallsListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_enterpriseId, arg_userId, arg_deviceId).then(unittest.expectAsync1(((api.InstallsListResponse response) {
+      res
+          .list(arg_enterpriseId, arg_userId, arg_deviceId)
+          .then(unittest.expectAsync1(((api.InstallsListResponse response) {
         checkInstallsListResponse(response);
       })));
     });
 
     unittest.test("method--patch", () {
-
       var mock = new HttpServerMock();
       api.InstallsResourceApi res = new api.AndroidenterpriseApi(mock).installs;
       var arg_request = buildInstall();
@@ -4412,32 +4660,41 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/devices/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/devices/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/devices/"));
         pathOffset += 9;
         index = path.indexOf("/installs/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_deviceId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/installs/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/installs/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -4453,27 +4710,30 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildInstall());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_enterpriseId, arg_userId, arg_deviceId, arg_installId).then(unittest.expectAsync1(((api.Install response) {
+      res
+          .patch(arg_request, arg_enterpriseId, arg_userId, arg_deviceId,
+              arg_installId)
+          .then(unittest.expectAsync1(((api.Install response) {
         checkInstall(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
       api.InstallsResourceApi res = new api.AndroidenterpriseApi(mock).installs;
       var arg_request = buildInstall();
@@ -4489,32 +4749,41 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/devices/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/devices/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/devices/"));
         pathOffset += 9;
         index = path.indexOf("/installs/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_deviceId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/installs/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/installs/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -4530,33 +4799,35 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildInstall());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_enterpriseId, arg_userId, arg_deviceId, arg_installId).then(unittest.expectAsync1(((api.Install response) {
+      res
+          .update(arg_request, arg_enterpriseId, arg_userId, arg_deviceId,
+              arg_installId)
+          .then(unittest.expectAsync1(((api.Install response) {
         checkInstall(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-ManagedconfigurationsfordeviceResourceApi", () {
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
-      api.ManagedconfigurationsfordeviceResourceApi res = new api.AndroidenterpriseApi(mock).managedconfigurationsfordevice;
+      api.ManagedconfigurationsfordeviceResourceApi res =
+          new api.AndroidenterpriseApi(mock).managedconfigurationsfordevice;
       var arg_enterpriseId = "foo";
       var arg_userId = "foo";
       var arg_deviceId = "foo";
@@ -4566,36 +4837,46 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/devices/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/devices/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/devices/"));
         pathOffset += 9;
         index = path.indexOf("/managedConfigurationsForDevice/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_deviceId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 32), unittest.equals("/managedConfigurationsForDevice/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 32),
+            unittest.equals("/managedConfigurationsForDevice/"));
         pathOffset += 32;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_managedConfigurationForDeviceId"));
+        unittest.expect(
+            subPart, unittest.equals("$arg_managedConfigurationForDeviceId"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4607,27 +4888,31 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_enterpriseId, arg_userId, arg_deviceId, arg_managedConfigurationForDeviceId).then(unittest.expectAsync1((_) {}));
+      res
+          .delete(arg_enterpriseId, arg_userId, arg_deviceId,
+              arg_managedConfigurationForDeviceId)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.ManagedconfigurationsfordeviceResourceApi res = new api.AndroidenterpriseApi(mock).managedconfigurationsfordevice;
+      api.ManagedconfigurationsfordeviceResourceApi res =
+          new api.AndroidenterpriseApi(mock).managedconfigurationsfordevice;
       var arg_enterpriseId = "foo";
       var arg_userId = "foo";
       var arg_deviceId = "foo";
@@ -4637,36 +4922,46 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/devices/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/devices/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/devices/"));
         pathOffset += 9;
         index = path.indexOf("/managedConfigurationsForDevice/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_deviceId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 32), unittest.equals("/managedConfigurationsForDevice/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 32),
+            unittest.equals("/managedConfigurationsForDevice/"));
         pathOffset += 32;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_managedConfigurationForDeviceId"));
+        unittest.expect(
+            subPart, unittest.equals("$arg_managedConfigurationForDeviceId"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4678,29 +4973,33 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildManagedConfiguration());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_enterpriseId, arg_userId, arg_deviceId, arg_managedConfigurationForDeviceId).then(unittest.expectAsync1(((api.ManagedConfiguration response) {
+      res
+          .get(arg_enterpriseId, arg_userId, arg_deviceId,
+              arg_managedConfigurationForDeviceId)
+          .then(unittest.expectAsync1(((api.ManagedConfiguration response) {
         checkManagedConfiguration(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.ManagedconfigurationsfordeviceResourceApi res = new api.AndroidenterpriseApi(mock).managedconfigurationsfordevice;
+      api.ManagedconfigurationsfordeviceResourceApi res =
+          new api.AndroidenterpriseApi(mock).managedconfigurationsfordevice;
       var arg_enterpriseId = "foo";
       var arg_userId = "foo";
       var arg_deviceId = "foo";
@@ -4709,32 +5008,41 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/devices/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/devices/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/devices/"));
         pathOffset += 9;
         index = path.indexOf("/managedConfigurationsForDevice", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_deviceId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 31), unittest.equals("/managedConfigurationsForDevice"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 31),
+            unittest.equals("/managedConfigurationsForDevice"));
         pathOffset += 31;
 
         var query = (req.url).query;
@@ -4747,29 +5055,33 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildManagedConfigurationsForDeviceListResponse());
+        var resp = convert.JSON
+            .encode(buildManagedConfigurationsForDeviceListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_enterpriseId, arg_userId, arg_deviceId).then(unittest.expectAsync1(((api.ManagedConfigurationsForDeviceListResponse response) {
+      res.list(arg_enterpriseId, arg_userId, arg_deviceId).then(unittest
+          .expectAsync1(
+              ((api.ManagedConfigurationsForDeviceListResponse response) {
         checkManagedConfigurationsForDeviceListResponse(response);
       })));
     });
 
     unittest.test("method--patch", () {
-
       var mock = new HttpServerMock();
-      api.ManagedconfigurationsfordeviceResourceApi res = new api.AndroidenterpriseApi(mock).managedconfigurationsfordevice;
+      api.ManagedconfigurationsfordeviceResourceApi res =
+          new api.AndroidenterpriseApi(mock).managedconfigurationsfordevice;
       var arg_request = buildManagedConfiguration();
       var arg_enterpriseId = "foo";
       var arg_userId = "foo";
@@ -4783,36 +5095,46 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/devices/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/devices/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/devices/"));
         pathOffset += 9;
         index = path.indexOf("/managedConfigurationsForDevice/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_deviceId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 32), unittest.equals("/managedConfigurationsForDevice/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 32),
+            unittest.equals("/managedConfigurationsForDevice/"));
         pathOffset += 32;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_managedConfigurationForDeviceId"));
+        unittest.expect(
+            subPart, unittest.equals("$arg_managedConfigurationForDeviceId"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4824,29 +5146,33 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildManagedConfiguration());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_enterpriseId, arg_userId, arg_deviceId, arg_managedConfigurationForDeviceId).then(unittest.expectAsync1(((api.ManagedConfiguration response) {
+      res
+          .patch(arg_request, arg_enterpriseId, arg_userId, arg_deviceId,
+              arg_managedConfigurationForDeviceId)
+          .then(unittest.expectAsync1(((api.ManagedConfiguration response) {
         checkManagedConfiguration(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
-      api.ManagedconfigurationsfordeviceResourceApi res = new api.AndroidenterpriseApi(mock).managedconfigurationsfordevice;
+      api.ManagedconfigurationsfordeviceResourceApi res =
+          new api.AndroidenterpriseApi(mock).managedconfigurationsfordevice;
       var arg_request = buildManagedConfiguration();
       var arg_enterpriseId = "foo";
       var arg_userId = "foo";
@@ -4860,36 +5186,46 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/devices/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/devices/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/devices/"));
         pathOffset += 9;
         index = path.indexOf("/managedConfigurationsForDevice/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_deviceId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 32), unittest.equals("/managedConfigurationsForDevice/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 32),
+            unittest.equals("/managedConfigurationsForDevice/"));
         pathOffset += 32;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_managedConfigurationForDeviceId"));
+        unittest.expect(
+            subPart, unittest.equals("$arg_managedConfigurationForDeviceId"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4901,33 +5237,35 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildManagedConfiguration());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_enterpriseId, arg_userId, arg_deviceId, arg_managedConfigurationForDeviceId).then(unittest.expectAsync1(((api.ManagedConfiguration response) {
+      res
+          .update(arg_request, arg_enterpriseId, arg_userId, arg_deviceId,
+              arg_managedConfigurationForDeviceId)
+          .then(unittest.expectAsync1(((api.ManagedConfiguration response) {
         checkManagedConfiguration(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-ManagedconfigurationsforuserResourceApi", () {
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
-      api.ManagedconfigurationsforuserResourceApi res = new api.AndroidenterpriseApi(mock).managedconfigurationsforuser;
+      api.ManagedconfigurationsforuserResourceApi res =
+          new api.AndroidenterpriseApi(mock).managedconfigurationsforuser;
       var arg_enterpriseId = "foo";
       var arg_userId = "foo";
       var arg_managedConfigurationForUserId = "foo";
@@ -4936,29 +5274,37 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/managedConfigurationsForUser/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 30), unittest.equals("/managedConfigurationsForUser/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 30),
+            unittest.equals("/managedConfigurationsForUser/"));
         pathOffset += 30;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_managedConfigurationForUserId"));
+        unittest.expect(
+            subPart, unittest.equals("$arg_managedConfigurationForUserId"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -4970,27 +5316,31 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_enterpriseId, arg_userId, arg_managedConfigurationForUserId).then(unittest.expectAsync1((_) {}));
+      res
+          .delete(
+              arg_enterpriseId, arg_userId, arg_managedConfigurationForUserId)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.ManagedconfigurationsforuserResourceApi res = new api.AndroidenterpriseApi(mock).managedconfigurationsforuser;
+      api.ManagedconfigurationsforuserResourceApi res =
+          new api.AndroidenterpriseApi(mock).managedconfigurationsforuser;
       var arg_enterpriseId = "foo";
       var arg_userId = "foo";
       var arg_managedConfigurationForUserId = "foo";
@@ -4999,29 +5349,37 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/managedConfigurationsForUser/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 30), unittest.equals("/managedConfigurationsForUser/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 30),
+            unittest.equals("/managedConfigurationsForUser/"));
         pathOffset += 30;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_managedConfigurationForUserId"));
+        unittest.expect(
+            subPart, unittest.equals("$arg_managedConfigurationForUserId"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5033,29 +5391,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildManagedConfiguration());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_enterpriseId, arg_userId, arg_managedConfigurationForUserId).then(unittest.expectAsync1(((api.ManagedConfiguration response) {
+      res
+          .get(arg_enterpriseId, arg_userId, arg_managedConfigurationForUserId)
+          .then(unittest.expectAsync1(((api.ManagedConfiguration response) {
         checkManagedConfiguration(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.ManagedconfigurationsforuserResourceApi res = new api.AndroidenterpriseApi(mock).managedconfigurationsforuser;
+      api.ManagedconfigurationsforuserResourceApi res =
+          new api.AndroidenterpriseApi(mock).managedconfigurationsforuser;
       var arg_enterpriseId = "foo";
       var arg_userId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5063,25 +5424,32 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/managedConfigurationsForUser", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 29), unittest.equals("/managedConfigurationsForUser"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 29),
+            unittest.equals("/managedConfigurationsForUser"));
         pathOffset += 29;
 
         var query = (req.url).query;
@@ -5094,29 +5462,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildManagedConfigurationsForUserListResponse());
+        var resp = convert.JSON
+            .encode(buildManagedConfigurationsForUserListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_enterpriseId, arg_userId).then(unittest.expectAsync1(((api.ManagedConfigurationsForUserListResponse response) {
+      res.list(arg_enterpriseId, arg_userId).then(unittest.expectAsync1(
+          ((api.ManagedConfigurationsForUserListResponse response) {
         checkManagedConfigurationsForUserListResponse(response);
       })));
     });
 
     unittest.test("method--patch", () {
-
       var mock = new HttpServerMock();
-      api.ManagedconfigurationsforuserResourceApi res = new api.AndroidenterpriseApi(mock).managedconfigurationsforuser;
+      api.ManagedconfigurationsforuserResourceApi res =
+          new api.AndroidenterpriseApi(mock).managedconfigurationsforuser;
       var arg_request = buildManagedConfiguration();
       var arg_enterpriseId = "foo";
       var arg_userId = "foo";
@@ -5129,29 +5500,37 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/managedConfigurationsForUser/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 30), unittest.equals("/managedConfigurationsForUser/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 30),
+            unittest.equals("/managedConfigurationsForUser/"));
         pathOffset += 30;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_managedConfigurationForUserId"));
+        unittest.expect(
+            subPart, unittest.equals("$arg_managedConfigurationForUserId"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5163,29 +5542,33 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildManagedConfiguration());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_enterpriseId, arg_userId, arg_managedConfigurationForUserId).then(unittest.expectAsync1(((api.ManagedConfiguration response) {
+      res
+          .patch(arg_request, arg_enterpriseId, arg_userId,
+              arg_managedConfigurationForUserId)
+          .then(unittest.expectAsync1(((api.ManagedConfiguration response) {
         checkManagedConfiguration(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
-      api.ManagedconfigurationsforuserResourceApi res = new api.AndroidenterpriseApi(mock).managedconfigurationsforuser;
+      api.ManagedconfigurationsforuserResourceApi res =
+          new api.AndroidenterpriseApi(mock).managedconfigurationsforuser;
       var arg_request = buildManagedConfiguration();
       var arg_enterpriseId = "foo";
       var arg_userId = "foo";
@@ -5198,29 +5581,37 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/managedConfigurationsForUser/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 30), unittest.equals("/managedConfigurationsForUser/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 30),
+            unittest.equals("/managedConfigurationsForUser/"));
         pathOffset += 30;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
-        unittest.expect(subPart, unittest.equals("$arg_managedConfigurationForUserId"));
+        unittest.expect(
+            subPart, unittest.equals("$arg_managedConfigurationForUserId"));
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -5232,33 +5623,35 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildManagedConfiguration());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_enterpriseId, arg_userId, arg_managedConfigurationForUserId).then(unittest.expectAsync1(((api.ManagedConfiguration response) {
+      res
+          .update(arg_request, arg_enterpriseId, arg_userId,
+              arg_managedConfigurationForUserId)
+          .then(unittest.expectAsync1(((api.ManagedConfiguration response) {
         checkManagedConfiguration(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-PermissionsResourceApi", () {
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.PermissionsResourceApi res = new api.AndroidenterpriseApi(mock).permissions;
+      api.PermissionsResourceApi res =
+          new api.AndroidenterpriseApi(mock).permissions;
       var arg_permissionId = "foo";
       var arg_language = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5266,11 +5659,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("permissions/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("permissions/"));
         pathOffset += 12;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -5286,32 +5682,33 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["language"].first, unittest.equals(arg_language));
-
+        unittest.expect(
+            queryMap["language"].first, unittest.equals(arg_language));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildPermission());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_permissionId, language: arg_language).then(unittest.expectAsync1(((api.Permission response) {
+      res
+          .get(arg_permissionId, language: arg_language)
+          .then(unittest.expectAsync1(((api.Permission response) {
         checkPermission(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-ProductsResourceApi", () {
     unittest.test("method--approve", () {
-
       var mock = new HttpServerMock();
       api.ProductsResourceApi res = new api.AndroidenterpriseApi(mock).products;
       var arg_request = buildProductsApproveRequest();
@@ -5325,25 +5722,32 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/products/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/products/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/products/"));
         pathOffset += 10;
         index = path.indexOf("/approve", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_productId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 8), unittest.equals("/approve"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 8),
+            unittest.equals("/approve"));
         pathOffset += 8;
 
         var query = (req.url).query;
@@ -5356,25 +5760,27 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.approve(arg_request, arg_enterpriseId, arg_productId).then(unittest.expectAsync1((_) {}));
+      res
+          .approve(arg_request, arg_enterpriseId, arg_productId)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--generateApprovalUrl", () {
-
       var mock = new HttpServerMock();
       api.ProductsResourceApi res = new api.AndroidenterpriseApi(mock).products;
       var arg_enterpriseId = "foo";
@@ -5385,25 +5791,32 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/products/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/products/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/products/"));
         pathOffset += 10;
         index = path.indexOf("/generateApprovalUrl", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_productId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/generateApprovalUrl"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 20),
+            unittest.equals("/generateApprovalUrl"));
         pathOffset += 20;
 
         var query = (req.url).query;
@@ -5416,28 +5829,34 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["languageCode"].first, unittest.equals(arg_languageCode));
-
+        unittest.expect(
+            queryMap["languageCode"].first, unittest.equals(arg_languageCode));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
-        var resp = convert.JSON.encode(buildProductsGenerateApprovalUrlResponse());
+        var resp =
+            convert.JSON.encode(buildProductsGenerateApprovalUrlResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.generateApprovalUrl(arg_enterpriseId, arg_productId, languageCode: arg_languageCode).then(unittest.expectAsync1(((api.ProductsGenerateApprovalUrlResponse response) {
+      res
+          .generateApprovalUrl(arg_enterpriseId, arg_productId,
+              languageCode: arg_languageCode)
+          .then(unittest.expectAsync1(
+              ((api.ProductsGenerateApprovalUrlResponse response) {
         checkProductsGenerateApprovalUrlResponse(response);
       })));
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
       api.ProductsResourceApi res = new api.AndroidenterpriseApi(mock).products;
       var arg_enterpriseId = "foo";
@@ -5448,18 +5867,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/products/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/products/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/products/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -5475,28 +5899,31 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["language"].first, unittest.equals(arg_language));
-
+        unittest.expect(
+            queryMap["language"].first, unittest.equals(arg_language));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildProduct());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_enterpriseId, arg_productId, language: arg_language).then(unittest.expectAsync1(((api.Product response) {
+      res
+          .get(arg_enterpriseId, arg_productId, language: arg_language)
+          .then(unittest.expectAsync1(((api.Product response) {
         checkProduct(response);
       })));
     });
 
     unittest.test("method--getAppRestrictionsSchema", () {
-
       var mock = new HttpServerMock();
       api.ProductsResourceApi res = new api.AndroidenterpriseApi(mock).products;
       var arg_enterpriseId = "foo";
@@ -5507,25 +5934,32 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/products/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/products/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/products/"));
         pathOffset += 10;
         index = path.indexOf("/appRestrictionsSchema", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_productId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 22), unittest.equals("/appRestrictionsSchema"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 22),
+            unittest.equals("/appRestrictionsSchema"));
         pathOffset += 22;
 
         var query = (req.url).query;
@@ -5538,28 +5972,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["language"].first, unittest.equals(arg_language));
-
+        unittest.expect(
+            queryMap["language"].first, unittest.equals(arg_language));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAppRestrictionsSchema());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getAppRestrictionsSchema(arg_enterpriseId, arg_productId, language: arg_language).then(unittest.expectAsync1(((api.AppRestrictionsSchema response) {
+      res
+          .getAppRestrictionsSchema(arg_enterpriseId, arg_productId,
+              language: arg_language)
+          .then(unittest.expectAsync1(((api.AppRestrictionsSchema response) {
         checkAppRestrictionsSchema(response);
       })));
     });
 
     unittest.test("method--getPermissions", () {
-
       var mock = new HttpServerMock();
       api.ProductsResourceApi res = new api.AndroidenterpriseApi(mock).products;
       var arg_enterpriseId = "foo";
@@ -5569,25 +6007,32 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/products/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/products/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/products/"));
         pathOffset += 10;
         index = path.indexOf("/permissions", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_productId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("/permissions"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("/permissions"));
         pathOffset += 12;
 
         var query = (req.url).query;
@@ -5600,27 +6045,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildProductPermissions());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getPermissions(arg_enterpriseId, arg_productId).then(unittest.expectAsync1(((api.ProductPermissions response) {
+      res
+          .getPermissions(arg_enterpriseId, arg_productId)
+          .then(unittest.expectAsync1(((api.ProductPermissions response) {
         checkProductPermissions(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
       api.ProductsResourceApi res = new api.AndroidenterpriseApi(mock).products;
       var arg_enterpriseId = "foo";
@@ -5634,18 +6081,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/products", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/products"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/products"));
         pathOffset += 9;
 
         var query = (req.url).query;
@@ -5658,32 +6110,42 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["approved"].first, unittest.equals("$arg_approved"));
-        unittest.expect(queryMap["language"].first, unittest.equals(arg_language));
-        unittest.expect(core.int.parse(queryMap["maxResults"].first), unittest.equals(arg_maxResults));
+        unittest.expect(
+            queryMap["approved"].first, unittest.equals("$arg_approved"));
+        unittest.expect(
+            queryMap["language"].first, unittest.equals(arg_language));
+        unittest.expect(core.int.parse(queryMap["maxResults"].first),
+            unittest.equals(arg_maxResults));
         unittest.expect(queryMap["query"].first, unittest.equals(arg_query));
         unittest.expect(queryMap["token"].first, unittest.equals(arg_token));
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildProductsListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_enterpriseId, approved: arg_approved, language: arg_language, maxResults: arg_maxResults, query: arg_query, token: arg_token).then(unittest.expectAsync1(((api.ProductsListResponse response) {
+      res
+          .list(arg_enterpriseId,
+              approved: arg_approved,
+              language: arg_language,
+              maxResults: arg_maxResults,
+              query: arg_query,
+              token: arg_token)
+          .then(unittest.expectAsync1(((api.ProductsListResponse response) {
         checkProductsListResponse(response);
       })));
     });
 
     unittest.test("method--unapprove", () {
-
       var mock = new HttpServerMock();
       api.ProductsResourceApi res = new api.AndroidenterpriseApi(mock).products;
       var arg_enterpriseId = "foo";
@@ -5693,25 +6155,32 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/products/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/products/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/products/"));
         pathOffset += 10;
         index = path.indexOf("/unapprove", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_productId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/unapprove"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/unapprove"));
         pathOffset += 10;
 
         var query = (req.url).query;
@@ -5724,31 +6193,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.unapprove(arg_enterpriseId, arg_productId).then(unittest.expectAsync1((_) {}));
+      res
+          .unapprove(arg_enterpriseId, arg_productId)
+          .then(unittest.expectAsync1((_) {}));
     });
-
   });
-
 
   unittest.group("resource-ServiceaccountkeysResourceApi", () {
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
-      api.ServiceaccountkeysResourceApi res = new api.AndroidenterpriseApi(mock).serviceaccountkeys;
+      api.ServiceaccountkeysResourceApi res =
+          new api.AndroidenterpriseApi(mock).serviceaccountkeys;
       var arg_enterpriseId = "foo";
       var arg_keyId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5756,18 +6226,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/serviceAccountKeys/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/serviceAccountKeys/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 20),
+            unittest.equals("/serviceAccountKeys/"));
         pathOffset += 20;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -5783,27 +6258,30 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_enterpriseId, arg_keyId).then(unittest.expectAsync1((_) {}));
+      res
+          .delete(arg_enterpriseId, arg_keyId)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--insert", () {
-
       var mock = new HttpServerMock();
-      api.ServiceaccountkeysResourceApi res = new api.AndroidenterpriseApi(mock).serviceaccountkeys;
+      api.ServiceaccountkeysResourceApi res =
+          new api.AndroidenterpriseApi(mock).serviceaccountkeys;
       var arg_request = buildServiceAccountKey();
       var arg_enterpriseId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5814,18 +6292,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/serviceAccountKeys", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/serviceAccountKeys"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("/serviceAccountKeys"));
         pathOffset += 19;
 
         var query = (req.url).query;
@@ -5838,47 +6321,55 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildServiceAccountKey());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_enterpriseId).then(unittest.expectAsync1(((api.ServiceAccountKey response) {
+      res
+          .insert(arg_request, arg_enterpriseId)
+          .then(unittest.expectAsync1(((api.ServiceAccountKey response) {
         checkServiceAccountKey(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.ServiceaccountkeysResourceApi res = new api.AndroidenterpriseApi(mock).serviceaccountkeys;
+      api.ServiceaccountkeysResourceApi res =
+          new api.AndroidenterpriseApi(mock).serviceaccountkeys;
       var arg_enterpriseId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/serviceAccountKeys", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/serviceAccountKeys"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("/serviceAccountKeys"));
         pathOffset += 19;
 
         var query = (req.url).query;
@@ -5891,33 +6382,33 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildServiceAccountKeysListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_enterpriseId).then(unittest.expectAsync1(((api.ServiceAccountKeysListResponse response) {
+      res.list(arg_enterpriseId).then(
+          unittest.expectAsync1(((api.ServiceAccountKeysListResponse response) {
         checkServiceAccountKeysListResponse(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-StorelayoutclustersResourceApi", () {
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
-      api.StorelayoutclustersResourceApi res = new api.AndroidenterpriseApi(mock).storelayoutclusters;
+      api.StorelayoutclustersResourceApi res =
+          new api.AndroidenterpriseApi(mock).storelayoutclusters;
       var arg_enterpriseId = "foo";
       var arg_pageId = "foo";
       var arg_clusterId = "foo";
@@ -5926,25 +6417,32 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/storeLayout/pages/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/storeLayout/pages/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("/storeLayout/pages/"));
         pathOffset += 19;
         index = path.indexOf("/clusters/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_pageId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/clusters/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/clusters/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -5960,27 +6458,30 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_enterpriseId, arg_pageId, arg_clusterId).then(unittest.expectAsync1((_) {}));
+      res
+          .delete(arg_enterpriseId, arg_pageId, arg_clusterId)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.StorelayoutclustersResourceApi res = new api.AndroidenterpriseApi(mock).storelayoutclusters;
+      api.StorelayoutclustersResourceApi res =
+          new api.AndroidenterpriseApi(mock).storelayoutclusters;
       var arg_enterpriseId = "foo";
       var arg_pageId = "foo";
       var arg_clusterId = "foo";
@@ -5989,25 +6490,32 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/storeLayout/pages/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/storeLayout/pages/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("/storeLayout/pages/"));
         pathOffset += 19;
         index = path.indexOf("/clusters/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_pageId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/clusters/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/clusters/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -6023,29 +6531,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildStoreCluster());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_enterpriseId, arg_pageId, arg_clusterId).then(unittest.expectAsync1(((api.StoreCluster response) {
+      res
+          .get(arg_enterpriseId, arg_pageId, arg_clusterId)
+          .then(unittest.expectAsync1(((api.StoreCluster response) {
         checkStoreCluster(response);
       })));
     });
 
     unittest.test("method--insert", () {
-
       var mock = new HttpServerMock();
-      api.StorelayoutclustersResourceApi res = new api.AndroidenterpriseApi(mock).storelayoutclusters;
+      api.StorelayoutclustersResourceApi res =
+          new api.AndroidenterpriseApi(mock).storelayoutclusters;
       var arg_request = buildStoreCluster();
       var arg_enterpriseId = "foo";
       var arg_pageId = "foo";
@@ -6057,25 +6568,32 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/storeLayout/pages/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/storeLayout/pages/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("/storeLayout/pages/"));
         pathOffset += 19;
         index = path.indexOf("/clusters", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_pageId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/clusters"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/clusters"));
         pathOffset += 9;
 
         var query = (req.url).query;
@@ -6088,29 +6606,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildStoreCluster());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_enterpriseId, arg_pageId).then(unittest.expectAsync1(((api.StoreCluster response) {
+      res
+          .insert(arg_request, arg_enterpriseId, arg_pageId)
+          .then(unittest.expectAsync1(((api.StoreCluster response) {
         checkStoreCluster(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.StorelayoutclustersResourceApi res = new api.AndroidenterpriseApi(mock).storelayoutclusters;
+      api.StorelayoutclustersResourceApi res =
+          new api.AndroidenterpriseApi(mock).storelayoutclusters;
       var arg_enterpriseId = "foo";
       var arg_pageId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6118,25 +6639,32 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/storeLayout/pages/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/storeLayout/pages/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("/storeLayout/pages/"));
         pathOffset += 19;
         index = path.indexOf("/clusters", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_pageId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 9), unittest.equals("/clusters"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 9),
+            unittest.equals("/clusters"));
         pathOffset += 9;
 
         var query = (req.url).query;
@@ -6149,29 +6677,31 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildStoreLayoutClustersListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_enterpriseId, arg_pageId).then(unittest.expectAsync1(((api.StoreLayoutClustersListResponse response) {
+      res.list(arg_enterpriseId, arg_pageId).then(unittest
+          .expectAsync1(((api.StoreLayoutClustersListResponse response) {
         checkStoreLayoutClustersListResponse(response);
       })));
     });
 
     unittest.test("method--patch", () {
-
       var mock = new HttpServerMock();
-      api.StorelayoutclustersResourceApi res = new api.AndroidenterpriseApi(mock).storelayoutclusters;
+      api.StorelayoutclustersResourceApi res =
+          new api.AndroidenterpriseApi(mock).storelayoutclusters;
       var arg_request = buildStoreCluster();
       var arg_enterpriseId = "foo";
       var arg_pageId = "foo";
@@ -6184,25 +6714,32 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/storeLayout/pages/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/storeLayout/pages/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("/storeLayout/pages/"));
         pathOffset += 19;
         index = path.indexOf("/clusters/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_pageId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/clusters/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/clusters/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -6218,29 +6755,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildStoreCluster());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_enterpriseId, arg_pageId, arg_clusterId).then(unittest.expectAsync1(((api.StoreCluster response) {
+      res
+          .patch(arg_request, arg_enterpriseId, arg_pageId, arg_clusterId)
+          .then(unittest.expectAsync1(((api.StoreCluster response) {
         checkStoreCluster(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
-      api.StorelayoutclustersResourceApi res = new api.AndroidenterpriseApi(mock).storelayoutclusters;
+      api.StorelayoutclustersResourceApi res =
+          new api.AndroidenterpriseApi(mock).storelayoutclusters;
       var arg_request = buildStoreCluster();
       var arg_enterpriseId = "foo";
       var arg_pageId = "foo";
@@ -6253,25 +6793,32 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/storeLayout/pages/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/storeLayout/pages/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("/storeLayout/pages/"));
         pathOffset += 19;
         index = path.indexOf("/clusters/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_pageId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 10), unittest.equals("/clusters/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 10),
+            unittest.equals("/clusters/"));
         pathOffset += 10;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -6287,33 +6834,34 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildStoreCluster());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_enterpriseId, arg_pageId, arg_clusterId).then(unittest.expectAsync1(((api.StoreCluster response) {
+      res
+          .update(arg_request, arg_enterpriseId, arg_pageId, arg_clusterId)
+          .then(unittest.expectAsync1(((api.StoreCluster response) {
         checkStoreCluster(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-StorelayoutpagesResourceApi", () {
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
-      api.StorelayoutpagesResourceApi res = new api.AndroidenterpriseApi(mock).storelayoutpages;
+      api.StorelayoutpagesResourceApi res =
+          new api.AndroidenterpriseApi(mock).storelayoutpages;
       var arg_enterpriseId = "foo";
       var arg_pageId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6321,18 +6869,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/storeLayout/pages/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/storeLayout/pages/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("/storeLayout/pages/"));
         pathOffset += 19;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -6348,27 +6901,30 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_enterpriseId, arg_pageId).then(unittest.expectAsync1((_) {}));
+      res
+          .delete(arg_enterpriseId, arg_pageId)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
-      api.StorelayoutpagesResourceApi res = new api.AndroidenterpriseApi(mock).storelayoutpages;
+      api.StorelayoutpagesResourceApi res =
+          new api.AndroidenterpriseApi(mock).storelayoutpages;
       var arg_enterpriseId = "foo";
       var arg_pageId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6376,18 +6932,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/storeLayout/pages/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/storeLayout/pages/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("/storeLayout/pages/"));
         pathOffset += 19;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -6403,29 +6964,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildStorePage());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_enterpriseId, arg_pageId).then(unittest.expectAsync1(((api.StorePage response) {
+      res
+          .get(arg_enterpriseId, arg_pageId)
+          .then(unittest.expectAsync1(((api.StorePage response) {
         checkStorePage(response);
       })));
     });
 
     unittest.test("method--insert", () {
-
       var mock = new HttpServerMock();
-      api.StorelayoutpagesResourceApi res = new api.AndroidenterpriseApi(mock).storelayoutpages;
+      api.StorelayoutpagesResourceApi res =
+          new api.AndroidenterpriseApi(mock).storelayoutpages;
       var arg_request = buildStorePage();
       var arg_enterpriseId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6436,18 +7000,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/storeLayout/pages", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/storeLayout/pages"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 18),
+            unittest.equals("/storeLayout/pages"));
         pathOffset += 18;
 
         var query = (req.url).query;
@@ -6460,47 +7029,55 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildStorePage());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_enterpriseId).then(unittest.expectAsync1(((api.StorePage response) {
+      res
+          .insert(arg_request, arg_enterpriseId)
+          .then(unittest.expectAsync1(((api.StorePage response) {
         checkStorePage(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
-      api.StorelayoutpagesResourceApi res = new api.AndroidenterpriseApi(mock).storelayoutpages;
+      api.StorelayoutpagesResourceApi res =
+          new api.AndroidenterpriseApi(mock).storelayoutpages;
       var arg_enterpriseId = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/storeLayout/pages", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 18), unittest.equals("/storeLayout/pages"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 18),
+            unittest.equals("/storeLayout/pages"));
         pathOffset += 18;
 
         var query = (req.url).query;
@@ -6513,29 +7090,31 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildStoreLayoutPagesListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_enterpriseId).then(unittest.expectAsync1(((api.StoreLayoutPagesListResponse response) {
+      res.list(arg_enterpriseId).then(
+          unittest.expectAsync1(((api.StoreLayoutPagesListResponse response) {
         checkStoreLayoutPagesListResponse(response);
       })));
     });
 
     unittest.test("method--patch", () {
-
       var mock = new HttpServerMock();
-      api.StorelayoutpagesResourceApi res = new api.AndroidenterpriseApi(mock).storelayoutpages;
+      api.StorelayoutpagesResourceApi res =
+          new api.AndroidenterpriseApi(mock).storelayoutpages;
       var arg_request = buildStorePage();
       var arg_enterpriseId = "foo";
       var arg_pageId = "foo";
@@ -6547,18 +7126,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/storeLayout/pages/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/storeLayout/pages/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("/storeLayout/pages/"));
         pathOffset += 19;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -6574,29 +7158,32 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildStorePage());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_enterpriseId, arg_pageId).then(unittest.expectAsync1(((api.StorePage response) {
+      res
+          .patch(arg_request, arg_enterpriseId, arg_pageId)
+          .then(unittest.expectAsync1(((api.StorePage response) {
         checkStorePage(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
-      api.StorelayoutpagesResourceApi res = new api.AndroidenterpriseApi(mock).storelayoutpages;
+      api.StorelayoutpagesResourceApi res =
+          new api.AndroidenterpriseApi(mock).storelayoutpages;
       var arg_request = buildStorePage();
       var arg_enterpriseId = "foo";
       var arg_pageId = "foo";
@@ -6608,18 +7195,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/storeLayout/pages/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 19), unittest.equals("/storeLayout/pages/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 19),
+            unittest.equals("/storeLayout/pages/"));
         pathOffset += 19;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -6635,31 +7227,31 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildStorePage());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_enterpriseId, arg_pageId).then(unittest.expectAsync1(((api.StorePage response) {
+      res
+          .update(arg_request, arg_enterpriseId, arg_pageId)
+          .then(unittest.expectAsync1(((api.StorePage response) {
         checkStorePage(response);
       })));
     });
-
   });
-
 
   unittest.group("resource-UsersResourceApi", () {
     unittest.test("method--delete", () {
-
       var mock = new HttpServerMock();
       api.UsersResourceApi res = new api.AndroidenterpriseApi(mock).users;
       var arg_enterpriseId = "foo";
@@ -6669,18 +7261,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -6696,25 +7293,27 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_enterpriseId, arg_userId).then(unittest.expectAsync1((_) {}));
+      res
+          .delete(arg_enterpriseId, arg_userId)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--generateAuthenticationToken", () {
-
       var mock = new HttpServerMock();
       api.UsersResourceApi res = new api.AndroidenterpriseApi(mock).users;
       var arg_enterpriseId = "foo";
@@ -6724,25 +7323,32 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/authenticationToken", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/authenticationToken"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 20),
+            unittest.equals("/authenticationToken"));
         pathOffset += 20;
 
         var query = (req.url).query;
@@ -6755,27 +7361,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildAuthenticationToken());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.generateAuthenticationToken(arg_enterpriseId, arg_userId).then(unittest.expectAsync1(((api.AuthenticationToken response) {
+      res
+          .generateAuthenticationToken(arg_enterpriseId, arg_userId)
+          .then(unittest.expectAsync1(((api.AuthenticationToken response) {
         checkAuthenticationToken(response);
       })));
     });
 
     unittest.test("method--generateToken", () {
-
       var mock = new HttpServerMock();
       api.UsersResourceApi res = new api.AndroidenterpriseApi(mock).users;
       var arg_enterpriseId = "foo";
@@ -6785,25 +7393,32 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/token", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("/token"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("/token"));
         pathOffset += 6;
 
         var query = (req.url).query;
@@ -6816,27 +7431,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildUserToken());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.generateToken(arg_enterpriseId, arg_userId).then(unittest.expectAsync1(((api.UserToken response) {
+      res
+          .generateToken(arg_enterpriseId, arg_userId)
+          .then(unittest.expectAsync1(((api.UserToken response) {
         checkUserToken(response);
       })));
     });
 
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
       api.UsersResourceApi res = new api.AndroidenterpriseApi(mock).users;
       var arg_enterpriseId = "foo";
@@ -6846,18 +7463,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -6873,27 +7495,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildUser());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_enterpriseId, arg_userId).then(unittest.expectAsync1(((api.User response) {
+      res
+          .get(arg_enterpriseId, arg_userId)
+          .then(unittest.expectAsync1(((api.User response) {
         checkUser(response);
       })));
     });
 
     unittest.test("method--getAvailableProductSet", () {
-
       var mock = new HttpServerMock();
       api.UsersResourceApi res = new api.AndroidenterpriseApi(mock).users;
       var arg_enterpriseId = "foo";
@@ -6903,25 +7527,32 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/availableProductSet", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/availableProductSet"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 20),
+            unittest.equals("/availableProductSet"));
         pathOffset += 20;
 
         var query = (req.url).query;
@@ -6934,27 +7565,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildProductSet());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getAvailableProductSet(arg_enterpriseId, arg_userId).then(unittest.expectAsync1(((api.ProductSet response) {
+      res
+          .getAvailableProductSet(arg_enterpriseId, arg_userId)
+          .then(unittest.expectAsync1(((api.ProductSet response) {
         checkProductSet(response);
       })));
     });
 
     unittest.test("method--insert", () {
-
       var mock = new HttpServerMock();
       api.UsersResourceApi res = new api.AndroidenterpriseApi(mock).users;
       var arg_request = buildUser();
@@ -6967,18 +7600,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("/users"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("/users"));
         pathOffset += 6;
 
         var query = (req.url).query;
@@ -6991,27 +7629,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildUser());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_enterpriseId).then(unittest.expectAsync1(((api.User response) {
+      res
+          .insert(arg_request, arg_enterpriseId)
+          .then(unittest.expectAsync1(((api.User response) {
         checkUser(response);
       })));
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
       api.UsersResourceApi res = new api.AndroidenterpriseApi(mock).users;
       var arg_enterpriseId = "foo";
@@ -7021,18 +7661,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("/users"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("/users"));
         pathOffset += 6;
 
         var query = (req.url).query;
@@ -7045,28 +7690,30 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
         unittest.expect(queryMap["email"].first, unittest.equals(arg_email));
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildUsersListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_enterpriseId, arg_email).then(unittest.expectAsync1(((api.UsersListResponse response) {
+      res
+          .list(arg_enterpriseId, arg_email)
+          .then(unittest.expectAsync1(((api.UsersListResponse response) {
         checkUsersListResponse(response);
       })));
     });
 
     unittest.test("method--patch", () {
-
       var mock = new HttpServerMock();
       api.UsersResourceApi res = new api.AndroidenterpriseApi(mock).users;
       var arg_request = buildUser();
@@ -7080,18 +7727,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -7107,27 +7759,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildUser());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_enterpriseId, arg_userId).then(unittest.expectAsync1(((api.User response) {
+      res
+          .patch(arg_request, arg_enterpriseId, arg_userId)
+          .then(unittest.expectAsync1(((api.User response) {
         checkUser(response);
       })));
     });
 
     unittest.test("method--revokeToken", () {
-
       var mock = new HttpServerMock();
       api.UsersResourceApi res = new api.AndroidenterpriseApi(mock).users;
       var arg_enterpriseId = "foo";
@@ -7137,25 +7791,32 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/token", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 6), unittest.equals("/token"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 6),
+            unittest.equals("/token"));
         pathOffset += 6;
 
         var query = (req.url).query;
@@ -7168,25 +7829,27 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.revokeToken(arg_enterpriseId, arg_userId).then(unittest.expectAsync1((_) {}));
+      res
+          .revokeToken(arg_enterpriseId, arg_userId)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--setAvailableProductSet", () {
-
       var mock = new HttpServerMock();
       api.UsersResourceApi res = new api.AndroidenterpriseApi(mock).users;
       var arg_request = buildProductSet();
@@ -7200,25 +7863,32 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         index = path.indexOf("/availableProductSet", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_userId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 20), unittest.equals("/availableProductSet"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 20),
+            unittest.equals("/availableProductSet"));
         pathOffset += 20;
 
         var query = (req.url).query;
@@ -7231,27 +7901,29 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildProductSet());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.setAvailableProductSet(arg_request, arg_enterpriseId, arg_userId).then(unittest.expectAsync1(((api.ProductSet response) {
+      res
+          .setAvailableProductSet(arg_request, arg_enterpriseId, arg_userId)
+          .then(unittest.expectAsync1(((api.ProductSet response) {
         checkProductSet(response);
       })));
     });
 
     unittest.test("method--update", () {
-
       var mock = new HttpServerMock();
       api.UsersResourceApi res = new api.AndroidenterpriseApi(mock).users;
       var arg_request = buildUser();
@@ -7265,18 +7937,23 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 21), unittest.equals("androidenterprise/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 21),
+            unittest.equals("androidenterprise/v1/"));
         pathOffset += 21;
-        unittest.expect(path.substring(pathOffset, pathOffset + 12), unittest.equals("enterprises/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 12),
+            unittest.equals("enterprises/"));
         pathOffset += 12;
         index = path.indexOf("/users/", pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
-        subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
+        subPart =
+            core.Uri.decodeQueryComponent(path.substring(pathOffset, index));
         pathOffset = index;
         unittest.expect(subPart, unittest.equals("$arg_enterpriseId"));
-        unittest.expect(path.substring(pathOffset, pathOffset + 7), unittest.equals("/users/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 7),
+            unittest.equals("/users/"));
         pathOffset += 7;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
@@ -7292,27 +7969,26 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildUser());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_enterpriseId, arg_userId).then(unittest.expectAsync1(((api.User response) {
+      res
+          .update(arg_request, arg_enterpriseId, arg_userId)
+          .then(unittest.expectAsync1(((api.User response) {
         checkUser(response);
       })));
     });
-
   });
-
-
 }
-

@@ -28,7 +28,7 @@
     },
     "basePath": "/tagmanager/v1/",
     "baseUrl": "https://www.googleapis.com/tagmanager/v1/",
-    "batchPath": "batch",
+    "batchPath": "batch/tagmanager/v1",
     "canonicalName": "Tag Manager",
     "description": "Accesses Tag Manager accounts and containers.",
     "discoveryVersion": "v1",

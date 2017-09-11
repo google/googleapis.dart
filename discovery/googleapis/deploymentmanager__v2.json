@@ -19,7 +19,7 @@
     },
     "basePath": "/deploymentmanager/v2/projects/",
     "baseUrl": "https://www.googleapis.com/deploymentmanager/v2/projects/",
-    "batchPath": "batch",
+    "batchPath": "batch/deploymentmanager/v2",
     "canonicalName": "Deployment Manager",
     "description": "Declares, configures, and deploys complex solutions on Google Cloud Platform.",
     "discoveryVersion": "v1",

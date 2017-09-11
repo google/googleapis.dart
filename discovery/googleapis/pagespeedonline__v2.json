@@ -1,7 +1,7 @@
 {
     "basePath": "/pagespeedonline/v2/",
     "baseUrl": "https://www.googleapis.com/pagespeedonline/v2/",
-    "batchPath": "batch",
+    "batchPath": "batch/pagespeedonline/v2",
     "description": "Analyzes the performance of a web page and provides tailored suggestions to make that page faster.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/speed/docs/insights/v2/getting-started",

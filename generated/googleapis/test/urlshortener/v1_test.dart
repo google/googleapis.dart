@@ -1,12 +1,10 @@
 library googleapis.urlshortener.v1.test;
 
 import "dart:core" as core;
-import "dart:collection" as collection;
 import "dart:async" as async;
 import "dart:convert" as convert;
 
 import 'package:http/http.dart' as http;
-import 'package:http/testing.dart' as http_testing;
 import 'package:test/test.dart' as unittest;
 
 import 'package:googleapis/urlshortener/v1.dart' as api;
@@ -22,7 +20,8 @@ class HttpServerMock extends http.BaseClient {
 
   async.Future<http.StreamedResponse> send(http.BaseRequest request) {
     if (_expectJson) {
-      return request.finalize()
+      return request
+          .finalize()
           .transform(convert.UTF8.decoder)
           .join('')
           .then((core.String jsonString) {
@@ -45,49 +44,10 @@ class HttpServerMock extends http.BaseClient {
   }
 }
 
-http.StreamedResponse stringResponse(
-    core.int status, core.Map<core.String, core.String> headers, core.String body) {
+http.StreamedResponse stringResponse(core.int status,
+    core.Map<core.String, core.String> headers, core.String body) {
   var stream = new async.Stream.fromIterable([convert.UTF8.encode(body)]);
   return new http.StreamedResponse(stream, status, headers: headers);
-}
-
-buildUnnamed787() {
-  var o = new core.List<api.StringCount>();
-  o.add(buildStringCount());
-  o.add(buildStringCount());
-  return o;
-}
-
-checkUnnamed787(core.List<api.StringCount> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkStringCount(o[0]);
-  checkStringCount(o[1]);
-}
-
-buildUnnamed788() {
-  var o = new core.List<api.StringCount>();
-  o.add(buildStringCount());
-  o.add(buildStringCount());
-  return o;
-}
-
-checkUnnamed788(core.List<api.StringCount> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkStringCount(o[0]);
-  checkStringCount(o[1]);
-}
-
-buildUnnamed789() {
-  var o = new core.List<api.StringCount>();
-  o.add(buildStringCount());
-  o.add(buildStringCount());
-  return o;
-}
-
-checkUnnamed789(core.List<api.StringCount> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkStringCount(o[0]);
-  checkStringCount(o[1]);
 }
 
 buildUnnamed790() {
@@ -103,16 +63,55 @@ checkUnnamed790(core.List<api.StringCount> o) {
   checkStringCount(o[1]);
 }
 
+buildUnnamed791() {
+  var o = new core.List<api.StringCount>();
+  o.add(buildStringCount());
+  o.add(buildStringCount());
+  return o;
+}
+
+checkUnnamed791(core.List<api.StringCount> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkStringCount(o[0]);
+  checkStringCount(o[1]);
+}
+
+buildUnnamed792() {
+  var o = new core.List<api.StringCount>();
+  o.add(buildStringCount());
+  o.add(buildStringCount());
+  return o;
+}
+
+checkUnnamed792(core.List<api.StringCount> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkStringCount(o[0]);
+  checkStringCount(o[1]);
+}
+
+buildUnnamed793() {
+  var o = new core.List<api.StringCount>();
+  o.add(buildStringCount());
+  o.add(buildStringCount());
+  return o;
+}
+
+checkUnnamed793(core.List<api.StringCount> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkStringCount(o[0]);
+  checkStringCount(o[1]);
+}
+
 core.int buildCounterAnalyticsSnapshot = 0;
 buildAnalyticsSnapshot() {
   var o = new api.AnalyticsSnapshot();
   buildCounterAnalyticsSnapshot++;
   if (buildCounterAnalyticsSnapshot < 3) {
-    o.browsers = buildUnnamed787();
-    o.countries = buildUnnamed788();
+    o.browsers = buildUnnamed790();
+    o.countries = buildUnnamed791();
     o.longUrlClicks = "foo";
-    o.platforms = buildUnnamed789();
-    o.referrers = buildUnnamed790();
+    o.platforms = buildUnnamed792();
+    o.referrers = buildUnnamed793();
     o.shortUrlClicks = "foo";
   }
   buildCounterAnalyticsSnapshot--;
@@ -122,11 +121,11 @@ buildAnalyticsSnapshot() {
 checkAnalyticsSnapshot(api.AnalyticsSnapshot o) {
   buildCounterAnalyticsSnapshot++;
   if (buildCounterAnalyticsSnapshot < 3) {
-    checkUnnamed787(o.browsers);
-    checkUnnamed788(o.countries);
+    checkUnnamed790(o.browsers);
+    checkUnnamed791(o.countries);
     unittest.expect(o.longUrlClicks, unittest.equals('foo'));
-    checkUnnamed789(o.platforms);
-    checkUnnamed790(o.referrers);
+    checkUnnamed792(o.platforms);
+    checkUnnamed793(o.referrers);
     unittest.expect(o.shortUrlClicks, unittest.equals('foo'));
   }
   buildCounterAnalyticsSnapshot--;
@@ -209,14 +208,14 @@ checkUrl(api.Url o) {
   buildCounterUrl--;
 }
 
-buildUnnamed791() {
+buildUnnamed794() {
   var o = new core.List<api.Url>();
   o.add(buildUrl());
   o.add(buildUrl());
   return o;
 }
 
-checkUnnamed791(core.List<api.Url> o) {
+checkUnnamed794(core.List<api.Url> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrl(o[0]);
   checkUrl(o[1]);
@@ -227,7 +226,7 @@ buildUrlHistory() {
   var o = new api.UrlHistory();
   buildCounterUrlHistory++;
   if (buildCounterUrlHistory < 3) {
-    o.items = buildUnnamed791();
+    o.items = buildUnnamed794();
     o.itemsPerPage = 42;
     o.kind = "foo";
     o.nextPageToken = "foo";
@@ -240,7 +239,7 @@ buildUrlHistory() {
 checkUrlHistory(api.UrlHistory o) {
   buildCounterUrlHistory++;
   if (buildCounterUrlHistory < 3) {
-    checkUnnamed791(o.items);
+    checkUnnamed794(o.items);
     unittest.expect(o.itemsPerPage, unittest.equals(42));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -248,7 +247,6 @@ checkUrlHistory(api.UrlHistory o) {
   }
   buildCounterUrlHistory--;
 }
-
 
 main() {
   unittest.group("obj-schema-AnalyticsSnapshot", () {
@@ -259,7 +257,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-AnalyticsSummary", () {
     unittest.test("to-json--from-json", () {
       var o = buildAnalyticsSummary();
@@ -267,7 +264,6 @@ main() {
       checkAnalyticsSummary(od);
     });
   });
-
 
   unittest.group("obj-schema-StringCount", () {
     unittest.test("to-json--from-json", () {
@@ -277,7 +273,6 @@ main() {
     });
   });
 
-
   unittest.group("obj-schema-Url", () {
     unittest.test("to-json--from-json", () {
       var o = buildUrl();
@@ -285,7 +280,6 @@ main() {
       checkUrl(od);
     });
   });
-
 
   unittest.group("obj-schema-UrlHistory", () {
     unittest.test("to-json--from-json", () {
@@ -295,10 +289,8 @@ main() {
     });
   });
 
-
   unittest.group("resource-UrlResourceApi", () {
     unittest.test("method--get", () {
-
       var mock = new HttpServerMock();
       api.UrlResourceApi res = new api.UrlshortenerApi(mock).url;
       var arg_shortUrl = "foo";
@@ -308,11 +300,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("urlshortener/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("urlshortener/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("url"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("url"));
         pathOffset += 3;
 
         var query = (req.url).query;
@@ -325,29 +320,33 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["shortUrl"].first, unittest.equals(arg_shortUrl));
-        unittest.expect(queryMap["projection"].first, unittest.equals(arg_projection));
-
+        unittest.expect(
+            queryMap["shortUrl"].first, unittest.equals(arg_shortUrl));
+        unittest.expect(
+            queryMap["projection"].first, unittest.equals(arg_projection));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildUrl());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_shortUrl, projection: arg_projection).then(unittest.expectAsync1(((api.Url response) {
+      res
+          .get(arg_shortUrl, projection: arg_projection)
+          .then(unittest.expectAsync1(((api.Url response) {
         checkUrl(response);
       })));
     });
 
     unittest.test("method--insert", () {
-
       var mock = new HttpServerMock();
       api.UrlResourceApi res = new api.UrlshortenerApi(mock).url;
       var arg_request = buildUrl();
@@ -359,11 +358,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("urlshortener/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("urlshortener/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 3), unittest.equals("url"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("url"));
         pathOffset += 3;
 
         var query = (req.url).query;
@@ -376,16 +378,17 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
 
-
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildUrl());
         return new async.Future.value(stringResponse(200, h, resp));
@@ -396,7 +399,6 @@ main() {
     });
 
     unittest.test("method--list", () {
-
       var mock = new HttpServerMock();
       api.UrlResourceApi res = new api.UrlshortenerApi(mock).url;
       var arg_projection = "foo";
@@ -406,11 +408,14 @@ main() {
         var pathOffset = 0;
         var index;
         var subPart;
-        unittest.expect(path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 16), unittest.equals("urlshortener/v1/"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 16),
+            unittest.equals("urlshortener/v1/"));
         pathOffset += 16;
-        unittest.expect(path.substring(pathOffset, pathOffset + 11), unittest.equals("url/history"));
+        unittest.expect(path.substring(pathOffset, pathOffset + 11),
+            unittest.equals("url/history"));
         pathOffset += 11;
 
         var query = (req.url).query;
@@ -423,29 +428,30 @@ main() {
           if (n == null) return null;
           throw new core.ArgumentError("Invalid boolean: $n");
         }
+
         if (query.length > 0) {
           for (var part in query.split("&")) {
             var keyvalue = part.split("=");
-            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]), core.Uri.decodeQueryComponent(keyvalue[1]));
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["projection"].first, unittest.equals(arg_projection));
-        unittest.expect(queryMap["start-token"].first, unittest.equals(arg_start_token));
-
+        unittest.expect(
+            queryMap["projection"].first, unittest.equals(arg_projection));
+        unittest.expect(
+            queryMap["start-token"].first, unittest.equals(arg_start_token));
 
         var h = {
-          "content-type" : "application/json; charset=utf-8",
+          "content-type": "application/json; charset=utf-8",
         };
         var resp = convert.JSON.encode(buildUrlHistory());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(projection: arg_projection, start_token: arg_start_token).then(unittest.expectAsync1(((api.UrlHistory response) {
+      res
+          .list(projection: arg_projection, start_token: arg_start_token)
+          .then(unittest.expectAsync1(((api.UrlHistory response) {
         checkUrlHistory(response);
       })));
     });
-
   });
-
-
 }
-

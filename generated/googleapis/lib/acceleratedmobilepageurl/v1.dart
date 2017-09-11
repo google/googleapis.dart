@@ -9,49 +9,46 @@ import 'dart:convert' as convert;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
-export 'package:_discoveryapis_commons/_discoveryapis_commons.dart' show
-    ApiRequestError, DetailedApiRequestError;
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
+    show ApiRequestError, DetailedApiRequestError;
 
 const core.String USER_AGENT = 'dart-api-client acceleratedmobilepageurl/v1';
 
-/**
- * Retrieves the list of AMP URLs (and equivalent AMP Cache URLs) for a given
- * list of public URL(s).
- */
+/// Retrieves the list of AMP URLs (and equivalent AMP Cache URLs) for a given
+/// list of public URL(s).
 class AcceleratedmobilepageurlApi {
-
   final commons.ApiRequester _requester;
 
   AmpUrlsResourceApi get ampUrls => new AmpUrlsResourceApi(_requester);
 
-  AcceleratedmobilepageurlApi(http.Client client, {core.String rootUrl: "https://acceleratedmobilepageurl.googleapis.com/", core.String servicePath: ""}) :
-      _requester = new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
+  AcceleratedmobilepageurlApi(http.Client client,
+      {core.String rootUrl: "https://acceleratedmobilepageurl.googleapis.com/",
+      core.String servicePath: ""})
+      : _requester =
+            new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
-
 
 class AmpUrlsResourceApi {
   final commons.ApiRequester _requester;
 
-  AmpUrlsResourceApi(commons.ApiRequester client) : 
-      _requester = client;
+  AmpUrlsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /**
-   * Returns AMP URL(s) and equivalent
-   * [AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-format).
-   *
-   * [request] - The metadata request object.
-   *
-   * Request parameters:
-   *
-   * Completes with a [BatchGetAmpUrlsResponse].
-   *
-   * Completes with a [commons.ApiRequestError] if the API endpoint returned an
-   * error.
-   *
-   * If the used [http.Client] completes with an error when making a REST call,
-   * this method will complete with the same error.
-   */
-  async.Future<BatchGetAmpUrlsResponse> batchGet(BatchGetAmpUrlsRequest request) {
+  /// Returns AMP URL(s) and equivalent
+  /// [AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-format).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [BatchGetAmpUrlsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchGetAmpUrlsResponse> batchGet(
+      BatchGetAmpUrlsRequest request) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -65,30 +62,26 @@ class AmpUrlsResourceApi {
 
     _url = 'v1/ampUrls:batchGet';
 
-    var _response = _requester.request(_url,
-                                       "POST",
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions);
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
     return _response.then((data) => new BatchGetAmpUrlsResponse.fromJson(data));
   }
-
 }
 
-
-
-/** AMP URL response for a requested URL. */
+/// AMP URL response for a requested URL.
 class AmpUrl {
-  /** The AMP URL pointing to the publisher's web server. */
+  /// The AMP URL pointing to the publisher's web server.
   core.String ampUrl;
-  /**
-   * The [AMP Cache URL](/amp/cache/overview#amp-cache-url-format) pointing to
-   * the cached document in the Google AMP Cache.
-   */
+
+  /// The [AMP Cache URL](/amp/cache/overview#amp-cache-url-format) pointing to
+  /// the cached document in the Google AMP Cache.
   core.String cdnAmpUrl;
-  /** The original non-AMP URL. */
+
+  /// The original non-AMP URL.
   core.String originalUrl;
 
   AmpUrl();
@@ -106,7 +99,8 @@ class AmpUrl {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (ampUrl != null) {
       _json["ampUrl"] = ampUrl;
     }
@@ -120,34 +114,34 @@ class AmpUrl {
   }
 }
 
-/** AMP URL Error resource for a requested URL that couldn't be found. */
+/// AMP URL Error resource for a requested URL that couldn't be found.
 class AmpUrlError {
-  /**
-   * The error code of an API call.
-   * Possible string values are:
-   * - "ERROR_CODE_UNSPECIFIED" : Not specified error.
-   * - "INPUT_URL_NOT_FOUND" : Indicates the requested URL is not found in the
-   * index, possibly because
-   * it's unable to be found, not able to be accessed by Googlebot, or some
-   * other error.
-   * - "NO_AMP_URL" : Indicates no AMP URL has been found that corresponds to
-   * the requested
-   * URL.
-   * - "APPLICATION_ERROR" : Indicates some kind of application error occurred
-   * at the server.
-   * Client advised to retry.
-   * - "URL_IS_VALID_AMP" : DEPRECATED: Indicates the requested URL is a valid
-   * AMP URL.  This is a
-   * non-error state, should not be relied upon as a sign of success or
-   * failure.  It will be removed in future versions of the API.
-   * - "URL_IS_INVALID_AMP" : Indicates that an AMP URL has been found that
-   * corresponds to the request
-   * URL, but it is not valid AMP HTML.
-   */
+  /// The error code of an API call.
+  /// Possible string values are:
+  /// - "ERROR_CODE_UNSPECIFIED" : Not specified error.
+  /// - "INPUT_URL_NOT_FOUND" : Indicates the requested URL is not found in the
+  /// index, possibly because
+  /// it's unable to be found, not able to be accessed by Googlebot, or some
+  /// other error.
+  /// - "NO_AMP_URL" : Indicates no AMP URL has been found that corresponds to
+  /// the requested
+  /// URL.
+  /// - "APPLICATION_ERROR" : Indicates some kind of application error occurred
+  /// at the server.
+  /// Client advised to retry.
+  /// - "URL_IS_VALID_AMP" : DEPRECATED: Indicates the requested URL is a valid
+  /// AMP URL.  This is a
+  /// non-error state, should not be relied upon as a sign of success or
+  /// failure.  It will be removed in future versions of the API.
+  /// - "URL_IS_INVALID_AMP" : Indicates that an AMP URL has been found that
+  /// corresponds to the request
+  /// URL, but it is not valid AMP HTML.
   core.String errorCode;
-  /** An optional descriptive error message. */
+
+  /// An optional descriptive error message.
   core.String errorMessage;
-  /** The original non-AMP URL. */
+
+  /// The original non-AMP URL.
   core.String originalUrl;
 
   AmpUrlError();
@@ -165,7 +159,8 @@ class AmpUrlError {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (errorCode != null) {
       _json["errorCode"] = errorCode;
     }
@@ -179,29 +174,26 @@ class AmpUrlError {
   }
 }
 
-/** AMP URL request for a batch of URLs. */
+/// AMP URL request for a batch of URLs.
 class BatchGetAmpUrlsRequest {
-  /**
-   * The lookup_strategy being requested.
-   * Possible string values are:
-   * - "FETCH_LIVE_DOC" : FETCH_LIVE_DOC strategy involves live document fetch
-   * of URLs not found in
-   * the index. Any request URL not found in the index is crawled in realtime
-   * to validate if there is a corresponding AMP URL. This strategy has higher
-   * coverage but with extra latency introduced by realtime crawling. This is
-   * the default strategy. Applications using this strategy should set higher
-   * HTTP timeouts of the API calls.
-   * - "IN_INDEX_DOC" : IN_INDEX_DOC strategy skips fetching live documents of
-   * URL(s) not found
-   * in index. For applications which need low latency use of IN_INDEX_DOC
-   * strategy is recommended.
-   */
+  /// The lookup_strategy being requested.
+  /// Possible string values are:
+  /// - "FETCH_LIVE_DOC" : FETCH_LIVE_DOC strategy involves live document fetch
+  /// of URLs not found in
+  /// the index. Any request URL not found in the index is crawled in realtime
+  /// to validate if there is a corresponding AMP URL. This strategy has higher
+  /// coverage but with extra latency introduced by realtime crawling. This is
+  /// the default strategy. Applications using this strategy should set higher
+  /// HTTP timeouts of the API calls.
+  /// - "IN_INDEX_DOC" : IN_INDEX_DOC strategy skips fetching live documents of
+  /// URL(s) not found
+  /// in index. For applications which need low latency use of IN_INDEX_DOC
+  /// strategy is recommended.
   core.String lookupStrategy;
-  /**
-   * List of URLs to look up for the paired AMP URLs.
-   * The URLs are case-sensitive. Up to 50 URLs per lookup
-   * (see [Usage Limits](/amp/cache/reference/limits)).
-   */
+
+  /// List of URLs to look up for the paired AMP URLs.
+  /// The URLs are case-sensitive. Up to 50 URLs per lookup
+  /// (see [Usage Limits](/amp/cache/reference/limits)).
   core.List<core.String> urls;
 
   BatchGetAmpUrlsRequest();
@@ -216,7 +208,8 @@ class BatchGetAmpUrlsRequest {
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (lookupStrategy != null) {
       _json["lookupStrategy"] = lookupStrategy;
     }
@@ -227,31 +220,34 @@ class BatchGetAmpUrlsRequest {
   }
 }
 
-/** Batch AMP URL response. */
+/// Batch AMP URL response.
 class BatchGetAmpUrlsResponse {
-  /**
-   * For each URL in BatchAmpUrlsRequest, the URL response. The response might
-   * not be in the same order as URLs in the batch request.
-   * If BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated
-   * only once.
-   */
+  /// For each URL in BatchAmpUrlsRequest, the URL response. The response might
+  /// not be in the same order as URLs in the batch request.
+  /// If BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated
+  /// only once.
   core.List<AmpUrl> ampUrls;
-  /** The errors for requested URLs that have no AMP URL. */
+
+  /// The errors for requested URLs that have no AMP URL.
   core.List<AmpUrlError> urlErrors;
 
   BatchGetAmpUrlsResponse();
 
   BatchGetAmpUrlsResponse.fromJson(core.Map _json) {
     if (_json.containsKey("ampUrls")) {
-      ampUrls = _json["ampUrls"].map((value) => new AmpUrl.fromJson(value)).toList();
+      ampUrls =
+          _json["ampUrls"].map((value) => new AmpUrl.fromJson(value)).toList();
     }
     if (_json.containsKey("urlErrors")) {
-      urlErrors = _json["urlErrors"].map((value) => new AmpUrlError.fromJson(value)).toList();
+      urlErrors = _json["urlErrors"]
+          .map((value) => new AmpUrlError.fromJson(value))
+          .toList();
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json = new core.Map<core.String, core.Object>();
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     if (ampUrls != null) {
       _json["ampUrls"] = ampUrls.map((value) => (value).toJson()).toList();
     }
