@@ -246,15 +246,15 @@ class ContactGroupsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [syncToken] - A sync token, returned by a previous call to
-  /// `contactgroups.list`.
-  /// Only resources changed since the sync token was created will be returned.
-  ///
   /// [pageToken] - The next_page_token value returned from a previous call to
   /// [ListContactGroups](/people/api/rest/v1/contactgroups/list).
   /// Requests the next page of resources.
   ///
   /// [pageSize] - The maximum number of resources to return.
+  ///
+  /// [syncToken] - A sync token, returned by a previous call to
+  /// `contactgroups.list`.
+  /// Only resources changed since the sync token was created will be returned.
   ///
   /// Completes with a [ListContactGroupsResponse].
   ///
@@ -264,7 +264,7 @@ class ContactGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListContactGroupsResponse> list(
-      {core.String syncToken, core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String syncToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -272,14 +272,14 @@ class ContactGroupsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (syncToken != null) {
-      _queryParams["syncToken"] = [syncToken];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (syncToken != null) {
+      _queryParams["syncToken"] = [syncToken];
     }
 
     _url = 'v1/contactGroups';
@@ -582,6 +582,18 @@ class PeopleResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [resourceNames] - The resource names of the people to provide information
+  /// about.
+  ///
+  /// - To get information about the authenticated user, specify `people/me`.
+  /// - To get information about a google account, specify
+  ///   `people/`<var>account_id</var>.
+  /// - To get information about a contact, specify the resource name that
+  ///   identifies the contact as returned by
+  /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).
+  ///
+  /// You can include up to 50 resource names in one request.
+  ///
   /// [personFields] - **Required.** A field mask to restrict which fields on
   /// each person are
   /// returned. Valid values are:
@@ -619,18 +631,6 @@ class PeopleResourceApi {
   /// response. Each path should start with `person.`: for example,
   /// `person.names` or `person.photos`.
   ///
-  /// [resourceNames] - The resource names of the people to provide information
-  /// about.
-  ///
-  /// - To get information about the authenticated user, specify `people/me`.
-  /// - To get information about a google account, specify
-  ///   `people/`<var>account_id</var>.
-  /// - To get information about a contact, specify the resource name that
-  ///   identifies the contact as returned by
-  /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).
-  ///
-  /// You can include up to 50 resource names in one request.
-  ///
   /// Completes with a [GetPeopleResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -639,9 +639,9 @@ class PeopleResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetPeopleResponse> getBatchGet(
-      {core.String personFields,
-      core.String requestMask_includeField,
-      core.List<core.String> resourceNames}) {
+      {core.List<core.String> resourceNames,
+      core.String personFields,
+      core.String requestMask_includeField}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -649,14 +649,14 @@ class PeopleResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (resourceNames != null) {
+      _queryParams["resourceNames"] = resourceNames;
+    }
     if (personFields != null) {
       _queryParams["personFields"] = [personFields];
     }
     if (requestMask_includeField != null) {
       _queryParams["requestMask.includeField"] = [requestMask_includeField];
-    }
-    if (resourceNames != null) {
-      _queryParams["resourceNames"] = resourceNames;
     }
 
     _url = 'v1/people:batchGet';
@@ -774,29 +774,6 @@ class PeopleConnectionsResourceApi {
   /// `people/me` is valid.
   /// Value must have pattern "^people/[^/]+$".
   ///
-  /// [sortOrder] - The order in which the connections should be sorted.
-  /// Defaults to
-  /// `LAST_MODIFIED_ASCENDING`.
-  /// Possible string values are:
-  /// - "LAST_MODIFIED_ASCENDING" : A LAST_MODIFIED_ASCENDING.
-  /// - "FIRST_NAME_ASCENDING" : A FIRST_NAME_ASCENDING.
-  /// - "LAST_NAME_ASCENDING" : A LAST_NAME_ASCENDING.
-  ///
-  /// [requestSyncToken] - Whether the response should include a sync token,
-  /// which can be used to get
-  /// all changes since the last request.
-  ///
-  /// [pageToken] - The token of the page to be returned.
-  ///
-  /// [pageSize] - The number of connections to include in the response. Valid
-  /// values are
-  /// between 1 and 2000, inclusive. Defaults to 100.
-  ///
-  /// [requestMask_includeField] - **Required.** Comma-separated list of person
-  /// fields to be included in the
-  /// response. Each path should start with `person.`: for example,
-  /// `person.names` or `person.photos`.
-  ///
   /// [syncToken] - A sync token, returned by a previous call to
   /// `people.connections.list`.
   /// Only resources changed since the sync token was created will be returned.
@@ -833,6 +810,29 @@ class PeopleConnectionsResourceApi {
   /// * taglines
   /// * urls
   ///
+  /// [sortOrder] - The order in which the connections should be sorted.
+  /// Defaults to
+  /// `LAST_MODIFIED_ASCENDING`.
+  /// Possible string values are:
+  /// - "LAST_MODIFIED_ASCENDING" : A LAST_MODIFIED_ASCENDING.
+  /// - "FIRST_NAME_ASCENDING" : A FIRST_NAME_ASCENDING.
+  /// - "LAST_NAME_ASCENDING" : A LAST_NAME_ASCENDING.
+  ///
+  /// [requestSyncToken] - Whether the response should include a sync token,
+  /// which can be used to get
+  /// all changes since the last request.
+  ///
+  /// [pageToken] - The token of the page to be returned.
+  ///
+  /// [pageSize] - The number of connections to include in the response. Valid
+  /// values are
+  /// between 1 and 2000, inclusive. Defaults to 100.
+  ///
+  /// [requestMask_includeField] - **Required.** Comma-separated list of person
+  /// fields to be included in the
+  /// response. Each path should start with `person.`: for example,
+  /// `person.names` or `person.photos`.
+  ///
   /// Completes with a [ListConnectionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -841,13 +841,13 @@ class PeopleConnectionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListConnectionsResponse> list(core.String resourceName,
-      {core.String sortOrder,
+      {core.String syncToken,
+      core.String personFields,
+      core.String sortOrder,
       core.bool requestSyncToken,
       core.String pageToken,
       core.int pageSize,
-      core.String requestMask_includeField,
-      core.String syncToken,
-      core.String personFields}) {
+      core.String requestMask_includeField}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -857,6 +857,12 @@ class PeopleConnectionsResourceApi {
 
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
+    }
+    if (syncToken != null) {
+      _queryParams["syncToken"] = [syncToken];
+    }
+    if (personFields != null) {
+      _queryParams["personFields"] = [personFields];
     }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
@@ -872,12 +878,6 @@ class PeopleConnectionsResourceApi {
     }
     if (requestMask_includeField != null) {
       _queryParams["requestMask.includeField"] = [requestMask_includeField];
-    }
-    if (syncToken != null) {
-      _queryParams["syncToken"] = [syncToken];
-    }
-    if (personFields != null) {
-      _queryParams["personFields"] = [personFields];
     }
 
     _url = 'v1/' +
@@ -3126,6 +3126,10 @@ class PhoneNumber {
 /// A person's read-only photo. A picture shown next to the person's name to
 /// help others recognize the person.
 class Photo {
+  /// True if the photo is a default photo;
+  /// false if the photo is a user-provided photo.
+  core.bool default_;
+
   /// Metadata about the photo.
   FieldMetadata metadata;
 
@@ -3137,6 +3141,9 @@ class Photo {
   Photo();
 
   Photo.fromJson(core.Map _json) {
+    if (_json.containsKey("default")) {
+      default_ = _json["default"];
+    }
     if (_json.containsKey("metadata")) {
       metadata = new FieldMetadata.fromJson(_json["metadata"]);
     }
@@ -3148,6 +3155,9 @@ class Photo {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (default_ != null) {
+      _json["default"] = default_;
+    }
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
     }

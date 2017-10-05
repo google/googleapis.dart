@@ -50,6 +50,8 @@ class SheetsApi {
 class SpreadsheetsResourceApi {
   final commons.ApiRequester _requester;
 
+  SpreadsheetsDeveloperMetadataResourceApi get developerMetadata =>
+      new SpreadsheetsDeveloperMetadataResourceApi(_requester);
   SpreadsheetsSheetsResourceApi get sheets =>
       new SpreadsheetsSheetsResourceApi(_requester);
   SpreadsheetsValuesResourceApi get values =>
@@ -222,6 +224,174 @@ class SpreadsheetsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Spreadsheet.fromJson(data));
+  }
+
+  /// Returns the spreadsheet at the given ID.
+  /// The caller must specify the spreadsheet ID.
+  ///
+  /// This method differs from GetSpreadsheet in that it allows selecting
+  /// which subsets of spreadsheet data to return by specifying a
+  /// dataFilters parameter.
+  /// Multiple DataFilters can be specified.  Specifying one or
+  /// more data filters will return the portions of the spreadsheet that
+  /// intersect ranges matched by any of the filters.
+  ///
+  /// By default, data within grids will not be returned.
+  /// You can include grid data one of two ways:
+  ///
+  /// * Specify a field mask listing your desired fields using the `fields` URL
+  /// parameter in HTTP
+  ///
+  /// * Set the includeGridData
+  /// parameter to true.  If a field mask is set, the `includeGridData`
+  /// parameter is ignored
+  ///
+  /// For large spreadsheets, it is recommended to retrieve only the specific
+  /// fields of the spreadsheet that you want.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [spreadsheetId] - The spreadsheet to request.
+  ///
+  /// Completes with a [Spreadsheet].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Spreadsheet> getByDataFilter(
+      GetSpreadsheetByDataFilterRequest request, core.String spreadsheetId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (spreadsheetId == null) {
+      throw new core.ArgumentError("Parameter spreadsheetId is required.");
+    }
+
+    _url = 'v4/spreadsheets/' +
+        commons.Escaper.ecapeVariable('$spreadsheetId') +
+        ':getByDataFilter';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Spreadsheet.fromJson(data));
+  }
+}
+
+class SpreadsheetsDeveloperMetadataResourceApi {
+  final commons.ApiRequester _requester;
+
+  SpreadsheetsDeveloperMetadataResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Returns the developer metadata with the specified ID.
+  /// The caller must specify the spreadsheet ID and the developer metadata's
+  /// unique metadataId.
+  ///
+  /// Request parameters:
+  ///
+  /// [spreadsheetId] - The ID of the spreadsheet to retrieve metadata from.
+  ///
+  /// [metadataId] - The ID of the developer metadata to retrieve.
+  ///
+  /// Completes with a [DeveloperMetadata].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DeveloperMetadata> get(
+      core.String spreadsheetId, core.int metadataId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (spreadsheetId == null) {
+      throw new core.ArgumentError("Parameter spreadsheetId is required.");
+    }
+    if (metadataId == null) {
+      throw new core.ArgumentError("Parameter metadataId is required.");
+    }
+
+    _url = 'v4/spreadsheets/' +
+        commons.Escaper.ecapeVariable('$spreadsheetId') +
+        '/developerMetadata/' +
+        commons.Escaper.ecapeVariable('$metadataId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new DeveloperMetadata.fromJson(data));
+  }
+
+  /// Returns all developer metadata matching the specified DataFilter.
+  /// If the provided DataFilter represents a DeveloperMetadataLookup object,
+  /// this will return all DeveloperMetadata entries selected by it. If the
+  /// DataFilter represents a location in a spreadsheet, this will return all
+  /// developer metadata associated with locations intersecting that region.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [spreadsheetId] - The ID of the spreadsheet to retrieve metadata from.
+  ///
+  /// Completes with a [SearchDeveloperMetadataResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchDeveloperMetadataResponse> search(
+      SearchDeveloperMetadataRequest request, core.String spreadsheetId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (spreadsheetId == null) {
+      throw new core.ArgumentError("Parameter spreadsheetId is required.");
+    }
+
+    _url = 'v4/spreadsheets/' +
+        commons.Escaper.ecapeVariable('$spreadsheetId') +
+        '/developerMetadata:search';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new SearchDeveloperMetadataResponse.fromJson(data));
   }
 }
 
@@ -462,6 +632,55 @@ class SpreadsheetsValuesResourceApi {
         .then((data) => new BatchClearValuesResponse.fromJson(data));
   }
 
+  /// Clears one or more ranges of values from a spreadsheet.
+  /// The caller must specify the spreadsheet ID and one or more
+  /// DataFilters. Ranges matching any of the specified data
+  /// filters will be cleared.  Only values are cleared -- all other properties
+  /// of the cell (such as formatting, data validation, etc..) are kept.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [spreadsheetId] - The ID of the spreadsheet to update.
+  ///
+  /// Completes with a [BatchClearValuesByDataFilterResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchClearValuesByDataFilterResponse> batchClearByDataFilter(
+      BatchClearValuesByDataFilterRequest request, core.String spreadsheetId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (spreadsheetId == null) {
+      throw new core.ArgumentError("Parameter spreadsheetId is required.");
+    }
+
+    _url = 'v4/spreadsheets/' +
+        commons.Escaper.ecapeVariable('$spreadsheetId') +
+        '/values:batchClearByDataFilter';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new BatchClearValuesByDataFilterResponse.fromJson(data));
+  }
+
   /// Returns one or more ranges of values from a spreadsheet.
   /// The caller must specify the spreadsheet ID and one or more ranges.
   ///
@@ -548,6 +767,55 @@ class SpreadsheetsValuesResourceApi {
     return _response.then((data) => new BatchGetValuesResponse.fromJson(data));
   }
 
+  /// Returns one or more ranges of values that match the specified data
+  /// filters.
+  /// The caller must specify the spreadsheet ID and one or more
+  /// DataFilters.  Ranges that match any of the data filters in
+  /// the request will be returned.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [spreadsheetId] - The ID of the spreadsheet to retrieve data from.
+  ///
+  /// Completes with a [BatchGetValuesByDataFilterResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchGetValuesByDataFilterResponse> batchGetByDataFilter(
+      BatchGetValuesByDataFilterRequest request, core.String spreadsheetId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (spreadsheetId == null) {
+      throw new core.ArgumentError("Parameter spreadsheetId is required.");
+    }
+
+    _url = 'v4/spreadsheets/' +
+        commons.Escaper.ecapeVariable('$spreadsheetId') +
+        '/values:batchGetByDataFilter';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new BatchGetValuesByDataFilterResponse.fromJson(data));
+  }
+
   /// Sets values in one or more ranges of a spreadsheet.
   /// The caller must specify the spreadsheet ID,
   /// a valueInputOption, and one or more
@@ -594,6 +862,54 @@ class SpreadsheetsValuesResourceApi {
         downloadOptions: _downloadOptions);
     return _response
         .then((data) => new BatchUpdateValuesResponse.fromJson(data));
+  }
+
+  /// Sets values in one or more ranges of a spreadsheet.
+  /// The caller must specify the spreadsheet ID,
+  /// a valueInputOption, and one or more
+  /// DataFilterValueRanges.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [spreadsheetId] - The ID of the spreadsheet to update.
+  ///
+  /// Completes with a [BatchUpdateValuesByDataFilterResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchUpdateValuesByDataFilterResponse> batchUpdateByDataFilter(
+      BatchUpdateValuesByDataFilterRequest request, core.String spreadsheetId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (spreadsheetId == null) {
+      throw new core.ArgumentError("Parameter spreadsheetId is required.");
+    }
+
+    _url = 'v4/spreadsheets/' +
+        commons.Escaper.ecapeVariable('$spreadsheetId') +
+        '/values:batchUpdateByDataFilter';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new BatchUpdateValuesByDataFilterResponse.fromJson(data));
   }
 
   /// Clears values from a spreadsheet.
@@ -748,14 +1064,6 @@ class SpreadsheetsValuesResourceApi {
   ///
   /// [range] - The A1 notation of the values to update.
   ///
-  /// [responseValueRenderOption] - Determines how values in the response should
-  /// be rendered.
-  /// The default render option is ValueRenderOption.FORMATTED_VALUE.
-  /// Possible string values are:
-  /// - "FORMATTED_VALUE" : A FORMATTED_VALUE.
-  /// - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
-  /// - "FORMULA" : A FORMULA.
-  ///
   /// [valueInputOption] - How the input data should be interpreted.
   /// Possible string values are:
   /// - "INPUT_VALUE_OPTION_UNSPECIFIED" : A INPUT_VALUE_OPTION_UNSPECIFIED.
@@ -780,6 +1088,14 @@ class SpreadsheetsValuesResourceApi {
   /// the response will include all values in the requested range (excluding
   /// trailing empty rows and columns).
   ///
+  /// [responseValueRenderOption] - Determines how values in the response should
+  /// be rendered.
+  /// The default render option is ValueRenderOption.FORMATTED_VALUE.
+  /// Possible string values are:
+  /// - "FORMATTED_VALUE" : A FORMATTED_VALUE.
+  /// - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
+  /// - "FORMULA" : A FORMULA.
+  ///
   /// Completes with a [UpdateValuesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -789,10 +1105,10 @@ class SpreadsheetsValuesResourceApi {
   /// this method will complete with the same error.
   async.Future<UpdateValuesResponse> update(
       ValueRange request, core.String spreadsheetId, core.String range,
-      {core.String responseValueRenderOption,
-      core.String valueInputOption,
+      {core.String valueInputOption,
       core.String responseDateTimeRenderOption,
-      core.bool includeValuesInResponse}) {
+      core.bool includeValuesInResponse,
+      core.String responseValueRenderOption}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -809,9 +1125,6 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
-    if (responseValueRenderOption != null) {
-      _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
-    }
     if (valueInputOption != null) {
       _queryParams["valueInputOption"] = [valueInputOption];
     }
@@ -822,6 +1135,9 @@ class SpreadsheetsValuesResourceApi {
     }
     if (includeValuesInResponse != null) {
       _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
+    }
+    if (responseValueRenderOption != null) {
+      _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
     }
 
     _url = 'v4/spreadsheets/' +
@@ -1528,6 +1844,9 @@ class BasicChartAxis {
   /// from headers of the data.
   core.String title;
 
+  /// The axis title text position.
+  TextPosition titleTextPosition;
+
   BasicChartAxis();
 
   BasicChartAxis.fromJson(core.Map _json) {
@@ -1539,6 +1858,9 @@ class BasicChartAxis {
     }
     if (_json.containsKey("title")) {
       title = _json["title"];
+    }
+    if (_json.containsKey("titleTextPosition")) {
+      titleTextPosition = new TextPosition.fromJson(_json["titleTextPosition"]);
     }
   }
 
@@ -1553,6 +1875,9 @@ class BasicChartAxis {
     }
     if (title != null) {
       _json["title"] = title;
+    }
+    if (titleTextPosition != null) {
+      _json["titleTextPosition"] = (titleTextPosition).toJson();
     }
     return _json;
   }
@@ -1700,6 +2025,17 @@ class BasicChartSpec {
   /// chart</a>.
   core.String chartType;
 
+  /// The behavior of tooltips and data highlighting when hovering on data and
+  /// chart area.
+  /// Possible string values are:
+  /// - "BASIC_CHART_COMPARE_MODE_UNSPECIFIED" : Default value, do not use.
+  /// - "DATUM" : Only the focused data element is highlighted and shown in the
+  /// tooltip.
+  /// - "CATEGORY" : All data elements with the same category (e.g., domain
+  /// value) are
+  /// highlighted and shown in the tooltip.
+  core.String compareMode;
+
   /// The domain of data this is charting.
   /// Only a single domain is supported.
   core.List<BasicChartDomain> domains;
@@ -1763,6 +2099,9 @@ class BasicChartSpec {
     if (_json.containsKey("chartType")) {
       chartType = _json["chartType"];
     }
+    if (_json.containsKey("compareMode")) {
+      compareMode = _json["compareMode"];
+    }
     if (_json.containsKey("domains")) {
       domains = _json["domains"]
           .map((value) => new BasicChartDomain.fromJson(value))
@@ -1801,6 +2140,9 @@ class BasicChartSpec {
     }
     if (chartType != null) {
       _json["chartType"] = chartType;
+    }
+    if (compareMode != null) {
+      _json["compareMode"] = compareMode;
     }
     if (domains != null) {
       _json["domains"] = domains.map((value) => (value).toJson()).toList();
@@ -1882,6 +2224,69 @@ class BasicFilter {
   }
 }
 
+/// The request for clearing more than one range selected by a
+/// DataFilter in a spreadsheet.
+class BatchClearValuesByDataFilterRequest {
+  /// The DataFilters used to determine which ranges to clear.
+  core.List<DataFilter> dataFilters;
+
+  BatchClearValuesByDataFilterRequest();
+
+  BatchClearValuesByDataFilterRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("dataFilters")) {
+      dataFilters = _json["dataFilters"]
+          .map((value) => new DataFilter.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dataFilters != null) {
+      _json["dataFilters"] =
+          dataFilters.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// The response when clearing a range of values selected with
+/// DataFilters in a spreadsheet.
+class BatchClearValuesByDataFilterResponse {
+  /// The ranges that were cleared, in A1 notation.
+  /// (If the requests were for an unbounded range or a ranger larger
+  ///  than the bounds of the sheet, this will be the actual ranges
+  ///  that were cleared, bounded to the sheet's limits.)
+  core.List<core.String> clearedRanges;
+
+  /// The spreadsheet the updates were applied to.
+  core.String spreadsheetId;
+
+  BatchClearValuesByDataFilterResponse();
+
+  BatchClearValuesByDataFilterResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("clearedRanges")) {
+      clearedRanges = _json["clearedRanges"];
+    }
+    if (_json.containsKey("spreadsheetId")) {
+      spreadsheetId = _json["spreadsheetId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (clearedRanges != null) {
+      _json["clearedRanges"] = clearedRanges;
+    }
+    if (spreadsheetId != null) {
+      _json["spreadsheetId"] = spreadsheetId;
+    }
+    return _json;
+  }
+}
+
 /// The request for clearing more than one range of values in a spreadsheet.
 class BatchClearValuesRequest {
   /// The ranges to clear, in A1 notation.
@@ -1935,6 +2340,146 @@ class BatchClearValuesResponse {
     }
     if (spreadsheetId != null) {
       _json["spreadsheetId"] = spreadsheetId;
+    }
+    return _json;
+  }
+}
+
+/// The request for retrieving a range of values in a spreadsheet selected by a
+/// set of DataFilters.
+class BatchGetValuesByDataFilterRequest {
+  /// The data filters used to match the ranges of values to retrieve.  Ranges
+  /// that match any of the specified data filters will be included in the
+  /// response.
+  core.List<DataFilter> dataFilters;
+
+  /// How dates, times, and durations should be represented in the output.
+  /// This is ignored if value_render_option is
+  /// FORMATTED_VALUE.
+  /// The default dateTime render option is
+  /// [DateTimeRenderOption.SERIAL_NUMBER].
+  /// Possible string values are:
+  /// - "SERIAL_NUMBER" : Instructs date, time, datetime, and duration fields to
+  /// be output
+  /// as doubles in "serial number" format, as popularized by Lotus 1-2-3.
+  /// The whole number portion of the value (left of the decimal) counts
+  /// the days since December 30th 1899. The fractional portion (right of
+  /// the decimal) counts the time as a fraction of the day. For example,
+  /// January 1st 1900 at noon would be 2.5, 2 because it's 2 days after
+  /// December 30st 1899, and .5 because noon is half a day.  February 1st
+  /// 1900 at 3pm would be 33.625. This correctly treats the year 1900 as
+  /// not a leap year.
+  /// - "FORMATTED_STRING" : Instructs date, time, datetime, and duration fields
+  /// to be output
+  /// as strings in their given number format (which is dependent
+  /// on the spreadsheet locale).
+  core.String dateTimeRenderOption;
+
+  /// The major dimension that results should use.
+  ///
+  /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
+  /// then a request that selects that range and sets `majorDimension=ROWS` will
+  /// return `[[1,2],[3,4]]`,
+  /// whereas a request that sets `majorDimension=COLUMNS` will return
+  /// `[[1,3],[2,4]]`.
+  /// Possible string values are:
+  /// - "DIMENSION_UNSPECIFIED" : The default value, do not use.
+  /// - "ROWS" : Operates on the rows of a sheet.
+  /// - "COLUMNS" : Operates on the columns of a sheet.
+  core.String majorDimension;
+
+  /// How values should be represented in the output.
+  /// The default render option is ValueRenderOption.FORMATTED_VALUE.
+  /// Possible string values are:
+  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
+  /// according to the
+  /// cell's formatting.  Formatting is based on the spreadsheet's locale,
+  /// not the requesting user's locale.
+  /// For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as
+  /// currency,
+  /// then `A2` would return `"$1.23"`.
+  /// - "UNFORMATTED_VALUE" : Values will be calculated, but not formatted in
+  /// the reply.
+  /// For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as
+  /// currency,
+  /// then `A2` would return the number `1.23`.
+  /// - "FORMULA" : Values will not be calculated.  The reply will include the
+  /// formulas.
+  /// For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as
+  /// currency,
+  /// then A2 would return `"=A1"`.
+  core.String valueRenderOption;
+
+  BatchGetValuesByDataFilterRequest();
+
+  BatchGetValuesByDataFilterRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("dataFilters")) {
+      dataFilters = _json["dataFilters"]
+          .map((value) => new DataFilter.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("dateTimeRenderOption")) {
+      dateTimeRenderOption = _json["dateTimeRenderOption"];
+    }
+    if (_json.containsKey("majorDimension")) {
+      majorDimension = _json["majorDimension"];
+    }
+    if (_json.containsKey("valueRenderOption")) {
+      valueRenderOption = _json["valueRenderOption"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dataFilters != null) {
+      _json["dataFilters"] =
+          dataFilters.map((value) => (value).toJson()).toList();
+    }
+    if (dateTimeRenderOption != null) {
+      _json["dateTimeRenderOption"] = dateTimeRenderOption;
+    }
+    if (majorDimension != null) {
+      _json["majorDimension"] = majorDimension;
+    }
+    if (valueRenderOption != null) {
+      _json["valueRenderOption"] = valueRenderOption;
+    }
+    return _json;
+  }
+}
+
+/// The response when retrieving more than one range of values in a spreadsheet
+/// selected by DataFilters.
+class BatchGetValuesByDataFilterResponse {
+  /// The ID of the spreadsheet the data was retrieved from.
+  core.String spreadsheetId;
+
+  /// The requested values with the list of data filters that matched them.
+  core.List<MatchedValueRange> valueRanges;
+
+  BatchGetValuesByDataFilterResponse();
+
+  BatchGetValuesByDataFilterResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("spreadsheetId")) {
+      spreadsheetId = _json["spreadsheetId"];
+    }
+    if (_json.containsKey("valueRanges")) {
+      valueRanges = _json["valueRanges"]
+          .map((value) => new MatchedValueRange.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (spreadsheetId != null) {
+      _json["spreadsheetId"] = spreadsheetId;
+    }
+    if (valueRanges != null) {
+      _json["valueRanges"] =
+          valueRanges.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -2075,6 +2620,196 @@ class BatchUpdateSpreadsheetResponse {
     }
     if (updatedSpreadsheet != null) {
       _json["updatedSpreadsheet"] = (updatedSpreadsheet).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The request for updating more than one range of values in a spreadsheet.
+class BatchUpdateValuesByDataFilterRequest {
+  /// The new values to apply to the spreadsheet.  If more than one range is
+  /// matched by the specified DataFilter the specified values will be
+  /// applied to all of those ranges.
+  core.List<DataFilterValueRange> data;
+
+  /// Determines if the update response should include the values
+  /// of the cells that were updated. By default, responses
+  /// do not include the updated values. The `updatedData` field within
+  /// each of the BatchUpdateValuesResponse.responses will contain
+  /// the updated values. If the range to write was larger than than the range
+  /// actually written, the response will include all values in the requested
+  /// range (excluding trailing empty rows and columns).
+  core.bool includeValuesInResponse;
+
+  /// Determines how dates, times, and durations in the response should be
+  /// rendered. This is ignored if response_value_render_option is
+  /// FORMATTED_VALUE.
+  /// The default dateTime render option is
+  /// DateTimeRenderOption.SERIAL_NUMBER.
+  /// Possible string values are:
+  /// - "SERIAL_NUMBER" : Instructs date, time, datetime, and duration fields to
+  /// be output
+  /// as doubles in "serial number" format, as popularized by Lotus 1-2-3.
+  /// The whole number portion of the value (left of the decimal) counts
+  /// the days since December 30th 1899. The fractional portion (right of
+  /// the decimal) counts the time as a fraction of the day. For example,
+  /// January 1st 1900 at noon would be 2.5, 2 because it's 2 days after
+  /// December 30st 1899, and .5 because noon is half a day.  February 1st
+  /// 1900 at 3pm would be 33.625. This correctly treats the year 1900 as
+  /// not a leap year.
+  /// - "FORMATTED_STRING" : Instructs date, time, datetime, and duration fields
+  /// to be output
+  /// as strings in their given number format (which is dependent
+  /// on the spreadsheet locale).
+  core.String responseDateTimeRenderOption;
+
+  /// Determines how values in the response should be rendered.
+  /// The default render option is ValueRenderOption.FORMATTED_VALUE.
+  /// Possible string values are:
+  /// - "FORMATTED_VALUE" : Values will be calculated & formatted in the reply
+  /// according to the
+  /// cell's formatting.  Formatting is based on the spreadsheet's locale,
+  /// not the requesting user's locale.
+  /// For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as
+  /// currency,
+  /// then `A2` would return `"$1.23"`.
+  /// - "UNFORMATTED_VALUE" : Values will be calculated, but not formatted in
+  /// the reply.
+  /// For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as
+  /// currency,
+  /// then `A2` would return the number `1.23`.
+  /// - "FORMULA" : Values will not be calculated.  The reply will include the
+  /// formulas.
+  /// For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as
+  /// currency,
+  /// then A2 would return `"=A1"`.
+  core.String responseValueRenderOption;
+
+  /// How the input data should be interpreted.
+  /// Possible string values are:
+  /// - "INPUT_VALUE_OPTION_UNSPECIFIED" : Default input value. This value must
+  /// not be used.
+  /// - "RAW" : The values the user has entered will not be parsed and will be
+  /// stored
+  /// as-is.
+  /// - "USER_ENTERED" : The values will be parsed as if the user typed them
+  /// into the UI.
+  /// Numbers will stay as numbers, but strings may be converted to numbers,
+  /// dates, etc. following the same rules that are applied when entering
+  /// text into a cell via the Google Sheets UI.
+  core.String valueInputOption;
+
+  BatchUpdateValuesByDataFilterRequest();
+
+  BatchUpdateValuesByDataFilterRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new DataFilterValueRange.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("includeValuesInResponse")) {
+      includeValuesInResponse = _json["includeValuesInResponse"];
+    }
+    if (_json.containsKey("responseDateTimeRenderOption")) {
+      responseDateTimeRenderOption = _json["responseDateTimeRenderOption"];
+    }
+    if (_json.containsKey("responseValueRenderOption")) {
+      responseValueRenderOption = _json["responseValueRenderOption"];
+    }
+    if (_json.containsKey("valueInputOption")) {
+      valueInputOption = _json["valueInputOption"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (includeValuesInResponse != null) {
+      _json["includeValuesInResponse"] = includeValuesInResponse;
+    }
+    if (responseDateTimeRenderOption != null) {
+      _json["responseDateTimeRenderOption"] = responseDateTimeRenderOption;
+    }
+    if (responseValueRenderOption != null) {
+      _json["responseValueRenderOption"] = responseValueRenderOption;
+    }
+    if (valueInputOption != null) {
+      _json["valueInputOption"] = valueInputOption;
+    }
+    return _json;
+  }
+}
+
+/// The response when updating a range of values in a spreadsheet.
+class BatchUpdateValuesByDataFilterResponse {
+  /// The response for each range updated.
+  core.List<UpdateValuesByDataFilterResponse> responses;
+
+  /// The spreadsheet the updates were applied to.
+  core.String spreadsheetId;
+
+  /// The total number of cells updated.
+  core.int totalUpdatedCells;
+
+  /// The total number of columns where at least one cell in the column was
+  /// updated.
+  core.int totalUpdatedColumns;
+
+  /// The total number of rows where at least one cell in the row was updated.
+  core.int totalUpdatedRows;
+
+  /// The total number of sheets where at least one cell in the sheet was
+  /// updated.
+  core.int totalUpdatedSheets;
+
+  BatchUpdateValuesByDataFilterResponse();
+
+  BatchUpdateValuesByDataFilterResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("responses")) {
+      responses = _json["responses"]
+          .map((value) => new UpdateValuesByDataFilterResponse.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("spreadsheetId")) {
+      spreadsheetId = _json["spreadsheetId"];
+    }
+    if (_json.containsKey("totalUpdatedCells")) {
+      totalUpdatedCells = _json["totalUpdatedCells"];
+    }
+    if (_json.containsKey("totalUpdatedColumns")) {
+      totalUpdatedColumns = _json["totalUpdatedColumns"];
+    }
+    if (_json.containsKey("totalUpdatedRows")) {
+      totalUpdatedRows = _json["totalUpdatedRows"];
+    }
+    if (_json.containsKey("totalUpdatedSheets")) {
+      totalUpdatedSheets = _json["totalUpdatedSheets"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (responses != null) {
+      _json["responses"] = responses.map((value) => (value).toJson()).toList();
+    }
+    if (spreadsheetId != null) {
+      _json["spreadsheetId"] = spreadsheetId;
+    }
+    if (totalUpdatedCells != null) {
+      _json["totalUpdatedCells"] = totalUpdatedCells;
+    }
+    if (totalUpdatedColumns != null) {
+      _json["totalUpdatedColumns"] = totalUpdatedColumns;
+    }
+    if (totalUpdatedRows != null) {
+      _json["totalUpdatedRows"] = totalUpdatedRows;
+    }
+    if (totalUpdatedSheets != null) {
+      _json["totalUpdatedSheets"] = totalUpdatedSheets;
     }
     return _json;
   }
@@ -3268,12 +4003,27 @@ class ChartSpec {
   /// A pie chart specification.
   PieChartSpec pieChart;
 
+  /// The subtitle of the chart.
+  core.String subtitle;
+
+  /// The subtitle text format.
+  /// Strikethrough and underline are not supported.
+  TextFormat subtitleTextFormat;
+
+  /// The subtitle text position.
+  /// This field is optional.
+  TextPosition subtitleTextPosition;
+
   /// The title of the chart.
   core.String title;
 
   /// The title text format.
   /// Strikethrough and underline are not supported.
   TextFormat titleTextFormat;
+
+  /// The title text position.
+  /// This field is optional.
+  TextPosition titleTextPosition;
 
   ChartSpec();
 
@@ -3312,11 +4062,24 @@ class ChartSpec {
     if (_json.containsKey("pieChart")) {
       pieChart = new PieChartSpec.fromJson(_json["pieChart"]);
     }
+    if (_json.containsKey("subtitle")) {
+      subtitle = _json["subtitle"];
+    }
+    if (_json.containsKey("subtitleTextFormat")) {
+      subtitleTextFormat = new TextFormat.fromJson(_json["subtitleTextFormat"]);
+    }
+    if (_json.containsKey("subtitleTextPosition")) {
+      subtitleTextPosition =
+          new TextPosition.fromJson(_json["subtitleTextPosition"]);
+    }
     if (_json.containsKey("title")) {
       title = _json["title"];
     }
     if (_json.containsKey("titleTextFormat")) {
       titleTextFormat = new TextFormat.fromJson(_json["titleTextFormat"]);
+    }
+    if (_json.containsKey("titleTextPosition")) {
+      titleTextPosition = new TextPosition.fromJson(_json["titleTextPosition"]);
     }
   }
 
@@ -3356,11 +4119,23 @@ class ChartSpec {
     if (pieChart != null) {
       _json["pieChart"] = (pieChart).toJson();
     }
+    if (subtitle != null) {
+      _json["subtitle"] = subtitle;
+    }
+    if (subtitleTextFormat != null) {
+      _json["subtitleTextFormat"] = (subtitleTextFormat).toJson();
+    }
+    if (subtitleTextPosition != null) {
+      _json["subtitleTextPosition"] = (subtitleTextPosition).toJson();
+    }
     if (title != null) {
       _json["title"] = title;
     }
     if (titleTextFormat != null) {
       _json["titleTextFormat"] = (titleTextFormat).toJson();
+    }
+    if (titleTextPosition != null) {
+      _json["titleTextPosition"] = (titleTextPosition).toJson();
     }
     return _json;
   }
@@ -3797,6 +4572,54 @@ class CopySheetToAnotherSpreadsheetRequest {
   }
 }
 
+/// A request to create developer metadata.
+class CreateDeveloperMetadataRequest {
+  /// The developer metadata to create.
+  DeveloperMetadata developerMetadata;
+
+  CreateDeveloperMetadataRequest();
+
+  CreateDeveloperMetadataRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("developerMetadata")) {
+      developerMetadata =
+          new DeveloperMetadata.fromJson(_json["developerMetadata"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (developerMetadata != null) {
+      _json["developerMetadata"] = (developerMetadata).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The response from creating developer metadata.
+class CreateDeveloperMetadataResponse {
+  /// The developer metadata that was created.
+  DeveloperMetadata developerMetadata;
+
+  CreateDeveloperMetadataResponse();
+
+  CreateDeveloperMetadataResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("developerMetadata")) {
+      developerMetadata =
+          new DeveloperMetadata.fromJson(_json["developerMetadata"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (developerMetadata != null) {
+      _json["developerMetadata"] = (developerMetadata).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Moves data from the source to the destination.
 class CutPasteRequest {
   /// The top-left coordinate where the data should be pasted.
@@ -3844,6 +4667,101 @@ class CutPasteRequest {
     }
     if (source != null) {
       _json["source"] = (source).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Filter that describes what data should be selected or returned from a
+/// request.
+class DataFilter {
+  /// Selects data that matches the specified A1 range.
+  core.String a1Range;
+
+  /// Selects data associated with the developer metadata matching the criteria
+  /// described by this DeveloperMetadataLookup.
+  DeveloperMetadataLookup developerMetadataLookup;
+
+  /// Selects data that matches the range described by the GridRange.
+  GridRange gridRange;
+
+  DataFilter();
+
+  DataFilter.fromJson(core.Map _json) {
+    if (_json.containsKey("a1Range")) {
+      a1Range = _json["a1Range"];
+    }
+    if (_json.containsKey("developerMetadataLookup")) {
+      developerMetadataLookup = new DeveloperMetadataLookup.fromJson(
+          _json["developerMetadataLookup"]);
+    }
+    if (_json.containsKey("gridRange")) {
+      gridRange = new GridRange.fromJson(_json["gridRange"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (a1Range != null) {
+      _json["a1Range"] = a1Range;
+    }
+    if (developerMetadataLookup != null) {
+      _json["developerMetadataLookup"] = (developerMetadataLookup).toJson();
+    }
+    if (gridRange != null) {
+      _json["gridRange"] = (gridRange).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A range of values whose location is specified by a DataFilter.
+class DataFilterValueRange {
+  /// The data filter describing the location of the values in the spreadsheet.
+  DataFilter dataFilter;
+
+  /// The major dimension of the values.
+  /// Possible string values are:
+  /// - "DIMENSION_UNSPECIFIED" : The default value, do not use.
+  /// - "ROWS" : Operates on the rows of a sheet.
+  /// - "COLUMNS" : Operates on the columns of a sheet.
+  core.String majorDimension;
+
+  /// The data to be written.  If the provided values exceed any of the ranges
+  /// matched by the data filter then the request will fail.  If the provided
+  /// values are less than the matched ranges only the specified values will be
+  /// written, existing values in the matched ranges will remain unaffected.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.List<core.Object>> values;
+
+  DataFilterValueRange();
+
+  DataFilterValueRange.fromJson(core.Map _json) {
+    if (_json.containsKey("dataFilter")) {
+      dataFilter = new DataFilter.fromJson(_json["dataFilter"]);
+    }
+    if (_json.containsKey("majorDimension")) {
+      majorDimension = _json["majorDimension"];
+    }
+    if (_json.containsKey("values")) {
+      values = _json["values"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dataFilter != null) {
+      _json["dataFilter"] = (dataFilter).toJson();
+    }
+    if (majorDimension != null) {
+      _json["majorDimension"] = majorDimension;
+    }
+    if (values != null) {
+      _json["values"] = values;
     }
     return _json;
   }
@@ -3974,6 +4892,56 @@ class DeleteConditionalFormatRuleResponse {
         new core.Map<core.String, core.Object>();
     if (rule != null) {
       _json["rule"] = (rule).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A request to delete developer metadata.
+class DeleteDeveloperMetadataRequest {
+  /// The data filter describing the criteria used to select which developer
+  /// metadata entry to delete.
+  DataFilter dataFilter;
+
+  DeleteDeveloperMetadataRequest();
+
+  DeleteDeveloperMetadataRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("dataFilter")) {
+      dataFilter = new DataFilter.fromJson(_json["dataFilter"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dataFilter != null) {
+      _json["dataFilter"] = (dataFilter).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The response from deleting developer metadata.
+class DeleteDeveloperMetadataResponse {
+  /// The metadata that was deleted.
+  core.List<DeveloperMetadata> deletedDeveloperMetadata;
+
+  DeleteDeveloperMetadataResponse();
+
+  DeleteDeveloperMetadataResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("deletedDeveloperMetadata")) {
+      deletedDeveloperMetadata = _json["deletedDeveloperMetadata"]
+          .map((value) => new DeveloperMetadata.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (deletedDeveloperMetadata != null) {
+      _json["deletedDeveloperMetadata"] =
+          deletedDeveloperMetadata.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -4156,8 +5124,294 @@ class DeleteSheetRequest {
   }
 }
 
+/// Developer metadata associated with a location or object in a spreadsheet.
+/// Developer metadata may be used to associate arbitrary data with various
+/// parts of a spreadsheet and will remain associated at those locations as they
+/// move around and the spreadsheet is edited.  For example, if developer
+/// metadata is associated with row 5 and another row is then subsequently
+/// inserted above row 5, that original metadata will still be associated with
+/// the row it was first associated with (what is now row 6). If the associated
+/// object is deleted its metadata will be deleted too.
+class DeveloperMetadata {
+  /// The location where the metadata is associated.
+  DeveloperMetadataLocation location;
+
+  /// The spreadsheet-scoped unique ID that identifies the metadata. IDs may be
+  /// specified when metadata is created, otherwise one will be randomly
+  /// generated and assigned. Must be positive.
+  core.int metadataId;
+
+  /// The metadata key. There may be multiple metadata in a spreadsheet with the
+  /// same key.  Developer metadata must always have a key specified.
+  core.String metadataKey;
+
+  /// Data associated with the metadata's key.
+  core.String metadataValue;
+
+  /// The metadata visibility.  Developer metadata must always have a visibility
+  /// specified.
+  /// Possible string values are:
+  /// - "DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED" : Default value.
+  /// - "DOCUMENT" : Document-visible metadata is accessible from any developer
+  /// project with
+  /// access to the document.
+  /// - "PROJECT" : Project-visible metadata is only visible to and accessible
+  /// by the developer
+  /// project that created the metadata.
+  core.String visibility;
+
+  DeveloperMetadata();
+
+  DeveloperMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("location")) {
+      location = new DeveloperMetadataLocation.fromJson(_json["location"]);
+    }
+    if (_json.containsKey("metadataId")) {
+      metadataId = _json["metadataId"];
+    }
+    if (_json.containsKey("metadataKey")) {
+      metadataKey = _json["metadataKey"];
+    }
+    if (_json.containsKey("metadataValue")) {
+      metadataValue = _json["metadataValue"];
+    }
+    if (_json.containsKey("visibility")) {
+      visibility = _json["visibility"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (location != null) {
+      _json["location"] = (location).toJson();
+    }
+    if (metadataId != null) {
+      _json["metadataId"] = metadataId;
+    }
+    if (metadataKey != null) {
+      _json["metadataKey"] = metadataKey;
+    }
+    if (metadataValue != null) {
+      _json["metadataValue"] = metadataValue;
+    }
+    if (visibility != null) {
+      _json["visibility"] = visibility;
+    }
+    return _json;
+  }
+}
+
+/// A location where metadata may be associated in a spreadsheet.
+class DeveloperMetadataLocation {
+  /// Represents the row or column when metadata is associated with
+  /// a dimension. The specified DimensionRange must represent a single row
+  /// or column; it cannot be unbounded or span multiple rows or columns.
+  DimensionRange dimensionRange;
+
+  /// The type of location this object represents.  This field is read-only.
+  /// Possible string values are:
+  /// - "DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED" : Default value.
+  /// - "ROW" : Developer metadata associated on an entire row dimension.
+  /// - "COLUMN" : Developer metadata associated on an entire column dimension.
+  /// - "SHEET" : Developer metadata associated on an entire sheet.
+  /// - "SPREADSHEET" : Developer metadata associated on the entire spreadsheet.
+  core.String locationType;
+
+  /// The ID of the sheet when metadata is associated with an entire sheet.
+  core.int sheetId;
+
+  /// True when metadata is associated with an entire spreadsheet.
+  core.bool spreadsheet;
+
+  DeveloperMetadataLocation();
+
+  DeveloperMetadataLocation.fromJson(core.Map _json) {
+    if (_json.containsKey("dimensionRange")) {
+      dimensionRange = new DimensionRange.fromJson(_json["dimensionRange"]);
+    }
+    if (_json.containsKey("locationType")) {
+      locationType = _json["locationType"];
+    }
+    if (_json.containsKey("sheetId")) {
+      sheetId = _json["sheetId"];
+    }
+    if (_json.containsKey("spreadsheet")) {
+      spreadsheet = _json["spreadsheet"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dimensionRange != null) {
+      _json["dimensionRange"] = (dimensionRange).toJson();
+    }
+    if (locationType != null) {
+      _json["locationType"] = locationType;
+    }
+    if (sheetId != null) {
+      _json["sheetId"] = sheetId;
+    }
+    if (spreadsheet != null) {
+      _json["spreadsheet"] = spreadsheet;
+    }
+    return _json;
+  }
+}
+
+/// Selects DeveloperMetadata that matches all of the specified fields.  For
+/// example, if only a metadata ID is specified this considers the
+/// DeveloperMetadata with that particular unique ID. If a metadata key is
+/// specified, this considers all developer metadata with that key.  If a
+/// key, visibility, and location type are all specified, this considers all
+/// developer metadata with that key and visibility that are associated with a
+/// location of that type.  In general, this
+/// selects all DeveloperMetadata that matches the intersection of all the
+/// specified fields; any field or combination of fields may be specified.
+class DeveloperMetadataLookup {
+  /// Determines how this lookup matches the location.  If this field is
+  /// specified as EXACT, only developer metadata associated on the exact
+  /// location specified is matched.  If this field is specified to
+  /// INTERSECTING,
+  /// developer metadata associated on intersecting locations is also
+  /// matched.  If left unspecified, this field assumes a default value of
+  /// INTERSECTING.
+  /// If this field is specified, a metadataLocation
+  /// must also be specified.
+  /// Possible string values are:
+  /// - "DEVELOPER_METADATA_LOCATION_MATCHING_STRATEGY_UNSPECIFIED" : Default
+  /// value. This value must not be used.
+  /// - "EXACT_LOCATION" : Indicates that a specified location should be matched
+  /// exactly.  For
+  /// example, if row three were specified as a location this matching strategy
+  /// would only match developer metadata also associated on row three.
+  /// Metadata
+  /// associated on other locations would not be considered.
+  /// - "INTERSECTING_LOCATION" : Indicates that a specified location should
+  /// match that exact location as
+  /// well as any intersecting locations.  For example, if row three were
+  /// specified as a location this matching strategy would match developer
+  /// metadata associated on row three as well as metadata associated on
+  /// locations that intersect row three.  If, for instance, there was developer
+  /// metadata associated on column B, this matching strategy would also match
+  /// that location because column B intersects row three.
+  core.String locationMatchingStrategy;
+
+  /// Limits the selected developer metadata to those entries which are
+  /// associated with locations of the specified type.  For example, when this
+  /// field is specified as ROW this lookup
+  /// only considers developer metadata associated on rows.  If the field is
+  /// left
+  /// unspecified, all location types are considered.  This field cannot be
+  /// specified as SPREADSHEET when
+  /// the locationMatchingStrategy
+  /// is specified as INTERSECTING or when the
+  /// metadataLocation is specified as a
+  /// non-spreadsheet location: spreadsheet metadata cannot intersect any other
+  /// developer metadata location.  This field also must be left unspecified
+  /// when
+  /// the locationMatchingStrategy
+  /// is specified as EXACT.
+  /// Possible string values are:
+  /// - "DEVELOPER_METADATA_LOCATION_TYPE_UNSPECIFIED" : Default value.
+  /// - "ROW" : Developer metadata associated on an entire row dimension.
+  /// - "COLUMN" : Developer metadata associated on an entire column dimension.
+  /// - "SHEET" : Developer metadata associated on an entire sheet.
+  /// - "SPREADSHEET" : Developer metadata associated on the entire spreadsheet.
+  core.String locationType;
+
+  /// Limits the selected developer metadata to that which has a matching
+  /// DeveloperMetadata.metadata_id.
+  core.int metadataId;
+
+  /// Limits the selected developer metadata to that which has a matching
+  /// DeveloperMetadata.metadata_key.
+  core.String metadataKey;
+
+  /// Limits the selected developer metadata to those entries associated with
+  /// the specified location.  This field either matches exact locations or all
+  /// intersecting locations according the specified
+  /// locationMatchingStrategy.
+  DeveloperMetadataLocation metadataLocation;
+
+  /// Limits the selected developer metadata to that which has a matching
+  /// DeveloperMetadata.metadata_value.
+  core.String metadataValue;
+
+  /// Limits the selected developer metadata to that which has a matching
+  /// DeveloperMetadata.visibility.  If left unspecified, all developer
+  /// metadata visibile to the requesting project is considered.
+  /// Possible string values are:
+  /// - "DEVELOPER_METADATA_VISIBILITY_UNSPECIFIED" : Default value.
+  /// - "DOCUMENT" : Document-visible metadata is accessible from any developer
+  /// project with
+  /// access to the document.
+  /// - "PROJECT" : Project-visible metadata is only visible to and accessible
+  /// by the developer
+  /// project that created the metadata.
+  core.String visibility;
+
+  DeveloperMetadataLookup();
+
+  DeveloperMetadataLookup.fromJson(core.Map _json) {
+    if (_json.containsKey("locationMatchingStrategy")) {
+      locationMatchingStrategy = _json["locationMatchingStrategy"];
+    }
+    if (_json.containsKey("locationType")) {
+      locationType = _json["locationType"];
+    }
+    if (_json.containsKey("metadataId")) {
+      metadataId = _json["metadataId"];
+    }
+    if (_json.containsKey("metadataKey")) {
+      metadataKey = _json["metadataKey"];
+    }
+    if (_json.containsKey("metadataLocation")) {
+      metadataLocation =
+          new DeveloperMetadataLocation.fromJson(_json["metadataLocation"]);
+    }
+    if (_json.containsKey("metadataValue")) {
+      metadataValue = _json["metadataValue"];
+    }
+    if (_json.containsKey("visibility")) {
+      visibility = _json["visibility"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (locationMatchingStrategy != null) {
+      _json["locationMatchingStrategy"] = locationMatchingStrategy;
+    }
+    if (locationType != null) {
+      _json["locationType"] = locationType;
+    }
+    if (metadataId != null) {
+      _json["metadataId"] = metadataId;
+    }
+    if (metadataKey != null) {
+      _json["metadataKey"] = metadataKey;
+    }
+    if (metadataLocation != null) {
+      _json["metadataLocation"] = (metadataLocation).toJson();
+    }
+    if (metadataValue != null) {
+      _json["metadataValue"] = metadataValue;
+    }
+    if (visibility != null) {
+      _json["visibility"] = visibility;
+    }
+    return _json;
+  }
+}
+
 /// Properties about a dimension.
 class DimensionProperties {
+  /// The developer metadata associated with a single row or column.
+  core.List<DeveloperMetadata> developerMetadata;
+
   /// True if this dimension is being filtered.
   /// This field is read-only.
   core.bool hiddenByFilter;
@@ -4171,6 +5425,11 @@ class DimensionProperties {
   DimensionProperties();
 
   DimensionProperties.fromJson(core.Map _json) {
+    if (_json.containsKey("developerMetadata")) {
+      developerMetadata = _json["developerMetadata"]
+          .map((value) => new DeveloperMetadata.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("hiddenByFilter")) {
       hiddenByFilter = _json["hiddenByFilter"];
     }
@@ -4185,6 +5444,10 @@ class DimensionProperties {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (developerMetadata != null) {
+      _json["developerMetadata"] =
+          developerMetadata.map((value) => (value).toJson()).toList();
+    }
     if (hiddenByFilter != null) {
       _json["hiddenByFilter"] = hiddenByFilter;
     }
@@ -4897,6 +6160,43 @@ class FindReplaceResponse {
   }
 }
 
+/// The request for retrieving a Spreadsheet.
+class GetSpreadsheetByDataFilterRequest {
+  /// The DataFilters used to select which ranges to retrieve from
+  /// the spreadsheet.
+  core.List<DataFilter> dataFilters;
+
+  /// True if grid data should be returned.
+  /// This parameter is ignored if a field mask was set in the request.
+  core.bool includeGridData;
+
+  GetSpreadsheetByDataFilterRequest();
+
+  GetSpreadsheetByDataFilterRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("dataFilters")) {
+      dataFilters = _json["dataFilters"]
+          .map((value) => new DataFilter.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("includeGridData")) {
+      includeGridData = _json["includeGridData"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dataFilters != null) {
+      _json["dataFilters"] =
+          dataFilters.map((value) => (value).toJson()).toList();
+    }
+    if (includeGridData != null) {
+      _json["includeGridData"] = includeGridData;
+    }
+    return _json;
+  }
+}
+
 /// A rule that applies a gradient color scale format, based on
 /// the interpolation points listed. The format of a cell will vary
 /// based on its contents as compared to the values of the interpolation
@@ -5497,6 +6797,79 @@ class IterativeCalculationSettings {
     }
     if (maxIterations != null) {
       _json["maxIterations"] = maxIterations;
+    }
+    return _json;
+  }
+}
+
+/// A developer metadata entry and the data filters specified in the original
+/// request that matched it.
+class MatchedDeveloperMetadata {
+  /// All filters matching the returned developer metadata.
+  core.List<DataFilter> dataFilters;
+
+  /// The developer metadata matching the specified filters.
+  DeveloperMetadata developerMetadata;
+
+  MatchedDeveloperMetadata();
+
+  MatchedDeveloperMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey("dataFilters")) {
+      dataFilters = _json["dataFilters"]
+          .map((value) => new DataFilter.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("developerMetadata")) {
+      developerMetadata =
+          new DeveloperMetadata.fromJson(_json["developerMetadata"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dataFilters != null) {
+      _json["dataFilters"] =
+          dataFilters.map((value) => (value).toJson()).toList();
+    }
+    if (developerMetadata != null) {
+      _json["developerMetadata"] = (developerMetadata).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A value range that was matched by one or more data filers.
+class MatchedValueRange {
+  /// The DataFilters from the request that matched the range of
+  /// values.
+  core.List<DataFilter> dataFilters;
+
+  /// The values matched by the DataFilter.
+  ValueRange valueRange;
+
+  MatchedValueRange();
+
+  MatchedValueRange.fromJson(core.Map _json) {
+    if (_json.containsKey("dataFilters")) {
+      dataFilters = _json["dataFilters"]
+          .map((value) => new DataFilter.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("valueRange")) {
+      valueRange = new ValueRange.fromJson(_json["valueRange"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dataFilters != null) {
+      _json["dataFilters"] =
+          dataFilters.map((value) => (value).toJson()).toList();
+    }
+    if (valueRange != null) {
+      _json["valueRange"] = (valueRange).toJson();
     }
     return _json;
   }
@@ -6582,6 +7955,9 @@ class Request {
   /// Copies data from one area and pastes it to another.
   CopyPasteRequest copyPaste;
 
+  /// Creates new developer metadata
+  CreateDeveloperMetadataRequest createDeveloperMetadata;
+
   /// Cuts data from one area and pastes it to another.
   CutPasteRequest cutPaste;
 
@@ -6590,6 +7966,9 @@ class Request {
 
   /// Deletes an existing conditional format rule.
   DeleteConditionalFormatRuleRequest deleteConditionalFormatRule;
+
+  /// Deletes developer metadata
+  DeleteDeveloperMetadataRequest deleteDeveloperMetadata;
 
   /// Deletes rows or columns in a sheet.
   DeleteDimensionRequest deleteDimension;
@@ -6672,6 +8051,9 @@ class Request {
   /// Updates an existing conditional format rule.
   UpdateConditionalFormatRuleRequest updateConditionalFormatRule;
 
+  /// Updates an existing developer metadata entry
+  UpdateDeveloperMetadataRequest updateDeveloperMetadata;
+
   /// Updates dimensions' properties.
   UpdateDimensionPropertiesRequest updateDimensionProperties;
 
@@ -6740,6 +8122,10 @@ class Request {
     if (_json.containsKey("copyPaste")) {
       copyPaste = new CopyPasteRequest.fromJson(_json["copyPaste"]);
     }
+    if (_json.containsKey("createDeveloperMetadata")) {
+      createDeveloperMetadata = new CreateDeveloperMetadataRequest.fromJson(
+          _json["createDeveloperMetadata"]);
+    }
     if (_json.containsKey("cutPaste")) {
       cutPaste = new CutPasteRequest.fromJson(_json["cutPaste"]);
     }
@@ -6750,6 +8136,10 @@ class Request {
       deleteConditionalFormatRule =
           new DeleteConditionalFormatRuleRequest.fromJson(
               _json["deleteConditionalFormatRule"]);
+    }
+    if (_json.containsKey("deleteDeveloperMetadata")) {
+      deleteDeveloperMetadata = new DeleteDeveloperMetadataRequest.fromJson(
+          _json["deleteDeveloperMetadata"]);
     }
     if (_json.containsKey("deleteDimension")) {
       deleteDimension =
@@ -6846,6 +8236,10 @@ class Request {
           new UpdateConditionalFormatRuleRequest.fromJson(
               _json["updateConditionalFormatRule"]);
     }
+    if (_json.containsKey("updateDeveloperMetadata")) {
+      updateDeveloperMetadata = new UpdateDeveloperMetadataRequest.fromJson(
+          _json["updateDeveloperMetadata"]);
+    }
     if (_json.containsKey("updateDimensionProperties")) {
       updateDimensionProperties = new UpdateDimensionPropertiesRequest.fromJson(
           _json["updateDimensionProperties"]);
@@ -6920,6 +8314,9 @@ class Request {
     if (copyPaste != null) {
       _json["copyPaste"] = (copyPaste).toJson();
     }
+    if (createDeveloperMetadata != null) {
+      _json["createDeveloperMetadata"] = (createDeveloperMetadata).toJson();
+    }
     if (cutPaste != null) {
       _json["cutPaste"] = (cutPaste).toJson();
     }
@@ -6929,6 +8326,9 @@ class Request {
     if (deleteConditionalFormatRule != null) {
       _json["deleteConditionalFormatRule"] =
           (deleteConditionalFormatRule).toJson();
+    }
+    if (deleteDeveloperMetadata != null) {
+      _json["deleteDeveloperMetadata"] = (deleteDeveloperMetadata).toJson();
     }
     if (deleteDimension != null) {
       _json["deleteDimension"] = (deleteDimension).toJson();
@@ -7012,6 +8412,9 @@ class Request {
       _json["updateConditionalFormatRule"] =
           (updateConditionalFormatRule).toJson();
     }
+    if (updateDeveloperMetadata != null) {
+      _json["updateDeveloperMetadata"] = (updateDeveloperMetadata).toJson();
+    }
     if (updateDimensionProperties != null) {
       _json["updateDimensionProperties"] = (updateDimensionProperties).toJson();
     }
@@ -7059,8 +8462,14 @@ class Response {
   /// A reply from adding a sheet.
   AddSheetResponse addSheet;
 
+  /// A reply from creating a developer metadata entry.
+  CreateDeveloperMetadataResponse createDeveloperMetadata;
+
   /// A reply from deleting a conditional format rule.
   DeleteConditionalFormatRuleResponse deleteConditionalFormatRule;
+
+  /// A reply from deleting a developer metadata entry.
+  DeleteDeveloperMetadataResponse deleteDeveloperMetadata;
 
   /// A reply from duplicating a filter view.
   DuplicateFilterViewResponse duplicateFilterView;
@@ -7073,6 +8482,9 @@ class Response {
 
   /// A reply from updating a conditional format rule.
   UpdateConditionalFormatRuleResponse updateConditionalFormatRule;
+
+  /// A reply from updating a developer metadata entry.
+  UpdateDeveloperMetadataResponse updateDeveloperMetadata;
 
   /// A reply from updating an embedded object's position.
   UpdateEmbeddedObjectPositionResponse updateEmbeddedObjectPosition;
@@ -7101,10 +8513,18 @@ class Response {
     if (_json.containsKey("addSheet")) {
       addSheet = new AddSheetResponse.fromJson(_json["addSheet"]);
     }
+    if (_json.containsKey("createDeveloperMetadata")) {
+      createDeveloperMetadata = new CreateDeveloperMetadataResponse.fromJson(
+          _json["createDeveloperMetadata"]);
+    }
     if (_json.containsKey("deleteConditionalFormatRule")) {
       deleteConditionalFormatRule =
           new DeleteConditionalFormatRuleResponse.fromJson(
               _json["deleteConditionalFormatRule"]);
+    }
+    if (_json.containsKey("deleteDeveloperMetadata")) {
+      deleteDeveloperMetadata = new DeleteDeveloperMetadataResponse.fromJson(
+          _json["deleteDeveloperMetadata"]);
     }
     if (_json.containsKey("duplicateFilterView")) {
       duplicateFilterView = new DuplicateFilterViewResponse.fromJson(
@@ -7121,6 +8541,10 @@ class Response {
       updateConditionalFormatRule =
           new UpdateConditionalFormatRuleResponse.fromJson(
               _json["updateConditionalFormatRule"]);
+    }
+    if (_json.containsKey("updateDeveloperMetadata")) {
+      updateDeveloperMetadata = new UpdateDeveloperMetadataResponse.fromJson(
+          _json["updateDeveloperMetadata"]);
     }
     if (_json.containsKey("updateEmbeddedObjectPosition")) {
       updateEmbeddedObjectPosition =
@@ -7150,9 +8574,15 @@ class Response {
     if (addSheet != null) {
       _json["addSheet"] = (addSheet).toJson();
     }
+    if (createDeveloperMetadata != null) {
+      _json["createDeveloperMetadata"] = (createDeveloperMetadata).toJson();
+    }
     if (deleteConditionalFormatRule != null) {
       _json["deleteConditionalFormatRule"] =
           (deleteConditionalFormatRule).toJson();
+    }
+    if (deleteDeveloperMetadata != null) {
+      _json["deleteDeveloperMetadata"] = (deleteDeveloperMetadata).toJson();
     }
     if (duplicateFilterView != null) {
       _json["duplicateFilterView"] = (duplicateFilterView).toJson();
@@ -7166,6 +8596,9 @@ class Response {
     if (updateConditionalFormatRule != null) {
       _json["updateConditionalFormatRule"] =
           (updateConditionalFormatRule).toJson();
+    }
+    if (updateDeveloperMetadata != null) {
+      _json["updateDeveloperMetadata"] = (updateDeveloperMetadata).toJson();
     }
     if (updateEmbeddedObjectPosition != null) {
       _json["updateEmbeddedObjectPosition"] =
@@ -7194,6 +8627,62 @@ class RowData {
         new core.Map<core.String, core.Object>();
     if (values != null) {
       _json["values"] = values.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A request to retrieve all developer metadata matching the set of specified
+/// criteria.
+class SearchDeveloperMetadataRequest {
+  /// The data filters describing the criteria used to determine which
+  /// DeveloperMetadata entries to return.  DeveloperMetadata matching any of
+  /// the
+  /// specified filters will be included in the response.
+  core.List<DataFilter> dataFilters;
+
+  SearchDeveloperMetadataRequest();
+
+  SearchDeveloperMetadataRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("dataFilters")) {
+      dataFilters = _json["dataFilters"]
+          .map((value) => new DataFilter.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dataFilters != null) {
+      _json["dataFilters"] =
+          dataFilters.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A reply to a developer metadata search request.
+class SearchDeveloperMetadataResponse {
+  /// The metadata matching the criteria of the search request.
+  core.List<MatchedDeveloperMetadata> matchedDeveloperMetadata;
+
+  SearchDeveloperMetadataResponse();
+
+  SearchDeveloperMetadataResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("matchedDeveloperMetadata")) {
+      matchedDeveloperMetadata = _json["matchedDeveloperMetadata"]
+          .map((value) => new MatchedDeveloperMetadata.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (matchedDeveloperMetadata != null) {
+      _json["matchedDeveloperMetadata"] =
+          matchedDeveloperMetadata.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -7280,6 +8769,9 @@ class Sheet {
   /// and `startColumn 3` (zero-based column D).
   core.List<GridData> data;
 
+  /// The developer metadata associated with a sheet.
+  core.List<DeveloperMetadata> developerMetadata;
+
   /// The filter views in this sheet.
   core.List<FilterView> filterViews;
 
@@ -7316,6 +8808,11 @@ class Sheet {
     if (_json.containsKey("data")) {
       data =
           _json["data"].map((value) => new GridData.fromJson(value)).toList();
+    }
+    if (_json.containsKey("developerMetadata")) {
+      developerMetadata = _json["developerMetadata"]
+          .map((value) => new DeveloperMetadata.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("filterViews")) {
       filterViews = _json["filterViews"]
@@ -7356,6 +8853,10 @@ class Sheet {
     }
     if (data != null) {
       _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (developerMetadata != null) {
+      _json["developerMetadata"] =
+          developerMetadata.map((value) => (value).toJson()).toList();
     }
     if (filterViews != null) {
       _json["filterViews"] =
@@ -7601,6 +9102,9 @@ class SourceAndDestination {
 
 /// Resource that represents a spreadsheet.
 class Spreadsheet {
+  /// The developer metadata associated with a spreadsheet.
+  core.List<DeveloperMetadata> developerMetadata;
+
   /// The named ranges defined in a spreadsheet.
   core.List<NamedRange> namedRanges;
 
@@ -7621,6 +9125,11 @@ class Spreadsheet {
   Spreadsheet();
 
   Spreadsheet.fromJson(core.Map _json) {
+    if (_json.containsKey("developerMetadata")) {
+      developerMetadata = _json["developerMetadata"]
+          .map((value) => new DeveloperMetadata.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("namedRanges")) {
       namedRanges = _json["namedRanges"]
           .map((value) => new NamedRange.fromJson(value))
@@ -7644,6 +9153,10 @@ class Spreadsheet {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (developerMetadata != null) {
+      _json["developerMetadata"] =
+          developerMetadata.map((value) => (value).toJson()).toList();
+    }
     if (namedRanges != null) {
       _json["namedRanges"] =
           namedRanges.map((value) => (value).toJson()).toList();
@@ -7863,6 +9376,35 @@ class TextFormatRun {
     }
     if (startIndex != null) {
       _json["startIndex"] = startIndex;
+    }
+    return _json;
+  }
+}
+
+/// Position settings for text.
+class TextPosition {
+  /// Horizontal alignment setting for the piece of text.
+  /// Possible string values are:
+  /// - "HORIZONTAL_ALIGN_UNSPECIFIED" : The horizontal alignment is not
+  /// specified. Do not use this.
+  /// - "LEFT" : The text is explicitly aligned to the left of the cell.
+  /// - "CENTER" : The text is explicitly aligned to the center of the cell.
+  /// - "RIGHT" : The text is explicitly aligned to the right of the cell.
+  core.String horizontalAlignment;
+
+  TextPosition();
+
+  TextPosition.fromJson(core.Map _json) {
+    if (_json.containsKey("horizontalAlignment")) {
+      horizontalAlignment = _json["horizontalAlignment"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (horizontalAlignment != null) {
+      _json["horizontalAlignment"] = horizontalAlignment;
     }
     return _json;
   }
@@ -8310,6 +9852,85 @@ class UpdateConditionalFormatRuleResponse {
   }
 }
 
+/// A request to update properties of developer metadata.
+/// Updates the properties of the developer metadata selected by the filters to
+/// the values provided in the DeveloperMetadata resource.  Callers must
+/// specify the properties they wish to update in the fields parameter, as well
+/// as specify at least one DataFilter matching the metadata they wish to
+/// update.
+class UpdateDeveloperMetadataRequest {
+  /// The filters matching the developer metadata entries to update.
+  core.List<DataFilter> dataFilters;
+
+  /// The value that all metadata matched by the data filters will be updated
+  /// to.
+  DeveloperMetadata developerMetadata;
+
+  /// The fields that should be updated.  At least one field must be specified.
+  /// The root `developerMetadata` is implied and should not be specified.
+  /// A single `"*"` can be used as short-hand for listing every field.
+  core.String fields;
+
+  UpdateDeveloperMetadataRequest();
+
+  UpdateDeveloperMetadataRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("dataFilters")) {
+      dataFilters = _json["dataFilters"]
+          .map((value) => new DataFilter.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("developerMetadata")) {
+      developerMetadata =
+          new DeveloperMetadata.fromJson(_json["developerMetadata"]);
+    }
+    if (_json.containsKey("fields")) {
+      fields = _json["fields"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dataFilters != null) {
+      _json["dataFilters"] =
+          dataFilters.map((value) => (value).toJson()).toList();
+    }
+    if (developerMetadata != null) {
+      _json["developerMetadata"] = (developerMetadata).toJson();
+    }
+    if (fields != null) {
+      _json["fields"] = fields;
+    }
+    return _json;
+  }
+}
+
+/// The response from updating developer metadata.
+class UpdateDeveloperMetadataResponse {
+  /// The updated developer metadata.
+  core.List<DeveloperMetadata> developerMetadata;
+
+  UpdateDeveloperMetadataResponse();
+
+  UpdateDeveloperMetadataResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("developerMetadata")) {
+      developerMetadata = _json["developerMetadata"]
+          .map((value) => new DeveloperMetadata.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (developerMetadata != null) {
+      _json["developerMetadata"] =
+          developerMetadata.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// Updates properties of dimensions within the specified range.
 class UpdateDimensionPropertiesRequest {
   /// The fields that should be updated.  At least one field must be specified.
@@ -8596,6 +10217,77 @@ class UpdateSpreadsheetPropertiesRequest {
     }
     if (properties != null) {
       _json["properties"] = (properties).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The response when updating a range of values by a data filter in a
+/// spreadsheet.
+class UpdateValuesByDataFilterResponse {
+  /// The data filter that selected the range that was updated.
+  DataFilter dataFilter;
+
+  /// The number of cells updated.
+  core.int updatedCells;
+
+  /// The number of columns where at least one cell in the column was updated.
+  core.int updatedColumns;
+
+  /// The values of the cells in the range matched by the dataFilter after all
+  /// updates were applied. This is only included if the request's
+  /// `includeValuesInResponse` field was `true`.
+  ValueRange updatedData;
+
+  /// The range (in A1 notation) that updates were applied to.
+  core.String updatedRange;
+
+  /// The number of rows where at least one cell in the row was updated.
+  core.int updatedRows;
+
+  UpdateValuesByDataFilterResponse();
+
+  UpdateValuesByDataFilterResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("dataFilter")) {
+      dataFilter = new DataFilter.fromJson(_json["dataFilter"]);
+    }
+    if (_json.containsKey("updatedCells")) {
+      updatedCells = _json["updatedCells"];
+    }
+    if (_json.containsKey("updatedColumns")) {
+      updatedColumns = _json["updatedColumns"];
+    }
+    if (_json.containsKey("updatedData")) {
+      updatedData = new ValueRange.fromJson(_json["updatedData"]);
+    }
+    if (_json.containsKey("updatedRange")) {
+      updatedRange = _json["updatedRange"];
+    }
+    if (_json.containsKey("updatedRows")) {
+      updatedRows = _json["updatedRows"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dataFilter != null) {
+      _json["dataFilter"] = (dataFilter).toJson();
+    }
+    if (updatedCells != null) {
+      _json["updatedCells"] = updatedCells;
+    }
+    if (updatedColumns != null) {
+      _json["updatedColumns"] = updatedColumns;
+    }
+    if (updatedData != null) {
+      _json["updatedData"] = (updatedData).toJson();
+    }
+    if (updatedRange != null) {
+      _json["updatedRange"] = updatedRange;
+    }
+    if (updatedRows != null) {
+      _json["updatedRows"] = updatedRows;
     }
     return _json;
   }

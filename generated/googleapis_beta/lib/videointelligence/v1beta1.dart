@@ -14,7 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client videointelligence/v1beta1';
 
-/// Google Cloud Video Intelligence API.
+/// Cloud Video Intelligence API.
 class VideointelligenceApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =

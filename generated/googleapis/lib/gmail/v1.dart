@@ -48,7 +48,7 @@ class GmailApi {
   static const GmailModifyScope =
       "https://www.googleapis.com/auth/gmail.modify";
 
-  /// View your emails messages and settings
+  /// View your email messages and settings
   static const GmailReadonlyScope =
       "https://www.googleapis.com/auth/gmail.readonly";
 
@@ -3915,11 +3915,6 @@ class ImapSettings {
 /// Labels are used to categorize messages and threads within the user's
 /// mailbox.
 class Label {
-  /// Color to assign to the label. This field is hidden behind an API server
-  /// mendel experiment and only available for user-defined labels. Will be
-  /// unset if the label doesn't have a color configured.
-  LabelColor color;
-
   /// The immutable ID of the label.
   core.String id;
 
@@ -3968,9 +3963,6 @@ class Label {
   Label();
 
   Label.fromJson(core.Map _json) {
-    if (_json.containsKey("color")) {
-      color = new LabelColor.fromJson(_json["color"]);
-    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -4003,9 +3995,6 @@ class Label {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (color != null) {
-      _json["color"] = (color).toJson();
-    }
     if (id != null) {
       _json["id"] = id;
     }
@@ -4032,41 +4021,6 @@ class Label {
     }
     if (type != null) {
       _json["type"] = type;
-    }
-    return _json;
-  }
-}
-
-class LabelColor {
-  /// Background color represented as hex string #RRGGBB (ex #000000). Only a
-  /// restricted predefined set of color values are allowed. See
-  /// (go/gmail-api-label-colors).
-  core.String backgroundColor;
-
-  /// Text color represented as hex string #RRGGBB (ex #000000). Only a
-  /// restricted predefined set of color values are allowed. See
-  /// (go/gmail-api-label-colors).
-  core.String textColor;
-
-  LabelColor();
-
-  LabelColor.fromJson(core.Map _json) {
-    if (_json.containsKey("backgroundColor")) {
-      backgroundColor = _json["backgroundColor"];
-    }
-    if (_json.containsKey("textColor")) {
-      textColor = _json["textColor"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (backgroundColor != null) {
-      _json["backgroundColor"] = backgroundColor;
-    }
-    if (textColor != null) {
-      _json["textColor"] = textColor;
     }
     return _json;
   }

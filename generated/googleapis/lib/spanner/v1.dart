@@ -394,14 +394,6 @@ class ProjectsInstancesResourceApi {
   /// requested. Values are of the form `projects/<project>`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - If non-empty, `page_token` should contain a
-  /// next_page_token from a
-  /// previous ListInstancesResponse.
-  ///
-  /// [pageSize] - Number of instances to be returned in the response. If 0 or
-  /// less, defaults
-  /// to the server's maximum allowed page size.
-  ///
   /// [filter] - An expression for filtering the results of the request. Filter
   /// rules are
   /// case insensitive. The fields eligible for filtering are:
@@ -423,6 +415,14 @@ class ProjectsInstancesResourceApi {
   ///                                  it has the label "env" with its value
   ///                                  containing "dev".
   ///
+  /// [pageToken] - If non-empty, `page_token` should contain a
+  /// next_page_token from a
+  /// previous ListInstancesResponse.
+  ///
+  /// [pageSize] - Number of instances to be returned in the response. If 0 or
+  /// less, defaults
+  /// to the server's maximum allowed page size.
+  ///
   /// Completes with a [ListInstancesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -431,7 +431,7 @@ class ProjectsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String filter}) {
+      {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -442,14 +442,14 @@ class ProjectsInstancesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url =
@@ -1437,6 +1437,8 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// Idle sessions can be kept alive by sending a trivial SQL query
   /// periodically, e.g., `"SELECT 1"`.
   ///
+  /// [request] - The metadata request object.
+  ///
   /// Request parameters:
   ///
   /// [database] - Required. The database in which the new session is created.
@@ -1450,7 +1452,8 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Session> create(core.String database) {
+  async.Future<Session> create(
+      CreateSessionRequest request, core.String database) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1458,6 +1461,9 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
     }
@@ -1659,6 +1665,76 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Session.fromJson(data));
+  }
+
+  /// Lists all sessions in a given database.
+  ///
+  /// Request parameters:
+  ///
+  /// [database] - Required. The database in which to list sessions.
+  /// Value must have pattern
+  /// "^projects/[^/]+/instances/[^/]+/databases/[^/]+$".
+  ///
+  /// [pageToken] - If non-empty, `page_token` should contain a
+  /// next_page_token from a previous
+  /// ListSessionsResponse.
+  ///
+  /// [pageSize] - Number of sessions to be returned in the response. If 0 or
+  /// less, defaults
+  /// to the server's maximum allowed page size.
+  ///
+  /// [filter] - An expression for filtering the results of the request. Filter
+  /// rules are
+  /// case insensitive. The fields eligible for filtering are:
+  ///
+  ///   * labels.key where key is the name of a label
+  ///
+  /// Some examples of using filters are:
+  ///
+  ///   * labels.env:* --> The session has the label "env".
+  ///   * labels.env:dev --> The session has the label "env" and the value of
+  ///                        the label contains the string "dev".
+  ///
+  /// Completes with a [ListSessionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSessionsResponse> list(core.String database,
+      {core.String pageToken, core.int pageSize, core.String filter}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (database == null) {
+      throw new core.ArgumentError("Parameter database is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$database') +
+        '/sessions';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListSessionsResponse.fromJson(data));
   }
 
   /// Reads rows from the database using key lookups and scans, as a
@@ -1970,11 +2046,11 @@ class ProjectsInstancesOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+/operations$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// Completes with a [ListOperationsResponse].
   ///
@@ -1984,7 +2060,7 @@ class ProjectsInstancesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter, core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1995,14 +2071,14 @@ class ProjectsInstancesOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -2380,6 +2456,29 @@ class CreateInstanceRequest {
     }
     if (instanceId != null) {
       _json["instanceId"] = instanceId;
+    }
+    return _json;
+  }
+}
+
+/// The request for CreateSession.
+class CreateSessionRequest {
+  /// The session to create.
+  Session session;
+
+  CreateSessionRequest();
+
+  CreateSessionRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("session")) {
+      session = new Session.fromJson(_json["session"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (session != null) {
+      _json["session"] = (session).toJson();
     }
     return _json;
   }
@@ -3187,6 +3286,42 @@ class ListOperationsResponse {
   }
 }
 
+/// The response for ListSessions.
+class ListSessionsResponse {
+  /// `next_page_token` can be sent in a subsequent
+  /// ListSessions call to fetch more of the matching
+  /// sessions.
+  core.String nextPageToken;
+
+  /// The list of requested sessions.
+  core.List<Session> sessions;
+
+  ListSessionsResponse();
+
+  ListSessionsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("sessions")) {
+      sessions = _json["sessions"]
+          .map((value) => new Session.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (sessions != null) {
+      _json["sessions"] = sessions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// A modification to one or more Cloud Spanner rows.  Mutations can be
 /// applied to a Cloud Spanner database by sending them in a
 /// Commit call.
@@ -3260,7 +3395,7 @@ class Mutation {
 /// network API call.
 class Operation {
   /// If the value is `false`, it means the operation is still in progress.
-  /// If true, the operation is completed, and either `error` or `response` is
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 
@@ -3856,6 +3991,7 @@ class ReadRequest {
 
   /// If greater than zero, only the first `limit` rows are yielded. If `limit`
   /// is zero, the default is no limit.
+  /// A limit cannot be specified if partition_token is set.
   core.String limit;
 
   /// If this request is resuming a previously interrupted read,
@@ -4117,12 +4253,38 @@ class RollbackRequest {
 
 /// A session in the Cloud Spanner API.
 class Session {
-  /// Required. The name of the session.
+  /// Output only. The approximate timestamp when the session is last used. It
+  /// is
+  /// typically earlier than the actual last use time.
+  core.String approximateLastUseTime;
+
+  /// Output only. The timestamp when the session is created.
+  core.String createTime;
+
+  /// The labels for the session.
+  ///
+  /// * Label keys must be between 1 and 63 characters long and must conform to
+  ///    the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`.
+  ///  * Label values must be between 0 and 63 characters long and must conform
+  ///    to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
+  ///  * No more than 20 labels can be associated with a given session.
+  core.Map<core.String, core.String> labels;
+
+  /// The name of the session.
   core.String name;
 
   Session();
 
   Session.fromJson(core.Map _json) {
+    if (_json.containsKey("approximateLastUseTime")) {
+      approximateLastUseTime = _json["approximateLastUseTime"];
+    }
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -4131,6 +4293,15 @@ class Session {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (approximateLastUseTime != null) {
+      _json["approximateLastUseTime"] = approximateLastUseTime;
+    }
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
     if (name != null) {
       _json["name"] = name;
     }

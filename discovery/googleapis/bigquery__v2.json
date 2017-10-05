@@ -32,7 +32,7 @@
     "description": "A data platform for customers to create, manage, share and query data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/bigquery/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/9Y-B0QHiU2mw4FGTgPCBJA_ja7U\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/eKfo1IihjCeexX2Be6ySOGd7TdQ\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -971,7 +971,7 @@
             }
         }
     },
-    "revision": "20170903",
+    "revision": "20170923",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "BigtableColumn": {
@@ -2118,6 +2118,11 @@
                 },
                 "totalBytesProcessed": {
                     "description": "[Output-only] Total bytes processed for the job.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "totalSlotMs": {
+                    "description": "[Output-only] Slot-milliseconds for the job.",
                     "format": "int64",
                     "type": "string"
                 },

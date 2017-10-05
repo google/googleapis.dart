@@ -461,11 +461,11 @@ class ProjectsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - The standard list page size.
-  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
   ///
   /// Completes with a [GoogleLongrunningListOperationsResponse].
   ///
@@ -475,7 +475,7 @@ class ProjectsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.int pageSize, core.String filter, core.String pageToken}) {
+      {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -486,14 +486,14 @@ class ProjectsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url =
@@ -956,17 +956,15 @@ class GoogleDatastoreAdminV1beta1CommonMetadata {
   core.String endTime;
 
   /// The client-assigned labels which were provided when the operation was
-  /// created.  May also include additional labels.
+  /// created. May also include additional labels.
   core.Map<core.String, core.String> labels;
 
-  /// The type of the operation.  Can be used as a filter in
+  /// The type of the operation. Can be used as a filter in
   /// ListOperationsRequest.
   /// Possible string values are:
   /// - "OPERATION_TYPE_UNSPECIFIED" : Unspecified.
   /// - "EXPORT_ENTITIES" : ExportEntities.
   /// - "IMPORT_ENTITIES" : ImportEntities.
-  /// - "BUILD_INDEX" : Build an index.
-  /// - "CLEAR_INDEX" : Clear an index.
   core.String operationType;
 
   /// The time that work began on the operation.
@@ -979,14 +977,14 @@ class GoogleDatastoreAdminV1beta1CommonMetadata {
   /// - "PROCESSING" : Request is actively being processed.
   /// - "CANCELLING" : Request is in the process of being cancelled after user
   /// called
-  /// longrunning.Operations.CancelOperation on the operation.
+  /// google.longrunning.Operations.CancelOperation on the operation.
   /// - "FINALIZING" : Request has been processed and is in its finalization
   /// stage.
   /// - "SUCCESSFUL" : Request has completed successfully.
   /// - "FAILED" : Request has finished being processed, but encountered an
   /// error.
   /// - "CANCELLED" : Request has finished being cancelled after user called
-  /// longrunning.Operations.CancelOperation.
+  /// google.longrunning.Operations.CancelOperation.
   core.String state;
 
   GoogleDatastoreAdminV1beta1CommonMetadata();
@@ -1031,8 +1029,8 @@ class GoogleDatastoreAdminV1beta1CommonMetadata {
   }
 }
 
-/// Identifies a subset of entities in a project.  This is specified as
-/// combinations of kind + namespace (either or both of which may be all, as
+/// Identifies a subset of entities in a project. This is specified as
+/// combinations of kinds and namespaces (either or both of which may be all, as
 /// described in the following examples).
 /// Example usage:
 ///
@@ -1054,10 +1052,10 @@ class GoogleDatastoreAdminV1beta1EntityFilter {
   /// If empty, then this represents all kinds.
   core.List<core.String> kinds;
 
-  /// An empty list represents all namespaces.  This is the preferred
+  /// An empty list represents all namespaces. This is the preferred
   /// usage for projects that don't use namespaces.
   ///
-  /// An empty string element represents the default namespace.  This should be
+  /// An empty string element represents the default namespace. This should be
   /// used if the project has data in non-default namespaces, but doesn't want
   /// to
   /// include them.
@@ -1249,10 +1247,11 @@ class GoogleDatastoreAdminV1beta1ImportEntitiesMetadata {
 
 /// Measures the progress of a particular metric.
 class GoogleDatastoreAdminV1beta1Progress {
-  /// Note that this may be greater than work_estimated.
+  /// The amount of work that has been completed. Note that this may be greater
+  /// than work_estimated.
   core.String workCompleted;
 
-  /// An estimate of how much work needs to be performed.  May be zero if the
+  /// An estimate of how much work needs to be performed. May be zero if the
   /// work estimate is unavailable.
   core.String workEstimated;
 
@@ -1319,7 +1318,7 @@ class GoogleLongrunningListOperationsResponse {
 /// network API call.
 class GoogleLongrunningOperation {
   /// If the value is `false`, it means the operation is still in progress.
-  /// If true, the operation is completed, and either `error` or `response` is
+  /// If `true`, the operation is completed, and either `error` or `response` is
   /// available.
   core.bool done;
 

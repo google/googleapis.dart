@@ -383,13 +383,13 @@ main() {
       api.ProjectsTracesResourceApi res =
           new api.CloudtraceApi(mock).projects.traces;
       var arg_projectId = "foo";
-      var arg_filter = "foo";
-      var arg_endTime = "foo";
-      var arg_startTime = "foo";
       var arg_pageToken = "foo";
+      var arg_startTime = "foo";
       var arg_pageSize = 42;
       var arg_view = "foo";
       var arg_orderBy = "foo";
+      var arg_filter = "foo";
+      var arg_endTime = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -429,18 +429,18 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
-        unittest.expect(
-            queryMap["endTime"].first, unittest.equals(arg_endTime));
-        unittest.expect(
-            queryMap["startTime"].first, unittest.equals(arg_startTime));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["startTime"].first, unittest.equals(arg_startTime));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
         unittest.expect(
             queryMap["orderBy"].first, unittest.equals(arg_orderBy));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["endTime"].first, unittest.equals(arg_endTime));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -450,13 +450,13 @@ main() {
       }), true);
       res
           .list(arg_projectId,
-              filter: arg_filter,
-              endTime: arg_endTime,
-              startTime: arg_startTime,
               pageToken: arg_pageToken,
+              startTime: arg_startTime,
               pageSize: arg_pageSize,
               view: arg_view,
-              orderBy: arg_orderBy)
+              orderBy: arg_orderBy,
+              filter: arg_filter,
+              endTime: arg_endTime)
           .then(unittest.expectAsync1(((api.ListTracesResponse response) {
         checkListTracesResponse(response);
       })));

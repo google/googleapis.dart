@@ -202,11 +202,6 @@ class OrganizationsRolesResourceApi {
   /// `projects/{PROJECT_ID}`
   /// Value must have pattern "^organizations/[^/]+$".
   ///
-  /// [showDeleted] - Include Roles that have been deleted.
-  ///
-  /// [pageToken] - Optional pagination token returned in an earlier
-  /// ListRolesResponse.
-  ///
   /// [pageSize] - Optional limit on the number of roles to include in the
   /// response.
   ///
@@ -214,6 +209,11 @@ class OrganizationsRolesResourceApi {
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
+  ///
+  /// [showDeleted] - Include Roles that have been deleted.
+  ///
+  /// [pageToken] - Optional pagination token returned in an earlier
+  /// ListRolesResponse.
   ///
   /// Completes with a [ListRolesResponse].
   ///
@@ -223,10 +223,10 @@ class OrganizationsRolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRolesResponse> list(core.String parent,
-      {core.bool showDeleted,
-      core.String pageToken,
-      core.int pageSize,
-      core.String view}) {
+      {core.int pageSize,
+      core.String view,
+      core.bool showDeleted,
+      core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -237,17 +237,17 @@ class OrganizationsRolesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (showDeleted != null) {
+      _queryParams["showDeleted"] = ["${showDeleted}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
@@ -568,6 +568,8 @@ class ProjectsRolesResourceApi {
   /// `projects/{PROJECT_ID}`
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [showDeleted] - Include Roles that have been deleted.
+  ///
   /// [pageToken] - Optional pagination token returned in an earlier
   /// ListRolesResponse.
   ///
@@ -579,8 +581,6 @@ class ProjectsRolesResourceApi {
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
   ///
-  /// [showDeleted] - Include Roles that have been deleted.
-  ///
   /// Completes with a [ListRolesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -589,10 +589,10 @@ class ProjectsRolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRolesResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.bool showDeleted,
+      core.String pageToken,
       core.int pageSize,
-      core.String view,
-      core.bool showDeleted}) {
+      core.String view}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -603,6 +603,9 @@ class ProjectsRolesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (showDeleted != null) {
+      _queryParams["showDeleted"] = ["${showDeleted}"];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -611,9 +614,6 @@ class ProjectsRolesResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
-    }
-    if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
@@ -785,9 +785,9 @@ class ProjectsServiceAccountsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The resource name of the service account in the following format:
-  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
-  /// Using `-` as a wildcard for the project will infer the project from
-  /// the account. The `account` value can be the `email` address or the
+  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
+  /// Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
+  /// the account. The `ACCOUNT` value can be the `email` address or the
   /// `unique_id` of the service account.
   /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
   ///
@@ -826,9 +826,9 @@ class ProjectsServiceAccountsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The resource name of the service account in the following format:
-  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
-  /// Using `-` as a wildcard for the project will infer the project from
-  /// the account. The `account` value can be the `email` address or the
+  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
+  /// Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
+  /// the account. The `ACCOUNT` value can be the `email` address or the
   /// `unique_id` of the service account.
   /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
   ///
@@ -1017,9 +1017,9 @@ class ProjectsServiceAccountsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The resource name of the service account in the following format:
-  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
-  /// Using `-` as a wildcard for the project will infer the project from
-  /// the account. The `account` value can be the `email` address or the
+  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
+  /// Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
+  /// the account. The `ACCOUNT` value can be the `email` address or the
   /// `unique_id` of the service account.
   /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
   ///
@@ -1068,9 +1068,9 @@ class ProjectsServiceAccountsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The resource name of the service account in the following format:
-  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
-  /// Using `-` as a wildcard for the project will infer the project from
-  /// the account. The `account` value can be the `email` address or the
+  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
+  /// Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
+  /// the account. The `ACCOUNT` value can be the `email` address or the
   /// `unique_id` of the service account.
   /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
   ///
@@ -1168,14 +1168,14 @@ class ProjectsServiceAccountsResourceApi {
   /// Request parameters:
   ///
   /// [name] - The resource name of the service account in the following format:
-  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
   ///
-  /// Requests using `-` as a wildcard for the project will infer the project
-  /// from the `account` and the `account` value can be the `email` address or
-  /// the `unique_id` of the service account.
+  /// Requests using `-` as a wildcard for the `PROJECT_ID` will infer the
+  /// project from the `account` and the `ACCOUNT` value can be the `email`
+  /// address or the `unique_id` of the service account.
   ///
   /// In responses the resource name will always be in the format
-  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
   /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
   ///
   /// Completes with a [ServiceAccount].
@@ -1227,9 +1227,9 @@ class ProjectsServiceAccountsKeysResourceApi {
   /// Request parameters:
   ///
   /// [name] - The resource name of the service account in the following format:
-  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
-  /// Using `-` as a wildcard for the project will infer the project from
-  /// the account. The `account` value can be the `email` address or the
+  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
+  /// Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
+  /// the account. The `ACCOUNT` value can be the `email` address or the
   /// `unique_id` of the service account.
   /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
   ///
@@ -1273,9 +1273,9 @@ class ProjectsServiceAccountsKeysResourceApi {
   ///
   /// [name] - The resource name of the service account key in the following
   /// format:
-  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}/keys/{key}`.
-  /// Using `-` as a wildcard for the project will infer the project from
-  /// the account. The `account` value can be the `email` address or the
+  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`.
+  /// Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
+  /// the account. The `ACCOUNT` value can be the `email` address or the
   /// `unique_id` of the service account.
   /// Value must have pattern
   /// "^projects/[^/]+/serviceAccounts/[^/]+/keys/[^/]+$".
@@ -1317,10 +1317,10 @@ class ProjectsServiceAccountsKeysResourceApi {
   ///
   /// [name] - The resource name of the service account key in the following
   /// format:
-  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}/keys/{key}`.
+  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`.
   ///
-  /// Using `-` as a wildcard for the project will infer the project from
-  /// the account. The `account` value can be the `email` address or the
+  /// Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
+  /// the account. The `ACCOUNT` value can be the `email` address or the
   /// `unique_id` of the service account.
   /// Value must have pattern
   /// "^projects/[^/]+/serviceAccounts/[^/]+/keys/[^/]+$".
@@ -1371,10 +1371,10 @@ class ProjectsServiceAccountsKeysResourceApi {
   /// Request parameters:
   ///
   /// [name] - The resource name of the service account in the following format:
-  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
   ///
-  /// Using `-` as a wildcard for the project, will infer the project from
-  /// the account. The `account` value can be the `email` address or the
+  /// Using `-` as a wildcard for the `PROJECT_ID`, will infer the project from
+  /// the account. The `ACCOUNT` value can be the `email` address or the
   /// `unique_id` of the service account.
   /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
   ///
@@ -2497,14 +2497,13 @@ class Role {
 ///
 /// If the account already exists, the account's resource name is returned
 /// in util::Status's ResourceInfo.resource_name in the format of
-/// projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}. The caller
-/// can
+/// projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}. The caller can
 /// use the name in other methods to access the account.
 ///
 /// All other methods can identify the service account using the format
-/// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
-/// Using `-` as a wildcard for the project will infer the project from
-/// the account. The `account` value can be the `email` address or the
+/// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
+/// Using `-` as a wildcard for the `PROJECT_ID` will infer the project from
+/// the account. The `ACCOUNT` value can be the `email` address or the
 /// `unique_id` of the service account.
 class ServiceAccount {
   /// Optional. A user-specified description of the service account.  Must be
@@ -2526,14 +2525,14 @@ class ServiceAccount {
   }
 
   /// The resource name of the service account in the following format:
-  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
   ///
-  /// Requests using `-` as a wildcard for the project will infer the project
-  /// from the `account` and the `account` value can be the `email` address or
-  /// the `unique_id` of the service account.
+  /// Requests using `-` as a wildcard for the `PROJECT_ID` will infer the
+  /// project from the `account` and the `ACCOUNT` value can be the `email`
+  /// address or the `unique_id` of the service account.
   ///
   /// In responses the resource name will always be in the format
-  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}`.
+  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
   core.String name;
 
   /// @OutputOnly. The OAuth2 client id for the service account.
@@ -2626,7 +2625,7 @@ class ServiceAccountKey {
   core.String keyAlgorithm;
 
   /// The resource name of the service account key in the following format
-  /// `projects/{PROJECT_ID}/serviceAccounts/{SERVICE_ACCOUNT_EMAIL}/keys/{key}`.
+  /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`.
   core.String name;
 
   /// The private key data. Only provided in `CreateServiceAccountKey`

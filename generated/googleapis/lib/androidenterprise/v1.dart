@@ -4607,6 +4607,10 @@ class AppUpdateEvent {
 
 /// This represents a single version of the app.
 class AppVersion {
+  /// The track that this app was published in. For example if track is "alpha",
+  /// this is an alpha version of the app.
+  core.String track;
+
   /// Unique increasing identifier for the app version.
   core.int versionCode;
 
@@ -4618,6 +4622,9 @@ class AppVersion {
   AppVersion();
 
   AppVersion.fromJson(core.Map _json) {
+    if (_json.containsKey("track")) {
+      track = _json["track"];
+    }
     if (_json.containsKey("versionCode")) {
       versionCode = _json["versionCode"];
     }
@@ -4629,6 +4636,9 @@ class AppVersion {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (track != null) {
+      _json["track"] = track;
+    }
     if (versionCode != null) {
       _json["versionCode"] = versionCode;
     }
@@ -6115,6 +6125,9 @@ class Product {
   /// The name of the author of the product (for example, the app developer).
   core.String authorName;
 
+  /// The tracks that are visible to the enterprise.
+  core.List<core.String> availableTracks;
+
   /// A link to the (consumer) Google Play details page for the product.
   core.String detailsUrl;
 
@@ -6172,6 +6185,9 @@ class Product {
     if (_json.containsKey("authorName")) {
       authorName = _json["authorName"];
     }
+    if (_json.containsKey("availableTracks")) {
+      availableTracks = _json["availableTracks"];
+    }
     if (_json.containsKey("detailsUrl")) {
       detailsUrl = _json["detailsUrl"];
     }
@@ -6217,6 +6233,9 @@ class Product {
     }
     if (authorName != null) {
       _json["authorName"] = authorName;
+    }
+    if (availableTracks != null) {
+      _json["availableTracks"] = availableTracks;
     }
     if (detailsUrl != null) {
       _json["detailsUrl"] = detailsUrl;
@@ -6429,6 +6448,14 @@ class ProductSet {
   /// tracks per user.
   core.String productSetBehavior;
 
+  /// Other products that are part of the set, in addition to those specified in
+  /// the productId array. The only difference between this field and the
+  /// productId array is that it's possible to specify additional information
+  /// about this product visibility, see ProductVisibility and its fields for
+  /// more information. Specifying the same product ID both here and in the
+  /// productId array is not allowed and it will result in an error.
+  core.List<ProductVisibility> productVisibility;
+
   ProductSet();
 
   ProductSet.fromJson(core.Map _json) {
@@ -6440,6 +6467,11 @@ class ProductSet {
     }
     if (_json.containsKey("productSetBehavior")) {
       productSetBehavior = _json["productSetBehavior"];
+    }
+    if (_json.containsKey("productVisibility")) {
+      productVisibility = _json["productVisibility"]
+          .map((value) => new ProductVisibility.fromJson(value))
+          .toList();
     }
   }
 
@@ -6454,6 +6486,10 @@ class ProductSet {
     }
     if (productSetBehavior != null) {
       _json["productSetBehavior"] = productSetBehavior;
+    }
+    if (productVisibility != null) {
+      _json["productVisibility"] =
+          productVisibility.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -6487,6 +6523,53 @@ class ProductSigningCertificate {
     }
     if (certificateHashSha256 != null) {
       _json["certificateHashSha256"] = certificateHashSha256;
+    }
+    return _json;
+  }
+}
+
+/// A product to be made visible to a user.
+class ProductVisibility {
+  /// The product ID that should be made visible to the user. This is required.
+  core.String productId;
+
+  /// This allows to only grant visibility to the specified tracks of the app.
+  /// For example, if an app has a prod version, a beta version and an alpha
+  /// version and the enterprise has been granted visibility to both the alpha
+  /// and beta tracks, if tracks is {"beta", "production"} the user will be able
+  /// to install the app and they will get the beta version of the app. If there
+  /// are no app versions in the specified track or if the enterprise wasn't
+  /// granted visibility for the track, adding the "alpha" and "beta" values to
+  /// the list of tracks will have no effect for now; however they will take
+  /// effect once both conditions are met. Note that the enterprise itself needs
+  /// to be granted access to the alpha and/or beta tracks, regardless of
+  /// whether individual users or admins have access to those tracks.
+  ///
+  /// The allowed sets are: {} (considered equivalent to {"production"})
+  /// {"production"} {"beta", "production"} {"alpha", "beta", "production"} The
+  /// order of elements is not relevant. Any other set of tracks will be
+  /// rejected with an error.
+  core.List<core.String> tracks;
+
+  ProductVisibility();
+
+  ProductVisibility.fromJson(core.Map _json) {
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
+    }
+    if (_json.containsKey("tracks")) {
+      tracks = _json["tracks"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (productId != null) {
+      _json["productId"] = productId;
+    }
+    if (tracks != null) {
+      _json["tracks"] = tracks;
     }
     return _json;
   }

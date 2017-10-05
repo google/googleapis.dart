@@ -15,7 +15,7 @@
     "description": "Reads and publishes results from Firebase Test Lab.",
     "discoveryVersion": "v1",
     "documentationLink": "https://firebase.google.com/docs/test-lab/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/v_JZVM80yi8yxAu63mX855kWEUQ\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/dsThgnMRVyXvP0x7GRMgJLgmPMc\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -1161,7 +1161,7 @@
             }
         }
     },
-    "revision": "20170908",
+    "revision": "20171004",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AndroidAppInfo": {
@@ -1485,7 +1485,7 @@
             "id": "FailureDetail",
             "properties": {
                 "crashed": {
-                    "description": "If the failure was severe because the system under test crashed.",
+                    "description": "If the failure was severe because the system (app) under test crashed.",
                     "type": "boolean"
                 },
                 "notInstalled": {
@@ -1493,7 +1493,7 @@
                     "type": "boolean"
                 },
                 "otherNativeCrash": {
-                    "description": "If a native process other than the app crashed.",
+                    "description": "If a native process (including any other than the app) crashed.",
                     "type": "boolean"
                 },
                 "timedOut": {

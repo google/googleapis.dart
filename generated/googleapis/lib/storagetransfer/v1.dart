@@ -181,8 +181,6 @@ class TransferJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The list page size. The max allowed value is 256.
-  ///
   /// [filter] - A list of query parameters specified as JSON text in the form
   /// of
   /// {"project_id":"my_project_id",
@@ -196,6 +194,8 @@ class TransferJobsResourceApi {
   ///
   /// [pageToken] - The list page token.
   ///
+  /// [pageSize] - The list page size. The max allowed value is 256.
+  ///
   /// Completes with a [ListTransferJobsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -204,7 +204,7 @@ class TransferJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferJobsResponse> list(
-      {core.int pageSize, core.String filter, core.String pageToken}) {
+      {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -212,14 +212,14 @@ class TransferJobsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/transferJobs';
@@ -418,8 +418,6 @@ class TransferOperationsResourceApi {
   /// [name] - The value `transferOperations`.
   /// Value must have pattern "^transferOperations$".
   ///
-  /// [pageSize] - The list page size. The max allowed value is 256.
-  ///
   /// [filter] - A list of query parameters specified as JSON text in the form
   /// of {\"project_id\" : \"my_project_id\", \"job_names\" : [\"jobid1\",
   /// \"jobid2\",...], \"operation_names\" : [\"opid1\", \"opid2\",...],
@@ -430,6 +428,8 @@ class TransferOperationsResourceApi {
   ///
   /// [pageToken] - The list page token.
   ///
+  /// [pageSize] - The list page size. The max allowed value is 256.
+  ///
   /// Completes with a [ListOperationsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -438,7 +438,7 @@ class TransferOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.int pageSize, core.String filter, core.String pageToken}) {
+      {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -449,14 +449,14 @@ class TransferOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1705,11 +1705,9 @@ class TransferJob {
   core.String name;
 
   /// The ID of the Google Cloud Platform Console project that owns the job.
-  /// Required.
   core.String projectId;
 
   /// Schedule specification.
-  /// Required.
   Schedule schedule;
 
   /// Status of the job. This value MUST be specified for
@@ -1731,7 +1729,6 @@ class TransferJob {
   core.String status;
 
   /// Transfer specification.
-  /// Required.
   TransferSpec transferSpec;
 
   TransferJob();

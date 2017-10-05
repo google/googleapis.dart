@@ -144,11 +144,11 @@ class OperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^operations$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// Completes with a [ListOperationsResponse].
   ///
@@ -158,7 +158,7 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken, core.int pageSize, core.String filter}) {
+      {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -169,14 +169,14 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -664,6 +664,7 @@ class ProjectsTriggersResourceApi {
 /// - $TAG_NAME: the tag name specified by RepoSource.
 /// - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or
 ///   resolved from the specified branch or tag.
+/// - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
 class Build {
   /// The ID of the BuildTrigger that triggered this build, if it was
   /// triggered automatically.
@@ -1669,8 +1670,7 @@ class Source {
   /// If provided, get source from this location in a Cloud Repo.
   RepoSource repoSource;
 
-  /// If provided, get the source from this location in in Google Cloud
-  /// Storage.
+  /// If provided, get the source from this location in Google Cloud Storage.
   StorageSource storageSource;
 
   Source();

@@ -117,6 +117,16 @@ class ProjectsJobsResourceApi {
   ///
   /// [projectId] - The project which owns the jobs.
   ///
+  /// [location] - The location that contains this job.
+  ///
+  /// [pageToken] - Set this to the 'next_page_token' field of a previous
+  /// response
+  /// to request additional results in a long list.
+  ///
+  /// [pageSize] - If there are many jobs, limit response to at most this many.
+  /// The actual number of jobs returned will be the lesser of max_responses
+  /// and an unspecified server-defined limit.
+  ///
   /// [view] - Level of information requested in response. Default is
   /// `JOB_VIEW_SUMMARY`.
   /// Possible string values are:
@@ -132,16 +142,6 @@ class ProjectsJobsResourceApi {
   /// - "TERMINATED" : A TERMINATED.
   /// - "ACTIVE" : A ACTIVE.
   ///
-  /// [location] - The location that contains this job.
-  ///
-  /// [pageToken] - Set this to the 'next_page_token' field of a previous
-  /// response
-  /// to request additional results in a long list.
-  ///
-  /// [pageSize] - If there are many jobs, limit response to at most this many.
-  /// The actual number of jobs returned will be the lesser of max_responses
-  /// and an unspecified server-defined limit.
-  ///
   /// Completes with a [ListJobsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -150,11 +150,11 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> aggregated(core.String projectId,
-      {core.String view,
-      core.String filter,
-      core.String location,
+      {core.String location,
       core.String pageToken,
-      core.int pageSize}) {
+      core.int pageSize,
+      core.String view,
+      core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -165,12 +165,6 @@ class ProjectsJobsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (location != null) {
       _queryParams["location"] = [location];
     }
@@ -179,6 +173,12 @@ class ProjectsJobsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1b3/projects/' +
@@ -203,16 +203,16 @@ class ProjectsJobsResourceApi {
   /// [projectId] - The ID of the Cloud Platform project that the job belongs
   /// to.
   ///
-  /// [location] - The location that contains this job.
-  ///
-  /// [replaceJobId] - Deprecated. This field is now in the Job message.
-  ///
   /// [view] - The level of information requested in response.
   /// Possible string values are:
   /// - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
   /// - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
   /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
   /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
+  ///
+  /// [location] - The location that contains this job.
+  ///
+  /// [replaceJobId] - Deprecated. This field is now in the Job message.
   ///
   /// Completes with a [Job].
   ///
@@ -222,7 +222,7 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Job> create(Job request, core.String projectId,
-      {core.String location, core.String replaceJobId, core.String view}) {
+      {core.String view, core.String location, core.String replaceJobId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -236,14 +236,14 @@ class ProjectsJobsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
     if (location != null) {
       _queryParams["location"] = [location];
     }
     if (replaceJobId != null) {
       _queryParams["replaceJobId"] = [replaceJobId];
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
     }
 
     _url = 'v1b3/projects/' +
@@ -268,14 +268,14 @@ class ProjectsJobsResourceApi {
   ///
   /// [jobId] - The job ID.
   ///
-  /// [location] - The location that contains this job.
-  ///
   /// [view] - The level of information requested in response.
   /// Possible string values are:
   /// - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
   /// - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
   /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
   /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
+  ///
+  /// [location] - The location that contains this job.
   ///
   /// Completes with a [Job].
   ///
@@ -285,7 +285,7 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Job> get(core.String projectId, core.String jobId,
-      {core.String location, core.String view}) {
+      {core.String view, core.String location}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -299,11 +299,11 @@ class ProjectsJobsResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-    if (location != null) {
-      _queryParams["location"] = [location];
-    }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
     }
 
     _url = 'v1b3/projects/' +
@@ -328,10 +328,10 @@ class ProjectsJobsResourceApi {
   ///
   /// [jobId] - The job to get messages for.
   ///
-  /// [location] - The location which contains the job specified by job_id.
-  ///
   /// [startTime] - Return only metric data that has changed since this time.
   /// Default is to return all information about all metrics for the job.
+  ///
+  /// [location] - The location which contains the job specified by job_id.
   ///
   /// Completes with a [JobMetrics].
   ///
@@ -341,7 +341,7 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<JobMetrics> getMetrics(core.String projectId, core.String jobId,
-      {core.String location, core.String startTime}) {
+      {core.String startTime, core.String location}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -355,11 +355,11 @@ class ProjectsJobsResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-    if (location != null) {
-      _queryParams["location"] = [location];
-    }
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
     }
 
     _url = 'v1b3/projects/' +
@@ -644,20 +644,20 @@ class ProjectsJobsMessagesResourceApi {
   ///
   /// [jobId] - The job to get messages about.
   ///
-  /// [location] - The location which contains the job specified by job_id.
-  ///
   /// [endTime] - Return only messages with timestamps < end_time. The default
   /// is now
   /// (i.e. return up to the latest messages available).
+  ///
+  /// [location] - The location which contains the job specified by job_id.
+  ///
+  /// [startTime] - If specified, return only messages with timestamps >=
+  /// start_time.
+  /// The default is the job creation time (i.e. beginning of messages).
   ///
   /// [pageToken] - If supplied, this should be the value of next_page_token
   /// returned
   /// by an earlier call. This will cause the next page of results to
   /// be returned.
-  ///
-  /// [startTime] - If specified, return only messages with timestamps >=
-  /// start_time.
-  /// The default is the job creation time (i.e. beginning of messages).
   ///
   /// [pageSize] - If specified, determines the maximum number of messages to
   /// return.  If unspecified, the service may choose an appropriate
@@ -681,10 +681,10 @@ class ProjectsJobsMessagesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListJobMessagesResponse> list(
       core.String projectId, core.String jobId,
-      {core.String location,
-      core.String endTime,
-      core.String pageToken,
+      {core.String endTime,
+      core.String location,
       core.String startTime,
+      core.String pageToken,
       core.int pageSize,
       core.String minimumImportance}) {
     var _url = null;
@@ -700,17 +700,17 @@ class ProjectsJobsMessagesResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-    if (location != null) {
-      _queryParams["location"] = [location];
-    }
     if (endTime != null) {
       _queryParams["endTime"] = [endTime];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (location != null) {
+      _queryParams["location"] = [location];
     }
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -937,14 +937,14 @@ class ProjectsLocationsJobsResourceApi {
   ///
   /// [location] - The location that contains this job.
   ///
-  /// [replaceJobId] - Deprecated. This field is now in the Job message.
-  ///
   /// [view] - The level of information requested in response.
   /// Possible string values are:
   /// - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
   /// - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
   /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
   /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
+  ///
+  /// [replaceJobId] - Deprecated. This field is now in the Job message.
   ///
   /// Completes with a [Job].
   ///
@@ -955,7 +955,7 @@ class ProjectsLocationsJobsResourceApi {
   /// this method will complete with the same error.
   async.Future<Job> create(
       Job request, core.String projectId, core.String location,
-      {core.String replaceJobId, core.String view}) {
+      {core.String view, core.String replaceJobId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -972,11 +972,11 @@ class ProjectsLocationsJobsResourceApi {
     if (location == null) {
       throw new core.ArgumentError("Parameter location is required.");
     }
-    if (replaceJobId != null) {
-      _queryParams["replaceJobId"] = [replaceJobId];
-    }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (replaceJobId != null) {
+      _queryParams["replaceJobId"] = [replaceJobId];
     }
 
     _url = 'v1b3/projects/' +
@@ -1126,6 +1126,13 @@ class ProjectsLocationsJobsResourceApi {
   ///
   /// [location] - The location that contains this job.
   ///
+  /// [filter] - The kind of filter to use.
+  /// Possible string values are:
+  /// - "UNKNOWN" : A UNKNOWN.
+  /// - "ALL" : A ALL.
+  /// - "TERMINATED" : A TERMINATED.
+  /// - "ACTIVE" : A ACTIVE.
+  ///
   /// [pageToken] - Set this to the 'next_page_token' field of a previous
   /// response
   /// to request additional results in a long list.
@@ -1142,13 +1149,6 @@ class ProjectsLocationsJobsResourceApi {
   /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
   /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
   ///
-  /// [filter] - The kind of filter to use.
-  /// Possible string values are:
-  /// - "UNKNOWN" : A UNKNOWN.
-  /// - "ALL" : A ALL.
-  /// - "TERMINATED" : A TERMINATED.
-  /// - "ACTIVE" : A ACTIVE.
-  ///
   /// Completes with a [ListJobsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1158,10 +1158,10 @@ class ProjectsLocationsJobsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(
       core.String projectId, core.String location,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String view,
-      core.String filter}) {
+      core.String view}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1175,6 +1175,9 @@ class ProjectsLocationsJobsResourceApi {
     if (location == null) {
       throw new core.ArgumentError("Parameter location is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -1183,9 +1186,6 @@ class ProjectsLocationsJobsResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1b3/projects/' +
@@ -1405,19 +1405,6 @@ class ProjectsLocationsJobsMessagesResourceApi {
   ///
   /// [jobId] - The job to get messages about.
   ///
-  /// [endTime] - Return only messages with timestamps < end_time. The default
-  /// is now
-  /// (i.e. return up to the latest messages available).
-  ///
-  /// [pageToken] - If supplied, this should be the value of next_page_token
-  /// returned
-  /// by an earlier call. This will cause the next page of results to
-  /// be returned.
-  ///
-  /// [startTime] - If specified, return only messages with timestamps >=
-  /// start_time.
-  /// The default is the job creation time (i.e. beginning of messages).
-  ///
   /// [pageSize] - If specified, determines the maximum number of messages to
   /// return.  If unspecified, the service may choose an appropriate
   /// default, or may return an arbitrarily large number of results.
@@ -1431,6 +1418,19 @@ class ProjectsLocationsJobsMessagesResourceApi {
   /// - "JOB_MESSAGE_WARNING" : A JOB_MESSAGE_WARNING.
   /// - "JOB_MESSAGE_ERROR" : A JOB_MESSAGE_ERROR.
   ///
+  /// [endTime] - Return only messages with timestamps < end_time. The default
+  /// is now
+  /// (i.e. return up to the latest messages available).
+  ///
+  /// [startTime] - If specified, return only messages with timestamps >=
+  /// start_time.
+  /// The default is the job creation time (i.e. beginning of messages).
+  ///
+  /// [pageToken] - If supplied, this should be the value of next_page_token
+  /// returned
+  /// by an earlier call. This will cause the next page of results to
+  /// be returned.
+  ///
   /// Completes with a [ListJobMessagesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1440,11 +1440,11 @@ class ProjectsLocationsJobsMessagesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListJobMessagesResponse> list(
       core.String projectId, core.String location, core.String jobId,
-      {core.String endTime,
-      core.String pageToken,
+      {core.int pageSize,
+      core.String minimumImportance,
+      core.String endTime,
       core.String startTime,
-      core.int pageSize,
-      core.String minimumImportance}) {
+      core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1461,20 +1461,20 @@ class ProjectsLocationsJobsMessagesResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-    if (endTime != null) {
-      _queryParams["endTime"] = [endTime];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (startTime != null) {
-      _queryParams["startTime"] = [startTime];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (minimumImportance != null) {
       _queryParams["minimumImportance"] = [minimumImportance];
+    }
+    if (endTime != null) {
+      _queryParams["endTime"] = [endTime];
+    }
+    if (startTime != null) {
+      _queryParams["startTime"] = [startTime];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1b3/projects/' +
@@ -1869,6 +1869,8 @@ class ProjectsTemplatesResourceApi {
   /// [projectId] - Required. The ID of the Cloud Platform project that the job
   /// belongs to.
   ///
+  /// [location] - The location to which to direct the request.
+  ///
   /// [view] - The view to retrieve. Defaults to METADATA_ONLY.
   /// Possible string values are:
   /// - "METADATA_ONLY" : A METADATA_ONLY.
@@ -1876,8 +1878,6 @@ class ProjectsTemplatesResourceApi {
   /// [gcsPath] - Required. A Cloud Storage path to the template from which to
   /// create the job.
   /// Must be a valid Cloud Storage URL, beginning with `gs://`.
-  ///
-  /// [location] - The location to which to direct the request.
   ///
   /// Completes with a [GetTemplateResponse].
   ///
@@ -1887,7 +1887,7 @@ class ProjectsTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetTemplateResponse> get(core.String projectId,
-      {core.String view, core.String gcsPath, core.String location}) {
+      {core.String location, core.String view, core.String gcsPath}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1898,14 +1898,14 @@ class ProjectsTemplatesResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (location != null) {
+      _queryParams["location"] = [location];
+    }
     if (view != null) {
       _queryParams["view"] = [view];
     }
     if (gcsPath != null) {
       _queryParams["gcsPath"] = [gcsPath];
-    }
-    if (location != null) {
-      _queryParams["location"] = [location];
     }
 
     _url = 'v1b3/projects/' +
@@ -1930,16 +1930,16 @@ class ProjectsTemplatesResourceApi {
   /// [projectId] - Required. The ID of the Cloud Platform project that the job
   /// belongs to.
   ///
+  /// [gcsPath] - Required. A Cloud Storage path to the template from which to
+  /// create
+  /// the job.
+  /// Must be valid Cloud Storage URL, beginning with 'gs://'.
+  ///
   /// [location] - The location to which to direct the request.
   ///
   /// [validateOnly] - If true, the request is validated but not actually
   /// executed.
   /// Defaults to false.
-  ///
-  /// [gcsPath] - Required. A Cloud Storage path to the template from which to
-  /// create
-  /// the job.
-  /// Must be valid Cloud Storage URL, beginning with 'gs://'.
   ///
   /// Completes with a [LaunchTemplateResponse].
   ///
@@ -1950,7 +1950,7 @@ class ProjectsTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<LaunchTemplateResponse> launch(
       LaunchTemplateParameters request, core.String projectId,
-      {core.String location, core.bool validateOnly, core.String gcsPath}) {
+      {core.String gcsPath, core.String location, core.bool validateOnly}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1964,14 +1964,14 @@ class ProjectsTemplatesResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (gcsPath != null) {
+      _queryParams["gcsPath"] = [gcsPath];
+    }
     if (location != null) {
       _queryParams["location"] = [location];
     }
     if (validateOnly != null) {
       _queryParams["validateOnly"] = ["${validateOnly}"];
-    }
-    if (gcsPath != null) {
-      _queryParams["gcsPath"] = [gcsPath];
     }
 
     _url = 'v1b3/projects/' +
@@ -3240,9 +3240,8 @@ class DistributionUpdate {
   /// The count of the number of elements present in the distribution.
   SplitInt64 count;
 
-  /// (Optional) Logarithmic histogram of values.
-  /// Each log may be in no more than one bucket. Order does not matter.
-  core.List<LogBucket> logBuckets;
+  /// (Optional) Histogram of value counts for the distribution.
+  Histogram histogram;
 
   /// The maximum value present in the distribution.
   SplitInt64 max;
@@ -3264,10 +3263,8 @@ class DistributionUpdate {
     if (_json.containsKey("count")) {
       count = new SplitInt64.fromJson(_json["count"]);
     }
-    if (_json.containsKey("logBuckets")) {
-      logBuckets = _json["logBuckets"]
-          .map((value) => new LogBucket.fromJson(value))
-          .toList();
+    if (_json.containsKey("histogram")) {
+      histogram = new Histogram.fromJson(_json["histogram"]);
     }
     if (_json.containsKey("max")) {
       max = new SplitInt64.fromJson(_json["max"]);
@@ -3289,9 +3286,8 @@ class DistributionUpdate {
     if (count != null) {
       _json["count"] = (count).toJson();
     }
-    if (logBuckets != null) {
-      _json["logBuckets"] =
-          logBuckets.map((value) => (value).toJson()).toList();
+    if (histogram != null) {
+      _json["histogram"] = (histogram).toJson();
     }
     if (max != null) {
       _json["max"] = (max).toJson();
@@ -3884,6 +3880,49 @@ class GetTemplateResponse {
     }
     if (status != null) {
       _json["status"] = (status).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Histogram of value counts for a distribution.
+///
+/// Buckets have an inclusive lower bound and exclusive upper bound and use
+/// "1,2,5 bucketing": The first bucket range is from [0,1) and all subsequent
+/// bucket boundaries are powers of ten multiplied by 1, 2, or 5. Thus, bucket
+/// boundaries are 0, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, ...
+/// Negative values are not supported.
+class Histogram {
+  /// Counts of values in each bucket. For efficiency, prefix and trailing
+  /// buckets with count = 0 are elided. Buckets can store the full range of
+  /// values of an unsigned long, with ULLONG_MAX falling into the 59th bucket
+  /// with range [1e19, 2e19).
+  core.List<core.String> bucketCounts;
+
+  /// Starting index of first stored bucket. The non-inclusive upper-bound of
+  /// the ith bucket is given by:
+  ///   pow(10,(i-first_bucket_offset)/3) * (1,2,5)[(i-first_bucket_offset)%3]
+  core.int firstBucketOffset;
+
+  Histogram();
+
+  Histogram.fromJson(core.Map _json) {
+    if (_json.containsKey("bucketCounts")) {
+      bucketCounts = _json["bucketCounts"];
+    }
+    if (_json.containsKey("firstBucketOffset")) {
+      firstBucketOffset = _json["firstBucketOffset"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bucketCounts != null) {
+      _json["bucketCounts"] = bucketCounts;
+    }
+    if (firstBucketOffset != null) {
+      _json["firstBucketOffset"] = firstBucketOffset;
     }
     return _json;
   }
@@ -4970,45 +5009,6 @@ class ListJobsResponse {
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
-    }
-    return _json;
-  }
-}
-
-/// Bucket of values for Distribution's logarithmic histogram.
-class LogBucket {
-  /// Number of values in this bucket.
-  core.String count;
-
-  /// floor(log2(value)); defined to be zero for nonpositive values.
-  ///   log(-1) = 0
-  ///   log(0) = 0
-  ///   log(1) = 0
-  ///   log(2) = 1
-  ///   log(3) = 1
-  ///   log(4) = 2
-  ///   log(5) = 2
-  core.int log;
-
-  LogBucket();
-
-  LogBucket.fromJson(core.Map _json) {
-    if (_json.containsKey("count")) {
-      count = _json["count"];
-    }
-    if (_json.containsKey("log")) {
-      log = _json["log"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (count != null) {
-      _json["count"] = count;
-    }
-    if (log != null) {
-      _json["log"] = log;
     }
     return _json;
   }
@@ -8592,6 +8592,9 @@ class WorkItemStatus {
   /// P' and R' must be together equivalent to P, etc.
   Position stopPosition;
 
+  /// Total time the worker spent being throttled by external systems.
+  core.double totalThrottlerWaitTimeSeconds;
+
   /// Identifies the WorkItem.
   core.String workItemId;
 
@@ -8642,6 +8645,9 @@ class WorkItemStatus {
     if (_json.containsKey("stopPosition")) {
       stopPosition = new Position.fromJson(_json["stopPosition"]);
     }
+    if (_json.containsKey("totalThrottlerWaitTimeSeconds")) {
+      totalThrottlerWaitTimeSeconds = _json["totalThrottlerWaitTimeSeconds"];
+    }
     if (_json.containsKey("workItemId")) {
       workItemId = _json["workItemId"];
     }
@@ -8687,6 +8693,9 @@ class WorkItemStatus {
     }
     if (stopPosition != null) {
       _json["stopPosition"] = (stopPosition).toJson();
+    }
+    if (totalThrottlerWaitTimeSeconds != null) {
+      _json["totalThrottlerWaitTimeSeconds"] = totalThrottlerWaitTimeSeconds;
     }
     if (workItemId != null) {
       _json["workItemId"] = workItemId;
@@ -9346,9 +9355,11 @@ class WorkerSettings {
 /// script of the worker VM so that the backend knows that the VM is being
 /// shut down.
 class WorkerShutdownNotice {
-  /// Optional reason to be attached for the shutdown notice.
-  /// For example: "PREEMPTION" would indicate the VM is being shut down because
-  /// of preemption. Other possible reasons may be added in the future.
+  /// The reason for the worker shutdown.
+  /// Current possible values are:
+  ///   "UNKNOWN": shutdown reason is unknown.
+  ///   "PREEMPTION": shutdown reason is preemption.
+  /// Other possible reasons may be added in the future.
   core.String reason;
 
   WorkerShutdownNotice();

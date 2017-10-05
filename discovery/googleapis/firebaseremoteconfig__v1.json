@@ -16,6 +16,11 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
         "pp": {
             "default": "true",
             "description": "Pretty-print response.",
@@ -96,11 +101,6 @@
             "description": "OAuth access token.",
             "location": "query",
             "type": "string"
-        },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
         }
     },
     "protocol": "rest",
@@ -160,9 +160,45 @@
             }
         }
     },
-    "revision": "20170901",
+    "revision": "20171002",
     "rootUrl": "https://firebaseremoteconfig.googleapis.com/",
     "schemas": {
+        "RemoteConfigParameterValue": {
+            "description": "A RemoteConfigParameter's \"value\" (either the default value, or the value\nassociated with a condition name) is either a string, or the\n\"use_in_app_default\" indicator (which means to leave out the parameter from\nthe returned <key, value> map that is the output of the parameter fetch).\nWe represent the \"use_in_app_default\" as a bool, but (when using the boolean\ninstead of the string) it should always be <code>true</code>.",
+            "id": "RemoteConfigParameterValue",
+            "properties": {
+                "useInAppDefault": {
+                    "description": "if true, omit the parameter from the map of fetched parameter values",
+                    "type": "boolean"
+                },
+                "value": {
+                    "description": "the string to set the parameter to",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RemoteConfig": {
+            "description": "*\nThe RemoteConfig consists of a list of conditions (which can be\nthought of as named \"if\" statements) and a map of parameters (parameter key\nto a stucture containing an optional default value, as well as a optional\nsubmap of (condition name to value when that condition is true).",
+            "id": "RemoteConfig",
+            "properties": {
+                "parameters": {
+                    "additionalProperties": {
+                        "$ref": "RemoteConfigParameter"
+                    },
+                    "description": "Map of parameter keys to their optional default values and optional submap\nof (condition name : value). Order doesn't affect semantics, and so is\nsorted by the server. The 'key' values of the params must be unique.",
+                    "type": "object"
+                },
+                "conditions": {
+                    "description": "The list of named conditions. The order *does* affect the semantics.\nThe condition_name values of these entries must be unique.\n\nThe resolved value of a config parameter P is determined as follow:\n* Let Y be the set of values from the submap of P that refer to conditions\n  that evaluate to <code>true</code>.\n* If Y is non empty, the value is taken from the specific submap in Y whose\n  condition_name is the earliest in this condition list.\n* Else, if P has a default value option (condition_name is empty) then\n  the value is taken from that option.\n* Else, parameter P has no value and is omitted from the config result.\n\nExample: parameter key \"p1\", default value \"v1\", submap specified as\n{\"c1\": v2, \"c2\": v3} where \"c1\" and \"c2\" are names of conditions in the\ncondition list (where \"c1\" in this example appears before \"c2\").  The\nvalue of p1 would be v2 as long as c1 is true.  Otherwise, if c2 is true,\np1 would evaluate to v3, and if c1 and c2 are both false, p1 would evaluate\nto v1.  If no default value was specified, and c1 and c2 were both false,\nno value for p1 would be generated.",
+                    "items": {
+                        "$ref": "RemoteConfigCondition"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "RemoteConfigParameter": {
             "description": "While default_value and conditional_values are each optional, at least one of\nthe two is required - otherwise, the parameter is meaningless (and an\nexception will be thrown by the validation logic).",
             "id": "RemoteConfigParameter",
@@ -224,42 +260,6 @@
                 "name": {
                     "description": "Required.\nA non empty and unique name of this condition.",
                     "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "RemoteConfigParameterValue": {
-            "description": "A RemoteConfigParameter's \"value\" (either the default value, or the value\nassociated with a condition name) is either a string, or the\n\"use_in_app_default\" indicator (which means to leave out the parameter from\nthe returned <key, value> map that is the output of the parameter fetch).\nWe represent the \"use_in_app_default\" as a bool, but (when using the boolean\ninstead of the string) it should always be <code>true</code>.",
-            "id": "RemoteConfigParameterValue",
-            "properties": {
-                "useInAppDefault": {
-                    "description": "if true, omit the parameter from the map of fetched parameter values",
-                    "type": "boolean"
-                },
-                "value": {
-                    "description": "the string to set the parameter to",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "RemoteConfig": {
-            "description": "*\nThe RemoteConfig consists of a list of conditions (which can be\nthought of as named \"if\" statements) and a map of parameters (parameter key\nto a stucture containing an optional default value, as well as a optional\nsubmap of (condition name to value when that condition is true).",
-            "id": "RemoteConfig",
-            "properties": {
-                "parameters": {
-                    "additionalProperties": {
-                        "$ref": "RemoteConfigParameter"
-                    },
-                    "description": "Map of parameter keys to their optional default values and optional submap\nof (condition name : value). Order doesn't affect semantics, and so is\nsorted by the server. The 'key' values of the params must be unique.",
-                    "type": "object"
-                },
-                "conditions": {
-                    "description": "The list of named conditions. The order *does* affect the semantics.\nThe condition_name values of these entries must be unique.\n\nThe resolved value of a config parameter P is determined as follow:\n* Let Y be the set of values from the submap of P that refer to conditions\n  that evaluate to <code>true</code>.\n* If Y is non empty, the value is taken from the specific submap in Y whose\n  condition_name is the earliest in this condition list.\n* Else, if P has a default value option (condition_name is empty) then\n  the value is taken from that option.\n* Else, parameter P has no value and is omitted from the config result.\n\nExample: parameter key \"p1\", default value \"v1\", submap specified as\n{\"c1\": v2, \"c2\": v3} where \"c1\" and \"c2\" are names of conditions in the\ncondition list (where \"c1\" in this example appears before \"c2\").  The\nvalue of p1 would be v2 as long as c1 is true.  Otherwise, if c2 is true,\np1 would evaluate to v3, and if c1 and c2 are both false, p1 would evaluate\nto v1.  If no default value was specified, and c1 and c2 were both false,\nno value for p1 would be generated.",
-                    "items": {
-                        "$ref": "RemoteConfigCondition"
-                    },
-                    "type": "array"
                 }
             },
             "type": "object"

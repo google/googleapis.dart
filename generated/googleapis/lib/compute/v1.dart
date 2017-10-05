@@ -10333,6 +10333,89 @@ class InstancesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
+  /// Changes the minimum CPU platform that this instance should use. This
+  /// method can only be called on a stopped instance. For more information,
+  /// read Specifying a Minimum CPU Platform.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [instance] - Name of the instance scoping this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setMinCpuPlatform(
+      InstancesSetMinCpuPlatformRequest request,
+      core.String project,
+      core.String zone,
+      core.String instance,
+      {core.String requestId}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (instance == null) {
+      throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/instances/' +
+        commons.Escaper.ecapeVariable('$instance') +
+        '/setMinCpuPlatform';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
   /// Sets an instance's scheduling options.
   ///
   /// [request] - The metadata request object.
@@ -11475,6 +11558,75 @@ class NetworksResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new NetworkList.fromJson(data));
+  }
+
+  /// Patches the specified network with the data included in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [network] - Name of the network to update.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+      Network request, core.String project, core.String network,
+      {core.String requestId}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (network == null) {
+      throw new core.ArgumentError("Parameter network is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/networks/' +
+        commons.Escaper.ecapeVariable('$network');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
   }
 
   /// Removes a peering from the specified network.
@@ -22368,6 +22520,112 @@ class AcceleratorType {
   }
 }
 
+class AcceleratorTypeAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  AcceleratorTypeAggregatedListWarningData();
+
+  AcceleratorTypeAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class AcceleratorTypeAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<AcceleratorTypeAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  AcceleratorTypeAggregatedListWarning();
+
+  AcceleratorTypeAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) =>
+              new AcceleratorTypeAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 class AcceleratorTypeAggregatedList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
   core.String id;
@@ -22389,6 +22647,9 @@ class AcceleratorTypeAggregatedList {
 
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  AcceleratorTypeAggregatedListWarning warning;
 
   AcceleratorTypeAggregatedList();
 
@@ -22412,6 +22673,10 @@ class AcceleratorTypeAggregatedList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning =
+          new AcceleratorTypeAggregatedListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -22433,6 +22698,114 @@ class AcceleratorTypeAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class AcceleratorTypeListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  AcceleratorTypeListWarningData();
+
+  AcceleratorTypeListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class AcceleratorTypeListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<AcceleratorTypeListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  AcceleratorTypeListWarning();
+
+  AcceleratorTypeListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new AcceleratorTypeListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
     }
     return _json;
   }
@@ -22460,6 +22833,9 @@ class AcceleratorTypeList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  AcceleratorTypeListWarning warning;
+
   AcceleratorTypeList();
 
   AcceleratorTypeList.fromJson(core.Map _json) {
@@ -22480,6 +22856,9 @@ class AcceleratorTypeList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new AcceleratorTypeListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -22499,6 +22878,9 @@ class AcceleratorTypeList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -22550,8 +22932,10 @@ class AcceleratorTypesScopedListWarning {
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
   /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
@@ -22562,7 +22946,9 @@ class AcceleratorTypesScopedListWarning {
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
   /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
   /// - "UNREACHABLE"
   core.String code;
 
@@ -22705,8 +23091,15 @@ class AccessConfig {
 
 /// A reserved address resource.
 class Address {
-  /// The static external IP address represented by this resource.
+  /// The static IP address represented by this resource.
   core.String address;
+
+  /// The type of address to reserve. If unspecified, defaults to EXTERNAL.
+  /// Possible string values are:
+  /// - "EXTERNAL"
+  /// - "INTERNAL"
+  /// - "UNSPECIFIED_TYPE"
+  core.String addressType;
 
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
@@ -22746,14 +23139,21 @@ class Address {
   /// [Output Only] Server-defined URL for the resource.
   core.String selfLink;
 
-  /// [Output Only] The status of the address, which can be either IN_USE or
-  /// RESERVED. An address that is RESERVED is currently reserved and available
-  /// to use. An IN_USE address is currently being used by another resource and
-  /// is not available.
+  /// [Output Only] The status of the address, which can be one of RESERVING,
+  /// RESERVED, or IN_USE. An address that is RESERVING is currently in the
+  /// process of being reserved. A RESERVED address is currently reserved and
+  /// available to use. An IN_USE address is currently being used by another
+  /// resource and is not available.
   /// Possible string values are:
   /// - "IN_USE"
   /// - "RESERVED"
   core.String status;
+
+  /// For external addresses, this field should not be used.
+  ///
+  /// The URL of the subnetwork in which to reserve the address. If an IP
+  /// address is specified, it must be within the subnetwork's IP range.
+  core.String subnetwork;
 
   /// [Output Only] The URLs of the resources that are using this address.
   core.List<core.String> users;
@@ -22763,6 +23163,9 @@ class Address {
   Address.fromJson(core.Map _json) {
     if (_json.containsKey("address")) {
       address = _json["address"];
+    }
+    if (_json.containsKey("addressType")) {
+      addressType = _json["addressType"];
     }
     if (_json.containsKey("creationTimestamp")) {
       creationTimestamp = _json["creationTimestamp"];
@@ -22791,6 +23194,9 @@ class Address {
     if (_json.containsKey("status")) {
       status = _json["status"];
     }
+    if (_json.containsKey("subnetwork")) {
+      subnetwork = _json["subnetwork"];
+    }
     if (_json.containsKey("users")) {
       users = _json["users"];
     }
@@ -22801,6 +23207,9 @@ class Address {
         new core.Map<core.String, core.Object>();
     if (address != null) {
       _json["address"] = address;
+    }
+    if (addressType != null) {
+      _json["addressType"] = addressType;
     }
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
@@ -22829,8 +23238,116 @@ class Address {
     if (status != null) {
       _json["status"] = status;
     }
+    if (subnetwork != null) {
+      _json["subnetwork"] = subnetwork;
+    }
     if (users != null) {
       _json["users"] = users;
+    }
+    return _json;
+  }
+}
+
+class AddressAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  AddressAggregatedListWarningData();
+
+  AddressAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class AddressAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<AddressAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  AddressAggregatedListWarning();
+
+  AddressAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new AddressAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
     }
     return _json;
   }
@@ -22857,6 +23374,9 @@ class AddressAggregatedList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  AddressAggregatedListWarning warning;
+
   AddressAggregatedList();
 
   AddressAggregatedList.fromJson(core.Map _json) {
@@ -22879,6 +23399,9 @@ class AddressAggregatedList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new AddressAggregatedListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -22900,6 +23423,114 @@ class AddressAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class AddressListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  AddressListWarningData();
+
+  AddressListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class AddressListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<AddressListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  AddressListWarning();
+
+  AddressListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new AddressListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
     }
     return _json;
   }
@@ -22927,6 +23558,9 @@ class AddressList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  AddressListWarning warning;
+
   AddressList();
 
   AddressList.fromJson(core.Map _json) {
@@ -22945,6 +23579,9 @@ class AddressList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new AddressListWarning.fromJson(_json["warning"]);
     }
   }
 
@@ -22965,6 +23602,9 @@ class AddressList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -23016,8 +23656,10 @@ class AddressesScopedListWarning {
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
   /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
@@ -23028,7 +23670,9 @@ class AddressesScopedListWarning {
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
   /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
   /// - "UNREACHABLE"
   core.String code;
 
@@ -23184,10 +23828,9 @@ class AttachedDisk {
   /// cannot use your own keys to encrypt disks in a managed instance group.
   CustomerEncryptionKey diskEncryptionKey;
 
-  /// Assigns a zero-based index to this disk, where 0 is reserved for the boot
-  /// disk. For example, if you have many disks attached to an instance, each
-  /// disk would have a unique index number. If not specified, the server will
-  /// choose an appropriate value.
+  /// [Output Only] A zero-based index to this disk, where 0 is reserved for the
+  /// boot disk. If you have many disks attached to an instance, each disk would
+  /// have a unique index number.
   core.int index;
 
   /// [Input Only] Specifies the parameters for a new disk that will be created
@@ -23585,6 +24228,112 @@ class Autoscaler {
   }
 }
 
+class AutoscalerAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  AutoscalerAggregatedListWarningData();
+
+  AutoscalerAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class AutoscalerAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<AutoscalerAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  AutoscalerAggregatedListWarning();
+
+  AutoscalerAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) =>
+              new AutoscalerAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 class AutoscalerAggregatedList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
   core.String id;
@@ -23605,6 +24354,9 @@ class AutoscalerAggregatedList {
 
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  AutoscalerAggregatedListWarning warning;
 
   AutoscalerAggregatedList();
 
@@ -23628,6 +24380,9 @@ class AutoscalerAggregatedList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new AutoscalerAggregatedListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -23649,6 +24404,114 @@ class AutoscalerAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class AutoscalerListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  AutoscalerListWarningData();
+
+  AutoscalerListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class AutoscalerListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<AutoscalerListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  AutoscalerListWarning();
+
+  AutoscalerListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new AutoscalerListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
     }
     return _json;
   }
@@ -23676,6 +24539,9 @@ class AutoscalerList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  AutoscalerListWarning warning;
+
   AutoscalerList();
 
   AutoscalerList.fromJson(core.Map _json) {
@@ -23696,6 +24562,9 @@ class AutoscalerList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new AutoscalerListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -23715,6 +24584,9 @@ class AutoscalerList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -23813,8 +24685,10 @@ class AutoscalersScopedListWarning {
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
   /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
@@ -23825,7 +24699,9 @@ class AutoscalersScopedListWarning {
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
   /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
   /// - "UNREACHABLE"
   core.String code;
 
@@ -24344,6 +25220,111 @@ class BackendBucket {
   }
 }
 
+class BackendBucketListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  BackendBucketListWarningData();
+
+  BackendBucketListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class BackendBucketListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<BackendBucketListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  BackendBucketListWarning();
+
+  BackendBucketListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new BackendBucketListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// Contains a list of BackendBucket resources.
 class BackendBucketList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
@@ -24365,6 +25346,9 @@ class BackendBucketList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  BackendBucketListWarning warning;
+
   BackendBucketList();
 
   BackendBucketList.fromJson(core.Map _json) {
@@ -24385,6 +25369,9 @@ class BackendBucketList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new BackendBucketListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -24404,6 +25391,9 @@ class BackendBucketList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -24687,6 +25677,112 @@ class BackendService {
   }
 }
 
+class BackendServiceAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  BackendServiceAggregatedListWarningData();
+
+  BackendServiceAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class BackendServiceAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<BackendServiceAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  BackendServiceAggregatedListWarning();
+
+  BackendServiceAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) =>
+              new BackendServiceAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// Contains a list of BackendServicesScopedList.
 class BackendServiceAggregatedList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
@@ -24707,6 +25803,9 @@ class BackendServiceAggregatedList {
 
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  BackendServiceAggregatedListWarning warning;
 
   BackendServiceAggregatedList();
 
@@ -24730,6 +25829,10 @@ class BackendServiceAggregatedList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning =
+          new BackendServiceAggregatedListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -24751,6 +25854,9 @@ class BackendServiceAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -24858,6 +25964,111 @@ class BackendServiceIAP {
   }
 }
 
+class BackendServiceListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  BackendServiceListWarningData();
+
+  BackendServiceListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class BackendServiceListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<BackendServiceListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  BackendServiceListWarning();
+
+  BackendServiceListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new BackendServiceListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// Contains a list of BackendService resources.
 class BackendServiceList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
@@ -24880,6 +26091,9 @@ class BackendServiceList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  BackendServiceListWarning warning;
+
   BackendServiceList();
 
   BackendServiceList.fromJson(core.Map _json) {
@@ -24900,6 +26114,9 @@ class BackendServiceList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new BackendServiceListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -24919,6 +26136,9 @@ class BackendServiceList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -24970,8 +26190,10 @@ class BackendServicesScopedListWarning {
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
   /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
@@ -24982,7 +26204,9 @@ class BackendServicesScopedListWarning {
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
   /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
   /// - "UNREACHABLE"
   core.String code;
 
@@ -25326,6 +26550,112 @@ class Commitment {
   }
 }
 
+class CommitmentAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  CommitmentAggregatedListWarningData();
+
+  CommitmentAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class CommitmentAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<CommitmentAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  CommitmentAggregatedListWarning();
+
+  CommitmentAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) =>
+              new CommitmentAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 class CommitmentAggregatedList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
   core.String id;
@@ -25346,6 +26676,9 @@ class CommitmentAggregatedList {
 
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  CommitmentAggregatedListWarning warning;
 
   CommitmentAggregatedList();
 
@@ -25369,6 +26702,9 @@ class CommitmentAggregatedList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new CommitmentAggregatedListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -25390,6 +26726,114 @@ class CommitmentAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class CommitmentListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  CommitmentListWarningData();
+
+  CommitmentListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class CommitmentListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<CommitmentListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  CommitmentListWarning();
+
+  CommitmentListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new CommitmentListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
     }
     return _json;
   }
@@ -25417,6 +26861,9 @@ class CommitmentList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  CommitmentListWarning warning;
+
   CommitmentList();
 
   CommitmentList.fromJson(core.Map _json) {
@@ -25437,6 +26884,9 @@ class CommitmentList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new CommitmentListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -25456,6 +26906,9 @@ class CommitmentList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -25507,8 +26960,10 @@ class CommitmentsScopedListWarning {
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
   /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
@@ -25519,7 +26974,9 @@ class CommitmentsScopedListWarning {
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
   /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
   /// - "UNREACHABLE"
   core.String code;
 
@@ -26085,6 +27542,111 @@ class Disk {
   }
 }
 
+class DiskAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  DiskAggregatedListWarningData();
+
+  DiskAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class DiskAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<DiskAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  DiskAggregatedListWarning();
+
+  DiskAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new DiskAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 class DiskAggregatedList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
   core.String id;
@@ -26105,6 +27667,9 @@ class DiskAggregatedList {
 
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  DiskAggregatedListWarning warning;
 
   DiskAggregatedList();
 
@@ -26128,6 +27693,9 @@ class DiskAggregatedList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new DiskAggregatedListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -26149,6 +27717,114 @@ class DiskAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class DiskListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  DiskListWarningData();
+
+  DiskListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class DiskListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<DiskListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  DiskListWarning();
+
+  DiskListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new DiskListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
     }
     return _json;
   }
@@ -26176,6 +27852,9 @@ class DiskList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  DiskListWarning warning;
+
   DiskList();
 
   DiskList.fromJson(core.Map _json) {
@@ -26193,6 +27872,9 @@ class DiskList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new DiskListWarning.fromJson(_json["warning"]);
     }
   }
 
@@ -26213,6 +27895,9 @@ class DiskList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -26365,6 +28050,111 @@ class DiskType {
   }
 }
 
+class DiskTypeAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  DiskTypeAggregatedListWarningData();
+
+  DiskTypeAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class DiskTypeAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<DiskTypeAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  DiskTypeAggregatedListWarning();
+
+  DiskTypeAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new DiskTypeAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 class DiskTypeAggregatedList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
   core.String id;
@@ -26384,6 +28174,9 @@ class DiskTypeAggregatedList {
 
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  DiskTypeAggregatedListWarning warning;
 
   DiskTypeAggregatedList();
 
@@ -26407,6 +28200,9 @@ class DiskTypeAggregatedList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new DiskTypeAggregatedListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -26428,6 +28224,114 @@ class DiskTypeAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class DiskTypeListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  DiskTypeListWarningData();
+
+  DiskTypeListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class DiskTypeListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<DiskTypeListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  DiskTypeListWarning();
+
+  DiskTypeListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new DiskTypeListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
     }
     return _json;
   }
@@ -26455,6 +28359,9 @@ class DiskTypeList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  DiskTypeListWarning warning;
+
   DiskTypeList();
 
   DiskTypeList.fromJson(core.Map _json) {
@@ -26473,6 +28380,9 @@ class DiskTypeList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new DiskTypeListWarning.fromJson(_json["warning"]);
     }
   }
 
@@ -26493,6 +28403,9 @@ class DiskTypeList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -26544,8 +28457,10 @@ class DiskTypesScopedListWarning {
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
   /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
@@ -26556,7 +28471,9 @@ class DiskTypesScopedListWarning {
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
   /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
   /// - "UNREACHABLE"
   core.String code;
 
@@ -26702,8 +28619,10 @@ class DisksScopedListWarning {
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
   /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
@@ -26714,7 +28633,9 @@ class DisksScopedListWarning {
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
   /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
   /// - "UNREACHABLE"
   core.String code;
 
@@ -27072,6 +28993,111 @@ class Firewall {
   }
 }
 
+class FirewallListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  FirewallListWarningData();
+
+  FirewallListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class FirewallListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<FirewallListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  FirewallListWarning();
+
+  FirewallListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new FirewallListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// Contains a list of firewalls.
 class FirewallList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
@@ -27094,6 +29120,9 @@ class FirewallList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  FirewallListWarning warning;
+
   FirewallList();
 
   FirewallList.fromJson(core.Map _json) {
@@ -27112,6 +29141,9 @@ class FirewallList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new FirewallListWarning.fromJson(_json["warning"]);
     }
   }
 
@@ -27132,6 +29164,9 @@ class FirewallList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -27397,6 +29432,112 @@ class ForwardingRule {
   }
 }
 
+class ForwardingRuleAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  ForwardingRuleAggregatedListWarningData();
+
+  ForwardingRuleAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class ForwardingRuleAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<ForwardingRuleAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  ForwardingRuleAggregatedListWarning();
+
+  ForwardingRuleAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) =>
+              new ForwardingRuleAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 class ForwardingRuleAggregatedList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
   core.String id;
@@ -27417,6 +29558,9 @@ class ForwardingRuleAggregatedList {
 
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  ForwardingRuleAggregatedListWarning warning;
 
   ForwardingRuleAggregatedList();
 
@@ -27440,6 +29584,10 @@ class ForwardingRuleAggregatedList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning =
+          new ForwardingRuleAggregatedListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -27461,6 +29609,114 @@ class ForwardingRuleAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class ForwardingRuleListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  ForwardingRuleListWarningData();
+
+  ForwardingRuleListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class ForwardingRuleListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<ForwardingRuleListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  ForwardingRuleListWarning();
+
+  ForwardingRuleListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new ForwardingRuleListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
     }
     return _json;
   }
@@ -27487,6 +29743,9 @@ class ForwardingRuleList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  ForwardingRuleListWarning warning;
+
   ForwardingRuleList();
 
   ForwardingRuleList.fromJson(core.Map _json) {
@@ -27507,6 +29766,9 @@ class ForwardingRuleList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new ForwardingRuleListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -27526,6 +29788,9 @@ class ForwardingRuleList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -27577,8 +29842,10 @@ class ForwardingRulesScopedListWarning {
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
   /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
@@ -27589,7 +29856,9 @@ class ForwardingRulesScopedListWarning {
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
   /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
   /// - "UNREACHABLE"
   core.String code;
 
@@ -27724,8 +29993,6 @@ class GuestOsFeature {
   /// The type of supported feature. Currently only VIRTIO_SCSI_MULTIQUEUE is
   /// supported. For newer Windows images, the server might also populate this
   /// property with the value WINDOWS to indicate that this is a Windows image.
-  /// This value is purely informational and does not enable or disable any
-  /// features.
   /// Possible string values are:
   /// - "FEATURE_TYPE_UNSPECIFIED"
   /// - "VIRTIO_SCSI_MULTIQUEUE"
@@ -28048,6 +30315,111 @@ class HealthCheck {
   }
 }
 
+class HealthCheckListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  HealthCheckListWarningData();
+
+  HealthCheckListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class HealthCheckListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<HealthCheckListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  HealthCheckListWarning();
+
+  HealthCheckListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new HealthCheckListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// Contains a list of HealthCheck resources.
 class HealthCheckList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
@@ -28069,6 +30441,9 @@ class HealthCheckList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  HealthCheckListWarning warning;
+
   HealthCheckList();
 
   HealthCheckList.fromJson(core.Map _json) {
@@ -28089,6 +30464,9 @@ class HealthCheckList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new HealthCheckListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -28108,6 +30486,9 @@ class HealthCheckList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -28387,6 +30768,111 @@ class HttpHealthCheck {
   }
 }
 
+class HttpHealthCheckListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  HttpHealthCheckListWarningData();
+
+  HttpHealthCheckListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class HttpHealthCheckListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<HttpHealthCheckListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  HttpHealthCheckListWarning();
+
+  HttpHealthCheckListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new HttpHealthCheckListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// Contains a list of HttpHealthCheck resources.
 class HttpHealthCheckList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
@@ -28408,6 +30894,9 @@ class HttpHealthCheckList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  HttpHealthCheckListWarning warning;
+
   HttpHealthCheckList();
 
   HttpHealthCheckList.fromJson(core.Map _json) {
@@ -28428,6 +30917,9 @@ class HttpHealthCheckList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new HttpHealthCheckListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -28447,6 +30939,9 @@ class HttpHealthCheckList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -28601,6 +31096,111 @@ class HttpsHealthCheck {
   }
 }
 
+class HttpsHealthCheckListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  HttpsHealthCheckListWarningData();
+
+  HttpsHealthCheckListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class HttpsHealthCheckListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<HttpsHealthCheckListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  HttpsHealthCheckListWarning();
+
+  HttpsHealthCheckListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new HttpsHealthCheckListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// Contains a list of HttpsHealthCheck resources.
 class HttpsHealthCheckList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
@@ -28622,6 +31222,9 @@ class HttpsHealthCheckList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  HttpsHealthCheckListWarning warning;
+
   HttpsHealthCheckList();
 
   HttpsHealthCheckList.fromJson(core.Map _json) {
@@ -28642,6 +31245,9 @@ class HttpsHealthCheckList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new HttpsHealthCheckListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -28661,6 +31267,9 @@ class HttpsHealthCheckList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -28745,9 +31354,8 @@ class Image {
   /// images with driver version 1.2.0.1621 or higher. Linux images with kernel
   /// versions 3.17 and higher will support VIRTIO_SCSI_MULTIQUEUE.
   ///
-  /// For new Windows images, the server might also populate this field with the
-  /// value WINDOWS, to indicate that this is a Windows image. This value is
-  /// purely informational and does not enable or disable any features.
+  /// For newer Windows images, the server might also populate this property
+  /// with the value WINDOWS to indicate that this is a Windows image.
   core.List<GuestOsFeature> guestOsFeatures;
 
   /// [Output Only] The unique identifier for the resource. This identifier is
@@ -28829,6 +31437,22 @@ class Image {
   /// instance of a given disk name.
   core.String sourceDiskId;
 
+  /// URL of the source image used to create this image. This can be a full or
+  /// valid partial URL. You must provide exactly one of:
+  /// - this property, or
+  /// - the rawDisk.source property, or
+  /// - the sourceDisk property   in order to create an image.
+  core.String sourceImage;
+
+  /// The customer-supplied encryption key of the source image. Required if the
+  /// source image is protected by a customer-supplied encryption key.
+  CustomerEncryptionKey sourceImageEncryptionKey;
+
+  /// [Output Only] The ID value of the image used to create this image. This
+  /// value may be used to determine whether the image was taken from the
+  /// current or a previous instance of a given image name.
+  core.String sourceImageId;
+
   /// The type of the image used to create this disk. The default and only value
   /// is RAW
   /// Possible string values are:
@@ -28909,6 +31533,16 @@ class Image {
     if (_json.containsKey("sourceDiskId")) {
       sourceDiskId = _json["sourceDiskId"];
     }
+    if (_json.containsKey("sourceImage")) {
+      sourceImage = _json["sourceImage"];
+    }
+    if (_json.containsKey("sourceImageEncryptionKey")) {
+      sourceImageEncryptionKey =
+          new CustomerEncryptionKey.fromJson(_json["sourceImageEncryptionKey"]);
+    }
+    if (_json.containsKey("sourceImageId")) {
+      sourceImageId = _json["sourceImageId"];
+    }
     if (_json.containsKey("sourceType")) {
       sourceType = _json["sourceType"];
     }
@@ -28978,11 +31612,125 @@ class Image {
     if (sourceDiskId != null) {
       _json["sourceDiskId"] = sourceDiskId;
     }
+    if (sourceImage != null) {
+      _json["sourceImage"] = sourceImage;
+    }
+    if (sourceImageEncryptionKey != null) {
+      _json["sourceImageEncryptionKey"] = (sourceImageEncryptionKey).toJson();
+    }
+    if (sourceImageId != null) {
+      _json["sourceImageId"] = sourceImageId;
+    }
     if (sourceType != null) {
       _json["sourceType"] = sourceType;
     }
     if (status != null) {
       _json["status"] = status;
+    }
+    return _json;
+  }
+}
+
+class ImageListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  ImageListWarningData();
+
+  ImageListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class ImageListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<ImageListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  ImageListWarning();
+
+  ImageListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new ImageListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
     }
     return _json;
   }
@@ -29009,6 +31757,9 @@ class ImageList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  ImageListWarning warning;
+
   ImageList();
 
   ImageList.fromJson(core.Map _json) {
@@ -29026,6 +31777,9 @@ class ImageList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new ImageListWarning.fromJson(_json["warning"]);
     }
   }
 
@@ -29046,6 +31800,9 @@ class ImageList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -29128,6 +31885,11 @@ class Instance {
   /// The metadata key/value pairs assigned to this instance. This includes
   /// custom metadata and predefined keys.
   Metadata metadata;
+
+  /// Specifies a minimum CPU platform for the VM instance. Applicable values
+  /// are the friendly names of CPU platforms, such as minCpuPlatform: "Intel
+  /// Haswell" or minCpuPlatform: "Intel Sandy Bridge".
+  core.String minCpuPlatform;
 
   /// The name of the resource, provided by the client when initially creating
   /// the resource. The resource name must be 1-63 characters long, and comply
@@ -29231,6 +31993,9 @@ class Instance {
     if (_json.containsKey("metadata")) {
       metadata = new Metadata.fromJson(_json["metadata"]);
     }
+    if (_json.containsKey("minCpuPlatform")) {
+      minCpuPlatform = _json["minCpuPlatform"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -29307,6 +32072,9 @@ class Instance {
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
     }
+    if (minCpuPlatform != null) {
+      _json["minCpuPlatform"] = minCpuPlatform;
+    }
     if (name != null) {
       _json["name"] = name;
     }
@@ -29343,6 +32111,111 @@ class Instance {
   }
 }
 
+class InstanceAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  InstanceAggregatedListWarningData();
+
+  InstanceAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class InstanceAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<InstanceAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  InstanceAggregatedListWarning();
+
+  InstanceAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new InstanceAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 class InstanceAggregatedList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
   core.String id;
@@ -29363,6 +32236,9 @@ class InstanceAggregatedList {
 
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  InstanceAggregatedListWarning warning;
 
   InstanceAggregatedList();
 
@@ -29386,6 +32262,9 @@ class InstanceAggregatedList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new InstanceAggregatedListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -29407,6 +32286,9 @@ class InstanceAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -29571,6 +32453,112 @@ class InstanceGroup {
   }
 }
 
+class InstanceGroupAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  InstanceGroupAggregatedListWarningData();
+
+  InstanceGroupAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class InstanceGroupAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<InstanceGroupAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  InstanceGroupAggregatedListWarning();
+
+  InstanceGroupAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) =>
+              new InstanceGroupAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 class InstanceGroupAggregatedList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
   core.String id;
@@ -29592,6 +32580,9 @@ class InstanceGroupAggregatedList {
 
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  InstanceGroupAggregatedListWarning warning;
 
   InstanceGroupAggregatedList();
 
@@ -29615,6 +32606,10 @@ class InstanceGroupAggregatedList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning =
+          new InstanceGroupAggregatedListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -29636,6 +32631,114 @@ class InstanceGroupAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  InstanceGroupListWarningData();
+
+  InstanceGroupListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class InstanceGroupListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<InstanceGroupListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  InstanceGroupListWarning();
+
+  InstanceGroupListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new InstanceGroupListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
     }
     return _json;
   }
@@ -29663,6 +32766,9 @@ class InstanceGroupList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  InstanceGroupListWarning warning;
+
   InstanceGroupList();
 
   InstanceGroupList.fromJson(core.Map _json) {
@@ -29683,6 +32789,9 @@ class InstanceGroupList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new InstanceGroupListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -29702,6 +32811,9 @@ class InstanceGroupList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -30003,6 +33115,112 @@ class InstanceGroupManagerActionsSummary {
   }
 }
 
+class InstanceGroupManagerAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  InstanceGroupManagerAggregatedListWarningData();
+
+  InstanceGroupManagerAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class InstanceGroupManagerAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<InstanceGroupManagerAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  InstanceGroupManagerAggregatedListWarning();
+
+  InstanceGroupManagerAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) =>
+              new InstanceGroupManagerAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 class InstanceGroupManagerAggregatedList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
   core.String id;
@@ -30024,6 +33242,9 @@ class InstanceGroupManagerAggregatedList {
 
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  InstanceGroupManagerAggregatedListWarning warning;
 
   InstanceGroupManagerAggregatedList();
 
@@ -30047,6 +33268,10 @@ class InstanceGroupManagerAggregatedList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new InstanceGroupManagerAggregatedListWarning.fromJson(
+          _json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -30068,6 +33293,115 @@ class InstanceGroupManagerAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class InstanceGroupManagerListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  InstanceGroupManagerListWarningData();
+
+  InstanceGroupManagerListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class InstanceGroupManagerListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<InstanceGroupManagerListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  InstanceGroupManagerListWarning();
+
+  InstanceGroupManagerListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) =>
+              new InstanceGroupManagerListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
     }
     return _json;
   }
@@ -30095,6 +33429,9 @@ class InstanceGroupManagerList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  InstanceGroupManagerListWarning warning;
+
   InstanceGroupManagerList();
 
   InstanceGroupManagerList.fromJson(core.Map _json) {
@@ -30115,6 +33452,9 @@ class InstanceGroupManagerList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new InstanceGroupManagerListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -30134,6 +33474,9 @@ class InstanceGroupManagerList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -30279,8 +33622,10 @@ class InstanceGroupManagersScopedListWarning {
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
   /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
@@ -30291,7 +33636,9 @@ class InstanceGroupManagersScopedListWarning {
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
   /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
   /// - "UNREACHABLE"
   core.String code;
 
@@ -30468,6 +33815,112 @@ class InstanceGroupsAddInstancesRequest {
   }
 }
 
+class InstanceGroupsListInstancesWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  InstanceGroupsListInstancesWarningData();
+
+  InstanceGroupsListInstancesWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class InstanceGroupsListInstancesWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<InstanceGroupsListInstancesWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  InstanceGroupsListInstancesWarning();
+
+  InstanceGroupsListInstancesWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) =>
+              new InstanceGroupsListInstancesWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 class InstanceGroupsListInstances {
   /// [Output Only] Unique identifier for the resource; defined by the server.
   core.String id;
@@ -30490,6 +33943,9 @@ class InstanceGroupsListInstances {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  InstanceGroupsListInstancesWarning warning;
+
   InstanceGroupsListInstances();
 
   InstanceGroupsListInstances.fromJson(core.Map _json) {
@@ -30510,6 +33966,10 @@ class InstanceGroupsListInstances {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning =
+          new InstanceGroupsListInstancesWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -30529,6 +33989,9 @@ class InstanceGroupsListInstances {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -30631,8 +34094,10 @@ class InstanceGroupsScopedListWarning {
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
   /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
@@ -30643,7 +34108,9 @@ class InstanceGroupsScopedListWarning {
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
   /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
   /// - "UNREACHABLE"
   core.String code;
 
@@ -30771,6 +34238,111 @@ class InstanceGroupsSetNamedPortsRequest {
   }
 }
 
+class InstanceListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  InstanceListWarningData();
+
+  InstanceListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class InstanceListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<InstanceListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  InstanceListWarning();
+
+  InstanceListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new InstanceListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// Contains a list of instances.
 class InstanceList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
@@ -30793,6 +34365,9 @@ class InstanceList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  InstanceListWarning warning;
+
   InstanceList();
 
   InstanceList.fromJson(core.Map _json) {
@@ -30811,6 +34386,9 @@ class InstanceList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new InstanceListWarning.fromJson(_json["warning"]);
     }
   }
 
@@ -30831,6 +34409,9 @@ class InstanceList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -30908,6 +34489,13 @@ class InstanceProperties {
   /// keys. See Project and instance metadata for more information.
   Metadata metadata;
 
+  /// Minimum cpu/platform to be used by this instance. The instance may be
+  /// scheduled on the specified or newer cpu/platform. Applicable values are
+  /// the friendly names of CPU platforms, such as minCpuPlatform: "Intel
+  /// Haswell" or minCpuPlatform: "Intel Sandy Bridge". For more information,
+  /// read Specifying a Minimum CPU Platform.
+  core.String minCpuPlatform;
+
   /// An array of network access configurations for this interface.
   core.List<NetworkInterface> networkInterfaces;
 
@@ -30955,6 +34543,9 @@ class InstanceProperties {
     if (_json.containsKey("metadata")) {
       metadata = new Metadata.fromJson(_json["metadata"]);
     }
+    if (_json.containsKey("minCpuPlatform")) {
+      minCpuPlatform = _json["minCpuPlatform"];
+    }
     if (_json.containsKey("networkInterfaces")) {
       networkInterfaces = _json["networkInterfaces"]
           .map((value) => new NetworkInterface.fromJson(value))
@@ -30997,6 +34588,9 @@ class InstanceProperties {
     }
     if (metadata != null) {
       _json["metadata"] = (metadata).toJson();
+    }
+    if (minCpuPlatform != null) {
+      _json["minCpuPlatform"] = minCpuPlatform;
     }
     if (networkInterfaces != null) {
       _json["networkInterfaces"] =
@@ -31126,6 +34720,111 @@ class InstanceTemplate {
   }
 }
 
+class InstanceTemplateListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  InstanceTemplateListWarningData();
+
+  InstanceTemplateListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class InstanceTemplateListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<InstanceTemplateListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  InstanceTemplateListWarning();
+
+  InstanceTemplateListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new InstanceTemplateListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// A list of instance templates.
 class InstanceTemplateList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
@@ -31148,6 +34847,9 @@ class InstanceTemplateList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  InstanceTemplateListWarning warning;
+
   InstanceTemplateList();
 
   InstanceTemplateList.fromJson(core.Map _json) {
@@ -31168,6 +34870,9 @@ class InstanceTemplateList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new InstanceTemplateListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -31187,6 +34892,9 @@ class InstanceTemplateList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -31290,8 +34998,10 @@ class InstancesScopedListWarning {
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
   /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
@@ -31302,7 +35012,9 @@ class InstancesScopedListWarning {
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
   /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
   /// - "UNREACHABLE"
   core.String code;
 
@@ -31464,6 +35176,28 @@ class InstancesSetMachineTypeRequest {
         new core.Map<core.String, core.Object>();
     if (machineType != null) {
       _json["machineType"] = machineType;
+    }
+    return _json;
+  }
+}
+
+class InstancesSetMinCpuPlatformRequest {
+  /// Minimum cpu/platform this instance should be started at.
+  core.String minCpuPlatform;
+
+  InstancesSetMinCpuPlatformRequest();
+
+  InstancesSetMinCpuPlatformRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("minCpuPlatform")) {
+      minCpuPlatform = _json["minCpuPlatform"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (minCpuPlatform != null) {
+      _json["minCpuPlatform"] = minCpuPlatform;
     }
     return _json;
   }
@@ -31765,6 +35499,112 @@ class MachineType {
   }
 }
 
+class MachineTypeAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  MachineTypeAggregatedListWarningData();
+
+  MachineTypeAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class MachineTypeAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<MachineTypeAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  MachineTypeAggregatedListWarning();
+
+  MachineTypeAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) =>
+              new MachineTypeAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 class MachineTypeAggregatedList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
   core.String id;
@@ -31785,6 +35625,9 @@ class MachineTypeAggregatedList {
 
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  MachineTypeAggregatedListWarning warning;
 
   MachineTypeAggregatedList();
 
@@ -31808,6 +35651,9 @@ class MachineTypeAggregatedList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new MachineTypeAggregatedListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -31829,6 +35675,114 @@ class MachineTypeAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class MachineTypeListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  MachineTypeListWarningData();
+
+  MachineTypeListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class MachineTypeListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<MachineTypeListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  MachineTypeListWarning();
+
+  MachineTypeListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new MachineTypeListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
     }
     return _json;
   }
@@ -31856,6 +35810,9 @@ class MachineTypeList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  MachineTypeListWarning warning;
+
   MachineTypeList();
 
   MachineTypeList.fromJson(core.Map _json) {
@@ -31876,6 +35833,9 @@ class MachineTypeList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new MachineTypeListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -31895,6 +35855,9 @@ class MachineTypeList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -31946,8 +35909,10 @@ class MachineTypesScopedListWarning {
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
   /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
@@ -31958,7 +35923,9 @@ class MachineTypesScopedListWarning {
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
   /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
   /// - "UNREACHABLE"
   core.String code;
 
@@ -32403,6 +36370,10 @@ class Network {
   /// [Output Only] List of network peerings for the resource.
   core.List<NetworkPeering> peerings;
 
+  /// The network-level routing configuration for this network. Used by Cloud
+  /// Router to determine what type of network-wide routing behavior to enforce.
+  NetworkRoutingConfig routingConfig;
+
   /// [Output Only] Server-defined URL for the resource.
   core.String selfLink;
 
@@ -32442,6 +36413,9 @@ class Network {
           .map((value) => new NetworkPeering.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("routingConfig")) {
+      routingConfig = new NetworkRoutingConfig.fromJson(_json["routingConfig"]);
+    }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
@@ -32479,6 +36453,9 @@ class Network {
     }
     if (peerings != null) {
       _json["peerings"] = peerings.map((value) => (value).toJson()).toList();
+    }
+    if (routingConfig != null) {
+      _json["routingConfig"] = (routingConfig).toJson();
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
@@ -32602,6 +36579,111 @@ class NetworkInterface {
   }
 }
 
+class NetworkListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  NetworkListWarningData();
+
+  NetworkListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class NetworkListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<NetworkListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  NetworkListWarning();
+
+  NetworkListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new NetworkListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// Contains a list of networks.
 class NetworkList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
@@ -32624,6 +36706,9 @@ class NetworkList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  NetworkListWarning warning;
+
   NetworkList();
 
   NetworkList.fromJson(core.Map _json) {
@@ -32642,6 +36727,9 @@ class NetworkList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new NetworkListWarning.fromJson(_json["warning"]);
     }
   }
 
@@ -32662,6 +36750,9 @@ class NetworkList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -32738,6 +36829,38 @@ class NetworkPeering {
     }
     if (stateDetails != null) {
       _json["stateDetails"] = stateDetails;
+    }
+    return _json;
+  }
+}
+
+/// A routing configuration attached to a network resource. The message includes
+/// the list of routers associated with the network, and a flag indicating the
+/// type of routing behavior to enforce network-wide.
+class NetworkRoutingConfig {
+  /// The network-wide routing mode to use. If set to REGIONAL, this network's
+  /// cloud routers will only advertise routes with subnetworks of this network
+  /// in the same region as the router. If set to GLOBAL, this network's cloud
+  /// routers will advertise routes with all subnetworks of this network, across
+  /// regions.
+  /// Possible string values are:
+  /// - "GLOBAL"
+  /// - "REGIONAL"
+  core.String routingMode;
+
+  NetworkRoutingConfig();
+
+  NetworkRoutingConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("routingMode")) {
+      routingMode = _json["routingMode"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (routingMode != null) {
+      _json["routingMode"] = routingMode;
     }
     return _json;
   }
@@ -32920,8 +37043,10 @@ class OperationWarnings {
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
   /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
@@ -32932,7 +37057,9 @@ class OperationWarnings {
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
   /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
   /// - "UNREACHABLE"
   core.String code;
 
@@ -33227,6 +37354,112 @@ class Operation {
   }
 }
 
+class OperationAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  OperationAggregatedListWarningData();
+
+  OperationAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class OperationAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<OperationAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  OperationAggregatedListWarning();
+
+  OperationAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map(
+              (value) => new OperationAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 class OperationAggregatedList {
   /// [Output Only] The unique identifier for the resource. This identifier is
   /// defined by the server.
@@ -33248,6 +37481,9 @@ class OperationAggregatedList {
 
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  OperationAggregatedListWarning warning;
 
   OperationAggregatedList();
 
@@ -33271,6 +37507,9 @@ class OperationAggregatedList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new OperationAggregatedListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -33292,6 +37531,114 @@ class OperationAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class OperationListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  OperationListWarningData();
+
+  OperationListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class OperationListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<OperationListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  OperationListWarning();
+
+  OperationListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new OperationListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
     }
     return _json;
   }
@@ -33320,6 +37667,9 @@ class OperationList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  OperationListWarning warning;
+
   OperationList();
 
   OperationList.fromJson(core.Map _json) {
@@ -33338,6 +37688,9 @@ class OperationList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new OperationListWarning.fromJson(_json["warning"]);
     }
   }
 
@@ -33358,6 +37711,9 @@ class OperationList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -33409,8 +37765,10 @@ class OperationsScopedListWarning {
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
   /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
@@ -33421,7 +37779,9 @@ class OperationsScopedListWarning {
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
   /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
   /// - "UNREACHABLE"
   core.String code;
 
@@ -34044,6 +38404,111 @@ class Region {
   }
 }
 
+class RegionAutoscalerListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  RegionAutoscalerListWarningData();
+
+  RegionAutoscalerListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class RegionAutoscalerListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<RegionAutoscalerListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  RegionAutoscalerListWarning();
+
+  RegionAutoscalerListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new RegionAutoscalerListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// Contains a list of autoscalers.
 class RegionAutoscalerList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
@@ -34065,6 +38530,9 @@ class RegionAutoscalerList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  RegionAutoscalerListWarning warning;
+
   RegionAutoscalerList();
 
   RegionAutoscalerList.fromJson(core.Map _json) {
@@ -34085,6 +38553,9 @@ class RegionAutoscalerList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new RegionAutoscalerListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -34104,6 +38575,115 @@ class RegionAutoscalerList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class RegionInstanceGroupListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  RegionInstanceGroupListWarningData();
+
+  RegionInstanceGroupListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class RegionInstanceGroupListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<RegionInstanceGroupListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  RegionInstanceGroupListWarning();
+
+  RegionInstanceGroupListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map(
+              (value) => new RegionInstanceGroupListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
     }
     return _json;
   }
@@ -34130,6 +38710,9 @@ class RegionInstanceGroupList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  RegionInstanceGroupListWarning warning;
+
   RegionInstanceGroupList();
 
   RegionInstanceGroupList.fromJson(core.Map _json) {
@@ -34150,6 +38733,9 @@ class RegionInstanceGroupList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new RegionInstanceGroupListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -34169,6 +38755,115 @@ class RegionInstanceGroupList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class RegionInstanceGroupManagerListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  RegionInstanceGroupManagerListWarningData();
+
+  RegionInstanceGroupManagerListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class RegionInstanceGroupManagerListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<RegionInstanceGroupManagerListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  RegionInstanceGroupManagerListWarning();
+
+  RegionInstanceGroupManagerListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) =>
+              new RegionInstanceGroupManagerListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
     }
     return _json;
   }
@@ -34197,6 +38892,9 @@ class RegionInstanceGroupManagerList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  RegionInstanceGroupManagerListWarning warning;
+
   RegionInstanceGroupManagerList();
 
   RegionInstanceGroupManagerList.fromJson(core.Map _json) {
@@ -34217,6 +38915,10 @@ class RegionInstanceGroupManagerList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning =
+          new RegionInstanceGroupManagerListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -34236,6 +38938,9 @@ class RegionInstanceGroupManagerList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -34401,6 +39106,112 @@ class RegionInstanceGroupManagersSetTemplateRequest {
   }
 }
 
+class RegionInstanceGroupsListInstancesWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  RegionInstanceGroupsListInstancesWarningData();
+
+  RegionInstanceGroupsListInstancesWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class RegionInstanceGroupsListInstancesWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<RegionInstanceGroupsListInstancesWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  RegionInstanceGroupsListInstancesWarning();
+
+  RegionInstanceGroupsListInstancesWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) =>
+              new RegionInstanceGroupsListInstancesWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 class RegionInstanceGroupsListInstances {
   /// [Output Only] Unique identifier for the resource; defined by the server.
   core.String id;
@@ -34420,6 +39231,9 @@ class RegionInstanceGroupsListInstances {
 
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  RegionInstanceGroupsListInstancesWarning warning;
 
   RegionInstanceGroupsListInstances();
 
@@ -34441,6 +39255,10 @@ class RegionInstanceGroupsListInstances {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new RegionInstanceGroupsListInstancesWarning.fromJson(
+          _json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -34460,6 +39278,9 @@ class RegionInstanceGroupsListInstances {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -34549,6 +39370,111 @@ class RegionInstanceGroupsSetNamedPortsRequest {
   }
 }
 
+class RegionListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  RegionListWarningData();
+
+  RegionListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class RegionListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<RegionListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  RegionListWarning();
+
+  RegionListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new RegionListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// Contains a list of region resources.
 class RegionList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
@@ -34571,6 +39497,9 @@ class RegionList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  RegionListWarning warning;
+
   RegionList();
 
   RegionList.fromJson(core.Map _json) {
@@ -34589,6 +39518,9 @@ class RegionList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new RegionListWarning.fromJson(_json["warning"]);
     }
   }
 
@@ -34609,6 +39541,9 @@ class RegionList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -34722,8 +39657,10 @@ class RouteWarnings {
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
   /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
@@ -34734,7 +39671,9 @@ class RouteWarnings {
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
   /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
   /// - "UNREACHABLE"
   core.String code;
 
@@ -34983,6 +39922,111 @@ class Route {
   }
 }
 
+class RouteListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  RouteListWarningData();
+
+  RouteListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class RouteListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<RouteListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  RouteListWarning();
+
+  RouteListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new RouteListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// Contains a list of Route resources.
 class RouteList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
@@ -35004,6 +40048,9 @@ class RouteList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  RouteListWarning warning;
+
   RouteList();
 
   RouteList.fromJson(core.Map _json) {
@@ -35021,6 +40068,9 @@ class RouteList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new RouteListWarning.fromJson(_json["warning"]);
     }
   }
 
@@ -35041,6 +40091,9 @@ class RouteList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -35176,6 +40229,111 @@ class Router {
   }
 }
 
+class RouterAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  RouterAggregatedListWarningData();
+
+  RouterAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class RouterAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<RouterAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  RouterAggregatedListWarning();
+
+  RouterAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new RouterAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// Contains a list of routers.
 class RouterAggregatedList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
@@ -35196,6 +40354,9 @@ class RouterAggregatedList {
 
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  RouterAggregatedListWarning warning;
 
   RouterAggregatedList();
 
@@ -35219,6 +40380,9 @@ class RouterAggregatedList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new RouterAggregatedListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -35240,6 +40404,9 @@ class RouterAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -35388,6 +40555,111 @@ class RouterInterface {
   }
 }
 
+class RouterListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  RouterListWarningData();
+
+  RouterListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class RouterListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<RouterListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  RouterListWarning();
+
+  RouterListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new RouterListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// Contains a list of Router resources.
 class RouterList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
@@ -35409,6 +40681,9 @@ class RouterList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  RouterListWarning warning;
+
   RouterList();
 
   RouterList.fromJson(core.Map _json) {
@@ -35427,6 +40702,9 @@ class RouterList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new RouterListWarning.fromJson(_json["warning"]);
     }
   }
 
@@ -35447,6 +40725,9 @@ class RouterList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -35716,8 +40997,10 @@ class RoutersScopedListWarning {
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
   /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
@@ -35728,7 +41011,9 @@ class RoutersScopedListWarning {
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
   /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
   /// - "UNREACHABLE"
   core.String code;
 
@@ -36121,7 +41406,7 @@ class Snapshot {
   /// - "UPLOADING"
   core.String status;
 
-  /// [Output Only] A size of the the storage used by the snapshot. As snapshots
+  /// [Output Only] A size of the storage used by the snapshot. As snapshots
   /// share storage, this number is expected to change with snapshot
   /// creation/deletion.
   core.String storageBytes;
@@ -36251,6 +41536,111 @@ class Snapshot {
   }
 }
 
+class SnapshotListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  SnapshotListWarningData();
+
+  SnapshotListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class SnapshotListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<SnapshotListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  SnapshotListWarning();
+
+  SnapshotListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new SnapshotListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// Contains a list of Snapshot resources.
 class SnapshotList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
@@ -36272,6 +41662,9 @@ class SnapshotList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  SnapshotListWarning warning;
+
   SnapshotList();
 
   SnapshotList.fromJson(core.Map _json) {
@@ -36290,6 +41683,9 @@ class SnapshotList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new SnapshotListWarning.fromJson(_json["warning"]);
     }
   }
 
@@ -36310,6 +41706,9 @@ class SnapshotList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -36415,6 +41814,111 @@ class SslCertificate {
   }
 }
 
+class SslCertificateListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  SslCertificateListWarningData();
+
+  SslCertificateListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class SslCertificateListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<SslCertificateListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  SslCertificateListWarning();
+
+  SslCertificateListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new SslCertificateListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// Contains a list of SslCertificate resources.
 class SslCertificateList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
@@ -36436,6 +41940,9 @@ class SslCertificateList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  SslCertificateListWarning warning;
+
   SslCertificateList();
 
   SslCertificateList.fromJson(core.Map _json) {
@@ -36456,6 +41963,9 @@ class SslCertificateList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new SslCertificateListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -36475,6 +41985,9 @@ class SslCertificateList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -36629,6 +42142,112 @@ class Subnetwork {
   }
 }
 
+class SubnetworkAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  SubnetworkAggregatedListWarningData();
+
+  SubnetworkAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class SubnetworkAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<SubnetworkAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  SubnetworkAggregatedListWarning();
+
+  SubnetworkAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) =>
+              new SubnetworkAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 class SubnetworkAggregatedList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
   core.String id;
@@ -36649,6 +42268,9 @@ class SubnetworkAggregatedList {
 
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  SubnetworkAggregatedListWarning warning;
 
   SubnetworkAggregatedList();
 
@@ -36672,6 +42294,9 @@ class SubnetworkAggregatedList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new SubnetworkAggregatedListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -36693,6 +42318,114 @@ class SubnetworkAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class SubnetworkListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  SubnetworkListWarningData();
+
+  SubnetworkListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class SubnetworkListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<SubnetworkListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  SubnetworkListWarning();
+
+  SubnetworkListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new SubnetworkListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
     }
     return _json;
   }
@@ -36720,6 +42453,9 @@ class SubnetworkList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  SubnetworkListWarning warning;
+
   SubnetworkList();
 
   SubnetworkList.fromJson(core.Map _json) {
@@ -36740,6 +42476,9 @@ class SubnetworkList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new SubnetworkListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -36759,6 +42498,9 @@ class SubnetworkList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -36871,8 +42613,10 @@ class SubnetworksScopedListWarning {
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
   /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
@@ -36883,7 +42627,9 @@ class SubnetworksScopedListWarning {
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
   /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
   /// - "UNREACHABLE"
   core.String code;
 
@@ -37185,6 +42931,111 @@ class TargetHttpProxy {
   }
 }
 
+class TargetHttpProxyListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  TargetHttpProxyListWarningData();
+
+  TargetHttpProxyListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class TargetHttpProxyListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<TargetHttpProxyListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  TargetHttpProxyListWarning();
+
+  TargetHttpProxyListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new TargetHttpProxyListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// A list of TargetHttpProxy resources.
 class TargetHttpProxyList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
@@ -37207,6 +43058,9 @@ class TargetHttpProxyList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  TargetHttpProxyListWarning warning;
+
   TargetHttpProxyList();
 
   TargetHttpProxyList.fromJson(core.Map _json) {
@@ -37227,6 +43081,9 @@ class TargetHttpProxyList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new TargetHttpProxyListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -37246,6 +43103,9 @@ class TargetHttpProxyList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -37378,6 +43238,111 @@ class TargetHttpsProxy {
   }
 }
 
+class TargetHttpsProxyListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  TargetHttpsProxyListWarningData();
+
+  TargetHttpsProxyListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class TargetHttpsProxyListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<TargetHttpsProxyListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  TargetHttpsProxyListWarning();
+
+  TargetHttpsProxyListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new TargetHttpsProxyListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// Contains a list of TargetHttpsProxy resources.
 class TargetHttpsProxyList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
@@ -37400,6 +43365,9 @@ class TargetHttpsProxyList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  TargetHttpsProxyListWarning warning;
+
   TargetHttpsProxyList();
 
   TargetHttpsProxyList.fromJson(core.Map _json) {
@@ -37420,6 +43388,9 @@ class TargetHttpsProxyList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new TargetHttpsProxyListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -37439,6 +43410,9 @@ class TargetHttpsProxyList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -37559,6 +43533,112 @@ class TargetInstance {
   }
 }
 
+class TargetInstanceAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  TargetInstanceAggregatedListWarningData();
+
+  TargetInstanceAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class TargetInstanceAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<TargetInstanceAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  TargetInstanceAggregatedListWarning();
+
+  TargetInstanceAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) =>
+              new TargetInstanceAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 class TargetInstanceAggregatedList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
   core.String id;
@@ -37578,6 +43658,9 @@ class TargetInstanceAggregatedList {
 
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  TargetInstanceAggregatedListWarning warning;
 
   TargetInstanceAggregatedList();
 
@@ -37601,6 +43684,10 @@ class TargetInstanceAggregatedList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning =
+          new TargetInstanceAggregatedListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -37622,6 +43709,114 @@ class TargetInstanceAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class TargetInstanceListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  TargetInstanceListWarningData();
+
+  TargetInstanceListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class TargetInstanceListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<TargetInstanceListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  TargetInstanceListWarning();
+
+  TargetInstanceListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new TargetInstanceListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
     }
     return _json;
   }
@@ -37648,6 +43843,9 @@ class TargetInstanceList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  TargetInstanceListWarning warning;
+
   TargetInstanceList();
 
   TargetInstanceList.fromJson(core.Map _json) {
@@ -37668,6 +43866,9 @@ class TargetInstanceList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new TargetInstanceListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -37687,6 +43888,9 @@ class TargetInstanceList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -37738,8 +43942,10 @@ class TargetInstancesScopedListWarning {
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
   /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
@@ -37750,7 +43956,9 @@ class TargetInstancesScopedListWarning {
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
   /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
   /// - "UNREACHABLE"
   core.String code;
 
@@ -38004,6 +44212,112 @@ class TargetPool {
   }
 }
 
+class TargetPoolAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  TargetPoolAggregatedListWarningData();
+
+  TargetPoolAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class TargetPoolAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<TargetPoolAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  TargetPoolAggregatedListWarning();
+
+  TargetPoolAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) =>
+              new TargetPoolAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 class TargetPoolAggregatedList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
   core.String id;
@@ -38024,6 +44338,9 @@ class TargetPoolAggregatedList {
 
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  TargetPoolAggregatedListWarning warning;
 
   TargetPoolAggregatedList();
 
@@ -38047,6 +44364,9 @@ class TargetPoolAggregatedList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new TargetPoolAggregatedListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -38068,6 +44388,9 @@ class TargetPoolAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -38107,6 +44430,111 @@ class TargetPoolInstanceHealth {
   }
 }
 
+class TargetPoolListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  TargetPoolListWarningData();
+
+  TargetPoolListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class TargetPoolListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<TargetPoolListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  TargetPoolListWarning();
+
+  TargetPoolListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new TargetPoolListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// Contains a list of TargetPool resources.
 class TargetPoolList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
@@ -38129,6 +44557,9 @@ class TargetPoolList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  TargetPoolListWarning warning;
+
   TargetPoolList();
 
   TargetPoolList.fromJson(core.Map _json) {
@@ -38149,6 +44580,9 @@ class TargetPoolList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new TargetPoolListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -38168,6 +44602,9 @@ class TargetPoolList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -38327,8 +44764,10 @@ class TargetPoolsScopedListWarning {
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
   /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
@@ -38339,7 +44778,9 @@ class TargetPoolsScopedListWarning {
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
   /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
   /// - "UNREACHABLE"
   core.String code;
 
@@ -38619,6 +45060,111 @@ class TargetSslProxy {
   }
 }
 
+class TargetSslProxyListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  TargetSslProxyListWarningData();
+
+  TargetSslProxyListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class TargetSslProxyListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<TargetSslProxyListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  TargetSslProxyListWarning();
+
+  TargetSslProxyListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new TargetSslProxyListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// Contains a list of TargetSslProxy resources.
 class TargetSslProxyList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
@@ -38640,6 +45186,9 @@ class TargetSslProxyList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  TargetSslProxyListWarning warning;
+
   TargetSslProxyList();
 
   TargetSslProxyList.fromJson(core.Map _json) {
@@ -38660,6 +45209,9 @@ class TargetSslProxyList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new TargetSslProxyListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -38679,6 +45231,9 @@ class TargetSslProxyList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -38831,6 +45386,111 @@ class TargetTcpProxy {
   }
 }
 
+class TargetTcpProxyListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  TargetTcpProxyListWarningData();
+
+  TargetTcpProxyListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class TargetTcpProxyListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<TargetTcpProxyListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  TargetTcpProxyListWarning();
+
+  TargetTcpProxyListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new TargetTcpProxyListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// Contains a list of TargetTcpProxy resources.
 class TargetTcpProxyList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
@@ -38852,6 +45512,9 @@ class TargetTcpProxyList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  TargetTcpProxyListWarning warning;
+
   TargetTcpProxyList();
 
   TargetTcpProxyList.fromJson(core.Map _json) {
@@ -38872,6 +45535,9 @@ class TargetTcpProxyList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new TargetTcpProxyListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -38891,6 +45557,9 @@ class TargetTcpProxyList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -39028,6 +45697,112 @@ class TargetVpnGateway {
   }
 }
 
+class TargetVpnGatewayAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  TargetVpnGatewayAggregatedListWarningData();
+
+  TargetVpnGatewayAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class TargetVpnGatewayAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<TargetVpnGatewayAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  TargetVpnGatewayAggregatedListWarning();
+
+  TargetVpnGatewayAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) =>
+              new TargetVpnGatewayAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 class TargetVpnGatewayAggregatedList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
   core.String id;
@@ -39048,6 +45823,9 @@ class TargetVpnGatewayAggregatedList {
 
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  TargetVpnGatewayAggregatedListWarning warning;
 
   TargetVpnGatewayAggregatedList();
 
@@ -39071,6 +45849,10 @@ class TargetVpnGatewayAggregatedList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning =
+          new TargetVpnGatewayAggregatedListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -39092,6 +45874,114 @@ class TargetVpnGatewayAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class TargetVpnGatewayListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  TargetVpnGatewayListWarningData();
+
+  TargetVpnGatewayListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class TargetVpnGatewayListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<TargetVpnGatewayListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  TargetVpnGatewayListWarning();
+
+  TargetVpnGatewayListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new TargetVpnGatewayListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
     }
     return _json;
   }
@@ -39119,6 +46009,9 @@ class TargetVpnGatewayList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  TargetVpnGatewayListWarning warning;
+
   TargetVpnGatewayList();
 
   TargetVpnGatewayList.fromJson(core.Map _json) {
@@ -39139,6 +46032,9 @@ class TargetVpnGatewayList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new TargetVpnGatewayListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -39158,6 +46054,9 @@ class TargetVpnGatewayList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -39209,8 +46108,10 @@ class TargetVpnGatewaysScopedListWarning {
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
   /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
@@ -39221,7 +46122,9 @@ class TargetVpnGatewaysScopedListWarning {
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
   /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
   /// - "UNREACHABLE"
   core.String code;
 
@@ -39486,6 +46389,111 @@ class UrlMap {
   }
 }
 
+class UrlMapListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  UrlMapListWarningData();
+
+  UrlMapListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class UrlMapListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<UrlMapListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  UrlMapListWarning();
+
+  UrlMapListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new UrlMapListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// Contains a list of UrlMap resources.
 class UrlMapList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
@@ -39507,6 +46515,9 @@ class UrlMapList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  UrlMapListWarning warning;
+
   UrlMapList();
 
   UrlMapList.fromJson(core.Map _json) {
@@ -39525,6 +46536,9 @@ class UrlMapList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new UrlMapListWarning.fromJson(_json["warning"]);
     }
   }
 
@@ -39545,6 +46559,9 @@ class UrlMapList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -39952,6 +46969,112 @@ class VpnTunnel {
   }
 }
 
+class VpnTunnelAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  VpnTunnelAggregatedListWarningData();
+
+  VpnTunnelAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class VpnTunnelAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<VpnTunnelAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  VpnTunnelAggregatedListWarning();
+
+  VpnTunnelAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map(
+              (value) => new VpnTunnelAggregatedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 class VpnTunnelAggregatedList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
   core.String id;
@@ -39971,6 +47094,9 @@ class VpnTunnelAggregatedList {
 
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  VpnTunnelAggregatedListWarning warning;
 
   VpnTunnelAggregatedList();
 
@@ -39994,6 +47120,9 @@ class VpnTunnelAggregatedList {
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
     }
+    if (_json.containsKey("warning")) {
+      warning = new VpnTunnelAggregatedListWarning.fromJson(_json["warning"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -40015,6 +47144,114 @@ class VpnTunnelAggregatedList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class VpnTunnelListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  VpnTunnelListWarningData();
+
+  VpnTunnelListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class VpnTunnelListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<VpnTunnelListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  VpnTunnelListWarning();
+
+  VpnTunnelListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new VpnTunnelListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
     }
     return _json;
   }
@@ -40041,6 +47278,9 @@ class VpnTunnelList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  VpnTunnelListWarning warning;
+
   VpnTunnelList();
 
   VpnTunnelList.fromJson(core.Map _json) {
@@ -40059,6 +47299,9 @@ class VpnTunnelList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new VpnTunnelListWarning.fromJson(_json["warning"]);
     }
   }
 
@@ -40079,6 +47322,9 @@ class VpnTunnelList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -40130,8 +47376,10 @@ class VpnTunnelsScopedListWarning {
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
   /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
@@ -40142,7 +47390,9 @@ class VpnTunnelsScopedListWarning {
   /// - "REQUIRED_TOS_AGREEMENT"
   /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
   /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
   /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
   /// - "UNREACHABLE"
   core.String code;
 
@@ -40221,6 +47471,111 @@ class VpnTunnelsScopedList {
   }
 }
 
+class XpnHostListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  XpnHostListWarningData();
+
+  XpnHostListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class XpnHostListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<XpnHostListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  XpnHostListWarning();
+
+  XpnHostListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new XpnHostListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 class XpnHostList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
   core.String id;
@@ -40242,6 +47597,9 @@ class XpnHostList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  XpnHostListWarning warning;
+
   XpnHostList();
 
   XpnHostList.fromJson(core.Map _json) {
@@ -40260,6 +47618,9 @@ class XpnHostList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new XpnHostListWarning.fromJson(_json["warning"]);
     }
   }
 
@@ -40280,6 +47641,9 @@ class XpnHostList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }
@@ -40324,6 +47688,9 @@ class XpnResourceId {
 
 /// A Zone resource.
 class Zone {
+  /// [Output Only] Available cpu/platform selections for the zone.
+  core.List<core.String> availableCpuPlatforms;
+
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
 
@@ -40358,6 +47725,9 @@ class Zone {
   Zone();
 
   Zone.fromJson(core.Map _json) {
+    if (_json.containsKey("availableCpuPlatforms")) {
+      availableCpuPlatforms = _json["availableCpuPlatforms"];
+    }
     if (_json.containsKey("creationTimestamp")) {
       creationTimestamp = _json["creationTimestamp"];
     }
@@ -40390,6 +47760,9 @@ class Zone {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (availableCpuPlatforms != null) {
+      _json["availableCpuPlatforms"] = availableCpuPlatforms;
+    }
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
     }
@@ -40421,6 +47794,111 @@ class Zone {
   }
 }
 
+class ZoneListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  ZoneListWarningData();
+
+  ZoneListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class ZoneListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<ZoneListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  ZoneListWarning();
+
+  ZoneListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new ZoneListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// Contains a list of zone resources.
 class ZoneList {
   /// [Output Only] Unique identifier for the resource; defined by the server.
@@ -40442,6 +47920,9 @@ class ZoneList {
   /// [Output Only] Server-defined URL for this resource.
   core.String selfLink;
 
+  /// [Output Only] Informational warning message.
+  ZoneListWarning warning;
+
   ZoneList();
 
   ZoneList.fromJson(core.Map _json) {
@@ -40459,6 +47940,9 @@ class ZoneList {
     }
     if (_json.containsKey("selfLink")) {
       selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new ZoneListWarning.fromJson(_json["warning"]);
     }
   }
 
@@ -40479,6 +47963,9 @@ class ZoneList {
     }
     if (selfLink != null) {
       _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
     }
     return _json;
   }

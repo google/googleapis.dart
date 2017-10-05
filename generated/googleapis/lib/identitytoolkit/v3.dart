@@ -152,6 +152,43 @@ class RelyingpartyResourceApi {
     return _response.then((data) => new DownloadAccountResponse.fromJson(data));
   }
 
+  /// Reset password for a user.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [EmailLinkSigninResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<EmailLinkSigninResponse> emailLinkSignin(
+      IdentitytoolkitRelyingpartyEmailLinkSigninRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'emailLinkSignin';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new EmailLinkSigninResponse.fromJson(data));
+  }
+
   /// Returns the account info.
   ///
   /// [request] - The metadata request object.
@@ -781,6 +818,9 @@ class CreateAuthUriResponse {
   /// request.
   core.String sessionId;
 
+  /// All sign-in methods this user has used.
+  core.List<core.String> signinMethods;
+
   CreateAuthUriResponse();
 
   CreateAuthUriResponse.fromJson(core.Map _json) {
@@ -807,6 +847,9 @@ class CreateAuthUriResponse {
     }
     if (_json.containsKey("sessionId")) {
       sessionId = _json["sessionId"];
+    }
+    if (_json.containsKey("signinMethods")) {
+      signinMethods = _json["signinMethods"];
     }
   }
 
@@ -836,6 +879,9 @@ class CreateAuthUriResponse {
     }
     if (sessionId != null) {
       _json["sessionId"] = sessionId;
+    }
+    if (signinMethods != null) {
+      _json["signinMethods"] = signinMethods;
     }
     return _json;
   }
@@ -902,6 +948,83 @@ class DownloadAccountResponse {
     }
     if (users != null) {
       _json["users"] = users.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Response of email signIn.
+class EmailLinkSigninResponse {
+  /// The user's email.
+  core.String email;
+
+  /// Expiration time of STS id token in seconds.
+  core.String expiresIn;
+
+  /// The STS id token to login the newly signed in user.
+  core.String idToken;
+
+  /// Whether the user is new.
+  core.bool isNewUser;
+
+  /// The fixed string "identitytoolkit#EmailLinkSigninResponse".
+  core.String kind;
+
+  /// The RP local ID of the user.
+  core.String localId;
+
+  /// The refresh token for the signed in user.
+  core.String refreshToken;
+
+  EmailLinkSigninResponse();
+
+  EmailLinkSigninResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("email")) {
+      email = _json["email"];
+    }
+    if (_json.containsKey("expiresIn")) {
+      expiresIn = _json["expiresIn"];
+    }
+    if (_json.containsKey("idToken")) {
+      idToken = _json["idToken"];
+    }
+    if (_json.containsKey("isNewUser")) {
+      isNewUser = _json["isNewUser"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("localId")) {
+      localId = _json["localId"];
+    }
+    if (_json.containsKey("refreshToken")) {
+      refreshToken = _json["refreshToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (email != null) {
+      _json["email"] = email;
+    }
+    if (expiresIn != null) {
+      _json["expiresIn"] = expiresIn;
+    }
+    if (idToken != null) {
+      _json["idToken"] = idToken;
+    }
+    if (isNewUser != null) {
+      _json["isNewUser"] = isNewUser;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (localId != null) {
+      _json["localId"] = localId;
+    }
+    if (refreshToken != null) {
+      _json["refreshToken"] = refreshToken;
     }
     return _json;
   }
@@ -1334,6 +1457,47 @@ class IdentitytoolkitRelyingpartyDownloadAccountRequest {
     }
     if (targetProjectId != null) {
       _json["targetProjectId"] = targetProjectId;
+    }
+    return _json;
+  }
+}
+
+/// Request to sign in with email.
+class IdentitytoolkitRelyingpartyEmailLinkSigninRequest {
+  /// The email address of the user.
+  core.String email;
+
+  /// Token for linking flow.
+  core.String idToken;
+
+  /// The confirmation code.
+  core.String oobCode;
+
+  IdentitytoolkitRelyingpartyEmailLinkSigninRequest();
+
+  IdentitytoolkitRelyingpartyEmailLinkSigninRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("email")) {
+      email = _json["email"];
+    }
+    if (_json.containsKey("idToken")) {
+      idToken = _json["idToken"];
+    }
+    if (_json.containsKey("oobCode")) {
+      oobCode = _json["oobCode"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (email != null) {
+      _json["email"] = email;
+    }
+    if (idToken != null) {
+      _json["idToken"] = idToken;
+    }
+    if (oobCode != null) {
+      _json["oobCode"] = oobCode;
     }
     return _json;
   }

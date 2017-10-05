@@ -3922,6 +3922,9 @@ class JobStatistics2 {
   /// [Output-only] Total bytes processed for the job.
   core.String totalBytesProcessed;
 
+  /// [Output-only] Slot-milliseconds for the job.
+  core.String totalSlotMs;
+
   /// [Output-only, Experimental] Standard SQL only: list of undeclared query
   /// parameters detected during a dry run validation.
   core.List<QueryParameter> undeclaredQueryParameters;
@@ -3960,6 +3963,9 @@ class JobStatistics2 {
     if (_json.containsKey("totalBytesProcessed")) {
       totalBytesProcessed = _json["totalBytesProcessed"];
     }
+    if (_json.containsKey("totalSlotMs")) {
+      totalSlotMs = _json["totalSlotMs"];
+    }
     if (_json.containsKey("undeclaredQueryParameters")) {
       undeclaredQueryParameters = _json["undeclaredQueryParameters"]
           .map((value) => new QueryParameter.fromJson(value))
@@ -3997,6 +4003,9 @@ class JobStatistics2 {
     }
     if (totalBytesProcessed != null) {
       _json["totalBytesProcessed"] = totalBytesProcessed;
+    }
+    if (totalSlotMs != null) {
+      _json["totalSlotMs"] = totalSlotMs;
     }
     if (undeclaredQueryParameters != null) {
       _json["undeclaredQueryParameters"] =

@@ -291,6 +291,10 @@ class ProjectsRegionsClustersResourceApi {
   /// [region] - Required. The Cloud Dataproc region in which to handle the
   /// request.
   ///
+  /// [pageToken] - Optional. The standard List page token.
+  ///
+  /// [pageSize] - Optional. The standard List page size.
+  ///
   /// [filter] - Optional. A filter constraining the clusters to list. Filters
   /// are case-sensitive and have the following syntax:field = value AND field =
   /// value ...where field is one of status.state, clusterName, or labels.[KEY],
@@ -303,10 +307,6 @@ class ProjectsRegionsClustersResourceApi {
   /// implicit AND operator.Example filter:status.state = ACTIVE AND clusterName
   /// = mycluster AND labels.env = staging AND labels.starred = *
   ///
-  /// [pageToken] - Optional. The standard List page token.
-  ///
-  /// [pageSize] - Optional. The standard List page size.
-  ///
   /// Completes with a [ListClustersResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -316,7 +316,7 @@ class ProjectsRegionsClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListClustersResponse> list(
       core.String projectId, core.String region,
-      {core.String filter, core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -330,14 +330,14 @@ class ProjectsRegionsClustersResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/projects/' +
@@ -989,11 +989,11 @@ class ProjectsRegionsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/regions/[^/]+/operations$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// Completes with a [ListOperationsResponse].
   ///
@@ -1003,7 +1003,7 @@ class ProjectsRegionsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String pageToken, core.int pageSize, core.String filter}) {
+      {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1014,14 +1014,14 @@ class ProjectsRegionsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');

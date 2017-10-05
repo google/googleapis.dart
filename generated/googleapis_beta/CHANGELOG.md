@@ -1,3 +1,15 @@
+## 0.40.0
+
+* [api-new] cloudtasks:v2beta2
+* [api-new] firestore:v1beta1
+* [api-new] oslogin:v1beta
+* [api] dlp:v2beta1
+* [api] proximitybeacon:v1beta1
+* [api] oslogin:v1alpha
+* [api] dataflow:v1b3
+* [api-breaking] oslogin:v1alpha
+* [api-breaking] dataflow:v1b3
+
 ## 0.39.2
 * [api] appengine:v1beta
 * [api] dataflow:v1b3

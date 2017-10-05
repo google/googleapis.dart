@@ -93,7 +93,7 @@
     "description": "The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/directory/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/O3yStPLO-_BtPqwnPm5OpyYaKQ4\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/JB19efQGH5f-JRT49yZz7BTyNQU\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -3458,7 +3458,7 @@
             }
         }
     },
-    "revision": "20170723",
+    "revision": "20170830",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Alias": {
@@ -3581,6 +3581,10 @@
                     "description": "ETag of the resource.",
                     "type": "string"
                 },
+                "generatedResourceName": {
+                    "description": "The auto-generated name of the calendar resource which includes metadata about the resource such as building name, floor, capacity, etc. For example, NYC-2-Training Room 1A (16)",
+                    "type": "string"
+                },
                 "kind": {
                     "default": "admin#directory#resources#calendars#CalendarResource",
                     "description": "The type of the resource. For calendar resources, the value is admin#directory#resources#calendars#CalendarResource.",
@@ -3595,20 +3599,10 @@
                     "type": "string"
                 },
                 "resourceId": {
-                    "annotations": {
-                        "required": [
-                            "directory.resources.calendars.insert"
-                        ]
-                    },
                     "description": "The unique ID for the calendar resource.",
                     "type": "string"
                 },
                 "resourceName": {
-                    "annotations": {
-                        "required": [
-                            "directory.resources.calendars.insert"
-                        ]
-                    },
                     "description": "The name of the calendar resource. For example, Training Room 1A",
                     "type": "string"
                 },
@@ -5147,6 +5141,9 @@
                 "externalIds": {
                     "type": "any"
                 },
+                "gender": {
+                    "type": "any"
+                },
                 "hashFunction": {
                     "description": "Hash function name for password. Supported are MD5, SHA-1 and crypt",
                     "type": "string"
@@ -5413,6 +5410,24 @@
                 },
                 "value": {
                     "description": "The value of the id.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UserGender": {
+            "id": "UserGender",
+            "properties": {
+                "addressMeAs": {
+                    "description": "AddressMeAs. A human-readable string containing the proper way to refer to the profile owner by humans, for example \"he/him/his\" or \"they/them/their\".",
+                    "type": "string"
+                },
+                "customGender": {
+                    "description": "Custom gender.",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "Gender.",
                     "type": "string"
                 }
             },
@@ -5700,8 +5715,8 @@
                 },
                 "gid": {
                     "description": "The default group ID.",
-                    "format": "int32",
-                    "type": "integer"
+                    "format": "uint64",
+                    "type": "string"
                 },
                 "homeDirectory": {
                     "description": "The path to the home directory for this account.",
@@ -5721,8 +5736,8 @@
                 },
                 "uid": {
                     "description": "The POSIX compliant user ID.",
-                    "format": "int32",
-                    "type": "integer"
+                    "format": "uint64",
+                    "type": "string"
                 },
                 "username": {
                     "description": "The username of the account.",

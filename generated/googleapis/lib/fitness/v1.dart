@@ -116,6 +116,8 @@ class UsersResourceApi {
 class UsersDataSourcesResourceApi {
   final commons.ApiRequester _requester;
 
+  UsersDataSourcesDataPointChangesResourceApi get dataPointChanges =>
+      new UsersDataSourcesDataPointChangesResourceApi(_requester);
   UsersDataSourcesDatasetsResourceApi get datasets =>
       new UsersDataSourcesDatasetsResourceApi(_requester);
 
@@ -415,6 +417,75 @@ class UsersDataSourcesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new DataSource.fromJson(data));
+  }
+}
+
+class UsersDataSourcesDataPointChangesResourceApi {
+  final commons.ApiRequester _requester;
+
+  UsersDataSourcesDataPointChangesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Queries for user's data point changes for a particular data source.
+  ///
+  /// Request parameters:
+  ///
+  /// [userId] - List data points for the person identified. Use me to indicate
+  /// the authenticated user. Only me is supported at this time.
+  ///
+  /// [dataSourceId] - The data stream ID of the data source that created the
+  /// dataset.
+  ///
+  /// [limit] - If specified, no more than this many data point changes will be
+  /// included in the response.
+  ///
+  /// [pageToken] - The continuation token, which is used to page through large
+  /// result sets. To get the next page of results, set this parameter to the
+  /// value of nextPageToken from the previous response.
+  ///
+  /// Completes with a [ListDataPointChangesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDataPointChangesResponse> list(
+      core.String userId, core.String dataSourceId,
+      {core.int limit, core.String pageToken}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if (dataSourceId == null) {
+      throw new core.ArgumentError("Parameter dataSourceId is required.");
+    }
+    if (limit != null) {
+      _queryParams["limit"] = ["${limit}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$userId') +
+        '/dataSources/' +
+        commons.Escaper.ecapeVariable('$dataSourceId') +
+        '/dataPointChanges';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListDataPointChangesResponse.fromJson(data));
   }
 }
 
@@ -1800,6 +1871,64 @@ class Device {
     }
     if (version != null) {
       _json["version"] = version;
+    }
+    return _json;
+  }
+}
+
+class ListDataPointChangesResponse {
+  /// The data stream ID of the data source with data point changes.
+  core.String dataSourceId;
+
+  /// Deleted data points for the user. Note, for modifications this should be
+  /// parsed before handling insertions.
+  core.List<DataPoint> deletedDataPoint;
+
+  /// Inserted data points for the user.
+  core.List<DataPoint> insertedDataPoint;
+
+  /// The continuation token, which is used to page through large result sets.
+  /// Provide this value in a subsequent request to return the next page of
+  /// results.
+  core.String nextPageToken;
+
+  ListDataPointChangesResponse();
+
+  ListDataPointChangesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("dataSourceId")) {
+      dataSourceId = _json["dataSourceId"];
+    }
+    if (_json.containsKey("deletedDataPoint")) {
+      deletedDataPoint = _json["deletedDataPoint"]
+          .map((value) => new DataPoint.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("insertedDataPoint")) {
+      insertedDataPoint = _json["insertedDataPoint"]
+          .map((value) => new DataPoint.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dataSourceId != null) {
+      _json["dataSourceId"] = dataSourceId;
+    }
+    if (deletedDataPoint != null) {
+      _json["deletedDataPoint"] =
+          deletedDataPoint.map((value) => (value).toJson()).toList();
+    }
+    if (insertedDataPoint != null) {
+      _json["insertedDataPoint"] =
+          insertedDataPoint.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
     }
     return _json;
   }

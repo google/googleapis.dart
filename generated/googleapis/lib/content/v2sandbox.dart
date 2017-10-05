@@ -1355,6 +1355,9 @@ class OrderLineItem {
   /// Cancellations of the line item.
   core.List<OrderCancellation> cancellations;
 
+  /// The channel type of the order: "purchaseOnGoogle" or "googleExpress".
+  core.String channelType;
+
   /// The id of the line item.
   core.String id;
 
@@ -1404,6 +1407,9 @@ class OrderLineItem {
       cancellations = _json["cancellations"]
           .map((value) => new OrderCancellation.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("channelType")) {
+      channelType = _json["channelType"];
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -1455,6 +1461,9 @@ class OrderLineItem {
     if (cancellations != null) {
       _json["cancellations"] =
           cancellations.map((value) => (value).toJson()).toList();
+    }
+    if (channelType != null) {
+      _json["channelType"] = channelType;
     }
     if (id != null) {
       _json["id"] = id;
@@ -1765,7 +1774,8 @@ class OrderLineItemShippingDetails {
 }
 
 class OrderLineItemShippingDetailsMethod {
-  /// The carrier for the shipping. Optional.
+  /// The carrier for the shipping. Optional. See shipments[].carrier for a list
+  /// of acceptable values.
   core.String carrier;
 
   /// Maximum transit time.
@@ -1829,7 +1839,16 @@ class OrderPaymentMethod {
   /// The billing phone number.
   core.String phoneNumber;
 
-  /// The type of instrument (VISA, Mastercard, etc).
+  /// The type of instrument.
+  ///
+  /// Acceptable values are:
+  /// - "AMEX"
+  /// - "DISCOVER"
+  /// - "JCB"
+  /// - "MASTERCARD"
+  /// - "UNIONPAY"
+  /// - "VISA"
+  /// - ""
   core.String type;
 
   OrderPaymentMethod();
@@ -2145,6 +2164,30 @@ class OrderReturn {
 
 class OrderShipment {
   /// The carrier handling the shipment.
+  ///
+  /// Acceptable values are:
+  /// - "gsx"
+  /// - "ups"
+  /// - "united parcel service"
+  /// - "usps"
+  /// - "united states postal service"
+  /// - "fedex"
+  /// - "dhl"
+  /// - "ecourier"
+  /// - "cxt"
+  /// - "google"
+  /// - "on trac"
+  /// - "ontrac"
+  /// - "on-trac"
+  /// - "on_trac"
+  /// - "delvic"
+  /// - "dynamex"
+  /// - "lasership"
+  /// - "smartpost"
+  /// - "fedex smartpost"
+  /// - "mpx"
+  /// - "uds"
+  /// - "united delivery service"
   core.String carrier;
 
   /// Date on which the shipment has been created, in ISO 8601 format.
@@ -2902,16 +2945,24 @@ class OrdersCustomBatchRequestEntryReturnLineItem {
 }
 
 class OrdersCustomBatchRequestEntryShipLineItems {
-  /// The carrier handling the shipment.
+  /// Deprecated. Please use shipmentInfo instead. The carrier handling the
+  /// shipment. See shipments[].carrier in the  Orders resource representation
+  /// for a list of acceptable values.
   core.String carrier;
 
   /// Line items to ship.
   core.List<OrderShipmentLineItemShipment> lineItems;
 
-  /// The ID of the shipment.
+  /// Deprecated. Please use shipmentInfo instead. The ID of the shipment.
   core.String shipmentId;
 
-  /// The tracking id for the shipment.
+  /// Shipment information. This field is repeated because a single line item
+  /// can be shipped in several packages (and have several tracking IDs).
+  core.List<OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>
+      shipmentInfos;
+
+  /// Deprecated. Please use shipmentInfo instead. The tracking id for the
+  /// shipment.
   core.String trackingId;
 
   OrdersCustomBatchRequestEntryShipLineItems();
@@ -2927,6 +2978,13 @@ class OrdersCustomBatchRequestEntryShipLineItems {
     }
     if (_json.containsKey("shipmentId")) {
       shipmentId = _json["shipmentId"];
+    }
+    if (_json.containsKey("shipmentInfos")) {
+      shipmentInfos = _json["shipmentInfos"]
+          .map((value) =>
+              new OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo
+                  .fromJson(value))
+          .toList();
     }
     if (_json.containsKey("trackingId")) {
       trackingId = _json["trackingId"];
@@ -2945,6 +3003,52 @@ class OrdersCustomBatchRequestEntryShipLineItems {
     if (shipmentId != null) {
       _json["shipmentId"] = shipmentId;
     }
+    if (shipmentInfos != null) {
+      _json["shipmentInfos"] =
+          shipmentInfos.map((value) => (value).toJson()).toList();
+    }
+    if (trackingId != null) {
+      _json["trackingId"] = trackingId;
+    }
+    return _json;
+  }
+}
+
+class OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo {
+  /// The carrier handling the shipment. See shipments[].carrier in the  Orders
+  /// resource representation for a list of acceptable values.
+  core.String carrier;
+
+  /// The ID of the shipment.
+  core.String shipmentId;
+
+  /// The tracking id for the shipment.
+  core.String trackingId;
+
+  OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo();
+
+  OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("carrier")) {
+      carrier = _json["carrier"];
+    }
+    if (_json.containsKey("shipmentId")) {
+      shipmentId = _json["shipmentId"];
+    }
+    if (_json.containsKey("trackingId")) {
+      trackingId = _json["trackingId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (carrier != null) {
+      _json["carrier"] = carrier;
+    }
+    if (shipmentId != null) {
+      _json["shipmentId"] = shipmentId;
+    }
     if (trackingId != null) {
       _json["trackingId"] = trackingId;
     }
@@ -2953,7 +3057,9 @@ class OrdersCustomBatchRequestEntryShipLineItems {
 }
 
 class OrdersCustomBatchRequestEntryUpdateShipment {
-  /// The carrier handling the shipment. Not updated if missing.
+  /// The carrier handling the shipment. Not updated if missing. See
+  /// shipments[].carrier in the  Orders resource representation for a list of
+  /// acceptable values.
   core.String carrier;
 
   /// The ID of the shipment.
@@ -3372,7 +3478,9 @@ class OrdersReturnLineItemResponse {
 }
 
 class OrdersShipLineItemsRequest {
-  /// The carrier handling the shipment.
+  /// Deprecated. Please use shipmentInfo instead. The carrier handling the
+  /// shipment. See shipments[].carrier in the  Orders resource representation
+  /// for a list of acceptable values.
   core.String carrier;
 
   /// Line items to ship.
@@ -3381,10 +3489,16 @@ class OrdersShipLineItemsRequest {
   /// The ID of the operation. Unique across all operations for a given order.
   core.String operationId;
 
-  /// The ID of the shipment.
+  /// Deprecated. Please use shipmentInfo instead. The ID of the shipment.
   core.String shipmentId;
 
-  /// The tracking id for the shipment.
+  /// Shipment information. This field is repeated because a single line item
+  /// can be shipped in several packages (and have several tracking IDs).
+  core.List<OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>
+      shipmentInfos;
+
+  /// Deprecated. Please use shipmentInfo instead. The tracking id for the
+  /// shipment.
   core.String trackingId;
 
   OrdersShipLineItemsRequest();
@@ -3403,6 +3517,13 @@ class OrdersShipLineItemsRequest {
     }
     if (_json.containsKey("shipmentId")) {
       shipmentId = _json["shipmentId"];
+    }
+    if (_json.containsKey("shipmentInfos")) {
+      shipmentInfos = _json["shipmentInfos"]
+          .map((value) =>
+              new OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo
+                  .fromJson(value))
+          .toList();
     }
     if (_json.containsKey("trackingId")) {
       trackingId = _json["trackingId"];
@@ -3423,6 +3544,10 @@ class OrdersShipLineItemsRequest {
     }
     if (shipmentId != null) {
       _json["shipmentId"] = shipmentId;
+    }
+    if (shipmentInfos != null) {
+      _json["shipmentInfos"] =
+          shipmentInfos.map((value) => (value).toJson()).toList();
     }
     if (trackingId != null) {
       _json["trackingId"] = trackingId;
@@ -3528,7 +3653,9 @@ class OrdersUpdateMerchantOrderIdResponse {
 }
 
 class OrdersUpdateShipmentRequest {
-  /// The carrier handling the shipment. Not updated if missing.
+  /// The carrier handling the shipment. Not updated if missing. See
+  /// shipments[].carrier in the  Orders resource representation for a list of
+  /// acceptable values.
   core.String carrier;
 
   /// The ID of the operation. Unique across all operations for a given order.

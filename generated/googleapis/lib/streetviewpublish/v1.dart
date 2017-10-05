@@ -45,6 +45,13 @@ class PhotoResourceApi {
   /// publishes the uploaded Photo to
   /// Street View on Google Maps.
   ///
+  /// Currently, the only way to set heading, pitch, and roll in CreatePhoto is
+  /// through the [Photo Sphere XMP
+  /// metadata](https://developers.google.com/streetview/spherical-metadata) in
+  /// the photo bytes. The `pose.heading`, `pose.pitch`, `pose.roll`,
+  /// `pose.altitude`, and `pose.level` fields in Pose are ignored for
+  /// CreatePhoto.
+  ///
   /// This method returns the following error codes:
   ///
   /// * google.rpc.Code.INVALID_ARGUMENT if the request is malformed.
@@ -242,7 +249,7 @@ class PhotoResourceApi {
   /// as pose, place association, connections, etc. Changing the pixels of a
   /// photo is not supported.
   ///
-  /// Only the fields specified in
+  /// Only the fields specified in the
   /// updateMask
   /// field are used. If `updateMask` is not present, the update applies to all
   /// fields.
@@ -267,9 +274,11 @@ class PhotoResourceApi {
   ///
   /// [updateMask] - Mask that identifies fields on the photo metadata to
   /// update.
-  /// If not present, the old Photo metadata will be entirely replaced with the
-  /// new Photo metadata in this request. The update fails if invalid fields are
-  /// specified. Multiple fields can be specified in a comma-delimited list.
+  /// If not present, the old Photo
+  /// metadata will be entirely replaced with the
+  /// new Photo metadata in this request.
+  /// The update fails if invalid fields are specified. Multiple fields can be
+  /// specified in a comma-delimited list.
   ///
   /// The following fields are valid:
   ///
@@ -407,16 +416,16 @@ class PhotosResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [photoIds] - Required. IDs of the Photos. For HTTP
-  /// GET requests, the URL query parameter should be
-  /// `photoIds=<id1>&photoIds=<id2>&...`.
-  ///
   /// [view] - Specifies if a download URL for the photo bytes should be
   /// returned in the
   /// Photo response.
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
   /// - "INCLUDE_DOWNLOAD_URL" : A INCLUDE_DOWNLOAD_URL.
+  ///
+  /// [photoIds] - Required. IDs of the Photos. For HTTP
+  /// GET requests, the URL query parameter should be
+  /// `photoIds=<id1>&photoIds=<id2>&...`.
   ///
   /// Completes with a [BatchGetPhotosResponse].
   ///
@@ -426,7 +435,7 @@ class PhotosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchGetPhotosResponse> batchGet(
-      {core.List<core.String> photoIds, core.String view}) {
+      {core.String view, core.List<core.String> photoIds}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -434,11 +443,11 @@ class PhotosResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (photoIds != null) {
-      _queryParams["photoIds"] = photoIds;
-    }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (photoIds != null) {
+      _queryParams["photoIds"] = photoIds;
     }
 
     _url = 'v1/photos:batchGet';
@@ -524,6 +533,8 @@ class PhotosResourceApi {
   ///
   /// [filter] - The filter expression. For example:
   /// `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.
+  ///
+  /// The only filter supported at the moment is `placeId`.
   ///
   /// [pageToken] - The
   /// nextPageToken
@@ -911,6 +922,87 @@ class ListPhotosResponse {
   }
 }
 
+/// This resource represents a long-running operation that is the result of a
+/// network API call.
+class Operation {
+  /// If the value is `false`, it means the operation is still in progress.
+  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// available.
+  core.bool done;
+
+  /// The error result of the operation in case of failure or cancellation.
+  Status error;
+
+  /// Service-specific metadata associated with the operation.  It typically
+  /// contains progress information and common metadata such as create time.
+  /// Some services might not provide such metadata.  Any method that returns a
+  /// long-running operation should document the metadata type, if any.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> metadata;
+
+  /// The server-assigned name, which is only unique within the same service
+  /// that
+  /// originally returns it. If you use the default HTTP mapping, the
+  /// `name` should have the format of `operations/some/unique/name`.
+  core.String name;
+
+  /// The normal response of the operation in case of success.  If the original
+  /// method returns no data on success, such as `Delete`, the response is
+  /// `google.protobuf.Empty`.  If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource.  For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx`
+  /// is the original method name.  For example, if the original method name
+  /// is `TakeSnapshot()`, the inferred response type is
+  /// `TakeSnapshotResponse`.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> response;
+
+  Operation();
+
+  Operation.fromJson(core.Map _json) {
+    if (_json.containsKey("done")) {
+      done = _json["done"];
+    }
+    if (_json.containsKey("error")) {
+      error = new Status.fromJson(_json["error"]);
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = _json["metadata"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("response")) {
+      response = _json["response"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (done != null) {
+      _json["done"] = done;
+    }
+    if (error != null) {
+      _json["error"] = (error).toJson();
+    }
+    if (metadata != null) {
+      _json["metadata"] = metadata;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (response != null) {
+      _json["response"] = response;
+    }
+    return _json;
+  }
+}
+
 /// Photo is used to store 360 photos along with photo metadata.
 class Photo {
   /// Absolute time when the photo was captured.
@@ -929,7 +1021,7 @@ class Photo {
   /// PhotoView.INCLUDE_DOWNLOAD_URL.
   core.String downloadUrl;
 
-  /// Required when updating photo. Output only when creating photo.
+  /// Required when updating a photo. Output only when creating a photo.
   /// Identifier for the photo, which is unique among all photos in
   /// Google.
   PhotoId photoId;
@@ -946,8 +1038,8 @@ class Photo {
   /// Output only. The thumbnail URL for showing a preview of the given photo.
   core.String thumbnailUrl;
 
-  /// Required when creating photo. Input only. The resource URL where the photo
-  /// bytes are uploaded to.
+  /// Required when creating a photo. Input only. The resource URL where the
+  /// photo bytes are uploaded to.
   UploadRef uploadReference;
 
   /// Output only. View count of the photo.
@@ -1093,7 +1185,7 @@ class PhotoResponse {
 
 /// Place metadata for an entity.
 class Place {
-  /// Required. Place identifier, as described in
+  /// Place identifier, as described in
   /// https://developers.google.com/places/place-id.
   core.String placeId;
 
@@ -1309,9 +1401,11 @@ class UpdatePhotoRequest {
   Photo photo;
 
   /// Mask that identifies fields on the photo metadata to update.
-  /// If not present, the old Photo metadata will be entirely replaced with the
-  /// new Photo metadata in this request. The update fails if invalid fields are
-  /// specified. Multiple fields can be specified in a comma-delimited list.
+  /// If not present, the old Photo
+  /// metadata will be entirely replaced with the
+  /// new Photo metadata in this request.
+  /// The update fails if invalid fields are specified. Multiple fields can be
+  /// specified in a comma-delimited list.
   ///
   /// The following fields are valid:
   ///

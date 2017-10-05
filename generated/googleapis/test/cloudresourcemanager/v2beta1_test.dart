@@ -1034,10 +1034,10 @@ main() {
       var mock = new HttpServerMock();
       api.FoldersResourceApi res =
           new api.CloudresourcemanagerApi(mock).folders;
+      var arg_pageToken = "foo";
       var arg_pageSize = 42;
       var arg_parent = "foo";
       var arg_showDeleted = true;
-      var arg_pageToken = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1068,13 +1068,13 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(queryMap["parent"].first, unittest.equals(arg_parent));
         unittest.expect(
             queryMap["showDeleted"].first, unittest.equals("$arg_showDeleted"));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1084,10 +1084,10 @@ main() {
       }), true);
       res
           .list(
+              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
               parent: arg_parent,
-              showDeleted: arg_showDeleted,
-              pageToken: arg_pageToken)
+              showDeleted: arg_showDeleted)
           .then(unittest.expectAsync1(((api.ListFoldersResponse response) {
         checkListFoldersResponse(response);
       })));

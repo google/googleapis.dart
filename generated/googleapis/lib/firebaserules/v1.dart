@@ -270,6 +270,60 @@ class ProjectsReleasesResourceApi {
     return _response.then((data) => new Release.fromJson(data));
   }
 
+  /// Get the `Release` executable to use when enforcing rules.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name of the `Release`.
+  ///
+  /// Format: `projects/{project_id}/releases/{release_id}`
+  /// Value must have pattern "^projects/[^/]+/releases/.+$".
+  ///
+  /// [executableVersion] - The requested runtime executable version.
+  /// Defaults to FIREBASE_RULES_EXECUTABLE_V1
+  /// Possible string values are:
+  /// - "RELEASE_EXECUTABLE_VERSION_UNSPECIFIED" : A
+  /// RELEASE_EXECUTABLE_VERSION_UNSPECIFIED.
+  /// - "FIREBASE_RULES_EXECUTABLE_V1" : A FIREBASE_RULES_EXECUTABLE_V1.
+  /// - "FIREBASE_RULES_EXECUTABLE_V2" : A FIREBASE_RULES_EXECUTABLE_V2.
+  ///
+  /// Completes with a [GetReleaseExecutableResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GetReleaseExecutableResponse> getExecutable(core.String name,
+      {core.String executableVersion}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (executableVersion != null) {
+      _queryParams["executableVersion"] = [executableVersion];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':getExecutable';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GetReleaseExecutableResponse.fromJson(data));
+  }
+
   /// List the `Release` values for a project. This list may optionally be
   /// filtered by `Release` name, `Ruleset` name, `TestSuite` name, or any
   /// combination thereof.
@@ -577,6 +631,14 @@ class ProjectsRulesetsResourceApi {
   /// Format: `projects/{project_id}`
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageToken] - Next page token for loading the next batch of `Ruleset`
+  /// instances.
+  ///
+  /// [pageSize] - Page size to load. Maximum of 100. Defaults to 10.
+  /// Note: `page_size` is just a hint and the service may choose to load less
+  /// than `page_size` due to the size of the output. To traverse all of the
+  /// releases, caller should iterate until the `page_token` is empty.
+  ///
   /// [filter] - `Ruleset` filter. The list method supports filters with
   /// restrictions on
   /// `Ruleset.name`.
@@ -586,14 +648,6 @@ class ProjectsRulesetsResourceApi {
   ///
   /// Example: `create_time > date("2017-01-01") AND name=UUID-*`
   ///
-  /// [pageToken] - Next page token for loading the next batch of `Ruleset`
-  /// instances.
-  ///
-  /// [pageSize] - Page size to load. Maximum of 100. Defaults to 10.
-  /// Note: `page_size` is just a hint and the service may choose to load less
-  /// than `page_size` due to the size of the output. To traverse all of the
-  /// releases, caller should iterate until the `page_token` is empty.
-  ///
   /// Completes with a [ListRulesetsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -602,7 +656,7 @@ class ProjectsRulesetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRulesetsResponse> list(core.String name,
-      {core.String filter, core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -613,14 +667,14 @@ class ProjectsRulesetsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/rulesets';
@@ -825,6 +879,87 @@ class FunctionMock {
     }
     if (result != null) {
       _json["result"] = (result).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The response for FirebaseRulesService.GetReleaseExecutable
+class GetReleaseExecutableResponse {
+  /// Executable view of the `Ruleset` referenced by the `Release`.
+  core.String executable;
+  core.List<core.int> get executableAsBytes {
+    return convert.BASE64.decode(executable);
+  }
+
+  void set executableAsBytes(core.List<core.int> _bytes) {
+    executable =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// The Rules runtime version of the executable.
+  /// Possible string values are:
+  /// - "RELEASE_EXECUTABLE_VERSION_UNSPECIFIED" : Executable format
+  /// unspecified.
+  /// Defaults to FIREBASE_RULES_EXECUTABLE_V1
+  /// - "FIREBASE_RULES_EXECUTABLE_V1" : Firebase Rules syntax 'rules2'
+  /// executable versions:
+  /// Custom AST for use with Java clients.
+  /// - "FIREBASE_RULES_EXECUTABLE_V2" : CEL-based executable for use with C++
+  /// clients.
+  core.String executableVersion;
+
+  /// `Language` used to generate the executable bytes.
+  /// Possible string values are:
+  /// - "LANGUAGE_UNSPECIFIED" : Language unspecified. Defaults to
+  /// FIREBASE_RULES.
+  /// - "FIREBASE_RULES" : Firebase Rules language.
+  /// - "EVENT_FLOW_TRIGGERS" : Event Flow triggers.
+  core.String language;
+
+  /// `Ruleset` name associated with the `Release` executable.
+  core.String rulesetName;
+
+  /// Timestamp for the most recent `Release.update_time`.
+  core.String updateTime;
+
+  GetReleaseExecutableResponse();
+
+  GetReleaseExecutableResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("executable")) {
+      executable = _json["executable"];
+    }
+    if (_json.containsKey("executableVersion")) {
+      executableVersion = _json["executableVersion"];
+    }
+    if (_json.containsKey("language")) {
+      language = _json["language"];
+    }
+    if (_json.containsKey("rulesetName")) {
+      rulesetName = _json["rulesetName"];
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (executable != null) {
+      _json["executable"] = executable;
+    }
+    if (executableVersion != null) {
+      _json["executableVersion"] = executableVersion;
+    }
+    if (language != null) {
+      _json["language"] = language;
+    }
+    if (rulesetName != null) {
+      _json["rulesetName"] = rulesetName;
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
     }
     return _json;
   }

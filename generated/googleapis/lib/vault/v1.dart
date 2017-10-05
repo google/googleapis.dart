@@ -14,7 +14,15 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client vault/v1';
 
+/// Archiving and eDiscovery for G Suite.
 class VaultApi {
+  /// Manage your eDiscovery data
+  static const EdiscoveryScope = "https://www.googleapis.com/auth/ediscovery";
+
+  /// View your eDiscovery data
+  static const EdiscoveryReadonlyScope =
+      "https://www.googleapis.com/auth/ediscovery.readonly";
+
   final commons.ApiRequester _requester;
 
   MattersResourceApi get matters => new MattersResourceApi(_requester);
@@ -120,7 +128,10 @@ class MattersResourceApi {
     return _response.then((data) => new CloseMatterResponse.fromJson(data));
   }
 
-  /// Creates a new matter. Returns created matter with default view.
+  /// Creates a new matter with the given name and description. The initial
+  /// state
+  /// is open, and the owner is the method caller. Returns the created matter
+  /// with default view.
   ///
   /// [request] - The metadata request object.
   ///
@@ -252,6 +263,15 @@ class MattersResourceApi {
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
   ///
+  /// [state] - If set, list only matters with that specific state. The default
+  /// is listing
+  /// matters of all states.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : A STATE_UNSPECIFIED.
+  /// - "OPEN" : A OPEN.
+  /// - "CLOSED" : A CLOSED.
+  /// - "DELETED" : A DELETED.
+  ///
   /// Completes with a [ListMattersResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -260,7 +280,10 @@ class MattersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMattersResponse> list(
-      {core.String pageToken, core.int pageSize, core.String view}) {
+      {core.String pageToken,
+      core.int pageSize,
+      core.String view,
+      core.String state}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -276,6 +299,9 @@ class MattersResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (state != null) {
+      _queryParams["state"] = [state];
     }
 
     _url = 'v1/matters';

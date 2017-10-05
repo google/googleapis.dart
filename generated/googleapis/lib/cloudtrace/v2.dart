@@ -27,10 +27,6 @@ class CloudtraceApi {
   static const TraceAppendScope =
       "https://www.googleapis.com/auth/trace.append";
 
-  /// Read Trace data for a project or application
-  static const TraceReadonlyScope =
-      "https://www.googleapis.com/auth/trace.readonly";
-
   final commons.ApiRequester _requester;
 
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
@@ -109,156 +105,6 @@ class ProjectsTracesResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Empty.fromJson(data));
   }
-
-  /// Returns of a list of traces that match the specified filter conditions.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. The project where the trace data is stored. The
-  /// format
-  /// is `projects/PROJECT_ID`.
-  /// Value must have pattern "^projects/[^/]+$".
-  ///
-  /// [orderBy] - Optional. A single field used to sort the returned traces.
-  /// Only the following field names can be used:
-  ///
-  /// *   `trace_id`: the trace's ID field
-  /// *   `name`:  the root span's resource name
-  /// *   `duration`: the difference between the root span's start time and end
-  /// time
-  /// *   `start`:  the start time of the root span
-  ///
-  /// Sorting is in ascending order unless `desc` is appended to the sort field
-  /// name.
-  /// Example: `"name desc"`).
-  ///
-  /// [filter] - Opional. Return only traces that match this
-  /// [trace filter](/trace/docs/trace-filters). Example:
-  ///
-  ///     "label:/http/url root:/_ah/background my_label:17"
-  ///
-  /// [endTime] - Optional. Do not return traces whose start time is later than
-  /// this time.
-  ///
-  /// [pageToken] - Optional. If present, then retrieve the next batch of
-  /// results from the
-  /// preceding call to this method.  `page_token` must be the value of
-  /// `next_page_token` from the previous response.  The values of other method
-  /// parameters should be identical to those in the previous call.
-  ///
-  /// [startTime] - Optional. Do not return traces whose end time is earlier
-  /// than this time.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request.
-  /// Non-positive values are ignored. The presence of `next_page_token` in the
-  /// response indicates that more results might be available, even if fewer
-  /// than
-  /// the maximum number of results is returned by this request.
-  ///
-  /// Completes with a [ListTracesResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListTracesResponse> list(core.String parent,
-      {core.String orderBy,
-      core.String filter,
-      core.String endTime,
-      core.String pageToken,
-      core.String startTime,
-      core.int pageSize}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
-    }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (endTime != null) {
-      _queryParams["endTime"] = [endTime];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (startTime != null) {
-      _queryParams["startTime"] = [startTime];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-
-    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/traces';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListTracesResponse.fromJson(data));
-  }
-
-  /// Returns a list of spans within a trace.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required: The resource name of the trace containing the spans
-  /// to list.
-  /// The format is `projects/PROJECT_ID/traces/TRACE_ID`.
-  /// Value must have pattern "^projects/[^/]+/traces/[^/]+$".
-  ///
-  /// [pageToken] - Optional. If present, then retrieve the next batch of
-  /// results from the
-  /// preceding call to this method. `page_token` must be the value of
-  /// `next_page_token` from the previous response. The values of other method
-  /// parameters should be identical to those in the previous call.
-  ///
-  /// Completes with a [ListSpansResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListSpansResponse> listSpans(core.String parent,
-      {core.String pageToken}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (parent == null) {
-      throw new core.ArgumentError("Parameter parent is required.");
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-
-    _url =
-        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + ':listSpans';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new ListSpansResponse.fromJson(data));
-  }
 }
 
 class ProjectsTracesSpansResourceApi {
@@ -275,7 +121,7 @@ class ProjectsTracesSpansResourceApi {
   ///
   /// [name] - The resource name of the span in the following format:
   ///
-  /// projects/[PROJECT_ID]traces/[TRACE_ID]/spans/SPAN_ID is a unique
+  /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique
   /// identifier for a trace within a project.
   /// [SPAN_ID] is a unique identifier for a span within a trace,
   /// assigned when the span is created.
@@ -573,75 +419,6 @@ class Links {
   }
 }
 
-/// The response message for the `ListSpans` method.
-class ListSpansResponse {
-  /// If defined, indicates that there might be more spans that match the
-  /// request. Pass this as the value of `pageToken` in a subsequent request to
-  /// retrieve additional spans.
-  core.String nextPageToken;
-
-  /// The requested spans, if there are any in the specified trace.
-  core.List<Span> spans;
-
-  ListSpansResponse();
-
-  ListSpansResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
-    }
-    if (_json.containsKey("spans")) {
-      spans = _json["spans"].map((value) => new Span.fromJson(value)).toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
-    }
-    if (spans != null) {
-      _json["spans"] = spans.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/// The response message for the `ListTraces` method.
-class ListTracesResponse {
-  /// If there might be more results than those appearing in this response, then
-  /// `next_page_token` is included.  To get the next set of results, call this
-  /// method again using the value of `next_page_token` as `page_token`.
-  core.String nextPageToken;
-
-  /// List of trace records returned.
-  core.List<Trace> traces;
-
-  ListTracesResponse();
-
-  ListTracesResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("nextPageToken")) {
-      nextPageToken = _json["nextPageToken"];
-    }
-    if (_json.containsKey("traces")) {
-      traces =
-          _json["traces"].map((value) => new Trace.fromJson(value)).toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (nextPageToken != null) {
-      _json["nextPageToken"] = nextPageToken;
-    }
-    if (traces != null) {
-      _json["traces"] = traces.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
 /// Binary module.
 class Module {
   /// A unique identifier for the module, usually a hash of its
@@ -777,7 +554,7 @@ class Span {
 
   /// The resource name of the span in the following format:
   ///
-  /// projects/[PROJECT_ID]traces/[TRACE_ID]/spans/SPAN_ID is a unique
+  /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique
   /// identifier for a trace within a project.
   /// [SPAN_ID] is a unique identifier for a span within a trace,
   /// assigned when the span is created.
@@ -1165,7 +942,7 @@ class Status {
 
 /// A time-stamped annotation or network event in the Span.
 class TimeEvent {
-  /// One or more key:value pairs.
+  /// Text annotation with a set of attributes.
   Annotation annotation;
 
   /// An event describing an RPC message sent/received on the network.
@@ -1246,35 +1023,6 @@ class TimeEvents {
     }
     if (timeEvent != null) {
       _json["timeEvent"] = timeEvent.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/// A trace describes how long it takes for an application to perform some
-/// operations. It consists of a set of spans, each representing
-/// an operation and including time information and operation details.
-class Trace {
-  /// The resource name of the trace in the following format:
-  ///
-  /// projects/[PROJECT_ID]/traces/TRACE_ID is a unique identifier for a trace
-  /// within a project.
-  /// The ID is assigned when the trace is created.
-  core.String name;
-
-  Trace();
-
-  Trace.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (name != null) {
-      _json["name"] = name;
     }
     return _json;
   }

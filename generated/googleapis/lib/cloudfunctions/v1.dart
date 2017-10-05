@@ -165,11 +165,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// Completes with a [ListLocationsResponse].
   ///
@@ -179,7 +179,7 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String pageToken, core.int pageSize, core.String filter}) {
+      {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -190,14 +190,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url =
@@ -440,6 +440,10 @@ class OperationMetadataV1Beta2 {
   /// - "DELETE_FUNCTION" : Triggered by DeleteFunction call.
   core.String type;
 
+  /// Version id of the function created or updated by an API call.
+  /// This field is only pupulated for Create and Update operations.
+  core.String versionId;
+
   OperationMetadataV1Beta2();
 
   OperationMetadataV1Beta2.fromJson(core.Map _json) {
@@ -451,6 +455,9 @@ class OperationMetadataV1Beta2 {
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
+    }
+    if (_json.containsKey("versionId")) {
+      versionId = _json["versionId"];
     }
   }
 
@@ -465,6 +472,9 @@ class OperationMetadataV1Beta2 {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    if (versionId != null) {
+      _json["versionId"] = versionId;
     }
     return _json;
   }

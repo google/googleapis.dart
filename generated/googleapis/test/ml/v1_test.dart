@@ -1909,9 +1909,9 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsJobsResourceApi res = new api.MlApi(mock).projects.jobs;
       var arg_parent = "foo";
-      var arg_filter = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_filter = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1943,11 +1943,11 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1957,9 +1957,9 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              filter: arg_filter,
               pageToken: arg_pageToken,
-              pageSize: arg_pageSize)
+              pageSize: arg_pageSize,
+              filter: arg_filter)
           .then(unittest
               .expectAsync1(((api.GoogleCloudMlV1ListJobsResponse response) {
         checkGoogleCloudMlV1ListJobsResponse(response);
@@ -2330,6 +2330,61 @@ main() {
       })));
     });
 
+    unittest.test("method--patch", () {
+      var mock = new HttpServerMock();
+      api.ProjectsModelsResourceApi res = new api.MlApi(mock).projects.models;
+      var arg_request = buildGoogleCloudMlV1Model();
+      var arg_name = "foo";
+      var arg_updateMask = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.GoogleCloudMlV1Model.fromJson(json);
+        checkGoogleCloudMlV1Model(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildGoogleLongrunningOperation());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.patch(arg_request, arg_name, updateMask: arg_updateMask).then(
+          unittest.expectAsync1(((api.GoogleLongrunningOperation response) {
+        checkGoogleLongrunningOperation(response);
+      })));
+    });
+
     unittest.test("method--setIamPolicy", () {
       var mock = new HttpServerMock();
       api.ProjectsModelsResourceApi res = new api.MlApi(mock).projects.models;
@@ -2648,6 +2703,62 @@ main() {
       })));
     });
 
+    unittest.test("method--patch", () {
+      var mock = new HttpServerMock();
+      api.ProjectsModelsVersionsResourceApi res =
+          new api.MlApi(mock).projects.models.versions;
+      var arg_request = buildGoogleCloudMlV1Version();
+      var arg_name = "foo";
+      var arg_updateMask = "foo";
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api.GoogleCloudMlV1Version.fromJson(json);
+        checkGoogleCloudMlV1Version(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildGoogleLongrunningOperation());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.patch(arg_request, arg_name, updateMask: arg_updateMask).then(
+          unittest.expectAsync1(((api.GoogleLongrunningOperation response) {
+        checkGoogleLongrunningOperation(response);
+      })));
+    });
+
     unittest.test("method--setDefault", () {
       var mock = new HttpServerMock();
       api.ProjectsModelsVersionsResourceApi res =
@@ -2859,9 +2970,9 @@ main() {
       api.ProjectsOperationsResourceApi res =
           new api.MlApi(mock).projects.operations;
       var arg_name = "foo";
+      var arg_filter = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
-      var arg_filter = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2893,11 +3004,11 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2908,9 +3019,9 @@ main() {
       }), true);
       res
           .list(arg_name,
+              filter: arg_filter,
               pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
-              filter: arg_filter)
+              pageSize: arg_pageSize)
           .then(unittest.expectAsync1(
               ((api.GoogleLongrunningListOperationsResponse response) {
         checkGoogleLongrunningListOperationsResponse(response);

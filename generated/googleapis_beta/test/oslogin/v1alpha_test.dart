@@ -84,27 +84,27 @@ checkImportSshPublicKeyResponse(api.ImportSshPublicKeyResponse o) {
   buildCounterImportSshPublicKeyResponse--;
 }
 
-buildUnnamed3429() {
+buildUnnamed3604() {
   var o = new core.List<api.PosixAccount>();
   o.add(buildPosixAccount());
   o.add(buildPosixAccount());
   return o;
 }
 
-checkUnnamed3429(core.List<api.PosixAccount> o) {
+checkUnnamed3604(core.List<api.PosixAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPosixAccount(o[0]);
   checkPosixAccount(o[1]);
 }
 
-buildUnnamed3430() {
+buildUnnamed3605() {
   var o = new core.Map<core.String, api.SshPublicKey>();
   o["x"] = buildSshPublicKey();
   o["y"] = buildSshPublicKey();
   return o;
 }
 
-checkUnnamed3430(core.Map<core.String, api.SshPublicKey> o) {
+checkUnnamed3605(core.Map<core.String, api.SshPublicKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSshPublicKey(o["x"]);
   checkSshPublicKey(o["y"]);
@@ -116,8 +116,8 @@ buildLoginProfile() {
   buildCounterLoginProfile++;
   if (buildCounterLoginProfile < 3) {
     o.name = "foo";
-    o.posixAccounts = buildUnnamed3429();
-    o.sshPublicKeys = buildUnnamed3430();
+    o.posixAccounts = buildUnnamed3604();
+    o.sshPublicKeys = buildUnnamed3605();
     o.suspended = true;
   }
   buildCounterLoginProfile--;
@@ -128,8 +128,8 @@ checkLoginProfile(api.LoginProfile o) {
   buildCounterLoginProfile++;
   if (buildCounterLoginProfile < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed3429(o.posixAccounts);
-    checkUnnamed3430(o.sshPublicKeys);
+    checkUnnamed3604(o.posixAccounts);
+    checkUnnamed3605(o.sshPublicKeys);
     unittest.expect(o.suspended, unittest.isTrue);
   }
   buildCounterLoginProfile--;
@@ -141,12 +141,12 @@ buildPosixAccount() {
   buildCounterPosixAccount++;
   if (buildCounterPosixAccount < 3) {
     o.gecos = "foo";
-    o.gid = 42;
+    o.gid = "foo";
     o.homeDirectory = "foo";
     o.primary = true;
     o.shell = "foo";
     o.systemId = "foo";
-    o.uid = 42;
+    o.uid = "foo";
     o.username = "foo";
   }
   buildCounterPosixAccount--;
@@ -157,12 +157,12 @@ checkPosixAccount(api.PosixAccount o) {
   buildCounterPosixAccount++;
   if (buildCounterPosixAccount < 3) {
     unittest.expect(o.gecos, unittest.equals('foo'));
-    unittest.expect(o.gid, unittest.equals(42));
+    unittest.expect(o.gid, unittest.equals('foo'));
     unittest.expect(o.homeDirectory, unittest.equals('foo'));
     unittest.expect(o.primary, unittest.isTrue);
     unittest.expect(o.shell, unittest.equals('foo'));
     unittest.expect(o.systemId, unittest.equals('foo'));
-    unittest.expect(o.uid, unittest.equals(42));
+    unittest.expect(o.uid, unittest.equals('foo'));
     unittest.expect(o.username, unittest.equals('foo'));
   }
   buildCounterPosixAccount--;

@@ -172,11 +172,11 @@ class ProjectsServicesResourceApi {
   /// - projects/my-project
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Requested size of the next page of data.
-  ///
   /// [pageToken] - Token identifying which result to start with; returned by a
   /// previous list
   /// call.
+  ///
+  /// [pageSize] - Requested size of the next page of data.
   ///
   /// Completes with a [ListEnabledServicesResponse].
   ///
@@ -186,7 +186,7 @@ class ProjectsServicesResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListEnabledServicesResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken}) {
+      {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -197,11 +197,11 @@ class ProjectsServicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url =
@@ -694,62 +694,6 @@ class AuthorizationConfig {
   }
 }
 
-/// Authorization rule for API services.
-///
-/// It specifies the permission(s) required for an API element for the overall
-/// API request to succeed. It is typically used to mark request message fields
-/// that contain the name of the resource and indicates the permissions that
-/// will be checked on that resource.
-///
-/// For example:
-///
-///     package google.storage.v1;
-///
-///     message CopyObjectRequest {
-///       string source = 1 [
-///         (google.api.authz).permissions = "storage.objects.get"];
-///
-///       string destination = 2 [
-///         (google.api.authz).permissions =
-///             "storage.objects.create,storage.objects.update"];
-///     }
-class AuthorizationRule {
-  /// The required permissions. The acceptable values vary depend on the
-  /// authorization system used. For Google APIs, it should be a comma-separated
-  /// Google IAM permission values. When multiple permissions are listed, the
-  /// semantics is not defined by the system. Additional documentation must
-  /// be provided manually.
-  core.String permissions;
-
-  /// Selects the API elements to which this rule applies.
-  ///
-  /// Refer to selector for syntax details.
-  core.String selector;
-
-  AuthorizationRule();
-
-  AuthorizationRule.fromJson(core.Map _json) {
-    if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"];
-    }
-    if (_json.containsKey("selector")) {
-      selector = _json["selector"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (permissions != null) {
-      _json["permissions"] = permissions;
-    }
-    if (selector != null) {
-      _json["selector"] = selector;
-    }
-    return _json;
-  }
-}
-
 /// `Backend` defines the backend configuration for a service.
 class Backend {
   /// A list of API backend rules that apply to individual API methods.
@@ -783,8 +727,8 @@ class BackendRule {
   core.String address;
 
   /// The number of seconds to wait for a response from a request.  The default
-  /// deadline for gRPC and HTTP requests is 5 seconds. For Stubby requests,
-  /// the default is no deadline.
+  /// deadline for gRPC is infinite (no deadline) and HTTP requests is 5
+  /// seconds.
   core.double deadline;
 
   /// Minimum deadline in seconds needed for this method. Calls having deadline
@@ -827,6 +771,91 @@ class BackendRule {
     }
     if (selector != null) {
       _json["selector"] = selector;
+    }
+    return _json;
+  }
+}
+
+/// Billing related configuration of the service.
+///
+/// The following example shows how to configure monitored resources and metrics
+/// for billing:
+///
+///     monitored_resources:
+///     - type: library.googleapis.com/branch
+///       labels:
+///       - key: /city
+///         description: The city where the library branch is located in.
+///       - key: /name
+///         description: The name of the branch.
+///     metrics:
+///     - name: library.googleapis.com/book/borrowed_count
+///       metric_kind: DELTA
+///       value_type: INT64
+///     billing:
+///       consumer_destinations:
+///       - monitored_resource: library.googleapis.com/branch
+///         metrics:
+///         - library.googleapis.com/book/borrowed_count
+class Billing {
+  /// Billing configurations for sending metrics to the consumer project.
+  /// There can be multiple consumer destinations per service, each one must
+  /// have
+  /// a different monitored resource type. A metric can be used in at most
+  /// one consumer destination.
+  core.List<BillingDestination> consumerDestinations;
+
+  Billing();
+
+  Billing.fromJson(core.Map _json) {
+    if (_json.containsKey("consumerDestinations")) {
+      consumerDestinations = _json["consumerDestinations"]
+          .map((value) => new BillingDestination.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (consumerDestinations != null) {
+      _json["consumerDestinations"] =
+          consumerDestinations.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Configuration of a specific billing destination (Currently only support
+/// bill against consumer project).
+class BillingDestination {
+  /// Names of the metrics to report to this billing destination.
+  /// Each name must be defined in Service.metrics section.
+  core.List<core.String> metrics;
+
+  /// The monitored resource type. The type must be defined in
+  /// Service.monitored_resources section.
+  core.String monitoredResource;
+
+  BillingDestination();
+
+  BillingDestination.fromJson(core.Map _json) {
+    if (_json.containsKey("metrics")) {
+      metrics = _json["metrics"];
+    }
+    if (_json.containsKey("monitoredResource")) {
+      monitoredResource = _json["monitoredResource"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (metrics != null) {
+      _json["metrics"] = metrics;
+    }
+    if (monitoredResource != null) {
+      _json["monitoredResource"] = monitoredResource;
     }
     return _json;
   }
@@ -1926,13 +1955,6 @@ class HttpRule {
   /// the nesting may only be one level deep).
   core.List<HttpRule> additionalBindings;
 
-  /// Specifies the permission(s) required for an API element for the overall
-  /// API request to succeed. It is typically used to mark request message
-  /// fields
-  /// that contain the name of the resource and indicates the permissions that
-  /// will be checked on that resource.
-  core.List<AuthorizationRule> authorizations;
-
   /// The name of the request field whose value is mapped to the HTTP body, or
   /// `*` for mapping all fields not captured by the path pattern to the HTTP
   /// body. NOTE: the referred field must not be a repeated field and must be
@@ -1978,46 +2000,6 @@ class HttpRule {
   /// at the top-level of response message type.
   core.String responseBody;
 
-  /// DO NOT USE. This is an experimental field.
-  ///
-  /// Optional. The REST collection name is by default derived from the URL
-  /// pattern. If specified, this field overrides the default collection name.
-  /// Example:
-  ///
-  ///     rpc AddressesAggregatedList(AddressesAggregatedListRequest)
-  ///         returns (AddressesAggregatedListResponse) {
-  ///       option (google.api.http) = {
-  ///         get: "/v1/projects/{project_id}/aggregated/addresses"
-  ///         rest_collection: "projects.addresses"
-  ///       };
-  ///     }
-  ///
-  /// This method has the automatically derived collection name
-  /// "projects.aggregated". Because, semantically, this rpc is actually an
-  /// operation on the "projects.addresses" collection, the `rest_collection`
-  /// field is configured to override the derived collection name.
-  core.String restCollection;
-
-  /// DO NOT USE. This is an experimental field.
-  ///
-  /// Optional. The rest method name is by default derived from the URL
-  /// pattern. If specified, this field overrides the default method name.
-  /// Example:
-  ///
-  ///     rpc CreateResource(CreateResourceRequest)
-  ///         returns (CreateResourceResponse) {
-  ///       option (google.api.http) = {
-  ///         post: "/v1/resources",
-  ///         body: "resource",
-  ///         rest_method_name: "insert"
-  ///       };
-  ///     }
-  ///
-  /// This method has the automatically derived rest method name
-  /// "create", but for backwards compatibility with apiary, it is specified as
-  /// insert.
-  core.String restMethodName;
-
   /// Selects methods to which this rule applies.
   ///
   /// Refer to selector for syntax details.
@@ -2029,11 +2011,6 @@ class HttpRule {
     if (_json.containsKey("additionalBindings")) {
       additionalBindings = _json["additionalBindings"]
           .map((value) => new HttpRule.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("authorizations")) {
-      authorizations = _json["authorizations"]
-          .map((value) => new AuthorizationRule.fromJson(value))
           .toList();
     }
     if (_json.containsKey("body")) {
@@ -2066,12 +2043,6 @@ class HttpRule {
     if (_json.containsKey("responseBody")) {
       responseBody = _json["responseBody"];
     }
-    if (_json.containsKey("restCollection")) {
-      restCollection = _json["restCollection"];
-    }
-    if (_json.containsKey("restMethodName")) {
-      restMethodName = _json["restMethodName"];
-    }
     if (_json.containsKey("selector")) {
       selector = _json["selector"];
     }
@@ -2083,10 +2054,6 @@ class HttpRule {
     if (additionalBindings != null) {
       _json["additionalBindings"] =
           additionalBindings.map((value) => (value).toJson()).toList();
-    }
-    if (authorizations != null) {
-      _json["authorizations"] =
-          authorizations.map((value) => (value).toJson()).toList();
     }
     if (body != null) {
       _json["body"] = body;
@@ -2117,12 +2084,6 @@ class HttpRule {
     }
     if (responseBody != null) {
       _json["responseBody"] = responseBody;
-    }
-    if (restCollection != null) {
-      _json["restCollection"] = restCollection;
-    }
-    if (restMethodName != null) {
-      _json["restMethodName"] = restMethodName;
     }
     if (selector != null) {
       _json["selector"] = selector;
@@ -3832,6 +3793,9 @@ class Service {
   /// API backend configuration.
   Backend backend;
 
+  /// Billing configuration.
+  Billing billing;
+
   /// The semantic version of the service configuration. The config version
   /// affects the interpretation of the service configuration. For example,
   /// certain features are enabled by default for certain config versions.
@@ -3946,6 +3910,9 @@ class Service {
     if (_json.containsKey("backend")) {
       backend = new Backend.fromJson(_json["backend"]);
     }
+    if (_json.containsKey("billing")) {
+      billing = new Billing.fromJson(_json["billing"]);
+    }
     if (_json.containsKey("configVersion")) {
       configVersion = _json["configVersion"];
     }
@@ -4045,6 +4012,9 @@ class Service {
     }
     if (backend != null) {
       _json["backend"] = (backend).toJson();
+    }
+    if (billing != null) {
+      _json["billing"] = (billing).toJson();
     }
     if (configVersion != null) {
       _json["configVersion"] = configVersion;

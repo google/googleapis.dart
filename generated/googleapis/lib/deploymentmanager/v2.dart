@@ -1654,10 +1654,10 @@ class Deployment {
         convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// [Output Only] Unique identifier for the resource; defined by the server.
+  /// Output only. Unique identifier for the resource; defined by the server.
   core.String id;
 
-  /// [Output Only] Timestamp when the deployment was created, in RFC3339 text
+  /// Output only. Timestamp when the deployment was created, in RFC3339 text
   /// format .
   core.String insertTime;
 
@@ -1669,7 +1669,7 @@ class Deployment {
   /// ([a-z]([-a-z0-9]*[a-z0-9])?)?
   core.List<DeploymentLabelEntry> labels;
 
-  /// [Output Only] URL of the manifest representing the last manifest that was
+  /// Output only. URL of the manifest representing the last manifest that was
   /// successfully deployed.
   core.String manifest;
 
@@ -1682,18 +1682,18 @@ class Deployment {
   /// dash.
   core.String name;
 
-  /// [Output Only] The Operation that most recently ran, or is currently
+  /// Output only. The Operation that most recently ran, or is currently
   /// running, on this deployment.
   Operation operation;
 
-  /// [Output Only] Self link for the deployment.
+  /// Output only. Self link for the deployment.
   core.String selfLink;
 
   /// [Input Only] The parameters that define your deployment, including the
   /// deployment configuration and relevant templates.
   TargetConfiguration target;
 
-  /// [Output Only] If Deployment Manager is currently updating or previewing an
+  /// Output only. If Deployment Manager is currently updating or previewing an
   /// update to this deployment, the updated configuration appears here.
   DeploymentUpdate update;
 
@@ -1806,11 +1806,11 @@ class DeploymentLabelEntry {
 }
 
 class DeploymentUpdate {
-  /// [Output Only] An optional user-provided description of the deployment
-  /// after the current update has been applied.
+  /// Output only. An optional user-provided description of the deployment after
+  /// the current update has been applied.
   core.String description;
 
-  /// [Output Only] Map of labels; provided by the client when the resource is
+  /// Output only. Map of labels; provided by the client when the resource is
   /// created or updated. Specifically: Label keys must be between 1 and 63
   /// characters long and must conform to the following regular expression:
   /// [a-z]([-a-z0-9]*[a-z0-9])? Label values must be between 0 and 63
@@ -1818,7 +1818,7 @@ class DeploymentUpdate {
   /// ([a-z]([-a-z0-9]*[a-z0-9])?)?
   core.List<DeploymentUpdateLabelEntry> labels;
 
-  /// [Output Only] URL of the manifest representing the update configuration of
+  /// Output only. URL of the manifest representing the update configuration of
   /// this deployment.
   core.String manifest;
 
@@ -1924,10 +1924,10 @@ class DeploymentsCancelPreviewRequest {
 /// A response containing a partial list of deployments and a page token used to
 /// build the next request if the request has been truncated.
 class DeploymentsListResponse {
-  /// [Output Only] The deployments contained in this response.
+  /// Output only. The deployments contained in this response.
   core.List<Deployment> deployments;
 
-  /// [Output Only] A token used to continue a truncated list request.
+  /// Output only. A token used to continue a truncated list request.
   core.String nextPageToken;
 
   DeploymentsListResponse();
@@ -2238,30 +2238,32 @@ class LogConfigDataAccessOptions {
 }
 
 class Manifest {
-  /// [Output Only] The YAML configuration for this manifest.
+  /// Output only. The YAML configuration for this manifest.
   ConfigFile config;
 
-  /// [Output Only] The fully-expanded configuration file, including any
+  /// Output only. The fully-expanded configuration file, including any
   /// templates and references.
   core.String expandedConfig;
 
-  /// [Output Only] Unique identifier for the resource; defined by the server.
+  /// Output only. Unique identifier for the resource; defined by the server.
   core.String id;
 
-  /// [Output Only] The imported files for this manifest.
+  /// Output only. The imported files for this manifest.
   core.List<ImportFile> imports;
 
-  /// [Output Only] Timestamp when the manifest was created, in RFC3339 text
+  /// Output only. Timestamp when the manifest was created, in RFC3339 text
   /// format.
   core.String insertTime;
 
-  /// [Output Only] The YAML layout for this manifest.
+  /// Output only. The YAML layout for this manifest.
   core.String layout;
 
-  /// [Output Only] The name of the manifest.
+  /// Output only.
+  ///
+  /// The name of the manifest.
   core.String name;
 
-  /// [Output Only] Self link for the manifest.
+  /// Output only. Self link for the manifest.
   core.String selfLink;
 
   Manifest();
@@ -2329,10 +2331,10 @@ class Manifest {
 /// A response containing a partial list of manifests and a page token used to
 /// build the next request if the request has been truncated.
 class ManifestsListResponse {
-  /// [Output Only] Manifests contained in this list response.
+  /// Output only. Manifests contained in this list response.
   core.List<Manifest> manifests;
 
-  /// [Output Only] A token used to continue a truncated list request.
+  /// Output only. A token used to continue a truncated list request.
   core.String nextPageToken;
 
   ManifestsListResponse();
@@ -2761,10 +2763,10 @@ class Operation {
 /// A response containing a partial list of operations and a page token used to
 /// build the next request if the request has been truncated.
 class OperationsListResponse {
-  /// [Output Only] A token used to continue a truncated list request.
+  /// Output only. A token used to continue a truncated list request.
   core.String nextPageToken;
 
-  /// [Output Only] Operations contained in this list response.
+  /// Output only. Operations contained in this list response.
   core.List<Operation> operations;
 
   OperationsListResponse();
@@ -2995,44 +2997,44 @@ class Resource {
   /// The Access Control Policy set on this resource.
   ResourceAccessControl accessControl;
 
-  /// [Output Only] The evaluated properties of the resource with references
+  /// Output only. The evaluated properties of the resource with references
   /// expanded. Returned as serialized YAML.
   core.String finalProperties;
 
-  /// [Output Only] Unique identifier for the resource; defined by the server.
+  /// Output only. Unique identifier for the resource; defined by the server.
   core.String id;
 
-  /// [Output Only] Timestamp when the resource was created or acquired, in
+  /// Output only. Timestamp when the resource was created or acquired, in
   /// RFC3339 text format .
   core.String insertTime;
 
-  /// [Output Only] URL of the manifest representing the current configuration
-  /// of this resource.
+  /// Output only. URL of the manifest representing the current configuration of
+  /// this resource.
   core.String manifest;
 
-  /// [Output Only] The name of the resource as it appears in the YAML config.
+  /// Output only. The name of the resource as it appears in the YAML config.
   core.String name;
 
-  /// [Output Only] The current properties of the resource before any references
+  /// Output only. The current properties of the resource before any references
   /// have been filled in. Returned as serialized YAML.
   core.String properties;
 
-  /// [Output Only] The type of the resource, for example compute.v1.instance,
-  /// or cloudfunctions.v1beta1.function.
+  /// Output only. The type of the resource, for example compute.v1.instance, or
+  /// cloudfunctions.v1beta1.function.
   core.String type;
 
-  /// [Output Only] If Deployment Manager is currently updating or previewing an
+  /// Output only. If Deployment Manager is currently updating or previewing an
   /// update to this resource, the updated configuration appears here.
   ResourceUpdate update;
 
-  /// [Output Only] Timestamp when the resource was updated, in RFC3339 text
+  /// Output only. Timestamp when the resource was updated, in RFC3339 text
   /// format .
   core.String updateTime;
 
-  /// [Output Only] The URL of the actual resource.
+  /// Output only. The URL of the actual resource.
   core.String url;
 
-  /// [Output Only] If warning messages are generated during processing of this
+  /// Output only. If warning messages are generated during processing of this
   /// resource, this field will be populated.
   core.List<ResourceWarnings> warnings;
 
@@ -3187,7 +3189,7 @@ class ResourceUpdateErrorErrors {
   }
 }
 
-/// [Output Only] If errors are generated during update of the resource, this
+/// Output only. If errors are generated during update of the resource, this
 /// field will be populated.
 class ResourceUpdateError {
   /// [Output Only] The array of errors encountered while processing this
@@ -3301,29 +3303,29 @@ class ResourceUpdate {
   /// resource itself.
   ResourceAccessControl accessControl;
 
-  /// [Output Only] If errors are generated during update of the resource, this
+  /// Output only. If errors are generated during update of the resource, this
   /// field will be populated.
   ResourceUpdateError error;
 
-  /// [Output Only] The expanded properties of the resource with reference
-  /// values expanded. Returned as serialized YAML.
+  /// Output only. The expanded properties of the resource with reference values
+  /// expanded. Returned as serialized YAML.
   core.String finalProperties;
 
-  /// [Output Only] The intent of the resource: PREVIEW, UPDATE, or CANCEL.
+  /// Output only. The intent of the resource: PREVIEW, UPDATE, or CANCEL.
   core.String intent;
 
-  /// [Output Only] URL of the manifest representing the update configuration of
+  /// Output only. URL of the manifest representing the update configuration of
   /// this resource.
   core.String manifest;
 
-  /// [Output Only] The set of updated properties for this resource, before
+  /// Output only. The set of updated properties for this resource, before
   /// references are expanded. Returned as serialized YAML.
   core.String properties;
 
-  /// [Output Only] The state of the resource.
+  /// Output only. The state of the resource.
   core.String state;
 
-  /// [Output Only] If warning messages are generated during processing of this
+  /// Output only. If warning messages are generated during processing of this
   /// resource, this field will be populated.
   core.List<ResourceUpdateWarnings> warnings;
 
@@ -3430,7 +3432,8 @@ class Rule {
   /// Required
   core.String action;
 
-  /// Additional restrictions that must be met
+  /// Additional restrictions that must be met. All conditions must pass for the
+  /// rule to match.
   core.List<Condition> conditions;
 
   /// Human-readable description of the rule.
@@ -3596,20 +3599,20 @@ class TestPermissionsResponse {
 
 /// A resource type supported by Deployment Manager.
 class Type {
-  /// [Output Only] Unique identifier for the resource; defined by the server.
+  /// Output only. Unique identifier for the resource; defined by the server.
   core.String id;
 
-  /// [Output Only] Timestamp when the type was created, in RFC3339 text format.
+  /// Output only. Timestamp when the type was created, in RFC3339 text format.
   core.String insertTime;
 
   /// Name of the type.
   core.String name;
 
-  /// [Output Only] The Operation that most recently ran, or is currently
+  /// Output only. The Operation that most recently ran, or is currently
   /// running, on this type.
   Operation operation;
 
-  /// [Output Only] Self link for the type.
+  /// Output only. Self link for the type.
   core.String selfLink;
 
   Type();
@@ -3659,7 +3662,7 @@ class TypesListResponse {
   /// A token used to continue a truncated list request.
   core.String nextPageToken;
 
-  /// [Output Only] A list of resource types supported by Deployment Manager.
+  /// Output only. A list of resource types supported by Deployment Manager.
   core.List<Type> types;
 
   TypesListResponse();

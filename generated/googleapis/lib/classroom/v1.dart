@@ -16,6 +16,14 @@ const core.String USER_AGENT = 'dart-api-client classroom/v1';
 
 /// Manages classes, rosters, and invitations in Google Classroom.
 class ClassroomApi {
+  /// View and manage announcements in Google Classroom
+  static const ClassroomAnnouncementsScope =
+      "https://www.googleapis.com/auth/classroom.announcements";
+
+  /// View announcements in Google Classroom
+  static const ClassroomAnnouncementsReadonlyScope =
+      "https://www.googleapis.com/auth/classroom.announcements.readonly";
+
   /// Manage your Google Classroom classes
   static const ClassroomCoursesScope =
       "https://www.googleapis.com/auth/classroom.courses";
@@ -84,6 +92,8 @@ class ClassroomApi {
   CoursesResourceApi get courses => new CoursesResourceApi(_requester);
   InvitationsResourceApi get invitations =>
       new InvitationsResourceApi(_requester);
+  RegistrationsResourceApi get registrations =>
+      new RegistrationsResourceApi(_requester);
   UserProfilesResourceApi get userProfiles =>
       new UserProfilesResourceApi(_requester);
 
@@ -99,6 +109,8 @@ class CoursesResourceApi {
 
   CoursesAliasesResourceApi get aliases =>
       new CoursesAliasesResourceApi(_requester);
+  CoursesAnnouncementsResourceApi get announcements =>
+      new CoursesAnnouncementsResourceApi(_requester);
   CoursesCourseWorkResourceApi get courseWork =>
       new CoursesCourseWorkResourceApi(_requester);
   CoursesStudentsResourceApi get students =>
@@ -660,6 +672,423 @@ class CoursesAliasesResourceApi {
   }
 }
 
+class CoursesAnnouncementsResourceApi {
+  final commons.ApiRequester _requester;
+
+  CoursesAnnouncementsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates an announcement.
+  ///
+  /// This method returns the following error codes:
+  ///
+  /// * `PERMISSION_DENIED` if the requesting user is not permitted to access
+  /// the
+  /// requested course, create announcements in the requested course, share a
+  /// Drive attachment, or for access errors.
+  /// * `INVALID_ARGUMENT` if the request is malformed.
+  /// * `NOT_FOUND` if the requested course does not exist.
+  /// * `FAILED_PRECONDITION` for the following request error:
+  ///     * AttachmentNotVisible
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Identifier of the course.
+  /// This identifier can be either the Classroom-assigned identifier or an
+  /// alias.
+  ///
+  /// Completes with a [Announcement].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Announcement> create(
+      Announcement request, core.String courseId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (courseId == null) {
+      throw new core.ArgumentError("Parameter courseId is required.");
+    }
+
+    _url = 'v1/courses/' +
+        commons.Escaper.ecapeVariable('$courseId') +
+        '/announcements';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Announcement.fromJson(data));
+  }
+
+  /// Deletes an announcement.
+  ///
+  /// This request must be made by the Developer Console project of the
+  /// [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to
+  /// create the corresponding announcement item.
+  ///
+  /// This method returns the following error codes:
+  ///
+  /// * `PERMISSION_DENIED` if the requesting developer project did not create
+  /// the corresponding announcement, if the requesting user is not permitted
+  /// to delete the requested course or for access errors.
+  /// * `FAILED_PRECONDITION` if the requested announcement has already been
+  /// deleted.
+  /// * `NOT_FOUND` if no course exists with the requested ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Identifier of the course.
+  /// This identifier can be either the Classroom-assigned identifier or an
+  /// alias.
+  ///
+  /// [id] - Identifier of the announcement to delete.
+  /// This identifier is a Classroom-assigned identifier.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String courseId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (courseId == null) {
+      throw new core.ArgumentError("Parameter courseId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+    _url = 'v1/courses/' +
+        commons.Escaper.ecapeVariable('$courseId') +
+        '/announcements/' +
+        commons.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Returns an announcement.
+  ///
+  /// This method returns the following error codes:
+  ///
+  /// * `PERMISSION_DENIED` if the requesting user is not permitted to access
+  /// the
+  /// requested course or announcement, or for access errors.
+  /// * `INVALID_ARGUMENT` if the request is malformed.
+  /// * `NOT_FOUND` if the requested course or announcement does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Identifier of the course.
+  /// This identifier can be either the Classroom-assigned identifier or an
+  /// alias.
+  ///
+  /// [id] - Identifier of the announcement.
+  ///
+  /// Completes with a [Announcement].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Announcement> get(core.String courseId, core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (courseId == null) {
+      throw new core.ArgumentError("Parameter courseId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+    _url = 'v1/courses/' +
+        commons.Escaper.ecapeVariable('$courseId') +
+        '/announcements/' +
+        commons.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Announcement.fromJson(data));
+  }
+
+  /// Returns a list of announcements that the requester is permitted to view.
+  ///
+  /// Course students may only view `PUBLISHED` announcements. Course teachers
+  /// and domain administrators may view all announcements.
+  ///
+  /// This method returns the following error codes:
+  ///
+  /// * `PERMISSION_DENIED` if the requesting user is not permitted to access
+  /// the requested course or for access errors.
+  /// * `INVALID_ARGUMENT` if the request is malformed.
+  /// * `NOT_FOUND` if the requested course does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Identifier of the course.
+  /// This identifier can be either the Classroom-assigned identifier or an
+  /// alias.
+  ///
+  /// [announcementStates] - Restriction on the `state` of announcements
+  /// returned.
+  /// If this argument is left unspecified, the default value is `PUBLISHED`.
+  ///
+  /// [pageToken] - nextPageToken
+  /// value returned from a previous
+  /// list call,
+  /// indicating that the subsequent page of results should be returned.
+  ///
+  /// The list request
+  /// must be otherwise identical to the one that resulted in this token.
+  ///
+  /// [orderBy] - Optional sort ordering for results. A comma-separated list of
+  /// fields with
+  /// an optional sort direction keyword. Supported field is `updateTime`.
+  /// Supported direction keywords are `asc` and `desc`.
+  /// If not specified, `updateTime desc` is the default behavior.
+  /// Examples: `updateTime asc`, `updateTime`
+  ///
+  /// [pageSize] - Maximum number of items to return. Zero or unspecified
+  /// indicates that the
+  /// server may assign a maximum.
+  ///
+  /// The server may return fewer than the specified number of results.
+  ///
+  /// Completes with a [ListAnnouncementsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAnnouncementsResponse> list(core.String courseId,
+      {core.List<core.String> announcementStates,
+      core.String pageToken,
+      core.String orderBy,
+      core.int pageSize}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (courseId == null) {
+      throw new core.ArgumentError("Parameter courseId is required.");
+    }
+    if (announcementStates != null) {
+      _queryParams["announcementStates"] = announcementStates;
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+
+    _url = 'v1/courses/' +
+        commons.Escaper.ecapeVariable('$courseId') +
+        '/announcements';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListAnnouncementsResponse.fromJson(data));
+  }
+
+  /// Modifies assignee mode and options of an announcement.
+  ///
+  /// Only a teacher of the course that contains the announcement may
+  /// call this method.
+  ///
+  /// This method returns the following error codes:
+  ///
+  /// * `PERMISSION_DENIED` if the requesting user is not permitted to access
+  /// the
+  /// requested course or course work or for access errors.
+  /// * `INVALID_ARGUMENT` if the request is malformed.
+  /// * `NOT_FOUND` if the requested course or course work does not exist.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Identifier of the course.
+  /// This identifier can be either the Classroom-assigned identifier or an
+  /// alias.
+  ///
+  /// [id] - Identifier of the announcement.
+  ///
+  /// Completes with a [Announcement].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Announcement> modifyAssignees(
+      ModifyAnnouncementAssigneesRequest request,
+      core.String courseId,
+      core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (courseId == null) {
+      throw new core.ArgumentError("Parameter courseId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+    _url = 'v1/courses/' +
+        commons.Escaper.ecapeVariable('$courseId') +
+        '/announcements/' +
+        commons.Escaper.ecapeVariable('$id') +
+        ':modifyAssignees';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Announcement.fromJson(data));
+  }
+
+  /// Updates one or more fields of an announcement.
+  ///
+  /// This method returns the following error codes:
+  ///
+  /// * `PERMISSION_DENIED` if the requesting developer project did not create
+  /// the corresponding announcement or for access errors.
+  /// * `INVALID_ARGUMENT` if the request is malformed.
+  /// * `FAILED_PRECONDITION` if the requested announcement has already been
+  /// deleted.
+  /// * `NOT_FOUND` if the requested course or announcement does not exist
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Identifier of the course.
+  /// This identifier can be either the Classroom-assigned identifier or an
+  /// alias.
+  ///
+  /// [id] - Identifier of the announcement.
+  ///
+  /// [updateMask] - Mask that identifies which fields on the announcement to
+  /// update.
+  /// This field is required to do an update. The update fails if invalid
+  /// fields are specified. If a field supports empty values, it can be cleared
+  /// by specifying it in the update mask and not in the Announcement object. If
+  /// a field that does not support empty values is included in the update mask
+  /// and not set in the Announcement object, an `INVALID_ARGUMENT` error will
+  /// be
+  /// returned.
+  ///
+  /// The following fields may be specified by teachers:
+  ///
+  /// * `text`
+  /// * `state`
+  /// * `scheduled_time`
+  ///
+  /// Completes with a [Announcement].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Announcement> patch(
+      Announcement request, core.String courseId, core.String id,
+      {core.String updateMask}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (courseId == null) {
+      throw new core.ArgumentError("Parameter courseId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+
+    _url = 'v1/courses/' +
+        commons.Escaper.ecapeVariable('$courseId') +
+        '/announcements/' +
+        commons.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Announcement.fromJson(data));
+  }
+}
+
 class CoursesCourseWorkResourceApi {
   final commons.ApiRequester _requester;
 
@@ -938,6 +1367,72 @@ class CoursesCourseWorkResourceApi {
     return _response.then((data) => new ListCourseWorkResponse.fromJson(data));
   }
 
+  /// Modifies assignee mode and options of a coursework.
+  ///
+  /// Only a teacher of the course that contains the coursework may
+  /// call this method.
+  ///
+  /// This method returns the following error codes:
+  ///
+  /// * `PERMISSION_DENIED` if the requesting user is not permitted to access
+  /// the
+  /// requested course or course work or for access errors.
+  /// * `INVALID_ARGUMENT` if the request is malformed.
+  /// * `NOT_FOUND` if the requested course or course work does not exist.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Identifier of the course.
+  /// This identifier can be either the Classroom-assigned identifier or an
+  /// alias.
+  ///
+  /// [id] - Identifier of the coursework.
+  ///
+  /// Completes with a [CourseWork].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CourseWork> modifyAssignees(
+      ModifyCourseWorkAssigneesRequest request,
+      core.String courseId,
+      core.String id) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (courseId == null) {
+      throw new core.ArgumentError("Parameter courseId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+
+    _url = 'v1/courses/' +
+        commons.Escaper.ecapeVariable('$courseId') +
+        '/courseWork/' +
+        commons.Escaper.ecapeVariable('$id') +
+        ':modifyAssignees';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new CourseWork.fromJson(data));
+  }
+
   /// Updates one or more fields of a course work.
   ///
   /// See google.classroom.v1.CourseWork for details
@@ -980,6 +1475,7 @@ class CoursesCourseWorkResourceApi {
   /// returned.
   ///
   /// The following fields may be specified by teachers:
+  ///
   /// * `title`
   /// * `description`
   /// * `state`
@@ -1341,6 +1837,7 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// fields are specified.
   ///
   /// The following fields may be specified by teachers:
+  ///
   /// * `draft_grade`
   /// * `assigned_grade`
   ///
@@ -2412,6 +2909,117 @@ class InvitationsResourceApi {
   }
 }
 
+class RegistrationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  RegistrationsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a `Registration`, causing Classroom to start sending notifications
+  /// from the provided `feed` to the provided `destination`.
+  ///
+  /// Returns the created `Registration`. Currently, this will be the same as
+  /// the argument, but with server-assigned fields such as `expiry_time` and
+  /// `id` filled in.
+  ///
+  /// Note that any value specified for the `expiry_time` or `id` fields will be
+  /// ignored.
+  ///
+  /// While Classroom may validate the `destination` and return errors on a best
+  /// effort basis, it is the caller's responsibility to ensure that it exists
+  /// and that Classroom has permission to publish to it.
+  ///
+  /// This method may return the following error codes:
+  ///
+  /// * `PERMISSION_DENIED` if:
+  ///   * the authenticated user does not have permission to receive
+  ///     notifications from the requested field; or
+  /// * the credential provided does not include the appropriate scope for the
+  ///     requested feed.
+  ///   * another access error is encountered.
+  /// * `INVALID_ARGUMENT` if:
+  ///   * no `destination` is specified, or the specified `destination` is not
+  ///     valid; or
+  ///   * no `feed` is specified, or the specified `feed` is not valid.
+  /// * `NOT_FOUND` if:
+  /// * the specified `feed` cannot be located, or the requesting user does not
+  ///     have permission to determine whether or not it exists; or
+  ///   * the specified `destination` cannot be located, or Classroom has not
+  ///     been granted permission to publish to it.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [Registration].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Registration> create(Registration request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'v1/registrations';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Registration.fromJson(data));
+  }
+
+  /// Deletes a `Registration`, causing Classroom to stop sending notifications
+  /// for that `Registration`.
+  ///
+  /// Request parameters:
+  ///
+  /// [registrationId] - The `registration_id` of the `Registration` to be
+  /// deleted.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String registrationId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (registrationId == null) {
+      throw new core.ArgumentError("Parameter registrationId is required.");
+    }
+
+    _url =
+        'v1/registrations/' + commons.Escaper.ecapeVariable('$registrationId');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+}
+
 class UserProfilesResourceApi {
   final commons.ApiRequester _requester;
 
@@ -3030,6 +3638,172 @@ class UserProfilesGuardiansResourceApi {
   }
 }
 
+/// Announcement created by a teacher for students of the course
+class Announcement {
+  /// Absolute link to this announcement in the Classroom web UI.
+  /// This is only populated if `state` is `PUBLISHED`.
+  ///
+  /// Read-only.
+  core.String alternateLink;
+
+  /// Assignee mode of the announcement.
+  /// If unspecified, the default value is `ALL_STUDENTS`.
+  /// Possible string values are:
+  /// - "ASSIGNEE_MODE_UNSPECIFIED" : No mode specified. This is never returned.
+  /// - "ALL_STUDENTS" : All students can see the item.
+  /// This is the default state.
+  /// - "INDIVIDUAL_STUDENTS" : A subset of the students can see the item.
+  core.String assigneeMode;
+
+  /// Identifier of the course.
+  ///
+  /// Read-only.
+  core.String courseId;
+
+  /// Timestamp when this announcement was created.
+  ///
+  /// Read-only.
+  core.String creationTime;
+
+  /// Identifier for the user that created the announcement.
+  ///
+  /// Read-only.
+  core.String creatorUserId;
+
+  /// Classroom-assigned identifier of this announcement, unique per course.
+  ///
+  /// Read-only.
+  core.String id;
+
+  /// Identifiers of students with access to the announcement.
+  /// This field is set only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.
+  /// If the `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students
+  /// specified in this
+  /// field will be able to see the announcement.
+  IndividualStudentsOptions individualStudentsOptions;
+
+  /// Additional materials.
+  ///
+  /// Announcements must have no more than 20 material items.
+  core.List<Material> materials;
+
+  /// Optional timestamp when this announcement is scheduled to be published.
+  core.String scheduledTime;
+
+  /// Status of this announcement.
+  /// If unspecified, the default state is `DRAFT`.
+  /// Possible string values are:
+  /// - "ANNOUNCEMENT_STATE_UNSPECIFIED" : No state specified. This is never
+  /// returned.
+  /// - "PUBLISHED" : Status for announcement that has been published.
+  /// This is the default state.
+  /// - "DRAFT" : Status for an announcement that is not yet published.
+  /// Announcement in this state is visible only to course teachers and domain
+  /// administrators.
+  /// - "DELETED" : Status for announcement that was published but is now
+  /// deleted.
+  /// Announcement in this state is visible only to course teachers and domain
+  /// administrators.
+  /// Announcement in this state is deleted after some time.
+  core.String state;
+
+  /// Description of this announcement.
+  /// The text must be a valid UTF-8 string containing no more
+  /// than 30,000 characters.
+  core.String text;
+
+  /// Timestamp of the most recent change to this announcement.
+  ///
+  /// Read-only.
+  core.String updateTime;
+
+  Announcement();
+
+  Announcement.fromJson(core.Map _json) {
+    if (_json.containsKey("alternateLink")) {
+      alternateLink = _json["alternateLink"];
+    }
+    if (_json.containsKey("assigneeMode")) {
+      assigneeMode = _json["assigneeMode"];
+    }
+    if (_json.containsKey("courseId")) {
+      courseId = _json["courseId"];
+    }
+    if (_json.containsKey("creationTime")) {
+      creationTime = _json["creationTime"];
+    }
+    if (_json.containsKey("creatorUserId")) {
+      creatorUserId = _json["creatorUserId"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("individualStudentsOptions")) {
+      individualStudentsOptions = new IndividualStudentsOptions.fromJson(
+          _json["individualStudentsOptions"]);
+    }
+    if (_json.containsKey("materials")) {
+      materials = _json["materials"]
+          .map((value) => new Material.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("scheduledTime")) {
+      scheduledTime = _json["scheduledTime"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+    if (_json.containsKey("text")) {
+      text = _json["text"];
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (alternateLink != null) {
+      _json["alternateLink"] = alternateLink;
+    }
+    if (assigneeMode != null) {
+      _json["assigneeMode"] = assigneeMode;
+    }
+    if (courseId != null) {
+      _json["courseId"] = courseId;
+    }
+    if (creationTime != null) {
+      _json["creationTime"] = creationTime;
+    }
+    if (creatorUserId != null) {
+      _json["creatorUserId"] = creatorUserId;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (individualStudentsOptions != null) {
+      _json["individualStudentsOptions"] = (individualStudentsOptions).toJson();
+    }
+    if (materials != null) {
+      _json["materials"] = materials.map((value) => (value).toJson()).toList();
+    }
+    if (scheduledTime != null) {
+      _json["scheduledTime"] = scheduledTime;
+    }
+    if (state != null) {
+      _json["state"] = state;
+    }
+    if (text != null) {
+      _json["text"] = text;
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
+    }
+    return _json;
+  }
+}
+
 /// Additional details for assignments.
 class Assignment {
   /// Drive folder where attachments from student submissions are placed.
@@ -3134,6 +3908,34 @@ class Attachment {
     }
     if (youTubeVideo != null) {
       _json["youTubeVideo"] = (youTubeVideo).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A reference to a Cloud Pub/Sub topic.
+///
+/// To register for notifications, the owner of the topic must grant
+/// `classroom-notifications@system.gserviceaccount.com` the
+///  `projects.topics.publish` permission.
+class CloudPubsubTopic {
+  /// The `name` field of a Cloud Pub/Sub
+  /// [Topic](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic).
+  core.String topicName;
+
+  CloudPubsubTopic();
+
+  CloudPubsubTopic.fromJson(core.Map _json) {
+    if (_json.containsKey("topicName")) {
+      topicName = _json["topicName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (topicName != null) {
+      _json["topicName"] = topicName;
     }
     return _json;
   }
@@ -3545,6 +4347,29 @@ class CourseMaterialSet {
   }
 }
 
+/// Information about a `Feed` with a `feed_type` of `COURSE_ROSTER_CHANGES`.
+class CourseRosterChangesInfo {
+  /// The `course_id` of the course to subscribe to roster changes for.
+  core.String courseId;
+
+  CourseRosterChangesInfo();
+
+  CourseRosterChangesInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("courseId")) {
+      courseId = _json["courseId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (courseId != null) {
+      _json["courseId"] = courseId;
+    }
+    return _json;
+  }
+}
+
 /// Course work created by a teacher for students of the course.
 class CourseWork {
   /// Absolute link to this course work in the Classroom web UI.
@@ -3552,6 +4377,15 @@ class CourseWork {
   ///
   /// Read-only.
   core.String alternateLink;
+
+  /// Assignee mode of the coursework.
+  /// If unspecified, the default value is `ALL_STUDENTS`.
+  /// Possible string values are:
+  /// - "ASSIGNEE_MODE_UNSPECIFIED" : No mode specified. This is never returned.
+  /// - "ALL_STUDENTS" : All students can see the item.
+  /// This is the default state.
+  /// - "INDIVIDUAL_STUDENTS" : A subset of the students can see the item.
+  core.String assigneeMode;
 
   /// Assignment details.
   /// This is populated only when `work_type` is `ASSIGNMENT`.
@@ -3578,6 +4412,11 @@ class CourseWork {
   /// Read-only.
   core.String creationTime;
 
+  /// Identifier for the user that created the coursework.
+  ///
+  /// Read-only.
+  core.String creatorUserId;
+
   /// Optional description of this course work.
   /// If set, the description must be a valid UTF-8 string containing no more
   /// than 30,000 characters.
@@ -3596,6 +4435,12 @@ class CourseWork {
   ///
   /// Read-only.
   core.String id;
+
+  /// Identifiers of students with access to the coursework.
+  /// This field is set only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.
+  /// If the `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students
+  /// specified in this field will be assigned the coursework.
+  IndividualStudentsOptions individualStudentsOptions;
 
   /// Additional materials.
   ///
@@ -3671,6 +4516,9 @@ class CourseWork {
     if (_json.containsKey("alternateLink")) {
       alternateLink = _json["alternateLink"];
     }
+    if (_json.containsKey("assigneeMode")) {
+      assigneeMode = _json["assigneeMode"];
+    }
     if (_json.containsKey("assignment")) {
       assignment = new Assignment.fromJson(_json["assignment"]);
     }
@@ -3683,6 +4531,9 @@ class CourseWork {
     if (_json.containsKey("creationTime")) {
       creationTime = _json["creationTime"];
     }
+    if (_json.containsKey("creatorUserId")) {
+      creatorUserId = _json["creatorUserId"];
+    }
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
@@ -3694,6 +4545,10 @@ class CourseWork {
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
+    }
+    if (_json.containsKey("individualStudentsOptions")) {
+      individualStudentsOptions = new IndividualStudentsOptions.fromJson(
+          _json["individualStudentsOptions"]);
     }
     if (_json.containsKey("materials")) {
       materials = _json["materials"]
@@ -3733,6 +4588,9 @@ class CourseWork {
     if (alternateLink != null) {
       _json["alternateLink"] = alternateLink;
     }
+    if (assigneeMode != null) {
+      _json["assigneeMode"] = assigneeMode;
+    }
     if (assignment != null) {
       _json["assignment"] = (assignment).toJson();
     }
@@ -3745,6 +4603,9 @@ class CourseWork {
     if (creationTime != null) {
       _json["creationTime"] = creationTime;
     }
+    if (creatorUserId != null) {
+      _json["creatorUserId"] = creatorUserId;
+    }
     if (description != null) {
       _json["description"] = description;
     }
@@ -3756,6 +4617,9 @@ class CourseWork {
     }
     if (id != null) {
       _json["id"] = id;
+    }
+    if (individualStudentsOptions != null) {
+      _json["individualStudentsOptions"] = (individualStudentsOptions).toJson();
     }
     if (materials != null) {
       _json["materials"] = materials.map((value) => (value).toJson()).toList();
@@ -3956,6 +4820,57 @@ class Empty {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// A class of notifications that an application can register to receive.
+/// For example: "all roster changes for a domain".
+class Feed {
+  /// Information about a `Feed` with a `feed_type` of `COURSE_ROSTER_CHANGES`.
+  /// This field must be specified if `feed_type` is `COURSE_ROSTER_CHANGES`.
+  CourseRosterChangesInfo courseRosterChangesInfo;
+
+  /// The type of feed.
+  /// Possible string values are:
+  /// - "FEED_TYPE_UNSPECIFIED" : Should never be returned or provided.
+  /// - "DOMAIN_ROSTER_CHANGES" : All roster changes for a particular domain.
+  ///
+  /// Notifications will be generated whenever a user joins or leaves a course.
+  ///
+  /// No notifications will be generated when an invitation is created or
+  /// deleted, but notifications will be generated when a user joins a course
+  /// by accepting an invitation.
+  /// - "COURSE_ROSTER_CHANGES" : All roster changes for a particular course.
+  ///
+  /// Notifications will be generated whenever a user joins or leaves a course.
+  ///
+  /// No notifications will be generated when an invitation is created or
+  /// deleted, but notifications will be generated when a user joins a course
+  /// by accepting an invitation.
+  core.String feedType;
+
+  Feed();
+
+  Feed.fromJson(core.Map _json) {
+    if (_json.containsKey("courseRosterChangesInfo")) {
+      courseRosterChangesInfo = new CourseRosterChangesInfo.fromJson(
+          _json["courseRosterChangesInfo"]);
+    }
+    if (_json.containsKey("feedType")) {
+      feedType = _json["feedType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (courseRosterChangesInfo != null) {
+      _json["courseRosterChangesInfo"] = (courseRosterChangesInfo).toJson();
+    }
+    if (feedType != null) {
+      _json["feedType"] = feedType;
+    }
     return _json;
   }
 }
@@ -4238,6 +5153,31 @@ class GuardianInvitation {
   }
 }
 
+/// Assignee details about a coursework/announcement.
+/// This field is set if and only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.
+class IndividualStudentsOptions {
+  /// Identifiers for the students that have access to the
+  /// coursework/announcement.
+  core.List<core.String> studentIds;
+
+  IndividualStudentsOptions();
+
+  IndividualStudentsOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("studentIds")) {
+      studentIds = _json["studentIds"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (studentIds != null) {
+      _json["studentIds"] = studentIds;
+    }
+    return _json;
+  }
+}
+
 /// An invitation to join a course.
 class Invitation {
   /// Identifier of the course to invite the user to.
@@ -4345,6 +5285,42 @@ class Link {
     }
     if (url != null) {
       _json["url"] = url;
+    }
+    return _json;
+  }
+}
+
+/// Response when listing course work.
+class ListAnnouncementsResponse {
+  /// Announcement items that match the request.
+  core.List<Announcement> announcements;
+
+  /// Token identifying the next page of results to return. If empty, no further
+  /// results are available.
+  core.String nextPageToken;
+
+  ListAnnouncementsResponse();
+
+  ListAnnouncementsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("announcements")) {
+      announcements = _json["announcements"]
+          .map((value) => new Announcement.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (announcements != null) {
+      _json["announcements"] =
+          announcements.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
     }
     return _json;
   }
@@ -4722,6 +5698,48 @@ class Material {
   }
 }
 
+/// Request to modify assignee mode and options of an announcement.
+class ModifyAnnouncementAssigneesRequest {
+  /// Mode of the announcement describing whether it will be accessible by all
+  /// students or specified individual students.
+  /// Possible string values are:
+  /// - "ASSIGNEE_MODE_UNSPECIFIED" : No mode specified. This is never returned.
+  /// - "ALL_STUDENTS" : All students can see the item.
+  /// This is the default state.
+  /// - "INDIVIDUAL_STUDENTS" : A subset of the students can see the item.
+  core.String assigneeMode;
+
+  /// Set which students can view or cannot view the announcement.
+  /// Must be specified only when `assigneeMode` is `INDIVIDUAL_STUDENTS`.
+  ModifyIndividualStudentsOptions modifyIndividualStudentsOptions;
+
+  ModifyAnnouncementAssigneesRequest();
+
+  ModifyAnnouncementAssigneesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("assigneeMode")) {
+      assigneeMode = _json["assigneeMode"];
+    }
+    if (_json.containsKey("modifyIndividualStudentsOptions")) {
+      modifyIndividualStudentsOptions =
+          new ModifyIndividualStudentsOptions.fromJson(
+              _json["modifyIndividualStudentsOptions"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (assigneeMode != null) {
+      _json["assigneeMode"] = assigneeMode;
+    }
+    if (modifyIndividualStudentsOptions != null) {
+      _json["modifyIndividualStudentsOptions"] =
+          (modifyIndividualStudentsOptions).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Request to modify the attachments of a student submission.
 class ModifyAttachmentsRequest {
   /// Attachments to add.
@@ -4746,6 +5764,83 @@ class ModifyAttachmentsRequest {
     if (addAttachments != null) {
       _json["addAttachments"] =
           addAttachments.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Request to modify assignee mode and options of a coursework.
+class ModifyCourseWorkAssigneesRequest {
+  /// Mode of the coursework describing whether it will be assigned to all
+  /// students or specified individual students.
+  /// Possible string values are:
+  /// - "ASSIGNEE_MODE_UNSPECIFIED" : No mode specified. This is never returned.
+  /// - "ALL_STUDENTS" : All students can see the item.
+  /// This is the default state.
+  /// - "INDIVIDUAL_STUDENTS" : A subset of the students can see the item.
+  core.String assigneeMode;
+
+  /// Set which students are assigned or not assigned to the coursework.
+  /// Must be specified only when `assigneeMode` is `INDIVIDUAL_STUDENTS`.
+  ModifyIndividualStudentsOptions modifyIndividualStudentsOptions;
+
+  ModifyCourseWorkAssigneesRequest();
+
+  ModifyCourseWorkAssigneesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("assigneeMode")) {
+      assigneeMode = _json["assigneeMode"];
+    }
+    if (_json.containsKey("modifyIndividualStudentsOptions")) {
+      modifyIndividualStudentsOptions =
+          new ModifyIndividualStudentsOptions.fromJson(
+              _json["modifyIndividualStudentsOptions"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (assigneeMode != null) {
+      _json["assigneeMode"] = assigneeMode;
+    }
+    if (modifyIndividualStudentsOptions != null) {
+      _json["modifyIndividualStudentsOptions"] =
+          (modifyIndividualStudentsOptions).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Contains fields to add or remove students from a course work or announcement
+/// where the `assigneeMode` is set to `INDIVIDUAL_STUDENTS`.
+class ModifyIndividualStudentsOptions {
+  /// Ids of students to be added as having access to this
+  /// coursework/announcement.
+  core.List<core.String> addStudentIds;
+
+  /// Ids of students to be removed from having access to this
+  /// coursework/announcement.
+  core.List<core.String> removeStudentIds;
+
+  ModifyIndividualStudentsOptions();
+
+  ModifyIndividualStudentsOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("addStudentIds")) {
+      addStudentIds = _json["addStudentIds"];
+    }
+    if (_json.containsKey("removeStudentIds")) {
+      removeStudentIds = _json["removeStudentIds"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (addStudentIds != null) {
+      _json["addStudentIds"] = addStudentIds;
+    }
+    if (removeStudentIds != null) {
+      _json["removeStudentIds"] = removeStudentIds;
     }
     return _json;
   }
@@ -4854,6 +5949,63 @@ class ReclaimStudentSubmissionRequest {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// An instruction to Classroom to send notifications from the `feed` to the
+/// provided `destination`.
+class Registration {
+  /// The Cloud Pub/Sub topic that notifications are to be sent to.
+  CloudPubsubTopic cloudPubsubTopic;
+
+  /// The time until which the `Registration` is effective.
+  ///
+  /// This is a read-only field assigned by the server.
+  core.String expiryTime;
+
+  /// Specification for the class of notifications that Classroom should deliver
+  /// to the `destination`.
+  Feed feed;
+
+  /// A server-generated unique identifier for this `Registration`.
+  ///
+  /// Read-only.
+  core.String registrationId;
+
+  Registration();
+
+  Registration.fromJson(core.Map _json) {
+    if (_json.containsKey("cloudPubsubTopic")) {
+      cloudPubsubTopic =
+          new CloudPubsubTopic.fromJson(_json["cloudPubsubTopic"]);
+    }
+    if (_json.containsKey("expiryTime")) {
+      expiryTime = _json["expiryTime"];
+    }
+    if (_json.containsKey("feed")) {
+      feed = new Feed.fromJson(_json["feed"]);
+    }
+    if (_json.containsKey("registrationId")) {
+      registrationId = _json["registrationId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cloudPubsubTopic != null) {
+      _json["cloudPubsubTopic"] = (cloudPubsubTopic).toJson();
+    }
+    if (expiryTime != null) {
+      _json["expiryTime"] = expiryTime;
+    }
+    if (feed != null) {
+      _json["feed"] = (feed).toJson();
+    }
+    if (registrationId != null) {
+      _json["registrationId"] = registrationId;
+    }
     return _json;
   }
 }
@@ -5071,7 +6223,10 @@ class StudentSubmission {
   /// This may be modified only by course teachers.
   core.double assignedGrade;
 
-  /// Submission content when course_work_type is ASSIGNMENT .
+  /// Submission content when course_work_type is ASSIGNMENT.
+  ///
+  /// Students can modify this content using
+  /// google.classroom.Work.ModifyAttachments.
   AssignmentSubmission assignmentSubmission;
 
   /// Whether this student submission is associated with the Developer Console

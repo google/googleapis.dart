@@ -94,14 +94,6 @@ class OperationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - The standard list page token.
-  ///
-  /// [name] - Not used.
-  ///
-  /// [pageSize] - The maximum number of operations to return. If unspecified,
-  /// defaults to
-  /// 50. The maximum value is 100.
-  ///
   /// [filter] - A string for filtering Operations.
   ///   The following filter fields are supported&#58;
   ///
@@ -124,6 +116,14 @@ class OperationsResourceApi {
   /// * `serviceName={some-service}.googleapis.com AND (status=done OR
   /// startTime>="2017-02-01")`
   ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [name] - Not used.
+  ///
+  /// [pageSize] - The maximum number of operations to return. If unspecified,
+  /// defaults to
+  /// 50. The maximum value is 100.
+  ///
   /// Completes with a [ListOperationsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -132,10 +132,10 @@ class OperationsResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.String name,
-      core.int pageSize,
-      core.String filter}) {
+      core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -143,6 +143,9 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -151,9 +154,6 @@ class OperationsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/operations';
@@ -1265,6 +1265,10 @@ class ServicesRolloutsResourceApi {
   /// [overview](/service-management/overview)
   /// for naming requirements.  For example: `example.googleapis.com`.
   ///
+  /// [pageToken] - The token of the page to retrieve.
+  ///
+  /// [pageSize] - The max number of items to include in the response list.
+  ///
   /// [filter] - Use `filter` to return subset of rollouts.
   /// The following filters are supported:
   ///   -- To limit the results to only those in
@@ -1274,10 +1278,6 @@ class ServicesRolloutsResourceApi {
   ///      [status](google.api.servicemanagement.v1.RolloutStatus) 'CANCELLED'
   ///      or 'FAILED', use filter='status=CANCELLED OR status=FAILED'
   ///
-  /// [pageToken] - The token of the page to retrieve.
-  ///
-  /// [pageSize] - The max number of items to include in the response list.
-  ///
   /// Completes with a [ListServiceRolloutsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1286,7 +1286,7 @@ class ServicesRolloutsResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListServiceRolloutsResponse> list(core.String serviceName,
-      {core.String filter, core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1297,14 +1297,14 @@ class ServicesRolloutsResourceApi {
     if (serviceName == null) {
       throw new core.ArgumentError("Parameter serviceName is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/services/' +
@@ -1954,8 +1954,8 @@ class BackendRule {
   core.String address;
 
   /// The number of seconds to wait for a response from a request.  The default
-  /// deadline for gRPC and HTTP requests is 5 seconds. For Stubby requests,
-  /// the default is no deadline.
+  /// deadline for gRPC is infinite (no deadline) and HTTP requests is 5
+  /// seconds.
   core.double deadline;
 
   /// Minimum deadline in seconds needed for this method. Calls having deadline
@@ -1998,6 +1998,90 @@ class BackendRule {
     }
     if (selector != null) {
       _json["selector"] = selector;
+    }
+    return _json;
+  }
+}
+
+/// Billing related configuration of the service.
+///
+/// The following example shows how to configure monitored resources and metrics
+/// for billing:
+///     monitored_resources:
+///     - type: library.googleapis.com/branch
+///       labels:
+///       - key: /city
+///         description: The city where the library branch is located in.
+///       - key: /name
+///         description: The name of the branch.
+///     metrics:
+///     - name: library.googleapis.com/book/borrowed_count
+///       metric_kind: DELTA
+///       value_type: INT64
+///     billing:
+///       consumer_destinations:
+///       - monitored_resource: library.googleapis.com/branch
+///         metrics:
+///         - library.googleapis.com/book/borrowed_count
+class Billing {
+  /// Billing configurations for sending metrics to the consumer project.
+  /// There can be multiple consumer destinations per service, each one must
+  /// have
+  /// a different monitored resource type. A metric can be used in at most
+  /// one consumer destination.
+  core.List<BillingDestination> consumerDestinations;
+
+  Billing();
+
+  Billing.fromJson(core.Map _json) {
+    if (_json.containsKey("consumerDestinations")) {
+      consumerDestinations = _json["consumerDestinations"]
+          .map((value) => new BillingDestination.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (consumerDestinations != null) {
+      _json["consumerDestinations"] =
+          consumerDestinations.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Configuration of a specific billing destination (Currently only support
+/// bill against consumer project).
+class BillingDestination {
+  /// Names of the metrics to report to this billing destination.
+  /// Each name must be defined in Service.metrics section.
+  core.List<core.String> metrics;
+
+  /// The monitored resource type. The type must be defined in
+  /// Service.monitored_resources section.
+  core.String monitoredResource;
+
+  BillingDestination();
+
+  BillingDestination.fromJson(core.Map _json) {
+    if (_json.containsKey("metrics")) {
+      metrics = _json["metrics"];
+    }
+    if (_json.containsKey("monitoredResource")) {
+      monitoredResource = _json["monitoredResource"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (metrics != null) {
+      _json["metrics"] = metrics;
+    }
+    if (monitoredResource != null) {
+      _json["monitoredResource"] = monitoredResource;
     }
     return _json;
   }
@@ -2222,6 +2306,12 @@ class ConfigFile {
   /// in a new file named out.pb.
   ///
   /// $protoc --include_imports --include_source_info test.proto -o out.pb
+  /// - "PROTO_FILE" : Uncompiled Proto file. Used for storage and display
+  /// purposes only,
+  /// currently server-side compilation is not supported. Should match the
+  /// inputs to 'protoc' command used to generated FILE_DESCRIPTOR_SET_PROTO. A
+  /// file of this type can only be included if at least one file of type
+  /// FILE_DESCRIPTOR_SET_PROTO is included.
   core.String fileType;
 
   ConfigFile();
@@ -3320,11 +3410,25 @@ class FlowOperationMetadata {
   /// Must be equal to the "name" field for a FlowName enum.
   core.String flowName;
 
+  /// Operation type which is a flow type and subtype info as that is missing in
+  /// our datastore otherwise. This maps to the ordinal value of the enum:
+  /// jcg/api/tenant/operations/OperationNamespace.java
+  core.int operationType;
+
   /// The full name of the resources that this flow is directly associated with.
   core.List<core.String> resourceNames;
 
   /// The start time of the operation.
   core.String startTime;
+
+  ///
+  /// Possible string values are:
+  /// - "UNSPECIFIED_OP_SERVICE"
+  /// - "SERVICE_MANAGEMENT"
+  /// - "SERVICE_USAGE"
+  /// - "SERVICE_CONSUMER_MANAGEMENT" : TenancyUnit, ServiceNetworking fall
+  /// under this
+  core.String surface;
 
   FlowOperationMetadata();
 
@@ -3338,11 +3442,17 @@ class FlowOperationMetadata {
     if (_json.containsKey("flowName")) {
       flowName = _json["flowName"];
     }
+    if (_json.containsKey("operationType")) {
+      operationType = _json["operationType"];
+    }
     if (_json.containsKey("resourceNames")) {
       resourceNames = _json["resourceNames"];
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
+    }
+    if (_json.containsKey("surface")) {
+      surface = _json["surface"];
     }
   }
 
@@ -3358,11 +3468,17 @@ class FlowOperationMetadata {
     if (flowName != null) {
       _json["flowName"] = flowName;
     }
+    if (operationType != null) {
+      _json["operationType"] = operationType;
+    }
     if (resourceNames != null) {
       _json["resourceNames"] = resourceNames;
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
+    }
+    if (surface != null) {
+      _json["surface"] = surface;
     }
     return _json;
   }
@@ -5886,6 +6002,9 @@ class Service {
   /// API backend configuration.
   Backend backend;
 
+  /// Billing configuration.
+  Billing billing;
+
   /// The semantic version of the service configuration. The config version
   /// affects the interpretation of the service configuration. For example,
   /// certain features are enabled by default for certain config versions.
@@ -6000,6 +6119,9 @@ class Service {
     if (_json.containsKey("backend")) {
       backend = new Backend.fromJson(_json["backend"]);
     }
+    if (_json.containsKey("billing")) {
+      billing = new Billing.fromJson(_json["billing"]);
+    }
     if (_json.containsKey("configVersion")) {
       configVersion = _json["configVersion"];
     }
@@ -6099,6 +6221,9 @@ class Service {
     }
     if (backend != null) {
       _json["backend"] = (backend).toJson();
+    }
+    if (billing != null) {
+      _json["billing"] = (billing).toJson();
     }
     if (configVersion != null) {
       _json["configVersion"] = configVersion;

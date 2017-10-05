@@ -73,30 +73,30 @@ checkContextFacets(api.ContextFacets o) {
   buildCounterContextFacets--;
 }
 
-buildUnnamed298() {
+buildUnnamed318() {
   var o = new core.List<api.ContextFacets>();
   o.add(buildContextFacets());
   o.add(buildContextFacets());
   return o;
 }
 
-checkUnnamed298(core.List<api.ContextFacets> o) {
+checkUnnamed318(core.List<api.ContextFacets> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkContextFacets(o[0]);
   checkContextFacets(o[1]);
 }
 
-buildUnnamed299() {
+buildUnnamed319() {
   var o = new core.List<core.List<api.ContextFacets>>();
-  o.add(buildUnnamed298());
-  o.add(buildUnnamed298());
+  o.add(buildUnnamed318());
+  o.add(buildUnnamed318());
   return o;
 }
 
-checkUnnamed299(core.List<core.List<api.ContextFacets>> o) {
+checkUnnamed319(core.List<core.List<api.ContextFacets>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed298(o[0]);
-  checkUnnamed298(o[1]);
+  checkUnnamed318(o[0]);
+  checkUnnamed318(o[1]);
 }
 
 core.int buildCounterContext = 0;
@@ -104,7 +104,7 @@ buildContext() {
   var o = new api.Context();
   buildCounterContext++;
   if (buildCounterContext < 3) {
-    o.facets = buildUnnamed299();
+    o.facets = buildUnnamed319();
     o.title = "foo";
   }
   buildCounterContext--;
@@ -114,7 +114,7 @@ buildContext() {
 checkContext(api.Context o) {
   buildCounterContext++;
   if (buildCounterContext < 3) {
-    checkUnnamed299(o.facets);
+    checkUnnamed319(o.facets);
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterContext--;
@@ -145,14 +145,14 @@ checkPromotionBodyLines(api.PromotionBodyLines o) {
   buildCounterPromotionBodyLines--;
 }
 
-buildUnnamed300() {
+buildUnnamed320() {
   var o = new core.List<api.PromotionBodyLines>();
   o.add(buildPromotionBodyLines());
   o.add(buildPromotionBodyLines());
   return o;
 }
 
-checkUnnamed300(core.List<api.PromotionBodyLines> o) {
+checkUnnamed320(core.List<api.PromotionBodyLines> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPromotionBodyLines(o[0]);
   checkPromotionBodyLines(o[1]);
@@ -186,7 +186,7 @@ buildPromotion() {
   var o = new api.Promotion();
   buildCounterPromotion++;
   if (buildCounterPromotion < 3) {
-    o.bodyLines = buildUnnamed300();
+    o.bodyLines = buildUnnamed320();
     o.displayLink = "foo";
     o.htmlTitle = "foo";
     o.image = buildPromotionImage();
@@ -200,7 +200,7 @@ buildPromotion() {
 checkPromotion(api.Promotion o) {
   buildCounterPromotion++;
   if (buildCounterPromotion < 3) {
-    checkUnnamed300(o.bodyLines);
+    checkUnnamed320(o.bodyLines);
     unittest.expect(o.displayLink, unittest.equals('foo'));
     unittest.expect(o.htmlTitle, unittest.equals('foo'));
     checkPromotionImage(o.image);
@@ -353,20 +353,20 @@ checkResultLabels(api.ResultLabels o) {
   buildCounterResultLabels--;
 }
 
-buildUnnamed301() {
+buildUnnamed321() {
   var o = new core.List<api.ResultLabels>();
   o.add(buildResultLabels());
   o.add(buildResultLabels());
   return o;
 }
 
-checkUnnamed301(core.List<api.ResultLabels> o) {
+checkUnnamed321(core.List<api.ResultLabels> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResultLabels(o[0]);
   checkResultLabels(o[1]);
 }
 
-buildUnnamed302() {
+buildUnnamed322() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -381,7 +381,7 @@ buildUnnamed302() {
   return o;
 }
 
-checkUnnamed302(core.Map<core.String, core.Object> o) {
+checkUnnamed322(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -395,32 +395,32 @@ checkUnnamed302(core.Map<core.String, core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed303() {
+buildUnnamed323() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed302());
-  o.add(buildUnnamed302());
+  o.add(buildUnnamed322());
+  o.add(buildUnnamed322());
   return o;
 }
 
-checkUnnamed303(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed323(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed302(o[0]);
-  checkUnnamed302(o[1]);
+  checkUnnamed322(o[0]);
+  checkUnnamed322(o[1]);
 }
 
-buildUnnamed304() {
+buildUnnamed324() {
   var o = new core
       .Map<core.String, core.List<core.Map<core.String, core.Object>>>();
-  o["x"] = buildUnnamed303();
-  o["y"] = buildUnnamed303();
+  o["x"] = buildUnnamed323();
+  o["y"] = buildUnnamed323();
   return o;
 }
 
-checkUnnamed304(
+checkUnnamed324(
     core.Map<core.String, core.List<core.Map<core.String, core.Object>>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed303(o["x"]);
-  checkUnnamed303(o["y"]);
+  checkUnnamed323(o["x"]);
+  checkUnnamed323(o["y"]);
 }
 
 core.int buildCounterResult = 0;
@@ -437,10 +437,10 @@ buildResult() {
     o.htmlTitle = "foo";
     o.image = buildResultImage();
     o.kind = "foo";
-    o.labels = buildUnnamed301();
+    o.labels = buildUnnamed321();
     o.link = "foo";
     o.mime = "foo";
-    o.pagemap = buildUnnamed304();
+    o.pagemap = buildUnnamed324();
     o.snippet = "foo";
     o.title = "foo";
   }
@@ -460,66 +460,66 @@ checkResult(api.Result o) {
     unittest.expect(o.htmlTitle, unittest.equals('foo'));
     checkResultImage(o.image);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed301(o.labels);
+    checkUnnamed321(o.labels);
     unittest.expect(o.link, unittest.equals('foo'));
     unittest.expect(o.mime, unittest.equals('foo'));
-    checkUnnamed304(o.pagemap);
+    checkUnnamed324(o.pagemap);
     unittest.expect(o.snippet, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterResult--;
 }
 
-buildUnnamed305() {
+buildUnnamed325() {
   var o = new core.List<api.Result>();
   o.add(buildResult());
   o.add(buildResult());
   return o;
 }
 
-checkUnnamed305(core.List<api.Result> o) {
+checkUnnamed325(core.List<api.Result> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResult(o[0]);
   checkResult(o[1]);
 }
 
-buildUnnamed306() {
+buildUnnamed326() {
   var o = new core.List<api.Promotion>();
   o.add(buildPromotion());
   o.add(buildPromotion());
   return o;
 }
 
-checkUnnamed306(core.List<api.Promotion> o) {
+checkUnnamed326(core.List<api.Promotion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPromotion(o[0]);
   checkPromotion(o[1]);
 }
 
-buildUnnamed307() {
+buildUnnamed327() {
   var o = new core.List<api.Query>();
   o.add(buildQuery());
   o.add(buildQuery());
   return o;
 }
 
-checkUnnamed307(core.List<api.Query> o) {
+checkUnnamed327(core.List<api.Query> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkQuery(o[0]);
   checkQuery(o[1]);
 }
 
-buildUnnamed308() {
+buildUnnamed328() {
   var o = new core.Map<core.String, core.List<api.Query>>();
-  o["x"] = buildUnnamed307();
-  o["y"] = buildUnnamed307();
+  o["x"] = buildUnnamed327();
+  o["y"] = buildUnnamed327();
   return o;
 }
 
-checkUnnamed308(core.Map<core.String, core.List<api.Query>> o) {
+checkUnnamed328(core.Map<core.String, core.List<api.Query>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed307(o["x"]);
-  checkUnnamed307(o["y"]);
+  checkUnnamed327(o["x"]);
+  checkUnnamed327(o["y"]);
 }
 
 core.int buildCounterSearchSearchInformation = 0;
@@ -595,10 +595,10 @@ buildSearch() {
   buildCounterSearch++;
   if (buildCounterSearch < 3) {
     o.context = buildContext();
-    o.items = buildUnnamed305();
+    o.items = buildUnnamed325();
     o.kind = "foo";
-    o.promotions = buildUnnamed306();
-    o.queries = buildUnnamed308();
+    o.promotions = buildUnnamed326();
+    o.queries = buildUnnamed328();
     o.searchInformation = buildSearchSearchInformation();
     o.spelling = buildSearchSpelling();
     o.url = buildSearchUrl();
@@ -611,10 +611,10 @@ checkSearch(api.Search o) {
   buildCounterSearch++;
   if (buildCounterSearch < 3) {
     checkContext(o.context);
-    checkUnnamed305(o.items);
+    checkUnnamed325(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed306(o.promotions);
-    checkUnnamed308(o.queries);
+    checkUnnamed326(o.promotions);
+    checkUnnamed328(o.queries);
     checkSearchSearchInformation(o.searchInformation);
     checkSearchSpelling(o.spelling);
     checkSearchUrl(o.url);

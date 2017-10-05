@@ -24,16 +24,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
         "upload_protocol": {
             "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
@@ -89,13 +79,13 @@
             "location": "query",
             "type": "string"
         },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "description": "OAuth access token.",
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
@@ -109,12 +99,100 @@
             "description": "Pretty-print response.",
             "location": "query",
             "type": "boolean"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
         }
     },
     "protocol": "rest",
     "resources": {
+        "googleServiceAccounts": {
+            "methods": {
+                "get": {
+                    "description": "Returns the Google service account that is used by Storage Transfer\nService to access buckets in the project where transfers\nrun or in other projects. Each Google service account is associated\nwith one Google Cloud Platform Console project. Users\nshould add this service account to the Google Cloud Storage bucket\nACLs to grant access to Storage Transfer Service. This service\naccount is created and owned by Storage Transfer Service and can\nonly be used by Storage Transfer Service.",
+                    "httpMethod": "GET",
+                    "id": "storagetransfer.googleServiceAccounts.get",
+                    "parameterOrder": [
+                        "projectId"
+                    ],
+                    "parameters": {
+                        "projectId": {
+                            "description": "The ID of the Google Cloud Platform Console project that the Google service\naccount is associated with.\nRequired.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/googleServiceAccounts/{projectId}",
+                    "response": {
+                        "$ref": "GoogleServiceAccount"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                }
+            }
+        },
         "transferOperations": {
             "methods": {
+                "resume": {
+                    "description": "Resumes a transfer operation that is paused.",
+                    "httpMethod": "POST",
+                    "id": "storagetransfer.transferOperations.resume",
+                    "parameterOrder": [
+                        "name"
+                    ],
+                    "parameters": {
+                        "name": {
+                            "description": "The name of the transfer operation.\nRequired.",
+                            "location": "path",
+                            "pattern": "^transferOperations/.+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+name}:resume",
+                    "request": {
+                        "$ref": "ResumeTransferOperationRequest"
+                    },
+                    "response": {
+                        "$ref": "Empty"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
+                "cancel": {
+                    "description": "Cancels a transfer. Use the get method to check whether the cancellation succeeded or whether the operation completed despite cancellation.",
+                    "httpMethod": "POST",
+                    "id": "storagetransfer.transferOperations.cancel",
+                    "parameterOrder": [
+                        "name"
+                    ],
+                    "parameters": {
+                        "name": {
+                            "description": "The name of the operation resource to be cancelled.",
+                            "location": "path",
+                            "pattern": "^transferOperations/.+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/{+name}:cancel",
+                    "response": {
+                        "$ref": "Empty"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
                 "get": {
                     "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
                     "httpMethod": "GET",
@@ -198,12 +276,6 @@
                         "name"
                     ],
                     "parameters": {
-                        "pageSize": {
-                            "description": "The list page size. The max allowed value is 256.",
-                            "format": "int32",
-                            "location": "query",
-                            "type": "integer"
-                        },
                         "filter": {
                             "description": "A list of query parameters specified as JSON text in the form of {\\\"project_id\\\" : \\\"my_project_id\\\", \\\"job_names\\\" : [\\\"jobid1\\\", \\\"jobid2\\\",...], \\\"operation_names\\\" : [\\\"opid1\\\", \\\"opid2\\\",...], \\\"transfer_statuses\\\":[\\\"status1\\\", \\\"status2\\\",...]}. Since `job_names`, `operation_names`, and `transfer_statuses` support multiple values, they must be specified with array notation. `job_names`, `operation_names`, and `transfer_statuses` are optional.",
                             "location": "query",
@@ -220,62 +292,17 @@
                             "pattern": "^transferOperations$",
                             "required": true,
                             "type": "string"
+                        },
+                        "pageSize": {
+                            "description": "The list page size. The max allowed value is 256.",
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
                         }
                     },
                     "path": "v1/{+name}",
                     "response": {
                         "$ref": "ListOperationsResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                    ]
-                },
-                "resume": {
-                    "description": "Resumes a transfer operation that is paused.",
-                    "httpMethod": "POST",
-                    "id": "storagetransfer.transferOperations.resume",
-                    "parameterOrder": [
-                        "name"
-                    ],
-                    "parameters": {
-                        "name": {
-                            "description": "The name of the transfer operation.\nRequired.",
-                            "location": "path",
-                            "pattern": "^transferOperations/.+$",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "v1/{+name}:resume",
-                    "request": {
-                        "$ref": "ResumeTransferOperationRequest"
-                    },
-                    "response": {
-                        "$ref": "Empty"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                    ]
-                },
-                "cancel": {
-                    "description": "Cancels a transfer. Use the get method to check whether the cancellation succeeded or whether the operation completed despite cancellation.",
-                    "httpMethod": "POST",
-                    "id": "storagetransfer.transferOperations.cancel",
-                    "parameterOrder": [
-                        "name"
-                    ],
-                    "parameters": {
-                        "name": {
-                            "description": "The name of the operation resource to be cancelled.",
-                            "location": "path",
-                            "pattern": "^transferOperations/.+$",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "v1/{+name}:cancel",
-                    "response": {
-                        "$ref": "Empty"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform"
@@ -291,12 +318,6 @@
                     "id": "storagetransfer.transferJobs.list",
                     "parameterOrder": [],
                     "parameters": {
-                        "pageSize": {
-                            "description": "The list page size. The max allowed value is 256.",
-                            "format": "int32",
-                            "location": "query",
-                            "type": "integer"
-                        },
                         "filter": {
                             "description": "A list of query parameters specified as JSON text in the form of\n{\"project_id\":\"my_project_id\",\n\"job_names\":[\"jobid1\",\"jobid2\",...],\n\"job_statuses\":[\"status1\",\"status2\",...]}.\nSince `job_names` and `job_statuses` support multiple values, their values\nmust be specified with array notation. `project_id` is required. `job_names`\nand `job_statuses` are optional.  The valid values for `job_statuses` are\ncase-insensitive: `ENABLED`, `DISABLED`, and `DELETED`.",
                             "location": "query",
@@ -306,6 +327,12 @@
                             "description": "The list page token.",
                             "location": "query",
                             "type": "string"
+                        },
+                        "pageSize": {
+                            "description": "The list page size. The max allowed value is 256.",
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
                         }
                     },
                     "path": "v1/transferJobs",
@@ -390,36 +417,9 @@
                     ]
                 }
             }
-        },
-        "googleServiceAccounts": {
-            "methods": {
-                "get": {
-                    "description": "Returns the Google service account that is used by Storage Transfer\nService to access buckets in the project where transfers\nrun or in other projects. Each Google service account is associated\nwith one Google Cloud Platform Console project. Users\nshould add this service account to the Google Cloud Storage bucket\nACLs to grant access to Storage Transfer Service. This service\naccount is created and owned by Storage Transfer Service and can\nonly be used by Storage Transfer Service.",
-                    "httpMethod": "GET",
-                    "id": "storagetransfer.googleServiceAccounts.get",
-                    "parameterOrder": [
-                        "projectId"
-                    ],
-                    "parameters": {
-                        "projectId": {
-                            "description": "The ID of the Google Cloud Platform Console project that the Google service\naccount is associated with.\nRequired.",
-                            "location": "path",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "v1/googleServiceAccounts/{projectId}",
-                    "response": {
-                        "$ref": "GoogleServiceAccount"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                    ]
-                }
-            }
         }
     },
-    "revision": "20170831",
+    "revision": "20170928",
     "rootUrl": "https://storagetransfer.googleapis.com/",
     "schemas": {
         "GcsData": {
@@ -455,10 +455,6 @@
             "description": "Request passed to UpdateTransferJob.",
             "id": "UpdateTransferJobRequest",
             "properties": {
-                "transferJob": {
-                    "$ref": "TransferJob",
-                    "description": "The job to update. `transferJob` is expected to specify only three fields:\n`description`, `transferSpec`, and `status`.  An UpdateTransferJobRequest\nthat specifies other fields will be rejected with an error\n`INVALID_ARGUMENT`.\nRequired."
-                },
                 "projectId": {
                     "description": "The ID of the Google Cloud Platform Console project that owns the job.\nRequired.",
                     "type": "string"
@@ -467,6 +463,10 @@
                     "description": "The field mask of the fields in `transferJob` that are to be updated in\nthis request.  Fields in `transferJob` that can be updated are:\n`description`, `transferSpec`, and `status`.  To update the `transferSpec`\nof the job, a complete transfer specification has to be provided. An\nincomplete specification which misses any required fields will be rejected\nwith the error `INVALID_ARGUMENT`.",
                     "format": "google-fieldmask",
                     "type": "string"
+                },
+                "transferJob": {
+                    "$ref": "TransferJob",
+                    "description": "The job to update. `transferJob` is expected to specify only three fields:\n`description`, `transferSpec`, and `status`.  An UpdateTransferJobRequest\nthat specifies other fields will be rejected with an error\n`INVALID_ARGUMENT`.\nRequired."
                 }
             },
             "type": "object"
@@ -475,18 +475,6 @@
             "description": "Conditions that determine which objects will be transferred.",
             "id": "ObjectConditions",
             "properties": {
-                "maxTimeElapsedSinceLastModification": {
-                    "description": "`maxTimeElapsedSinceLastModification` is the complement to\n`minTimeElapsedSinceLastModification`.",
-                    "format": "google-duration",
-                    "type": "string"
-                },
-                "includePrefixes": {
-                    "description": "If `includePrefixes` is specified, objects that satisfy the object\nconditions must have names that start with one of the `includePrefixes`\nand that do not start with any of the `excludePrefixes`. If `includePrefixes`\nis not specified, all objects except those that have names starting with\none of the `excludePrefixes` must satisfy the object conditions.\n\nRequirements:\n\n  * Each include-prefix and exclude-prefix can contain any sequence of\n    Unicode characters, of max length 1024 bytes when UTF8-encoded, and\n    must not contain Carriage Return or Line Feed characters.  Wildcard\n    matching and regular expression matching are not supported.\n\n  * Each include-prefix and exclude-prefix must omit the leading slash.\n    For example, to include the `requests.gz` object in a transfer from\n    `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the include\n    prefix as `logs/y=2015/requests.gz`.\n\n  * None of the include-prefix or the exclude-prefix values can be empty,\n    if specified.\n\n  * Each include-prefix must include a distinct portion of the object\n    namespace, i.e., no include-prefix may be a prefix of another\n    include-prefix.\n\n  * Each exclude-prefix must exclude a distinct portion of the object\n    namespace, i.e., no exclude-prefix may be a prefix of another\n    exclude-prefix.\n\n  * If `includePrefixes` is specified, then each exclude-prefix must start\n    with the value of a path explicitly included by `includePrefixes`.\n\nThe max size of `includePrefixes` is 1000.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "excludePrefixes": {
                     "description": "`excludePrefixes` must follow the requirements described for\n`includePrefixes`.\n\nThe max size of `excludePrefixes` is 1000.",
                     "items": {
@@ -498,6 +486,18 @@
                     "description": "If unspecified, `minTimeElapsedSinceLastModification` takes a zero value\nand `maxTimeElapsedSinceLastModification` takes the maximum possible\nvalue of Duration. Objects that satisfy the object conditions\nmust either have a `lastModificationTime` greater or equal to\n`NOW` - `maxTimeElapsedSinceLastModification` and less than\n`NOW` - `minTimeElapsedSinceLastModification`, or not have a\n`lastModificationTime`.",
                     "format": "google-duration",
                     "type": "string"
+                },
+                "maxTimeElapsedSinceLastModification": {
+                    "description": "`maxTimeElapsedSinceLastModification` is the complement to\n`minTimeElapsedSinceLastModification`.",
+                    "format": "google-duration",
+                    "type": "string"
+                },
+                "includePrefixes": {
+                    "description": "If `includePrefixes` is specified, objects that satisfy the object\nconditions must have names that start with one of the `includePrefixes`\nand that do not start with any of the `excludePrefixes`. If `includePrefixes`\nis not specified, all objects except those that have names starting with\none of the `excludePrefixes` must satisfy the object conditions.\n\nRequirements:\n\n  * Each include-prefix and exclude-prefix can contain any sequence of\n    Unicode characters, of max length 1024 bytes when UTF8-encoded, and\n    must not contain Carriage Return or Line Feed characters.  Wildcard\n    matching and regular expression matching are not supported.\n\n  * Each include-prefix and exclude-prefix must omit the leading slash.\n    For example, to include the `requests.gz` object in a transfer from\n    `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the include\n    prefix as `logs/y=2015/requests.gz`.\n\n  * None of the include-prefix or the exclude-prefix values can be empty,\n    if specified.\n\n  * Each include-prefix must include a distinct portion of the object\n    namespace, i.e., no include-prefix may be a prefix of another\n    include-prefix.\n\n  * Each exclude-prefix must exclude a distinct portion of the object\n    namespace, i.e., no exclude-prefix may be a prefix of another\n    exclude-prefix.\n\n  * If `includePrefixes` is specified, then each exclude-prefix must start\n    with the value of a path explicitly included by `includePrefixes`.\n\nThe max size of `includePrefixes` is 1000.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -541,16 +541,16 @@
             "description": "TransferOptions uses three boolean parameters to define the actions\nto be performed on objects in a transfer.",
             "id": "TransferOptions",
             "properties": {
+                "deleteObjectsUniqueInSink": {
+                    "description": "Whether objects that exist only in the sink should be deleted.  Note that\nthis option and `deleteObjectsFromSourceAfterTransfer` are mutually\nexclusive.",
+                    "type": "boolean"
+                },
                 "overwriteObjectsAlreadyExistingInSink": {
                     "description": "Whether overwriting objects that already exist in the sink is allowed.",
                     "type": "boolean"
                 },
                 "deleteObjectsFromSourceAfterTransfer": {
                     "description": "Whether objects should be deleted from the source after they are\ntransferred to the sink.  Note that this option and\n`deleteObjectsUniqueInSink` are mutually exclusive.",
-                    "type": "boolean"
-                },
-                "deleteObjectsUniqueInSink": {
-                    "description": "Whether objects that exist only in the sink should be deleted.  Note that\nthis option and `deleteObjectsFromSourceAfterTransfer` are mutually\nexclusive.",
                     "type": "boolean"
                 }
             },
@@ -624,16 +624,16 @@
             "description": "The response message for Operations.ListOperations.",
             "id": "ListOperationsResponse",
             "properties": {
+                "nextPageToken": {
+                    "description": "The standard List next-page token.",
+                    "type": "string"
+                },
                 "operations": {
                     "description": "A list of operations that matches the specified filter in the request.",
                     "items": {
                         "$ref": "Operation"
                     },
                     "type": "array"
-                },
-                "nextPageToken": {
-                    "description": "The standard List next-page token.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -653,16 +653,6 @@
             "description": "Represents a time of day. The date and time zone are either not significant\nor are specified elsewhere. An API may choose to allow leap seconds. Related\ntypes are google.type.Date and `google.protobuf.Timestamp`.",
             "id": "TimeOfDay",
             "properties": {
-                "hours": {
-                    "description": "Hours of day in 24 hour format. Should be from 0 to 23. An API may choose\nto allow the value \"24:00:00\" for scenarios like business closing time.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "nanos": {
-                    "description": "Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.",
-                    "format": "int32",
-                    "type": "integer"
-                },
                 "seconds": {
                     "description": "Seconds of minutes of the time. Must normally be from 0 to 59. An API may\nallow the value 60 if it allows leap-seconds.",
                     "format": "int32",
@@ -670,6 +660,16 @@
                 },
                 "minutes": {
                     "description": "Minutes of hour of day. Must be from 0 to 59.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "hours": {
+                    "description": "Hours of day in 24 hour format. Should be from 0 to 23. An API may choose\nto allow the value \"24:00:00\" for scenarios like business closing time.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "nanos": {
+                    "description": "Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.",
                     "format": "int32",
                     "type": "integer"
                 }
@@ -704,7 +704,7 @@
                 },
                 "transferSpec": {
                     "$ref": "TransferSpec",
-                    "description": "Transfer specification.\nRequired."
+                    "description": "Transfer specification."
                 },
                 "creationTime": {
                     "description": "This field cannot be changed by user requests.",
@@ -729,7 +729,7 @@
                 },
                 "schedule": {
                     "$ref": "Schedule",
-                    "description": "Schedule specification.\nRequired."
+                    "description": "Schedule specification."
                 },
                 "name": {
                     "description": "A globally unique name assigned by Storage Transfer Service when the\njob is created. This field should be left empty in requests to create a new\ntransfer job; otherwise, the requests result in an `INVALID_ARGUMENT`\nerror.",
@@ -740,13 +740,13 @@
                     "format": "google-datetime",
                     "type": "string"
                 },
+                "projectId": {
+                    "description": "The ID of the Google Cloud Platform Console project that owns the job.",
+                    "type": "string"
+                },
                 "lastModificationTime": {
                     "description": "This field cannot be changed by user requests.",
                     "format": "google-datetime",
-                    "type": "string"
-                },
-                "projectId": {
-                    "description": "The ID of the Google Cloud Platform Console project that owns the job.\nRequired.",
                     "type": "string"
                 }
             },
@@ -756,6 +756,10 @@
             "description": "Transfers can be scheduled to recur or to run just once.",
             "id": "Schedule",
             "properties": {
+                "scheduleEndDate": {
+                    "$ref": "Date",
+                    "description": "The last day the recurring transfer will be run. If `scheduleEndDate`\nis the same as `scheduleStartDate`, the transfer will be executed only\nonce."
+                },
                 "startTimeOfDay": {
                     "$ref": "TimeOfDay",
                     "description": "The time in UTC at which the transfer will be scheduled to start in a day.\nTransfers may start later than this time. If not specified, recurring and\none-time transfers that are scheduled to run today will run immediately;\nrecurring transfers that are scheduled to run on a future date will start\nat approximately midnight UTC on that date. Note that when configuring a\ntransfer with the Cloud Platform Console, the transfer's start time in a\nday is specified in your local timezone."
@@ -763,10 +767,6 @@
                 "scheduleStartDate": {
                     "$ref": "Date",
                     "description": "The first day the recurring transfer is scheduled to run. If\n`scheduleStartDate` is in the past, the transfer will run for the first\ntime on the following day.\nRequired."
-                },
-                "scheduleEndDate": {
-                    "$ref": "Date",
-                    "description": "The last day the recurring transfer will be run. If `scheduleEndDate`\nis the same as `scheduleStartDate`, the transfer will be executed only\nonce."
                 }
             },
             "type": "object"
@@ -775,6 +775,11 @@
             "description": "Represents a whole calendar date, e.g. date of birth. The time of day and\ntime zone are either specified elsewhere or are not significant. The date\nis relative to the Proleptic Gregorian Calendar. The day may be 0 to\nrepresent a year and month where the day is not significant, e.g. credit card\nexpiration date. The year may be 0 to represent a month and day independent\nof year, e.g. anniversary date. Related types are google.type.TimeOfDay\nand `google.protobuf.Timestamp`.",
             "id": "Date",
             "properties": {
+                "month": {
+                    "description": "Month of year. Must be from 1 to 12.",
+                    "format": "int32",
+                    "type": "integer"
+                },
                 "day": {
                     "description": "Day of month. Must be from 1 to 31 and valid for the year and month, or 0\nif specifying a year/month where the day is not significant.",
                     "format": "int32",
@@ -782,11 +787,6 @@
                 },
                 "year": {
                     "description": "Year of date. Must be from 1 to 9999, or 0 if specifying a date without\na year.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "month": {
-                    "description": "Month of year. Must be from 1 to 12.",
                     "format": "int32",
                     "type": "integer"
                 }
@@ -797,24 +797,6 @@
             "description": "A description of the execution of a transfer.",
             "id": "TransferOperation",
             "properties": {
-                "projectId": {
-                    "description": "The ID of the Google Cloud Platform Console project that owns the operation.\nRequired.",
-                    "type": "string"
-                },
-                "endTime": {
-                    "description": "End time of this transfer execution.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "startTime": {
-                    "description": "Start time of this transfer execution.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "transferJobName": {
-                    "description": "The name of the transfer job that triggers this transfer operation.",
-                    "type": "string"
-                },
                 "transferSpec": {
                     "$ref": "TransferSpec",
                     "description": "Transfer specification.\nRequired."
@@ -853,6 +835,24 @@
                 "name": {
                     "description": "A globally unique ID assigned by the system.",
                     "type": "string"
+                },
+                "projectId": {
+                    "description": "The ID of the Google Cloud Platform Console project that owns the operation.\nRequired.",
+                    "type": "string"
+                },
+                "endTime": {
+                    "description": "End time of this transfer execution.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "startTime": {
+                    "description": "Start time of this transfer execution.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "transferJobName": {
+                    "description": "The name of the transfer job that triggers this transfer operation.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -861,13 +861,13 @@
             "description": "An AwsS3Data can be a data source, but not a data sink.\nIn an AwsS3Data, an object's name is the S3 object's key name.",
             "id": "AwsS3Data",
             "properties": {
-                "awsAccessKey": {
-                    "$ref": "AwsAccessKey",
-                    "description": "AWS access key used to sign the API requests to the AWS S3 bucket.\nPermissions on the bucket must be granted to the access ID of the\nAWS access key.\nRequired."
-                },
                 "bucketName": {
                     "description": "S3 Bucket name (see\n[Creating a bucket](http://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).\nRequired.",
                     "type": "string"
+                },
+                "awsAccessKey": {
+                    "$ref": "AwsAccessKey",
+                    "description": "AWS access key used to sign the API requests to the AWS S3 bucket.\nPermissions on the bucket must be granted to the access ID of the\nAWS access key.\nRequired."
                 }
             },
             "type": "object"
@@ -903,28 +903,18 @@
             "description": "A collection of counters that report the progress of a transfer operation.",
             "id": "TransferCounters",
             "properties": {
-                "bytesFailedToDeleteFromSink": {
-                    "description": "Bytes that failed to be deleted from the data sink.",
-                    "format": "int64",
-                    "type": "string"
-                },
-                "bytesDeletedFromSink": {
-                    "description": "Bytes that are deleted from the data sink.",
-                    "format": "int64",
-                    "type": "string"
-                },
                 "bytesFromSourceFailed": {
                     "description": "Bytes in the data source that failed during the transfer.",
                     "format": "int64",
                     "type": "string"
                 },
-                "objectsFromSourceFailed": {
-                    "description": "Objects in the data source that failed during the transfer.",
+                "objectsCopiedToSink": {
+                    "description": "Objects that are copied to the data sink.",
                     "format": "int64",
                     "type": "string"
                 },
-                "objectsCopiedToSink": {
-                    "description": "Objects that are copied to the data sink.",
+                "objectsFromSourceFailed": {
+                    "description": "Objects in the data source that failed during the transfer.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -968,18 +958,28 @@
                     "format": "int64",
                     "type": "string"
                 },
-                "objectsFoundOnlyFromSink": {
-                    "description": "Objects found only in the data sink that are scheduled to be deleted.",
-                    "format": "int64",
-                    "type": "string"
-                },
                 "objectsDeletedFromSink": {
                     "description": "Objects that are deleted from the data sink.",
                     "format": "int64",
                     "type": "string"
                 },
+                "objectsFoundOnlyFromSink": {
+                    "description": "Objects found only in the data sink that are scheduled to be deleted.",
+                    "format": "int64",
+                    "type": "string"
+                },
                 "bytesFromSourceSkippedBySync": {
                     "description": "Bytes in the data source that are not transferred because they already\nexist in the data sink.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "bytesDeletedFromSink": {
+                    "description": "Bytes that are deleted from the data sink.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "bytesFailedToDeleteFromSink": {
+                    "description": "Bytes that failed to be deleted from the data sink.",
                     "format": "int64",
                     "type": "string"
                 }
@@ -990,6 +990,13 @@
             "description": "A summary of errors by error code, plus a count and sample error log\nentries.",
             "id": "ErrorSummary",
             "properties": {
+                "errorLogEntries": {
+                    "description": "Error samples.",
+                    "items": {
+                        "$ref": "ErrorLogEntry"
+                    },
+                    "type": "array"
+                },
                 "errorCode": {
                     "description": "Required.",
                     "enum": [
@@ -1036,13 +1043,6 @@
                     "description": "Count of this type of error.\nRequired.",
                     "format": "int64",
                     "type": "string"
-                },
-                "errorLogEntries": {
-                    "description": "Error samples.",
-                    "items": {
-                        "$ref": "ErrorLogEntry"
-                    },
-                    "type": "array"
                 }
             },
             "type": "object"

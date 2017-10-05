@@ -15,19 +15,55 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
+        "pp": {
+            "default": "true",
+            "description": "Pretty-print response.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
         "prettyPrint": {
             "default": "true",
             "description": "Returns response with indentations and line breaks.",
             "location": "query",
             "type": "boolean"
         },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
@@ -64,42 +100,6 @@
             ],
             "location": "query",
             "type": "string"
-        },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-            "location": "query",
-            "type": "string"
-        },
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
-        },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
-        "pp": {
-            "default": "true",
-            "description": "Pretty-print response.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
-        },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
         }
     },
     "protocol": "rest",
@@ -112,22 +112,6 @@
                     "id": "kgsearch.entities.search",
                     "parameterOrder": [],
                     "parameters": {
-                        "prefix": {
-                            "description": "Enables prefix match against names and aliases of entities",
-                            "location": "query",
-                            "type": "boolean"
-                        },
-                        "query": {
-                            "description": "The literal query string for search.",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "types": {
-                            "description": "Restricts returned entities with these types, e.g. Person\n(as defined in http://schema.org/Person). If multiple types are specified,\nreturned entities will contain one or more of these types.",
-                            "location": "query",
-                            "repeated": true,
-                            "type": "string"
-                        },
                         "indent": {
                             "description": "Enables indenting of json results.",
                             "location": "query",
@@ -150,6 +134,22 @@
                             "format": "int32",
                             "location": "query",
                             "type": "integer"
+                        },
+                        "prefix": {
+                            "description": "Enables prefix match against names and aliases of entities",
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "query": {
+                            "description": "The literal query string for search.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "types": {
+                            "description": "Restricts returned entities with these types, e.g. Person\n(as defined in http://schema.org/Person). If multiple types are specified,\nreturned entities will contain one or more of these types.",
+                            "location": "query",
+                            "repeated": true,
+                            "type": "string"
                         }
                     },
                     "path": "v1/entities:search",
@@ -160,7 +160,7 @@
             }
         }
     },
-    "revision": "20170109",
+    "revision": "20170925",
     "rootUrl": "https://kgsearch.googleapis.com/",
     "schemas": {
         "SearchResponse": {
