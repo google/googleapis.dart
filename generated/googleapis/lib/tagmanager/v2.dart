@@ -1865,6 +1865,15 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
   /// - "referrer"
   /// - "resolution"
   /// - "sdkVersion"
+  /// - "videoCurrentTime"
+  /// - "videoDuration"
+  /// - "videoElapsedTime"
+  /// - "videoPercent"
+  /// - "videoProvider"
+  /// - "videoStatus"
+  /// - "videoTitle"
+  /// - "videoUrl"
+  /// - "videoVisible"
   ///
   /// Completes with a [RevertBuiltInVariableResponse].
   ///
@@ -3554,6 +3563,15 @@ class BuiltInVariable {
   /// - "referrer"
   /// - "resolution"
   /// - "sdkVersion"
+  /// - "videoCurrentTime"
+  /// - "videoDuration"
+  /// - "videoElapsedTime"
+  /// - "videoPercent"
+  /// - "videoProvider"
+  /// - "videoStatus"
+  /// - "videoTitle"
+  /// - "videoUrl"
+  /// - "videoVisible"
   core.String type;
 
   /// GTM Workspace ID.
@@ -3857,6 +3875,9 @@ class ContainerVersion {
   /// The variables in the container that this version was taken from.
   core.List<Variable> variable;
 
+  /// The zones in the container that this version was taken from.
+  core.List<Zone> zone;
+
   ContainerVersion();
 
   ContainerVersion.fromJson(core.Map _json) {
@@ -3911,6 +3932,9 @@ class ContainerVersion {
           .map((value) => new Variable.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("zone")) {
+      zone = _json["zone"].map((value) => new Zone.fromJson(value)).toList();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -3962,6 +3986,9 @@ class ContainerVersion {
     if (variable != null) {
       _json["variable"] = variable.map((value) => (value).toJson()).toList();
     }
+    if (zone != null) {
+      _json["zone"] = zone.map((value) => (value).toJson()).toList();
+    }
     return _json;
   }
 }
@@ -3998,6 +4025,9 @@ class ContainerVersionHeader {
   /// Number of variables in the container version.
   core.String numVariables;
 
+  /// Number of zones in the container version.
+  core.String numZones;
+
   /// GTM Container Versions's API relative path.
   core.String path;
 
@@ -4033,6 +4063,9 @@ class ContainerVersionHeader {
     }
     if (_json.containsKey("numVariables")) {
       numVariables = _json["numVariables"];
+    }
+    if (_json.containsKey("numZones")) {
+      numZones = _json["numZones"];
     }
     if (_json.containsKey("path")) {
       path = _json["path"];
@@ -4071,6 +4104,9 @@ class ContainerVersionHeader {
     }
     if (numVariables != null) {
       _json["numVariables"] = numVariables;
+    }
+    if (numZones != null) {
+      _json["numZones"] = numZones;
     }
     if (path != null) {
       _json["path"] = path;
@@ -5872,6 +5908,9 @@ class Trigger {
   /// User notes on how to apply this trigger in the container.
   core.String notes;
 
+  /// Additional parameters.
+  core.List<Parameter> parameter;
+
   /// Parent folder id.
   core.String parentFolderId;
 
@@ -5922,6 +5961,7 @@ class Trigger {
   /// - "pageview"
   /// - "timer"
   /// - "windowLoaded"
+  /// - "youTubeVideo"
   core.String type;
 
   /// Globally unique id of the trigger that auto-generates this (a Form Submit,
@@ -6022,6 +6062,11 @@ class Trigger {
     }
     if (_json.containsKey("notes")) {
       notes = _json["notes"];
+    }
+    if (_json.containsKey("parameter")) {
+      parameter = _json["parameter"]
+          .map((value) => new Parameter.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("parentFolderId")) {
       parentFolderId = _json["parentFolderId"];
@@ -6128,6 +6173,9 @@ class Trigger {
     }
     if (notes != null) {
       _json["notes"] = notes;
+    }
+    if (parameter != null) {
+      _json["parameter"] = parameter.map((value) => (value).toJson()).toList();
     }
     if (parentFolderId != null) {
       _json["parentFolderId"] = parentFolderId;
@@ -6801,6 +6849,232 @@ class WorkspaceProposalUser {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    return _json;
+  }
+}
+
+/// Represents a Google Tag Manager Zone's contents.
+class Zone {
+  /// GTM Account ID.
+  core.String accountId;
+
+  /// This Zone's boundary.
+  ZoneBoundary boundary;
+
+  /// Containers that are children of this Zone.
+  core.List<ZoneChildContainer> childContainer;
+
+  /// GTM Container ID.
+  core.String containerId;
+
+  /// The fingerprint of the GTM Zone as computed at storage time. This value is
+  /// recomputed whenever the zone is modified.
+  core.String fingerprint;
+
+  /// Zone display name.
+  core.String name;
+
+  /// User notes on how to apply this zone in the container.
+  core.String notes;
+
+  /// GTM Zone's API relative path.
+  core.String path;
+
+  /// Auto generated link to the tag manager UI
+  core.String tagManagerUrl;
+
+  /// This Zone's type restrictions.
+  ZoneTypeRestriction typeRestriction;
+
+  /// GTM Workspace ID.
+  core.String workspaceId;
+
+  /// The Zone ID uniquely identifies the GTM Zone.
+  core.String zoneId;
+
+  Zone();
+
+  Zone.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
+    if (_json.containsKey("boundary")) {
+      boundary = new ZoneBoundary.fromJson(_json["boundary"]);
+    }
+    if (_json.containsKey("childContainer")) {
+      childContainer = _json["childContainer"]
+          .map((value) => new ZoneChildContainer.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("containerId")) {
+      containerId = _json["containerId"];
+    }
+    if (_json.containsKey("fingerprint")) {
+      fingerprint = _json["fingerprint"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("notes")) {
+      notes = _json["notes"];
+    }
+    if (_json.containsKey("path")) {
+      path = _json["path"];
+    }
+    if (_json.containsKey("tagManagerUrl")) {
+      tagManagerUrl = _json["tagManagerUrl"];
+    }
+    if (_json.containsKey("typeRestriction")) {
+      typeRestriction =
+          new ZoneTypeRestriction.fromJson(_json["typeRestriction"]);
+    }
+    if (_json.containsKey("workspaceId")) {
+      workspaceId = _json["workspaceId"];
+    }
+    if (_json.containsKey("zoneId")) {
+      zoneId = _json["zoneId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
+    if (boundary != null) {
+      _json["boundary"] = (boundary).toJson();
+    }
+    if (childContainer != null) {
+      _json["childContainer"] =
+          childContainer.map((value) => (value).toJson()).toList();
+    }
+    if (containerId != null) {
+      _json["containerId"] = containerId;
+    }
+    if (fingerprint != null) {
+      _json["fingerprint"] = fingerprint;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (notes != null) {
+      _json["notes"] = notes;
+    }
+    if (path != null) {
+      _json["path"] = path;
+    }
+    if (tagManagerUrl != null) {
+      _json["tagManagerUrl"] = tagManagerUrl;
+    }
+    if (typeRestriction != null) {
+      _json["typeRestriction"] = (typeRestriction).toJson();
+    }
+    if (workspaceId != null) {
+      _json["workspaceId"] = workspaceId;
+    }
+    if (zoneId != null) {
+      _json["zoneId"] = zoneId;
+    }
+    return _json;
+  }
+}
+
+/// Represents a Zone's boundaries.
+class ZoneBoundary {
+  /// The conditions that, when conjoined, make up the boundary.
+  core.List<Condition> condition;
+
+  /// Custom evaluation trigger IDs. A zone will evaluate its boundary
+  /// conditions when any of the listed triggers are true.
+  core.List<core.String> customEvaluationTriggerId;
+
+  ZoneBoundary();
+
+  ZoneBoundary.fromJson(core.Map _json) {
+    if (_json.containsKey("condition")) {
+      condition = _json["condition"]
+          .map((value) => new Condition.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("customEvaluationTriggerId")) {
+      customEvaluationTriggerId = _json["customEvaluationTriggerId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (condition != null) {
+      _json["condition"] = condition.map((value) => (value).toJson()).toList();
+    }
+    if (customEvaluationTriggerId != null) {
+      _json["customEvaluationTriggerId"] = customEvaluationTriggerId;
+    }
+    return _json;
+  }
+}
+
+/// Represents a child container of a Zone.
+class ZoneChildContainer {
+  /// The zone's nickname for the child container.
+  core.String nickname;
+
+  /// The child container's public id.
+  core.String publicId;
+
+  ZoneChildContainer();
+
+  ZoneChildContainer.fromJson(core.Map _json) {
+    if (_json.containsKey("nickname")) {
+      nickname = _json["nickname"];
+    }
+    if (_json.containsKey("publicId")) {
+      publicId = _json["publicId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nickname != null) {
+      _json["nickname"] = nickname;
+    }
+    if (publicId != null) {
+      _json["publicId"] = publicId;
+    }
+    return _json;
+  }
+}
+
+/// Represents a Zone's type restrictions.
+class ZoneTypeRestriction {
+  /// True if type restrictions have been enabled for this Zone.
+  core.bool enable;
+
+  /// List of type public ids that have been whitelisted for use in this Zone.
+  core.List<core.String> whitelistedTypeId;
+
+  ZoneTypeRestriction();
+
+  ZoneTypeRestriction.fromJson(core.Map _json) {
+    if (_json.containsKey("enable")) {
+      enable = _json["enable"];
+    }
+    if (_json.containsKey("whitelistedTypeId")) {
+      whitelistedTypeId = _json["whitelistedTypeId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (enable != null) {
+      _json["enable"] = enable;
+    }
+    if (whitelistedTypeId != null) {
+      _json["whitelistedTypeId"] = whitelistedTypeId;
     }
     return _json;
   }

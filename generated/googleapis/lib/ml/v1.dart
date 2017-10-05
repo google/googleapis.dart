@@ -311,8 +311,6 @@ class ProjectsJobsResourceApi {
   /// [parent] - Required. The name of the project for which to list jobs.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - Optional. Specifies the subset of jobs to retrieve.
-  ///
   /// [pageToken] - Optional. A page token to request the next page of results.
   ///
   /// You get the token from the `next_page_token` field of the response from
@@ -325,6 +323,8 @@ class ProjectsJobsResourceApi {
   ///
   /// The default value is 20, and the maximum page size is 100.
   ///
+  /// [filter] - Optional. Specifies the subset of jobs to retrieve.
+  ///
   /// Completes with a [GoogleCloudMlV1ListJobsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -333,7 +333,7 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListJobsResponse> list(core.String parent,
-      {core.String filter, core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String filter}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -344,14 +344,14 @@ class ProjectsJobsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jobs';
@@ -709,6 +709,78 @@ class ProjectsModelsResourceApi {
         .then((data) => new GoogleCloudMlV1ListModelsResponse.fromJson(data));
   }
 
+  /// Updates a specific model resource.
+  ///
+  /// Currently the only supported fields to update are `description` and
+  /// `default_version.name`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The project name.
+  /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
+  ///
+  /// [updateMask] - Required. Specifies the path, relative to `Model`, of the
+  /// field to update.
+  ///
+  /// For example, to change the description of a model to "foo" and set its
+  /// default version to "version_1", the `update_mask` parameter would be
+  /// specified as `description`, `default_version.name`, and the `PATCH`
+  /// request body would specify the new value, as follows:
+  ///     {
+  ///       "description": "foo",
+  ///       "defaultVersion": {
+  ///         "name":"version_1"
+  ///       }
+  ///     }
+  /// In this example, the model is blindly overwritten since no etag is given.
+  ///
+  /// To adopt etag mechanism, include `etag` field in the mask, and include the
+  /// `etag` value in your model resource.
+  ///
+  /// Currently the supported update masks are `description`,
+  /// `default_version.name`, `labels`, and `etag`.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+      GoogleCloudMlV1Model request, core.String name,
+      {core.String updateMask}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+  }
+
   /// Sets the access control policy on the specified resource. Replaces any
   /// existing policy.
   ///
@@ -1021,6 +1093,75 @@ class ProjectsModelsVersionsResourceApi {
         .then((data) => new GoogleCloudMlV1ListVersionsResponse.fromJson(data));
   }
 
+  /// Updates the specified Version resource.
+  ///
+  /// Currently the only supported field to update is `description`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the model.
+  /// Value must have pattern "^projects/[^/]+/models/[^/]+/versions/[^/]+$".
+  ///
+  /// [updateMask] - Required. Specifies the path, relative to `Version`, of the
+  /// field to
+  /// update. Must be present and non-empty.
+  ///
+  /// For example, to change the description of a version to "foo", the
+  /// `update_mask` parameter would be specified as `description`, and the
+  /// `PATCH` request body would specify the new value, as follows:
+  ///     {
+  ///       "description": "foo"
+  ///     }
+  /// In this example, the version is blindly overwritten since no etag is
+  /// given.
+  ///
+  /// To adopt etag mechanism, include `etag` field in the mask, and include the
+  /// `etag` value in your version resource.
+  ///
+  /// Currently the only supported update masks are `description`, `labels`, and
+  /// `etag`.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+      GoogleCloudMlV1Version request, core.String name,
+      {core.String updateMask}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+  }
+
   /// Designates a version to be the default for the model.
   ///
   /// The default version is used for prediction requests made against the model
@@ -1225,11 +1366,11 @@ class ProjectsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// Completes with a [GoogleLongrunningListOperationsResponse].
   ///
@@ -1239,7 +1380,7 @@ class ProjectsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.String pageToken, core.int pageSize, core.String filter}) {
+      {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1250,14 +1391,14 @@ class ProjectsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url =
@@ -1487,7 +1628,8 @@ class GoogleCloudMlV1GetConfigResponse {
 /// completion of a training job with hyperparameter tuning includes a list
 /// of HyperparameterOutput objects, one for each successful trial.
 class GoogleCloudMlV1HyperparameterOutput {
-  /// All recorded object metrics for this trial.
+  /// All recorded object metrics for this trial. This field is not currently
+  /// populated.
   core.List<GoogleCloudMlV1HyperparameterOutputHyperparameterMetric> allMetrics;
 
   /// The final objective metric seen for this trial.
@@ -2675,6 +2817,7 @@ class GoogleCloudMlV1TrainingInput {
   /// - "PREMIUM_1" : A large number of workers with many parameter servers.
   /// - "BASIC_GPU" : A single worker instance [with a
   /// GPU](/ml-engine/docs/how-tos/using-gpus).
+  /// - "BASIC_TPU" : A single worker instance with a [Cloud TPU](/tpu)
   /// - "CUSTOM" : The CUSTOM tier is not a set tier, but rather enables you to
   /// use your
   /// own cluster specification. When you use this tier, set values to
@@ -2871,7 +3014,8 @@ class GoogleCloudMlV1TrainingOutput {
 /// information about all of the versions of a given model by calling
 /// [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list).
 ///
-/// Next ID: 18
+/// Next ID: 19
+/// LINT.IfChange
 class GoogleCloudMlV1Version {
   /// Automatically scale the number of nodes used to serve the model in
   /// response to increases and decreases in traffic. Care should be

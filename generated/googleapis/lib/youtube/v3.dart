@@ -746,6 +746,15 @@ class ChannelBannersResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [channelId] - The channelId parameter identifies the YouTube channel to
+  /// which the banner is uploaded. The channelId parameter was introduced as a
+  /// required parameter in May 2017. As this was a backward-incompatible
+  /// change, channelBanners.insert requests that do not specify this parameter
+  /// will not return an error until six months have passed from the time that
+  /// the parameter was introduced. Please see the API Terms of Service for the
+  /// official policy regarding backward incompatible changes and the API
+  /// revision history for the exact date that the parameter was introduced.
+  ///
   /// [onBehalfOfContentOwner] - Note: This parameter is intended exclusively
   /// for YouTube content partners.
   ///
@@ -773,7 +782,8 @@ class ChannelBannersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ChannelBannerResource> insert(ChannelBannerResource request,
-      {core.String onBehalfOfContentOwner,
+      {core.String channelId,
+      core.String onBehalfOfContentOwner,
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
@@ -785,6 +795,9 @@ class ChannelBannersResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if (channelId != null) {
+      _queryParams["channelId"] = [channelId];
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
@@ -5120,7 +5133,7 @@ class SuperChatEventsResourceApi {
   ///
   /// [maxResults] - The maxResults parameter specifies the maximum number of
   /// items that should be returned in the result set.
-  /// Value must be between "0" and "50".
+  /// Value must be between "1" and "50".
   ///
   /// [pageToken] - The pageToken parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
@@ -9301,7 +9314,7 @@ class CommentThreadSnippet {
 }
 
 /// Ratings schemes. The country-specific ratings are mostly for movies and
-/// shows. NEXT_ID: 69
+/// shows. NEXT_ID: 71
 class ContentRating {
   /// The video's Australian Classification Board (ACB) or Australian
   /// Communications and Media Authority (ACMA) rating. ACMA ratings are used to
@@ -9819,6 +9832,15 @@ class ContentRating {
   /// - "mekuUnrated"
   core.String mekuRating;
 
+  /// The rating system for MENA countries, a clone of MPAA. It is needed to
+  /// Possible string values are:
+  /// - "menaMpaaG"
+  /// - "menaMpaaPg"
+  /// - "menaMpaaPg13"
+  /// - "menaMpaaR"
+  /// - "menaMpaaUnrated"
+  core.String menaMpaaRating;
+
   /// The video's rating from the Ministero dei Beni e delle Attività Culturali
   /// e del Turismo (Italy).
   /// Possible string values are:
@@ -9863,6 +9885,13 @@ class ContentRating {
   /// - "mpaaR"
   /// - "mpaaUnrated"
   core.String mpaaRating;
+
+  /// The rating system for trailer, DVD, and Ad in the US. See
+  /// http://movielabs.com/md/ratings/v2.3/html/US_MPAAT_Ratings.html.
+  /// Possible string values are:
+  /// - "mpaatGb"
+  /// - "mpaatRb"
+  core.String mpaatRating;
 
   /// The video's rating from the Movie and Television Review and Classification
   /// Board (Philippines).
@@ -10196,6 +10225,9 @@ class ContentRating {
     if (_json.containsKey("mekuRating")) {
       mekuRating = _json["mekuRating"];
     }
+    if (_json.containsKey("menaMpaaRating")) {
+      menaMpaaRating = _json["menaMpaaRating"];
+    }
     if (_json.containsKey("mibacRating")) {
       mibacRating = _json["mibacRating"];
     }
@@ -10207,6 +10239,9 @@ class ContentRating {
     }
     if (_json.containsKey("mpaaRating")) {
       mpaaRating = _json["mpaaRating"];
+    }
+    if (_json.containsKey("mpaatRating")) {
+      mpaatRating = _json["mpaatRating"];
     }
     if (_json.containsKey("mtrcbRating")) {
       mtrcbRating = _json["mtrcbRating"];
@@ -10405,6 +10440,9 @@ class ContentRating {
     if (mekuRating != null) {
       _json["mekuRating"] = mekuRating;
     }
+    if (menaMpaaRating != null) {
+      _json["menaMpaaRating"] = menaMpaaRating;
+    }
     if (mibacRating != null) {
       _json["mibacRating"] = mibacRating;
     }
@@ -10416,6 +10454,9 @@ class ContentRating {
     }
     if (mpaaRating != null) {
       _json["mpaaRating"] = mpaaRating;
+    }
+    if (mpaatRating != null) {
+      _json["mpaatRating"] = mpaatRating;
     }
     if (mtrcbRating != null) {
       _json["mtrcbRating"] = mtrcbRating;
@@ -11750,7 +11791,6 @@ class LiveBroadcast {
 
   /// The status object contains information about the event's status.
   LiveBroadcastStatus status;
-  LiveBroadcastTopicDetails topicDetails;
 
   LiveBroadcast();
 
@@ -11777,10 +11817,6 @@ class LiveBroadcast {
     if (_json.containsKey("status")) {
       status = new LiveBroadcastStatus.fromJson(_json["status"]);
     }
-    if (_json.containsKey("topicDetails")) {
-      topicDetails =
-          new LiveBroadcastTopicDetails.fromJson(_json["topicDetails"]);
-    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -11806,9 +11842,6 @@ class LiveBroadcast {
     }
     if (status != null) {
       _json["status"] = (status).toJson();
-    }
-    if (topicDetails != null) {
-      _json["topicDetails"] = (topicDetails).toJson();
     }
     return _json;
   }
@@ -11862,6 +11895,25 @@ class LiveBroadcastContentDetails {
   /// Indicates whether this broadcast has low latency enabled.
   core.bool enableLowLatency;
 
+  /// If both this and enable_low_latency are set, they must match.
+  /// LATENCY_NORMAL should match enable_low_latency=false LATENCY_LOW should
+  /// match enable_low_latency=true LATENCY_ULTRA_LOW should have
+  /// enable_low_latency omitted.
+  /// Possible string values are:
+  /// - "low"
+  /// - "normal"
+  /// - "ultraLow"
+  core.String latencyPreference;
+  core.String mesh;
+  core.List<core.int> get meshAsBytes {
+    return convert.BASE64.decode(mesh);
+  }
+
+  void set meshAsBytes(core.List<core.int> _bytes) {
+    mesh =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
   /// The monitorStream object contains information about the monitor stream,
   /// which the broadcaster can use to review the event content before the
   /// broadcast stream is shown publicly.
@@ -11870,6 +11922,7 @@ class LiveBroadcastContentDetails {
   /// The projection format of this broadcast. This defaults to rectangular.
   /// Possible string values are:
   /// - "360"
+  /// - "mesh"
   /// - "rectangular"
   core.String projection;
 
@@ -11920,6 +11973,12 @@ class LiveBroadcastContentDetails {
     if (_json.containsKey("enableLowLatency")) {
       enableLowLatency = _json["enableLowLatency"];
     }
+    if (_json.containsKey("latencyPreference")) {
+      latencyPreference = _json["latencyPreference"];
+    }
+    if (_json.containsKey("mesh")) {
+      mesh = _json["mesh"];
+    }
     if (_json.containsKey("monitorStream")) {
       monitorStream = new MonitorStreamInfo.fromJson(_json["monitorStream"]);
     }
@@ -11961,6 +12020,12 @@ class LiveBroadcastContentDetails {
     }
     if (enableLowLatency != null) {
       _json["enableLowLatency"] = enableLowLatency;
+    }
+    if (latencyPreference != null) {
+      _json["latencyPreference"] = latencyPreference;
+    }
+    if (mesh != null) {
+      _json["mesh"] = mesh;
     }
     if (monitorStream != null) {
       _json["monitorStream"] = (monitorStream).toJson();
@@ -12316,103 +12381,6 @@ class LiveBroadcastStatus {
     }
     if (recordingStatus != null) {
       _json["recordingStatus"] = recordingStatus;
-    }
-    return _json;
-  }
-}
-
-class LiveBroadcastTopic {
-  /// Information about the topic matched.
-  LiveBroadcastTopicSnippet snippet;
-
-  /// The type of the topic.
-  /// Possible string values are:
-  /// - "videoGame"
-  core.String type;
-
-  /// If this flag is set it means that we have not been able to match the topic
-  /// title and type provided to a known entity.
-  core.bool unmatched;
-
-  LiveBroadcastTopic();
-
-  LiveBroadcastTopic.fromJson(core.Map _json) {
-    if (_json.containsKey("snippet")) {
-      snippet = new LiveBroadcastTopicSnippet.fromJson(_json["snippet"]);
-    }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
-    }
-    if (_json.containsKey("unmatched")) {
-      unmatched = _json["unmatched"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (snippet != null) {
-      _json["snippet"] = (snippet).toJson();
-    }
-    if (type != null) {
-      _json["type"] = type;
-    }
-    if (unmatched != null) {
-      _json["unmatched"] = unmatched;
-    }
-    return _json;
-  }
-}
-
-class LiveBroadcastTopicDetails {
-  core.List<LiveBroadcastTopic> topics;
-
-  LiveBroadcastTopicDetails();
-
-  LiveBroadcastTopicDetails.fromJson(core.Map _json) {
-    if (_json.containsKey("topics")) {
-      topics = _json["topics"]
-          .map((value) => new LiveBroadcastTopic.fromJson(value))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (topics != null) {
-      _json["topics"] = topics.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-class LiveBroadcastTopicSnippet {
-  /// The name of the topic.
-  core.String name;
-
-  /// The date at which the topic was released. Filled for types: videoGame
-  core.String releaseDate;
-
-  LiveBroadcastTopicSnippet();
-
-  LiveBroadcastTopicSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey("name")) {
-      name = _json["name"];
-    }
-    if (_json.containsKey("releaseDate")) {
-      releaseDate = _json["releaseDate"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (name != null) {
-      _json["name"] = name;
-    }
-    if (releaseDate != null) {
-      _json["releaseDate"] = releaseDate;
     }
     return _json;
   }

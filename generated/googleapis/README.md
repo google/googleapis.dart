@@ -149,7 +149,7 @@ Official API documentation: https://developers.google.com/analytics/devguides/re
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Android Device Provisioning Partner API - androiddeviceprovisioning v1
 
-Automates reseller integration into Zero Touch Provisioning by assigning devices to customers and creating device reports.
+Automates reseller integration into zero-touch enrollment by assigning devices to customers and creating device reports.
 
 Official API documentation: https://developers.google.com/zero-touch/
 
@@ -195,7 +195,7 @@ A data platform for customers to create, manage, share and query data.
 
 Official API documentation: https://cloud.google.com/bigquery/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) BigQuery Data Transfer Service API - bigquerydatatransfer v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) BigQuery Data Transfer API - bigquerydatatransfer v1
 
 Transfers data from partner SaaS applications to Google BigQuery on a scheduled, managed basis.
 
@@ -256,6 +256,13 @@ Official API documentation: http://cloud.google.com/debugger
 API for managing lightweight user-provided functions executed in response to events.
 
 Official API documentation: https://cloud.google.com/functions
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud IoT API - cloudiot v1
+
+Registers and manages IoT (Internet of Things) devices that connect to the Google Cloud Platform.
+
+
+Official API documentation: https://cloud.google.com/iot
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Key Management Service (KMS) API - cloudkms v1
 
@@ -616,7 +623,7 @@ Official API documentation: https://developers.google.com/safe-browsing/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Apps Script Execution API - script v1
 
-Executes functions in Google Apps Script projects.
+An API for managing and executing Google Apps Script projects.
 
 Official API documentation: https://developers.google.com/apps-script/execution/rest/v1/scripts/run
 
@@ -721,6 +728,12 @@ Lets you manage your tasks and task lists.
 
 Official API documentation: https://developers.google.com/google-apps/tasks/firstapp
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Testing API - testing v1
+
+Allows developers to run automated tests for their mobile applications on Google infrastructure.
+
+Official API documentation: https://developers.google.com/cloud-test-lab/
+
 #### ![Logo](https://www.google.com/images/icons/product/translate-16.png) Google Cloud Translation API - translate v2
 
 The Google Cloud Translation API lets websites and programs integrate with
@@ -736,9 +749,9 @@ Official API documentation: https://developers.google.com/url-shortener/v1/getti
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Vault API - vault v1
 
+Archiving and eDiscovery for G Suite.
 
-
-Official API documentation: https://apps.google.com/products/vault/
+Official API documentation: https://developers.google.com/vault
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Vision API - vision v1
 

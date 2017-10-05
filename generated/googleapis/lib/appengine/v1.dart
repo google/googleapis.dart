@@ -49,6 +49,8 @@ class AppsResourceApi {
       new AppsAuthorizedDomainsResourceApi(_requester);
   AppsDomainMappingsResourceApi get domainMappings =>
       new AppsDomainMappingsResourceApi(_requester);
+  AppsFirewallResourceApi get firewall =>
+      new AppsFirewallResourceApi(_requester);
   AppsLocationsResourceApi get locations =>
       new AppsLocationsResourceApi(_requester);
   AppsOperationsResourceApi get operations =>
@@ -530,9 +532,9 @@ class AppsAuthorizedDomainsResourceApi {
   /// [appsId] - Part of `parent`. Name of the parent Application resource.
   /// Example: apps/myapp.
   ///
-  /// [pageSize] - Maximum results to return per page.
-  ///
   /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [pageSize] - Maximum results to return per page.
   ///
   /// Completes with a [ListAuthorizedDomainsResponse].
   ///
@@ -542,7 +544,7 @@ class AppsAuthorizedDomainsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAuthorizedDomainsResponse> list(core.String appsId,
-      {core.int pageSize, core.String pageToken}) {
+      {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -553,11 +555,11 @@ class AppsAuthorizedDomainsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/apps/' +
@@ -833,6 +835,321 @@ class AppsDomainMappingsResourceApi {
   }
 }
 
+class AppsFirewallResourceApi {
+  final commons.ApiRequester _requester;
+
+  AppsFirewallIngressRulesResourceApi get ingressRules =>
+      new AppsFirewallIngressRulesResourceApi(_requester);
+
+  AppsFirewallResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class AppsFirewallIngressRulesResourceApi {
+  final commons.ApiRequester _requester;
+
+  AppsFirewallIngressRulesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Replaces the entire firewall ruleset in one bulk operation. This overrides
+  /// and replaces the rules of an existing firewall with the new rules.If the
+  /// final rule does not match traffic with the '*' wildcard IP range, then an
+  /// "allow all" rule is explicitly added to the end of the list.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [appsId] - Part of `name`. Name of the Firewall collection to set.
+  /// Example: apps/myapp/firewall/ingressRules.
+  ///
+  /// Completes with a [BatchUpdateIngressRulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BatchUpdateIngressRulesResponse> batchUpdate(
+      BatchUpdateIngressRulesRequest request, core.String appsId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+
+    _url = 'v1/apps/' +
+        commons.Escaper.ecapeVariable('$appsId') +
+        '/firewall/ingressRules:batchUpdate';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new BatchUpdateIngressRulesResponse.fromJson(data));
+  }
+
+  /// Creates a firewall rule for the application.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [appsId] - Part of `parent`. Name of the parent Firewall collection in
+  /// which to create a new rule. Example: apps/myapp/firewall/ingressRules.
+  ///
+  /// Completes with a [FirewallRule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FirewallRule> create(FirewallRule request, core.String appsId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+
+    _url = 'v1/apps/' +
+        commons.Escaper.ecapeVariable('$appsId') +
+        '/firewall/ingressRules';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new FirewallRule.fromJson(data));
+  }
+
+  /// Deletes the specified firewall rule.
+  ///
+  /// Request parameters:
+  ///
+  /// [appsId] - Part of `name`. Name of the Firewall resource to delete.
+  /// Example: apps/myapp/firewall/ingressRules/100.
+  ///
+  /// [ingressRulesId] - Part of `name`. See documentation of `appsId`.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String appsId, core.String ingressRulesId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (ingressRulesId == null) {
+      throw new core.ArgumentError("Parameter ingressRulesId is required.");
+    }
+
+    _url = 'v1/apps/' +
+        commons.Escaper.ecapeVariable('$appsId') +
+        '/firewall/ingressRules/' +
+        commons.Escaper.ecapeVariable('$ingressRulesId');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Gets the specified firewall rule.
+  ///
+  /// Request parameters:
+  ///
+  /// [appsId] - Part of `name`. Name of the Firewall resource to retrieve.
+  /// Example: apps/myapp/firewall/ingressRules/100.
+  ///
+  /// [ingressRulesId] - Part of `name`. See documentation of `appsId`.
+  ///
+  /// Completes with a [FirewallRule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FirewallRule> get(
+      core.String appsId, core.String ingressRulesId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (ingressRulesId == null) {
+      throw new core.ArgumentError("Parameter ingressRulesId is required.");
+    }
+
+    _url = 'v1/apps/' +
+        commons.Escaper.ecapeVariable('$appsId') +
+        '/firewall/ingressRules/' +
+        commons.Escaper.ecapeVariable('$ingressRulesId');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new FirewallRule.fromJson(data));
+  }
+
+  /// Lists the firewall rules of an application.
+  ///
+  /// Request parameters:
+  ///
+  /// [appsId] - Part of `parent`. Name of the Firewall collection to retrieve.
+  /// Example: apps/myapp/firewall/ingressRules.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [pageSize] - Maximum results to return per page.
+  ///
+  /// [matchingAddress] - A valid IP Address. If set, only rules matching this
+  /// address will be returned. The first returned rule will be the rule that
+  /// fires on requests from this IP.
+  ///
+  /// Completes with a [ListIngressRulesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListIngressRulesResponse> list(core.String appsId,
+      {core.String pageToken, core.int pageSize, core.String matchingAddress}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (matchingAddress != null) {
+      _queryParams["matchingAddress"] = [matchingAddress];
+    }
+
+    _url = 'v1/apps/' +
+        commons.Escaper.ecapeVariable('$appsId') +
+        '/firewall/ingressRules';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListIngressRulesResponse.fromJson(data));
+  }
+
+  /// Updates the specified firewall rule.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [appsId] - Part of `name`. Name of the Firewall resource to update.
+  /// Example: apps/myapp/firewall/ingressRules/100.
+  ///
+  /// [ingressRulesId] - Part of `name`. See documentation of `appsId`.
+  ///
+  /// [updateMask] - Standard field mask for the set of fields to be updated.
+  ///
+  /// Completes with a [FirewallRule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FirewallRule> patch(
+      FirewallRule request, core.String appsId, core.String ingressRulesId,
+      {core.String updateMask}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (appsId == null) {
+      throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (ingressRulesId == null) {
+      throw new core.ArgumentError("Parameter ingressRulesId is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+
+    _url = 'v1/apps/' +
+        commons.Escaper.ecapeVariable('$appsId') +
+        '/firewall/ingressRules/' +
+        commons.Escaper.ecapeVariable('$ingressRulesId');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new FirewallRule.fromJson(data));
+  }
+}
+
 class AppsLocationsResourceApi {
   final commons.ApiRequester _requester;
 
@@ -889,11 +1206,11 @@ class AppsLocationsResourceApi {
   /// [appsId] - Part of `name`. The resource that owns the locations
   /// collection, if applicable.
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// Completes with a [ListLocationsResponse].
   ///
@@ -903,7 +1220,7 @@ class AppsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String appsId,
-      {core.String pageToken, core.int pageSize, core.String filter}) {
+      {core.String filter, core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -914,14 +1231,14 @@ class AppsLocationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/locations';
@@ -1001,11 +1318,11 @@ class AppsOperationsResourceApi {
   ///
   /// [appsId] - Part of `name`. The name of the operation's parent resource.
   ///
+  /// [pageSize] - The standard list page size.
+  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
-  ///
-  /// [pageSize] - The standard list page size.
   ///
   /// Completes with a [ListOperationsResponse].
   ///
@@ -1015,7 +1332,7 @@ class AppsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String appsId,
-      {core.String filter, core.String pageToken, core.int pageSize}) {
+      {core.int pageSize, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1026,14 +1343,14 @@ class AppsOperationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url =
@@ -1154,9 +1471,9 @@ class AppsServicesResourceApi {
   /// [appsId] - Part of `parent`. Name of the parent Application resource.
   /// Example: apps/myapp.
   ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
-  ///
   /// [pageSize] - Maximum results to return per page.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
   ///
   /// Completes with a [ListServicesResponse].
   ///
@@ -1166,7 +1483,7 @@ class AppsServicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListServicesResponse> list(core.String appsId,
-      {core.String pageToken, core.int pageSize}) {
+      {core.int pageSize, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1177,11 +1494,11 @@ class AppsServicesResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services';
@@ -2459,6 +2776,58 @@ class BasicScaling {
   }
 }
 
+/// Request message for Firewall.BatchUpdateIngressRules.
+class BatchUpdateIngressRulesRequest {
+  /// A list of FirewallRules to replace the existing set.
+  core.List<FirewallRule> ingressRules;
+
+  BatchUpdateIngressRulesRequest();
+
+  BatchUpdateIngressRulesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("ingressRules")) {
+      ingressRules = _json["ingressRules"]
+          .map((value) => new FirewallRule.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ingressRules != null) {
+      _json["ingressRules"] =
+          ingressRules.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Response message for Firewall.UpdateAllIngressRules.
+class BatchUpdateIngressRulesResponse {
+  /// The full list of ingress FirewallRules for this application.
+  core.List<FirewallRule> ingressRules;
+
+  BatchUpdateIngressRulesResponse();
+
+  BatchUpdateIngressRulesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("ingressRules")) {
+      ingressRules = _json["ingressRules"]
+          .map((value) => new FirewallRule.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ingressRules != null) {
+      _json["ingressRules"] =
+          ingressRules.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// An SSL certificate obtained from a certificate authority.
 class CertificateRawData {
   /// Unencrypted PEM encoded RSA private key. This field is set once on
@@ -2919,6 +3288,73 @@ class FileInfo {
   }
 }
 
+/// A single firewall rule that is evaluated against incoming traffic and
+/// provides an action to take on matched requests.
+class FirewallRule {
+  /// The action to take on matched requests.
+  /// Possible string values are:
+  /// - "UNSPECIFIED_ACTION"
+  /// - "ALLOW" : Matching requests are allowed.
+  /// - "DENY" : Matching requests are denied.
+  core.String action;
+
+  /// An optional string description of this rule. This field has a maximum
+  /// length of 100 characters.
+  core.String description;
+
+  /// A positive integer between 1, Int32.MaxValue-1 that defines the order of
+  /// rule evaluation. Rules with the lowest priority are evaluated first.A
+  /// default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic
+  /// when no previous rule matches. Only the action of this rule can be
+  /// modified by the user.
+  core.int priority;
+
+  /// IP address or range, defined using CIDR notation, of requests that this
+  /// rule applies to. You can use the wildcard character "*" to match all IPs
+  /// equivalent to "0/0" and "::/0" together. Examples: 192.168.1.1 or
+  /// 192.168.0.0/16 or 2001:db8::/32  or
+  /// 2001:0db8:0000:0042:0000:8a2e:0370:7334.<p>Truncation will be silently
+  /// performed on addresses which are not properly truncated. For example,
+  /// 1.2.3.4/24 is accepted as the same address as 1.2.3.0/24. Similarly, for
+  /// IPv6, 2001:db8::1/32 is accepted as the same address as 2001:db8::/32.
+  core.String sourceRange;
+
+  FirewallRule();
+
+  FirewallRule.fromJson(core.Map _json) {
+    if (_json.containsKey("action")) {
+      action = _json["action"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("priority")) {
+      priority = _json["priority"];
+    }
+    if (_json.containsKey("sourceRange")) {
+      sourceRange = _json["sourceRange"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (action != null) {
+      _json["action"] = action;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (priority != null) {
+      _json["priority"] = priority;
+    }
+    if (sourceRange != null) {
+      _json["sourceRange"] = sourceRange;
+    }
+    return _json;
+  }
+}
+
 /// Health checking configuration for VM instances. Unhealthy instances are
 /// killed and replaced with new instances. Only applicable for instances in App
 /// Engine flexible environment.
@@ -3356,6 +3792,41 @@ class ListDomainMappingsResponse {
     if (domainMappings != null) {
       _json["domainMappings"] =
           domainMappings.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/// Response message for Firewall.ListIngressRules.
+class ListIngressRulesResponse {
+  /// The ingress FirewallRules for this application.
+  core.List<FirewallRule> ingressRules;
+
+  /// Continuation token for fetching the next page of results.
+  core.String nextPageToken;
+
+  ListIngressRulesResponse();
+
+  ListIngressRulesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("ingressRules")) {
+      ingressRules = _json["ingressRules"]
+          .map((value) => new FirewallRule.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ingressRules != null) {
+      _json["ingressRules"] =
+          ingressRules.map((value) => (value).toJson()).toList();
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;

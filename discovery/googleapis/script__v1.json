@@ -2,27 +2,6 @@
     "auth": {
         "oauth2": {
             "scopes": {
-                "https://www.googleapis.com/auth/groups": {
-                    "description": "View and manage your Google Groups"
-                },
-                "https://www.googleapis.com/auth/forms.currentonly": {
-                    "description": "View and manage forms that this application has been installed in"
-                },
-                "https://www.googleapis.com/auth/drive": {
-                    "description": "View and manage the files in your Google Drive"
-                },
-                "https://www.googleapis.com/auth/spreadsheets": {
-                    "description": "View and manage your spreadsheets in Google Drive"
-                },
-                "https://mail.google.com/": {
-                    "description": "Read, send, delete, and manage your email"
-                },
-                "https://www.googleapis.com/auth/admin.directory.user": {
-                    "description": "View and manage the provisioning of users on your domain"
-                },
-                "https://www.googleapis.com/auth/admin.directory.group": {
-                    "description": "View and manage the provisioning of groups on your domain"
-                },
                 "https://www.googleapis.com/auth/forms": {
                     "description": "View and manage your forms in Google Drive"
                 },
@@ -34,6 +13,27 @@
                 },
                 "https://www.google.com/calendar/feeds": {
                     "description": "Manage your calendars"
+                },
+                "https://www.googleapis.com/auth/groups": {
+                    "description": "View and manage your Google Groups"
+                },
+                "https://www.googleapis.com/auth/forms.currentonly": {
+                    "description": "View and manage forms that this application has been installed in"
+                },
+                "https://www.googleapis.com/auth/drive": {
+                    "description": "View and manage the files in your Google Drive"
+                },
+                "https://www.googleapis.com/auth/admin.directory.user": {
+                    "description": "View and manage the provisioning of users on your domain"
+                },
+                "https://www.googleapis.com/auth/admin.directory.group": {
+                    "description": "View and manage the provisioning of groups on your domain"
+                },
+                "https://www.googleapis.com/auth/spreadsheets": {
+                    "description": "View and manage your spreadsheets in Google Drive"
+                },
+                "https://mail.google.com/": {
+                    "description": "Read, send, delete, and manage your email"
                 }
             }
         }
@@ -41,7 +41,7 @@
     "basePath": "",
     "baseUrl": "https://script.googleapis.com/",
     "batchPath": "batch",
-    "description": "Executes functions in Google Apps Script projects.",
+    "description": "An API for managing and executing Google Apps Script projects.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/apps-script/execution/rest/v1/scripts/run",
     "icons": {
@@ -54,13 +54,13 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "description": "OAuth access token.",
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
@@ -75,13 +75,13 @@
             "location": "query",
             "type": "boolean"
         },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
+        "bearer_token": {
+            "description": "OAuth bearer token.",
             "location": "query",
             "type": "string"
         },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
         },
@@ -184,51 +184,20 @@
             }
         }
     },
-    "revision": "20170829",
+    "revision": "20170927",
     "rootUrl": "https://script.googleapis.com/",
     "schemas": {
-        "Status": {
-            "description": "If a `run` call succeeds but the script function (or Apps Script itself) throws an exception, the response body's `error` field will contain this `Status` object.",
-            "id": "Status",
-            "properties": {
-                "details": {
-                    "description": "An array that contains a single `ExecutionError` object that provides information about the nature of the error.",
-                    "items": {
-                        "additionalProperties": {
-                            "description": "Properties of the object. Contains field @type with type URL.",
-                            "type": "any"
-                        },
-                        "type": "object"
-                    },
-                    "type": "array"
-                },
-                "code": {
-                    "description": "The status code. For this API, this value will always be 3, corresponding to an <code>INVALID_ARGUMENT</code> error.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "message": {
-                    "description": "A developer-facing error message, which is in English. Any user-facing error message is localized and sent in the [`google.rpc.Status.details`](google.rpc.Status.details) field, or localized by the client.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "ExecutionRequest": {
             "description": "A request to run the function in a script. The script is identified by the\nspecified `script_id`. Executing a function on a script returns results\nbased on the implementation of the script.",
             "id": "ExecutionRequest",
             "properties": {
-                "sessionState": {
-                    "description": "For Android add-ons only. An ID that represents the user's current session\nin the Android app for Google Docs or Sheets, included as extra data in the\n[`Intent`](https://developer.android.com/guide/components/intents-filters.html)\nthat launches the add-on. When an Android add-on is run with a session\nstate, it gains the privileges of a\n[bound](https://developers.google.com/apps-script/guides/bound) script &mdash;\nthat is, it can access information like the user's current cursor position\n(in Docs) or selected cell (in Sheets). To retrieve the state, call\n`Intent.getStringExtra(\"com.google.android.apps.docs.addons.SessionState\")`.\nOptional.",
+                "function": {
+                    "description": "The name of the function to execute in the given script. The name does not\ninclude parentheses or parameters.",
                     "type": "string"
                 },
                 "devMode": {
                     "description": "If `true` and the user is an owner of the script, the script runs at the\nmost recently saved version rather than the version deployed for use with\nthe Execution API. Optional; default is `false`.",
                     "type": "boolean"
-                },
-                "function": {
-                    "description": "The name of the function to execute in the given script. The name does not\ninclude parentheses or parameters.",
-                    "type": "string"
                 },
                 "parameters": {
                     "description": "The parameters to be passed to the function being executed. The object type\nfor each parameter should match the expected type in Apps Script.\nParameters cannot be Apps Script-specific object types (such as a\n`Document` or a `Calendar`); they can only be primitive types such as\n`string`, `number`, `array`, `object`, or `boolean`. Optional.",
@@ -236,6 +205,10 @@
                         "type": "any"
                     },
                     "type": "array"
+                },
+                "sessionState": {
+                    "description": "For Android add-ons only. An ID that represents the user's current session\nin the Android app for Google Docs or Sheets, included as extra data in the\n[`Intent`](https://developer.android.com/guide/components/intents-filters.html)\nthat launches the add-on. When an Android add-on is run with a session\nstate, it gains the privileges of a\n[bound](https://developers.google.com/apps-script/guides/bound) script &mdash;\nthat is, it can access information like the user's current cursor position\n(in Docs) or selected cell (in Sheets). To retrieve the state, call\n`Intent.getStringExtra(\"com.google.android.apps.docs.addons.SessionState\")`.\nOptional.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -314,6 +287,33 @@
                     "description": "An array of objects that provide a stack trace through the script to show\nwhere the execution failed, with the deepest call first.",
                     "items": {
                         "$ref": "ScriptStackTraceElement"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Status": {
+            "description": "If a `run` call succeeds but the script function (or Apps Script itself) throws an exception, the response body's `error` field will contain this `Status` object.",
+            "id": "Status",
+            "properties": {
+                "code": {
+                    "description": "The status code. For this API, this value will always be 3, corresponding to an <code>INVALID_ARGUMENT</code> error.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "message": {
+                    "description": "A developer-facing error message, which is in English. Any user-facing error message is localized and sent in the [`google.rpc.Status.details`](google.rpc.Status.details) field, or localized by the client.",
+                    "type": "string"
+                },
+                "details": {
+                    "description": "An array that contains a single `ExecutionError` object that provides information about the nature of the error.",
+                    "items": {
+                        "additionalProperties": {
+                            "description": "Properties of the object. Contains field @type with type URL.",
+                            "type": "any"
+                        },
+                        "type": "object"
                     },
                     "type": "array"
                 }

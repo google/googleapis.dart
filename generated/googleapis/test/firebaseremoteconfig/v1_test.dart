@@ -50,27 +50,27 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed758() {
+buildUnnamed795() {
   var o = new core.List<api.RemoteConfigCondition>();
   o.add(buildRemoteConfigCondition());
   o.add(buildRemoteConfigCondition());
   return o;
 }
 
-checkUnnamed758(core.List<api.RemoteConfigCondition> o) {
+checkUnnamed795(core.List<api.RemoteConfigCondition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRemoteConfigCondition(o[0]);
   checkRemoteConfigCondition(o[1]);
 }
 
-buildUnnamed759() {
+buildUnnamed796() {
   var o = new core.Map<core.String, api.RemoteConfigParameter>();
   o["x"] = buildRemoteConfigParameter();
   o["y"] = buildRemoteConfigParameter();
   return o;
 }
 
-checkUnnamed759(core.Map<core.String, api.RemoteConfigParameter> o) {
+checkUnnamed796(core.Map<core.String, api.RemoteConfigParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRemoteConfigParameter(o["x"]);
   checkRemoteConfigParameter(o["y"]);
@@ -81,8 +81,8 @@ buildRemoteConfig() {
   var o = new api.RemoteConfig();
   buildCounterRemoteConfig++;
   if (buildCounterRemoteConfig < 3) {
-    o.conditions = buildUnnamed758();
-    o.parameters = buildUnnamed759();
+    o.conditions = buildUnnamed795();
+    o.parameters = buildUnnamed796();
   }
   buildCounterRemoteConfig--;
   return o;
@@ -91,8 +91,8 @@ buildRemoteConfig() {
 checkRemoteConfig(api.RemoteConfig o) {
   buildCounterRemoteConfig++;
   if (buildCounterRemoteConfig < 3) {
-    checkUnnamed758(o.conditions);
-    checkUnnamed759(o.parameters);
+    checkUnnamed795(o.conditions);
+    checkUnnamed796(o.parameters);
   }
   buildCounterRemoteConfig--;
 }
@@ -120,14 +120,14 @@ checkRemoteConfigCondition(api.RemoteConfigCondition o) {
   buildCounterRemoteConfigCondition--;
 }
 
-buildUnnamed760() {
+buildUnnamed797() {
   var o = new core.Map<core.String, api.RemoteConfigParameterValue>();
   o["x"] = buildRemoteConfigParameterValue();
   o["y"] = buildRemoteConfigParameterValue();
   return o;
 }
 
-checkUnnamed760(core.Map<core.String, api.RemoteConfigParameterValue> o) {
+checkUnnamed797(core.Map<core.String, api.RemoteConfigParameterValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRemoteConfigParameterValue(o["x"]);
   checkRemoteConfigParameterValue(o["y"]);
@@ -138,7 +138,7 @@ buildRemoteConfigParameter() {
   var o = new api.RemoteConfigParameter();
   buildCounterRemoteConfigParameter++;
   if (buildCounterRemoteConfigParameter < 3) {
-    o.conditionalValues = buildUnnamed760();
+    o.conditionalValues = buildUnnamed797();
     o.defaultValue = buildRemoteConfigParameterValue();
   }
   buildCounterRemoteConfigParameter--;
@@ -148,7 +148,7 @@ buildRemoteConfigParameter() {
 checkRemoteConfigParameter(api.RemoteConfigParameter o) {
   buildCounterRemoteConfigParameter++;
   if (buildCounterRemoteConfigParameter < 3) {
-    checkUnnamed760(o.conditionalValues);
+    checkUnnamed797(o.conditionalValues);
     checkRemoteConfigParameterValue(o.defaultValue);
   }
   buildCounterRemoteConfigParameter--;

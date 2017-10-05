@@ -66,14 +66,14 @@ checkGoogleLongrunningCancelOperationRequest(
   buildCounterGoogleLongrunningCancelOperationRequest--;
 }
 
-buildUnnamed3303() {
+buildUnnamed3452() {
   var o = new core.List<api.GoogleLongrunningOperation>();
   o.add(buildGoogleLongrunningOperation());
   o.add(buildGoogleLongrunningOperation());
   return o;
 }
 
-checkUnnamed3303(core.List<api.GoogleLongrunningOperation> o) {
+checkUnnamed3452(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0]);
   checkGoogleLongrunningOperation(o[1]);
@@ -85,7 +85,7 @@ buildGoogleLongrunningListOperationsResponse() {
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = "foo";
-    o.operations = buildUnnamed3303();
+    o.operations = buildUnnamed3452();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -96,12 +96,12 @@ checkGoogleLongrunningListOperationsResponse(
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3303(o.operations);
+    checkUnnamed3452(o.operations);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-buildUnnamed3304() {
+buildUnnamed3453() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -116,7 +116,7 @@ buildUnnamed3304() {
   return o;
 }
 
-checkUnnamed3304(core.Map<core.String, core.Object> o) {
+checkUnnamed3453(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -130,7 +130,7 @@ checkUnnamed3304(core.Map<core.String, core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed3305() {
+buildUnnamed3454() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -145,7 +145,7 @@ buildUnnamed3305() {
   return o;
 }
 
-checkUnnamed3305(core.Map<core.String, core.Object> o) {
+checkUnnamed3454(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["x"]) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -166,9 +166,9 @@ buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed3304();
+    o.metadata = buildUnnamed3453();
     o.name = "foo";
-    o.response = buildUnnamed3305();
+    o.response = buildUnnamed3454();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -179,21 +179,43 @@ checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkGoogleRpcStatus(o.error);
-    checkUnnamed3304(o.metadata);
+    checkUnnamed3453(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed3305(o.response);
+    checkUnnamed3454(o.response);
   }
   buildCounterGoogleLongrunningOperation--;
 }
 
-buildUnnamed3306() {
+core.int buildCounterGooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest = 0;
+buildGooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest() {
+  var o = new api.GooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest();
+  buildCounterGooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest++;
+  if (buildCounterGooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest < 3) {
+    o.privacyMetric = buildGooglePrivacyDlpV2beta1PrivacyMetric();
+    o.sourceTable = buildGooglePrivacyDlpV2beta1BigQueryTable();
+  }
+  buildCounterGooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest(
+    api.GooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest o) {
+  buildCounterGooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest++;
+  if (buildCounterGooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest < 3) {
+    checkGooglePrivacyDlpV2beta1PrivacyMetric(o.privacyMetric);
+    checkGooglePrivacyDlpV2beta1BigQueryTable(o.sourceTable);
+  }
+  buildCounterGooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest--;
+}
+
+buildUnnamed3455() {
   var o = new core.List<api.GooglePrivacyDlpV2beta1FieldId>();
   o.add(buildGooglePrivacyDlpV2beta1FieldId());
   o.add(buildGooglePrivacyDlpV2beta1FieldId());
   return o;
 }
 
-checkUnnamed3306(core.List<api.GooglePrivacyDlpV2beta1FieldId> o) {
+checkUnnamed3455(core.List<api.GooglePrivacyDlpV2beta1FieldId> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2beta1FieldId(o[0]);
   checkGooglePrivacyDlpV2beta1FieldId(o[1]);
@@ -204,7 +226,7 @@ buildGooglePrivacyDlpV2beta1BigQueryOptions() {
   var o = new api.GooglePrivacyDlpV2beta1BigQueryOptions();
   buildCounterGooglePrivacyDlpV2beta1BigQueryOptions++;
   if (buildCounterGooglePrivacyDlpV2beta1BigQueryOptions < 3) {
-    o.identifyingFields = buildUnnamed3306();
+    o.identifyingFields = buildUnnamed3455();
     o.tableReference = buildGooglePrivacyDlpV2beta1BigQueryTable();
   }
   buildCounterGooglePrivacyDlpV2beta1BigQueryOptions--;
@@ -215,7 +237,7 @@ checkGooglePrivacyDlpV2beta1BigQueryOptions(
     api.GooglePrivacyDlpV2beta1BigQueryOptions o) {
   buildCounterGooglePrivacyDlpV2beta1BigQueryOptions++;
   if (buildCounterGooglePrivacyDlpV2beta1BigQueryOptions < 3) {
-    checkUnnamed3306(o.identifyingFields);
+    checkUnnamed3455(o.identifyingFields);
     checkGooglePrivacyDlpV2beta1BigQueryTable(o.tableReference);
   }
   buildCounterGooglePrivacyDlpV2beta1BigQueryOptions--;
@@ -245,6 +267,156 @@ checkGooglePrivacyDlpV2beta1BigQueryTable(
   buildCounterGooglePrivacyDlpV2beta1BigQueryTable--;
 }
 
+core.int buildCounterGooglePrivacyDlpV2beta1Bucket = 0;
+buildGooglePrivacyDlpV2beta1Bucket() {
+  var o = new api.GooglePrivacyDlpV2beta1Bucket();
+  buildCounterGooglePrivacyDlpV2beta1Bucket++;
+  if (buildCounterGooglePrivacyDlpV2beta1Bucket < 3) {
+    o.max = buildGooglePrivacyDlpV2beta1Value();
+    o.min = buildGooglePrivacyDlpV2beta1Value();
+    o.replacementValue = buildGooglePrivacyDlpV2beta1Value();
+  }
+  buildCounterGooglePrivacyDlpV2beta1Bucket--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1Bucket(api.GooglePrivacyDlpV2beta1Bucket o) {
+  buildCounterGooglePrivacyDlpV2beta1Bucket++;
+  if (buildCounterGooglePrivacyDlpV2beta1Bucket < 3) {
+    checkGooglePrivacyDlpV2beta1Value(o.max);
+    checkGooglePrivacyDlpV2beta1Value(o.min);
+    checkGooglePrivacyDlpV2beta1Value(o.replacementValue);
+  }
+  buildCounterGooglePrivacyDlpV2beta1Bucket--;
+}
+
+buildUnnamed3456() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1Bucket>();
+  o.add(buildGooglePrivacyDlpV2beta1Bucket());
+  o.add(buildGooglePrivacyDlpV2beta1Bucket());
+  return o;
+}
+
+checkUnnamed3456(core.List<api.GooglePrivacyDlpV2beta1Bucket> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1Bucket(o[0]);
+  checkGooglePrivacyDlpV2beta1Bucket(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1BucketingConfig = 0;
+buildGooglePrivacyDlpV2beta1BucketingConfig() {
+  var o = new api.GooglePrivacyDlpV2beta1BucketingConfig();
+  buildCounterGooglePrivacyDlpV2beta1BucketingConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1BucketingConfig < 3) {
+    o.buckets = buildUnnamed3456();
+  }
+  buildCounterGooglePrivacyDlpV2beta1BucketingConfig--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1BucketingConfig(
+    api.GooglePrivacyDlpV2beta1BucketingConfig o) {
+  buildCounterGooglePrivacyDlpV2beta1BucketingConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1BucketingConfig < 3) {
+    checkUnnamed3456(o.buckets);
+  }
+  buildCounterGooglePrivacyDlpV2beta1BucketingConfig--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1CategoricalStatsConfig = 0;
+buildGooglePrivacyDlpV2beta1CategoricalStatsConfig() {
+  var o = new api.GooglePrivacyDlpV2beta1CategoricalStatsConfig();
+  buildCounterGooglePrivacyDlpV2beta1CategoricalStatsConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1CategoricalStatsConfig < 3) {
+    o.field = buildGooglePrivacyDlpV2beta1FieldId();
+  }
+  buildCounterGooglePrivacyDlpV2beta1CategoricalStatsConfig--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1CategoricalStatsConfig(
+    api.GooglePrivacyDlpV2beta1CategoricalStatsConfig o) {
+  buildCounterGooglePrivacyDlpV2beta1CategoricalStatsConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1CategoricalStatsConfig < 3) {
+    checkGooglePrivacyDlpV2beta1FieldId(o.field);
+  }
+  buildCounterGooglePrivacyDlpV2beta1CategoricalStatsConfig--;
+}
+
+buildUnnamed3457() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1ValueFrequency>();
+  o.add(buildGooglePrivacyDlpV2beta1ValueFrequency());
+  o.add(buildGooglePrivacyDlpV2beta1ValueFrequency());
+  return o;
+}
+
+checkUnnamed3457(core.List<api.GooglePrivacyDlpV2beta1ValueFrequency> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1ValueFrequency(o[0]);
+  checkGooglePrivacyDlpV2beta1ValueFrequency(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket = 0;
+buildGooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket() {
+  var o = new api.GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket();
+  buildCounterGooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket++;
+  if (buildCounterGooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket < 3) {
+    o.bucketSize = "foo";
+    o.bucketValues = buildUnnamed3457();
+    o.valueFrequencyLowerBound = "foo";
+    o.valueFrequencyUpperBound = "foo";
+  }
+  buildCounterGooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket(
+    api.GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket o) {
+  buildCounterGooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket++;
+  if (buildCounterGooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket < 3) {
+    unittest.expect(o.bucketSize, unittest.equals('foo'));
+    checkUnnamed3457(o.bucketValues);
+    unittest.expect(o.valueFrequencyLowerBound, unittest.equals('foo'));
+    unittest.expect(o.valueFrequencyUpperBound, unittest.equals('foo'));
+  }
+  buildCounterGooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket--;
+}
+
+buildUnnamed3458() {
+  var o = new core
+      .List<api.GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket>();
+  o.add(buildGooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket());
+  o.add(buildGooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket());
+  return o;
+}
+
+checkUnnamed3458(
+    core.List<api.GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket(o[0]);
+  checkGooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1CategoricalStatsResult = 0;
+buildGooglePrivacyDlpV2beta1CategoricalStatsResult() {
+  var o = new api.GooglePrivacyDlpV2beta1CategoricalStatsResult();
+  buildCounterGooglePrivacyDlpV2beta1CategoricalStatsResult++;
+  if (buildCounterGooglePrivacyDlpV2beta1CategoricalStatsResult < 3) {
+    o.valueFrequencyHistogramBuckets = buildUnnamed3458();
+  }
+  buildCounterGooglePrivacyDlpV2beta1CategoricalStatsResult--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1CategoricalStatsResult(
+    api.GooglePrivacyDlpV2beta1CategoricalStatsResult o) {
+  buildCounterGooglePrivacyDlpV2beta1CategoricalStatsResult++;
+  if (buildCounterGooglePrivacyDlpV2beta1CategoricalStatsResult < 3) {
+    checkUnnamed3458(o.valueFrequencyHistogramBuckets);
+  }
+  buildCounterGooglePrivacyDlpV2beta1CategoricalStatsResult--;
+}
+
 core.int buildCounterGooglePrivacyDlpV2beta1CategoryDescription = 0;
 buildGooglePrivacyDlpV2beta1CategoryDescription() {
   var o = new api.GooglePrivacyDlpV2beta1CategoryDescription();
@@ -265,6 +437,67 @@ checkGooglePrivacyDlpV2beta1CategoryDescription(
     unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterGooglePrivacyDlpV2beta1CategoryDescription--;
+}
+
+buildUnnamed3459() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1CharsToIgnore>();
+  o.add(buildGooglePrivacyDlpV2beta1CharsToIgnore());
+  o.add(buildGooglePrivacyDlpV2beta1CharsToIgnore());
+  return o;
+}
+
+checkUnnamed3459(core.List<api.GooglePrivacyDlpV2beta1CharsToIgnore> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1CharsToIgnore(o[0]);
+  checkGooglePrivacyDlpV2beta1CharsToIgnore(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1CharacterMaskConfig = 0;
+buildGooglePrivacyDlpV2beta1CharacterMaskConfig() {
+  var o = new api.GooglePrivacyDlpV2beta1CharacterMaskConfig();
+  buildCounterGooglePrivacyDlpV2beta1CharacterMaskConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1CharacterMaskConfig < 3) {
+    o.charactersToIgnore = buildUnnamed3459();
+    o.maskingCharacter = "foo";
+    o.numberToMask = 42;
+    o.reverseOrder = true;
+  }
+  buildCounterGooglePrivacyDlpV2beta1CharacterMaskConfig--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1CharacterMaskConfig(
+    api.GooglePrivacyDlpV2beta1CharacterMaskConfig o) {
+  buildCounterGooglePrivacyDlpV2beta1CharacterMaskConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1CharacterMaskConfig < 3) {
+    checkUnnamed3459(o.charactersToIgnore);
+    unittest.expect(o.maskingCharacter, unittest.equals('foo'));
+    unittest.expect(o.numberToMask, unittest.equals(42));
+    unittest.expect(o.reverseOrder, unittest.isTrue);
+  }
+  buildCounterGooglePrivacyDlpV2beta1CharacterMaskConfig--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1CharsToIgnore = 0;
+buildGooglePrivacyDlpV2beta1CharsToIgnore() {
+  var o = new api.GooglePrivacyDlpV2beta1CharsToIgnore();
+  buildCounterGooglePrivacyDlpV2beta1CharsToIgnore++;
+  if (buildCounterGooglePrivacyDlpV2beta1CharsToIgnore < 3) {
+    o.charactersToSkip = "foo";
+    o.commonCharactersToIgnore = "foo";
+  }
+  buildCounterGooglePrivacyDlpV2beta1CharsToIgnore--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1CharsToIgnore(
+    api.GooglePrivacyDlpV2beta1CharsToIgnore o) {
+  buildCounterGooglePrivacyDlpV2beta1CharsToIgnore++;
+  if (buildCounterGooglePrivacyDlpV2beta1CharsToIgnore < 3) {
+    unittest.expect(o.charactersToSkip, unittest.equals('foo'));
+    unittest.expect(o.commonCharactersToIgnore, unittest.equals('foo'));
+  }
+  buildCounterGooglePrivacyDlpV2beta1CharsToIgnore--;
 }
 
 core.int buildCounterGooglePrivacyDlpV2beta1CloudStorageKey = 0;
@@ -352,6 +585,62 @@ checkGooglePrivacyDlpV2beta1Color(api.GooglePrivacyDlpV2beta1Color o) {
   buildCounterGooglePrivacyDlpV2beta1Color--;
 }
 
+core.int buildCounterGooglePrivacyDlpV2beta1Condition = 0;
+buildGooglePrivacyDlpV2beta1Condition() {
+  var o = new api.GooglePrivacyDlpV2beta1Condition();
+  buildCounterGooglePrivacyDlpV2beta1Condition++;
+  if (buildCounterGooglePrivacyDlpV2beta1Condition < 3) {
+    o.field = buildGooglePrivacyDlpV2beta1FieldId();
+    o.operator = "foo";
+    o.value = buildGooglePrivacyDlpV2beta1Value();
+  }
+  buildCounterGooglePrivacyDlpV2beta1Condition--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1Condition(api.GooglePrivacyDlpV2beta1Condition o) {
+  buildCounterGooglePrivacyDlpV2beta1Condition++;
+  if (buildCounterGooglePrivacyDlpV2beta1Condition < 3) {
+    checkGooglePrivacyDlpV2beta1FieldId(o.field);
+    unittest.expect(o.operator, unittest.equals('foo'));
+    checkGooglePrivacyDlpV2beta1Value(o.value);
+  }
+  buildCounterGooglePrivacyDlpV2beta1Condition--;
+}
+
+buildUnnamed3460() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1Condition>();
+  o.add(buildGooglePrivacyDlpV2beta1Condition());
+  o.add(buildGooglePrivacyDlpV2beta1Condition());
+  return o;
+}
+
+checkUnnamed3460(core.List<api.GooglePrivacyDlpV2beta1Condition> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1Condition(o[0]);
+  checkGooglePrivacyDlpV2beta1Condition(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1Conditions = 0;
+buildGooglePrivacyDlpV2beta1Conditions() {
+  var o = new api.GooglePrivacyDlpV2beta1Conditions();
+  buildCounterGooglePrivacyDlpV2beta1Conditions++;
+  if (buildCounterGooglePrivacyDlpV2beta1Conditions < 3) {
+    o.conditions = buildUnnamed3460();
+  }
+  buildCounterGooglePrivacyDlpV2beta1Conditions--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1Conditions(
+    api.GooglePrivacyDlpV2beta1Conditions o) {
+  buildCounterGooglePrivacyDlpV2beta1Conditions++;
+  if (buildCounterGooglePrivacyDlpV2beta1Conditions < 3) {
+    checkUnnamed3460(o.conditions);
+  }
+  buildCounterGooglePrivacyDlpV2beta1Conditions--;
+}
+
 core.int buildCounterGooglePrivacyDlpV2beta1ContentItem = 0;
 buildGooglePrivacyDlpV2beta1ContentItem() {
   var o = new api.GooglePrivacyDlpV2beta1ContentItem();
@@ -404,6 +693,77 @@ checkGooglePrivacyDlpV2beta1CreateInspectOperationRequest(
   buildCounterGooglePrivacyDlpV2beta1CreateInspectOperationRequest--;
 }
 
+core.int buildCounterGooglePrivacyDlpV2beta1CryptoHashConfig = 0;
+buildGooglePrivacyDlpV2beta1CryptoHashConfig() {
+  var o = new api.GooglePrivacyDlpV2beta1CryptoHashConfig();
+  buildCounterGooglePrivacyDlpV2beta1CryptoHashConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1CryptoHashConfig < 3) {
+    o.cryptoKey = buildGooglePrivacyDlpV2beta1CryptoKey();
+  }
+  buildCounterGooglePrivacyDlpV2beta1CryptoHashConfig--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1CryptoHashConfig(
+    api.GooglePrivacyDlpV2beta1CryptoHashConfig o) {
+  buildCounterGooglePrivacyDlpV2beta1CryptoHashConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1CryptoHashConfig < 3) {
+    checkGooglePrivacyDlpV2beta1CryptoKey(o.cryptoKey);
+  }
+  buildCounterGooglePrivacyDlpV2beta1CryptoHashConfig--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1CryptoKey = 0;
+buildGooglePrivacyDlpV2beta1CryptoKey() {
+  var o = new api.GooglePrivacyDlpV2beta1CryptoKey();
+  buildCounterGooglePrivacyDlpV2beta1CryptoKey++;
+  if (buildCounterGooglePrivacyDlpV2beta1CryptoKey < 3) {
+    o.kmsWrapped = buildGooglePrivacyDlpV2beta1KmsWrappedCryptoKey();
+    o.transient = buildGooglePrivacyDlpV2beta1TransientCryptoKey();
+    o.unwrapped = buildGooglePrivacyDlpV2beta1UnwrappedCryptoKey();
+  }
+  buildCounterGooglePrivacyDlpV2beta1CryptoKey--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1CryptoKey(api.GooglePrivacyDlpV2beta1CryptoKey o) {
+  buildCounterGooglePrivacyDlpV2beta1CryptoKey++;
+  if (buildCounterGooglePrivacyDlpV2beta1CryptoKey < 3) {
+    checkGooglePrivacyDlpV2beta1KmsWrappedCryptoKey(o.kmsWrapped);
+    checkGooglePrivacyDlpV2beta1TransientCryptoKey(o.transient);
+    checkGooglePrivacyDlpV2beta1UnwrappedCryptoKey(o.unwrapped);
+  }
+  buildCounterGooglePrivacyDlpV2beta1CryptoKey--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig = 0;
+buildGooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig() {
+  var o = new api.GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig();
+  buildCounterGooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig < 3) {
+    o.commonAlphabet = "foo";
+    o.context = buildGooglePrivacyDlpV2beta1FieldId();
+    o.cryptoKey = buildGooglePrivacyDlpV2beta1CryptoKey();
+    o.customAlphabet = "foo";
+    o.radix = 42;
+  }
+  buildCounterGooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig(
+    api.GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig o) {
+  buildCounterGooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig < 3) {
+    unittest.expect(o.commonAlphabet, unittest.equals('foo'));
+    checkGooglePrivacyDlpV2beta1FieldId(o.context);
+    checkGooglePrivacyDlpV2beta1CryptoKey(o.cryptoKey);
+    unittest.expect(o.customAlphabet, unittest.equals('foo'));
+    unittest.expect(o.radix, unittest.equals(42));
+  }
+  buildCounterGooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig--;
+}
+
 core.int buildCounterGooglePrivacyDlpV2beta1DatastoreKey = 0;
 buildGooglePrivacyDlpV2beta1DatastoreKey() {
   var o = new api.GooglePrivacyDlpV2beta1DatastoreKey();
@@ -424,14 +784,14 @@ checkGooglePrivacyDlpV2beta1DatastoreKey(
   buildCounterGooglePrivacyDlpV2beta1DatastoreKey--;
 }
 
-buildUnnamed3307() {
+buildUnnamed3461() {
   var o = new core.List<api.GooglePrivacyDlpV2beta1Projection>();
   o.add(buildGooglePrivacyDlpV2beta1Projection());
   o.add(buildGooglePrivacyDlpV2beta1Projection());
   return o;
 }
 
-checkUnnamed3307(core.List<api.GooglePrivacyDlpV2beta1Projection> o) {
+checkUnnamed3461(core.List<api.GooglePrivacyDlpV2beta1Projection> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2beta1Projection(o[0]);
   checkGooglePrivacyDlpV2beta1Projection(o[1]);
@@ -444,7 +804,7 @@ buildGooglePrivacyDlpV2beta1DatastoreOptions() {
   if (buildCounterGooglePrivacyDlpV2beta1DatastoreOptions < 3) {
     o.kind = buildGooglePrivacyDlpV2beta1KindExpression();
     o.partitionId = buildGooglePrivacyDlpV2beta1PartitionId();
-    o.projection = buildUnnamed3307();
+    o.projection = buildUnnamed3461();
   }
   buildCounterGooglePrivacyDlpV2beta1DatastoreOptions--;
   return o;
@@ -456,9 +816,197 @@ checkGooglePrivacyDlpV2beta1DatastoreOptions(
   if (buildCounterGooglePrivacyDlpV2beta1DatastoreOptions < 3) {
     checkGooglePrivacyDlpV2beta1KindExpression(o.kind);
     checkGooglePrivacyDlpV2beta1PartitionId(o.partitionId);
-    checkUnnamed3307(o.projection);
+    checkUnnamed3461(o.projection);
   }
   buildCounterGooglePrivacyDlpV2beta1DatastoreOptions--;
+}
+
+buildUnnamed3462() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1TransformationSummary>();
+  o.add(buildGooglePrivacyDlpV2beta1TransformationSummary());
+  o.add(buildGooglePrivacyDlpV2beta1TransformationSummary());
+  return o;
+}
+
+checkUnnamed3462(
+    core.List<api.GooglePrivacyDlpV2beta1TransformationSummary> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1TransformationSummary(o[0]);
+  checkGooglePrivacyDlpV2beta1TransformationSummary(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1DeidentificationSummary = 0;
+buildGooglePrivacyDlpV2beta1DeidentificationSummary() {
+  var o = new api.GooglePrivacyDlpV2beta1DeidentificationSummary();
+  buildCounterGooglePrivacyDlpV2beta1DeidentificationSummary++;
+  if (buildCounterGooglePrivacyDlpV2beta1DeidentificationSummary < 3) {
+    o.transformationSummaries = buildUnnamed3462();
+    o.transformedBytes = "foo";
+  }
+  buildCounterGooglePrivacyDlpV2beta1DeidentificationSummary--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1DeidentificationSummary(
+    api.GooglePrivacyDlpV2beta1DeidentificationSummary o) {
+  buildCounterGooglePrivacyDlpV2beta1DeidentificationSummary++;
+  if (buildCounterGooglePrivacyDlpV2beta1DeidentificationSummary < 3) {
+    checkUnnamed3462(o.transformationSummaries);
+    unittest.expect(o.transformedBytes, unittest.equals('foo'));
+  }
+  buildCounterGooglePrivacyDlpV2beta1DeidentificationSummary--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1DeidentifyConfig = 0;
+buildGooglePrivacyDlpV2beta1DeidentifyConfig() {
+  var o = new api.GooglePrivacyDlpV2beta1DeidentifyConfig();
+  buildCounterGooglePrivacyDlpV2beta1DeidentifyConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1DeidentifyConfig < 3) {
+    o.infoTypeTransformations =
+        buildGooglePrivacyDlpV2beta1InfoTypeTransformations();
+    o.recordTransformations =
+        buildGooglePrivacyDlpV2beta1RecordTransformations();
+  }
+  buildCounterGooglePrivacyDlpV2beta1DeidentifyConfig--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1DeidentifyConfig(
+    api.GooglePrivacyDlpV2beta1DeidentifyConfig o) {
+  buildCounterGooglePrivacyDlpV2beta1DeidentifyConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1DeidentifyConfig < 3) {
+    checkGooglePrivacyDlpV2beta1InfoTypeTransformations(
+        o.infoTypeTransformations);
+    checkGooglePrivacyDlpV2beta1RecordTransformations(o.recordTransformations);
+  }
+  buildCounterGooglePrivacyDlpV2beta1DeidentifyConfig--;
+}
+
+buildUnnamed3463() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1ContentItem>();
+  o.add(buildGooglePrivacyDlpV2beta1ContentItem());
+  o.add(buildGooglePrivacyDlpV2beta1ContentItem());
+  return o;
+}
+
+checkUnnamed3463(core.List<api.GooglePrivacyDlpV2beta1ContentItem> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1ContentItem(o[0]);
+  checkGooglePrivacyDlpV2beta1ContentItem(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1DeidentifyContentRequest = 0;
+buildGooglePrivacyDlpV2beta1DeidentifyContentRequest() {
+  var o = new api.GooglePrivacyDlpV2beta1DeidentifyContentRequest();
+  buildCounterGooglePrivacyDlpV2beta1DeidentifyContentRequest++;
+  if (buildCounterGooglePrivacyDlpV2beta1DeidentifyContentRequest < 3) {
+    o.deidentifyConfig = buildGooglePrivacyDlpV2beta1DeidentifyConfig();
+    o.inspectConfig = buildGooglePrivacyDlpV2beta1InspectConfig();
+    o.items = buildUnnamed3463();
+  }
+  buildCounterGooglePrivacyDlpV2beta1DeidentifyContentRequest--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1DeidentifyContentRequest(
+    api.GooglePrivacyDlpV2beta1DeidentifyContentRequest o) {
+  buildCounterGooglePrivacyDlpV2beta1DeidentifyContentRequest++;
+  if (buildCounterGooglePrivacyDlpV2beta1DeidentifyContentRequest < 3) {
+    checkGooglePrivacyDlpV2beta1DeidentifyConfig(o.deidentifyConfig);
+    checkGooglePrivacyDlpV2beta1InspectConfig(o.inspectConfig);
+    checkUnnamed3463(o.items);
+  }
+  buildCounterGooglePrivacyDlpV2beta1DeidentifyContentRequest--;
+}
+
+buildUnnamed3464() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1ContentItem>();
+  o.add(buildGooglePrivacyDlpV2beta1ContentItem());
+  o.add(buildGooglePrivacyDlpV2beta1ContentItem());
+  return o;
+}
+
+checkUnnamed3464(core.List<api.GooglePrivacyDlpV2beta1ContentItem> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1ContentItem(o[0]);
+  checkGooglePrivacyDlpV2beta1ContentItem(o[1]);
+}
+
+buildUnnamed3465() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1DeidentificationSummary>();
+  o.add(buildGooglePrivacyDlpV2beta1DeidentificationSummary());
+  o.add(buildGooglePrivacyDlpV2beta1DeidentificationSummary());
+  return o;
+}
+
+checkUnnamed3465(
+    core.List<api.GooglePrivacyDlpV2beta1DeidentificationSummary> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1DeidentificationSummary(o[0]);
+  checkGooglePrivacyDlpV2beta1DeidentificationSummary(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1DeidentifyContentResponse = 0;
+buildGooglePrivacyDlpV2beta1DeidentifyContentResponse() {
+  var o = new api.GooglePrivacyDlpV2beta1DeidentifyContentResponse();
+  buildCounterGooglePrivacyDlpV2beta1DeidentifyContentResponse++;
+  if (buildCounterGooglePrivacyDlpV2beta1DeidentifyContentResponse < 3) {
+    o.items = buildUnnamed3464();
+    o.summaries = buildUnnamed3465();
+  }
+  buildCounterGooglePrivacyDlpV2beta1DeidentifyContentResponse--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1DeidentifyContentResponse(
+    api.GooglePrivacyDlpV2beta1DeidentifyContentResponse o) {
+  buildCounterGooglePrivacyDlpV2beta1DeidentifyContentResponse++;
+  if (buildCounterGooglePrivacyDlpV2beta1DeidentifyContentResponse < 3) {
+    checkUnnamed3464(o.items);
+    checkUnnamed3465(o.summaries);
+  }
+  buildCounterGooglePrivacyDlpV2beta1DeidentifyContentResponse--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1EntityId = 0;
+buildGooglePrivacyDlpV2beta1EntityId() {
+  var o = new api.GooglePrivacyDlpV2beta1EntityId();
+  buildCounterGooglePrivacyDlpV2beta1EntityId++;
+  if (buildCounterGooglePrivacyDlpV2beta1EntityId < 3) {
+    o.field = buildGooglePrivacyDlpV2beta1FieldId();
+  }
+  buildCounterGooglePrivacyDlpV2beta1EntityId--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1EntityId(api.GooglePrivacyDlpV2beta1EntityId o) {
+  buildCounterGooglePrivacyDlpV2beta1EntityId++;
+  if (buildCounterGooglePrivacyDlpV2beta1EntityId < 3) {
+    checkGooglePrivacyDlpV2beta1FieldId(o.field);
+  }
+  buildCounterGooglePrivacyDlpV2beta1EntityId--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1Expressions = 0;
+buildGooglePrivacyDlpV2beta1Expressions() {
+  var o = new api.GooglePrivacyDlpV2beta1Expressions();
+  buildCounterGooglePrivacyDlpV2beta1Expressions++;
+  if (buildCounterGooglePrivacyDlpV2beta1Expressions < 3) {
+    o.conditions = buildGooglePrivacyDlpV2beta1Conditions();
+    o.logicalOperator = "foo";
+  }
+  buildCounterGooglePrivacyDlpV2beta1Expressions--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1Expressions(
+    api.GooglePrivacyDlpV2beta1Expressions o) {
+  buildCounterGooglePrivacyDlpV2beta1Expressions++;
+  if (buildCounterGooglePrivacyDlpV2beta1Expressions < 3) {
+    checkGooglePrivacyDlpV2beta1Conditions(o.conditions);
+    unittest.expect(o.logicalOperator, unittest.equals('foo'));
+  }
+  buildCounterGooglePrivacyDlpV2beta1Expressions--;
 }
 
 core.int buildCounterGooglePrivacyDlpV2beta1FieldId = 0;
@@ -478,6 +1026,49 @@ checkGooglePrivacyDlpV2beta1FieldId(api.GooglePrivacyDlpV2beta1FieldId o) {
     unittest.expect(o.columnName, unittest.equals('foo'));
   }
   buildCounterGooglePrivacyDlpV2beta1FieldId--;
+}
+
+buildUnnamed3466() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1FieldId>();
+  o.add(buildGooglePrivacyDlpV2beta1FieldId());
+  o.add(buildGooglePrivacyDlpV2beta1FieldId());
+  return o;
+}
+
+checkUnnamed3466(core.List<api.GooglePrivacyDlpV2beta1FieldId> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1FieldId(o[0]);
+  checkGooglePrivacyDlpV2beta1FieldId(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1FieldTransformation = 0;
+buildGooglePrivacyDlpV2beta1FieldTransformation() {
+  var o = new api.GooglePrivacyDlpV2beta1FieldTransformation();
+  buildCounterGooglePrivacyDlpV2beta1FieldTransformation++;
+  if (buildCounterGooglePrivacyDlpV2beta1FieldTransformation < 3) {
+    o.condition = buildGooglePrivacyDlpV2beta1RecordCondition();
+    o.fields = buildUnnamed3466();
+    o.infoTypeTransformations =
+        buildGooglePrivacyDlpV2beta1InfoTypeTransformations();
+    o.primitiveTransformation =
+        buildGooglePrivacyDlpV2beta1PrimitiveTransformation();
+  }
+  buildCounterGooglePrivacyDlpV2beta1FieldTransformation--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1FieldTransformation(
+    api.GooglePrivacyDlpV2beta1FieldTransformation o) {
+  buildCounterGooglePrivacyDlpV2beta1FieldTransformation++;
+  if (buildCounterGooglePrivacyDlpV2beta1FieldTransformation < 3) {
+    checkGooglePrivacyDlpV2beta1RecordCondition(o.condition);
+    checkUnnamed3466(o.fields);
+    checkGooglePrivacyDlpV2beta1InfoTypeTransformations(
+        o.infoTypeTransformations);
+    checkGooglePrivacyDlpV2beta1PrimitiveTransformation(
+        o.primitiveTransformation);
+  }
+  buildCounterGooglePrivacyDlpV2beta1FieldTransformation--;
 }
 
 core.int buildCounterGooglePrivacyDlpV2beta1FileSet = 0;
@@ -524,6 +1115,30 @@ checkGooglePrivacyDlpV2beta1Finding(api.GooglePrivacyDlpV2beta1Finding o) {
     unittest.expect(o.quote, unittest.equals('foo'));
   }
   buildCounterGooglePrivacyDlpV2beta1Finding--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1FixedSizeBucketingConfig = 0;
+buildGooglePrivacyDlpV2beta1FixedSizeBucketingConfig() {
+  var o = new api.GooglePrivacyDlpV2beta1FixedSizeBucketingConfig();
+  buildCounterGooglePrivacyDlpV2beta1FixedSizeBucketingConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1FixedSizeBucketingConfig < 3) {
+    o.bucketSize = 42.0;
+    o.lowerBound = buildGooglePrivacyDlpV2beta1Value();
+    o.upperBound = buildGooglePrivacyDlpV2beta1Value();
+  }
+  buildCounterGooglePrivacyDlpV2beta1FixedSizeBucketingConfig--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1FixedSizeBucketingConfig(
+    api.GooglePrivacyDlpV2beta1FixedSizeBucketingConfig o) {
+  buildCounterGooglePrivacyDlpV2beta1FixedSizeBucketingConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1FixedSizeBucketingConfig < 3) {
+    unittest.expect(o.bucketSize, unittest.equals(42.0));
+    checkGooglePrivacyDlpV2beta1Value(o.lowerBound);
+    checkGooglePrivacyDlpV2beta1Value(o.upperBound);
+  }
+  buildCounterGooglePrivacyDlpV2beta1FixedSizeBucketingConfig--;
 }
 
 core.int buildCounterGooglePrivacyDlpV2beta1ImageLocation = 0;
@@ -595,14 +1210,14 @@ checkGooglePrivacyDlpV2beta1InfoType(api.GooglePrivacyDlpV2beta1InfoType o) {
   buildCounterGooglePrivacyDlpV2beta1InfoType--;
 }
 
-buildUnnamed3308() {
+buildUnnamed3467() {
   var o = new core.List<api.GooglePrivacyDlpV2beta1CategoryDescription>();
   o.add(buildGooglePrivacyDlpV2beta1CategoryDescription());
   o.add(buildGooglePrivacyDlpV2beta1CategoryDescription());
   return o;
 }
 
-checkUnnamed3308(core.List<api.GooglePrivacyDlpV2beta1CategoryDescription> o) {
+checkUnnamed3467(core.List<api.GooglePrivacyDlpV2beta1CategoryDescription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2beta1CategoryDescription(o[0]);
   checkGooglePrivacyDlpV2beta1CategoryDescription(o[1]);
@@ -613,7 +1228,7 @@ buildGooglePrivacyDlpV2beta1InfoTypeDescription() {
   var o = new api.GooglePrivacyDlpV2beta1InfoTypeDescription();
   buildCounterGooglePrivacyDlpV2beta1InfoTypeDescription++;
   if (buildCounterGooglePrivacyDlpV2beta1InfoTypeDescription < 3) {
-    o.categories = buildUnnamed3308();
+    o.categories = buildUnnamed3467();
     o.displayName = "foo";
     o.name = "foo";
   }
@@ -625,7 +1240,7 @@ checkGooglePrivacyDlpV2beta1InfoTypeDescription(
     api.GooglePrivacyDlpV2beta1InfoTypeDescription o) {
   buildCounterGooglePrivacyDlpV2beta1InfoTypeDescription++;
   if (buildCounterGooglePrivacyDlpV2beta1InfoTypeDescription < 3) {
-    checkUnnamed3308(o.categories);
+    checkUnnamed3467(o.categories);
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
   }
@@ -676,27 +1291,98 @@ checkGooglePrivacyDlpV2beta1InfoTypeStatistics(
   buildCounterGooglePrivacyDlpV2beta1InfoTypeStatistics--;
 }
 
-buildUnnamed3309() {
-  var o = new core.List<api.GooglePrivacyDlpV2beta1InfoTypeLimit>();
-  o.add(buildGooglePrivacyDlpV2beta1InfoTypeLimit());
-  o.add(buildGooglePrivacyDlpV2beta1InfoTypeLimit());
-  return o;
-}
-
-checkUnnamed3309(core.List<api.GooglePrivacyDlpV2beta1InfoTypeLimit> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGooglePrivacyDlpV2beta1InfoTypeLimit(o[0]);
-  checkGooglePrivacyDlpV2beta1InfoTypeLimit(o[1]);
-}
-
-buildUnnamed3310() {
+buildUnnamed3468() {
   var o = new core.List<api.GooglePrivacyDlpV2beta1InfoType>();
   o.add(buildGooglePrivacyDlpV2beta1InfoType());
   o.add(buildGooglePrivacyDlpV2beta1InfoType());
   return o;
 }
 
-checkUnnamed3310(core.List<api.GooglePrivacyDlpV2beta1InfoType> o) {
+checkUnnamed3468(core.List<api.GooglePrivacyDlpV2beta1InfoType> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1InfoType(o[0]);
+  checkGooglePrivacyDlpV2beta1InfoType(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1InfoTypeTransformation = 0;
+buildGooglePrivacyDlpV2beta1InfoTypeTransformation() {
+  var o = new api.GooglePrivacyDlpV2beta1InfoTypeTransformation();
+  buildCounterGooglePrivacyDlpV2beta1InfoTypeTransformation++;
+  if (buildCounterGooglePrivacyDlpV2beta1InfoTypeTransformation < 3) {
+    o.infoTypes = buildUnnamed3468();
+    o.primitiveTransformation =
+        buildGooglePrivacyDlpV2beta1PrimitiveTransformation();
+  }
+  buildCounterGooglePrivacyDlpV2beta1InfoTypeTransformation--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1InfoTypeTransformation(
+    api.GooglePrivacyDlpV2beta1InfoTypeTransformation o) {
+  buildCounterGooglePrivacyDlpV2beta1InfoTypeTransformation++;
+  if (buildCounterGooglePrivacyDlpV2beta1InfoTypeTransformation < 3) {
+    checkUnnamed3468(o.infoTypes);
+    checkGooglePrivacyDlpV2beta1PrimitiveTransformation(
+        o.primitiveTransformation);
+  }
+  buildCounterGooglePrivacyDlpV2beta1InfoTypeTransformation--;
+}
+
+buildUnnamed3469() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1InfoTypeTransformation>();
+  o.add(buildGooglePrivacyDlpV2beta1InfoTypeTransformation());
+  o.add(buildGooglePrivacyDlpV2beta1InfoTypeTransformation());
+  return o;
+}
+
+checkUnnamed3469(
+    core.List<api.GooglePrivacyDlpV2beta1InfoTypeTransformation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1InfoTypeTransformation(o[0]);
+  checkGooglePrivacyDlpV2beta1InfoTypeTransformation(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1InfoTypeTransformations = 0;
+buildGooglePrivacyDlpV2beta1InfoTypeTransformations() {
+  var o = new api.GooglePrivacyDlpV2beta1InfoTypeTransformations();
+  buildCounterGooglePrivacyDlpV2beta1InfoTypeTransformations++;
+  if (buildCounterGooglePrivacyDlpV2beta1InfoTypeTransformations < 3) {
+    o.transformations = buildUnnamed3469();
+  }
+  buildCounterGooglePrivacyDlpV2beta1InfoTypeTransformations--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1InfoTypeTransformations(
+    api.GooglePrivacyDlpV2beta1InfoTypeTransformations o) {
+  buildCounterGooglePrivacyDlpV2beta1InfoTypeTransformations++;
+  if (buildCounterGooglePrivacyDlpV2beta1InfoTypeTransformations < 3) {
+    checkUnnamed3469(o.transformations);
+  }
+  buildCounterGooglePrivacyDlpV2beta1InfoTypeTransformations--;
+}
+
+buildUnnamed3470() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1InfoTypeLimit>();
+  o.add(buildGooglePrivacyDlpV2beta1InfoTypeLimit());
+  o.add(buildGooglePrivacyDlpV2beta1InfoTypeLimit());
+  return o;
+}
+
+checkUnnamed3470(core.List<api.GooglePrivacyDlpV2beta1InfoTypeLimit> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1InfoTypeLimit(o[0]);
+  checkGooglePrivacyDlpV2beta1InfoTypeLimit(o[1]);
+}
+
+buildUnnamed3471() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1InfoType>();
+  o.add(buildGooglePrivacyDlpV2beta1InfoType());
+  o.add(buildGooglePrivacyDlpV2beta1InfoType());
+  return o;
+}
+
+checkUnnamed3471(core.List<api.GooglePrivacyDlpV2beta1InfoType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2beta1InfoType(o[0]);
   checkGooglePrivacyDlpV2beta1InfoType(o[1]);
@@ -709,8 +1395,8 @@ buildGooglePrivacyDlpV2beta1InspectConfig() {
   if (buildCounterGooglePrivacyDlpV2beta1InspectConfig < 3) {
     o.excludeTypes = true;
     o.includeQuote = true;
-    o.infoTypeLimits = buildUnnamed3309();
-    o.infoTypes = buildUnnamed3310();
+    o.infoTypeLimits = buildUnnamed3470();
+    o.infoTypes = buildUnnamed3471();
     o.maxFindings = 42;
     o.minLikelihood = "foo";
   }
@@ -724,22 +1410,22 @@ checkGooglePrivacyDlpV2beta1InspectConfig(
   if (buildCounterGooglePrivacyDlpV2beta1InspectConfig < 3) {
     unittest.expect(o.excludeTypes, unittest.isTrue);
     unittest.expect(o.includeQuote, unittest.isTrue);
-    checkUnnamed3309(o.infoTypeLimits);
-    checkUnnamed3310(o.infoTypes);
+    checkUnnamed3470(o.infoTypeLimits);
+    checkUnnamed3471(o.infoTypes);
     unittest.expect(o.maxFindings, unittest.equals(42));
     unittest.expect(o.minLikelihood, unittest.equals('foo'));
   }
   buildCounterGooglePrivacyDlpV2beta1InspectConfig--;
 }
 
-buildUnnamed3311() {
+buildUnnamed3472() {
   var o = new core.List<api.GooglePrivacyDlpV2beta1ContentItem>();
   o.add(buildGooglePrivacyDlpV2beta1ContentItem());
   o.add(buildGooglePrivacyDlpV2beta1ContentItem());
   return o;
 }
 
-checkUnnamed3311(core.List<api.GooglePrivacyDlpV2beta1ContentItem> o) {
+checkUnnamed3472(core.List<api.GooglePrivacyDlpV2beta1ContentItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2beta1ContentItem(o[0]);
   checkGooglePrivacyDlpV2beta1ContentItem(o[1]);
@@ -751,7 +1437,7 @@ buildGooglePrivacyDlpV2beta1InspectContentRequest() {
   buildCounterGooglePrivacyDlpV2beta1InspectContentRequest++;
   if (buildCounterGooglePrivacyDlpV2beta1InspectContentRequest < 3) {
     o.inspectConfig = buildGooglePrivacyDlpV2beta1InspectConfig();
-    o.items = buildUnnamed3311();
+    o.items = buildUnnamed3472();
   }
   buildCounterGooglePrivacyDlpV2beta1InspectContentRequest--;
   return o;
@@ -762,19 +1448,19 @@ checkGooglePrivacyDlpV2beta1InspectContentRequest(
   buildCounterGooglePrivacyDlpV2beta1InspectContentRequest++;
   if (buildCounterGooglePrivacyDlpV2beta1InspectContentRequest < 3) {
     checkGooglePrivacyDlpV2beta1InspectConfig(o.inspectConfig);
-    checkUnnamed3311(o.items);
+    checkUnnamed3472(o.items);
   }
   buildCounterGooglePrivacyDlpV2beta1InspectContentRequest--;
 }
 
-buildUnnamed3312() {
+buildUnnamed3473() {
   var o = new core.List<api.GooglePrivacyDlpV2beta1InspectResult>();
   o.add(buildGooglePrivacyDlpV2beta1InspectResult());
   o.add(buildGooglePrivacyDlpV2beta1InspectResult());
   return o;
 }
 
-checkUnnamed3312(core.List<api.GooglePrivacyDlpV2beta1InspectResult> o) {
+checkUnnamed3473(core.List<api.GooglePrivacyDlpV2beta1InspectResult> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2beta1InspectResult(o[0]);
   checkGooglePrivacyDlpV2beta1InspectResult(o[1]);
@@ -785,7 +1471,7 @@ buildGooglePrivacyDlpV2beta1InspectContentResponse() {
   var o = new api.GooglePrivacyDlpV2beta1InspectContentResponse();
   buildCounterGooglePrivacyDlpV2beta1InspectContentResponse++;
   if (buildCounterGooglePrivacyDlpV2beta1InspectContentResponse < 3) {
-    o.results = buildUnnamed3312();
+    o.results = buildUnnamed3473();
   }
   buildCounterGooglePrivacyDlpV2beta1InspectContentResponse--;
   return o;
@@ -795,19 +1481,19 @@ checkGooglePrivacyDlpV2beta1InspectContentResponse(
     api.GooglePrivacyDlpV2beta1InspectContentResponse o) {
   buildCounterGooglePrivacyDlpV2beta1InspectContentResponse++;
   if (buildCounterGooglePrivacyDlpV2beta1InspectContentResponse < 3) {
-    checkUnnamed3312(o.results);
+    checkUnnamed3473(o.results);
   }
   buildCounterGooglePrivacyDlpV2beta1InspectContentResponse--;
 }
 
-buildUnnamed3313() {
+buildUnnamed3474() {
   var o = new core.List<api.GooglePrivacyDlpV2beta1InfoTypeStatistics>();
   o.add(buildGooglePrivacyDlpV2beta1InfoTypeStatistics());
   o.add(buildGooglePrivacyDlpV2beta1InfoTypeStatistics());
   return o;
 }
 
-checkUnnamed3313(core.List<api.GooglePrivacyDlpV2beta1InfoTypeStatistics> o) {
+checkUnnamed3474(core.List<api.GooglePrivacyDlpV2beta1InfoTypeStatistics> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2beta1InfoTypeStatistics(o[0]);
   checkGooglePrivacyDlpV2beta1InfoTypeStatistics(o[1]);
@@ -819,7 +1505,7 @@ buildGooglePrivacyDlpV2beta1InspectOperationMetadata() {
   buildCounterGooglePrivacyDlpV2beta1InspectOperationMetadata++;
   if (buildCounterGooglePrivacyDlpV2beta1InspectOperationMetadata < 3) {
     o.createTime = "foo";
-    o.infoTypeStats = buildUnnamed3313();
+    o.infoTypeStats = buildUnnamed3474();
     o.processedBytes = "foo";
     o.requestInspectConfig = buildGooglePrivacyDlpV2beta1InspectConfig();
     o.requestOutputConfig = buildGooglePrivacyDlpV2beta1OutputStorageConfig();
@@ -835,7 +1521,7 @@ checkGooglePrivacyDlpV2beta1InspectOperationMetadata(
   buildCounterGooglePrivacyDlpV2beta1InspectOperationMetadata++;
   if (buildCounterGooglePrivacyDlpV2beta1InspectOperationMetadata < 3) {
     unittest.expect(o.createTime, unittest.equals('foo'));
-    checkUnnamed3313(o.infoTypeStats);
+    checkUnnamed3474(o.infoTypeStats);
     unittest.expect(o.processedBytes, unittest.equals('foo'));
     checkGooglePrivacyDlpV2beta1InspectConfig(o.requestInspectConfig);
     checkGooglePrivacyDlpV2beta1OutputStorageConfig(o.requestOutputConfig);
@@ -865,14 +1551,14 @@ checkGooglePrivacyDlpV2beta1InspectOperationResult(
   buildCounterGooglePrivacyDlpV2beta1InspectOperationResult--;
 }
 
-buildUnnamed3314() {
+buildUnnamed3475() {
   var o = new core.List<api.GooglePrivacyDlpV2beta1Finding>();
   o.add(buildGooglePrivacyDlpV2beta1Finding());
   o.add(buildGooglePrivacyDlpV2beta1Finding());
   return o;
 }
 
-checkUnnamed3314(core.List<api.GooglePrivacyDlpV2beta1Finding> o) {
+checkUnnamed3475(core.List<api.GooglePrivacyDlpV2beta1Finding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2beta1Finding(o[0]);
   checkGooglePrivacyDlpV2beta1Finding(o[1]);
@@ -883,7 +1569,7 @@ buildGooglePrivacyDlpV2beta1InspectResult() {
   var o = new api.GooglePrivacyDlpV2beta1InspectResult();
   buildCounterGooglePrivacyDlpV2beta1InspectResult++;
   if (buildCounterGooglePrivacyDlpV2beta1InspectResult < 3) {
-    o.findings = buildUnnamed3314();
+    o.findings = buildUnnamed3475();
     o.findingsTruncated = true;
   }
   buildCounterGooglePrivacyDlpV2beta1InspectResult--;
@@ -894,20 +1580,165 @@ checkGooglePrivacyDlpV2beta1InspectResult(
     api.GooglePrivacyDlpV2beta1InspectResult o) {
   buildCounterGooglePrivacyDlpV2beta1InspectResult++;
   if (buildCounterGooglePrivacyDlpV2beta1InspectResult < 3) {
-    checkUnnamed3314(o.findings);
+    checkUnnamed3475(o.findings);
     unittest.expect(o.findingsTruncated, unittest.isTrue);
   }
   buildCounterGooglePrivacyDlpV2beta1InspectResult--;
 }
 
-buildUnnamed3315() {
+buildUnnamed3476() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1FieldId>();
+  o.add(buildGooglePrivacyDlpV2beta1FieldId());
+  o.add(buildGooglePrivacyDlpV2beta1FieldId());
+  return o;
+}
+
+checkUnnamed3476(core.List<api.GooglePrivacyDlpV2beta1FieldId> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1FieldId(o[0]);
+  checkGooglePrivacyDlpV2beta1FieldId(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1KAnonymityConfig = 0;
+buildGooglePrivacyDlpV2beta1KAnonymityConfig() {
+  var o = new api.GooglePrivacyDlpV2beta1KAnonymityConfig();
+  buildCounterGooglePrivacyDlpV2beta1KAnonymityConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1KAnonymityConfig < 3) {
+    o.entityId = buildGooglePrivacyDlpV2beta1EntityId();
+    o.quasiIds = buildUnnamed3476();
+  }
+  buildCounterGooglePrivacyDlpV2beta1KAnonymityConfig--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1KAnonymityConfig(
+    api.GooglePrivacyDlpV2beta1KAnonymityConfig o) {
+  buildCounterGooglePrivacyDlpV2beta1KAnonymityConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1KAnonymityConfig < 3) {
+    checkGooglePrivacyDlpV2beta1EntityId(o.entityId);
+    checkUnnamed3476(o.quasiIds);
+  }
+  buildCounterGooglePrivacyDlpV2beta1KAnonymityConfig--;
+}
+
+buildUnnamed3477() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1Value>();
+  o.add(buildGooglePrivacyDlpV2beta1Value());
+  o.add(buildGooglePrivacyDlpV2beta1Value());
+  return o;
+}
+
+checkUnnamed3477(core.List<api.GooglePrivacyDlpV2beta1Value> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1Value(o[0]);
+  checkGooglePrivacyDlpV2beta1Value(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1KAnonymityEquivalenceClass = 0;
+buildGooglePrivacyDlpV2beta1KAnonymityEquivalenceClass() {
+  var o = new api.GooglePrivacyDlpV2beta1KAnonymityEquivalenceClass();
+  buildCounterGooglePrivacyDlpV2beta1KAnonymityEquivalenceClass++;
+  if (buildCounterGooglePrivacyDlpV2beta1KAnonymityEquivalenceClass < 3) {
+    o.equivalenceClassSize = "foo";
+    o.quasiIdsValues = buildUnnamed3477();
+  }
+  buildCounterGooglePrivacyDlpV2beta1KAnonymityEquivalenceClass--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1KAnonymityEquivalenceClass(
+    api.GooglePrivacyDlpV2beta1KAnonymityEquivalenceClass o) {
+  buildCounterGooglePrivacyDlpV2beta1KAnonymityEquivalenceClass++;
+  if (buildCounterGooglePrivacyDlpV2beta1KAnonymityEquivalenceClass < 3) {
+    unittest.expect(o.equivalenceClassSize, unittest.equals('foo'));
+    checkUnnamed3477(o.quasiIdsValues);
+  }
+  buildCounterGooglePrivacyDlpV2beta1KAnonymityEquivalenceClass--;
+}
+
+buildUnnamed3478() {
+  var o =
+      new core.List<api.GooglePrivacyDlpV2beta1KAnonymityEquivalenceClass>();
+  o.add(buildGooglePrivacyDlpV2beta1KAnonymityEquivalenceClass());
+  o.add(buildGooglePrivacyDlpV2beta1KAnonymityEquivalenceClass());
+  return o;
+}
+
+checkUnnamed3478(
+    core.List<api.GooglePrivacyDlpV2beta1KAnonymityEquivalenceClass> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1KAnonymityEquivalenceClass(o[0]);
+  checkGooglePrivacyDlpV2beta1KAnonymityEquivalenceClass(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1KAnonymityHistogramBucket = 0;
+buildGooglePrivacyDlpV2beta1KAnonymityHistogramBucket() {
+  var o = new api.GooglePrivacyDlpV2beta1KAnonymityHistogramBucket();
+  buildCounterGooglePrivacyDlpV2beta1KAnonymityHistogramBucket++;
+  if (buildCounterGooglePrivacyDlpV2beta1KAnonymityHistogramBucket < 3) {
+    o.bucketSize = "foo";
+    o.bucketValues = buildUnnamed3478();
+    o.equivalenceClassSizeLowerBound = "foo";
+    o.equivalenceClassSizeUpperBound = "foo";
+  }
+  buildCounterGooglePrivacyDlpV2beta1KAnonymityHistogramBucket--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1KAnonymityHistogramBucket(
+    api.GooglePrivacyDlpV2beta1KAnonymityHistogramBucket o) {
+  buildCounterGooglePrivacyDlpV2beta1KAnonymityHistogramBucket++;
+  if (buildCounterGooglePrivacyDlpV2beta1KAnonymityHistogramBucket < 3) {
+    unittest.expect(o.bucketSize, unittest.equals('foo'));
+    checkUnnamed3478(o.bucketValues);
+    unittest.expect(o.equivalenceClassSizeLowerBound, unittest.equals('foo'));
+    unittest.expect(o.equivalenceClassSizeUpperBound, unittest.equals('foo'));
+  }
+  buildCounterGooglePrivacyDlpV2beta1KAnonymityHistogramBucket--;
+}
+
+buildUnnamed3479() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1KAnonymityHistogramBucket>();
+  o.add(buildGooglePrivacyDlpV2beta1KAnonymityHistogramBucket());
+  o.add(buildGooglePrivacyDlpV2beta1KAnonymityHistogramBucket());
+  return o;
+}
+
+checkUnnamed3479(
+    core.List<api.GooglePrivacyDlpV2beta1KAnonymityHistogramBucket> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1KAnonymityHistogramBucket(o[0]);
+  checkGooglePrivacyDlpV2beta1KAnonymityHistogramBucket(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1KAnonymityResult = 0;
+buildGooglePrivacyDlpV2beta1KAnonymityResult() {
+  var o = new api.GooglePrivacyDlpV2beta1KAnonymityResult();
+  buildCounterGooglePrivacyDlpV2beta1KAnonymityResult++;
+  if (buildCounterGooglePrivacyDlpV2beta1KAnonymityResult < 3) {
+    o.equivalenceClassHistogramBuckets = buildUnnamed3479();
+  }
+  buildCounterGooglePrivacyDlpV2beta1KAnonymityResult--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1KAnonymityResult(
+    api.GooglePrivacyDlpV2beta1KAnonymityResult o) {
+  buildCounterGooglePrivacyDlpV2beta1KAnonymityResult++;
+  if (buildCounterGooglePrivacyDlpV2beta1KAnonymityResult < 3) {
+    checkUnnamed3479(o.equivalenceClassHistogramBuckets);
+  }
+  buildCounterGooglePrivacyDlpV2beta1KAnonymityResult--;
+}
+
+buildUnnamed3480() {
   var o = new core.List<api.GooglePrivacyDlpV2beta1PathElement>();
   o.add(buildGooglePrivacyDlpV2beta1PathElement());
   o.add(buildGooglePrivacyDlpV2beta1PathElement());
   return o;
 }
 
-checkUnnamed3315(core.List<api.GooglePrivacyDlpV2beta1PathElement> o) {
+checkUnnamed3480(core.List<api.GooglePrivacyDlpV2beta1PathElement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2beta1PathElement(o[0]);
   checkGooglePrivacyDlpV2beta1PathElement(o[1]);
@@ -919,7 +1750,7 @@ buildGooglePrivacyDlpV2beta1Key() {
   buildCounterGooglePrivacyDlpV2beta1Key++;
   if (buildCounterGooglePrivacyDlpV2beta1Key < 3) {
     o.partitionId = buildGooglePrivacyDlpV2beta1PartitionId();
-    o.path = buildUnnamed3315();
+    o.path = buildUnnamed3480();
   }
   buildCounterGooglePrivacyDlpV2beta1Key--;
   return o;
@@ -929,7 +1760,7 @@ checkGooglePrivacyDlpV2beta1Key(api.GooglePrivacyDlpV2beta1Key o) {
   buildCounterGooglePrivacyDlpV2beta1Key++;
   if (buildCounterGooglePrivacyDlpV2beta1Key < 3) {
     checkGooglePrivacyDlpV2beta1PartitionId(o.partitionId);
-    checkUnnamed3315(o.path);
+    checkUnnamed3480(o.path);
   }
   buildCounterGooglePrivacyDlpV2beta1Key--;
 }
@@ -954,14 +1785,200 @@ checkGooglePrivacyDlpV2beta1KindExpression(
   buildCounterGooglePrivacyDlpV2beta1KindExpression--;
 }
 
-buildUnnamed3316() {
+core.int buildCounterGooglePrivacyDlpV2beta1KmsWrappedCryptoKey = 0;
+buildGooglePrivacyDlpV2beta1KmsWrappedCryptoKey() {
+  var o = new api.GooglePrivacyDlpV2beta1KmsWrappedCryptoKey();
+  buildCounterGooglePrivacyDlpV2beta1KmsWrappedCryptoKey++;
+  if (buildCounterGooglePrivacyDlpV2beta1KmsWrappedCryptoKey < 3) {
+    o.cryptoKeyName = "foo";
+    o.wrappedKey = "foo";
+  }
+  buildCounterGooglePrivacyDlpV2beta1KmsWrappedCryptoKey--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1KmsWrappedCryptoKey(
+    api.GooglePrivacyDlpV2beta1KmsWrappedCryptoKey o) {
+  buildCounterGooglePrivacyDlpV2beta1KmsWrappedCryptoKey++;
+  if (buildCounterGooglePrivacyDlpV2beta1KmsWrappedCryptoKey < 3) {
+    unittest.expect(o.cryptoKeyName, unittest.equals('foo'));
+    unittest.expect(o.wrappedKey, unittest.equals('foo'));
+  }
+  buildCounterGooglePrivacyDlpV2beta1KmsWrappedCryptoKey--;
+}
+
+buildUnnamed3481() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1FieldId>();
+  o.add(buildGooglePrivacyDlpV2beta1FieldId());
+  o.add(buildGooglePrivacyDlpV2beta1FieldId());
+  return o;
+}
+
+checkUnnamed3481(core.List<api.GooglePrivacyDlpV2beta1FieldId> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1FieldId(o[0]);
+  checkGooglePrivacyDlpV2beta1FieldId(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1LDiversityConfig = 0;
+buildGooglePrivacyDlpV2beta1LDiversityConfig() {
+  var o = new api.GooglePrivacyDlpV2beta1LDiversityConfig();
+  buildCounterGooglePrivacyDlpV2beta1LDiversityConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1LDiversityConfig < 3) {
+    o.quasiIds = buildUnnamed3481();
+    o.sensitiveAttribute = buildGooglePrivacyDlpV2beta1FieldId();
+  }
+  buildCounterGooglePrivacyDlpV2beta1LDiversityConfig--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1LDiversityConfig(
+    api.GooglePrivacyDlpV2beta1LDiversityConfig o) {
+  buildCounterGooglePrivacyDlpV2beta1LDiversityConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1LDiversityConfig < 3) {
+    checkUnnamed3481(o.quasiIds);
+    checkGooglePrivacyDlpV2beta1FieldId(o.sensitiveAttribute);
+  }
+  buildCounterGooglePrivacyDlpV2beta1LDiversityConfig--;
+}
+
+buildUnnamed3482() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1Value>();
+  o.add(buildGooglePrivacyDlpV2beta1Value());
+  o.add(buildGooglePrivacyDlpV2beta1Value());
+  return o;
+}
+
+checkUnnamed3482(core.List<api.GooglePrivacyDlpV2beta1Value> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1Value(o[0]);
+  checkGooglePrivacyDlpV2beta1Value(o[1]);
+}
+
+buildUnnamed3483() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1ValueFrequency>();
+  o.add(buildGooglePrivacyDlpV2beta1ValueFrequency());
+  o.add(buildGooglePrivacyDlpV2beta1ValueFrequency());
+  return o;
+}
+
+checkUnnamed3483(core.List<api.GooglePrivacyDlpV2beta1ValueFrequency> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1ValueFrequency(o[0]);
+  checkGooglePrivacyDlpV2beta1ValueFrequency(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1LDiversityEquivalenceClass = 0;
+buildGooglePrivacyDlpV2beta1LDiversityEquivalenceClass() {
+  var o = new api.GooglePrivacyDlpV2beta1LDiversityEquivalenceClass();
+  buildCounterGooglePrivacyDlpV2beta1LDiversityEquivalenceClass++;
+  if (buildCounterGooglePrivacyDlpV2beta1LDiversityEquivalenceClass < 3) {
+    o.equivalenceClassSize = "foo";
+    o.numDistinctSensitiveValues = "foo";
+    o.quasiIdsValues = buildUnnamed3482();
+    o.topSensitiveValues = buildUnnamed3483();
+  }
+  buildCounterGooglePrivacyDlpV2beta1LDiversityEquivalenceClass--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1LDiversityEquivalenceClass(
+    api.GooglePrivacyDlpV2beta1LDiversityEquivalenceClass o) {
+  buildCounterGooglePrivacyDlpV2beta1LDiversityEquivalenceClass++;
+  if (buildCounterGooglePrivacyDlpV2beta1LDiversityEquivalenceClass < 3) {
+    unittest.expect(o.equivalenceClassSize, unittest.equals('foo'));
+    unittest.expect(o.numDistinctSensitiveValues, unittest.equals('foo'));
+    checkUnnamed3482(o.quasiIdsValues);
+    checkUnnamed3483(o.topSensitiveValues);
+  }
+  buildCounterGooglePrivacyDlpV2beta1LDiversityEquivalenceClass--;
+}
+
+buildUnnamed3484() {
+  var o =
+      new core.List<api.GooglePrivacyDlpV2beta1LDiversityEquivalenceClass>();
+  o.add(buildGooglePrivacyDlpV2beta1LDiversityEquivalenceClass());
+  o.add(buildGooglePrivacyDlpV2beta1LDiversityEquivalenceClass());
+  return o;
+}
+
+checkUnnamed3484(
+    core.List<api.GooglePrivacyDlpV2beta1LDiversityEquivalenceClass> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1LDiversityEquivalenceClass(o[0]);
+  checkGooglePrivacyDlpV2beta1LDiversityEquivalenceClass(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1LDiversityHistogramBucket = 0;
+buildGooglePrivacyDlpV2beta1LDiversityHistogramBucket() {
+  var o = new api.GooglePrivacyDlpV2beta1LDiversityHistogramBucket();
+  buildCounterGooglePrivacyDlpV2beta1LDiversityHistogramBucket++;
+  if (buildCounterGooglePrivacyDlpV2beta1LDiversityHistogramBucket < 3) {
+    o.bucketSize = "foo";
+    o.bucketValues = buildUnnamed3484();
+    o.sensitiveValueFrequencyLowerBound = "foo";
+    o.sensitiveValueFrequencyUpperBound = "foo";
+  }
+  buildCounterGooglePrivacyDlpV2beta1LDiversityHistogramBucket--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1LDiversityHistogramBucket(
+    api.GooglePrivacyDlpV2beta1LDiversityHistogramBucket o) {
+  buildCounterGooglePrivacyDlpV2beta1LDiversityHistogramBucket++;
+  if (buildCounterGooglePrivacyDlpV2beta1LDiversityHistogramBucket < 3) {
+    unittest.expect(o.bucketSize, unittest.equals('foo'));
+    checkUnnamed3484(o.bucketValues);
+    unittest.expect(
+        o.sensitiveValueFrequencyLowerBound, unittest.equals('foo'));
+    unittest.expect(
+        o.sensitiveValueFrequencyUpperBound, unittest.equals('foo'));
+  }
+  buildCounterGooglePrivacyDlpV2beta1LDiversityHistogramBucket--;
+}
+
+buildUnnamed3485() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1LDiversityHistogramBucket>();
+  o.add(buildGooglePrivacyDlpV2beta1LDiversityHistogramBucket());
+  o.add(buildGooglePrivacyDlpV2beta1LDiversityHistogramBucket());
+  return o;
+}
+
+checkUnnamed3485(
+    core.List<api.GooglePrivacyDlpV2beta1LDiversityHistogramBucket> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1LDiversityHistogramBucket(o[0]);
+  checkGooglePrivacyDlpV2beta1LDiversityHistogramBucket(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1LDiversityResult = 0;
+buildGooglePrivacyDlpV2beta1LDiversityResult() {
+  var o = new api.GooglePrivacyDlpV2beta1LDiversityResult();
+  buildCounterGooglePrivacyDlpV2beta1LDiversityResult++;
+  if (buildCounterGooglePrivacyDlpV2beta1LDiversityResult < 3) {
+    o.sensitiveValueFrequencyHistogramBuckets = buildUnnamed3485();
+  }
+  buildCounterGooglePrivacyDlpV2beta1LDiversityResult--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1LDiversityResult(
+    api.GooglePrivacyDlpV2beta1LDiversityResult o) {
+  buildCounterGooglePrivacyDlpV2beta1LDiversityResult++;
+  if (buildCounterGooglePrivacyDlpV2beta1LDiversityResult < 3) {
+    checkUnnamed3485(o.sensitiveValueFrequencyHistogramBuckets);
+  }
+  buildCounterGooglePrivacyDlpV2beta1LDiversityResult--;
+}
+
+buildUnnamed3486() {
   var o = new core.List<api.GooglePrivacyDlpV2beta1InfoTypeDescription>();
   o.add(buildGooglePrivacyDlpV2beta1InfoTypeDescription());
   o.add(buildGooglePrivacyDlpV2beta1InfoTypeDescription());
   return o;
 }
 
-checkUnnamed3316(core.List<api.GooglePrivacyDlpV2beta1InfoTypeDescription> o) {
+checkUnnamed3486(core.List<api.GooglePrivacyDlpV2beta1InfoTypeDescription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2beta1InfoTypeDescription(o[0]);
   checkGooglePrivacyDlpV2beta1InfoTypeDescription(o[1]);
@@ -972,7 +1989,7 @@ buildGooglePrivacyDlpV2beta1ListInfoTypesResponse() {
   var o = new api.GooglePrivacyDlpV2beta1ListInfoTypesResponse();
   buildCounterGooglePrivacyDlpV2beta1ListInfoTypesResponse++;
   if (buildCounterGooglePrivacyDlpV2beta1ListInfoTypesResponse < 3) {
-    o.infoTypes = buildUnnamed3316();
+    o.infoTypes = buildUnnamed3486();
   }
   buildCounterGooglePrivacyDlpV2beta1ListInfoTypesResponse--;
   return o;
@@ -982,7 +1999,7 @@ checkGooglePrivacyDlpV2beta1ListInfoTypesResponse(
     api.GooglePrivacyDlpV2beta1ListInfoTypesResponse o) {
   buildCounterGooglePrivacyDlpV2beta1ListInfoTypesResponse++;
   if (buildCounterGooglePrivacyDlpV2beta1ListInfoTypesResponse < 3) {
-    checkUnnamed3316(o.infoTypes);
+    checkUnnamed3486(o.infoTypes);
   }
   buildCounterGooglePrivacyDlpV2beta1ListInfoTypesResponse--;
 }
@@ -1009,14 +2026,14 @@ checkGooglePrivacyDlpV2beta1ListInspectFindingsResponse(
   buildCounterGooglePrivacyDlpV2beta1ListInspectFindingsResponse--;
 }
 
-buildUnnamed3317() {
+buildUnnamed3487() {
   var o = new core.List<api.GooglePrivacyDlpV2beta1CategoryDescription>();
   o.add(buildGooglePrivacyDlpV2beta1CategoryDescription());
   o.add(buildGooglePrivacyDlpV2beta1CategoryDescription());
   return o;
 }
 
-checkUnnamed3317(core.List<api.GooglePrivacyDlpV2beta1CategoryDescription> o) {
+checkUnnamed3487(core.List<api.GooglePrivacyDlpV2beta1CategoryDescription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2beta1CategoryDescription(o[0]);
   checkGooglePrivacyDlpV2beta1CategoryDescription(o[1]);
@@ -1027,7 +2044,7 @@ buildGooglePrivacyDlpV2beta1ListRootCategoriesResponse() {
   var o = new api.GooglePrivacyDlpV2beta1ListRootCategoriesResponse();
   buildCounterGooglePrivacyDlpV2beta1ListRootCategoriesResponse++;
   if (buildCounterGooglePrivacyDlpV2beta1ListRootCategoriesResponse < 3) {
-    o.categories = buildUnnamed3317();
+    o.categories = buildUnnamed3487();
   }
   buildCounterGooglePrivacyDlpV2beta1ListRootCategoriesResponse--;
   return o;
@@ -1037,19 +2054,19 @@ checkGooglePrivacyDlpV2beta1ListRootCategoriesResponse(
     api.GooglePrivacyDlpV2beta1ListRootCategoriesResponse o) {
   buildCounterGooglePrivacyDlpV2beta1ListRootCategoriesResponse++;
   if (buildCounterGooglePrivacyDlpV2beta1ListRootCategoriesResponse < 3) {
-    checkUnnamed3317(o.categories);
+    checkUnnamed3487(o.categories);
   }
   buildCounterGooglePrivacyDlpV2beta1ListRootCategoriesResponse--;
 }
 
-buildUnnamed3318() {
+buildUnnamed3488() {
   var o = new core.List<api.GooglePrivacyDlpV2beta1ImageLocation>();
   o.add(buildGooglePrivacyDlpV2beta1ImageLocation());
   o.add(buildGooglePrivacyDlpV2beta1ImageLocation());
   return o;
 }
 
-checkUnnamed3318(core.List<api.GooglePrivacyDlpV2beta1ImageLocation> o) {
+checkUnnamed3488(core.List<api.GooglePrivacyDlpV2beta1ImageLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2beta1ImageLocation(o[0]);
   checkGooglePrivacyDlpV2beta1ImageLocation(o[1]);
@@ -1063,7 +2080,7 @@ buildGooglePrivacyDlpV2beta1Location() {
     o.byteRange = buildGooglePrivacyDlpV2beta1Range();
     o.codepointRange = buildGooglePrivacyDlpV2beta1Range();
     o.fieldId = buildGooglePrivacyDlpV2beta1FieldId();
-    o.imageBoxes = buildUnnamed3318();
+    o.imageBoxes = buildUnnamed3488();
     o.recordKey = buildGooglePrivacyDlpV2beta1RecordKey();
     o.tableLocation = buildGooglePrivacyDlpV2beta1TableLocation();
   }
@@ -1077,11 +2094,68 @@ checkGooglePrivacyDlpV2beta1Location(api.GooglePrivacyDlpV2beta1Location o) {
     checkGooglePrivacyDlpV2beta1Range(o.byteRange);
     checkGooglePrivacyDlpV2beta1Range(o.codepointRange);
     checkGooglePrivacyDlpV2beta1FieldId(o.fieldId);
-    checkUnnamed3318(o.imageBoxes);
+    checkUnnamed3488(o.imageBoxes);
     checkGooglePrivacyDlpV2beta1RecordKey(o.recordKey);
     checkGooglePrivacyDlpV2beta1TableLocation(o.tableLocation);
   }
   buildCounterGooglePrivacyDlpV2beta1Location--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1NumericalStatsConfig = 0;
+buildGooglePrivacyDlpV2beta1NumericalStatsConfig() {
+  var o = new api.GooglePrivacyDlpV2beta1NumericalStatsConfig();
+  buildCounterGooglePrivacyDlpV2beta1NumericalStatsConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1NumericalStatsConfig < 3) {
+    o.field = buildGooglePrivacyDlpV2beta1FieldId();
+  }
+  buildCounterGooglePrivacyDlpV2beta1NumericalStatsConfig--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1NumericalStatsConfig(
+    api.GooglePrivacyDlpV2beta1NumericalStatsConfig o) {
+  buildCounterGooglePrivacyDlpV2beta1NumericalStatsConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1NumericalStatsConfig < 3) {
+    checkGooglePrivacyDlpV2beta1FieldId(o.field);
+  }
+  buildCounterGooglePrivacyDlpV2beta1NumericalStatsConfig--;
+}
+
+buildUnnamed3489() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1Value>();
+  o.add(buildGooglePrivacyDlpV2beta1Value());
+  o.add(buildGooglePrivacyDlpV2beta1Value());
+  return o;
+}
+
+checkUnnamed3489(core.List<api.GooglePrivacyDlpV2beta1Value> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1Value(o[0]);
+  checkGooglePrivacyDlpV2beta1Value(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1NumericalStatsResult = 0;
+buildGooglePrivacyDlpV2beta1NumericalStatsResult() {
+  var o = new api.GooglePrivacyDlpV2beta1NumericalStatsResult();
+  buildCounterGooglePrivacyDlpV2beta1NumericalStatsResult++;
+  if (buildCounterGooglePrivacyDlpV2beta1NumericalStatsResult < 3) {
+    o.maxValue = buildGooglePrivacyDlpV2beta1Value();
+    o.minValue = buildGooglePrivacyDlpV2beta1Value();
+    o.quantileValues = buildUnnamed3489();
+  }
+  buildCounterGooglePrivacyDlpV2beta1NumericalStatsResult--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1NumericalStatsResult(
+    api.GooglePrivacyDlpV2beta1NumericalStatsResult o) {
+  buildCounterGooglePrivacyDlpV2beta1NumericalStatsResult++;
+  if (buildCounterGooglePrivacyDlpV2beta1NumericalStatsResult < 3) {
+    checkGooglePrivacyDlpV2beta1Value(o.maxValue);
+    checkGooglePrivacyDlpV2beta1Value(o.minValue);
+    checkUnnamed3489(o.quantileValues);
+  }
+  buildCounterGooglePrivacyDlpV2beta1NumericalStatsResult--;
 }
 
 core.int buildCounterGooglePrivacyDlpV2beta1OperationConfig = 0;
@@ -1172,6 +2246,76 @@ checkGooglePrivacyDlpV2beta1PathElement(
   buildCounterGooglePrivacyDlpV2beta1PathElement--;
 }
 
+core.int buildCounterGooglePrivacyDlpV2beta1PrimitiveTransformation = 0;
+buildGooglePrivacyDlpV2beta1PrimitiveTransformation() {
+  var o = new api.GooglePrivacyDlpV2beta1PrimitiveTransformation();
+  buildCounterGooglePrivacyDlpV2beta1PrimitiveTransformation++;
+  if (buildCounterGooglePrivacyDlpV2beta1PrimitiveTransformation < 3) {
+    o.bucketingConfig = buildGooglePrivacyDlpV2beta1BucketingConfig();
+    o.characterMaskConfig = buildGooglePrivacyDlpV2beta1CharacterMaskConfig();
+    o.cryptoHashConfig = buildGooglePrivacyDlpV2beta1CryptoHashConfig();
+    o.cryptoReplaceFfxFpeConfig =
+        buildGooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig();
+    o.fixedSizeBucketingConfig =
+        buildGooglePrivacyDlpV2beta1FixedSizeBucketingConfig();
+    o.redactConfig = buildGooglePrivacyDlpV2beta1RedactConfig();
+    o.replaceConfig = buildGooglePrivacyDlpV2beta1ReplaceValueConfig();
+    o.replaceWithInfoTypeConfig =
+        buildGooglePrivacyDlpV2beta1ReplaceWithInfoTypeConfig();
+    o.timePartConfig = buildGooglePrivacyDlpV2beta1TimePartConfig();
+  }
+  buildCounterGooglePrivacyDlpV2beta1PrimitiveTransformation--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1PrimitiveTransformation(
+    api.GooglePrivacyDlpV2beta1PrimitiveTransformation o) {
+  buildCounterGooglePrivacyDlpV2beta1PrimitiveTransformation++;
+  if (buildCounterGooglePrivacyDlpV2beta1PrimitiveTransformation < 3) {
+    checkGooglePrivacyDlpV2beta1BucketingConfig(o.bucketingConfig);
+    checkGooglePrivacyDlpV2beta1CharacterMaskConfig(o.characterMaskConfig);
+    checkGooglePrivacyDlpV2beta1CryptoHashConfig(o.cryptoHashConfig);
+    checkGooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig(
+        o.cryptoReplaceFfxFpeConfig);
+    checkGooglePrivacyDlpV2beta1FixedSizeBucketingConfig(
+        o.fixedSizeBucketingConfig);
+    checkGooglePrivacyDlpV2beta1RedactConfig(o.redactConfig);
+    checkGooglePrivacyDlpV2beta1ReplaceValueConfig(o.replaceConfig);
+    checkGooglePrivacyDlpV2beta1ReplaceWithInfoTypeConfig(
+        o.replaceWithInfoTypeConfig);
+    checkGooglePrivacyDlpV2beta1TimePartConfig(o.timePartConfig);
+  }
+  buildCounterGooglePrivacyDlpV2beta1PrimitiveTransformation--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1PrivacyMetric = 0;
+buildGooglePrivacyDlpV2beta1PrivacyMetric() {
+  var o = new api.GooglePrivacyDlpV2beta1PrivacyMetric();
+  buildCounterGooglePrivacyDlpV2beta1PrivacyMetric++;
+  if (buildCounterGooglePrivacyDlpV2beta1PrivacyMetric < 3) {
+    o.categoricalStatsConfig =
+        buildGooglePrivacyDlpV2beta1CategoricalStatsConfig();
+    o.kAnonymityConfig = buildGooglePrivacyDlpV2beta1KAnonymityConfig();
+    o.lDiversityConfig = buildGooglePrivacyDlpV2beta1LDiversityConfig();
+    o.numericalStatsConfig = buildGooglePrivacyDlpV2beta1NumericalStatsConfig();
+  }
+  buildCounterGooglePrivacyDlpV2beta1PrivacyMetric--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1PrivacyMetric(
+    api.GooglePrivacyDlpV2beta1PrivacyMetric o) {
+  buildCounterGooglePrivacyDlpV2beta1PrivacyMetric++;
+  if (buildCounterGooglePrivacyDlpV2beta1PrivacyMetric < 3) {
+    checkGooglePrivacyDlpV2beta1CategoricalStatsConfig(
+        o.categoricalStatsConfig);
+    checkGooglePrivacyDlpV2beta1KAnonymityConfig(o.kAnonymityConfig);
+    checkGooglePrivacyDlpV2beta1LDiversityConfig(o.lDiversityConfig);
+    checkGooglePrivacyDlpV2beta1NumericalStatsConfig(o.numericalStatsConfig);
+  }
+  buildCounterGooglePrivacyDlpV2beta1PrivacyMetric--;
+}
+
 core.int buildCounterGooglePrivacyDlpV2beta1Projection = 0;
 buildGooglePrivacyDlpV2beta1Projection() {
   var o = new api.GooglePrivacyDlpV2beta1Projection();
@@ -1233,6 +2377,26 @@ checkGooglePrivacyDlpV2beta1Range(api.GooglePrivacyDlpV2beta1Range o) {
   buildCounterGooglePrivacyDlpV2beta1Range--;
 }
 
+core.int buildCounterGooglePrivacyDlpV2beta1RecordCondition = 0;
+buildGooglePrivacyDlpV2beta1RecordCondition() {
+  var o = new api.GooglePrivacyDlpV2beta1RecordCondition();
+  buildCounterGooglePrivacyDlpV2beta1RecordCondition++;
+  if (buildCounterGooglePrivacyDlpV2beta1RecordCondition < 3) {
+    o.expressions = buildGooglePrivacyDlpV2beta1Expressions();
+  }
+  buildCounterGooglePrivacyDlpV2beta1RecordCondition--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1RecordCondition(
+    api.GooglePrivacyDlpV2beta1RecordCondition o) {
+  buildCounterGooglePrivacyDlpV2beta1RecordCondition++;
+  if (buildCounterGooglePrivacyDlpV2beta1RecordCondition < 3) {
+    checkGooglePrivacyDlpV2beta1Expressions(o.expressions);
+  }
+  buildCounterGooglePrivacyDlpV2beta1RecordCondition--;
+}
+
 core.int buildCounterGooglePrivacyDlpV2beta1RecordKey = 0;
 buildGooglePrivacyDlpV2beta1RecordKey() {
   var o = new api.GooglePrivacyDlpV2beta1RecordKey();
@@ -1254,40 +2418,124 @@ checkGooglePrivacyDlpV2beta1RecordKey(api.GooglePrivacyDlpV2beta1RecordKey o) {
   buildCounterGooglePrivacyDlpV2beta1RecordKey--;
 }
 
-buildUnnamed3319() {
+core.int buildCounterGooglePrivacyDlpV2beta1RecordSuppression = 0;
+buildGooglePrivacyDlpV2beta1RecordSuppression() {
+  var o = new api.GooglePrivacyDlpV2beta1RecordSuppression();
+  buildCounterGooglePrivacyDlpV2beta1RecordSuppression++;
+  if (buildCounterGooglePrivacyDlpV2beta1RecordSuppression < 3) {
+    o.condition = buildGooglePrivacyDlpV2beta1RecordCondition();
+  }
+  buildCounterGooglePrivacyDlpV2beta1RecordSuppression--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1RecordSuppression(
+    api.GooglePrivacyDlpV2beta1RecordSuppression o) {
+  buildCounterGooglePrivacyDlpV2beta1RecordSuppression++;
+  if (buildCounterGooglePrivacyDlpV2beta1RecordSuppression < 3) {
+    checkGooglePrivacyDlpV2beta1RecordCondition(o.condition);
+  }
+  buildCounterGooglePrivacyDlpV2beta1RecordSuppression--;
+}
+
+buildUnnamed3490() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1FieldTransformation>();
+  o.add(buildGooglePrivacyDlpV2beta1FieldTransformation());
+  o.add(buildGooglePrivacyDlpV2beta1FieldTransformation());
+  return o;
+}
+
+checkUnnamed3490(core.List<api.GooglePrivacyDlpV2beta1FieldTransformation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1FieldTransformation(o[0]);
+  checkGooglePrivacyDlpV2beta1FieldTransformation(o[1]);
+}
+
+buildUnnamed3491() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1RecordSuppression>();
+  o.add(buildGooglePrivacyDlpV2beta1RecordSuppression());
+  o.add(buildGooglePrivacyDlpV2beta1RecordSuppression());
+  return o;
+}
+
+checkUnnamed3491(core.List<api.GooglePrivacyDlpV2beta1RecordSuppression> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1RecordSuppression(o[0]);
+  checkGooglePrivacyDlpV2beta1RecordSuppression(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1RecordTransformations = 0;
+buildGooglePrivacyDlpV2beta1RecordTransformations() {
+  var o = new api.GooglePrivacyDlpV2beta1RecordTransformations();
+  buildCounterGooglePrivacyDlpV2beta1RecordTransformations++;
+  if (buildCounterGooglePrivacyDlpV2beta1RecordTransformations < 3) {
+    o.fieldTransformations = buildUnnamed3490();
+    o.recordSuppressions = buildUnnamed3491();
+  }
+  buildCounterGooglePrivacyDlpV2beta1RecordTransformations--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1RecordTransformations(
+    api.GooglePrivacyDlpV2beta1RecordTransformations o) {
+  buildCounterGooglePrivacyDlpV2beta1RecordTransformations++;
+  if (buildCounterGooglePrivacyDlpV2beta1RecordTransformations < 3) {
+    checkUnnamed3490(o.fieldTransformations);
+    checkUnnamed3491(o.recordSuppressions);
+  }
+  buildCounterGooglePrivacyDlpV2beta1RecordTransformations--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1RedactConfig = 0;
+buildGooglePrivacyDlpV2beta1RedactConfig() {
+  var o = new api.GooglePrivacyDlpV2beta1RedactConfig();
+  buildCounterGooglePrivacyDlpV2beta1RedactConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1RedactConfig < 3) {}
+  buildCounterGooglePrivacyDlpV2beta1RedactConfig--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1RedactConfig(
+    api.GooglePrivacyDlpV2beta1RedactConfig o) {
+  buildCounterGooglePrivacyDlpV2beta1RedactConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1RedactConfig < 3) {}
+  buildCounterGooglePrivacyDlpV2beta1RedactConfig--;
+}
+
+buildUnnamed3492() {
   var o = new core.List<api.GooglePrivacyDlpV2beta1ImageRedactionConfig>();
   o.add(buildGooglePrivacyDlpV2beta1ImageRedactionConfig());
   o.add(buildGooglePrivacyDlpV2beta1ImageRedactionConfig());
   return o;
 }
 
-checkUnnamed3319(core.List<api.GooglePrivacyDlpV2beta1ImageRedactionConfig> o) {
+checkUnnamed3492(core.List<api.GooglePrivacyDlpV2beta1ImageRedactionConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2beta1ImageRedactionConfig(o[0]);
   checkGooglePrivacyDlpV2beta1ImageRedactionConfig(o[1]);
 }
 
-buildUnnamed3320() {
+buildUnnamed3493() {
   var o = new core.List<api.GooglePrivacyDlpV2beta1ContentItem>();
   o.add(buildGooglePrivacyDlpV2beta1ContentItem());
   o.add(buildGooglePrivacyDlpV2beta1ContentItem());
   return o;
 }
 
-checkUnnamed3320(core.List<api.GooglePrivacyDlpV2beta1ContentItem> o) {
+checkUnnamed3493(core.List<api.GooglePrivacyDlpV2beta1ContentItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2beta1ContentItem(o[0]);
   checkGooglePrivacyDlpV2beta1ContentItem(o[1]);
 }
 
-buildUnnamed3321() {
+buildUnnamed3494() {
   var o = new core.List<api.GooglePrivacyDlpV2beta1ReplaceConfig>();
   o.add(buildGooglePrivacyDlpV2beta1ReplaceConfig());
   o.add(buildGooglePrivacyDlpV2beta1ReplaceConfig());
   return o;
 }
 
-checkUnnamed3321(core.List<api.GooglePrivacyDlpV2beta1ReplaceConfig> o) {
+checkUnnamed3494(core.List<api.GooglePrivacyDlpV2beta1ReplaceConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2beta1ReplaceConfig(o[0]);
   checkGooglePrivacyDlpV2beta1ReplaceConfig(o[1]);
@@ -1298,10 +2546,10 @@ buildGooglePrivacyDlpV2beta1RedactContentRequest() {
   var o = new api.GooglePrivacyDlpV2beta1RedactContentRequest();
   buildCounterGooglePrivacyDlpV2beta1RedactContentRequest++;
   if (buildCounterGooglePrivacyDlpV2beta1RedactContentRequest < 3) {
-    o.imageRedactionConfigs = buildUnnamed3319();
+    o.imageRedactionConfigs = buildUnnamed3492();
     o.inspectConfig = buildGooglePrivacyDlpV2beta1InspectConfig();
-    o.items = buildUnnamed3320();
-    o.replaceConfigs = buildUnnamed3321();
+    o.items = buildUnnamed3493();
+    o.replaceConfigs = buildUnnamed3494();
   }
   buildCounterGooglePrivacyDlpV2beta1RedactContentRequest--;
   return o;
@@ -1311,22 +2559,22 @@ checkGooglePrivacyDlpV2beta1RedactContentRequest(
     api.GooglePrivacyDlpV2beta1RedactContentRequest o) {
   buildCounterGooglePrivacyDlpV2beta1RedactContentRequest++;
   if (buildCounterGooglePrivacyDlpV2beta1RedactContentRequest < 3) {
-    checkUnnamed3319(o.imageRedactionConfigs);
+    checkUnnamed3492(o.imageRedactionConfigs);
     checkGooglePrivacyDlpV2beta1InspectConfig(o.inspectConfig);
-    checkUnnamed3320(o.items);
-    checkUnnamed3321(o.replaceConfigs);
+    checkUnnamed3493(o.items);
+    checkUnnamed3494(o.replaceConfigs);
   }
   buildCounterGooglePrivacyDlpV2beta1RedactContentRequest--;
 }
 
-buildUnnamed3322() {
+buildUnnamed3495() {
   var o = new core.List<api.GooglePrivacyDlpV2beta1ContentItem>();
   o.add(buildGooglePrivacyDlpV2beta1ContentItem());
   o.add(buildGooglePrivacyDlpV2beta1ContentItem());
   return o;
 }
 
-checkUnnamed3322(core.List<api.GooglePrivacyDlpV2beta1ContentItem> o) {
+checkUnnamed3495(core.List<api.GooglePrivacyDlpV2beta1ContentItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2beta1ContentItem(o[0]);
   checkGooglePrivacyDlpV2beta1ContentItem(o[1]);
@@ -1337,7 +2585,7 @@ buildGooglePrivacyDlpV2beta1RedactContentResponse() {
   var o = new api.GooglePrivacyDlpV2beta1RedactContentResponse();
   buildCounterGooglePrivacyDlpV2beta1RedactContentResponse++;
   if (buildCounterGooglePrivacyDlpV2beta1RedactContentResponse < 3) {
-    o.items = buildUnnamed3322();
+    o.items = buildUnnamed3495();
   }
   buildCounterGooglePrivacyDlpV2beta1RedactContentResponse--;
   return o;
@@ -1347,7 +2595,7 @@ checkGooglePrivacyDlpV2beta1RedactContentResponse(
     api.GooglePrivacyDlpV2beta1RedactContentResponse o) {
   buildCounterGooglePrivacyDlpV2beta1RedactContentResponse++;
   if (buildCounterGooglePrivacyDlpV2beta1RedactContentResponse < 3) {
-    checkUnnamed3322(o.items);
+    checkUnnamed3495(o.items);
   }
   buildCounterGooglePrivacyDlpV2beta1RedactContentResponse--;
 }
@@ -1374,14 +2622,102 @@ checkGooglePrivacyDlpV2beta1ReplaceConfig(
   buildCounterGooglePrivacyDlpV2beta1ReplaceConfig--;
 }
 
-buildUnnamed3323() {
+core.int buildCounterGooglePrivacyDlpV2beta1ReplaceValueConfig = 0;
+buildGooglePrivacyDlpV2beta1ReplaceValueConfig() {
+  var o = new api.GooglePrivacyDlpV2beta1ReplaceValueConfig();
+  buildCounterGooglePrivacyDlpV2beta1ReplaceValueConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1ReplaceValueConfig < 3) {
+    o.newValue = buildGooglePrivacyDlpV2beta1Value();
+  }
+  buildCounterGooglePrivacyDlpV2beta1ReplaceValueConfig--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1ReplaceValueConfig(
+    api.GooglePrivacyDlpV2beta1ReplaceValueConfig o) {
+  buildCounterGooglePrivacyDlpV2beta1ReplaceValueConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1ReplaceValueConfig < 3) {
+    checkGooglePrivacyDlpV2beta1Value(o.newValue);
+  }
+  buildCounterGooglePrivacyDlpV2beta1ReplaceValueConfig--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1ReplaceWithInfoTypeConfig = 0;
+buildGooglePrivacyDlpV2beta1ReplaceWithInfoTypeConfig() {
+  var o = new api.GooglePrivacyDlpV2beta1ReplaceWithInfoTypeConfig();
+  buildCounterGooglePrivacyDlpV2beta1ReplaceWithInfoTypeConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1ReplaceWithInfoTypeConfig < 3) {}
+  buildCounterGooglePrivacyDlpV2beta1ReplaceWithInfoTypeConfig--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1ReplaceWithInfoTypeConfig(
+    api.GooglePrivacyDlpV2beta1ReplaceWithInfoTypeConfig o) {
+  buildCounterGooglePrivacyDlpV2beta1ReplaceWithInfoTypeConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1ReplaceWithInfoTypeConfig < 3) {}
+  buildCounterGooglePrivacyDlpV2beta1ReplaceWithInfoTypeConfig--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata = 0;
+buildGooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata() {
+  var o = new api.GooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata();
+  buildCounterGooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata++;
+  if (buildCounterGooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata < 3) {
+    o.createTime = "foo";
+    o.requestedPrivacyMetric = buildGooglePrivacyDlpV2beta1PrivacyMetric();
+    o.requestedSourceTable = buildGooglePrivacyDlpV2beta1BigQueryTable();
+  }
+  buildCounterGooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata(
+    api.GooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata o) {
+  buildCounterGooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata++;
+  if (buildCounterGooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata < 3) {
+    unittest.expect(o.createTime, unittest.equals('foo'));
+    checkGooglePrivacyDlpV2beta1PrivacyMetric(o.requestedPrivacyMetric);
+    checkGooglePrivacyDlpV2beta1BigQueryTable(o.requestedSourceTable);
+  }
+  buildCounterGooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1RiskAnalysisOperationResult = 0;
+buildGooglePrivacyDlpV2beta1RiskAnalysisOperationResult() {
+  var o = new api.GooglePrivacyDlpV2beta1RiskAnalysisOperationResult();
+  buildCounterGooglePrivacyDlpV2beta1RiskAnalysisOperationResult++;
+  if (buildCounterGooglePrivacyDlpV2beta1RiskAnalysisOperationResult < 3) {
+    o.categoricalStatsResult =
+        buildGooglePrivacyDlpV2beta1CategoricalStatsResult();
+    o.kAnonymityResult = buildGooglePrivacyDlpV2beta1KAnonymityResult();
+    o.lDiversityResult = buildGooglePrivacyDlpV2beta1LDiversityResult();
+    o.numericalStatsResult = buildGooglePrivacyDlpV2beta1NumericalStatsResult();
+  }
+  buildCounterGooglePrivacyDlpV2beta1RiskAnalysisOperationResult--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1RiskAnalysisOperationResult(
+    api.GooglePrivacyDlpV2beta1RiskAnalysisOperationResult o) {
+  buildCounterGooglePrivacyDlpV2beta1RiskAnalysisOperationResult++;
+  if (buildCounterGooglePrivacyDlpV2beta1RiskAnalysisOperationResult < 3) {
+    checkGooglePrivacyDlpV2beta1CategoricalStatsResult(
+        o.categoricalStatsResult);
+    checkGooglePrivacyDlpV2beta1KAnonymityResult(o.kAnonymityResult);
+    checkGooglePrivacyDlpV2beta1LDiversityResult(o.lDiversityResult);
+    checkGooglePrivacyDlpV2beta1NumericalStatsResult(o.numericalStatsResult);
+  }
+  buildCounterGooglePrivacyDlpV2beta1RiskAnalysisOperationResult--;
+}
+
+buildUnnamed3496() {
   var o = new core.List<api.GooglePrivacyDlpV2beta1Value>();
   o.add(buildGooglePrivacyDlpV2beta1Value());
   o.add(buildGooglePrivacyDlpV2beta1Value());
   return o;
 }
 
-checkUnnamed3323(core.List<api.GooglePrivacyDlpV2beta1Value> o) {
+checkUnnamed3496(core.List<api.GooglePrivacyDlpV2beta1Value> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2beta1Value(o[0]);
   checkGooglePrivacyDlpV2beta1Value(o[1]);
@@ -1392,7 +2728,7 @@ buildGooglePrivacyDlpV2beta1Row() {
   var o = new api.GooglePrivacyDlpV2beta1Row();
   buildCounterGooglePrivacyDlpV2beta1Row++;
   if (buildCounterGooglePrivacyDlpV2beta1Row < 3) {
-    o.values = buildUnnamed3323();
+    o.values = buildUnnamed3496();
   }
   buildCounterGooglePrivacyDlpV2beta1Row--;
   return o;
@@ -1401,7 +2737,7 @@ buildGooglePrivacyDlpV2beta1Row() {
 checkGooglePrivacyDlpV2beta1Row(api.GooglePrivacyDlpV2beta1Row o) {
   buildCounterGooglePrivacyDlpV2beta1Row++;
   if (buildCounterGooglePrivacyDlpV2beta1Row < 3) {
-    checkUnnamed3323(o.values);
+    checkUnnamed3496(o.values);
   }
   buildCounterGooglePrivacyDlpV2beta1Row--;
 }
@@ -1430,27 +2766,51 @@ checkGooglePrivacyDlpV2beta1StorageConfig(
   buildCounterGooglePrivacyDlpV2beta1StorageConfig--;
 }
 
-buildUnnamed3324() {
+core.int buildCounterGooglePrivacyDlpV2beta1SummaryResult = 0;
+buildGooglePrivacyDlpV2beta1SummaryResult() {
+  var o = new api.GooglePrivacyDlpV2beta1SummaryResult();
+  buildCounterGooglePrivacyDlpV2beta1SummaryResult++;
+  if (buildCounterGooglePrivacyDlpV2beta1SummaryResult < 3) {
+    o.code = "foo";
+    o.count = "foo";
+    o.details = "foo";
+  }
+  buildCounterGooglePrivacyDlpV2beta1SummaryResult--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1SummaryResult(
+    api.GooglePrivacyDlpV2beta1SummaryResult o) {
+  buildCounterGooglePrivacyDlpV2beta1SummaryResult++;
+  if (buildCounterGooglePrivacyDlpV2beta1SummaryResult < 3) {
+    unittest.expect(o.code, unittest.equals('foo'));
+    unittest.expect(o.count, unittest.equals('foo'));
+    unittest.expect(o.details, unittest.equals('foo'));
+  }
+  buildCounterGooglePrivacyDlpV2beta1SummaryResult--;
+}
+
+buildUnnamed3497() {
   var o = new core.List<api.GooglePrivacyDlpV2beta1FieldId>();
   o.add(buildGooglePrivacyDlpV2beta1FieldId());
   o.add(buildGooglePrivacyDlpV2beta1FieldId());
   return o;
 }
 
-checkUnnamed3324(core.List<api.GooglePrivacyDlpV2beta1FieldId> o) {
+checkUnnamed3497(core.List<api.GooglePrivacyDlpV2beta1FieldId> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2beta1FieldId(o[0]);
   checkGooglePrivacyDlpV2beta1FieldId(o[1]);
 }
 
-buildUnnamed3325() {
+buildUnnamed3498() {
   var o = new core.List<api.GooglePrivacyDlpV2beta1Row>();
   o.add(buildGooglePrivacyDlpV2beta1Row());
   o.add(buildGooglePrivacyDlpV2beta1Row());
   return o;
 }
 
-checkUnnamed3325(core.List<api.GooglePrivacyDlpV2beta1Row> o) {
+checkUnnamed3498(core.List<api.GooglePrivacyDlpV2beta1Row> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGooglePrivacyDlpV2beta1Row(o[0]);
   checkGooglePrivacyDlpV2beta1Row(o[1]);
@@ -1461,8 +2821,8 @@ buildGooglePrivacyDlpV2beta1Table() {
   var o = new api.GooglePrivacyDlpV2beta1Table();
   buildCounterGooglePrivacyDlpV2beta1Table++;
   if (buildCounterGooglePrivacyDlpV2beta1Table < 3) {
-    o.headers = buildUnnamed3324();
-    o.rows = buildUnnamed3325();
+    o.headers = buildUnnamed3497();
+    o.rows = buildUnnamed3498();
   }
   buildCounterGooglePrivacyDlpV2beta1Table--;
   return o;
@@ -1471,8 +2831,8 @@ buildGooglePrivacyDlpV2beta1Table() {
 checkGooglePrivacyDlpV2beta1Table(api.GooglePrivacyDlpV2beta1Table o) {
   buildCounterGooglePrivacyDlpV2beta1Table++;
   if (buildCounterGooglePrivacyDlpV2beta1Table < 3) {
-    checkUnnamed3324(o.headers);
-    checkUnnamed3325(o.rows);
+    checkUnnamed3497(o.headers);
+    checkUnnamed3498(o.rows);
   }
   buildCounterGooglePrivacyDlpV2beta1Table--;
 }
@@ -1495,6 +2855,122 @@ checkGooglePrivacyDlpV2beta1TableLocation(
     unittest.expect(o.rowIndex, unittest.equals('foo'));
   }
   buildCounterGooglePrivacyDlpV2beta1TableLocation--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1TimePartConfig = 0;
+buildGooglePrivacyDlpV2beta1TimePartConfig() {
+  var o = new api.GooglePrivacyDlpV2beta1TimePartConfig();
+  buildCounterGooglePrivacyDlpV2beta1TimePartConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1TimePartConfig < 3) {
+    o.partToExtract = "foo";
+  }
+  buildCounterGooglePrivacyDlpV2beta1TimePartConfig--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1TimePartConfig(
+    api.GooglePrivacyDlpV2beta1TimePartConfig o) {
+  buildCounterGooglePrivacyDlpV2beta1TimePartConfig++;
+  if (buildCounterGooglePrivacyDlpV2beta1TimePartConfig < 3) {
+    unittest.expect(o.partToExtract, unittest.equals('foo'));
+  }
+  buildCounterGooglePrivacyDlpV2beta1TimePartConfig--;
+}
+
+buildUnnamed3499() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1FieldTransformation>();
+  o.add(buildGooglePrivacyDlpV2beta1FieldTransformation());
+  o.add(buildGooglePrivacyDlpV2beta1FieldTransformation());
+  return o;
+}
+
+checkUnnamed3499(core.List<api.GooglePrivacyDlpV2beta1FieldTransformation> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1FieldTransformation(o[0]);
+  checkGooglePrivacyDlpV2beta1FieldTransformation(o[1]);
+}
+
+buildUnnamed3500() {
+  var o = new core.List<api.GooglePrivacyDlpV2beta1SummaryResult>();
+  o.add(buildGooglePrivacyDlpV2beta1SummaryResult());
+  o.add(buildGooglePrivacyDlpV2beta1SummaryResult());
+  return o;
+}
+
+checkUnnamed3500(core.List<api.GooglePrivacyDlpV2beta1SummaryResult> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGooglePrivacyDlpV2beta1SummaryResult(o[0]);
+  checkGooglePrivacyDlpV2beta1SummaryResult(o[1]);
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1TransformationSummary = 0;
+buildGooglePrivacyDlpV2beta1TransformationSummary() {
+  var o = new api.GooglePrivacyDlpV2beta1TransformationSummary();
+  buildCounterGooglePrivacyDlpV2beta1TransformationSummary++;
+  if (buildCounterGooglePrivacyDlpV2beta1TransformationSummary < 3) {
+    o.field = buildGooglePrivacyDlpV2beta1FieldId();
+    o.fieldTransformations = buildUnnamed3499();
+    o.infoType = buildGooglePrivacyDlpV2beta1InfoType();
+    o.recordSuppress = buildGooglePrivacyDlpV2beta1RecordSuppression();
+    o.results = buildUnnamed3500();
+    o.transformation = buildGooglePrivacyDlpV2beta1PrimitiveTransformation();
+  }
+  buildCounterGooglePrivacyDlpV2beta1TransformationSummary--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1TransformationSummary(
+    api.GooglePrivacyDlpV2beta1TransformationSummary o) {
+  buildCounterGooglePrivacyDlpV2beta1TransformationSummary++;
+  if (buildCounterGooglePrivacyDlpV2beta1TransformationSummary < 3) {
+    checkGooglePrivacyDlpV2beta1FieldId(o.field);
+    checkUnnamed3499(o.fieldTransformations);
+    checkGooglePrivacyDlpV2beta1InfoType(o.infoType);
+    checkGooglePrivacyDlpV2beta1RecordSuppression(o.recordSuppress);
+    checkUnnamed3500(o.results);
+    checkGooglePrivacyDlpV2beta1PrimitiveTransformation(o.transformation);
+  }
+  buildCounterGooglePrivacyDlpV2beta1TransformationSummary--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1TransientCryptoKey = 0;
+buildGooglePrivacyDlpV2beta1TransientCryptoKey() {
+  var o = new api.GooglePrivacyDlpV2beta1TransientCryptoKey();
+  buildCounterGooglePrivacyDlpV2beta1TransientCryptoKey++;
+  if (buildCounterGooglePrivacyDlpV2beta1TransientCryptoKey < 3) {
+    o.name = "foo";
+  }
+  buildCounterGooglePrivacyDlpV2beta1TransientCryptoKey--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1TransientCryptoKey(
+    api.GooglePrivacyDlpV2beta1TransientCryptoKey o) {
+  buildCounterGooglePrivacyDlpV2beta1TransientCryptoKey++;
+  if (buildCounterGooglePrivacyDlpV2beta1TransientCryptoKey < 3) {
+    unittest.expect(o.name, unittest.equals('foo'));
+  }
+  buildCounterGooglePrivacyDlpV2beta1TransientCryptoKey--;
+}
+
+core.int buildCounterGooglePrivacyDlpV2beta1UnwrappedCryptoKey = 0;
+buildGooglePrivacyDlpV2beta1UnwrappedCryptoKey() {
+  var o = new api.GooglePrivacyDlpV2beta1UnwrappedCryptoKey();
+  buildCounterGooglePrivacyDlpV2beta1UnwrappedCryptoKey++;
+  if (buildCounterGooglePrivacyDlpV2beta1UnwrappedCryptoKey < 3) {
+    o.key = "foo";
+  }
+  buildCounterGooglePrivacyDlpV2beta1UnwrappedCryptoKey--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1UnwrappedCryptoKey(
+    api.GooglePrivacyDlpV2beta1UnwrappedCryptoKey o) {
+  buildCounterGooglePrivacyDlpV2beta1UnwrappedCryptoKey++;
+  if (buildCounterGooglePrivacyDlpV2beta1UnwrappedCryptoKey < 3) {
+    unittest.expect(o.key, unittest.equals('foo'));
+  }
+  buildCounterGooglePrivacyDlpV2beta1UnwrappedCryptoKey--;
 }
 
 core.int buildCounterGooglePrivacyDlpV2beta1Value = 0;
@@ -1528,6 +3004,28 @@ checkGooglePrivacyDlpV2beta1Value(api.GooglePrivacyDlpV2beta1Value o) {
   buildCounterGooglePrivacyDlpV2beta1Value--;
 }
 
+core.int buildCounterGooglePrivacyDlpV2beta1ValueFrequency = 0;
+buildGooglePrivacyDlpV2beta1ValueFrequency() {
+  var o = new api.GooglePrivacyDlpV2beta1ValueFrequency();
+  buildCounterGooglePrivacyDlpV2beta1ValueFrequency++;
+  if (buildCounterGooglePrivacyDlpV2beta1ValueFrequency < 3) {
+    o.count = "foo";
+    o.value = buildGooglePrivacyDlpV2beta1Value();
+  }
+  buildCounterGooglePrivacyDlpV2beta1ValueFrequency--;
+  return o;
+}
+
+checkGooglePrivacyDlpV2beta1ValueFrequency(
+    api.GooglePrivacyDlpV2beta1ValueFrequency o) {
+  buildCounterGooglePrivacyDlpV2beta1ValueFrequency++;
+  if (buildCounterGooglePrivacyDlpV2beta1ValueFrequency < 3) {
+    unittest.expect(o.count, unittest.equals('foo'));
+    checkGooglePrivacyDlpV2beta1Value(o.value);
+  }
+  buildCounterGooglePrivacyDlpV2beta1ValueFrequency--;
+}
+
 core.int buildCounterGoogleProtobufEmpty = 0;
 buildGoogleProtobufEmpty() {
   var o = new api.GoogleProtobufEmpty();
@@ -1543,7 +3041,7 @@ checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-buildUnnamed3326() {
+buildUnnamed3501() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -1558,7 +3056,7 @@ buildUnnamed3326() {
   return o;
 }
 
-checkUnnamed3326(core.Map<core.String, core.Object> o) {
+checkUnnamed3501(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o["x"]) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1572,17 +3070,17 @@ checkUnnamed3326(core.Map<core.String, core.Object> o) {
   unittest.expect(casted6["string"], unittest.equals('foo'));
 }
 
-buildUnnamed3327() {
+buildUnnamed3502() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed3326());
-  o.add(buildUnnamed3326());
+  o.add(buildUnnamed3501());
+  o.add(buildUnnamed3501());
   return o;
 }
 
-checkUnnamed3327(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed3502(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed3326(o[0]);
-  checkUnnamed3326(o[1]);
+  checkUnnamed3501(o[0]);
+  checkUnnamed3501(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -1591,7 +3089,7 @@ buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed3327();
+    o.details = buildUnnamed3502();
     o.message = "foo";
   }
   buildCounterGoogleRpcStatus--;
@@ -1602,7 +3100,7 @@ checkGoogleRpcStatus(api.GoogleRpcStatus o) {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed3327(o.details);
+    checkUnnamed3502(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterGoogleRpcStatus--;
@@ -1683,6 +3181,17 @@ main() {
     });
   });
 
+  unittest.group(
+      "obj-schema-GooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest();
+      var od =
+          new api.GooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest.fromJson(
+              o.toJson());
+      checkGooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest(od);
+    });
+  });
+
   unittest.group("obj-schema-GooglePrivacyDlpV2beta1BigQueryOptions", () {
     unittest.test("to-json--from-json", () {
       var o = buildGooglePrivacyDlpV2beta1BigQueryOptions();
@@ -1701,12 +3210,78 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1Bucket", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1Bucket();
+      var od = new api.GooglePrivacyDlpV2beta1Bucket.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1Bucket(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1BucketingConfig", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1BucketingConfig();
+      var od =
+          new api.GooglePrivacyDlpV2beta1BucketingConfig.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1BucketingConfig(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1CategoricalStatsConfig",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1CategoricalStatsConfig();
+      var od = new api.GooglePrivacyDlpV2beta1CategoricalStatsConfig.fromJson(
+          o.toJson());
+      checkGooglePrivacyDlpV2beta1CategoricalStatsConfig(od);
+    });
+  });
+
+  unittest.group(
+      "obj-schema-GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket();
+      var od = new api
+              .GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket.fromJson(
+          o.toJson());
+      checkGooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1CategoricalStatsResult",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1CategoricalStatsResult();
+      var od = new api.GooglePrivacyDlpV2beta1CategoricalStatsResult.fromJson(
+          o.toJson());
+      checkGooglePrivacyDlpV2beta1CategoricalStatsResult(od);
+    });
+  });
+
   unittest.group("obj-schema-GooglePrivacyDlpV2beta1CategoryDescription", () {
     unittest.test("to-json--from-json", () {
       var o = buildGooglePrivacyDlpV2beta1CategoryDescription();
       var od = new api.GooglePrivacyDlpV2beta1CategoryDescription.fromJson(
           o.toJson());
       checkGooglePrivacyDlpV2beta1CategoryDescription(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1CharacterMaskConfig", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1CharacterMaskConfig();
+      var od = new api.GooglePrivacyDlpV2beta1CharacterMaskConfig.fromJson(
+          o.toJson());
+      checkGooglePrivacyDlpV2beta1CharacterMaskConfig(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1CharsToIgnore", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1CharsToIgnore();
+      var od =
+          new api.GooglePrivacyDlpV2beta1CharsToIgnore.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1CharsToIgnore(od);
     });
   });
 
@@ -1745,6 +3320,22 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1Condition", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1Condition();
+      var od = new api.GooglePrivacyDlpV2beta1Condition.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1Condition(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1Conditions", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1Conditions();
+      var od = new api.GooglePrivacyDlpV2beta1Conditions.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1Conditions(od);
+    });
+  });
+
   unittest.group("obj-schema-GooglePrivacyDlpV2beta1ContentItem", () {
     unittest.test("to-json--from-json", () {
       var o = buildGooglePrivacyDlpV2beta1ContentItem();
@@ -1761,6 +3352,34 @@ main() {
           new api.GooglePrivacyDlpV2beta1CreateInspectOperationRequest.fromJson(
               o.toJson());
       checkGooglePrivacyDlpV2beta1CreateInspectOperationRequest(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1CryptoHashConfig", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1CryptoHashConfig();
+      var od =
+          new api.GooglePrivacyDlpV2beta1CryptoHashConfig.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1CryptoHashConfig(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1CryptoKey", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1CryptoKey();
+      var od = new api.GooglePrivacyDlpV2beta1CryptoKey.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1CryptoKey(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig();
+      var od =
+          new api.GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig.fromJson(
+              o.toJson());
+      checkGooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig(od);
     });
   });
 
@@ -1781,11 +3400,76 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1DeidentificationSummary",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1DeidentificationSummary();
+      var od = new api.GooglePrivacyDlpV2beta1DeidentificationSummary.fromJson(
+          o.toJson());
+      checkGooglePrivacyDlpV2beta1DeidentificationSummary(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1DeidentifyConfig", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1DeidentifyConfig();
+      var od =
+          new api.GooglePrivacyDlpV2beta1DeidentifyConfig.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1DeidentifyConfig(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1DeidentifyContentRequest",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1DeidentifyContentRequest();
+      var od = new api.GooglePrivacyDlpV2beta1DeidentifyContentRequest.fromJson(
+          o.toJson());
+      checkGooglePrivacyDlpV2beta1DeidentifyContentRequest(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1DeidentifyContentResponse",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1DeidentifyContentResponse();
+      var od =
+          new api.GooglePrivacyDlpV2beta1DeidentifyContentResponse.fromJson(
+              o.toJson());
+      checkGooglePrivacyDlpV2beta1DeidentifyContentResponse(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1EntityId", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1EntityId();
+      var od = new api.GooglePrivacyDlpV2beta1EntityId.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1EntityId(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1Expressions", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1Expressions();
+      var od = new api.GooglePrivacyDlpV2beta1Expressions.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1Expressions(od);
+    });
+  });
+
   unittest.group("obj-schema-GooglePrivacyDlpV2beta1FieldId", () {
     unittest.test("to-json--from-json", () {
       var o = buildGooglePrivacyDlpV2beta1FieldId();
       var od = new api.GooglePrivacyDlpV2beta1FieldId.fromJson(o.toJson());
       checkGooglePrivacyDlpV2beta1FieldId(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1FieldTransformation", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1FieldTransformation();
+      var od = new api.GooglePrivacyDlpV2beta1FieldTransformation.fromJson(
+          o.toJson());
+      checkGooglePrivacyDlpV2beta1FieldTransformation(od);
     });
   });
 
@@ -1802,6 +3486,16 @@ main() {
       var o = buildGooglePrivacyDlpV2beta1Finding();
       var od = new api.GooglePrivacyDlpV2beta1Finding.fromJson(o.toJson());
       checkGooglePrivacyDlpV2beta1Finding(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1FixedSizeBucketingConfig",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1FixedSizeBucketingConfig();
+      var od = new api.GooglePrivacyDlpV2beta1FixedSizeBucketingConfig.fromJson(
+          o.toJson());
+      checkGooglePrivacyDlpV2beta1FixedSizeBucketingConfig(od);
     });
   });
 
@@ -1855,6 +3549,26 @@ main() {
       var od = new api.GooglePrivacyDlpV2beta1InfoTypeStatistics.fromJson(
           o.toJson());
       checkGooglePrivacyDlpV2beta1InfoTypeStatistics(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1InfoTypeTransformation",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1InfoTypeTransformation();
+      var od = new api.GooglePrivacyDlpV2beta1InfoTypeTransformation.fromJson(
+          o.toJson());
+      checkGooglePrivacyDlpV2beta1InfoTypeTransformation(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1InfoTypeTransformations",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1InfoTypeTransformations();
+      var od = new api.GooglePrivacyDlpV2beta1InfoTypeTransformations.fromJson(
+          o.toJson());
+      checkGooglePrivacyDlpV2beta1InfoTypeTransformations(od);
     });
   });
 
@@ -1915,6 +3629,46 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1KAnonymityConfig", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1KAnonymityConfig();
+      var od =
+          new api.GooglePrivacyDlpV2beta1KAnonymityConfig.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1KAnonymityConfig(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1KAnonymityEquivalenceClass",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1KAnonymityEquivalenceClass();
+      var od =
+          new api.GooglePrivacyDlpV2beta1KAnonymityEquivalenceClass.fromJson(
+              o.toJson());
+      checkGooglePrivacyDlpV2beta1KAnonymityEquivalenceClass(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1KAnonymityHistogramBucket",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1KAnonymityHistogramBucket();
+      var od =
+          new api.GooglePrivacyDlpV2beta1KAnonymityHistogramBucket.fromJson(
+              o.toJson());
+      checkGooglePrivacyDlpV2beta1KAnonymityHistogramBucket(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1KAnonymityResult", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1KAnonymityResult();
+      var od =
+          new api.GooglePrivacyDlpV2beta1KAnonymityResult.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1KAnonymityResult(od);
+    });
+  });
+
   unittest.group("obj-schema-GooglePrivacyDlpV2beta1Key", () {
     unittest.test("to-json--from-json", () {
       var o = buildGooglePrivacyDlpV2beta1Key();
@@ -1929,6 +3683,55 @@ main() {
       var od =
           new api.GooglePrivacyDlpV2beta1KindExpression.fromJson(o.toJson());
       checkGooglePrivacyDlpV2beta1KindExpression(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1KmsWrappedCryptoKey", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1KmsWrappedCryptoKey();
+      var od = new api.GooglePrivacyDlpV2beta1KmsWrappedCryptoKey.fromJson(
+          o.toJson());
+      checkGooglePrivacyDlpV2beta1KmsWrappedCryptoKey(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1LDiversityConfig", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1LDiversityConfig();
+      var od =
+          new api.GooglePrivacyDlpV2beta1LDiversityConfig.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1LDiversityConfig(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1LDiversityEquivalenceClass",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1LDiversityEquivalenceClass();
+      var od =
+          new api.GooglePrivacyDlpV2beta1LDiversityEquivalenceClass.fromJson(
+              o.toJson());
+      checkGooglePrivacyDlpV2beta1LDiversityEquivalenceClass(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1LDiversityHistogramBucket",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1LDiversityHistogramBucket();
+      var od =
+          new api.GooglePrivacyDlpV2beta1LDiversityHistogramBucket.fromJson(
+              o.toJson());
+      checkGooglePrivacyDlpV2beta1LDiversityHistogramBucket(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1LDiversityResult", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1LDiversityResult();
+      var od =
+          new api.GooglePrivacyDlpV2beta1LDiversityResult.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1LDiversityResult(od);
     });
   });
 
@@ -1971,6 +3774,24 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1NumericalStatsConfig", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1NumericalStatsConfig();
+      var od = new api.GooglePrivacyDlpV2beta1NumericalStatsConfig.fromJson(
+          o.toJson());
+      checkGooglePrivacyDlpV2beta1NumericalStatsConfig(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1NumericalStatsResult", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1NumericalStatsResult();
+      var od = new api.GooglePrivacyDlpV2beta1NumericalStatsResult.fromJson(
+          o.toJson());
+      checkGooglePrivacyDlpV2beta1NumericalStatsResult(od);
+    });
+  });
+
   unittest.group("obj-schema-GooglePrivacyDlpV2beta1OperationConfig", () {
     unittest.test("to-json--from-json", () {
       var o = buildGooglePrivacyDlpV2beta1OperationConfig();
@@ -2005,6 +3826,25 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1PrimitiveTransformation",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1PrimitiveTransformation();
+      var od = new api.GooglePrivacyDlpV2beta1PrimitiveTransformation.fromJson(
+          o.toJson());
+      checkGooglePrivacyDlpV2beta1PrimitiveTransformation(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1PrivacyMetric", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1PrivacyMetric();
+      var od =
+          new api.GooglePrivacyDlpV2beta1PrivacyMetric.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1PrivacyMetric(od);
+    });
+  });
+
   unittest.group("obj-schema-GooglePrivacyDlpV2beta1Projection", () {
     unittest.test("to-json--from-json", () {
       var o = buildGooglePrivacyDlpV2beta1Projection();
@@ -2030,11 +3870,46 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1RecordCondition", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1RecordCondition();
+      var od =
+          new api.GooglePrivacyDlpV2beta1RecordCondition.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1RecordCondition(od);
+    });
+  });
+
   unittest.group("obj-schema-GooglePrivacyDlpV2beta1RecordKey", () {
     unittest.test("to-json--from-json", () {
       var o = buildGooglePrivacyDlpV2beta1RecordKey();
       var od = new api.GooglePrivacyDlpV2beta1RecordKey.fromJson(o.toJson());
       checkGooglePrivacyDlpV2beta1RecordKey(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1RecordSuppression", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1RecordSuppression();
+      var od =
+          new api.GooglePrivacyDlpV2beta1RecordSuppression.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1RecordSuppression(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1RecordTransformations", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1RecordTransformations();
+      var od = new api.GooglePrivacyDlpV2beta1RecordTransformations.fromJson(
+          o.toJson());
+      checkGooglePrivacyDlpV2beta1RecordTransformations(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1RedactConfig", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1RedactConfig();
+      var od = new api.GooglePrivacyDlpV2beta1RedactConfig.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1RedactConfig(od);
     });
   });
 
@@ -2065,6 +3940,48 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1ReplaceValueConfig", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1ReplaceValueConfig();
+      var od = new api.GooglePrivacyDlpV2beta1ReplaceValueConfig.fromJson(
+          o.toJson());
+      checkGooglePrivacyDlpV2beta1ReplaceValueConfig(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1ReplaceWithInfoTypeConfig",
+      () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1ReplaceWithInfoTypeConfig();
+      var od =
+          new api.GooglePrivacyDlpV2beta1ReplaceWithInfoTypeConfig.fromJson(
+              o.toJson());
+      checkGooglePrivacyDlpV2beta1ReplaceWithInfoTypeConfig(od);
+    });
+  });
+
+  unittest.group(
+      "obj-schema-GooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata();
+      var od =
+          new api.GooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata.fromJson(
+              o.toJson());
+      checkGooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata(od);
+    });
+  });
+
+  unittest.group(
+      "obj-schema-GooglePrivacyDlpV2beta1RiskAnalysisOperationResult", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1RiskAnalysisOperationResult();
+      var od =
+          new api.GooglePrivacyDlpV2beta1RiskAnalysisOperationResult.fromJson(
+              o.toJson());
+      checkGooglePrivacyDlpV2beta1RiskAnalysisOperationResult(od);
+    });
+  });
+
   unittest.group("obj-schema-GooglePrivacyDlpV2beta1Row", () {
     unittest.test("to-json--from-json", () {
       var o = buildGooglePrivacyDlpV2beta1Row();
@@ -2079,6 +3996,15 @@ main() {
       var od =
           new api.GooglePrivacyDlpV2beta1StorageConfig.fromJson(o.toJson());
       checkGooglePrivacyDlpV2beta1StorageConfig(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1SummaryResult", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1SummaryResult();
+      var od =
+          new api.GooglePrivacyDlpV2beta1SummaryResult.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1SummaryResult(od);
     });
   });
 
@@ -2099,11 +4025,56 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1TimePartConfig", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1TimePartConfig();
+      var od =
+          new api.GooglePrivacyDlpV2beta1TimePartConfig.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1TimePartConfig(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1TransformationSummary", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1TransformationSummary();
+      var od = new api.GooglePrivacyDlpV2beta1TransformationSummary.fromJson(
+          o.toJson());
+      checkGooglePrivacyDlpV2beta1TransformationSummary(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1TransientCryptoKey", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1TransientCryptoKey();
+      var od = new api.GooglePrivacyDlpV2beta1TransientCryptoKey.fromJson(
+          o.toJson());
+      checkGooglePrivacyDlpV2beta1TransientCryptoKey(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1UnwrappedCryptoKey", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1UnwrappedCryptoKey();
+      var od = new api.GooglePrivacyDlpV2beta1UnwrappedCryptoKey.fromJson(
+          o.toJson());
+      checkGooglePrivacyDlpV2beta1UnwrappedCryptoKey(od);
+    });
+  });
+
   unittest.group("obj-schema-GooglePrivacyDlpV2beta1Value", () {
     unittest.test("to-json--from-json", () {
       var o = buildGooglePrivacyDlpV2beta1Value();
       var od = new api.GooglePrivacyDlpV2beta1Value.fromJson(o.toJson());
       checkGooglePrivacyDlpV2beta1Value(od);
+    });
+  });
+
+  unittest.group("obj-schema-GooglePrivacyDlpV2beta1ValueFrequency", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildGooglePrivacyDlpV2beta1ValueFrequency();
+      var od =
+          new api.GooglePrivacyDlpV2beta1ValueFrequency.fromJson(o.toJson());
+      checkGooglePrivacyDlpV2beta1ValueFrequency(od);
     });
   });
 
@@ -2140,6 +4111,59 @@ main() {
   });
 
   unittest.group("resource-ContentResourceApi", () {
+    unittest.test("method--deidentify", () {
+      var mock = new HttpServerMock();
+      api.ContentResourceApi res = new api.DlpApi(mock).content;
+      var arg_request = buildGooglePrivacyDlpV2beta1DeidentifyContentRequest();
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj =
+            new api.GooglePrivacyDlpV2beta1DeidentifyContentRequest.fromJson(
+                json);
+        checkGooglePrivacyDlpV2beta1DeidentifyContentRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 26),
+            unittest.equals("v2beta1/content:deidentify"));
+        pathOffset += 26;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON
+            .encode(buildGooglePrivacyDlpV2beta1DeidentifyContentResponse());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.deidentify(arg_request).then(unittest.expectAsync1(
+          ((api.GooglePrivacyDlpV2beta1DeidentifyContentResponse response) {
+        checkGooglePrivacyDlpV2beta1DeidentifyContentResponse(response);
+      })));
+    });
+
     unittest.test("method--inspect", () {
       var mock = new HttpServerMock();
       api.ContentResourceApi res = new api.DlpApi(mock).content;
@@ -2241,6 +4265,60 @@ main() {
       res.redact(arg_request).then(unittest.expectAsync1(
           ((api.GooglePrivacyDlpV2beta1RedactContentResponse response) {
         checkGooglePrivacyDlpV2beta1RedactContentResponse(response);
+      })));
+    });
+  });
+
+  unittest.group("resource-DataSourceResourceApi", () {
+    unittest.test("method--analyze", () {
+      var mock = new HttpServerMock();
+      api.DataSourceResourceApi res = new api.DlpApi(mock).dataSource;
+      var arg_request =
+          buildGooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest();
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj = new api
+            .GooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest.fromJson(json);
+        checkGooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest(obj);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        var index;
+        var subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(path.substring(pathOffset, pathOffset + 26),
+            unittest.equals("v2beta1/dataSource:analyze"));
+        pathOffset += 26;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = {};
+        addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        parseBool(n) {
+          if (n == "true") return true;
+          if (n == "false") return false;
+          if (n == null) return null;
+          throw new core.ArgumentError("Invalid boolean: $n");
+        }
+
+        if (query.length > 0) {
+          for (var part in query.split("&")) {
+            var keyvalue = part.split("=");
+            addQueryParam(core.Uri.decodeQueryComponent(keyvalue[0]),
+                core.Uri.decodeQueryComponent(keyvalue[1]));
+          }
+        }
+
+        var h = {
+          "content-type": "application/json; charset=utf-8",
+        };
+        var resp = convert.JSON.encode(buildGoogleLongrunningOperation());
+        return new async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res.analyze(arg_request).then(
+          unittest.expectAsync1(((api.GoogleLongrunningOperation response) {
+        checkGoogleLongrunningOperation(response);
       })));
     });
   });
@@ -2524,9 +4602,9 @@ main() {
       api.InspectResultsFindingsResourceApi res =
           new api.DlpApi(mock).inspect.results.findings;
       var arg_name = "foo";
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
       var arg_filter = "foo";
+      var arg_pageToken = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2558,11 +4636,11 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2573,9 +4651,9 @@ main() {
       }), true);
       res
           .list(arg_name,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
-              filter: arg_filter)
+              filter: arg_filter,
+              pageToken: arg_pageToken)
           .then(unittest.expectAsync1(
               ((api.GooglePrivacyDlpV2beta1ListInspectFindingsResponse
                   response) {
@@ -2744,9 +4822,9 @@ main() {
       api.RiskAnalysisOperationsResourceApi res =
           new api.DlpApi(mock).riskAnalysis.operations;
       var arg_name = "foo";
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
       var arg_filter = "foo";
+      var arg_pageToken = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2778,11 +4856,11 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2793,9 +4871,9 @@ main() {
       }), true);
       res
           .list(arg_name,
-              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
-              filter: arg_filter)
+              filter: arg_filter,
+              pageToken: arg_pageToken)
           .then(unittest.expectAsync1(
               ((api.GoogleLongrunningListOperationsResponse response) {
         checkGoogleLongrunningListOperationsResponse(response);

@@ -20,6 +20,10 @@ class SourcerepoApi {
   static const CloudPlatformScope =
       "https://www.googleapis.com/auth/cloud-platform";
 
+  /// Manage your source code repositories
+  static const SourceFullControlScope =
+      "https://www.googleapis.com/auth/source.full_control";
+
   /// View the contents of your source code repositories
   static const SourceReadOnlyScope =
       "https://www.googleapis.com/auth/source.read_only";
@@ -525,6 +529,13 @@ class AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class Binding {
+  /// The condition that is associated with this binding.
+  /// NOTE: an unsatisfied condition will not allow user access via current
+  /// binding. Different bindings, including their conditions, are examined
+  /// independently.
+  /// This field is GOOGLE_INTERNAL.
+  Expr condition;
+
   /// Specifies the identities requesting access for a Cloud Platform resource.
   /// `members` can have the following values:
   ///
@@ -557,6 +568,9 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
+    if (_json.containsKey("condition")) {
+      condition = new Expr.fromJson(_json["condition"]);
+    }
     if (_json.containsKey("members")) {
       members = _json["members"];
     }
@@ -568,194 +582,15 @@ class Binding {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (condition != null) {
+      _json["condition"] = (condition).toJson();
+    }
     if (members != null) {
       _json["members"] = members;
     }
     if (role != null) {
       _json["role"] = role;
     }
-    return _json;
-  }
-}
-
-/// Write a Cloud Audit log
-class CloudAuditOptions {
-  /// The log_name to populate in the Cloud Audit Record.
-  /// Possible string values are:
-  /// - "UNSPECIFIED_LOG_NAME" : Default. Should not be used.
-  /// - "ADMIN_ACTIVITY" : Corresponds to "cloudaudit.googleapis.com/activity"
-  /// - "DATA_ACCESS" : Corresponds to "cloudaudit.googleapis.com/data_access"
-  core.String logName;
-
-  CloudAuditOptions();
-
-  CloudAuditOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("logName")) {
-      logName = _json["logName"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (logName != null) {
-      _json["logName"] = logName;
-    }
-    return _json;
-  }
-}
-
-/// A condition to be met.
-class Condition {
-  /// Trusted attributes supplied by the IAM system.
-  /// Possible string values are:
-  /// - "NO_ATTR" : Default non-attribute.
-  /// - "AUTHORITY" : Either principal or (if present) authority selector.
-  /// - "ATTRIBUTION" : The principal (even if an authority selector is
-  /// present), which
-  /// must only be used for attribution, not authorization.
-  /// - "APPROVER" : An approver (distinct from the requester) that has
-  /// authorized this
-  /// request.
-  /// When used with IN, the condition indicates that one of the approvers
-  /// associated with the request matches the specified principal, or is a
-  /// member of the specified group. Approvers can only grant additional
-  /// access, and are thus only used in a strictly positive context
-  /// (e.g. ALLOW/IN or DENY/NOT_IN).
-  /// See: go/rpc-security-policy-dynamicauth.
-  /// - "JUSTIFICATION_TYPE" : What types of justifications have been supplied
-  /// with this request.
-  /// String values should match enum names from tech.iam.JustificationType,
-  /// e.g. "MANUAL_STRING". It is not permitted to grant access based on
-  /// the *absence* of a justification, so justification conditions can only
-  /// be used in a "positive" context (e.g., ALLOW/IN or DENY/NOT_IN).
-  ///
-  /// Multiple justifications, e.g., a Buganizer ID and a manually-entered
-  /// reason, are normal and supported.
-  core.String iam;
-
-  /// An operator to apply the subject with.
-  /// Possible string values are:
-  /// - "NO_OP" : Default no-op.
-  /// - "EQUALS" : DEPRECATED. Use IN instead.
-  /// - "NOT_EQUALS" : DEPRECATED. Use NOT_IN instead.
-  /// - "IN" : The condition is true if the subject (or any element of it if it
-  /// is
-  /// a set) matches any of the supplied values.
-  /// - "NOT_IN" : The condition is true if the subject (or every element of it
-  /// if it is
-  /// a set) matches none of the supplied values.
-  /// - "DISCHARGED" : Subject is discharged
-  core.String op;
-
-  /// Trusted attributes discharged by the service.
-  core.String svc;
-
-  /// Trusted attributes supplied by any service that owns resources and uses
-  /// the IAM system for access control.
-  /// Possible string values are:
-  /// - "NO_ATTR" : Default non-attribute type
-  /// - "REGION" : Region of the resource
-  /// - "SERVICE" : Service name
-  /// - "NAME" : Resource name
-  /// - "IP" : IP address of the caller
-  core.String sys;
-
-  /// DEPRECATED. Use 'values' instead.
-  core.String value;
-
-  /// The objects of the condition. This is mutually exclusive with 'value'.
-  core.List<core.String> values;
-
-  Condition();
-
-  Condition.fromJson(core.Map _json) {
-    if (_json.containsKey("iam")) {
-      iam = _json["iam"];
-    }
-    if (_json.containsKey("op")) {
-      op = _json["op"];
-    }
-    if (_json.containsKey("svc")) {
-      svc = _json["svc"];
-    }
-    if (_json.containsKey("sys")) {
-      sys = _json["sys"];
-    }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
-    }
-    if (_json.containsKey("values")) {
-      values = _json["values"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (iam != null) {
-      _json["iam"] = iam;
-    }
-    if (op != null) {
-      _json["op"] = op;
-    }
-    if (svc != null) {
-      _json["svc"] = svc;
-    }
-    if (sys != null) {
-      _json["sys"] = sys;
-    }
-    if (value != null) {
-      _json["value"] = value;
-    }
-    if (values != null) {
-      _json["values"] = values;
-    }
-    return _json;
-  }
-}
-
-/// Options for counters
-class CounterOptions {
-  /// The field value to attribute.
-  core.String field;
-
-  /// The metric to update.
-  core.String metric;
-
-  CounterOptions();
-
-  CounterOptions.fromJson(core.Map _json) {
-    if (_json.containsKey("field")) {
-      field = _json["field"];
-    }
-    if (_json.containsKey("metric")) {
-      metric = _json["metric"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (field != null) {
-      _json["field"] = field;
-    }
-    if (metric != null) {
-      _json["metric"] = metric;
-    }
-    return _json;
-  }
-}
-
-/// Write a Data Access (Gin) log
-class DataAccessOptions {
-  DataAccessOptions();
-
-  DataAccessOptions.fromJson(core.Map _json) {}
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -777,6 +612,68 @@ class Empty {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Represents an expression text. Example:
+///
+///     title: "User account presence"
+///     description: "Determines whether the request has a user account"
+///     expression: "size(request.user) > 0"
+class Expr {
+  /// An optional description of the expression. This is a longer text which
+  /// describes the expression, e.g. when hovered over it in a UI.
+  core.String description;
+
+  /// Textual representation of an expression in
+  /// Common Expression Language syntax.
+  ///
+  /// The application context of the containing message determines which
+  /// well-known feature set of CEL is supported.
+  core.String expression;
+
+  /// An optional string indicating the location of the expression for error
+  /// reporting, e.g. a file name and a position in the file.
+  core.String location;
+
+  /// An optional title for the expression, i.e. a short string describing
+  /// its purpose. This can be used e.g. in UIs which allow to enter the
+  /// expression.
+  core.String title;
+
+  Expr();
+
+  Expr.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("expression")) {
+      expression = _json["expression"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("title")) {
+      title = _json["title"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (expression != null) {
+      _json["expression"] = expression;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (title != null) {
+      _json["title"] = title;
+    }
     return _json;
   }
 }
@@ -810,47 +707,6 @@ class ListReposResponse {
     }
     if (repos != null) {
       _json["repos"] = repos.map((value) => (value).toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/// Specifies what kind of log the caller must write
-class LogConfig {
-  /// Cloud audit options.
-  CloudAuditOptions cloudAudit;
-
-  /// Counter options.
-  CounterOptions counter;
-
-  /// Data access options.
-  DataAccessOptions dataAccess;
-
-  LogConfig();
-
-  LogConfig.fromJson(core.Map _json) {
-    if (_json.containsKey("cloudAudit")) {
-      cloudAudit = new CloudAuditOptions.fromJson(_json["cloudAudit"]);
-    }
-    if (_json.containsKey("counter")) {
-      counter = new CounterOptions.fromJson(_json["counter"]);
-    }
-    if (_json.containsKey("dataAccess")) {
-      dataAccess = new DataAccessOptions.fromJson(_json["dataAccess"]);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (cloudAudit != null) {
-      _json["cloudAudit"] = (cloudAudit).toJson();
-    }
-    if (counter != null) {
-      _json["counter"] = (counter).toJson();
-    }
-    if (dataAccess != null) {
-      _json["dataAccess"] = (dataAccess).toJson();
     }
     return _json;
   }
@@ -941,7 +797,6 @@ class Policy {
   core.List<AuditConfig> auditConfigs;
 
   /// Associates a list of `members` to a `role`.
-  /// Multiple `bindings` must not be specified for the same `role`.
   /// `bindings` with no members will result in an error.
   core.List<Binding> bindings;
 
@@ -968,17 +823,6 @@ class Policy {
 
   core.bool iamOwned;
 
-  /// If more than one rule is specified, the rules are applied in the following
-  /// manner:
-  /// - All matching LOG rules are always applied.
-  /// - If any DENY/DENY_WITH_LOG rule matches, permission is denied.
-  ///   Logging will be applied if one or more matching rule requires logging.
-  /// - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is
-  ///   granted.
-  ///   Logging will be applied if one or more matching rule requires logging.
-  /// - Otherwise, if no rule applies, permission is denied.
-  core.List<Rule> rules;
-
   /// Version of the `Policy`. The default version is 0.
   core.int version;
 
@@ -1001,9 +845,6 @@ class Policy {
     if (_json.containsKey("iamOwned")) {
       iamOwned = _json["iamOwned"];
     }
-    if (_json.containsKey("rules")) {
-      rules = _json["rules"].map((value) => new Rule.fromJson(value)).toList();
-    }
     if (_json.containsKey("version")) {
       version = _json["version"];
     }
@@ -1024,9 +865,6 @@ class Policy {
     }
     if (iamOwned != null) {
       _json["iamOwned"] = iamOwned;
-    }
-    if (rules != null) {
-      _json["rules"] = rules.map((value) => (value).toJson()).toList();
     }
     if (version != null) {
       _json["version"] = version;
@@ -1083,106 +921,6 @@ class Repo {
     }
     if (url != null) {
       _json["url"] = url;
-    }
-    return _json;
-  }
-}
-
-/// A rule to be applied in a Policy.
-class Rule {
-  /// Required
-  /// Possible string values are:
-  /// - "NO_ACTION" : Default no action.
-  /// - "ALLOW" : Matching 'Entries' grant access.
-  /// - "ALLOW_WITH_LOG" : Matching 'Entries' grant access and the caller
-  /// promises to log
-  /// the request per the returned log_configs.
-  /// - "DENY" : Matching 'Entries' deny access.
-  /// - "DENY_WITH_LOG" : Matching 'Entries' deny access and the caller promises
-  /// to log
-  /// the request per the returned log_configs.
-  /// - "LOG" : Matching 'Entries' tell IAM.Check callers to generate logs.
-  core.String action;
-
-  /// Additional restrictions that must be met
-  core.List<Condition> conditions;
-
-  /// Human-readable description of the rule.
-  core.String description;
-
-  /// If one or more 'in' clauses are specified, the rule matches if
-  /// the PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
-  core.List<core.String> in_;
-
-  /// The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
-  /// that match the LOG action.
-  core.List<LogConfig> logConfig;
-
-  /// If one or more 'not_in' clauses are specified, the rule matches
-  /// if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.
-  /// The format for in and not_in entries is the same as for members in a
-  /// Binding (see google/iam/v1/policy.proto).
-  core.List<core.String> notIn;
-
-  /// A permission is a string of form '<service>.<resource type>.<verb>'
-  /// (e.g., 'storage.buckets.list'). A value of '*' matches all permissions,
-  /// and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.
-  core.List<core.String> permissions;
-
-  Rule();
-
-  Rule.fromJson(core.Map _json) {
-    if (_json.containsKey("action")) {
-      action = _json["action"];
-    }
-    if (_json.containsKey("conditions")) {
-      conditions = _json["conditions"]
-          .map((value) => new Condition.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("description")) {
-      description = _json["description"];
-    }
-    if (_json.containsKey("in")) {
-      in_ = _json["in"];
-    }
-    if (_json.containsKey("logConfig")) {
-      logConfig = _json["logConfig"]
-          .map((value) => new LogConfig.fromJson(value))
-          .toList();
-    }
-    if (_json.containsKey("notIn")) {
-      notIn = _json["notIn"];
-    }
-    if (_json.containsKey("permissions")) {
-      permissions = _json["permissions"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (action != null) {
-      _json["action"] = action;
-    }
-    if (conditions != null) {
-      _json["conditions"] =
-          conditions.map((value) => (value).toJson()).toList();
-    }
-    if (description != null) {
-      _json["description"] = description;
-    }
-    if (in_ != null) {
-      _json["in"] = in_;
-    }
-    if (logConfig != null) {
-      _json["logConfig"] = logConfig.map((value) => (value).toJson()).toList();
-    }
-    if (notIn != null) {
-      _json["notIn"] = notIn;
-    }
-    if (permissions != null) {
-      _json["permissions"] = permissions;
     }
     return _json;
   }

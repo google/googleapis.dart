@@ -22,11 +22,11 @@
     },
     "basePath": "/storage/v1/",
     "baseUrl": "https://www.googleapis.com/storage/v1/",
-    "batchPath": "batch/storage/v1",
+    "batchPath": "batch",
     "description": "Stores and retrieves potentially large, immutable data objects.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/storage/docs/json_api/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/dkoYxqfGO2jaG60VA5h0K8BOG4k\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/rE26AVrnFbD9orx-YtVO_pKNglE\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/cloud_storage-16.png",
         "x32": "https://www.google.com/images/icons/product/cloud_storage-32.png"
@@ -494,6 +494,11 @@
                             ],
                             "location": "query",
                             "type": "string"
+                        },
+                        "userProject": {
+                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "location": "query",
+                            "type": "string"
                         }
                     },
                     "path": "b",
@@ -551,6 +556,11 @@
                                 "Include all properties.",
                                 "Omit owner, acl and defaultObjectAcl properties."
                             ],
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "userProject": {
+                            "description": "The project to be billed for this request, for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -2127,7 +2137,7 @@
                     "supportsSubscription": true
                 },
                 "patch": {
-                    "description": "Patches an object's metadata.",
+                    "description": "Updates an object's metadata. This method supports patch semantics.",
                     "httpMethod": "PATCH",
                     "id": "storage.objects.patch",
                     "parameterOrder": [
@@ -2227,8 +2237,7 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control"
-                    ],
-                    "supportsMediaDownload": true
+                    ]
                 },
                 "rewrite": {
                     "description": "Rewrites a source object to a destination object. Optionally overrides metadata.",
@@ -2688,6 +2697,11 @@
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
+                                },
+                                "userProject": {
+                                    "description": "The project to be billed for this request, for Requester Pays buckets.",
+                                    "location": "query",
+                                    "type": "string"
                                 }
                             },
                             "path": "projects/{projectId}/serviceAccount",
@@ -2707,7 +2721,7 @@
             }
         }
     },
-    "revision": "20170824",
+    "revision": "20170920",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Bucket": {

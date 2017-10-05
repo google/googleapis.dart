@@ -193,8 +193,8 @@ class AccountsResourceApi {
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
-  /// [force] - Flag to delete sub-accounts with products. The default value of
-  /// false will become active on September 28, 2017.
+  /// [force] - Flag to delete sub-accounts with products. The default value is
+  /// false.
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
@@ -1307,6 +1307,16 @@ class DatafeedstatusesResourceApi {
   ///
   /// [datafeedId] - null
   ///
+  /// [country] - The country for which to get the datafeed status. If this
+  /// parameter is provided then language must also be provided. Note that this
+  /// parameter is required for feeds targeting multiple countries and
+  /// languages, since a feed may have a different status for each target.
+  ///
+  /// [language] - The language for which to get the datafeed status. If this
+  /// parameter is provided then country must also be provided. Note that this
+  /// parameter is required for feeds targeting multiple countries and
+  /// languages, since a feed may have a different status for each target.
+  ///
   /// Completes with a [DatafeedStatus].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1315,7 +1325,8 @@ class DatafeedstatusesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DatafeedStatus> get(
-      core.String merchantId, core.String datafeedId) {
+      core.String merchantId, core.String datafeedId,
+      {core.String country, core.String language}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1328,6 +1339,12 @@ class DatafeedstatusesResourceApi {
     }
     if (datafeedId == null) {
       throw new core.ArgumentError("Parameter datafeedId is required.");
+    }
+    if (country != null) {
+      _queryParams["country"] = [country];
+    }
+    if (language != null) {
+      _queryParams["language"] = [language];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -3088,6 +3105,13 @@ class Account {
   /// The merchant's website.
   core.String websiteUrl;
 
+  /// List of linked YouTube channels that are active or pending approval. To
+  /// create a new link request, add a new link with status active to the list.
+  /// It will remain in a pending state until approved or rejected in the YT
+  /// Creator Studio interface. To delete an active link, or to cancel a link
+  /// request, remove it from the list.
+  core.List<AccountYouTubeChannelLink> youtubeChannelLinks;
+
   Account();
 
   Account.fromJson(core.Map _json) {
@@ -3122,6 +3146,11 @@ class Account {
     if (_json.containsKey("websiteUrl")) {
       websiteUrl = _json["websiteUrl"];
     }
+    if (_json.containsKey("youtubeChannelLinks")) {
+      youtubeChannelLinks = _json["youtubeChannelLinks"]
+          .map((value) => new AccountYouTubeChannelLink.fromJson(value))
+          .toList();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -3154,6 +3183,10 @@ class Account {
     }
     if (websiteUrl != null) {
       _json["websiteUrl"] = websiteUrl;
+    }
+    if (youtubeChannelLinks != null) {
+      _json["youtubeChannelLinks"] =
+          youtubeChannelLinks.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -3655,6 +3688,46 @@ class AccountUser {
     }
     if (emailAddress != null) {
       _json["emailAddress"] = emailAddress;
+    }
+    return _json;
+  }
+}
+
+class AccountYouTubeChannelLink {
+  /// Channel ID.
+  core.String channelId;
+
+  /// Status of the link between this Merchant Center account and the YouTube
+  /// channel. Upon retrieval, it represents the actual status of the link and
+  /// can be either active if it was approved in YT Creator Studio or pending if
+  /// it's pending approval. Upon insertion, it represents the intended status
+  /// of the link. Re-uploading a link with status active when it's still
+  /// pending or with status pending when it's already active will have no
+  /// effect: the status will remain unchanged. Re-uploading a link with
+  /// deprecated status inactive is equivalent to not submitting the link at all
+  /// and will delete the link if it was active or cancel the link request if it
+  /// was pending.
+  core.String status;
+
+  AccountYouTubeChannelLink();
+
+  AccountYouTubeChannelLink.fromJson(core.Map _json) {
+    if (_json.containsKey("channelId")) {
+      channelId = _json["channelId"];
+    }
+    if (_json.containsKey("status")) {
+      status = _json["status"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (channelId != null) {
+      _json["channelId"] = channelId;
+    }
+    if (status != null) {
+      _json["status"] = status;
     }
     return _json;
   }
@@ -4474,8 +4547,9 @@ class Datafeed {
   /// the data feed.
   core.String attributeLanguage;
 
-  /// The two-letter ISO 639-1 language of the items in the feed. Must be a
-  /// valid language for targetCountry.
+  /// [DEPRECATED] Please use target.language instead. The two-letter ISO 639-1
+  /// language of the items in the feed. Must be a valid language for
+  /// targetCountry.
   core.String contentLanguage;
 
   /// The type of data feed. For product inventory feeds, only feeds for local
@@ -4494,8 +4568,9 @@ class Datafeed {
   /// The ID of the data feed.
   core.String id;
 
-  /// The list of intended destinations (corresponds to checked check boxes in
-  /// Merchant Center).
+  /// [DEPRECATED] Please use target.includedDestination instead. The list of
+  /// intended destinations (corresponds to checked check boxes in Merchant
+  /// Center).
   core.List<core.String> intendedDestinations;
 
   /// Identifies what kind of resource this is. Value: the fixed string
@@ -4505,9 +4580,13 @@ class Datafeed {
   /// A descriptive name of the data feed.
   core.String name;
 
-  /// The country where the items in the feed will be included in the search
-  /// index, represented as a CLDR territory code.
+  /// [DEPRECATED] Please use target.country instead. The country where the
+  /// items in the feed will be included in the search index, represented as a
+  /// CLDR territory code.
   core.String targetCountry;
+
+  /// The targets this feed should apply to (country, language, destinations).
+  core.List<DatafeedTarget> targets;
 
   Datafeed();
 
@@ -4546,6 +4625,11 @@ class Datafeed {
     if (_json.containsKey("targetCountry")) {
       targetCountry = _json["targetCountry"];
     }
+    if (_json.containsKey("targets")) {
+      targets = _json["targets"]
+          .map((value) => new DatafeedTarget.fromJson(value))
+          .toList();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -4583,6 +4667,9 @@ class Datafeed {
     }
     if (targetCountry != null) {
       _json["targetCountry"] = targetCountry;
+    }
+    if (targets != null) {
+      _json["targets"] = targets.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -4736,6 +4823,10 @@ class DatafeedFormat {
 /// The status of a datafeed, i.e., the result of the last retrieval of the
 /// datafeed computed asynchronously when the feed processing is finished.
 class DatafeedStatus {
+  /// The country for which the status is reported, represented as a  CLDR
+  /// territory code.
+  core.String country;
+
   /// The ID of the feed for which the status is reported.
   core.String datafeedId;
 
@@ -4752,6 +4843,9 @@ class DatafeedStatus {
   /// "content#datafeedStatus".
   core.String kind;
 
+  /// The two-letter ISO 639-1 language for which the status is reported.
+  core.String language;
+
   /// The last date at which the feed was uploaded.
   core.String lastUploadDate;
 
@@ -4764,6 +4858,9 @@ class DatafeedStatus {
   DatafeedStatus();
 
   DatafeedStatus.fromJson(core.Map _json) {
+    if (_json.containsKey("country")) {
+      country = _json["country"];
+    }
     if (_json.containsKey("datafeedId")) {
       datafeedId = _json["datafeedId"];
     }
@@ -4781,6 +4878,9 @@ class DatafeedStatus {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("language")) {
+      language = _json["language"];
+    }
     if (_json.containsKey("lastUploadDate")) {
       lastUploadDate = _json["lastUploadDate"];
     }
@@ -4797,6 +4897,9 @@ class DatafeedStatus {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (country != null) {
+      _json["country"] = country;
+    }
     if (datafeedId != null) {
       _json["datafeedId"] = datafeedId;
     }
@@ -4811,6 +4914,9 @@ class DatafeedStatus {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (language != null) {
+      _json["language"] = language;
     }
     if (lastUploadDate != null) {
       _json["lastUploadDate"] = lastUploadDate;
@@ -4913,6 +5019,60 @@ class DatafeedStatusExample {
     }
     if (value != null) {
       _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+class DatafeedTarget {
+  /// The country where the items in the feed will be included in the search
+  /// index, represented as a  CLDR territory code.
+  core.String country;
+
+  /// The list of destinations to exclude for this target (corresponds to
+  /// unchecked check boxes in Merchant Center).
+  core.List<core.String> excludedDestinations;
+
+  /// The list of destinations to include for this target (corresponds to
+  /// checked check boxes in Merchant Center). Default destinations are always
+  /// included unless provided in the excluded_destination field.
+  core.List<core.String> includedDestinations;
+
+  /// The two-letter ISO 639-1 language of the items in the feed. Must be a
+  /// valid language for targets[].country.
+  core.String language;
+
+  DatafeedTarget();
+
+  DatafeedTarget.fromJson(core.Map _json) {
+    if (_json.containsKey("country")) {
+      country = _json["country"];
+    }
+    if (_json.containsKey("excludedDestinations")) {
+      excludedDestinations = _json["excludedDestinations"];
+    }
+    if (_json.containsKey("includedDestinations")) {
+      includedDestinations = _json["includedDestinations"];
+    }
+    if (_json.containsKey("language")) {
+      language = _json["language"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (country != null) {
+      _json["country"] = country;
+    }
+    if (excludedDestinations != null) {
+      _json["excludedDestinations"] = excludedDestinations;
+    }
+    if (includedDestinations != null) {
+      _json["includedDestinations"] = includedDestinations;
+    }
+    if (language != null) {
+      _json["language"] = language;
     }
     return _json;
   }
@@ -5146,8 +5306,18 @@ class DatafeedstatusesCustomBatchRequestEntry {
   /// An entry ID, unique within the batch request.
   core.int batchId;
 
-  /// The ID of the data feed to get or delete.
+  /// The country for which to get the datafeed status. If this parameter is
+  /// provided then language must also be provided. Note that for multi-target
+  /// datafeeds this parameter is required.
+  core.String country;
+
+  /// The ID of the data feed to get.
   core.String datafeedId;
+
+  /// The language for which to get the datafeed status. If this parameter is
+  /// provided then country must also be provided. Note that for multi-target
+  /// datafeeds this parameter is required.
+  core.String language;
 
   /// The ID of the managing account.
   core.String merchantId;
@@ -5159,8 +5329,14 @@ class DatafeedstatusesCustomBatchRequestEntry {
     if (_json.containsKey("batchId")) {
       batchId = _json["batchId"];
     }
+    if (_json.containsKey("country")) {
+      country = _json["country"];
+    }
     if (_json.containsKey("datafeedId")) {
       datafeedId = _json["datafeedId"];
+    }
+    if (_json.containsKey("language")) {
+      language = _json["language"];
     }
     if (_json.containsKey("merchantId")) {
       merchantId = _json["merchantId"];
@@ -5176,8 +5352,14 @@ class DatafeedstatusesCustomBatchRequestEntry {
     if (batchId != null) {
       _json["batchId"] = batchId;
     }
+    if (country != null) {
+      _json["country"] = country;
+    }
     if (datafeedId != null) {
       _json["datafeedId"] = datafeedId;
+    }
+    if (language != null) {
+      _json["language"] = language;
     }
     if (merchantId != null) {
       _json["merchantId"] = merchantId;
@@ -6465,6 +6647,9 @@ class OrderLineItem {
   /// Cancellations of the line item.
   core.List<OrderCancellation> cancellations;
 
+  /// The channel type of the order: "purchaseOnGoogle" or "googleExpress".
+  core.String channelType;
+
   /// The id of the line item.
   core.String id;
 
@@ -6514,6 +6699,9 @@ class OrderLineItem {
       cancellations = _json["cancellations"]
           .map((value) => new OrderCancellation.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("channelType")) {
+      channelType = _json["channelType"];
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -6565,6 +6753,9 @@ class OrderLineItem {
     if (cancellations != null) {
       _json["cancellations"] =
           cancellations.map((value) => (value).toJson()).toList();
+    }
+    if (channelType != null) {
+      _json["channelType"] = channelType;
     }
     if (id != null) {
       _json["id"] = id;
@@ -6875,7 +7066,8 @@ class OrderLineItemShippingDetails {
 }
 
 class OrderLineItemShippingDetailsMethod {
-  /// The carrier for the shipping. Optional.
+  /// The carrier for the shipping. Optional. See shipments[].carrier for a list
+  /// of acceptable values.
   core.String carrier;
 
   /// Maximum transit time.
@@ -6939,7 +7131,16 @@ class OrderPaymentMethod {
   /// The billing phone number.
   core.String phoneNumber;
 
-  /// The type of instrument (VISA, Mastercard, etc).
+  /// The type of instrument.
+  ///
+  /// Acceptable values are:
+  /// - "AMEX"
+  /// - "DISCOVER"
+  /// - "JCB"
+  /// - "MASTERCARD"
+  /// - "UNIONPAY"
+  /// - "VISA"
+  /// - ""
   core.String type;
 
   OrderPaymentMethod();
@@ -7255,6 +7456,30 @@ class OrderReturn {
 
 class OrderShipment {
   /// The carrier handling the shipment.
+  ///
+  /// Acceptable values are:
+  /// - "gsx"
+  /// - "ups"
+  /// - "united parcel service"
+  /// - "usps"
+  /// - "united states postal service"
+  /// - "fedex"
+  /// - "dhl"
+  /// - "ecourier"
+  /// - "cxt"
+  /// - "google"
+  /// - "on trac"
+  /// - "ontrac"
+  /// - "on-trac"
+  /// - "on_trac"
+  /// - "delvic"
+  /// - "dynamex"
+  /// - "lasership"
+  /// - "smartpost"
+  /// - "fedex smartpost"
+  /// - "mpx"
+  /// - "uds"
+  /// - "united delivery service"
   core.String carrier;
 
   /// Date on which the shipment has been created, in ISO 8601 format.
@@ -8012,16 +8237,24 @@ class OrdersCustomBatchRequestEntryReturnLineItem {
 }
 
 class OrdersCustomBatchRequestEntryShipLineItems {
-  /// The carrier handling the shipment.
+  /// Deprecated. Please use shipmentInfo instead. The carrier handling the
+  /// shipment. See shipments[].carrier in the  Orders resource representation
+  /// for a list of acceptable values.
   core.String carrier;
 
   /// Line items to ship.
   core.List<OrderShipmentLineItemShipment> lineItems;
 
-  /// The ID of the shipment.
+  /// Deprecated. Please use shipmentInfo instead. The ID of the shipment.
   core.String shipmentId;
 
-  /// The tracking id for the shipment.
+  /// Shipment information. This field is repeated because a single line item
+  /// can be shipped in several packages (and have several tracking IDs).
+  core.List<OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>
+      shipmentInfos;
+
+  /// Deprecated. Please use shipmentInfo instead. The tracking id for the
+  /// shipment.
   core.String trackingId;
 
   OrdersCustomBatchRequestEntryShipLineItems();
@@ -8037,6 +8270,13 @@ class OrdersCustomBatchRequestEntryShipLineItems {
     }
     if (_json.containsKey("shipmentId")) {
       shipmentId = _json["shipmentId"];
+    }
+    if (_json.containsKey("shipmentInfos")) {
+      shipmentInfos = _json["shipmentInfos"]
+          .map((value) =>
+              new OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo
+                  .fromJson(value))
+          .toList();
     }
     if (_json.containsKey("trackingId")) {
       trackingId = _json["trackingId"];
@@ -8055,6 +8295,52 @@ class OrdersCustomBatchRequestEntryShipLineItems {
     if (shipmentId != null) {
       _json["shipmentId"] = shipmentId;
     }
+    if (shipmentInfos != null) {
+      _json["shipmentInfos"] =
+          shipmentInfos.map((value) => (value).toJson()).toList();
+    }
+    if (trackingId != null) {
+      _json["trackingId"] = trackingId;
+    }
+    return _json;
+  }
+}
+
+class OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo {
+  /// The carrier handling the shipment. See shipments[].carrier in the  Orders
+  /// resource representation for a list of acceptable values.
+  core.String carrier;
+
+  /// The ID of the shipment.
+  core.String shipmentId;
+
+  /// The tracking id for the shipment.
+  core.String trackingId;
+
+  OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo();
+
+  OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("carrier")) {
+      carrier = _json["carrier"];
+    }
+    if (_json.containsKey("shipmentId")) {
+      shipmentId = _json["shipmentId"];
+    }
+    if (_json.containsKey("trackingId")) {
+      trackingId = _json["trackingId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (carrier != null) {
+      _json["carrier"] = carrier;
+    }
+    if (shipmentId != null) {
+      _json["shipmentId"] = shipmentId;
+    }
     if (trackingId != null) {
       _json["trackingId"] = trackingId;
     }
@@ -8063,7 +8349,9 @@ class OrdersCustomBatchRequestEntryShipLineItems {
 }
 
 class OrdersCustomBatchRequestEntryUpdateShipment {
-  /// The carrier handling the shipment. Not updated if missing.
+  /// The carrier handling the shipment. Not updated if missing. See
+  /// shipments[].carrier in the  Orders resource representation for a list of
+  /// acceptable values.
   core.String carrier;
 
   /// The ID of the shipment.
@@ -8482,7 +8770,9 @@ class OrdersReturnLineItemResponse {
 }
 
 class OrdersShipLineItemsRequest {
-  /// The carrier handling the shipment.
+  /// Deprecated. Please use shipmentInfo instead. The carrier handling the
+  /// shipment. See shipments[].carrier in the  Orders resource representation
+  /// for a list of acceptable values.
   core.String carrier;
 
   /// Line items to ship.
@@ -8491,10 +8781,16 @@ class OrdersShipLineItemsRequest {
   /// The ID of the operation. Unique across all operations for a given order.
   core.String operationId;
 
-  /// The ID of the shipment.
+  /// Deprecated. Please use shipmentInfo instead. The ID of the shipment.
   core.String shipmentId;
 
-  /// The tracking id for the shipment.
+  /// Shipment information. This field is repeated because a single line item
+  /// can be shipped in several packages (and have several tracking IDs).
+  core.List<OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>
+      shipmentInfos;
+
+  /// Deprecated. Please use shipmentInfo instead. The tracking id for the
+  /// shipment.
   core.String trackingId;
 
   OrdersShipLineItemsRequest();
@@ -8513,6 +8809,13 @@ class OrdersShipLineItemsRequest {
     }
     if (_json.containsKey("shipmentId")) {
       shipmentId = _json["shipmentId"];
+    }
+    if (_json.containsKey("shipmentInfos")) {
+      shipmentInfos = _json["shipmentInfos"]
+          .map((value) =>
+              new OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo
+                  .fromJson(value))
+          .toList();
     }
     if (_json.containsKey("trackingId")) {
       trackingId = _json["trackingId"];
@@ -8533,6 +8836,10 @@ class OrdersShipLineItemsRequest {
     }
     if (shipmentId != null) {
       _json["shipmentId"] = shipmentId;
+    }
+    if (shipmentInfos != null) {
+      _json["shipmentInfos"] =
+          shipmentInfos.map((value) => (value).toJson()).toList();
     }
     if (trackingId != null) {
       _json["trackingId"] = trackingId;
@@ -8638,7 +8945,9 @@ class OrdersUpdateMerchantOrderIdResponse {
 }
 
 class OrdersUpdateShipmentRequest {
-  /// The carrier handling the shipment. Not updated if missing.
+  /// The carrier handling the shipment. Not updated if missing. See
+  /// shipments[].carrier in the  Orders resource representation for a list of
+  /// acceptable values.
   core.String carrier;
 
   /// The ID of the operation. Unique across all operations for a given order.

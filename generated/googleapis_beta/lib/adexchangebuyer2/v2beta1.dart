@@ -760,23 +760,6 @@ class AccountsCreativesResourceApi {
   /// [accountId] - The account to list the creatives from.
   /// Specify "-" to list all creatives the current user has access to.
   ///
-  /// [query] - An optional query string to filter creatives. If no filter is
-  /// specified,
-  /// all active creatives will be returned.
-  /// Supported queries are:
-  /// <ul>
-  /// <li>accountId=<i>account_id_string</i>
-  /// <li>creativeId=<i>creative_id_string</i>
-  /// <li>dealsStatus: {approved, conditionally_approved, disapproved,
-  ///                    not_checked}
-  /// <li>openAuctionStatus: {approved, conditionally_approved, disapproved,
-  ///                           not_checked}
-  /// <li>attribute: {a numeric attribute from the list of attributes}
-  /// <li>disapprovalReason: {a reason from DisapprovalReason
-  /// </ul>
-  /// Example: 'accountId=12345 AND (dealsStatus:disapproved AND
-  /// disapprovalReason:unacceptable_content) OR attribute:47'
-  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   /// Typically, this is the value of
@@ -789,6 +772,24 @@ class AccountsCreativesResourceApi {
   /// If unspecified, server will pick an appropriate default.
   /// Acceptable values are 1 to 1000, inclusive.
   ///
+  /// [query] - An optional query string to filter creatives. If no filter is
+  /// specified,
+  /// all active creatives will be returned.
+  /// Supported queries are:
+  /// <ul>
+  /// <li>accountId=<i>account_id_string</i>
+  /// <li>creativeId=<i>creative_id_string</i>
+  /// <li>dealsStatus: {approved, conditionally_approved, disapproved,
+  ///                    not_checked}
+  /// <li>openAuctionStatus: {approved, conditionally_approved, disapproved,
+  ///                           not_checked}
+  /// <li>attribute: {a numeric attribute from the list of attributes}
+  /// <li>disapprovalReason: {a reason from
+  /// DisapprovalReason
+  /// </ul>
+  /// Example: 'accountId=12345 AND (dealsStatus:disapproved AND
+  /// disapprovalReason:unacceptable_content) OR attribute:47'
+  ///
   /// Completes with a [ListCreativesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -797,7 +798,7 @@ class AccountsCreativesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCreativesResponse> list(core.String accountId,
-      {core.String query, core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String query}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -808,14 +809,14 @@ class AccountsCreativesResourceApi {
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
     }
-    if (query != null) {
-      _queryParams["query"] = [query];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (query != null) {
+      _queryParams["query"] = [query];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -1899,10 +1900,6 @@ class AccountsFilterSetsFilteredBidsDetailsResourceApi {
   /// Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and
   /// 87.
   ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested.
-  /// If unspecified, the server will pick an appropriate default.
-  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   /// Typically, this is the value of
@@ -1910,6 +1907,10 @@ class AccountsFilterSetsFilteredBidsDetailsResourceApi {
   /// returned from the previous call to the
   /// accounts.filterSets.filteredBids.details.list
   /// method.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
   ///
   /// Completes with a [ListCreativeStatusBreakdownByDetailResponse].
   ///
@@ -1920,7 +1921,7 @@ class AccountsFilterSetsFilteredBidsDetailsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListCreativeStatusBreakdownByDetailResponse> list(
       core.String accountId, core.String filterSetId, core.int creativeStatusId,
-      {core.int pageSize, core.String pageToken}) {
+      {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1937,11 +1938,11 @@ class AccountsFilterSetsFilteredBidsDetailsResourceApi {
     if (creativeStatusId == null) {
       throw new core.ArgumentError("Parameter creativeStatusId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -1977,10 +1978,6 @@ class AccountsFilterSetsImpressionMetricsResourceApi {
   ///
   /// [filterSetId] - The ID of the filter set to apply.
   ///
-  /// [pageSize] - Requested page size. The server may return fewer results than
-  /// requested.
-  /// If unspecified, the server will pick an appropriate default.
-  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   /// Typically, this is the value of
@@ -1988,6 +1985,10 @@ class AccountsFilterSetsImpressionMetricsResourceApi {
   /// returned from the previous call to the
   /// accounts.filterSets.impressionMetrics.list
   /// method.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
   ///
   /// Completes with a [ListImpressionMetricsResponse].
   ///
@@ -1998,7 +1999,7 @@ class AccountsFilterSetsImpressionMetricsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListImpressionMetricsResponse> list(
       core.String accountId, core.String filterSetId,
-      {core.int pageSize, core.String pageToken}) {
+      {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2012,11 +2013,11 @@ class AccountsFilterSetsImpressionMetricsResourceApi {
     if (filterSetId == null) {
       throw new core.ArgumentError("Parameter filterSetId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -5185,16 +5186,6 @@ class StopWatchingCreativeRequest {
 }
 
 /// An interval of time, with an absolute start and end.
-/// This is included in the response, for several reasons:
-/// 1) The request may have specified start or end times relative to the time
-/// the
-///    request was sent; the response indicates the corresponding absolute time
-///    interval.
-/// 2) The request may have specified an end time past the latest time for which
-///    data was available (e.g. if requesting data for the today); the response
-///    indicates the latest time for which data was actually returned.
-/// 3) The response data for a single request may be broken down into multiple
-///    time intervals, if a time series was requested.
 class TimeInterval {
   /// The timestamp marking the end of the range (exclusive) for which data is
   /// included.

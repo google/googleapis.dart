@@ -307,6 +307,7 @@ buildOperationMetadataV1Beta2() {
     o.request = buildUnnamed147();
     o.target = "foo";
     o.type = "foo";
+    o.versionId = "foo";
   }
   buildCounterOperationMetadataV1Beta2--;
   return o;
@@ -318,6 +319,7 @@ checkOperationMetadataV1Beta2(api.OperationMetadataV1Beta2 o) {
     checkUnnamed147(o.request);
     unittest.expect(o.target, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
+    unittest.expect(o.versionId, unittest.equals('foo'));
   }
   buildCounterOperationMetadataV1Beta2--;
 }
@@ -554,9 +556,9 @@ main() {
       api.ProjectsLocationsResourceApi res =
           new api.CloudfunctionsApi(mock).projects.locations;
       var arg_name = "foo";
+      var arg_filter = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
-      var arg_filter = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -588,11 +590,11 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -602,9 +604,9 @@ main() {
       }), true);
       res
           .list(arg_name,
+              filter: arg_filter,
               pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
-              filter: arg_filter)
+              pageSize: arg_pageSize)
           .then(unittest.expectAsync1(((api.ListLocationsResponse response) {
         checkListLocationsResponse(response);
       })));

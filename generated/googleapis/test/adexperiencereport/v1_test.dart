@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed1772() {
+buildUnnamed1826() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1772(core.List<core.String> o) {
+checkUnnamed1826(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -68,12 +68,11 @@ buildPlatformSummary() {
   var o = new api.PlatformSummary();
   buildCounterPlatformSummary++;
   if (buildCounterPlatformSummary < 3) {
-    o.abusiveStatus = "foo";
     o.betterAdsStatus = "foo";
     o.enforcementTime = "foo";
     o.filterStatus = "foo";
     o.lastChangeTime = "foo";
-    o.region = buildUnnamed1772();
+    o.region = buildUnnamed1826();
     o.reportUrl = "foo";
     o.underReview = true;
   }
@@ -84,12 +83,11 @@ buildPlatformSummary() {
 checkPlatformSummary(api.PlatformSummary o) {
   buildCounterPlatformSummary++;
   if (buildCounterPlatformSummary < 3) {
-    unittest.expect(o.abusiveStatus, unittest.equals('foo'));
     unittest.expect(o.betterAdsStatus, unittest.equals('foo'));
     unittest.expect(o.enforcementTime, unittest.equals('foo'));
     unittest.expect(o.filterStatus, unittest.equals('foo'));
     unittest.expect(o.lastChangeTime, unittest.equals('foo'));
-    checkUnnamed1772(o.region);
+    checkUnnamed1826(o.region);
     unittest.expect(o.reportUrl, unittest.equals('foo'));
     unittest.expect(o.underReview, unittest.isTrue);
   }
@@ -119,14 +117,14 @@ checkSiteSummaryResponse(api.SiteSummaryResponse o) {
   buildCounterSiteSummaryResponse--;
 }
 
-buildUnnamed1773() {
+buildUnnamed1827() {
   var o = new core.List<api.SiteSummaryResponse>();
   o.add(buildSiteSummaryResponse());
   o.add(buildSiteSummaryResponse());
   return o;
 }
 
-checkUnnamed1773(core.List<api.SiteSummaryResponse> o) {
+checkUnnamed1827(core.List<api.SiteSummaryResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSiteSummaryResponse(o[0]);
   checkSiteSummaryResponse(o[1]);
@@ -137,7 +135,7 @@ buildViolatingSitesResponse() {
   var o = new api.ViolatingSitesResponse();
   buildCounterViolatingSitesResponse++;
   if (buildCounterViolatingSitesResponse < 3) {
-    o.violatingSites = buildUnnamed1773();
+    o.violatingSites = buildUnnamed1827();
   }
   buildCounterViolatingSitesResponse--;
   return o;
@@ -146,7 +144,7 @@ buildViolatingSitesResponse() {
 checkViolatingSitesResponse(api.ViolatingSitesResponse o) {
   buildCounterViolatingSitesResponse++;
   if (buildCounterViolatingSitesResponse < 3) {
-    checkUnnamed1773(o.violatingSites);
+    checkUnnamed1827(o.violatingSites);
   }
   buildCounterViolatingSitesResponse--;
 }

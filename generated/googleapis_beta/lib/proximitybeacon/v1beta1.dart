@@ -693,18 +693,18 @@ class BeaconsAttachmentsResourceApi {
   /// Required.
   /// Value must have pattern "^beacons/[^/]+$".
   ///
+  /// [namespacedType] - Specifies the namespace and type of attachments to
+  /// delete in
+  /// `namespace/type` format. Accepts `* / * ` to specify
+  /// "all types in all namespaces".
+  /// Optional.
+  ///
   /// [projectId] - The project id to delete beacon attachments under. This
   /// field can be
   /// used when "*" is specified to mean all attachment namespaces. Projects
   /// may have multiple attachments with multiple namespaces. If "*" is
   /// specified and the projectId string is empty, then the project
   /// making the request is used.
-  /// Optional.
-  ///
-  /// [namespacedType] - Specifies the namespace and type of attachments to
-  /// delete in
-  /// `namespace/type` format. Accepts `* / * ` to specify
-  /// "all types in all namespaces".
   /// Optional.
   ///
   /// Completes with a [DeleteAttachmentsResponse].
@@ -715,7 +715,7 @@ class BeaconsAttachmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DeleteAttachmentsResponse> batchDelete(core.String beaconName,
-      {core.String projectId, core.String namespacedType}) {
+      {core.String namespacedType, core.String projectId}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -726,11 +726,11 @@ class BeaconsAttachmentsResourceApi {
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
     }
-    if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
-    }
     if (namespacedType != null) {
       _queryParams["namespacedType"] = [namespacedType];
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
 
     _url = 'v1beta1/' +
@@ -1504,6 +1504,25 @@ class BeaconAttachment {
         convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
+  /// The distance away from the beacon at which this attachment should be
+  /// delivered to a mobile app.
+  ///
+  /// Setting this to a value greater than zero indicates that the app should
+  /// behave as if the beacon is "seen" when the mobile device is less than this
+  /// distance away from the beacon.
+  ///
+  /// Different attachments on the same beacon can have different max distances.
+  ///
+  /// Note that even though this value is expressed with fractional meter
+  /// precision, real-world behavior is likley to be much less precise than one
+  /// meter, due to the nature of current Bluetooth radio technology.
+  ///
+  /// Optional. When not set or zero, the attachment should be delivered at the
+  /// beacon's outer limit of detection.
+  ///
+  /// Negative values are invalid and return an error.
+  core.double maxDistanceMeters;
+
   /// Specifies what kind of attachment this is. Tells a client how to
   /// interpret the `data` field. Format is <var>namespace/type</var>. Namespace
   /// provides type separation between clients. Type describes the type of
@@ -1523,6 +1542,9 @@ class BeaconAttachment {
     if (_json.containsKey("data")) {
       data = _json["data"];
     }
+    if (_json.containsKey("maxDistanceMeters")) {
+      maxDistanceMeters = _json["maxDistanceMeters"];
+    }
     if (_json.containsKey("namespacedType")) {
       namespacedType = _json["namespacedType"];
     }
@@ -1539,6 +1561,9 @@ class BeaconAttachment {
     }
     if (data != null) {
       _json["data"] = data;
+    }
+    if (maxDistanceMeters != null) {
+      _json["maxDistanceMeters"] = maxDistanceMeters;
     }
     if (namespacedType != null) {
       _json["namespacedType"] = namespacedType;

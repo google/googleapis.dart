@@ -21,7 +21,7 @@
                     "description": "View and modify but not delete your email"
                 },
                 "https://www.googleapis.com/auth/gmail.readonly": {
-                    "description": "View your emails messages and settings"
+                    "description": "View your email messages and settings"
                 },
                 "https://www.googleapis.com/auth/gmail.send": {
                     "description": "Send email on your behalf"
@@ -41,7 +41,7 @@
     "description": "Access Gmail mailboxes including sending user email.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/gmail/api/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/uYcO_Bfzv01oUg-u_-w9YZWy7FQ\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/Jxtw49Vdy6XkRjNk3GQgsLTd4CA\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/googlemail-16.png",
         "x32": "https://www.google.com/images/icons/product/googlemail-32.png"
@@ -2382,7 +2382,7 @@
             }
         }
     },
-    "revision": "20170905",
+    "revision": "20170926",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AutoForwarding": {
@@ -2738,10 +2738,6 @@
             "description": "Labels are used to categorize messages and threads within the user's mailbox.",
             "id": "Label",
             "properties": {
-                "color": {
-                    "$ref": "LabelColor",
-                    "description": "Color to assign to the label. This field is hidden behind an API server mendel experiment and only available for user-defined labels. Will be unset if the label doesn't have a color configured."
-                },
                 "id": {
                     "annotations": {
                         "required": [
@@ -2829,20 +2825,6 @@
                         "",
                         ""
                     ],
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "LabelColor": {
-            "id": "LabelColor",
-            "properties": {
-                "backgroundColor": {
-                    "description": "Background color represented as hex string #RRGGBB (ex #000000). Only a restricted predefined set of color values are allowed. See (go/gmail-api-label-colors).",
-                    "type": "string"
-                },
-                "textColor": {
-                    "description": "Text color represented as hex string #RRGGBB (ex #000000). Only a restricted predefined set of color values are allowed. See (go/gmail-api-label-colors).",
                     "type": "string"
                 }
             },

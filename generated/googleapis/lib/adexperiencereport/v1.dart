@@ -121,13 +121,6 @@ class ViolatingSitesResourceApi {
 
 /// Summary of the ad experience rating of a site for a specific platform.
 class PlatformSummary {
-  /// The status of the site reviewed for abusive ads.
-  /// Possible string values are:
-  /// - "UNKNOWN" : Not reviewed.
-  /// - "PASSING" : Passing.
-  /// - "FAILING" : Failing.
-  core.String abusiveStatus;
-
   /// The status of the site reviewed for the Better Ads Standards.
   /// Possible string values are:
   /// - "UNKNOWN" : Not reviewed.
@@ -163,9 +156,6 @@ class PlatformSummary {
   PlatformSummary();
 
   PlatformSummary.fromJson(core.Map _json) {
-    if (_json.containsKey("abusiveStatus")) {
-      abusiveStatus = _json["abusiveStatus"];
-    }
     if (_json.containsKey("betterAdsStatus")) {
       betterAdsStatus = _json["betterAdsStatus"];
     }
@@ -192,9 +182,6 @@ class PlatformSummary {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (abusiveStatus != null) {
-      _json["abusiveStatus"] = abusiveStatus;
-    }
     if (betterAdsStatus != null) {
       _json["betterAdsStatus"] = betterAdsStatus;
     }

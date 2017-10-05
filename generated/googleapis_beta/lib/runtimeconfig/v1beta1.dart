@@ -253,13 +253,13 @@ class ProjectsConfigsResourceApi {
   /// for this request, in the format `projects/[PROJECT_ID]`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Specifies the number of results to return per page. If there
-  /// are fewer
-  /// elements than the specified number, returns all elements.
-  ///
   /// [pageToken] - Specifies a page token to use. Set `pageToken` to a
   /// `nextPageToken`
   /// returned by a previous list request to get the next page of results.
+  ///
+  /// [pageSize] - Specifies the number of results to return per page. If there
+  /// are fewer
+  /// elements than the specified number, returns all elements.
   ///
   /// Completes with a [ListConfigsResponse].
   ///
@@ -269,7 +269,7 @@ class ProjectsConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListConfigsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken}) {
+      {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -280,11 +280,11 @@ class ProjectsConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1beta1/' +
@@ -730,6 +730,11 @@ class ProjectsConfigsVariablesResourceApi {
   /// `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
   /// Value must have pattern "^projects/[^/]+/configs/[^/]+$".
   ///
+  /// [filter] - Filters variables by matching the specified filter. For
+  /// example:
+  ///
+  /// `projects/example-project/config/[CONFIG_NAME]/variables/example-variable`.
+  ///
   /// [returnValues] - The flag indicates whether the user wants to return
   /// values of variables.
   /// If true, then only those variables that user has IAM GetVariable
@@ -744,11 +749,6 @@ class ProjectsConfigsVariablesResourceApi {
   /// are fewer
   /// elements than the specified number, returns all elements.
   ///
-  /// [filter] - Filters variables by matching the specified filter. For
-  /// example:
-  ///
-  /// `projects/example-project/config/[CONFIG_NAME]/variables/example-variable`.
-  ///
   /// Completes with a [ListVariablesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -757,10 +757,10 @@ class ProjectsConfigsVariablesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListVariablesResponse> list(core.String parent,
-      {core.bool returnValues,
+      {core.String filter,
+      core.bool returnValues,
       core.String pageToken,
-      core.int pageSize,
-      core.String filter}) {
+      core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -771,6 +771,9 @@ class ProjectsConfigsVariablesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (returnValues != null) {
       _queryParams["returnValues"] = ["${returnValues}"];
     }
@@ -779,9 +782,6 @@ class ProjectsConfigsVariablesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
 
     _url = 'v1beta1/' +

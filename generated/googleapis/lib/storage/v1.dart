@@ -607,6 +607,9 @@ class BucketsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
   ///
+  /// [userProject] - The project to be billed for this request, for Requester
+  /// Pays buckets.
+  ///
   /// Completes with a [Bucket].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -617,7 +620,8 @@ class BucketsResourceApi {
   async.Future<Bucket> insert(Bucket request, core.String project,
       {core.String predefinedAcl,
       core.String predefinedDefaultObjectAcl,
-      core.String projection}) {
+      core.String projection,
+      core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -640,6 +644,9 @@ class BucketsResourceApi {
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b';
@@ -672,6 +679,9 @@ class BucketsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
   ///
+  /// [userProject] - The project to be billed for this request, for Requester
+  /// Pays buckets.
+  ///
   /// Completes with a [Buckets].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -683,7 +693,8 @@ class BucketsResourceApi {
       {core.int maxResults,
       core.String pageToken,
       core.String prefix,
-      core.String projection}) {
+      core.String projection,
+      core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -706,6 +717,9 @@ class BucketsResourceApi {
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'b';
@@ -2903,7 +2917,7 @@ class ObjectsResourceApi {
     return _response.then((data) => new Objects.fromJson(data));
   }
 
-  /// Patches an object's metadata.
+  /// Updates an object's metadata. This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2955,22 +2969,15 @@ class ObjectsResourceApi {
   /// [userProject] - The project to be billed for this request, for Requester
   /// Pays buckets.
   ///
-  /// [downloadOptions] - Options for downloading. A download can be either a
-  /// Metadata (default) or Media download. Partial Media downloads are possible
-  /// as well.
-  ///
-  /// Completes with a
-  ///
-  /// - [Object] for Metadata downloads (see [downloadOptions]).
-  ///
-  /// - [commons.Media] for Media downloads (see [downloadOptions]).
+  /// Completes with a [Object].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future patch(Object request, core.String bucket, core.String object,
+  async.Future<Object> patch(
+      Object request, core.String bucket, core.String object,
       {core.String generation,
       core.String ifGenerationMatch,
       core.String ifGenerationNotMatch,
@@ -2978,9 +2985,7 @@ class ObjectsResourceApi {
       core.String ifMetagenerationNotMatch,
       core.String predefinedAcl,
       core.String projection,
-      core.String userProject,
-      commons.DownloadOptions downloadOptions:
-          commons.DownloadOptions.Metadata}) {
+      core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3022,8 +3027,6 @@ class ObjectsResourceApi {
       _queryParams["userProject"] = [userProject];
     }
 
-    _downloadOptions = downloadOptions;
-
     _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/o/' +
@@ -3035,12 +3038,7 @@ class ObjectsResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    if (_downloadOptions == null ||
-        _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then((data) => new Object.fromJson(data));
-    } else {
-      return _response;
-    }
+    return _response.then((data) => new Object.fromJson(data));
   }
 
   /// Rewrites a source object to a destination object. Optionally overrides
@@ -3651,6 +3649,9 @@ class ProjectsServiceAccountResourceApi {
   ///
   /// [projectId] - Project ID
   ///
+  /// [userProject] - The project to be billed for this request, for Requester
+  /// Pays buckets.
+  ///
   /// Completes with a [ServiceAccount].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3658,7 +3659,8 @@ class ProjectsServiceAccountResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ServiceAccount> get(core.String projectId) {
+  async.Future<ServiceAccount> get(core.String projectId,
+      {core.String userProject}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3668,6 +3670,9 @@ class ProjectsServiceAccountResourceApi {
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (userProject != null) {
+      _queryParams["userProject"] = [userProject];
     }
 
     _url = 'projects/' +

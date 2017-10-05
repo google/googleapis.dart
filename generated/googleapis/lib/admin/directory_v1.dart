@@ -5222,6 +5222,11 @@ class CalendarResource {
   /// ETag of the resource.
   core.String etags;
 
+  /// The auto-generated name of the calendar resource which includes metadata
+  /// about the resource such as building name, floor, capacity, etc. For
+  /// example, NYC-2-Training Room 1A (16)
+  core.String generatedResourceName;
+
   /// The type of the resource. For calendar resources, the value is
   /// admin#directory#resources#calendars#CalendarResource.
   core.String kind;
@@ -5249,6 +5254,9 @@ class CalendarResource {
     if (_json.containsKey("etags")) {
       etags = _json["etags"];
     }
+    if (_json.containsKey("generatedResourceName")) {
+      generatedResourceName = _json["generatedResourceName"];
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -5274,6 +5282,9 @@ class CalendarResource {
         new core.Map<core.String, core.Object>();
     if (etags != null) {
       _json["etags"] = etags;
+    }
+    if (generatedResourceName != null) {
+      _json["generatedResourceName"] = generatedResourceName;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -8232,6 +8243,12 @@ class User {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object externalIds;
 
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object gender;
+
   /// Hash function name for password. Supported are MD5, SHA-1 and crypt
   core.String hashFunction;
 
@@ -8398,6 +8415,9 @@ class User {
     if (_json.containsKey("externalIds")) {
       externalIds = _json["externalIds"];
     }
+    if (_json.containsKey("gender")) {
+      gender = _json["gender"];
+    }
     if (_json.containsKey("hashFunction")) {
       hashFunction = _json["hashFunction"];
     }
@@ -8528,6 +8548,9 @@ class User {
     }
     if (externalIds != null) {
       _json["externalIds"] = externalIds;
+    }
+    if (gender != null) {
+      _json["gender"] = gender;
     }
     if (hashFunction != null) {
       _json["hashFunction"] = hashFunction;
@@ -8926,6 +8949,48 @@ class UserExternalId {
     }
     if (value != null) {
       _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+class UserGender {
+  /// AddressMeAs. A human-readable string containing the proper way to refer to
+  /// the profile owner by humans, for example "he/him/his" or
+  /// "they/them/their".
+  core.String addressMeAs;
+
+  /// Custom gender.
+  core.String customGender;
+
+  /// Gender.
+  core.String type;
+
+  UserGender();
+
+  UserGender.fromJson(core.Map _json) {
+    if (_json.containsKey("addressMeAs")) {
+      addressMeAs = _json["addressMeAs"];
+    }
+    if (_json.containsKey("customGender")) {
+      customGender = _json["customGender"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (addressMeAs != null) {
+      _json["addressMeAs"] = addressMeAs;
+    }
+    if (customGender != null) {
+      _json["customGender"] = customGender;
+    }
+    if (type != null) {
+      _json["type"] = type;
     }
     return _json;
   }
@@ -9515,7 +9580,7 @@ class UserPosixAccount {
   core.String gecos;
 
   /// The default group ID.
-  core.int gid;
+  core.String gid;
 
   /// The path to the home directory for this account.
   core.String homeDirectory;
@@ -9530,7 +9595,7 @@ class UserPosixAccount {
   core.String systemId;
 
   /// The POSIX compliant user ID.
-  core.int uid;
+  core.String uid;
 
   /// The username of the account.
   core.String username;

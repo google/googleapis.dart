@@ -14,7 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client script/v1';
 
-/// Executes functions in Google Apps Script projects.
+/// An API for managing and executing Google Apps Script projects.
 class ScriptApi {
   /// Read, send, delete, and manage your email
   static const MailGoogleComScope = "https://mail.google.com/";

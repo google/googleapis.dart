@@ -37,7 +37,7 @@
     },
     "basePath": "/plusDomains/v1/",
     "baseUrl": "https://www.googleapis.com/plusDomains/v1/",
-    "batchPath": "batch/plusDomains/v1",
+    "batchPath": "batch",
     "description": "Builds on top of the Google+ platform for Google Apps Domains.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/+/domains/",

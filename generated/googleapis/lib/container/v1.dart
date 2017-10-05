@@ -832,6 +832,70 @@ class ProjectsZonesClustersResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
+  /// Sets the maintenance policy for a cluster.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - The Google Developers Console [project ID or project
+  /// number](https://support.google.com/cloud/answer/6158840).
+  ///
+  /// [zone] - The name of the Google Compute Engine
+  /// [zone](/compute/docs/zones#available) in which the cluster
+  /// resides.
+  ///
+  /// [clusterId] - The name of the cluster to update.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setMaintenancePolicy(
+      SetMaintenancePolicyRequest request,
+      core.String projectId,
+      core.String zone,
+      core.String clusterId) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (clusterId == null) {
+      throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/clusters/' +
+        commons.Escaper.ecapeVariable('$clusterId') +
+        ':setMaintenancePolicy';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
   /// Used to set master auth materials. Currently supports :-
   /// Changing the admin password of a specific cluster.
   /// This can be either via password generation or explicitly set the password.
@@ -1906,6 +1970,11 @@ class AddonsConfig {
   /// Configuration for the Kubernetes Dashboard.
   KubernetesDashboard kubernetesDashboard;
 
+  /// Configuration for NetworkPolicy. This only tracks whether the addon
+  /// is enabled or not on the Master, it does not track whether network policy
+  /// is enabled for the nodes.
+  NetworkPolicyConfig networkPolicyConfig;
+
   AddonsConfig();
 
   AddonsConfig.fromJson(core.Map _json) {
@@ -1921,6 +1990,10 @@ class AddonsConfig {
       kubernetesDashboard =
           new KubernetesDashboard.fromJson(_json["kubernetesDashboard"]);
     }
+    if (_json.containsKey("networkPolicyConfig")) {
+      networkPolicyConfig =
+          new NetworkPolicyConfig.fromJson(_json["networkPolicyConfig"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -1934,6 +2007,9 @@ class AddonsConfig {
     }
     if (kubernetesDashboard != null) {
       _json["kubernetesDashboard"] = (kubernetesDashboard).toJson();
+    }
+    if (networkPolicyConfig != null) {
+      _json["networkPolicyConfig"] = (networkPolicyConfig).toJson();
     }
     return _json;
   }
@@ -2136,6 +2212,9 @@ class Cluster {
   /// * if left as an empty string,`logging.googleapis.com` will be used.
   core.String loggingService;
 
+  /// Configure the maintenance policy for this cluster.
+  MaintenancePolicy maintenancePolicy;
+
   /// The authentication information for accessing the master endpoint.
   MasterAuth masterAuth;
 
@@ -2293,6 +2372,10 @@ class Cluster {
     if (_json.containsKey("loggingService")) {
       loggingService = _json["loggingService"];
     }
+    if (_json.containsKey("maintenancePolicy")) {
+      maintenancePolicy =
+          new MaintenancePolicy.fromJson(_json["maintenancePolicy"]);
+    }
     if (_json.containsKey("masterAuth")) {
       masterAuth = new MasterAuth.fromJson(_json["masterAuth"]);
     }
@@ -2403,6 +2486,9 @@ class Cluster {
     }
     if (loggingService != null) {
       _json["loggingService"] = loggingService;
+    }
+    if (maintenancePolicy != null) {
+      _json["maintenancePolicy"] = (maintenancePolicy).toJson();
     }
     if (masterAuth != null) {
       _json["masterAuth"] = (masterAuth).toJson();
@@ -2638,6 +2724,43 @@ class CreateNodePoolRequest {
         new core.Map<core.String, core.Object>();
     if (nodePool != null) {
       _json["nodePool"] = (nodePool).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Time window specified for daily maintenance operations.
+class DailyMaintenanceWindow {
+  /// [Output only] Duration of the time window, automatically chosen to be
+  /// smallest possible in the given scenario.
+  /// Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+  /// format "PTnHnMnS".
+  core.String duration;
+
+  /// Time within the maintenance window to start the maintenance operations.
+  /// Time format should be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+  /// format "HH:MM”, where HH : [00-23] and MM : [00-59] GMT.
+  core.String startTime;
+
+  DailyMaintenanceWindow();
+
+  DailyMaintenanceWindow.fromJson(core.Map _json) {
+    if (_json.containsKey("duration")) {
+      duration = _json["duration"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (duration != null) {
+      _json["duration"] = duration;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
     }
     return _json;
   }
@@ -3035,6 +3158,53 @@ class ListOperationsResponse {
   }
 }
 
+/// MaintenancePolicy defines the maintenance policy to be used for the cluster.
+class MaintenancePolicy {
+  /// Specifies the maintenance window in which maintenance may be performed.
+  MaintenanceWindow window;
+
+  MaintenancePolicy();
+
+  MaintenancePolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("window")) {
+      window = new MaintenanceWindow.fromJson(_json["window"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (window != null) {
+      _json["window"] = (window).toJson();
+    }
+    return _json;
+  }
+}
+
+/// MaintenanceWindow defines the maintenance window to be used for the cluster.
+class MaintenanceWindow {
+  /// DailyMaintenanceWindow specifies a daily maintenance operation window.
+  DailyMaintenanceWindow dailyMaintenanceWindow;
+
+  MaintenanceWindow();
+
+  MaintenanceWindow.fromJson(core.Map _json) {
+    if (_json.containsKey("dailyMaintenanceWindow")) {
+      dailyMaintenanceWindow =
+          new DailyMaintenanceWindow.fromJson(_json["dailyMaintenanceWindow"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dailyMaintenanceWindow != null) {
+      _json["dailyMaintenanceWindow"] = (dailyMaintenanceWindow).toJson();
+    }
+    return _json;
+  }
+}
+
 /// The authentication information for accessing the master endpoint.
 /// Authentication can be done using HTTP basic auth or using client
 /// certificates.
@@ -3191,6 +3361,31 @@ class NetworkPolicy {
   }
 }
 
+/// Configuration for NetworkPolicy. This only tracks whether the addon
+/// is enabled or not on the Master, it does not track whether network policy
+/// is enabled for the nodes.
+class NetworkPolicyConfig {
+  /// Whether NetworkPolicy is enabled for this cluster.
+  core.bool disabled;
+
+  NetworkPolicyConfig();
+
+  NetworkPolicyConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("disabled")) {
+      disabled = _json["disabled"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (disabled != null) {
+      _json["disabled"] = disabled;
+    }
+    return _json;
+  }
+}
+
 /// Parameters that describe the nodes in a cluster.
 class NodeConfig {
   /// A list of hardware accelerators to be attached to each node.
@@ -3249,6 +3444,16 @@ class NodeConfig {
   /// The total size of all keys and values must be less than 512 KB.
   core.Map<core.String, core.String> metadata;
 
+  /// Minimum CPU platform to be used by this instance. The instance may be
+  /// scheduled on the specified or newer CPU platform. Applicable values are
+  /// the
+  /// friendly names of CPU platforms, such as
+  /// <code>minCpuPlatform: &quot;Intel Haswell&quot;</code> or
+  /// <code>minCpuPlatform: &quot;Intel Sandy Bridge&quot;</code>. For more
+  /// information, read [how to specify min CPU
+  /// platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+  core.String minCpuPlatform;
+
   /// The set of Google API scopes to be made available on all of the
   /// node VMs under the "default" service account.
   ///
@@ -3306,6 +3511,9 @@ class NodeConfig {
     if (_json.containsKey("metadata")) {
       metadata = _json["metadata"];
     }
+    if (_json.containsKey("minCpuPlatform")) {
+      minCpuPlatform = _json["minCpuPlatform"];
+    }
     if (_json.containsKey("oauthScopes")) {
       oauthScopes = _json["oauthScopes"];
     }
@@ -3344,6 +3552,9 @@ class NodeConfig {
     }
     if (metadata != null) {
       _json["metadata"] = metadata;
+    }
+    if (minCpuPlatform != null) {
+      _json["minCpuPlatform"] = minCpuPlatform;
     }
     if (oauthScopes != null) {
       _json["oauthScopes"] = oauthScopes;
@@ -3619,6 +3830,7 @@ class Operation {
   /// - "SET_MASTER_AUTH" : Set/generate master auth materials
   /// - "SET_NODE_POOL_SIZE" : Set node pool size.
   /// - "SET_NETWORK_POLICY" : Updates network policy for a cluster.
+  /// - "SET_MAINTENANCE_POLICY" : Set the maintenance policy.
   core.String operationType;
 
   /// Server-defined URL for the resource.
@@ -3933,6 +4145,31 @@ class SetLoggingServiceRequest {
         new core.Map<core.String, core.Object>();
     if (loggingService != null) {
       _json["loggingService"] = loggingService;
+    }
+    return _json;
+  }
+}
+
+/// SetMaintenancePolicyRequest sets the maintenance policy for a cluster.
+class SetMaintenancePolicyRequest {
+  /// The maintenance policy to be set for the cluster. An empty field
+  /// clears the existing maintenance policy.
+  MaintenancePolicy maintenancePolicy;
+
+  SetMaintenancePolicyRequest();
+
+  SetMaintenancePolicyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("maintenancePolicy")) {
+      maintenancePolicy =
+          new MaintenancePolicy.fromJson(_json["maintenancePolicy"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (maintenancePolicy != null) {
+      _json["maintenancePolicy"] = (maintenancePolicy).toJson();
     }
     return _json;
   }

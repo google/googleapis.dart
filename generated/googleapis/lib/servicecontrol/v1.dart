@@ -46,17 +46,12 @@ class ServicesResourceApi {
   ///
   /// This method requires the `servicemanagement.services.quota`
   /// permission on the specified service. For more information, see
-  /// [Google Cloud IAM](https://cloud.google.com/iam).
+  /// [Cloud IAM](https://cloud.google.com/iam).
   ///
-  /// **NOTE:** the client code **must** fail-open if the server returns one
-  /// of the following quota errors:
-  /// -   `PROJECT_STATUS_UNAVAILABLE`
-  /// -   `SERVICE_STATUS_UNAVAILABLE`
-  /// -   `BILLING_STATUS_UNAVAILABLE`
-  /// -   `QUOTA_SYSTEM_UNAVAILABLE`
-  ///
-  /// The server may inject above errors to prohibit any hard dependency
-  /// on the quota system.
+  /// **NOTE:** The client **must** fail-open on server errors `INTERNAL`,
+  /// `UNKNOWN`, `DEADLINE_EXCEEDED`, and `UNAVAILABLE`. To ensure system
+  /// reliability, the server may inject these errors to prohibit any hard
+  /// dependency on the quota functionality.
   ///
   /// [request] - The metadata request object.
   ///
@@ -224,17 +219,13 @@ class ServicesResourceApi {
   ///
   /// This method requires the `servicemanagement.services.quota`
   /// permission on the specified service. For more information, see
-  /// [Google Cloud IAM](https://cloud.google.com/iam).
+  /// [Cloud IAM](https://cloud.google.com/iam).
   ///
-  /// **NOTE:** the client code **must** fail-open if the server returns one
-  /// of the following quota errors:
-  /// -   `PROJECT_STATUS_UNAVAILABLE`
-  /// -   `SERVICE_STATUS_UNAVAILABLE`
-  /// -   `BILLING_STATUS_UNAVAILABLE`
-  /// -   `QUOTA_SYSTEM_UNAVAILABLE`
   ///
-  /// The server may inject above errors to prohibit any hard dependency
-  /// on the quota system.
+  /// **NOTE:** The client **must** fail-open on server errors `INTERNAL`,
+  /// `UNKNOWN`, `DEADLINE_EXCEEDED`, and `UNAVAILABLE`. To ensure system
+  /// reliability, the server may inject these errors to prohibit any hard
+  /// dependency on the quota functionality.
   ///
   /// [request] - The metadata request object.
   ///
@@ -420,29 +411,35 @@ class ServicesResourceApi {
   }
 }
 
+class AllocateInfo {
+  /// A list of label keys that were unused by the server in processing the
+  /// request. Thus, for similar requests repeated in a certain future time
+  /// window, the caller can choose to ignore these labels in the requests
+  /// to achieve better client-side cache hits and quota aggregation.
+  core.List<core.String> unusedArguments;
+
+  AllocateInfo();
+
+  AllocateInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("unusedArguments")) {
+      unusedArguments = _json["unusedArguments"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (unusedArguments != null) {
+      _json["unusedArguments"] = unusedArguments;
+    }
+    return _json;
+  }
+}
+
 /// Request message for the AllocateQuota method.
 class AllocateQuotaRequest {
   /// Operation that describes the quota allocation.
   QuotaOperation allocateOperation;
-
-  /// Allocation mode for this operation.
-  /// Deprecated: use QuotaMode inside the QuotaOperation.
-  /// Possible string values are:
-  /// - "UNSPECIFIED"
-  /// - "NORMAL" : Allocates quota for the amount specified in the service
-  /// configuration or
-  /// specified using the quota_metrics. If the amount is higher than the
-  /// available quota, allocation error will be returned and no quota will be
-  /// allocated.
-  /// - "BEST_EFFORT" : Allocates quota for the amount specified in the service
-  /// configuration or
-  /// specified using the quota_metrics. If the amount is higher than the
-  /// available quota, request does not fail but all available quota will be
-  /// allocated.
-  /// - "CHECK_ONLY" : Only checks if there is enough quota available and does
-  /// not change the
-  /// available quota. No lock is placed on the available quota either.
-  core.String allocationMode;
 
   /// Specifies which version of service configuration should be used to process
   /// the request. If unspecified or no matching version can be found, the
@@ -457,9 +454,6 @@ class AllocateQuotaRequest {
       allocateOperation =
           new QuotaOperation.fromJson(_json["allocateOperation"]);
     }
-    if (_json.containsKey("allocationMode")) {
-      allocationMode = _json["allocationMode"];
-    }
     if (_json.containsKey("serviceConfigId")) {
       serviceConfigId = _json["serviceConfigId"];
     }
@@ -470,9 +464,6 @@ class AllocateQuotaRequest {
         new core.Map<core.String, core.Object>();
     if (allocateOperation != null) {
       _json["allocateOperation"] = (allocateOperation).toJson();
-    }
-    if (allocationMode != null) {
-      _json["allocationMode"] = allocationMode;
     }
     if (serviceConfigId != null) {
       _json["serviceConfigId"] = serviceConfigId;
@@ -485,6 +476,9 @@ class AllocateQuotaRequest {
 class AllocateQuotaResponse {
   /// Indicates the decision of the allocate.
   core.List<QuotaError> allocateErrors;
+
+  /// WARNING: DO NOT use this field until this warning message is removed.
+  AllocateInfo allocateInfo;
 
   /// The same operation_id value used in the AllocateQuotaRequest. Used for
   /// logging and diagnostics purposes.
@@ -521,6 +515,9 @@ class AllocateQuotaResponse {
           .map((value) => new QuotaError.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("allocateInfo")) {
+      allocateInfo = new AllocateInfo.fromJson(_json["allocateInfo"]);
+    }
     if (_json.containsKey("operationId")) {
       operationId = _json["operationId"];
     }
@@ -540,6 +537,9 @@ class AllocateQuotaResponse {
     if (allocateErrors != null) {
       _json["allocateErrors"] =
           allocateErrors.map((value) => (value).toJson()).toList();
+    }
+    if (allocateInfo != null) {
+      _json["allocateInfo"] = (allocateInfo).toJson();
     }
     if (operationId != null) {
       _json["operationId"] = operationId;
@@ -564,6 +564,13 @@ class AuditLog {
   /// resources or permissions involved, then there is
   /// one AuthorizationInfo element for each {resource, permission} tuple.
   core.List<AuthorizationInfo> authorizationInfo;
+
+  /// Other service-specific data about the request, response, and other
+  /// information associated with the current audited event.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object>> metadata;
 
   /// The name of the service method or operation.
   /// For API calls, this should be the name of the API method.
@@ -610,6 +617,7 @@ class AuditLog {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> response;
 
+  /// Deprecated, use `metadata` field instead.
   /// Other service-specific data about the request, response, and other
   /// activities.
   ///
@@ -635,6 +643,9 @@ class AuditLog {
       authorizationInfo = _json["authorizationInfo"]
           .map((value) => new AuthorizationInfo.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("metadata")) {
+      metadata = _json["metadata"];
     }
     if (_json.containsKey("methodName")) {
       methodName = _json["methodName"];
@@ -674,6 +685,9 @@ class AuditLog {
     if (authorizationInfo != null) {
       _json["authorizationInfo"] =
           authorizationInfo.map((value) => (value).toJson()).toList();
+    }
+    if (metadata != null) {
+      _json["metadata"] = metadata;
     }
     if (methodName != null) {
       _json["methodName"] = methodName;
@@ -896,6 +910,7 @@ class CheckError {
   }
 }
 
+/// Contains additional information about the check operation.
 class CheckInfo {
   /// Consumer info of this check.
   ConsumerInfo consumerInfo;
@@ -1193,6 +1208,7 @@ class Distribution {
   }
 }
 
+/// Request message for QuotaController.EndReconciliation.
 class EndReconciliationRequest {
   /// Operation that describes the quota reconciliation.
   QuotaOperation reconciliationOperation;
@@ -1228,6 +1244,7 @@ class EndReconciliationRequest {
   }
 }
 
+/// Response message for QuotaController.EndReconciliation.
 class EndReconciliationResponse {
   /// The same operation_id value used in the EndReconciliationRequest. Used for
   /// logging and diagnostics purposes.
@@ -1818,9 +1835,11 @@ class Operation {
   core.String operationName;
 
   /// Represents the properties needed for quota check. Applicable only if this
-  /// operation is for a quota check request.
+  /// operation is for a quota check request. If this is not specified, no quota
+  /// check will be performed.
   QuotaProperties quotaProperties;
 
+  /// DO NOT USE. This field is deprecated, use "resources" field instead.
   /// The resource name of the parent of a resource in the resource hierarchy.
   ///
   /// This can be in one of the following formats:
@@ -1829,15 +1848,15 @@ class Operation {
   ///     - “organizations/<organization-id>”
   core.String resourceContainer;
 
-  /// DO NOT USE.
-  /// This field is not ready for use yet.
-  core.List<core.String> resourceContainers;
+  /// The resources that are involved in the operation.
+  core.List<ResourceInfo> resources;
 
   /// Required. Start time of the operation.
   core.String startTime;
 
   /// User defined labels for the resource that this operation is associated
-  /// with.
+  /// with. Only a combination of 1000 user labels per consumer project are
+  /// allowed.
   core.Map<core.String, core.String> userLabels;
 
   Operation();
@@ -1877,8 +1896,10 @@ class Operation {
     if (_json.containsKey("resourceContainer")) {
       resourceContainer = _json["resourceContainer"];
     }
-    if (_json.containsKey("resourceContainers")) {
-      resourceContainers = _json["resourceContainers"];
+    if (_json.containsKey("resources")) {
+      resources = _json["resources"]
+          .map((value) => new ResourceInfo.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
@@ -1923,8 +1944,8 @@ class Operation {
     if (resourceContainer != null) {
       _json["resourceContainer"] = resourceContainer;
     }
-    if (resourceContainers != null) {
-      _json["resourceContainers"] = resourceContainers;
+    if (resources != null) {
+      _json["resources"] = resources.map((value) => (value).toJson()).toList();
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
@@ -1936,6 +1957,7 @@ class Operation {
   }
 }
 
+/// Represents error information for QuotaOperation.
 class QuotaError {
   /// Error code.
   /// Possible string values are:
@@ -2124,7 +2146,7 @@ class QuotaOperation {
 
   /// Quota mode for this operation.
   /// Possible string values are:
-  /// - "UNSPECIFIED"
+  /// - "UNSPECIFIED" : Guard against implicit default. Must not be used.
   /// - "NORMAL" : For AllocateQuota request, allocates quota for the amount
   /// specified in
   /// the service configuration or specified using the quota metrics. If the
@@ -2207,21 +2229,6 @@ class QuotaOperation {
 
 /// Represents the properties needed for quota operations.
 class QuotaProperties {
-  /// LimitType IDs that should be used for checking quota. Key in this map
-  /// should be a valid LimitType string, and the value is the ID to be used.
-  /// For
-  /// example, an entry <USER, 123> will cause all user quota limits to use 123
-  /// as the user ID. See google/api/quota.proto for the definition of
-  /// LimitType.
-  /// CLIENT_PROJECT: Not supported.
-  /// USER: Value of this entry will be used for enforcing user-level quota
-  ///       limits. If none specified, caller IP passed in the
-  ///       servicecontrol.googleapis.com/caller_ip label will be used instead.
-  ///       If the server cannot resolve a value for this LimitType, an error
-  ///       will be thrown. No validation will be performed on this ID.
-  /// Deprecated: use servicecontrol.googleapis.com/user label to send user ID.
-  core.Map<core.String, core.String> limitByIds;
-
   /// Quota mode for this operation.
   /// Possible string values are:
   /// - "ACQUIRE" : Decreases available quota by the cost specified for the
@@ -2244,9 +2251,6 @@ class QuotaProperties {
   QuotaProperties();
 
   QuotaProperties.fromJson(core.Map _json) {
-    if (_json.containsKey("limitByIds")) {
-      limitByIds = _json["limitByIds"];
-    }
     if (_json.containsKey("quotaMode")) {
       quotaMode = _json["quotaMode"];
     }
@@ -2255,9 +2259,6 @@ class QuotaProperties {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (limitByIds != null) {
-      _json["limitByIds"] = limitByIds;
-    }
     if (quotaMode != null) {
       _json["quotaMode"] = quotaMode;
     }
@@ -2402,6 +2403,7 @@ class ReportError {
   }
 }
 
+/// Contains additional info about the report operation.
 class ReportInfo {
   /// The Operation.operation_id value from the request.
   core.String operationId;
@@ -2552,15 +2554,23 @@ class ReportResponse {
 class RequestMetadata {
   /// The IP address of the caller.
   /// For caller from internet, this will be public IPv4 or IPv6 address.
-  /// For caller from GCE VM with external IP address, this will be the VM's
-  /// external IP address. For caller from GCE VM without external IP address,
-  /// if
-  /// the VM is in the same GCP organization (or project) as the accessed
-  /// resource, `caller_ip` will be the GCE VM's internal IPv4 address,
-  /// otherwise
-  /// it will be redacted to "gce-internal-ip".
+  /// For caller from a Compute Engine VM with external IP address, this
+  /// will be the VM's external IP address. For caller from a Compute
+  /// Engine VM without external IP address, if the VM is in the same
+  /// organization (or project) as the accessed resource, `caller_ip` will
+  /// be the VM's internal IPv4 address, otherwise the `caller_ip` will be
+  /// redacted to "gce-internal-ip".
   /// See https://cloud.google.com/compute/docs/vpc/ for more information.
   core.String callerIp;
+
+  /// The network of the caller.
+  /// Set only if the network host project is part of the same GCP organization
+  /// (or project) as the accessed resource.
+  /// See https://cloud.google.com/compute/docs/vpc/ for more information.
+  /// This is a scheme-less URI full resource name. For example:
+  ///
+  /// "//compute.googleapis.com/projects/PROJECT_ID/global/networks/NETWORK_ID"
+  core.String callerNetwork;
 
   /// The user agent of the caller.
   /// This information is not authenticated and should be treated accordingly.
@@ -2582,6 +2592,9 @@ class RequestMetadata {
     if (_json.containsKey("callerIp")) {
       callerIp = _json["callerIp"];
     }
+    if (_json.containsKey("callerNetwork")) {
+      callerNetwork = _json["callerNetwork"];
+    }
     if (_json.containsKey("callerSuppliedUserAgent")) {
       callerSuppliedUserAgent = _json["callerSuppliedUserAgent"];
     }
@@ -2593,6 +2606,9 @@ class RequestMetadata {
     if (callerIp != null) {
       _json["callerIp"] = callerIp;
     }
+    if (callerNetwork != null) {
+      _json["callerNetwork"] = callerNetwork;
+    }
     if (callerSuppliedUserAgent != null) {
       _json["callerSuppliedUserAgent"] = callerSuppliedUserAgent;
     }
@@ -2600,6 +2616,43 @@ class RequestMetadata {
   }
 }
 
+/// Describes a resource associated with this operation.
+class ResourceInfo {
+  /// The identifier of the parent of this resource instance.
+  /// Must be in one of the following formats:
+  ///     - “projects/<project-id or project-number>”
+  ///     - “folders/<folder-id>”
+  ///     - “organizations/<organization-id>”
+  core.String resourceContainer;
+
+  /// Name of the resource. This is used for auditing purposes.
+  core.String resourceName;
+
+  ResourceInfo();
+
+  ResourceInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("resourceContainer")) {
+      resourceContainer = _json["resourceContainer"];
+    }
+    if (_json.containsKey("resourceName")) {
+      resourceName = _json["resourceName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (resourceContainer != null) {
+      _json["resourceContainer"] = resourceContainer;
+    }
+    if (resourceName != null) {
+      _json["resourceName"] = resourceName;
+    }
+    return _json;
+  }
+}
+
+/// Request message for QuotaController.StartReconciliation.
 class StartReconciliationRequest {
   /// Operation that describes the quota reconciliation.
   QuotaOperation reconciliationOperation;
@@ -2635,6 +2688,7 @@ class StartReconciliationRequest {
   }
 }
 
+/// Response message for QuotaController.StartReconciliation.
 class StartReconciliationResponse {
   /// The same operation_id value used in the StartReconciliationRequest. Used
   /// for logging and diagnostics purposes.

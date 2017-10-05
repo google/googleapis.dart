@@ -25,6 +25,7 @@ class DlpApi {
   final commons.ApiRequester _requester;
 
   ContentResourceApi get content => new ContentResourceApi(_requester);
+  DataSourceResourceApi get dataSource => new DataSourceResourceApi(_requester);
   InspectResourceApi get inspect => new InspectResourceApi(_requester);
   RiskAnalysisResourceApi get riskAnalysis =>
       new RiskAnalysisResourceApi(_requester);
@@ -42,6 +43,45 @@ class ContentResourceApi {
   final commons.ApiRequester _requester;
 
   ContentResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// De-identifies potentially sensitive info from a list of strings.
+  /// This method has limits on input size and output size.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [GooglePrivacyDlpV2beta1DeidentifyContentResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2beta1DeidentifyContentResponse> deidentify(
+      GooglePrivacyDlpV2beta1DeidentifyContentRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'v2beta1/content:deidentify';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) =>
+        new GooglePrivacyDlpV2beta1DeidentifyContentResponse.fromJson(data));
+  }
 
   /// Finds potentially sensitive info in a list of strings.
   /// This method has limits on input size, processing time, and output size.
@@ -122,6 +162,51 @@ class ContentResourceApi {
   }
 }
 
+class DataSourceResourceApi {
+  final commons.ApiRequester _requester;
+
+  DataSourceResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Schedules a job to compute risk analysis metrics over content in a Google
+  /// Cloud Platform repository.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> analyze(
+      GooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'v2beta1/dataSource:analyze';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new GoogleLongrunningOperation.fromJson(data));
+  }
+}
+
 class InspectResourceApi {
   final commons.ApiRequester _requester;
 
@@ -139,8 +224,9 @@ class InspectOperationsResourceApi {
   InspectOperationsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Cancels an operation. Use the get method to check whether the cancellation
-  /// succeeded or whether the operation completed despite cancellation.
+  /// Cancels an operation. Use the `inspect.operations.get` to check whether
+  /// the cancellation succeeded or the operation completed despite
+  /// cancellation.
   ///
   /// [request] - The metadata request object.
   ///
@@ -300,20 +386,19 @@ class InspectOperationsResourceApi {
         .then((data) => new GoogleLongrunningOperation.fromJson(data));
   }
 
-  /// Fetch the list of long running operations.
+  /// Fetches the list of long running operations.
   ///
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^inspect/operations$".
   ///
-  /// [filter] - This parameter supports filtering by done, ie done=true or
-  /// done=false.
+  /// [filter] - Filters by `done`. That is, `done=true` or `done=false`.
   ///
   /// [pageToken] - The standard list page token.
   ///
-  /// [pageSize] - The list page size. The max allowed value is 256 and default
-  /// is 100.
+  /// [pageSize] - The list page size. The maximum allowed value is 256 and the
+  /// default is 100.
   ///
   /// Completes with a [GoogleLongrunningListOperationsResponse].
   ///
@@ -381,23 +466,25 @@ class InspectResultsFindingsResourceApi {
   /// Should be in the format of `inspect/results/{id}`.
   /// Value must have pattern "^inspect/results/[^/]+$".
   ///
-  /// [pageToken] - The value returned by the last
-  /// `ListInspectFindingsResponse`; indicates
-  /// that this is a continuation of a prior `ListInspectFindings` call, and
-  /// that
-  /// the system should return the next page of data.
-  ///
   /// [pageSize] - Maximum number of results to return.
   /// If 0, the implementation selects a reasonable value.
   ///
   /// [filter] - Restricts findings to items that match. Supports info_type and
   /// likelihood.
+  ///
   /// Examples:
+  ///
   /// - info_type=EMAIL_ADDRESS
   /// - info_type=PHONE_NUMBER,EMAIL_ADDRESS
   /// - likelihood=VERY_LIKELY
   /// - likelihood=VERY_LIKELY,LIKELY
   /// - info_type=EMAIL_ADDRESS,likelihood=VERY_LIKELY,LIKELY
+  ///
+  /// [pageToken] - The value returned by the last
+  /// `ListInspectFindingsResponse`; indicates
+  /// that this is a continuation of a prior `ListInspectFindings` call, and
+  /// that
+  /// the system should return the next page of data.
   ///
   /// Completes with a [GooglePrivacyDlpV2beta1ListInspectFindingsResponse].
   ///
@@ -408,9 +495,9 @@ class InspectResultsFindingsResourceApi {
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2beta1ListInspectFindingsResponse> list(
       core.String name,
-      {core.String pageToken,
-      core.int pageSize,
-      core.String filter}) {
+      {core.int pageSize,
+      core.String filter,
+      core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -421,14 +508,14 @@ class InspectResultsFindingsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v2beta1/' +
@@ -461,8 +548,9 @@ class RiskAnalysisOperationsResourceApi {
   RiskAnalysisOperationsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Cancels an operation. Use the get method to check whether the cancellation
-  /// succeeded or whether the operation completed despite cancellation.
+  /// Cancels an operation. Use the `inspect.operations.get` to check whether
+  /// the cancellation succeeded or the operation completed despite
+  /// cancellation.
   ///
   /// [request] - The metadata request object.
   ///
@@ -583,20 +671,19 @@ class RiskAnalysisOperationsResourceApi {
         .then((data) => new GoogleLongrunningOperation.fromJson(data));
   }
 
-  /// Fetch the list of long running operations.
+  /// Fetches the list of long running operations.
   ///
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^riskAnalysis/operations$".
   ///
+  /// [pageSize] - The list page size. The maximum allowed value is 256 and the
+  /// default is 100.
+  ///
+  /// [filter] - Filters by `done`. That is, `done=true` or `done=false`.
+  ///
   /// [pageToken] - The standard list page token.
-  ///
-  /// [pageSize] - The list page size. The max allowed value is 256 and default
-  /// is 100.
-  ///
-  /// [filter] - This parameter supports filtering by done, ie done=true or
-  /// done=false.
   ///
   /// Completes with a [GoogleLongrunningListOperationsResponse].
   ///
@@ -606,7 +693,7 @@ class RiskAnalysisOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.String pageToken, core.int pageSize, core.String filter}) {
+      {core.int pageSize, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -617,14 +704,14 @@ class RiskAnalysisOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -806,18 +893,21 @@ class GoogleLongrunningOperation {
   /// The error result of the operation in case of failure or cancellation.
   GoogleRpcStatus error;
 
-  /// This field will contain an InspectOperationMetadata object. This will
-  /// always be returned with the Operation.
+  /// This field will contain an InspectOperationMetadata object for
+  /// `inspect.operations.create` or a RiskAnalysisOperationMetadata object for
+  /// `dataSource.analyze`.  This will always be returned with the Operation.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> metadata;
 
-  /// The server-assigned name, The `name` should have the format of
+  /// The server-assigned name. The `name` should have the format of
   /// `inspect/operations/<identifier>`.
   core.String name;
 
-  /// This field will contain an InspectOperationResult object.
+  /// This field will contain an InspectOperationResult object for
+  /// `inspect.operations.create` or a RiskAnalysisOperationResult object for
+  /// `dataSource.analyze`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -860,6 +950,40 @@ class GoogleLongrunningOperation {
     }
     if (response != null) {
       _json["response"] = response;
+    }
+    return _json;
+  }
+}
+
+/// Request for creating a risk analysis operation.
+class GooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest {
+  /// Privacy metric to compute.
+  GooglePrivacyDlpV2beta1PrivacyMetric privacyMetric;
+
+  /// Input dataset to compute metrics over.
+  GooglePrivacyDlpV2beta1BigQueryTable sourceTable;
+
+  GooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest();
+
+  GooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("privacyMetric")) {
+      privacyMetric = new GooglePrivacyDlpV2beta1PrivacyMetric.fromJson(
+          _json["privacyMetric"]);
+    }
+    if (_json.containsKey("sourceTable")) {
+      sourceTable = new GooglePrivacyDlpV2beta1BigQueryTable.fromJson(
+          _json["sourceTable"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (privacyMetric != null) {
+      _json["privacyMetric"] = (privacyMetric).toJson();
+    }
+    if (sourceTable != null) {
+      _json["sourceTable"] = (sourceTable).toJson();
     }
     return _json;
   }
@@ -948,6 +1072,197 @@ class GooglePrivacyDlpV2beta1BigQueryTable {
   }
 }
 
+/// Buckets represented as ranges, along with replacement values. Ranges must
+/// be non-overlapping.
+class GooglePrivacyDlpV2beta1Bucket {
+  /// Upper bound of the range, exclusive; type must match min.
+  GooglePrivacyDlpV2beta1Value max;
+
+  /// Lower bound of the range, inclusive. Type should be the same as max if
+  /// used.
+  GooglePrivacyDlpV2beta1Value min;
+
+  /// Replacement value for this bucket. If not provided
+  /// the default behavior will be to hyphenate the min-max range.
+  GooglePrivacyDlpV2beta1Value replacementValue;
+
+  GooglePrivacyDlpV2beta1Bucket();
+
+  GooglePrivacyDlpV2beta1Bucket.fromJson(core.Map _json) {
+    if (_json.containsKey("max")) {
+      max = new GooglePrivacyDlpV2beta1Value.fromJson(_json["max"]);
+    }
+    if (_json.containsKey("min")) {
+      min = new GooglePrivacyDlpV2beta1Value.fromJson(_json["min"]);
+    }
+    if (_json.containsKey("replacementValue")) {
+      replacementValue =
+          new GooglePrivacyDlpV2beta1Value.fromJson(_json["replacementValue"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (max != null) {
+      _json["max"] = (max).toJson();
+    }
+    if (min != null) {
+      _json["min"] = (min).toJson();
+    }
+    if (replacementValue != null) {
+      _json["replacementValue"] = (replacementValue).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Generalization function that buckets values based on ranges. The ranges and
+/// replacement values are dynamically provided by the user for custom behavior,
+/// such as 1-30 -> LOW 31-65 -> MEDIUM 66-100 -> HIGH
+/// This can be used on
+/// data of type: number, long, string, timestamp.
+/// If the bound `Value` type differs from the type of data being transformed,
+/// we
+/// will first attempt converting the type of the data to be transformed to
+/// match
+/// the type of the bound before comparing.
+class GooglePrivacyDlpV2beta1BucketingConfig {
+  core.List<GooglePrivacyDlpV2beta1Bucket> buckets;
+
+  GooglePrivacyDlpV2beta1BucketingConfig();
+
+  GooglePrivacyDlpV2beta1BucketingConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("buckets")) {
+      buckets = _json["buckets"]
+          .map((value) => new GooglePrivacyDlpV2beta1Bucket.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (buckets != null) {
+      _json["buckets"] = buckets.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Compute numerical stats over an individual column, including
+/// number of distinct values and value count distribution.
+class GooglePrivacyDlpV2beta1CategoricalStatsConfig {
+  /// Field to compute categorical stats on. All column types are
+  /// supported except for arrays and structs. However, it may be more
+  /// informative to use NumericalStats when the field type is supported,
+  /// depending on the data.
+  GooglePrivacyDlpV2beta1FieldId field;
+
+  GooglePrivacyDlpV2beta1CategoricalStatsConfig();
+
+  GooglePrivacyDlpV2beta1CategoricalStatsConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("field")) {
+      field = new GooglePrivacyDlpV2beta1FieldId.fromJson(_json["field"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (field != null) {
+      _json["field"] = (field).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Histogram bucket of value frequencies in the column.
+class GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket {
+  /// Total number of records in this bucket.
+  core.String bucketSize;
+
+  /// Sample of value frequencies in this bucket. The total number of
+  /// values returned per bucket is capped at 20.
+  core.List<GooglePrivacyDlpV2beta1ValueFrequency> bucketValues;
+
+  /// Lower bound on the value frequency of the values in this bucket.
+  core.String valueFrequencyLowerBound;
+
+  /// Upper bound on the value frequency of the values in this bucket.
+  core.String valueFrequencyUpperBound;
+
+  GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket();
+
+  GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("bucketSize")) {
+      bucketSize = _json["bucketSize"];
+    }
+    if (_json.containsKey("bucketValues")) {
+      bucketValues = _json["bucketValues"]
+          .map((value) =>
+              new GooglePrivacyDlpV2beta1ValueFrequency.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("valueFrequencyLowerBound")) {
+      valueFrequencyLowerBound = _json["valueFrequencyLowerBound"];
+    }
+    if (_json.containsKey("valueFrequencyUpperBound")) {
+      valueFrequencyUpperBound = _json["valueFrequencyUpperBound"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bucketSize != null) {
+      _json["bucketSize"] = bucketSize;
+    }
+    if (bucketValues != null) {
+      _json["bucketValues"] =
+          bucketValues.map((value) => (value).toJson()).toList();
+    }
+    if (valueFrequencyLowerBound != null) {
+      _json["valueFrequencyLowerBound"] = valueFrequencyLowerBound;
+    }
+    if (valueFrequencyUpperBound != null) {
+      _json["valueFrequencyUpperBound"] = valueFrequencyUpperBound;
+    }
+    return _json;
+  }
+}
+
+/// Result of the categorical stats computation.
+class GooglePrivacyDlpV2beta1CategoricalStatsResult {
+  /// Histogram of value frequencies in the column.
+  core.List<GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket>
+      valueFrequencyHistogramBuckets;
+
+  GooglePrivacyDlpV2beta1CategoricalStatsResult();
+
+  GooglePrivacyDlpV2beta1CategoricalStatsResult.fromJson(core.Map _json) {
+    if (_json.containsKey("valueFrequencyHistogramBuckets")) {
+      valueFrequencyHistogramBuckets = _json["valueFrequencyHistogramBuckets"]
+          .map((value) =>
+              new GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket
+                  .fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (valueFrequencyHistogramBuckets != null) {
+      _json["valueFrequencyHistogramBuckets"] = valueFrequencyHistogramBuckets
+          .map((value) => (value).toJson())
+          .toList();
+    }
+    return _json;
+  }
+}
+
 /// Info Type Category description.
 class GooglePrivacyDlpV2beta1CategoryDescription {
   /// Human readable form of the category name.
@@ -975,6 +1290,116 @@ class GooglePrivacyDlpV2beta1CategoryDescription {
     }
     if (name != null) {
       _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/// Partially mask a string by replacing a given number of characters with a
+/// fixed character. Masking can start from the beginning or end of the string.
+/// This can be used on data of any type (numbers, longs, and so on) and when
+/// de-identifying structured data we'll attempt to preserve the original data's
+/// type. (This allows you to take a long like 123 and modify it to a string
+/// like
+/// **3.
+class GooglePrivacyDlpV2beta1CharacterMaskConfig {
+  /// When masking a string, items in this list will be skipped when replacing.
+  /// For example, if your string is 555-555-5555 and you ask us to skip `-` and
+  /// mask 5 chars with * we would produce ***-*55-5555.
+  core.List<GooglePrivacyDlpV2beta1CharsToIgnore> charactersToIgnore;
+
+  /// Character to mask the sensitive values&mdash;for example, "*" for an
+  /// alphabetic string such as name, or "0" for a numeric string such as ZIP
+  /// code or credit card number. String must have length 1. If not supplied, we
+  /// will default to "*" for strings, 0 for digits.
+  core.String maskingCharacter;
+
+  /// Number of characters to mask. If not set, all matching chars will be
+  /// masked. Skipped characters do not count towards this tally.
+  core.int numberToMask;
+
+  /// Mask characters in reverse order. For example, if `masking_character` is
+  /// '0', number_to_mask is 14, and `reverse_order` is false, then
+  /// 1234-5678-9012-3456 -> 00000000000000-3456
+  /// If `masking_character` is '*', `number_to_mask` is 3, and `reverse_order`
+  /// is true, then 12345 -> 12***
+  core.bool reverseOrder;
+
+  GooglePrivacyDlpV2beta1CharacterMaskConfig();
+
+  GooglePrivacyDlpV2beta1CharacterMaskConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("charactersToIgnore")) {
+      charactersToIgnore = _json["charactersToIgnore"]
+          .map((value) =>
+              new GooglePrivacyDlpV2beta1CharsToIgnore.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("maskingCharacter")) {
+      maskingCharacter = _json["maskingCharacter"];
+    }
+    if (_json.containsKey("numberToMask")) {
+      numberToMask = _json["numberToMask"];
+    }
+    if (_json.containsKey("reverseOrder")) {
+      reverseOrder = _json["reverseOrder"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (charactersToIgnore != null) {
+      _json["charactersToIgnore"] =
+          charactersToIgnore.map((value) => (value).toJson()).toList();
+    }
+    if (maskingCharacter != null) {
+      _json["maskingCharacter"] = maskingCharacter;
+    }
+    if (numberToMask != null) {
+      _json["numberToMask"] = numberToMask;
+    }
+    if (reverseOrder != null) {
+      _json["reverseOrder"] = reverseOrder;
+    }
+    return _json;
+  }
+}
+
+/// Characters to skip when doing deidentification of a value. These will be
+/// left
+/// alone and skipped.
+class GooglePrivacyDlpV2beta1CharsToIgnore {
+  core.String charactersToSkip;
+
+  ///
+  /// Possible string values are:
+  /// - "CHARACTER_GROUP_UNSPECIFIED"
+  /// - "NUMERIC" : 0-9
+  /// - "ALPHA_UPPER_CASE" : A-Z
+  /// - "ALPHA_LOWER_CASE" : a-z
+  /// - "PUNCTUATION" : US Punctuation, one of !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
+  /// - "WHITESPACE" : Whitespace character, one of [ \t\n\x0B\f\r]
+  core.String commonCharactersToIgnore;
+
+  GooglePrivacyDlpV2beta1CharsToIgnore();
+
+  GooglePrivacyDlpV2beta1CharsToIgnore.fromJson(core.Map _json) {
+    if (_json.containsKey("charactersToSkip")) {
+      charactersToSkip = _json["charactersToSkip"];
+    }
+    if (_json.containsKey("commonCharactersToIgnore")) {
+      commonCharactersToIgnore = _json["commonCharactersToIgnore"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (charactersToSkip != null) {
+      _json["charactersToSkip"] = charactersToSkip;
+    }
+    if (commonCharactersToIgnore != null) {
+      _json["commonCharactersToIgnore"] = commonCharactersToIgnore;
     }
     return _json;
   }
@@ -1099,6 +1524,97 @@ class GooglePrivacyDlpV2beta1Color {
   }
 }
 
+/// The field type of `value` and `field` do not need to match to be
+/// considered equal, but not all comparisons are possible.
+///
+/// A `value` of type:
+///
+/// - `string` can be compared against all other types
+/// - `boolean` can only be compared against other booleans
+/// - `integer` can be compared against doubles or a string if the string value
+/// can be parsed as an integer.
+/// - `double` can be compared against integers or a string if the string can
+/// be parsed as a double.
+/// - `Timestamp` can be compared against strings in RFC 3339 date string
+/// format.
+/// - `TimeOfDay` can be compared against timestamps and strings in the format
+/// of 'HH:mm:ss'.
+///
+/// If we fail to compare do to type mismatch, a warning will be given and
+/// the condition will evaluate to false.
+class GooglePrivacyDlpV2beta1Condition {
+  /// Field within the record this condition is evaluated against. [required]
+  GooglePrivacyDlpV2beta1FieldId field;
+
+  /// Operator used to compare the field or info type to the value. [required]
+  /// Possible string values are:
+  /// - "RELATIONAL_OPERATOR_UNSPECIFIED"
+  /// - "EQUAL_TO" : Equal.
+  /// - "NOT_EQUAL_TO" : Not equal to.
+  /// - "GREATER_THAN" : Greater than.
+  /// - "LESS_THAN" : Less than.
+  /// - "GREATER_THAN_OR_EQUALS" : Greater than or equals.
+  /// - "LESS_THAN_OR_EQUALS" : Less than or equals.
+  /// - "EXISTS" : Exists
+  core.String operator;
+
+  /// Value to compare against. [Required, except for `EXISTS` tests.]
+  GooglePrivacyDlpV2beta1Value value;
+
+  GooglePrivacyDlpV2beta1Condition();
+
+  GooglePrivacyDlpV2beta1Condition.fromJson(core.Map _json) {
+    if (_json.containsKey("field")) {
+      field = new GooglePrivacyDlpV2beta1FieldId.fromJson(_json["field"]);
+    }
+    if (_json.containsKey("operator")) {
+      operator = _json["operator"];
+    }
+    if (_json.containsKey("value")) {
+      value = new GooglePrivacyDlpV2beta1Value.fromJson(_json["value"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (field != null) {
+      _json["field"] = (field).toJson();
+    }
+    if (operator != null) {
+      _json["operator"] = operator;
+    }
+    if (value != null) {
+      _json["value"] = (value).toJson();
+    }
+    return _json;
+  }
+}
+
+class GooglePrivacyDlpV2beta1Conditions {
+  core.List<GooglePrivacyDlpV2beta1Condition> conditions;
+
+  GooglePrivacyDlpV2beta1Conditions();
+
+  GooglePrivacyDlpV2beta1Conditions.fromJson(core.Map _json) {
+    if (_json.containsKey("conditions")) {
+      conditions = _json["conditions"]
+          .map((value) => new GooglePrivacyDlpV2beta1Condition.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (conditions != null) {
+      _json["conditions"] =
+          conditions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// Container structure for the content to inspect.
 class GooglePrivacyDlpV2beta1ContentItem {
   /// Content data to inspect or redact.
@@ -1168,39 +1684,7 @@ class GooglePrivacyDlpV2beta1CreateInspectOperationRequest {
   /// Additional configuration settings for long running operations.
   GooglePrivacyDlpV2beta1OperationConfig operationConfig;
 
-  /// Optional location to store findings. The bucket must already exist and
-  /// the Google APIs service account for DLP must have write permission to
-  /// write to the given bucket.
-  /// Results are split over multiple csv files with each file name matching
-  /// the pattern "[operation_id]_[count].csv", for example
-  /// `3094877188788974909_1.csv`. The `operation_id` matches the
-  /// identifier for the Operation, and the `count` is a counter used for
-  /// tracking the number of files written.
-  /// The CSV file(s) contain the
-  /// following columns regardless of storage type scanned:
-  /// - id
-  /// - info_type
-  /// - likelihood
-  /// - byte size of finding
-  /// - quote
-  /// - timestamp
-  ///
-  /// For Cloud Storage the next columns are:
-  /// - file_path
-  /// - start_offset
-  ///
-  /// For Cloud Datastore the next columns are:
-  /// - project_id
-  /// - namespace_id
-  /// - path
-  /// - column_name
-  /// - offset
-  ///
-  /// For BigQuery the next columns are:
-  /// - row_number
-  /// - project_id
-  /// - dataset_id
-  /// - table_id
+  /// Optional location to store findings.
   GooglePrivacyDlpV2beta1OutputStorageConfig outputConfig;
 
   /// Specification of the data set to process.
@@ -1242,6 +1726,180 @@ class GooglePrivacyDlpV2beta1CreateInspectOperationRequest {
     }
     if (storageConfig != null) {
       _json["storageConfig"] = (storageConfig).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Pseudonymization method that generates surrogates via cryptographic hashing.
+/// Uses SHA-256.
+/// Outputs a 32 byte digest as an uppercase hex string
+/// (for example, 41D1567F7F99F1DC2A5FAB886DEE5BEE).
+/// Currently, only string and integer values can be hashed.
+class GooglePrivacyDlpV2beta1CryptoHashConfig {
+  /// The key used by the hash function.
+  GooglePrivacyDlpV2beta1CryptoKey cryptoKey;
+
+  GooglePrivacyDlpV2beta1CryptoHashConfig();
+
+  GooglePrivacyDlpV2beta1CryptoHashConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("cryptoKey")) {
+      cryptoKey =
+          new GooglePrivacyDlpV2beta1CryptoKey.fromJson(_json["cryptoKey"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cryptoKey != null) {
+      _json["cryptoKey"] = (cryptoKey).toJson();
+    }
+    return _json;
+  }
+}
+
+/// This is a data encryption key (DEK) (as opposed to
+/// a key encryption key (KEK) stored by KMS).
+/// When using KMS to wrap/unwrap DEKs, be sure to set an appropriate
+/// IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot
+/// unwrap the data crypto key.
+class GooglePrivacyDlpV2beta1CryptoKey {
+  GooglePrivacyDlpV2beta1KmsWrappedCryptoKey kmsWrapped;
+  GooglePrivacyDlpV2beta1TransientCryptoKey transient;
+  GooglePrivacyDlpV2beta1UnwrappedCryptoKey unwrapped;
+
+  GooglePrivacyDlpV2beta1CryptoKey();
+
+  GooglePrivacyDlpV2beta1CryptoKey.fromJson(core.Map _json) {
+    if (_json.containsKey("kmsWrapped")) {
+      kmsWrapped = new GooglePrivacyDlpV2beta1KmsWrappedCryptoKey.fromJson(
+          _json["kmsWrapped"]);
+    }
+    if (_json.containsKey("transient")) {
+      transient = new GooglePrivacyDlpV2beta1TransientCryptoKey.fromJson(
+          _json["transient"]);
+    }
+    if (_json.containsKey("unwrapped")) {
+      unwrapped = new GooglePrivacyDlpV2beta1UnwrappedCryptoKey.fromJson(
+          _json["unwrapped"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kmsWrapped != null) {
+      _json["kmsWrapped"] = (kmsWrapped).toJson();
+    }
+    if (transient != null) {
+      _json["transient"] = (transient).toJson();
+    }
+    if (unwrapped != null) {
+      _json["unwrapped"] = (unwrapped).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Replaces an identifier with an surrogate using FPE with the FFX
+/// mode of operation.
+/// The identifier must be representable by the US-ASCII character set.
+/// For a given crypto key and context, the same identifier will be
+/// replaced with the same surrogate.
+/// Note that a given identifier must be either the empty string or be at
+/// least two characters long.
+class GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig {
+  ///
+  /// Possible string values are:
+  /// - "FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED"
+  /// - "NUMERIC" : [0-9] (radix of 10)
+  /// - "HEXADECIMAL" : [0-9A-F] (radix of 16)
+  /// - "UPPER_CASE_ALPHA_NUMERIC" : [0-9A-Z] (radix of 36)
+  /// - "ALPHA_NUMERIC" : [0-9A-Za-z] (radix of 62)
+  core.String commonAlphabet;
+
+  /// A context may be used for higher security since the same
+  /// identifier in two different contexts likely will be given a distinct
+  /// surrogate. The principle is that the likeliness is inversely related
+  /// to the ratio of the number of distinct identifiers per context over the
+  /// number of possible surrogates: As long as this ratio is small, the
+  /// likehood is large.
+  ///
+  /// If the context is not set, a default tweak will be used.
+  /// If the context is set but:
+  ///
+  /// 1. there is no record present when transforming a given value or
+  /// 1. the field is not present when transforming a given value,
+  ///
+  /// a default tweak will be used.
+  ///
+  /// Note that case (1) is expected when an `InfoTypeTransformation` is
+  /// applied to both structured and non-structured `ContentItem`s.
+  /// Currently, the referenced field may be of value type integer or string.
+  ///
+  /// The tweak is constructed as a sequence of bytes in big endian byte order
+  /// such that:
+  ///
+  /// - a 64 bit integer is encoded followed by a single byte of value 1
+  /// - a string is encoded in UTF-8 format followed by a single byte of value 2
+  ///
+  /// This is also known as the 'tweak', as in tweakable encryption.
+  GooglePrivacyDlpV2beta1FieldId context;
+
+  /// The key used by the encryption algorithm. [required]
+  GooglePrivacyDlpV2beta1CryptoKey cryptoKey;
+
+  /// This is supported by mapping these to the alphanumeric characters
+  /// that the FFX mode natively supports. This happens before/after
+  /// encryption/decryption.
+  /// Each character listed must appear only once.
+  /// Number of characters must be in the range [2, 62].
+  /// This must be encoded as ASCII.
+  /// The order of characters does not matter.
+  core.String customAlphabet;
+
+  /// The native way to select the alphabet. Must be in the range [2, 62].
+  core.int radix;
+
+  GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig();
+
+  GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("commonAlphabet")) {
+      commonAlphabet = _json["commonAlphabet"];
+    }
+    if (_json.containsKey("context")) {
+      context = new GooglePrivacyDlpV2beta1FieldId.fromJson(_json["context"]);
+    }
+    if (_json.containsKey("cryptoKey")) {
+      cryptoKey =
+          new GooglePrivacyDlpV2beta1CryptoKey.fromJson(_json["cryptoKey"]);
+    }
+    if (_json.containsKey("customAlphabet")) {
+      customAlphabet = _json["customAlphabet"];
+    }
+    if (_json.containsKey("radix")) {
+      radix = _json["radix"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (commonAlphabet != null) {
+      _json["commonAlphabet"] = commonAlphabet;
+    }
+    if (context != null) {
+      _json["context"] = (context).toJson();
+    }
+    if (cryptoKey != null) {
+      _json["cryptoKey"] = (cryptoKey).toJson();
+    }
+    if (customAlphabet != null) {
+      _json["customAlphabet"] = customAlphabet;
+    }
+    if (radix != null) {
+      _json["radix"] = radix;
     }
     return _json;
   }
@@ -1317,6 +1975,230 @@ class GooglePrivacyDlpV2beta1DatastoreOptions {
   }
 }
 
+/// High level summary of deidentification.
+class GooglePrivacyDlpV2beta1DeidentificationSummary {
+  /// Transformations applied to the dataset.
+  core.List<GooglePrivacyDlpV2beta1TransformationSummary>
+      transformationSummaries;
+
+  /// Total size in bytes that were transformed in some way.
+  core.String transformedBytes;
+
+  GooglePrivacyDlpV2beta1DeidentificationSummary();
+
+  GooglePrivacyDlpV2beta1DeidentificationSummary.fromJson(core.Map _json) {
+    if (_json.containsKey("transformationSummaries")) {
+      transformationSummaries = _json["transformationSummaries"]
+          .map((value) =>
+              new GooglePrivacyDlpV2beta1TransformationSummary.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("transformedBytes")) {
+      transformedBytes = _json["transformedBytes"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (transformationSummaries != null) {
+      _json["transformationSummaries"] =
+          transformationSummaries.map((value) => (value).toJson()).toList();
+    }
+    if (transformedBytes != null) {
+      _json["transformedBytes"] = transformedBytes;
+    }
+    return _json;
+  }
+}
+
+/// The configuration that controls how the data will change.
+class GooglePrivacyDlpV2beta1DeidentifyConfig {
+  /// Treat the dataset as free-form text and apply the same free text
+  /// transformation everywhere.
+  GooglePrivacyDlpV2beta1InfoTypeTransformations infoTypeTransformations;
+
+  /// Treat the dataset as structured. Transformations can be applied to
+  /// specific locations within structured datasets, such as transforming
+  /// a column within a table.
+  GooglePrivacyDlpV2beta1RecordTransformations recordTransformations;
+
+  GooglePrivacyDlpV2beta1DeidentifyConfig();
+
+  GooglePrivacyDlpV2beta1DeidentifyConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("infoTypeTransformations")) {
+      infoTypeTransformations =
+          new GooglePrivacyDlpV2beta1InfoTypeTransformations.fromJson(
+              _json["infoTypeTransformations"]);
+    }
+    if (_json.containsKey("recordTransformations")) {
+      recordTransformations =
+          new GooglePrivacyDlpV2beta1RecordTransformations.fromJson(
+              _json["recordTransformations"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (infoTypeTransformations != null) {
+      _json["infoTypeTransformations"] = (infoTypeTransformations).toJson();
+    }
+    if (recordTransformations != null) {
+      _json["recordTransformations"] = (recordTransformations).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Request to de-identify a list of items.
+class GooglePrivacyDlpV2beta1DeidentifyContentRequest {
+  /// Configuration for the de-identification of the list of content items.
+  GooglePrivacyDlpV2beta1DeidentifyConfig deidentifyConfig;
+
+  /// Configuration for the inspector.
+  GooglePrivacyDlpV2beta1InspectConfig inspectConfig;
+
+  /// The list of items to inspect. Up to 100 are allowed per request.
+  /// All items will be treated as text / * .
+  core.List<GooglePrivacyDlpV2beta1ContentItem> items;
+
+  GooglePrivacyDlpV2beta1DeidentifyContentRequest();
+
+  GooglePrivacyDlpV2beta1DeidentifyContentRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("deidentifyConfig")) {
+      deidentifyConfig = new GooglePrivacyDlpV2beta1DeidentifyConfig.fromJson(
+          _json["deidentifyConfig"]);
+    }
+    if (_json.containsKey("inspectConfig")) {
+      inspectConfig = new GooglePrivacyDlpV2beta1InspectConfig.fromJson(
+          _json["inspectConfig"]);
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"]
+          .map(
+              (value) => new GooglePrivacyDlpV2beta1ContentItem.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (deidentifyConfig != null) {
+      _json["deidentifyConfig"] = (deidentifyConfig).toJson();
+    }
+    if (inspectConfig != null) {
+      _json["inspectConfig"] = (inspectConfig).toJson();
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Results of de-identifying a list of items.
+class GooglePrivacyDlpV2beta1DeidentifyContentResponse {
+  core.List<GooglePrivacyDlpV2beta1ContentItem> items;
+
+  /// A review of the transformations that took place for each item.
+  core.List<GooglePrivacyDlpV2beta1DeidentificationSummary> summaries;
+
+  GooglePrivacyDlpV2beta1DeidentifyContentResponse();
+
+  GooglePrivacyDlpV2beta1DeidentifyContentResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("items")) {
+      items = _json["items"]
+          .map(
+              (value) => new GooglePrivacyDlpV2beta1ContentItem.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("summaries")) {
+      summaries = _json["summaries"]
+          .map((value) =>
+              new GooglePrivacyDlpV2beta1DeidentificationSummary.fromJson(
+                  value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (summaries != null) {
+      _json["summaries"] = summaries.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// An entity in a dataset is a field or set of fields that correspond to a
+/// single person. For example, in medical records the `EntityId` might be
+/// a patient identifier, or for financial records it might be an account
+/// identifier. This message is used when generalizations or analysis must be
+/// consistent across multiple rows pertaining to the same entity.
+class GooglePrivacyDlpV2beta1EntityId {
+  /// Composite key indicating which field contains the entity identifier.
+  GooglePrivacyDlpV2beta1FieldId field;
+
+  GooglePrivacyDlpV2beta1EntityId();
+
+  GooglePrivacyDlpV2beta1EntityId.fromJson(core.Map _json) {
+    if (_json.containsKey("field")) {
+      field = new GooglePrivacyDlpV2beta1FieldId.fromJson(_json["field"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (field != null) {
+      _json["field"] = (field).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A collection of expressions
+class GooglePrivacyDlpV2beta1Expressions {
+  GooglePrivacyDlpV2beta1Conditions conditions;
+
+  /// The operator to apply to the result of conditions. Default and currently
+  /// only supported value is `AND`.
+  /// Possible string values are:
+  /// - "LOGICAL_OPERATOR_UNSPECIFIED"
+  /// - "AND"
+  core.String logicalOperator;
+
+  GooglePrivacyDlpV2beta1Expressions();
+
+  GooglePrivacyDlpV2beta1Expressions.fromJson(core.Map _json) {
+    if (_json.containsKey("conditions")) {
+      conditions =
+          new GooglePrivacyDlpV2beta1Conditions.fromJson(_json["conditions"]);
+    }
+    if (_json.containsKey("logicalOperator")) {
+      logicalOperator = _json["logicalOperator"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (conditions != null) {
+      _json["conditions"] = (conditions).toJson();
+    }
+    if (logicalOperator != null) {
+      _json["logicalOperator"] = logicalOperator;
+    }
+    return _json;
+  }
+}
+
 /// General identifier of a data field in a storage service.
 class GooglePrivacyDlpV2beta1FieldId {
   /// Name describing the field.
@@ -1335,6 +2217,72 @@ class GooglePrivacyDlpV2beta1FieldId {
         new core.Map<core.String, core.Object>();
     if (columnName != null) {
       _json["columnName"] = columnName;
+    }
+    return _json;
+  }
+}
+
+/// The transformation to apply to the field.
+class GooglePrivacyDlpV2beta1FieldTransformation {
+  /// Only apply the transformation if the condition evaluates to true for the
+  /// given `RecordCondition`. The conditions are allowed to reference fields
+  /// that are not used in the actual transformation. [optional]
+  ///
+  /// Example Use Cases:
+  ///
+  /// - Apply a different bucket transformation to an age column if the zip code
+  /// column for the same record is within a specific range.
+  /// - Redact a field if the date of birth field is greater than 85.
+  GooglePrivacyDlpV2beta1RecordCondition condition;
+
+  /// Input field(s) to apply the transformation to. [required]
+  core.List<GooglePrivacyDlpV2beta1FieldId> fields;
+
+  /// Treat the contents of the field as free text, and selectively
+  /// transform content that matches an `InfoType`.
+  GooglePrivacyDlpV2beta1InfoTypeTransformations infoTypeTransformations;
+
+  /// Apply the transformation to the entire field.
+  GooglePrivacyDlpV2beta1PrimitiveTransformation primitiveTransformation;
+
+  GooglePrivacyDlpV2beta1FieldTransformation();
+
+  GooglePrivacyDlpV2beta1FieldTransformation.fromJson(core.Map _json) {
+    if (_json.containsKey("condition")) {
+      condition = new GooglePrivacyDlpV2beta1RecordCondition.fromJson(
+          _json["condition"]);
+    }
+    if (_json.containsKey("fields")) {
+      fields = _json["fields"]
+          .map((value) => new GooglePrivacyDlpV2beta1FieldId.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("infoTypeTransformations")) {
+      infoTypeTransformations =
+          new GooglePrivacyDlpV2beta1InfoTypeTransformations.fromJson(
+              _json["infoTypeTransformations"]);
+    }
+    if (_json.containsKey("primitiveTransformation")) {
+      primitiveTransformation =
+          new GooglePrivacyDlpV2beta1PrimitiveTransformation.fromJson(
+              _json["primitiveTransformation"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (condition != null) {
+      _json["condition"] = (condition).toJson();
+    }
+    if (fields != null) {
+      _json["fields"] = fields.map((value) => (value).toJson()).toList();
+    }
+    if (infoTypeTransformations != null) {
+      _json["infoTypeTransformations"] = (infoTypeTransformations).toJson();
+    }
+    if (primitiveTransformation != null) {
+      _json["primitiveTransformation"] = (primitiveTransformation).toJson();
     }
     return _json;
   }
@@ -1428,6 +2376,68 @@ class GooglePrivacyDlpV2beta1Finding {
     }
     if (quote != null) {
       _json["quote"] = quote;
+    }
+    return _json;
+  }
+}
+
+/// Buckets values based on fixed size ranges. The
+/// Bucketing transformation can provide all of this functionality,
+/// but requires more configuration. This message is provided as a convenience
+/// to
+/// the user for simple bucketing strategies.
+/// The resulting value will be a hyphenated string of
+/// lower_bound-upper_bound.
+/// This can be used on data of type: double, long.
+/// If the bound Value type differs from the type of data
+/// being transformed, we will first attempt converting the type of the data to
+/// be transformed to match the type of the bound before comparing.
+class GooglePrivacyDlpV2beta1FixedSizeBucketingConfig {
+  /// Size of each bucket (except for minimum and maximum buckets). So if
+  /// `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the
+  /// following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60,
+  /// 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works. [Required].
+  core.double bucketSize;
+
+  /// Lower bound value of buckets. All values less than `lower_bound` are
+  /// grouped together into a single bucket; for example if `lower_bound` = 10,
+  /// then all values less than 10 are replaced with the value “-10”.
+  /// [Required].
+  GooglePrivacyDlpV2beta1Value lowerBound;
+
+  /// Upper bound value of buckets. All values greater than upper_bound are
+  /// grouped together into a single bucket; for example if `upper_bound` = 89,
+  /// then all values greater than 89 are replaced with the value “89+”.
+  /// [Required].
+  GooglePrivacyDlpV2beta1Value upperBound;
+
+  GooglePrivacyDlpV2beta1FixedSizeBucketingConfig();
+
+  GooglePrivacyDlpV2beta1FixedSizeBucketingConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("bucketSize")) {
+      bucketSize = _json["bucketSize"];
+    }
+    if (_json.containsKey("lowerBound")) {
+      lowerBound =
+          new GooglePrivacyDlpV2beta1Value.fromJson(_json["lowerBound"]);
+    }
+    if (_json.containsKey("upperBound")) {
+      upperBound =
+          new GooglePrivacyDlpV2beta1Value.fromJson(_json["upperBound"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bucketSize != null) {
+      _json["bucketSize"] = bucketSize;
+    }
+    if (lowerBound != null) {
+      _json["lowerBound"] = (lowerBound).toJson();
+    }
+    if (upperBound != null) {
+      _json["upperBound"] = (upperBound).toJson();
     }
     return _json;
   }
@@ -1554,15 +2564,15 @@ class GooglePrivacyDlpV2beta1InfoType {
   }
 }
 
-/// Info type description.
+/// Description of the information type (infoType).
 class GooglePrivacyDlpV2beta1InfoTypeDescription {
-  /// List of categories this info type belongs to.
+  /// List of categories this infoType belongs to.
   core.List<GooglePrivacyDlpV2beta1CategoryDescription> categories;
 
-  /// Human readable form of the info type name.
+  /// Human readable form of the infoType name.
   core.String displayName;
 
-  /// Internal name of the info type.
+  /// Internal name of the infoType.
   core.String name;
 
   GooglePrivacyDlpV2beta1InfoTypeDescription();
@@ -1664,6 +2674,75 @@ class GooglePrivacyDlpV2beta1InfoTypeStatistics {
     }
     if (infoType != null) {
       _json["infoType"] = (infoType).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A transformation to apply to text that is identified as a specific
+/// info_type.
+class GooglePrivacyDlpV2beta1InfoTypeTransformation {
+  /// Info types to apply the transformation to. Empty list will match all
+  /// available info types for this transformation.
+  core.List<GooglePrivacyDlpV2beta1InfoType> infoTypes;
+
+  /// Primitive transformation to apply to the info type. [required]
+  GooglePrivacyDlpV2beta1PrimitiveTransformation primitiveTransformation;
+
+  GooglePrivacyDlpV2beta1InfoTypeTransformation();
+
+  GooglePrivacyDlpV2beta1InfoTypeTransformation.fromJson(core.Map _json) {
+    if (_json.containsKey("infoTypes")) {
+      infoTypes = _json["infoTypes"]
+          .map((value) => new GooglePrivacyDlpV2beta1InfoType.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("primitiveTransformation")) {
+      primitiveTransformation =
+          new GooglePrivacyDlpV2beta1PrimitiveTransformation.fromJson(
+              _json["primitiveTransformation"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (infoTypes != null) {
+      _json["infoTypes"] = infoTypes.map((value) => (value).toJson()).toList();
+    }
+    if (primitiveTransformation != null) {
+      _json["primitiveTransformation"] = (primitiveTransformation).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A type of transformation that will scan unstructured text and
+/// apply various `PrimitiveTransformation`s to each finding, where the
+/// transformation is applied to only values that were identified as a specific
+/// info_type.
+class GooglePrivacyDlpV2beta1InfoTypeTransformations {
+  /// Transformation for each info type. Cannot specify more than one
+  /// for a given info type. [required]
+  core.List<GooglePrivacyDlpV2beta1InfoTypeTransformation> transformations;
+
+  GooglePrivacyDlpV2beta1InfoTypeTransformations();
+
+  GooglePrivacyDlpV2beta1InfoTypeTransformations.fromJson(core.Map _json) {
+    if (_json.containsKey("transformations")) {
+      transformations = _json["transformations"]
+          .map((value) =>
+              new GooglePrivacyDlpV2beta1InfoTypeTransformation.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (transformations != null) {
+      _json["transformations"] =
+          transformations.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -1970,6 +3049,172 @@ class GooglePrivacyDlpV2beta1InspectResult {
   }
 }
 
+/// k-anonymity metric, used for analysis of reidentification risk.
+class GooglePrivacyDlpV2beta1KAnonymityConfig {
+  /// Optional message indicating that each distinct `EntityId` should not
+  /// contribute to the k-anonymity count more than once per equivalence class.
+  GooglePrivacyDlpV2beta1EntityId entityId;
+
+  /// Set of fields to compute k-anonymity over. When multiple fields are
+  /// specified, they are considered a single composite key. Structs and
+  /// repeated data types are not supported; however, nested fields are
+  /// supported so long as they are not structs themselves or nested within
+  /// a repeated field.
+  core.List<GooglePrivacyDlpV2beta1FieldId> quasiIds;
+
+  GooglePrivacyDlpV2beta1KAnonymityConfig();
+
+  GooglePrivacyDlpV2beta1KAnonymityConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("entityId")) {
+      entityId =
+          new GooglePrivacyDlpV2beta1EntityId.fromJson(_json["entityId"]);
+    }
+    if (_json.containsKey("quasiIds")) {
+      quasiIds = _json["quasiIds"]
+          .map((value) => new GooglePrivacyDlpV2beta1FieldId.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (entityId != null) {
+      _json["entityId"] = (entityId).toJson();
+    }
+    if (quasiIds != null) {
+      _json["quasiIds"] = quasiIds.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// The set of columns' values that share the same k-anonymity value.
+class GooglePrivacyDlpV2beta1KAnonymityEquivalenceClass {
+  /// Size of the equivalence class, for example number of rows with the
+  /// above set of values.
+  core.String equivalenceClassSize;
+
+  /// Set of values defining the equivalence class. One value per
+  /// quasi-identifier column in the original KAnonymity metric message.
+  /// The order is always the same as the original request.
+  core.List<GooglePrivacyDlpV2beta1Value> quasiIdsValues;
+
+  GooglePrivacyDlpV2beta1KAnonymityEquivalenceClass();
+
+  GooglePrivacyDlpV2beta1KAnonymityEquivalenceClass.fromJson(core.Map _json) {
+    if (_json.containsKey("equivalenceClassSize")) {
+      equivalenceClassSize = _json["equivalenceClassSize"];
+    }
+    if (_json.containsKey("quasiIdsValues")) {
+      quasiIdsValues = _json["quasiIdsValues"]
+          .map((value) => new GooglePrivacyDlpV2beta1Value.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (equivalenceClassSize != null) {
+      _json["equivalenceClassSize"] = equivalenceClassSize;
+    }
+    if (quasiIdsValues != null) {
+      _json["quasiIdsValues"] =
+          quasiIdsValues.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Histogram bucket of equivalence class sizes in the table.
+class GooglePrivacyDlpV2beta1KAnonymityHistogramBucket {
+  /// Total number of records in this bucket.
+  core.String bucketSize;
+
+  /// Sample of equivalence classes in this bucket. The total number of
+  /// classes returned per bucket is capped at 20.
+  core.List<GooglePrivacyDlpV2beta1KAnonymityEquivalenceClass> bucketValues;
+
+  /// Lower bound on the size of the equivalence classes in this bucket.
+  core.String equivalenceClassSizeLowerBound;
+
+  /// Upper bound on the size of the equivalence classes in this bucket.
+  core.String equivalenceClassSizeUpperBound;
+
+  GooglePrivacyDlpV2beta1KAnonymityHistogramBucket();
+
+  GooglePrivacyDlpV2beta1KAnonymityHistogramBucket.fromJson(core.Map _json) {
+    if (_json.containsKey("bucketSize")) {
+      bucketSize = _json["bucketSize"];
+    }
+    if (_json.containsKey("bucketValues")) {
+      bucketValues = _json["bucketValues"]
+          .map((value) =>
+              new GooglePrivacyDlpV2beta1KAnonymityEquivalenceClass.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("equivalenceClassSizeLowerBound")) {
+      equivalenceClassSizeLowerBound = _json["equivalenceClassSizeLowerBound"];
+    }
+    if (_json.containsKey("equivalenceClassSizeUpperBound")) {
+      equivalenceClassSizeUpperBound = _json["equivalenceClassSizeUpperBound"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bucketSize != null) {
+      _json["bucketSize"] = bucketSize;
+    }
+    if (bucketValues != null) {
+      _json["bucketValues"] =
+          bucketValues.map((value) => (value).toJson()).toList();
+    }
+    if (equivalenceClassSizeLowerBound != null) {
+      _json["equivalenceClassSizeLowerBound"] = equivalenceClassSizeLowerBound;
+    }
+    if (equivalenceClassSizeUpperBound != null) {
+      _json["equivalenceClassSizeUpperBound"] = equivalenceClassSizeUpperBound;
+    }
+    return _json;
+  }
+}
+
+/// Result of the k-anonymity computation.
+class GooglePrivacyDlpV2beta1KAnonymityResult {
+  /// Histogram of k-anonymity equivalence classes.
+  core.List<GooglePrivacyDlpV2beta1KAnonymityHistogramBucket>
+      equivalenceClassHistogramBuckets;
+
+  GooglePrivacyDlpV2beta1KAnonymityResult();
+
+  GooglePrivacyDlpV2beta1KAnonymityResult.fromJson(core.Map _json) {
+    if (_json.containsKey("equivalenceClassHistogramBuckets")) {
+      equivalenceClassHistogramBuckets =
+          _json["equivalenceClassHistogramBuckets"]
+              .map((value) =>
+                  new GooglePrivacyDlpV2beta1KAnonymityHistogramBucket.fromJson(
+                      value))
+              .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (equivalenceClassHistogramBuckets != null) {
+      _json["equivalenceClassHistogramBuckets"] =
+          equivalenceClassHistogramBuckets
+              .map((value) => (value).toJson())
+              .toList();
+    }
+    return _json;
+  }
+}
+
 /// A unique identifier for a Datastore entity.
 /// If a key's partition ID or any of its path kinds or names are
 /// reserved/read-only, the key is reserved/read-only.
@@ -2037,6 +3282,238 @@ class GooglePrivacyDlpV2beta1KindExpression {
         new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/// Include to use an existing data crypto key wrapped by KMS.
+/// Authorization requires the following IAM permissions when sending a request
+/// to perform a crypto transformation using a kms-wrapped crypto key:
+/// dlp.kms.encrypt
+class GooglePrivacyDlpV2beta1KmsWrappedCryptoKey {
+  /// The resource name of the KMS CryptoKey to use for unwrapping. [required]
+  core.String cryptoKeyName;
+
+  /// The wrapped data crypto key. [required]
+  core.String wrappedKey;
+  core.List<core.int> get wrappedKeyAsBytes {
+    return convert.BASE64.decode(wrappedKey);
+  }
+
+  void set wrappedKeyAsBytes(core.List<core.int> _bytes) {
+    wrappedKey =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  GooglePrivacyDlpV2beta1KmsWrappedCryptoKey();
+
+  GooglePrivacyDlpV2beta1KmsWrappedCryptoKey.fromJson(core.Map _json) {
+    if (_json.containsKey("cryptoKeyName")) {
+      cryptoKeyName = _json["cryptoKeyName"];
+    }
+    if (_json.containsKey("wrappedKey")) {
+      wrappedKey = _json["wrappedKey"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cryptoKeyName != null) {
+      _json["cryptoKeyName"] = cryptoKeyName;
+    }
+    if (wrappedKey != null) {
+      _json["wrappedKey"] = wrappedKey;
+    }
+    return _json;
+  }
+}
+
+/// l-diversity metric, used for analysis of reidentification risk.
+class GooglePrivacyDlpV2beta1LDiversityConfig {
+  /// Set of quasi-identifiers indicating how equivalence classes are
+  /// defined for the l-diversity computation. When multiple fields are
+  /// specified, they are considered a single composite key.
+  core.List<GooglePrivacyDlpV2beta1FieldId> quasiIds;
+
+  /// Sensitive field for computing the l-value.
+  GooglePrivacyDlpV2beta1FieldId sensitiveAttribute;
+
+  GooglePrivacyDlpV2beta1LDiversityConfig();
+
+  GooglePrivacyDlpV2beta1LDiversityConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("quasiIds")) {
+      quasiIds = _json["quasiIds"]
+          .map((value) => new GooglePrivacyDlpV2beta1FieldId.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("sensitiveAttribute")) {
+      sensitiveAttribute = new GooglePrivacyDlpV2beta1FieldId.fromJson(
+          _json["sensitiveAttribute"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (quasiIds != null) {
+      _json["quasiIds"] = quasiIds.map((value) => (value).toJson()).toList();
+    }
+    if (sensitiveAttribute != null) {
+      _json["sensitiveAttribute"] = (sensitiveAttribute).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The set of columns' values that share the same l-diversity value.
+class GooglePrivacyDlpV2beta1LDiversityEquivalenceClass {
+  /// Size of the k-anonymity equivalence class.
+  core.String equivalenceClassSize;
+
+  /// Number of distinct sensitive values in this equivalence class.
+  core.String numDistinctSensitiveValues;
+
+  /// Quasi-identifier values defining the k-anonymity equivalence
+  /// class. The order is always the same as the original request.
+  core.List<GooglePrivacyDlpV2beta1Value> quasiIdsValues;
+
+  /// Estimated frequencies of top sensitive values.
+  core.List<GooglePrivacyDlpV2beta1ValueFrequency> topSensitiveValues;
+
+  GooglePrivacyDlpV2beta1LDiversityEquivalenceClass();
+
+  GooglePrivacyDlpV2beta1LDiversityEquivalenceClass.fromJson(core.Map _json) {
+    if (_json.containsKey("equivalenceClassSize")) {
+      equivalenceClassSize = _json["equivalenceClassSize"];
+    }
+    if (_json.containsKey("numDistinctSensitiveValues")) {
+      numDistinctSensitiveValues = _json["numDistinctSensitiveValues"];
+    }
+    if (_json.containsKey("quasiIdsValues")) {
+      quasiIdsValues = _json["quasiIdsValues"]
+          .map((value) => new GooglePrivacyDlpV2beta1Value.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("topSensitiveValues")) {
+      topSensitiveValues = _json["topSensitiveValues"]
+          .map((value) =>
+              new GooglePrivacyDlpV2beta1ValueFrequency.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (equivalenceClassSize != null) {
+      _json["equivalenceClassSize"] = equivalenceClassSize;
+    }
+    if (numDistinctSensitiveValues != null) {
+      _json["numDistinctSensitiveValues"] = numDistinctSensitiveValues;
+    }
+    if (quasiIdsValues != null) {
+      _json["quasiIdsValues"] =
+          quasiIdsValues.map((value) => (value).toJson()).toList();
+    }
+    if (topSensitiveValues != null) {
+      _json["topSensitiveValues"] =
+          topSensitiveValues.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Histogram bucket of sensitive value frequencies in the table.
+class GooglePrivacyDlpV2beta1LDiversityHistogramBucket {
+  /// Total number of records in this bucket.
+  core.String bucketSize;
+
+  /// Sample of equivalence classes in this bucket. The total number of
+  /// classes returned per bucket is capped at 20.
+  core.List<GooglePrivacyDlpV2beta1LDiversityEquivalenceClass> bucketValues;
+
+  /// Lower bound on the sensitive value frequencies of the equivalence
+  /// classes in this bucket.
+  core.String sensitiveValueFrequencyLowerBound;
+
+  /// Upper bound on the sensitive value frequencies of the equivalence
+  /// classes in this bucket.
+  core.String sensitiveValueFrequencyUpperBound;
+
+  GooglePrivacyDlpV2beta1LDiversityHistogramBucket();
+
+  GooglePrivacyDlpV2beta1LDiversityHistogramBucket.fromJson(core.Map _json) {
+    if (_json.containsKey("bucketSize")) {
+      bucketSize = _json["bucketSize"];
+    }
+    if (_json.containsKey("bucketValues")) {
+      bucketValues = _json["bucketValues"]
+          .map((value) =>
+              new GooglePrivacyDlpV2beta1LDiversityEquivalenceClass.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("sensitiveValueFrequencyLowerBound")) {
+      sensitiveValueFrequencyLowerBound =
+          _json["sensitiveValueFrequencyLowerBound"];
+    }
+    if (_json.containsKey("sensitiveValueFrequencyUpperBound")) {
+      sensitiveValueFrequencyUpperBound =
+          _json["sensitiveValueFrequencyUpperBound"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bucketSize != null) {
+      _json["bucketSize"] = bucketSize;
+    }
+    if (bucketValues != null) {
+      _json["bucketValues"] =
+          bucketValues.map((value) => (value).toJson()).toList();
+    }
+    if (sensitiveValueFrequencyLowerBound != null) {
+      _json["sensitiveValueFrequencyLowerBound"] =
+          sensitiveValueFrequencyLowerBound;
+    }
+    if (sensitiveValueFrequencyUpperBound != null) {
+      _json["sensitiveValueFrequencyUpperBound"] =
+          sensitiveValueFrequencyUpperBound;
+    }
+    return _json;
+  }
+}
+
+/// Result of the l-diversity computation.
+class GooglePrivacyDlpV2beta1LDiversityResult {
+  /// Histogram of l-diversity equivalence class sensitive value frequencies.
+  core.List<GooglePrivacyDlpV2beta1LDiversityHistogramBucket>
+      sensitiveValueFrequencyHistogramBuckets;
+
+  GooglePrivacyDlpV2beta1LDiversityResult();
+
+  GooglePrivacyDlpV2beta1LDiversityResult.fromJson(core.Map _json) {
+    if (_json.containsKey("sensitiveValueFrequencyHistogramBuckets")) {
+      sensitiveValueFrequencyHistogramBuckets =
+          _json["sensitiveValueFrequencyHistogramBuckets"]
+              .map((value) =>
+                  new GooglePrivacyDlpV2beta1LDiversityHistogramBucket.fromJson(
+                      value))
+              .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (sensitiveValueFrequencyHistogramBuckets != null) {
+      _json["sensitiveValueFrequencyHistogramBuckets"] =
+          sensitiveValueFrequencyHistogramBuckets
+              .map((value) => (value).toJson())
+              .toList();
     }
     return _json;
   }
@@ -2206,6 +3683,76 @@ class GooglePrivacyDlpV2beta1Location {
   }
 }
 
+/// Compute numerical stats over an individual column, including
+/// min, max, and quantiles.
+class GooglePrivacyDlpV2beta1NumericalStatsConfig {
+  /// Field to compute numerical stats on. Supported types are
+  /// integer, float, date, datetime, timestamp, time.
+  GooglePrivacyDlpV2beta1FieldId field;
+
+  GooglePrivacyDlpV2beta1NumericalStatsConfig();
+
+  GooglePrivacyDlpV2beta1NumericalStatsConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("field")) {
+      field = new GooglePrivacyDlpV2beta1FieldId.fromJson(_json["field"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (field != null) {
+      _json["field"] = (field).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Result of the numerical stats computation.
+class GooglePrivacyDlpV2beta1NumericalStatsResult {
+  /// Maximum value appearing in the column.
+  GooglePrivacyDlpV2beta1Value maxValue;
+
+  /// Minimum value appearing in the column.
+  GooglePrivacyDlpV2beta1Value minValue;
+
+  /// List of 99 values that partition the set of field values into 100 equal
+  /// sized buckets.
+  core.List<GooglePrivacyDlpV2beta1Value> quantileValues;
+
+  GooglePrivacyDlpV2beta1NumericalStatsResult();
+
+  GooglePrivacyDlpV2beta1NumericalStatsResult.fromJson(core.Map _json) {
+    if (_json.containsKey("maxValue")) {
+      maxValue = new GooglePrivacyDlpV2beta1Value.fromJson(_json["maxValue"]);
+    }
+    if (_json.containsKey("minValue")) {
+      minValue = new GooglePrivacyDlpV2beta1Value.fromJson(_json["minValue"]);
+    }
+    if (_json.containsKey("quantileValues")) {
+      quantileValues = _json["quantileValues"]
+          .map((value) => new GooglePrivacyDlpV2beta1Value.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (maxValue != null) {
+      _json["maxValue"] = (maxValue).toJson();
+    }
+    if (minValue != null) {
+      _json["minValue"] = (minValue).toJson();
+    }
+    if (quantileValues != null) {
+      _json["quantileValues"] =
+          quantileValues.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// Additional configuration for inspect long running operations.
 class GooglePrivacyDlpV2beta1OperationConfig {
   /// Max number of findings per file, Datastore entity, or database row.
@@ -2232,6 +3779,43 @@ class GooglePrivacyDlpV2beta1OperationConfig {
 /// Cloud repository for storing output.
 class GooglePrivacyDlpV2beta1OutputStorageConfig {
   /// The path to a Google Cloud Storage location to store output.
+  /// The bucket must already exist and
+  /// the Google APIs service account for DLP must have write permission to
+  /// write to the given bucket.
+  /// Results are split over multiple csv files with each file name matching
+  /// the pattern "[operation_id]_[count].csv", for example
+  /// `3094877188788974909_1.csv`. The `operation_id` matches the
+  /// identifier for the Operation, and the `count` is a counter used for
+  /// tracking the number of files written.
+  ///
+  /// The CSV file(s) contain the following columns regardless of storage type
+  /// scanned:
+  /// - id
+  /// - info_type
+  /// - likelihood
+  /// - byte size of finding
+  /// - quote
+  /// - timestamp
+  ///
+  /// For Cloud Storage the next columns are:
+  ///
+  /// - file_path
+  /// - start_offset
+  ///
+  /// For Cloud Datastore the next columns are:
+  ///
+  /// - project_id
+  /// - namespace_id
+  /// - path
+  /// - column_name
+  /// - offset
+  ///
+  /// For BigQuery the next columns are:
+  ///
+  /// - row_number
+  /// - project_id
+  /// - dataset_id
+  /// - table_id
   GooglePrivacyDlpV2beta1CloudStoragePath storagePath;
 
   /// Store findings in a new table in the dataset.
@@ -2351,6 +3935,146 @@ class GooglePrivacyDlpV2beta1PathElement {
   }
 }
 
+/// A rule for transforming a value.
+class GooglePrivacyDlpV2beta1PrimitiveTransformation {
+  GooglePrivacyDlpV2beta1BucketingConfig bucketingConfig;
+  GooglePrivacyDlpV2beta1CharacterMaskConfig characterMaskConfig;
+  GooglePrivacyDlpV2beta1CryptoHashConfig cryptoHashConfig;
+  GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig cryptoReplaceFfxFpeConfig;
+  GooglePrivacyDlpV2beta1FixedSizeBucketingConfig fixedSizeBucketingConfig;
+  GooglePrivacyDlpV2beta1RedactConfig redactConfig;
+  GooglePrivacyDlpV2beta1ReplaceValueConfig replaceConfig;
+  GooglePrivacyDlpV2beta1ReplaceWithInfoTypeConfig replaceWithInfoTypeConfig;
+  GooglePrivacyDlpV2beta1TimePartConfig timePartConfig;
+
+  GooglePrivacyDlpV2beta1PrimitiveTransformation();
+
+  GooglePrivacyDlpV2beta1PrimitiveTransformation.fromJson(core.Map _json) {
+    if (_json.containsKey("bucketingConfig")) {
+      bucketingConfig = new GooglePrivacyDlpV2beta1BucketingConfig.fromJson(
+          _json["bucketingConfig"]);
+    }
+    if (_json.containsKey("characterMaskConfig")) {
+      characterMaskConfig =
+          new GooglePrivacyDlpV2beta1CharacterMaskConfig.fromJson(
+              _json["characterMaskConfig"]);
+    }
+    if (_json.containsKey("cryptoHashConfig")) {
+      cryptoHashConfig = new GooglePrivacyDlpV2beta1CryptoHashConfig.fromJson(
+          _json["cryptoHashConfig"]);
+    }
+    if (_json.containsKey("cryptoReplaceFfxFpeConfig")) {
+      cryptoReplaceFfxFpeConfig =
+          new GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig.fromJson(
+              _json["cryptoReplaceFfxFpeConfig"]);
+    }
+    if (_json.containsKey("fixedSizeBucketingConfig")) {
+      fixedSizeBucketingConfig =
+          new GooglePrivacyDlpV2beta1FixedSizeBucketingConfig.fromJson(
+              _json["fixedSizeBucketingConfig"]);
+    }
+    if (_json.containsKey("redactConfig")) {
+      redactConfig = new GooglePrivacyDlpV2beta1RedactConfig.fromJson(
+          _json["redactConfig"]);
+    }
+    if (_json.containsKey("replaceConfig")) {
+      replaceConfig = new GooglePrivacyDlpV2beta1ReplaceValueConfig.fromJson(
+          _json["replaceConfig"]);
+    }
+    if (_json.containsKey("replaceWithInfoTypeConfig")) {
+      replaceWithInfoTypeConfig =
+          new GooglePrivacyDlpV2beta1ReplaceWithInfoTypeConfig.fromJson(
+              _json["replaceWithInfoTypeConfig"]);
+    }
+    if (_json.containsKey("timePartConfig")) {
+      timePartConfig = new GooglePrivacyDlpV2beta1TimePartConfig.fromJson(
+          _json["timePartConfig"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bucketingConfig != null) {
+      _json["bucketingConfig"] = (bucketingConfig).toJson();
+    }
+    if (characterMaskConfig != null) {
+      _json["characterMaskConfig"] = (characterMaskConfig).toJson();
+    }
+    if (cryptoHashConfig != null) {
+      _json["cryptoHashConfig"] = (cryptoHashConfig).toJson();
+    }
+    if (cryptoReplaceFfxFpeConfig != null) {
+      _json["cryptoReplaceFfxFpeConfig"] = (cryptoReplaceFfxFpeConfig).toJson();
+    }
+    if (fixedSizeBucketingConfig != null) {
+      _json["fixedSizeBucketingConfig"] = (fixedSizeBucketingConfig).toJson();
+    }
+    if (redactConfig != null) {
+      _json["redactConfig"] = (redactConfig).toJson();
+    }
+    if (replaceConfig != null) {
+      _json["replaceConfig"] = (replaceConfig).toJson();
+    }
+    if (replaceWithInfoTypeConfig != null) {
+      _json["replaceWithInfoTypeConfig"] = (replaceWithInfoTypeConfig).toJson();
+    }
+    if (timePartConfig != null) {
+      _json["timePartConfig"] = (timePartConfig).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Privacy metric to compute for reidentification risk analysis.
+class GooglePrivacyDlpV2beta1PrivacyMetric {
+  GooglePrivacyDlpV2beta1CategoricalStatsConfig categoricalStatsConfig;
+  GooglePrivacyDlpV2beta1KAnonymityConfig kAnonymityConfig;
+  GooglePrivacyDlpV2beta1LDiversityConfig lDiversityConfig;
+  GooglePrivacyDlpV2beta1NumericalStatsConfig numericalStatsConfig;
+
+  GooglePrivacyDlpV2beta1PrivacyMetric();
+
+  GooglePrivacyDlpV2beta1PrivacyMetric.fromJson(core.Map _json) {
+    if (_json.containsKey("categoricalStatsConfig")) {
+      categoricalStatsConfig =
+          new GooglePrivacyDlpV2beta1CategoricalStatsConfig.fromJson(
+              _json["categoricalStatsConfig"]);
+    }
+    if (_json.containsKey("kAnonymityConfig")) {
+      kAnonymityConfig = new GooglePrivacyDlpV2beta1KAnonymityConfig.fromJson(
+          _json["kAnonymityConfig"]);
+    }
+    if (_json.containsKey("lDiversityConfig")) {
+      lDiversityConfig = new GooglePrivacyDlpV2beta1LDiversityConfig.fromJson(
+          _json["lDiversityConfig"]);
+    }
+    if (_json.containsKey("numericalStatsConfig")) {
+      numericalStatsConfig =
+          new GooglePrivacyDlpV2beta1NumericalStatsConfig.fromJson(
+              _json["numericalStatsConfig"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (categoricalStatsConfig != null) {
+      _json["categoricalStatsConfig"] = (categoricalStatsConfig).toJson();
+    }
+    if (kAnonymityConfig != null) {
+      _json["kAnonymityConfig"] = (kAnonymityConfig).toJson();
+    }
+    if (lDiversityConfig != null) {
+      _json["lDiversityConfig"] = (lDiversityConfig).toJson();
+    }
+    if (numericalStatsConfig != null) {
+      _json["numericalStatsConfig"] = (numericalStatsConfig).toJson();
+    }
+    return _json;
+  }
+}
+
 /// A representation of a Datastore property in a projection.
 class GooglePrivacyDlpV2beta1Projection {
   /// The property to project.
@@ -2431,6 +4155,30 @@ class GooglePrivacyDlpV2beta1Range {
   }
 }
 
+/// A condition for determing whether a transformation should be applied to
+/// a field.
+class GooglePrivacyDlpV2beta1RecordCondition {
+  GooglePrivacyDlpV2beta1Expressions expressions;
+
+  GooglePrivacyDlpV2beta1RecordCondition();
+
+  GooglePrivacyDlpV2beta1RecordCondition.fromJson(core.Map _json) {
+    if (_json.containsKey("expressions")) {
+      expressions =
+          new GooglePrivacyDlpV2beta1Expressions.fromJson(_json["expressions"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (expressions != null) {
+      _json["expressions"] = (expressions).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Message for a unique key indicating a record that contains a finding.
 class GooglePrivacyDlpV2beta1RecordKey {
   GooglePrivacyDlpV2beta1CloudStorageKey cloudStorageKey;
@@ -2458,6 +4206,87 @@ class GooglePrivacyDlpV2beta1RecordKey {
     if (datastoreKey != null) {
       _json["datastoreKey"] = (datastoreKey).toJson();
     }
+    return _json;
+  }
+}
+
+/// Configuration to suppress records whose suppression conditions evaluate to
+/// true.
+class GooglePrivacyDlpV2beta1RecordSuppression {
+  GooglePrivacyDlpV2beta1RecordCondition condition;
+
+  GooglePrivacyDlpV2beta1RecordSuppression();
+
+  GooglePrivacyDlpV2beta1RecordSuppression.fromJson(core.Map _json) {
+    if (_json.containsKey("condition")) {
+      condition = new GooglePrivacyDlpV2beta1RecordCondition.fromJson(
+          _json["condition"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (condition != null) {
+      _json["condition"] = (condition).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A type of transformation that is applied over structured data such as a
+/// table.
+class GooglePrivacyDlpV2beta1RecordTransformations {
+  /// Transform the record by applying various field transformations.
+  core.List<GooglePrivacyDlpV2beta1FieldTransformation> fieldTransformations;
+
+  /// Configuration defining which records get suppressed entirely. Records that
+  /// match any suppression rule are omitted from the output [optional].
+  core.List<GooglePrivacyDlpV2beta1RecordSuppression> recordSuppressions;
+
+  GooglePrivacyDlpV2beta1RecordTransformations();
+
+  GooglePrivacyDlpV2beta1RecordTransformations.fromJson(core.Map _json) {
+    if (_json.containsKey("fieldTransformations")) {
+      fieldTransformations = _json["fieldTransformations"]
+          .map((value) =>
+              new GooglePrivacyDlpV2beta1FieldTransformation.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("recordSuppressions")) {
+      recordSuppressions = _json["recordSuppressions"]
+          .map((value) =>
+              new GooglePrivacyDlpV2beta1RecordSuppression.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (fieldTransformations != null) {
+      _json["fieldTransformations"] =
+          fieldTransformations.map((value) => (value).toJson()).toList();
+    }
+    if (recordSuppressions != null) {
+      _json["recordSuppressions"] =
+          recordSuppressions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Redact a given value. For example, if used with an `InfoTypeTransformation`
+/// transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the
+/// output would be 'My phone number is '.
+class GooglePrivacyDlpV2beta1RedactConfig {
+  GooglePrivacyDlpV2beta1RedactConfig();
+
+  GooglePrivacyDlpV2beta1RedactConfig.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }
@@ -2587,6 +4416,140 @@ class GooglePrivacyDlpV2beta1ReplaceConfig {
   }
 }
 
+/// Replace each input value with a given `Value`.
+class GooglePrivacyDlpV2beta1ReplaceValueConfig {
+  /// Value to replace it with.
+  GooglePrivacyDlpV2beta1Value newValue;
+
+  GooglePrivacyDlpV2beta1ReplaceValueConfig();
+
+  GooglePrivacyDlpV2beta1ReplaceValueConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("newValue")) {
+      newValue = new GooglePrivacyDlpV2beta1Value.fromJson(_json["newValue"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (newValue != null) {
+      _json["newValue"] = (newValue).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Replace each matching finding with the name of the info_type.
+class GooglePrivacyDlpV2beta1ReplaceWithInfoTypeConfig {
+  GooglePrivacyDlpV2beta1ReplaceWithInfoTypeConfig();
+
+  GooglePrivacyDlpV2beta1ReplaceWithInfoTypeConfig.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Metadata returned within the
+/// [`riskAnalysis.operations.get`](/dlp/docs/reference/rest/v2beta1/riskAnalysis.operations/get)
+/// for risk analysis.
+class GooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata {
+  /// The time which this request was started.
+  core.String createTime;
+
+  /// Privacy metric to compute.
+  GooglePrivacyDlpV2beta1PrivacyMetric requestedPrivacyMetric;
+
+  /// Input dataset to compute metrics over.
+  GooglePrivacyDlpV2beta1BigQueryTable requestedSourceTable;
+
+  GooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata();
+
+  GooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("createTime")) {
+      createTime = _json["createTime"];
+    }
+    if (_json.containsKey("requestedPrivacyMetric")) {
+      requestedPrivacyMetric =
+          new GooglePrivacyDlpV2beta1PrivacyMetric.fromJson(
+              _json["requestedPrivacyMetric"]);
+    }
+    if (_json.containsKey("requestedSourceTable")) {
+      requestedSourceTable = new GooglePrivacyDlpV2beta1BigQueryTable.fromJson(
+          _json["requestedSourceTable"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (createTime != null) {
+      _json["createTime"] = createTime;
+    }
+    if (requestedPrivacyMetric != null) {
+      _json["requestedPrivacyMetric"] = (requestedPrivacyMetric).toJson();
+    }
+    if (requestedSourceTable != null) {
+      _json["requestedSourceTable"] = (requestedSourceTable).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Result of a risk analysis
+/// [`Operation`](/dlp/docs/reference/rest/v2beta1/inspect.operations)
+/// request.
+class GooglePrivacyDlpV2beta1RiskAnalysisOperationResult {
+  GooglePrivacyDlpV2beta1CategoricalStatsResult categoricalStatsResult;
+  GooglePrivacyDlpV2beta1KAnonymityResult kAnonymityResult;
+  GooglePrivacyDlpV2beta1LDiversityResult lDiversityResult;
+  GooglePrivacyDlpV2beta1NumericalStatsResult numericalStatsResult;
+
+  GooglePrivacyDlpV2beta1RiskAnalysisOperationResult();
+
+  GooglePrivacyDlpV2beta1RiskAnalysisOperationResult.fromJson(core.Map _json) {
+    if (_json.containsKey("categoricalStatsResult")) {
+      categoricalStatsResult =
+          new GooglePrivacyDlpV2beta1CategoricalStatsResult.fromJson(
+              _json["categoricalStatsResult"]);
+    }
+    if (_json.containsKey("kAnonymityResult")) {
+      kAnonymityResult = new GooglePrivacyDlpV2beta1KAnonymityResult.fromJson(
+          _json["kAnonymityResult"]);
+    }
+    if (_json.containsKey("lDiversityResult")) {
+      lDiversityResult = new GooglePrivacyDlpV2beta1LDiversityResult.fromJson(
+          _json["lDiversityResult"]);
+    }
+    if (_json.containsKey("numericalStatsResult")) {
+      numericalStatsResult =
+          new GooglePrivacyDlpV2beta1NumericalStatsResult.fromJson(
+              _json["numericalStatsResult"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (categoricalStatsResult != null) {
+      _json["categoricalStatsResult"] = (categoricalStatsResult).toJson();
+    }
+    if (kAnonymityResult != null) {
+      _json["kAnonymityResult"] = (kAnonymityResult).toJson();
+    }
+    if (lDiversityResult != null) {
+      _json["lDiversityResult"] = (lDiversityResult).toJson();
+    }
+    if (numericalStatsResult != null) {
+      _json["numericalStatsResult"] = (numericalStatsResult).toJson();
+    }
+    return _json;
+  }
+}
+
 class GooglePrivacyDlpV2beta1Row {
   core.List<GooglePrivacyDlpV2beta1Value> values;
 
@@ -2655,6 +4618,51 @@ class GooglePrivacyDlpV2beta1StorageConfig {
   }
 }
 
+/// A collection that informs the user the number of times a particular
+/// `TransformationResultCode` and error details occurred.
+class GooglePrivacyDlpV2beta1SummaryResult {
+  ///
+  /// Possible string values are:
+  /// - "TRANSFORMATION_RESULT_CODE_UNSPECIFIED"
+  /// - "SUCCESS"
+  /// - "ERROR"
+  core.String code;
+  core.String count;
+
+  /// A place for warnings or errors to show up if a transformation didn't
+  /// work as expected.
+  core.String details;
+
+  GooglePrivacyDlpV2beta1SummaryResult();
+
+  GooglePrivacyDlpV2beta1SummaryResult.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("count")) {
+      count = _json["count"];
+    }
+    if (_json.containsKey("details")) {
+      details = _json["details"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (count != null) {
+      _json["count"] = count;
+    }
+    if (details != null) {
+      _json["details"] = details;
+    }
+    return _json;
+  }
+}
+
 /// Structured content to inspect. Up to 50,000 `Value`s per request allowed.
 class GooglePrivacyDlpV2beta1Table {
   core.List<GooglePrivacyDlpV2beta1FieldId> headers;
@@ -2706,6 +4714,177 @@ class GooglePrivacyDlpV2beta1TableLocation {
         new core.Map<core.String, core.Object>();
     if (rowIndex != null) {
       _json["rowIndex"] = rowIndex;
+    }
+    return _json;
+  }
+}
+
+/// For use with `Date`, `Timestamp`, and `TimeOfDay`, extract or preserve a
+/// portion of the value.
+class GooglePrivacyDlpV2beta1TimePartConfig {
+  ///
+  /// Possible string values are:
+  /// - "TIME_PART_UNSPECIFIED"
+  /// - "YEAR" : [000-9999]
+  /// - "MONTH" : [1-12]
+  /// - "DAY_OF_MONTH" : [1-31]
+  /// - "DAY_OF_WEEK" : [1-7]
+  /// - "WEEK_OF_YEAR" : [1-52]
+  /// - "HOUR_OF_DAY" : [0-24]
+  core.String partToExtract;
+
+  GooglePrivacyDlpV2beta1TimePartConfig();
+
+  GooglePrivacyDlpV2beta1TimePartConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("partToExtract")) {
+      partToExtract = _json["partToExtract"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (partToExtract != null) {
+      _json["partToExtract"] = partToExtract;
+    }
+    return _json;
+  }
+}
+
+/// Summary of a single tranformation.
+class GooglePrivacyDlpV2beta1TransformationSummary {
+  /// Set if the transformation was limited to a specific FieldId.
+  GooglePrivacyDlpV2beta1FieldId field;
+
+  /// The field transformation that was applied. This list will contain
+  /// multiple only in the case of errors.
+  core.List<GooglePrivacyDlpV2beta1FieldTransformation> fieldTransformations;
+
+  /// Set if the transformation was limited to a specific info_type.
+  GooglePrivacyDlpV2beta1InfoType infoType;
+
+  /// The specific suppression option these stats apply to.
+  GooglePrivacyDlpV2beta1RecordSuppression recordSuppress;
+  core.List<GooglePrivacyDlpV2beta1SummaryResult> results;
+
+  /// The specific transformation these stats apply to.
+  GooglePrivacyDlpV2beta1PrimitiveTransformation transformation;
+
+  GooglePrivacyDlpV2beta1TransformationSummary();
+
+  GooglePrivacyDlpV2beta1TransformationSummary.fromJson(core.Map _json) {
+    if (_json.containsKey("field")) {
+      field = new GooglePrivacyDlpV2beta1FieldId.fromJson(_json["field"]);
+    }
+    if (_json.containsKey("fieldTransformations")) {
+      fieldTransformations = _json["fieldTransformations"]
+          .map((value) =>
+              new GooglePrivacyDlpV2beta1FieldTransformation.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("infoType")) {
+      infoType =
+          new GooglePrivacyDlpV2beta1InfoType.fromJson(_json["infoType"]);
+    }
+    if (_json.containsKey("recordSuppress")) {
+      recordSuppress = new GooglePrivacyDlpV2beta1RecordSuppression.fromJson(
+          _json["recordSuppress"]);
+    }
+    if (_json.containsKey("results")) {
+      results = _json["results"]
+          .map((value) =>
+              new GooglePrivacyDlpV2beta1SummaryResult.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("transformation")) {
+      transformation =
+          new GooglePrivacyDlpV2beta1PrimitiveTransformation.fromJson(
+              _json["transformation"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (field != null) {
+      _json["field"] = (field).toJson();
+    }
+    if (fieldTransformations != null) {
+      _json["fieldTransformations"] =
+          fieldTransformations.map((value) => (value).toJson()).toList();
+    }
+    if (infoType != null) {
+      _json["infoType"] = (infoType).toJson();
+    }
+    if (recordSuppress != null) {
+      _json["recordSuppress"] = (recordSuppress).toJson();
+    }
+    if (results != null) {
+      _json["results"] = results.map((value) => (value).toJson()).toList();
+    }
+    if (transformation != null) {
+      _json["transformation"] = (transformation).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Use this to have a random data crypto key generated.
+/// It will be discarded after the operation/request finishes.
+class GooglePrivacyDlpV2beta1TransientCryptoKey {
+  /// Name of the key. [required]
+  /// This is an arbitrary string used to differentiate different keys.
+  /// A unique key is generated per name: two separate `TransientCryptoKey`
+  /// protos share the same generated key if their names are the same.
+  /// When the data crypto key is generated, this name is not used in any way
+  /// (repeating the api call will result in a different key being generated).
+  core.String name;
+
+  GooglePrivacyDlpV2beta1TransientCryptoKey();
+
+  GooglePrivacyDlpV2beta1TransientCryptoKey.fromJson(core.Map _json) {
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/// Using raw keys is prone to security risks due to accidentally
+/// leaking the key. Choose another type of key if possible.
+class GooglePrivacyDlpV2beta1UnwrappedCryptoKey {
+  /// The AES 128/192/256 bit key. [required]
+  core.String key;
+  core.List<core.int> get keyAsBytes {
+    return convert.BASE64.decode(key);
+  }
+
+  void set keyAsBytes(core.List<core.int> _bytes) {
+    key =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  GooglePrivacyDlpV2beta1UnwrappedCryptoKey();
+
+  GooglePrivacyDlpV2beta1UnwrappedCryptoKey.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
     }
     return _json;
   }
@@ -2770,6 +4949,38 @@ class GooglePrivacyDlpV2beta1Value {
     }
     if (timestampValue != null) {
       _json["timestampValue"] = timestampValue;
+    }
+    return _json;
+  }
+}
+
+/// A value of a field, including its frequency.
+class GooglePrivacyDlpV2beta1ValueFrequency {
+  /// How many times the value is contained in the field.
+  core.String count;
+
+  /// A value contained in the field in question.
+  GooglePrivacyDlpV2beta1Value value;
+
+  GooglePrivacyDlpV2beta1ValueFrequency();
+
+  GooglePrivacyDlpV2beta1ValueFrequency.fromJson(core.Map _json) {
+    if (_json.containsKey("count")) {
+      count = _json["count"];
+    }
+    if (_json.containsKey("value")) {
+      value = new GooglePrivacyDlpV2beta1Value.fromJson(_json["value"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (count != null) {
+      _json["count"] = count;
+    }
+    if (value != null) {
+      _json["value"] = (value).toJson();
     }
     return _json;
   }

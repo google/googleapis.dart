@@ -111,6 +111,12 @@ The Google Cloud Resource Manager API provides methods for creating, reading, an
 
 Official API documentation: https://cloud.google.com/resource-manager
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Tasks API - cloudtasks v2beta2
+
+Manages the execution of large numbers of distributed requests. Cloud Tasks is in Alpha.
+
+Official API documentation: https://cloud.google.com/cloud-tasks/
+
 #### ![Logo](https://www.google.com/images/icons/product/compute_engine-16.png) Cloud User Accounts API - clouduseraccounts beta
 
 Creates and manages users and groups for accessing Google Compute Engine virtual machines.
@@ -135,6 +141,12 @@ Configures and serves authoritative DNS records.
 
 Official API documentation: https://developers.google.com/cloud-dns
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Firestore API - firestore v1beta1
+
+
+
+Official API documentation: https://cloud.google.com/firestore
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Natural Language API - language v1beta1
 
 Provides natural language understanding technologies to developers. Examples include sentiment analysis, entity recognition, entity sentiment analysis, and text annotations.
@@ -154,6 +166,12 @@ Writes log entries and manages your Stackdriver Logging configuration.
 Official API documentation: https://cloud.google.com/logging/docs/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud OS Login API - oslogin v1alpha
+
+Manages OS login configuration for Directory API users.
+
+Official API documentation: https://cloud.google.com/compute/docs/oslogin/rest/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud OS Login API - oslogin v1beta
 
 Manages OS login configuration for Directory API users.
 
@@ -232,15 +250,9 @@ Reads and publishes results from Firebase Test Lab.
 
 Official API documentation: https://firebase.google.com/docs/test-lab/
 
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Cloud Tool Results firstparty API - toolresults v1beta3firstparty
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Video Intelligence API - videointelligence v1beta1
 
-Reads and publishes results from Firebase Test Lab.
-
-Official API documentation: https://firebase.google.com/docs/test-lab/
-
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Video Intelligence API - videointelligence v1beta1
-
-Google Cloud Video Intelligence API.
+Cloud Video Intelligence API.
 
 Official API documentation: https://cloud.google.com/video-intelligence/docs/
 

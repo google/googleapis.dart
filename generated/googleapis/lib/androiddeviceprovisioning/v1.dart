@@ -14,7 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client androiddeviceprovisioning/v1';
 
-/// Automates reseller integration into Zero Touch Provisioning by assigning
+/// Automates reseller integration into zero-touch enrollment by assigning
 /// devices to customers and creating device reports.
 class AndroiddeviceprovisioningApi {
   final commons.ApiRequester _requester;
@@ -91,16 +91,19 @@ class PartnersCustomersResourceApi {
   PartnersCustomersResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// A customer for Zero Touch Provisioning will be created.
-  /// After a Customer is created, their admins and owners will be able to
-  /// manage
-  /// devices on partner.android.com/zerotouch or via their API.
+  /// Creates a customer for zero-touch enrollment. After the method returns
+  /// successfully, admin and owner roles can manage devices and EMM configs
+  /// by calling API methods or using their zero-touch enrollment portal. The
+  /// API
+  /// doesn't notify the customer that they have access.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource in format `partners/[PARTNER_ID]'.
+  /// [parent] - Required. The parent resource ID in format
+  /// `partners/[PARTNER_ID]` that
+  /// identifies the reseller.
   /// Value must have pattern "^partners/[^/]+$".
   ///
   /// Completes with a [Company].
@@ -138,7 +141,7 @@ class PartnersCustomersResourceApi {
     return _response.then((data) => new Company.fromJson(data));
   }
 
-  /// List the customers that are enrolled to the reseller identified by the
+  /// Lists the customers that are enrolled to the reseller identified by the
   /// `partnerId` argument. This list includes customers that the reseller
   /// created and customers that enrolled themselves using the portal.
   ///
@@ -698,26 +701,30 @@ class ClaimDevicesRequest {
   }
 }
 
-/// Company
+/// A customer resource in the zero-touch enrollment API.
 class Company {
-  /// Admin emails.
-  /// Admins are able to operate on the portal.
-  /// This field is a write-only field at creation time.
+  /// Input only. Optional. Email address of customer's users in the admin role.
+  /// Each email address must be associated with a Google Account.
   core.List<core.String> adminEmails;
 
-  /// Company ID.
+  /// Output only. The ID of the company. Assigned by the server.
   core.String companyId;
 
-  /// Company name.
+  /// Required. The name of the company. For example _XYZ Corp_. Characters
+  /// allowed are: Latin letters, numerals, hyphens, and spaces. Displayed to
+  /// the
+  /// customer's employees in the zero-touch enrollment portal.
   core.String companyName;
 
-  /// The API resource name of the company in the format
-  /// `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]`.
+  /// Output only. The API resource name of the company in the format
+  /// `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]`. Assigned by the server.
   core.String name;
 
-  /// Owner emails.
-  /// Owners are able to operate on the portal, and modify admins or other
-  /// owners. This field is a write-only field at creation time.
+  /// Input only. Email address of customer's users in the owner role. At least
+  /// one `owner_email` is required. Each email address must be associated with
+  /// a
+  /// Google Account. Owners share the same access as admins but can also add,
+  /// delete, and edit your organization's portal users.
   core.List<core.String> ownerEmails;
 
   Company();
@@ -764,7 +771,10 @@ class Company {
 
 /// Request message to create a customer.
 class CreateCustomerRequest {
-  /// The customer to create.
+  /// Required. The company data to populate the new customer. Must contain a
+  /// value for `companyName` and at least one `owner_email` that's associated
+  /// with a Google Account. The values for `companyId` and `name` must be
+  /// empty.
   Company customer;
 
   CreateCustomerRequest();

@@ -5471,6 +5471,7 @@ class SubscriptionPurchase {
   /// - User cancelled the subscription
   /// - Subscription was cancelled by the system, for example because of a
   /// billing problem
+  /// - Subscription was replaced with a new subscription
   core.int cancelReason;
 
   /// ISO 3166-1 alpha-2 billing country/region code of the user at the time the

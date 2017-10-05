@@ -144,11 +144,6 @@ class OrganizationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - A pagination token returned from a previous call to
-  /// `ListOrganizations`
-  /// that indicates from where listing should continue.
-  /// This field is optional.
-  ///
   /// [pageSize] - The maximum number of Organizations to return in the
   /// response.
   /// This field is optional.
@@ -170,6 +165,11 @@ class OrganizationsResourceApi {
   ///
   /// This field is optional.
   ///
+  /// [pageToken] - A pagination token returned from a previous call to
+  /// `ListOrganizations`
+  /// that indicates from where listing should continue.
+  /// This field is optional.
+  ///
   /// Completes with a [ListOrganizationsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -178,7 +178,7 @@ class OrganizationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOrganizationsResponse> list(
-      {core.String pageToken, core.int pageSize, core.String filter}) {
+      {core.int pageSize, core.String filter, core.String pageToken}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -186,14 +186,14 @@ class OrganizationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
 
     _url = 'v1beta1/organizations';

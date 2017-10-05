@@ -24,6 +24,13 @@ class OsloginApi {
   static const CloudPlatformReadOnlyScope =
       "https://www.googleapis.com/auth/cloud-platform.read-only";
 
+  /// View and manage your Google Compute Engine resources
+  static const ComputeScope = "https://www.googleapis.com/auth/compute";
+
+  /// View your Google Compute Engine resources
+  static const ComputeReadonlyScope =
+      "https://www.googleapis.com/auth/compute.readonly";
+
   final commons.ApiRequester _requester;
 
   UsersResourceApi get users => new UsersResourceApi(_requester);
@@ -382,7 +389,7 @@ class PosixAccount {
   core.String gecos;
 
   /// The default group ID.
-  core.int gid;
+  core.String gid;
 
   /// The path to the home directory for this account.
   core.String homeDirectory;
@@ -398,7 +405,7 @@ class PosixAccount {
   core.String systemId;
 
   /// The user ID.
-  core.int uid;
+  core.String uid;
 
   /// The username of the POSIX account.
   core.String username;
@@ -468,7 +475,8 @@ class SshPublicKey {
   /// An expiration time in microseconds since epoch.
   core.String expirationTimeUsec;
 
-  /// [Output Only] The SHA-256 fingerprint of the SSH public key.
+  /// The SHA-256 fingerprint of the SSH public key.
+  /// Output only.
   core.String fingerprint;
 
   /// Public key text in SSH format, defined by

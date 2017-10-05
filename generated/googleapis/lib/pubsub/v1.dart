@@ -449,12 +449,12 @@ class ProjectsSubscriptionsResourceApi {
   /// Format is `projects/{project}`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Maximum number of subscriptions to return.
-  ///
   /// [pageToken] - The value returned by the last `ListSubscriptionsResponse`;
   /// indicates that
   /// this is a continuation of a prior `ListSubscriptions` call, and that the
   /// system should return the next page of data.
+  ///
+  /// [pageSize] - Maximum number of subscriptions to return.
   ///
   /// Completes with a [ListSubscriptionsResponse].
   ///
@@ -464,7 +464,7 @@ class ProjectsSubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSubscriptionsResponse> list(core.String project,
-      {core.int pageSize, core.String pageToken}) {
+      {core.String pageToken, core.int pageSize}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -475,11 +475,11 @@ class ProjectsSubscriptionsResourceApi {
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
 
     _url = 'v1/' +
@@ -1442,7 +1442,7 @@ class ModifyPushConfigRequest {
   /// An empty `pushConfig` indicates that the Pub/Sub system should
   /// stop pushing messages from the given subscription and allow
   /// messages to be pulled and acknowledged - effectively pausing
-  /// the subscription if `Pull` is not called.
+  /// the subscription if `Pull` or `StreamingPull` is not called.
   PushConfig pushConfig;
 
   ModifyPushConfigRequest();
@@ -1861,7 +1861,8 @@ class Subscription {
   /// ack
   /// deadline. To override this value for a given message, call
   /// `ModifyAckDeadline` with the corresponding `ack_id` if using
-  /// pull.
+  /// non-streaming pull or send the `ack_id` in a
+  /// `StreamingModifyAckDeadlineRequest` if using streaming pull.
   /// The minimum custom deadline you can specify is 10 seconds.
   /// The maximum custom deadline you can specify is 600 seconds (10 minutes).
   /// If this parameter is 0, a default value of 10 seconds is used.

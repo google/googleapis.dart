@@ -2599,14 +2599,14 @@ class Execution {
 }
 
 class FailureDetail {
-  /// If the failure was severe because the system under test crashed.
+  /// If the failure was severe because the system (app) under test crashed.
   core.bool crashed;
 
   /// If an app is not installed and thus no test can be run with the app. This
   /// might be caused by trying to run a test on an unsupported platform.
   core.bool notInstalled;
 
-  /// If a native process other than the app crashed.
+  /// If a native process (including any other than the app) crashed.
   core.bool otherNativeCrash;
 
   /// If the test overran some time limit, and that is why it failed.

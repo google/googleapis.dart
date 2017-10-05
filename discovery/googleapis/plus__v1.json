@@ -19,7 +19,7 @@
     },
     "basePath": "/plus/v1/",
     "baseUrl": "https://www.googleapis.com/plus/v1/",
-    "batchPath": "batch/plus/v1",
+    "batchPath": "batch",
     "description": "Builds on top of the Google+ platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/+/api/",

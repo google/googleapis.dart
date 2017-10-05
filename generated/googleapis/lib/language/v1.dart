@@ -81,6 +81,45 @@ class DocumentsResourceApi {
     return _response.then((data) => new AnalyzeEntitiesResponse.fromJson(data));
   }
 
+  /// Finds entities, similar to AnalyzeEntities in the text and analyzes
+  /// sentiment associated with each entity and its mentions.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// Completes with a [AnalyzeEntitySentimentResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AnalyzeEntitySentimentResponse> analyzeEntitySentiment(
+      AnalyzeEntitySentimentRequest request) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+
+    _url = 'v1/documents:analyzeEntitySentiment';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new AnalyzeEntitySentimentResponse.fromJson(data));
+  }
+
   /// Analyzes the sentiment of the provided text.
   ///
   /// [request] - The metadata request object.
@@ -257,6 +296,89 @@ class AnalyzeEntitiesResponse {
   AnalyzeEntitiesResponse();
 
   AnalyzeEntitiesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("entities")) {
+      entities =
+          _json["entities"].map((value) => new Entity.fromJson(value)).toList();
+    }
+    if (_json.containsKey("language")) {
+      language = _json["language"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (entities != null) {
+      _json["entities"] = entities.map((value) => (value).toJson()).toList();
+    }
+    if (language != null) {
+      _json["language"] = language;
+    }
+    return _json;
+  }
+}
+
+/// The entity-level sentiment analysis request message.
+class AnalyzeEntitySentimentRequest {
+  /// Input document.
+  Document document;
+
+  /// The encoding type used by the API to calculate offsets.
+  /// Possible string values are:
+  /// - "NONE" : If `EncodingType` is not specified, encoding-dependent
+  /// information (such as
+  /// `begin_offset`) will be set at `-1`.
+  /// - "UTF8" : Encoding-dependent information (such as `begin_offset`) is
+  /// calculated based
+  /// on the UTF-8 encoding of the input. C++ and Go are examples of languages
+  /// that use this encoding natively.
+  /// - "UTF16" : Encoding-dependent information (such as `begin_offset`) is
+  /// calculated based
+  /// on the UTF-16 encoding of the input. Java and Javascript are examples of
+  /// languages that use this encoding natively.
+  /// - "UTF32" : Encoding-dependent information (such as `begin_offset`) is
+  /// calculated based
+  /// on the UTF-32 encoding of the input. Python is an example of a language
+  /// that uses this encoding natively.
+  core.String encodingType;
+
+  AnalyzeEntitySentimentRequest();
+
+  AnalyzeEntitySentimentRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("document")) {
+      document = new Document.fromJson(_json["document"]);
+    }
+    if (_json.containsKey("encodingType")) {
+      encodingType = _json["encodingType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (document != null) {
+      _json["document"] = (document).toJson();
+    }
+    if (encodingType != null) {
+      _json["encodingType"] = encodingType;
+    }
+    return _json;
+  }
+}
+
+/// The entity-level sentiment analysis response message.
+class AnalyzeEntitySentimentResponse {
+  /// The recognized entities in the input document with associated sentiments.
+  core.List<Entity> entities;
+
+  /// The language of the text, which will be the same as the language specified
+  /// in the request or, if not specified, the automatically-detected language.
+  /// See Document.language field for more details.
+  core.String language;
+
+  AnalyzeEntitySentimentResponse();
+
+  AnalyzeEntitySentimentResponse.fromJson(core.Map _json) {
     if (_json.containsKey("entities")) {
       entities =
           _json["entities"].map((value) => new Entity.fromJson(value)).toList();
@@ -686,6 +808,12 @@ class DependencyEdge {
   /// - "NUMC" : Compound of numeric modifier
   /// - "COP" : Copula
   /// - "DISLOCATED" : Dislocated relation (for fronted/topicalized elements)
+  /// - "ASP" : Aspect marker
+  /// - "GMOD" : Genitive modifier
+  /// - "GOBJ" : Genitive object
+  /// - "INFMOD" : Infinitival modifier
+  /// - "MES" : Measure
+  /// - "NCOMP" : Nominal complement of a noun
   core.String label;
 
   DependencyEdge();
@@ -805,6 +933,12 @@ class Entity {
   /// salient.
   core.double salience;
 
+  /// For calls to AnalyzeEntitySentiment or if
+  /// AnnotateTextRequest.Features.extract_entity_sentiment is set to
+  /// true, this field will contain the aggregate sentiment expressed for this
+  /// entity in the provided document.
+  Sentiment sentiment;
+
   /// The entity type.
   /// Possible string values are:
   /// - "UNKNOWN" : Unknown
@@ -834,6 +968,9 @@ class Entity {
     if (_json.containsKey("salience")) {
       salience = _json["salience"];
     }
+    if (_json.containsKey("sentiment")) {
+      sentiment = new Sentiment.fromJson(_json["sentiment"]);
+    }
     if (_json.containsKey("type")) {
       type = _json["type"];
     }
@@ -854,6 +991,9 @@ class Entity {
     if (salience != null) {
       _json["salience"] = salience;
     }
+    if (sentiment != null) {
+      _json["sentiment"] = (sentiment).toJson();
+    }
     if (type != null) {
       _json["type"] = type;
     }
@@ -864,6 +1004,12 @@ class Entity {
 /// Represents a mention for an entity in the text. Currently, proper noun
 /// mentions are supported.
 class EntityMention {
+  /// For calls to AnalyzeEntitySentiment or if
+  /// AnnotateTextRequest.Features.extract_entity_sentiment is set to
+  /// true, this field will contain the sentiment expressed for this mention of
+  /// the entity in the provided document.
+  Sentiment sentiment;
+
   /// The mention text.
   TextSpan text;
 
@@ -877,6 +1023,9 @@ class EntityMention {
   EntityMention();
 
   EntityMention.fromJson(core.Map _json) {
+    if (_json.containsKey("sentiment")) {
+      sentiment = new Sentiment.fromJson(_json["sentiment"]);
+    }
     if (_json.containsKey("text")) {
       text = new TextSpan.fromJson(_json["text"]);
     }
@@ -888,6 +1037,9 @@ class EntityMention {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (sentiment != null) {
+      _json["sentiment"] = (sentiment).toJson();
+    }
     if (text != null) {
       _json["text"] = (text).toJson();
     }
@@ -907,6 +1059,9 @@ class Features {
   /// Extract entities.
   core.bool extractEntities;
 
+  /// Extract entities and their associated sentiment.
+  core.bool extractEntitySentiment;
+
   /// Extract syntax information.
   core.bool extractSyntax;
 
@@ -918,6 +1073,9 @@ class Features {
     }
     if (_json.containsKey("extractEntities")) {
       extractEntities = _json["extractEntities"];
+    }
+    if (_json.containsKey("extractEntitySentiment")) {
+      extractEntitySentiment = _json["extractEntitySentiment"];
     }
     if (_json.containsKey("extractSyntax")) {
       extractSyntax = _json["extractSyntax"];
@@ -932,6 +1090,9 @@ class Features {
     }
     if (extractEntities != null) {
       _json["extractEntities"] = extractEntities;
+    }
+    if (extractEntitySentiment != null) {
+      _json["extractEntitySentiment"] = extractEntitySentiment;
     }
     if (extractSyntax != null) {
       _json["extractSyntax"] = extractSyntax;
