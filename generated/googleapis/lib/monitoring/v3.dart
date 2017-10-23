@@ -37,6 +37,8 @@ class MonitoringApi {
   final commons.ApiRequester _requester;
 
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  UptimeCheckIpsResourceApi get uptimeCheckIps =>
+      new UptimeCheckIpsResourceApi(_requester);
 
   MonitoringApi(http.Client client,
       {core.String rootUrl: "https://monitoring.googleapis.com/",
@@ -59,6 +61,8 @@ class ProjectsResourceApi {
           new ProjectsMonitoredResourceDescriptorsResourceApi(_requester);
   ProjectsTimeSeriesResourceApi get timeSeries =>
       new ProjectsTimeSeriesResourceApi(_requester);
+  ProjectsUptimeCheckConfigsResourceApi get uptimeCheckConfigs =>
+      new ProjectsUptimeCheckConfigsResourceApi(_requester);
 
   ProjectsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -81,6 +85,9 @@ class ProjectsCollectdTimeSeriesResourceApi {
   /// "projects/PROJECT_ID_OR_NUMBER".
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CreateCollectdTimeSeriesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -89,7 +96,8 @@ class ProjectsCollectdTimeSeriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreateCollectdTimeSeriesResponse> create(
-      CreateCollectdTimeSeriesRequest request, core.String name) {
+      CreateCollectdTimeSeriesRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -102,6 +110,9 @@ class ProjectsCollectdTimeSeriesResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v3/' +
@@ -140,6 +151,9 @@ class ProjectsGroupsResourceApi {
   /// [validateOnly] - If true, validate this request but do not create the
   /// group.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Group].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -148,7 +162,7 @@ class ProjectsGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Group> create(Group request, core.String name,
-      {core.bool validateOnly}) {
+      {core.bool validateOnly, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -164,6 +178,9 @@ class ProjectsGroupsResourceApi {
     }
     if (validateOnly != null) {
       _queryParams["validateOnly"] = ["${validateOnly}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name') + '/groups';
@@ -185,6 +202,9 @@ class ProjectsGroupsResourceApi {
   /// "projects/{project_id_or_number}/groups/{group_id}".
   /// Value must have pattern "^projects/[^/]+/groups/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -192,7 +212,7 @@ class ProjectsGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name) {
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -202,6 +222,9 @@ class ProjectsGroupsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -223,6 +246,9 @@ class ProjectsGroupsResourceApi {
   /// "projects/{project_id_or_number}/groups/{group_id}".
   /// Value must have pattern "^projects/[^/]+/groups/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Group].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -230,7 +256,7 @@ class ProjectsGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Group> get(core.String name) {
+  async.Future<Group> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -240,6 +266,9 @@ class ProjectsGroupsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -287,6 +316,9 @@ class ProjectsGroupsResourceApi {
   /// ancestor. If the specified group has no immediate parent, the results are
   /// empty.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListGroupsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -299,7 +331,8 @@ class ProjectsGroupsResourceApi {
       core.String descendantsOfGroup,
       core.String pageToken,
       core.int pageSize,
-      core.String ancestorsOfGroup}) {
+      core.String ancestorsOfGroup,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -324,6 +357,9 @@ class ProjectsGroupsResourceApi {
     }
     if (ancestorsOfGroup != null) {
       _queryParams["ancestorsOfGroup"] = [ancestorsOfGroup];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name') + '/groups';
@@ -354,6 +390,9 @@ class ProjectsGroupsResourceApi {
   /// [validateOnly] - If true, validate this request but do not update the
   /// existing group.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Group].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -362,7 +401,7 @@ class ProjectsGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Group> update(Group request, core.String name,
-      {core.bool validateOnly}) {
+      {core.bool validateOnly, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -378,6 +417,9 @@ class ProjectsGroupsResourceApi {
     }
     if (validateOnly != null) {
       _queryParams["validateOnly"] = ["${validateOnly}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -419,12 +461,15 @@ class ProjectsGroupsMembersResourceApi {
   /// field causes the method to return additional results from the previous
   /// method call.
   ///
+  /// [pageSize] - A positive number that is the maximum number of results to
+  /// return.
+  ///
   /// [interval_startTime] - Optional. The beginning of the time interval. The
   /// default value for the start time is the end time. The start time must not
   /// be later than the end time.
   ///
-  /// [pageSize] - A positive number that is the maximum number of results to
-  /// return.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListGroupMembersResponse].
   ///
@@ -437,8 +482,9 @@ class ProjectsGroupsMembersResourceApi {
       {core.String interval_endTime,
       core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String interval_startTime,
-      core.int pageSize}) {
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -458,11 +504,14 @@ class ProjectsGroupsMembersResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (interval_startTime != null) {
       _queryParams["interval.startTime"] = [interval_startTime];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name') + '/members';
@@ -495,6 +544,9 @@ class ProjectsMetricDescriptorsResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [MetricDescriptor].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -503,7 +555,8 @@ class ProjectsMetricDescriptorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<MetricDescriptor> create(
-      MetricDescriptor request, core.String name) {
+      MetricDescriptor request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -516,6 +569,9 @@ class ProjectsMetricDescriptorsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v3/' +
@@ -541,6 +597,9 @@ class ProjectsMetricDescriptorsResourceApi {
   /// example of {metric_id} is: "custom.googleapis.com/my_test_metric".
   /// Value must have pattern "^projects/[^/]+/metricDescriptors/.+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -548,7 +607,7 @@ class ProjectsMetricDescriptorsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name) {
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -558,6 +617,9 @@ class ProjectsMetricDescriptorsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -582,6 +644,9 @@ class ProjectsMetricDescriptorsResourceApi {
   /// "compute.googleapis.com/instance/disk/read_bytes_count".
   /// Value must have pattern "^projects/[^/]+/metricDescriptors/.+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [MetricDescriptor].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -589,7 +654,7 @@ class ProjectsMetricDescriptorsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<MetricDescriptor> get(core.String name) {
+  async.Future<MetricDescriptor> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -599,6 +664,9 @@ class ProjectsMetricDescriptorsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -621,6 +689,12 @@ class ProjectsMetricDescriptorsResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [filter] - If this field is empty, all custom and system-defined metric
+  /// descriptors are returned. Otherwise, the filter specifies which metric
+  /// descriptors are to be returned. For example, the following filter matches
+  /// all custom metrics:
+  /// metric.type = starts_with("custom.googleapis.com/")
+  ///
   /// [pageToken] - If this field is not empty then it must contain the
   /// nextPageToken value returned by a previous call to this method. Using this
   /// field causes the method to return additional results from the previous
@@ -629,11 +703,8 @@ class ProjectsMetricDescriptorsResourceApi {
   /// [pageSize] - A positive number that is the maximum number of results to
   /// return.
   ///
-  /// [filter] - If this field is empty, all custom and system-defined metric
-  /// descriptors are returned. Otherwise, the filter specifies which metric
-  /// descriptors are to be returned. For example, the following filter matches
-  /// all custom metrics:
-  /// metric.type = starts_with("custom.googleapis.com/")
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListMetricDescriptorsResponse].
   ///
@@ -643,7 +714,10 @@ class ProjectsMetricDescriptorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMetricDescriptorsResponse> list(core.String name,
-      {core.String pageToken, core.int pageSize, core.String filter}) {
+      {core.String filter,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -654,14 +728,17 @@ class ProjectsMetricDescriptorsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v3/' +
@@ -696,6 +773,9 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/monitoredResourceDescriptors/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [MonitoredResourceDescriptor].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -703,7 +783,8 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<MonitoredResourceDescriptor> get(core.String name) {
+  async.Future<MonitoredResourceDescriptor> get(core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -713,6 +794,9 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -736,12 +820,6 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - An optional filter describing the descriptors to be returned.
-  /// The filter can reference the descriptor's type and labels. For example,
-  /// the following filter returns only Google Compute Engine descriptors that
-  /// have an id label:
-  /// resource.type = starts_with("gce_") AND resource.label:id
-  ///
   /// [pageToken] - If this field is not empty then it must contain the
   /// nextPageToken value returned by a previous call to this method. Using this
   /// field causes the method to return additional results from the previous
@@ -749,6 +827,15 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   ///
   /// [pageSize] - A positive number that is the maximum number of results to
   /// return.
+  ///
+  /// [filter] - An optional filter describing the descriptors to be returned.
+  /// The filter can reference the descriptor's type and labels. For example,
+  /// the following filter returns only Google Compute Engine descriptors that
+  /// have an id label:
+  /// resource.type = starts_with("gce_") AND resource.label:id
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListMonitoredResourceDescriptorsResponse].
   ///
@@ -758,7 +845,10 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMonitoredResourceDescriptorsResponse> list(core.String name,
-      {core.String filter, core.String pageToken, core.int pageSize}) {
+      {core.String pageToken,
+      core.int pageSize,
+      core.String filter,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -769,14 +859,17 @@ class ProjectsMonitoredResourceDescriptorsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v3/' +
@@ -813,6 +906,9 @@ class ProjectsTimeSeriesResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -820,8 +916,8 @@ class ProjectsTimeSeriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> create(
-      CreateTimeSeriesRequest request, core.String name) {
+  async.Future<Empty> create(CreateTimeSeriesRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -834,6 +930,9 @@ class ProjectsTimeSeriesResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -856,34 +955,6 @@ class ProjectsTimeSeriesResourceApi {
   /// [name] - The project on which to execute the request. The format is
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
-  ///
-  /// [aggregation_groupByFields] - The set of fields to preserve when
-  /// crossSeriesReducer is specified. The groupByFields determine how the time
-  /// series are partitioned into subsets prior to applying the aggregation
-  /// function. Each subset contains time series that have the same value for
-  /// each of the grouping fields. Each individual time series is a member of
-  /// exactly one subset. The crossSeriesReducer is applied to each subset of
-  /// time series. It is not possible to reduce across different resource types,
-  /// so this field implicitly contains resource.type. Fields not specified in
-  /// groupByFields are aggregated away. If groupByFields is not specified and
-  /// all the time series have the same resource type, then the time series are
-  /// aggregated into a single output time series. If crossSeriesReducer is not
-  /// defined, this field is ignored.
-  ///
-  /// [interval_endTime] - Required. The end of the time interval.
-  ///
-  /// [aggregation_alignmentPeriod] - The alignment period for per-time series
-  /// alignment. If present, alignmentPeriod must be at least 60 seconds. After
-  /// per-time series alignment, each time series will contain data points only
-  /// on the period boundaries. If perSeriesAligner is not specified or equals
-  /// ALIGN_NONE, then this field is ignored. If perSeriesAligner is specified
-  /// and does not equal ALIGN_NONE, then this field must be defined; otherwise
-  /// an error is returned.
-  ///
-  /// [pageSize] - A positive number that is the maximum number of results to
-  /// return. When view field sets to FULL, it limits the number of Points
-  /// server will return; if view field is HEADERS, it limits the number of
-  /// TimeSeries server will return.
   ///
   /// [orderBy] - Specifies the order in which the points of the time series
   /// should be returned. By default, results are not ordered. Currently, this
@@ -918,6 +989,11 @@ class ProjectsTimeSeriesResourceApi {
   /// metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
   ///     metric.label.instance_name = "my-instance-name"
   ///
+  /// [pageToken] - If this field is not empty then it must contain the
+  /// nextPageToken value returned by a previous call to this method. Using this
+  /// field causes the method to return additional results from the previous
+  /// method call.
+  ///
   /// [aggregation_perSeriesAligner] - The approach to be used to align
   /// individual time series. Not all alignment functions may be applied to all
   /// time series, depending on the metric type and value type of the original
@@ -945,11 +1021,6 @@ class ProjectsTimeSeriesResourceApi {
   /// - "ALIGN_PERCENTILE_50" : A ALIGN_PERCENTILE_50.
   /// - "ALIGN_PERCENTILE_05" : A ALIGN_PERCENTILE_05.
   ///
-  /// [pageToken] - If this field is not empty then it must contain the
-  /// nextPageToken value returned by a previous call to this method. Using this
-  /// field causes the method to return additional results from the previous
-  /// method call.
-  ///
   /// [interval_startTime] - Optional. The beginning of the time interval. The
   /// default value for the start time is the end time. The start time must not
   /// be later than the end time.
@@ -959,6 +1030,37 @@ class ProjectsTimeSeriesResourceApi {
   /// - "FULL" : A FULL.
   /// - "HEADERS" : A HEADERS.
   ///
+  /// [aggregation_groupByFields] - The set of fields to preserve when
+  /// crossSeriesReducer is specified. The groupByFields determine how the time
+  /// series are partitioned into subsets prior to applying the aggregation
+  /// function. Each subset contains time series that have the same value for
+  /// each of the grouping fields. Each individual time series is a member of
+  /// exactly one subset. The crossSeriesReducer is applied to each subset of
+  /// time series. It is not possible to reduce across different resource types,
+  /// so this field implicitly contains resource.type. Fields not specified in
+  /// groupByFields are aggregated away. If groupByFields is not specified and
+  /// all the time series have the same resource type, then the time series are
+  /// aggregated into a single output time series. If crossSeriesReducer is not
+  /// defined, this field is ignored.
+  ///
+  /// [interval_endTime] - Required. The end of the time interval.
+  ///
+  /// [aggregation_alignmentPeriod] - The alignment period for per-time series
+  /// alignment. If present, alignmentPeriod must be at least 60 seconds. After
+  /// per-time series alignment, each time series will contain data points only
+  /// on the period boundaries. If perSeriesAligner is not specified or equals
+  /// ALIGN_NONE, then this field is ignored. If perSeriesAligner is specified
+  /// and does not equal ALIGN_NONE, then this field must be defined; otherwise
+  /// an error is returned.
+  ///
+  /// [pageSize] - A positive number that is the maximum number of results to
+  /// return. When view field sets to FULL, it limits the number of Points
+  /// server will return; if view field is HEADERS, it limits the number of
+  /// TimeSeries server will return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListTimeSeriesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -967,17 +1069,18 @@ class ProjectsTimeSeriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTimeSeriesResponse> list(core.String name,
-      {core.List<core.String> aggregation_groupByFields,
+      {core.String orderBy,
+      core.String aggregation_crossSeriesReducer,
+      core.String filter,
+      core.String pageToken,
+      core.String aggregation_perSeriesAligner,
+      core.String interval_startTime,
+      core.String view,
+      core.List<core.String> aggregation_groupByFields,
       core.String interval_endTime,
       core.String aggregation_alignmentPeriod,
       core.int pageSize,
-      core.String orderBy,
-      core.String aggregation_crossSeriesReducer,
-      core.String filter,
-      core.String aggregation_perSeriesAligner,
-      core.String pageToken,
-      core.String interval_startTime,
-      core.String view}) {
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -987,6 +1090,31 @@ class ProjectsTimeSeriesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (aggregation_crossSeriesReducer != null) {
+      _queryParams["aggregation.crossSeriesReducer"] = [
+        aggregation_crossSeriesReducer
+      ];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (aggregation_perSeriesAligner != null) {
+      _queryParams["aggregation.perSeriesAligner"] = [
+        aggregation_perSeriesAligner
+      ];
+    }
+    if (interval_startTime != null) {
+      _queryParams["interval.startTime"] = [interval_startTime];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if (aggregation_groupByFields != null) {
       _queryParams["aggregation.groupByFields"] = aggregation_groupByFields;
@@ -1002,30 +1130,8 @@ class ProjectsTimeSeriesResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (orderBy != null) {
-      _queryParams["orderBy"] = [orderBy];
-    }
-    if (aggregation_crossSeriesReducer != null) {
-      _queryParams["aggregation.crossSeriesReducer"] = [
-        aggregation_crossSeriesReducer
-      ];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (aggregation_perSeriesAligner != null) {
-      _queryParams["aggregation.perSeriesAligner"] = [
-        aggregation_perSeriesAligner
-      ];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (interval_startTime != null) {
-      _queryParams["interval.startTime"] = [interval_startTime];
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -1038,6 +1144,386 @@ class ProjectsTimeSeriesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new ListTimeSeriesResponse.fromJson(data));
+  }
+}
+
+class ProjectsUptimeCheckConfigsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsUptimeCheckConfigsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a new uptime check configuration.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The project in which to create the uptime check. The format
+  /// is:projects/[PROJECT_ID].
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UptimeCheckConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UptimeCheckConfig> create(
+      UptimeCheckConfig request, core.String parent,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/uptimeCheckConfigs';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new UptimeCheckConfig.fromJson(data));
+  }
+
+  /// Deletes an uptime check configuration. Note that this method will fail if
+  /// the uptime check configuration is referenced by an alert policy or other
+  /// dependent configs that would be rendered invalid by the deletion.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The uptime check configuration to delete. The format
+  /// isprojects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+  /// Value must have pattern "^projects/[^/]+/uptimeCheckConfigs/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Gets a single uptime check configuration.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The uptime check configuration to retrieve. The format
+  /// isprojects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+  /// Value must have pattern "^projects/[^/]+/uptimeCheckConfigs/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UptimeCheckConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UptimeCheckConfig> get(core.String name, {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new UptimeCheckConfig.fromJson(data));
+  }
+
+  /// Lists the existing valid uptime check configurations for the project,
+  /// leaving out any invalid configurations.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The project whose uptime check configurations are listed. The
+  /// format isprojects/[PROJECT_ID].
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [pageToken] - If this field is not empty then it must contain the
+  /// nextPageToken value returned by a previous call to this method. Using this
+  /// field causes the method to return more results from the previous method
+  /// call.
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// The server may further constrain the maximum number of results returned in
+  /// a single page. If the page_size is <=0, the server will decide the number
+  /// of results to be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListUptimeCheckConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListUptimeCheckConfigsResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/uptimeCheckConfigs';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListUptimeCheckConfigsResponse.fromJson(data));
+  }
+
+  /// Updates an uptime check configuration. You can either replace the entire
+  /// configuration with a new one or replace only certain fields in the current
+  /// configuration by specifying the fields to be updated via "updateMask".
+  /// Returns the updated configuration.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - A unique resource name for this UptimeCheckConfig. The format
+  /// is:projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].This field
+  /// should be omitted when creating the uptime check configuration; on create,
+  /// the resource name is assigned by the server and included in the response.
+  /// Value must have pattern "^projects/[^/]+/uptimeCheckConfigs/[^/]+$".
+  ///
+  /// [updateMask] - Optional. If present, only the listed fields in the current
+  /// uptime check configuration are updated with values from the new
+  /// configuration. If this field is empty, then the current configuration is
+  /// completely replaced with the new configuration.
+  ///
+  /// [name1] - The uptime check configuration to update. The format
+  /// isprojects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [UptimeCheckConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<UptimeCheckConfig> patch(
+      UptimeCheckConfig request, core.String name,
+      {core.String updateMask, core.String name1, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if (name1 != null) {
+      _queryParams["name1"] = [name1];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new UptimeCheckConfig.fromJson(data));
+  }
+}
+
+class UptimeCheckIpsResourceApi {
+  final commons.ApiRequester _requester;
+
+  UptimeCheckIpsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Returns the list of IPs that checkers run from
+  ///
+  /// Request parameters:
+  ///
+  /// [pageToken] - If this field is not empty then it must contain the
+  /// nextPageToken value returned by a previous call to this method. Using this
+  /// field causes the method to return more results from the previous method
+  /// call. NOTE: this field is not yet implemented
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// The server may further constrain the maximum number of results returned in
+  /// a single page. If the page_size is <=0, the server will decide the number
+  /// of results to be returned. NOTE: this field is not yet implemented
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListUptimeCheckIpsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListUptimeCheckIpsResponse> list(
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v3/uptimeCheckIps';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListUptimeCheckIpsResponse.fromJson(data));
+  }
+}
+
+/// A type of authentication to perform against the specified resource or URL
+/// that uses username and password. Currently, only Basic authentication is
+/// supported in Uptime Monitoring.
+class BasicAuthentication {
+  /// The password to authenticate.
+  core.String password;
+
+  /// The username to authenticate.
+  core.String username;
+
+  BasicAuthentication();
+
+  BasicAuthentication.fromJson(core.Map _json) {
+    if (_json.containsKey("password")) {
+      password = _json["password"];
+    }
+    if (_json.containsKey("username")) {
+      username = _json["username"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (password != null) {
+      _json["password"] = password;
+    }
+    if (username != null) {
+      _json["username"] = username;
+    }
+    return _json;
   }
 }
 
@@ -1318,6 +1804,31 @@ class CollectdValueError {
     }
     if (index != null) {
       _json["index"] = index;
+    }
+    return _json;
+  }
+}
+
+/// Used to perform string matching. Currently, this matches on the exact
+/// content. In the future, it can be expanded to allow for regular expressions
+/// and more complex matching.
+class ContentMatcher {
+  /// String content to match
+  core.String content;
+
+  ContentMatcher();
+
+  ContentMatcher.fromJson(core.Map _json) {
+    if (_json.containsKey("content")) {
+      content = _json["content"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (content != null) {
+      _json["content"] = content;
     }
     return _json;
   }
@@ -1836,6 +2347,89 @@ class Group {
   }
 }
 
+/// Information involved in an HTTP/HTTPS uptime check request.
+class HttpCheck {
+  /// The authentication information. Optional when creating an HTTP check;
+  /// defaults to empty.
+  BasicAuthentication authInfo;
+
+  /// The list of headers to send as part of the uptime check request. If two
+  /// headers have the same key and different values, they should be entered as
+  /// a single header, with the value being a comma-separated list of all the
+  /// desired values as described at
+  /// https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two
+  /// separate headers with the same key in a Create call will cause the first
+  /// to be overwritten by the second.
+  core.Map<core.String, core.String> headers;
+
+  /// Boolean specifiying whether to encrypt the header information. Encryption
+  /// should be specified for any headers related to authentication that you do
+  /// not wish to be seen when retrieving the configuration. The server will be
+  /// responsible for encrypting the headers. On Get/List calls, if mask_headers
+  /// is set to True then the headers will be obscured with ******.
+  core.bool maskHeaders;
+
+  /// The path to the page to run the check against. Will be combined with the
+  /// host (specified within the MonitoredResource) and port to construct the
+  /// full URL. Optional (defaults to "/").
+  core.String path;
+
+  /// The port to the page to run the check against. Will be combined with host
+  /// (specified within the MonitoredResource) and path to construct the full
+  /// URL. Optional (defaults to 80 without SSL, or 443 with SSL).
+  core.int port;
+
+  /// If true, use HTTPS instead of HTTP to run the check.
+  core.bool useSsl;
+
+  HttpCheck();
+
+  HttpCheck.fromJson(core.Map _json) {
+    if (_json.containsKey("authInfo")) {
+      authInfo = new BasicAuthentication.fromJson(_json["authInfo"]);
+    }
+    if (_json.containsKey("headers")) {
+      headers = _json["headers"];
+    }
+    if (_json.containsKey("maskHeaders")) {
+      maskHeaders = _json["maskHeaders"];
+    }
+    if (_json.containsKey("path")) {
+      path = _json["path"];
+    }
+    if (_json.containsKey("port")) {
+      port = _json["port"];
+    }
+    if (_json.containsKey("useSsl")) {
+      useSsl = _json["useSsl"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (authInfo != null) {
+      _json["authInfo"] = (authInfo).toJson();
+    }
+    if (headers != null) {
+      _json["headers"] = headers;
+    }
+    if (maskHeaders != null) {
+      _json["maskHeaders"] = maskHeaders;
+    }
+    if (path != null) {
+      _json["path"] = path;
+    }
+    if (port != null) {
+      _json["port"] = port;
+    }
+    if (useSsl != null) {
+      _json["useSsl"] = useSsl;
+    }
+    return _json;
+  }
+}
+
 /// A description of a label.
 class LabelDescriptor {
   /// A human-readable description for the label.
@@ -2119,6 +2713,86 @@ class ListTimeSeriesResponse {
   }
 }
 
+/// The protocol for the ListUptimeCheckConfigs response.
+class ListUptimeCheckConfigsResponse {
+  /// This field represents the pagination token to retrieve the next page of
+  /// results. If the value is empty, it means no further results for the
+  /// request. To retrieve the next page of results, the value of the
+  /// next_page_token is passed to the subsequent List method call (in the
+  /// request message's page_token field).
+  core.String nextPageToken;
+
+  /// The returned uptime check configurations.
+  core.List<UptimeCheckConfig> uptimeCheckConfigs;
+
+  ListUptimeCheckConfigsResponse();
+
+  ListUptimeCheckConfigsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("uptimeCheckConfigs")) {
+      uptimeCheckConfigs = _json["uptimeCheckConfigs"]
+          .map((value) => new UptimeCheckConfig.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (uptimeCheckConfigs != null) {
+      _json["uptimeCheckConfigs"] =
+          uptimeCheckConfigs.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// The protocol for the ListUptimeCheckIps response.
+class ListUptimeCheckIpsResponse {
+  /// This field represents the pagination token to retrieve the next page of
+  /// results. If the value is empty, it means no further results for the
+  /// request. To retrieve the next page of results, the value of the
+  /// next_page_token is passed to the subsequent List method call (in the
+  /// request message's page_token field). NOTE: this field is not yet
+  /// implemented
+  core.String nextPageToken;
+
+  /// The returned list of IP addresses (including region and location) that the
+  /// checkers run from.
+  core.List<UptimeCheckIp> uptimeCheckIps;
+
+  ListUptimeCheckIpsResponse();
+
+  ListUptimeCheckIpsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("uptimeCheckIps")) {
+      uptimeCheckIps = _json["uptimeCheckIps"]
+          .map((value) => new UptimeCheckIp.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (uptimeCheckIps != null) {
+      _json["uptimeCheckIps"] =
+          uptimeCheckIps.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// A specific metric, identified by specifying values for all of the labels of
 /// a MetricDescriptor.
 class Metric {
@@ -2163,6 +2837,8 @@ class MetricDescriptor {
 
   /// A concise name for the metric, which can be displayed in user interfaces.
   /// Use sentence case without an ending period, for example "Request count".
+  /// This field is optional but it is recommended to be set for any metrics
+  /// associated with user-visible concepts, such as Quota.
   core.String displayName;
 
   /// The set of labels that can be used to describe a specific instance of this
@@ -2184,13 +2860,7 @@ class MetricDescriptor {
   /// and sets a new start time for the following points.
   core.String metricKind;
 
-  /// The resource name of the metric descriptor. Depending on the
-  /// implementation, the name typically includes: (1) the parent resource name
-  /// that defines the scope of the metric type or of its data; and (2) the
-  /// metric's URL-encoded type, which also appears in the type field of this
-  /// descriptor. For example, following is the resource name of a custom metric
-  /// within the GCP project my-project-id:
-  /// "projects/my-project-id/metricDescriptors/custom.googleapis.com%2Finvoice%2Fpaid%2Famount"
+  /// The resource name of the metric descriptor.
   core.String name;
 
   /// The metric type, including its DNS name prefix. The type is not
@@ -2567,6 +3237,44 @@ class Range {
   }
 }
 
+/// The resource submessage for group checks. It can be used instead of a
+/// monitored resource, when multiple resources are being monitored.
+class ResourceGroup {
+  /// The group of resources being monitored. Should be only the group_id, not
+  /// projects/<project_id>/groups/<group_id>.
+  core.String groupId;
+
+  /// The resource type of the group members.
+  /// Possible string values are:
+  /// - "RESOURCE_TYPE_UNSPECIFIED" : Default value (not valid).
+  /// - "INSTANCE" : A group of instances (could be either GCE or AWS_EC2).
+  /// - "AWS_ELB_LOAD_BALANCER" : A group of AWS load balancers.
+  core.String resourceType;
+
+  ResourceGroup();
+
+  ResourceGroup.fromJson(core.Map _json) {
+    if (_json.containsKey("groupId")) {
+      groupId = _json["groupId"];
+    }
+    if (_json.containsKey("resourceType")) {
+      resourceType = _json["resourceType"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (groupId != null) {
+      _json["groupId"] = groupId;
+    }
+    if (resourceType != null) {
+      _json["resourceType"] = resourceType;
+    }
+    return _json;
+  }
+}
+
 /// SourceContext represents information about the source of a protobuf element,
 /// like the file in which it is defined.
 class SourceContext {
@@ -2668,6 +3376,31 @@ class Status {
     }
     if (message != null) {
       _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/// Information required for a TCP uptime check request.
+class TcpCheck {
+  /// The port to the page to run the check against. Will be combined with host
+  /// (specified within the MonitoredResource) to construct the full URL.
+  /// Required.
+  core.int port;
+
+  TcpCheck();
+
+  TcpCheck.fromJson(core.Map _json) {
+    if (_json.containsKey("port")) {
+      port = _json["port"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (port != null) {
+      _json["port"] = port;
     }
     return _json;
   }
@@ -2938,6 +3671,188 @@ class TypedValue {
     }
     if (stringValue != null) {
       _json["stringValue"] = stringValue;
+    }
+    return _json;
+  }
+}
+
+/// This message configures which resources and services to monitor for
+/// availability.
+class UptimeCheckConfig {
+  /// The expected content on the page the check is run against. Currently, only
+  /// the first entry in the list is supported, and other entries will be
+  /// ignored. The server will look for an exact match of the string in the page
+  /// response's content. This field is optional and should only be specified if
+  /// a content match is required.
+  core.List<ContentMatcher> contentMatchers;
+
+  /// A human-friendly name for the uptime check configuration. The display name
+  /// should be unique within a Stackdriver Account in order to make it easier
+  /// to identify; however, uniqueness is not enforced. Required.
+  core.String displayName;
+
+  /// Contains information needed to make an HTTP or HTTPS check.
+  HttpCheck httpCheck;
+
+  /// The monitored resource associated with the configuration.
+  MonitoredResource monitoredResource;
+
+  /// A unique resource name for this UptimeCheckConfig. The format
+  /// is:projects/[PROJECT_ID]/uptimeCheckConfigs/[UPTIME_CHECK_ID].This field
+  /// should be omitted when creating the uptime check configuration; on create,
+  /// the resource name is assigned by the server and included in the response.
+  core.String name;
+
+  /// How often the uptime check is performed. Currently, only 1, 5, 10, and 15
+  /// minutes are supported. Required.
+  core.String period;
+
+  /// The group resource associated with the configuration.
+  ResourceGroup resourceGroup;
+
+  /// The list of regions from which the check will be run. If this field is
+  /// specified, enough regions to include a minimum of 3 locations must be
+  /// provided, or an error message is returned. Not specifying this field will
+  /// result in uptime checks running from all regions.
+  core.List<core.String> selectedRegions;
+
+  /// Contains information needed to make a TCP check.
+  TcpCheck tcpCheck;
+
+  /// The maximum amount of time to wait for the request to complete (must be
+  /// between 1 and 60 seconds). Required.
+  core.String timeout;
+
+  UptimeCheckConfig();
+
+  UptimeCheckConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("contentMatchers")) {
+      contentMatchers = _json["contentMatchers"]
+          .map((value) => new ContentMatcher.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("httpCheck")) {
+      httpCheck = new HttpCheck.fromJson(_json["httpCheck"]);
+    }
+    if (_json.containsKey("monitoredResource")) {
+      monitoredResource =
+          new MonitoredResource.fromJson(_json["monitoredResource"]);
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("period")) {
+      period = _json["period"];
+    }
+    if (_json.containsKey("resourceGroup")) {
+      resourceGroup = new ResourceGroup.fromJson(_json["resourceGroup"]);
+    }
+    if (_json.containsKey("selectedRegions")) {
+      selectedRegions = _json["selectedRegions"];
+    }
+    if (_json.containsKey("tcpCheck")) {
+      tcpCheck = new TcpCheck.fromJson(_json["tcpCheck"]);
+    }
+    if (_json.containsKey("timeout")) {
+      timeout = _json["timeout"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (contentMatchers != null) {
+      _json["contentMatchers"] =
+          contentMatchers.map((value) => (value).toJson()).toList();
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (httpCheck != null) {
+      _json["httpCheck"] = (httpCheck).toJson();
+    }
+    if (monitoredResource != null) {
+      _json["monitoredResource"] = (monitoredResource).toJson();
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (period != null) {
+      _json["period"] = period;
+    }
+    if (resourceGroup != null) {
+      _json["resourceGroup"] = (resourceGroup).toJson();
+    }
+    if (selectedRegions != null) {
+      _json["selectedRegions"] = selectedRegions;
+    }
+    if (tcpCheck != null) {
+      _json["tcpCheck"] = (tcpCheck).toJson();
+    }
+    if (timeout != null) {
+      _json["timeout"] = timeout;
+    }
+    return _json;
+  }
+}
+
+/// Contains the region, location, and list of IP addresses where checkers in
+/// the location run from.
+class UptimeCheckIp {
+  /// The IP address from which the uptime check originates. This is a full IP
+  /// address (not an IP address range). Most IP addresses, as of this
+  /// publication, are in IPv4 format; however, one should not rely on the IP
+  /// addresses being in IPv4 format indefinitely and should support
+  /// interpreting this field in either IPv4 or IPv6 format.
+  core.String ipAddress;
+
+  /// A more specific location within the region that typically encodes a
+  /// particular city/town/metro (and its containing state/province or country)
+  /// within the broader umbrella region category.
+  core.String location;
+
+  /// A broad region category in which the IP address is located.
+  /// Possible string values are:
+  /// - "REGION_UNSPECIFIED" : Default value if no region is specified. Will
+  /// result in uptime checks running from all regions.
+  /// - "USA" : Allows checks to run from locations within the United States of
+  /// America.
+  /// - "EUROPE" : Allows checks to run from locations within the continent of
+  /// Europe.
+  /// - "SOUTH_AMERICA" : Allows checks to run from locations within the
+  /// continent of South America.
+  /// - "ASIA_PACIFIC" : Allows checks to run from locations within the Asia
+  /// Pacific area (ex: Singapore).
+  core.String region;
+
+  UptimeCheckIp();
+
+  UptimeCheckIp.fromJson(core.Map _json) {
+    if (_json.containsKey("ipAddress")) {
+      ipAddress = _json["ipAddress"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("region")) {
+      region = _json["region"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (ipAddress != null) {
+      _json["ipAddress"] = ipAddress;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (region != null) {
+      _json["region"] = region;
     }
     return _json;
   }

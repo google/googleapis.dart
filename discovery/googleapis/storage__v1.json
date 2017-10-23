@@ -26,7 +26,7 @@
     "description": "Stores and retrieves potentially large, immutable data objects.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/storage/docs/json_api/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/rE26AVrnFbD9orx-YtVO_pKNglE\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/wG6rmEvDnTlddzJg86OD2al2nik\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/cloud_storage-16.png",
         "x32": "https://www.google.com/images/icons/product/cloud_storage-32.png"
@@ -110,7 +110,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -143,7 +143,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -172,7 +172,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -204,7 +204,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -240,7 +240,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -279,7 +279,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -327,7 +327,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -379,7 +379,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -411,7 +411,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -496,7 +496,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request",
                             "location": "query",
                             "type": "string"
                         }
@@ -560,7 +560,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request.",
                             "location": "query",
                             "type": "string"
                         }
@@ -657,7 +657,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -689,7 +689,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -730,7 +730,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -827,7 +827,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -891,7 +891,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -924,7 +924,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -953,7 +953,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -997,7 +997,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -1033,7 +1033,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -1072,7 +1072,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -1115,7 +1115,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -1149,7 +1149,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -1181,7 +1181,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -1214,7 +1214,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -1270,7 +1270,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -1316,7 +1316,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -1358,7 +1358,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -1403,7 +1403,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -1452,7 +1452,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -1504,7 +1504,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -1585,7 +1585,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -1728,7 +1728,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -1799,7 +1799,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -1876,7 +1876,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -1922,7 +1922,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -2042,7 +2042,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -2113,7 +2113,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         },
@@ -2222,7 +2222,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -2379,7 +2379,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -2425,7 +2425,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -2479,7 +2479,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -2582,7 +2582,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -2651,7 +2651,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request, for Requester Pays buckets.",
+                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         },
@@ -2699,7 +2699,7 @@
                                     "type": "string"
                                 },
                                 "userProject": {
-                                    "description": "The project to be billed for this request, for Requester Pays buckets.",
+                                    "description": "The project to be billed for this request.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -2721,7 +2721,7 @@
             }
         }
     },
-    "revision": "20170920",
+    "revision": "20171004",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Bucket": {

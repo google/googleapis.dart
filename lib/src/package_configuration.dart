@@ -135,9 +135,15 @@ class DiscoveryPackagesConfiguration {
 
     // Generate packages.
     packages.forEach((name, package) {
-      generateAllLibraries('$discoveryDocsDir/$name',
+      final results = generateAllLibraries('$discoveryDocsDir/$name',
                            '$generatedApisDir/$name',
                            package.pubspec);
+      for (final GenerateResult result in results) {
+        if (!result.success) {
+          print(result.toString());
+        }
+      }
+
       new File('$generatedApisDir/$name/README.md')
           .writeAsStringSync(package.readme);
       if (package.license != null) {

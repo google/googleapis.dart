@@ -61,6 +61,9 @@ class MobileapppanelsResourceApi {
   ///
   /// [panelId] - External URL ID for the panel.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [MobileAppPanel].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -68,7 +71,7 @@ class MobileapppanelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<MobileAppPanel> get(core.String panelId) {
+  async.Future<MobileAppPanel> get(core.String panelId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -78,6 +81,9 @@ class MobileapppanelsResourceApi {
 
     if (panelId == null) {
       throw new core.ArgumentError("Parameter panelId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'mobileAppPanels/' + commons.Escaper.ecapeVariable('$panelId');
@@ -101,6 +107,9 @@ class MobileapppanelsResourceApi {
   ///
   /// [token] - null
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [MobileAppPanelsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -109,7 +118,10 @@ class MobileapppanelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<MobileAppPanelsListResponse> list(
-      {core.int maxResults, core.int startIndex, core.String token}) {
+      {core.int maxResults,
+      core.int startIndex,
+      core.String token,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -125,6 +137,9 @@ class MobileapppanelsResourceApi {
     }
     if (token != null) {
       _queryParams["token"] = [token];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'mobileAppPanels';
@@ -148,6 +163,9 @@ class MobileapppanelsResourceApi {
   ///
   /// [panelId] - External URL ID for the panel.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [MobileAppPanel].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -156,7 +174,8 @@ class MobileapppanelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<MobileAppPanel> update(
-      MobileAppPanel request, core.String panelId) {
+      MobileAppPanel request, core.String panelId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -169,6 +188,9 @@ class MobileapppanelsResourceApi {
     }
     if (panelId == null) {
       throw new core.ArgumentError("Parameter panelId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'mobileAppPanels/' + commons.Escaper.ecapeVariable('$panelId');
@@ -198,6 +220,9 @@ class ResultsResourceApi {
   ///
   /// [surveyUrlId] - External URL ID for the survey.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [downloadOptions] - Options for downloading. A download can be either a
   /// Metadata (default) or Media download. Partial Media downloads are possible
   /// as well.
@@ -214,7 +239,8 @@ class ResultsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future get(ResultsGetRequest request, core.String surveyUrlId,
-      {commons.DownloadOptions downloadOptions:
+      {core.String $fields,
+      commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -228,6 +254,9 @@ class ResultsResourceApi {
     }
     if (surveyUrlId == null) {
       throw new core.ArgumentError("Parameter surveyUrlId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = downloadOptions;
@@ -261,6 +290,9 @@ class SurveysResourceApi {
   ///
   /// [surveyUrlId] - External URL ID for the survey.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SurveysDeleteResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -268,7 +300,8 @@ class SurveysResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SurveysDeleteResponse> delete(core.String surveyUrlId) {
+  async.Future<SurveysDeleteResponse> delete(core.String surveyUrlId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -278,6 +311,9 @@ class SurveysResourceApi {
 
     if (surveyUrlId == null) {
       throw new core.ArgumentError("Parameter surveyUrlId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'surveys/' + commons.Escaper.ecapeVariable('$surveyUrlId');
@@ -297,6 +333,9 @@ class SurveysResourceApi {
   ///
   /// [surveyUrlId] - External URL ID for the survey.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Survey].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -304,7 +343,7 @@ class SurveysResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Survey> get(core.String surveyUrlId) {
+  async.Future<Survey> get(core.String surveyUrlId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -314,6 +353,9 @@ class SurveysResourceApi {
 
     if (surveyUrlId == null) {
       throw new core.ArgumentError("Parameter surveyUrlId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'surveys/' + commons.Escaper.ecapeVariable('$surveyUrlId');
@@ -333,6 +375,9 @@ class SurveysResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Survey].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -340,7 +385,7 @@ class SurveysResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Survey> insert(Survey request) {
+  async.Future<Survey> insert(Survey request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -350,6 +395,9 @@ class SurveysResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'surveys';
@@ -373,6 +421,9 @@ class SurveysResourceApi {
   ///
   /// [token] - null
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SurveysListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -381,7 +432,10 @@ class SurveysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SurveysListResponse> list(
-      {core.int maxResults, core.int startIndex, core.String token}) {
+      {core.int maxResults,
+      core.int startIndex,
+      core.String token,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -397,6 +451,9 @@ class SurveysResourceApi {
     }
     if (token != null) {
       _queryParams["token"] = [token];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'surveys';
@@ -418,6 +475,9 @@ class SurveysResourceApi {
   ///
   /// [resourceId] - null
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SurveysStartResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -426,7 +486,8 @@ class SurveysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SurveysStartResponse> start(
-      SurveysStartRequest request, core.String resourceId) {
+      SurveysStartRequest request, core.String resourceId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -439,6 +500,9 @@ class SurveysResourceApi {
     }
     if (resourceId == null) {
       throw new core.ArgumentError("Parameter resourceId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'surveys/' + commons.Escaper.ecapeVariable('$resourceId') + '/start';
@@ -458,6 +522,9 @@ class SurveysResourceApi {
   ///
   /// [resourceId] - null
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SurveysStopResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -465,7 +532,8 @@ class SurveysResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SurveysStopResponse> stop(core.String resourceId) {
+  async.Future<SurveysStopResponse> stop(core.String resourceId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -475,6 +543,9 @@ class SurveysResourceApi {
 
     if (resourceId == null) {
       throw new core.ArgumentError("Parameter resourceId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'surveys/' + commons.Escaper.ecapeVariable('$resourceId') + '/stop';
@@ -497,6 +568,9 @@ class SurveysResourceApi {
   ///
   /// [surveyUrlId] - External URL ID for the survey.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Survey].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -504,7 +578,8 @@ class SurveysResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Survey> update(Survey request, core.String surveyUrlId) {
+  async.Future<Survey> update(Survey request, core.String surveyUrlId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -517,6 +592,9 @@ class SurveysResourceApi {
     }
     if (surveyUrlId == null) {
       throw new core.ArgumentError("Parameter surveyUrlId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'surveys/' + commons.Escaper.ecapeVariable('$surveyUrlId');

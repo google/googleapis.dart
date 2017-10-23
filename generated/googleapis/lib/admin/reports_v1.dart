@@ -87,6 +87,9 @@ class ActivitiesResourceApi {
   /// Value must have pattern
   /// "(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Activities].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -103,7 +106,8 @@ class ActivitiesResourceApi {
       core.String filters,
       core.int maxResults,
       core.String pageToken,
-      core.String startTime}) {
+      core.String startTime,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -140,6 +144,9 @@ class ActivitiesResourceApi {
     }
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'activity/users/' +
@@ -199,6 +206,9 @@ class ActivitiesResourceApi {
   /// Value must have pattern
   /// "(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Channel].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -215,7 +225,8 @@ class ActivitiesResourceApi {
       core.String filters,
       core.int maxResults,
       core.String pageToken,
-      core.String startTime}) {
+      core.String startTime,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -256,6 +267,9 @@ class ActivitiesResourceApi {
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'activity/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
@@ -284,12 +298,15 @@ class ChannelsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future stop(Channel request) {
+  async.Future stop(Channel request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -299,6 +316,9 @@ class ChannelsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -341,6 +361,9 @@ class CustomerUsageReportsResourceApi {
   /// Value must have pattern
   /// "(((accounts)|(app_maker)|(apps_scripts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+,)*(((accounts)|(app_maker)|(apps_scripts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+)".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UsageReports].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -349,7 +372,10 @@ class CustomerUsageReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UsageReports> get(core.String date,
-      {core.String customerId, core.String pageToken, core.String parameters}) {
+      {core.String customerId,
+      core.String pageToken,
+      core.String parameters,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -368,6 +394,9 @@ class CustomerUsageReportsResourceApi {
     }
     if (parameters != null) {
       _queryParams["parameters"] = [parameters];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'usage/dates/' + commons.Escaper.ecapeVariable('$date');
@@ -418,6 +447,9 @@ class UserUsageReportResourceApi {
   /// Value must have pattern
   /// "(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+,)*(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+)".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UsageReports].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -430,7 +462,8 @@ class UserUsageReportResourceApi {
       core.String filters,
       core.int maxResults,
       core.String pageToken,
-      core.String parameters}) {
+      core.String parameters,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -458,6 +491,9 @@ class UserUsageReportResourceApi {
     }
     if (parameters != null) {
       _queryParams["parameters"] = [parameters];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'usage/users/' +

@@ -2,6 +2,21 @@
     "auth": {
         "oauth2": {
             "scopes": {
+                "https://www.googleapis.com/auth/drive": {
+                    "description": "View and manage the files in your Google Drive"
+                },
+                "https://www.googleapis.com/auth/spreadsheets": {
+                    "description": "View and manage your spreadsheets in Google Drive"
+                },
+                "https://mail.google.com/": {
+                    "description": "Read, send, delete, and manage your email"
+                },
+                "https://www.googleapis.com/auth/admin.directory.group": {
+                    "description": "View and manage the provisioning of groups on your domain"
+                },
+                "https://www.googleapis.com/auth/admin.directory.user": {
+                    "description": "View and manage the provisioning of users on your domain"
+                },
                 "https://www.googleapis.com/auth/forms": {
                     "description": "View and manage your forms in Google Drive"
                 },
@@ -19,21 +34,6 @@
                 },
                 "https://www.googleapis.com/auth/forms.currentonly": {
                     "description": "View and manage forms that this application has been installed in"
-                },
-                "https://www.googleapis.com/auth/drive": {
-                    "description": "View and manage the files in your Google Drive"
-                },
-                "https://www.googleapis.com/auth/admin.directory.user": {
-                    "description": "View and manage the provisioning of users on your domain"
-                },
-                "https://www.googleapis.com/auth/admin.directory.group": {
-                    "description": "View and manage the provisioning of groups on your domain"
-                },
-                "https://www.googleapis.com/auth/spreadsheets": {
-                    "description": "View and manage your spreadsheets in Google Drive"
-                },
-                "https://mail.google.com/": {
-                    "description": "Read, send, delete, and manage your email"
                 }
             }
         }
@@ -54,13 +54,29 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "access_token": {
-            "description": "OAuth access token.",
+        "alt": {
+            "default": "json",
+            "description": "Data format for response.",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
+            ],
             "location": "query",
             "type": "string"
         },
         "key": {
             "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
@@ -96,13 +112,13 @@
             "location": "query",
             "type": "boolean"
         },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
@@ -120,22 +136,6 @@
             "enumDescriptions": [
                 "v1 error format",
                 "v2 error format"
-            ],
-            "location": "query",
-            "type": "string"
-        },
-        "alt": {
-            "default": "json",
-            "description": "Data format for response.",
-            "enum": [
-                "json",
-                "media",
-                "proto"
-            ],
-            "enumDescriptions": [
-                "Responses with Content-Type of application/json",
-                "Media download with context-dependent Content-Type",
-                "Responses with Content-Type of application/x-protobuf"
             ],
             "location": "query",
             "type": "string"
@@ -184,9 +184,36 @@
             }
         }
     },
-    "revision": "20170927",
+    "revision": "20171010",
     "rootUrl": "https://script.googleapis.com/",
     "schemas": {
+        "Status": {
+            "description": "If a `run` call succeeds but the script function (or Apps Script itself) throws an exception, the response body's `error` field will contain this `Status` object.",
+            "id": "Status",
+            "properties": {
+                "code": {
+                    "description": "The status code. For this API, this value will always be 3, corresponding to an <code>INVALID_ARGUMENT</code> error.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "message": {
+                    "description": "A developer-facing error message, which is in English. Any user-facing error message is localized and sent in the [`google.rpc.Status.details`](google.rpc.Status.details) field, or localized by the client.",
+                    "type": "string"
+                },
+                "details": {
+                    "description": "An array that contains a single `ExecutionError` object that provides information about the nature of the error.",
+                    "items": {
+                        "additionalProperties": {
+                            "description": "Properties of the object. Contains field @type with type URL.",
+                            "type": "any"
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "ExecutionRequest": {
             "description": "A request to run the function in a script. The script is identified by the\nspecified `script_id`. Executing a function on a script returns results\nbased on the implementation of the script.",
             "id": "ExecutionRequest",
@@ -228,10 +255,6 @@
             "description": "The response will not arrive until the function finishes executing. The maximum runtime is listed in the guide to [limitations in Apps Script](https://developers.google.com/apps-script/guides/services/quotas#current_limitations).\n<p>If the script function returns successfully, the `response` field will contain an `ExecutionResponse` object with the function's return value in the object's `result` field.</p>\n<p>If the script function (or Apps Script itself) throws an exception, the `error` field will contain a `Status` object. The `Status` object's `details` field will contain an array with a single `ExecutionError` object that provides information about the nature of the error.</p>\n<p>If the `run` call itself fails (for example, because of a malformed request or an authorization error), the method will return an HTTP response code in the 4XX range with a different format for the response body. Client libraries will automatically convert a 4XX response into an exception class.</p>",
             "id": "Operation",
             "properties": {
-                "done": {
-                    "description": "This field is only used with asynchronous executions and indicates whether or not the script execution has completed. A completed execution has a populated response field containing the `ExecutionResponse` from function that was executed.",
-                    "type": "boolean"
-                },
                 "response": {
                     "additionalProperties": {
                         "description": "Properties of the object. Contains field @type with type URL.",
@@ -251,6 +274,10 @@
                     },
                     "description": "This field is not used.",
                     "type": "object"
+                },
+                "done": {
+                    "description": "This field is only used with asynchronous executions and indicates whether or not the script execution has completed. A completed execution has a populated response field containing the `ExecutionResponse` from function that was executed.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -287,33 +314,6 @@
                     "description": "An array of objects that provide a stack trace through the script to show\nwhere the execution failed, with the deepest call first.",
                     "items": {
                         "$ref": "ScriptStackTraceElement"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "Status": {
-            "description": "If a `run` call succeeds but the script function (or Apps Script itself) throws an exception, the response body's `error` field will contain this `Status` object.",
-            "id": "Status",
-            "properties": {
-                "code": {
-                    "description": "The status code. For this API, this value will always be 3, corresponding to an <code>INVALID_ARGUMENT</code> error.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "message": {
-                    "description": "A developer-facing error message, which is in English. Any user-facing error message is localized and sent in the [`google.rpc.Status.details`](google.rpc.Status.details) field, or localized by the client.",
-                    "type": "string"
-                },
-                "details": {
-                    "description": "An array that contains a single `ExecutionError` object that provides information about the nature of the error.",
-                    "items": {
-                        "additionalProperties": {
-                            "description": "Properties of the object. Contains field @type with type URL.",
-                            "type": "any"
-                        },
-                        "type": "object"
                     },
                     "type": "array"
                 }

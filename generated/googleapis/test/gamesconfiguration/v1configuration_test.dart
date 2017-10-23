@@ -112,14 +112,14 @@ checkAchievementConfigurationDetail(api.AchievementConfigurationDetail o) {
   buildCounterAchievementConfigurationDetail--;
 }
 
-buildUnnamed792() {
+buildUnnamed777() {
   var o = new core.List<api.AchievementConfiguration>();
   o.add(buildAchievementConfiguration());
   o.add(buildAchievementConfiguration());
   return o;
 }
 
-checkUnnamed792(core.List<api.AchievementConfiguration> o) {
+checkUnnamed777(core.List<api.AchievementConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAchievementConfiguration(o[0]);
   checkAchievementConfiguration(o[1]);
@@ -130,7 +130,7 @@ buildAchievementConfigurationListResponse() {
   var o = new api.AchievementConfigurationListResponse();
   buildCounterAchievementConfigurationListResponse++;
   if (buildCounterAchievementConfigurationListResponse < 3) {
-    o.items = buildUnnamed792();
+    o.items = buildUnnamed777();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -142,7 +142,7 @@ checkAchievementConfigurationListResponse(
     api.AchievementConfigurationListResponse o) {
   buildCounterAchievementConfigurationListResponse++;
   if (buildCounterAchievementConfigurationListResponse < 3) {
-    checkUnnamed792(o.items);
+    checkUnnamed777(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -288,14 +288,14 @@ checkLeaderboardConfigurationDetail(api.LeaderboardConfigurationDetail o) {
   buildCounterLeaderboardConfigurationDetail--;
 }
 
-buildUnnamed793() {
+buildUnnamed778() {
   var o = new core.List<api.LeaderboardConfiguration>();
   o.add(buildLeaderboardConfiguration());
   o.add(buildLeaderboardConfiguration());
   return o;
 }
 
-checkUnnamed793(core.List<api.LeaderboardConfiguration> o) {
+checkUnnamed778(core.List<api.LeaderboardConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLeaderboardConfiguration(o[0]);
   checkLeaderboardConfiguration(o[1]);
@@ -306,7 +306,7 @@ buildLeaderboardConfigurationListResponse() {
   var o = new api.LeaderboardConfigurationListResponse();
   buildCounterLeaderboardConfigurationListResponse++;
   if (buildCounterLeaderboardConfigurationListResponse < 3) {
-    o.items = buildUnnamed793();
+    o.items = buildUnnamed778();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -318,7 +318,7 @@ checkLeaderboardConfigurationListResponse(
     api.LeaderboardConfigurationListResponse o) {
   buildCounterLeaderboardConfigurationListResponse++;
   if (buildCounterLeaderboardConfigurationListResponse < 3) {
-    checkUnnamed793(o.items);
+    checkUnnamed778(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -348,14 +348,14 @@ checkLocalizedString(api.LocalizedString o) {
   buildCounterLocalizedString--;
 }
 
-buildUnnamed794() {
+buildUnnamed779() {
   var o = new core.List<api.LocalizedString>();
   o.add(buildLocalizedString());
   o.add(buildLocalizedString());
   return o;
 }
 
-checkUnnamed794(core.List<api.LocalizedString> o) {
+checkUnnamed779(core.List<api.LocalizedString> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocalizedString(o[0]);
   checkLocalizedString(o[1]);
@@ -367,7 +367,7 @@ buildLocalizedStringBundle() {
   buildCounterLocalizedStringBundle++;
   if (buildCounterLocalizedStringBundle < 3) {
     o.kind = "foo";
-    o.translations = buildUnnamed794();
+    o.translations = buildUnnamed779();
   }
   buildCounterLocalizedStringBundle--;
   return o;
@@ -377,7 +377,7 @@ checkLocalizedStringBundle(api.LocalizedStringBundle o) {
   buildCounterLocalizedStringBundle++;
   if (buildCounterLocalizedStringBundle < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed794(o.translations);
+    checkUnnamed779(o.translations);
   }
   buildCounterLocalizedStringBundle--;
 }
@@ -479,6 +479,7 @@ main() {
       api.AchievementConfigurationsResourceApi res =
           new api.GamesConfigurationApi(mock).achievementConfigurations;
       var arg_achievementId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -515,6 +516,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -522,7 +524,9 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_achievementId).then(unittest.expectAsync1((_) {}));
+      res
+          .delete(arg_achievementId, $fields: arg_$fields)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
@@ -530,6 +534,7 @@ main() {
       api.AchievementConfigurationsResourceApi res =
           new api.GamesConfigurationApi(mock).achievementConfigurations;
       var arg_achievementId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -566,6 +571,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -574,7 +580,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_achievementId)
+          .get(arg_achievementId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.AchievementConfiguration response) {
         checkAchievementConfiguration(response);
       })));
@@ -586,6 +592,7 @@ main() {
           new api.GamesConfigurationApi(mock).achievementConfigurations;
       var arg_request = buildAchievementConfiguration();
       var arg_applicationId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.AchievementConfiguration.fromJson(json);
         checkAchievementConfiguration(obj);
@@ -631,6 +638,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -639,7 +647,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .insert(arg_request, arg_applicationId)
+          .insert(arg_request, arg_applicationId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.AchievementConfiguration response) {
         checkAchievementConfiguration(response);
       })));
@@ -652,6 +660,7 @@ main() {
       var arg_applicationId = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -698,6 +707,7 @@ main() {
             unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -708,7 +718,9 @@ main() {
       }), true);
       res
           .list(arg_applicationId,
-              maxResults: arg_maxResults, pageToken: arg_pageToken)
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(
               ((api.AchievementConfigurationListResponse response) {
         checkAchievementConfigurationListResponse(response);
@@ -721,6 +733,7 @@ main() {
           new api.GamesConfigurationApi(mock).achievementConfigurations;
       var arg_request = buildAchievementConfiguration();
       var arg_achievementId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.AchievementConfiguration.fromJson(json);
         checkAchievementConfiguration(obj);
@@ -760,6 +773,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -768,7 +782,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .patch(arg_request, arg_achievementId)
+          .patch(arg_request, arg_achievementId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.AchievementConfiguration response) {
         checkAchievementConfiguration(response);
       })));
@@ -780,6 +794,7 @@ main() {
           new api.GamesConfigurationApi(mock).achievementConfigurations;
       var arg_request = buildAchievementConfiguration();
       var arg_achievementId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.AchievementConfiguration.fromJson(json);
         checkAchievementConfiguration(obj);
@@ -819,6 +834,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -827,7 +843,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .update(arg_request, arg_achievementId)
+          .update(arg_request, arg_achievementId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.AchievementConfiguration response) {
         checkAchievementConfiguration(response);
       })));
@@ -844,6 +860,7 @@ main() {
           new api.GamesConfigurationApi(mock).imageConfigurations;
       var arg_resourceId = "foo";
       var arg_imageType = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -889,6 +906,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -897,7 +915,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .upload(arg_resourceId, arg_imageType)
+          .upload(arg_resourceId, arg_imageType, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ImageConfiguration response) {
         checkImageConfiguration(response);
       })));
@@ -910,6 +928,7 @@ main() {
       api.LeaderboardConfigurationsResourceApi res =
           new api.GamesConfigurationApi(mock).leaderboardConfigurations;
       var arg_leaderboardId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -946,6 +965,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -953,7 +973,9 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_leaderboardId).then(unittest.expectAsync1((_) {}));
+      res
+          .delete(arg_leaderboardId, $fields: arg_$fields)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
@@ -961,6 +983,7 @@ main() {
       api.LeaderboardConfigurationsResourceApi res =
           new api.GamesConfigurationApi(mock).leaderboardConfigurations;
       var arg_leaderboardId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -997,6 +1020,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1005,7 +1029,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_leaderboardId)
+          .get(arg_leaderboardId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.LeaderboardConfiguration response) {
         checkLeaderboardConfiguration(response);
       })));
@@ -1017,6 +1041,7 @@ main() {
           new api.GamesConfigurationApi(mock).leaderboardConfigurations;
       var arg_request = buildLeaderboardConfiguration();
       var arg_applicationId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.LeaderboardConfiguration.fromJson(json);
         checkLeaderboardConfiguration(obj);
@@ -1062,6 +1087,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1070,7 +1096,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .insert(arg_request, arg_applicationId)
+          .insert(arg_request, arg_applicationId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.LeaderboardConfiguration response) {
         checkLeaderboardConfiguration(response);
       })));
@@ -1083,6 +1109,7 @@ main() {
       var arg_applicationId = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1129,6 +1156,7 @@ main() {
             unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1139,7 +1167,9 @@ main() {
       }), true);
       res
           .list(arg_applicationId,
-              maxResults: arg_maxResults, pageToken: arg_pageToken)
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(
               ((api.LeaderboardConfigurationListResponse response) {
         checkLeaderboardConfigurationListResponse(response);
@@ -1152,6 +1182,7 @@ main() {
           new api.GamesConfigurationApi(mock).leaderboardConfigurations;
       var arg_request = buildLeaderboardConfiguration();
       var arg_leaderboardId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.LeaderboardConfiguration.fromJson(json);
         checkLeaderboardConfiguration(obj);
@@ -1191,6 +1222,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1199,7 +1231,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .patch(arg_request, arg_leaderboardId)
+          .patch(arg_request, arg_leaderboardId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.LeaderboardConfiguration response) {
         checkLeaderboardConfiguration(response);
       })));
@@ -1211,6 +1243,7 @@ main() {
           new api.GamesConfigurationApi(mock).leaderboardConfigurations;
       var arg_request = buildLeaderboardConfiguration();
       var arg_leaderboardId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.LeaderboardConfiguration.fromJson(json);
         checkLeaderboardConfiguration(obj);
@@ -1250,6 +1283,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1258,7 +1292,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .update(arg_request, arg_leaderboardId)
+          .update(arg_request, arg_leaderboardId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.LeaderboardConfiguration response) {
         checkLeaderboardConfiguration(response);
       })));

@@ -57,6 +57,9 @@ class AchievementsResourceApi {
   ///
   /// [achievementId] - The ID of the achievement used by this method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AchievementResetResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -64,7 +67,8 @@ class AchievementsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AchievementResetResponse> reset(core.String achievementId) {
+  async.Future<AchievementResetResponse> reset(core.String achievementId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -74,6 +78,9 @@ class AchievementsResourceApi {
 
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'achievements/' +
@@ -96,6 +103,9 @@ class AchievementsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AchievementResetAllResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -103,13 +113,17 @@ class AchievementsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AchievementResetAllResponse> resetAll() {
+  async.Future<AchievementResetAllResponse> resetAll({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'achievements/reset';
 
@@ -128,18 +142,25 @@ class AchievementsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetAllForAllPlayers() {
+  async.Future resetAllForAllPlayers({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _downloadOptions = null;
 
@@ -162,12 +183,16 @@ class AchievementsResourceApi {
   ///
   /// [achievementId] - The ID of the achievement used by this method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetForAllPlayers(core.String achievementId) {
+  async.Future resetForAllPlayers(core.String achievementId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -177,6 +202,9 @@ class AchievementsResourceApi {
 
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -202,13 +230,17 @@ class AchievementsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future resetMultipleForAllPlayers(
-      AchievementResetMultipleForAllRequest request) {
+      AchievementResetMultipleForAllRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -218,6 +250,9 @@ class AchievementsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -254,6 +289,9 @@ class ApplicationsResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [HiddenPlayerList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -262,7 +300,7 @@ class ApplicationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HiddenPlayerList> listHidden(core.String applicationId,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -278,6 +316,9 @@ class ApplicationsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'applications/' +
@@ -308,12 +349,15 @@ class EventsResourceApi {
   ///
   /// [eventId] - The ID of the event.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future reset(core.String eventId) {
+  async.Future reset(core.String eventId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -323,6 +367,9 @@ class EventsResourceApi {
 
     if (eventId == null) {
       throw new core.ArgumentError("Parameter eventId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -344,18 +391,25 @@ class EventsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetAll() {
+  async.Future resetAll({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _downloadOptions = null;
 
@@ -376,18 +430,25 @@ class EventsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetAllForAllPlayers() {
+  async.Future resetAllForAllPlayers({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _downloadOptions = null;
 
@@ -410,12 +471,15 @@ class EventsResourceApi {
   ///
   /// [eventId] - The ID of the event.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetForAllPlayers(core.String eventId) {
+  async.Future resetForAllPlayers(core.String eventId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -425,6 +489,9 @@ class EventsResourceApi {
 
     if (eventId == null) {
       throw new core.ArgumentError("Parameter eventId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -450,13 +517,17 @@ class EventsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future resetMultipleForAllPlayers(
-      EventsResetMultipleForAllRequest request) {
+      EventsResetMultipleForAllRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -466,6 +537,9 @@ class EventsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -498,12 +572,16 @@ class PlayersResourceApi {
   /// [playerId] - A player ID. A value of me may be used in place of the
   /// authenticated player's ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future hide(core.String applicationId, core.String playerId) {
+  async.Future hide(core.String applicationId, core.String playerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -516,6 +594,9 @@ class PlayersResourceApi {
     }
     if (playerId == null) {
       throw new core.ArgumentError("Parameter playerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -545,12 +626,16 @@ class PlayersResourceApi {
   /// [playerId] - A player ID. A value of me may be used in place of the
   /// authenticated player's ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future unhide(core.String applicationId, core.String playerId) {
+  async.Future unhide(core.String applicationId, core.String playerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -563,6 +648,9 @@ class PlayersResourceApi {
     }
     if (playerId == null) {
       throw new core.ArgumentError("Parameter playerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -595,12 +683,15 @@ class QuestsResourceApi {
   ///
   /// [questId] - The ID of the quest.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future reset(core.String questId) {
+  async.Future reset(core.String questId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -610,6 +701,9 @@ class QuestsResourceApi {
 
     if (questId == null) {
       throw new core.ArgumentError("Parameter questId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -631,18 +725,25 @@ class QuestsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetAll() {
+  async.Future resetAll({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _downloadOptions = null;
 
@@ -662,18 +763,25 @@ class QuestsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetAllForAllPlayers() {
+  async.Future resetAllForAllPlayers({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _downloadOptions = null;
 
@@ -696,12 +804,15 @@ class QuestsResourceApi {
   ///
   /// [questId] - The ID of the quest.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetForAllPlayers(core.String questId) {
+  async.Future resetForAllPlayers(core.String questId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -711,6 +822,9 @@ class QuestsResourceApi {
 
     if (questId == null) {
       throw new core.ArgumentError("Parameter questId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -736,13 +850,17 @@ class QuestsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future resetMultipleForAllPlayers(
-      QuestsResetMultipleForAllRequest request) {
+      QuestsResetMultipleForAllRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -752,6 +870,9 @@ class QuestsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -779,18 +900,25 @@ class RoomsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future reset() {
+  async.Future reset({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _downloadOptions = null;
 
@@ -811,18 +939,25 @@ class RoomsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetForAllPlayers() {
+  async.Future resetForAllPlayers({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _downloadOptions = null;
 
@@ -851,6 +986,9 @@ class ScoresResourceApi {
   ///
   /// [leaderboardId] - The ID of the leaderboard.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PlayerScoreResetResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -858,7 +996,8 @@ class ScoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PlayerScoreResetResponse> reset(core.String leaderboardId) {
+  async.Future<PlayerScoreResetResponse> reset(core.String leaderboardId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -868,6 +1007,9 @@ class ScoresResourceApi {
 
     if (leaderboardId == null) {
       throw new core.ArgumentError("Parameter leaderboardId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'leaderboards/' +
@@ -890,6 +1032,9 @@ class ScoresResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PlayerScoreResetAllResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -897,13 +1042,17 @@ class ScoresResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PlayerScoreResetAllResponse> resetAll() {
+  async.Future<PlayerScoreResetAllResponse> resetAll({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'scores/reset';
 
@@ -922,18 +1071,25 @@ class ScoresResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetAllForAllPlayers() {
+  async.Future resetAllForAllPlayers({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _downloadOptions = null;
 
@@ -956,12 +1112,16 @@ class ScoresResourceApi {
   ///
   /// [leaderboardId] - The ID of the leaderboard.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetForAllPlayers(core.String leaderboardId) {
+  async.Future resetForAllPlayers(core.String leaderboardId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -971,6 +1131,9 @@ class ScoresResourceApi {
 
     if (leaderboardId == null) {
       throw new core.ArgumentError("Parameter leaderboardId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -996,13 +1159,17 @@ class ScoresResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future resetMultipleForAllPlayers(
-      ScoresResetMultipleForAllRequest request) {
+      ScoresResetMultipleForAllRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1012,6 +1179,9 @@ class ScoresResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1039,18 +1209,25 @@ class TurnBasedMatchesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future reset() {
+  async.Future reset({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _downloadOptions = null;
 
@@ -1071,18 +1248,25 @@ class TurnBasedMatchesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetForAllPlayers() {
+  async.Future resetForAllPlayers({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _downloadOptions = null;
 

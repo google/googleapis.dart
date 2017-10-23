@@ -144,6 +144,7 @@ main() {
       var mock = new HttpServerMock();
       api.GroupsResourceApi res = new api.GroupssettingsApi(mock).groups;
       var arg_groupUniqueId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -171,6 +172,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -179,7 +181,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_groupUniqueId)
+          .get(arg_groupUniqueId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Groups response) {
         checkGroups(response);
       })));
@@ -190,6 +192,7 @@ main() {
       api.GroupsResourceApi res = new api.GroupssettingsApi(mock).groups;
       var arg_request = buildGroups();
       var arg_groupUniqueId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Groups.fromJson(json);
         checkGroups(obj);
@@ -220,6 +223,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -228,7 +232,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .patch(arg_request, arg_groupUniqueId)
+          .patch(arg_request, arg_groupUniqueId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Groups response) {
         checkGroups(response);
       })));
@@ -239,6 +243,7 @@ main() {
       api.GroupsResourceApi res = new api.GroupssettingsApi(mock).groups;
       var arg_request = buildGroups();
       var arg_groupUniqueId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Groups.fromJson(json);
         checkGroups(obj);
@@ -269,6 +274,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -277,7 +283,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .update(arg_request, arg_groupUniqueId)
+          .update(arg_request, arg_groupUniqueId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Groups response) {
         checkGroups(response);
       })));

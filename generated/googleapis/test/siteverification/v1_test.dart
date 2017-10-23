@@ -116,14 +116,14 @@ checkSiteVerificationWebResourceGettokenResponse(
   buildCounterSiteVerificationWebResourceGettokenResponse--;
 }
 
-buildUnnamed161() {
+buildUnnamed145() {
   var o = new core.List<api.SiteVerificationWebResourceResource>();
   o.add(buildSiteVerificationWebResourceResource());
   o.add(buildSiteVerificationWebResourceResource());
   return o;
 }
 
-checkUnnamed161(core.List<api.SiteVerificationWebResourceResource> o) {
+checkUnnamed145(core.List<api.SiteVerificationWebResourceResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSiteVerificationWebResourceResource(o[0]);
   checkSiteVerificationWebResourceResource(o[1]);
@@ -134,7 +134,7 @@ buildSiteVerificationWebResourceListResponse() {
   var o = new api.SiteVerificationWebResourceListResponse();
   buildCounterSiteVerificationWebResourceListResponse++;
   if (buildCounterSiteVerificationWebResourceListResponse < 3) {
-    o.items = buildUnnamed161();
+    o.items = buildUnnamed145();
   }
   buildCounterSiteVerificationWebResourceListResponse--;
   return o;
@@ -144,19 +144,19 @@ checkSiteVerificationWebResourceListResponse(
     api.SiteVerificationWebResourceListResponse o) {
   buildCounterSiteVerificationWebResourceListResponse++;
   if (buildCounterSiteVerificationWebResourceListResponse < 3) {
-    checkUnnamed161(o.items);
+    checkUnnamed145(o.items);
   }
   buildCounterSiteVerificationWebResourceListResponse--;
 }
 
-buildUnnamed162() {
+buildUnnamed146() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed162(core.List<core.String> o) {
+checkUnnamed146(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -190,7 +190,7 @@ buildSiteVerificationWebResourceResource() {
   buildCounterSiteVerificationWebResourceResource++;
   if (buildCounterSiteVerificationWebResourceResource < 3) {
     o.id = "foo";
-    o.owners = buildUnnamed162();
+    o.owners = buildUnnamed146();
     o.site = buildSiteVerificationWebResourceResourceSite();
   }
   buildCounterSiteVerificationWebResourceResource--;
@@ -202,7 +202,7 @@ checkSiteVerificationWebResourceResource(
   buildCounterSiteVerificationWebResourceResource++;
   if (buildCounterSiteVerificationWebResourceResource < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed162(o.owners);
+    checkUnnamed146(o.owners);
     checkSiteVerificationWebResourceResourceSite(o.site);
   }
   buildCounterSiteVerificationWebResourceResource--;
@@ -269,6 +269,7 @@ main() {
       api.WebResourceResourceApi res =
           new api.SiteVerificationApi(mock).webResource;
       var arg_id = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -305,6 +306,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -312,7 +314,9 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_id).then(unittest.expectAsync1((_) {}));
+      res
+          .delete(arg_id, $fields: arg_$fields)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
@@ -320,6 +324,7 @@ main() {
       api.WebResourceResourceApi res =
           new api.SiteVerificationApi(mock).webResource;
       var arg_id = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -356,6 +361,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -364,7 +370,7 @@ main() {
             convert.JSON.encode(buildSiteVerificationWebResourceResource());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_id).then(unittest
+      res.get(arg_id, $fields: arg_$fields).then(unittest
           .expectAsync1(((api.SiteVerificationWebResourceResource response) {
         checkSiteVerificationWebResourceResource(response);
       })));
@@ -375,6 +381,7 @@ main() {
       api.WebResourceResourceApi res =
           new api.SiteVerificationApi(mock).webResource;
       var arg_request = buildSiteVerificationWebResourceGettokenRequest();
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             new api.SiteVerificationWebResourceGettokenRequest.fromJson(json);
@@ -412,6 +419,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -420,8 +428,9 @@ main() {
             .encode(buildSiteVerificationWebResourceGettokenResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getToken(arg_request).then(unittest.expectAsync1(
-          ((api.SiteVerificationWebResourceGettokenResponse response) {
+      res.getToken(arg_request, $fields: arg_$fields).then(unittest
+          .expectAsync1(
+              ((api.SiteVerificationWebResourceGettokenResponse response) {
         checkSiteVerificationWebResourceGettokenResponse(response);
       })));
     });
@@ -432,6 +441,7 @@ main() {
           new api.SiteVerificationApi(mock).webResource;
       var arg_request = buildSiteVerificationWebResourceResource();
       var arg_verificationMethod = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SiteVerificationWebResourceResource.fromJson(json);
         checkSiteVerificationWebResourceResource(obj);
@@ -470,6 +480,7 @@ main() {
         }
         unittest.expect(queryMap["verificationMethod"].first,
             unittest.equals(arg_verificationMethod));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -478,8 +489,10 @@ main() {
             convert.JSON.encode(buildSiteVerificationWebResourceResource());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_verificationMethod).then(unittest
-          .expectAsync1(((api.SiteVerificationWebResourceResource response) {
+      res
+          .insert(arg_request, arg_verificationMethod, $fields: arg_$fields)
+          .then(unittest.expectAsync1(
+              ((api.SiteVerificationWebResourceResource response) {
         checkSiteVerificationWebResourceResource(response);
       })));
     });
@@ -488,6 +501,7 @@ main() {
       var mock = new HttpServerMock();
       api.WebResourceResourceApi res =
           new api.SiteVerificationApi(mock).webResource;
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -521,6 +535,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -529,7 +544,7 @@ main() {
             convert.JSON.encode(buildSiteVerificationWebResourceListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list().then(unittest.expectAsync1(
+      res.list($fields: arg_$fields).then(unittest.expectAsync1(
           ((api.SiteVerificationWebResourceListResponse response) {
         checkSiteVerificationWebResourceListResponse(response);
       })));
@@ -541,6 +556,7 @@ main() {
           new api.SiteVerificationApi(mock).webResource;
       var arg_request = buildSiteVerificationWebResourceResource();
       var arg_id = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SiteVerificationWebResourceResource.fromJson(json);
         checkSiteVerificationWebResourceResource(obj);
@@ -580,6 +596,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -588,7 +605,7 @@ main() {
             convert.JSON.encode(buildSiteVerificationWebResourceResource());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_id).then(unittest
+      res.patch(arg_request, arg_id, $fields: arg_$fields).then(unittest
           .expectAsync1(((api.SiteVerificationWebResourceResource response) {
         checkSiteVerificationWebResourceResource(response);
       })));
@@ -600,6 +617,7 @@ main() {
           new api.SiteVerificationApi(mock).webResource;
       var arg_request = buildSiteVerificationWebResourceResource();
       var arg_id = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SiteVerificationWebResourceResource.fromJson(json);
         checkSiteVerificationWebResourceResource(obj);
@@ -639,6 +657,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -647,7 +666,7 @@ main() {
             convert.JSON.encode(buildSiteVerificationWebResourceResource());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.update(arg_request, arg_id).then(unittest
+      res.update(arg_request, arg_id, $fields: arg_$fields).then(unittest
           .expectAsync1(((api.SiteVerificationWebResourceResource response) {
         checkSiteVerificationWebResourceResource(response);
       })));

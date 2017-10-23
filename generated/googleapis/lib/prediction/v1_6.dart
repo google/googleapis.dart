@@ -65,6 +65,9 @@ class HostedmodelsResourceApi {
   ///
   /// [hostedModelName] - The name of a hosted model.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Output].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -73,7 +76,8 @@ class HostedmodelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Output> predict(
-      Input request, core.String project, core.String hostedModelName) {
+      Input request, core.String project, core.String hostedModelName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -89,6 +93,9 @@ class HostedmodelsResourceApi {
     }
     if (hostedModelName == null) {
       throw new core.ArgumentError("Parameter hostedModelName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -119,6 +126,9 @@ class TrainedmodelsResourceApi {
   ///
   /// [id] - The unique name for the predictive model.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Analyze].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -126,7 +136,8 @@ class TrainedmodelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Analyze> analyze(core.String project, core.String id) {
+  async.Future<Analyze> analyze(core.String project, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -139,6 +150,9 @@ class TrainedmodelsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -163,12 +177,16 @@ class TrainedmodelsResourceApi {
   ///
   /// [id] - The unique name for the predictive model.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String project, core.String id) {
+  async.Future delete(core.String project, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -181,6 +199,9 @@ class TrainedmodelsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -206,6 +227,9 @@ class TrainedmodelsResourceApi {
   ///
   /// [id] - The unique name for the predictive model.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Insert2].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -213,7 +237,8 @@ class TrainedmodelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Insert2> get(core.String project, core.String id) {
+  async.Future<Insert2> get(core.String project, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -226,6 +251,9 @@ class TrainedmodelsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -249,6 +277,9 @@ class TrainedmodelsResourceApi {
   ///
   /// [project] - The project associated with the model.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Insert2].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -256,7 +287,8 @@ class TrainedmodelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Insert2> insert(Insert request, core.String project) {
+  async.Future<Insert2> insert(Insert request, core.String project,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -269,6 +301,9 @@ class TrainedmodelsResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/trainedmodels';
@@ -292,6 +327,9 @@ class TrainedmodelsResourceApi {
   ///
   /// [pageToken] - Pagination token.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [List].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -300,7 +338,7 @@ class TrainedmodelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<List> list(core.String project,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -316,6 +354,9 @@ class TrainedmodelsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/trainedmodels/list';
@@ -339,6 +380,9 @@ class TrainedmodelsResourceApi {
   ///
   /// [id] - The unique name for the predictive model.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Output].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -347,7 +391,8 @@ class TrainedmodelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Output> predict(
-      Input request, core.String project, core.String id) {
+      Input request, core.String project, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -363,6 +408,9 @@ class TrainedmodelsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -389,6 +437,9 @@ class TrainedmodelsResourceApi {
   ///
   /// [id] - The unique name for the predictive model.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Insert2].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -397,7 +448,8 @@ class TrainedmodelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Insert2> update(
-      Update request, core.String project, core.String id) {
+      Update request, core.String project, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -413,6 +465,9 @@ class TrainedmodelsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +

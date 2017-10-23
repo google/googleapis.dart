@@ -50,6 +50,9 @@ class ArchiveResourceApi {
   ///
   /// [groupId] - The group ID
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [uploadMedia] - The media to upload.
   ///
   /// [uploadOptions] - Options for the media upload. Streaming Media without
@@ -64,7 +67,8 @@ class ArchiveResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Groups> insert(core.String groupId,
-      {commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      {core.String $fields,
+      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -75,6 +79,9 @@ class ArchiveResourceApi {
 
     if (groupId == null) {
       throw new core.ArgumentError("Parameter groupId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _uploadMedia = uploadMedia;

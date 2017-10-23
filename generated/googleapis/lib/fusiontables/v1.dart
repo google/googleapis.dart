@@ -61,12 +61,16 @@ class ColumnResourceApi {
   ///
   /// [columnId] - Name or identifier for the column being deleted.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String tableId, core.String columnId) {
+  async.Future delete(core.String tableId, core.String columnId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -79,6 +83,9 @@ class ColumnResourceApi {
     }
     if (columnId == null) {
       throw new core.ArgumentError("Parameter columnId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -105,6 +112,9 @@ class ColumnResourceApi {
   ///
   /// [columnId] - Name or identifier for the column that is being requested.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Column].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -112,7 +122,8 @@ class ColumnResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Column> get(core.String tableId, core.String columnId) {
+  async.Future<Column> get(core.String tableId, core.String columnId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -125,6 +136,9 @@ class ColumnResourceApi {
     }
     if (columnId == null) {
       throw new core.ArgumentError("Parameter columnId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'tables/' +
@@ -149,6 +163,9 @@ class ColumnResourceApi {
   ///
   /// [tableId] - Table for which a new column is being added.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Column].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -156,7 +173,8 @@ class ColumnResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Column> insert(Column request, core.String tableId) {
+  async.Future<Column> insert(Column request, core.String tableId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -169,6 +187,9 @@ class ColumnResourceApi {
     }
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/columns';
@@ -194,6 +215,9 @@ class ColumnResourceApi {
   /// [pageToken] - Continuation token specifying which result page to return.
   /// Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ColumnList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -202,7 +226,7 @@ class ColumnResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ColumnList> list(core.String tableId,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -218,6 +242,9 @@ class ColumnResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/columns';
@@ -242,6 +269,9 @@ class ColumnResourceApi {
   ///
   /// [columnId] - Name or identifier for the column that is being updated.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Column].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -250,7 +280,8 @@ class ColumnResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Column> patch(
-      Column request, core.String tableId, core.String columnId) {
+      Column request, core.String tableId, core.String columnId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -266,6 +297,9 @@ class ColumnResourceApi {
     }
     if (columnId == null) {
       throw new core.ArgumentError("Parameter columnId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'tables/' +
@@ -292,6 +326,9 @@ class ColumnResourceApi {
   ///
   /// [columnId] - Name or identifier for the column that is being updated.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Column].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -300,7 +337,8 @@ class ColumnResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Column> update(
-      Column request, core.String tableId, core.String columnId) {
+      Column request, core.String tableId, core.String columnId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -316,6 +354,9 @@ class ColumnResourceApi {
     }
     if (columnId == null) {
       throw new core.ArgumentError("Parameter columnId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'tables/' +
@@ -353,6 +394,9 @@ class QueryResourceApi {
   /// numbers for numeric values and parsed geometries for KML values? Default
   /// is true.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [downloadOptions] - Options for downloading. A download can be either a
   /// Metadata (default) or Media download. Partial Media downloads are possible
   /// as well.
@@ -371,6 +415,7 @@ class QueryResourceApi {
   async.Future sql(core.String sql_1,
       {core.bool hdrs,
       core.bool typed,
+      core.String $fields,
       commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
@@ -389,6 +434,9 @@ class QueryResourceApi {
     }
     if (typed != null) {
       _queryParams["typed"] = ["${typed}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = downloadOptions;
@@ -422,6 +470,9 @@ class QueryResourceApi {
   /// numbers for numeric values and parsed geometries for KML values? Default
   /// is true.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [downloadOptions] - Options for downloading. A download can be either a
   /// Metadata (default) or Media download. Partial Media downloads are possible
   /// as well.
@@ -440,6 +491,7 @@ class QueryResourceApi {
   async.Future sqlGet(core.String sql_1,
       {core.bool hdrs,
       core.bool typed,
+      core.String $fields,
       commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
@@ -458,6 +510,9 @@ class QueryResourceApi {
     }
     if (typed != null) {
       _queryParams["typed"] = ["${typed}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = downloadOptions;
@@ -492,12 +547,16 @@ class StyleResourceApi {
   ///
   /// [styleId] - Identifier (within a table) for the style being deleted
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String tableId, core.int styleId) {
+  async.Future delete(core.String tableId, core.int styleId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -510,6 +569,9 @@ class StyleResourceApi {
     }
     if (styleId == null) {
       throw new core.ArgumentError("Parameter styleId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -536,6 +598,9 @@ class StyleResourceApi {
   ///
   /// [styleId] - Identifier (integer) for a specific style in a table
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [StyleSetting].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -543,7 +608,8 @@ class StyleResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<StyleSetting> get(core.String tableId, core.int styleId) {
+  async.Future<StyleSetting> get(core.String tableId, core.int styleId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -556,6 +622,9 @@ class StyleResourceApi {
     }
     if (styleId == null) {
       throw new core.ArgumentError("Parameter styleId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'tables/' +
@@ -580,6 +649,9 @@ class StyleResourceApi {
   ///
   /// [tableId] - Table for which a new style is being added
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [StyleSetting].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -587,7 +659,8 @@ class StyleResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<StyleSetting> insert(StyleSetting request, core.String tableId) {
+  async.Future<StyleSetting> insert(StyleSetting request, core.String tableId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -600,6 +673,9 @@ class StyleResourceApi {
     }
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/styles';
@@ -624,6 +700,9 @@ class StyleResourceApi {
   /// [pageToken] - Continuation token specifying which result page to return.
   /// Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [StyleSettingList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -632,7 +711,7 @@ class StyleResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<StyleSettingList> list(core.String tableId,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -648,6 +727,9 @@ class StyleResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/styles';
@@ -671,6 +753,9 @@ class StyleResourceApi {
   ///
   /// [styleId] - Identifier (within a table) for the style being updated.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [StyleSetting].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -679,7 +764,8 @@ class StyleResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<StyleSetting> patch(
-      StyleSetting request, core.String tableId, core.int styleId) {
+      StyleSetting request, core.String tableId, core.int styleId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -695,6 +781,9 @@ class StyleResourceApi {
     }
     if (styleId == null) {
       throw new core.ArgumentError("Parameter styleId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'tables/' +
@@ -721,6 +810,9 @@ class StyleResourceApi {
   ///
   /// [styleId] - Identifier (within a table) for the style being updated.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [StyleSetting].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -729,7 +821,8 @@ class StyleResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<StyleSetting> update(
-      StyleSetting request, core.String tableId, core.int styleId) {
+      StyleSetting request, core.String tableId, core.int styleId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -745,6 +838,9 @@ class StyleResourceApi {
     }
     if (styleId == null) {
       throw new core.ArgumentError("Parameter styleId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'tables/' +
@@ -776,6 +872,9 @@ class TableResourceApi {
   /// [copyPresentation] - Whether to also copy tabs, styles, and templates.
   /// Default is false.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Table].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -783,7 +882,8 @@ class TableResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Table> copy(core.String tableId, {core.bool copyPresentation}) {
+  async.Future<Table> copy(core.String tableId,
+      {core.bool copyPresentation, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -796,6 +896,9 @@ class TableResourceApi {
     }
     if (copyPresentation != null) {
       _queryParams["copyPresentation"] = ["${copyPresentation}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/copy';
@@ -815,12 +918,15 @@ class TableResourceApi {
   ///
   /// [tableId] - ID of the table that is being deleted.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String tableId) {
+  async.Future delete(core.String tableId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -830,6 +936,9 @@ class TableResourceApi {
 
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -851,6 +960,9 @@ class TableResourceApi {
   ///
   /// [tableId] - Identifier(ID) for the table being requested.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Table].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -858,7 +970,7 @@ class TableResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Table> get(core.String tableId) {
+  async.Future<Table> get(core.String tableId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -868,6 +980,9 @@ class TableResourceApi {
 
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId');
@@ -909,6 +1024,9 @@ class TableResourceApi {
   /// [startLine] - The index of the first line from which to start importing,
   /// inclusive. Default is 0.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [uploadMedia] - The media to upload.
   ///
   /// [uploadOptions] - Options for the media upload. Streaming Media without
@@ -928,6 +1046,7 @@ class TableResourceApi {
       core.int endLine,
       core.bool isStrict,
       core.int startLine,
+      core.String $fields,
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
@@ -954,6 +1073,9 @@ class TableResourceApi {
     }
     if (startLine != null) {
       _queryParams["startLine"] = ["${startLine}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -992,6 +1114,9 @@ class TableResourceApi {
   /// [encoding] - The encoding of the content. Default is UTF-8. Use
   /// 'auto-detect' if you are unsure of the encoding.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [uploadMedia] - The media to upload.
   ///
   /// [uploadOptions] - Options for the media upload. Streaming Media without
@@ -1008,6 +1133,7 @@ class TableResourceApi {
   async.Future<Table> importTable(core.String name,
       {core.String delimiter,
       core.String encoding,
+      core.String $fields,
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
@@ -1026,6 +1152,9 @@ class TableResourceApi {
     }
     if (encoding != null) {
       _queryParams["encoding"] = [encoding];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -1054,6 +1183,9 @@ class TableResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Table].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1061,7 +1193,7 @@ class TableResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Table> insert(Table request) {
+  async.Future<Table> insert(Table request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1071,6 +1203,9 @@ class TableResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'tables';
@@ -1093,6 +1228,9 @@ class TableResourceApi {
   /// [pageToken] - Continuation token specifying which result page to return.
   /// Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TableList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1100,7 +1238,8 @@ class TableResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TableList> list({core.int maxResults, core.String pageToken}) {
+  async.Future<TableList> list(
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1113,6 +1252,9 @@ class TableResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'tables';
@@ -1140,6 +1282,9 @@ class TableResourceApi {
   /// specified view definition replaces the existing one. Only a view can be
   /// updated with a new definition.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Table].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1148,7 +1293,7 @@ class TableResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Table> patch(Table request, core.String tableId,
-      {core.bool replaceViewDefinition}) {
+      {core.bool replaceViewDefinition, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1164,6 +1309,9 @@ class TableResourceApi {
     }
     if (replaceViewDefinition != null) {
       _queryParams["replaceViewDefinition"] = ["${replaceViewDefinition}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId');
@@ -1190,6 +1338,9 @@ class TableResourceApi {
   /// specified view definition replaces the existing one. Only a view can be
   /// updated with a new definition.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Table].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1198,7 +1349,7 @@ class TableResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Table> update(Table request, core.String tableId,
-      {core.bool replaceViewDefinition}) {
+      {core.bool replaceViewDefinition, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1214,6 +1365,9 @@ class TableResourceApi {
     }
     if (replaceViewDefinition != null) {
       _queryParams["replaceViewDefinition"] = ["${replaceViewDefinition}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId');
@@ -1241,12 +1395,16 @@ class TaskResourceApi {
   ///
   /// [taskId] - null
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String tableId, core.String taskId) {
+  async.Future delete(core.String tableId, core.String taskId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1259,6 +1417,9 @@ class TaskResourceApi {
     }
     if (taskId == null) {
       throw new core.ArgumentError("Parameter taskId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1285,6 +1446,9 @@ class TaskResourceApi {
   ///
   /// [taskId] - null
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Task].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1292,7 +1456,8 @@ class TaskResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Task> get(core.String tableId, core.String taskId) {
+  async.Future<Task> get(core.String tableId, core.String taskId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1305,6 +1470,9 @@ class TaskResourceApi {
     }
     if (taskId == null) {
       throw new core.ArgumentError("Parameter taskId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'tables/' +
@@ -1334,6 +1502,9 @@ class TaskResourceApi {
   ///
   /// [startIndex] - null
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TaskList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1342,7 +1513,10 @@ class TaskResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TaskList> list(core.String tableId,
-      {core.int maxResults, core.String pageToken, core.int startIndex}) {
+      {core.int maxResults,
+      core.String pageToken,
+      core.int startIndex,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1361,6 +1535,9 @@ class TaskResourceApi {
     }
     if (startIndex != null) {
       _queryParams["startIndex"] = ["${startIndex}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/tasks';
@@ -1388,12 +1565,16 @@ class TemplateResourceApi {
   ///
   /// [templateId] - Identifier for the template which is being deleted
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String tableId, core.int templateId) {
+  async.Future delete(core.String tableId, core.int templateId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1406,6 +1587,9 @@ class TemplateResourceApi {
     }
     if (templateId == null) {
       throw new core.ArgumentError("Parameter templateId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1432,6 +1616,9 @@ class TemplateResourceApi {
   ///
   /// [templateId] - Identifier for the template that is being requested
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Template].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1439,7 +1626,8 @@ class TemplateResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Template> get(core.String tableId, core.int templateId) {
+  async.Future<Template> get(core.String tableId, core.int templateId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1452,6 +1640,9 @@ class TemplateResourceApi {
     }
     if (templateId == null) {
       throw new core.ArgumentError("Parameter templateId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'tables/' +
@@ -1476,6 +1667,9 @@ class TemplateResourceApi {
   ///
   /// [tableId] - Table for which a new template is being created
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Template].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1483,7 +1677,8 @@ class TemplateResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Template> insert(Template request, core.String tableId) {
+  async.Future<Template> insert(Template request, core.String tableId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1496,6 +1691,9 @@ class TemplateResourceApi {
     }
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/templates';
@@ -1521,6 +1719,9 @@ class TemplateResourceApi {
   /// [pageToken] - Continuation token specifying which results page to return.
   /// Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TemplateList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1529,7 +1730,7 @@ class TemplateResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TemplateList> list(core.String tableId,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1545,6 +1746,9 @@ class TemplateResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/templates';
@@ -1568,6 +1772,9 @@ class TemplateResourceApi {
   ///
   /// [templateId] - Identifier for the template that is being updated
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Template].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1576,7 +1783,8 @@ class TemplateResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Template> patch(
-      Template request, core.String tableId, core.int templateId) {
+      Template request, core.String tableId, core.int templateId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1592,6 +1800,9 @@ class TemplateResourceApi {
     }
     if (templateId == null) {
       throw new core.ArgumentError("Parameter templateId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'tables/' +
@@ -1618,6 +1829,9 @@ class TemplateResourceApi {
   ///
   /// [templateId] - Identifier for the template that is being updated
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Template].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1626,7 +1840,8 @@ class TemplateResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Template> update(
-      Template request, core.String tableId, core.int templateId) {
+      Template request, core.String tableId, core.int templateId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1642,6 +1857,9 @@ class TemplateResourceApi {
     }
     if (templateId == null) {
       throw new core.ArgumentError("Parameter templateId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'tables/' +

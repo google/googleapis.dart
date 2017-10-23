@@ -168,14 +168,14 @@ checkGroupItem(api.GroupItem o) {
   buildCounterGroupItem--;
 }
 
-buildUnnamed270() {
+buildUnnamed254() {
   var o = new core.List<api.GroupItem>();
   o.add(buildGroupItem());
   o.add(buildGroupItem());
   return o;
 }
 
-checkUnnamed270(core.List<api.GroupItem> o) {
+checkUnnamed254(core.List<api.GroupItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroupItem(o[0]);
   checkGroupItem(o[1]);
@@ -187,7 +187,7 @@ buildGroupItemListResponse() {
   buildCounterGroupItemListResponse++;
   if (buildCounterGroupItemListResponse < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed270();
+    o.items = buildUnnamed254();
     o.kind = "foo";
   }
   buildCounterGroupItemListResponse--;
@@ -198,20 +198,20 @@ checkGroupItemListResponse(api.GroupItemListResponse o) {
   buildCounterGroupItemListResponse++;
   if (buildCounterGroupItemListResponse < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed270(o.items);
+    checkUnnamed254(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterGroupItemListResponse--;
 }
 
-buildUnnamed271() {
+buildUnnamed255() {
   var o = new core.List<api.Group>();
   o.add(buildGroup());
   o.add(buildGroup());
   return o;
 }
 
-checkUnnamed271(core.List<api.Group> o) {
+checkUnnamed255(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroup(o[0]);
   checkGroup(o[1]);
@@ -223,7 +223,7 @@ buildGroupListResponse() {
   buildCounterGroupListResponse++;
   if (buildCounterGroupListResponse < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed271();
+    o.items = buildUnnamed255();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -235,7 +235,7 @@ checkGroupListResponse(api.GroupListResponse o) {
   buildCounterGroupListResponse++;
   if (buildCounterGroupListResponse < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed271(o.items);
+    checkUnnamed255(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -265,20 +265,20 @@ checkResultTableColumnHeaders(api.ResultTableColumnHeaders o) {
   buildCounterResultTableColumnHeaders--;
 }
 
-buildUnnamed272() {
+buildUnnamed256() {
   var o = new core.List<api.ResultTableColumnHeaders>();
   o.add(buildResultTableColumnHeaders());
   o.add(buildResultTableColumnHeaders());
   return o;
 }
 
-checkUnnamed272(core.List<api.ResultTableColumnHeaders> o) {
+checkUnnamed256(core.List<api.ResultTableColumnHeaders> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResultTableColumnHeaders(o[0]);
   checkResultTableColumnHeaders(o[1]);
 }
 
-buildUnnamed273() {
+buildUnnamed257() {
   var o = new core.List<core.Object>();
   o.add({
     'list': [1, 2, 3],
@@ -293,7 +293,7 @@ buildUnnamed273() {
   return o;
 }
 
-checkUnnamed273(core.List<core.Object> o) {
+checkUnnamed257(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -307,17 +307,17 @@ checkUnnamed273(core.List<core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed274() {
+buildUnnamed258() {
   var o = new core.List<core.List<core.Object>>();
-  o.add(buildUnnamed273());
-  o.add(buildUnnamed273());
+  o.add(buildUnnamed257());
+  o.add(buildUnnamed257());
   return o;
 }
 
-checkUnnamed274(core.List<core.List<core.Object>> o) {
+checkUnnamed258(core.List<core.List<core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed273(o[0]);
-  checkUnnamed273(o[1]);
+  checkUnnamed257(o[0]);
+  checkUnnamed257(o[1]);
 }
 
 core.int buildCounterResultTable = 0;
@@ -325,9 +325,9 @@ buildResultTable() {
   var o = new api.ResultTable();
   buildCounterResultTable++;
   if (buildCounterResultTable < 3) {
-    o.columnHeaders = buildUnnamed272();
+    o.columnHeaders = buildUnnamed256();
     o.kind = "foo";
-    o.rows = buildUnnamed274();
+    o.rows = buildUnnamed258();
   }
   buildCounterResultTable--;
   return o;
@@ -336,9 +336,9 @@ buildResultTable() {
 checkResultTable(api.ResultTable o) {
   buildCounterResultTable++;
   if (buildCounterResultTable < 3) {
-    checkUnnamed272(o.columnHeaders);
+    checkUnnamed256(o.columnHeaders);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed274(o.rows);
+    checkUnnamed258(o.rows);
   }
   buildCounterResultTable--;
 }
@@ -423,6 +423,7 @@ main() {
           new api.YoutubeAnalyticsApi(mock).groupItems;
       var arg_id = "foo";
       var arg_onBehalfOfContentOwner = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -459,6 +460,7 @@ main() {
         unittest.expect(queryMap["id"].first, unittest.equals(arg_id));
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -467,7 +469,9 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .delete(arg_id, onBehalfOfContentOwner: arg_onBehalfOfContentOwner)
+          .delete(arg_id,
+              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
     });
 
@@ -477,6 +481,7 @@ main() {
           new api.YoutubeAnalyticsApi(mock).groupItems;
       var arg_request = buildGroupItem();
       var arg_onBehalfOfContentOwner = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GroupItem.fromJson(json);
         checkGroupItem(obj);
@@ -515,6 +520,7 @@ main() {
         }
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -524,7 +530,8 @@ main() {
       }), true);
       res
           .insert(arg_request,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner)
+              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.GroupItem response) {
         checkGroupItem(response);
       })));
@@ -536,6 +543,7 @@ main() {
           new api.YoutubeAnalyticsApi(mock).groupItems;
       var arg_groupId = "foo";
       var arg_onBehalfOfContentOwner = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -573,6 +581,7 @@ main() {
             queryMap["groupId"].first, unittest.equals(arg_groupId));
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -581,7 +590,9 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .list(arg_groupId, onBehalfOfContentOwner: arg_onBehalfOfContentOwner)
+          .list(arg_groupId,
+              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.GroupItemListResponse response) {
         checkGroupItemListResponse(response);
       })));
@@ -594,6 +605,7 @@ main() {
       api.GroupsResourceApi res = new api.YoutubeAnalyticsApi(mock).groups;
       var arg_id = "foo";
       var arg_onBehalfOfContentOwner = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -630,6 +642,7 @@ main() {
         unittest.expect(queryMap["id"].first, unittest.equals(arg_id));
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -638,7 +651,9 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .delete(arg_id, onBehalfOfContentOwner: arg_onBehalfOfContentOwner)
+          .delete(arg_id,
+              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
     });
 
@@ -647,6 +662,7 @@ main() {
       api.GroupsResourceApi res = new api.YoutubeAnalyticsApi(mock).groups;
       var arg_request = buildGroup();
       var arg_onBehalfOfContentOwner = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Group.fromJson(json);
         checkGroup(obj);
@@ -685,6 +701,7 @@ main() {
         }
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -694,7 +711,8 @@ main() {
       }), true);
       res
           .insert(arg_request,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner)
+              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Group response) {
         checkGroup(response);
       })));
@@ -707,6 +725,7 @@ main() {
       var arg_mine = true;
       var arg_onBehalfOfContentOwner = "foo";
       var arg_pageToken = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -746,6 +765,7 @@ main() {
             unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -758,7 +778,8 @@ main() {
               id: arg_id,
               mine: arg_mine,
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-              pageToken: arg_pageToken)
+              pageToken: arg_pageToken,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.GroupListResponse response) {
         checkGroupListResponse(response);
       })));
@@ -769,6 +790,7 @@ main() {
       api.GroupsResourceApi res = new api.YoutubeAnalyticsApi(mock).groups;
       var arg_request = buildGroup();
       var arg_onBehalfOfContentOwner = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Group.fromJson(json);
         checkGroup(obj);
@@ -807,6 +829,7 @@ main() {
         }
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -816,7 +839,8 @@ main() {
       }), true);
       res
           .update(arg_request,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner)
+              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Group response) {
         checkGroup(response);
       })));
@@ -838,6 +862,7 @@ main() {
       var arg_max_results = 42;
       var arg_sort = "foo";
       var arg_start_index = 42;
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -891,6 +916,7 @@ main() {
         unittest.expect(queryMap["sort"].first, unittest.equals(arg_sort));
         unittest.expect(core.int.parse(queryMap["start-index"].first),
             unittest.equals(arg_start_index));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -907,7 +933,8 @@ main() {
                   arg_include_historical_channel_data,
               max_results: arg_max_results,
               sort: arg_sort,
-              start_index: arg_start_index)
+              start_index: arg_start_index,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ResultTable response) {
         checkResultTable(response);
       })));

@@ -55,6 +55,9 @@ class OperationsResourceApi {
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern "^operations/.+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -62,7 +65,8 @@ class OperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> cancel(CancelOperationRequest request, core.String name) {
+  async.Future<Empty> cancel(CancelOperationRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -75,6 +79,9 @@ class OperationsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
@@ -97,6 +104,9 @@ class OperationsResourceApi {
   /// [name] - The name of the operation resource.
   /// Value must have pattern "^operations/.+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -104,7 +114,7 @@ class OperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name) {
+  async.Future<Operation> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -114,6 +124,9 @@ class OperationsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -144,11 +157,14 @@ class OperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^operations$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListOperationsResponse].
   ///
@@ -158,7 +174,10 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter, core.String pageToken, core.int pageSize}) {
+      {core.String pageToken,
+      core.int pageSize,
+      core.String filter,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -169,14 +188,17 @@ class OperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -217,6 +239,9 @@ class ProjectsBuildsResourceApi {
   ///
   /// [id] - ID of the build.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Build].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -225,7 +250,8 @@ class ProjectsBuildsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Build> cancel(
-      CancelBuildRequest request, core.String projectId, core.String id) {
+      CancelBuildRequest request, core.String projectId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -241,6 +267,9 @@ class ProjectsBuildsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -270,6 +299,9 @@ class ProjectsBuildsResourceApi {
   ///
   /// [projectId] - ID of the project.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -277,7 +309,8 @@ class ProjectsBuildsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> create(Build request, core.String projectId) {
+  async.Future<Operation> create(Build request, core.String projectId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -290,6 +323,9 @@ class ProjectsBuildsResourceApi {
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -316,6 +352,9 @@ class ProjectsBuildsResourceApi {
   ///
   /// [id] - ID of the build.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Build].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -323,7 +362,8 @@ class ProjectsBuildsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Build> get(core.String projectId, core.String id) {
+  async.Future<Build> get(core.String projectId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -336,6 +376,9 @@ class ProjectsBuildsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -361,11 +404,14 @@ class ProjectsBuildsResourceApi {
   ///
   /// [projectId] - ID of the project.
   ///
+  /// [filter] - The raw filter text to constrain the results.
+  ///
   /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
   /// [pageSize] - Number of results to return in the list.
   ///
-  /// [filter] - The raw filter text to constrain the results.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListBuildsResponse].
   ///
@@ -375,7 +421,10 @@ class ProjectsBuildsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBuildsResponse> list(core.String projectId,
-      {core.String pageToken, core.int pageSize, core.String filter}) {
+      {core.String filter,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -386,14 +435,17 @@ class ProjectsBuildsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -426,6 +478,9 @@ class ProjectsTriggersResourceApi {
   ///
   /// [projectId] - ID of the project for which to configure automatic builds.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BuildTrigger].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -433,8 +488,8 @@ class ProjectsTriggersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<BuildTrigger> create(
-      BuildTrigger request, core.String projectId) {
+  async.Future<BuildTrigger> create(BuildTrigger request, core.String projectId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -447,6 +502,9 @@ class ProjectsTriggersResourceApi {
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -472,6 +530,9 @@ class ProjectsTriggersResourceApi {
   ///
   /// [triggerId] - ID of the BuildTrigger to delete.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -479,7 +540,8 @@ class ProjectsTriggersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String projectId, core.String triggerId) {
+  async.Future<Empty> delete(core.String projectId, core.String triggerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -492,6 +554,9 @@ class ProjectsTriggersResourceApi {
     }
     if (triggerId == null) {
       throw new core.ArgumentError("Parameter triggerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -518,6 +583,9 @@ class ProjectsTriggersResourceApi {
   ///
   /// [triggerId] - ID of the BuildTrigger to get.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BuildTrigger].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -525,7 +593,8 @@ class ProjectsTriggersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<BuildTrigger> get(core.String projectId, core.String triggerId) {
+  async.Future<BuildTrigger> get(core.String projectId, core.String triggerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -538,6 +607,9 @@ class ProjectsTriggersResourceApi {
     }
     if (triggerId == null) {
       throw new core.ArgumentError("Parameter triggerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -562,6 +634,9 @@ class ProjectsTriggersResourceApi {
   ///
   /// [projectId] - ID of the project for which to list BuildTriggers.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListBuildTriggersResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -569,7 +644,8 @@ class ProjectsTriggersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListBuildTriggersResponse> list(core.String projectId) {
+  async.Future<ListBuildTriggersResponse> list(core.String projectId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -579,6 +655,9 @@ class ProjectsTriggersResourceApi {
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -607,6 +686,9 @@ class ProjectsTriggersResourceApi {
   ///
   /// [triggerId] - ID of the BuildTrigger to update.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BuildTrigger].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -615,7 +697,8 @@ class ProjectsTriggersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BuildTrigger> patch(
-      BuildTrigger request, core.String projectId, core.String triggerId) {
+      BuildTrigger request, core.String projectId, core.String triggerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -631,6 +714,9 @@ class ProjectsTriggersResourceApi {
     }
     if (triggerId == null) {
       throw new core.ArgumentError("Parameter triggerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +

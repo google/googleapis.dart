@@ -51,6 +51,9 @@ class ContentResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GooglePrivacyDlpV2beta1DeidentifyContentResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -59,7 +62,8 @@ class ContentResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2beta1DeidentifyContentResponse> deidentify(
-      GooglePrivacyDlpV2beta1DeidentifyContentRequest request) {
+      GooglePrivacyDlpV2beta1DeidentifyContentRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -69,6 +73,9 @@ class ContentResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/content:deidentify';
@@ -90,6 +97,9 @@ class ContentResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GooglePrivacyDlpV2beta1InspectContentResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -98,7 +108,8 @@ class ContentResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2beta1InspectContentResponse> inspect(
-      GooglePrivacyDlpV2beta1InspectContentRequest request) {
+      GooglePrivacyDlpV2beta1InspectContentRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -108,6 +119,9 @@ class ContentResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/content:inspect';
@@ -129,6 +143,9 @@ class ContentResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GooglePrivacyDlpV2beta1RedactContentResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -137,7 +154,8 @@ class ContentResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2beta1RedactContentResponse> redact(
-      GooglePrivacyDlpV2beta1RedactContentRequest request) {
+      GooglePrivacyDlpV2beta1RedactContentRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -147,6 +165,9 @@ class ContentResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/content:redact';
@@ -174,6 +195,9 @@ class DataSourceResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleLongrunningOperation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -182,7 +206,8 @@ class DataSourceResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> analyze(
-      GooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest request) {
+      GooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -192,6 +217,9 @@ class DataSourceResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/dataSource:analyze';
@@ -235,6 +263,9 @@ class InspectOperationsResourceApi {
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern "^inspect/operations/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleProtobufEmpty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -243,7 +274,8 @@ class InspectOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> cancel(
-      GoogleLongrunningCancelOperationRequest request, core.String name) {
+      GoogleLongrunningCancelOperationRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -256,6 +288,9 @@ class InspectOperationsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -277,6 +312,9 @@ class InspectOperationsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleLongrunningOperation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -285,7 +323,8 @@ class InspectOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> create(
-      GooglePrivacyDlpV2beta1CreateInspectOperationRequest request) {
+      GooglePrivacyDlpV2beta1CreateInspectOperationRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -295,6 +334,9 @@ class InspectOperationsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/inspect/operations';
@@ -316,6 +358,9 @@ class InspectOperationsResourceApi {
   /// [name] - The name of the operation resource to be deleted.
   /// Value must have pattern "^inspect/operations/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleProtobufEmpty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -323,7 +368,8 @@ class InspectOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name) {
+  async.Future<GoogleProtobufEmpty> delete(core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -333,6 +379,9 @@ class InspectOperationsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -355,6 +404,9 @@ class InspectOperationsResourceApi {
   /// [name] - The name of the operation resource.
   /// Value must have pattern "^inspect/operations/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleLongrunningOperation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -362,7 +414,8 @@ class InspectOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> get(core.String name) {
+  async.Future<GoogleLongrunningOperation> get(core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -372,6 +425,9 @@ class InspectOperationsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -400,6 +456,9 @@ class InspectOperationsResourceApi {
   /// [pageSize] - The list page size. The maximum allowed value is 256 and the
   /// default is 100.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleLongrunningListOperationsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -408,7 +467,10 @@ class InspectOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.String filter, core.String pageToken, core.int pageSize}) {
+      {core.String filter,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -427,6 +489,9 @@ class InspectOperationsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -466,9 +531,6 @@ class InspectResultsFindingsResourceApi {
   /// Should be in the format of `inspect/results/{id}`.
   /// Value must have pattern "^inspect/results/[^/]+$".
   ///
-  /// [pageSize] - Maximum number of results to return.
-  /// If 0, the implementation selects a reasonable value.
-  ///
   /// [filter] - Restricts findings to items that match. Supports info_type and
   /// likelihood.
   ///
@@ -486,6 +548,12 @@ class InspectResultsFindingsResourceApi {
   /// that
   /// the system should return the next page of data.
   ///
+  /// [pageSize] - Maximum number of results to return.
+  /// If 0, the implementation selects a reasonable value.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GooglePrivacyDlpV2beta1ListInspectFindingsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -495,9 +563,10 @@ class InspectResultsFindingsResourceApi {
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2beta1ListInspectFindingsResponse> list(
       core.String name,
-      {core.int pageSize,
-      core.String filter,
-      core.String pageToken}) {
+      {core.String filter,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -508,14 +577,17 @@ class InspectResultsFindingsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -559,6 +631,9 @@ class RiskAnalysisOperationsResourceApi {
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern "^riskAnalysis/operations/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleProtobufEmpty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -567,7 +642,8 @@ class RiskAnalysisOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> cancel(
-      GoogleLongrunningCancelOperationRequest request, core.String name) {
+      GoogleLongrunningCancelOperationRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -580,6 +656,9 @@ class RiskAnalysisOperationsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -601,6 +680,9 @@ class RiskAnalysisOperationsResourceApi {
   /// [name] - The name of the operation resource to be deleted.
   /// Value must have pattern "^riskAnalysis/operations/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleProtobufEmpty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -608,7 +690,8 @@ class RiskAnalysisOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name) {
+  async.Future<GoogleProtobufEmpty> delete(core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -618,6 +701,9 @@ class RiskAnalysisOperationsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -640,6 +726,9 @@ class RiskAnalysisOperationsResourceApi {
   /// [name] - The name of the operation resource.
   /// Value must have pattern "^riskAnalysis/operations/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleLongrunningOperation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -647,7 +736,8 @@ class RiskAnalysisOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> get(core.String name) {
+  async.Future<GoogleLongrunningOperation> get(core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -657,6 +747,9 @@ class RiskAnalysisOperationsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -678,12 +771,15 @@ class RiskAnalysisOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^riskAnalysis/operations$".
   ///
-  /// [pageSize] - The list page size. The maximum allowed value is 256 and the
-  /// default is 100.
-  ///
   /// [filter] - Filters by `done`. That is, `done=true` or `done=false`.
   ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The list page size. The maximum allowed value is 256 and the
+  /// default is 100.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [GoogleLongrunningListOperationsResponse].
   ///
@@ -693,7 +789,10 @@ class RiskAnalysisOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.int pageSize, core.String filter, core.String pageToken}) {
+      {core.String filter,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -704,14 +803,17 @@ class RiskAnalysisOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -744,6 +846,9 @@ class RootCategoriesResourceApi {
   /// If omitted or if localized strings are not available,
   /// en-US strings will be returned.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GooglePrivacyDlpV2beta1ListRootCategoriesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -752,7 +857,7 @@ class RootCategoriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2beta1ListRootCategoriesResponse> list(
-      {core.String languageCode}) {
+      {core.String languageCode, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -762,6 +867,9 @@ class RootCategoriesResourceApi {
 
     if (languageCode != null) {
       _queryParams["languageCode"] = [languageCode];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/rootCategories';
@@ -795,6 +903,9 @@ class RootCategoriesInfoTypesResourceApi {
   /// names. If omitted, or if localized strings are not available,
   /// en-US strings will be returned.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GooglePrivacyDlpV2beta1ListInfoTypesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -804,7 +915,8 @@ class RootCategoriesInfoTypesResourceApi {
   /// this method will complete with the same error.
   async.Future<GooglePrivacyDlpV2beta1ListInfoTypesResponse> list(
       core.String category,
-      {core.String languageCode}) {
+      {core.String languageCode,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -817,6 +929,9 @@ class RootCategoriesInfoTypesResourceApi {
     }
     if (languageCode != null) {
       _queryParams["languageCode"] = [languageCode];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/rootCategories/' +
@@ -1905,6 +2020,42 @@ class GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig {
   }
 }
 
+/// Custom information type provided by the user. Used to find domain-specific
+/// sensitive information configurable to the data in question.
+class GooglePrivacyDlpV2beta1CustomInfoType {
+  /// Dictionary-based custom info type.
+  GooglePrivacyDlpV2beta1Dictionary dictionary;
+
+  /// Info type configuration. All custom info types must have configurations
+  /// that do not conflict with built-in info types or other custom info types.
+  GooglePrivacyDlpV2beta1InfoType infoType;
+
+  GooglePrivacyDlpV2beta1CustomInfoType();
+
+  GooglePrivacyDlpV2beta1CustomInfoType.fromJson(core.Map _json) {
+    if (_json.containsKey("dictionary")) {
+      dictionary =
+          new GooglePrivacyDlpV2beta1Dictionary.fromJson(_json["dictionary"]);
+    }
+    if (_json.containsKey("infoType")) {
+      infoType =
+          new GooglePrivacyDlpV2beta1InfoType.fromJson(_json["infoType"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dictionary != null) {
+      _json["dictionary"] = (dictionary).toJson();
+    }
+    if (infoType != null) {
+      _json["infoType"] = (infoType).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Record key for a finding in Cloud Datastore.
 class GooglePrivacyDlpV2beta1DatastoreKey {
   /// Datastore entity key.
@@ -2131,6 +2282,48 @@ class GooglePrivacyDlpV2beta1DeidentifyContentResponse {
     }
     if (summaries != null) {
       _json["summaries"] = summaries.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Custom information type based on a dictionary of words or phrases. This can
+/// be used to match sensitive information specific to the data, such as a list
+/// of employee IDs or job titles.
+///
+/// Dictionary words are case-insensitive and all characters other than letters
+/// and digits in the unicode [Basic Multilingual
+/// Plane](https://en.wikipedia.org/wiki/Plane_(Unicode)#Basic_Multilingual_Plane)
+/// will be replaced with whitespace when scanning for matches, so the
+/// dictionary phrase "Sam Johnson" will match all three phrases "sam johnson",
+/// "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters
+/// surrounding any match must be of a different type than the adjacent
+/// characters within the word, so letters must be next to non-letters and
+/// digits next to non-digits. For example, the dictionary word "jen" will
+/// match the first three letters of the text "jen123" but will return no
+/// matches for "jennifer".
+///
+/// Dictionary words containing a large number of characters that are not
+/// letters or digits may result in unexpected findings because such characters
+/// are treated as whitespace.
+class GooglePrivacyDlpV2beta1Dictionary {
+  /// List of words or phrases to search for.
+  GooglePrivacyDlpV2beta1WordList wordList;
+
+  GooglePrivacyDlpV2beta1Dictionary();
+
+  GooglePrivacyDlpV2beta1Dictionary.fromJson(core.Map _json) {
+    if (_json.containsKey("wordList")) {
+      wordList =
+          new GooglePrivacyDlpV2beta1WordList.fromJson(_json["wordList"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (wordList != null) {
+      _json["wordList"] = (wordList).toJson();
     }
     return _json;
   }
@@ -2493,7 +2686,7 @@ class GooglePrivacyDlpV2beta1ImageLocation {
   }
 }
 
-/// Configuration for determing how redaction of images should occur.
+/// Configuration for determining how redaction of images should occur.
 class GooglePrivacyDlpV2beta1ImageRedactionConfig {
   /// Only one per info_type should be provided per request. If not
   /// specified, and redact_all_text is false, the DLP API will redact all
@@ -2753,6 +2946,9 @@ class GooglePrivacyDlpV2beta1InfoTypeTransformations {
 /// currently
 /// used.
 class GooglePrivacyDlpV2beta1InspectConfig {
+  /// Custom info types provided by the user.
+  core.List<GooglePrivacyDlpV2beta1CustomInfoType> customInfoTypes;
+
   /// When true, excludes type information of the findings.
   core.bool excludeTypes;
 
@@ -2785,6 +2981,12 @@ class GooglePrivacyDlpV2beta1InspectConfig {
   GooglePrivacyDlpV2beta1InspectConfig();
 
   GooglePrivacyDlpV2beta1InspectConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("customInfoTypes")) {
+      customInfoTypes = _json["customInfoTypes"]
+          .map((value) =>
+              new GooglePrivacyDlpV2beta1CustomInfoType.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("excludeTypes")) {
       excludeTypes = _json["excludeTypes"];
     }
@@ -2813,6 +3015,10 @@ class GooglePrivacyDlpV2beta1InspectConfig {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (customInfoTypes != null) {
+      _json["customInfoTypes"] =
+          customInfoTypes.map((value) => (value).toJson()).toList();
+    }
     if (excludeTypes != null) {
       _json["excludeTypes"] = excludeTypes;
     }
@@ -4155,7 +4361,7 @@ class GooglePrivacyDlpV2beta1Range {
   }
 }
 
-/// A condition for determing whether a transformation should be applied to
+/// A condition for determining whether a transformation should be applied to
 /// a field.
 class GooglePrivacyDlpV2beta1RecordCondition {
   GooglePrivacyDlpV2beta1Expressions expressions;
@@ -4981,6 +5187,31 @@ class GooglePrivacyDlpV2beta1ValueFrequency {
     }
     if (value != null) {
       _json["value"] = (value).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Message defining a list of words or phrases to search for in the data.
+class GooglePrivacyDlpV2beta1WordList {
+  /// Words or phrases defining the dictionary. The dictionary must contain
+  /// at least one phrase and every phrase must contain at least 2 characters
+  /// that are letters or digits. [required]
+  core.List<core.String> words;
+
+  GooglePrivacyDlpV2beta1WordList();
+
+  GooglePrivacyDlpV2beta1WordList.fromJson(core.Map _json) {
+    if (_json.containsKey("words")) {
+      words = _json["words"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (words != null) {
+      _json["words"] = words;
     }
     return _json;
   }

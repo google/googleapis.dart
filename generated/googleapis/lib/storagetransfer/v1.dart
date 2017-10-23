@@ -59,6 +59,9 @@ class GoogleServiceAccountsResourceApi {
   /// account is associated with.
   /// Required.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleServiceAccount].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -66,7 +69,8 @@ class GoogleServiceAccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleServiceAccount> get(core.String projectId) {
+  async.Future<GoogleServiceAccount> get(core.String projectId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -76,6 +80,9 @@ class GoogleServiceAccountsResourceApi {
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/googleServiceAccounts/' +
@@ -102,6 +109,9 @@ class TransferJobsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TransferJob].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -109,7 +119,7 @@ class TransferJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TransferJob> create(TransferJob request) {
+  async.Future<TransferJob> create(TransferJob request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -119,6 +129,9 @@ class TransferJobsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/transferJobs';
@@ -144,6 +157,9 @@ class TransferJobsResourceApi {
   /// owns the job.
   /// Required.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TransferJob].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -151,7 +167,8 @@ class TransferJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TransferJob> get(core.String jobName, {core.String projectId}) {
+  async.Future<TransferJob> get(core.String jobName,
+      {core.String projectId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -164,6 +181,9 @@ class TransferJobsResourceApi {
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$jobName');
@@ -181,6 +201,10 @@ class TransferJobsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageToken] - The list page token.
+  ///
+  /// [pageSize] - The list page size. The max allowed value is 256.
+  ///
   /// [filter] - A list of query parameters specified as JSON text in the form
   /// of
   /// {"project_id":"my_project_id",
@@ -192,9 +216,8 @@ class TransferJobsResourceApi {
   /// and `job_statuses` are optional.  The valid values for `job_statuses` are
   /// case-insensitive: `ENABLED`, `DISABLED`, and `DELETED`.
   ///
-  /// [pageToken] - The list page token.
-  ///
-  /// [pageSize] - The list page size. The max allowed value is 256.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListTransferJobsResponse].
   ///
@@ -204,7 +227,10 @@ class TransferJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferJobsResponse> list(
-      {core.String filter, core.String pageToken, core.int pageSize}) {
+      {core.String pageToken,
+      core.int pageSize,
+      core.String filter,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -212,14 +238,17 @@ class TransferJobsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/transferJobs';
@@ -246,6 +275,9 @@ class TransferJobsResourceApi {
   /// Required.
   /// Value must have pattern "^transferJobs/.+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TransferJob].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -254,7 +286,8 @@ class TransferJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TransferJob> patch(
-      UpdateTransferJobRequest request, core.String jobName) {
+      UpdateTransferJobRequest request, core.String jobName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -267,6 +300,9 @@ class TransferJobsResourceApi {
     }
     if (jobName == null) {
       throw new core.ArgumentError("Parameter jobName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$jobName');
@@ -295,6 +331,9 @@ class TransferOperationsResourceApi {
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern "^transferOperations/.+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -302,7 +341,7 @@ class TransferOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> cancel(core.String name) {
+  async.Future<Empty> cancel(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -312,6 +351,9 @@ class TransferOperationsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
@@ -332,6 +374,9 @@ class TransferOperationsResourceApi {
   /// [name] - The name of the operation resource to be deleted.
   /// Value must have pattern "^transferOperations/.+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -339,7 +384,7 @@ class TransferOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name) {
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -349,6 +394,9 @@ class TransferOperationsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -371,6 +419,9 @@ class TransferOperationsResourceApi {
   /// [name] - The name of the operation resource.
   /// Value must have pattern "^transferOperations/.+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -378,7 +429,7 @@ class TransferOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name) {
+  async.Future<Operation> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -388,6 +439,9 @@ class TransferOperationsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -418,6 +472,10 @@ class TransferOperationsResourceApi {
   /// [name] - The value `transferOperations`.
   /// Value must have pattern "^transferOperations$".
   ///
+  /// [pageToken] - The list page token.
+  ///
+  /// [pageSize] - The list page size. The max allowed value is 256.
+  ///
   /// [filter] - A list of query parameters specified as JSON text in the form
   /// of {\"project_id\" : \"my_project_id\", \"job_names\" : [\"jobid1\",
   /// \"jobid2\",...], \"operation_names\" : [\"opid1\", \"opid2\",...],
@@ -426,9 +484,8 @@ class TransferOperationsResourceApi {
   /// must be specified with array notation. `job_names`, `operation_names`, and
   /// `transfer_statuses` are optional.
   ///
-  /// [pageToken] - The list page token.
-  ///
-  /// [pageSize] - The list page size. The max allowed value is 256.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListOperationsResponse].
   ///
@@ -438,7 +495,10 @@ class TransferOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter, core.String pageToken, core.int pageSize}) {
+      {core.String pageToken,
+      core.int pageSize,
+      core.String filter,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -449,14 +509,17 @@ class TransferOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -480,6 +543,9 @@ class TransferOperationsResourceApi {
   /// Required.
   /// Value must have pattern "^transferOperations/.+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -488,7 +554,8 @@ class TransferOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> pause(
-      PauseTransferOperationRequest request, core.String name) {
+      PauseTransferOperationRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -501,6 +568,9 @@ class TransferOperationsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':pause';
@@ -524,6 +594,9 @@ class TransferOperationsResourceApi {
   /// Required.
   /// Value must have pattern "^transferOperations/.+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -532,7 +605,8 @@ class TransferOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> resume(
-      ResumeTransferOperationRequest request, core.String name) {
+      ResumeTransferOperationRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -545,6 +619,9 @@ class TransferOperationsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':resume';

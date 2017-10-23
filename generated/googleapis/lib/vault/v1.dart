@@ -49,6 +49,9 @@ class MattersResourceApi {
   ///
   /// [matterId] - The matter ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [MatterPermission].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -57,7 +60,8 @@ class MattersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<MatterPermission> addPermissions(
-      AddMatterPermissionsRequest request, core.String matterId) {
+      AddMatterPermissionsRequest request, core.String matterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -70,6 +74,9 @@ class MattersResourceApi {
     }
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/matters/' +
@@ -93,6 +100,9 @@ class MattersResourceApi {
   ///
   /// [matterId] - The matter ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CloseMatterResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -101,7 +111,8 @@ class MattersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CloseMatterResponse> close(
-      CloseMatterRequest request, core.String matterId) {
+      CloseMatterRequest request, core.String matterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -114,6 +125,9 @@ class MattersResourceApi {
     }
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -137,6 +151,9 @@ class MattersResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Matter].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -144,7 +161,7 @@ class MattersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Matter> create(Matter request) {
+  async.Future<Matter> create(Matter request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -154,6 +171,9 @@ class MattersResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/matters';
@@ -173,6 +193,9 @@ class MattersResourceApi {
   ///
   /// [matterId] - The matter ID
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Matter].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -180,7 +203,7 @@ class MattersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Matter> delete(core.String matterId) {
+  async.Future<Matter> delete(core.String matterId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -190,6 +213,9 @@ class MattersResourceApi {
 
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/matters/' + commons.Escaper.ecapeVariable('$matterId');
@@ -215,6 +241,9 @@ class MattersResourceApi {
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Matter].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -222,7 +251,8 @@ class MattersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Matter> get(core.String matterId, {core.String view}) {
+  async.Future<Matter> get(core.String matterId,
+      {core.String view, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -235,6 +265,9 @@ class MattersResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/matters/' + commons.Escaper.ecapeVariable('$matterId');
@@ -252,6 +285,15 @@ class MattersResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [state] - If set, list only matters with that specific state. The default
+  /// is listing
+  /// matters of all states.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : A STATE_UNSPECIFIED.
+  /// - "OPEN" : A OPEN.
+  /// - "CLOSED" : A CLOSED.
+  /// - "DELETED" : A DELETED.
+  ///
   /// [pageToken] - The pagination token as returned in the response.
   ///
   /// [pageSize] - The number of matters to return in the response.
@@ -263,14 +305,8 @@ class MattersResourceApi {
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
   ///
-  /// [state] - If set, list only matters with that specific state. The default
-  /// is listing
-  /// matters of all states.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : A STATE_UNSPECIFIED.
-  /// - "OPEN" : A OPEN.
-  /// - "CLOSED" : A CLOSED.
-  /// - "DELETED" : A DELETED.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListMattersResponse].
   ///
@@ -280,10 +316,11 @@ class MattersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMattersResponse> list(
-      {core.String pageToken,
+      {core.String state,
+      core.String pageToken,
       core.int pageSize,
       core.String view,
-      core.String state}) {
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -291,6 +328,9 @@ class MattersResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (state != null) {
+      _queryParams["state"] = [state];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -300,8 +340,8 @@ class MattersResourceApi {
     if (view != null) {
       _queryParams["view"] = [view];
     }
-    if (state != null) {
-      _queryParams["state"] = [state];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/matters';
@@ -323,6 +363,9 @@ class MattersResourceApi {
   ///
   /// [matterId] - The matter ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -331,7 +374,8 @@ class MattersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> removePermissions(
-      RemoveMatterPermissionsRequest request, core.String matterId) {
+      RemoveMatterPermissionsRequest request, core.String matterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -344,6 +388,9 @@ class MattersResourceApi {
     }
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/matters/' +
@@ -367,6 +414,9 @@ class MattersResourceApi {
   ///
   /// [matterId] - The matter ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ReopenMatterResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -375,7 +425,8 @@ class MattersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ReopenMatterResponse> reopen(
-      ReopenMatterRequest request, core.String matterId) {
+      ReopenMatterRequest request, core.String matterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -388,6 +439,9 @@ class MattersResourceApi {
     }
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -410,6 +464,9 @@ class MattersResourceApi {
   ///
   /// [matterId] - The matter ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Matter].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -418,7 +475,8 @@ class MattersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Matter> undelete(
-      UndeleteMatterRequest request, core.String matterId) {
+      UndeleteMatterRequest request, core.String matterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -431,6 +489,9 @@ class MattersResourceApi {
     }
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/matters/' +
@@ -457,6 +518,9 @@ class MattersResourceApi {
   ///
   /// [matterId] - The matter ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Matter].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -464,7 +528,8 @@ class MattersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Matter> update(Matter request, core.String matterId) {
+  async.Future<Matter> update(Matter request, core.String matterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -477,6 +542,9 @@ class MattersResourceApi {
     }
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/matters/' + commons.Escaper.ecapeVariable('$matterId');
@@ -507,6 +575,9 @@ class MattersHoldsResourceApi {
   ///
   /// [matterId] - The matter ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Hold].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -514,7 +585,8 @@ class MattersHoldsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Hold> create(Hold request, core.String matterId) {
+  async.Future<Hold> create(Hold request, core.String matterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -527,6 +599,9 @@ class MattersHoldsResourceApi {
     }
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -549,6 +624,9 @@ class MattersHoldsResourceApi {
   ///
   /// [holdId] - The hold ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -556,7 +634,8 @@ class MattersHoldsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String matterId, core.String holdId) {
+  async.Future<Empty> delete(core.String matterId, core.String holdId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -569,6 +648,9 @@ class MattersHoldsResourceApi {
     }
     if (holdId == null) {
       throw new core.ArgumentError("Parameter holdId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/matters/' +
@@ -593,6 +675,9 @@ class MattersHoldsResourceApi {
   ///
   /// [holdId] - The hold ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Hold].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -600,7 +685,8 @@ class MattersHoldsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Hold> get(core.String matterId, core.String holdId) {
+  async.Future<Hold> get(core.String matterId, core.String holdId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -613,6 +699,9 @@ class MattersHoldsResourceApi {
     }
     if (holdId == null) {
       throw new core.ArgumentError("Parameter holdId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/matters/' +
@@ -643,6 +732,9 @@ class MattersHoldsResourceApi {
   /// 100 inclusive.
   /// Leaving this empty, or as 0, is the same as page_size = 100.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListHoldsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -651,7 +743,7 @@ class MattersHoldsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListHoldsResponse> list(core.String matterId,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -667,6 +759,9 @@ class MattersHoldsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -693,6 +788,9 @@ class MattersHoldsResourceApi {
   ///
   /// [holdId] - The ID of the hold.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Hold].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -701,7 +799,8 @@ class MattersHoldsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Hold> update(
-      Hold request, core.String matterId, core.String holdId) {
+      Hold request, core.String matterId, core.String holdId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -717,6 +816,9 @@ class MattersHoldsResourceApi {
     }
     if (holdId == null) {
       throw new core.ArgumentError("Parameter holdId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/matters/' +
@@ -752,6 +854,9 @@ class MattersHoldsAccountsResourceApi {
   ///
   /// [holdId] - The hold ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [HeldAccount].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -760,7 +865,8 @@ class MattersHoldsAccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HeldAccount> create(
-      HeldAccount request, core.String matterId, core.String holdId) {
+      HeldAccount request, core.String matterId, core.String holdId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -776,6 +882,9 @@ class MattersHoldsAccountsResourceApi {
     }
     if (holdId == null) {
       throw new core.ArgumentError("Parameter holdId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/matters/' +
@@ -804,6 +913,9 @@ class MattersHoldsAccountsResourceApi {
   ///
   /// [accountId] - The ID of the account to remove from the hold.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -812,7 +924,8 @@ class MattersHoldsAccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(
-      core.String matterId, core.String holdId, core.String accountId) {
+      core.String matterId, core.String holdId, core.String accountId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -828,6 +941,9 @@ class MattersHoldsAccountsResourceApi {
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/matters/' +
@@ -857,6 +973,9 @@ class MattersHoldsAccountsResourceApi {
   ///
   /// [holdId] - The hold ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListHeldAccountsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -865,7 +984,8 @@ class MattersHoldsAccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListHeldAccountsResponse> list(
-      core.String matterId, core.String holdId) {
+      core.String matterId, core.String holdId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -878,6 +998,9 @@ class MattersHoldsAccountsResourceApi {
     }
     if (holdId == null) {
       throw new core.ArgumentError("Parameter holdId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/matters/' +

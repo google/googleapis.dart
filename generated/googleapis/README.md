@@ -597,12 +597,6 @@ Provides reliable, many-to-many, asynchronous messaging between applications.
 
 Official API documentation: https://cloud.google.com/pubsub/docs
 
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) QPX Express API - qpxExpress v1
-
-Finds the least expensive flights between an origin and a destination.
-
-Official API documentation: http://developers.google.com/qpx-express
-
 #### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Enterprise Apps Reseller API - reseller v1
 
 Creates and manages your customers and their subscriptions.

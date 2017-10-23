@@ -61,6 +61,9 @@ class ProjectsResourceApi {
   ///
   /// [projectId] - The project to send the WorkerMessages to.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SendWorkerMessagesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -69,7 +72,8 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SendWorkerMessagesResponse> workerMessages(
-      SendWorkerMessagesRequest request, core.String projectId) {
+      SendWorkerMessagesRequest request, core.String projectId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -82,6 +86,9 @@ class ProjectsResourceApi {
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -117,16 +124,6 @@ class ProjectsJobsResourceApi {
   ///
   /// [projectId] - The project which owns the jobs.
   ///
-  /// [location] - The location that contains this job.
-  ///
-  /// [pageToken] - Set this to the 'next_page_token' field of a previous
-  /// response
-  /// to request additional results in a long list.
-  ///
-  /// [pageSize] - If there are many jobs, limit response to at most this many.
-  /// The actual number of jobs returned will be the lesser of max_responses
-  /// and an unspecified server-defined limit.
-  ///
   /// [view] - Level of information requested in response. Default is
   /// `JOB_VIEW_SUMMARY`.
   /// Possible string values are:
@@ -142,6 +139,19 @@ class ProjectsJobsResourceApi {
   /// - "TERMINATED" : A TERMINATED.
   /// - "ACTIVE" : A ACTIVE.
   ///
+  /// [location] - The location that contains this job.
+  ///
+  /// [pageToken] - Set this to the 'next_page_token' field of a previous
+  /// response
+  /// to request additional results in a long list.
+  ///
+  /// [pageSize] - If there are many jobs, limit response to at most this many.
+  /// The actual number of jobs returned will be the lesser of max_responses
+  /// and an unspecified server-defined limit.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListJobsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -150,11 +160,12 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> aggregated(core.String projectId,
-      {core.String location,
+      {core.String view,
+      core.String filter,
+      core.String location,
       core.String pageToken,
       core.int pageSize,
-      core.String view,
-      core.String filter}) {
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -165,6 +176,12 @@ class ProjectsJobsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (location != null) {
       _queryParams["location"] = [location];
     }
@@ -174,11 +191,8 @@ class ProjectsJobsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -203,6 +217,10 @@ class ProjectsJobsResourceApi {
   /// [projectId] - The ID of the Cloud Platform project that the job belongs
   /// to.
   ///
+  /// [location] - The location that contains this job.
+  ///
+  /// [replaceJobId] - Deprecated. This field is now in the Job message.
+  ///
   /// [view] - The level of information requested in response.
   /// Possible string values are:
   /// - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
@@ -210,9 +228,8 @@ class ProjectsJobsResourceApi {
   /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
   /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
   ///
-  /// [location] - The location that contains this job.
-  ///
-  /// [replaceJobId] - Deprecated. This field is now in the Job message.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [Job].
   ///
@@ -222,7 +239,10 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Job> create(Job request, core.String projectId,
-      {core.String view, core.String location, core.String replaceJobId}) {
+      {core.String location,
+      core.String replaceJobId,
+      core.String view,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -236,14 +256,17 @@ class ProjectsJobsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (location != null) {
       _queryParams["location"] = [location];
     }
     if (replaceJobId != null) {
       _queryParams["replaceJobId"] = [replaceJobId];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -268,6 +291,8 @@ class ProjectsJobsResourceApi {
   ///
   /// [jobId] - The job ID.
   ///
+  /// [location] - The location that contains this job.
+  ///
   /// [view] - The level of information requested in response.
   /// Possible string values are:
   /// - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
@@ -275,7 +300,8 @@ class ProjectsJobsResourceApi {
   /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
   /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
   ///
-  /// [location] - The location that contains this job.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [Job].
   ///
@@ -285,7 +311,7 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Job> get(core.String projectId, core.String jobId,
-      {core.String view, core.String location}) {
+      {core.String location, core.String view, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -299,11 +325,14 @@ class ProjectsJobsResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
+    if (location != null) {
+      _queryParams["location"] = [location];
+    }
     if (view != null) {
       _queryParams["view"] = [view];
     }
-    if (location != null) {
-      _queryParams["location"] = [location];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -328,10 +357,13 @@ class ProjectsJobsResourceApi {
   ///
   /// [jobId] - The job to get messages for.
   ///
+  /// [location] - The location which contains the job specified by job_id.
+  ///
   /// [startTime] - Return only metric data that has changed since this time.
   /// Default is to return all information about all metrics for the job.
   ///
-  /// [location] - The location which contains the job specified by job_id.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [JobMetrics].
   ///
@@ -341,7 +373,7 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<JobMetrics> getMetrics(core.String projectId, core.String jobId,
-      {core.String startTime, core.String location}) {
+      {core.String location, core.String startTime, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -355,11 +387,14 @@ class ProjectsJobsResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
+    if (location != null) {
+      _queryParams["location"] = [location];
+    }
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
     }
-    if (location != null) {
-      _queryParams["location"] = [location];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -408,6 +443,9 @@ class ProjectsJobsResourceApi {
   /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
   /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListJobsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -420,7 +458,8 @@ class ProjectsJobsResourceApi {
       core.String location,
       core.String pageToken,
       core.int pageSize,
-      core.String view}) {
+      core.String view,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -445,6 +484,9 @@ class ProjectsJobsResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -473,6 +515,9 @@ class ProjectsJobsResourceApi {
   ///
   /// [location] - The location that contains this job.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Job].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -482,7 +527,7 @@ class ProjectsJobsResourceApi {
   /// this method will complete with the same error.
   async.Future<Job> update(
       Job request, core.String projectId, core.String jobId,
-      {core.String location}) {
+      {core.String location, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -501,6 +546,9 @@ class ProjectsJobsResourceApi {
     }
     if (location != null) {
       _queryParams["location"] = [location];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -534,6 +582,9 @@ class ProjectsJobsDebugResourceApi {
   ///
   /// [jobId] - The job id.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GetDebugConfigResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -542,7 +593,8 @@ class ProjectsJobsDebugResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetDebugConfigResponse> getConfig(
-      GetDebugConfigRequest request, core.String projectId, core.String jobId) {
+      GetDebugConfigRequest request, core.String projectId, core.String jobId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -558,6 +610,9 @@ class ProjectsJobsDebugResourceApi {
     }
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -585,6 +640,9 @@ class ProjectsJobsDebugResourceApi {
   ///
   /// [jobId] - The job id.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SendDebugCaptureResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -593,9 +651,8 @@ class ProjectsJobsDebugResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SendDebugCaptureResponse> sendCapture(
-      SendDebugCaptureRequest request,
-      core.String projectId,
-      core.String jobId) {
+      SendDebugCaptureRequest request, core.String projectId, core.String jobId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -611,6 +668,9 @@ class ProjectsJobsDebugResourceApi {
     }
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -644,11 +704,11 @@ class ProjectsJobsMessagesResourceApi {
   ///
   /// [jobId] - The job to get messages about.
   ///
+  /// [location] - The location which contains the job specified by job_id.
+  ///
   /// [endTime] - Return only messages with timestamps < end_time. The default
   /// is now
   /// (i.e. return up to the latest messages available).
-  ///
-  /// [location] - The location which contains the job specified by job_id.
   ///
   /// [startTime] - If specified, return only messages with timestamps >=
   /// start_time.
@@ -672,6 +732,9 @@ class ProjectsJobsMessagesResourceApi {
   /// - "JOB_MESSAGE_WARNING" : A JOB_MESSAGE_WARNING.
   /// - "JOB_MESSAGE_ERROR" : A JOB_MESSAGE_ERROR.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListJobMessagesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -681,12 +744,13 @@ class ProjectsJobsMessagesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListJobMessagesResponse> list(
       core.String projectId, core.String jobId,
-      {core.String endTime,
-      core.String location,
+      {core.String location,
+      core.String endTime,
       core.String startTime,
       core.String pageToken,
       core.int pageSize,
-      core.String minimumImportance}) {
+      core.String minimumImportance,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -700,11 +764,11 @@ class ProjectsJobsMessagesResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-    if (endTime != null) {
-      _queryParams["endTime"] = [endTime];
-    }
     if (location != null) {
       _queryParams["location"] = [location];
+    }
+    if (endTime != null) {
+      _queryParams["endTime"] = [endTime];
     }
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
@@ -717,6 +781,9 @@ class ProjectsJobsMessagesResourceApi {
     }
     if (minimumImportance != null) {
       _queryParams["minimumImportance"] = [minimumImportance];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -751,6 +818,9 @@ class ProjectsJobsWorkItemsResourceApi {
   ///
   /// [jobId] - Identifies the workflow job this worker belongs to.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LeaseWorkItemResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -759,7 +829,8 @@ class ProjectsJobsWorkItemsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LeaseWorkItemResponse> lease(
-      LeaseWorkItemRequest request, core.String projectId, core.String jobId) {
+      LeaseWorkItemRequest request, core.String projectId, core.String jobId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -775,6 +846,9 @@ class ProjectsJobsWorkItemsResourceApi {
     }
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -802,6 +876,9 @@ class ProjectsJobsWorkItemsResourceApi {
   ///
   /// [jobId] - The job which the WorkItem is part of.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ReportWorkItemStatusResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -812,7 +889,8 @@ class ProjectsJobsWorkItemsResourceApi {
   async.Future<ReportWorkItemStatusResponse> reportStatus(
       ReportWorkItemStatusRequest request,
       core.String projectId,
-      core.String jobId) {
+      core.String jobId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -828,6 +906,9 @@ class ProjectsJobsWorkItemsResourceApi {
     }
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -868,6 +949,9 @@ class ProjectsLocationsResourceApi {
   ///
   /// [location] - The location which contains the job
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SendWorkerMessagesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -878,7 +962,8 @@ class ProjectsLocationsResourceApi {
   async.Future<SendWorkerMessagesResponse> workerMessages(
       SendWorkerMessagesRequest request,
       core.String projectId,
-      core.String location) {
+      core.String location,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -894,6 +979,9 @@ class ProjectsLocationsResourceApi {
     }
     if (location == null) {
       throw new core.ArgumentError("Parameter location is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -946,6 +1034,9 @@ class ProjectsLocationsJobsResourceApi {
   ///
   /// [replaceJobId] - Deprecated. This field is now in the Job message.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Job].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -955,7 +1046,7 @@ class ProjectsLocationsJobsResourceApi {
   /// this method will complete with the same error.
   async.Future<Job> create(
       Job request, core.String projectId, core.String location,
-      {core.String view, core.String replaceJobId}) {
+      {core.String view, core.String replaceJobId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -977,6 +1068,9 @@ class ProjectsLocationsJobsResourceApi {
     }
     if (replaceJobId != null) {
       _queryParams["replaceJobId"] = [replaceJobId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -1012,6 +1106,9 @@ class ProjectsLocationsJobsResourceApi {
   /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
   /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Job].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1021,7 +1118,7 @@ class ProjectsLocationsJobsResourceApi {
   /// this method will complete with the same error.
   async.Future<Job> get(
       core.String projectId, core.String location, core.String jobId,
-      {core.String view}) {
+      {core.String view, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1040,6 +1137,9 @@ class ProjectsLocationsJobsResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -1071,6 +1171,9 @@ class ProjectsLocationsJobsResourceApi {
   /// [startTime] - Return only metric data that has changed since this time.
   /// Default is to return all information about all metrics for the job.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [JobMetrics].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1080,7 +1183,7 @@ class ProjectsLocationsJobsResourceApi {
   /// this method will complete with the same error.
   async.Future<JobMetrics> getMetrics(
       core.String projectId, core.String location, core.String jobId,
-      {core.String startTime}) {
+      {core.String startTime, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1099,6 +1202,9 @@ class ProjectsLocationsJobsResourceApi {
     }
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -1149,6 +1255,9 @@ class ProjectsLocationsJobsResourceApi {
   /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
   /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListJobsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1161,7 +1270,8 @@ class ProjectsLocationsJobsResourceApi {
       {core.String filter,
       core.String pageToken,
       core.int pageSize,
-      core.String view}) {
+      core.String view,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1186,6 +1296,9 @@ class ProjectsLocationsJobsResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -1216,6 +1329,9 @@ class ProjectsLocationsJobsResourceApi {
   ///
   /// [jobId] - The job ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Job].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1224,7 +1340,8 @@ class ProjectsLocationsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Job> update(Job request, core.String projectId,
-      core.String location, core.String jobId) {
+      core.String location, core.String jobId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1243,6 +1360,9 @@ class ProjectsLocationsJobsResourceApi {
     }
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -1280,6 +1400,9 @@ class ProjectsLocationsJobsDebugResourceApi {
   ///
   /// [jobId] - The job id.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GetDebugConfigResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1288,7 +1411,8 @@ class ProjectsLocationsJobsDebugResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetDebugConfigResponse> getConfig(GetDebugConfigRequest request,
-      core.String projectId, core.String location, core.String jobId) {
+      core.String projectId, core.String location, core.String jobId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1307,6 +1431,9 @@ class ProjectsLocationsJobsDebugResourceApi {
     }
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -1338,6 +1465,9 @@ class ProjectsLocationsJobsDebugResourceApi {
   ///
   /// [jobId] - The job id.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SendDebugCaptureResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1349,7 +1479,8 @@ class ProjectsLocationsJobsDebugResourceApi {
       SendDebugCaptureRequest request,
       core.String projectId,
       core.String location,
-      core.String jobId) {
+      core.String jobId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1368,6 +1499,9 @@ class ProjectsLocationsJobsDebugResourceApi {
     }
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -1405,19 +1539,6 @@ class ProjectsLocationsJobsMessagesResourceApi {
   ///
   /// [jobId] - The job to get messages about.
   ///
-  /// [pageSize] - If specified, determines the maximum number of messages to
-  /// return.  If unspecified, the service may choose an appropriate
-  /// default, or may return an arbitrarily large number of results.
-  ///
-  /// [minimumImportance] - Filter to only get messages with importance >= level
-  /// Possible string values are:
-  /// - "JOB_MESSAGE_IMPORTANCE_UNKNOWN" : A JOB_MESSAGE_IMPORTANCE_UNKNOWN.
-  /// - "JOB_MESSAGE_DEBUG" : A JOB_MESSAGE_DEBUG.
-  /// - "JOB_MESSAGE_DETAILED" : A JOB_MESSAGE_DETAILED.
-  /// - "JOB_MESSAGE_BASIC" : A JOB_MESSAGE_BASIC.
-  /// - "JOB_MESSAGE_WARNING" : A JOB_MESSAGE_WARNING.
-  /// - "JOB_MESSAGE_ERROR" : A JOB_MESSAGE_ERROR.
-  ///
   /// [endTime] - Return only messages with timestamps < end_time. The default
   /// is now
   /// (i.e. return up to the latest messages available).
@@ -1431,6 +1552,22 @@ class ProjectsLocationsJobsMessagesResourceApi {
   /// by an earlier call. This will cause the next page of results to
   /// be returned.
   ///
+  /// [pageSize] - If specified, determines the maximum number of messages to
+  /// return.  If unspecified, the service may choose an appropriate
+  /// default, or may return an arbitrarily large number of results.
+  ///
+  /// [minimumImportance] - Filter to only get messages with importance >= level
+  /// Possible string values are:
+  /// - "JOB_MESSAGE_IMPORTANCE_UNKNOWN" : A JOB_MESSAGE_IMPORTANCE_UNKNOWN.
+  /// - "JOB_MESSAGE_DEBUG" : A JOB_MESSAGE_DEBUG.
+  /// - "JOB_MESSAGE_DETAILED" : A JOB_MESSAGE_DETAILED.
+  /// - "JOB_MESSAGE_BASIC" : A JOB_MESSAGE_BASIC.
+  /// - "JOB_MESSAGE_WARNING" : A JOB_MESSAGE_WARNING.
+  /// - "JOB_MESSAGE_ERROR" : A JOB_MESSAGE_ERROR.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListJobMessagesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1440,11 +1577,12 @@ class ProjectsLocationsJobsMessagesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListJobMessagesResponse> list(
       core.String projectId, core.String location, core.String jobId,
-      {core.int pageSize,
-      core.String minimumImportance,
-      core.String endTime,
+      {core.String endTime,
       core.String startTime,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.int pageSize,
+      core.String minimumImportance,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1461,12 +1599,6 @@ class ProjectsLocationsJobsMessagesResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (minimumImportance != null) {
-      _queryParams["minimumImportance"] = [minimumImportance];
-    }
     if (endTime != null) {
       _queryParams["endTime"] = [endTime];
     }
@@ -1475,6 +1607,15 @@ class ProjectsLocationsJobsMessagesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (minimumImportance != null) {
+      _queryParams["minimumImportance"] = [minimumImportance];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -1513,6 +1654,9 @@ class ProjectsLocationsJobsWorkItemsResourceApi {
   ///
   /// [jobId] - Identifies the workflow job this worker belongs to.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LeaseWorkItemResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1521,7 +1665,8 @@ class ProjectsLocationsJobsWorkItemsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LeaseWorkItemResponse> lease(LeaseWorkItemRequest request,
-      core.String projectId, core.String location, core.String jobId) {
+      core.String projectId, core.String location, core.String jobId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1540,6 +1685,9 @@ class ProjectsLocationsJobsWorkItemsResourceApi {
     }
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -1571,6 +1719,9 @@ class ProjectsLocationsJobsWorkItemsResourceApi {
   ///
   /// [jobId] - The job which the WorkItem is part of.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ReportWorkItemStatusResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1582,7 +1733,8 @@ class ProjectsLocationsJobsWorkItemsResourceApi {
       ReportWorkItemStatusRequest request,
       core.String projectId,
       core.String location,
-      core.String jobId) {
+      core.String jobId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1601,6 +1753,9 @@ class ProjectsLocationsJobsWorkItemsResourceApi {
     }
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -1639,6 +1794,9 @@ class ProjectsLocationsTemplatesResourceApi {
   ///
   /// [location] - The location to which to direct the request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Job].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1647,7 +1805,8 @@ class ProjectsLocationsTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Job> create(CreateJobFromTemplateRequest request,
-      core.String projectId, core.String location) {
+      core.String projectId, core.String location,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1663,6 +1822,9 @@ class ProjectsLocationsTemplatesResourceApi {
     }
     if (location == null) {
       throw new core.ArgumentError("Parameter location is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -1697,6 +1859,9 @@ class ProjectsLocationsTemplatesResourceApi {
   /// create the job.
   /// Must be a valid Cloud Storage URL, beginning with `gs://`.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GetTemplateResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1706,7 +1871,7 @@ class ProjectsLocationsTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<GetTemplateResponse> get(
       core.String projectId, core.String location,
-      {core.String view, core.String gcsPath}) {
+      {core.String view, core.String gcsPath, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1725,6 +1890,9 @@ class ProjectsLocationsTemplatesResourceApi {
     }
     if (gcsPath != null) {
       _queryParams["gcsPath"] = [gcsPath];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -1762,6 +1930,9 @@ class ProjectsLocationsTemplatesResourceApi {
   /// the job.
   /// Must be valid Cloud Storage URL, beginning with 'gs://'.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LaunchTemplateResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1771,7 +1942,7 @@ class ProjectsLocationsTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<LaunchTemplateResponse> launch(LaunchTemplateParameters request,
       core.String projectId, core.String location,
-      {core.bool validateOnly, core.String gcsPath}) {
+      {core.bool validateOnly, core.String gcsPath, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1793,6 +1964,9 @@ class ProjectsLocationsTemplatesResourceApi {
     }
     if (gcsPath != null) {
       _queryParams["gcsPath"] = [gcsPath];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -1826,6 +2000,9 @@ class ProjectsTemplatesResourceApi {
   /// [projectId] - Required. The ID of the Cloud Platform project that the job
   /// belongs to.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Job].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1834,7 +2011,8 @@ class ProjectsTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Job> create(
-      CreateJobFromTemplateRequest request, core.String projectId) {
+      CreateJobFromTemplateRequest request, core.String projectId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1847,6 +2025,9 @@ class ProjectsTemplatesResourceApi {
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -1879,6 +2060,9 @@ class ProjectsTemplatesResourceApi {
   /// create the job.
   /// Must be a valid Cloud Storage URL, beginning with `gs://`.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GetTemplateResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1887,7 +2071,10 @@ class ProjectsTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetTemplateResponse> get(core.String projectId,
-      {core.String location, core.String view, core.String gcsPath}) {
+      {core.String location,
+      core.String view,
+      core.String gcsPath,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1906,6 +2093,9 @@ class ProjectsTemplatesResourceApi {
     }
     if (gcsPath != null) {
       _queryParams["gcsPath"] = [gcsPath];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +
@@ -1941,6 +2131,9 @@ class ProjectsTemplatesResourceApi {
   /// executed.
   /// Defaults to false.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LaunchTemplateResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1950,7 +2143,10 @@ class ProjectsTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<LaunchTemplateResponse> launch(
       LaunchTemplateParameters request, core.String projectId,
-      {core.String gcsPath, core.String location, core.bool validateOnly}) {
+      {core.String gcsPath,
+      core.String location,
+      core.bool validateOnly,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1972,6 +2168,9 @@ class ProjectsTemplatesResourceApi {
     }
     if (validateOnly != null) {
       _queryParams["validateOnly"] = ["${validateOnly}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1b3/projects/' +

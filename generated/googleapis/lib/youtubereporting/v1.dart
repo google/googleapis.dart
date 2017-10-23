@@ -65,6 +65,9 @@ class JobsResourceApi {
   /// the user is acting on. If
   /// not set, the user is acting for himself (his own channel).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Job].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -72,7 +75,8 @@ class JobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Job> create(Job request, {core.String onBehalfOfContentOwner}) {
+  async.Future<Job> create(Job request,
+      {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -85,6 +89,9 @@ class JobsResourceApi {
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/jobs';
@@ -108,6 +115,9 @@ class JobsResourceApi {
   /// the user is acting on. If
   /// not set, the user is acting for himself (his own channel).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -116,7 +126,7 @@ class JobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String jobId,
-      {core.String onBehalfOfContentOwner}) {
+      {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -129,6 +139,9 @@ class JobsResourceApi {
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId');
@@ -152,6 +165,9 @@ class JobsResourceApi {
   /// the user is acting on. If
   /// not set, the user is acting for himself (his own channel).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Job].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -160,7 +176,7 @@ class JobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Job> get(core.String jobId,
-      {core.String onBehalfOfContentOwner}) {
+      {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -173,6 +189,9 @@ class JobsResourceApi {
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId');
@@ -190,6 +209,10 @@ class JobsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
+  /// the user is acting on. If
+  /// not set, the user is acting for himself (his own channel).
+  ///
   /// [includeSystemManaged] - If set to true, also system-managed jobs will be
   /// returned; otherwise only
   /// user-created jobs will be returned. System-managed jobs can neither be
@@ -205,9 +228,8 @@ class JobsResourceApi {
   /// requested.
   /// If unspecified, server will pick an appropriate default.
   ///
-  /// [onBehalfOfContentOwner] - The content owner's external ID on which behalf
-  /// the user is acting on. If
-  /// not set, the user is acting for himself (his own channel).
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListJobsResponse].
   ///
@@ -217,10 +239,11 @@ class JobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(
-      {core.bool includeSystemManaged,
+      {core.String onBehalfOfContentOwner,
+      core.bool includeSystemManaged,
       core.String pageToken,
       core.int pageSize,
-      core.String onBehalfOfContentOwner}) {
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -228,6 +251,9 @@ class JobsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (onBehalfOfContentOwner != null) {
+      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
     if (includeSystemManaged != null) {
       _queryParams["includeSystemManaged"] = ["${includeSystemManaged}"];
     }
@@ -237,8 +263,8 @@ class JobsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/jobs';
@@ -270,6 +296,9 @@ class JobsReportsResourceApi {
   /// the user is acting on. If
   /// not set, the user is acting for himself (his own channel).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Report].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -278,7 +307,7 @@ class JobsReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Report> get(core.String jobId, core.String reportId,
-      {core.String onBehalfOfContentOwner}) {
+      {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -294,6 +323,9 @@ class JobsReportsResourceApi {
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/jobs/' +
@@ -342,6 +374,9 @@ class JobsReportsResourceApi {
   /// than requested.
   /// If unspecified, server will pick an appropriate default.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListReportsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -355,7 +390,8 @@ class JobsReportsResourceApi {
       core.String createdAfter,
       core.String startTimeAtOrAfter,
       core.String pageToken,
-      core.int pageSize}) {
+      core.int pageSize,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -384,6 +420,9 @@ class JobsReportsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/reports';
 
@@ -411,6 +450,9 @@ class MediaResourceApi {
   /// ReadRequest.resource_name.
   /// Value must have pattern "^.+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [downloadOptions] - Options for downloading. A download can be either a
   /// Metadata (default) or Media download. Partial Media downloads are possible
   /// as well.
@@ -427,7 +469,8 @@ class MediaResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future download(core.String resourceName,
-      {commons.DownloadOptions downloadOptions:
+      {core.String $fields,
+      commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -438,6 +481,9 @@ class MediaResourceApi {
 
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = downloadOptions;
@@ -487,6 +533,9 @@ class ReportTypesResourceApi {
   /// than requested.
   /// If unspecified, server will pick an appropriate default.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListReportTypesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -498,7 +547,8 @@ class ReportTypesResourceApi {
       {core.String onBehalfOfContentOwner,
       core.bool includeSystemManaged,
       core.String pageToken,
-      core.int pageSize}) {
+      core.int pageSize,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -517,6 +567,9 @@ class ReportTypesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/reportTypes';

@@ -76,10 +76,13 @@ class ContactGroupsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [resourceNames] - The resource names of the contact groups to get.
+  ///
   /// [maxMembers] - Specifies the maximum number of members to return for each
   /// group.
   ///
-  /// [resourceNames] - The resource names of the contact groups to get.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [BatchGetContactGroupsResponse].
   ///
@@ -89,7 +92,9 @@ class ContactGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchGetContactGroupsResponse> batchGet(
-      {core.int maxMembers, core.List<core.String> resourceNames}) {
+      {core.List<core.String> resourceNames,
+      core.int maxMembers,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -97,11 +102,14 @@ class ContactGroupsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (resourceNames != null) {
+      _queryParams["resourceNames"] = resourceNames;
+    }
     if (maxMembers != null) {
       _queryParams["maxMembers"] = ["${maxMembers}"];
     }
-    if (resourceNames != null) {
-      _queryParams["resourceNames"] = resourceNames;
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/contactGroups:batchGet';
@@ -122,6 +130,9 @@ class ContactGroupsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ContactGroup].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -129,7 +140,8 @@ class ContactGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ContactGroup> create(CreateContactGroupRequest request) {
+  async.Future<ContactGroup> create(CreateContactGroupRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -139,6 +151,9 @@ class ContactGroupsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/contactGroups';
@@ -163,6 +178,9 @@ class ContactGroupsResourceApi {
   /// [deleteContacts] - Set to true to also delete the contacts in the
   /// specified group.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -171,7 +189,7 @@ class ContactGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String resourceName,
-      {core.bool deleteContacts}) {
+      {core.bool deleteContacts, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -184,6 +202,9 @@ class ContactGroupsResourceApi {
     }
     if (deleteContacts != null) {
       _queryParams["deleteContacts"] = ["${deleteContacts}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
@@ -207,6 +228,9 @@ class ContactGroupsResourceApi {
   ///
   /// [maxMembers] - Specifies the maximum number of members to return.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ContactGroup].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -215,7 +239,7 @@ class ContactGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ContactGroup> get(core.String resourceName,
-      {core.int maxMembers}) {
+      {core.int maxMembers, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -228,6 +252,9 @@ class ContactGroupsResourceApi {
     }
     if (maxMembers != null) {
       _queryParams["maxMembers"] = ["${maxMembers}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
@@ -246,15 +273,18 @@ class ContactGroupsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [syncToken] - A sync token, returned by a previous call to
+  /// `contactgroups.list`.
+  /// Only resources changed since the sync token was created will be returned.
+  ///
   /// [pageToken] - The next_page_token value returned from a previous call to
   /// [ListContactGroups](/people/api/rest/v1/contactgroups/list).
   /// Requests the next page of resources.
   ///
   /// [pageSize] - The maximum number of resources to return.
   ///
-  /// [syncToken] - A sync token, returned by a previous call to
-  /// `contactgroups.list`.
-  /// Only resources changed since the sync token was created will be returned.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListContactGroupsResponse].
   ///
@@ -264,7 +294,10 @@ class ContactGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListContactGroupsResponse> list(
-      {core.String pageToken, core.int pageSize, core.String syncToken}) {
+      {core.String syncToken,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -272,14 +305,17 @@ class ContactGroupsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (syncToken != null) {
+      _queryParams["syncToken"] = [syncToken];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (syncToken != null) {
-      _queryParams["syncToken"] = [syncToken];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/contactGroups';
@@ -306,6 +342,9 @@ class ContactGroupsResourceApi {
   /// string, in the form of `contactGroups/`<var>contact_group_id</var>.
   /// Value must have pattern "^contactGroups/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ContactGroup].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -314,7 +353,8 @@ class ContactGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ContactGroup> update(
-      UpdateContactGroupRequest request, core.String resourceName) {
+      UpdateContactGroupRequest request, core.String resourceName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -327,6 +367,9 @@ class ContactGroupsResourceApi {
     }
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
@@ -356,6 +399,9 @@ class ContactGroupsMembersResourceApi {
   /// [resourceName] - The resource name of the contact group to modify.
   /// Value must have pattern "^contactGroups/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ModifyContactGroupMembersResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -364,7 +410,8 @@ class ContactGroupsMembersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ModifyContactGroupMembersResponse> modify(
-      ModifyContactGroupMembersRequest request, core.String resourceName) {
+      ModifyContactGroupMembersRequest request, core.String resourceName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -377,6 +424,9 @@ class ContactGroupsMembersResourceApi {
     }
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -410,6 +460,9 @@ class PeopleResourceApi {
   ///
   /// [parent] - The resource name of the owning person resource.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Person].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -417,7 +470,8 @@ class PeopleResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Person> createContact(Person request, {core.String parent}) {
+  async.Future<Person> createContact(Person request,
+      {core.String parent, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -430,6 +484,9 @@ class PeopleResourceApi {
     }
     if (parent != null) {
       _queryParams["parent"] = [parent];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/people:createContact';
@@ -450,6 +507,9 @@ class PeopleResourceApi {
   /// [resourceName] - The resource name of the contact to delete.
   /// Value must have pattern "^people/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -457,7 +517,8 @@ class PeopleResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> deleteContact(core.String resourceName) {
+  async.Future<Empty> deleteContact(core.String resourceName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -467,6 +528,9 @@ class PeopleResourceApi {
 
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -537,6 +601,9 @@ class PeopleResourceApi {
   /// response. Each path should start with `person.`: for example,
   /// `person.names` or `person.photos`.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Person].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -545,7 +612,9 @@ class PeopleResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Person> get(core.String resourceName,
-      {core.String personFields, core.String requestMask_includeField}) {
+      {core.String personFields,
+      core.String requestMask_includeField,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -561,6 +630,9 @@ class PeopleResourceApi {
     }
     if (requestMask_includeField != null) {
       _queryParams["requestMask.includeField"] = [requestMask_includeField];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
@@ -581,18 +653,6 @@ class PeopleResourceApi {
   /// The request throws a 400 error if 'personFields' is not specified.
   ///
   /// Request parameters:
-  ///
-  /// [resourceNames] - The resource names of the people to provide information
-  /// about.
-  ///
-  /// - To get information about the authenticated user, specify `people/me`.
-  /// - To get information about a google account, specify
-  ///   `people/`<var>account_id</var>.
-  /// - To get information about a contact, specify the resource name that
-  ///   identifies the contact as returned by
-  /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).
-  ///
-  /// You can include up to 50 resource names in one request.
   ///
   /// [personFields] - **Required.** A field mask to restrict which fields on
   /// each person are
@@ -631,6 +691,21 @@ class PeopleResourceApi {
   /// response. Each path should start with `person.`: for example,
   /// `person.names` or `person.photos`.
   ///
+  /// [resourceNames] - The resource names of the people to provide information
+  /// about.
+  ///
+  /// - To get information about the authenticated user, specify `people/me`.
+  /// - To get information about a google account, specify
+  ///   `people/`<var>account_id</var>.
+  /// - To get information about a contact, specify the resource name that
+  ///   identifies the contact as returned by
+  /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).
+  ///
+  /// You can include up to 50 resource names in one request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GetPeopleResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -639,9 +714,10 @@ class PeopleResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetPeopleResponse> getBatchGet(
-      {core.List<core.String> resourceNames,
-      core.String personFields,
-      core.String requestMask_includeField}) {
+      {core.String personFields,
+      core.String requestMask_includeField,
+      core.List<core.String> resourceNames,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -649,14 +725,17 @@ class PeopleResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (resourceNames != null) {
-      _queryParams["resourceNames"] = resourceNames;
-    }
     if (personFields != null) {
       _queryParams["personFields"] = [personFields];
     }
     if (requestMask_includeField != null) {
       _queryParams["requestMask.includeField"] = [requestMask_includeField];
+    }
+    if (resourceNames != null) {
+      _queryParams["resourceNames"] = resourceNames;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/people:batchGet';
@@ -717,6 +796,9 @@ class PeopleResourceApi {
   /// * skills
   /// * urls
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Person].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -725,7 +807,7 @@ class PeopleResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Person> updateContact(Person request, core.String resourceName,
-      {core.String updatePersonFields}) {
+      {core.String updatePersonFields, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -741,6 +823,9 @@ class PeopleResourceApi {
     }
     if (updatePersonFields != null) {
       _queryParams["updatePersonFields"] = [updatePersonFields];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -773,6 +858,29 @@ class PeopleConnectionsResourceApi {
   /// [resourceName] - The resource name to return connections for. Only
   /// `people/me` is valid.
   /// Value must have pattern "^people/[^/]+$".
+  ///
+  /// [sortOrder] - The order in which the connections should be sorted.
+  /// Defaults to
+  /// `LAST_MODIFIED_ASCENDING`.
+  /// Possible string values are:
+  /// - "LAST_MODIFIED_ASCENDING" : A LAST_MODIFIED_ASCENDING.
+  /// - "FIRST_NAME_ASCENDING" : A FIRST_NAME_ASCENDING.
+  /// - "LAST_NAME_ASCENDING" : A LAST_NAME_ASCENDING.
+  ///
+  /// [requestSyncToken] - Whether the response should include a sync token,
+  /// which can be used to get
+  /// all changes since the last request.
+  ///
+  /// [pageToken] - The token of the page to be returned.
+  ///
+  /// [requestMask_includeField] - **Required.** Comma-separated list of person
+  /// fields to be included in the
+  /// response. Each path should start with `person.`: for example,
+  /// `person.names` or `person.photos`.
+  ///
+  /// [pageSize] - The number of connections to include in the response. Valid
+  /// values are
+  /// between 1 and 2000, inclusive. Defaults to 100.
   ///
   /// [syncToken] - A sync token, returned by a previous call to
   /// `people.connections.list`.
@@ -810,28 +918,8 @@ class PeopleConnectionsResourceApi {
   /// * taglines
   /// * urls
   ///
-  /// [sortOrder] - The order in which the connections should be sorted.
-  /// Defaults to
-  /// `LAST_MODIFIED_ASCENDING`.
-  /// Possible string values are:
-  /// - "LAST_MODIFIED_ASCENDING" : A LAST_MODIFIED_ASCENDING.
-  /// - "FIRST_NAME_ASCENDING" : A FIRST_NAME_ASCENDING.
-  /// - "LAST_NAME_ASCENDING" : A LAST_NAME_ASCENDING.
-  ///
-  /// [requestSyncToken] - Whether the response should include a sync token,
-  /// which can be used to get
-  /// all changes since the last request.
-  ///
-  /// [pageToken] - The token of the page to be returned.
-  ///
-  /// [pageSize] - The number of connections to include in the response. Valid
-  /// values are
-  /// between 1 and 2000, inclusive. Defaults to 100.
-  ///
-  /// [requestMask_includeField] - **Required.** Comma-separated list of person
-  /// fields to be included in the
-  /// response. Each path should start with `person.`: for example,
-  /// `person.names` or `person.photos`.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListConnectionsResponse].
   ///
@@ -841,13 +929,14 @@ class PeopleConnectionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListConnectionsResponse> list(core.String resourceName,
-      {core.String syncToken,
-      core.String personFields,
-      core.String sortOrder,
+      {core.String sortOrder,
       core.bool requestSyncToken,
       core.String pageToken,
+      core.String requestMask_includeField,
       core.int pageSize,
-      core.String requestMask_includeField}) {
+      core.String syncToken,
+      core.String personFields,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -858,12 +947,6 @@ class PeopleConnectionsResourceApi {
     if (resourceName == null) {
       throw new core.ArgumentError("Parameter resourceName is required.");
     }
-    if (syncToken != null) {
-      _queryParams["syncToken"] = [syncToken];
-    }
-    if (personFields != null) {
-      _queryParams["personFields"] = [personFields];
-    }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
@@ -873,11 +956,20 @@ class PeopleConnectionsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if (requestMask_includeField != null) {
+      _queryParams["requestMask.includeField"] = [requestMask_includeField];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (requestMask_includeField != null) {
-      _queryParams["requestMask.includeField"] = [requestMask_includeField];
+    if (syncToken != null) {
+      _queryParams["syncToken"] = [syncToken];
+    }
+    if (personFields != null) {
+      _queryParams["personFields"] = [personFields];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +

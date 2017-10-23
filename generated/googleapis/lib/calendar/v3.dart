@@ -57,12 +57,16 @@ class AclResourceApi {
   ///
   /// [ruleId] - ACL rule identifier.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String calendarId, core.String ruleId) {
+  async.Future delete(core.String calendarId, core.String ruleId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -75,6 +79,9 @@ class AclResourceApi {
     }
     if (ruleId == null) {
       throw new core.ArgumentError("Parameter ruleId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -103,6 +110,9 @@ class AclResourceApi {
   ///
   /// [ruleId] - ACL rule identifier.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AclRule].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -110,7 +120,8 @@ class AclResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AclRule> get(core.String calendarId, core.String ruleId) {
+  async.Future<AclRule> get(core.String calendarId, core.String ruleId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -123,6 +134,9 @@ class AclResourceApi {
     }
     if (ruleId == null) {
       throw new core.ArgumentError("Parameter ruleId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'calendars/' +
@@ -149,6 +163,12 @@ class AclResourceApi {
   /// calendarList.list method. If you want to access the primary calendar of
   /// the currently logged in user, use the "primary" keyword.
   ///
+  /// [sendNotifications] - Whether to send notifications about the calendar
+  /// sharing change. Optional. The default is True.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AclRule].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -156,7 +176,8 @@ class AclResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AclRule> insert(AclRule request, core.String calendarId) {
+  async.Future<AclRule> insert(AclRule request, core.String calendarId,
+      {core.bool sendNotifications, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -169,6 +190,12 @@ class AclResourceApi {
     }
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
+    }
+    if (sendNotifications != null) {
+      _queryParams["sendNotifications"] = ["${sendNotifications}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl';
@@ -211,6 +238,9 @@ class AclResourceApi {
   /// Learn more about incremental synchronization.
   /// Optional. The default is to return all entries.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Acl].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -222,7 +252,8 @@ class AclResourceApi {
       {core.int maxResults,
       core.String pageToken,
       core.bool showDeleted,
-      core.String syncToken}) {
+      core.String syncToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -244,6 +275,9 @@ class AclResourceApi {
     }
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl';
@@ -269,6 +303,13 @@ class AclResourceApi {
   ///
   /// [ruleId] - ACL rule identifier.
   ///
+  /// [sendNotifications] - Whether to send notifications about the calendar
+  /// sharing change. Note that there are no notifications on access removal.
+  /// Optional. The default is True.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AclRule].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -277,7 +318,8 @@ class AclResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AclRule> patch(
-      AclRule request, core.String calendarId, core.String ruleId) {
+      AclRule request, core.String calendarId, core.String ruleId,
+      {core.bool sendNotifications, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -293,6 +335,12 @@ class AclResourceApi {
     }
     if (ruleId == null) {
       throw new core.ArgumentError("Parameter ruleId is required.");
+    }
+    if (sendNotifications != null) {
+      _queryParams["sendNotifications"] = ["${sendNotifications}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'calendars/' +
@@ -321,6 +369,13 @@ class AclResourceApi {
   ///
   /// [ruleId] - ACL rule identifier.
   ///
+  /// [sendNotifications] - Whether to send notifications about the calendar
+  /// sharing change. Note that there are no notifications on access removal.
+  /// Optional. The default is True.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AclRule].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -329,7 +384,8 @@ class AclResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AclRule> update(
-      AclRule request, core.String calendarId, core.String ruleId) {
+      AclRule request, core.String calendarId, core.String ruleId,
+      {core.bool sendNotifications, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -345,6 +401,12 @@ class AclResourceApi {
     }
     if (ruleId == null) {
       throw new core.ArgumentError("Parameter ruleId is required.");
+    }
+    if (sendNotifications != null) {
+      _queryParams["sendNotifications"] = ["${sendNotifications}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'calendars/' +
@@ -392,6 +454,9 @@ class AclResourceApi {
   /// Learn more about incremental synchronization.
   /// Optional. The default is to return all entries.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Channel].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -403,7 +468,8 @@ class AclResourceApi {
       {core.int maxResults,
       core.String pageToken,
       core.bool showDeleted,
-      core.String syncToken}) {
+      core.String syncToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -428,6 +494,9 @@ class AclResourceApi {
     }
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'calendars/' +
@@ -457,12 +526,15 @@ class CalendarListResourceApi {
   /// calendarList.list method. If you want to access the primary calendar of
   /// the currently logged in user, use the "primary" keyword.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String calendarId) {
+  async.Future delete(core.String calendarId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -472,6 +544,9 @@ class CalendarListResourceApi {
 
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -496,6 +571,9 @@ class CalendarListResourceApi {
   /// calendarList.list method. If you want to access the primary calendar of
   /// the currently logged in user, use the "primary" keyword.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CalendarListEntry].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -503,7 +581,8 @@ class CalendarListResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CalendarListEntry> get(core.String calendarId) {
+  async.Future<CalendarListEntry> get(core.String calendarId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -513,6 +592,9 @@ class CalendarListResourceApi {
 
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -538,6 +620,9 @@ class CalendarListResourceApi {
   /// index-based colorId field will be set to the best matching option
   /// automatically. Optional. The default is False.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CalendarListEntry].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -546,7 +631,7 @@ class CalendarListResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CalendarListEntry> insert(CalendarListEntry request,
-      {core.bool colorRgbFormat}) {
+      {core.bool colorRgbFormat, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -559,6 +644,9 @@ class CalendarListResourceApi {
     }
     if (colorRgbFormat != null) {
       _queryParams["colorRgbFormat"] = ["${colorRgbFormat}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/me/calendarList';
@@ -611,6 +699,9 @@ class CalendarListResourceApi {
   /// Learn more about incremental synchronization.
   /// Optional. The default is to return all entries.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CalendarList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -624,7 +715,8 @@ class CalendarListResourceApi {
       core.String pageToken,
       core.bool showDeleted,
       core.bool showHidden,
-      core.String syncToken}) {
+      core.String syncToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -649,6 +741,9 @@ class CalendarListResourceApi {
     }
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/me/calendarList';
@@ -678,6 +773,9 @@ class CalendarListResourceApi {
   /// index-based colorId field will be set to the best matching option
   /// automatically. Optional. The default is False.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CalendarListEntry].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -687,7 +785,7 @@ class CalendarListResourceApi {
   /// this method will complete with the same error.
   async.Future<CalendarListEntry> patch(
       CalendarListEntry request, core.String calendarId,
-      {core.bool colorRgbFormat}) {
+      {core.bool colorRgbFormat, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -703,6 +801,9 @@ class CalendarListResourceApi {
     }
     if (colorRgbFormat != null) {
       _queryParams["colorRgbFormat"] = ["${colorRgbFormat}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -732,6 +833,9 @@ class CalendarListResourceApi {
   /// index-based colorId field will be set to the best matching option
   /// automatically. Optional. The default is False.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CalendarListEntry].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -741,7 +845,7 @@ class CalendarListResourceApi {
   /// this method will complete with the same error.
   async.Future<CalendarListEntry> update(
       CalendarListEntry request, core.String calendarId,
-      {core.bool colorRgbFormat}) {
+      {core.bool colorRgbFormat, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -757,6 +861,9 @@ class CalendarListResourceApi {
     }
     if (colorRgbFormat != null) {
       _queryParams["colorRgbFormat"] = ["${colorRgbFormat}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -812,6 +919,9 @@ class CalendarListResourceApi {
   /// Learn more about incremental synchronization.
   /// Optional. The default is to return all entries.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Channel].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -825,7 +935,8 @@ class CalendarListResourceApi {
       core.String pageToken,
       core.bool showDeleted,
       core.bool showHidden,
-      core.String syncToken}) {
+      core.String syncToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -854,6 +965,9 @@ class CalendarListResourceApi {
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'users/me/calendarList/watch';
 
@@ -881,12 +995,15 @@ class CalendarsResourceApi {
   /// calendarList.list method. If you want to access the primary calendar of
   /// the currently logged in user, use the "primary" keyword.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future clear(core.String calendarId) {
+  async.Future clear(core.String calendarId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -896,6 +1013,9 @@ class CalendarsResourceApi {
 
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -921,12 +1041,15 @@ class CalendarsResourceApi {
   /// calendarList.list method. If you want to access the primary calendar of
   /// the currently logged in user, use the "primary" keyword.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String calendarId) {
+  async.Future delete(core.String calendarId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -936,6 +1059,9 @@ class CalendarsResourceApi {
 
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -959,6 +1085,9 @@ class CalendarsResourceApi {
   /// calendarList.list method. If you want to access the primary calendar of
   /// the currently logged in user, use the "primary" keyword.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Calendar].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -966,7 +1095,7 @@ class CalendarsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Calendar> get(core.String calendarId) {
+  async.Future<Calendar> get(core.String calendarId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -976,6 +1105,9 @@ class CalendarsResourceApi {
 
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
@@ -995,6 +1127,9 @@ class CalendarsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Calendar].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1002,7 +1137,7 @@ class CalendarsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Calendar> insert(Calendar request) {
+  async.Future<Calendar> insert(Calendar request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1012,6 +1147,9 @@ class CalendarsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'calendars';
@@ -1035,6 +1173,9 @@ class CalendarsResourceApi {
   /// calendarList.list method. If you want to access the primary calendar of
   /// the currently logged in user, use the "primary" keyword.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Calendar].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1042,7 +1183,8 @@ class CalendarsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Calendar> patch(Calendar request, core.String calendarId) {
+  async.Future<Calendar> patch(Calendar request, core.String calendarId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1055,6 +1197,9 @@ class CalendarsResourceApi {
     }
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
@@ -1078,6 +1223,9 @@ class CalendarsResourceApi {
   /// calendarList.list method. If you want to access the primary calendar of
   /// the currently logged in user, use the "primary" keyword.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Calendar].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1085,7 +1233,8 @@ class CalendarsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Calendar> update(Calendar request, core.String calendarId) {
+  async.Future<Calendar> update(Calendar request, core.String calendarId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1098,6 +1247,9 @@ class CalendarsResourceApi {
     }
     if (calendarId == null) {
       throw new core.ArgumentError("Parameter calendarId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
@@ -1123,12 +1275,15 @@ class ChannelsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future stop(Channel request) {
+  async.Future stop(Channel request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1138,6 +1293,9 @@ class ChannelsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1163,6 +1321,9 @@ class ColorsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Colors].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1170,13 +1331,17 @@ class ColorsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Colors> get() {
+  async.Future<Colors> get({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'colors';
 
@@ -1208,13 +1373,16 @@ class EventsResourceApi {
   /// [sendNotifications] - Whether to send notifications about the deletion of
   /// the event. Optional. The default is False.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String calendarId, core.String eventId,
-      {core.bool sendNotifications}) {
+      {core.bool sendNotifications, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1230,6 +1398,9 @@ class EventsResourceApi {
     }
     if (sendNotifications != null) {
       _queryParams["sendNotifications"] = ["${sendNotifications}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1272,6 +1443,9 @@ class EventsResourceApi {
   /// [timeZone] - Time zone used in the response. Optional. The default is the
   /// time zone of the calendar.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Event].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1282,7 +1456,8 @@ class EventsResourceApi {
   async.Future<Event> get(core.String calendarId, core.String eventId,
       {core.bool alwaysIncludeEmail,
       core.int maxAttendees,
-      core.String timeZone}) {
+      core.String timeZone,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1304,6 +1479,9 @@ class EventsResourceApi {
     }
     if (timeZone != null) {
       _queryParams["timeZone"] = [timeZone];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'calendars/' +
@@ -1334,6 +1512,9 @@ class EventsResourceApi {
   /// [supportsAttachments] - Whether API client performing operation supports
   /// event attachments. Optional. The default is False.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Event].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1342,7 +1523,7 @@ class EventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Event> import(Event request, core.String calendarId,
-      {core.bool supportsAttachments}) {
+      {core.bool supportsAttachments, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1358,6 +1539,9 @@ class EventsResourceApi {
     }
     if (supportsAttachments != null) {
       _queryParams["supportsAttachments"] = ["${supportsAttachments}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'calendars/' +
@@ -1393,6 +1577,9 @@ class EventsResourceApi {
   /// [supportsAttachments] - Whether API client performing operation supports
   /// event attachments. Optional. The default is False.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Event].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1403,7 +1590,8 @@ class EventsResourceApi {
   async.Future<Event> insert(Event request, core.String calendarId,
       {core.int maxAttendees,
       core.bool sendNotifications,
-      core.bool supportsAttachments}) {
+      core.bool supportsAttachments,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1425,6 +1613,9 @@ class EventsResourceApi {
     }
     if (supportsAttachments != null) {
       _queryParams["supportsAttachments"] = ["${supportsAttachments}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -1485,6 +1676,9 @@ class EventsResourceApi {
   /// [timeZone] - Time zone used in the response. Optional. The default is the
   /// time zone of the calendar.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Events].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1501,7 +1695,8 @@ class EventsResourceApi {
       core.bool showDeleted,
       core.DateTime timeMax,
       core.DateTime timeMin,
-      core.String timeZone}) {
+      core.String timeZone,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1541,6 +1736,9 @@ class EventsResourceApi {
     }
     if (timeZone != null) {
       _queryParams["timeZone"] = [timeZone];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'calendars/' +
@@ -1669,6 +1867,9 @@ class EventsResourceApi {
   /// this time will always be included regardless of showDeleted. Optional. The
   /// default is not to filter by last modification time.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Events].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1693,7 +1894,8 @@ class EventsResourceApi {
       core.DateTime timeMax,
       core.DateTime timeMin,
       core.String timeZone,
-      core.DateTime updatedMin}) {
+      core.DateTime updatedMin,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1755,6 +1957,9 @@ class EventsResourceApi {
     if (updatedMin != null) {
       _queryParams["updatedMin"] = [(updatedMin).toIso8601String()];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url =
         'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events';
@@ -1783,6 +1988,9 @@ class EventsResourceApi {
   /// [sendNotifications] - Whether to send notifications about the change of
   /// the event's organizer. Optional. The default is False.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Event].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1792,7 +2000,7 @@ class EventsResourceApi {
   /// this method will complete with the same error.
   async.Future<Event> move(
       core.String calendarId, core.String eventId, core.String destination,
-      {core.bool sendNotifications}) {
+      {core.bool sendNotifications, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1812,6 +2020,9 @@ class EventsResourceApi {
     _queryParams["destination"] = [destination];
     if (sendNotifications != null) {
       _queryParams["sendNotifications"] = ["${sendNotifications}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'calendars/' +
@@ -1859,6 +2070,9 @@ class EventsResourceApi {
   /// [supportsAttachments] - Whether API client performing operation supports
   /// event attachments. Optional. The default is False.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Event].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1871,7 +2085,8 @@ class EventsResourceApi {
       {core.bool alwaysIncludeEmail,
       core.int maxAttendees,
       core.bool sendNotifications,
-      core.bool supportsAttachments}) {
+      core.bool supportsAttachments,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1899,6 +2114,9 @@ class EventsResourceApi {
     }
     if (supportsAttachments != null) {
       _queryParams["supportsAttachments"] = ["${supportsAttachments}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'calendars/' +
@@ -1928,6 +2146,9 @@ class EventsResourceApi {
   /// [sendNotifications] - Whether to send notifications about the creation of
   /// the event. Optional. The default is False.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Event].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1936,7 +2157,7 @@ class EventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Event> quickAdd(core.String calendarId, core.String text,
-      {core.bool sendNotifications}) {
+      {core.bool sendNotifications, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1953,6 +2174,9 @@ class EventsResourceApi {
     _queryParams["text"] = [text];
     if (sendNotifications != null) {
       _queryParams["sendNotifications"] = ["${sendNotifications}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'calendars/' +
@@ -1998,6 +2222,9 @@ class EventsResourceApi {
   /// [supportsAttachments] - Whether API client performing operation supports
   /// event attachments. Optional. The default is False.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Event].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2010,7 +2237,8 @@ class EventsResourceApi {
       {core.bool alwaysIncludeEmail,
       core.int maxAttendees,
       core.bool sendNotifications,
-      core.bool supportsAttachments}) {
+      core.bool supportsAttachments,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2038,6 +2266,9 @@ class EventsResourceApi {
     }
     if (supportsAttachments != null) {
       _queryParams["supportsAttachments"] = ["${supportsAttachments}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'calendars/' +
@@ -2167,6 +2398,9 @@ class EventsResourceApi {
   /// this time will always be included regardless of showDeleted. Optional. The
   /// default is not to filter by last modification time.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Channel].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2191,7 +2425,8 @@ class EventsResourceApi {
       core.DateTime timeMax,
       core.DateTime timeMin,
       core.String timeZone,
-      core.DateTime updatedMin}) {
+      core.DateTime updatedMin,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2256,6 +2491,9 @@ class EventsResourceApi {
     if (updatedMin != null) {
       _queryParams["updatedMin"] = [(updatedMin).toIso8601String()];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
@@ -2282,6 +2520,9 @@ class FreebusyResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FreeBusyResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2289,7 +2530,8 @@ class FreebusyResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FreeBusyResponse> query(FreeBusyRequest request) {
+  async.Future<FreeBusyResponse> query(FreeBusyRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2299,6 +2541,9 @@ class FreebusyResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'freeBusy';
@@ -2324,6 +2569,9 @@ class SettingsResourceApi {
   ///
   /// [setting] - The id of the user setting.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Setting].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2331,7 +2579,7 @@ class SettingsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Setting> get(core.String setting) {
+  async.Future<Setting> get(core.String setting, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2341,6 +2589,9 @@ class SettingsResourceApi {
 
     if (setting == null) {
       throw new core.ArgumentError("Parameter setting is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/me/settings/' + commons.Escaper.ecapeVariable('$setting');
@@ -2373,6 +2624,9 @@ class SettingsResourceApi {
   /// Learn more about incremental synchronization.
   /// Optional. The default is to return all entries.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Settings].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2381,7 +2635,10 @@ class SettingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Settings> list(
-      {core.int maxResults, core.String pageToken, core.String syncToken}) {
+      {core.int maxResults,
+      core.String pageToken,
+      core.String syncToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2397,6 +2654,9 @@ class SettingsResourceApi {
     }
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/me/settings';
@@ -2431,6 +2691,9 @@ class SettingsResourceApi {
   /// Learn more about incremental synchronization.
   /// Optional. The default is to return all entries.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Channel].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2439,7 +2702,10 @@ class SettingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Channel> watch(Channel request,
-      {core.int maxResults, core.String pageToken, core.String syncToken}) {
+      {core.int maxResults,
+      core.String pageToken,
+      core.String syncToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2458,6 +2724,9 @@ class SettingsResourceApi {
     }
     if (syncToken != null) {
       _queryParams["syncToken"] = [syncToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/me/settings/watch';

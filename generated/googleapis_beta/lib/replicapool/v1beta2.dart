@@ -70,6 +70,9 @@ class InstanceGroupManagersResourceApi {
   /// [instanceGroupManager] - The name of the instance group manager.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -81,7 +84,8 @@ class InstanceGroupManagersResourceApi {
       InstanceGroupManagersAbandonInstancesRequest request,
       core.String project,
       core.String zone,
-      core.String instanceGroupManager) {
+      core.String instanceGroupManager,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -101,6 +105,9 @@ class InstanceGroupManagersResourceApi {
     if (instanceGroupManager == null) {
       throw new core.ArgumentError(
           "Parameter instanceGroupManager is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -136,6 +143,9 @@ class InstanceGroupManagersResourceApi {
   /// delete.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -144,7 +154,8 @@ class InstanceGroupManagersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(
-      core.String project, core.String zone, core.String instanceGroupManager) {
+      core.String project, core.String zone, core.String instanceGroupManager,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -161,6 +172,9 @@ class InstanceGroupManagersResourceApi {
     if (instanceGroupManager == null) {
       throw new core.ArgumentError(
           "Parameter instanceGroupManager is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -197,6 +211,9 @@ class InstanceGroupManagersResourceApi {
   /// [instanceGroupManager] - The name of the instance group manager.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -208,7 +225,8 @@ class InstanceGroupManagersResourceApi {
       InstanceGroupManagersDeleteInstancesRequest request,
       core.String project,
       core.String zone,
-      core.String instanceGroupManager) {
+      core.String instanceGroupManager,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -228,6 +246,9 @@ class InstanceGroupManagersResourceApi {
     if (instanceGroupManager == null) {
       throw new core.ArgumentError(
           "Parameter instanceGroupManager is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -260,6 +281,9 @@ class InstanceGroupManagersResourceApi {
   /// [instanceGroupManager] - Name of the instance resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InstanceGroupManager].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -268,7 +292,8 @@ class InstanceGroupManagersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<InstanceGroupManager> get(
-      core.String project, core.String zone, core.String instanceGroupManager) {
+      core.String project, core.String zone, core.String instanceGroupManager,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -285,6 +310,9 @@ class InstanceGroupManagersResourceApi {
     if (instanceGroupManager == null) {
       throw new core.ArgumentError(
           "Parameter instanceGroupManager is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -318,6 +346,9 @@ class InstanceGroupManagersResourceApi {
   ///
   /// [size] - Number of instances that should exist.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -326,7 +357,8 @@ class InstanceGroupManagersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(InstanceGroupManager request,
-      core.String project, core.String zone, core.int size) {
+      core.String project, core.String zone, core.int size,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -347,6 +379,9 @@ class InstanceGroupManagersResourceApi {
       throw new core.ArgumentError("Parameter size is required.");
     }
     _queryParams["size"] = ["${size}"];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
@@ -383,6 +418,9 @@ class InstanceGroupManagersResourceApi {
   /// [pageToken] - Optional. Tag returned by a previous list request truncated
   /// by maxResults. Used to continue a previous list request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InstanceGroupManagerList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -392,7 +430,10 @@ class InstanceGroupManagersResourceApi {
   /// this method will complete with the same error.
   async.Future<InstanceGroupManagerList> list(
       core.String project, core.String zone,
-      {core.String filter, core.int maxResults, core.String pageToken}) {
+      {core.String filter,
+      core.int maxResults,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -414,6 +455,9 @@ class InstanceGroupManagersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -448,6 +492,9 @@ class InstanceGroupManagersResourceApi {
   /// [instanceGroupManager] - The name of the instance group manager.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -459,7 +506,8 @@ class InstanceGroupManagersResourceApi {
       InstanceGroupManagersRecreateInstancesRequest request,
       core.String project,
       core.String zone,
-      core.String instanceGroupManager) {
+      core.String instanceGroupManager,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -479,6 +527,9 @@ class InstanceGroupManagersResourceApi {
     if (instanceGroupManager == null) {
       throw new core.ArgumentError(
           "Parameter instanceGroupManager is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -517,6 +568,9 @@ class InstanceGroupManagersResourceApi {
   /// [size] - Number of instances that should exist in this Instance Group
   /// Manager.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -525,7 +579,8 @@ class InstanceGroupManagersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> resize(core.String project, core.String zone,
-      core.String instanceGroupManager, core.int size) {
+      core.String instanceGroupManager, core.int size,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -547,6 +602,9 @@ class InstanceGroupManagersResourceApi {
       throw new core.ArgumentError("Parameter size is required.");
     }
     _queryParams["size"] = ["${size}"];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
@@ -581,6 +639,9 @@ class InstanceGroupManagersResourceApi {
   /// [instanceGroupManager] - The name of the instance group manager.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -592,7 +653,8 @@ class InstanceGroupManagersResourceApi {
       InstanceGroupManagersSetInstanceTemplateRequest request,
       core.String project,
       core.String zone,
-      core.String instanceGroupManager) {
+      core.String instanceGroupManager,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -612,6 +674,9 @@ class InstanceGroupManagersResourceApi {
     if (instanceGroupManager == null) {
       throw new core.ArgumentError(
           "Parameter instanceGroupManager is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -647,6 +712,9 @@ class InstanceGroupManagersResourceApi {
   /// [instanceGroupManager] - The name of the instance group manager.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -658,7 +726,8 @@ class InstanceGroupManagersResourceApi {
       InstanceGroupManagersSetTargetPoolsRequest request,
       core.String project,
       core.String zone,
-      core.String instanceGroupManager) {
+      core.String instanceGroupManager,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -678,6 +747,9 @@ class InstanceGroupManagersResourceApi {
     if (instanceGroupManager == null) {
       throw new core.ArgumentError(
           "Parameter instanceGroupManager is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -716,6 +788,9 @@ class ZoneOperationsResourceApi {
   /// [operation] - Name of the operation resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -724,7 +799,8 @@ class ZoneOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> get(
-      core.String project, core.String zone, core.String operation) {
+      core.String project, core.String zone, core.String operation,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -740,6 +816,9 @@ class ZoneOperationsResourceApi {
     }
     if (operation == null) {
       throw new core.ArgumentError("Parameter operation is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -778,6 +857,9 @@ class ZoneOperationsResourceApi {
   /// [pageToken] - Optional. Tag returned by a previous list request truncated
   /// by maxResults. Used to continue a previous list request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OperationList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -786,7 +868,10 @@ class ZoneOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<OperationList> list(core.String project, core.String zone,
-      {core.String filter, core.int maxResults, core.String pageToken}) {
+      {core.String filter,
+      core.int maxResults,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -808,6 +893,9 @@ class ZoneOperationsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +

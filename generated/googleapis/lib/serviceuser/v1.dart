@@ -78,6 +78,9 @@ class ProjectsServicesResourceApi {
   /// /v1/projects/my-project/services/servicemanagement.googleapis.com:disable
   /// Value must have pattern "^projects/[^/]+/services/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -86,7 +89,8 @@ class ProjectsServicesResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<Operation> disable(
-      DisableServiceRequest request, core.String name) {
+      DisableServiceRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -99,6 +103,9 @@ class ProjectsServicesResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':disable';
@@ -128,6 +135,9 @@ class ProjectsServicesResourceApi {
   /// - /v1/projects/my-project/services/servicemanagement.googleapis.com:enable
   /// Value must have pattern "^projects/[^/]+/services/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -135,8 +145,8 @@ class ProjectsServicesResourceApi {
   ///
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
-  async.Future<Operation> enable(
-      EnableServiceRequest request, core.String name) {
+  async.Future<Operation> enable(EnableServiceRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -149,6 +159,9 @@ class ProjectsServicesResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':enable';
@@ -178,6 +191,9 @@ class ProjectsServicesResourceApi {
   ///
   /// [pageSize] - Requested size of the next page of data.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListEnabledServicesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -186,7 +202,7 @@ class ProjectsServicesResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListEnabledServicesResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -202,6 +218,9 @@ class ProjectsServicesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -237,6 +256,9 @@ class ServicesResourceApi {
   ///
   /// [pageSize] - Requested size of the next page of data.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SearchServicesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -245,7 +267,7 @@ class ServicesResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<SearchServicesResponse> search(
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -258,6 +280,9 @@ class ServicesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/services:search';
@@ -1335,8 +1360,8 @@ class EnableServiceRequest {
 ///       allow_cors: true
 class Endpoint {
   /// DEPRECATED: This field is no longer supported. Instead of using aliases,
-  /// please specify multiple google.api.Endpoint for each of the intented
-  /// alias.
+  /// please specify multiple google.api.Endpoint for each of the intended
+  /// aliases.
   ///
   /// Additional names that this endpoint will be hosted on.
   core.List<core.String> aliases;
@@ -2608,6 +2633,8 @@ class MetricDescriptor {
 
   /// A concise name for the metric, which can be displayed in user interfaces.
   /// Use sentence case without an ending period, for example "Request count".
+  /// This field is optional but it is recommended to be set for any metrics
+  /// associated with user-visible concepts, such as Quota.
   core.String displayName;
 
   /// The set of labels that can be used to describe a specific
@@ -2632,14 +2659,7 @@ class MetricDescriptor {
   /// points.
   core.String metricKind;
 
-  /// The resource name of the metric descriptor. Depending on the
-  /// implementation, the name typically includes: (1) the parent resource name
-  /// that defines the scope of the metric type or of its data; and (2) the
-  /// metric's URL-encoded type, which also appears in the `type` field of this
-  /// descriptor. For example, following is the resource name of a custom
-  /// metric within the GCP project `my-project-id`:
-  ///
-  /// "projects/my-project-id/metricDescriptors/custom.googleapis.com%2Finvoice%2Fpaid%2Famount"
+  /// The resource name of the metric descriptor.
   core.String name;
 
   /// The metric type, including its DNS name prefix. The type is not
@@ -3603,49 +3623,30 @@ class QuotaLimit {
   /// the same metric will be checked together during runtime. The metric must
   /// be
   /// defined within the service config.
-  ///
-  /// Used by metric-based quotas only.
   core.String metric;
 
-  /// Name of the quota limit. The name is used to refer to the limit when
-  /// overriding the default limit on per-consumer basis.
+  /// Name of the quota limit.
   ///
-  /// For metric-based quota limits, the name must be provided, and it must be
-  /// unique within the service. The name can only include alphanumeric
-  /// characters as well as '-'.
+  /// The name must be provided, and it must be unique within the service. The
+  /// name can only include alphanumeric characters as well as '-'.
   ///
   /// The maximum length of the limit name is 64 characters.
-  ///
-  /// The name of a limit is used as a unique identifier for this limit.
-  /// Therefore, once a limit has been put into use, its name should be
-  /// immutable. You can use the display_name field to provide a user-friendly
-  /// name for the limit. The display name can be evolved over time without
-  /// affecting the identity of the limit.
   core.String name;
 
   /// Specify the unit of the quota limit. It uses the same syntax as
   /// Metric.unit. The supported unit kinds are determined by the quota
   /// backend system.
   ///
-  /// The [Google Service Control](https://cloud.google.com/service-control)
-  /// supports the following unit components:
-  /// * One of the time intevals:
-  ///   * "/min"  for quota every minute.
-  ///   * "/d"  for quota every 24 hours, starting 00:00 US Pacific Time.
-  ///   * Otherwise the quota won't be reset by time, such as storage limit.
-  /// * One and only one of the granted containers:
-  ///   * "/{project}" quota for a project
-  ///
   /// Here are some examples:
   /// * "1/min/{project}" for quota per minute per project.
   ///
   /// Note: the order of unit components is insignificant.
   /// The "1" at the beginning is required to follow the metric unit syntax.
-  ///
-  /// Used by metric-based quotas only.
   core.String unit;
 
-  /// Tiered limit values, currently only STANDARD is supported.
+  /// Tiered limit values. You must specify this as a key:value pair, with an
+  /// integer value that is the maximum number of requests allowed for the
+  /// specified unit. Currently only STANDARD is supported.
   core.Map<core.String, core.String> values;
 
   QuotaLimit();
@@ -4603,6 +4604,8 @@ class UsageRule {
 
   /// True, if the method should skip service control. If so, no control plane
   /// feature (like quota and billing) will be enabled.
+  /// This flag is used by ESP to allow some Endpoints customers to bypass
+  /// Google internal checks.
   core.bool skipServiceControl;
 
   UsageRule();

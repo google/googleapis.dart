@@ -48,11 +48,14 @@ class EncodedFullHashesResourceApi {
   ///
   /// [encodedRequest] - A serialized FindFullHashesRequest proto.
   ///
+  /// [clientVersion] - The version of the client implementation.
+  ///
   /// [clientId] - A client ID that (hopefully) uniquely identifies the client
   /// implementation
   /// of the Safe Browsing API.
   ///
-  /// [clientVersion] - The version of the client implementation.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [FindFullHashesResponse].
   ///
@@ -62,7 +65,7 @@ class EncodedFullHashesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FindFullHashesResponse> get(core.String encodedRequest,
-      {core.String clientId, core.String clientVersion}) {
+      {core.String clientVersion, core.String clientId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -73,11 +76,14 @@ class EncodedFullHashesResourceApi {
     if (encodedRequest == null) {
       throw new core.ArgumentError("Parameter encodedRequest is required.");
     }
+    if (clientVersion != null) {
+      _queryParams["clientVersion"] = [clientVersion];
+    }
     if (clientId != null) {
       _queryParams["clientId"] = [clientId];
     }
-    if (clientVersion != null) {
-      _queryParams["clientVersion"] = [clientVersion];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v4/encodedFullHashes/' +
@@ -108,6 +114,9 @@ class EncodedUpdatesResourceApi {
   ///
   /// [clientVersion] - The version of the client implementation.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FetchThreatListUpdatesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -116,7 +125,7 @@ class EncodedUpdatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FetchThreatListUpdatesResponse> get(core.String encodedRequest,
-      {core.String clientId, core.String clientVersion}) {
+      {core.String clientId, core.String clientVersion, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -132,6 +141,9 @@ class EncodedUpdatesResourceApi {
     }
     if (clientVersion != null) {
       _queryParams["clientVersion"] = [clientVersion];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -159,6 +171,9 @@ class FullHashesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FindFullHashesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -166,7 +181,8 @@ class FullHashesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FindFullHashesResponse> find(FindFullHashesRequest request) {
+  async.Future<FindFullHashesResponse> find(FindFullHashesRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -176,6 +192,9 @@ class FullHashesResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v4/fullHashes:find';
@@ -203,6 +222,9 @@ class ThreatListUpdatesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FetchThreatListUpdatesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -211,7 +233,8 @@ class ThreatListUpdatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FetchThreatListUpdatesResponse> fetch(
-      FetchThreatListUpdatesRequest request) {
+      FetchThreatListUpdatesRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -221,6 +244,9 @@ class ThreatListUpdatesResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v4/threatListUpdates:fetch';
@@ -245,6 +271,9 @@ class ThreatListsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListThreatListsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -252,13 +281,17 @@ class ThreatListsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListThreatListsResponse> list() {
+  async.Future<ListThreatListsResponse> list({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'v4/threatLists';
 
@@ -283,6 +316,9 @@ class ThreatMatchesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FindThreatMatchesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -290,8 +326,8 @@ class ThreatMatchesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FindThreatMatchesResponse> find(
-      FindThreatMatchesRequest request) {
+  async.Future<FindThreatMatchesResponse> find(FindThreatMatchesRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -301,6 +337,9 @@ class ThreatMatchesResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v4/threatMatches:find';

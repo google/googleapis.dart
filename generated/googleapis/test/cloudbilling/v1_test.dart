@@ -121,14 +121,14 @@ checkCategory(api.Category o) {
   buildCounterCategory--;
 }
 
-buildUnnamed63() {
+buildUnnamed44() {
   var o = new core.List<api.BillingAccount>();
   o.add(buildBillingAccount());
   o.add(buildBillingAccount());
   return o;
 }
 
-checkUnnamed63(core.List<api.BillingAccount> o) {
+checkUnnamed44(core.List<api.BillingAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBillingAccount(o[0]);
   checkBillingAccount(o[1]);
@@ -139,7 +139,7 @@ buildListBillingAccountsResponse() {
   var o = new api.ListBillingAccountsResponse();
   buildCounterListBillingAccountsResponse++;
   if (buildCounterListBillingAccountsResponse < 3) {
-    o.billingAccounts = buildUnnamed63();
+    o.billingAccounts = buildUnnamed44();
     o.nextPageToken = "foo";
   }
   buildCounterListBillingAccountsResponse--;
@@ -149,20 +149,20 @@ buildListBillingAccountsResponse() {
 checkListBillingAccountsResponse(api.ListBillingAccountsResponse o) {
   buildCounterListBillingAccountsResponse++;
   if (buildCounterListBillingAccountsResponse < 3) {
-    checkUnnamed63(o.billingAccounts);
+    checkUnnamed44(o.billingAccounts);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListBillingAccountsResponse--;
 }
 
-buildUnnamed64() {
+buildUnnamed45() {
   var o = new core.List<api.ProjectBillingInfo>();
   o.add(buildProjectBillingInfo());
   o.add(buildProjectBillingInfo());
   return o;
 }
 
-checkUnnamed64(core.List<api.ProjectBillingInfo> o) {
+checkUnnamed45(core.List<api.ProjectBillingInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProjectBillingInfo(o[0]);
   checkProjectBillingInfo(o[1]);
@@ -174,7 +174,7 @@ buildListProjectBillingInfoResponse() {
   buildCounterListProjectBillingInfoResponse++;
   if (buildCounterListProjectBillingInfoResponse < 3) {
     o.nextPageToken = "foo";
-    o.projectBillingInfo = buildUnnamed64();
+    o.projectBillingInfo = buildUnnamed45();
   }
   buildCounterListProjectBillingInfoResponse--;
   return o;
@@ -184,19 +184,19 @@ checkListProjectBillingInfoResponse(api.ListProjectBillingInfoResponse o) {
   buildCounterListProjectBillingInfoResponse++;
   if (buildCounterListProjectBillingInfoResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed64(o.projectBillingInfo);
+    checkUnnamed45(o.projectBillingInfo);
   }
   buildCounterListProjectBillingInfoResponse--;
 }
 
-buildUnnamed65() {
+buildUnnamed46() {
   var o = new core.List<api.Service>();
   o.add(buildService());
   o.add(buildService());
   return o;
 }
 
-checkUnnamed65(core.List<api.Service> o) {
+checkUnnamed46(core.List<api.Service> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkService(o[0]);
   checkService(o[1]);
@@ -208,7 +208,7 @@ buildListServicesResponse() {
   buildCounterListServicesResponse++;
   if (buildCounterListServicesResponse < 3) {
     o.nextPageToken = "foo";
-    o.services = buildUnnamed65();
+    o.services = buildUnnamed46();
   }
   buildCounterListServicesResponse--;
   return o;
@@ -218,19 +218,19 @@ checkListServicesResponse(api.ListServicesResponse o) {
   buildCounterListServicesResponse++;
   if (buildCounterListServicesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed65(o.services);
+    checkUnnamed46(o.services);
   }
   buildCounterListServicesResponse--;
 }
 
-buildUnnamed66() {
+buildUnnamed47() {
   var o = new core.List<api.Sku>();
   o.add(buildSku());
   o.add(buildSku());
   return o;
 }
 
-checkUnnamed66(core.List<api.Sku> o) {
+checkUnnamed47(core.List<api.Sku> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSku(o[0]);
   checkSku(o[1]);
@@ -242,7 +242,7 @@ buildListSkusResponse() {
   buildCounterListSkusResponse++;
   if (buildCounterListSkusResponse < 3) {
     o.nextPageToken = "foo";
-    o.skus = buildUnnamed66();
+    o.skus = buildUnnamed47();
   }
   buildCounterListSkusResponse--;
   return o;
@@ -252,7 +252,7 @@ checkListSkusResponse(api.ListSkusResponse o) {
   buildCounterListSkusResponse++;
   if (buildCounterListSkusResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed66(o.skus);
+    checkUnnamed47(o.skus);
   }
   buildCounterListSkusResponse--;
 }
@@ -280,14 +280,14 @@ checkMoney(api.Money o) {
   buildCounterMoney--;
 }
 
-buildUnnamed67() {
+buildUnnamed48() {
   var o = new core.List<api.TierRate>();
   o.add(buildTierRate());
   o.add(buildTierRate());
   return o;
 }
 
-checkUnnamed67(core.List<api.TierRate> o) {
+checkUnnamed48(core.List<api.TierRate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTierRate(o[0]);
   checkTierRate(o[1]);
@@ -302,7 +302,7 @@ buildPricingExpression() {
     o.baseUnitConversionFactor = 42.0;
     o.baseUnitDescription = "foo";
     o.displayQuantity = 42.0;
-    o.tieredRates = buildUnnamed67();
+    o.tieredRates = buildUnnamed48();
     o.usageUnit = "foo";
     o.usageUnitDescription = "foo";
   }
@@ -317,7 +317,7 @@ checkPricingExpression(api.PricingExpression o) {
     unittest.expect(o.baseUnitConversionFactor, unittest.equals(42.0));
     unittest.expect(o.baseUnitDescription, unittest.equals('foo'));
     unittest.expect(o.displayQuantity, unittest.equals(42.0));
-    checkUnnamed67(o.tieredRates);
+    checkUnnamed48(o.tieredRates);
     unittest.expect(o.usageUnit, unittest.equals('foo'));
     unittest.expect(o.usageUnitDescription, unittest.equals('foo'));
   }
@@ -399,27 +399,27 @@ checkService(api.Service o) {
   buildCounterService--;
 }
 
-buildUnnamed68() {
+buildUnnamed49() {
   var o = new core.List<api.PricingInfo>();
   o.add(buildPricingInfo());
   o.add(buildPricingInfo());
   return o;
 }
 
-checkUnnamed68(core.List<api.PricingInfo> o) {
+checkUnnamed49(core.List<api.PricingInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPricingInfo(o[0]);
   checkPricingInfo(o[1]);
 }
 
-buildUnnamed69() {
+buildUnnamed50() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed69(core.List<core.String> o) {
+checkUnnamed50(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -433,9 +433,9 @@ buildSku() {
     o.category = buildCategory();
     o.description = "foo";
     o.name = "foo";
-    o.pricingInfo = buildUnnamed68();
+    o.pricingInfo = buildUnnamed49();
     o.serviceProviderName = "foo";
-    o.serviceRegions = buildUnnamed69();
+    o.serviceRegions = buildUnnamed50();
     o.skuId = "foo";
   }
   buildCounterSku--;
@@ -448,9 +448,9 @@ checkSku(api.Sku o) {
     checkCategory(o.category);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed68(o.pricingInfo);
+    checkUnnamed49(o.pricingInfo);
     unittest.expect(o.serviceProviderName, unittest.equals('foo'));
-    checkUnnamed69(o.serviceRegions);
+    checkUnnamed50(o.serviceRegions);
     unittest.expect(o.skuId, unittest.equals('foo'));
   }
   buildCounterSku--;
@@ -596,6 +596,7 @@ main() {
       api.BillingAccountsResourceApi res =
           new api.CloudbillingApi(mock).billingAccounts;
       var arg_name = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -627,6 +628,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -635,7 +637,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_name)
+          .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.BillingAccount response) {
         checkBillingAccount(response);
       })));
@@ -647,6 +649,7 @@ main() {
           new api.CloudbillingApi(mock).billingAccounts;
       var arg_pageSize = 42;
       var arg_pageToken = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -681,6 +684,7 @@ main() {
             unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -688,8 +692,13 @@ main() {
         var resp = convert.JSON.encode(buildListBillingAccountsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(pageSize: arg_pageSize, pageToken: arg_pageToken).then(
-          unittest.expectAsync1(((api.ListBillingAccountsResponse response) {
+      res
+          .list(
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              $fields: arg_$fields)
+          .then(unittest
+              .expectAsync1(((api.ListBillingAccountsResponse response) {
         checkListBillingAccountsResponse(response);
       })));
     });
@@ -703,6 +712,7 @@ main() {
       var arg_name = "foo";
       var arg_pageSize = 42;
       var arg_pageToken = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -738,6 +748,7 @@ main() {
             unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -745,8 +756,13 @@ main() {
         var resp = convert.JSON.encode(buildListProjectBillingInfoResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_name, pageSize: arg_pageSize, pageToken: arg_pageToken).then(
-          unittest.expectAsync1(((api.ListProjectBillingInfoResponse response) {
+      res
+          .list(arg_name,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              $fields: arg_$fields)
+          .then(unittest
+              .expectAsync1(((api.ListProjectBillingInfoResponse response) {
         checkListProjectBillingInfoResponse(response);
       })));
     });
@@ -757,6 +773,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsResourceApi res = new api.CloudbillingApi(mock).projects;
       var arg_name = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -788,6 +805,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -796,7 +814,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .getBillingInfo(arg_name)
+          .getBillingInfo(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ProjectBillingInfo response) {
         checkProjectBillingInfo(response);
       })));
@@ -807,6 +825,7 @@ main() {
       api.ProjectsResourceApi res = new api.CloudbillingApi(mock).projects;
       var arg_request = buildProjectBillingInfo();
       var arg_name = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ProjectBillingInfo.fromJson(json);
         checkProjectBillingInfo(obj);
@@ -841,6 +860,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -849,7 +869,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .updateBillingInfo(arg_request, arg_name)
+          .updateBillingInfo(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ProjectBillingInfo response) {
         checkProjectBillingInfo(response);
       })));
@@ -862,6 +882,7 @@ main() {
       api.ServicesResourceApi res = new api.CloudbillingApi(mock).services;
       var arg_pageSize = 42;
       var arg_pageToken = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -896,6 +917,7 @@ main() {
             unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -904,7 +926,10 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .list(pageSize: arg_pageSize, pageToken: arg_pageToken)
+          .list(
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ListServicesResponse response) {
         checkListServicesResponse(response);
       })));
@@ -922,6 +947,7 @@ main() {
       var arg_pageSize = 42;
       var arg_startTime = "foo";
       var arg_pageToken = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -963,6 +989,7 @@ main() {
             queryMap["startTime"].first, unittest.equals(arg_startTime));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -976,7 +1003,8 @@ main() {
               endTime: arg_endTime,
               pageSize: arg_pageSize,
               startTime: arg_startTime,
-              pageToken: arg_pageToken)
+              pageToken: arg_pageToken,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ListSkusResponse response) {
         checkListSkusResponse(response);
       })));

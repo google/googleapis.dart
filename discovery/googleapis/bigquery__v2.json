@@ -32,7 +32,7 @@
     "description": "A data platform for customers to create, manage, share and query data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/bigquery/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/eKfo1IihjCeexX2Be6ySOGd7TdQ\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/Yjz730WZUqb4y3BERqr_d1RRnuI\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/search-16.gif",
         "x32": "https://www.google.com/images/icons/product/search-32.gif"
@@ -971,7 +971,7 @@
             }
         }
     },
-    "revision": "20170923",
+    "revision": "20171015",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "BigtableColumn": {
@@ -1775,7 +1775,7 @@
                     "type": "string"
                 },
                 "schemaUpdateOptions": {
-                    "description": "[Experimental] Allows the schema of the desitination table to be updated as a side effect of the load job if a schema is autodetected or supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.",
+                    "description": "Allows the schema of the desitination table to be updated as a side effect of the load job if a schema is autodetected or supplied in the job configuration. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.",
                     "items": {
                         "type": "string"
                     },
@@ -1799,7 +1799,7 @@
                 },
                 "timePartitioning": {
                     "$ref": "TimePartitioning",
-                    "description": "[Experimental] If specified, configures time-based partitioning for the destination table."
+                    "description": "If specified, configures time-based partitioning for the destination table."
                 },
                 "writeDisposition": {
                     "description": "[Optional] Specifies the action that occurs if the destination table already exists. The following values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data. WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in the job result. The default value is WRITE_APPEND. Each action is atomic and only occurs if BigQuery is able to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon job completion.",
@@ -1872,7 +1872,7 @@
                     "type": "array"
                 },
                 "schemaUpdateOptions": {
-                    "description": "[Experimental] Allows the schema of the destination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.",
+                    "description": "Allows the schema of the destination table to be updated as a side effect of the query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.",
                     "items": {
                         "type": "string"
                     },
@@ -1887,7 +1887,7 @@
                 },
                 "timePartitioning": {
                     "$ref": "TimePartitioning",
-                    "description": "[Experimental] If specified, configures time-based partitioning for the destination table."
+                    "description": "If specified, configures time-based partitioning for the destination table."
                 },
                 "useLegacySql": {
                     "description": "Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.",
@@ -2591,7 +2591,7 @@
                 },
                 "timePartitioning": {
                     "$ref": "TimePartitioning",
-                    "description": "[Experimental] If specified, configures time-based partitioning for this table."
+                    "description": "If specified, configures time-based partitioning for this table."
                 },
                 "type": {
                     "description": "[Output-only] Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.",
@@ -2765,6 +2765,16 @@
                     "description": "Tables in the requested dataset.",
                     "items": {
                         "properties": {
+                            "creationTime": {
+                                "description": "The time when this table was created, in milliseconds since the epoch.",
+                                "format": "int64",
+                                "type": "string"
+                            },
+                            "expirationTime": {
+                                "description": "[Optional] The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed.",
+                                "format": "int64",
+                                "type": "string"
+                            },
                             "friendlyName": {
                                 "description": "The user-friendly name for this table.",
                                 "type": "string"
@@ -2791,7 +2801,7 @@
                             },
                             "timePartitioning": {
                                 "$ref": "TimePartitioning",
-                                "description": "[Experimental] The time-based partitioning for this table."
+                                "description": "The time-based partitioning for this table."
                             },
                             "type": {
                                 "description": "The type of table. Possible values are: TABLE, VIEW.",

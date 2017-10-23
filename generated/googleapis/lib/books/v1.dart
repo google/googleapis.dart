@@ -63,6 +63,9 @@ class BookshelvesResourceApi {
   ///
   /// [source] - String to identify the originator of this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Bookshelf].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -71,7 +74,7 @@ class BookshelvesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Bookshelf> get(core.String userId, core.String shelf,
-      {core.String source}) {
+      {core.String source, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -87,6 +90,9 @@ class BookshelvesResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/' +
@@ -111,6 +117,9 @@ class BookshelvesResourceApi {
   ///
   /// [source] - String to identify the originator of this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Bookshelves].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -118,7 +127,8 @@ class BookshelvesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Bookshelves> list(core.String userId, {core.String source}) {
+  async.Future<Bookshelves> list(core.String userId,
+      {core.String source, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -131,6 +141,9 @@ class BookshelvesResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userId') + '/bookshelves';
@@ -168,6 +181,9 @@ class BookshelvesVolumesResourceApi {
   ///
   /// [startIndex] - Index of the first element to return (starts at 0)
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Volumes].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -179,7 +195,8 @@ class BookshelvesVolumesResourceApi {
       {core.int maxResults,
       core.bool showPreorders,
       core.String source,
-      core.int startIndex}) {
+      core.int startIndex,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -204,6 +221,9 @@ class BookshelvesVolumesResourceApi {
     }
     if (startIndex != null) {
       _queryParams["startIndex"] = ["${startIndex}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/' +
@@ -240,6 +260,9 @@ class CloudloadingResourceApi {
   ///
   /// [uploadClientToken] - null
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BooksCloudloadingResource].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -251,7 +274,8 @@ class CloudloadingResourceApi {
       {core.String driveDocumentId,
       core.String mimeType,
       core.String name,
-      core.String uploadClientToken}) {
+      core.String uploadClientToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -270,6 +294,9 @@ class CloudloadingResourceApi {
     }
     if (uploadClientToken != null) {
       _queryParams["upload_client_token"] = [uploadClientToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'cloudloading/addBook';
@@ -290,12 +317,15 @@ class CloudloadingResourceApi {
   ///
   /// [volumeId] - The id of the book to be removed.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future deleteBook(core.String volumeId) {
+  async.Future deleteBook(core.String volumeId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -307,6 +337,9 @@ class CloudloadingResourceApi {
       throw new core.ArgumentError("Parameter volumeId is required.");
     }
     _queryParams["volumeId"] = [volumeId];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _downloadOptions = null;
 
@@ -325,6 +358,9 @@ class CloudloadingResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BooksCloudloadingResource].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -333,7 +369,8 @@ class CloudloadingResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BooksCloudloadingResource> updateBook(
-      BooksCloudloadingResource request) {
+      BooksCloudloadingResource request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -343,6 +380,9 @@ class CloudloadingResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'cloudloading/updateBook';
@@ -369,6 +409,9 @@ class DictionaryResourceApi {
   ///
   /// [cpksver] - The device/version ID from which to request the data.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Metadata].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -376,7 +419,8 @@ class DictionaryResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Metadata> listOfflineMetadata(core.String cpksver) {
+  async.Future<Metadata> listOfflineMetadata(core.String cpksver,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -388,6 +432,9 @@ class DictionaryResourceApi {
       throw new core.ArgumentError("Parameter cpksver is required.");
     }
     _queryParams["cpksver"] = [cpksver];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'dictionary/listOfflineMetadata';
 
@@ -423,6 +470,9 @@ class LayersResourceApi {
   ///
   /// [source] - String to identify the originator of this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Layersummary].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -431,7 +481,7 @@ class LayersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Layersummary> get(core.String volumeId, core.String summaryId,
-      {core.String contentVersion, core.String source}) {
+      {core.String contentVersion, core.String source, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -450,6 +500,9 @@ class LayersResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'volumes/' +
@@ -481,6 +534,9 @@ class LayersResourceApi {
   ///
   /// [source] - String to identify the originator of this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Layersummaries].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -492,7 +548,8 @@ class LayersResourceApi {
       {core.String contentVersion,
       core.int maxResults,
       core.String pageToken,
-      core.String source}) {
+      core.String source,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -514,6 +571,9 @@ class LayersResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'volumes/' +
@@ -565,6 +625,9 @@ class LayersAnnotationDataResourceApi {
   /// [w] - The requested pixel width for any images. If width is provided
   /// height must also be provided.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Annotationdata].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -579,7 +642,8 @@ class LayersAnnotationDataResourceApi {
       core.String locale,
       core.int scale,
       core.String source,
-      core.int w}) {
+      core.int w,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -617,6 +681,9 @@ class LayersAnnotationDataResourceApi {
     }
     if (w != null) {
       _queryParams["w"] = ["${w}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'volumes/' +
@@ -672,6 +739,9 @@ class LayersAnnotationDataResourceApi {
   /// [w] - The requested pixel width for any images. If width is provided
   /// height must also be provided.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Annotationsdata].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -690,7 +760,8 @@ class LayersAnnotationDataResourceApi {
       core.String source,
       core.String updatedMax,
       core.String updatedMin,
-      core.int w}) {
+      core.int w,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -738,6 +809,9 @@ class LayersAnnotationDataResourceApi {
     if (w != null) {
       _queryParams["w"] = ["${w}"];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'volumes/' +
         commons.Escaper.ecapeVariable('$volumeId') +
@@ -776,6 +850,9 @@ class LayersVolumeAnnotationsResourceApi {
   ///
   /// [source] - String to identify the originator of this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Volumeannotation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -785,7 +862,7 @@ class LayersVolumeAnnotationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Volumeannotation> get(
       core.String volumeId, core.String layerId, core.String annotationId,
-      {core.String locale, core.String source}) {
+      {core.String locale, core.String source, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -807,6 +884,9 @@ class LayersVolumeAnnotationsResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'volumes/' +
@@ -865,6 +945,9 @@ class LayersVolumeAnnotationsResourceApi {
   /// [volumeAnnotationsVersion] - The version of the volume annotations that
   /// you are requesting.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Volumeannotations].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -885,7 +968,8 @@ class LayersVolumeAnnotationsResourceApi {
       core.String startPosition,
       core.String updatedMax,
       core.String updatedMin,
-      core.String volumeAnnotationsVersion}) {
+      core.String volumeAnnotationsVersion,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -939,6 +1023,9 @@ class LayersVolumeAnnotationsResourceApi {
     if (volumeAnnotationsVersion != null) {
       _queryParams["volumeAnnotationsVersion"] = [volumeAnnotationsVersion];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'volumes/' +
         commons.Escaper.ecapeVariable('$volumeId') +
@@ -964,6 +1051,9 @@ class MyconfigResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Usersettings].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -971,13 +1061,17 @@ class MyconfigResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Usersettings> getUserSettings() {
+  async.Future<Usersettings> getUserSettings({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'myconfig/getUserSettings';
 
@@ -1003,6 +1097,9 @@ class MyconfigResourceApi {
   ///
   /// [source] - String to identify the originator of this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DownloadAccesses].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1012,7 +1109,7 @@ class MyconfigResourceApi {
   /// this method will complete with the same error.
   async.Future<DownloadAccesses> releaseDownloadAccess(
       core.List<core.String> volumeIds, core.String cpksver,
-      {core.String locale, core.String source}) {
+      {core.String locale, core.String source, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1033,6 +1130,9 @@ class MyconfigResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'myconfig/releaseDownloadAccess';
@@ -1068,6 +1168,9 @@ class MyconfigResourceApi {
   /// [locale] - ISO-639-1, ISO-3166-1 codes for message localization, i.e.
   /// en_US.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RequestAccess].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1077,7 +1180,7 @@ class MyconfigResourceApi {
   /// this method will complete with the same error.
   async.Future<RequestAccess> requestAccess(core.String source,
       core.String volumeId, core.String nonce, core.String cpksver,
-      {core.String licenseTypes, core.String locale}) {
+      {core.String licenseTypes, core.String locale, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1106,6 +1209,9 @@ class MyconfigResourceApi {
     }
     if (locale != null) {
       _queryParams["locale"] = [locale];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'myconfig/requestAccess';
@@ -1143,6 +1249,9 @@ class MyconfigResourceApi {
   ///
   /// [volumeIds] - The volume(s) to request download restrictions for.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Volumes].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1156,7 +1265,8 @@ class MyconfigResourceApi {
       core.bool includeNonComicsSeries,
       core.String locale,
       core.bool showPreorders,
-      core.List<core.String> volumeIds}) {
+      core.List<core.String> volumeIds,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1191,6 +1301,9 @@ class MyconfigResourceApi {
     if (volumeIds != null) {
       _queryParams["volumeIds"] = volumeIds;
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'myconfig/syncVolumeLicenses';
 
@@ -1211,6 +1324,9 @@ class MyconfigResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Usersettings].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1218,7 +1334,8 @@ class MyconfigResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Usersettings> updateUserSettings(Usersettings request) {
+  async.Future<Usersettings> updateUserSettings(Usersettings request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1228,6 +1345,9 @@ class MyconfigResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'myconfig/updateUserSettings';
@@ -1269,12 +1389,16 @@ class MylibraryAnnotationsResourceApi {
   ///
   /// [source] - String to identify the originator of this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String annotationId, {core.String source}) {
+  async.Future delete(core.String annotationId,
+      {core.String source, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1287,6 +1411,9 @@ class MylibraryAnnotationsResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1318,6 +1445,9 @@ class MylibraryAnnotationsResourceApi {
   ///
   /// [source] - String to identify the originator of this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Annotation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1329,7 +1459,8 @@ class MylibraryAnnotationsResourceApi {
       {core.String annotationId,
       core.String country,
       core.bool showOnlySummaryInResponse,
-      core.String source}) {
+      core.String source,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1353,6 +1484,9 @@ class MylibraryAnnotationsResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'mylibrary/annotations';
@@ -1394,6 +1528,9 @@ class MylibraryAnnotationsResourceApi {
   ///
   /// [volumeId] - The volume to restrict annotations to.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Annotations].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1411,7 +1548,8 @@ class MylibraryAnnotationsResourceApi {
       core.String source,
       core.String updatedMax,
       core.String updatedMin,
-      core.String volumeId}) {
+      core.String volumeId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1449,6 +1587,9 @@ class MylibraryAnnotationsResourceApi {
     if (volumeId != null) {
       _queryParams["volumeId"] = [volumeId];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'mylibrary/annotations';
 
@@ -1469,6 +1610,9 @@ class MylibraryAnnotationsResourceApi {
   ///
   /// [volumeId] - Volume id to get the summary for.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AnnotationsSummary].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1477,7 +1621,8 @@ class MylibraryAnnotationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AnnotationsSummary> summary(
-      core.List<core.String> layerIds, core.String volumeId) {
+      core.List<core.String> layerIds, core.String volumeId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1493,6 +1638,9 @@ class MylibraryAnnotationsResourceApi {
       throw new core.ArgumentError("Parameter volumeId is required.");
     }
     _queryParams["volumeId"] = [volumeId];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'mylibrary/annotations/summary';
 
@@ -1515,6 +1663,9 @@ class MylibraryAnnotationsResourceApi {
   ///
   /// [source] - String to identify the originator of this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Annotation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1523,7 +1674,7 @@ class MylibraryAnnotationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Annotation> update(Annotation request, core.String annotationId,
-      {core.String source}) {
+      {core.String source, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1539,6 +1690,9 @@ class MylibraryAnnotationsResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'mylibrary/annotations/' +
@@ -1579,13 +1733,16 @@ class MylibraryBookshelvesResourceApi {
   ///
   /// [source] - String to identify the originator of this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future addVolume(core.String shelf, core.String volumeId,
-      {core.String reason, core.String source}) {
+      {core.String reason, core.String source, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1605,6 +1762,9 @@ class MylibraryBookshelvesResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1630,12 +1790,16 @@ class MylibraryBookshelvesResourceApi {
   ///
   /// [source] - String to identify the originator of this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future clearVolumes(core.String shelf, {core.String source}) {
+  async.Future clearVolumes(core.String shelf,
+      {core.String source, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1648,6 +1812,9 @@ class MylibraryBookshelvesResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1674,6 +1841,9 @@ class MylibraryBookshelvesResourceApi {
   ///
   /// [source] - String to identify the originator of this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Bookshelf].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1681,7 +1851,8 @@ class MylibraryBookshelvesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Bookshelf> get(core.String shelf, {core.String source}) {
+  async.Future<Bookshelf> get(core.String shelf,
+      {core.String source, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1694,6 +1865,9 @@ class MylibraryBookshelvesResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'mylibrary/bookshelves/' + commons.Escaper.ecapeVariable('$shelf');
@@ -1713,6 +1887,9 @@ class MylibraryBookshelvesResourceApi {
   ///
   /// [source] - String to identify the originator of this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Bookshelves].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1720,7 +1897,7 @@ class MylibraryBookshelvesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Bookshelves> list({core.String source}) {
+  async.Future<Bookshelves> list({core.String source, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1730,6 +1907,9 @@ class MylibraryBookshelvesResourceApi {
 
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'mylibrary/bookshelves';
@@ -1757,6 +1937,9 @@ class MylibraryBookshelvesResourceApi {
   ///
   /// [source] - String to identify the originator of this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
@@ -1764,7 +1947,7 @@ class MylibraryBookshelvesResourceApi {
   /// this method will complete with the same error.
   async.Future moveVolume(
       core.String shelf, core.String volumeId, core.int volumePosition,
-      {core.String source}) {
+      {core.String source, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1785,6 +1968,9 @@ class MylibraryBookshelvesResourceApi {
     _queryParams["volumePosition"] = ["${volumePosition}"];
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1816,13 +2002,16 @@ class MylibraryBookshelvesResourceApi {
   ///
   /// [source] - String to identify the originator of this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future removeVolume(core.String shelf, core.String volumeId,
-      {core.String reason, core.String source}) {
+      {core.String reason, core.String source, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1842,6 +2031,9 @@ class MylibraryBookshelvesResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1890,6 +2082,9 @@ class MylibraryBookshelvesVolumesResourceApi {
   ///
   /// [startIndex] - Index of the first element to return (starts at 0)
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Volumes].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1904,7 +2099,8 @@ class MylibraryBookshelvesVolumesResourceApi {
       core.String q,
       core.bool showPreorders,
       core.String source,
-      core.int startIndex}) {
+      core.int startIndex,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1935,6 +2131,9 @@ class MylibraryBookshelvesVolumesResourceApi {
     }
     if (startIndex != null) {
       _queryParams["startIndex"] = ["${startIndex}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'mylibrary/bookshelves/' +
@@ -1968,6 +2167,9 @@ class MylibraryReadingpositionsResourceApi {
   ///
   /// [source] - String to identify the originator of this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ReadingPosition].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1976,7 +2178,7 @@ class MylibraryReadingpositionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ReadingPosition> get(core.String volumeId,
-      {core.String contentVersion, core.String source}) {
+      {core.String contentVersion, core.String source, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1992,6 +2194,9 @@ class MylibraryReadingpositionsResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'mylibrary/readingpositions/' +
@@ -2033,6 +2238,9 @@ class MylibraryReadingpositionsResourceApi {
   ///
   /// [source] - String to identify the originator of this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
@@ -2043,7 +2251,8 @@ class MylibraryReadingpositionsResourceApi {
       {core.String action,
       core.String contentVersion,
       core.String deviceCookie,
-      core.String source}) {
+      core.String source,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2073,6 +2282,9 @@ class MylibraryReadingpositionsResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2107,6 +2319,9 @@ class NotificationResourceApi {
   ///
   /// [source] - String to identify the originator of this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Notification].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2115,7 +2330,7 @@ class NotificationResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Notification> get(core.String notificationId,
-      {core.String locale, core.String source}) {
+      {core.String locale, core.String source, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2132,6 +2347,9 @@ class NotificationResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'notification/get';
@@ -2158,6 +2376,9 @@ class OnboardingResourceApi {
   /// [locale] - ISO-639-1 language and ISO-3166-1 country code. Default is
   /// en-US if unset.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Category].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2165,7 +2386,8 @@ class OnboardingResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Category> listCategories({core.String locale}) {
+  async.Future<Category> listCategories(
+      {core.String locale, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2175,6 +2397,9 @@ class OnboardingResourceApi {
 
     if (locale != null) {
       _queryParams["locale"] = [locale];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'onboarding/listCategories';
@@ -2208,6 +2433,9 @@ class OnboardingResourceApi {
   ///
   /// [pageToken] - The value of the nextToken from the previous page.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Volume2].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2220,7 +2448,8 @@ class OnboardingResourceApi {
       core.String locale,
       core.String maxAllowedMaturityRating,
       core.int pageSize,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2242,6 +2471,9 @@ class OnboardingResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'onboarding/listCategoryVolumes';
@@ -2278,6 +2510,9 @@ class PersonalizedstreamResourceApi {
   ///
   /// [source] - String to identify the originator of this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Discoveryclusters].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2288,7 +2523,8 @@ class PersonalizedstreamResourceApi {
   async.Future<Discoveryclusters> get(
       {core.String locale,
       core.String maxAllowedMaturityRating,
-      core.String source}) {
+      core.String source,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2304,6 +2540,9 @@ class PersonalizedstreamResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'personalizedstream/get';
@@ -2341,6 +2580,9 @@ class PromoofferResourceApi {
   ///
   /// [volumeId] - Volume id to exercise the offer
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
@@ -2354,7 +2596,8 @@ class PromoofferResourceApi {
       core.String offerId,
       core.String product,
       core.String serial,
-      core.String volumeId}) {
+      core.String volumeId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2386,6 +2629,9 @@ class PromoofferResourceApi {
     if (volumeId != null) {
       _queryParams["volumeId"] = [volumeId];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _downloadOptions = null;
 
@@ -2416,6 +2662,9 @@ class PromoofferResourceApi {
   ///
   /// [serial] - device serial
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
@@ -2428,7 +2677,8 @@ class PromoofferResourceApi {
       core.String model,
       core.String offerId,
       core.String product,
-      core.String serial}) {
+      core.String serial,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2456,6 +2706,9 @@ class PromoofferResourceApi {
     }
     if (serial != null) {
       _queryParams["serial"] = [serial];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2487,6 +2740,9 @@ class PromoofferResourceApi {
   ///
   /// [serial] - device serial
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Offers].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2500,7 +2756,8 @@ class PromoofferResourceApi {
       core.String manufacturer,
       core.String model,
       core.String product,
-      core.String serial}) {
+      core.String serial,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2525,6 +2782,9 @@ class PromoofferResourceApi {
     }
     if (serial != null) {
       _queryParams["serial"] = [serial];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'promooffer/get';
@@ -2553,6 +2813,9 @@ class SeriesResourceApi {
   ///
   /// [seriesId] - String that identifies the series
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Series].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2560,7 +2823,8 @@ class SeriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Series> get(core.List<core.String> seriesId) {
+  async.Future<Series> get(core.List<core.String> seriesId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2572,6 +2836,9 @@ class SeriesResourceApi {
       throw new core.ArgumentError("Parameter seriesId is required.");
     }
     _queryParams["series_id"] = seriesId;
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'series/get';
 
@@ -2602,6 +2869,9 @@ class SeriesMembershipResourceApi {
   ///
   /// [pageToken] - The value of the nextToken from the previous page.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Seriesmembership].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2610,7 +2880,7 @@ class SeriesMembershipResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Seriesmembership> get(core.String seriesId,
-      {core.int pageSize, core.String pageToken}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2627,6 +2897,9 @@ class SeriesMembershipResourceApi {
     }
     if (pageToken != null) {
       _queryParams["page_token"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'series/membership/get';
@@ -2677,6 +2950,9 @@ class VolumesResourceApi {
   ///
   /// [userLibraryConsistentRead] - null
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Volume].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2690,7 +2966,8 @@ class VolumesResourceApi {
       core.String partner,
       core.String projection,
       core.String source,
-      core.bool userLibraryConsistentRead}) {
+      core.bool userLibraryConsistentRead,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2720,6 +2997,9 @@ class VolumesResourceApi {
       _queryParams["user_library_consistent_read"] = [
         "${userLibraryConsistentRead}"
       ];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'volumes/' + commons.Escaper.ecapeVariable('$volumeId');
@@ -2793,6 +3073,9 @@ class VolumesResourceApi {
   ///
   /// [startIndex] - Index of the first result to return (starts at 0)
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Volumes].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2813,7 +3096,8 @@ class VolumesResourceApi {
       core.String projection,
       core.bool showPreorders,
       core.String source,
-      core.int startIndex}) {
+      core.int startIndex,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2864,6 +3148,9 @@ class VolumesResourceApi {
     if (startIndex != null) {
       _queryParams["startIndex"] = ["${startIndex}"];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'volumes';
 
@@ -2907,6 +3194,9 @@ class VolumesAssociatedResourceApi {
   ///
   /// [source] - String to identify the originator of this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Volumes].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2918,7 +3208,8 @@ class VolumesAssociatedResourceApi {
       {core.String association,
       core.String locale,
       core.String maxAllowedMaturityRating,
-      core.String source}) {
+      core.String source,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2940,6 +3231,9 @@ class VolumesAssociatedResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -2982,6 +3276,9 @@ class VolumesMybooksResourceApi {
   ///
   /// [startIndex] - Index of the first result to return (starts at 0)
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Volumes].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2996,7 +3293,8 @@ class VolumesMybooksResourceApi {
       core.int maxResults,
       core.List<core.String> processingState,
       core.String source,
-      core.int startIndex}) {
+      core.int startIndex,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3024,6 +3322,9 @@ class VolumesMybooksResourceApi {
     }
     if (startIndex != null) {
       _queryParams["startIndex"] = ["${startIndex}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'volumes/mybooks';
@@ -3060,6 +3361,9 @@ class VolumesRecommendedResourceApi {
   ///
   /// [source] - String to identify the originator of this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Volumes].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3070,7 +3374,8 @@ class VolumesRecommendedResourceApi {
   async.Future<Volumes> list(
       {core.String locale,
       core.String maxAllowedMaturityRating,
-      core.String source}) {
+      core.String source,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3086,6 +3391,9 @@ class VolumesRecommendedResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'volumes/recommended';
@@ -3115,6 +3423,9 @@ class VolumesRecommendedResourceApi {
   ///
   /// [source] - String to identify the originator of this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BooksVolumesRecommendedRateResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3124,7 +3435,7 @@ class VolumesRecommendedResourceApi {
   /// this method will complete with the same error.
   async.Future<BooksVolumesRecommendedRateResponse> rate(
       core.String rating, core.String volumeId,
-      {core.String locale, core.String source}) {
+      {core.String locale, core.String source, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3145,6 +3456,9 @@ class VolumesRecommendedResourceApi {
     }
     if (source != null) {
       _queryParams["source"] = [source];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'volumes/recommended/rate';
@@ -3186,6 +3500,9 @@ class VolumesUseruploadedResourceApi {
   /// [volumeId] - The ids of the volumes to be returned. If not specified all
   /// that match the processingState are returned.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Volumes].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3199,7 +3516,8 @@ class VolumesUseruploadedResourceApi {
       core.List<core.String> processingState,
       core.String source,
       core.int startIndex,
-      core.List<core.String> volumeId}) {
+      core.List<core.String> volumeId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3224,6 +3542,9 @@ class VolumesUseruploadedResourceApi {
     }
     if (volumeId != null) {
       _queryParams["volumeId"] = volumeId;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'volumes/useruploaded';

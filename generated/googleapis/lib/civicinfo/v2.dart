@@ -48,6 +48,9 @@ class DivisionsResourceApi {
   /// Lucene library are supported. See
   /// http://lucene.apache.org/core/2_9_4/queryparsersyntax.html
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DivisionSearchResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -56,7 +59,7 @@ class DivisionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DivisionSearchResponse> search(DivisionSearchRequest request,
-      {core.String query}) {
+      {core.String query, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -69,6 +72,9 @@ class DivisionsResourceApi {
     }
     if (query != null) {
       _queryParams["query"] = [query];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'divisions';
@@ -94,6 +100,9 @@ class ElectionsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ElectionsQueryResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -102,7 +111,8 @@ class ElectionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ElectionsQueryResponse> electionQuery(
-      ElectionsQueryRequest request) {
+      ElectionsQueryRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -112,6 +122,9 @@ class ElectionsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'elections';
@@ -146,6 +159,9 @@ class ElectionsResourceApi {
   /// determine a matching address or unable to determine the election for
   /// electionId=0 queries.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [VoterInfoResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -157,7 +173,8 @@ class ElectionsResourceApi {
       VoterInfoRequest request, core.String address,
       {core.String electionId,
       core.bool officialOnly,
-      core.bool returnAllAvailableData}) {
+      core.bool returnAllAvailableData,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -180,6 +197,9 @@ class ElectionsResourceApi {
     }
     if (returnAllAvailableData != null) {
       _queryParams["returnAllAvailableData"] = ["${returnAllAvailableData}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'voterinfo';
@@ -221,6 +241,9 @@ class RepresentativesResourceApi {
   /// of these roles will be returned. Divisions that don't contain a matching
   /// office will not be returned.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RepresentativeInfoResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -233,7 +256,8 @@ class RepresentativesResourceApi {
       {core.String address,
       core.bool includeOffices,
       core.List<core.String> levels,
-      core.List<core.String> roles}) {
+      core.List<core.String> roles,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -255,6 +279,9 @@ class RepresentativesResourceApi {
     }
     if (roles != null) {
       _queryParams["roles"] = roles;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'representatives';
@@ -291,6 +318,9 @@ class RepresentativesResourceApi {
   /// of these roles will be returned. Divisions that don't contain a matching
   /// office will not be returned.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RepresentativeInfoData].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -302,7 +332,8 @@ class RepresentativesResourceApi {
       DivisionRepresentativeInfoRequest request, core.String ocdId,
       {core.List<core.String> levels,
       core.bool recursive,
-      core.List<core.String> roles}) {
+      core.List<core.String> roles,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -324,6 +355,9 @@ class RepresentativesResourceApi {
     }
     if (roles != null) {
       _queryParams["roles"] = roles;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'representatives/' + commons.Escaper.ecapeVariable('$ocdId');

@@ -75,6 +75,12 @@ class ComputeApi {
   InstanceTemplatesResourceApi get instanceTemplates =>
       new InstanceTemplatesResourceApi(_requester);
   InstancesResourceApi get instances => new InstancesResourceApi(_requester);
+  InterconnectAttachmentsResourceApi get interconnectAttachments =>
+      new InterconnectAttachmentsResourceApi(_requester);
+  InterconnectLocationsResourceApi get interconnectLocations =>
+      new InterconnectLocationsResourceApi(_requester);
+  InterconnectsResourceApi get interconnects =>
+      new InterconnectsResourceApi(_requester);
   LicensesResourceApi get licenses => new LicensesResourceApi(_requester);
   MachineTypesResourceApi get machineTypes =>
       new MachineTypesResourceApi(_requester);
@@ -187,6 +193,9 @@ class AcceleratorTypesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AcceleratorTypeAggregatedList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -199,7 +208,8 @@ class AcceleratorTypesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -221,6 +231,9 @@ class AcceleratorTypesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -251,6 +264,9 @@ class AcceleratorTypesResourceApi {
   /// [acceleratorType] - Name of the accelerator type to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AcceleratorType].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -259,7 +275,8 @@ class AcceleratorTypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AcceleratorType> get(
-      core.String project, core.String zone, core.String acceleratorType) {
+      core.String project, core.String zone, core.String acceleratorType,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -275,6 +292,9 @@ class AcceleratorTypesResourceApi {
     }
     if (acceleratorType == null) {
       throw new core.ArgumentError("Parameter acceleratorType is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -349,6 +369,9 @@ class AcceleratorTypesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AcceleratorTypeList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -360,7 +383,8 @@ class AcceleratorTypesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -385,6 +409,9 @@ class AcceleratorTypesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -461,6 +488,9 @@ class AddressesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AddressAggregatedList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -472,7 +502,8 @@ class AddressesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -494,6 +525,9 @@ class AddressesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/addresses';
@@ -534,6 +568,9 @@ class AddressesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -543,7 +580,7 @@ class AddressesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String region, core.String address,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -562,6 +599,9 @@ class AddressesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -593,6 +633,9 @@ class AddressesResourceApi {
   /// [address] - Name of the address resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Address].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -601,7 +644,8 @@ class AddressesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Address> get(
-      core.String project, core.String region, core.String address) {
+      core.String project, core.String region, core.String address,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -617,6 +661,9 @@ class AddressesResourceApi {
     }
     if (address == null) {
       throw new core.ArgumentError("Parameter address is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -661,6 +708,9 @@ class AddressesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -670,7 +720,7 @@ class AddressesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(
       Address request, core.String project, core.String region,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -689,6 +739,9 @@ class AddressesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -762,6 +815,9 @@ class AddressesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AddressList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -773,7 +829,8 @@ class AddressesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -798,6 +855,9 @@ class AddressesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -874,6 +934,9 @@ class AutoscalersResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AutoscalerAggregatedList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -885,7 +948,8 @@ class AutoscalersResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -907,6 +971,9 @@ class AutoscalersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -949,6 +1016,9 @@ class AutoscalersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -958,7 +1028,7 @@ class AutoscalersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String zone, core.String autoscaler,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -977,6 +1047,9 @@ class AutoscalersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -1009,6 +1082,9 @@ class AutoscalersResourceApi {
   /// [autoscaler] - Name of the autoscaler to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Autoscaler].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1017,7 +1093,8 @@ class AutoscalersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Autoscaler> get(
-      core.String project, core.String zone, core.String autoscaler) {
+      core.String project, core.String zone, core.String autoscaler,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1033,6 +1110,9 @@ class AutoscalersResourceApi {
     }
     if (autoscaler == null) {
       throw new core.ArgumentError("Parameter autoscaler is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -1077,6 +1157,9 @@ class AutoscalersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1086,7 +1169,7 @@ class AutoscalersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(
       Autoscaler request, core.String project, core.String zone,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1105,6 +1188,9 @@ class AutoscalersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -1178,6 +1264,9 @@ class AutoscalersResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AutoscalerList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1189,7 +1278,8 @@ class AutoscalersResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1214,6 +1304,9 @@ class AutoscalersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -1261,6 +1354,9 @@ class AutoscalersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1270,7 +1366,7 @@ class AutoscalersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(
       Autoscaler request, core.String project, core.String zone,
-      {core.String autoscaler, core.String requestId}) {
+      {core.String autoscaler, core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1292,6 +1388,9 @@ class AutoscalersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -1338,6 +1437,9 @@ class AutoscalersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1347,7 +1449,7 @@ class AutoscalersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> update(
       Autoscaler request, core.String project, core.String zone,
-      {core.String autoscaler, core.String requestId}) {
+      {core.String autoscaler, core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1369,6 +1471,9 @@ class AutoscalersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -1415,6 +1520,9 @@ class BackendBucketsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1423,7 +1531,7 @@ class BackendBucketsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String backendBucket,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1439,6 +1547,9 @@ class BackendBucketsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -1466,6 +1577,9 @@ class BackendBucketsResourceApi {
   /// [backendBucket] - Name of the BackendBucket resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BackendBucket].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1474,7 +1588,8 @@ class BackendBucketsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BackendBucket> get(
-      core.String project, core.String backendBucket) {
+      core.String project, core.String backendBucket,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1487,6 +1602,9 @@ class BackendBucketsResourceApi {
     }
     if (backendBucket == null) {
       throw new core.ArgumentError("Parameter backendBucket is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -1526,6 +1644,9 @@ class BackendBucketsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1534,7 +1655,7 @@ class BackendBucketsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(BackendBucket request, core.String project,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1550,6 +1671,9 @@ class BackendBucketsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/backendBuckets';
@@ -1618,6 +1742,9 @@ class BackendBucketsResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BackendBucketList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1629,7 +1756,8 @@ class BackendBucketsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1651,6 +1779,9 @@ class BackendBucketsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/backendBuckets';
@@ -1692,6 +1823,9 @@ class BackendBucketsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1701,7 +1835,7 @@ class BackendBucketsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(
       BackendBucket request, core.String project, core.String backendBucket,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1720,6 +1854,9 @@ class BackendBucketsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -1762,6 +1899,9 @@ class BackendBucketsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1771,7 +1911,7 @@ class BackendBucketsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> update(
       BackendBucket request, core.String project, core.String backendBucket,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1790,6 +1930,9 @@ class BackendBucketsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -1866,6 +2009,9 @@ class BackendServicesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BackendServiceAggregatedList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1877,7 +2023,8 @@ class BackendServicesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1899,6 +2046,9 @@ class BackendServicesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -1938,6 +2088,9 @@ class BackendServicesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1947,7 +2100,7 @@ class BackendServicesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String backendService,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1963,6 +2116,9 @@ class BackendServicesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -1990,6 +2146,9 @@ class BackendServicesResourceApi {
   /// [backendService] - Name of the BackendService resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BackendService].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1998,7 +2157,8 @@ class BackendServicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BackendService> get(
-      core.String project, core.String backendService) {
+      core.String project, core.String backendService,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2011,6 +2171,9 @@ class BackendServicesResourceApi {
     }
     if (backendService == null) {
       throw new core.ArgumentError("Parameter backendService is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -2040,6 +2203,9 @@ class BackendServicesResourceApi {
   /// queried instance belongs.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BackendServiceGroupHealth].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2050,7 +2216,8 @@ class BackendServicesResourceApi {
   async.Future<BackendServiceGroupHealth> getHealth(
       ResourceGroupReference request,
       core.String project,
-      core.String backendService) {
+      core.String backendService,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2066,6 +2233,9 @@ class BackendServicesResourceApi {
     }
     if (backendService == null) {
       throw new core.ArgumentError("Parameter backendService is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -2109,6 +2279,9 @@ class BackendServicesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2117,7 +2290,7 @@ class BackendServicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(BackendService request, core.String project,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2133,6 +2306,9 @@ class BackendServicesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -2202,6 +2378,9 @@ class BackendServicesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BackendServiceList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2213,7 +2392,8 @@ class BackendServicesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2235,6 +2415,9 @@ class BackendServicesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -2279,6 +2462,9 @@ class BackendServicesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2288,7 +2474,7 @@ class BackendServicesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(
       BackendService request, core.String project, core.String backendService,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2307,6 +2493,9 @@ class BackendServicesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -2351,6 +2540,9 @@ class BackendServicesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2360,7 +2552,7 @@ class BackendServicesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> update(
       BackendService request, core.String project, core.String backendService,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2379,6 +2571,9 @@ class BackendServicesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -2454,6 +2649,9 @@ class DiskTypesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DiskTypeAggregatedList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2465,7 +2663,8 @@ class DiskTypesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2487,6 +2686,9 @@ class DiskTypesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/diskTypes';
@@ -2515,6 +2717,9 @@ class DiskTypesResourceApi {
   /// [diskType] - Name of the disk type to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DiskType].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2523,7 +2728,8 @@ class DiskTypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DiskType> get(
-      core.String project, core.String zone, core.String diskType) {
+      core.String project, core.String zone, core.String diskType,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2539,6 +2745,9 @@ class DiskTypesResourceApi {
     }
     if (diskType == null) {
       throw new core.ArgumentError("Parameter diskType is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -2613,6 +2822,9 @@ class DiskTypesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DiskTypeList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2624,7 +2836,8 @@ class DiskTypesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2649,6 +2862,9 @@ class DiskTypesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -2725,6 +2941,9 @@ class DisksResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DiskAggregatedList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2736,7 +2955,8 @@ class DisksResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2758,6 +2978,9 @@ class DisksResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/disks';
@@ -2802,6 +3025,9 @@ class DisksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2811,7 +3037,7 @@ class DisksResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> createSnapshot(
       Snapshot request, core.String project, core.String zone, core.String disk,
-      {core.bool guestFlush, core.String requestId}) {
+      {core.bool guestFlush, core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2836,6 +3062,9 @@ class DisksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -2883,6 +3112,9 @@ class DisksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2892,7 +3124,7 @@ class DisksResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String zone, core.String disk,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2911,6 +3143,9 @@ class DisksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -2943,6 +3178,9 @@ class DisksResourceApi {
   /// [disk] - Name of the persistent disk to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Disk].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2951,7 +3189,8 @@ class DisksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Disk> get(
-      core.String project, core.String zone, core.String disk) {
+      core.String project, core.String zone, core.String disk,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2967,6 +3206,9 @@ class DisksResourceApi {
     }
     if (disk == null) {
       throw new core.ArgumentError("Parameter disk is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -3016,6 +3258,9 @@ class DisksResourceApi {
   ///
   /// [sourceImage] - Optional. Source image to restore onto a disk.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3025,7 +3270,7 @@ class DisksResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(
       Disk request, core.String project, core.String zone,
-      {core.String requestId, core.String sourceImage}) {
+      {core.String requestId, core.String sourceImage, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3047,6 +3292,9 @@ class DisksResourceApi {
     }
     if (sourceImage != null) {
       _queryParams["sourceImage"] = [sourceImage];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -3120,6 +3368,9 @@ class DisksResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DiskList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3131,7 +3382,8 @@ class DisksResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3156,6 +3408,9 @@ class DisksResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -3201,6 +3456,9 @@ class DisksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3210,7 +3468,7 @@ class DisksResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> resize(DisksResizeRequest request,
       core.String project, core.String zone, core.String disk,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3232,6 +3490,9 @@ class DisksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -3280,6 +3541,9 @@ class DisksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3289,7 +3553,7 @@ class DisksResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> setLabels(ZoneSetLabelsRequest request,
       core.String project, core.String zone, core.String resource,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3311,6 +3575,9 @@ class DisksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -3359,6 +3626,9 @@ class FirewallsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3367,7 +3637,7 @@ class FirewallsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String firewall,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3383,6 +3653,9 @@ class FirewallsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -3409,6 +3682,9 @@ class FirewallsResourceApi {
   /// [firewall] - Name of the firewall rule to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Firewall].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3416,7 +3692,8 @@ class FirewallsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Firewall> get(core.String project, core.String firewall) {
+  async.Future<Firewall> get(core.String project, core.String firewall,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3429,6 +3706,9 @@ class FirewallsResourceApi {
     }
     if (firewall == null) {
       throw new core.ArgumentError("Parameter firewall is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -3468,6 +3748,9 @@ class FirewallsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3476,7 +3759,7 @@ class FirewallsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(Firewall request, core.String project,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3492,6 +3775,9 @@ class FirewallsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/firewalls';
@@ -3559,6 +3845,9 @@ class FirewallsResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FirewallList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3570,7 +3859,8 @@ class FirewallsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3592,6 +3882,9 @@ class FirewallsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/firewalls';
@@ -3633,6 +3926,9 @@ class FirewallsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3642,7 +3938,7 @@ class FirewallsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(
       Firewall request, core.String project, core.String firewall,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3661,6 +3957,9 @@ class FirewallsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -3704,6 +4003,9 @@ class FirewallsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3713,7 +4015,7 @@ class FirewallsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> update(
       Firewall request, core.String project, core.String firewall,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3732,6 +4034,9 @@ class FirewallsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -3807,6 +4112,9 @@ class ForwardingRulesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ForwardingRuleAggregatedList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3818,7 +4126,8 @@ class ForwardingRulesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3840,6 +4149,9 @@ class ForwardingRulesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -3882,6 +4194,9 @@ class ForwardingRulesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3891,7 +4206,7 @@ class ForwardingRulesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String region, core.String forwardingRule,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3910,6 +4225,9 @@ class ForwardingRulesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -3941,6 +4259,9 @@ class ForwardingRulesResourceApi {
   /// [forwardingRule] - Name of the ForwardingRule resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ForwardingRule].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3949,7 +4270,8 @@ class ForwardingRulesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ForwardingRule> get(
-      core.String project, core.String region, core.String forwardingRule) {
+      core.String project, core.String region, core.String forwardingRule,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3965,6 +4287,9 @@ class ForwardingRulesResourceApi {
     }
     if (forwardingRule == null) {
       throw new core.ArgumentError("Parameter forwardingRule is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -4009,6 +4334,9 @@ class ForwardingRulesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4018,7 +4346,7 @@ class ForwardingRulesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(
       ForwardingRule request, core.String project, core.String region,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4037,6 +4365,9 @@ class ForwardingRulesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -4111,6 +4442,9 @@ class ForwardingRulesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ForwardingRuleList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4122,7 +4456,8 @@ class ForwardingRulesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4147,6 +4482,9 @@ class ForwardingRulesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -4194,6 +4532,9 @@ class ForwardingRulesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4203,7 +4544,7 @@ class ForwardingRulesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> setTarget(TargetReference request,
       core.String project, core.String region, core.String forwardingRule,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4225,6 +4566,9 @@ class ForwardingRulesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -4273,6 +4617,9 @@ class GlobalAddressesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4281,7 +4628,7 @@ class GlobalAddressesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String address,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4297,6 +4644,9 @@ class GlobalAddressesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -4324,6 +4674,9 @@ class GlobalAddressesResourceApi {
   /// [address] - Name of the address resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Address].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4331,7 +4684,8 @@ class GlobalAddressesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Address> get(core.String project, core.String address) {
+  async.Future<Address> get(core.String project, core.String address,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4344,6 +4698,9 @@ class GlobalAddressesResourceApi {
     }
     if (address == null) {
       throw new core.ArgumentError("Parameter address is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -4383,6 +4740,9 @@ class GlobalAddressesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4391,7 +4751,7 @@ class GlobalAddressesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(Address request, core.String project,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4407,6 +4767,9 @@ class GlobalAddressesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/addresses';
@@ -4474,6 +4837,9 @@ class GlobalAddressesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AddressList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4485,7 +4851,8 @@ class GlobalAddressesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4507,6 +4874,9 @@ class GlobalAddressesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/addresses';
@@ -4551,6 +4921,9 @@ class GlobalForwardingRulesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4560,7 +4933,7 @@ class GlobalForwardingRulesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String forwardingRule,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4576,6 +4949,9 @@ class GlobalForwardingRulesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -4603,6 +4979,9 @@ class GlobalForwardingRulesResourceApi {
   /// [forwardingRule] - Name of the ForwardingRule resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ForwardingRule].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4611,7 +4990,8 @@ class GlobalForwardingRulesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ForwardingRule> get(
-      core.String project, core.String forwardingRule) {
+      core.String project, core.String forwardingRule,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4624,6 +5004,9 @@ class GlobalForwardingRulesResourceApi {
     }
     if (forwardingRule == null) {
       throw new core.ArgumentError("Parameter forwardingRule is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -4663,6 +5046,9 @@ class GlobalForwardingRulesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4671,7 +5057,7 @@ class GlobalForwardingRulesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(ForwardingRule request, core.String project,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4687,6 +5073,9 @@ class GlobalForwardingRulesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -4756,6 +5145,9 @@ class GlobalForwardingRulesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ForwardingRuleList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4767,7 +5159,8 @@ class GlobalForwardingRulesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4789,6 +5182,9 @@ class GlobalForwardingRulesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -4831,6 +5227,9 @@ class GlobalForwardingRulesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4840,7 +5239,7 @@ class GlobalForwardingRulesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> setTarget(
       TargetReference request, core.String project, core.String forwardingRule,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4859,6 +5258,9 @@ class GlobalForwardingRulesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -4936,6 +5338,9 @@ class GlobalOperationsResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OperationAggregatedList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4947,7 +5352,8 @@ class GlobalOperationsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4969,6 +5375,9 @@ class GlobalOperationsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/operations';
@@ -4993,12 +5402,16 @@ class GlobalOperationsResourceApi {
   /// [operation] - Name of the Operations resource to delete.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String project, core.String operation) {
+  async.Future delete(core.String project, core.String operation,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5011,6 +5424,9 @@ class GlobalOperationsResourceApi {
     }
     if (operation == null) {
       throw new core.ArgumentError("Parameter operation is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -5040,6 +5456,9 @@ class GlobalOperationsResourceApi {
   /// [operation] - Name of the Operations resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5047,7 +5466,8 @@ class GlobalOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String project, core.String operation) {
+  async.Future<Operation> get(core.String project, core.String operation,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5060,6 +5480,9 @@ class GlobalOperationsResourceApi {
     }
     if (operation == null) {
       throw new core.ArgumentError("Parameter operation is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -5130,6 +5553,9 @@ class GlobalOperationsResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OperationList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5141,7 +5567,8 @@ class GlobalOperationsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5163,6 +5590,9 @@ class GlobalOperationsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/operations';
@@ -5206,6 +5636,9 @@ class HealthChecksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5214,7 +5647,7 @@ class HealthChecksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String healthCheck,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5230,6 +5663,9 @@ class HealthChecksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -5257,6 +5693,9 @@ class HealthChecksResourceApi {
   /// [healthCheck] - Name of the HealthCheck resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [HealthCheck].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5264,7 +5703,8 @@ class HealthChecksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<HealthCheck> get(core.String project, core.String healthCheck) {
+  async.Future<HealthCheck> get(core.String project, core.String healthCheck,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5277,6 +5717,9 @@ class HealthChecksResourceApi {
     }
     if (healthCheck == null) {
       throw new core.ArgumentError("Parameter healthCheck is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -5316,6 +5759,9 @@ class HealthChecksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5324,7 +5770,7 @@ class HealthChecksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(HealthCheck request, core.String project,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5340,6 +5786,9 @@ class HealthChecksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/healthChecks';
@@ -5408,6 +5857,9 @@ class HealthChecksResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [HealthCheckList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5419,7 +5871,8 @@ class HealthChecksResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5441,6 +5894,9 @@ class HealthChecksResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/healthChecks';
@@ -5482,6 +5938,9 @@ class HealthChecksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5491,7 +5950,7 @@ class HealthChecksResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(
       HealthCheck request, core.String project, core.String healthCheck,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5510,6 +5969,9 @@ class HealthChecksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -5552,6 +6014,9 @@ class HealthChecksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5561,7 +6026,7 @@ class HealthChecksResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> update(
       HealthCheck request, core.String project, core.String healthCheck,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5580,6 +6045,9 @@ class HealthChecksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -5626,6 +6094,9 @@ class HttpHealthChecksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5635,7 +6106,7 @@ class HttpHealthChecksResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String httpHealthCheck,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5651,6 +6122,9 @@ class HttpHealthChecksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -5678,6 +6152,9 @@ class HttpHealthChecksResourceApi {
   /// [httpHealthCheck] - Name of the HttpHealthCheck resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [HttpHealthCheck].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5686,7 +6163,8 @@ class HttpHealthChecksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpHealthCheck> get(
-      core.String project, core.String httpHealthCheck) {
+      core.String project, core.String httpHealthCheck,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5699,6 +6177,9 @@ class HttpHealthChecksResourceApi {
     }
     if (httpHealthCheck == null) {
       throw new core.ArgumentError("Parameter httpHealthCheck is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -5738,6 +6219,9 @@ class HttpHealthChecksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5746,7 +6230,7 @@ class HttpHealthChecksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(HttpHealthCheck request, core.String project,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5762,6 +6246,9 @@ class HttpHealthChecksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -5831,6 +6318,9 @@ class HttpHealthChecksResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [HttpHealthCheckList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5842,7 +6332,8 @@ class HttpHealthChecksResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5864,6 +6355,9 @@ class HttpHealthChecksResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -5906,6 +6400,9 @@ class HttpHealthChecksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5915,7 +6412,7 @@ class HttpHealthChecksResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(
       HttpHealthCheck request, core.String project, core.String httpHealthCheck,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5934,6 +6431,9 @@ class HttpHealthChecksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -5976,6 +6476,9 @@ class HttpHealthChecksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5985,7 +6488,7 @@ class HttpHealthChecksResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> update(
       HttpHealthCheck request, core.String project, core.String httpHealthCheck,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6004,6 +6507,9 @@ class HttpHealthChecksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -6050,6 +6556,9 @@ class HttpsHealthChecksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6059,7 +6568,7 @@ class HttpsHealthChecksResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String httpsHealthCheck,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6075,6 +6584,9 @@ class HttpsHealthChecksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -6102,6 +6614,9 @@ class HttpsHealthChecksResourceApi {
   /// [httpsHealthCheck] - Name of the HttpsHealthCheck resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [HttpsHealthCheck].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6110,7 +6625,8 @@ class HttpsHealthChecksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<HttpsHealthCheck> get(
-      core.String project, core.String httpsHealthCheck) {
+      core.String project, core.String httpsHealthCheck,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6123,6 +6639,9 @@ class HttpsHealthChecksResourceApi {
     }
     if (httpsHealthCheck == null) {
       throw new core.ArgumentError("Parameter httpsHealthCheck is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -6162,6 +6681,9 @@ class HttpsHealthChecksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6170,7 +6692,7 @@ class HttpsHealthChecksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(HttpsHealthCheck request, core.String project,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6186,6 +6708,9 @@ class HttpsHealthChecksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -6255,6 +6780,9 @@ class HttpsHealthChecksResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [HttpsHealthCheckList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6266,7 +6794,8 @@ class HttpsHealthChecksResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6288,6 +6817,9 @@ class HttpsHealthChecksResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -6330,6 +6862,9 @@ class HttpsHealthChecksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6339,7 +6874,7 @@ class HttpsHealthChecksResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(HttpsHealthCheck request, core.String project,
       core.String httpsHealthCheck,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6358,6 +6893,9 @@ class HttpsHealthChecksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -6400,6 +6938,9 @@ class HttpsHealthChecksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6409,7 +6950,7 @@ class HttpsHealthChecksResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> update(HttpsHealthCheck request, core.String project,
       core.String httpsHealthCheck,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6428,6 +6969,9 @@ class HttpsHealthChecksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -6473,6 +7017,9 @@ class ImagesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6481,7 +7028,7 @@ class ImagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String image,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6497,6 +7044,9 @@ class ImagesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -6540,6 +7090,9 @@ class ImagesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6549,7 +7102,7 @@ class ImagesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> deprecate(
       DeprecationStatus request, core.String project, core.String image,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6568,6 +7121,9 @@ class ImagesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -6596,6 +7152,9 @@ class ImagesResourceApi {
   /// [image] - Name of the image resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Image].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6603,7 +7162,8 @@ class ImagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Image> get(core.String project, core.String image) {
+  async.Future<Image> get(core.String project, core.String image,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6616,6 +7176,9 @@ class ImagesResourceApi {
     }
     if (image == null) {
       throw new core.ArgumentError("Parameter image is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -6643,6 +7206,9 @@ class ImagesResourceApi {
   /// [family] - Name of the image family to search for.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Image].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6650,7 +7216,8 @@ class ImagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Image> getFromFamily(core.String project, core.String family) {
+  async.Future<Image> getFromFamily(core.String project, core.String family,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6663,6 +7230,9 @@ class ImagesResourceApi {
     }
     if (family == null) {
       throw new core.ArgumentError("Parameter family is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -6704,6 +7274,9 @@ class ImagesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6712,7 +7285,7 @@ class ImagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(Image request, core.String project,
-      {core.bool forceCreate, core.String requestId}) {
+      {core.bool forceCreate, core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6731,6 +7304,9 @@ class ImagesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/images';
@@ -6803,6 +7379,9 @@ class ImagesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ImageList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6814,7 +7393,8 @@ class ImagesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6836,6 +7416,9 @@ class ImagesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/images';
@@ -6863,6 +7446,9 @@ class ImagesResourceApi {
   /// [resource] - Name of the resource for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6870,8 +7456,9 @@ class ImagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> setLabels(GlobalSetLabelsRequest request,
-      core.String project, core.String resource) {
+  async.Future<Operation> setLabels(
+      GlobalSetLabelsRequest request, core.String project, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6887,6 +7474,9 @@ class ImagesResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -6951,6 +7541,9 @@ class InstanceGroupManagersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6963,7 +7556,8 @@ class InstanceGroupManagersResourceApi {
       core.String project,
       core.String zone,
       core.String instanceGroupManager,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6986,6 +7580,9 @@ class InstanceGroupManagersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -7058,6 +7655,9 @@ class InstanceGroupManagersResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InstanceGroupManagerAggregatedList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7070,7 +7670,8 @@ class InstanceGroupManagersResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7092,6 +7693,9 @@ class InstanceGroupManagersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -7134,6 +7738,9 @@ class InstanceGroupManagersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7143,7 +7750,7 @@ class InstanceGroupManagersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String zone, core.String instanceGroupManager,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7163,6 +7770,9 @@ class InstanceGroupManagersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -7219,6 +7829,9 @@ class InstanceGroupManagersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7231,7 +7844,8 @@ class InstanceGroupManagersResourceApi {
       core.String project,
       core.String zone,
       core.String instanceGroupManager,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7254,6 +7868,9 @@ class InstanceGroupManagersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -7285,6 +7902,9 @@ class InstanceGroupManagersResourceApi {
   ///
   /// [instanceGroupManager] - The name of the managed instance group.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InstanceGroupManager].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7293,7 +7913,8 @@ class InstanceGroupManagersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<InstanceGroupManager> get(
-      core.String project, core.String zone, core.String instanceGroupManager) {
+      core.String project, core.String zone, core.String instanceGroupManager,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7310,6 +7931,9 @@ class InstanceGroupManagersResourceApi {
     if (instanceGroupManager == null) {
       throw new core.ArgumentError(
           "Parameter instanceGroupManager is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -7362,6 +7986,9 @@ class InstanceGroupManagersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7371,7 +7998,7 @@ class InstanceGroupManagersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(
       InstanceGroupManager request, core.String project, core.String zone,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7390,6 +8017,9 @@ class InstanceGroupManagersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -7463,6 +8093,9 @@ class InstanceGroupManagersResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InstanceGroupManagerList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7475,7 +8108,8 @@ class InstanceGroupManagersResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7500,6 +8134,9 @@ class InstanceGroupManagersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -7541,6 +8178,9 @@ class InstanceGroupManagersResourceApi {
   ///
   /// [pageToken] - null
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InstanceGroupManagersListManagedInstancesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7554,7 +8194,8 @@ class InstanceGroupManagersResourceApi {
           {core.String filter,
           core.int maxResults,
           core.String orderBy,
-          core.String pageToken}) {
+          core.String pageToken,
+          core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7583,6 +8224,9 @@ class InstanceGroupManagersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -7640,6 +8284,9 @@ class InstanceGroupManagersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7652,7 +8299,8 @@ class InstanceGroupManagersResourceApi {
       core.String project,
       core.String zone,
       core.String instanceGroupManager,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7675,6 +8323,9 @@ class InstanceGroupManagersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -7731,6 +8382,9 @@ class InstanceGroupManagersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7740,7 +8394,7 @@ class InstanceGroupManagersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> resize(core.String project, core.String zone,
       core.String instanceGroupManager, core.int size,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7764,6 +8418,9 @@ class InstanceGroupManagersResourceApi {
     _queryParams["size"] = ["${size}"];
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -7811,6 +8468,9 @@ class InstanceGroupManagersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7823,7 +8483,8 @@ class InstanceGroupManagersResourceApi {
       core.String project,
       core.String zone,
       core.String instanceGroupManager,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7846,6 +8507,9 @@ class InstanceGroupManagersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -7896,6 +8560,9 @@ class InstanceGroupManagersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7908,7 +8575,8 @@ class InstanceGroupManagersResourceApi {
       core.String project,
       core.String zone,
       core.String instanceGroupManager,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7931,6 +8599,9 @@ class InstanceGroupManagersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -7985,6 +8656,9 @@ class InstanceGroupsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7997,7 +8671,8 @@ class InstanceGroupsResourceApi {
       core.String project,
       core.String zone,
       core.String instanceGroup,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8019,6 +8694,9 @@ class InstanceGroupsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -8091,6 +8769,9 @@ class InstanceGroupsResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InstanceGroupAggregatedList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8102,7 +8783,8 @@ class InstanceGroupsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8124,6 +8806,9 @@ class InstanceGroupsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -8166,6 +8851,9 @@ class InstanceGroupsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8175,7 +8863,7 @@ class InstanceGroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String zone, core.String instanceGroup,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8194,6 +8882,9 @@ class InstanceGroupsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -8224,6 +8915,9 @@ class InstanceGroupsResourceApi {
   ///
   /// [instanceGroup] - The name of the instance group.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InstanceGroup].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8232,7 +8926,8 @@ class InstanceGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<InstanceGroup> get(
-      core.String project, core.String zone, core.String instanceGroup) {
+      core.String project, core.String zone, core.String instanceGroup,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8248,6 +8943,9 @@ class InstanceGroupsResourceApi {
     }
     if (instanceGroup == null) {
       throw new core.ArgumentError("Parameter instanceGroup is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -8291,6 +8989,9 @@ class InstanceGroupsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8300,7 +9001,7 @@ class InstanceGroupsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(
       InstanceGroup request, core.String project, core.String zone,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8319,6 +9020,9 @@ class InstanceGroupsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -8392,6 +9096,9 @@ class InstanceGroupsResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InstanceGroupList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8403,7 +9110,8 @@ class InstanceGroupsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8428,6 +9136,9 @@ class InstanceGroupsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -8505,6 +9216,9 @@ class InstanceGroupsResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InstanceGroupsListInstances].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8520,7 +9234,8 @@ class InstanceGroupsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8551,6 +9266,9 @@ class InstanceGroupsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -8603,6 +9321,9 @@ class InstanceGroupsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8615,7 +9336,8 @@ class InstanceGroupsResourceApi {
       core.String project,
       core.String zone,
       core.String instanceGroup,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8637,6 +9359,9 @@ class InstanceGroupsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -8683,6 +9408,9 @@ class InstanceGroupsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8695,7 +9423,8 @@ class InstanceGroupsResourceApi {
       core.String project,
       core.String zone,
       core.String instanceGroup,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8717,6 +9446,9 @@ class InstanceGroupsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -8770,6 +9502,9 @@ class InstanceTemplatesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8779,7 +9514,7 @@ class InstanceTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String instanceTemplate,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8795,6 +9530,9 @@ class InstanceTemplatesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -8822,6 +9560,9 @@ class InstanceTemplatesResourceApi {
   /// [instanceTemplate] - The name of the instance template.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InstanceTemplate].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8830,7 +9571,8 @@ class InstanceTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<InstanceTemplate> get(
-      core.String project, core.String instanceTemplate) {
+      core.String project, core.String instanceTemplate,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8843,6 +9585,9 @@ class InstanceTemplatesResourceApi {
     }
     if (instanceTemplate == null) {
       throw new core.ArgumentError("Parameter instanceTemplate is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -8884,6 +9629,9 @@ class InstanceTemplatesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8892,7 +9640,7 @@ class InstanceTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(InstanceTemplate request, core.String project,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8908,6 +9656,9 @@ class InstanceTemplatesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -8977,6 +9728,9 @@ class InstanceTemplatesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InstanceTemplateList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8988,7 +9742,8 @@ class InstanceTemplatesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9010,6 +9765,9 @@ class InstanceTemplatesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -9062,6 +9820,9 @@ class InstancesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9075,7 +9836,8 @@ class InstancesResourceApi {
       core.String zone,
       core.String instance,
       core.String networkInterface,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9101,6 +9863,9 @@ class InstancesResourceApi {
     _queryParams["networkInterface"] = [networkInterface];
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -9173,6 +9938,9 @@ class InstancesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InstanceAggregatedList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9184,7 +9952,8 @@ class InstancesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9206,6 +9975,9 @@ class InstancesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/instances';
@@ -9251,6 +10023,9 @@ class InstancesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9260,7 +10035,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> attachDisk(AttachedDisk request, core.String project,
       core.String zone, core.String instance,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9282,6 +10057,9 @@ class InstancesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -9328,6 +10106,9 @@ class InstancesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9337,7 +10118,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String zone, core.String instance,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9356,6 +10137,9 @@ class InstancesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -9404,6 +10188,9 @@ class InstancesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9417,7 +10204,8 @@ class InstancesResourceApi {
       core.String instance,
       core.String accessConfig,
       core.String networkInterface,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9444,6 +10232,9 @@ class InstancesResourceApi {
     _queryParams["networkInterface"] = [networkInterface];
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -9491,6 +10282,9 @@ class InstancesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9500,7 +10294,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> detachDisk(core.String project, core.String zone,
       core.String instance, core.String deviceName,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9523,6 +10317,9 @@ class InstancesResourceApi {
     _queryParams["deviceName"] = [deviceName];
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -9556,6 +10353,9 @@ class InstancesResourceApi {
   /// [instance] - Name of the instance resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Instance].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9564,7 +10364,8 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Instance> get(
-      core.String project, core.String zone, core.String instance) {
+      core.String project, core.String zone, core.String instance,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9580,6 +10381,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -9620,6 +10424,9 @@ class InstancesResourceApi {
   /// subsequent calls, this field should be set to the next value returned in
   /// the previous call.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SerialPortOutput].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9629,7 +10436,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<SerialPortOutput> getSerialPortOutput(
       core.String project, core.String zone, core.String instance,
-      {core.int port, core.String start_1}) {
+      {core.int port, core.String start_1, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9651,6 +10458,9 @@ class InstancesResourceApi {
     }
     if (start_1 != null) {
       _queryParams["start"] = [start_1];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -9696,6 +10506,9 @@ class InstancesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9705,7 +10518,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(
       Instance request, core.String project, core.String zone,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9724,6 +10537,9 @@ class InstancesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -9797,6 +10613,9 @@ class InstancesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InstanceList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9808,7 +10627,8 @@ class InstancesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9833,6 +10653,9 @@ class InstancesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -9877,6 +10700,9 @@ class InstancesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9886,7 +10712,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> reset(
       core.String project, core.String zone, core.String instance,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9906,6 +10732,9 @@ class InstancesResourceApi {
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
@@ -9913,6 +10742,93 @@ class InstancesResourceApi {
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
         '/reset';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Sets deletion protection on the instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [zone] - The name of the zone for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [resource] - Name of the resource for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [deletionProtection] - Whether the resource should be protected against
+  /// deletion.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setDeletionProtection(
+      core.String project, core.String zone, core.String resource,
+      {core.bool deletionProtection,
+      core.String requestId,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (zone == null) {
+      throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if (resource == null) {
+      throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if (deletionProtection != null) {
+      _queryParams["deletionProtection"] = ["${deletionProtection}"];
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/zones/' +
+        commons.Escaper.ecapeVariable('$zone') +
+        '/instances/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/setDeletionProtection';
 
     var _response = _requester.request(_url, "POST",
         body: _body,
@@ -9956,6 +10872,9 @@ class InstancesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9969,7 +10888,8 @@ class InstancesResourceApi {
       core.String instance,
       core.bool autoDelete,
       core.String deviceName,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9996,6 +10916,9 @@ class InstancesResourceApi {
     _queryParams["deviceName"] = [deviceName];
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -10044,6 +10967,9 @@ class InstancesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10053,7 +10979,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> setLabels(InstancesSetLabelsRequest request,
       core.String project, core.String zone, core.String instance,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10075,6 +11001,9 @@ class InstancesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -10123,6 +11052,9 @@ class InstancesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10135,7 +11067,8 @@ class InstancesResourceApi {
       core.String project,
       core.String zone,
       core.String instance,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10157,6 +11090,9 @@ class InstancesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -10205,6 +11141,9 @@ class InstancesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10214,7 +11153,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> setMachineType(InstancesSetMachineTypeRequest request,
       core.String project, core.String zone, core.String instance,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10236,6 +11175,9 @@ class InstancesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -10284,6 +11226,9 @@ class InstancesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10293,7 +11238,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> setMetadata(Metadata request, core.String project,
       core.String zone, core.String instance,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10315,6 +11260,9 @@ class InstancesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -10364,6 +11312,9 @@ class InstancesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10376,7 +11327,8 @@ class InstancesResourceApi {
       core.String project,
       core.String zone,
       core.String instance,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10398,6 +11350,9 @@ class InstancesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -10445,6 +11400,9 @@ class InstancesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10454,7 +11412,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> setScheduling(Scheduling request, core.String project,
       core.String zone, core.String instance,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10476,6 +11434,9 @@ class InstancesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -10524,6 +11485,9 @@ class InstancesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10536,7 +11500,8 @@ class InstancesResourceApi {
       core.String project,
       core.String zone,
       core.String instance,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10558,6 +11523,9 @@ class InstancesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -10605,6 +11573,9 @@ class InstancesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10614,7 +11585,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> setTags(
       Tags request, core.String project, core.String zone, core.String instance,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10636,6 +11607,9 @@ class InstancesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -10682,6 +11656,9 @@ class InstancesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10691,7 +11668,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> start(
       core.String project, core.String zone, core.String instance,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10710,6 +11687,9 @@ class InstancesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -10758,6 +11738,9 @@ class InstancesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10770,7 +11753,8 @@ class InstancesResourceApi {
       core.String project,
       core.String zone,
       core.String instance,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10793,6 +11777,9 @@ class InstancesResourceApi {
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
@@ -10811,11 +11798,11 @@ class InstancesResourceApi {
   }
 
   /// Stops a running instance, shutting it down cleanly, and allows you to
-  /// restart the instance at a later time. Stopped instances do not incur
-  /// per-minute, virtual machine usage charges while they are stopped, but any
-  /// resources that the virtual machine is using, such as persistent disks and
-  /// static IP addresses, will continue to be charged until they are deleted.
-  /// For more information, see Stopping an instance.
+  /// restart the instance at a later time. Stopped instances do not incur VM
+  /// usage charges while they are stopped. However, resources that the VM is
+  /// using, such as persistent disks and static IP addresses, will continue to
+  /// be charged until they are deleted. For more information, see Stopping an
+  /// instance.
   ///
   /// Request parameters:
   ///
@@ -10842,6 +11829,9 @@ class InstancesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10851,7 +11841,7 @@ class InstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> stop(
       core.String project, core.String zone, core.String instance,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10871,6 +11861,9 @@ class InstancesResourceApi {
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
@@ -10880,6 +11873,1014 @@ class InstancesResourceApi {
         '/stop';
 
     var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+}
+
+class InterconnectAttachmentsResourceApi {
+  final commons.ApiRequester _requester;
+
+  InterconnectAttachmentsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Retrieves an aggregated list of interconnect attachments.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
+  /// {expression} must be in the format: field_name comparison_string
+  /// literal_string.
+  ///
+  /// The field_name is the name of the field you want to compare. Only atomic
+  /// field types are supported (string, number, boolean). The comparison_string
+  /// must be either eq (equals) or ne (not equals). The literal_string is the
+  /// string value to filter to. The literal value must be valid for the type of
+  /// field you are filtering by (string, number, boolean). For string fields,
+  /// the literal value is interpreted as a regular expression using RE2 syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not have a name of
+  /// example-instance, you would use name ne example-instance.
+  ///
+  /// You can filter on nested fields. For example, you could filter on
+  /// instances that have set the scheduling.automaticRestart field to true. Use
+  /// filtering on nested fields to take advantage of labels to organize and
+  /// search for results based on label values.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
+  /// us-central1-f). Multiple expressions are treated as AND expressions,
+  /// meaning that resources must match all expressions to pass the filters.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InterconnectAttachmentAggregatedList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InterconnectAttachmentAggregatedList> aggregatedList(
+      core.String project,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/interconnectAttachments';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new InterconnectAttachmentAggregatedList.fromJson(data));
+  }
+
+  /// Deletes the specified interconnect attachment.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [interconnectAttachment] - Name of the interconnect attachment to delete.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(core.String project, core.String region,
+      core.String interconnectAttachment,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (interconnectAttachment == null) {
+      throw new core.ArgumentError(
+          "Parameter interconnectAttachment is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/interconnectAttachments/' +
+        commons.Escaper.ecapeVariable('$interconnectAttachment');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Returns the specified interconnect attachment.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [interconnectAttachment] - Name of the interconnect attachment to return.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InterconnectAttachment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InterconnectAttachment> get(core.String project,
+      core.String region, core.String interconnectAttachment,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (interconnectAttachment == null) {
+      throw new core.ArgumentError(
+          "Parameter interconnectAttachment is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/interconnectAttachments/' +
+        commons.Escaper.ecapeVariable('$interconnectAttachment');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new InterconnectAttachment.fromJson(data));
+  }
+
+  /// Creates an InterconnectAttachment in the specified project using the data
+  /// included in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+      InterconnectAttachment request, core.String project, core.String region,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/interconnectAttachments';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Retrieves the list of interconnect attachments contained within the
+  /// specified region.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [region] - Name of the region for this request.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
+  /// {expression} must be in the format: field_name comparison_string
+  /// literal_string.
+  ///
+  /// The field_name is the name of the field you want to compare. Only atomic
+  /// field types are supported (string, number, boolean). The comparison_string
+  /// must be either eq (equals) or ne (not equals). The literal_string is the
+  /// string value to filter to. The literal value must be valid for the type of
+  /// field you are filtering by (string, number, boolean). For string fields,
+  /// the literal value is interpreted as a regular expression using RE2 syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not have a name of
+  /// example-instance, you would use name ne example-instance.
+  ///
+  /// You can filter on nested fields. For example, you could filter on
+  /// instances that have set the scheduling.automaticRestart field to true. Use
+  /// filtering on nested fields to take advantage of labels to organize and
+  /// search for results based on label values.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
+  /// us-central1-f). Multiple expressions are treated as AND expressions,
+  /// meaning that resources must match all expressions to pass the filters.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InterconnectAttachmentList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InterconnectAttachmentList> list(
+      core.String project, core.String region,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (region == null) {
+      throw new core.ArgumentError("Parameter region is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/interconnectAttachments';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new InterconnectAttachmentList.fromJson(data));
+  }
+}
+
+class InterconnectLocationsResourceApi {
+  final commons.ApiRequester _requester;
+
+  InterconnectLocationsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Returns the details for the specified interconnect location. Get a list of
+  /// available interconnect locations by making a list() request.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [interconnectLocation] - Name of the interconnect location to return.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InterconnectLocation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InterconnectLocation> get(
+      core.String project, core.String interconnectLocation,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (interconnectLocation == null) {
+      throw new core.ArgumentError(
+          "Parameter interconnectLocation is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/interconnectLocations/' +
+        commons.Escaper.ecapeVariable('$interconnectLocation');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new InterconnectLocation.fromJson(data));
+  }
+
+  /// Retrieves the list of interconnect locations available to the specified
+  /// project.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
+  /// {expression} must be in the format: field_name comparison_string
+  /// literal_string.
+  ///
+  /// The field_name is the name of the field you want to compare. Only atomic
+  /// field types are supported (string, number, boolean). The comparison_string
+  /// must be either eq (equals) or ne (not equals). The literal_string is the
+  /// string value to filter to. The literal value must be valid for the type of
+  /// field you are filtering by (string, number, boolean). For string fields,
+  /// the literal value is interpreted as a regular expression using RE2 syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not have a name of
+  /// example-instance, you would use name ne example-instance.
+  ///
+  /// You can filter on nested fields. For example, you could filter on
+  /// instances that have set the scheduling.automaticRestart field to true. Use
+  /// filtering on nested fields to take advantage of labels to organize and
+  /// search for results based on label values.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
+  /// us-central1-f). Multiple expressions are treated as AND expressions,
+  /// meaning that resources must match all expressions to pass the filters.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InterconnectLocationList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InterconnectLocationList> list(core.String project,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/interconnectLocations';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new InterconnectLocationList.fromJson(data));
+  }
+}
+
+class InterconnectsResourceApi {
+  final commons.ApiRequester _requester;
+
+  InterconnectsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Deletes the specified interconnect.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [interconnect] - Name of the interconnect to delete.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(core.String project, core.String interconnect,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (interconnect == null) {
+      throw new core.ArgumentError("Parameter interconnect is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/interconnects/' +
+        commons.Escaper.ecapeVariable('$interconnect');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Returns the specified interconnect. Get a list of available interconnects
+  /// by making a list() request.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [interconnect] - Name of the interconnect to return.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Interconnect].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Interconnect> get(core.String project, core.String interconnect,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (interconnect == null) {
+      throw new core.ArgumentError("Parameter interconnect is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/interconnects/' +
+        commons.Escaper.ecapeVariable('$interconnect');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Interconnect.fromJson(data));
+  }
+
+  /// Creates a Interconnect in the specified project using the data included in
+  /// the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(Interconnect request, core.String project,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/interconnects';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Retrieves the list of interconnect available to the specified project.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [filter] - Sets a filter {expression} for filtering listed resources. Your
+  /// {expression} must be in the format: field_name comparison_string
+  /// literal_string.
+  ///
+  /// The field_name is the name of the field you want to compare. Only atomic
+  /// field types are supported (string, number, boolean). The comparison_string
+  /// must be either eq (equals) or ne (not equals). The literal_string is the
+  /// string value to filter to. The literal value must be valid for the type of
+  /// field you are filtering by (string, number, boolean). For string fields,
+  /// the literal value is interpreted as a regular expression using RE2 syntax.
+  /// The literal value must match the entire field.
+  ///
+  /// For example, to filter for instances that do not have a name of
+  /// example-instance, you would use name ne example-instance.
+  ///
+  /// You can filter on nested fields. For example, you could filter on
+  /// instances that have set the scheduling.automaticRestart field to true. Use
+  /// filtering on nested fields to take advantage of labels to organize and
+  /// search for results based on label values.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example, (scheduling.automaticRestart eq true) (zone eq
+  /// us-central1-f). Multiple expressions are treated as AND expressions,
+  /// meaning that resources must match all expressions to pass the filters.
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than maxResults,
+  /// Compute Engine returns a nextPageToken that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are 0 to
+  /// 500, inclusive. (Default: 500)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using orderBy="creationTimestamp desc". This sorts results based
+  /// on the creationTimestamp field in reverse chronological order (newest
+  /// result first). Use this to sort resources like operations so that the
+  /// newest operation is returned first.
+  ///
+  /// Currently, only sorting by name or creationTimestamp desc is supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set pageToken to the
+  /// nextPageToken returned by a previous list request to get the next page of
+  /// results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InterconnectList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InterconnectList> list(core.String project,
+      {core.String filter,
+      core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (orderBy != null) {
+      _queryParams["orderBy"] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') + '/global/interconnects';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new InterconnectList.fromJson(data));
+  }
+
+  /// Updates the specified interconnect with the data included in the request.
+  /// This method supports PATCH semantics and uses the JSON merge patch format
+  /// and processing rules.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  ///
+  /// [interconnect] - Name of the interconnect to update.
+  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+      Interconnect request, core.String project, core.String interconnect,
+      {core.String requestId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (interconnect == null) {
+      throw new core.ArgumentError("Parameter interconnect is required.");
+    }
+    if (requestId != null) {
+      _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariable('$project') +
+        '/global/interconnects/' +
+        commons.Escaper.ecapeVariable('$interconnect');
+
+    var _response = _requester.request(_url, "PATCH",
         body: _body,
         queryParams: _queryParams,
         uploadOptions: _uploadOptions,
@@ -10905,6 +12906,9 @@ class LicensesResourceApi {
   /// [license] - Name of the License resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [License].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10912,7 +12916,8 @@ class LicensesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<License> get(core.String project, core.String license) {
+  async.Future<License> get(core.String project, core.String license,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10925,6 +12930,9 @@ class LicensesResourceApi {
     }
     if (license == null) {
       throw new core.ArgumentError("Parameter license is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -11000,6 +13008,9 @@ class MachineTypesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [MachineTypeAggregatedList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11011,7 +13022,8 @@ class MachineTypesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11033,6 +13045,9 @@ class MachineTypesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -11063,6 +13078,9 @@ class MachineTypesResourceApi {
   /// [machineType] - Name of the machine type to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [MachineType].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11071,7 +13089,8 @@ class MachineTypesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<MachineType> get(
-      core.String project, core.String zone, core.String machineType) {
+      core.String project, core.String zone, core.String machineType,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11087,6 +13106,9 @@ class MachineTypesResourceApi {
     }
     if (machineType == null) {
       throw new core.ArgumentError("Parameter machineType is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -11161,6 +13183,9 @@ class MachineTypesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [MachineTypeList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11172,7 +13197,8 @@ class MachineTypesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11197,6 +13223,9 @@ class MachineTypesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -11245,6 +13274,9 @@ class NetworksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11254,7 +13286,7 @@ class NetworksResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> addPeering(NetworksAddPeeringRequest request,
       core.String project, core.String network,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11273,6 +13305,9 @@ class NetworksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -11313,6 +13348,9 @@ class NetworksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11321,7 +13359,7 @@ class NetworksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String network,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11337,6 +13375,9 @@ class NetworksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -11364,6 +13405,9 @@ class NetworksResourceApi {
   /// [network] - Name of the network to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Network].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11371,7 +13415,8 @@ class NetworksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Network> get(core.String project, core.String network) {
+  async.Future<Network> get(core.String project, core.String network,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11384,6 +13429,9 @@ class NetworksResourceApi {
     }
     if (network == null) {
       throw new core.ArgumentError("Parameter network is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -11423,6 +13471,9 @@ class NetworksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11431,7 +13482,7 @@ class NetworksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(Network request, core.String project,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11447,6 +13498,9 @@ class NetworksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/networks';
@@ -11514,6 +13568,9 @@ class NetworksResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [NetworkList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11525,7 +13582,8 @@ class NetworksResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11547,6 +13605,9 @@ class NetworksResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/networks';
@@ -11586,6 +13647,9 @@ class NetworksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11595,7 +13659,7 @@ class NetworksResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(
       Network request, core.String project, core.String network,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11614,6 +13678,9 @@ class NetworksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -11655,6 +13722,9 @@ class NetworksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11664,7 +13734,7 @@ class NetworksResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> removePeering(NetworksRemovePeeringRequest request,
       core.String project, core.String network,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11683,6 +13753,9 @@ class NetworksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -11723,6 +13796,9 @@ class NetworksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11732,7 +13808,7 @@ class NetworksResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> switchToCustomMode(
       core.String project, core.String network,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11748,6 +13824,9 @@ class NetworksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -11791,6 +13870,9 @@ class ProjectsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11799,7 +13881,7 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> disableXpnHost(core.String project,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11812,6 +13894,9 @@ class ProjectsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/disableXpnHost';
@@ -11849,6 +13934,9 @@ class ProjectsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11858,7 +13946,7 @@ class ProjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> disableXpnResource(
       ProjectsDisableXpnResourceRequest request, core.String project,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11874,6 +13962,9 @@ class ProjectsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/disableXpnResource';
@@ -11908,6 +13999,9 @@ class ProjectsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11916,7 +14010,7 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> enableXpnHost(core.String project,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11929,6 +14023,9 @@ class ProjectsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/enableXpnHost';
@@ -11967,6 +14064,9 @@ class ProjectsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11976,7 +14076,7 @@ class ProjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> enableXpnResource(
       ProjectsEnableXpnResourceRequest request, core.String project,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11992,6 +14092,9 @@ class ProjectsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/enableXpnResource';
@@ -12013,6 +14116,9 @@ class ProjectsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Project].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12020,7 +14126,7 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Project> get(core.String project) {
+  async.Future<Project> get(core.String project, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12030,6 +14136,9 @@ class ProjectsResourceApi {
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project');
@@ -12052,6 +14161,9 @@ class ProjectsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Project].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12059,7 +14171,7 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Project> getXpnHost(core.String project) {
+  async.Future<Project> getXpnHost(core.String project, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12069,6 +14181,9 @@ class ProjectsResourceApi {
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/getXpnHost';
@@ -12099,6 +14214,9 @@ class ProjectsResourceApi {
   ///
   /// [pageToken] - null
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ProjectsGetXpnResources].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12110,7 +14228,8 @@ class ProjectsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12132,6 +14251,9 @@ class ProjectsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/getXpnResources';
@@ -12163,6 +14285,9 @@ class ProjectsResourceApi {
   ///
   /// [pageToken] - null
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [XpnHostList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12175,7 +14300,8 @@ class ProjectsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12200,6 +14326,9 @@ class ProjectsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/listXpnHosts';
@@ -12236,6 +14365,9 @@ class ProjectsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12244,7 +14376,7 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> moveDisk(DiskMoveRequest request, core.String project,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12260,6 +14392,9 @@ class ProjectsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/moveDisk';
@@ -12297,6 +14432,9 @@ class ProjectsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12306,7 +14444,7 @@ class ProjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> moveInstance(
       InstanceMoveRequest request, core.String project,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12322,6 +14460,9 @@ class ProjectsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/moveInstance';
@@ -12359,6 +14500,9 @@ class ProjectsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12368,7 +14512,7 @@ class ProjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> setCommonInstanceMetadata(
       Metadata request, core.String project,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12384,6 +14528,9 @@ class ProjectsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -12423,6 +14570,9 @@ class ProjectsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12432,7 +14582,7 @@ class ProjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> setUsageExportBucket(
       UsageExportLocation request, core.String project,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12448,6 +14598,9 @@ class ProjectsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/setUsageExportBucket';
@@ -12495,6 +14648,9 @@ class RegionAutoscalersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12504,7 +14660,7 @@ class RegionAutoscalersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String region, core.String autoscaler,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12523,6 +14679,9 @@ class RegionAutoscalersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -12554,6 +14713,9 @@ class RegionAutoscalersResourceApi {
   /// [autoscaler] - Name of the autoscaler to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Autoscaler].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12562,7 +14724,8 @@ class RegionAutoscalersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Autoscaler> get(
-      core.String project, core.String region, core.String autoscaler) {
+      core.String project, core.String region, core.String autoscaler,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12578,6 +14741,9 @@ class RegionAutoscalersResourceApi {
     }
     if (autoscaler == null) {
       throw new core.ArgumentError("Parameter autoscaler is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -12622,6 +14788,9 @@ class RegionAutoscalersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12631,7 +14800,7 @@ class RegionAutoscalersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(
       Autoscaler request, core.String project, core.String region,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12650,6 +14819,9 @@ class RegionAutoscalersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -12723,6 +14895,9 @@ class RegionAutoscalersResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RegionAutoscalerList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12735,7 +14910,8 @@ class RegionAutoscalersResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12760,6 +14936,9 @@ class RegionAutoscalersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -12807,6 +14986,9 @@ class RegionAutoscalersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12816,7 +14998,7 @@ class RegionAutoscalersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(
       Autoscaler request, core.String project, core.String region,
-      {core.String autoscaler, core.String requestId}) {
+      {core.String autoscaler, core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12838,6 +15020,9 @@ class RegionAutoscalersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -12884,6 +15069,9 @@ class RegionAutoscalersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12893,7 +15081,7 @@ class RegionAutoscalersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> update(
       Autoscaler request, core.String project, core.String region,
-      {core.String autoscaler, core.String requestId}) {
+      {core.String autoscaler, core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12915,6 +15103,9 @@ class RegionAutoscalersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -12965,6 +15156,9 @@ class RegionBackendServicesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12974,7 +15168,7 @@ class RegionBackendServicesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String region, core.String backendService,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12993,6 +15187,9 @@ class RegionBackendServicesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -13024,6 +15221,9 @@ class RegionBackendServicesResourceApi {
   /// [backendService] - Name of the BackendService resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BackendService].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -13032,7 +15232,8 @@ class RegionBackendServicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BackendService> get(
-      core.String project, core.String region, core.String backendService) {
+      core.String project, core.String region, core.String backendService,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -13048,6 +15249,9 @@ class RegionBackendServicesResourceApi {
     }
     if (backendService == null) {
       throw new core.ArgumentError("Parameter backendService is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -13083,6 +15287,9 @@ class RegionBackendServicesResourceApi {
   /// queried instance belongs.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BackendServiceGroupHealth].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -13094,7 +15301,8 @@ class RegionBackendServicesResourceApi {
       ResourceGroupReference request,
       core.String project,
       core.String region,
-      core.String backendService) {
+      core.String backendService,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -13113,6 +15321,9 @@ class RegionBackendServicesResourceApi {
     }
     if (backendService == null) {
       throw new core.ArgumentError("Parameter backendService is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -13161,6 +15372,9 @@ class RegionBackendServicesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -13170,7 +15384,7 @@ class RegionBackendServicesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(
       BackendService request, core.String project, core.String region,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -13189,6 +15403,9 @@ class RegionBackendServicesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -13263,6 +15480,9 @@ class RegionBackendServicesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BackendServiceList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -13274,7 +15494,8 @@ class RegionBackendServicesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -13299,6 +15520,9 @@ class RegionBackendServicesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -13348,6 +15572,9 @@ class RegionBackendServicesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -13357,7 +15584,7 @@ class RegionBackendServicesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(BackendService request, core.String project,
       core.String region, core.String backendService,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -13379,6 +15606,9 @@ class RegionBackendServicesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -13428,6 +15658,9 @@ class RegionBackendServicesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -13437,7 +15670,7 @@ class RegionBackendServicesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> update(BackendService request, core.String project,
       core.String region, core.String backendService,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -13459,6 +15692,9 @@ class RegionBackendServicesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -13537,6 +15773,9 @@ class RegionCommitmentsResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CommitmentAggregatedList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -13548,7 +15787,8 @@ class RegionCommitmentsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -13570,6 +15810,9 @@ class RegionCommitmentsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -13600,6 +15843,9 @@ class RegionCommitmentsResourceApi {
   /// [commitment] - Name of the commitment to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Commitment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -13608,7 +15854,8 @@ class RegionCommitmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Commitment> get(
-      core.String project, core.String region, core.String commitment) {
+      core.String project, core.String region, core.String commitment,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -13624,6 +15871,9 @@ class RegionCommitmentsResourceApi {
     }
     if (commitment == null) {
       throw new core.ArgumentError("Parameter commitment is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -13668,6 +15918,9 @@ class RegionCommitmentsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -13677,7 +15930,7 @@ class RegionCommitmentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(
       Commitment request, core.String project, core.String region,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -13696,6 +15949,9 @@ class RegionCommitmentsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -13769,6 +16025,9 @@ class RegionCommitmentsResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CommitmentList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -13780,7 +16039,8 @@ class RegionCommitmentsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -13805,6 +16065,9 @@ class RegionCommitmentsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -13869,6 +16132,9 @@ class RegionInstanceGroupManagersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -13881,7 +16147,8 @@ class RegionInstanceGroupManagersResourceApi {
       core.String project,
       core.String region,
       core.String instanceGroupManager,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -13904,6 +16171,9 @@ class RegionInstanceGroupManagersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -13948,6 +16218,9 @@ class RegionInstanceGroupManagersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -13957,7 +16230,7 @@ class RegionInstanceGroupManagersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String region, core.String instanceGroupManager,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -13977,6 +16250,9 @@ class RegionInstanceGroupManagersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -14033,6 +16309,9 @@ class RegionInstanceGroupManagersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -14045,7 +16324,8 @@ class RegionInstanceGroupManagersResourceApi {
       core.String project,
       core.String region,
       core.String instanceGroupManager,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -14068,6 +16348,9 @@ class RegionInstanceGroupManagersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -14098,6 +16381,9 @@ class RegionInstanceGroupManagersResourceApi {
   ///
   /// [instanceGroupManager] - Name of the managed instance group to return.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InstanceGroupManager].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -14105,8 +16391,9 @@ class RegionInstanceGroupManagersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<InstanceGroupManager> get(core.String project,
-      core.String region, core.String instanceGroupManager) {
+  async.Future<InstanceGroupManager> get(
+      core.String project, core.String region, core.String instanceGroupManager,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -14123,6 +16410,9 @@ class RegionInstanceGroupManagersResourceApi {
     if (instanceGroupManager == null) {
       throw new core.ArgumentError(
           "Parameter instanceGroupManager is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -14173,6 +16463,9 @@ class RegionInstanceGroupManagersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -14182,7 +16475,7 @@ class RegionInstanceGroupManagersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(
       InstanceGroupManager request, core.String project, core.String region,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -14201,6 +16494,9 @@ class RegionInstanceGroupManagersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -14274,6 +16570,9 @@ class RegionInstanceGroupManagersResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RegionInstanceGroupManagerList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -14286,7 +16585,8 @@ class RegionInstanceGroupManagersResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -14311,6 +16611,9 @@ class RegionInstanceGroupManagersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -14350,6 +16653,9 @@ class RegionInstanceGroupManagersResourceApi {
   ///
   /// [pageToken] - null
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RegionInstanceGroupManagersListInstancesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -14363,7 +16669,8 @@ class RegionInstanceGroupManagersResourceApi {
           {core.String filter,
           core.int maxResults,
           core.String orderBy,
-          core.String pageToken}) {
+          core.String pageToken,
+          core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -14392,6 +16699,9 @@ class RegionInstanceGroupManagersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -14449,6 +16759,9 @@ class RegionInstanceGroupManagersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -14461,7 +16774,8 @@ class RegionInstanceGroupManagersResourceApi {
       core.String project,
       core.String region,
       core.String instanceGroupManager,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -14484,6 +16798,9 @@ class RegionInstanceGroupManagersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -14540,6 +16857,9 @@ class RegionInstanceGroupManagersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -14549,7 +16869,7 @@ class RegionInstanceGroupManagersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> resize(core.String project, core.String region,
       core.String instanceGroupManager, core.int size,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -14573,6 +16893,9 @@ class RegionInstanceGroupManagersResourceApi {
     _queryParams["size"] = ["${size}"];
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -14619,6 +16942,9 @@ class RegionInstanceGroupManagersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -14631,7 +16957,8 @@ class RegionInstanceGroupManagersResourceApi {
       core.String project,
       core.String region,
       core.String instanceGroupManager,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -14654,6 +16981,9 @@ class RegionInstanceGroupManagersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -14700,6 +17030,9 @@ class RegionInstanceGroupManagersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -14712,7 +17045,8 @@ class RegionInstanceGroupManagersResourceApi {
       core.String project,
       core.String region,
       core.String instanceGroupManager,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -14735,6 +17069,9 @@ class RegionInstanceGroupManagersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -14772,6 +17109,9 @@ class RegionInstanceGroupsResourceApi {
   ///
   /// [instanceGroup] - Name of the instance group resource to return.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InstanceGroup].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -14780,7 +17120,8 @@ class RegionInstanceGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<InstanceGroup> get(
-      core.String project, core.String region, core.String instanceGroup) {
+      core.String project, core.String region, core.String instanceGroup,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -14796,6 +17137,9 @@ class RegionInstanceGroupsResourceApi {
     }
     if (instanceGroup == null) {
       throw new core.ArgumentError("Parameter instanceGroup is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -14870,6 +17214,9 @@ class RegionInstanceGroupsResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RegionInstanceGroupList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -14882,7 +17229,8 @@ class RegionInstanceGroupsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -14907,6 +17255,9 @@ class RegionInstanceGroupsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -14986,6 +17337,9 @@ class RegionInstanceGroupsResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RegionInstanceGroupsListInstances].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -15001,7 +17355,8 @@ class RegionInstanceGroupsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -15032,6 +17387,9 @@ class RegionInstanceGroupsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -15079,6 +17437,9 @@ class RegionInstanceGroupsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -15091,7 +17452,8 @@ class RegionInstanceGroupsResourceApi {
       core.String project,
       core.String region,
       core.String instanceGroup,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -15113,6 +17475,9 @@ class RegionInstanceGroupsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -15152,13 +17517,17 @@ class RegionOperationsResourceApi {
   /// [operation] - Name of the Operations resource to delete.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(
-      core.String project, core.String region, core.String operation) {
+      core.String project, core.String region, core.String operation,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -15174,6 +17543,9 @@ class RegionOperationsResourceApi {
     }
     if (operation == null) {
       throw new core.ArgumentError("Parameter operation is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -15207,6 +17579,9 @@ class RegionOperationsResourceApi {
   /// [operation] - Name of the Operations resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -15215,7 +17590,8 @@ class RegionOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> get(
-      core.String project, core.String region, core.String operation) {
+      core.String project, core.String region, core.String operation,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -15231,6 +17607,9 @@ class RegionOperationsResourceApi {
     }
     if (operation == null) {
       throw new core.ArgumentError("Parameter operation is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -15306,6 +17685,9 @@ class RegionOperationsResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OperationList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -15317,7 +17699,8 @@ class RegionOperationsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -15342,6 +17725,9 @@ class RegionOperationsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -15376,6 +17762,9 @@ class RegionsResourceApi {
   /// [region] - Name of the region resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Region].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -15383,7 +17772,8 @@ class RegionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Region> get(core.String project, core.String region) {
+  async.Future<Region> get(core.String project, core.String region,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -15396,6 +17786,9 @@ class RegionsResourceApi {
     }
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -15465,6 +17858,9 @@ class RegionsResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RegionList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -15476,7 +17872,8 @@ class RegionsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -15498,6 +17895,9 @@ class RegionsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/regions';
@@ -15571,6 +17971,9 @@ class RoutersResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RouterAggregatedList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -15582,7 +17985,8 @@ class RoutersResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -15604,6 +18008,9 @@ class RoutersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/routers';
@@ -15644,6 +18051,9 @@ class RoutersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -15653,7 +18063,7 @@ class RoutersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String region, core.String router,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -15672,6 +18082,9 @@ class RoutersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -15704,6 +18117,9 @@ class RoutersResourceApi {
   /// [router] - Name of the Router resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Router].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -15712,7 +18128,8 @@ class RoutersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Router> get(
-      core.String project, core.String region, core.String router) {
+      core.String project, core.String region, core.String router,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -15728,6 +18145,9 @@ class RoutersResourceApi {
     }
     if (router == null) {
       throw new core.ArgumentError("Parameter router is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -15759,6 +18179,9 @@ class RoutersResourceApi {
   /// [router] - Name of the Router resource to query.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RouterStatusResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -15767,7 +18190,8 @@ class RoutersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RouterStatusResponse> getRouterStatus(
-      core.String project, core.String region, core.String router) {
+      core.String project, core.String region, core.String router,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -15783,6 +18207,9 @@ class RoutersResourceApi {
     }
     if (router == null) {
       throw new core.ArgumentError("Parameter router is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -15828,6 +18255,9 @@ class RoutersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -15837,7 +18267,7 @@ class RoutersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(
       Router request, core.String project, core.String region,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -15856,6 +18286,9 @@ class RoutersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -15929,6 +18362,9 @@ class RoutersResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RouterList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -15940,7 +18376,8 @@ class RoutersResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -15965,6 +18402,9 @@ class RoutersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -16012,6 +18452,9 @@ class RoutersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -16021,7 +18464,7 @@ class RoutersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(Router request, core.String project,
       core.String region, core.String router,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -16043,6 +18486,9 @@ class RoutersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -16077,6 +18523,9 @@ class RoutersResourceApi {
   /// [router] - Name of the Router resource to query.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RoutersPreviewResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -16085,7 +18534,8 @@ class RoutersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RoutersPreviewResponse> preview(Router request,
-      core.String project, core.String region, core.String router) {
+      core.String project, core.String region, core.String router,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -16104,6 +18554,9 @@ class RoutersResourceApi {
     }
     if (router == null) {
       throw new core.ArgumentError("Parameter router is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -16152,6 +18605,9 @@ class RoutersResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -16161,7 +18617,7 @@ class RoutersResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> update(Router request, core.String project,
       core.String region, core.String router,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -16183,6 +18639,9 @@ class RoutersResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -16230,6 +18689,9 @@ class RoutesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -16238,7 +18700,7 @@ class RoutesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String route,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -16254,6 +18716,9 @@ class RoutesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -16281,6 +18746,9 @@ class RoutesResourceApi {
   /// [route] - Name of the Route resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Route].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -16288,7 +18756,8 @@ class RoutesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Route> get(core.String project, core.String route) {
+  async.Future<Route> get(core.String project, core.String route,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -16301,6 +18770,9 @@ class RoutesResourceApi {
     }
     if (route == null) {
       throw new core.ArgumentError("Parameter route is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -16340,6 +18812,9 @@ class RoutesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -16348,7 +18823,7 @@ class RoutesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(Route request, core.String project,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -16364,6 +18839,9 @@ class RoutesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/routes';
@@ -16431,6 +18909,9 @@ class RoutesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RouteList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -16442,7 +18923,8 @@ class RoutesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -16464,6 +18946,9 @@ class RoutesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/routes';
@@ -16513,6 +18998,9 @@ class SnapshotsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -16521,7 +19009,7 @@ class SnapshotsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String snapshot,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -16537,6 +19025,9 @@ class SnapshotsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -16564,6 +19055,9 @@ class SnapshotsResourceApi {
   /// [snapshot] - Name of the Snapshot resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Snapshot].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -16571,7 +19065,8 @@ class SnapshotsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Snapshot> get(core.String project, core.String snapshot) {
+  async.Future<Snapshot> get(core.String project, core.String snapshot,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -16584,6 +19079,9 @@ class SnapshotsResourceApi {
     }
     if (snapshot == null) {
       throw new core.ArgumentError("Parameter snapshot is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -16654,6 +19152,9 @@ class SnapshotsResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SnapshotList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -16665,7 +19166,8 @@ class SnapshotsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -16687,6 +19189,9 @@ class SnapshotsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/snapshots';
@@ -16714,6 +19219,9 @@ class SnapshotsResourceApi {
   /// [resource] - Name of the resource for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -16721,8 +19229,9 @@ class SnapshotsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> setLabels(GlobalSetLabelsRequest request,
-      core.String project, core.String resource) {
+  async.Future<Operation> setLabels(
+      GlobalSetLabelsRequest request, core.String project, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -16738,6 +19247,9 @@ class SnapshotsResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -16784,6 +19296,9 @@ class SslCertificatesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -16793,7 +19308,7 @@ class SslCertificatesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String sslCertificate,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -16809,6 +19324,9 @@ class SslCertificatesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -16836,6 +19354,9 @@ class SslCertificatesResourceApi {
   /// [sslCertificate] - Name of the SslCertificate resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SslCertificate].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -16844,7 +19365,8 @@ class SslCertificatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SslCertificate> get(
-      core.String project, core.String sslCertificate) {
+      core.String project, core.String sslCertificate,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -16857,6 +19379,9 @@ class SslCertificatesResourceApi {
     }
     if (sslCertificate == null) {
       throw new core.ArgumentError("Parameter sslCertificate is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -16896,6 +19421,9 @@ class SslCertificatesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -16904,7 +19432,7 @@ class SslCertificatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(SslCertificate request, core.String project,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -16920,6 +19448,9 @@ class SslCertificatesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -16989,6 +19520,9 @@ class SslCertificatesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SslCertificateList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -17000,7 +19534,8 @@ class SslCertificatesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -17022,6 +19557,9 @@ class SslCertificatesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -17096,6 +19634,9 @@ class SubnetworksResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SubnetworkAggregatedList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -17107,7 +19648,8 @@ class SubnetworksResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -17129,6 +19671,9 @@ class SubnetworksResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -17171,6 +19716,9 @@ class SubnetworksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -17180,7 +19728,7 @@ class SubnetworksResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String region, core.String subnetwork,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -17199,6 +19747,9 @@ class SubnetworksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -17245,6 +19796,9 @@ class SubnetworksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -17257,7 +19811,8 @@ class SubnetworksResourceApi {
       core.String project,
       core.String region,
       core.String subnetwork,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -17279,6 +19834,9 @@ class SubnetworksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -17312,6 +19870,9 @@ class SubnetworksResourceApi {
   /// [subnetwork] - Name of the Subnetwork resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Subnetwork].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -17320,7 +19881,8 @@ class SubnetworksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Subnetwork> get(
-      core.String project, core.String region, core.String subnetwork) {
+      core.String project, core.String region, core.String subnetwork,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -17336,6 +19898,9 @@ class SubnetworksResourceApi {
     }
     if (subnetwork == null) {
       throw new core.ArgumentError("Parameter subnetwork is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -17380,6 +19945,9 @@ class SubnetworksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -17389,7 +19957,7 @@ class SubnetworksResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(
       Subnetwork request, core.String project, core.String region,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -17408,6 +19976,9 @@ class SubnetworksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -17481,6 +20052,9 @@ class SubnetworksResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SubnetworkList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -17492,7 +20066,8 @@ class SubnetworksResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -17517,6 +20092,9 @@ class SubnetworksResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -17563,6 +20141,9 @@ class SubnetworksResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -17575,7 +20156,8 @@ class SubnetworksResourceApi {
       core.String project,
       core.String region,
       core.String subnetwork,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -17597,6 +20179,9 @@ class SubnetworksResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -17646,6 +20231,9 @@ class TargetHttpProxiesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -17655,7 +20243,7 @@ class TargetHttpProxiesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String targetHttpProxy,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -17671,6 +20259,9 @@ class TargetHttpProxiesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -17698,6 +20289,9 @@ class TargetHttpProxiesResourceApi {
   /// [targetHttpProxy] - Name of the TargetHttpProxy resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TargetHttpProxy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -17706,7 +20300,8 @@ class TargetHttpProxiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TargetHttpProxy> get(
-      core.String project, core.String targetHttpProxy) {
+      core.String project, core.String targetHttpProxy,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -17719,6 +20314,9 @@ class TargetHttpProxiesResourceApi {
     }
     if (targetHttpProxy == null) {
       throw new core.ArgumentError("Parameter targetHttpProxy is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -17758,6 +20356,9 @@ class TargetHttpProxiesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -17766,7 +20367,7 @@ class TargetHttpProxiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(TargetHttpProxy request, core.String project,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -17782,6 +20383,9 @@ class TargetHttpProxiesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -17851,6 +20455,9 @@ class TargetHttpProxiesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TargetHttpProxyList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -17862,7 +20469,8 @@ class TargetHttpProxiesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -17884,6 +20492,9 @@ class TargetHttpProxiesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -17924,6 +20535,9 @@ class TargetHttpProxiesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -17933,7 +20547,7 @@ class TargetHttpProxiesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> setUrlMap(
       UrlMapReference request, core.String project, core.String targetHttpProxy,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -17952,6 +20566,9 @@ class TargetHttpProxiesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -17999,6 +20616,9 @@ class TargetHttpsProxiesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -18008,7 +20628,7 @@ class TargetHttpsProxiesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String targetHttpsProxy,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -18024,6 +20644,9 @@ class TargetHttpsProxiesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -18051,6 +20674,9 @@ class TargetHttpsProxiesResourceApi {
   /// [targetHttpsProxy] - Name of the TargetHttpsProxy resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TargetHttpsProxy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -18059,7 +20685,8 @@ class TargetHttpsProxiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TargetHttpsProxy> get(
-      core.String project, core.String targetHttpsProxy) {
+      core.String project, core.String targetHttpsProxy,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -18072,6 +20699,9 @@ class TargetHttpsProxiesResourceApi {
     }
     if (targetHttpsProxy == null) {
       throw new core.ArgumentError("Parameter targetHttpsProxy is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -18111,6 +20741,9 @@ class TargetHttpsProxiesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -18119,7 +20752,7 @@ class TargetHttpsProxiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(TargetHttpsProxy request, core.String project,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -18135,6 +20768,9 @@ class TargetHttpsProxiesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -18204,6 +20840,9 @@ class TargetHttpsProxiesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TargetHttpsProxyList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -18215,7 +20854,8 @@ class TargetHttpsProxiesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -18237,6 +20877,9 @@ class TargetHttpsProxiesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -18278,6 +20921,9 @@ class TargetHttpsProxiesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -18289,7 +20935,8 @@ class TargetHttpsProxiesResourceApi {
       TargetHttpsProxiesSetSslCertificatesRequest request,
       core.String project,
       core.String targetHttpsProxy,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -18308,6 +20955,9 @@ class TargetHttpsProxiesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -18351,6 +21001,9 @@ class TargetHttpsProxiesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -18360,7 +21013,7 @@ class TargetHttpsProxiesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> setUrlMap(UrlMapReference request,
       core.String project, core.String targetHttpsProxy,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -18379,6 +21032,9 @@ class TargetHttpsProxiesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -18455,6 +21111,9 @@ class TargetInstancesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TargetInstanceAggregatedList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -18466,7 +21125,8 @@ class TargetInstancesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -18488,6 +21148,9 @@ class TargetInstancesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -18530,6 +21193,9 @@ class TargetInstancesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -18539,7 +21205,7 @@ class TargetInstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String zone, core.String targetInstance,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -18558,6 +21224,9 @@ class TargetInstancesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -18590,6 +21259,9 @@ class TargetInstancesResourceApi {
   /// [targetInstance] - Name of the TargetInstance resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TargetInstance].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -18598,7 +21270,8 @@ class TargetInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TargetInstance> get(
-      core.String project, core.String zone, core.String targetInstance) {
+      core.String project, core.String zone, core.String targetInstance,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -18614,6 +21287,9 @@ class TargetInstancesResourceApi {
     }
     if (targetInstance == null) {
       throw new core.ArgumentError("Parameter targetInstance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -18658,6 +21334,9 @@ class TargetInstancesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -18667,7 +21346,7 @@ class TargetInstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(
       TargetInstance request, core.String project, core.String zone,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -18686,6 +21365,9 @@ class TargetInstancesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -18760,6 +21442,9 @@ class TargetInstancesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TargetInstanceList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -18771,7 +21456,8 @@ class TargetInstancesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -18796,6 +21482,9 @@ class TargetInstancesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -18847,6 +21536,9 @@ class TargetPoolsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -18859,7 +21551,8 @@ class TargetPoolsResourceApi {
       core.String project,
       core.String region,
       core.String targetPool,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -18881,6 +21574,9 @@ class TargetPoolsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -18928,6 +21624,9 @@ class TargetPoolsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -18937,7 +21636,7 @@ class TargetPoolsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> addInstance(TargetPoolsAddInstanceRequest request,
       core.String project, core.String region, core.String targetPool,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -18959,6 +21658,9 @@ class TargetPoolsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -19031,6 +21733,9 @@ class TargetPoolsResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TargetPoolAggregatedList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -19042,7 +21747,8 @@ class TargetPoolsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -19064,6 +21770,9 @@ class TargetPoolsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -19106,6 +21815,9 @@ class TargetPoolsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -19115,7 +21827,7 @@ class TargetPoolsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String region, core.String targetPool,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -19134,6 +21846,9 @@ class TargetPoolsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -19166,6 +21881,9 @@ class TargetPoolsResourceApi {
   /// [targetPool] - Name of the TargetPool resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TargetPool].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -19174,7 +21892,8 @@ class TargetPoolsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TargetPool> get(
-      core.String project, core.String region, core.String targetPool) {
+      core.String project, core.String region, core.String targetPool,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -19190,6 +21909,9 @@ class TargetPoolsResourceApi {
     }
     if (targetPool == null) {
       throw new core.ArgumentError("Parameter targetPool is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -19225,6 +21947,9 @@ class TargetPoolsResourceApi {
   /// instance belongs.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TargetPoolInstanceHealth].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -19233,7 +21958,8 @@ class TargetPoolsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TargetPoolInstanceHealth> getHealth(InstanceReference request,
-      core.String project, core.String region, core.String targetPool) {
+      core.String project, core.String region, core.String targetPool,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -19252,6 +21978,9 @@ class TargetPoolsResourceApi {
     }
     if (targetPool == null) {
       throw new core.ArgumentError("Parameter targetPool is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -19298,6 +22027,9 @@ class TargetPoolsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -19307,7 +22039,7 @@ class TargetPoolsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(
       TargetPool request, core.String project, core.String region,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -19326,6 +22058,9 @@ class TargetPoolsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -19400,6 +22135,9 @@ class TargetPoolsResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TargetPoolList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -19411,7 +22149,8 @@ class TargetPoolsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -19436,6 +22175,9 @@ class TargetPoolsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -19481,6 +22223,9 @@ class TargetPoolsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -19493,7 +22238,8 @@ class TargetPoolsResourceApi {
       core.String project,
       core.String region,
       core.String targetPool,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -19515,6 +22261,9 @@ class TargetPoolsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -19562,6 +22311,9 @@ class TargetPoolsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -19574,7 +22326,8 @@ class TargetPoolsResourceApi {
       core.String project,
       core.String region,
       core.String targetPool,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -19596,6 +22349,9 @@ class TargetPoolsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -19645,6 +22401,9 @@ class TargetPoolsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -19654,7 +22413,7 @@ class TargetPoolsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> setBackup(TargetReference request,
       core.String project, core.String region, core.String targetPool,
-      {core.double failoverRatio, core.String requestId}) {
+      {core.double failoverRatio, core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -19679,6 +22438,9 @@ class TargetPoolsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -19728,6 +22490,9 @@ class TargetSslProxiesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -19737,7 +22502,7 @@ class TargetSslProxiesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String targetSslProxy,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -19753,6 +22518,9 @@ class TargetSslProxiesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -19780,6 +22548,9 @@ class TargetSslProxiesResourceApi {
   /// [targetSslProxy] - Name of the TargetSslProxy resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TargetSslProxy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -19788,7 +22559,8 @@ class TargetSslProxiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TargetSslProxy> get(
-      core.String project, core.String targetSslProxy) {
+      core.String project, core.String targetSslProxy,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -19801,6 +22573,9 @@ class TargetSslProxiesResourceApi {
     }
     if (targetSslProxy == null) {
       throw new core.ArgumentError("Parameter targetSslProxy is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -19840,6 +22615,9 @@ class TargetSslProxiesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -19848,7 +22626,7 @@ class TargetSslProxiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(TargetSslProxy request, core.String project,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -19864,6 +22642,9 @@ class TargetSslProxiesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -19933,6 +22714,9 @@ class TargetSslProxiesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TargetSslProxyList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -19944,7 +22728,8 @@ class TargetSslProxiesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -19966,6 +22751,9 @@ class TargetSslProxiesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -20007,6 +22795,9 @@ class TargetSslProxiesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -20018,7 +22809,8 @@ class TargetSslProxiesResourceApi {
       TargetSslProxiesSetBackendServiceRequest request,
       core.String project,
       core.String targetSslProxy,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -20037,6 +22829,9 @@ class TargetSslProxiesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -20080,6 +22875,9 @@ class TargetSslProxiesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -20091,7 +22889,8 @@ class TargetSslProxiesResourceApi {
       TargetSslProxiesSetProxyHeaderRequest request,
       core.String project,
       core.String targetSslProxy,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -20110,6 +22909,9 @@ class TargetSslProxiesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -20153,6 +22955,9 @@ class TargetSslProxiesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -20164,7 +22969,8 @@ class TargetSslProxiesResourceApi {
       TargetSslProxiesSetSslCertificatesRequest request,
       core.String project,
       core.String targetSslProxy,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -20183,6 +22989,9 @@ class TargetSslProxiesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -20230,6 +23039,9 @@ class TargetTcpProxiesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -20239,7 +23051,7 @@ class TargetTcpProxiesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String targetTcpProxy,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -20255,6 +23067,9 @@ class TargetTcpProxiesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -20282,6 +23097,9 @@ class TargetTcpProxiesResourceApi {
   /// [targetTcpProxy] - Name of the TargetTcpProxy resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TargetTcpProxy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -20290,7 +23108,8 @@ class TargetTcpProxiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TargetTcpProxy> get(
-      core.String project, core.String targetTcpProxy) {
+      core.String project, core.String targetTcpProxy,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -20303,6 +23122,9 @@ class TargetTcpProxiesResourceApi {
     }
     if (targetTcpProxy == null) {
       throw new core.ArgumentError("Parameter targetTcpProxy is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -20342,6 +23164,9 @@ class TargetTcpProxiesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -20350,7 +23175,7 @@ class TargetTcpProxiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(TargetTcpProxy request, core.String project,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -20366,6 +23191,9 @@ class TargetTcpProxiesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -20435,6 +23263,9 @@ class TargetTcpProxiesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TargetTcpProxyList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -20446,7 +23277,8 @@ class TargetTcpProxiesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -20468,6 +23300,9 @@ class TargetTcpProxiesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -20509,6 +23344,9 @@ class TargetTcpProxiesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -20520,7 +23358,8 @@ class TargetTcpProxiesResourceApi {
       TargetTcpProxiesSetBackendServiceRequest request,
       core.String project,
       core.String targetTcpProxy,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -20539,6 +23378,9 @@ class TargetTcpProxiesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -20582,6 +23424,9 @@ class TargetTcpProxiesResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -20593,7 +23438,8 @@ class TargetTcpProxiesResourceApi {
       TargetTcpProxiesSetProxyHeaderRequest request,
       core.String project,
       core.String targetTcpProxy,
-      {core.String requestId}) {
+      {core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -20612,6 +23458,9 @@ class TargetTcpProxiesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -20689,6 +23538,9 @@ class TargetVpnGatewaysResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TargetVpnGatewayAggregatedList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -20701,7 +23553,8 @@ class TargetVpnGatewaysResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -20723,6 +23576,9 @@ class TargetVpnGatewaysResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -20765,6 +23621,9 @@ class TargetVpnGatewaysResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -20774,7 +23633,7 @@ class TargetVpnGatewaysResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String region, core.String targetVpnGateway,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -20793,6 +23652,9 @@ class TargetVpnGatewaysResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -20825,6 +23687,9 @@ class TargetVpnGatewaysResourceApi {
   /// [targetVpnGateway] - Name of the target VPN gateway to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TargetVpnGateway].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -20833,7 +23698,8 @@ class TargetVpnGatewaysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TargetVpnGateway> get(
-      core.String project, core.String region, core.String targetVpnGateway) {
+      core.String project, core.String region, core.String targetVpnGateway,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -20849,6 +23715,9 @@ class TargetVpnGatewaysResourceApi {
     }
     if (targetVpnGateway == null) {
       throw new core.ArgumentError("Parameter targetVpnGateway is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -20893,6 +23762,9 @@ class TargetVpnGatewaysResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -20902,7 +23774,7 @@ class TargetVpnGatewaysResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(
       TargetVpnGateway request, core.String project, core.String region,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -20921,6 +23793,9 @@ class TargetVpnGatewaysResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -20995,6 +23870,9 @@ class TargetVpnGatewaysResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TargetVpnGatewayList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -21007,7 +23885,8 @@ class TargetVpnGatewaysResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -21032,6 +23911,9 @@ class TargetVpnGatewaysResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -21078,6 +23960,9 @@ class UrlMapsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -21086,7 +23971,7 @@ class UrlMapsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String urlMap,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -21102,6 +23987,9 @@ class UrlMapsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -21129,6 +24017,9 @@ class UrlMapsResourceApi {
   /// [urlMap] - Name of the UrlMap resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UrlMap].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -21136,7 +24027,8 @@ class UrlMapsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UrlMap> get(core.String project, core.String urlMap) {
+  async.Future<UrlMap> get(core.String project, core.String urlMap,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -21149,6 +24041,9 @@ class UrlMapsResourceApi {
     }
     if (urlMap == null) {
       throw new core.ArgumentError("Parameter urlMap is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -21188,6 +24083,9 @@ class UrlMapsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -21196,7 +24094,7 @@ class UrlMapsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(UrlMap request, core.String project,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -21212,6 +24110,9 @@ class UrlMapsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps';
@@ -21252,6 +24153,9 @@ class UrlMapsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -21261,7 +24165,7 @@ class UrlMapsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> invalidateCache(
       CacheInvalidationRule request, core.String project, core.String urlMap,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -21280,6 +24184,9 @@ class UrlMapsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -21350,6 +24257,9 @@ class UrlMapsResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UrlMapList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -21361,7 +24271,8 @@ class UrlMapsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -21383,6 +24294,9 @@ class UrlMapsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps';
@@ -21424,6 +24338,9 @@ class UrlMapsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -21433,7 +24350,7 @@ class UrlMapsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(
       UrlMap request, core.String project, core.String urlMap,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -21452,6 +24369,9 @@ class UrlMapsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -21494,6 +24414,9 @@ class UrlMapsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -21503,7 +24426,7 @@ class UrlMapsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> update(
       UrlMap request, core.String project, core.String urlMap,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -21522,6 +24445,9 @@ class UrlMapsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -21552,6 +24478,9 @@ class UrlMapsResourceApi {
   /// [urlMap] - Name of the UrlMap resource to be validated as.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UrlMapsValidateResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -21560,7 +24489,8 @@ class UrlMapsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UrlMapsValidateResponse> validate(
-      UrlMapsValidateRequest request, core.String project, core.String urlMap) {
+      UrlMapsValidateRequest request, core.String project, core.String urlMap,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -21576,6 +24506,9 @@ class UrlMapsResourceApi {
     }
     if (urlMap == null) {
       throw new core.ArgumentError("Parameter urlMap is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -21652,6 +24585,9 @@ class VpnTunnelsResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [VpnTunnelAggregatedList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -21663,7 +24599,8 @@ class VpnTunnelsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -21685,6 +24622,9 @@ class VpnTunnelsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/vpnTunnels';
@@ -21725,6 +24665,9 @@ class VpnTunnelsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -21734,7 +24677,7 @@ class VpnTunnelsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> delete(
       core.String project, core.String region, core.String vpnTunnel,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -21753,6 +24696,9 @@ class VpnTunnelsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -21785,6 +24731,9 @@ class VpnTunnelsResourceApi {
   /// [vpnTunnel] - Name of the VpnTunnel resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [VpnTunnel].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -21793,7 +24742,8 @@ class VpnTunnelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<VpnTunnel> get(
-      core.String project, core.String region, core.String vpnTunnel) {
+      core.String project, core.String region, core.String vpnTunnel,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -21809,6 +24759,9 @@ class VpnTunnelsResourceApi {
     }
     if (vpnTunnel == null) {
       throw new core.ArgumentError("Parameter vpnTunnel is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -21853,6 +24806,9 @@ class VpnTunnelsResourceApi {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -21862,7 +24818,7 @@ class VpnTunnelsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> insert(
       VpnTunnel request, core.String project, core.String region,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -21881,6 +24837,9 @@ class VpnTunnelsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -21955,6 +24914,9 @@ class VpnTunnelsResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [VpnTunnelList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -21966,7 +24928,8 @@ class VpnTunnelsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -21991,6 +24954,9 @@ class VpnTunnelsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -22027,13 +24993,17 @@ class ZoneOperationsResourceApi {
   /// [operation] - Name of the Operations resource to delete.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(
-      core.String project, core.String zone, core.String operation) {
+      core.String project, core.String zone, core.String operation,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -22049,6 +25019,9 @@ class ZoneOperationsResourceApi {
     }
     if (operation == null) {
       throw new core.ArgumentError("Parameter operation is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -22082,6 +25055,9 @@ class ZoneOperationsResourceApi {
   /// [operation] - Name of the Operations resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -22090,7 +25066,8 @@ class ZoneOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> get(
-      core.String project, core.String zone, core.String operation) {
+      core.String project, core.String zone, core.String operation,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -22106,6 +25083,9 @@ class ZoneOperationsResourceApi {
     }
     if (operation == null) {
       throw new core.ArgumentError("Parameter operation is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -22181,6 +25161,9 @@ class ZoneOperationsResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OperationList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -22192,7 +25175,8 @@ class ZoneOperationsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -22217,6 +25201,9 @@ class ZoneOperationsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -22251,6 +25238,9 @@ class ZonesResourceApi {
   /// [zone] - Name of the zone resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Zone].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -22258,7 +25248,8 @@ class ZonesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Zone> get(core.String project, core.String zone) {
+  async.Future<Zone> get(core.String project, core.String zone,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -22271,6 +25262,9 @@ class ZonesResourceApi {
     }
     if (zone == null) {
       throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -22340,6 +25334,9 @@ class ZonesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ZoneList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -22351,7 +25348,8 @@ class ZonesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -22373,6 +25371,9 @@ class ZonesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/zones';
@@ -22564,7 +25565,9 @@ class AcceleratorTypeAggregatedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -22750,7 +25753,9 @@ class AcceleratorTypeListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -22931,7 +25936,9 @@ class AcceleratorTypesScopedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -23292,7 +26299,9 @@ class AddressAggregatedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -23475,7 +26484,9 @@ class AddressListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -23655,7 +26666,9 @@ class AddressesScopedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -23867,7 +26880,8 @@ class AttachedDisk {
 
   /// Specifies a valid partial or full URL to an existing Persistent Disk
   /// resource. When creating a new instance, one of
-  /// initializeParams.sourceImage or disks.source is required.
+  /// initializeParams.sourceImage or disks.source is required except for local
+  /// SSD.
   ///
   /// If desired, you can also attach existing non-root persistent disks using
   /// this property. This field is only applicable for persistent disks.
@@ -23999,7 +27013,8 @@ class AttachedDiskInitializeParams {
   core.String diskType;
 
   /// The source image to create this disk. When creating a new instance, one of
-  /// initializeParams.sourceImage or disks.source is required.
+  /// initializeParams.sourceImage or disks.source is required except for local
+  /// SSD.
   ///
   /// To create a disk with one of the public operating system images, specify
   /// the image by its family name. For example, specify family/debian-8 to use
@@ -24272,7 +27287,9 @@ class AutoscalerAggregatedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -24456,7 +27473,9 @@ class AutoscalerListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -24684,7 +27703,9 @@ class AutoscalersScopedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -24904,15 +27925,15 @@ class AutoscalingPolicyCpuUtilization {
 /// Custom utilization metric policy.
 class AutoscalingPolicyCustomMetricUtilization {
   /// The identifier (type) of the Stackdriver Monitoring metric. The metric
-  /// cannot have negative values and should be a utilization metric, which
-  /// means that the number of virtual machines handling requests should
-  /// increase or decrease proportionally to the metric.
+  /// cannot have negative values.
   ///
   /// The metric must have a value type of INT64 or DOUBLE.
   core.String metric;
 
   /// The target value of the metric that autoscaler should maintain. This must
-  /// be a positive value.
+  /// be a positive value. A utilization metric scales number of virtual
+  /// machines handling requests to increase or decrease proportionally to the
+  /// metric.
   ///
   /// For example, a good metric to use as a utilization_target is
   /// compute.googleapis.com/instance/network/received_bytes_count. The
@@ -25264,7 +28285,9 @@ class BackendBucketListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -25721,7 +28744,9 @@ class BackendServiceAggregatedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -26008,7 +29033,9 @@ class BackendServiceListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -26189,7 +29216,9 @@ class BackendServicesScopedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -26594,7 +29623,9 @@ class CommitmentAggregatedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -26778,7 +29809,9 @@ class CommitmentListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -26959,7 +29992,9 @@ class CommitmentsScopedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -27586,7 +30621,9 @@ class DiskAggregatedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -27769,7 +30806,9 @@ class DiskListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -28094,7 +31133,9 @@ class DiskTypeAggregatedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -28276,7 +31317,9 @@ class DiskTypeListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -28456,7 +31499,9 @@ class DiskTypesScopedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -28618,7 +31663,9 @@ class DisksScopedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -28868,6 +31915,19 @@ class Firewall {
   /// match both properties for the firewall to apply. Only IPv4 is supported.
   core.List<core.String> sourceRanges;
 
+  /// If source service accounts are specified, the firewall will apply only to
+  /// traffic originating from an instance with a service account in this list.
+  /// Source service accounts cannot be used to control traffic to an instance's
+  /// external IP address because service accounts are associated with an
+  /// instance, not an IP address. sourceRanges can be set at the same time as
+  /// sourceServiceAccounts. If both are set, the firewall will apply to traffic
+  /// that has source IP address within sourceRanges OR the source IP belongs to
+  /// an instance with service account listed in sourceServiceAccount. The
+  /// connection does not need to match both properties for the firewall to
+  /// apply. sourceServiceAccounts cannot be used at the same time as sourceTags
+  /// or targetTags.
+  core.List<core.String> sourceServiceAccounts;
+
   /// If source tags are specified, the firewall rule applies only to traffic
   /// with source IPs that match the primary network interfaces of VM instances
   /// that have the tag and are in the same VPC network. Source tags cannot be
@@ -28881,10 +31941,18 @@ class Firewall {
   /// for the firewall to apply.
   core.List<core.String> sourceTags;
 
-  /// A list of instance tags indicating sets of instances located in the
-  /// network that may make network connections as specified in allowed[]. If no
-  /// targetTags are specified, the firewall rule applies to all instances on
-  /// the specified network.
+  /// A list of service accounts indicating sets of instances located in the
+  /// network that may make network connections as specified in allowed[].
+  /// targetServiceAccounts cannot be used at the same time as targetTags or
+  /// sourceTags. If neither targetServiceAccounts nor targetTags are specified,
+  /// the firewall rule applies to all instances on the specified network.
+  core.List<core.String> targetServiceAccounts;
+
+  /// A list of tags that controls which instances the firewall rule applies to.
+  /// If targetTags are specified, then the firewall rule applies only to
+  /// instances in the VPC network that have one of those tags. If no targetTags
+  /// are specified, the firewall rule applies to all instances on the specified
+  /// network.
   core.List<core.String> targetTags;
 
   Firewall();
@@ -28933,8 +32001,14 @@ class Firewall {
     if (_json.containsKey("sourceRanges")) {
       sourceRanges = _json["sourceRanges"];
     }
+    if (_json.containsKey("sourceServiceAccounts")) {
+      sourceServiceAccounts = _json["sourceServiceAccounts"];
+    }
     if (_json.containsKey("sourceTags")) {
       sourceTags = _json["sourceTags"];
+    }
+    if (_json.containsKey("targetServiceAccounts")) {
+      targetServiceAccounts = _json["targetServiceAccounts"];
     }
     if (_json.containsKey("targetTags")) {
       targetTags = _json["targetTags"];
@@ -28983,8 +32057,14 @@ class Firewall {
     if (sourceRanges != null) {
       _json["sourceRanges"] = sourceRanges;
     }
+    if (sourceServiceAccounts != null) {
+      _json["sourceServiceAccounts"] = sourceServiceAccounts;
+    }
     if (sourceTags != null) {
       _json["sourceTags"] = sourceTags;
+    }
+    if (targetServiceAccounts != null) {
+      _json["targetServiceAccounts"] = targetServiceAccounts;
     }
     if (targetTags != null) {
       _json["targetTags"] = targetTags;
@@ -29037,7 +32117,9 @@ class FirewallListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -29178,18 +32260,32 @@ class FirewallList {
 class ForwardingRule {
   /// The IP address that this forwarding rule is serving on behalf of.
   ///
-  /// For global forwarding rules, the address must be a global IP. For regional
-  /// forwarding rules, the address must live in the same region as the
-  /// forwarding rule. By default, this field is empty and an ephemeral IPv4
-  /// address from the same scope (global or regional) will be assigned. A
-  /// regional forwarding rule supports IPv4 only. A global forwarding rule
-  /// supports either IPv4 or IPv6.
+  /// Addresses are restricted based on the forwarding rule's load balancing
+  /// scheme (EXTERNAL or INTERNAL) and scope (global or regional).
+  ///
+  /// When the load balancing scheme is EXTERNAL, for global forwarding rules,
+  /// the address must be a global IP, and for regional forwarding rules, the
+  /// address must live in the same region as the forwarding rule. If this field
+  /// is empty, an ephemeral IPv4 address from the same scope (global or
+  /// regional) will be assigned. A regional forwarding rule supports IPv4 only.
+  /// A global forwarding rule supports either IPv4 or IPv6.
   ///
   /// When the load balancing scheme is INTERNAL, this can only be an RFC 1918
-  /// IP address belonging to the network/subnetwork configured for the
-  /// forwarding rule. A reserved address cannot be used. If the field is empty,
-  /// the IP address will be automatically allocated from the internal IP range
-  /// of the subnetwork or network configured for this forwarding rule.
+  /// IP address belonging to the network/subnet configured for the forwarding
+  /// rule. By default, if this field is empty, an ephemeral internal IP address
+  /// will be automatically allocated from the IP range of the subnet or network
+  /// configured for this forwarding rule.
+  ///
+  /// An address can be specified either by a literal IP address or a URL
+  /// reference to an existing Address resource. The following examples are all
+  /// valid:
+  /// - 100.1.2.3
+  /// -
+  /// https://www.googleapis.com/compute/v1/projects/project/regions/region/addresses/address
+  /// - projects/project/regions/region/addresses/address
+  /// - regions/region/addresses/address
+  /// - global/addresses/address
+  /// - address
   core.String IPAddress;
 
   /// The IP protocol to which this rule applies. Valid options are TCP, UDP,
@@ -29476,7 +32572,9 @@ class ForwardingRuleAggregatedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -29661,7 +32759,9 @@ class ForwardingRuleListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -29841,7 +32941,9 @@ class ForwardingRulesScopedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -30359,7 +33461,9 @@ class HealthCheckListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -30812,7 +33916,9 @@ class HttpHealthCheckListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -31140,7 +34246,9 @@ class HttpsHealthCheckListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -31675,7 +34783,9 @@ class ImageListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -31822,6 +34932,9 @@ class Instance {
   /// [Output Only] Creation timestamp in RFC3339 text format.
   core.String creationTimestamp;
 
+  /// Whether the resource should be protected against deletion.
+  core.bool deletionProtection;
+
   /// An optional description of this resource. Provide this property when you
   /// create the resource.
   core.String description;
@@ -31962,6 +35075,9 @@ class Instance {
     if (_json.containsKey("creationTimestamp")) {
       creationTimestamp = _json["creationTimestamp"];
     }
+    if (_json.containsKey("deletionProtection")) {
+      deletionProtection = _json["deletionProtection"];
+    }
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
@@ -32043,6 +35159,9 @@ class Instance {
     }
     if (creationTimestamp != null) {
       _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (deletionProtection != null) {
+      _json["deletionProtection"] = deletionProtection;
     }
     if (description != null) {
       _json["description"] = description;
@@ -32155,7 +35274,9 @@ class InstanceAggregatedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -32497,7 +35618,9 @@ class InstanceGroupAggregatedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -32683,7 +35806,9 @@ class InstanceGroupListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -33159,7 +36284,9 @@ class InstanceGroupManagerAggregatedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -33345,7 +36472,9 @@ class InstanceGroupManagerListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -33621,7 +36750,9 @@ class InstanceGroupManagersScopedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -33859,7 +36990,9 @@ class InstanceGroupsListInstancesWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -34093,7 +37226,9 @@ class InstanceGroupsScopedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -34282,7 +37417,9 @@ class InstanceListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -34764,7 +37901,9 @@ class InstanceTemplateListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -34997,7 +38136,9 @@ class InstancesScopedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -35261,6 +38402,1687 @@ class InstancesStartWithEncryptionKeyRequest {
         new core.Map<core.String, core.Object>();
     if (disks != null) {
       _json["disks"] = disks.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Protocol definitions for Mixer API to support Interconnect. Next available
+/// tag: 25
+class Interconnect {
+  /// Administrative status of the interconnect. When this is set to ?true?, the
+  /// Interconnect is functional and may carry traffic (assuming there are
+  /// functional InterconnectAttachments and other requirements are satisfied).
+  /// When set to ?false?, no packets will be carried over this Interconnect and
+  /// no BGP routes will be exchanged over it. By default, it is set to ?true?.
+  core.bool adminEnabled;
+
+  /// [Output Only] List of CircuitInfo objects, that describe the individual
+  /// circuits in this LAG.
+  core.List<InterconnectCircuitInfo> circuitInfos;
+
+  /// [Output Only] Creation timestamp in RFC3339 text format.
+  core.String creationTimestamp;
+
+  /// Customer name, to put in the Letter of Authorization as the party
+  /// authorized to request a crossconnect.
+  core.String customerName;
+
+  /// An optional description of this resource. Provide this property when you
+  /// create the resource.
+  core.String description;
+
+  /// [Output Only] List of outages expected for this Interconnect.
+  core.List<InterconnectOutageNotification> expectedOutages;
+
+  /// [Output Only] IP address configured on the Google side of the Interconnect
+  /// link. This can be used only for ping tests.
+  core.String googleIpAddress;
+
+  /// [Output Only] Google reference ID; to be used when raising support tickets
+  /// with Google or otherwise to debug backend connectivity issues.
+  core.String googleReferenceId;
+
+  /// [Output Only] The unique identifier for the resource. This identifier is
+  /// defined by the server.
+  core.String id;
+
+  /// [Output Only] A list of the URLs of all InterconnectAttachments configured
+  /// to use this Interconnect.
+  core.List<core.String> interconnectAttachments;
+
+  ///
+  /// Possible string values are:
+  /// - "DEDICATED"
+  /// - "IT_PRIVATE"
+  core.String interconnectType;
+
+  /// [Output Only] Type of the resource. Always compute#interconnect for
+  /// interconnects.
+  core.String kind;
+
+  ///
+  /// Possible string values are:
+  /// - "LINK_TYPE_ETHERNET_10G_LR"
+  core.String linkType;
+
+  /// URL of the InterconnectLocation object that represents where this
+  /// connection is to be provisioned.
+  core.String location;
+
+  /// Name of the resource. Provided by the client when the resource is created.
+  /// The name must be 1-63 characters long, and comply with RFC1035.
+  /// Specifically, the name must be 1-63 characters long and match the regular
+  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+  /// be a lowercase letter, and all following characters must be a dash,
+  /// lowercase letter, or digit, except the last character, which cannot be a
+  /// dash.
+  core.String name;
+
+  /// Email address to contact the customer NOC for operations and maintenance
+  /// notifications regarding this Interconnect. If specified, this will be used
+  /// for notifications in addition to all other forms described, such as
+  /// Stackdriver logs alerting and Cloud Notifications.
+  core.String nocContactEmail;
+
+  /// [Output Only] The current status of whether or not this Interconnect is
+  /// functional.
+  /// Possible string values are:
+  /// - "ACTIVE"
+  /// - "OS_ACTIVE"
+  /// - "OS_UNPROVISIONED"
+  /// - "UNPROVISIONED"
+  core.String operationalStatus;
+
+  /// [Output Only] IP address configured on the customer side of the
+  /// Interconnect link. The customer should configure this IP address during
+  /// turnup when prompted by Google NOC. This can be used only for ping tests.
+  core.String peerIpAddress;
+
+  /// [Output Only] Number of links actually provisioned in this interconnect.
+  core.int provisionedLinkCount;
+
+  /// Target number of physical links in the link bundle, as requested by the
+  /// customer.
+  core.int requestedLinkCount;
+
+  /// [Output Only] Server-defined URL for the resource.
+  core.String selfLink;
+
+  Interconnect();
+
+  Interconnect.fromJson(core.Map _json) {
+    if (_json.containsKey("adminEnabled")) {
+      adminEnabled = _json["adminEnabled"];
+    }
+    if (_json.containsKey("circuitInfos")) {
+      circuitInfos = _json["circuitInfos"]
+          .map((value) => new InterconnectCircuitInfo.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("customerName")) {
+      customerName = _json["customerName"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("expectedOutages")) {
+      expectedOutages = _json["expectedOutages"]
+          .map((value) => new InterconnectOutageNotification.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("googleIpAddress")) {
+      googleIpAddress = _json["googleIpAddress"];
+    }
+    if (_json.containsKey("googleReferenceId")) {
+      googleReferenceId = _json["googleReferenceId"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("interconnectAttachments")) {
+      interconnectAttachments = _json["interconnectAttachments"];
+    }
+    if (_json.containsKey("interconnectType")) {
+      interconnectType = _json["interconnectType"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("linkType")) {
+      linkType = _json["linkType"];
+    }
+    if (_json.containsKey("location")) {
+      location = _json["location"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("nocContactEmail")) {
+      nocContactEmail = _json["nocContactEmail"];
+    }
+    if (_json.containsKey("operationalStatus")) {
+      operationalStatus = _json["operationalStatus"];
+    }
+    if (_json.containsKey("peerIpAddress")) {
+      peerIpAddress = _json["peerIpAddress"];
+    }
+    if (_json.containsKey("provisionedLinkCount")) {
+      provisionedLinkCount = _json["provisionedLinkCount"];
+    }
+    if (_json.containsKey("requestedLinkCount")) {
+      requestedLinkCount = _json["requestedLinkCount"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (adminEnabled != null) {
+      _json["adminEnabled"] = adminEnabled;
+    }
+    if (circuitInfos != null) {
+      _json["circuitInfos"] =
+          circuitInfos.map((value) => (value).toJson()).toList();
+    }
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (customerName != null) {
+      _json["customerName"] = customerName;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (expectedOutages != null) {
+      _json["expectedOutages"] =
+          expectedOutages.map((value) => (value).toJson()).toList();
+    }
+    if (googleIpAddress != null) {
+      _json["googleIpAddress"] = googleIpAddress;
+    }
+    if (googleReferenceId != null) {
+      _json["googleReferenceId"] = googleReferenceId;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (interconnectAttachments != null) {
+      _json["interconnectAttachments"] = interconnectAttachments;
+    }
+    if (interconnectType != null) {
+      _json["interconnectType"] = interconnectType;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (linkType != null) {
+      _json["linkType"] = linkType;
+    }
+    if (location != null) {
+      _json["location"] = location;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (nocContactEmail != null) {
+      _json["nocContactEmail"] = nocContactEmail;
+    }
+    if (operationalStatus != null) {
+      _json["operationalStatus"] = operationalStatus;
+    }
+    if (peerIpAddress != null) {
+      _json["peerIpAddress"] = peerIpAddress;
+    }
+    if (provisionedLinkCount != null) {
+      _json["provisionedLinkCount"] = provisionedLinkCount;
+    }
+    if (requestedLinkCount != null) {
+      _json["requestedLinkCount"] = requestedLinkCount;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+/// Protocol definitions for Mixer API to support InterconnectAttachment. Next
+/// available tag: 23
+class InterconnectAttachment {
+  /// [Output Only] IPv4 address + prefix length to be configured on Cloud
+  /// Router Interface for this interconnect attachment.
+  core.String cloudRouterIpAddress;
+
+  /// [Output Only] Creation timestamp in RFC3339 text format.
+  core.String creationTimestamp;
+
+  /// [Output Only] IPv4 address + prefix length to be configured on the
+  /// customer router subinterface for this interconnect attachment.
+  core.String customerRouterIpAddress;
+
+  /// An optional description of this resource. Provide this property when you
+  /// create the resource.
+  core.String description;
+
+  /// [Output Only] Google reference ID, to be used when raising support tickets
+  /// with Google or otherwise to debug backend connectivity issues.
+  core.String googleReferenceId;
+
+  /// [Output Only] The unique identifier for the resource. This identifier is
+  /// defined by the server.
+  core.String id;
+
+  /// URL of the underlying Interconnect object that this attachment's traffic
+  /// will traverse through.
+  core.String interconnect;
+
+  /// [Output Only] Type of the resource. Always compute#interconnectAttachment
+  /// for interconnect attachments.
+  core.String kind;
+
+  /// Name of the resource. Provided by the client when the resource is created.
+  /// The name must be 1-63 characters long, and comply with RFC1035.
+  /// Specifically, the name must be 1-63 characters long and match the regular
+  /// expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must
+  /// be a lowercase letter, and all following characters must be a dash,
+  /// lowercase letter, or digit, except the last character, which cannot be a
+  /// dash.
+  core.String name;
+
+  /// [Output Only] The current status of whether or not this interconnect
+  /// attachment is functional.
+  /// Possible string values are:
+  /// - "ACTIVE"
+  /// - "OS_ACTIVE"
+  /// - "OS_UNPROVISIONED"
+  /// - "UNPROVISIONED"
+  core.String operationalStatus;
+
+  /// [Output Only] Information specific to a Private InterconnectAttachment.
+  /// Only populated if the interconnect that this is attached is of type
+  /// IT_PRIVATE.
+  InterconnectAttachmentPrivateInfo privateInterconnectInfo;
+
+  /// [Output Only] URL of the region where the regional interconnect attachment
+  /// resides.
+  core.String region;
+
+  /// URL of the cloud router to be used for dynamic routing. This router must
+  /// be in the same region as this InterconnectAttachment. The
+  /// InterconnectAttachment will automatically connect the Interconnect to the
+  /// network & region within which the Cloud Router is configured.
+  core.String router;
+
+  /// [Output Only] Server-defined URL for the resource.
+  core.String selfLink;
+
+  InterconnectAttachment();
+
+  InterconnectAttachment.fromJson(core.Map _json) {
+    if (_json.containsKey("cloudRouterIpAddress")) {
+      cloudRouterIpAddress = _json["cloudRouterIpAddress"];
+    }
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("customerRouterIpAddress")) {
+      customerRouterIpAddress = _json["customerRouterIpAddress"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("googleReferenceId")) {
+      googleReferenceId = _json["googleReferenceId"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("interconnect")) {
+      interconnect = _json["interconnect"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("operationalStatus")) {
+      operationalStatus = _json["operationalStatus"];
+    }
+    if (_json.containsKey("privateInterconnectInfo")) {
+      privateInterconnectInfo = new InterconnectAttachmentPrivateInfo.fromJson(
+          _json["privateInterconnectInfo"]);
+    }
+    if (_json.containsKey("region")) {
+      region = _json["region"];
+    }
+    if (_json.containsKey("router")) {
+      router = _json["router"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (cloudRouterIpAddress != null) {
+      _json["cloudRouterIpAddress"] = cloudRouterIpAddress;
+    }
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (customerRouterIpAddress != null) {
+      _json["customerRouterIpAddress"] = customerRouterIpAddress;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (googleReferenceId != null) {
+      _json["googleReferenceId"] = googleReferenceId;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (interconnect != null) {
+      _json["interconnect"] = interconnect;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (operationalStatus != null) {
+      _json["operationalStatus"] = operationalStatus;
+    }
+    if (privateInterconnectInfo != null) {
+      _json["privateInterconnectInfo"] = (privateInterconnectInfo).toJson();
+    }
+    if (region != null) {
+      _json["region"] = region;
+    }
+    if (router != null) {
+      _json["router"] = router;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+class InterconnectAttachmentAggregatedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  InterconnectAttachmentAggregatedListWarningData();
+
+  InterconnectAttachmentAggregatedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class InterconnectAttachmentAggregatedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<InterconnectAttachmentAggregatedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  InterconnectAttachmentAggregatedListWarning();
+
+  InterconnectAttachmentAggregatedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) =>
+              new InterconnectAttachmentAggregatedListWarningData.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class InterconnectAttachmentAggregatedList {
+  /// [Output Only] Unique identifier for the resource; defined by the server.
+  core.String id;
+
+  /// A list of InterconnectAttachmentsScopedList resources.
+  core.Map<core.String, InterconnectAttachmentsScopedList> items;
+
+  /// [Output Only] Type of resource. Always
+  /// compute#interconnectAttachmentAggregatedList for aggregated lists of
+  /// interconnect attachments.
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  InterconnectAttachmentAggregatedListWarning warning;
+
+  InterconnectAttachmentAggregatedList();
+
+  InterconnectAttachmentAggregatedList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = commons.mapMap<core.Map<core.String, core.Object>,
+              InterconnectAttachmentsScopedList>(
+          _json["items"],
+          (core.Map<core.String, core.Object> item) =>
+              new InterconnectAttachmentsScopedList.fromJson(item));
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new InterconnectAttachmentAggregatedListWarning.fromJson(
+          _json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = commons.mapMap<InterconnectAttachmentsScopedList,
+              core.Map<core.String, core.Object>>(
+          items, (InterconnectAttachmentsScopedList item) => (item).toJson());
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+class InterconnectAttachmentListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  InterconnectAttachmentListWarningData();
+
+  InterconnectAttachmentListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class InterconnectAttachmentListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<InterconnectAttachmentListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  InterconnectAttachmentListWarning();
+
+  InterconnectAttachmentListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) =>
+              new InterconnectAttachmentListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/// Response to the list request, and contains a list of interconnect
+/// attachments.
+class InterconnectAttachmentList {
+  /// [Output Only] Unique identifier for the resource; defined by the server.
+  core.String id;
+
+  /// A list of InterconnectAttachment resources.
+  core.List<InterconnectAttachment> items;
+
+  /// [Output Only] Type of resource. Always compute#interconnectAttachmentList
+  /// for lists of interconnect attachments.
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  InterconnectAttachmentListWarning warning;
+
+  InterconnectAttachmentList();
+
+  InterconnectAttachmentList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"]
+          .map((value) => new InterconnectAttachment.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning =
+          new InterconnectAttachmentListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Private information for an interconnect attachment when this belongs to an
+/// interconnect of type IT_PRIVATE.
+class InterconnectAttachmentPrivateInfo {
+  /// [Output Only] 802.1q encapsulation tag to be used for traffic between
+  /// Google and the customer, going to and from this network and region.
+  core.int tag8021q;
+
+  InterconnectAttachmentPrivateInfo();
+
+  InterconnectAttachmentPrivateInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("tag8021q")) {
+      tag8021q = _json["tag8021q"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (tag8021q != null) {
+      _json["tag8021q"] = tag8021q;
+    }
+    return _json;
+  }
+}
+
+class InterconnectAttachmentsScopedListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  InterconnectAttachmentsScopedListWarningData();
+
+  InterconnectAttachmentsScopedListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// Informational warning which replaces the list of addresses when the list is
+/// empty.
+class InterconnectAttachmentsScopedListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<InterconnectAttachmentsScopedListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  InterconnectAttachmentsScopedListWarning();
+
+  InterconnectAttachmentsScopedListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) =>
+              new InterconnectAttachmentsScopedListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+class InterconnectAttachmentsScopedList {
+  /// List of interconnect attachments contained in this scope.
+  core.List<InterconnectAttachment> interconnectAttachments;
+
+  /// Informational warning which replaces the list of addresses when the list
+  /// is empty.
+  InterconnectAttachmentsScopedListWarning warning;
+
+  InterconnectAttachmentsScopedList();
+
+  InterconnectAttachmentsScopedList.fromJson(core.Map _json) {
+    if (_json.containsKey("interconnectAttachments")) {
+      interconnectAttachments = _json["interconnectAttachments"]
+          .map((value) => new InterconnectAttachment.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("warning")) {
+      warning = new InterconnectAttachmentsScopedListWarning.fromJson(
+          _json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (interconnectAttachments != null) {
+      _json["interconnectAttachments"] =
+          interconnectAttachments.map((value) => (value).toJson()).toList();
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Describes a single physical circuit between the Customer and Google.
+/// CircuitInfo objects are created by Google, so all fields are output only.
+/// Next id: 4
+class InterconnectCircuitInfo {
+  /// Customer-side demarc ID for this circuit. This will only be set if it was
+  /// provided by the Customer to Google during circuit turn-up.
+  core.String customerDemarcId;
+
+  /// Google-assigned unique ID for this circuit. Assigned at circuit turn-up.
+  core.String googleCircuitId;
+
+  /// Google-side demarc ID for this circuit. Assigned at circuit turn-up and
+  /// provided by Google to the customer in the LOA.
+  core.String googleDemarcId;
+
+  InterconnectCircuitInfo();
+
+  InterconnectCircuitInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("customerDemarcId")) {
+      customerDemarcId = _json["customerDemarcId"];
+    }
+    if (_json.containsKey("googleCircuitId")) {
+      googleCircuitId = _json["googleCircuitId"];
+    }
+    if (_json.containsKey("googleDemarcId")) {
+      googleDemarcId = _json["googleDemarcId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (customerDemarcId != null) {
+      _json["customerDemarcId"] = customerDemarcId;
+    }
+    if (googleCircuitId != null) {
+      _json["googleCircuitId"] = googleCircuitId;
+    }
+    if (googleDemarcId != null) {
+      _json["googleDemarcId"] = googleDemarcId;
+    }
+    return _json;
+  }
+}
+
+class InterconnectListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  InterconnectListWarningData();
+
+  InterconnectListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class InterconnectListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<InterconnectListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  InterconnectListWarning();
+
+  InterconnectListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) => new InterconnectListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/// Response to the list request, and contains a list of interconnects.
+class InterconnectList {
+  /// [Output Only] Unique identifier for the resource; defined by the server.
+  core.String id;
+
+  /// A list of Interconnect resources.
+  core.List<Interconnect> items;
+
+  /// [Output Only] Type of resource. Always compute#interconnectList for lists
+  /// of interconnects.
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  InterconnectListWarning warning;
+
+  InterconnectList();
+
+  InterconnectList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"]
+          .map((value) => new Interconnect.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new InterconnectListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Protocol definitions for Mixer API to support InterconnectLocation.
+class InterconnectLocation {
+  /// [Output Only] The postal address of the Point of Presence, each line in
+  /// the address is separated by a newline character.
+  core.String address;
+
+  /// Availability zone for this location. Within a city, maintenance will not
+  /// be simultaneously scheduled in more than one availability zone. Example:
+  /// "zone1" or "zone2".
+  core.String availabilityZone;
+
+  /// City designator used by the Interconnect UI to locate this
+  /// InterconnectLocation within the Continent. For example: "Chicago, IL",
+  /// "Amsterdam, Netherlands".
+  core.String city;
+
+  /// Continent for this location. Used by the location picker in the
+  /// Interconnect UI.
+  /// Possible string values are:
+  /// - "AFRICA"
+  /// - "ASIA_PAC"
+  /// - "C_AFRICA"
+  /// - "C_ASIA_PAC"
+  /// - "C_EUROPE"
+  /// - "C_NORTH_AMERICA"
+  /// - "C_SOUTH_AMERICA"
+  /// - "EUROPE"
+  /// - "NORTH_AMERICA"
+  /// - "SOUTH_AMERICA"
+  core.String continent;
+
+  /// [Output Only] Creation timestamp in RFC3339 text format.
+  core.String creationTimestamp;
+
+  /// [Output Only] An optional description of the resource.
+  core.String description;
+
+  /// [Output Only] The name of the provider for this facility (e.g., EQUINIX).
+  core.String facilityProvider;
+
+  /// [Output Only] A provider-assigned Identifier for this facility (e.g.,
+  /// Ashburn-DC1).
+  core.String facilityProviderFacilityId;
+
+  /// [Output Only] The unique identifier for the resource. This identifier is
+  /// defined by the server.
+  core.String id;
+
+  /// [Output Only] Type of the resource. Always compute#interconnectLocation
+  /// for interconnect locations.
+  core.String kind;
+
+  /// [Output Only] Name of the resource.
+  core.String name;
+
+  /// [Output Only] The peeringdb identifier for this facility (corresponding
+  /// with a netfac type in peeringdb).
+  core.String peeringdbFacilityId;
+
+  /// [Output Only] A list of InterconnectLocation.RegionInfo objects, that
+  /// describe parameters pertaining to the relation between this
+  /// InterconnectLocation and various Google Cloud regions.
+  core.List<InterconnectLocationRegionInfo> regionInfos;
+
+  /// [Output Only] Server-defined URL for the resource.
+  core.String selfLink;
+
+  InterconnectLocation();
+
+  InterconnectLocation.fromJson(core.Map _json) {
+    if (_json.containsKey("address")) {
+      address = _json["address"];
+    }
+    if (_json.containsKey("availabilityZone")) {
+      availabilityZone = _json["availabilityZone"];
+    }
+    if (_json.containsKey("city")) {
+      city = _json["city"];
+    }
+    if (_json.containsKey("continent")) {
+      continent = _json["continent"];
+    }
+    if (_json.containsKey("creationTimestamp")) {
+      creationTimestamp = _json["creationTimestamp"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("facilityProvider")) {
+      facilityProvider = _json["facilityProvider"];
+    }
+    if (_json.containsKey("facilityProviderFacilityId")) {
+      facilityProviderFacilityId = _json["facilityProviderFacilityId"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("peeringdbFacilityId")) {
+      peeringdbFacilityId = _json["peeringdbFacilityId"];
+    }
+    if (_json.containsKey("regionInfos")) {
+      regionInfos = _json["regionInfos"]
+          .map((value) => new InterconnectLocationRegionInfo.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (address != null) {
+      _json["address"] = address;
+    }
+    if (availabilityZone != null) {
+      _json["availabilityZone"] = availabilityZone;
+    }
+    if (city != null) {
+      _json["city"] = city;
+    }
+    if (continent != null) {
+      _json["continent"] = continent;
+    }
+    if (creationTimestamp != null) {
+      _json["creationTimestamp"] = creationTimestamp;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (facilityProvider != null) {
+      _json["facilityProvider"] = facilityProvider;
+    }
+    if (facilityProviderFacilityId != null) {
+      _json["facilityProviderFacilityId"] = facilityProviderFacilityId;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (peeringdbFacilityId != null) {
+      _json["peeringdbFacilityId"] = peeringdbFacilityId;
+    }
+    if (regionInfos != null) {
+      _json["regionInfos"] =
+          regionInfos.map((value) => (value).toJson()).toList();
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    return _json;
+  }
+}
+
+class InterconnectLocationListWarningData {
+  /// [Output Only] A key that provides more detail on the warning being
+  /// returned. For example, for warnings where there are no results in a list
+  /// request for a particular zone, this key might be scope and the key value
+  /// might be the zone name. Other examples might be a key indicating a
+  /// deprecated resource and a suggested replacement, or a warning about
+  /// invalid network settings (for example, if an instance attempts to perform
+  /// IP forwarding but is not enabled for IP forwarding).
+  core.String key;
+
+  /// [Output Only] A warning data value corresponding to the key.
+  core.String value;
+
+  InterconnectLocationListWarningData();
+
+  InterconnectLocationListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey("key")) {
+      key = _json["key"];
+    }
+    if (_json.containsKey("value")) {
+      value = _json["value"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (key != null) {
+      _json["key"] = key;
+    }
+    if (value != null) {
+      _json["value"] = value;
+    }
+    return _json;
+  }
+}
+
+/// [Output Only] Informational warning message.
+class InterconnectLocationListWarning {
+  /// [Output Only] A warning code, if applicable. For example, Compute Engine
+  /// returns NO_RESULTS_ON_PAGE if there are no results in the response.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// [Output Only] Metadata about this warning in key: value format. For
+  /// example:
+  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  core.List<InterconnectLocationListWarningData> data;
+
+  /// [Output Only] A human-readable description of the warning code.
+  core.String message;
+
+  InterconnectLocationListWarning();
+
+  InterconnectLocationListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("data")) {
+      data = _json["data"]
+          .map((value) =>
+              new InterconnectLocationListWarningData.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (data != null) {
+      _json["data"] = data.map((value) => (value).toJson()).toList();
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
+/// Response to the list request, and contains a list of interconnect locations.
+class InterconnectLocationList {
+  /// [Output Only] Unique identifier for the resource; defined by the server.
+  core.String id;
+
+  /// A list of InterconnectLocation resources.
+  core.List<InterconnectLocation> items;
+
+  /// [Output Only] Type of resource. Always compute#interconnectLocationList
+  /// for lists of interconnect locations.
+  core.String kind;
+
+  /// [Output Only] This token allows you to get the next page of results for
+  /// list requests. If the number of results is larger than maxResults, use the
+  /// nextPageToken as a value for the query parameter pageToken in the next
+  /// list request. Subsequent list requests will have their own nextPageToken
+  /// to continue paging through the results.
+  core.String nextPageToken;
+
+  /// [Output Only] Server-defined URL for this resource.
+  core.String selfLink;
+
+  /// [Output Only] Informational warning message.
+  InterconnectLocationListWarning warning;
+
+  InterconnectLocationList();
+
+  InterconnectLocationList.fromJson(core.Map _json) {
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("items")) {
+      items = _json["items"]
+          .map((value) => new InterconnectLocation.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("selfLink")) {
+      selfLink = _json["selfLink"];
+    }
+    if (_json.containsKey("warning")) {
+      warning = new InterconnectLocationListWarning.fromJson(_json["warning"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (items != null) {
+      _json["items"] = items.map((value) => (value).toJson()).toList();
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (selfLink != null) {
+      _json["selfLink"] = selfLink;
+    }
+    if (warning != null) {
+      _json["warning"] = (warning).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Information about any potential InterconnectAttachments between an
+/// Interconnect at a specific InterconnectLocation, and a specific Cloud
+/// Region.
+class InterconnectLocationRegionInfo {
+  /// Expected round-trip time in milliseconds, from this InterconnectLocation
+  /// to a VM in this region.
+  core.String expectedRttMs;
+
+  /// Identifies the network presence of this location.
+  /// Possible string values are:
+  /// - "GLOBAL"
+  /// - "LOCAL_REGION"
+  /// - "LP_GLOBAL"
+  /// - "LP_LOCAL_REGION"
+  core.String locationPresence;
+
+  /// URL for the region of this location.
+  core.String region;
+
+  InterconnectLocationRegionInfo();
+
+  InterconnectLocationRegionInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("expectedRttMs")) {
+      expectedRttMs = _json["expectedRttMs"];
+    }
+    if (_json.containsKey("locationPresence")) {
+      locationPresence = _json["locationPresence"];
+    }
+    if (_json.containsKey("region")) {
+      region = _json["region"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (expectedRttMs != null) {
+      _json["expectedRttMs"] = expectedRttMs;
+    }
+    if (locationPresence != null) {
+      _json["locationPresence"] = locationPresence;
+    }
+    if (region != null) {
+      _json["region"] = region;
+    }
+    return _json;
+  }
+}
+
+/// Description of a planned outage on this Interconnect. Next id: 9
+class InterconnectOutageNotification {
+  /// Iff issue_type is IT_PARTIAL_OUTAGE, a list of the Google-side circuit IDs
+  /// that will be affected.
+  core.List<core.String> affectedCircuits;
+
+  /// Short user-visible description of the purpose of the outage.
+  core.String description;
+  core.String endTime;
+
+  ///
+  /// Possible string values are:
+  /// - "IT_OUTAGE"
+  /// - "IT_PARTIAL_OUTAGE"
+  /// - "OUTAGE"
+  /// - "PARTIAL_OUTAGE"
+  core.String issueType;
+
+  /// Unique identifier for this outage notification.
+  core.String name;
+
+  ///
+  /// Possible string values are:
+  /// - "GOOGLE"
+  /// - "NSRC_GOOGLE"
+  core.String source;
+
+  /// Scheduled start and end times for the outage (milliseconds since Unix
+  /// epoch).
+  core.String startTime;
+
+  ///
+  /// Possible string values are:
+  /// - "ACTIVE"
+  /// - "CANCELLED"
+  /// - "NS_ACTIVE"
+  /// - "NS_CANCELED"
+  core.String state;
+
+  InterconnectOutageNotification();
+
+  InterconnectOutageNotification.fromJson(core.Map _json) {
+    if (_json.containsKey("affectedCircuits")) {
+      affectedCircuits = _json["affectedCircuits"];
+    }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
+    if (_json.containsKey("endTime")) {
+      endTime = _json["endTime"];
+    }
+    if (_json.containsKey("issueType")) {
+      issueType = _json["issueType"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("source")) {
+      source = _json["source"];
+    }
+    if (_json.containsKey("startTime")) {
+      startTime = _json["startTime"];
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (affectedCircuits != null) {
+      _json["affectedCircuits"] = affectedCircuits;
+    }
+    if (description != null) {
+      _json["description"] = description;
+    }
+    if (endTime != null) {
+      _json["endTime"] = endTime;
+    }
+    if (issueType != null) {
+      _json["issueType"] = issueType;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (source != null) {
+      _json["source"] = source;
+    }
+    if (startTime != null) {
+      _json["startTime"] = startTime;
+    }
+    if (state != null) {
+      _json["state"] = state;
     }
     return _json;
   }
@@ -35543,7 +40365,9 @@ class MachineTypeAggregatedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -35727,7 +40551,9 @@ class MachineTypeListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -35908,7 +40734,9 @@ class MachineTypesScopedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -36623,7 +41451,9 @@ class NetworkListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -37042,7 +41872,9 @@ class OperationWarnings {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -37398,7 +42230,9 @@ class OperationAggregatedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -37583,7 +42417,9 @@ class OperationListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -37764,7 +42600,9 @@ class OperationsScopedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -38448,7 +43286,9 @@ class RegionAutoscalerListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -38627,7 +43467,9 @@ class RegionInstanceGroupListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -38807,7 +43649,9 @@ class RegionInstanceGroupManagerListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -39150,7 +43994,9 @@ class RegionInstanceGroupsListInstancesWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -39414,7 +44260,9 @@ class RegionListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -39656,7 +44504,9 @@ class RouteWarnings {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -39966,7 +44816,9 @@ class RouteListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -40273,7 +45125,9 @@ class RouterAggregatedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -40516,6 +45370,11 @@ class RouterInterface {
   /// represents the IP address of the interface.
   core.String ipRange;
 
+  /// URI of the linked interconnect attachment. It must be in the same region
+  /// as the router. Each interface can have at most one linked resource and it
+  /// could either be a VPN Tunnel or an interconnect attachment.
+  core.String linkedInterconnectAttachment;
+
   /// URI of the linked VPN tunnel. It must be in the same region as the router.
   /// Each interface can have at most one linked resource and it could either be
   /// a VPN Tunnel or an interconnect attachment.
@@ -40531,6 +45390,9 @@ class RouterInterface {
     if (_json.containsKey("ipRange")) {
       ipRange = _json["ipRange"];
     }
+    if (_json.containsKey("linkedInterconnectAttachment")) {
+      linkedInterconnectAttachment = _json["linkedInterconnectAttachment"];
+    }
     if (_json.containsKey("linkedVpnTunnel")) {
       linkedVpnTunnel = _json["linkedVpnTunnel"];
     }
@@ -40544,6 +45406,9 @@ class RouterInterface {
         new core.Map<core.String, core.Object>();
     if (ipRange != null) {
       _json["ipRange"] = ipRange;
+    }
+    if (linkedInterconnectAttachment != null) {
+      _json["linkedInterconnectAttachment"] = linkedInterconnectAttachment;
     }
     if (linkedVpnTunnel != null) {
       _json["linkedVpnTunnel"] = linkedVpnTunnel;
@@ -40599,7 +45464,9 @@ class RouterListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -40996,7 +45863,9 @@ class RoutersScopedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -41580,7 +46449,9 @@ class SnapshotListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -41858,7 +46729,9 @@ class SslCertificateListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -42186,7 +47059,9 @@ class SubnetworkAggregatedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -42370,7 +47245,9 @@ class SubnetworkListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -42612,7 +47489,9 @@ class SubnetworksScopedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -42975,7 +47854,9 @@ class TargetHttpProxyListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -43282,7 +48163,9 @@ class TargetHttpsProxyListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -43577,7 +48460,9 @@ class TargetInstanceAggregatedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -43761,7 +48646,9 @@ class TargetInstanceListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -43941,7 +48828,9 @@ class TargetInstancesScopedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -44256,7 +49145,9 @@ class TargetPoolAggregatedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -44474,7 +49365,9 @@ class TargetPoolListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -44763,7 +49656,9 @@ class TargetPoolsScopedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -45104,7 +49999,9 @@ class TargetSslProxyListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -45430,7 +50327,9 @@ class TargetTcpProxyListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -45741,7 +50640,9 @@ class TargetVpnGatewayAggregatedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -45926,7 +50827,9 @@ class TargetVpnGatewayListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -46107,7 +51010,9 @@ class TargetVpnGatewaysScopedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -46433,7 +51338,9 @@ class UrlMapListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -47013,7 +51920,9 @@ class VpnTunnelAggregatedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -47196,7 +52105,9 @@ class VpnTunnelListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -47375,7 +52286,9 @@ class VpnTunnelsScopedListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -47515,7 +52428,9 @@ class XpnHostListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
@@ -47838,7 +52753,9 @@ class ZoneListWarning {
   /// Possible string values are:
   /// - "CLEANUP_FAILED"
   /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
   /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"

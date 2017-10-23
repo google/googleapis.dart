@@ -57,6 +57,9 @@ class ProjectsResourceApi {
   /// Example: `projects/my-project-123`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DeleteEventsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -64,7 +67,8 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DeleteEventsResponse> deleteEvents(core.String projectName) {
+  async.Future<DeleteEventsResponse> deleteEvents(core.String projectName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -74,6 +78,9 @@ class ProjectsResourceApi {
 
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -107,12 +114,6 @@ class ProjectsEventsResourceApi {
   /// Example: `projects/my-project-123`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - [Optional] The maximum number of results to return per
-  /// response.
-  ///
-  /// [serviceFilter_version] - [Optional] The exact value to match against
-  /// [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
-  ///
   /// [serviceFilter_resourceType] - [Optional] The exact value to match against
   /// [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
   ///
@@ -133,6 +134,15 @@ class ProjectsEventsResourceApi {
   /// [serviceFilter_service] - [Optional] The exact value to match against
   /// [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
   ///
+  /// [pageSize] - [Optional] The maximum number of results to return per
+  /// response.
+  ///
+  /// [serviceFilter_version] - [Optional] The exact value to match against
+  /// [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListEventsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -141,13 +151,14 @@ class ProjectsEventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListEventsResponse> list(core.String projectName,
-      {core.int pageSize,
-      core.String serviceFilter_version,
-      core.String serviceFilter_resourceType,
+      {core.String serviceFilter_resourceType,
       core.String timeRange_period,
       core.String groupId,
       core.String pageToken,
-      core.String serviceFilter_service}) {
+      core.String serviceFilter_service,
+      core.int pageSize,
+      core.String serviceFilter_version,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -157,12 +168,6 @@ class ProjectsEventsResourceApi {
 
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (serviceFilter_version != null) {
-      _queryParams["serviceFilter.version"] = [serviceFilter_version];
     }
     if (serviceFilter_resourceType != null) {
       _queryParams["serviceFilter.resourceType"] = [serviceFilter_resourceType];
@@ -178,6 +183,15 @@ class ProjectsEventsResourceApi {
     }
     if (serviceFilter_service != null) {
       _queryParams["serviceFilter.service"] = [serviceFilter_service];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (serviceFilter_version != null) {
+      _queryParams["serviceFilter.version"] = [serviceFilter_version];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -216,6 +230,9 @@ class ProjectsEventsResourceApi {
   /// Example: `projects/my-project-123`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ReportErrorEventResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -224,7 +241,8 @@ class ProjectsEventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ReportErrorEventResponse> report(
-      ReportedErrorEvent request, core.String projectName) {
+      ReportedErrorEvent request, core.String projectName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -237,6 +255,9 @@ class ProjectsEventsResourceApi {
     }
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -273,15 +294,6 @@ class ProjectsGroupStatsResourceApi {
   /// Example: <code>projects/my-project-123</code>.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [timedCountDuration] - [Optional] The preferred duration for a single
-  /// returned `TimedCount`.
-  /// If not set, no timed counts are returned.
-  ///
-  /// [pageToken] - [Optional] A `next_page_token` provided by a previous
-  /// response. To view
-  /// additional results, pass this token along with the identical query
-  /// parameters as the first request.
-  ///
   /// [timeRange_period] - Restricts the query to the specified time range.
   /// Possible string values are:
   /// - "PERIOD_UNSPECIFIED" : A PERIOD_UNSPECIFIED.
@@ -309,6 +321,9 @@ class ProjectsGroupStatsResourceApi {
   /// response.
   /// Default is 20.
   ///
+  /// [serviceFilter_version] - [Optional] The exact value to match against
+  /// [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
+  ///
   /// [order] - [Optional] The sort order in which the results are returned.
   /// Default is `COUNT_DESC`.
   /// Possible string values are:
@@ -318,15 +333,24 @@ class ProjectsGroupStatsResourceApi {
   /// - "CREATED_DESC" : A CREATED_DESC.
   /// - "AFFECTED_USERS_DESC" : A AFFECTED_USERS_DESC.
   ///
-  /// [serviceFilter_version] - [Optional] The exact value to match against
-  /// [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
-  ///
   /// [serviceFilter_resourceType] - [Optional] The exact value to match against
   /// [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
   ///
   /// [alignmentTime] - [Optional] Time where the timed counts shall be aligned
   /// if rounded
   /// alignment is chosen. Default is 00:00 UTC.
+  ///
+  /// [timedCountDuration] - [Optional] The preferred duration for a single
+  /// returned `TimedCount`.
+  /// If not set, no timed counts are returned.
+  ///
+  /// [pageToken] - [Optional] A `next_page_token` provided by a previous
+  /// response. To view
+  /// additional results, pass this token along with the identical query
+  /// parameters as the first request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListGroupStatsResponse].
   ///
@@ -336,17 +360,18 @@ class ProjectsGroupStatsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupStatsResponse> list(core.String projectName,
-      {core.String timedCountDuration,
-      core.String pageToken,
-      core.String timeRange_period,
+      {core.String timeRange_period,
       core.String alignment,
       core.List<core.String> groupId,
       core.String serviceFilter_service,
       core.int pageSize,
-      core.String order,
       core.String serviceFilter_version,
+      core.String order,
       core.String serviceFilter_resourceType,
-      core.String alignmentTime}) {
+      core.String alignmentTime,
+      core.String timedCountDuration,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -356,12 +381,6 @@ class ProjectsGroupStatsResourceApi {
 
     if (projectName == null) {
       throw new core.ArgumentError("Parameter projectName is required.");
-    }
-    if (timedCountDuration != null) {
-      _queryParams["timedCountDuration"] = [timedCountDuration];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if (timeRange_period != null) {
       _queryParams["timeRange.period"] = [timeRange_period];
@@ -378,17 +397,26 @@ class ProjectsGroupStatsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (order != null) {
-      _queryParams["order"] = [order];
-    }
     if (serviceFilter_version != null) {
       _queryParams["serviceFilter.version"] = [serviceFilter_version];
+    }
+    if (order != null) {
+      _queryParams["order"] = [order];
     }
     if (serviceFilter_resourceType != null) {
       _queryParams["serviceFilter.resourceType"] = [serviceFilter_resourceType];
     }
     if (alignmentTime != null) {
       _queryParams["alignmentTime"] = [alignmentTime];
+    }
+    if (timedCountDuration != null) {
+      _queryParams["timedCountDuration"] = [timedCountDuration];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -425,6 +453,9 @@ class ProjectsGroupsResourceApi {
   /// Example: <code>projects/my-project-123/groups/my-group</code>
   /// Value must have pattern "^projects/[^/]+/groups/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ErrorGroup].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -432,7 +463,7 @@ class ProjectsGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ErrorGroup> get(core.String groupName) {
+  async.Future<ErrorGroup> get(core.String groupName, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -442,6 +473,9 @@ class ProjectsGroupsResourceApi {
 
     if (groupName == null) {
       throw new core.ArgumentError("Parameter groupName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$groupName');
@@ -466,6 +500,9 @@ class ProjectsGroupsResourceApi {
   /// Example: <code>projects/my-project-123/groups/my-groupid</code>
   /// Value must have pattern "^projects/[^/]+/groups/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ErrorGroup].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -473,7 +510,8 @@ class ProjectsGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ErrorGroup> update(ErrorGroup request, core.String name) {
+  async.Future<ErrorGroup> update(ErrorGroup request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -486,6 +524,9 @@ class ProjectsGroupsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');

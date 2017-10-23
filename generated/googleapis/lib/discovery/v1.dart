@@ -41,6 +41,9 @@ class ApisResourceApi {
   ///
   /// [version] - The version of the API.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RestDescription].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -48,7 +51,8 @@ class ApisResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RestDescription> getRest(core.String api, core.String version) {
+  async.Future<RestDescription> getRest(core.String api, core.String version,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -61,6 +65,9 @@ class ApisResourceApi {
     }
     if (version == null) {
       throw new core.ArgumentError("Parameter version is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'apis/' +
@@ -86,6 +93,9 @@ class ApisResourceApi {
   ///
   /// [preferred] - Return only the preferred version of an API.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DirectoryList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -93,7 +103,8 @@ class ApisResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DirectoryList> list({core.String name, core.bool preferred}) {
+  async.Future<DirectoryList> list(
+      {core.String name, core.bool preferred, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -106,6 +117,9 @@ class ApisResourceApi {
     }
     if (preferred != null) {
       _queryParams["preferred"] = ["${preferred}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'apis';

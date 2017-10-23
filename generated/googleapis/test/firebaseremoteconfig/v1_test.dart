@@ -50,27 +50,27 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed795() {
+buildUnnamed780() {
   var o = new core.List<api.RemoteConfigCondition>();
   o.add(buildRemoteConfigCondition());
   o.add(buildRemoteConfigCondition());
   return o;
 }
 
-checkUnnamed795(core.List<api.RemoteConfigCondition> o) {
+checkUnnamed780(core.List<api.RemoteConfigCondition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRemoteConfigCondition(o[0]);
   checkRemoteConfigCondition(o[1]);
 }
 
-buildUnnamed796() {
+buildUnnamed781() {
   var o = new core.Map<core.String, api.RemoteConfigParameter>();
   o["x"] = buildRemoteConfigParameter();
   o["y"] = buildRemoteConfigParameter();
   return o;
 }
 
-checkUnnamed796(core.Map<core.String, api.RemoteConfigParameter> o) {
+checkUnnamed781(core.Map<core.String, api.RemoteConfigParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRemoteConfigParameter(o["x"]);
   checkRemoteConfigParameter(o["y"]);
@@ -81,8 +81,8 @@ buildRemoteConfig() {
   var o = new api.RemoteConfig();
   buildCounterRemoteConfig++;
   if (buildCounterRemoteConfig < 3) {
-    o.conditions = buildUnnamed795();
-    o.parameters = buildUnnamed796();
+    o.conditions = buildUnnamed780();
+    o.parameters = buildUnnamed781();
   }
   buildCounterRemoteConfig--;
   return o;
@@ -91,8 +91,8 @@ buildRemoteConfig() {
 checkRemoteConfig(api.RemoteConfig o) {
   buildCounterRemoteConfig++;
   if (buildCounterRemoteConfig < 3) {
-    checkUnnamed795(o.conditions);
-    checkUnnamed796(o.parameters);
+    checkUnnamed780(o.conditions);
+    checkUnnamed781(o.parameters);
   }
   buildCounterRemoteConfig--;
 }
@@ -120,14 +120,14 @@ checkRemoteConfigCondition(api.RemoteConfigCondition o) {
   buildCounterRemoteConfigCondition--;
 }
 
-buildUnnamed797() {
+buildUnnamed782() {
   var o = new core.Map<core.String, api.RemoteConfigParameterValue>();
   o["x"] = buildRemoteConfigParameterValue();
   o["y"] = buildRemoteConfigParameterValue();
   return o;
 }
 
-checkUnnamed797(core.Map<core.String, api.RemoteConfigParameterValue> o) {
+checkUnnamed782(core.Map<core.String, api.RemoteConfigParameterValue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRemoteConfigParameterValue(o["x"]);
   checkRemoteConfigParameterValue(o["y"]);
@@ -138,7 +138,7 @@ buildRemoteConfigParameter() {
   var o = new api.RemoteConfigParameter();
   buildCounterRemoteConfigParameter++;
   if (buildCounterRemoteConfigParameter < 3) {
-    o.conditionalValues = buildUnnamed797();
+    o.conditionalValues = buildUnnamed782();
     o.defaultValue = buildRemoteConfigParameterValue();
   }
   buildCounterRemoteConfigParameter--;
@@ -148,7 +148,7 @@ buildRemoteConfigParameter() {
 checkRemoteConfigParameter(api.RemoteConfigParameter o) {
   buildCounterRemoteConfigParameter++;
   if (buildCounterRemoteConfigParameter < 3) {
-    checkUnnamed797(o.conditionalValues);
+    checkUnnamed782(o.conditionalValues);
     checkRemoteConfigParameterValue(o.defaultValue);
   }
   buildCounterRemoteConfigParameter--;
@@ -214,6 +214,7 @@ main() {
       api.ProjectsResourceApi res =
           new api.FirebaseremoteconfigApi(mock).projects;
       var arg_project = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -245,6 +246,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -253,7 +255,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .getRemoteConfig(arg_project)
+          .getRemoteConfig(arg_project, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.RemoteConfig response) {
         checkRemoteConfig(response);
       })));
@@ -266,6 +268,7 @@ main() {
       var arg_request = buildRemoteConfig();
       var arg_project = "foo";
       var arg_validateOnly = true;
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.RemoteConfig.fromJson(json);
         checkRemoteConfig(obj);
@@ -302,6 +305,7 @@ main() {
         }
         unittest.expect(queryMap["validateOnly"].first,
             unittest.equals("$arg_validateOnly"));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -311,7 +315,7 @@ main() {
       }), true);
       res
           .updateRemoteConfig(arg_request, arg_project,
-              validateOnly: arg_validateOnly)
+              validateOnly: arg_validateOnly, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.RemoteConfig response) {
         checkRemoteConfig(response);
       })));

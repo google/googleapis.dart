@@ -46,12 +46,15 @@ class TasklistsResourceApi {
   ///
   /// [tasklist] - Task list identifier.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String tasklist) {
+  async.Future delete(core.String tasklist, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -61,6 +64,9 @@ class TasklistsResourceApi {
 
     if (tasklist == null) {
       throw new core.ArgumentError("Parameter tasklist is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -82,6 +88,9 @@ class TasklistsResourceApi {
   ///
   /// [tasklist] - Task list identifier.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TaskList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -89,7 +98,7 @@ class TasklistsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TaskList> get(core.String tasklist) {
+  async.Future<TaskList> get(core.String tasklist, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -99,6 +108,9 @@ class TasklistsResourceApi {
 
     if (tasklist == null) {
       throw new core.ArgumentError("Parameter tasklist is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/@me/lists/' + commons.Escaper.ecapeVariable('$tasklist');
@@ -119,6 +131,9 @@ class TasklistsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TaskList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -126,7 +141,7 @@ class TasklistsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TaskList> insert(TaskList request) {
+  async.Future<TaskList> insert(TaskList request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -136,6 +151,9 @@ class TasklistsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/@me/lists';
@@ -158,6 +176,9 @@ class TasklistsResourceApi {
   ///
   /// [pageToken] - Token specifying the result page to return. Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TaskLists].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -166,7 +187,7 @@ class TasklistsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TaskLists> list(
-      {core.String maxResults, core.String pageToken}) {
+      {core.String maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -179,6 +200,9 @@ class TasklistsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/@me/lists';
@@ -201,6 +225,9 @@ class TasklistsResourceApi {
   ///
   /// [tasklist] - Task list identifier.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TaskList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -208,7 +235,8 @@ class TasklistsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TaskList> patch(TaskList request, core.String tasklist) {
+  async.Future<TaskList> patch(TaskList request, core.String tasklist,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -221,6 +249,9 @@ class TasklistsResourceApi {
     }
     if (tasklist == null) {
       throw new core.ArgumentError("Parameter tasklist is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/@me/lists/' + commons.Escaper.ecapeVariable('$tasklist');
@@ -242,6 +273,9 @@ class TasklistsResourceApi {
   ///
   /// [tasklist] - Task list identifier.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TaskList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -249,7 +283,8 @@ class TasklistsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TaskList> update(TaskList request, core.String tasklist) {
+  async.Future<TaskList> update(TaskList request, core.String tasklist,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -262,6 +297,9 @@ class TasklistsResourceApi {
     }
     if (tasklist == null) {
       throw new core.ArgumentError("Parameter tasklist is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/@me/lists/' + commons.Escaper.ecapeVariable('$tasklist');
@@ -289,12 +327,15 @@ class TasksResourceApi {
   ///
   /// [tasklist] - Task list identifier.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future clear(core.String tasklist) {
+  async.Future clear(core.String tasklist, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -304,6 +345,9 @@ class TasksResourceApi {
 
     if (tasklist == null) {
       throw new core.ArgumentError("Parameter tasklist is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -327,12 +371,16 @@ class TasksResourceApi {
   ///
   /// [task] - Task identifier.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String tasklist, core.String task) {
+  async.Future delete(core.String tasklist, core.String task,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -345,6 +393,9 @@ class TasksResourceApi {
     }
     if (task == null) {
       throw new core.ArgumentError("Parameter task is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -371,6 +422,9 @@ class TasksResourceApi {
   ///
   /// [task] - Task identifier.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Task].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -378,7 +432,8 @@ class TasksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Task> get(core.String tasklist, core.String task) {
+  async.Future<Task> get(core.String tasklist, core.String task,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -391,6 +446,9 @@ class TasksResourceApi {
     }
     if (task == null) {
       throw new core.ArgumentError("Parameter task is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'lists/' +
@@ -422,6 +480,9 @@ class TasksResourceApi {
   /// the first position among its siblings, this parameter is omitted.
   /// Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Task].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -430,7 +491,7 @@ class TasksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Task> insert(Task request, core.String tasklist,
-      {core.String parent, core.String previous}) {
+      {core.String parent, core.String previous, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -449,6 +510,9 @@ class TasksResourceApi {
     }
     if (previous != null) {
       _queryParams["previous"] = [previous];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/tasks';
@@ -500,6 +564,9 @@ class TasksResourceApi {
   /// 3339 timestamp) to filter by. Optional. The default is not to filter by
   /// last modification time.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Tasks].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -517,7 +584,8 @@ class TasksResourceApi {
       core.bool showCompleted,
       core.bool showDeleted,
       core.bool showHidden,
-      core.String updatedMin}) {
+      core.String updatedMin,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -558,6 +626,9 @@ class TasksResourceApi {
     if (updatedMin != null) {
       _queryParams["updatedMin"] = [updatedMin];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'lists/' + commons.Escaper.ecapeVariable('$tasklist') + '/tasks';
 
@@ -587,6 +658,9 @@ class TasksResourceApi {
   /// the first position among its siblings, this parameter is omitted.
   /// Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Task].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -595,7 +669,7 @@ class TasksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Task> move(core.String tasklist, core.String task,
-      {core.String parent, core.String previous}) {
+      {core.String parent, core.String previous, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -614,6 +688,9 @@ class TasksResourceApi {
     }
     if (previous != null) {
       _queryParams["previous"] = [previous];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'lists/' +
@@ -641,6 +718,9 @@ class TasksResourceApi {
   ///
   /// [task] - Task identifier.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Task].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -648,8 +728,8 @@ class TasksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Task> patch(
-      Task request, core.String tasklist, core.String task) {
+  async.Future<Task> patch(Task request, core.String tasklist, core.String task,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -665,6 +745,9 @@ class TasksResourceApi {
     }
     if (task == null) {
       throw new core.ArgumentError("Parameter task is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'lists/' +
@@ -691,6 +774,9 @@ class TasksResourceApi {
   ///
   /// [task] - Task identifier.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Task].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -699,7 +785,8 @@ class TasksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Task> update(
-      Task request, core.String tasklist, core.String task) {
+      Task request, core.String tasklist, core.String task,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -715,6 +802,9 @@ class TasksResourceApi {
     }
     if (task == null) {
       throw new core.ArgumentError("Parameter task is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'lists/' +

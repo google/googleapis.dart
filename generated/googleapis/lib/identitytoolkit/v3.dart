@@ -47,6 +47,9 @@ class RelyingpartyResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CreateAuthUriResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -55,7 +58,8 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreateAuthUriResponse> createAuthUri(
-      IdentitytoolkitRelyingpartyCreateAuthUriRequest request) {
+      IdentitytoolkitRelyingpartyCreateAuthUriRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -65,6 +69,9 @@ class RelyingpartyResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'createAuthUri';
@@ -84,6 +91,9 @@ class RelyingpartyResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DeleteAccountResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -92,7 +102,8 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DeleteAccountResponse> deleteAccount(
-      IdentitytoolkitRelyingpartyDeleteAccountRequest request) {
+      IdentitytoolkitRelyingpartyDeleteAccountRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -102,6 +113,9 @@ class RelyingpartyResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'deleteAccount';
@@ -121,6 +135,9 @@ class RelyingpartyResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DownloadAccountResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -129,7 +146,8 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DownloadAccountResponse> downloadAccount(
-      IdentitytoolkitRelyingpartyDownloadAccountRequest request) {
+      IdentitytoolkitRelyingpartyDownloadAccountRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -139,6 +157,9 @@ class RelyingpartyResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'downloadAccount';
@@ -158,6 +179,9 @@ class RelyingpartyResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EmailLinkSigninResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -166,7 +190,8 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EmailLinkSigninResponse> emailLinkSignin(
-      IdentitytoolkitRelyingpartyEmailLinkSigninRequest request) {
+      IdentitytoolkitRelyingpartyEmailLinkSigninRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -176,6 +201,9 @@ class RelyingpartyResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'emailLinkSignin';
@@ -195,6 +223,9 @@ class RelyingpartyResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GetAccountInfoResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -203,7 +234,8 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetAccountInfoResponse> getAccountInfo(
-      IdentitytoolkitRelyingpartyGetAccountInfoRequest request) {
+      IdentitytoolkitRelyingpartyGetAccountInfoRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -213,6 +245,9 @@ class RelyingpartyResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'getAccountInfo';
@@ -232,6 +267,9 @@ class RelyingpartyResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GetOobConfirmationCodeResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -240,7 +278,8 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetOobConfirmationCodeResponse> getOobConfirmationCode(
-      Relyingparty request) {
+      Relyingparty request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -250,6 +289,9 @@ class RelyingpartyResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'getOobConfirmationCode';
@@ -272,6 +314,9 @@ class RelyingpartyResourceApi {
   ///
   /// [projectNumber] - GCP project number of the request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [IdentitytoolkitRelyingpartyGetProjectConfigResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -281,7 +326,9 @@ class RelyingpartyResourceApi {
   /// this method will complete with the same error.
   async.Future<IdentitytoolkitRelyingpartyGetProjectConfigResponse>
       getProjectConfig(
-          {core.String delegatedProjectNumber, core.String projectNumber}) {
+          {core.String delegatedProjectNumber,
+          core.String projectNumber,
+          core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -294,6 +341,9 @@ class RelyingpartyResourceApi {
     }
     if (projectNumber != null) {
       _queryParams["projectNumber"] = [projectNumber];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'getProjectConfig';
@@ -312,6 +362,9 @@ class RelyingpartyResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [IdentitytoolkitRelyingpartyGetPublicKeysResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -319,14 +372,18 @@ class RelyingpartyResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<IdentitytoolkitRelyingpartyGetPublicKeysResponse>
-      getPublicKeys() {
+  async.Future<IdentitytoolkitRelyingpartyGetPublicKeysResponse> getPublicKeys(
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'publicKeys';
 
@@ -344,6 +401,9 @@ class RelyingpartyResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GetRecaptchaParamResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -351,13 +411,18 @@ class RelyingpartyResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GetRecaptchaParamResponse> getRecaptchaParam() {
+  async.Future<GetRecaptchaParamResponse> getRecaptchaParam(
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'getRecaptchaParam';
 
@@ -377,6 +442,9 @@ class RelyingpartyResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ResetPasswordResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -385,7 +453,8 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ResetPasswordResponse> resetPassword(
-      IdentitytoolkitRelyingpartyResetPasswordRequest request) {
+      IdentitytoolkitRelyingpartyResetPasswordRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -395,6 +464,9 @@ class RelyingpartyResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'resetPassword';
@@ -414,6 +486,9 @@ class RelyingpartyResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a
   /// [IdentitytoolkitRelyingpartySendVerificationCodeResponse].
   ///
@@ -424,7 +499,8 @@ class RelyingpartyResourceApi {
   /// this method will complete with the same error.
   async.Future<IdentitytoolkitRelyingpartySendVerificationCodeResponse>
       sendVerificationCode(
-          IdentitytoolkitRelyingpartySendVerificationCodeRequest request) {
+          IdentitytoolkitRelyingpartySendVerificationCodeRequest request,
+          {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -434,6 +510,9 @@ class RelyingpartyResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'sendVerificationCode';
@@ -455,6 +534,9 @@ class RelyingpartyResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SetAccountInfoResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -463,7 +545,8 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SetAccountInfoResponse> setAccountInfo(
-      IdentitytoolkitRelyingpartySetAccountInfoRequest request) {
+      IdentitytoolkitRelyingpartySetAccountInfoRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -473,6 +556,9 @@ class RelyingpartyResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'setAccountInfo';
@@ -492,6 +578,9 @@ class RelyingpartyResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [IdentitytoolkitRelyingpartySetProjectConfigResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -501,7 +590,8 @@ class RelyingpartyResourceApi {
   /// this method will complete with the same error.
   async.Future<IdentitytoolkitRelyingpartySetProjectConfigResponse>
       setProjectConfig(
-          IdentitytoolkitRelyingpartySetProjectConfigRequest request) {
+          IdentitytoolkitRelyingpartySetProjectConfigRequest request,
+          {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -511,6 +601,9 @@ class RelyingpartyResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'setProjectConfig';
@@ -531,6 +624,9 @@ class RelyingpartyResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [IdentitytoolkitRelyingpartySignOutUserResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -539,7 +635,8 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<IdentitytoolkitRelyingpartySignOutUserResponse> signOutUser(
-      IdentitytoolkitRelyingpartySignOutUserRequest request) {
+      IdentitytoolkitRelyingpartySignOutUserRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -549,6 +646,9 @@ class RelyingpartyResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'signOutUser';
@@ -569,6 +669,9 @@ class RelyingpartyResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SignupNewUserResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -577,7 +680,8 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SignupNewUserResponse> signupNewUser(
-      IdentitytoolkitRelyingpartySignupNewUserRequest request) {
+      IdentitytoolkitRelyingpartySignupNewUserRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -587,6 +691,9 @@ class RelyingpartyResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'signupNewUser';
@@ -606,6 +713,9 @@ class RelyingpartyResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UploadAccountResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -614,7 +724,8 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UploadAccountResponse> uploadAccount(
-      IdentitytoolkitRelyingpartyUploadAccountRequest request) {
+      IdentitytoolkitRelyingpartyUploadAccountRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -624,6 +735,9 @@ class RelyingpartyResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'uploadAccount';
@@ -643,6 +757,9 @@ class RelyingpartyResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [VerifyAssertionResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -651,7 +768,8 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<VerifyAssertionResponse> verifyAssertion(
-      IdentitytoolkitRelyingpartyVerifyAssertionRequest request) {
+      IdentitytoolkitRelyingpartyVerifyAssertionRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -661,6 +779,9 @@ class RelyingpartyResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'verifyAssertion';
@@ -680,6 +801,9 @@ class RelyingpartyResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [VerifyCustomTokenResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -688,7 +812,8 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<VerifyCustomTokenResponse> verifyCustomToken(
-      IdentitytoolkitRelyingpartyVerifyCustomTokenRequest request) {
+      IdentitytoolkitRelyingpartyVerifyCustomTokenRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -698,6 +823,9 @@ class RelyingpartyResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'verifyCustomToken';
@@ -718,6 +846,9 @@ class RelyingpartyResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [VerifyPasswordResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -726,7 +857,8 @@ class RelyingpartyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<VerifyPasswordResponse> verifyPassword(
-      IdentitytoolkitRelyingpartyVerifyPasswordRequest request) {
+      IdentitytoolkitRelyingpartyVerifyPasswordRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -736,6 +868,9 @@ class RelyingpartyResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'verifyPassword';
@@ -756,6 +891,9 @@ class RelyingpartyResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -765,7 +903,8 @@ class RelyingpartyResourceApi {
   /// this method will complete with the same error.
   async.Future<IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse>
       verifyPhoneNumber(
-          IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest request) {
+          IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest request,
+          {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -775,6 +914,9 @@ class RelyingpartyResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'verifyPhoneNumber';

@@ -65,14 +65,14 @@ checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-buildUnnamed205() {
+buildUnnamed189() {
   var o = new core.List<api.Trace>();
   o.add(buildTrace());
   o.add(buildTrace());
   return o;
 }
 
-checkUnnamed205(core.List<api.Trace> o) {
+checkUnnamed189(core.List<api.Trace> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrace(o[0]);
   checkTrace(o[1]);
@@ -84,7 +84,7 @@ buildListTracesResponse() {
   buildCounterListTracesResponse++;
   if (buildCounterListTracesResponse < 3) {
     o.nextPageToken = "foo";
-    o.traces = buildUnnamed205();
+    o.traces = buildUnnamed189();
   }
   buildCounterListTracesResponse--;
   return o;
@@ -94,19 +94,19 @@ checkListTracesResponse(api.ListTracesResponse o) {
   buildCounterListTracesResponse++;
   if (buildCounterListTracesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed205(o.traces);
+    checkUnnamed189(o.traces);
   }
   buildCounterListTracesResponse--;
 }
 
-buildUnnamed206() {
+buildUnnamed190() {
   var o = new core.List<api.TraceSpan>();
   o.add(buildTraceSpan());
   o.add(buildTraceSpan());
   return o;
 }
 
-checkUnnamed206(core.List<api.TraceSpan> o) {
+checkUnnamed190(core.List<api.TraceSpan> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTraceSpan(o[0]);
   checkTraceSpan(o[1]);
@@ -118,7 +118,7 @@ buildTrace() {
   buildCounterTrace++;
   if (buildCounterTrace < 3) {
     o.projectId = "foo";
-    o.spans = buildUnnamed206();
+    o.spans = buildUnnamed190();
     o.traceId = "foo";
   }
   buildCounterTrace--;
@@ -129,20 +129,20 @@ checkTrace(api.Trace o) {
   buildCounterTrace++;
   if (buildCounterTrace < 3) {
     unittest.expect(o.projectId, unittest.equals('foo'));
-    checkUnnamed206(o.spans);
+    checkUnnamed190(o.spans);
     unittest.expect(o.traceId, unittest.equals('foo'));
   }
   buildCounterTrace--;
 }
 
-buildUnnamed207() {
+buildUnnamed191() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed207(core.Map<core.String, core.String> o) {
+checkUnnamed191(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -155,7 +155,7 @@ buildTraceSpan() {
   if (buildCounterTraceSpan < 3) {
     o.endTime = "foo";
     o.kind = "foo";
-    o.labels = buildUnnamed207();
+    o.labels = buildUnnamed191();
     o.name = "foo";
     o.parentSpanId = "foo";
     o.spanId = "foo";
@@ -170,7 +170,7 @@ checkTraceSpan(api.TraceSpan o) {
   if (buildCounterTraceSpan < 3) {
     unittest.expect(o.endTime, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed207(o.labels);
+    checkUnnamed191(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.parentSpanId, unittest.equals('foo'));
     unittest.expect(o.spanId, unittest.equals('foo'));
@@ -179,14 +179,14 @@ checkTraceSpan(api.TraceSpan o) {
   buildCounterTraceSpan--;
 }
 
-buildUnnamed208() {
+buildUnnamed192() {
   var o = new core.List<api.Trace>();
   o.add(buildTrace());
   o.add(buildTrace());
   return o;
 }
 
-checkUnnamed208(core.List<api.Trace> o) {
+checkUnnamed192(core.List<api.Trace> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTrace(o[0]);
   checkTrace(o[1]);
@@ -197,7 +197,7 @@ buildTraces() {
   var o = new api.Traces();
   buildCounterTraces++;
   if (buildCounterTraces < 3) {
-    o.traces = buildUnnamed208();
+    o.traces = buildUnnamed192();
   }
   buildCounterTraces--;
   return o;
@@ -206,7 +206,7 @@ buildTraces() {
 checkTraces(api.Traces o) {
   buildCounterTraces++;
   if (buildCounterTraces < 3) {
-    checkUnnamed208(o.traces);
+    checkUnnamed192(o.traces);
   }
   buildCounterTraces--;
 }
@@ -258,6 +258,7 @@ main() {
       api.ProjectsResourceApi res = new api.CloudtraceApi(mock).projects;
       var arg_request = buildTraces();
       var arg_projectId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Traces.fromJson(json);
         checkTraces(obj);
@@ -300,6 +301,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -308,7 +310,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .patchTraces(arg_request, arg_projectId)
+          .patchTraces(arg_request, arg_projectId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Empty response) {
         checkEmpty(response);
       })));
@@ -322,6 +324,7 @@ main() {
           new api.CloudtraceApi(mock).projects.traces;
       var arg_projectId = "foo";
       var arg_traceId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -364,6 +367,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -372,7 +376,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_projectId, arg_traceId)
+          .get(arg_projectId, arg_traceId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Trace response) {
         checkTrace(response);
       })));
@@ -383,13 +387,14 @@ main() {
       api.ProjectsTracesResourceApi res =
           new api.CloudtraceApi(mock).projects.traces;
       var arg_projectId = "foo";
-      var arg_pageToken = "foo";
-      var arg_startTime = "foo";
       var arg_pageSize = 42;
       var arg_view = "foo";
       var arg_orderBy = "foo";
       var arg_filter = "foo";
       var arg_endTime = "foo";
+      var arg_pageToken = "foo";
+      var arg_startTime = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -429,10 +434,6 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(
-            queryMap["startTime"].first, unittest.equals(arg_startTime));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
@@ -441,6 +442,11 @@ main() {
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["endTime"].first, unittest.equals(arg_endTime));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["startTime"].first, unittest.equals(arg_startTime));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -450,13 +456,14 @@ main() {
       }), true);
       res
           .list(arg_projectId,
-              pageToken: arg_pageToken,
-              startTime: arg_startTime,
               pageSize: arg_pageSize,
               view: arg_view,
               orderBy: arg_orderBy,
               filter: arg_filter,
-              endTime: arg_endTime)
+              endTime: arg_endTime,
+              pageToken: arg_pageToken,
+              startTime: arg_startTime,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ListTracesResponse response) {
         checkListTracesResponse(response);
       })));

@@ -75,6 +75,9 @@ class EditsResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AppEdit].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -82,7 +85,8 @@ class EditsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AppEdit> commit(core.String packageName, core.String editId) {
+  async.Future<AppEdit> commit(core.String packageName, core.String editId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -95,6 +99,9 @@ class EditsResourceApi {
     }
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -122,12 +129,16 @@ class EditsResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String packageName, core.String editId) {
+  async.Future delete(core.String packageName, core.String editId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -140,6 +151,9 @@ class EditsResourceApi {
     }
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -167,6 +181,9 @@ class EditsResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AppEdit].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -174,7 +191,8 @@ class EditsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AppEdit> get(core.String packageName, core.String editId) {
+  async.Future<AppEdit> get(core.String packageName, core.String editId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -187,6 +205,9 @@ class EditsResourceApi {
     }
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -211,6 +232,9 @@ class EditsResourceApi {
   /// [packageName] - Unique identifier for the Android app that is being
   /// updated; for example, "com.spiffygame".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AppEdit].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -218,7 +242,8 @@ class EditsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AppEdit> insert(AppEdit request, core.String packageName) {
+  async.Future<AppEdit> insert(AppEdit request, core.String packageName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -231,6 +256,9 @@ class EditsResourceApi {
     }
     if (packageName == null) {
       throw new core.ArgumentError("Parameter packageName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/edits';
@@ -254,6 +282,9 @@ class EditsResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AppEdit].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -261,7 +292,8 @@ class EditsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AppEdit> validate(core.String packageName, core.String editId) {
+  async.Future<AppEdit> validate(core.String packageName, core.String editId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -274,6 +306,9 @@ class EditsResourceApi {
     }
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -314,13 +349,17 @@ class EditsApklistingsResourceApi {
   /// localized listing to read or modify. For example, to select Austrian
   /// German, pass "de-AT".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String packageName, core.String editId,
-      core.int apkVersionCode, core.String language) {
+      core.int apkVersionCode, core.String language,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -339,6 +378,9 @@ class EditsApklistingsResourceApi {
     }
     if (language == null) {
       throw new core.ArgumentError("Parameter language is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -372,13 +414,17 @@ class EditsApklistingsResourceApi {
   /// [apkVersionCode] - The APK version code whose APK-specific listings should
   /// be read or modified.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future deleteall(
-      core.String packageName, core.String editId, core.int apkVersionCode) {
+      core.String packageName, core.String editId, core.int apkVersionCode,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -394,6 +440,9 @@ class EditsApklistingsResourceApi {
     }
     if (apkVersionCode == null) {
       throw new core.ArgumentError("Parameter apkVersionCode is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -431,6 +480,9 @@ class EditsApklistingsResourceApi {
   /// localized listing to read or modify. For example, to select Austrian
   /// German, pass "de-AT".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ApkListing].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -439,7 +491,8 @@ class EditsApklistingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ApkListing> get(core.String packageName, core.String editId,
-      core.int apkVersionCode, core.String language) {
+      core.int apkVersionCode, core.String language,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -458,6 +511,9 @@ class EditsApklistingsResourceApi {
     }
     if (language == null) {
       throw new core.ArgumentError("Parameter language is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -489,6 +545,9 @@ class EditsApklistingsResourceApi {
   /// [apkVersionCode] - The APK version code whose APK-specific listings should
   /// be read or modified.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ApkListingsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -497,7 +556,8 @@ class EditsApklistingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ApkListingsListResponse> list(
-      core.String packageName, core.String editId, core.int apkVersionCode) {
+      core.String packageName, core.String editId, core.int apkVersionCode,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -513,6 +573,9 @@ class EditsApklistingsResourceApi {
     }
     if (apkVersionCode == null) {
       throw new core.ArgumentError("Parameter apkVersionCode is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -550,6 +613,9 @@ class EditsApklistingsResourceApi {
   /// localized listing to read or modify. For example, to select Austrian
   /// German, pass "de-AT".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ApkListing].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -558,7 +624,8 @@ class EditsApklistingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ApkListing> patch(ApkListing request, core.String packageName,
-      core.String editId, core.int apkVersionCode, core.String language) {
+      core.String editId, core.int apkVersionCode, core.String language,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -580,6 +647,9 @@ class EditsApklistingsResourceApi {
     }
     if (language == null) {
       throw new core.ArgumentError("Parameter language is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -618,6 +688,9 @@ class EditsApklistingsResourceApi {
   /// localized listing to read or modify. For example, to select Austrian
   /// German, pass "de-AT".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ApkListing].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -626,7 +699,8 @@ class EditsApklistingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ApkListing> update(ApkListing request, core.String packageName,
-      core.String editId, core.int apkVersionCode, core.String language) {
+      core.String editId, core.int apkVersionCode, core.String language,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -648,6 +722,9 @@ class EditsApklistingsResourceApi {
     }
     if (language == null) {
       throw new core.ArgumentError("Parameter language is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -687,6 +764,9 @@ class EditsApksResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ApksAddExternallyHostedResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -697,7 +777,8 @@ class EditsApksResourceApi {
   async.Future<ApksAddExternallyHostedResponse> addexternallyhosted(
       ApksAddExternallyHostedRequest request,
       core.String packageName,
-      core.String editId) {
+      core.String editId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -713,6 +794,9 @@ class EditsApksResourceApi {
     }
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -737,6 +821,9 @@ class EditsApksResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ApksListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -745,7 +832,8 @@ class EditsApksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ApksListResponse> list(
-      core.String packageName, core.String editId) {
+      core.String packageName, core.String editId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -758,6 +846,9 @@ class EditsApksResourceApi {
     }
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -781,6 +872,9 @@ class EditsApksResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [uploadMedia] - The media to upload.
   ///
   /// [uploadOptions] - Options for the media upload. Streaming Media without
@@ -795,7 +889,8 @@ class EditsApksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Apk> upload(core.String packageName, core.String editId,
-      {commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      {core.String $fields,
+      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -809,6 +904,9 @@ class EditsApksResourceApi {
     }
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -866,6 +964,9 @@ class EditsDeobfuscationfilesResourceApi {
   /// Possible string values are:
   /// - "proguard"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [uploadMedia] - The media to upload.
   ///
   /// [uploadOptions] - Options for the media upload. Streaming Media without
@@ -884,7 +985,8 @@ class EditsDeobfuscationfilesResourceApi {
       core.String editId,
       core.int apkVersionCode,
       core.String deobfuscationFileType,
-      {commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      {core.String $fields,
+      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -905,6 +1007,9 @@ class EditsDeobfuscationfilesResourceApi {
     if (deobfuscationFileType == null) {
       throw new core.ArgumentError(
           "Parameter deobfuscationFileType is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -964,6 +1069,9 @@ class EditsDetailsResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AppDetails].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -971,7 +1079,8 @@ class EditsDetailsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AppDetails> get(core.String packageName, core.String editId) {
+  async.Future<AppDetails> get(core.String packageName, core.String editId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -984,6 +1093,9 @@ class EditsDetailsResourceApi {
     }
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -1011,6 +1123,9 @@ class EditsDetailsResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AppDetails].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1019,7 +1134,8 @@ class EditsDetailsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AppDetails> patch(
-      AppDetails request, core.String packageName, core.String editId) {
+      AppDetails request, core.String packageName, core.String editId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1035,6 +1151,9 @@ class EditsDetailsResourceApi {
     }
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -1062,6 +1181,9 @@ class EditsDetailsResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AppDetails].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1070,7 +1192,8 @@ class EditsDetailsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AppDetails> update(
-      AppDetails request, core.String packageName, core.String editId) {
+      AppDetails request, core.String packageName, core.String editId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1086,6 +1209,9 @@ class EditsDetailsResourceApi {
     }
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -1126,6 +1252,9 @@ class EditsExpansionfilesResourceApi {
   /// - "main"
   /// - "patch"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ExpansionFile].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1134,7 +1263,8 @@ class EditsExpansionfilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ExpansionFile> get(core.String packageName, core.String editId,
-      core.int apkVersionCode, core.String expansionFileType) {
+      core.int apkVersionCode, core.String expansionFileType,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1153,6 +1283,9 @@ class EditsExpansionfilesResourceApi {
     }
     if (expansionFileType == null) {
       throw new core.ArgumentError("Parameter expansionFileType is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -1193,6 +1326,9 @@ class EditsExpansionfilesResourceApi {
   /// - "main"
   /// - "patch"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ExpansionFile].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1205,7 +1341,8 @@ class EditsExpansionfilesResourceApi {
       core.String packageName,
       core.String editId,
       core.int apkVersionCode,
-      core.String expansionFileType) {
+      core.String expansionFileType,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1227,6 +1364,9 @@ class EditsExpansionfilesResourceApi {
     }
     if (expansionFileType == null) {
       throw new core.ArgumentError("Parameter expansionFileType is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -1266,6 +1406,9 @@ class EditsExpansionfilesResourceApi {
   /// - "main"
   /// - "patch"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ExpansionFile].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1278,7 +1421,8 @@ class EditsExpansionfilesResourceApi {
       core.String packageName,
       core.String editId,
       core.int apkVersionCode,
-      core.String expansionFileType) {
+      core.String expansionFileType,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1300,6 +1444,9 @@ class EditsExpansionfilesResourceApi {
     }
     if (expansionFileType == null) {
       throw new core.ArgumentError("Parameter expansionFileType is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -1336,6 +1483,9 @@ class EditsExpansionfilesResourceApi {
   /// - "main"
   /// - "patch"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [uploadMedia] - The media to upload.
   ///
   /// [uploadOptions] - Options for the media upload. Streaming Media without
@@ -1354,7 +1504,8 @@ class EditsExpansionfilesResourceApi {
       core.String editId,
       core.int apkVersionCode,
       core.String expansionFileType,
-      {commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      {core.String $fields,
+      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1374,6 +1525,9 @@ class EditsExpansionfilesResourceApi {
     }
     if (expansionFileType == null) {
       throw new core.ArgumentError("Parameter expansionFileType is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -1451,13 +1605,17 @@ class EditsImagesResourceApi {
   /// [imageId] - Unique identifier an image within the set of images attached
   /// to this edit.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String packageName, core.String editId,
-      core.String language, core.String imageType, core.String imageId) {
+      core.String language, core.String imageType, core.String imageId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1479,6 +1637,9 @@ class EditsImagesResourceApi {
     }
     if (imageId == null) {
       throw new core.ArgumentError("Parameter imageId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1527,6 +1688,9 @@ class EditsImagesResourceApi {
   /// - "tvScreenshots"
   /// - "wearScreenshots"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ImagesDeleteAllResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1535,7 +1699,8 @@ class EditsImagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ImagesDeleteAllResponse> deleteall(core.String packageName,
-      core.String editId, core.String language, core.String imageType) {
+      core.String editId, core.String language, core.String imageType,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1554,6 +1719,9 @@ class EditsImagesResourceApi {
     }
     if (imageType == null) {
       throw new core.ArgumentError("Parameter imageType is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -1598,6 +1766,9 @@ class EditsImagesResourceApi {
   /// - "tvScreenshots"
   /// - "wearScreenshots"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ImagesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1606,7 +1777,8 @@ class EditsImagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ImagesListResponse> list(core.String packageName,
-      core.String editId, core.String language, core.String imageType) {
+      core.String editId, core.String language, core.String imageType,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1625,6 +1797,9 @@ class EditsImagesResourceApi {
     }
     if (imageType == null) {
       throw new core.ArgumentError("Parameter imageType is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -1670,6 +1845,9 @@ class EditsImagesResourceApi {
   /// - "tvScreenshots"
   /// - "wearScreenshots"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [uploadMedia] - The media to upload.
   ///
   /// [uploadOptions] - Options for the media upload. Streaming Media without
@@ -1685,7 +1863,8 @@ class EditsImagesResourceApi {
   /// this method will complete with the same error.
   async.Future<ImagesUploadResponse> upload(core.String packageName,
       core.String editId, core.String language, core.String imageType,
-      {commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      {core.String $fields,
+      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1705,6 +1884,9 @@ class EditsImagesResourceApi {
     }
     if (imageType == null) {
       throw new core.ArgumentError("Parameter imageType is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -1766,13 +1948,17 @@ class EditsListingsResourceApi {
   /// listing to read or modify. For example, to select Austrian German, pass
   /// "de-AT".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(
-      core.String packageName, core.String editId, core.String language) {
+      core.String packageName, core.String editId, core.String language,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1788,6 +1974,9 @@ class EditsListingsResourceApi {
     }
     if (language == null) {
       throw new core.ArgumentError("Parameter language is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1816,12 +2005,16 @@ class EditsListingsResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future deleteall(core.String packageName, core.String editId) {
+  async.Future deleteall(core.String packageName, core.String editId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1834,6 +2027,9 @@ class EditsListingsResourceApi {
     }
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1865,6 +2061,9 @@ class EditsListingsResourceApi {
   /// listing to read or modify. For example, to select Austrian German, pass
   /// "de-AT".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Listing].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1873,7 +2072,8 @@ class EditsListingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Listing> get(
-      core.String packageName, core.String editId, core.String language) {
+      core.String packageName, core.String editId, core.String language,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1889,6 +2089,9 @@ class EditsListingsResourceApi {
     }
     if (language == null) {
       throw new core.ArgumentError("Parameter language is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -1915,6 +2118,9 @@ class EditsListingsResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListingsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1923,7 +2129,8 @@ class EditsListingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListingsListResponse> list(
-      core.String packageName, core.String editId) {
+      core.String packageName, core.String editId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1936,6 +2143,9 @@ class EditsListingsResourceApi {
     }
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -1968,6 +2178,9 @@ class EditsListingsResourceApi {
   /// listing to read or modify. For example, to select Austrian German, pass
   /// "de-AT".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Listing].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1976,7 +2189,8 @@ class EditsListingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Listing> patch(Listing request, core.String packageName,
-      core.String editId, core.String language) {
+      core.String editId, core.String language,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1995,6 +2209,9 @@ class EditsListingsResourceApi {
     }
     if (language == null) {
       throw new core.ArgumentError("Parameter language is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -2027,6 +2244,9 @@ class EditsListingsResourceApi {
   /// listing to read or modify. For example, to select Austrian German, pass
   /// "de-AT".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Listing].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2035,7 +2255,8 @@ class EditsListingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Listing> update(Listing request, core.String packageName,
-      core.String editId, core.String language) {
+      core.String editId, core.String language,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2054,6 +2275,9 @@ class EditsListingsResourceApi {
     }
     if (language == null) {
       throw new core.ArgumentError("Parameter language is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -2091,6 +2315,9 @@ class EditsTestersResourceApi {
   /// - "production"
   /// - "rollout"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Testers].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2099,7 +2326,8 @@ class EditsTestersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Testers> get(
-      core.String packageName, core.String editId, core.String track) {
+      core.String packageName, core.String editId, core.String track,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2115,6 +2343,9 @@ class EditsTestersResourceApi {
     }
     if (track == null) {
       throw new core.ArgumentError("Parameter track is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -2148,6 +2379,9 @@ class EditsTestersResourceApi {
   /// - "production"
   /// - "rollout"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Testers].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2156,7 +2390,8 @@ class EditsTestersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Testers> patch(Testers request, core.String packageName,
-      core.String editId, core.String track) {
+      core.String editId, core.String track,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2175,6 +2410,9 @@ class EditsTestersResourceApi {
     }
     if (track == null) {
       throw new core.ArgumentError("Parameter track is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -2208,6 +2446,9 @@ class EditsTestersResourceApi {
   /// - "production"
   /// - "rollout"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Testers].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2216,7 +2457,8 @@ class EditsTestersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Testers> update(Testers request, core.String packageName,
-      core.String editId, core.String track) {
+      core.String editId, core.String track,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2235,6 +2477,9 @@ class EditsTestersResourceApi {
     }
     if (track == null) {
       throw new core.ArgumentError("Parameter track is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -2275,6 +2520,9 @@ class EditsTracksResourceApi {
   /// - "production"
   /// - "rollout"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Track].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2283,7 +2531,8 @@ class EditsTracksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Track> get(
-      core.String packageName, core.String editId, core.String track) {
+      core.String packageName, core.String editId, core.String track,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2299,6 +2548,9 @@ class EditsTracksResourceApi {
     }
     if (track == null) {
       throw new core.ArgumentError("Parameter track is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -2325,6 +2577,9 @@ class EditsTracksResourceApi {
   ///
   /// [editId] - Unique identifier for this edit.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TracksListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2333,7 +2588,8 @@ class EditsTracksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TracksListResponse> list(
-      core.String packageName, core.String editId) {
+      core.String packageName, core.String editId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2346,6 +2602,9 @@ class EditsTracksResourceApi {
     }
     if (editId == null) {
       throw new core.ArgumentError("Parameter editId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -2382,6 +2641,9 @@ class EditsTracksResourceApi {
   /// - "production"
   /// - "rollout"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Track].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2390,7 +2652,8 @@ class EditsTracksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Track> patch(Track request, core.String packageName,
-      core.String editId, core.String track) {
+      core.String editId, core.String track,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2409,6 +2672,9 @@ class EditsTracksResourceApi {
     }
     if (track == null) {
       throw new core.ArgumentError("Parameter track is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -2446,6 +2712,9 @@ class EditsTracksResourceApi {
   /// - "production"
   /// - "rollout"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Track].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2454,7 +2723,8 @@ class EditsTracksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Track> update(Track request, core.String packageName,
-      core.String editId, core.String track) {
+      core.String editId, core.String track,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2473,6 +2743,9 @@ class EditsTracksResourceApi {
     }
     if (track == null) {
       throw new core.ArgumentError("Parameter track is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -2512,6 +2785,9 @@ class EntitlementsResourceApi {
   ///
   /// [token] - null
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EntitlementsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2523,7 +2799,8 @@ class EntitlementsResourceApi {
       {core.int maxResults,
       core.String productId,
       core.int startIndex,
-      core.String token}) {
+      core.String token,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2545,6 +2822,9 @@ class EntitlementsResourceApi {
     }
     if (token != null) {
       _queryParams["token"] = [token];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/entitlements';
@@ -2569,6 +2849,9 @@ class InappproductsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InappproductsBatchResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2577,7 +2860,8 @@ class InappproductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<InappproductsBatchResponse> batch(
-      InappproductsBatchRequest request) {
+      InappproductsBatchRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2587,6 +2871,9 @@ class InappproductsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'inappproducts/batch';
@@ -2610,12 +2897,16 @@ class InappproductsResourceApi {
   ///
   /// [sku] - Unique identifier for the in-app product.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String packageName, core.String sku) {
+  async.Future delete(core.String packageName, core.String sku,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2628,6 +2919,9 @@ class InappproductsResourceApi {
     }
     if (sku == null) {
       throw new core.ArgumentError("Parameter sku is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2653,6 +2947,9 @@ class InappproductsResourceApi {
   ///
   /// [sku] - Unique identifier for the in-app product.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InAppProduct].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2660,7 +2957,8 @@ class InappproductsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<InAppProduct> get(core.String packageName, core.String sku) {
+  async.Future<InAppProduct> get(core.String packageName, core.String sku,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2673,6 +2971,9 @@ class InappproductsResourceApi {
     }
     if (sku == null) {
       throw new core.ArgumentError("Parameter sku is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -2702,6 +3003,9 @@ class InappproductsResourceApi {
   /// product will be auto converted to the target currency based on the default
   /// price. Defaults to false.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InAppProduct].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2711,7 +3015,7 @@ class InappproductsResourceApi {
   /// this method will complete with the same error.
   async.Future<InAppProduct> insert(
       InAppProduct request, core.String packageName,
-      {core.bool autoConvertMissingPrices}) {
+      {core.bool autoConvertMissingPrices, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2729,6 +3033,9 @@ class InappproductsResourceApi {
       _queryParams["autoConvertMissingPrices"] = [
         "${autoConvertMissingPrices}"
       ];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/inappproducts';
@@ -2756,6 +3063,9 @@ class InappproductsResourceApi {
   ///
   /// [token] - null
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InappproductsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2764,7 +3074,10 @@ class InappproductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<InappproductsListResponse> list(core.String packageName,
-      {core.int maxResults, core.int startIndex, core.String token}) {
+      {core.int maxResults,
+      core.int startIndex,
+      core.String token,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2783,6 +3096,9 @@ class InappproductsResourceApi {
     }
     if (token != null) {
       _queryParams["token"] = [token];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/inappproducts';
@@ -2814,6 +3130,9 @@ class InappproductsResourceApi {
   /// product will be auto converted to the target currency based on the default
   /// price. Defaults to false.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InAppProduct].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2823,7 +3142,7 @@ class InappproductsResourceApi {
   /// this method will complete with the same error.
   async.Future<InAppProduct> patch(
       InAppProduct request, core.String packageName, core.String sku,
-      {core.bool autoConvertMissingPrices}) {
+      {core.bool autoConvertMissingPrices, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2844,6 +3163,9 @@ class InappproductsResourceApi {
       _queryParams["autoConvertMissingPrices"] = [
         "${autoConvertMissingPrices}"
       ];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -2875,6 +3197,9 @@ class InappproductsResourceApi {
   /// product will be auto converted to the target currency based on the default
   /// price. Defaults to false.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InAppProduct].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2884,7 +3209,7 @@ class InappproductsResourceApi {
   /// this method will complete with the same error.
   async.Future<InAppProduct> update(
       InAppProduct request, core.String packageName, core.String sku,
-      {core.bool autoConvertMissingPrices}) {
+      {core.bool autoConvertMissingPrices, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2905,6 +3230,9 @@ class InappproductsResourceApi {
       _queryParams["autoConvertMissingPrices"] = [
         "${autoConvertMissingPrices}"
       ];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -2953,6 +3281,9 @@ class PurchasesProductsResourceApi {
   /// [token] - The token provided to the user's device when the inapp product
   /// was purchased.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ProductPurchase].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2961,7 +3292,8 @@ class PurchasesProductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ProductPurchase> get(
-      core.String packageName, core.String productId, core.String token) {
+      core.String packageName, core.String productId, core.String token,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2977,6 +3309,9 @@ class PurchasesProductsResourceApi {
     }
     if (token == null) {
       throw new core.ArgumentError("Parameter token is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -3015,13 +3350,17 @@ class PurchasesSubscriptionsResourceApi {
   /// [token] - The token provided to the user's device when the subscription
   /// was purchased.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future cancel(
-      core.String packageName, core.String subscriptionId, core.String token) {
+      core.String packageName, core.String subscriptionId, core.String token,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3037,6 +3376,9 @@ class PurchasesSubscriptionsResourceApi {
     }
     if (token == null) {
       throw new core.ArgumentError("Parameter token is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3073,6 +3415,9 @@ class PurchasesSubscriptionsResourceApi {
   /// [token] - The token provided to the user's device when the subscription
   /// was purchased.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SubscriptionPurchasesDeferResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3084,7 +3429,8 @@ class PurchasesSubscriptionsResourceApi {
       SubscriptionPurchasesDeferRequest request,
       core.String packageName,
       core.String subscriptionId,
-      core.String token) {
+      core.String token,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3103,6 +3449,9 @@ class PurchasesSubscriptionsResourceApi {
     }
     if (token == null) {
       throw new core.ArgumentError("Parameter token is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -3136,6 +3485,9 @@ class PurchasesSubscriptionsResourceApi {
   /// [token] - The token provided to the user's device when the subscription
   /// was purchased.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SubscriptionPurchase].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3144,7 +3496,8 @@ class PurchasesSubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SubscriptionPurchase> get(
-      core.String packageName, core.String subscriptionId, core.String token) {
+      core.String packageName, core.String subscriptionId, core.String token,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3160,6 +3513,9 @@ class PurchasesSubscriptionsResourceApi {
     }
     if (token == null) {
       throw new core.ArgumentError("Parameter token is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -3191,13 +3547,17 @@ class PurchasesSubscriptionsResourceApi {
   /// [token] - The token provided to the user's device when the subscription
   /// was purchased.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future refund(
-      core.String packageName, core.String subscriptionId, core.String token) {
+      core.String packageName, core.String subscriptionId, core.String token,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3213,6 +3573,9 @@ class PurchasesSubscriptionsResourceApi {
     }
     if (token == null) {
       throw new core.ArgumentError("Parameter token is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3248,13 +3611,17 @@ class PurchasesSubscriptionsResourceApi {
   /// [token] - The token provided to the user's device when the subscription
   /// was purchased.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future revoke(
-      core.String packageName, core.String subscriptionId, core.String token) {
+      core.String packageName, core.String subscriptionId, core.String token,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3270,6 +3637,9 @@ class PurchasesSubscriptionsResourceApi {
     }
     if (token == null) {
       throw new core.ArgumentError("Parameter token is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3325,6 +3695,9 @@ class PurchasesVoidedpurchasesResourceApi {
   ///
   /// [token] - null
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [VoidedPurchasesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3337,7 +3710,8 @@ class PurchasesVoidedpurchasesResourceApi {
       core.int maxResults,
       core.int startIndex,
       core.String startTime,
-      core.String token}) {
+      core.String token,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3362,6 +3736,9 @@ class PurchasesVoidedpurchasesResourceApi {
     }
     if (token != null) {
       _queryParams["token"] = [token];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -3394,6 +3771,9 @@ class ReviewsResourceApi {
   ///
   /// [translationLanguage] - null
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Review].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3402,7 +3782,7 @@ class ReviewsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Review> get(core.String packageName, core.String reviewId,
-      {core.String translationLanguage}) {
+      {core.String translationLanguage, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3418,6 +3798,9 @@ class ReviewsResourceApi {
     }
     if (translationLanguage != null) {
       _queryParams["translationLanguage"] = [translationLanguage];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +
@@ -3448,6 +3831,9 @@ class ReviewsResourceApi {
   ///
   /// [translationLanguage] - null
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ReviewsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3459,7 +3845,8 @@ class ReviewsResourceApi {
       {core.int maxResults,
       core.int startIndex,
       core.String token,
-      core.String translationLanguage}) {
+      core.String translationLanguage,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3481,6 +3868,9 @@ class ReviewsResourceApi {
     }
     if (translationLanguage != null) {
       _queryParams["translationLanguage"] = [translationLanguage];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') + '/reviews';
@@ -3505,6 +3895,9 @@ class ReviewsResourceApi {
   ///
   /// [reviewId] - null
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ReviewsReplyResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3513,7 +3906,8 @@ class ReviewsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ReviewsReplyResponse> reply(ReviewsReplyRequest request,
-      core.String packageName, core.String reviewId) {
+      core.String packageName, core.String reviewId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3529,6 +3923,9 @@ class ReviewsResourceApi {
     }
     if (reviewId == null) {
       throw new core.ArgumentError("Parameter reviewId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$packageName') +

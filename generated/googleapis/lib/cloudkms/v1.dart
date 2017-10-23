@@ -57,6 +57,9 @@ class ProjectsLocationsResourceApi {
   /// [name] - Resource name for the location.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Location].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -64,7 +67,7 @@ class ProjectsLocationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(core.String name) {
+  async.Future<Location> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -74,6 +77,9 @@ class ProjectsLocationsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -94,11 +100,14 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
   ///
-  /// [filter] - The standard list filter.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListLocationsResponse].
   ///
@@ -108,7 +117,10 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String pageToken, core.int pageSize, core.String filter}) {
+      {core.String filter,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -119,14 +131,17 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -165,6 +180,9 @@ class ProjectsLocationsKeyRingsResourceApi {
   /// regular
   /// expression `[a-zA-Z0-9_-]{1,63}`
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [KeyRing].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -173,7 +191,7 @@ class ProjectsLocationsKeyRingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<KeyRing> create(KeyRing request, core.String parent,
-      {core.String keyRingId}) {
+      {core.String keyRingId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -189,6 +207,9 @@ class ProjectsLocationsKeyRingsResourceApi {
     }
     if (keyRingId != null) {
       _queryParams["keyRingId"] = [keyRingId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -210,6 +231,9 @@ class ProjectsLocationsKeyRingsResourceApi {
   /// [name] - The name of the KeyRing to get.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [KeyRing].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -217,7 +241,7 @@ class ProjectsLocationsKeyRingsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<KeyRing> get(core.String name) {
+  async.Future<KeyRing> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -227,6 +251,9 @@ class ProjectsLocationsKeyRingsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -251,6 +278,9 @@ class ProjectsLocationsKeyRingsResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Policy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -258,7 +288,8 @@ class ProjectsLocationsKeyRingsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Policy> getIamPolicy(core.String resource) {
+  async.Future<Policy> getIamPolicy(core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -268,6 +299,9 @@ class ProjectsLocationsKeyRingsResourceApi {
 
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -299,6 +333,9 @@ class ProjectsLocationsKeyRingsResourceApi {
   /// including the ListKeyRingsResponse.next_page_token in a subsequent
   /// request.  If unspecified, the server will pick an appropriate default.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListKeyRingsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -307,7 +344,7 @@ class ProjectsLocationsKeyRingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListKeyRingsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -323,6 +360,9 @@ class ProjectsLocationsKeyRingsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -349,6 +389,9 @@ class ProjectsLocationsKeyRingsResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Policy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -357,7 +400,8 @@ class ProjectsLocationsKeyRingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      SetIamPolicyRequest request, core.String resource) {
+      SetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -370,6 +414,9 @@ class ProjectsLocationsKeyRingsResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -402,6 +449,9 @@ class ProjectsLocationsKeyRingsResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TestIamPermissionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -410,7 +460,8 @@ class ProjectsLocationsKeyRingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource) {
+      TestIamPermissionsRequest request, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -423,6 +474,9 @@ class ProjectsLocationsKeyRingsResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -467,6 +521,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// regular
   /// expression `[a-zA-Z0-9_-]{1,63}`
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CryptoKey].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -475,7 +532,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CryptoKey> create(CryptoKey request, core.String parent,
-      {core.String cryptoKeyId}) {
+      {core.String cryptoKeyId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -491,6 +548,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     }
     if (cryptoKeyId != null) {
       _queryParams["cryptoKeyId"] = [cryptoKeyId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -518,6 +578,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DecryptResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -526,7 +589,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DecryptResponse> decrypt(
-      DecryptRequest request, core.String name) {
+      DecryptRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -539,6 +603,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':decrypt';
@@ -566,6 +633,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/.+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EncryptResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -574,7 +644,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EncryptResponse> encrypt(
-      EncryptRequest request, core.String name) {
+      EncryptRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -587,6 +658,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':encrypt';
@@ -609,6 +683,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CryptoKey].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -616,7 +693,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CryptoKey> get(core.String name) {
+  async.Future<CryptoKey> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -626,6 +703,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -651,6 +731,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Policy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -658,7 +741,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Policy> getIamPolicy(core.String resource) {
+  async.Future<Policy> getIamPolicy(core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -668,6 +752,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
 
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -700,6 +787,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// including the ListCryptoKeysResponse.next_page_token in a subsequent
   /// request.  If unspecified, the server will pick an appropriate default.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListCryptoKeysResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -708,7 +798,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCryptoKeysResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -724,6 +814,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -752,6 +845,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   ///
   /// [updateMask] - Required list of fields to be updated in this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CryptoKey].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -760,7 +856,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CryptoKey> patch(CryptoKey request, core.String name,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -776,6 +872,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -802,6 +901,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Policy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -810,7 +912,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      SetIamPolicyRequest request, core.String resource) {
+      SetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -823,6 +926,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -856,6 +962,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TestIamPermissionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -864,7 +973,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource) {
+      TestIamPermissionsRequest request, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -877,6 +987,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -903,6 +1016,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CryptoKey].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -911,7 +1027,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CryptoKey> updatePrimaryVersion(
-      UpdateCryptoKeyPrimaryVersionRequest request, core.String name) {
+      UpdateCryptoKeyPrimaryVersionRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -924,6 +1041,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -962,6 +1082,9 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CryptoKeyVersion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -970,7 +1093,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CryptoKeyVersion> create(
-      CryptoKeyVersion request, core.String parent) {
+      CryptoKeyVersion request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -983,6 +1107,9 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1019,6 +1146,9 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CryptoKeyVersion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1027,7 +1157,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CryptoKeyVersion> destroy(
-      DestroyCryptoKeyVersionRequest request, core.String name) {
+      DestroyCryptoKeyVersionRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1040,6 +1171,9 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':destroy';
@@ -1061,6 +1195,9 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CryptoKeyVersion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1068,7 +1205,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CryptoKeyVersion> get(core.String name) {
+  async.Future<CryptoKeyVersion> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1078,6 +1215,9 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1110,6 +1250,9 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   /// ListCryptoKeyVersionsResponse.next_page_token in a subsequent request.
   /// If unspecified, the server will pick an appropriate default.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListCryptoKeyVersionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1118,7 +1261,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCryptoKeyVersionsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1134,6 +1277,9 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1171,6 +1317,9 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   ///
   /// [updateMask] - Required list of fields to be updated in this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CryptoKeyVersion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1180,7 +1329,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<CryptoKeyVersion> patch(
       CryptoKeyVersion request, core.String name,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1196,6 +1345,9 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1225,6 +1377,9 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CryptoKeyVersion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1233,7 +1388,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CryptoKeyVersion> restore(
-      RestoreCryptoKeyVersionRequest request, core.String name) {
+      RestoreCryptoKeyVersionRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1246,6 +1402,9 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':restore';

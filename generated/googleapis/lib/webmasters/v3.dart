@@ -62,6 +62,9 @@ class SearchanalyticsResourceApi {
   /// [siteUrl] - The site's URL, including protocol. For example:
   /// http://www.example.com/
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SearchAnalyticsQueryResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -70,7 +73,8 @@ class SearchanalyticsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SearchAnalyticsQueryResponse> query(
-      SearchAnalyticsQueryRequest request, core.String siteUrl) {
+      SearchAnalyticsQueryRequest request, core.String siteUrl,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -83,6 +87,9 @@ class SearchanalyticsResourceApi {
     }
     if (siteUrl == null) {
       throw new core.ArgumentError("Parameter siteUrl is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'sites/' +
@@ -115,12 +122,16 @@ class SitemapsResourceApi {
   /// [feedpath] - The URL of the actual sitemap. For example:
   /// http://www.example.com/sitemap.xml
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String siteUrl, core.String feedpath) {
+  async.Future delete(core.String siteUrl, core.String feedpath,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -133,6 +144,9 @@ class SitemapsResourceApi {
     }
     if (feedpath == null) {
       throw new core.ArgumentError("Parameter feedpath is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -161,6 +175,9 @@ class SitemapsResourceApi {
   /// [feedpath] - The URL of the actual sitemap. For example:
   /// http://www.example.com/sitemap.xml
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [WmxSitemap].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -168,7 +185,8 @@ class SitemapsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<WmxSitemap> get(core.String siteUrl, core.String feedpath) {
+  async.Future<WmxSitemap> get(core.String siteUrl, core.String feedpath,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -181,6 +199,9 @@ class SitemapsResourceApi {
     }
     if (feedpath == null) {
       throw new core.ArgumentError("Parameter feedpath is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'sites/' +
@@ -208,6 +229,9 @@ class SitemapsResourceApi {
   /// [sitemapIndex] - A URL of a site's sitemap index. For example:
   /// http://www.example.com/sitemapindex.xml
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SitemapsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -216,7 +240,7 @@ class SitemapsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SitemapsListResponse> list(core.String siteUrl,
-      {core.String sitemapIndex}) {
+      {core.String sitemapIndex, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -229,6 +253,9 @@ class SitemapsResourceApi {
     }
     if (sitemapIndex != null) {
       _queryParams["sitemapIndex"] = [sitemapIndex];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl') + '/sitemaps';
@@ -252,12 +279,16 @@ class SitemapsResourceApi {
   /// [feedpath] - The URL of the sitemap to add. For example:
   /// http://www.example.com/sitemap.xml
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future submit(core.String siteUrl, core.String feedpath) {
+  async.Future submit(core.String siteUrl, core.String feedpath,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -270,6 +301,9 @@ class SitemapsResourceApi {
     }
     if (feedpath == null) {
       throw new core.ArgumentError("Parameter feedpath is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -300,12 +334,15 @@ class SitesResourceApi {
   ///
   /// [siteUrl] - The URL of the site to add.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future add(core.String siteUrl) {
+  async.Future add(core.String siteUrl, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -315,6 +352,9 @@ class SitesResourceApi {
 
     if (siteUrl == null) {
       throw new core.ArgumentError("Parameter siteUrl is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -337,12 +377,15 @@ class SitesResourceApi {
   /// [siteUrl] - The URI of the property as defined in Search Console.
   /// Examples: http://www.example.com/ or android-app://com.example/
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String siteUrl) {
+  async.Future delete(core.String siteUrl, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -352,6 +395,9 @@ class SitesResourceApi {
 
     if (siteUrl == null) {
       throw new core.ArgumentError("Parameter siteUrl is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -374,6 +420,9 @@ class SitesResourceApi {
   /// [siteUrl] - The URI of the property as defined in Search Console.
   /// Examples: http://www.example.com/ or android-app://com.example/
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [WmxSite].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -381,7 +430,7 @@ class SitesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<WmxSite> get(core.String siteUrl) {
+  async.Future<WmxSite> get(core.String siteUrl, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -391,6 +440,9 @@ class SitesResourceApi {
 
     if (siteUrl == null) {
       throw new core.ArgumentError("Parameter siteUrl is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl');
@@ -408,6 +460,9 @@ class SitesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SitesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -415,13 +470,17 @@ class SitesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SitesListResponse> list() {
+  async.Future<SitesListResponse> list({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'sites';
 
@@ -471,6 +530,9 @@ class UrlcrawlerrorscountsResourceApi {
   /// - "smartphoneOnly"
   /// - "web"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UrlCrawlErrorsCountsQueryResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -481,7 +543,8 @@ class UrlcrawlerrorscountsResourceApi {
   async.Future<UrlCrawlErrorsCountsQueryResponse> query(core.String siteUrl,
       {core.String category,
       core.bool latestCountsOnly,
-      core.String platform}) {
+      core.String platform,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -500,6 +563,9 @@ class UrlcrawlerrorscountsResourceApi {
     }
     if (platform != null) {
       _queryParams["platform"] = [platform];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'sites/' +
@@ -554,6 +620,9 @@ class UrlcrawlerrorssamplesResourceApi {
   /// - "smartphoneOnly"
   /// - "web"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UrlCrawlErrorsSample].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -562,7 +631,8 @@ class UrlcrawlerrorssamplesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UrlCrawlErrorsSample> get(core.String siteUrl, core.String url,
-      core.String category, core.String platform) {
+      core.String category, core.String platform,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -584,6 +654,9 @@ class UrlcrawlerrorssamplesResourceApi {
       throw new core.ArgumentError("Parameter platform is required.");
     }
     _queryParams["platform"] = [platform];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'sites/' +
         commons.Escaper.ecapeVariable('$siteUrl') +
@@ -626,6 +699,9 @@ class UrlcrawlerrorssamplesResourceApi {
   /// - "smartphoneOnly"
   /// - "web"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UrlCrawlErrorsSamplesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -634,7 +710,8 @@ class UrlcrawlerrorssamplesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UrlCrawlErrorsSamplesListResponse> list(
-      core.String siteUrl, core.String category, core.String platform) {
+      core.String siteUrl, core.String category, core.String platform,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -653,6 +730,9 @@ class UrlcrawlerrorssamplesResourceApi {
       throw new core.ArgumentError("Parameter platform is required.");
     }
     _queryParams["platform"] = [platform];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'sites/' +
         commons.Escaper.ecapeVariable('$siteUrl') +
@@ -700,13 +780,17 @@ class UrlcrawlerrorssamplesResourceApi {
   /// - "smartphoneOnly"
   /// - "web"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future markAsFixed(core.String siteUrl, core.String url,
-      core.String category, core.String platform) {
+      core.String category, core.String platform,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -728,6 +812,9 @@ class UrlcrawlerrorssamplesResourceApi {
       throw new core.ArgumentError("Parameter platform is required.");
     }
     _queryParams["platform"] = [platform];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _downloadOptions = null;
 

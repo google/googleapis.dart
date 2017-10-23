@@ -18,7 +18,7 @@
     "description": "Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/sql/docs/reference/latest",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/odbYGRT1izLWfRhfVNwcTacV8sM\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/qGR3q9t_cRz9md0zXxOmhlJ1eX0\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -543,6 +543,40 @@
                         }
                     },
                     "path": "projects/{project}/instances/{instance}",
+                    "response": {
+                        "$ref": "Operation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/sqlservice.admin"
+                    ]
+                },
+                "demoteMaster": {
+                    "description": "Demotes the standalone instance to be a read replica Cloud SQL instance of an on-premises master.",
+                    "httpMethod": "POST",
+                    "id": "sql.instances.demoteMaster",
+                    "parameterOrder": [
+                        "project",
+                        "instance"
+                    ],
+                    "parameters": {
+                        "instance": {
+                            "description": "Cloud SQL instance name.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "project": {
+                            "description": "ID of the project that contains the instance.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "projects/{project}/instances/{instance}/demoteMaster",
+                    "request": {
+                        "$ref": "InstancesDemoteMasterRequest"
+                    },
                     "response": {
                         "$ref": "Operation"
                     },
@@ -1490,7 +1524,7 @@
             }
         }
     },
-    "revision": "20170807",
+    "revision": "20171011",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AclEntry": {
@@ -1896,6 +1930,74 @@
             },
             "type": "object"
         },
+        "DemoteMasterConfiguration": {
+            "description": "Read-replica configuration for connecting to the on-premises master.",
+            "id": "DemoteMasterConfiguration",
+            "properties": {
+                "kind": {
+                    "default": "sql#demoteMasterConfiguration",
+                    "description": "This is always sql#demoteMasterConfiguration.",
+                    "type": "string"
+                },
+                "mysqlReplicaConfiguration": {
+                    "$ref": "DemoteMasterMySqlReplicaConfiguration",
+                    "description": "MySQL specific configuration when replicating from a MySQL on-premises master. Replication configuration information such as the username, password, certificates, and keys are not stored in the instance metadata. The configuration information is used only to set up the replication connection and is stored by MySQL in a file named master.info in the data directory."
+                }
+            },
+            "type": "object"
+        },
+        "DemoteMasterContext": {
+            "description": "Database instance demote master context.",
+            "id": "DemoteMasterContext",
+            "properties": {
+                "kind": {
+                    "default": "sql#demoteMasterContext",
+                    "description": "This is always sql#demoteMasterContext.",
+                    "type": "string"
+                },
+                "masterInstanceName": {
+                    "description": "The name of the instance which will act as on-premises master in the replication setup.",
+                    "type": "string"
+                },
+                "replicaConfiguration": {
+                    "$ref": "DemoteMasterConfiguration",
+                    "description": "Configuration specific to read-replicas replicating from the on-premises master."
+                }
+            },
+            "type": "object"
+        },
+        "DemoteMasterMySqlReplicaConfiguration": {
+            "description": "Read-replica configuration specific to MySQL databases.",
+            "id": "DemoteMasterMySqlReplicaConfiguration",
+            "properties": {
+                "caCertificate": {
+                    "description": "PEM representation of the trusted CA's x509 certificate.",
+                    "type": "string"
+                },
+                "clientCertificate": {
+                    "description": "PEM representation of the slave's x509 certificate.",
+                    "type": "string"
+                },
+                "clientKey": {
+                    "description": "PEM representation of the slave's private key. The corresponsing public key is encoded in the client's certificate. The format of the slave's private key can be either PKCS #1 or PKCS #8.",
+                    "type": "string"
+                },
+                "kind": {
+                    "default": "sql#demoteMasterMysqlReplicaConfiguration",
+                    "description": "This is always sql#demoteMasterMysqlReplicaConfiguration.",
+                    "type": "string"
+                },
+                "password": {
+                    "description": "The password for the replication connection.",
+                    "type": "string"
+                },
+                "username": {
+                    "description": "The username for the replication connection.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ExportContext": {
             "description": "Database instance export context.",
             "id": "ExportContext",
@@ -2086,6 +2188,17 @@
                 "cloneContext": {
                     "$ref": "CloneContext",
                     "description": "Contains details about the clone operation."
+                }
+            },
+            "type": "object"
+        },
+        "InstancesDemoteMasterRequest": {
+            "description": "Database demote master request.",
+            "id": "InstancesDemoteMasterRequest",
+            "properties": {
+                "demoteMasterContext": {
+                    "$ref": "DemoteMasterContext",
+                    "description": "Contains details about the demoteMaster operation."
                 }
             },
             "type": "object"

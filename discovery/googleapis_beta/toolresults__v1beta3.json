@@ -15,7 +15,7 @@
     "description": "Reads and publishes results from Firebase Test Lab.",
     "discoveryVersion": "v1",
     "documentationLink": "https://firebase.google.com/docs/test-lab/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/dsThgnMRVyXvP0x7GRMgJLgmPMc\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/1Q_hxPj6ovQkawravymDN5wNvJc\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -1161,7 +1161,7 @@
             }
         }
     },
-    "revision": "20171004",
+    "revision": "20171020",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AndroidAppInfo": {
@@ -1518,6 +1518,91 @@
             },
             "type": "object"
         },
+        "GraphicsStats": {
+            "description": "Graphics statistics for the App. The information is collected from 'adb shell dumpsys graphicsstats'. For more info see: https://developer.android.com/training/testing/performance.html Statistics will only be present for API 23+.",
+            "id": "GraphicsStats",
+            "properties": {
+                "buckets": {
+                    "description": "Histogram of frame render times. There should be 154 buckets ranging from [5ms, 6ms) to [4950ms, infinity)",
+                    "items": {
+                        "$ref": "GraphicsStatsBucket"
+                    },
+                    "type": "array"
+                },
+                "highInputLatencyCount": {
+                    "description": "Total \"high input latency\" events.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "jankyFrames": {
+                    "description": "Total frames with slow render time. Should be <= total_frames.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "missedVsyncCount": {
+                    "description": "Total \"missed vsync\" events.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "p50Millis": {
+                    "description": "50th percentile frame render time in milliseconds.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "p90Millis": {
+                    "description": "90th percentile frame render time in milliseconds.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "p95Millis": {
+                    "description": "95th percentile frame render time in milliseconds.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "p99Millis": {
+                    "description": "99th percentile frame render time in milliseconds.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "slowBitmapUploadCount": {
+                    "description": "Total \"slow bitmap upload\" events.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "slowDrawCount": {
+                    "description": "Total \"slow draw\" events.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "slowUiThreadCount": {
+                    "description": "Total \"slow UI thread\" events.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "totalFrames": {
+                    "description": "Total frames rendered by package.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GraphicsStatsBucket": {
+            "id": "GraphicsStatsBucket",
+            "properties": {
+                "frameCount": {
+                    "description": "Number of frames in the bucket.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "renderMillis": {
+                    "description": "Lower bound of render time in milliseconds.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "History": {
             "description": "A History represents a sorted list of Executions ordered by the start_timestamp_millis field (descending). It can be used to group all the Executions of a continuous build.\n\nNote that the ordering only operates on one-dimension. If a repository has multiple branches, it means that multiple histories will need to be used in order to order Executions per branch.",
             "id": "History",
@@ -1769,6 +1854,10 @@
                 "executionId": {
                     "description": "A tool results execution ID.",
                     "type": "string"
+                },
+                "graphicsStats": {
+                    "$ref": "GraphicsStats",
+                    "description": "Graphics statistics for the entire run. Statistics are reset at the beginning of the run and collected at the end of the run."
                 },
                 "historyId": {
                     "description": "A tool results history ID.",
@@ -2199,11 +2288,15 @@
                     "description": "Type of issue. Required.",
                     "enum": [
                         "anr",
+                        "compatibleWithOrchestrator",
                         "fatalException",
                         "nativeCrash",
-                        "unspecifiedType"
+                        "unspecifiedType",
+                        "unusedRoboDirective"
                     ],
                     "enumDescriptions": [
+                        "",
+                        "",
                         "",
                         "",
                         "",

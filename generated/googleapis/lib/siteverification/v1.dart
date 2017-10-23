@@ -47,12 +47,15 @@ class WebResourceResourceApi {
   ///
   /// [id] - The id of a verified site or domain.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String id) {
+  async.Future delete(core.String id, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -62,6 +65,9 @@ class WebResourceResourceApi {
 
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -83,6 +89,9 @@ class WebResourceResourceApi {
   ///
   /// [id] - The id of a verified site or domain.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SiteVerificationWebResourceResource].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -90,7 +99,8 @@ class WebResourceResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SiteVerificationWebResourceResource> get(core.String id) {
+  async.Future<SiteVerificationWebResourceResource> get(core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -100,6 +110,9 @@ class WebResourceResourceApi {
 
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
@@ -120,6 +133,9 @@ class WebResourceResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SiteVerificationWebResourceGettokenResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -128,7 +144,8 @@ class WebResourceResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SiteVerificationWebResourceGettokenResponse> getToken(
-      SiteVerificationWebResourceGettokenRequest request) {
+      SiteVerificationWebResourceGettokenRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -138,6 +155,9 @@ class WebResourceResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'token';
@@ -160,6 +180,9 @@ class WebResourceResourceApi {
   ///
   /// [verificationMethod] - The method to use for verifying a site or domain.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SiteVerificationWebResourceResource].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -169,7 +192,8 @@ class WebResourceResourceApi {
   /// this method will complete with the same error.
   async.Future<SiteVerificationWebResourceResource> insert(
       SiteVerificationWebResourceResource request,
-      core.String verificationMethod) {
+      core.String verificationMethod,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -184,6 +208,9 @@ class WebResourceResourceApi {
       throw new core.ArgumentError("Parameter verificationMethod is required.");
     }
     _queryParams["verificationMethod"] = [verificationMethod];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'webResource';
 
@@ -201,6 +228,9 @@ class WebResourceResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SiteVerificationWebResourceListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -208,13 +238,18 @@ class WebResourceResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SiteVerificationWebResourceListResponse> list() {
+  async.Future<SiteVerificationWebResourceListResponse> list(
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'webResource';
 
@@ -237,6 +272,9 @@ class WebResourceResourceApi {
   ///
   /// [id] - The id of a verified site or domain.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SiteVerificationWebResourceResource].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -245,7 +283,8 @@ class WebResourceResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SiteVerificationWebResourceResource> patch(
-      SiteVerificationWebResourceResource request, core.String id) {
+      SiteVerificationWebResourceResource request, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -258,6 +297,9 @@ class WebResourceResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
@@ -280,6 +322,9 @@ class WebResourceResourceApi {
   ///
   /// [id] - The id of a verified site or domain.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SiteVerificationWebResourceResource].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -288,7 +333,8 @@ class WebResourceResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SiteVerificationWebResourceResource> update(
-      SiteVerificationWebResourceResource request, core.String id) {
+      SiteVerificationWebResourceResource request, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -301,6 +347,9 @@ class WebResourceResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');

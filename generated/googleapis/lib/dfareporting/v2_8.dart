@@ -161,6 +161,9 @@ class AccountActiveAdSummariesResourceApi {
   ///
   /// [summaryAccountId] - Account ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AccountActiveAdSummary].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -169,7 +172,8 @@ class AccountActiveAdSummariesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountActiveAdSummary> get(
-      core.String profileId, core.String summaryAccountId) {
+      core.String profileId, core.String summaryAccountId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -182,6 +186,9 @@ class AccountActiveAdSummariesResourceApi {
     }
     if (summaryAccountId == null) {
       throw new core.ArgumentError("Parameter summaryAccountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -213,6 +220,9 @@ class AccountPermissionGroupsResourceApi {
   ///
   /// [id] - Account permission group ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AccountPermissionGroup].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -221,7 +231,8 @@ class AccountPermissionGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountPermissionGroup> get(
-      core.String profileId, core.String id) {
+      core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -234,6 +245,9 @@ class AccountPermissionGroupsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -256,6 +270,9 @@ class AccountPermissionGroupsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AccountPermissionGroupsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -263,8 +280,8 @@ class AccountPermissionGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AccountPermissionGroupsListResponse> list(
-      core.String profileId) {
+  async.Future<AccountPermissionGroupsListResponse> list(core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -274,6 +291,9 @@ class AccountPermissionGroupsResourceApi {
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -305,6 +325,9 @@ class AccountPermissionsResourceApi {
   ///
   /// [id] - Account permission ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AccountPermission].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -312,7 +335,8 @@ class AccountPermissionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AccountPermission> get(core.String profileId, core.String id) {
+  async.Future<AccountPermission> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -325,6 +349,9 @@ class AccountPermissionsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -347,6 +374,9 @@ class AccountPermissionsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AccountPermissionsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -354,7 +384,8 @@ class AccountPermissionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AccountPermissionsListResponse> list(core.String profileId) {
+  async.Future<AccountPermissionsListResponse> list(core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -364,6 +395,9 @@ class AccountPermissionsResourceApi {
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -395,6 +429,9 @@ class AccountUserProfilesResourceApi {
   ///
   /// [id] - User profile ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AccountUserProfile].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -402,7 +439,8 @@ class AccountUserProfilesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AccountUserProfile> get(core.String profileId, core.String id) {
+  async.Future<AccountUserProfile> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -415,6 +453,9 @@ class AccountUserProfilesResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -439,6 +480,9 @@ class AccountUserProfilesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AccountUserProfile].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -447,7 +491,8 @@ class AccountUserProfilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountUserProfile> insert(
-      AccountUserProfile request, core.String profileId) {
+      AccountUserProfile request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -460,6 +505,9 @@ class AccountUserProfilesResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -514,6 +562,9 @@ class AccountUserProfilesResourceApi {
   ///
   /// [userRoleId] - Select only user profiles with the specified user role ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AccountUserProfilesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -530,7 +581,8 @@ class AccountUserProfilesResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String subaccountId,
-      core.String userRoleId}) {
+      core.String userRoleId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -568,6 +620,9 @@ class AccountUserProfilesResourceApi {
     if (userRoleId != null) {
       _queryParams["userRoleId"] = [userRoleId];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -594,6 +649,9 @@ class AccountUserProfilesResourceApi {
   ///
   /// [id] - User profile ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AccountUserProfile].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -602,7 +660,8 @@ class AccountUserProfilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountUserProfile> patch(
-      AccountUserProfile request, core.String profileId, core.String id) {
+      AccountUserProfile request, core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -620,6 +679,9 @@ class AccountUserProfilesResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -642,6 +704,9 @@ class AccountUserProfilesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AccountUserProfile].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -650,7 +715,8 @@ class AccountUserProfilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountUserProfile> update(
-      AccountUserProfile request, core.String profileId) {
+      AccountUserProfile request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -663,6 +729,9 @@ class AccountUserProfilesResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -692,6 +761,9 @@ class AccountsResourceApi {
   ///
   /// [id] - Account ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Account].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -699,7 +771,8 @@ class AccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Account> get(core.String profileId, core.String id) {
+  async.Future<Account> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -712,6 +785,9 @@ class AccountsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -762,6 +838,9 @@ class AccountsResourceApi {
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AccountsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -776,7 +855,8 @@ class AccountsResourceApi {
       core.String pageToken,
       core.String searchString,
       core.String sortField,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -808,6 +888,9 @@ class AccountsResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -832,6 +915,9 @@ class AccountsResourceApi {
   ///
   /// [id] - Account ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Account].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -840,7 +926,8 @@ class AccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Account> patch(
-      Account request, core.String profileId, core.String id) {
+      Account request, core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -858,6 +945,9 @@ class AccountsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -880,6 +970,9 @@ class AccountsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Account].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -887,7 +980,8 @@ class AccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Account> update(Account request, core.String profileId) {
+  async.Future<Account> update(Account request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -900,6 +994,9 @@ class AccountsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -929,6 +1026,9 @@ class AdsResourceApi {
   ///
   /// [id] - Ad ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Ad].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -936,7 +1036,8 @@ class AdsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Ad> get(core.String profileId, core.String id) {
+  async.Future<Ad> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -949,6 +1050,9 @@ class AdsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -973,6 +1077,9 @@ class AdsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Ad].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -980,7 +1087,8 @@ class AdsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Ad> insert(Ad request, core.String profileId) {
+  async.Future<Ad> insert(Ad request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -993,6 +1101,9 @@ class AdsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -1087,6 +1198,9 @@ class AdsResourceApi {
   ///
   /// [type] - Select only ads with these types.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AdsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1117,7 +1231,8 @@ class AdsResourceApi {
       core.String sortOrder,
       core.bool sslCompliant,
       core.bool sslRequired,
-      core.List<core.String> type}) {
+      core.List<core.String> type,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1198,6 +1313,9 @@ class AdsResourceApi {
     if (type != null) {
       _queryParams["type"] = type;
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url =
         'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
@@ -1221,6 +1339,9 @@ class AdsResourceApi {
   ///
   /// [id] - Ad ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Ad].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1228,7 +1349,8 @@ class AdsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Ad> patch(Ad request, core.String profileId, core.String id) {
+  async.Future<Ad> patch(Ad request, core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1246,6 +1368,9 @@ class AdsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url =
         'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
@@ -1267,6 +1392,9 @@ class AdsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Ad].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1274,7 +1402,8 @@ class AdsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Ad> update(Ad request, core.String profileId) {
+  async.Future<Ad> update(Ad request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1287,6 +1416,9 @@ class AdsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -1316,12 +1448,16 @@ class AdvertiserGroupsResourceApi {
   ///
   /// [id] - Advertiser group ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String profileId, core.String id) {
+  async.Future delete(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1334,6 +1470,9 @@ class AdvertiserGroupsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1360,6 +1499,9 @@ class AdvertiserGroupsResourceApi {
   ///
   /// [id] - Advertiser group ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AdvertiserGroup].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1367,7 +1509,8 @@ class AdvertiserGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AdvertiserGroup> get(core.String profileId, core.String id) {
+  async.Future<AdvertiserGroup> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1380,6 +1523,9 @@ class AdvertiserGroupsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -1404,6 +1550,9 @@ class AdvertiserGroupsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AdvertiserGroup].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1412,7 +1561,8 @@ class AdvertiserGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AdvertiserGroup> insert(
-      AdvertiserGroup request, core.String profileId) {
+      AdvertiserGroup request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1425,6 +1575,9 @@ class AdvertiserGroupsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -1472,6 +1625,9 @@ class AdvertiserGroupsResourceApi {
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AdvertiserGroupsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1485,7 +1641,8 @@ class AdvertiserGroupsResourceApi {
       core.String pageToken,
       core.String searchString,
       core.String sortField,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1514,6 +1671,9 @@ class AdvertiserGroupsResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -1540,6 +1700,9 @@ class AdvertiserGroupsResourceApi {
   ///
   /// [id] - Advertiser group ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AdvertiserGroup].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1548,7 +1711,8 @@ class AdvertiserGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AdvertiserGroup> patch(
-      AdvertiserGroup request, core.String profileId, core.String id) {
+      AdvertiserGroup request, core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1566,6 +1730,9 @@ class AdvertiserGroupsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -1588,6 +1755,9 @@ class AdvertiserGroupsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AdvertiserGroup].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1596,7 +1766,8 @@ class AdvertiserGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AdvertiserGroup> update(
-      AdvertiserGroup request, core.String profileId) {
+      AdvertiserGroup request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1609,6 +1780,9 @@ class AdvertiserGroupsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -1638,6 +1812,9 @@ class AdvertisersResourceApi {
   ///
   /// [id] - Advertiser ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Advertiser].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1645,7 +1822,8 @@ class AdvertisersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Advertiser> get(core.String profileId, core.String id) {
+  async.Future<Advertiser> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1658,6 +1836,9 @@ class AdvertisersResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -1682,6 +1863,9 @@ class AdvertisersResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Advertiser].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1689,7 +1873,8 @@ class AdvertisersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Advertiser> insert(Advertiser request, core.String profileId) {
+  async.Future<Advertiser> insert(Advertiser request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1702,6 +1887,9 @@ class AdvertisersResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -1768,6 +1956,9 @@ class AdvertisersResourceApi {
   ///
   /// [subaccountId] - Select only advertisers with these subaccount IDs.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AdvertisersListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1787,7 +1978,8 @@ class AdvertisersResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String status,
-      core.String subaccountId}) {
+      core.String subaccountId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1836,6 +2028,9 @@ class AdvertisersResourceApi {
     if (subaccountId != null) {
       _queryParams["subaccountId"] = [subaccountId];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -1860,6 +2055,9 @@ class AdvertisersResourceApi {
   ///
   /// [id] - Advertiser ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Advertiser].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1868,7 +2066,8 @@ class AdvertisersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Advertiser> patch(
-      Advertiser request, core.String profileId, core.String id) {
+      Advertiser request, core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1886,6 +2085,9 @@ class AdvertisersResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -1908,6 +2110,9 @@ class AdvertisersResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Advertiser].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1915,7 +2120,8 @@ class AdvertisersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Advertiser> update(Advertiser request, core.String profileId) {
+  async.Future<Advertiser> update(Advertiser request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1928,6 +2134,9 @@ class AdvertisersResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -1955,6 +2164,9 @@ class BrowsersResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BrowsersListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1962,7 +2174,8 @@ class BrowsersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<BrowsersListResponse> list(core.String profileId) {
+  async.Future<BrowsersListResponse> list(core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1972,6 +2185,9 @@ class BrowsersResourceApi {
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -2006,6 +2222,9 @@ class CampaignCreativeAssociationsResourceApi {
   ///
   /// [campaignId] - Campaign ID in this association.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CampaignCreativeAssociation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2016,7 +2235,8 @@ class CampaignCreativeAssociationsResourceApi {
   async.Future<CampaignCreativeAssociation> insert(
       CampaignCreativeAssociation request,
       core.String profileId,
-      core.String campaignId) {
+      core.String campaignId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2032,6 +2252,9 @@ class CampaignCreativeAssociationsResourceApi {
     }
     if (campaignId == null) {
       throw new core.ArgumentError("Parameter campaignId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -2069,6 +2292,9 @@ class CampaignCreativeAssociationsResourceApi {
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CampaignCreativeAssociationsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2078,7 +2304,10 @@ class CampaignCreativeAssociationsResourceApi {
   /// this method will complete with the same error.
   async.Future<CampaignCreativeAssociationsListResponse> list(
       core.String profileId, core.String campaignId,
-      {core.int maxResults, core.String pageToken, core.String sortOrder}) {
+      {core.int maxResults,
+      core.String pageToken,
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2100,6 +2329,9 @@ class CampaignCreativeAssociationsResourceApi {
     }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -2132,6 +2364,9 @@ class CampaignsResourceApi {
   ///
   /// [id] - Campaign ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Campaign].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2139,7 +2374,8 @@ class CampaignsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Campaign> get(core.String profileId, core.String id) {
+  async.Future<Campaign> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2152,6 +2388,9 @@ class CampaignsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -2181,6 +2420,9 @@ class CampaignsResourceApi {
   ///
   /// [defaultLandingPageUrl] - Default landing page URL for this new campaign.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Campaign].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2189,7 +2431,8 @@ class CampaignsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Campaign> insert(Campaign request, core.String profileId,
-      core.String defaultLandingPageName, core.String defaultLandingPageUrl) {
+      core.String defaultLandingPageName, core.String defaultLandingPageUrl,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2213,6 +2456,9 @@ class CampaignsResourceApi {
           "Parameter defaultLandingPageUrl is required.");
     }
     _queryParams["defaultLandingPageUrl"] = [defaultLandingPageUrl];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -2277,6 +2523,9 @@ class CampaignsResourceApi {
   ///
   /// [subaccountId] - Select only campaigns that belong to this subaccount.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CampaignsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2297,7 +2546,8 @@ class CampaignsResourceApi {
       core.String searchString,
       core.String sortField,
       core.String sortOrder,
-      core.String subaccountId}) {
+      core.String subaccountId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2349,6 +2599,9 @@ class CampaignsResourceApi {
     if (subaccountId != null) {
       _queryParams["subaccountId"] = [subaccountId];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -2373,6 +2626,9 @@ class CampaignsResourceApi {
   ///
   /// [id] - Campaign ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Campaign].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2381,7 +2637,8 @@ class CampaignsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Campaign> patch(
-      Campaign request, core.String profileId, core.String id) {
+      Campaign request, core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2399,6 +2656,9 @@ class CampaignsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -2421,6 +2681,9 @@ class CampaignsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Campaign].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2428,7 +2691,8 @@ class CampaignsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Campaign> update(Campaign request, core.String profileId) {
+  async.Future<Campaign> update(Campaign request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2441,6 +2705,9 @@ class CampaignsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -2470,6 +2737,9 @@ class ChangeLogsResourceApi {
   ///
   /// [id] - Change log ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ChangeLog].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2477,7 +2747,8 @@ class ChangeLogsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ChangeLog> get(core.String profileId, core.String id) {
+  async.Future<ChangeLog> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2490,6 +2761,9 @@ class ChangeLogsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -2602,6 +2876,9 @@ class ChangeLogsResourceApi {
   ///
   /// [userProfileIds] - Select only change logs with these user profile IDs.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ChangeLogsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2619,7 +2896,8 @@ class ChangeLogsResourceApi {
       core.String objectType,
       core.String pageToken,
       core.String searchString,
-      core.List<core.String> userProfileIds}) {
+      core.List<core.String> userProfileIds,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2660,6 +2938,9 @@ class ChangeLogsResourceApi {
     if (userProfileIds != null) {
       _queryParams["userProfileIds"] = userProfileIds;
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -2694,6 +2975,9 @@ class CitiesResourceApi {
   ///
   /// [regionDartIds] - Select only cities from these regions.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CitiesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2705,7 +2989,8 @@ class CitiesResourceApi {
       {core.List<core.String> countryDartIds,
       core.List<core.String> dartIds,
       core.String namePrefix,
-      core.List<core.String> regionDartIds}) {
+      core.List<core.String> regionDartIds,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2727,6 +3012,9 @@ class CitiesResourceApi {
     }
     if (regionDartIds != null) {
       _queryParams["regionDartIds"] = regionDartIds;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -2756,6 +3044,9 @@ class ConnectionTypesResourceApi {
   ///
   /// [id] - Connection type ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ConnectionType].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2763,7 +3054,8 @@ class ConnectionTypesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ConnectionType> get(core.String profileId, core.String id) {
+  async.Future<ConnectionType> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2776,6 +3068,9 @@ class ConnectionTypesResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -2798,6 +3093,9 @@ class ConnectionTypesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ConnectionTypesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2805,7 +3103,8 @@ class ConnectionTypesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ConnectionTypesListResponse> list(core.String profileId) {
+  async.Future<ConnectionTypesListResponse> list(core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2815,6 +3114,9 @@ class ConnectionTypesResourceApi {
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -2846,12 +3148,16 @@ class ContentCategoriesResourceApi {
   ///
   /// [id] - Content category ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String profileId, core.String id) {
+  async.Future delete(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2864,6 +3170,9 @@ class ContentCategoriesResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2890,6 +3199,9 @@ class ContentCategoriesResourceApi {
   ///
   /// [id] - Content category ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ContentCategory].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2897,7 +3209,8 @@ class ContentCategoriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ContentCategory> get(core.String profileId, core.String id) {
+  async.Future<ContentCategory> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2910,6 +3223,9 @@ class ContentCategoriesResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -2934,6 +3250,9 @@ class ContentCategoriesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ContentCategory].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2942,7 +3261,8 @@ class ContentCategoriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ContentCategory> insert(
-      ContentCategory request, core.String profileId) {
+      ContentCategory request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2955,6 +3275,9 @@ class ContentCategoriesResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -3002,6 +3325,9 @@ class ContentCategoriesResourceApi {
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ContentCategoriesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3015,7 +3341,8 @@ class ContentCategoriesResourceApi {
       core.String pageToken,
       core.String searchString,
       core.String sortField,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3044,6 +3371,9 @@ class ContentCategoriesResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -3070,6 +3400,9 @@ class ContentCategoriesResourceApi {
   ///
   /// [id] - Content category ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ContentCategory].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3078,7 +3411,8 @@ class ContentCategoriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ContentCategory> patch(
-      ContentCategory request, core.String profileId, core.String id) {
+      ContentCategory request, core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3096,6 +3430,9 @@ class ContentCategoriesResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -3118,6 +3455,9 @@ class ContentCategoriesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ContentCategory].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3126,7 +3466,8 @@ class ContentCategoriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ContentCategory> update(
-      ContentCategory request, core.String profileId) {
+      ContentCategory request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3139,6 +3480,9 @@ class ContentCategoriesResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -3168,6 +3512,9 @@ class ConversionsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ConversionsBatchInsertResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3176,7 +3523,8 @@ class ConversionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ConversionsBatchInsertResponse> batchinsert(
-      ConversionsBatchInsertRequest request, core.String profileId) {
+      ConversionsBatchInsertRequest request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3189,6 +3537,9 @@ class ConversionsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -3213,6 +3564,9 @@ class ConversionsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ConversionsBatchUpdateResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3221,7 +3575,8 @@ class ConversionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ConversionsBatchUpdateResponse> batchupdate(
-      ConversionsBatchUpdateRequest request, core.String profileId) {
+      ConversionsBatchUpdateRequest request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3234,6 +3589,9 @@ class ConversionsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -3264,6 +3622,9 @@ class CountriesResourceApi {
   ///
   /// [dartId] - Country DART ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Country].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3271,7 +3632,8 @@ class CountriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Country> get(core.String profileId, core.String dartId) {
+  async.Future<Country> get(core.String profileId, core.String dartId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3284,6 +3646,9 @@ class CountriesResourceApi {
     }
     if (dartId == null) {
       throw new core.ArgumentError("Parameter dartId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -3306,6 +3671,9 @@ class CountriesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CountriesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3313,7 +3681,8 @@ class CountriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CountriesListResponse> list(core.String profileId) {
+  async.Future<CountriesListResponse> list(core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3323,6 +3692,9 @@ class CountriesResourceApi {
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -3354,6 +3726,9 @@ class CreativeAssetsResourceApi {
   ///
   /// [advertiserId] - Advertiser ID of this creative. This is a required field.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [uploadMedia] - The media to upload.
   ///
   /// [uploadOptions] - Options for the media upload. Streaming Media without
@@ -3369,7 +3744,8 @@ class CreativeAssetsResourceApi {
   /// this method will complete with the same error.
   async.Future<CreativeAssetMetadata> insert(CreativeAssetMetadata request,
       core.String profileId, core.String advertiserId,
-      {commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      {core.String $fields,
+      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -3386,6 +3762,9 @@ class CreativeAssetsResourceApi {
     }
     if (advertiserId == null) {
       throw new core.ArgumentError("Parameter advertiserId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -3437,13 +3816,17 @@ class CreativeFieldValuesResourceApi {
   ///
   /// [id] - Creative Field Value ID
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(
-      core.String profileId, core.String creativeFieldId, core.String id) {
+      core.String profileId, core.String creativeFieldId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3459,6 +3842,9 @@ class CreativeFieldValuesResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3489,6 +3875,9 @@ class CreativeFieldValuesResourceApi {
   ///
   /// [id] - Creative Field Value ID
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CreativeFieldValue].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3497,7 +3886,8 @@ class CreativeFieldValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreativeFieldValue> get(
-      core.String profileId, core.String creativeFieldId, core.String id) {
+      core.String profileId, core.String creativeFieldId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3513,6 +3903,9 @@ class CreativeFieldValuesResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -3541,6 +3934,9 @@ class CreativeFieldValuesResourceApi {
   ///
   /// [creativeFieldId] - Creative field ID for this creative field value.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CreativeFieldValue].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3549,7 +3945,8 @@ class CreativeFieldValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreativeFieldValue> insert(CreativeFieldValue request,
-      core.String profileId, core.String creativeFieldId) {
+      core.String profileId, core.String creativeFieldId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3565,6 +3962,9 @@ class CreativeFieldValuesResourceApi {
     }
     if (creativeFieldId == null) {
       throw new core.ArgumentError("Parameter creativeFieldId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -3611,6 +4011,9 @@ class CreativeFieldValuesResourceApi {
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CreativeFieldValuesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3625,7 +4028,8 @@ class CreativeFieldValuesResourceApi {
       core.String pageToken,
       core.String searchString,
       core.String sortField,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3657,6 +4061,9 @@ class CreativeFieldValuesResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -3687,6 +4094,9 @@ class CreativeFieldValuesResourceApi {
   ///
   /// [id] - Creative Field Value ID
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CreativeFieldValue].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3695,7 +4105,8 @@ class CreativeFieldValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreativeFieldValue> patch(CreativeFieldValue request,
-      core.String profileId, core.String creativeFieldId, core.String id) {
+      core.String profileId, core.String creativeFieldId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3716,6 +4127,9 @@ class CreativeFieldValuesResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -3742,6 +4156,9 @@ class CreativeFieldValuesResourceApi {
   ///
   /// [creativeFieldId] - Creative field ID for this creative field value.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CreativeFieldValue].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3750,7 +4167,8 @@ class CreativeFieldValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreativeFieldValue> update(CreativeFieldValue request,
-      core.String profileId, core.String creativeFieldId) {
+      core.String profileId, core.String creativeFieldId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3766,6 +4184,9 @@ class CreativeFieldValuesResourceApi {
     }
     if (creativeFieldId == null) {
       throw new core.ArgumentError("Parameter creativeFieldId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -3797,12 +4218,16 @@ class CreativeFieldsResourceApi {
   ///
   /// [id] - Creative Field ID
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String profileId, core.String id) {
+  async.Future delete(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3815,6 +4240,9 @@ class CreativeFieldsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3841,6 +4269,9 @@ class CreativeFieldsResourceApi {
   ///
   /// [id] - Creative Field ID
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CreativeField].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3848,7 +4279,8 @@ class CreativeFieldsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CreativeField> get(core.String profileId, core.String id) {
+  async.Future<CreativeField> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3861,6 +4293,9 @@ class CreativeFieldsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -3885,6 +4320,9 @@ class CreativeFieldsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CreativeField].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3893,7 +4331,8 @@ class CreativeFieldsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreativeField> insert(
-      CreativeField request, core.String profileId) {
+      CreativeField request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3906,6 +4345,9 @@ class CreativeFieldsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -3957,6 +4399,9 @@ class CreativeFieldsResourceApi {
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CreativeFieldsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3971,7 +4416,8 @@ class CreativeFieldsResourceApi {
       core.String pageToken,
       core.String searchString,
       core.String sortField,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4003,6 +4449,9 @@ class CreativeFieldsResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -4028,6 +4477,9 @@ class CreativeFieldsResourceApi {
   ///
   /// [id] - Creative Field ID
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CreativeField].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4036,7 +4488,8 @@ class CreativeFieldsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreativeField> patch(
-      CreativeField request, core.String profileId, core.String id) {
+      CreativeField request, core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4054,6 +4507,9 @@ class CreativeFieldsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -4076,6 +4532,9 @@ class CreativeFieldsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CreativeField].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4084,7 +4543,8 @@ class CreativeFieldsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreativeField> update(
-      CreativeField request, core.String profileId) {
+      CreativeField request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4097,6 +4557,9 @@ class CreativeFieldsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -4126,6 +4589,9 @@ class CreativeGroupsResourceApi {
   ///
   /// [id] - Creative group ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CreativeGroup].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4133,7 +4599,8 @@ class CreativeGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CreativeGroup> get(core.String profileId, core.String id) {
+  async.Future<CreativeGroup> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4146,6 +4613,9 @@ class CreativeGroupsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -4170,6 +4640,9 @@ class CreativeGroupsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CreativeGroup].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4178,7 +4651,8 @@ class CreativeGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreativeGroup> insert(
-      CreativeGroup request, core.String profileId) {
+      CreativeGroup request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4191,6 +4665,9 @@ class CreativeGroupsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -4245,6 +4722,9 @@ class CreativeGroupsResourceApi {
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CreativeGroupsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4260,7 +4740,8 @@ class CreativeGroupsResourceApi {
       core.String pageToken,
       core.String searchString,
       core.String sortField,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4295,6 +4776,9 @@ class CreativeGroupsResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -4320,6 +4804,9 @@ class CreativeGroupsResourceApi {
   ///
   /// [id] - Creative group ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CreativeGroup].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4328,7 +4815,8 @@ class CreativeGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreativeGroup> patch(
-      CreativeGroup request, core.String profileId, core.String id) {
+      CreativeGroup request, core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4346,6 +4834,9 @@ class CreativeGroupsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -4368,6 +4859,9 @@ class CreativeGroupsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CreativeGroup].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4376,7 +4870,8 @@ class CreativeGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreativeGroup> update(
-      CreativeGroup request, core.String profileId) {
+      CreativeGroup request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4389,6 +4884,9 @@ class CreativeGroupsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -4418,6 +4916,9 @@ class CreativesResourceApi {
   ///
   /// [id] - Creative ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Creative].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4425,7 +4926,8 @@ class CreativesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Creative> get(core.String profileId, core.String id) {
+  async.Future<Creative> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4438,6 +4940,9 @@ class CreativesResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -4462,6 +4967,9 @@ class CreativesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Creative].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4469,7 +4977,8 @@ class CreativesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Creative> insert(Creative request, core.String profileId) {
+  async.Future<Creative> insert(Creative request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4482,6 +4991,9 @@ class CreativesResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -4553,6 +5065,9 @@ class CreativesResourceApi {
   ///
   /// [types] - Select only creatives with these creative types.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CreativesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4576,7 +5091,8 @@ class CreativesResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String studioCreativeId,
-      core.List<core.String> types}) {
+      core.List<core.String> types,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4635,6 +5151,9 @@ class CreativesResourceApi {
     if (types != null) {
       _queryParams["types"] = types;
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -4659,6 +5178,9 @@ class CreativesResourceApi {
   ///
   /// [id] - Creative ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Creative].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4667,7 +5189,8 @@ class CreativesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Creative> patch(
-      Creative request, core.String profileId, core.String id) {
+      Creative request, core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4685,6 +5208,9 @@ class CreativesResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -4707,6 +5233,9 @@ class CreativesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Creative].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4714,7 +5243,8 @@ class CreativesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Creative> update(Creative request, core.String profileId) {
+  async.Future<Creative> update(Creative request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4727,6 +5257,9 @@ class CreativesResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -4761,6 +5294,9 @@ class DimensionValuesResourceApi {
   ///
   /// [pageToken] - The value of the nextToken from the previous result page.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DimensionValueList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4770,7 +5306,7 @@ class DimensionValuesResourceApi {
   /// this method will complete with the same error.
   async.Future<DimensionValueList> query(
       DimensionValueRequest request, core.String profileId,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4789,6 +5325,9 @@ class DimensionValuesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -4819,6 +5358,9 @@ class DirectorySiteContactsResourceApi {
   ///
   /// [id] - Directory site contact ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DirectorySiteContact].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4826,8 +5368,8 @@ class DirectorySiteContactsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DirectorySiteContact> get(
-      core.String profileId, core.String id) {
+  async.Future<DirectorySiteContact> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4840,6 +5382,9 @@ class DirectorySiteContactsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -4892,6 +5437,9 @@ class DirectorySiteContactsResourceApi {
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DirectorySiteContactsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4906,7 +5454,8 @@ class DirectorySiteContactsResourceApi {
       core.String pageToken,
       core.String searchString,
       core.String sortField,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4938,6 +5487,9 @@ class DirectorySiteContactsResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -4967,6 +5519,9 @@ class DirectorySitesResourceApi {
   ///
   /// [id] - Directory site ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DirectorySite].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4974,7 +5529,8 @@ class DirectorySitesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DirectorySite> get(core.String profileId, core.String id) {
+  async.Future<DirectorySite> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4987,6 +5543,9 @@ class DirectorySitesResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -5011,6 +5570,9 @@ class DirectorySitesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DirectorySite].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5019,7 +5581,8 @@ class DirectorySitesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DirectorySite> insert(
-      DirectorySite request, core.String profileId) {
+      DirectorySite request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5032,6 +5595,9 @@ class DirectorySitesResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -5097,6 +5663,9 @@ class DirectorySitesResourceApi {
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DirectorySitesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5117,7 +5686,8 @@ class DirectorySitesResourceApi {
       core.String parentId,
       core.String searchString,
       core.String sortField,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5173,6 +5743,9 @@ class DirectorySitesResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -5216,13 +5789,17 @@ class DynamicTargetingKeysResourceApi {
   /// - "OBJECT_CREATIVE"
   /// - "OBJECT_PLACEMENT"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String profileId, core.String objectId,
-      core.String name, core.String objectType) {
+      core.String name, core.String objectType,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5244,6 +5821,9 @@ class DynamicTargetingKeysResourceApi {
       throw new core.ArgumentError("Parameter objectType is required.");
     }
     _queryParams["objectType"] = [objectType];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _downloadOptions = null;
 
@@ -5272,6 +5852,9 @@ class DynamicTargetingKeysResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DynamicTargetingKey].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5280,7 +5863,8 @@ class DynamicTargetingKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DynamicTargetingKey> insert(
-      DynamicTargetingKey request, core.String profileId) {
+      DynamicTargetingKey request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5293,6 +5877,9 @@ class DynamicTargetingKeysResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -5328,6 +5915,9 @@ class DynamicTargetingKeysResourceApi {
   /// - "OBJECT_CREATIVE"
   /// - "OBJECT_PLACEMENT"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DynamicTargetingKeysListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5339,7 +5929,8 @@ class DynamicTargetingKeysResourceApi {
       {core.String advertiserId,
       core.List<core.String> names,
       core.String objectId,
-      core.String objectType}) {
+      core.String objectType,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5361,6 +5952,9 @@ class DynamicTargetingKeysResourceApi {
     }
     if (objectType != null) {
       _queryParams["objectType"] = [objectType];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -5391,12 +5985,16 @@ class EventTagsResourceApi {
   ///
   /// [id] - Event tag ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String profileId, core.String id) {
+  async.Future delete(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5409,6 +6007,9 @@ class EventTagsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -5435,6 +6036,9 @@ class EventTagsResourceApi {
   ///
   /// [id] - Event tag ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EventTag].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5442,7 +6046,8 @@ class EventTagsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<EventTag> get(core.String profileId, core.String id) {
+  async.Future<EventTag> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5455,6 +6060,9 @@ class EventTagsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -5479,6 +6087,9 @@ class EventTagsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EventTag].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5486,7 +6097,8 @@ class EventTagsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<EventTag> insert(EventTag request, core.String profileId) {
+  async.Future<EventTag> insert(EventTag request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5499,6 +6111,9 @@ class EventTagsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -5566,6 +6181,9 @@ class EventTagsResourceApi {
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EventTagsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5583,7 +6201,8 @@ class EventTagsResourceApi {
       core.List<core.String> ids,
       core.String searchString,
       core.String sortField,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5624,6 +6243,9 @@ class EventTagsResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -5648,6 +6270,9 @@ class EventTagsResourceApi {
   ///
   /// [id] - Event tag ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EventTag].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5656,7 +6281,8 @@ class EventTagsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EventTag> patch(
-      EventTag request, core.String profileId, core.String id) {
+      EventTag request, core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5674,6 +6300,9 @@ class EventTagsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -5696,6 +6325,9 @@ class EventTagsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EventTag].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5703,7 +6335,8 @@ class EventTagsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<EventTag> update(EventTag request, core.String profileId) {
+  async.Future<EventTag> update(EventTag request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5716,6 +6349,9 @@ class EventTagsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -5746,6 +6382,9 @@ class FilesResourceApi {
   ///
   /// [fileId] - The ID of the report file.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [downloadOptions] - Options for downloading. A download can be either a
   /// Metadata (default) or Media download. Partial Media downloads are possible
   /// as well.
@@ -5762,7 +6401,8 @@ class FilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future get(core.String reportId, core.String fileId,
-      {commons.DownloadOptions downloadOptions:
+      {core.String $fields,
+      commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -5776,6 +6416,9 @@ class FilesResourceApi {
     }
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = downloadOptions;
@@ -5826,6 +6469,9 @@ class FilesResourceApi {
   /// - "ASCENDING" : Ascending order.
   /// - "DESCENDING" : Descending order.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FileList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5838,7 +6484,8 @@ class FilesResourceApi {
       core.String pageToken,
       core.String scope,
       core.String sortField,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5863,6 +6510,9 @@ class FilesResourceApi {
     }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -5893,12 +6543,16 @@ class FloodlightActivitiesResourceApi {
   ///
   /// [id] - Floodlight activity ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String profileId, core.String id) {
+  async.Future delete(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5911,6 +6565,9 @@ class FloodlightActivitiesResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -5938,6 +6595,9 @@ class FloodlightActivitiesResourceApi {
   /// [floodlightActivityId] - Floodlight activity ID for which we want to
   /// generate a tag.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FloodlightActivitiesGenerateTagResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5947,7 +6607,8 @@ class FloodlightActivitiesResourceApi {
   /// this method will complete with the same error.
   async.Future<FloodlightActivitiesGenerateTagResponse> generatetag(
       core.String profileId,
-      {core.String floodlightActivityId}) {
+      {core.String floodlightActivityId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5960,6 +6621,9 @@ class FloodlightActivitiesResourceApi {
     }
     if (floodlightActivityId != null) {
       _queryParams["floodlightActivityId"] = [floodlightActivityId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -5984,6 +6648,9 @@ class FloodlightActivitiesResourceApi {
   ///
   /// [id] - Floodlight activity ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FloodlightActivity].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5991,7 +6658,8 @@ class FloodlightActivitiesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FloodlightActivity> get(core.String profileId, core.String id) {
+  async.Future<FloodlightActivity> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6004,6 +6672,9 @@ class FloodlightActivitiesResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -6028,6 +6699,9 @@ class FloodlightActivitiesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FloodlightActivity].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6036,7 +6710,8 @@ class FloodlightActivitiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FloodlightActivity> insert(
-      FloodlightActivity request, core.String profileId) {
+      FloodlightActivity request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6049,6 +6724,9 @@ class FloodlightActivitiesResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -6125,6 +6803,9 @@ class FloodlightActivitiesResourceApi {
   /// [tagString] - Select only floodlight activities with the specified tag
   /// string.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FloodlightActivitiesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6145,7 +6826,8 @@ class FloodlightActivitiesResourceApi {
       core.String searchString,
       core.String sortField,
       core.String sortOrder,
-      core.String tagString}) {
+      core.String tagString,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6201,6 +6883,9 @@ class FloodlightActivitiesResourceApi {
     if (tagString != null) {
       _queryParams["tagString"] = [tagString];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -6227,6 +6912,9 @@ class FloodlightActivitiesResourceApi {
   ///
   /// [id] - Floodlight activity ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FloodlightActivity].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6235,7 +6923,8 @@ class FloodlightActivitiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FloodlightActivity> patch(
-      FloodlightActivity request, core.String profileId, core.String id) {
+      FloodlightActivity request, core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6253,6 +6942,9 @@ class FloodlightActivitiesResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -6275,6 +6967,9 @@ class FloodlightActivitiesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FloodlightActivity].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6283,7 +6978,8 @@ class FloodlightActivitiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FloodlightActivity> update(
-      FloodlightActivity request, core.String profileId) {
+      FloodlightActivity request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6296,6 +6992,9 @@ class FloodlightActivitiesResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -6326,6 +7025,9 @@ class FloodlightActivityGroupsResourceApi {
   ///
   /// [id] - Floodlight activity Group ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FloodlightActivityGroup].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6334,7 +7036,8 @@ class FloodlightActivityGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FloodlightActivityGroup> get(
-      core.String profileId, core.String id) {
+      core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6347,6 +7050,9 @@ class FloodlightActivityGroupsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -6371,6 +7077,9 @@ class FloodlightActivityGroupsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FloodlightActivityGroup].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6379,7 +7088,8 @@ class FloodlightActivityGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FloodlightActivityGroup> insert(
-      FloodlightActivityGroup request, core.String profileId) {
+      FloodlightActivityGroup request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6392,6 +7102,9 @@ class FloodlightActivityGroupsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -6457,6 +7170,9 @@ class FloodlightActivityGroupsResourceApi {
   /// - "COUNTER"
   /// - "SALE"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FloodlightActivityGroupsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6473,7 +7189,8 @@ class FloodlightActivityGroupsResourceApi {
       core.String searchString,
       core.String sortField,
       core.String sortOrder,
-      core.String type}) {
+      core.String type,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6511,6 +7228,9 @@ class FloodlightActivityGroupsResourceApi {
     if (type != null) {
       _queryParams["type"] = [type];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -6537,6 +7257,9 @@ class FloodlightActivityGroupsResourceApi {
   ///
   /// [id] - Floodlight activity Group ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FloodlightActivityGroup].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6545,7 +7268,8 @@ class FloodlightActivityGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FloodlightActivityGroup> patch(
-      FloodlightActivityGroup request, core.String profileId, core.String id) {
+      FloodlightActivityGroup request, core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6563,6 +7287,9 @@ class FloodlightActivityGroupsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -6585,6 +7312,9 @@ class FloodlightActivityGroupsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FloodlightActivityGroup].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6593,7 +7323,8 @@ class FloodlightActivityGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FloodlightActivityGroup> update(
-      FloodlightActivityGroup request, core.String profileId) {
+      FloodlightActivityGroup request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6606,6 +7337,9 @@ class FloodlightActivityGroupsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -6636,6 +7370,9 @@ class FloodlightConfigurationsResourceApi {
   ///
   /// [id] - Floodlight configuration ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FloodlightConfiguration].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6644,7 +7381,8 @@ class FloodlightConfigurationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FloodlightConfiguration> get(
-      core.String profileId, core.String id) {
+      core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6657,6 +7395,9 @@ class FloodlightConfigurationsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -6682,6 +7423,9 @@ class FloodlightConfigurationsResourceApi {
   /// [ids] - Set of IDs of floodlight configurations to retrieve. Required
   /// field; otherwise an empty list will be returned.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FloodlightConfigurationsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6690,7 +7434,7 @@ class FloodlightConfigurationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FloodlightConfigurationsListResponse> list(core.String profileId,
-      {core.List<core.String> ids}) {
+      {core.List<core.String> ids, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6703,6 +7447,9 @@ class FloodlightConfigurationsResourceApi {
     }
     if (ids != null) {
       _queryParams["ids"] = ids;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -6730,6 +7477,9 @@ class FloodlightConfigurationsResourceApi {
   ///
   /// [id] - Floodlight configuration ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FloodlightConfiguration].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6738,7 +7488,8 @@ class FloodlightConfigurationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FloodlightConfiguration> patch(
-      FloodlightConfiguration request, core.String profileId, core.String id) {
+      FloodlightConfiguration request, core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6756,6 +7507,9 @@ class FloodlightConfigurationsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -6778,6 +7532,9 @@ class FloodlightConfigurationsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FloodlightConfiguration].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6786,7 +7543,8 @@ class FloodlightConfigurationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FloodlightConfiguration> update(
-      FloodlightConfiguration request, core.String profileId) {
+      FloodlightConfiguration request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6799,6 +7557,9 @@ class FloodlightConfigurationsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -6830,6 +7591,9 @@ class InventoryItemsResourceApi {
   ///
   /// [id] - Inventory item ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InventoryItem].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6838,7 +7602,8 @@ class InventoryItemsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<InventoryItem> get(
-      core.String profileId, core.String projectId, core.String id) {
+      core.String profileId, core.String projectId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6854,6 +7619,9 @@ class InventoryItemsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -6910,6 +7678,9 @@ class InventoryItemsResourceApi {
   /// - "PLANNING_PLACEMENT_TYPE_CREDIT"
   /// - "PLANNING_PLACEMENT_TYPE_REGULAR"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InventoryItemsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -6927,7 +7698,8 @@ class InventoryItemsResourceApi {
       core.List<core.String> siteId,
       core.String sortField,
       core.String sortOrder,
-      core.String type}) {
+      core.String type,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -6968,6 +7740,9 @@ class InventoryItemsResourceApi {
     if (type != null) {
       _queryParams["type"] = [type];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -7001,13 +7776,17 @@ class LandingPagesResourceApi {
   ///
   /// [id] - Landing page ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(
-      core.String profileId, core.String campaignId, core.String id) {
+      core.String profileId, core.String campaignId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7023,6 +7802,9 @@ class LandingPagesResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -7053,6 +7835,9 @@ class LandingPagesResourceApi {
   ///
   /// [id] - Landing page ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LandingPage].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7061,7 +7846,8 @@ class LandingPagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LandingPage> get(
-      core.String profileId, core.String campaignId, core.String id) {
+      core.String profileId, core.String campaignId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7077,6 +7863,9 @@ class LandingPagesResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -7105,6 +7894,9 @@ class LandingPagesResourceApi {
   ///
   /// [campaignId] - Landing page campaign ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LandingPage].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7113,7 +7905,8 @@ class LandingPagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LandingPage> insert(
-      LandingPage request, core.String profileId, core.String campaignId) {
+      LandingPage request, core.String profileId, core.String campaignId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7129,6 +7922,9 @@ class LandingPagesResourceApi {
     }
     if (campaignId == null) {
       throw new core.ArgumentError("Parameter campaignId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -7154,6 +7950,9 @@ class LandingPagesResourceApi {
   ///
   /// [campaignId] - Landing page campaign ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LandingPagesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7162,7 +7961,8 @@ class LandingPagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LandingPagesListResponse> list(
-      core.String profileId, core.String campaignId) {
+      core.String profileId, core.String campaignId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7175,6 +7975,9 @@ class LandingPagesResourceApi {
     }
     if (campaignId == null) {
       throw new core.ArgumentError("Parameter campaignId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -7206,6 +8009,9 @@ class LandingPagesResourceApi {
   ///
   /// [id] - Landing page ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LandingPage].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7214,7 +8020,8 @@ class LandingPagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LandingPage> patch(LandingPage request, core.String profileId,
-      core.String campaignId, core.String id) {
+      core.String campaignId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7235,6 +8042,9 @@ class LandingPagesResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -7261,6 +8071,9 @@ class LandingPagesResourceApi {
   ///
   /// [campaignId] - Landing page campaign ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LandingPage].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7269,7 +8082,8 @@ class LandingPagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LandingPage> update(
-      LandingPage request, core.String profileId, core.String campaignId) {
+      LandingPage request, core.String profileId, core.String campaignId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7285,6 +8099,9 @@ class LandingPagesResourceApi {
     }
     if (campaignId == null) {
       throw new core.ArgumentError("Parameter campaignId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -7314,6 +8131,9 @@ class LanguagesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LanguagesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7321,7 +8141,8 @@ class LanguagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LanguagesListResponse> list(core.String profileId) {
+  async.Future<LanguagesListResponse> list(core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7331,6 +8152,9 @@ class LanguagesResourceApi {
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -7358,6 +8182,9 @@ class MetrosResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [MetrosListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7365,7 +8192,8 @@ class MetrosResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<MetrosListResponse> list(core.String profileId) {
+  async.Future<MetrosListResponse> list(core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7375,6 +8203,9 @@ class MetrosResourceApi {
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -7404,6 +8235,9 @@ class MobileCarriersResourceApi {
   ///
   /// [id] - Mobile carrier ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [MobileCarrier].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7411,7 +8245,8 @@ class MobileCarriersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<MobileCarrier> get(core.String profileId, core.String id) {
+  async.Future<MobileCarrier> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7424,6 +8259,9 @@ class MobileCarriersResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -7446,6 +8284,9 @@ class MobileCarriersResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [MobileCarriersListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7453,7 +8294,8 @@ class MobileCarriersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<MobileCarriersListResponse> list(core.String profileId) {
+  async.Future<MobileCarriersListResponse> list(core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7463,6 +8305,9 @@ class MobileCarriersResourceApi {
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -7494,6 +8339,9 @@ class OperatingSystemVersionsResourceApi {
   ///
   /// [id] - Operating system version ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OperatingSystemVersion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7502,7 +8350,8 @@ class OperatingSystemVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<OperatingSystemVersion> get(
-      core.String profileId, core.String id) {
+      core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7515,6 +8364,9 @@ class OperatingSystemVersionsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -7537,6 +8389,9 @@ class OperatingSystemVersionsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OperatingSystemVersionsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7544,8 +8399,8 @@ class OperatingSystemVersionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<OperatingSystemVersionsListResponse> list(
-      core.String profileId) {
+  async.Future<OperatingSystemVersionsListResponse> list(core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7555,6 +8410,9 @@ class OperatingSystemVersionsResourceApi {
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -7586,6 +8444,9 @@ class OperatingSystemsResourceApi {
   ///
   /// [dartId] - Operating system DART ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OperatingSystem].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7593,7 +8454,8 @@ class OperatingSystemsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<OperatingSystem> get(core.String profileId, core.String dartId) {
+  async.Future<OperatingSystem> get(core.String profileId, core.String dartId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7606,6 +8468,9 @@ class OperatingSystemsResourceApi {
     }
     if (dartId == null) {
       throw new core.ArgumentError("Parameter dartId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -7628,6 +8493,9 @@ class OperatingSystemsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OperatingSystemsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7635,7 +8503,8 @@ class OperatingSystemsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<OperatingSystemsListResponse> list(core.String profileId) {
+  async.Future<OperatingSystemsListResponse> list(core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7645,6 +8514,9 @@ class OperatingSystemsResourceApi {
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -7677,6 +8549,9 @@ class OrderDocumentsResourceApi {
   ///
   /// [id] - Order document ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OrderDocument].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7685,7 +8560,8 @@ class OrderDocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<OrderDocument> get(
-      core.String profileId, core.String projectId, core.String id) {
+      core.String profileId, core.String projectId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7701,6 +8577,9 @@ class OrderDocumentsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -7762,6 +8641,9 @@ class OrderDocumentsResourceApi {
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OrderDocumentsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7779,7 +8661,8 @@ class OrderDocumentsResourceApi {
       core.String searchString,
       core.List<core.String> siteId,
       core.String sortField,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7820,6 +8703,9 @@ class OrderDocumentsResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -7853,6 +8739,9 @@ class OrdersResourceApi {
   ///
   /// [id] - Order ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Order].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7861,7 +8750,8 @@ class OrdersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Order> get(
-      core.String profileId, core.String projectId, core.String id) {
+      core.String profileId, core.String projectId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7877,6 +8767,9 @@ class OrdersResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -7930,6 +8823,9 @@ class OrdersResourceApi {
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OrdersListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -7945,7 +8841,8 @@ class OrdersResourceApi {
       core.String searchString,
       core.List<core.String> siteId,
       core.String sortField,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -7980,6 +8877,9 @@ class OrdersResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -8010,6 +8910,9 @@ class PlacementGroupsResourceApi {
   ///
   /// [id] - Placement group ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PlacementGroup].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8017,7 +8920,8 @@ class PlacementGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PlacementGroup> get(core.String profileId, core.String id) {
+  async.Future<PlacementGroup> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8030,6 +8934,9 @@ class PlacementGroupsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -8054,6 +8961,9 @@ class PlacementGroupsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PlacementGroup].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8062,7 +8972,8 @@ class PlacementGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlacementGroup> insert(
-      PlacementGroup request, core.String profileId) {
+      PlacementGroup request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8075,6 +8986,9 @@ class PlacementGroupsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -8173,6 +9087,9 @@ class PlacementGroupsResourceApi {
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PlacementGroupsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8199,7 +9116,8 @@ class PlacementGroupsResourceApi {
       core.String searchString,
       core.List<core.String> siteIds,
       core.String sortField,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8267,6 +9185,9 @@ class PlacementGroupsResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -8292,6 +9213,9 @@ class PlacementGroupsResourceApi {
   ///
   /// [id] - Placement group ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PlacementGroup].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8300,7 +9224,8 @@ class PlacementGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlacementGroup> patch(
-      PlacementGroup request, core.String profileId, core.String id) {
+      PlacementGroup request, core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8318,6 +9243,9 @@ class PlacementGroupsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -8340,6 +9268,9 @@ class PlacementGroupsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PlacementGroup].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8348,7 +9279,8 @@ class PlacementGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlacementGroup> update(
-      PlacementGroup request, core.String profileId) {
+      PlacementGroup request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8361,6 +9293,9 @@ class PlacementGroupsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -8391,12 +9326,16 @@ class PlacementStrategiesResourceApi {
   ///
   /// [id] - Placement strategy ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String profileId, core.String id) {
+  async.Future delete(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8409,6 +9348,9 @@ class PlacementStrategiesResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -8435,6 +9377,9 @@ class PlacementStrategiesResourceApi {
   ///
   /// [id] - Placement strategy ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PlacementStrategy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8442,7 +9387,8 @@ class PlacementStrategiesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PlacementStrategy> get(core.String profileId, core.String id) {
+  async.Future<PlacementStrategy> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8455,6 +9401,9 @@ class PlacementStrategiesResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -8479,6 +9428,9 @@ class PlacementStrategiesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PlacementStrategy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8487,7 +9439,8 @@ class PlacementStrategiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlacementStrategy> insert(
-      PlacementStrategy request, core.String profileId) {
+      PlacementStrategy request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8500,6 +9453,9 @@ class PlacementStrategiesResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -8548,6 +9504,9 @@ class PlacementStrategiesResourceApi {
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PlacementStrategiesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8561,7 +9520,8 @@ class PlacementStrategiesResourceApi {
       core.String pageToken,
       core.String searchString,
       core.String sortField,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8590,6 +9550,9 @@ class PlacementStrategiesResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -8616,6 +9579,9 @@ class PlacementStrategiesResourceApi {
   ///
   /// [id] - Placement strategy ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PlacementStrategy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8624,7 +9590,8 @@ class PlacementStrategiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlacementStrategy> patch(
-      PlacementStrategy request, core.String profileId, core.String id) {
+      PlacementStrategy request, core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8642,6 +9609,9 @@ class PlacementStrategiesResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -8664,6 +9634,9 @@ class PlacementStrategiesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PlacementStrategy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8672,7 +9645,8 @@ class PlacementStrategiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PlacementStrategy> update(
-      PlacementStrategy request, core.String profileId) {
+      PlacementStrategy request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8685,6 +9659,9 @@ class PlacementStrategiesResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -8721,6 +9698,9 @@ class PlacementsResourceApi {
   ///
   /// Note: PLACEMENT_TAG_STANDARD can only be generated for 1x1 placements.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PlacementsGenerateTagsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8732,7 +9712,8 @@ class PlacementsResourceApi {
       core.String profileId,
       {core.String campaignId,
       core.List<core.String> placementIds,
-      core.List<core.String> tagFormats}) {
+      core.List<core.String> tagFormats,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8751,6 +9732,9 @@ class PlacementsResourceApi {
     }
     if (tagFormats != null) {
       _queryParams["tagFormats"] = tagFormats;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -8775,6 +9759,9 @@ class PlacementsResourceApi {
   ///
   /// [id] - Placement ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Placement].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8782,7 +9769,8 @@ class PlacementsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Placement> get(core.String profileId, core.String id) {
+  async.Future<Placement> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8795,6 +9783,9 @@ class PlacementsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -8819,6 +9810,9 @@ class PlacementsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Placement].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8826,7 +9820,8 @@ class PlacementsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Placement> insert(Placement request, core.String profileId) {
+  async.Future<Placement> insert(Placement request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -8839,6 +9834,9 @@ class PlacementsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -8938,6 +9936,9 @@ class PlacementsResourceApi {
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PlacementsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -8967,7 +9968,8 @@ class PlacementsResourceApi {
       core.List<core.String> siteIds,
       core.List<core.String> sizeIds,
       core.String sortField,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9044,6 +10046,9 @@ class PlacementsResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -9068,6 +10073,9 @@ class PlacementsResourceApi {
   ///
   /// [id] - Placement ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Placement].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9076,7 +10084,8 @@ class PlacementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Placement> patch(
-      Placement request, core.String profileId, core.String id) {
+      Placement request, core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9094,6 +10103,9 @@ class PlacementsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -9116,6 +10128,9 @@ class PlacementsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Placement].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9123,7 +10138,8 @@ class PlacementsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Placement> update(Placement request, core.String profileId) {
+  async.Future<Placement> update(Placement request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9136,6 +10152,9 @@ class PlacementsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -9165,6 +10184,9 @@ class PlatformTypesResourceApi {
   ///
   /// [id] - Platform type ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PlatformType].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9172,7 +10194,8 @@ class PlatformTypesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PlatformType> get(core.String profileId, core.String id) {
+  async.Future<PlatformType> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9185,6 +10208,9 @@ class PlatformTypesResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -9207,6 +10233,9 @@ class PlatformTypesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PlatformTypesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9214,7 +10243,8 @@ class PlatformTypesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PlatformTypesListResponse> list(core.String profileId) {
+  async.Future<PlatformTypesListResponse> list(core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9224,6 +10254,9 @@ class PlatformTypesResourceApi {
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -9254,6 +10287,9 @@ class PostalCodesResourceApi {
   ///
   /// [code] - Postal code ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PostalCode].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9261,7 +10297,8 @@ class PostalCodesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PostalCode> get(core.String profileId, core.String code) {
+  async.Future<PostalCode> get(core.String profileId, core.String code,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9274,6 +10311,9 @@ class PostalCodesResourceApi {
     }
     if (code == null) {
       throw new core.ArgumentError("Parameter code is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -9296,6 +10336,9 @@ class PostalCodesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PostalCodesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9303,7 +10346,8 @@ class PostalCodesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PostalCodesListResponse> list(core.String profileId) {
+  async.Future<PostalCodesListResponse> list(core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9313,6 +10357,9 @@ class PostalCodesResourceApi {
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -9342,6 +10389,9 @@ class ProjectsResourceApi {
   ///
   /// [id] - Project ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Project].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9349,7 +10399,8 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Project> get(core.String profileId, core.String id) {
+  async.Future<Project> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9362,6 +10413,9 @@ class ProjectsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -9412,6 +10466,9 @@ class ProjectsResourceApi {
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ProjectsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9426,7 +10483,8 @@ class ProjectsResourceApi {
       core.String pageToken,
       core.String searchString,
       core.String sortField,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9458,6 +10516,9 @@ class ProjectsResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -9484,6 +10545,9 @@ class RegionsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RegionsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9491,7 +10555,8 @@ class RegionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RegionsListResponse> list(core.String profileId) {
+  async.Future<RegionsListResponse> list(core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9501,6 +10566,9 @@ class RegionsResourceApi {
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -9531,6 +10599,9 @@ class RemarketingListSharesResourceApi {
   ///
   /// [remarketingListId] - Remarketing list ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RemarketingListShare].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9539,7 +10610,8 @@ class RemarketingListSharesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RemarketingListShare> get(
-      core.String profileId, core.String remarketingListId) {
+      core.String profileId, core.String remarketingListId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9552,6 +10624,9 @@ class RemarketingListSharesResourceApi {
     }
     if (remarketingListId == null) {
       throw new core.ArgumentError("Parameter remarketingListId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -9579,6 +10654,9 @@ class RemarketingListSharesResourceApi {
   ///
   /// [remarketingListId] - Remarketing list ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RemarketingListShare].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9587,7 +10665,8 @@ class RemarketingListSharesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RemarketingListShare> patch(RemarketingListShare request,
-      core.String profileId, core.String remarketingListId) {
+      core.String profileId, core.String remarketingListId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9605,6 +10684,9 @@ class RemarketingListSharesResourceApi {
       throw new core.ArgumentError("Parameter remarketingListId is required.");
     }
     _queryParams["remarketingListId"] = [remarketingListId];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -9627,6 +10709,9 @@ class RemarketingListSharesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RemarketingListShare].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9635,7 +10720,8 @@ class RemarketingListSharesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RemarketingListShare> update(
-      RemarketingListShare request, core.String profileId) {
+      RemarketingListShare request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9648,6 +10734,9 @@ class RemarketingListSharesResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -9678,6 +10767,9 @@ class RemarketingListsResourceApi {
   ///
   /// [id] - Remarketing list ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RemarketingList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9685,7 +10777,8 @@ class RemarketingListsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RemarketingList> get(core.String profileId, core.String id) {
+  async.Future<RemarketingList> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9698,6 +10791,9 @@ class RemarketingListsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -9722,6 +10818,9 @@ class RemarketingListsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RemarketingList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9730,7 +10829,8 @@ class RemarketingListsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RemarketingList> insert(
-      RemarketingList request, core.String profileId) {
+      RemarketingList request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9743,6 +10843,9 @@ class RemarketingListsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -9795,6 +10898,9 @@ class RemarketingListsResourceApi {
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RemarketingListsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9810,7 +10916,8 @@ class RemarketingListsResourceApi {
       core.String name,
       core.String pageToken,
       core.String sortField,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9846,6 +10953,9 @@ class RemarketingListsResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -9872,6 +10982,9 @@ class RemarketingListsResourceApi {
   ///
   /// [id] - Remarketing list ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RemarketingList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9880,7 +10993,8 @@ class RemarketingListsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RemarketingList> patch(
-      RemarketingList request, core.String profileId, core.String id) {
+      RemarketingList request, core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9898,6 +11012,9 @@ class RemarketingListsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -9920,6 +11037,9 @@ class RemarketingListsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RemarketingList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -9928,7 +11048,8 @@ class RemarketingListsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RemarketingList> update(
-      RemarketingList request, core.String profileId) {
+      RemarketingList request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9941,6 +11062,9 @@ class RemarketingListsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -9974,12 +11098,16 @@ class ReportsResourceApi {
   ///
   /// [reportId] - The ID of the report.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String profileId, core.String reportId) {
+  async.Future delete(core.String profileId, core.String reportId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -9992,6 +11120,9 @@ class ReportsResourceApi {
     }
     if (reportId == null) {
       throw new core.ArgumentError("Parameter reportId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -10018,6 +11149,9 @@ class ReportsResourceApi {
   ///
   /// [reportId] - The ID of the report.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Report].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10025,7 +11159,8 @@ class ReportsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Report> get(core.String profileId, core.String reportId) {
+  async.Future<Report> get(core.String profileId, core.String reportId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10038,6 +11173,9 @@ class ReportsResourceApi {
     }
     if (reportId == null) {
       throw new core.ArgumentError("Parameter reportId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -10062,6 +11200,9 @@ class ReportsResourceApi {
   ///
   /// [profileId] - The DFA user profile ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Report].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10069,7 +11210,8 @@ class ReportsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Report> insert(Report request, core.String profileId) {
+  async.Future<Report> insert(Report request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10082,6 +11224,9 @@ class ReportsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -10124,6 +11269,9 @@ class ReportsResourceApi {
   /// - "ASCENDING" : Ascending order.
   /// - "DESCENDING" : Descending order.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ReportList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10136,7 +11284,8 @@ class ReportsResourceApi {
       core.String pageToken,
       core.String scope,
       core.String sortField,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10162,6 +11311,9 @@ class ReportsResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -10186,6 +11338,9 @@ class ReportsResourceApi {
   ///
   /// [reportId] - The ID of the report.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Report].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10194,7 +11349,8 @@ class ReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Report> patch(
-      Report request, core.String profileId, core.String reportId) {
+      Report request, core.String profileId, core.String reportId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10210,6 +11366,9 @@ class ReportsResourceApi {
     }
     if (reportId == null) {
       throw new core.ArgumentError("Parameter reportId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -10236,6 +11395,9 @@ class ReportsResourceApi {
   ///
   /// [synchronous] - If set and true, tries to run the report synchronously.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [File].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10244,7 +11406,7 @@ class ReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<File> run(core.String profileId, core.String reportId,
-      {core.bool synchronous}) {
+      {core.bool synchronous, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10260,6 +11422,9 @@ class ReportsResourceApi {
     }
     if (synchronous != null) {
       _queryParams["synchronous"] = ["${synchronous}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -10287,6 +11452,9 @@ class ReportsResourceApi {
   ///
   /// [reportId] - The ID of the report.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Report].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10295,7 +11463,8 @@ class ReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Report> update(
-      Report request, core.String profileId, core.String reportId) {
+      Report request, core.String profileId, core.String reportId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10311,6 +11480,9 @@ class ReportsResourceApi {
     }
     if (reportId == null) {
       throw new core.ArgumentError("Parameter reportId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -10344,6 +11516,9 @@ class ReportsCompatibleFieldsResourceApi {
   ///
   /// [profileId] - The DFA user profile ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CompatibleFields].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10351,7 +11526,8 @@ class ReportsCompatibleFieldsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CompatibleFields> query(Report request, core.String profileId) {
+  async.Future<CompatibleFields> query(Report request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10364,6 +11540,9 @@ class ReportsCompatibleFieldsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -10395,6 +11574,9 @@ class ReportsFilesResourceApi {
   ///
   /// [fileId] - The ID of the report file.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [downloadOptions] - Options for downloading. A download can be either a
   /// Metadata (default) or Media download. Partial Media downloads are possible
   /// as well.
@@ -10412,7 +11594,8 @@ class ReportsFilesResourceApi {
   /// this method will complete with the same error.
   async.Future get(
       core.String profileId, core.String reportId, core.String fileId,
-      {commons.DownloadOptions downloadOptions:
+      {core.String $fields,
+      commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -10429,6 +11612,9 @@ class ReportsFilesResourceApi {
     }
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = downloadOptions;
@@ -10477,6 +11663,9 @@ class ReportsFilesResourceApi {
   /// - "ASCENDING" : Ascending order.
   /// - "DESCENDING" : Descending order.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FileList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10488,7 +11677,8 @@ class ReportsFilesResourceApi {
       {core.int maxResults,
       core.String pageToken,
       core.String sortField,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10513,6 +11703,9 @@ class ReportsFilesResourceApi {
     }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -10544,6 +11737,9 @@ class SitesResourceApi {
   ///
   /// [id] - Site ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Site].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10551,7 +11747,8 @@ class SitesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Site> get(core.String profileId, core.String id) {
+  async.Future<Site> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10564,6 +11761,9 @@ class SitesResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -10588,6 +11788,9 @@ class SitesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Site].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10595,7 +11798,8 @@ class SitesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Site> insert(Site request, core.String profileId) {
+  async.Future<Site> insert(Site request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10608,6 +11812,9 @@ class SitesResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -10675,6 +11882,9 @@ class SitesResourceApi {
   /// [unmappedSite] - Select only sites that have not been mapped to a
   /// directory site.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SitesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10697,7 +11907,8 @@ class SitesResourceApi {
       core.String sortField,
       core.String sortOrder,
       core.String subaccountId,
-      core.bool unmappedSite}) {
+      core.bool unmappedSite,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10759,6 +11970,9 @@ class SitesResourceApi {
     if (unmappedSite != null) {
       _queryParams["unmappedSite"] = ["${unmappedSite}"];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -10783,6 +11997,9 @@ class SitesResourceApi {
   ///
   /// [id] - Site ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Site].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10790,8 +12007,8 @@ class SitesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Site> patch(
-      Site request, core.String profileId, core.String id) {
+  async.Future<Site> patch(Site request, core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10809,6 +12026,9 @@ class SitesResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -10831,6 +12051,9 @@ class SitesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Site].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10838,7 +12061,8 @@ class SitesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Site> update(Site request, core.String profileId) {
+  async.Future<Site> update(Site request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10851,6 +12075,9 @@ class SitesResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -10880,6 +12107,9 @@ class SizesResourceApi {
   ///
   /// [id] - Size ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Size].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10887,7 +12117,8 @@ class SizesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Size> get(core.String profileId, core.String id) {
+  async.Future<Size> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10900,6 +12131,9 @@ class SizesResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -10924,6 +12158,9 @@ class SizesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Size].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10931,7 +12168,8 @@ class SizesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Size> insert(Size request, core.String profileId) {
+  async.Future<Size> insert(Size request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -10944,6 +12182,9 @@ class SizesResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -10975,6 +12216,9 @@ class SizesResourceApi {
   /// [width] - Select only sizes with this width.
   /// Value must be between "0" and "32767".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SizesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -10986,7 +12230,8 @@ class SizesResourceApi {
       {core.int height,
       core.bool iabStandard,
       core.List<core.String> ids,
-      core.int width}) {
+      core.int width,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11008,6 +12253,9 @@ class SizesResourceApi {
     }
     if (width != null) {
       _queryParams["width"] = ["${width}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -11037,6 +12285,9 @@ class SubaccountsResourceApi {
   ///
   /// [id] - Subaccount ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Subaccount].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11044,7 +12295,8 @@ class SubaccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Subaccount> get(core.String profileId, core.String id) {
+  async.Future<Subaccount> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11057,6 +12309,9 @@ class SubaccountsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -11081,6 +12336,9 @@ class SubaccountsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Subaccount].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11088,7 +12346,8 @@ class SubaccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Subaccount> insert(Subaccount request, core.String profileId) {
+  async.Future<Subaccount> insert(Subaccount request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11101,6 +12360,9 @@ class SubaccountsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -11148,6 +12410,9 @@ class SubaccountsResourceApi {
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SubaccountsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11161,7 +12426,8 @@ class SubaccountsResourceApi {
       core.String pageToken,
       core.String searchString,
       core.String sortField,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11190,6 +12456,9 @@ class SubaccountsResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -11214,6 +12483,9 @@ class SubaccountsResourceApi {
   ///
   /// [id] - Subaccount ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Subaccount].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11222,7 +12494,8 @@ class SubaccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Subaccount> patch(
-      Subaccount request, core.String profileId, core.String id) {
+      Subaccount request, core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11240,6 +12513,9 @@ class SubaccountsResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -11262,6 +12538,9 @@ class SubaccountsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Subaccount].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11269,7 +12548,8 @@ class SubaccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Subaccount> update(Subaccount request, core.String profileId) {
+  async.Future<Subaccount> update(Subaccount request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11282,6 +12562,9 @@ class SubaccountsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -11312,6 +12595,9 @@ class TargetableRemarketingListsResourceApi {
   ///
   /// [id] - Remarketing list ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TargetableRemarketingList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11320,7 +12606,8 @@ class TargetableRemarketingListsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TargetableRemarketingList> get(
-      core.String profileId, core.String id) {
+      core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11333,6 +12620,9 @@ class TargetableRemarketingListsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -11386,6 +12676,9 @@ class TargetableRemarketingListsResourceApi {
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TargetableRemarketingListsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11400,7 +12693,8 @@ class TargetableRemarketingListsResourceApi {
       core.String name,
       core.String pageToken,
       core.String sortField,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11433,6 +12727,9 @@ class TargetableRemarketingListsResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -11463,6 +12760,9 @@ class TargetingTemplatesResourceApi {
   ///
   /// [id] - Targeting template ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TargetingTemplate].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11470,7 +12770,8 @@ class TargetingTemplatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TargetingTemplate> get(core.String profileId, core.String id) {
+  async.Future<TargetingTemplate> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11483,6 +12784,9 @@ class TargetingTemplatesResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -11507,6 +12811,9 @@ class TargetingTemplatesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TargetingTemplate].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11515,7 +12822,8 @@ class TargetingTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TargetingTemplate> insert(
-      TargetingTemplate request, core.String profileId) {
+      TargetingTemplate request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11528,6 +12836,9 @@ class TargetingTemplatesResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -11577,6 +12888,9 @@ class TargetingTemplatesResourceApi {
   /// - "ASCENDING"
   /// - "DESCENDING"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TargetingTemplatesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11591,7 +12905,8 @@ class TargetingTemplatesResourceApi {
       core.String pageToken,
       core.String searchString,
       core.String sortField,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11623,6 +12938,9 @@ class TargetingTemplatesResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -11649,6 +12967,9 @@ class TargetingTemplatesResourceApi {
   ///
   /// [id] - Targeting template ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TargetingTemplate].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11657,7 +12978,8 @@ class TargetingTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TargetingTemplate> patch(
-      TargetingTemplate request, core.String profileId, core.String id) {
+      TargetingTemplate request, core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11675,6 +12997,9 @@ class TargetingTemplatesResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -11697,6 +13022,9 @@ class TargetingTemplatesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TargetingTemplate].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11705,7 +13033,8 @@ class TargetingTemplatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TargetingTemplate> update(
-      TargetingTemplate request, core.String profileId) {
+      TargetingTemplate request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11718,6 +13047,9 @@ class TargetingTemplatesResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -11745,6 +13077,9 @@ class UserProfilesResourceApi {
   ///
   /// [profileId] - The user profile ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UserProfile].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11752,7 +13087,7 @@ class UserProfilesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserProfile> get(core.String profileId) {
+  async.Future<UserProfile> get(core.String profileId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11762,6 +13097,9 @@ class UserProfilesResourceApi {
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId');
@@ -11779,6 +13117,9 @@ class UserProfilesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UserProfileList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11786,13 +13127,17 @@ class UserProfilesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserProfileList> list() {
+  async.Future<UserProfileList> list({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles';
 
@@ -11820,6 +13165,9 @@ class UserRolePermissionGroupsResourceApi {
   ///
   /// [id] - User role permission group ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UserRolePermissionGroup].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11828,7 +13176,8 @@ class UserRolePermissionGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UserRolePermissionGroup> get(
-      core.String profileId, core.String id) {
+      core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11841,6 +13190,9 @@ class UserRolePermissionGroupsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -11863,6 +13215,9 @@ class UserRolePermissionGroupsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UserRolePermissionGroupsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11870,8 +13225,8 @@ class UserRolePermissionGroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserRolePermissionGroupsListResponse> list(
-      core.String profileId) {
+  async.Future<UserRolePermissionGroupsListResponse> list(core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11881,6 +13236,9 @@ class UserRolePermissionGroupsResourceApi {
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -11912,6 +13270,9 @@ class UserRolePermissionsResourceApi {
   ///
   /// [id] - User role permission ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UserRolePermission].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11919,7 +13280,8 @@ class UserRolePermissionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserRolePermission> get(core.String profileId, core.String id) {
+  async.Future<UserRolePermission> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11932,6 +13294,9 @@ class UserRolePermissionsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -11956,6 +13321,9 @@ class UserRolePermissionsResourceApi {
   ///
   /// [ids] - Select only user role permissions with these IDs.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UserRolePermissionsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -11964,7 +13332,7 @@ class UserRolePermissionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UserRolePermissionsListResponse> list(core.String profileId,
-      {core.List<core.String> ids}) {
+      {core.List<core.String> ids, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -11977,6 +13345,9 @@ class UserRolePermissionsResourceApi {
     }
     if (ids != null) {
       _queryParams["ids"] = ids;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -12007,12 +13378,16 @@ class UserRolesResourceApi {
   ///
   /// [id] - User role ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String profileId, core.String id) {
+  async.Future delete(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12025,6 +13400,9 @@ class UserRolesResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -12051,6 +13429,9 @@ class UserRolesResourceApi {
   ///
   /// [id] - User role ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UserRole].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12058,7 +13439,8 @@ class UserRolesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserRole> get(core.String profileId, core.String id) {
+  async.Future<UserRole> get(core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12071,6 +13453,9 @@ class UserRolesResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -12095,6 +13480,9 @@ class UserRolesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UserRole].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12102,7 +13490,8 @@ class UserRolesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserRole> insert(UserRole request, core.String profileId) {
+  async.Future<UserRole> insert(UserRole request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12115,6 +13504,9 @@ class UserRolesResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -12167,6 +13559,9 @@ class UserRolesResourceApi {
   ///
   /// [subaccountId] - Select only user roles that belong to this subaccount.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UserRolesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12182,7 +13577,8 @@ class UserRolesResourceApi {
       core.String searchString,
       core.String sortField,
       core.String sortOrder,
-      core.String subaccountId}) {
+      core.String subaccountId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12217,6 +13613,9 @@ class UserRolesResourceApi {
     if (subaccountId != null) {
       _queryParams["subaccountId"] = [subaccountId];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -12241,6 +13640,9 @@ class UserRolesResourceApi {
   ///
   /// [id] - User role ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UserRole].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12249,7 +13651,8 @@ class UserRolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UserRole> patch(
-      UserRole request, core.String profileId, core.String id) {
+      UserRole request, core.String profileId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12267,6 +13670,9 @@ class UserRolesResourceApi {
       throw new core.ArgumentError("Parameter id is required.");
     }
     _queryParams["id"] = [id];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
@@ -12289,6 +13695,9 @@ class UserRolesResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UserRole].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12296,7 +13705,8 @@ class UserRolesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserRole> update(UserRole request, core.String profileId) {
+  async.Future<UserRole> update(UserRole request, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12309,6 +13719,9 @@ class UserRolesResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -12338,6 +13751,9 @@ class VideoFormatsResourceApi {
   ///
   /// [id] - Video format ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [VideoFormat].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12345,7 +13761,8 @@ class VideoFormatsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<VideoFormat> get(core.String profileId, core.int id) {
+  async.Future<VideoFormat> get(core.String profileId, core.int id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12358,6 +13775,9 @@ class VideoFormatsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +
@@ -12380,6 +13800,9 @@ class VideoFormatsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [VideoFormatsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -12387,7 +13810,8 @@ class VideoFormatsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<VideoFormatsListResponse> list(core.String profileId) {
+  async.Future<VideoFormatsListResponse> list(core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -12397,6 +13821,9 @@ class VideoFormatsResourceApi {
 
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'userprofiles/' +

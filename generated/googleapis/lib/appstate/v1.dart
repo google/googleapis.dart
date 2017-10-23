@@ -47,6 +47,9 @@ class StatesResourceApi {
   /// [currentDataVersion] - The version of the data to be cleared. Version
   /// strings are returned by the server.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [WriteResult].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -55,7 +58,7 @@ class StatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<WriteResult> clear(core.int stateKey,
-      {core.String currentDataVersion}) {
+      {core.String currentDataVersion, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -68,6 +71,9 @@ class StatesResourceApi {
     }
     if (currentDataVersion != null) {
       _queryParams["currentDataVersion"] = [currentDataVersion];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'states/' + commons.Escaper.ecapeVariable('$stateKey') + '/clear';
@@ -92,12 +98,15 @@ class StatesResourceApi {
   /// [stateKey] - The key for the data to be retrieved.
   /// Value must be between "0" and "3".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.int stateKey) {
+  async.Future delete(core.int stateKey, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -107,6 +116,9 @@ class StatesResourceApi {
 
     if (stateKey == null) {
       throw new core.ArgumentError("Parameter stateKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -130,6 +142,9 @@ class StatesResourceApi {
   /// [stateKey] - The key for the data to be retrieved.
   /// Value must be between "0" and "3".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GetResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -137,7 +152,7 @@ class StatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GetResponse> get(core.int stateKey) {
+  async.Future<GetResponse> get(core.int stateKey, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -147,6 +162,9 @@ class StatesResourceApi {
 
     if (stateKey == null) {
       throw new core.ArgumentError("Parameter stateKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'states/' + commons.Escaper.ecapeVariable('$stateKey');
@@ -167,6 +185,9 @@ class StatesResourceApi {
   /// [includeData] - Whether to include the full data in addition to the
   /// version number
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -174,7 +195,8 @@ class StatesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListResponse> list({core.bool includeData}) {
+  async.Future<ListResponse> list(
+      {core.bool includeData, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -184,6 +206,9 @@ class StatesResourceApi {
 
     if (includeData != null) {
       _queryParams["includeData"] = ["${includeData}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'states';
@@ -214,6 +239,9 @@ class StatesResourceApi {
   /// server for this key, the update will succeed irrespective of the value of
   /// this parameter.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [WriteResult].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -222,7 +250,7 @@ class StatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<WriteResult> update(UpdateRequest request, core.int stateKey,
-      {core.String currentStateVersion}) {
+      {core.String currentStateVersion, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -238,6 +266,9 @@ class StatesResourceApi {
     }
     if (currentStateVersion != null) {
       _queryParams["currentStateVersion"] = [currentStateVersion];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'states/' + commons.Escaper.ecapeVariable('$stateKey');

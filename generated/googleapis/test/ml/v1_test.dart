@@ -1602,6 +1602,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsResourceApi res = new api.MlApi(mock).projects;
       var arg_name = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1633,6 +1634,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1640,7 +1642,7 @@ main() {
         var resp = convert.JSON.encode(buildGoogleCloudMlV1GetConfigResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getConfig(arg_name).then(unittest
+      res.getConfig(arg_name, $fields: arg_$fields).then(unittest
           .expectAsync1(((api.GoogleCloudMlV1GetConfigResponse response) {
         checkGoogleCloudMlV1GetConfigResponse(response);
       })));
@@ -1651,6 +1653,7 @@ main() {
       api.ProjectsResourceApi res = new api.MlApi(mock).projects;
       var arg_request = buildGoogleCloudMlV1PredictRequest();
       var arg_name = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GoogleCloudMlV1PredictRequest.fromJson(json);
         checkGoogleCloudMlV1PredictRequest(obj);
@@ -1685,6 +1688,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1693,7 +1697,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .predict(arg_request, arg_name)
+          .predict(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.GoogleApiHttpBody response) {
         checkGoogleApiHttpBody(response);
       })));
@@ -1706,6 +1710,7 @@ main() {
       api.ProjectsJobsResourceApi res = new api.MlApi(mock).projects.jobs;
       var arg_request = buildGoogleCloudMlV1CancelJobRequest();
       var arg_name = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GoogleCloudMlV1CancelJobRequest.fromJson(json);
         checkGoogleCloudMlV1CancelJobRequest(obj);
@@ -1740,6 +1745,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1748,7 +1754,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .cancel(arg_request, arg_name)
+          .cancel(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.GoogleProtobufEmpty response) {
         checkGoogleProtobufEmpty(response);
       })));
@@ -1759,6 +1765,7 @@ main() {
       api.ProjectsJobsResourceApi res = new api.MlApi(mock).projects.jobs;
       var arg_request = buildGoogleCloudMlV1Job();
       var arg_parent = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GoogleCloudMlV1Job.fromJson(json);
         checkGoogleCloudMlV1Job(obj);
@@ -1793,6 +1800,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1801,7 +1809,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .create(arg_request, arg_parent)
+          .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.GoogleCloudMlV1Job response) {
         checkGoogleCloudMlV1Job(response);
       })));
@@ -1811,6 +1819,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsJobsResourceApi res = new api.MlApi(mock).projects.jobs;
       var arg_name = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1842,6 +1851,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1850,7 +1860,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_name)
+          .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.GoogleCloudMlV1Job response) {
         checkGoogleCloudMlV1Job(response);
       })));
@@ -1860,6 +1870,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsJobsResourceApi res = new api.MlApi(mock).projects.jobs;
       var arg_resource = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1891,6 +1902,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1899,7 +1911,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .getIamPolicy(arg_resource)
+          .getIamPolicy(arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.GoogleIamV1Policy response) {
         checkGoogleIamV1Policy(response);
       })));
@@ -1909,9 +1921,10 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsJobsResourceApi res = new api.MlApi(mock).projects.jobs;
       var arg_parent = "foo";
+      var arg_filter = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
-      var arg_filter = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1943,11 +1956,12 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1957,9 +1971,10 @@ main() {
       }), true);
       res
           .list(arg_parent,
+              filter: arg_filter,
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
-              filter: arg_filter)
+              $fields: arg_$fields)
           .then(unittest
               .expectAsync1(((api.GoogleCloudMlV1ListJobsResponse response) {
         checkGoogleCloudMlV1ListJobsResponse(response);
@@ -1971,6 +1986,7 @@ main() {
       api.ProjectsJobsResourceApi res = new api.MlApi(mock).projects.jobs;
       var arg_request = buildGoogleIamV1SetIamPolicyRequest();
       var arg_resource = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GoogleIamV1SetIamPolicyRequest.fromJson(json);
         checkGoogleIamV1SetIamPolicyRequest(obj);
@@ -2005,6 +2021,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2013,7 +2030,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .setIamPolicy(arg_request, arg_resource)
+          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.GoogleIamV1Policy response) {
         checkGoogleIamV1Policy(response);
       })));
@@ -2024,6 +2041,7 @@ main() {
       api.ProjectsJobsResourceApi res = new api.MlApi(mock).projects.jobs;
       var arg_request = buildGoogleIamV1TestIamPermissionsRequest();
       var arg_resource = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GoogleIamV1TestIamPermissionsRequest.fromJson(json);
         checkGoogleIamV1TestIamPermissionsRequest(obj);
@@ -2058,6 +2076,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2066,8 +2085,10 @@ main() {
             convert.JSON.encode(buildGoogleIamV1TestIamPermissionsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.testIamPermissions(arg_request, arg_resource).then(unittest
-          .expectAsync1(((api.GoogleIamV1TestIamPermissionsResponse response) {
+      res
+          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
+          .then(unittest.expectAsync1(
+              ((api.GoogleIamV1TestIamPermissionsResponse response) {
         checkGoogleIamV1TestIamPermissionsResponse(response);
       })));
     });
@@ -2079,6 +2100,7 @@ main() {
       api.ProjectsModelsResourceApi res = new api.MlApi(mock).projects.models;
       var arg_request = buildGoogleCloudMlV1Model();
       var arg_parent = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GoogleCloudMlV1Model.fromJson(json);
         checkGoogleCloudMlV1Model(obj);
@@ -2113,6 +2135,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2121,7 +2144,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .create(arg_request, arg_parent)
+          .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.GoogleCloudMlV1Model response) {
         checkGoogleCloudMlV1Model(response);
       })));
@@ -2131,6 +2154,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsModelsResourceApi res = new api.MlApi(mock).projects.models;
       var arg_name = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2162,6 +2186,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2169,7 +2194,7 @@ main() {
         var resp = convert.JSON.encode(buildGoogleLongrunningOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_name).then(
+      res.delete(arg_name, $fields: arg_$fields).then(
           unittest.expectAsync1(((api.GoogleLongrunningOperation response) {
         checkGoogleLongrunningOperation(response);
       })));
@@ -2179,6 +2204,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsModelsResourceApi res = new api.MlApi(mock).projects.models;
       var arg_name = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2210,6 +2236,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2218,7 +2245,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_name)
+          .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.GoogleCloudMlV1Model response) {
         checkGoogleCloudMlV1Model(response);
       })));
@@ -2228,6 +2255,7 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsModelsResourceApi res = new api.MlApi(mock).projects.models;
       var arg_resource = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2259,6 +2287,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2267,7 +2296,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .getIamPolicy(arg_resource)
+          .getIamPolicy(arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.GoogleIamV1Policy response) {
         checkGoogleIamV1Policy(response);
       })));
@@ -2277,8 +2306,9 @@ main() {
       var mock = new HttpServerMock();
       api.ProjectsModelsResourceApi res = new api.MlApi(mock).projects.models;
       var arg_parent = "foo";
-      var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_pageToken = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2310,10 +2340,11 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2323,7 +2354,10 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .list(arg_parent, pageToken: arg_pageToken, pageSize: arg_pageSize)
+          .list(arg_parent,
+              pageSize: arg_pageSize,
+              pageToken: arg_pageToken,
+              $fields: arg_$fields)
           .then(unittest
               .expectAsync1(((api.GoogleCloudMlV1ListModelsResponse response) {
         checkGoogleCloudMlV1ListModelsResponse(response);
@@ -2336,6 +2370,7 @@ main() {
       var arg_request = buildGoogleCloudMlV1Model();
       var arg_name = "foo";
       var arg_updateMask = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GoogleCloudMlV1Model.fromJson(json);
         checkGoogleCloudMlV1Model(obj);
@@ -2372,6 +2407,7 @@ main() {
         }
         unittest.expect(
             queryMap["updateMask"].first, unittest.equals(arg_updateMask));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2379,8 +2415,11 @@ main() {
         var resp = convert.JSON.encode(buildGoogleLongrunningOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_name, updateMask: arg_updateMask).then(
-          unittest.expectAsync1(((api.GoogleLongrunningOperation response) {
+      res
+          .patch(arg_request, arg_name,
+              updateMask: arg_updateMask, $fields: arg_$fields)
+          .then(
+              unittest.expectAsync1(((api.GoogleLongrunningOperation response) {
         checkGoogleLongrunningOperation(response);
       })));
     });
@@ -2390,6 +2429,7 @@ main() {
       api.ProjectsModelsResourceApi res = new api.MlApi(mock).projects.models;
       var arg_request = buildGoogleIamV1SetIamPolicyRequest();
       var arg_resource = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GoogleIamV1SetIamPolicyRequest.fromJson(json);
         checkGoogleIamV1SetIamPolicyRequest(obj);
@@ -2424,6 +2464,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2432,7 +2473,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .setIamPolicy(arg_request, arg_resource)
+          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.GoogleIamV1Policy response) {
         checkGoogleIamV1Policy(response);
       })));
@@ -2443,6 +2484,7 @@ main() {
       api.ProjectsModelsResourceApi res = new api.MlApi(mock).projects.models;
       var arg_request = buildGoogleIamV1TestIamPermissionsRequest();
       var arg_resource = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GoogleIamV1TestIamPermissionsRequest.fromJson(json);
         checkGoogleIamV1TestIamPermissionsRequest(obj);
@@ -2477,6 +2519,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2485,8 +2528,10 @@ main() {
             convert.JSON.encode(buildGoogleIamV1TestIamPermissionsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.testIamPermissions(arg_request, arg_resource).then(unittest
-          .expectAsync1(((api.GoogleIamV1TestIamPermissionsResponse response) {
+      res
+          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
+          .then(unittest.expectAsync1(
+              ((api.GoogleIamV1TestIamPermissionsResponse response) {
         checkGoogleIamV1TestIamPermissionsResponse(response);
       })));
     });
@@ -2499,6 +2544,7 @@ main() {
           new api.MlApi(mock).projects.models.versions;
       var arg_request = buildGoogleCloudMlV1Version();
       var arg_parent = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GoogleCloudMlV1Version.fromJson(json);
         checkGoogleCloudMlV1Version(obj);
@@ -2533,6 +2579,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2540,7 +2587,7 @@ main() {
         var resp = convert.JSON.encode(buildGoogleLongrunningOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.create(arg_request, arg_parent).then(
+      res.create(arg_request, arg_parent, $fields: arg_$fields).then(
           unittest.expectAsync1(((api.GoogleLongrunningOperation response) {
         checkGoogleLongrunningOperation(response);
       })));
@@ -2551,6 +2598,7 @@ main() {
       api.ProjectsModelsVersionsResourceApi res =
           new api.MlApi(mock).projects.models.versions;
       var arg_name = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2582,6 +2630,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2589,7 +2638,7 @@ main() {
         var resp = convert.JSON.encode(buildGoogleLongrunningOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_name).then(
+      res.delete(arg_name, $fields: arg_$fields).then(
           unittest.expectAsync1(((api.GoogleLongrunningOperation response) {
         checkGoogleLongrunningOperation(response);
       })));
@@ -2600,6 +2649,7 @@ main() {
       api.ProjectsModelsVersionsResourceApi res =
           new api.MlApi(mock).projects.models.versions;
       var arg_name = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2631,6 +2681,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2639,7 +2690,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_name)
+          .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.GoogleCloudMlV1Version response) {
         checkGoogleCloudMlV1Version(response);
       })));
@@ -2652,6 +2703,7 @@ main() {
       var arg_parent = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2687,6 +2739,7 @@ main() {
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2696,7 +2749,10 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .list(arg_parent, pageToken: arg_pageToken, pageSize: arg_pageSize)
+          .list(arg_parent,
+              pageToken: arg_pageToken,
+              pageSize: arg_pageSize,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(
               ((api.GoogleCloudMlV1ListVersionsResponse response) {
         checkGoogleCloudMlV1ListVersionsResponse(response);
@@ -2710,6 +2766,7 @@ main() {
       var arg_request = buildGoogleCloudMlV1Version();
       var arg_name = "foo";
       var arg_updateMask = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GoogleCloudMlV1Version.fromJson(json);
         checkGoogleCloudMlV1Version(obj);
@@ -2746,6 +2803,7 @@ main() {
         }
         unittest.expect(
             queryMap["updateMask"].first, unittest.equals(arg_updateMask));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2753,8 +2811,11 @@ main() {
         var resp = convert.JSON.encode(buildGoogleLongrunningOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.patch(arg_request, arg_name, updateMask: arg_updateMask).then(
-          unittest.expectAsync1(((api.GoogleLongrunningOperation response) {
+      res
+          .patch(arg_request, arg_name,
+              updateMask: arg_updateMask, $fields: arg_$fields)
+          .then(
+              unittest.expectAsync1(((api.GoogleLongrunningOperation response) {
         checkGoogleLongrunningOperation(response);
       })));
     });
@@ -2765,6 +2826,7 @@ main() {
           new api.MlApi(mock).projects.models.versions;
       var arg_request = buildGoogleCloudMlV1SetDefaultVersionRequest();
       var arg_name = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             new api.GoogleCloudMlV1SetDefaultVersionRequest.fromJson(json);
@@ -2800,6 +2862,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2808,7 +2871,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .setDefault(arg_request, arg_name)
+          .setDefault(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.GoogleCloudMlV1Version response) {
         checkGoogleCloudMlV1Version(response);
       })));
@@ -2821,6 +2884,7 @@ main() {
       api.ProjectsOperationsResourceApi res =
           new api.MlApi(mock).projects.operations;
       var arg_name = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2852,6 +2916,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2860,7 +2925,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .cancel(arg_name)
+          .cancel(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.GoogleProtobufEmpty response) {
         checkGoogleProtobufEmpty(response);
       })));
@@ -2871,6 +2936,7 @@ main() {
       api.ProjectsOperationsResourceApi res =
           new api.MlApi(mock).projects.operations;
       var arg_name = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2902,6 +2968,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2910,7 +2977,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .delete(arg_name)
+          .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.GoogleProtobufEmpty response) {
         checkGoogleProtobufEmpty(response);
       })));
@@ -2921,6 +2988,7 @@ main() {
       api.ProjectsOperationsResourceApi res =
           new api.MlApi(mock).projects.operations;
       var arg_name = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2952,6 +3020,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2959,7 +3028,7 @@ main() {
         var resp = convert.JSON.encode(buildGoogleLongrunningOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_name).then(
+      res.get(arg_name, $fields: arg_$fields).then(
           unittest.expectAsync1(((api.GoogleLongrunningOperation response) {
         checkGoogleLongrunningOperation(response);
       })));
@@ -2970,9 +3039,10 @@ main() {
       api.ProjectsOperationsResourceApi res =
           new api.MlApi(mock).projects.operations;
       var arg_name = "foo";
+      var arg_pageSize = 42;
       var arg_filter = "foo";
       var arg_pageToken = "foo";
-      var arg_pageSize = 42;
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3004,11 +3074,12 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["filter"].first, unittest.equals(arg_filter));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -3019,9 +3090,10 @@ main() {
       }), true);
       res
           .list(arg_name,
+              pageSize: arg_pageSize,
               filter: arg_filter,
               pageToken: arg_pageToken,
-              pageSize: arg_pageSize)
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(
               ((api.GoogleLongrunningListOperationsResponse response) {
         checkGoogleLongrunningListOperationsResponse(response);

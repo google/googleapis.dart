@@ -91,6 +91,9 @@ class ActivitiesResourceApi {
   ///
   /// [activityId] - The ID of the activity to get.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Activity].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -98,7 +101,7 @@ class ActivitiesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Activity> get(core.String activityId) {
+  async.Future<Activity> get(core.String activityId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -108,6 +111,9 @@ class ActivitiesResourceApi {
 
     if (activityId == null) {
       throw new core.ArgumentError("Parameter activityId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'activities/' + commons.Escaper.ecapeVariable('$activityId');
@@ -134,6 +140,9 @@ class ActivitiesResourceApi {
   /// The response will include all possible attachments for a URL, including
   /// video, photos, and articles based on the content of the page.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Activity].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -142,7 +151,7 @@ class ActivitiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Activity> insert(Activity request, core.String userId,
-      {core.bool preview}) {
+      {core.bool preview, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -158,6 +167,9 @@ class ActivitiesResourceApi {
     }
     if (preview != null) {
       _queryParams["preview"] = ["${preview}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'people/' + commons.Escaper.ecapeVariable('$userId') + '/activities';
@@ -193,6 +205,9 @@ class ActivitiesResourceApi {
   /// result sets. To get the next page of results, set this parameter to the
   /// value of "nextPageToken" from the previous response.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ActivityFeed].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -201,7 +216,7 @@ class ActivitiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ActivityFeed> list(core.String userId, core.String collection,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -220,6 +235,9 @@ class ActivitiesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'people/' +
@@ -258,6 +276,9 @@ class AudiencesResourceApi {
   /// result sets. To get the next page of results, set this parameter to the
   /// value of "nextPageToken" from the previous response.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AudiencesFeed].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -266,7 +287,7 @@ class AudiencesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AudiencesFeed> list(core.String userId,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -282,6 +303,9 @@ class AudiencesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'people/' + commons.Escaper.ecapeVariable('$userId') + '/audiences';
@@ -314,6 +338,9 @@ class CirclesResourceApi {
   /// [userId] - IDs of the people to add to the circle. Optional, can be
   /// repeated.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Circle].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -322,7 +349,9 @@ class CirclesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Circle> addPeople(core.String circleId,
-      {core.List<core.String> email, core.List<core.String> userId}) {
+      {core.List<core.String> email,
+      core.List<core.String> userId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -338,6 +367,9 @@ class CirclesResourceApi {
     }
     if (userId != null) {
       _queryParams["userId"] = userId;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'circles/' + commons.Escaper.ecapeVariable('$circleId') + '/people';
@@ -357,6 +389,9 @@ class CirclesResourceApi {
   ///
   /// [circleId] - The ID of the circle to get.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Circle].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -364,7 +399,7 @@ class CirclesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Circle> get(core.String circleId) {
+  async.Future<Circle> get(core.String circleId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -374,6 +409,9 @@ class CirclesResourceApi {
 
     if (circleId == null) {
       throw new core.ArgumentError("Parameter circleId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'circles/' + commons.Escaper.ecapeVariable('$circleId');
@@ -396,6 +434,9 @@ class CirclesResourceApi {
   /// [userId] - The ID of the user to create the circle on behalf of. The value
   /// "me" can be used to indicate the authenticated user.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Circle].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -403,7 +444,8 @@ class CirclesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Circle> insert(Circle request, core.String userId) {
+  async.Future<Circle> insert(Circle request, core.String userId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -416,6 +458,9 @@ class CirclesResourceApi {
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'people/' + commons.Escaper.ecapeVariable('$userId') + '/circles';
@@ -445,6 +490,9 @@ class CirclesResourceApi {
   /// result sets. To get the next page of results, set this parameter to the
   /// value of "nextPageToken" from the previous response.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CircleFeed].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -453,7 +501,7 @@ class CirclesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CircleFeed> list(core.String userId,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -469,6 +517,9 @@ class CirclesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'people/' + commons.Escaper.ecapeVariable('$userId') + '/circles';
@@ -490,6 +541,9 @@ class CirclesResourceApi {
   ///
   /// [circleId] - The ID of the circle to update.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Circle].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -497,7 +551,8 @@ class CirclesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Circle> patch(Circle request, core.String circleId) {
+  async.Future<Circle> patch(Circle request, core.String circleId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -510,6 +565,9 @@ class CirclesResourceApi {
     }
     if (circleId == null) {
       throw new core.ArgumentError("Parameter circleId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'circles/' + commons.Escaper.ecapeVariable('$circleId');
@@ -529,12 +587,15 @@ class CirclesResourceApi {
   ///
   /// [circleId] - The ID of the circle to delete.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future remove(core.String circleId) {
+  async.Future remove(core.String circleId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -544,6 +605,9 @@ class CirclesResourceApi {
 
     if (circleId == null) {
       throw new core.ArgumentError("Parameter circleId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -571,13 +635,18 @@ class CirclesResourceApi {
   /// [userId] - IDs of the people to remove from the circle. Optional, can be
   /// repeated.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future removePeople(core.String circleId,
-      {core.List<core.String> email, core.List<core.String> userId}) {
+      {core.List<core.String> email,
+      core.List<core.String> userId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -593,6 +662,9 @@ class CirclesResourceApi {
     }
     if (userId != null) {
       _queryParams["userId"] = userId;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -616,6 +688,9 @@ class CirclesResourceApi {
   ///
   /// [circleId] - The ID of the circle to update.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Circle].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -623,7 +698,8 @@ class CirclesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Circle> update(Circle request, core.String circleId) {
+  async.Future<Circle> update(Circle request, core.String circleId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -636,6 +712,9 @@ class CirclesResourceApi {
     }
     if (circleId == null) {
       throw new core.ArgumentError("Parameter circleId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'circles/' + commons.Escaper.ecapeVariable('$circleId');
@@ -661,6 +740,9 @@ class CommentsResourceApi {
   ///
   /// [commentId] - The ID of the comment to get.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Comment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -668,7 +750,7 @@ class CommentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Comment> get(core.String commentId) {
+  async.Future<Comment> get(core.String commentId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -678,6 +760,9 @@ class CommentsResourceApi {
 
     if (commentId == null) {
       throw new core.ArgumentError("Parameter commentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'comments/' + commons.Escaper.ecapeVariable('$commentId');
@@ -699,6 +784,9 @@ class CommentsResourceApi {
   ///
   /// [activityId] - The ID of the activity to reply to.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Comment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -706,7 +794,8 @@ class CommentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Comment> insert(Comment request, core.String activityId) {
+  async.Future<Comment> insert(Comment request, core.String activityId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -719,6 +808,9 @@ class CommentsResourceApi {
     }
     if (activityId == null) {
       throw new core.ArgumentError("Parameter activityId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'activities/' +
@@ -754,6 +846,9 @@ class CommentsResourceApi {
   /// - "ascending" : Sort oldest comments first.
   /// - "descending" : Sort newest comments first.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CommentFeed].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -762,7 +857,10 @@ class CommentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CommentFeed> list(core.String activityId,
-      {core.int maxResults, core.String pageToken, core.String sortOrder}) {
+      {core.int maxResults,
+      core.String pageToken,
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -781,6 +879,9 @@ class CommentsResourceApi {
     }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'activities/' +
@@ -817,6 +918,9 @@ class MediaResourceApi {
   /// Possible string values are:
   /// - "cloud" : Upload the media to share on Google+.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [uploadMedia] - The media to upload.
   ///
   /// [uploadOptions] - Options for the media upload. Streaming Media without
@@ -832,7 +936,8 @@ class MediaResourceApi {
   /// this method will complete with the same error.
   async.Future<Media> insert(
       Media request, core.String userId, core.String collection,
-      {commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      {core.String $fields,
+      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -849,6 +954,9 @@ class MediaResourceApi {
     }
     if (collection == null) {
       throw new core.ArgumentError("Parameter collection is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -893,6 +1001,9 @@ class PeopleResourceApi {
   /// [userId] - The ID of the person to get the profile for. The special value
   /// "me" can be used to indicate the authenticated user.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Person].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -900,7 +1011,7 @@ class PeopleResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Person> get(core.String userId) {
+  async.Future<Person> get(core.String userId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -910,6 +1021,9 @@ class PeopleResourceApi {
 
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'people/' + commons.Escaper.ecapeVariable('$userId');
@@ -949,6 +1063,9 @@ class PeopleResourceApi {
   /// result sets. To get the next page of results, set this parameter to the
   /// value of "nextPageToken" from the previous response.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PeopleFeed].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -957,7 +1074,10 @@ class PeopleResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PeopleFeed> list(core.String userId, core.String collection,
-      {core.int maxResults, core.String orderBy, core.String pageToken}) {
+      {core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -979,6 +1099,9 @@ class PeopleResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'people/' +
@@ -1017,6 +1140,9 @@ class PeopleResourceApi {
   /// result sets. To get the next page of results, set this parameter to the
   /// value of "nextPageToken" from the previous response.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PeopleFeed].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1026,7 +1152,7 @@ class PeopleResourceApi {
   /// this method will complete with the same error.
   async.Future<PeopleFeed> listByActivity(
       core.String activityId, core.String collection,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1045,6 +1171,9 @@ class PeopleResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'activities/' +
@@ -1076,6 +1205,9 @@ class PeopleResourceApi {
   /// result sets. To get the next page of results, set this parameter to the
   /// value of "nextPageToken" from the previous response.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PeopleFeed].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1084,7 +1216,7 @@ class PeopleResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PeopleFeed> listByCircle(core.String circleId,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1100,6 +1232,9 @@ class PeopleResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'circles/' + commons.Escaper.ecapeVariable('$circleId') + '/people';

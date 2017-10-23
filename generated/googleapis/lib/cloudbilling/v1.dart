@@ -54,6 +54,9 @@ class BillingAccountsResourceApi {
   /// `billingAccounts/012345-567890-ABCDEF`.
   /// Value must have pattern "^billingAccounts/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BillingAccount].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -61,7 +64,7 @@ class BillingAccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<BillingAccount> get(core.String name) {
+  async.Future<BillingAccount> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -71,6 +74,9 @@ class BillingAccountsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -98,6 +104,9 @@ class BillingAccountsResourceApi {
   /// `next_page_token` value returned from a previous `ListBillingAccounts`
   /// call. If unspecified, the first page of results is returned.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListBillingAccountsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -106,7 +115,7 @@ class BillingAccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBillingAccountsResponse> list(
-      {core.int pageSize, core.String pageToken}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -119,6 +128,9 @@ class BillingAccountsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/billingAccounts';
@@ -160,6 +172,9 @@ class BillingAccountsProjectsResourceApi {
   /// `next_page_token` value returned from a previous `ListProjectBillingInfo`
   /// call. If unspecified, the first page of results is returned.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListProjectBillingInfoResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -168,7 +183,7 @@ class BillingAccountsProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListProjectBillingInfoResponse> list(core.String name,
-      {core.int pageSize, core.String pageToken}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -184,6 +199,9 @@ class BillingAccountsProjectsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/projects';
@@ -215,6 +233,9 @@ class ProjectsResourceApi {
   /// retrieved. For example, `projects/tokyo-rain-123`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ProjectBillingInfo].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -222,7 +243,8 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ProjectBillingInfo> getBillingInfo(core.String name) {
+  async.Future<ProjectBillingInfo> getBillingInfo(core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -232,6 +254,9 @@ class ProjectsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -289,6 +314,9 @@ class ProjectsResourceApi {
   /// that you want to update. For example, `projects/tokyo-rain-123`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ProjectBillingInfo].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -297,7 +325,8 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ProjectBillingInfo> updateBillingInfo(
-      ProjectBillingInfo request, core.String name) {
+      ProjectBillingInfo request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -310,6 +339,9 @@ class ProjectsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -343,6 +375,9 @@ class ServicesResourceApi {
   /// `next_page_token` value returned from a previous `ListServices`
   /// call. If unspecified, the first page of results is returned.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListServicesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -351,7 +386,7 @@ class ServicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListServicesResponse> list(
-      {core.int pageSize, core.String pageToken}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -364,6 +399,9 @@ class ServicesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/services';
@@ -417,6 +455,9 @@ class ServicesSkusResourceApi {
   /// `next_page_token` value returned from a previous `ListSkus`
   /// call. If unspecified, the first page of results is returned.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListSkusResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -429,7 +470,8 @@ class ServicesSkusResourceApi {
       core.String endTime,
       core.int pageSize,
       core.String startTime,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -454,6 +496,9 @@ class ServicesSkusResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/skus';

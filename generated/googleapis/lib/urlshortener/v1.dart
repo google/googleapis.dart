@@ -48,6 +48,9 @@ class UrlResourceApi {
   /// - "ANALYTICS_TOP_STRINGS" : Returns only top string counts.
   /// - "FULL" : Returns the creation timestamp and all available analytics.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Url].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -55,7 +58,8 @@ class UrlResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Url> get(core.String shortUrl, {core.String projection}) {
+  async.Future<Url> get(core.String shortUrl,
+      {core.String projection, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -69,6 +73,9 @@ class UrlResourceApi {
     _queryParams["shortUrl"] = [shortUrl];
     if (projection != null) {
       _queryParams["projection"] = [projection];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'url';
@@ -88,6 +95,9 @@ class UrlResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Url].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -95,7 +105,7 @@ class UrlResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Url> insert(Url request) {
+  async.Future<Url> insert(Url request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -105,6 +115,9 @@ class UrlResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'url';
@@ -129,6 +142,9 @@ class UrlResourceApi {
   ///
   /// [start_token] - Token for requesting successive pages of results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UrlHistory].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -137,7 +153,7 @@ class UrlResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UrlHistory> list(
-      {core.String projection, core.String start_token}) {
+      {core.String projection, core.String start_token, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -150,6 +166,9 @@ class UrlResourceApi {
     }
     if (start_token != null) {
       _queryParams["start-token"] = [start_token];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'url/history';

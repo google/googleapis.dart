@@ -42,6 +42,9 @@ class GroupsResourceApi {
   ///
   /// [groupUniqueId] - The resource ID
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Groups].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -49,7 +52,7 @@ class GroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Groups> get(core.String groupUniqueId) {
+  async.Future<Groups> get(core.String groupUniqueId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -59,6 +62,9 @@ class GroupsResourceApi {
 
     if (groupUniqueId == null) {
       throw new core.ArgumentError("Parameter groupUniqueId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$groupUniqueId');
@@ -80,6 +86,9 @@ class GroupsResourceApi {
   ///
   /// [groupUniqueId] - The resource ID
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Groups].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -87,7 +96,8 @@ class GroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Groups> patch(Groups request, core.String groupUniqueId) {
+  async.Future<Groups> patch(Groups request, core.String groupUniqueId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -100,6 +110,9 @@ class GroupsResourceApi {
     }
     if (groupUniqueId == null) {
       throw new core.ArgumentError("Parameter groupUniqueId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$groupUniqueId');
@@ -121,6 +134,9 @@ class GroupsResourceApi {
   ///
   /// [groupUniqueId] - The resource ID
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Groups].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -128,7 +144,8 @@ class GroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Groups> update(Groups request, core.String groupUniqueId) {
+  async.Future<Groups> update(Groups request, core.String groupUniqueId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -141,6 +158,9 @@ class GroupsResourceApi {
     }
     if (groupUniqueId == null) {
       throw new core.ArgumentError("Parameter groupUniqueId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$groupUniqueId');

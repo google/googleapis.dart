@@ -102,14 +102,14 @@ checkLicenseAssignmentInsert(api.LicenseAssignmentInsert o) {
   buildCounterLicenseAssignmentInsert--;
 }
 
-buildUnnamed2159() {
+buildUnnamed2157() {
   var o = new core.List<api.LicenseAssignment>();
   o.add(buildLicenseAssignment());
   o.add(buildLicenseAssignment());
   return o;
 }
 
-checkUnnamed2159(core.List<api.LicenseAssignment> o) {
+checkUnnamed2157(core.List<api.LicenseAssignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLicenseAssignment(o[0]);
   checkLicenseAssignment(o[1]);
@@ -121,7 +121,7 @@ buildLicenseAssignmentList() {
   buildCounterLicenseAssignmentList++;
   if (buildCounterLicenseAssignmentList < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed2159();
+    o.items = buildUnnamed2157();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -133,7 +133,7 @@ checkLicenseAssignmentList(api.LicenseAssignmentList o) {
   buildCounterLicenseAssignmentList++;
   if (buildCounterLicenseAssignmentList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed2159(o.items);
+    checkUnnamed2157(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -173,6 +173,7 @@ main() {
       var arg_productId = "foo";
       var arg_skuId = "foo";
       var arg_userId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -200,6 +201,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -208,7 +210,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .delete(arg_productId, arg_skuId, arg_userId)
+          .delete(arg_productId, arg_skuId, arg_userId, $fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
     });
 
@@ -219,6 +221,7 @@ main() {
       var arg_productId = "foo";
       var arg_skuId = "foo";
       var arg_userId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -246,6 +249,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -254,7 +258,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_productId, arg_skuId, arg_userId)
+          .get(arg_productId, arg_skuId, arg_userId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.LicenseAssignment response) {
         checkLicenseAssignment(response);
       })));
@@ -267,6 +271,7 @@ main() {
       var arg_request = buildLicenseAssignmentInsert();
       var arg_productId = "foo";
       var arg_skuId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.LicenseAssignmentInsert.fromJson(json);
         checkLicenseAssignmentInsert(obj);
@@ -297,6 +302,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -305,7 +311,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .insert(arg_request, arg_productId, arg_skuId)
+          .insert(arg_request, arg_productId, arg_skuId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.LicenseAssignment response) {
         checkLicenseAssignment(response);
       })));
@@ -319,6 +325,7 @@ main() {
       var arg_customerId = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -352,6 +359,7 @@ main() {
             unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -361,7 +369,9 @@ main() {
       }), true);
       res
           .listForProduct(arg_productId, arg_customerId,
-              maxResults: arg_maxResults, pageToken: arg_pageToken)
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.LicenseAssignmentList response) {
         checkLicenseAssignmentList(response);
       })));
@@ -376,6 +386,7 @@ main() {
       var arg_customerId = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -409,6 +420,7 @@ main() {
             unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -418,7 +430,9 @@ main() {
       }), true);
       res
           .listForProductAndSku(arg_productId, arg_skuId, arg_customerId,
-              maxResults: arg_maxResults, pageToken: arg_pageToken)
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.LicenseAssignmentList response) {
         checkLicenseAssignmentList(response);
       })));
@@ -432,6 +446,7 @@ main() {
       var arg_productId = "foo";
       var arg_skuId = "foo";
       var arg_userId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.LicenseAssignment.fromJson(json);
         checkLicenseAssignment(obj);
@@ -462,6 +477,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -470,7 +486,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .patch(arg_request, arg_productId, arg_skuId, arg_userId)
+          .patch(arg_request, arg_productId, arg_skuId, arg_userId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.LicenseAssignment response) {
         checkLicenseAssignment(response);
       })));
@@ -484,6 +501,7 @@ main() {
       var arg_productId = "foo";
       var arg_skuId = "foo";
       var arg_userId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.LicenseAssignment.fromJson(json);
         checkLicenseAssignment(obj);
@@ -514,6 +532,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -522,7 +541,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .update(arg_request, arg_productId, arg_skuId, arg_userId)
+          .update(arg_request, arg_productId, arg_skuId, arg_userId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.LicenseAssignment response) {
         checkLicenseAssignment(response);
       })));

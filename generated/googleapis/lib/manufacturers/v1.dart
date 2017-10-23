@@ -68,6 +68,9 @@ class AccountsProductsResourceApi {
   /// https://support.google.com/manufacturers/answer/6124116#id.
   /// Value must have pattern "^[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -75,7 +78,8 @@ class AccountsProductsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String parent, core.String name) {
+  async.Future<Empty> delete(core.String parent, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -88,6 +92,9 @@ class AccountsProductsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -132,6 +139,9 @@ class AccountsProductsResourceApi {
   /// https://support.google.com/manufacturers/answer/6124116#id.
   /// Value must have pattern "^[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Product].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -139,7 +149,8 @@ class AccountsProductsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Product> get(core.String parent, core.String name) {
+  async.Future<Product> get(core.String parent, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -152,6 +163,9 @@ class AccountsProductsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -177,11 +191,14 @@ class AccountsProductsResourceApi {
   /// `account_id` - The ID of the Manufacturer Center account.
   /// Value must have pattern "^accounts/[^/]+$".
   ///
-  /// [pageToken] - The token returned by the previous request.
-  ///
   /// [pageSize] - Maximum number of product statuses to return in the response,
   /// used for
   /// paging.
+  ///
+  /// [pageToken] - The token returned by the previous request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListProductsResponse].
   ///
@@ -191,7 +208,7 @@ class AccountsProductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListProductsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -202,11 +219,14 @@ class AccountsProductsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -256,6 +276,9 @@ class AccountsProductsResourceApi {
   /// https://support.google.com/manufacturers/answer/6124116#id.
   /// Value must have pattern "^[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Product].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -264,7 +287,8 @@ class AccountsProductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Product> update(
-      Product request, core.String parent, core.String name) {
+      Product request, core.String parent, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -280,6 +304,9 @@ class AccountsProductsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -389,7 +416,7 @@ class Attributes {
   /// https://support.google.com/manufacturers/answer/6124116#productpage.
   core.String productPageUrl;
 
-  /// The category of the product. For more information, see
+  /// The type or category of the product. For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#producttype.
   core.List<core.String> productType;
 
@@ -417,9 +444,9 @@ class Attributes {
   /// see https://support.google.com/manufacturers/answer/6124116#price.
   Price suggestedRetailPrice;
 
-  /// The target account id. Should only be used in the accounts of the data
+  /// The target client id. Should only be used in the accounts of the data
   /// partners.
-  core.String targetAccountId;
+  core.String targetClientId;
 
   /// The theme of the product. For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#theme.
@@ -529,8 +556,8 @@ class Attributes {
     if (_json.containsKey("suggestedRetailPrice")) {
       suggestedRetailPrice = new Price.fromJson(_json["suggestedRetailPrice"]);
     }
-    if (_json.containsKey("targetAccountId")) {
-      targetAccountId = _json["targetAccountId"];
+    if (_json.containsKey("targetClientId")) {
+      targetClientId = _json["targetClientId"];
     }
     if (_json.containsKey("theme")) {
       theme = _json["theme"];
@@ -636,8 +663,8 @@ class Attributes {
     if (suggestedRetailPrice != null) {
       _json["suggestedRetailPrice"] = (suggestedRetailPrice).toJson();
     }
-    if (targetAccountId != null) {
-      _json["targetAccountId"] = targetAccountId;
+    if (targetClientId != null) {
+      _json["targetClientId"] = targetClientId;
     }
     if (theme != null) {
       _json["theme"] = theme;
@@ -791,8 +818,9 @@ class Image {
   /// The status of the image.
   /// @OutputOnly
   /// Possible string values are:
-  /// - "STATUS_UNSPECIFIED" : Status is unspecified. Should not be used.
-  /// - "PENDING_PROCESSING" : Image was uploaded and is being processed.
+  /// - "STATUS_UNSPECIFIED" : The image status is unspecified. Should not be
+  /// used.
+  /// - "PENDING_PROCESSING" : The image was uploaded and is being processed.
   /// - "PENDING_CRAWL" : The image crawl is still pending.
   /// - "OK" : The image was processed and it meets the requirements.
   /// - "ROBOTED" : The image URL is protected by robots.txt file and cannot be
@@ -805,6 +833,9 @@ class Image {
   /// - "TOO_BIG" : The image is too big.
   /// - "CRAWL_SKIPPED" : The image was manually overridden and will not be
   /// crawled.
+  /// - "HOSTLOADED" : The image crawl was postponed to avoid overloading the
+  /// host.
+  /// - "HTTP_404" : The image URL returned a "404 Not Found" error.
   core.String status;
 
   /// The type of the image, i.e., crawled or uploaded.

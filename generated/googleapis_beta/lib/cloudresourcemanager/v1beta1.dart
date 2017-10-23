@@ -55,6 +55,9 @@ class OrganizationsResourceApi {
   /// [organizationId] - The id of the Organization resource to fetch.
   /// This field is deprecated and will be removed in v1. Use name instead.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Organization].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -63,7 +66,7 @@ class OrganizationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Organization> get(core.String name,
-      {core.String organizationId}) {
+      {core.String organizationId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -76,6 +79,9 @@ class OrganizationsResourceApi {
     }
     if (organizationId != null) {
       _queryParams["organizationId"] = [organizationId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -102,6 +108,9 @@ class OrganizationsResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Policy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -110,7 +119,8 @@ class OrganizationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
-      GetIamPolicyRequest request, core.String resource) {
+      GetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -123,6 +133,9 @@ class OrganizationsResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -143,6 +156,11 @@ class OrganizationsResourceApi {
   /// order. New Organizations do not necessarily appear at the end of the list.
   ///
   /// Request parameters:
+  ///
+  /// [pageToken] - A pagination token returned from a previous call to
+  /// `ListOrganizations`
+  /// that indicates from where listing should continue.
+  /// This field is optional.
   ///
   /// [pageSize] - The maximum number of Organizations to return in the
   /// response.
@@ -165,10 +183,8 @@ class OrganizationsResourceApi {
   ///
   /// This field is optional.
   ///
-  /// [pageToken] - A pagination token returned from a previous call to
-  /// `ListOrganizations`
-  /// that indicates from where listing should continue.
-  /// This field is optional.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListOrganizationsResponse].
   ///
@@ -178,7 +194,10 @@ class OrganizationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOrganizationsResponse> list(
-      {core.int pageSize, core.String filter, core.String pageToken}) {
+      {core.String pageToken,
+      core.int pageSize,
+      core.String filter,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -186,14 +205,17 @@ class OrganizationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/organizations';
@@ -222,6 +244,9 @@ class OrganizationsResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Policy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -230,7 +255,8 @@ class OrganizationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      SetIamPolicyRequest request, core.String resource) {
+      SetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -243,6 +269,9 @@ class OrganizationsResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -271,6 +300,9 @@ class OrganizationsResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TestIamPermissionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -279,7 +311,8 @@ class OrganizationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource) {
+      TestIamPermissionsRequest request, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -292,6 +325,9 @@ class OrganizationsResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -320,6 +356,9 @@ class OrganizationsResourceApi {
   /// "organizations/[organization_id]". For example, "organizations/1234".
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Organization].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -327,7 +366,8 @@ class OrganizationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Organization> update(Organization request, core.String name) {
+  async.Future<Organization> update(Organization request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -340,6 +380,9 @@ class OrganizationsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -375,6 +418,9 @@ class ProjectsResourceApi {
   /// [useLegacyStack] - A safety hatch to opt out of the new reliable project
   /// creation process.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Project].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -382,7 +428,8 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Project> create(Project request, {core.bool useLegacyStack}) {
+  async.Future<Project> create(Project request,
+      {core.bool useLegacyStack, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -395,6 +442,9 @@ class ProjectsResourceApi {
     }
     if (useLegacyStack != null) {
       _queryParams["useLegacyStack"] = ["${useLegacyStack}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/projects';
@@ -440,6 +490,9 @@ class ProjectsResourceApi {
   ///
   /// Required.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -447,7 +500,7 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String projectId) {
+  async.Future<Empty> delete(core.String projectId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -457,6 +510,9 @@ class ProjectsResourceApi {
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/projects/' + commons.Escaper.ecapeVariable('$projectId');
@@ -481,6 +537,9 @@ class ProjectsResourceApi {
   ///
   /// Required.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Project].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -488,7 +547,7 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Project> get(core.String projectId) {
+  async.Future<Project> get(core.String projectId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -498,6 +557,9 @@ class ProjectsResourceApi {
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/projects/' + commons.Escaper.ecapeVariable('$projectId');
@@ -524,6 +586,9 @@ class ProjectsResourceApi {
   ///
   /// Required.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GetAncestryResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -532,7 +597,8 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetAncestryResponse> getAncestry(
-      GetAncestryRequest request, core.String projectId) {
+      GetAncestryRequest request, core.String projectId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -545,6 +611,9 @@ class ProjectsResourceApi {
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/projects/' +
@@ -571,6 +640,9 @@ class ProjectsResourceApi {
   /// requested.
   /// See the operation documentation for the appropriate value for this field.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Policy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -579,7 +651,8 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
-      GetIamPolicyRequest request, core.String resource) {
+      GetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -592,6 +665,9 @@ class ProjectsResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/projects/' +
@@ -658,6 +734,9 @@ class ProjectsResourceApi {
   ///
   /// Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListProjectsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -666,7 +745,10 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListProjectsResponse> list(
-      {core.String filter, core.String pageToken, core.int pageSize}) {
+      {core.String filter,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -682,6 +764,9 @@ class ProjectsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/projects';
@@ -742,6 +827,9 @@ class ProjectsResourceApi {
   /// specified.
   /// See the operation documentation for the appropriate value for this field.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Policy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -750,7 +838,8 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      SetIamPolicyRequest request, core.String resource) {
+      SetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -763,6 +852,9 @@ class ProjectsResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/projects/' +
@@ -788,6 +880,9 @@ class ProjectsResourceApi {
   /// requested.
   /// See the operation documentation for the appropriate value for this field.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TestIamPermissionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -796,7 +891,8 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource) {
+      TestIamPermissionsRequest request, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -809,6 +905,9 @@ class ProjectsResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/projects/' +
@@ -841,6 +940,9 @@ class ProjectsResourceApi {
   ///
   /// Required.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -849,7 +951,8 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> undelete(
-      UndeleteProjectRequest request, core.String projectId) {
+      UndeleteProjectRequest request, core.String projectId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -862,6 +965,9 @@ class ProjectsResourceApi {
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/projects/' +
@@ -890,6 +996,9 @@ class ProjectsResourceApi {
   ///
   /// Required.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Project].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -897,7 +1006,8 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Project> update(Project request, core.String projectId) {
+  async.Future<Project> update(Project request, core.String projectId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -910,6 +1020,9 @@ class ProjectsResourceApi {
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/projects/' + commons.Escaper.ecapeVariable('$projectId');

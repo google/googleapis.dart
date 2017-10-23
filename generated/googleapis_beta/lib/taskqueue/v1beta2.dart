@@ -50,6 +50,9 @@ class TaskqueuesResourceApi {
   ///
   /// [getStats] - Whether to get stats. Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TaskQueue].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -58,7 +61,7 @@ class TaskqueuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TaskQueue> get(core.String project, core.String taskqueue,
-      {core.bool getStats}) {
+      {core.bool getStats, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -74,6 +77,9 @@ class TaskqueuesResourceApi {
     }
     if (getStats != null) {
       _queryParams["getStats"] = ["${getStats}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -105,13 +111,17 @@ class TasksResourceApi {
   ///
   /// [task] - The id of the task to delete.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(
-      core.String project, core.String taskqueue, core.String task) {
+      core.String project, core.String taskqueue, core.String task,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -127,6 +137,9 @@ class TasksResourceApi {
     }
     if (task == null) {
       throw new core.ArgumentError("Parameter task is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -156,6 +169,9 @@ class TasksResourceApi {
   ///
   /// [task] - The task to get properties of.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Task].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -164,7 +180,8 @@ class TasksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Task> get(
-      core.String project, core.String taskqueue, core.String task) {
+      core.String project, core.String taskqueue, core.String task,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -180,6 +197,9 @@ class TasksResourceApi {
     }
     if (task == null) {
       throw new core.ArgumentError("Parameter task is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -207,6 +227,9 @@ class TasksResourceApi {
   ///
   /// [taskqueue] - The taskqueue to insert the task into
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Task].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -215,7 +238,8 @@ class TasksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Task> insert(
-      Task request, core.String project, core.String taskqueue) {
+      Task request, core.String project, core.String taskqueue,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -231,6 +255,9 @@ class TasksResourceApi {
     }
     if (taskqueue == null) {
       throw new core.ArgumentError("Parameter taskqueue is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -266,6 +293,9 @@ class TasksResourceApi {
   /// the tag will be that of the oldest task by eta, i.e. the first available
   /// tag
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Tasks].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -275,7 +305,7 @@ class TasksResourceApi {
   /// this method will complete with the same error.
   async.Future<Tasks> lease(core.String project, core.String taskqueue,
       core.int numTasks, core.int leaseSecs,
-      {core.bool groupByTag, core.String tag}) {
+      {core.bool groupByTag, core.String tag, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -303,6 +333,9 @@ class TasksResourceApi {
     if (tag != null) {
       _queryParams["tag"] = [tag];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = commons.Escaper.ecapeVariable('$project') +
         '/taskqueues/' +
@@ -326,6 +359,9 @@ class TasksResourceApi {
   ///
   /// [taskqueue] - The id of the taskqueue to list tasks from.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Tasks2].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -333,7 +369,8 @@ class TasksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Tasks2> list(core.String project, core.String taskqueue) {
+  async.Future<Tasks2> list(core.String project, core.String taskqueue,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -346,6 +383,9 @@ class TasksResourceApi {
     }
     if (taskqueue == null) {
       throw new core.ArgumentError("Parameter taskqueue is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -377,6 +417,9 @@ class TasksResourceApi {
   ///
   /// [newLeaseSeconds] - The new lease in seconds.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Task].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -385,7 +428,8 @@ class TasksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Task> patch(Task request, core.String project,
-      core.String taskqueue, core.String task, core.int newLeaseSeconds) {
+      core.String taskqueue, core.String task, core.int newLeaseSeconds,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -409,6 +453,9 @@ class TasksResourceApi {
       throw new core.ArgumentError("Parameter newLeaseSeconds is required.");
     }
     _queryParams["newLeaseSeconds"] = ["${newLeaseSeconds}"];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = commons.Escaper.ecapeVariable('$project') +
         '/taskqueues/' +
@@ -439,6 +486,9 @@ class TasksResourceApi {
   ///
   /// [newLeaseSeconds] - The new lease in seconds.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Task].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -447,7 +497,8 @@ class TasksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Task> update(Task request, core.String project,
-      core.String taskqueue, core.String task, core.int newLeaseSeconds) {
+      core.String taskqueue, core.String task, core.int newLeaseSeconds,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -471,6 +522,9 @@ class TasksResourceApi {
       throw new core.ArgumentError("Parameter newLeaseSeconds is required.");
     }
     _queryParams["newLeaseSeconds"] = ["${newLeaseSeconds}"];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = commons.Escaper.ecapeVariable('$project') +
         '/taskqueues/' +

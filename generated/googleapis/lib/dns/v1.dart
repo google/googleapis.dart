@@ -64,6 +64,9 @@ class ChangesResourceApi {
   /// [managedZone] - Identifies the managed zone addressed by this request. Can
   /// be the managed zone name or id.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Change].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -72,7 +75,8 @@ class ChangesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Change> create(
-      Change request, core.String project, core.String managedZone) {
+      Change request, core.String project, core.String managedZone,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -88,6 +92,9 @@ class ChangesResourceApi {
     }
     if (managedZone == null) {
       throw new core.ArgumentError("Parameter managedZone is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -116,6 +123,9 @@ class ChangesResourceApi {
   /// [changeId] - The identifier of the requested change, from a previous
   /// ResourceRecordSetsChangeResponse.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Change].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -124,7 +134,8 @@ class ChangesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Change> get(
-      core.String project, core.String managedZone, core.String changeId) {
+      core.String project, core.String managedZone, core.String changeId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -140,6 +151,9 @@ class ChangesResourceApi {
     }
     if (changeId == null) {
       throw new core.ArgumentError("Parameter changeId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -178,6 +192,9 @@ class ChangesResourceApi {
   ///
   /// [sortOrder] - Sorting order direction: 'ascending' or 'descending'.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ChangesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -190,7 +207,8 @@ class ChangesResourceApi {
       {core.int maxResults,
       core.String pageToken,
       core.String sortBy,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -215,6 +233,9 @@ class ChangesResourceApi {
     }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -245,6 +266,9 @@ class ManagedZonesResourceApi {
   ///
   /// [project] - Identifies the project addressed by this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ManagedZone].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -252,7 +276,8 @@ class ManagedZonesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ManagedZone> create(ManagedZone request, core.String project) {
+  async.Future<ManagedZone> create(ManagedZone request, core.String project,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -265,6 +290,9 @@ class ManagedZonesResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/managedZones';
@@ -287,12 +315,16 @@ class ManagedZonesResourceApi {
   /// [managedZone] - Identifies the managed zone addressed by this request. Can
   /// be the managed zone name or id.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String project, core.String managedZone) {
+  async.Future delete(core.String project, core.String managedZone,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -305,6 +337,9 @@ class ManagedZonesResourceApi {
     }
     if (managedZone == null) {
       throw new core.ArgumentError("Parameter managedZone is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -331,6 +366,9 @@ class ManagedZonesResourceApi {
   /// [managedZone] - Identifies the managed zone addressed by this request. Can
   /// be the managed zone name or id.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ManagedZone].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -338,7 +376,8 @@ class ManagedZonesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ManagedZone> get(core.String project, core.String managedZone) {
+  async.Future<ManagedZone> get(core.String project, core.String managedZone,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -351,6 +390,9 @@ class ManagedZonesResourceApi {
     }
     if (managedZone == null) {
       throw new core.ArgumentError("Parameter managedZone is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -380,6 +422,9 @@ class ManagedZonesResourceApi {
   /// [pageToken] - Optional. A tag returned by a previous list request that was
   /// truncated. Use this parameter to continue a previous list request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ManagedZonesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -388,7 +433,10 @@ class ManagedZonesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ManagedZonesListResponse> list(core.String project,
-      {core.String dnsName, core.int maxResults, core.String pageToken}) {
+      {core.String dnsName,
+      core.int maxResults,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -407,6 +455,9 @@ class ManagedZonesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/managedZones';
@@ -433,6 +484,9 @@ class ProjectsResourceApi {
   ///
   /// [project] - Identifies the project addressed by this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Project].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -440,7 +494,7 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Project> get(core.String project) {
+  async.Future<Project> get(core.String project, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -450,6 +504,9 @@ class ProjectsResourceApi {
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project');
@@ -491,6 +548,9 @@ class ResourceRecordSetsResourceApi {
   /// [type] - Restricts the list to return only records of this type. If
   /// present, the "name" parameter must also be present.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ResourceRecordSetsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -503,7 +563,8 @@ class ResourceRecordSetsResourceApi {
       {core.int maxResults,
       core.String name,
       core.String pageToken,
-      core.String type}) {
+      core.String type,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -528,6 +589,9 @@ class ResourceRecordSetsResourceApi {
     }
     if (type != null) {
       _queryParams["type"] = [type];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +

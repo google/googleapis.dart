@@ -72,6 +72,9 @@ class AccountsResourceApi {
   ///
   /// [path] - GTM Accounts's API relative path. Example: accounts/{account_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Account].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -79,7 +82,7 @@ class AccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Account> get(core.String path) {
+  async.Future<Account> get(core.String path, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -89,6 +92,9 @@ class AccountsResourceApi {
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path');
@@ -108,6 +114,9 @@ class AccountsResourceApi {
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListAccountsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -115,7 +124,8 @@ class AccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListAccountsResponse> list({core.String pageToken}) {
+  async.Future<ListAccountsResponse> list(
+      {core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -125,6 +135,9 @@ class AccountsResourceApi {
 
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts';
@@ -149,6 +162,9 @@ class AccountsResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the account in storage.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Account].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -157,7 +173,7 @@ class AccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Account> update(Account request, core.String path,
-      {core.String fingerprint}) {
+      {core.String fingerprint, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -173,6 +189,9 @@ class AccountsResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path');
@@ -211,6 +230,9 @@ class AccountsContainersResourceApi {
   /// [parent] - GTM Account's API relative path. Example:
   /// accounts/{account_id}.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Container].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -218,7 +240,8 @@ class AccountsContainersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Container> create(Container request, core.String parent) {
+  async.Future<Container> create(Container request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -231,6 +254,9 @@ class AccountsContainersResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$parent') + '/containers';
@@ -251,12 +277,15 @@ class AccountsContainersResourceApi {
   /// [path] - GTM Container's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String path) {
+  async.Future delete(core.String path, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -266,6 +295,9 @@ class AccountsContainersResourceApi {
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -288,6 +320,9 @@ class AccountsContainersResourceApi {
   /// [path] - GTM Container's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Container].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -295,7 +330,7 @@ class AccountsContainersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Container> get(core.String path) {
+  async.Future<Container> get(core.String path, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -305,6 +340,9 @@ class AccountsContainersResourceApi {
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path');
@@ -327,6 +365,9 @@ class AccountsContainersResourceApi {
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListContainersResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -335,7 +376,7 @@ class AccountsContainersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListContainersResponse> list(core.String parent,
-      {core.String pageToken}) {
+      {core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -348,6 +389,9 @@ class AccountsContainersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$parent') + '/containers';
@@ -373,6 +417,9 @@ class AccountsContainersResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the container in storage.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Container].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -381,7 +428,7 @@ class AccountsContainersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Container> update(Container request, core.String path,
-      {core.String fingerprint}) {
+      {core.String fingerprint, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -397,6 +444,9 @@ class AccountsContainersResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path');
@@ -426,6 +476,9 @@ class AccountsContainersEnvironmentsResourceApi {
   /// [parent] - GTM Container's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Environment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -433,7 +486,8 @@ class AccountsContainersEnvironmentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Environment> create(Environment request, core.String parent) {
+  async.Future<Environment> create(Environment request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -446,6 +500,9 @@ class AccountsContainersEnvironmentsResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$parent') + '/environments';
@@ -466,12 +523,15 @@ class AccountsContainersEnvironmentsResourceApi {
   /// [path] - GTM Environment's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/environments/{environment_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String path) {
+  async.Future delete(core.String path, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -481,6 +541,9 @@ class AccountsContainersEnvironmentsResourceApi {
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -503,6 +566,9 @@ class AccountsContainersEnvironmentsResourceApi {
   /// [path] - GTM Environment's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/environments/{environment_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Environment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -510,7 +576,7 @@ class AccountsContainersEnvironmentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Environment> get(core.String path) {
+  async.Future<Environment> get(core.String path, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -520,6 +586,9 @@ class AccountsContainersEnvironmentsResourceApi {
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path');
@@ -542,6 +611,9 @@ class AccountsContainersEnvironmentsResourceApi {
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListEnvironmentsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -550,7 +622,7 @@ class AccountsContainersEnvironmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListEnvironmentsResponse> list(core.String parent,
-      {core.String pageToken}) {
+      {core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -563,6 +635,9 @@ class AccountsContainersEnvironmentsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$parent') + '/environments';
@@ -589,6 +664,9 @@ class AccountsContainersEnvironmentsResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the environment in storage.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Environment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -597,7 +675,7 @@ class AccountsContainersEnvironmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Environment> patch(Environment request, core.String path,
-      {core.String fingerprint}) {
+      {core.String fingerprint, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -613,6 +691,9 @@ class AccountsContainersEnvironmentsResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path');
@@ -635,6 +716,9 @@ class AccountsContainersEnvironmentsResourceApi {
   /// [path] - GTM Environment's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/environments/{environment_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Environment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -642,7 +726,8 @@ class AccountsContainersEnvironmentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Environment> reauthorize(Environment request, core.String path) {
+  async.Future<Environment> reauthorize(Environment request, core.String path,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -655,6 +740,9 @@ class AccountsContainersEnvironmentsResourceApi {
     }
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path') + ':reauthorize';
@@ -680,6 +768,9 @@ class AccountsContainersEnvironmentsResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the environment in storage.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Environment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -688,7 +779,7 @@ class AccountsContainersEnvironmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Environment> update(Environment request, core.String path,
-      {core.String fingerprint}) {
+      {core.String fingerprint, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -704,6 +795,9 @@ class AccountsContainersEnvironmentsResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path');
@@ -731,6 +825,9 @@ class AccountsContainersVersionHeadersResourceApi {
   /// [parent] - GTM Container's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ContainerVersionHeader].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -738,7 +835,8 @@ class AccountsContainersVersionHeadersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ContainerVersionHeader> latest(core.String parent) {
+  async.Future<ContainerVersionHeader> latest(core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -748,6 +846,9 @@ class AccountsContainersVersionHeadersResourceApi {
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$parent') +
@@ -773,6 +874,9 @@ class AccountsContainersVersionHeadersResourceApi {
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListContainerVersionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -781,7 +885,7 @@ class AccountsContainersVersionHeadersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListContainerVersionsResponse> list(core.String parent,
-      {core.bool includeDeleted, core.String pageToken}) {
+      {core.bool includeDeleted, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -797,6 +901,9 @@ class AccountsContainersVersionHeadersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -826,12 +933,15 @@ class AccountsContainersVersionsResourceApi {
   /// [path] - GTM ContainerVersion's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String path) {
+  async.Future delete(core.String path, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -841,6 +951,9 @@ class AccountsContainersVersionsResourceApi {
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -866,6 +979,9 @@ class AccountsContainersVersionsResourceApi {
   /// [containerVersionId] - The GTM ContainerVersion ID. Specify published to
   /// retrieve the currently published version.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ContainerVersion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -874,7 +990,7 @@ class AccountsContainersVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ContainerVersion> get(core.String path,
-      {core.String containerVersionId}) {
+      {core.String containerVersionId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -887,6 +1003,9 @@ class AccountsContainersVersionsResourceApi {
     }
     if (containerVersionId != null) {
       _queryParams["containerVersionId"] = [containerVersionId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path');
@@ -907,6 +1026,9 @@ class AccountsContainersVersionsResourceApi {
   /// [parent] - GTM Container's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ContainerVersion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -914,7 +1036,8 @@ class AccountsContainersVersionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ContainerVersion> live(core.String parent) {
+  async.Future<ContainerVersion> live(core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -924,6 +1047,9 @@ class AccountsContainersVersionsResourceApi {
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$parent') + '/versions:live';
@@ -947,6 +1073,9 @@ class AccountsContainersVersionsResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the container version in storage.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PublishContainerVersionResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -955,7 +1084,7 @@ class AccountsContainersVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PublishContainerVersionResponse> publish(core.String path,
-      {core.String fingerprint}) {
+      {core.String fingerprint, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -968,6 +1097,9 @@ class AccountsContainersVersionsResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path') + ':publish';
@@ -990,6 +1122,9 @@ class AccountsContainersVersionsResourceApi {
   /// [path] - GTM ContainerVersion's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ContainerVersion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -997,7 +1132,8 @@ class AccountsContainersVersionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ContainerVersion> setLatest(core.String path) {
+  async.Future<ContainerVersion> setLatest(core.String path,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1007,6 +1143,9 @@ class AccountsContainersVersionsResourceApi {
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path') + ':set_latest';
@@ -1027,6 +1166,9 @@ class AccountsContainersVersionsResourceApi {
   /// [path] - GTM ContainerVersion's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ContainerVersion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1034,7 +1176,8 @@ class AccountsContainersVersionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ContainerVersion> undelete(core.String path) {
+  async.Future<ContainerVersion> undelete(core.String path,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1044,6 +1187,9 @@ class AccountsContainersVersionsResourceApi {
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path') + ':undelete';
@@ -1069,6 +1215,9 @@ class AccountsContainersVersionsResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the container version in storage.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ContainerVersion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1078,7 +1227,7 @@ class AccountsContainersVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ContainerVersion> update(
       ContainerVersion request, core.String path,
-      {core.String fingerprint}) {
+      {core.String fingerprint, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1094,6 +1243,9 @@ class AccountsContainersVersionsResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path');
@@ -1138,6 +1290,9 @@ class AccountsContainersWorkspacesResourceApi {
   /// [parent] - GTM parent Container's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Workspace].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1145,7 +1300,8 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Workspace> create(Workspace request, core.String parent) {
+  async.Future<Workspace> create(Workspace request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1158,6 +1314,9 @@ class AccountsContainersWorkspacesResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$parent') + '/workspaces';
@@ -1182,6 +1341,9 @@ class AccountsContainersWorkspacesResourceApi {
   /// [path] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CreateContainerVersionResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1190,7 +1352,8 @@ class AccountsContainersWorkspacesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreateContainerVersionResponse> createVersion(
-      CreateContainerVersionRequestVersionOptions request, core.String path) {
+      CreateContainerVersionRequestVersionOptions request, core.String path,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1203,6 +1366,9 @@ class AccountsContainersWorkspacesResourceApi {
     }
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path') + ':create_version';
@@ -1224,12 +1390,15 @@ class AccountsContainersWorkspacesResourceApi {
   /// [path] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String path) {
+  async.Future delete(core.String path, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1239,6 +1408,9 @@ class AccountsContainersWorkspacesResourceApi {
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1261,6 +1433,9 @@ class AccountsContainersWorkspacesResourceApi {
   /// [path] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Workspace].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1268,7 +1443,7 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Workspace> get(core.String path) {
+  async.Future<Workspace> get(core.String path, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1278,6 +1453,9 @@ class AccountsContainersWorkspacesResourceApi {
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path');
@@ -1298,6 +1476,9 @@ class AccountsContainersWorkspacesResourceApi {
   /// [path] - GTM workspace proposal's relative path: Example:
   /// accounts/{aid}/containers/{cid}/workspace/{wid}/workspace_proposal
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [WorkspaceProposal].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1305,7 +1486,8 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<WorkspaceProposal> getProposal(core.String path) {
+  async.Future<WorkspaceProposal> getProposal(core.String path,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1315,6 +1497,9 @@ class AccountsContainersWorkspacesResourceApi {
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path');
@@ -1335,6 +1520,9 @@ class AccountsContainersWorkspacesResourceApi {
   /// [path] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GetWorkspaceStatusResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1342,7 +1530,8 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GetWorkspaceStatusResponse> getStatus(core.String path) {
+  async.Future<GetWorkspaceStatusResponse> getStatus(core.String path,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1352,6 +1541,9 @@ class AccountsContainersWorkspacesResourceApi {
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path') + '/status';
@@ -1375,6 +1567,9 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListWorkspacesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1383,7 +1578,7 @@ class AccountsContainersWorkspacesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListWorkspacesResponse> list(core.String parent,
-      {core.String pageToken}) {
+      {core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1396,6 +1591,9 @@ class AccountsContainersWorkspacesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$parent') + '/workspaces';
@@ -1417,6 +1615,9 @@ class AccountsContainersWorkspacesResourceApi {
   /// [path] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [QuickPreviewResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1424,7 +1625,8 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<QuickPreviewResponse> quickPreview(core.String path) {
+  async.Future<QuickPreviewResponse> quickPreview(core.String path,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1434,6 +1636,9 @@ class AccountsContainersWorkspacesResourceApi {
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path') + ':quick_preview';
@@ -1460,13 +1665,16 @@ class AccountsContainersWorkspacesResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the entity_in_workspace in the merge conflict.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future resolveConflict(Entity request, core.String path,
-      {core.String fingerprint}) {
+      {core.String fingerprint, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1482,6 +1690,9 @@ class AccountsContainersWorkspacesResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1506,6 +1717,9 @@ class AccountsContainersWorkspacesResourceApi {
   /// [path] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SyncWorkspaceResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1513,7 +1727,8 @@ class AccountsContainersWorkspacesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SyncWorkspaceResponse> sync(core.String path) {
+  async.Future<SyncWorkspaceResponse> sync(core.String path,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1523,6 +1738,9 @@ class AccountsContainersWorkspacesResourceApi {
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path') + ':sync';
@@ -1548,6 +1766,9 @@ class AccountsContainersWorkspacesResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the workspace in storage.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Workspace].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1556,7 +1777,7 @@ class AccountsContainersWorkspacesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Workspace> update(Workspace request, core.String path,
-      {core.String fingerprint}) {
+      {core.String fingerprint, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1572,6 +1793,9 @@ class AccountsContainersWorkspacesResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path');
@@ -1594,6 +1818,9 @@ class AccountsContainersWorkspacesResourceApi {
   /// [path] - GTM workspace proposal's relative path: Example:
   /// accounts/{aid}/containers/{cid}/workspace/{wid}/workspace_proposal
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [WorkspaceProposal].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1602,7 +1829,8 @@ class AccountsContainersWorkspacesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<WorkspaceProposal> updateProposal(
-      UpdateWorkspaceProposalRequest request, core.String path) {
+      UpdateWorkspaceProposalRequest request, core.String path,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1615,6 +1843,9 @@ class AccountsContainersWorkspacesResourceApi {
     }
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path');
@@ -1645,6 +1876,9 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
   ///
   /// [type] - The types of built-in variables to enable.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CreateBuiltInVariableResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1653,7 +1887,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreateBuiltInVariableResponse> create(core.String parent,
-      {core.List<core.String> type}) {
+      {core.List<core.String> type, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1666,6 +1900,9 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
     }
     if (type != null) {
       _queryParams["type"] = type;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$parent') +
@@ -1690,12 +1927,16 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
   ///
   /// [type] - The types of built-in variables to delete.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String path, {core.List<core.String> type}) {
+  async.Future delete(core.String path,
+      {core.List<core.String> type, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1708,6 +1949,9 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
     }
     if (type != null) {
       _queryParams["type"] = type;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1732,6 +1976,9 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListEnabledBuiltInVariablesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1740,7 +1987,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListEnabledBuiltInVariablesResponse> list(core.String parent,
-      {core.String pageToken}) {
+      {core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1753,6 +2000,9 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$parent') +
@@ -1875,6 +2125,9 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
   /// - "videoUrl"
   /// - "videoVisible"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RevertBuiltInVariableResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1883,7 +2136,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RevertBuiltInVariableResponse> revert(core.String path,
-      {core.String type}) {
+      {core.String type, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1896,6 +2149,9 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
     }
     if (type != null) {
       _queryParams["type"] = [type];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path') +
@@ -1927,6 +2183,9 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Folder].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1934,7 +2193,8 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Folder> create(Folder request, core.String parent) {
+  async.Future<Folder> create(Folder request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1947,6 +2207,9 @@ class AccountsContainersWorkspacesFoldersResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$parent') + '/folders';
@@ -1967,12 +2230,15 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   /// [path] - GTM Folder's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String path) {
+  async.Future delete(core.String path, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1982,6 +2248,9 @@ class AccountsContainersWorkspacesFoldersResourceApi {
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2006,6 +2275,9 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FolderEntities].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2014,7 +2286,7 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FolderEntities> entities(core.String path,
-      {core.String pageToken}) {
+      {core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2027,6 +2299,9 @@ class AccountsContainersWorkspacesFoldersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path') + ':entities';
@@ -2047,6 +2322,9 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   /// [path] - GTM Folder's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Folder].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2054,7 +2332,7 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Folder> get(core.String path) {
+  async.Future<Folder> get(core.String path, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2064,6 +2342,9 @@ class AccountsContainersWorkspacesFoldersResourceApi {
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path');
@@ -2086,6 +2367,9 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListFoldersResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2094,7 +2378,7 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListFoldersResponse> list(core.String parent,
-      {core.String pageToken}) {
+      {core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2107,6 +2391,9 @@ class AccountsContainersWorkspacesFoldersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$parent') + '/folders';
@@ -2135,6 +2422,9 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   ///
   /// [variableId] - The variables to be moved to the folder.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
@@ -2143,7 +2433,8 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   async.Future moveEntitiesToFolder(Folder request, core.String path,
       {core.List<core.String> tagId,
       core.List<core.String> triggerId,
-      core.List<core.String> variableId}) {
+      core.List<core.String> variableId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2165,6 +2456,9 @@ class AccountsContainersWorkspacesFoldersResourceApi {
     }
     if (variableId != null) {
       _queryParams["variableId"] = variableId;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2191,6 +2485,9 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the tag in storage.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RevertFolderResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2199,7 +2496,7 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RevertFolderResponse> revert(core.String path,
-      {core.String fingerprint}) {
+      {core.String fingerprint, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2212,6 +2509,9 @@ class AccountsContainersWorkspacesFoldersResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path') + ':revert';
@@ -2237,6 +2537,9 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the folder in storage.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Folder].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2245,7 +2548,7 @@ class AccountsContainersWorkspacesFoldersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Folder> update(Folder request, core.String path,
-      {core.String fingerprint}) {
+      {core.String fingerprint, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2261,6 +2564,9 @@ class AccountsContainersWorkspacesFoldersResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path');
@@ -2290,6 +2596,9 @@ class AccountsContainersWorkspacesProposalResourceApi {
   /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{aid}/containers/{cid}/workspace/{wid}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [WorkspaceProposal].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2298,7 +2607,8 @@ class AccountsContainersWorkspacesProposalResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<WorkspaceProposal> create(
-      CreateWorkspaceProposalRequest request, core.String parent) {
+      CreateWorkspaceProposalRequest request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2311,6 +2621,9 @@ class AccountsContainersWorkspacesProposalResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$parent') + '/proposal';
@@ -2331,12 +2644,15 @@ class AccountsContainersWorkspacesProposalResourceApi {
   /// [path] - GTM workspace proposal's relative path: Example:
   /// accounts/{aid}/containers/{cid}/workspace/{wid}/workspace_proposal
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String path) {
+  async.Future delete(core.String path, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2346,6 +2662,9 @@ class AccountsContainersWorkspacesProposalResourceApi {
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2377,6 +2696,9 @@ class AccountsContainersWorkspacesTagsResourceApi {
   /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Tag].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2384,7 +2706,8 @@ class AccountsContainersWorkspacesTagsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Tag> create(Tag request, core.String parent) {
+  async.Future<Tag> create(Tag request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2397,6 +2720,9 @@ class AccountsContainersWorkspacesTagsResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$parent') + '/tags';
@@ -2417,12 +2743,15 @@ class AccountsContainersWorkspacesTagsResourceApi {
   /// [path] - GTM Tag's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/tags/{tag_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String path) {
+  async.Future delete(core.String path, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2432,6 +2761,9 @@ class AccountsContainersWorkspacesTagsResourceApi {
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2454,6 +2786,9 @@ class AccountsContainersWorkspacesTagsResourceApi {
   /// [path] - GTM Tag's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/tags/{tag_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Tag].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2461,7 +2796,7 @@ class AccountsContainersWorkspacesTagsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Tag> get(core.String path) {
+  async.Future<Tag> get(core.String path, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2471,6 +2806,9 @@ class AccountsContainersWorkspacesTagsResourceApi {
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path');
@@ -2493,6 +2831,9 @@ class AccountsContainersWorkspacesTagsResourceApi {
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListTagsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2501,7 +2842,7 @@ class AccountsContainersWorkspacesTagsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTagsResponse> list(core.String parent,
-      {core.String pageToken}) {
+      {core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2514,6 +2855,9 @@ class AccountsContainersWorkspacesTagsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$parent') + '/tags';
@@ -2537,6 +2881,9 @@ class AccountsContainersWorkspacesTagsResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of thetag in storage.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RevertTagResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2545,7 +2892,7 @@ class AccountsContainersWorkspacesTagsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RevertTagResponse> revert(core.String path,
-      {core.String fingerprint}) {
+      {core.String fingerprint, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2558,6 +2905,9 @@ class AccountsContainersWorkspacesTagsResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path') + ':revert';
@@ -2583,6 +2933,9 @@ class AccountsContainersWorkspacesTagsResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the tag in storage.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Tag].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2591,7 +2944,7 @@ class AccountsContainersWorkspacesTagsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Tag> update(Tag request, core.String path,
-      {core.String fingerprint}) {
+      {core.String fingerprint, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2607,6 +2960,9 @@ class AccountsContainersWorkspacesTagsResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path');
@@ -2636,6 +2992,9 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   /// [parent] - GTM Workspaces's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Trigger].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2643,7 +3002,8 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Trigger> create(Trigger request, core.String parent) {
+  async.Future<Trigger> create(Trigger request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2656,6 +3016,9 @@ class AccountsContainersWorkspacesTriggersResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$parent') + '/triggers';
@@ -2676,12 +3039,15 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   /// [path] - GTM Trigger's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/triggers/{trigger_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String path) {
+  async.Future delete(core.String path, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2691,6 +3057,9 @@ class AccountsContainersWorkspacesTriggersResourceApi {
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2713,6 +3082,9 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   /// [path] - GTM Trigger's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/triggers/{trigger_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Trigger].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2720,7 +3092,7 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Trigger> get(core.String path) {
+  async.Future<Trigger> get(core.String path, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2730,6 +3102,9 @@ class AccountsContainersWorkspacesTriggersResourceApi {
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path');
@@ -2752,6 +3127,9 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListTriggersResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2760,7 +3138,7 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTriggersResponse> list(core.String parent,
-      {core.String pageToken}) {
+      {core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2773,6 +3151,9 @@ class AccountsContainersWorkspacesTriggersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$parent') + '/triggers';
@@ -2796,6 +3177,9 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the trigger in storage.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RevertTriggerResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2804,7 +3188,7 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RevertTriggerResponse> revert(core.String path,
-      {core.String fingerprint}) {
+      {core.String fingerprint, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2817,6 +3201,9 @@ class AccountsContainersWorkspacesTriggersResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path') + ':revert';
@@ -2842,6 +3229,9 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the trigger in storage.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Trigger].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2850,7 +3240,7 @@ class AccountsContainersWorkspacesTriggersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Trigger> update(Trigger request, core.String path,
-      {core.String fingerprint}) {
+      {core.String fingerprint, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2866,6 +3256,9 @@ class AccountsContainersWorkspacesTriggersResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path');
@@ -2895,6 +3288,9 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Variable].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2902,7 +3298,8 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Variable> create(Variable request, core.String parent) {
+  async.Future<Variable> create(Variable request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2915,6 +3312,9 @@ class AccountsContainersWorkspacesVariablesResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$parent') + '/variables';
@@ -2935,12 +3335,15 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   /// [path] - GTM Variable's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/variables/{variable_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String path) {
+  async.Future delete(core.String path, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2950,6 +3353,9 @@ class AccountsContainersWorkspacesVariablesResourceApi {
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2972,6 +3378,9 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   /// [path] - GTM Variable's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/variables/{variable_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Variable].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2979,7 +3388,7 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Variable> get(core.String path) {
+  async.Future<Variable> get(core.String path, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2989,6 +3398,9 @@ class AccountsContainersWorkspacesVariablesResourceApi {
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path');
@@ -3011,6 +3423,9 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListVariablesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3019,7 +3434,7 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListVariablesResponse> list(core.String parent,
-      {core.String pageToken}) {
+      {core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3032,6 +3447,9 @@ class AccountsContainersWorkspacesVariablesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$parent') + '/variables';
@@ -3055,6 +3473,9 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the variable in storage.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RevertVariableResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3063,7 +3484,7 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RevertVariableResponse> revert(core.String path,
-      {core.String fingerprint}) {
+      {core.String fingerprint, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3076,6 +3497,9 @@ class AccountsContainersWorkspacesVariablesResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path') + ':revert';
@@ -3101,6 +3525,9 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the variable in storage.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Variable].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3109,7 +3536,7 @@ class AccountsContainersWorkspacesVariablesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Variable> update(Variable request, core.String path,
-      {core.String fingerprint}) {
+      {core.String fingerprint, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3125,6 +3552,9 @@ class AccountsContainersWorkspacesVariablesResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path');
@@ -3153,6 +3583,9 @@ class AccountsUserPermissionsResourceApi {
   ///
   /// [parent] - GTM Account's API relative path. Example: accounts/{account_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UserPermission].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3161,7 +3594,8 @@ class AccountsUserPermissionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UserPermission> create(
-      UserPermission request, core.String parent) {
+      UserPermission request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3174,6 +3608,9 @@ class AccountsUserPermissionsResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -3196,12 +3633,15 @@ class AccountsUserPermissionsResourceApi {
   /// [path] - GTM UserPermission's API relative path. Example:
   /// accounts/{account_id}/user_permissions/{user_permission_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String path) {
+  async.Future delete(core.String path, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3211,6 +3651,9 @@ class AccountsUserPermissionsResourceApi {
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3233,6 +3676,9 @@ class AccountsUserPermissionsResourceApi {
   /// [path] - GTM UserPermission's API relative path. Example:
   /// accounts/{account_id}/user_permissions/{user_permission_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UserPermission].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3240,7 +3686,7 @@ class AccountsUserPermissionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserPermission> get(core.String path) {
+  async.Future<UserPermission> get(core.String path, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3250,6 +3696,9 @@ class AccountsUserPermissionsResourceApi {
 
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path');
@@ -3273,6 +3722,9 @@ class AccountsUserPermissionsResourceApi {
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListUserPermissionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3281,7 +3733,7 @@ class AccountsUserPermissionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListUserPermissionsResponse> list(core.String parent,
-      {core.String pageToken}) {
+      {core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3294,6 +3746,9 @@ class AccountsUserPermissionsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -3318,6 +3773,9 @@ class AccountsUserPermissionsResourceApi {
   /// [path] - GTM UserPermission's API relative path. Example:
   /// accounts/{account_id}/user_permissions/{user_permission_id}
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UserPermission].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3325,8 +3783,8 @@ class AccountsUserPermissionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserPermission> update(
-      UserPermission request, core.String path) {
+  async.Future<UserPermission> update(UserPermission request, core.String path,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3339,6 +3797,9 @@ class AccountsUserPermissionsResourceApi {
     }
     if (path == null) {
       throw new core.ArgumentError("Parameter path is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariableReserved('$path');

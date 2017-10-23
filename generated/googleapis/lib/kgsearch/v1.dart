@@ -38,8 +38,6 @@ class EntitiesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [indent] - Enables indenting of json results.
-  ///
   /// [languages] - The list of language codes (defined in ISO 693) to run the
   /// query with,
   /// e.g. 'en'.
@@ -59,6 +57,11 @@ class EntitiesResourceApi {
   /// (as defined in http://schema.org/Person). If multiple types are specified,
   /// returned entities will contain one or more of these types.
   ///
+  /// [indent] - Enables indenting of json results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SearchResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -67,13 +70,14 @@ class EntitiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SearchResponse> search(
-      {core.bool indent,
-      core.List<core.String> languages,
+      {core.List<core.String> languages,
       core.List<core.String> ids,
       core.int limit,
       core.bool prefix,
       core.String query,
-      core.List<core.String> types}) {
+      core.List<core.String> types,
+      core.bool indent,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -81,9 +85,6 @@ class EntitiesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (indent != null) {
-      _queryParams["indent"] = ["${indent}"];
-    }
     if (languages != null) {
       _queryParams["languages"] = languages;
     }
@@ -101,6 +102,12 @@ class EntitiesResourceApi {
     }
     if (types != null) {
       _queryParams["types"] = types;
+    }
+    if (indent != null) {
+      _queryParams["indent"] = ["${indent}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/entities:search';

@@ -86,6 +86,9 @@ class BillingAccountsLogsResourceApi {
   /// For more information about log names, see LogEntry.
   /// Value must have pattern "^billingAccounts/[^/]+/logs/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -93,7 +96,7 @@ class BillingAccountsLogsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String logName) {
+  async.Future<Empty> delete(core.String logName, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -103,6 +106,9 @@ class BillingAccountsLogsResourceApi {
 
     if (logName == null) {
       throw new core.ArgumentError("Parameter logName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$logName');
@@ -138,6 +144,9 @@ class BillingAccountsLogsResourceApi {
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListLogsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -146,7 +155,7 @@ class BillingAccountsLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -162,6 +171,9 @@ class BillingAccountsLogsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -189,6 +201,9 @@ class EntriesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListLogEntriesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -196,7 +211,8 @@ class EntriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListLogEntriesResponse> list(ListLogEntriesRequest request) {
+  async.Future<ListLogEntriesResponse> list(ListLogEntriesRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -206,6 +222,9 @@ class EntriesResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/entries:list';
@@ -228,6 +247,9 @@ class EntriesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [WriteLogEntriesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -235,7 +257,8 @@ class EntriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<WriteLogEntriesResponse> write(WriteLogEntriesRequest request) {
+  async.Future<WriteLogEntriesResponse> write(WriteLogEntriesRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -245,6 +268,9 @@ class EntriesResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/entries:write';
@@ -279,6 +305,9 @@ class MonitoredResourceDescriptorsResourceApi {
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListMonitoredResourceDescriptorsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -287,7 +316,7 @@ class MonitoredResourceDescriptorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMonitoredResourceDescriptorsResponse> list(
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -300,6 +329,9 @@ class MonitoredResourceDescriptorsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/monitoredResourceDescriptors';
@@ -347,6 +379,9 @@ class OrganizationsLogsResourceApi {
   /// For more information about log names, see LogEntry.
   /// Value must have pattern "^organizations/[^/]+/logs/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -354,7 +389,7 @@ class OrganizationsLogsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String logName) {
+  async.Future<Empty> delete(core.String logName, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -364,6 +399,9 @@ class OrganizationsLogsResourceApi {
 
     if (logName == null) {
       throw new core.ArgumentError("Parameter logName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$logName');
@@ -399,6 +437,9 @@ class OrganizationsLogsResourceApi {
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListLogsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -407,7 +448,7 @@ class OrganizationsLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -423,6 +464,9 @@ class OrganizationsLogsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -472,6 +516,9 @@ class ProjectsLogsResourceApi {
   /// For more information about log names, see LogEntry.
   /// Value must have pattern "^projects/[^/]+/logs/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -479,7 +526,7 @@ class ProjectsLogsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String logName) {
+  async.Future<Empty> delete(core.String logName, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -489,6 +536,9 @@ class ProjectsLogsResourceApi {
 
     if (logName == null) {
       throw new core.ArgumentError("Parameter logName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$logName');
@@ -524,6 +574,9 @@ class ProjectsLogsResourceApi {
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListLogsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -532,7 +585,7 @@ class ProjectsLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -548,6 +601,9 @@ class ProjectsLogsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -579,6 +635,9 @@ class ProjectsMetricsResourceApi {
   /// The new metric must be provided in the request.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogMetric].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -586,7 +645,8 @@ class ProjectsMetricsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogMetric> create(LogMetric request, core.String parent) {
+  async.Future<LogMetric> create(LogMetric request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -599,6 +659,9 @@ class ProjectsMetricsResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -623,6 +686,9 @@ class ProjectsMetricsResourceApi {
   ///
   /// Value must have pattern "^projects/[^/]+/metrics/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -630,7 +696,7 @@ class ProjectsMetricsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String metricName) {
+  async.Future<Empty> delete(core.String metricName, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -640,6 +706,9 @@ class ProjectsMetricsResourceApi {
 
     if (metricName == null) {
       throw new core.ArgumentError("Parameter metricName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$metricName');
@@ -662,6 +731,9 @@ class ProjectsMetricsResourceApi {
   ///
   /// Value must have pattern "^projects/[^/]+/metrics/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogMetric].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -669,7 +741,7 @@ class ProjectsMetricsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogMetric> get(core.String metricName) {
+  async.Future<LogMetric> get(core.String metricName, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -679,6 +751,9 @@ class ProjectsMetricsResourceApi {
 
     if (metricName == null) {
       throw new core.ArgumentError("Parameter metricName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$metricName');
@@ -701,14 +776,17 @@ class ProjectsMetricsResourceApi {
   ///
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
   ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListLogMetricsResponse].
   ///
@@ -718,7 +796,7 @@ class ProjectsMetricsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLogMetricsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -729,11 +807,14 @@ class ProjectsMetricsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -762,6 +843,9 @@ class ProjectsMetricsResourceApi {
   /// [PROJECT_ID], then a new metric is created.
   /// Value must have pattern "^projects/[^/]+/metrics/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogMetric].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -769,7 +853,8 @@ class ProjectsMetricsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogMetric> update(LogMetric request, core.String metricName) {
+  async.Future<LogMetric> update(LogMetric request, core.String metricName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -782,6 +867,9 @@ class ProjectsMetricsResourceApi {
     }
     if (metricName == null) {
       throw new core.ArgumentError("Parameter metricName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$metricName');
@@ -829,6 +917,9 @@ class ProjectsSinksResourceApi {
   /// be a unique service account used only for exports from the new sink. For
   /// more information, see writer_identity in LogSink.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogSink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -837,7 +928,7 @@ class ProjectsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogSink> create(LogSink request, core.String parent,
-      {core.bool uniqueWriterIdentity}) {
+      {core.bool uniqueWriterIdentity, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -853,6 +944,9 @@ class ProjectsSinksResourceApi {
     }
     if (uniqueWriterIdentity != null) {
       _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -882,6 +976,9 @@ class ProjectsSinksResourceApi {
   /// Example: "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^projects/[^/]+/sinks/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -889,7 +986,7 @@ class ProjectsSinksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String sinkName) {
+  async.Future<Empty> delete(core.String sinkName, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -899,6 +996,9 @@ class ProjectsSinksResourceApi {
 
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$sinkName');
@@ -924,6 +1024,9 @@ class ProjectsSinksResourceApi {
   /// Example: "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^projects/[^/]+/sinks/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogSink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -931,7 +1034,7 @@ class ProjectsSinksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogSink> get(core.String sinkName) {
+  async.Future<LogSink> get(core.String sinkName, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -941,6 +1044,9 @@ class ProjectsSinksResourceApi {
 
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$sinkName');
@@ -975,6 +1081,9 @@ class ProjectsSinksResourceApi {
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListSinksResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -983,7 +1092,7 @@ class ProjectsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -999,6 +1108,9 @@ class ProjectsSinksResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -1053,6 +1165,9 @@ class ProjectsSinksResourceApi {
   /// It is an error if the old value is true and the new value is set to false
   /// or defaulted to false.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogSink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1061,7 +1176,9 @@ class ProjectsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogSink> update(LogSink request, core.String sinkName,
-      {core.String updateMask, core.bool uniqueWriterIdentity}) {
+      {core.String updateMask,
+      core.bool uniqueWriterIdentity,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1080,6 +1197,9 @@ class ProjectsSinksResourceApi {
     }
     if (uniqueWriterIdentity != null) {
       _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$sinkName');
@@ -2423,6 +2543,8 @@ class MetricDescriptor {
 
   /// A concise name for the metric, which can be displayed in user interfaces.
   /// Use sentence case without an ending period, for example "Request count".
+  /// This field is optional but it is recommended to be set for any metrics
+  /// associated with user-visible concepts, such as Quota.
   core.String displayName;
 
   /// The set of labels that can be used to describe a specific instance of this
@@ -2444,13 +2566,7 @@ class MetricDescriptor {
   /// and sets a new start time for the following points.
   core.String metricKind;
 
-  /// The resource name of the metric descriptor. Depending on the
-  /// implementation, the name typically includes: (1) the parent resource name
-  /// that defines the scope of the metric type or of its data; and (2) the
-  /// metric's URL-encoded type, which also appears in the type field of this
-  /// descriptor. For example, following is the resource name of a custom metric
-  /// within the GCP project my-project-id:
-  /// "projects/my-project-id/metricDescriptors/custom.googleapis.com%2Finvoice%2Fpaid%2Famount"
+  /// The resource name of the metric descriptor.
   core.String name;
 
   /// The metric type, including its DNS name prefix. The type is not

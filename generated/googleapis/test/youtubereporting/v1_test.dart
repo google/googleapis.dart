@@ -94,14 +94,14 @@ checkJob(api.Job o) {
   buildCounterJob--;
 }
 
-buildUnnamed1125() {
+buildUnnamed1112() {
   var o = new core.List<api.Job>();
   o.add(buildJob());
   o.add(buildJob());
   return o;
 }
 
-checkUnnamed1125(core.List<api.Job> o) {
+checkUnnamed1112(core.List<api.Job> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJob(o[0]);
   checkJob(o[1]);
@@ -112,7 +112,7 @@ buildListJobsResponse() {
   var o = new api.ListJobsResponse();
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    o.jobs = buildUnnamed1125();
+    o.jobs = buildUnnamed1112();
     o.nextPageToken = "foo";
   }
   buildCounterListJobsResponse--;
@@ -122,20 +122,20 @@ buildListJobsResponse() {
 checkListJobsResponse(api.ListJobsResponse o) {
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
-    checkUnnamed1125(o.jobs);
+    checkUnnamed1112(o.jobs);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListJobsResponse--;
 }
 
-buildUnnamed1126() {
+buildUnnamed1113() {
   var o = new core.List<api.ReportType>();
   o.add(buildReportType());
   o.add(buildReportType());
   return o;
 }
 
-checkUnnamed1126(core.List<api.ReportType> o) {
+checkUnnamed1113(core.List<api.ReportType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportType(o[0]);
   checkReportType(o[1]);
@@ -147,7 +147,7 @@ buildListReportTypesResponse() {
   buildCounterListReportTypesResponse++;
   if (buildCounterListReportTypesResponse < 3) {
     o.nextPageToken = "foo";
-    o.reportTypes = buildUnnamed1126();
+    o.reportTypes = buildUnnamed1113();
   }
   buildCounterListReportTypesResponse--;
   return o;
@@ -157,19 +157,19 @@ checkListReportTypesResponse(api.ListReportTypesResponse o) {
   buildCounterListReportTypesResponse++;
   if (buildCounterListReportTypesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1126(o.reportTypes);
+    checkUnnamed1113(o.reportTypes);
   }
   buildCounterListReportTypesResponse--;
 }
 
-buildUnnamed1127() {
+buildUnnamed1114() {
   var o = new core.List<api.Report>();
   o.add(buildReport());
   o.add(buildReport());
   return o;
 }
 
-checkUnnamed1127(core.List<api.Report> o) {
+checkUnnamed1114(core.List<api.Report> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReport(o[0]);
   checkReport(o[1]);
@@ -181,7 +181,7 @@ buildListReportsResponse() {
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
     o.nextPageToken = "foo";
-    o.reports = buildUnnamed1127();
+    o.reports = buildUnnamed1114();
   }
   buildCounterListReportsResponse--;
   return o;
@@ -191,7 +191,7 @@ checkListReportsResponse(api.ListReportsResponse o) {
   buildCounterListReportsResponse++;
   if (buildCounterListReportsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1127(o.reports);
+    checkUnnamed1114(o.reports);
   }
   buildCounterListReportsResponse--;
 }
@@ -342,6 +342,7 @@ main() {
       api.JobsResourceApi res = new api.YoutubereportingApi(mock).jobs;
       var arg_request = buildJob();
       var arg_onBehalfOfContentOwner = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Job.fromJson(json);
         checkJob(obj);
@@ -377,6 +378,7 @@ main() {
         }
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -386,7 +388,8 @@ main() {
       }), true);
       res
           .create(arg_request,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner)
+              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Job response) {
         checkJob(response);
       })));
@@ -397,6 +400,7 @@ main() {
       api.JobsResourceApi res = new api.YoutubereportingApi(mock).jobs;
       var arg_jobId = "foo";
       var arg_onBehalfOfContentOwner = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -432,6 +436,7 @@ main() {
         }
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -440,7 +445,9 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .delete(arg_jobId, onBehalfOfContentOwner: arg_onBehalfOfContentOwner)
+          .delete(arg_jobId,
+              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Empty response) {
         checkEmpty(response);
       })));
@@ -451,6 +458,7 @@ main() {
       api.JobsResourceApi res = new api.YoutubereportingApi(mock).jobs;
       var arg_jobId = "foo";
       var arg_onBehalfOfContentOwner = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -486,6 +494,7 @@ main() {
         }
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -494,7 +503,9 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_jobId, onBehalfOfContentOwner: arg_onBehalfOfContentOwner)
+          .get(arg_jobId,
+              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Job response) {
         checkJob(response);
       })));
@@ -503,10 +514,11 @@ main() {
     unittest.test("method--list", () {
       var mock = new HttpServerMock();
       api.JobsResourceApi res = new api.YoutubereportingApi(mock).jobs;
+      var arg_onBehalfOfContentOwner = "foo";
       var arg_includeSystemManaged = true;
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
-      var arg_onBehalfOfContentOwner = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -537,14 +549,15 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
+            unittest.equals(arg_onBehalfOfContentOwner));
         unittest.expect(queryMap["includeSystemManaged"].first,
             unittest.equals("$arg_includeSystemManaged"));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["onBehalfOfContentOwner"].first,
-            unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -554,10 +567,11 @@ main() {
       }), true);
       res
           .list(
+              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               includeSystemManaged: arg_includeSystemManaged,
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner)
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ListJobsResponse response) {
         checkListJobsResponse(response);
       })));
@@ -572,6 +586,7 @@ main() {
       var arg_jobId = "foo";
       var arg_reportId = "foo";
       var arg_onBehalfOfContentOwner = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -616,6 +631,7 @@ main() {
         }
         unittest.expect(queryMap["onBehalfOfContentOwner"].first,
             unittest.equals(arg_onBehalfOfContentOwner));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -625,7 +641,8 @@ main() {
       }), true);
       res
           .get(arg_jobId, arg_reportId,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner)
+              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Report response) {
         checkReport(response);
       })));
@@ -642,6 +659,7 @@ main() {
       var arg_startTimeAtOrAfter = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -693,6 +711,7 @@ main() {
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -707,7 +726,8 @@ main() {
               createdAfter: arg_createdAfter,
               startTimeAtOrAfter: arg_startTimeAtOrAfter,
               pageToken: arg_pageToken,
-              pageSize: arg_pageSize)
+              pageSize: arg_pageSize,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ListReportsResponse response) {
         checkListReportsResponse(response);
       })));
@@ -722,6 +742,7 @@ main() {
       var mock = new HttpServerMock();
       api.MediaResourceApi res = new api.YoutubereportingApi(mock).media;
       var arg_resourceName = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -753,6 +774,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -761,7 +783,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .download(arg_resourceName)
+          .download(arg_resourceName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Media response) {
         checkMedia(response);
       })));
@@ -777,6 +799,7 @@ main() {
       var arg_includeSystemManaged = true;
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -815,6 +838,7 @@ main() {
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -827,7 +851,8 @@ main() {
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               includeSystemManaged: arg_includeSystemManaged,
               pageToken: arg_pageToken,
-              pageSize: arg_pageSize)
+              pageSize: arg_pageSize,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ListReportTypesResponse response) {
         checkListReportTypesResponse(response);
       })));

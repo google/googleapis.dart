@@ -88,6 +88,7 @@ main() {
       var mock = new HttpServerMock();
       api.ArchiveResourceApi res = new api.GroupsmigrationApi(mock).archive;
       var arg_groupId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -115,6 +116,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -123,7 +125,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .insert(arg_groupId)
+          .insert(arg_groupId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Groups response) {
         checkGroups(response);
       })));

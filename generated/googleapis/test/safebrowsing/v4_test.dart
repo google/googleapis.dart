@@ -90,14 +90,14 @@ checkClientInfo(api.ClientInfo o) {
   buildCounterClientInfo--;
 }
 
-buildUnnamed1128() {
+buildUnnamed1115() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1128(core.List<core.String> o) {
+checkUnnamed1115(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -111,7 +111,7 @@ buildConstraints() {
     o.maxDatabaseEntries = 42;
     o.maxUpdateEntries = 42;
     o.region = "foo";
-    o.supportedCompressions = buildUnnamed1128();
+    o.supportedCompressions = buildUnnamed1115();
   }
   buildCounterConstraints--;
   return o;
@@ -123,19 +123,19 @@ checkConstraints(api.Constraints o) {
     unittest.expect(o.maxDatabaseEntries, unittest.equals(42));
     unittest.expect(o.maxUpdateEntries, unittest.equals(42));
     unittest.expect(o.region, unittest.equals('foo'));
-    checkUnnamed1128(o.supportedCompressions);
+    checkUnnamed1115(o.supportedCompressions);
   }
   buildCounterConstraints--;
 }
 
-buildUnnamed1129() {
+buildUnnamed1116() {
   var o = new core.List<api.ListUpdateRequest>();
   o.add(buildListUpdateRequest());
   o.add(buildListUpdateRequest());
   return o;
 }
 
-checkUnnamed1129(core.List<api.ListUpdateRequest> o) {
+checkUnnamed1116(core.List<api.ListUpdateRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkListUpdateRequest(o[0]);
   checkListUpdateRequest(o[1]);
@@ -147,7 +147,7 @@ buildFetchThreatListUpdatesRequest() {
   buildCounterFetchThreatListUpdatesRequest++;
   if (buildCounterFetchThreatListUpdatesRequest < 3) {
     o.client = buildClientInfo();
-    o.listUpdateRequests = buildUnnamed1129();
+    o.listUpdateRequests = buildUnnamed1116();
   }
   buildCounterFetchThreatListUpdatesRequest--;
   return o;
@@ -157,19 +157,19 @@ checkFetchThreatListUpdatesRequest(api.FetchThreatListUpdatesRequest o) {
   buildCounterFetchThreatListUpdatesRequest++;
   if (buildCounterFetchThreatListUpdatesRequest < 3) {
     checkClientInfo(o.client);
-    checkUnnamed1129(o.listUpdateRequests);
+    checkUnnamed1116(o.listUpdateRequests);
   }
   buildCounterFetchThreatListUpdatesRequest--;
 }
 
-buildUnnamed1130() {
+buildUnnamed1117() {
   var o = new core.List<api.ListUpdateResponse>();
   o.add(buildListUpdateResponse());
   o.add(buildListUpdateResponse());
   return o;
 }
 
-checkUnnamed1130(core.List<api.ListUpdateResponse> o) {
+checkUnnamed1117(core.List<api.ListUpdateResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkListUpdateResponse(o[0]);
   checkListUpdateResponse(o[1]);
@@ -180,7 +180,7 @@ buildFetchThreatListUpdatesResponse() {
   var o = new api.FetchThreatListUpdatesResponse();
   buildCounterFetchThreatListUpdatesResponse++;
   if (buildCounterFetchThreatListUpdatesResponse < 3) {
-    o.listUpdateResponses = buildUnnamed1130();
+    o.listUpdateResponses = buildUnnamed1117();
     o.minimumWaitDuration = "foo";
   }
   buildCounterFetchThreatListUpdatesResponse--;
@@ -190,20 +190,20 @@ buildFetchThreatListUpdatesResponse() {
 checkFetchThreatListUpdatesResponse(api.FetchThreatListUpdatesResponse o) {
   buildCounterFetchThreatListUpdatesResponse++;
   if (buildCounterFetchThreatListUpdatesResponse < 3) {
-    checkUnnamed1130(o.listUpdateResponses);
+    checkUnnamed1117(o.listUpdateResponses);
     unittest.expect(o.minimumWaitDuration, unittest.equals('foo'));
   }
   buildCounterFetchThreatListUpdatesResponse--;
 }
 
-buildUnnamed1131() {
+buildUnnamed1118() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1131(core.List<core.String> o) {
+checkUnnamed1118(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -216,7 +216,7 @@ buildFindFullHashesRequest() {
   if (buildCounterFindFullHashesRequest < 3) {
     o.apiClient = buildClientInfo();
     o.client = buildClientInfo();
-    o.clientStates = buildUnnamed1131();
+    o.clientStates = buildUnnamed1118();
     o.threatInfo = buildThreatInfo();
   }
   buildCounterFindFullHashesRequest--;
@@ -228,20 +228,20 @@ checkFindFullHashesRequest(api.FindFullHashesRequest o) {
   if (buildCounterFindFullHashesRequest < 3) {
     checkClientInfo(o.apiClient);
     checkClientInfo(o.client);
-    checkUnnamed1131(o.clientStates);
+    checkUnnamed1118(o.clientStates);
     checkThreatInfo(o.threatInfo);
   }
   buildCounterFindFullHashesRequest--;
 }
 
-buildUnnamed1132() {
+buildUnnamed1119() {
   var o = new core.List<api.ThreatMatch>();
   o.add(buildThreatMatch());
   o.add(buildThreatMatch());
   return o;
 }
 
-checkUnnamed1132(core.List<api.ThreatMatch> o) {
+checkUnnamed1119(core.List<api.ThreatMatch> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkThreatMatch(o[0]);
   checkThreatMatch(o[1]);
@@ -252,7 +252,7 @@ buildFindFullHashesResponse() {
   var o = new api.FindFullHashesResponse();
   buildCounterFindFullHashesResponse++;
   if (buildCounterFindFullHashesResponse < 3) {
-    o.matches = buildUnnamed1132();
+    o.matches = buildUnnamed1119();
     o.minimumWaitDuration = "foo";
     o.negativeCacheDuration = "foo";
   }
@@ -263,7 +263,7 @@ buildFindFullHashesResponse() {
 checkFindFullHashesResponse(api.FindFullHashesResponse o) {
   buildCounterFindFullHashesResponse++;
   if (buildCounterFindFullHashesResponse < 3) {
-    checkUnnamed1132(o.matches);
+    checkUnnamed1119(o.matches);
     unittest.expect(o.minimumWaitDuration, unittest.equals('foo'));
     unittest.expect(o.negativeCacheDuration, unittest.equals('foo'));
   }
@@ -291,14 +291,14 @@ checkFindThreatMatchesRequest(api.FindThreatMatchesRequest o) {
   buildCounterFindThreatMatchesRequest--;
 }
 
-buildUnnamed1133() {
+buildUnnamed1120() {
   var o = new core.List<api.ThreatMatch>();
   o.add(buildThreatMatch());
   o.add(buildThreatMatch());
   return o;
 }
 
-checkUnnamed1133(core.List<api.ThreatMatch> o) {
+checkUnnamed1120(core.List<api.ThreatMatch> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkThreatMatch(o[0]);
   checkThreatMatch(o[1]);
@@ -309,7 +309,7 @@ buildFindThreatMatchesResponse() {
   var o = new api.FindThreatMatchesResponse();
   buildCounterFindThreatMatchesResponse++;
   if (buildCounterFindThreatMatchesResponse < 3) {
-    o.matches = buildUnnamed1133();
+    o.matches = buildUnnamed1120();
   }
   buildCounterFindThreatMatchesResponse--;
   return o;
@@ -318,19 +318,19 @@ buildFindThreatMatchesResponse() {
 checkFindThreatMatchesResponse(api.FindThreatMatchesResponse o) {
   buildCounterFindThreatMatchesResponse++;
   if (buildCounterFindThreatMatchesResponse < 3) {
-    checkUnnamed1133(o.matches);
+    checkUnnamed1120(o.matches);
   }
   buildCounterFindThreatMatchesResponse--;
 }
 
-buildUnnamed1134() {
+buildUnnamed1121() {
   var o = new core.List<api.ThreatListDescriptor>();
   o.add(buildThreatListDescriptor());
   o.add(buildThreatListDescriptor());
   return o;
 }
 
-checkUnnamed1134(core.List<api.ThreatListDescriptor> o) {
+checkUnnamed1121(core.List<api.ThreatListDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkThreatListDescriptor(o[0]);
   checkThreatListDescriptor(o[1]);
@@ -341,7 +341,7 @@ buildListThreatListsResponse() {
   var o = new api.ListThreatListsResponse();
   buildCounterListThreatListsResponse++;
   if (buildCounterListThreatListsResponse < 3) {
-    o.threatLists = buildUnnamed1134();
+    o.threatLists = buildUnnamed1121();
   }
   buildCounterListThreatListsResponse--;
   return o;
@@ -350,7 +350,7 @@ buildListThreatListsResponse() {
 checkListThreatListsResponse(api.ListThreatListsResponse o) {
   buildCounterListThreatListsResponse++;
   if (buildCounterListThreatListsResponse < 3) {
-    checkUnnamed1134(o.threatLists);
+    checkUnnamed1121(o.threatLists);
   }
   buildCounterListThreatListsResponse--;
 }
@@ -382,27 +382,27 @@ checkListUpdateRequest(api.ListUpdateRequest o) {
   buildCounterListUpdateRequest--;
 }
 
-buildUnnamed1135() {
+buildUnnamed1122() {
   var o = new core.List<api.ThreatEntrySet>();
   o.add(buildThreatEntrySet());
   o.add(buildThreatEntrySet());
   return o;
 }
 
-checkUnnamed1135(core.List<api.ThreatEntrySet> o) {
+checkUnnamed1122(core.List<api.ThreatEntrySet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkThreatEntrySet(o[0]);
   checkThreatEntrySet(o[1]);
 }
 
-buildUnnamed1136() {
+buildUnnamed1123() {
   var o = new core.List<api.ThreatEntrySet>();
   o.add(buildThreatEntrySet());
   o.add(buildThreatEntrySet());
   return o;
 }
 
-checkUnnamed1136(core.List<api.ThreatEntrySet> o) {
+checkUnnamed1123(core.List<api.ThreatEntrySet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkThreatEntrySet(o[0]);
   checkThreatEntrySet(o[1]);
@@ -413,11 +413,11 @@ buildListUpdateResponse() {
   var o = new api.ListUpdateResponse();
   buildCounterListUpdateResponse++;
   if (buildCounterListUpdateResponse < 3) {
-    o.additions = buildUnnamed1135();
+    o.additions = buildUnnamed1122();
     o.checksum = buildChecksum();
     o.newClientState = "foo";
     o.platformType = "foo";
-    o.removals = buildUnnamed1136();
+    o.removals = buildUnnamed1123();
     o.responseType = "foo";
     o.threatEntryType = "foo";
     o.threatType = "foo";
@@ -429,11 +429,11 @@ buildListUpdateResponse() {
 checkListUpdateResponse(api.ListUpdateResponse o) {
   buildCounterListUpdateResponse++;
   if (buildCounterListUpdateResponse < 3) {
-    checkUnnamed1135(o.additions);
+    checkUnnamed1122(o.additions);
     checkChecksum(o.checksum);
     unittest.expect(o.newClientState, unittest.equals('foo'));
     unittest.expect(o.platformType, unittest.equals('foo'));
-    checkUnnamed1136(o.removals);
+    checkUnnamed1123(o.removals);
     unittest.expect(o.responseType, unittest.equals('foo'));
     unittest.expect(o.threatEntryType, unittest.equals('foo'));
     unittest.expect(o.threatType, unittest.equals('foo'));
@@ -483,14 +483,14 @@ checkRawHashes(api.RawHashes o) {
   buildCounterRawHashes--;
 }
 
-buildUnnamed1137() {
+buildUnnamed1124() {
   var o = new core.List<core.int>();
   o.add(42);
   o.add(42);
   return o;
 }
 
-checkUnnamed1137(core.List<core.int> o) {
+checkUnnamed1124(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
@@ -501,7 +501,7 @@ buildRawIndices() {
   var o = new api.RawIndices();
   buildCounterRawIndices++;
   if (buildCounterRawIndices < 3) {
-    o.indices = buildUnnamed1137();
+    o.indices = buildUnnamed1124();
   }
   buildCounterRawIndices--;
   return o;
@@ -510,7 +510,7 @@ buildRawIndices() {
 checkRawIndices(api.RawIndices o) {
   buildCounterRawIndices++;
   if (buildCounterRawIndices < 3) {
-    checkUnnamed1137(o.indices);
+    checkUnnamed1124(o.indices);
   }
   buildCounterRawIndices--;
 }
@@ -563,14 +563,14 @@ checkThreatEntry(api.ThreatEntry o) {
   buildCounterThreatEntry--;
 }
 
-buildUnnamed1138() {
+buildUnnamed1125() {
   var o = new core.List<api.MetadataEntry>();
   o.add(buildMetadataEntry());
   o.add(buildMetadataEntry());
   return o;
 }
 
-checkUnnamed1138(core.List<api.MetadataEntry> o) {
+checkUnnamed1125(core.List<api.MetadataEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMetadataEntry(o[0]);
   checkMetadataEntry(o[1]);
@@ -581,7 +581,7 @@ buildThreatEntryMetadata() {
   var o = new api.ThreatEntryMetadata();
   buildCounterThreatEntryMetadata++;
   if (buildCounterThreatEntryMetadata < 3) {
-    o.entries = buildUnnamed1138();
+    o.entries = buildUnnamed1125();
   }
   buildCounterThreatEntryMetadata--;
   return o;
@@ -590,7 +590,7 @@ buildThreatEntryMetadata() {
 checkThreatEntryMetadata(api.ThreatEntryMetadata o) {
   buildCounterThreatEntryMetadata++;
   if (buildCounterThreatEntryMetadata < 3) {
-    checkUnnamed1138(o.entries);
+    checkUnnamed1125(o.entries);
   }
   buildCounterThreatEntryMetadata--;
 }
@@ -622,53 +622,53 @@ checkThreatEntrySet(api.ThreatEntrySet o) {
   buildCounterThreatEntrySet--;
 }
 
-buildUnnamed1139() {
+buildUnnamed1126() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1139(core.List<core.String> o) {
+checkUnnamed1126(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1140() {
+buildUnnamed1127() {
   var o = new core.List<api.ThreatEntry>();
   o.add(buildThreatEntry());
   o.add(buildThreatEntry());
   return o;
 }
 
-checkUnnamed1140(core.List<api.ThreatEntry> o) {
+checkUnnamed1127(core.List<api.ThreatEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkThreatEntry(o[0]);
   checkThreatEntry(o[1]);
 }
 
-buildUnnamed1141() {
+buildUnnamed1128() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1141(core.List<core.String> o) {
+checkUnnamed1128(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1142() {
+buildUnnamed1129() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1142(core.List<core.String> o) {
+checkUnnamed1129(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -679,10 +679,10 @@ buildThreatInfo() {
   var o = new api.ThreatInfo();
   buildCounterThreatInfo++;
   if (buildCounterThreatInfo < 3) {
-    o.platformTypes = buildUnnamed1139();
-    o.threatEntries = buildUnnamed1140();
-    o.threatEntryTypes = buildUnnamed1141();
-    o.threatTypes = buildUnnamed1142();
+    o.platformTypes = buildUnnamed1126();
+    o.threatEntries = buildUnnamed1127();
+    o.threatEntryTypes = buildUnnamed1128();
+    o.threatTypes = buildUnnamed1129();
   }
   buildCounterThreatInfo--;
   return o;
@@ -691,10 +691,10 @@ buildThreatInfo() {
 checkThreatInfo(api.ThreatInfo o) {
   buildCounterThreatInfo++;
   if (buildCounterThreatInfo < 3) {
-    checkUnnamed1139(o.platformTypes);
-    checkUnnamed1140(o.threatEntries);
-    checkUnnamed1141(o.threatEntryTypes);
-    checkUnnamed1142(o.threatTypes);
+    checkUnnamed1126(o.platformTypes);
+    checkUnnamed1127(o.threatEntries);
+    checkUnnamed1128(o.threatEntryTypes);
+    checkUnnamed1129(o.threatTypes);
   }
   buildCounterThreatInfo--;
 }
@@ -934,8 +934,9 @@ main() {
       api.EncodedFullHashesResourceApi res =
           new api.SafebrowsingApi(mock).encodedFullHashes;
       var arg_encodedRequest = "foo";
-      var arg_clientId = "foo";
       var arg_clientVersion = "foo";
+      var arg_clientId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -969,10 +970,11 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["clientId"].first, unittest.equals(arg_clientId));
         unittest.expect(queryMap["clientVersion"].first,
             unittest.equals(arg_clientVersion));
+        unittest.expect(
+            queryMap["clientId"].first, unittest.equals(arg_clientId));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -982,7 +984,9 @@ main() {
       }), true);
       res
           .get(arg_encodedRequest,
-              clientId: arg_clientId, clientVersion: arg_clientVersion)
+              clientVersion: arg_clientVersion,
+              clientId: arg_clientId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.FindFullHashesResponse response) {
         checkFindFullHashesResponse(response);
       })));
@@ -997,6 +1001,7 @@ main() {
       var arg_encodedRequest = "foo";
       var arg_clientId = "foo";
       var arg_clientVersion = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1034,6 +1039,7 @@ main() {
             queryMap["clientId"].first, unittest.equals(arg_clientId));
         unittest.expect(queryMap["clientVersion"].first,
             unittest.equals(arg_clientVersion));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1043,7 +1049,9 @@ main() {
       }), true);
       res
           .get(arg_encodedRequest,
-              clientId: arg_clientId, clientVersion: arg_clientVersion)
+              clientId: arg_clientId,
+              clientVersion: arg_clientVersion,
+              $fields: arg_$fields)
           .then(unittest
               .expectAsync1(((api.FetchThreatListUpdatesResponse response) {
         checkFetchThreatListUpdatesResponse(response);
@@ -1056,6 +1064,7 @@ main() {
       var mock = new HttpServerMock();
       api.FullHashesResourceApi res = new api.SafebrowsingApi(mock).fullHashes;
       var arg_request = buildFindFullHashesRequest();
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.FindFullHashesRequest.fromJson(json);
         checkFindFullHashesRequest(obj);
@@ -1089,6 +1098,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1097,7 +1107,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .find(arg_request)
+          .find(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.FindFullHashesResponse response) {
         checkFindFullHashesResponse(response);
       })));
@@ -1110,6 +1120,7 @@ main() {
       api.ThreatListUpdatesResourceApi res =
           new api.SafebrowsingApi(mock).threatListUpdates;
       var arg_request = buildFetchThreatListUpdatesRequest();
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.FetchThreatListUpdatesRequest.fromJson(json);
         checkFetchThreatListUpdatesRequest(obj);
@@ -1143,6 +1154,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1150,7 +1162,7 @@ main() {
         var resp = convert.JSON.encode(buildFetchThreatListUpdatesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.fetch(arg_request).then(
+      res.fetch(arg_request, $fields: arg_$fields).then(
           unittest.expectAsync1(((api.FetchThreatListUpdatesResponse response) {
         checkFetchThreatListUpdatesResponse(response);
       })));
@@ -1162,6 +1174,7 @@ main() {
       var mock = new HttpServerMock();
       api.ThreatListsResourceApi res =
           new api.SafebrowsingApi(mock).threatLists;
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1192,6 +1205,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1200,7 +1214,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .list()
+          .list($fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ListThreatListsResponse response) {
         checkListThreatListsResponse(response);
       })));
@@ -1213,6 +1227,7 @@ main() {
       api.ThreatMatchesResourceApi res =
           new api.SafebrowsingApi(mock).threatMatches;
       var arg_request = buildFindThreatMatchesRequest();
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.FindThreatMatchesRequest.fromJson(json);
         checkFindThreatMatchesRequest(obj);
@@ -1246,6 +1261,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1253,7 +1269,7 @@ main() {
         var resp = convert.JSON.encode(buildFindThreatMatchesResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.find(arg_request).then(
+      res.find(arg_request, $fields: arg_$fields).then(
           unittest.expectAsync1(((api.FindThreatMatchesResponse response) {
         checkFindThreatMatchesResponse(response);
       })));

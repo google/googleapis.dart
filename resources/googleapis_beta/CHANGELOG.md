@@ -1,3 +1,9 @@
+## 0.40.1
+
+* [api] sqladmin:v1beta4
+* [api] dlp:v2beta1
+* [api] toolresults:v1beta3
+
 ## 0.40.0
 
 * [api-new] cloudtasks:v2beta2

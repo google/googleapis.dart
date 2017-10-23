@@ -140,6 +140,9 @@ class UsersDataSourcesResourceApi {
   /// [userId] - Create the data source for the person identified. Use me to
   /// indicate the authenticated user. Only me is supported at this time.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DataSource].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -147,7 +150,8 @@ class UsersDataSourcesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DataSource> create(DataSource request, core.String userId) {
+  async.Future<DataSource> create(DataSource request, core.String userId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -160,6 +164,9 @@ class UsersDataSourcesResourceApi {
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources';
@@ -183,6 +190,9 @@ class UsersDataSourcesResourceApi {
   ///
   /// [dataSourceId] - The data stream ID of the data source to delete.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DataSource].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -190,8 +200,8 @@ class UsersDataSourcesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DataSource> delete(
-      core.String userId, core.String dataSourceId) {
+  async.Future<DataSource> delete(core.String userId, core.String dataSourceId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -204,6 +214,9 @@ class UsersDataSourcesResourceApi {
     }
     if (dataSourceId == null) {
       throw new core.ArgumentError("Parameter dataSourceId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$userId') +
@@ -228,6 +241,9 @@ class UsersDataSourcesResourceApi {
   ///
   /// [dataSourceId] - The data stream ID of the data source to retrieve.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DataSource].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -235,7 +251,8 @@ class UsersDataSourcesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DataSource> get(core.String userId, core.String dataSourceId) {
+  async.Future<DataSource> get(core.String userId, core.String dataSourceId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -248,6 +265,9 @@ class UsersDataSourcesResourceApi {
     }
     if (dataSourceId == null) {
       throw new core.ArgumentError("Parameter dataSourceId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$userId') +
@@ -276,6 +296,9 @@ class UsersDataSourcesResourceApi {
   /// [dataTypeName] - The names of data types to include in the list. If not
   /// specified, all data sources will be returned.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListDataSourcesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -284,7 +307,7 @@ class UsersDataSourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDataSourcesResponse> list(core.String userId,
-      {core.List<core.String> dataTypeName}) {
+      {core.List<core.String> dataTypeName, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -297,6 +320,9 @@ class UsersDataSourcesResourceApi {
     }
     if (dataTypeName != null) {
       _queryParams["dataTypeName"] = dataTypeName;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources';
@@ -326,6 +352,9 @@ class UsersDataSourcesResourceApi {
   ///
   /// [dataSourceId] - The data stream ID of the data source to update.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DataSource].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -334,7 +363,8 @@ class UsersDataSourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DataSource> patch(
-      DataSource request, core.String userId, core.String dataSourceId) {
+      DataSource request, core.String userId, core.String dataSourceId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -350,6 +380,9 @@ class UsersDataSourcesResourceApi {
     }
     if (dataSourceId == null) {
       throw new core.ArgumentError("Parameter dataSourceId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$userId') +
@@ -380,6 +413,9 @@ class UsersDataSourcesResourceApi {
   ///
   /// [dataSourceId] - The data stream ID of the data source to update.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DataSource].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -388,7 +424,8 @@ class UsersDataSourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DataSource> update(
-      DataSource request, core.String userId, core.String dataSourceId) {
+      DataSource request, core.String userId, core.String dataSourceId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -404,6 +441,9 @@ class UsersDataSourcesResourceApi {
     }
     if (dataSourceId == null) {
       throw new core.ArgumentError("Parameter dataSourceId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$userId') +
@@ -443,6 +483,9 @@ class UsersDataSourcesDataPointChangesResourceApi {
   /// result sets. To get the next page of results, set this parameter to the
   /// value of nextPageToken from the previous response.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListDataPointChangesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -452,7 +495,7 @@ class UsersDataSourcesDataPointChangesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListDataPointChangesResponse> list(
       core.String userId, core.String dataSourceId,
-      {core.int limit, core.String pageToken}) {
+      {core.int limit, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -471,6 +514,9 @@ class UsersDataSourcesDataPointChangesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$userId') +
@@ -521,6 +567,9 @@ class UsersDataSourcesDatasetsResourceApi {
   ///
   /// [modifiedTimeMillis] - When the operation was performed on the client.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
@@ -528,7 +577,9 @@ class UsersDataSourcesDatasetsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(
       core.String userId, core.String dataSourceId, core.String datasetId,
-      {core.String currentTimeMillis, core.String modifiedTimeMillis}) {
+      {core.String currentTimeMillis,
+      core.String modifiedTimeMillis,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -550,6 +601,9 @@ class UsersDataSourcesDatasetsResourceApi {
     }
     if (modifiedTimeMillis != null) {
       _queryParams["modifiedTimeMillis"] = [modifiedTimeMillis];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -598,6 +652,9 @@ class UsersDataSourcesDatasetsResourceApi {
   /// will yield a partial dataset with data point end timestamps that are
   /// strictly smaller than those in the previous partial response.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Dataset].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -607,7 +664,7 @@ class UsersDataSourcesDatasetsResourceApi {
   /// this method will complete with the same error.
   async.Future<Dataset> get(
       core.String userId, core.String dataSourceId, core.String datasetId,
-      {core.int limit, core.String pageToken}) {
+      {core.int limit, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -629,6 +686,9 @@ class UsersDataSourcesDatasetsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$userId') +
@@ -670,6 +730,9 @@ class UsersDataSourcesDatasetsResourceApi {
   /// epoch. Note that the minStartTimeNs and maxEndTimeNs properties in the
   /// request body are in nanoseconds instead of milliseconds.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Dataset].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -679,7 +742,7 @@ class UsersDataSourcesDatasetsResourceApi {
   /// this method will complete with the same error.
   async.Future<Dataset> patch(Dataset request, core.String userId,
       core.String dataSourceId, core.String datasetId,
-      {core.String currentTimeMillis}) {
+      {core.String currentTimeMillis, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -701,6 +764,9 @@ class UsersDataSourcesDatasetsResourceApi {
     }
     if (currentTimeMillis != null) {
       _queryParams["currentTimeMillis"] = [currentTimeMillis];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$userId') +
@@ -736,6 +802,9 @@ class UsersDatasetResourceApi {
   /// [userId] - Aggregate data for the person identified. Use me to indicate
   /// the authenticated user. Only me is supported at this time.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AggregateResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -744,7 +813,8 @@ class UsersDatasetResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AggregateResponse> aggregate(
-      AggregateRequest request, core.String userId) {
+      AggregateRequest request, core.String userId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -757,6 +827,9 @@ class UsersDatasetResourceApi {
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/dataset:aggregate';
@@ -788,13 +861,16 @@ class UsersSessionsResourceApi {
   /// [currentTimeMillis] - The client's current time in milliseconds since
   /// epoch.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String userId, core.String sessionId,
-      {core.String currentTimeMillis}) {
+      {core.String currentTimeMillis, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -810,6 +886,9 @@ class UsersSessionsResourceApi {
     }
     if (currentTimeMillis != null) {
       _queryParams["currentTimeMillis"] = [currentTimeMillis];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -848,6 +927,9 @@ class UsersSessionsResourceApi {
   /// [startTime] - An RFC3339 timestamp. Only sessions ending between the start
   /// and end times will be included in the response.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListSessionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -859,7 +941,8 @@ class UsersSessionsResourceApi {
       {core.String endTime,
       core.bool includeDeleted,
       core.String pageToken,
-      core.String startTime}) {
+      core.String startTime,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -881,6 +964,9 @@ class UsersSessionsResourceApi {
     }
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/sessions';
@@ -908,6 +994,9 @@ class UsersSessionsResourceApi {
   /// [currentTimeMillis] - The client's current time in milliseconds since
   /// epoch.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Session].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -917,7 +1006,7 @@ class UsersSessionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Session> update(
       Session request, core.String userId, core.String sessionId,
-      {core.String currentTimeMillis}) {
+      {core.String currentTimeMillis, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -936,6 +1025,9 @@ class UsersSessionsResourceApi {
     }
     if (currentTimeMillis != null) {
       _queryParams["currentTimeMillis"] = [currentTimeMillis];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$userId') +

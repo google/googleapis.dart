@@ -59,6 +59,9 @@ class BackupRunsResourceApi {
   /// [id] - The ID of the Backup Run to delete. To find a Backup Run ID, use
   /// the list method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -67,7 +70,8 @@ class BackupRunsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(
-      core.String project, core.String instance, core.String id) {
+      core.String project, core.String instance, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -83,6 +87,9 @@ class BackupRunsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -111,6 +118,9 @@ class BackupRunsResourceApi {
   ///
   /// [id] - The ID of this Backup Run.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BackupRun].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -119,7 +129,8 @@ class BackupRunsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BackupRun> get(
-      core.String project, core.String instance, core.String id) {
+      core.String project, core.String instance, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -135,6 +146,9 @@ class BackupRunsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -164,6 +178,9 @@ class BackupRunsResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -172,7 +189,8 @@ class BackupRunsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(
-      BackupRun request, core.String project, core.String instance) {
+      BackupRun request, core.String project, core.String instance,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -188,6 +206,9 @@ class BackupRunsResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -219,6 +240,9 @@ class BackupRunsResourceApi {
   /// [pageToken] - A previously-returned page token representing part of the
   /// larger set of results to view.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BackupRunsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -228,7 +252,7 @@ class BackupRunsResourceApi {
   /// this method will complete with the same error.
   async.Future<BackupRunsListResponse> list(
       core.String project, core.String instance,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -247,6 +271,9 @@ class BackupRunsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -280,6 +307,9 @@ class DatabasesResourceApi {
   ///
   /// [database] - Name of the database to be deleted in the instance.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -288,7 +318,8 @@ class DatabasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(
-      core.String project, core.String instance, core.String database) {
+      core.String project, core.String instance, core.String database,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -304,6 +335,9 @@ class DatabasesResourceApi {
     }
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -333,6 +367,9 @@ class DatabasesResourceApi {
   ///
   /// [database] - Name of the database in the instance.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Database].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -341,7 +378,8 @@ class DatabasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Database> get(
-      core.String project, core.String instance, core.String database) {
+      core.String project, core.String instance, core.String database,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -357,6 +395,9 @@ class DatabasesResourceApi {
     }
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -386,6 +427,9 @@ class DatabasesResourceApi {
   ///
   /// [instance] - Database instance ID. This does not include the project ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -394,7 +438,8 @@ class DatabasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(
-      Database request, core.String project, core.String instance) {
+      Database request, core.String project, core.String instance,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -410,6 +455,9 @@ class DatabasesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -436,6 +484,9 @@ class DatabasesResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DatabasesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -444,7 +495,8 @@ class DatabasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DatabasesListResponse> list(
-      core.String project, core.String instance) {
+      core.String project, core.String instance,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -457,6 +509,9 @@ class DatabasesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -487,6 +542,9 @@ class DatabasesResourceApi {
   ///
   /// [database] - Name of the database to be updated in the instance.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -495,7 +553,8 @@ class DatabasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> patch(Database request, core.String project,
-      core.String instance, core.String database) {
+      core.String instance, core.String database,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -514,6 +573,9 @@ class DatabasesResourceApi {
     }
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -545,6 +607,9 @@ class DatabasesResourceApi {
   ///
   /// [database] - Name of the database to be updated in the instance.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -553,7 +618,8 @@ class DatabasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> update(Database request, core.String project,
-      core.String instance, core.String database) {
+      core.String instance, core.String database,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -572,6 +638,9 @@ class DatabasesResourceApi {
     }
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -603,6 +672,9 @@ class FlagsResourceApi {
   /// [databaseVersion] - Database version for flag retrieval. Flags are
   /// specific to the database version.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FlagsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -610,7 +682,8 @@ class FlagsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FlagsListResponse> list({core.String databaseVersion}) {
+  async.Future<FlagsListResponse> list(
+      {core.String databaseVersion, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -620,6 +693,9 @@ class FlagsResourceApi {
 
     if (databaseVersion != null) {
       _queryParams["databaseVersion"] = [databaseVersion];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'flags';
@@ -652,6 +728,9 @@ class InstancesResourceApi {
   /// [instance] - The ID of the Cloud SQL instance to be cloned (source). This
   /// does not include the project ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -659,8 +738,9 @@ class InstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> clone(InstancesCloneRequest request,
-      core.String project, core.String instance) {
+  async.Future<Operation> clone(
+      InstancesCloneRequest request, core.String project, core.String instance,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -676,6 +756,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -702,6 +785,9 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -709,7 +795,8 @@ class InstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> delete(core.String project, core.String instance) {
+  async.Future<Operation> delete(core.String project, core.String instance,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -723,6 +810,9 @@ class InstancesResourceApi {
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -730,6 +820,65 @@ class InstancesResourceApi {
         commons.Escaper.ecapeVariable('$instance');
 
     var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
+
+  /// Demotes the standalone instance to be a read replica Cloud SQL instance of
+  /// an on-premises master.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - ID of the project that contains the instance.
+  ///
+  /// [instance] - Cloud SQL instance name.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> demoteMaster(InstancesDemoteMasterRequest request,
+      core.String project, core.String instance,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (instance == null) {
+      throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/instances/' +
+        commons.Escaper.ecapeVariable('$instance') +
+        '/demoteMaster';
+
+    var _response = _requester.request(_url, "POST",
         body: _body,
         queryParams: _queryParams,
         uploadOptions: _uploadOptions,
@@ -750,6 +899,9 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -757,8 +909,9 @@ class InstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> export(InstancesExportRequest request,
-      core.String project, core.String instance) {
+  async.Future<Operation> export(
+      InstancesExportRequest request, core.String project, core.String instance,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -774,6 +927,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -801,6 +957,9 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -809,7 +968,8 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> failover(InstancesFailoverRequest request,
-      core.String project, core.String instance) {
+      core.String project, core.String instance,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -825,6 +985,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -850,6 +1013,9 @@ class InstancesResourceApi {
   ///
   /// [instance] - Database instance ID. This does not include the project ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DatabaseInstance].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -857,8 +1023,8 @@ class InstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DatabaseInstance> get(
-      core.String project, core.String instance) {
+  async.Future<DatabaseInstance> get(core.String project, core.String instance,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -871,6 +1037,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -898,6 +1067,9 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -905,8 +1077,9 @@ class InstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> import(InstancesImportRequest request,
-      core.String project, core.String instance) {
+  async.Future<Operation> import(
+      InstancesImportRequest request, core.String project, core.String instance,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -922,6 +1095,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -948,6 +1124,9 @@ class InstancesResourceApi {
   /// [project] - Project ID of the project to which the newly created Cloud SQL
   /// instances should belong.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -955,8 +1134,8 @@ class InstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> insert(
-      DatabaseInstance request, core.String project) {
+  async.Future<Operation> insert(DatabaseInstance request, core.String project,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -969,6 +1148,9 @@ class InstancesResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -999,6 +1181,9 @@ class InstancesResourceApi {
   /// [pageToken] - A previously-returned page token representing part of the
   /// larger set of results to view.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InstancesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1007,7 +1192,10 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<InstancesListResponse> list(core.String project,
-      {core.String filter, core.int maxResults, core.String pageToken}) {
+      {core.String filter,
+      core.int maxResults,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1026,6 +1214,9 @@ class InstancesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -1053,6 +1244,9 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1061,7 +1255,8 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> patch(
-      DatabaseInstance request, core.String project, core.String instance) {
+      DatabaseInstance request, core.String project, core.String instance,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1077,6 +1272,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -1101,6 +1299,9 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL read replica instance name.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1109,7 +1310,8 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> promoteReplica(
-      core.String project, core.String instance) {
+      core.String project, core.String instance,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1122,6 +1324,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -1150,6 +1355,9 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1158,7 +1366,8 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> resetSslConfig(
-      core.String project, core.String instance) {
+      core.String project, core.String instance,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1171,6 +1380,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -1197,6 +1409,9 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1204,7 +1419,8 @@ class InstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> restart(core.String project, core.String instance) {
+  async.Future<Operation> restart(core.String project, core.String instance,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1217,6 +1433,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -1244,6 +1463,9 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1252,7 +1474,8 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> restoreBackup(InstancesRestoreBackupRequest request,
-      core.String project, core.String instance) {
+      core.String project, core.String instance,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1268,6 +1491,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -1293,6 +1519,9 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL read replica instance name.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1301,7 +1530,8 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> startReplica(
-      core.String project, core.String instance) {
+      core.String project, core.String instance,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1314,6 +1544,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -1339,6 +1572,9 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL read replica instance name.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1346,8 +1582,8 @@ class InstancesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> stopReplica(
-      core.String project, core.String instance) {
+  async.Future<Operation> stopReplica(core.String project, core.String instance,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1360,6 +1596,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -1387,6 +1626,9 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1395,7 +1637,8 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> truncateLog(InstancesTruncateLogRequest request,
-      core.String project, core.String instance) {
+      core.String project, core.String instance,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1411,6 +1654,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -1440,6 +1686,9 @@ class InstancesResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1448,7 +1697,8 @@ class InstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> update(
-      DatabaseInstance request, core.String project, core.String instance) {
+      DatabaseInstance request, core.String project, core.String instance,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1464,6 +1714,9 @@ class InstancesResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -1494,6 +1747,9 @@ class OperationsResourceApi {
   ///
   /// [operation] - Instance operation ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1501,7 +1757,8 @@ class OperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String project, core.String operation) {
+  async.Future<Operation> get(core.String project, core.String operation,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1514,6 +1771,9 @@ class OperationsResourceApi {
     }
     if (operation == null) {
       throw new core.ArgumentError("Parameter operation is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -1544,6 +1804,9 @@ class OperationsResourceApi {
   /// [pageToken] - A previously-returned page token representing part of the
   /// larger set of results to view.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OperationsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1553,7 +1816,7 @@ class OperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<OperationsListResponse> list(
       core.String project, core.String instance,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1573,6 +1836,9 @@ class OperationsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -1606,6 +1872,9 @@ class SslCertsResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SslCert].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1614,7 +1883,8 @@ class SslCertsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SslCert> createEphemeral(SslCertsCreateEphemeralRequest request,
-      core.String project, core.String instance) {
+      core.String project, core.String instance,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1630,6 +1900,9 @@ class SslCertsResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -1659,6 +1932,9 @@ class SslCertsResourceApi {
   ///
   /// [sha1Fingerprint] - Sha1 FingerPrint.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1667,7 +1943,8 @@ class SslCertsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(
-      core.String project, core.String instance, core.String sha1Fingerprint) {
+      core.String project, core.String instance, core.String sha1Fingerprint,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1683,6 +1960,9 @@ class SslCertsResourceApi {
     }
     if (sha1Fingerprint == null) {
       throw new core.ArgumentError("Parameter sha1Fingerprint is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -1713,6 +1993,9 @@ class SslCertsResourceApi {
   ///
   /// [sha1Fingerprint] - Sha1 FingerPrint.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SslCert].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1721,7 +2004,8 @@ class SslCertsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SslCert> get(
-      core.String project, core.String instance, core.String sha1Fingerprint) {
+      core.String project, core.String instance, core.String sha1Fingerprint,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1737,6 +2021,9 @@ class SslCertsResourceApi {
     }
     if (sha1Fingerprint == null) {
       throw new core.ArgumentError("Parameter sha1Fingerprint is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -1768,6 +2055,9 @@ class SslCertsResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SslCertsInsertResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1775,8 +2065,9 @@ class SslCertsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SslCertsInsertResponse> insert(SslCertsInsertRequest request,
-      core.String project, core.String instance) {
+  async.Future<SslCertsInsertResponse> insert(
+      SslCertsInsertRequest request, core.String project, core.String instance,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1792,6 +2083,9 @@ class SslCertsResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -1818,6 +2112,9 @@ class SslCertsResourceApi {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SslCertsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1826,7 +2123,8 @@ class SslCertsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SslCertsListResponse> list(
-      core.String project, core.String instance) {
+      core.String project, core.String instance,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1839,6 +2137,9 @@ class SslCertsResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -1869,6 +2170,9 @@ class TiersResourceApi {
   ///
   /// [project] - Project ID of the project for which to list tiers.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TiersListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1876,7 +2180,8 @@ class TiersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TiersListResponse> list(core.String project) {
+  async.Future<TiersListResponse> list(core.String project,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1886,6 +2191,9 @@ class TiersResourceApi {
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/tiers';
@@ -1917,6 +2225,9 @@ class UsersResourceApi {
   ///
   /// [name] - Name of the user in the instance.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1925,7 +2236,8 @@ class UsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String instance,
-      core.String host, core.String name) {
+      core.String host, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1947,6 +2259,9 @@ class UsersResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
     _queryParams["name"] = [name];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -1973,6 +2288,9 @@ class UsersResourceApi {
   ///
   /// [instance] - Database instance ID. This does not include the project ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1981,7 +2299,8 @@ class UsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(
-      User request, core.String project, core.String instance) {
+      User request, core.String project, core.String instance,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1997,6 +2316,9 @@ class UsersResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -2022,6 +2344,9 @@ class UsersResourceApi {
   ///
   /// [instance] - Database instance ID. This does not include the project ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UsersListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2030,7 +2355,8 @@ class UsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UsersListResponse> list(
-      core.String project, core.String instance) {
+      core.String project, core.String instance,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2043,6 +2369,9 @@ class UsersResourceApi {
     }
     if (instance == null) {
       throw new core.ArgumentError("Parameter instance is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -2074,6 +2403,9 @@ class UsersResourceApi {
   ///
   /// [name] - Name of the user in the instance.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2082,7 +2414,8 @@ class UsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> update(User request, core.String project,
-      core.String instance, core.String host, core.String name) {
+      core.String instance, core.String host, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2107,6 +2440,9 @@ class UsersResourceApi {
       throw new core.ArgumentError("Parameter name is required.");
     }
     _queryParams["name"] = [name];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
@@ -2959,6 +3295,159 @@ class DatabasesListResponse {
   }
 }
 
+/// Read-replica configuration for connecting to the on-premises master.
+class DemoteMasterConfiguration {
+  /// This is always sql#demoteMasterConfiguration.
+  core.String kind;
+
+  /// MySQL specific configuration when replicating from a MySQL on-premises
+  /// master. Replication configuration information such as the username,
+  /// password, certificates, and keys are not stored in the instance metadata.
+  /// The configuration information is used only to set up the replication
+  /// connection and is stored by MySQL in a file named master.info in the data
+  /// directory.
+  DemoteMasterMySqlReplicaConfiguration mysqlReplicaConfiguration;
+
+  DemoteMasterConfiguration();
+
+  DemoteMasterConfiguration.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("mysqlReplicaConfiguration")) {
+      mysqlReplicaConfiguration =
+          new DemoteMasterMySqlReplicaConfiguration.fromJson(
+              _json["mysqlReplicaConfiguration"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (mysqlReplicaConfiguration != null) {
+      _json["mysqlReplicaConfiguration"] = (mysqlReplicaConfiguration).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Database instance demote master context.
+class DemoteMasterContext {
+  /// This is always sql#demoteMasterContext.
+  core.String kind;
+
+  /// The name of the instance which will act as on-premises master in the
+  /// replication setup.
+  core.String masterInstanceName;
+
+  /// Configuration specific to read-replicas replicating from the on-premises
+  /// master.
+  DemoteMasterConfiguration replicaConfiguration;
+
+  DemoteMasterContext();
+
+  DemoteMasterContext.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("masterInstanceName")) {
+      masterInstanceName = _json["masterInstanceName"];
+    }
+    if (_json.containsKey("replicaConfiguration")) {
+      replicaConfiguration =
+          new DemoteMasterConfiguration.fromJson(_json["replicaConfiguration"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (masterInstanceName != null) {
+      _json["masterInstanceName"] = masterInstanceName;
+    }
+    if (replicaConfiguration != null) {
+      _json["replicaConfiguration"] = (replicaConfiguration).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Read-replica configuration specific to MySQL databases.
+class DemoteMasterMySqlReplicaConfiguration {
+  /// PEM representation of the trusted CA's x509 certificate.
+  core.String caCertificate;
+
+  /// PEM representation of the slave's x509 certificate.
+  core.String clientCertificate;
+
+  /// PEM representation of the slave's private key. The corresponsing public
+  /// key is encoded in the client's certificate. The format of the slave's
+  /// private key can be either PKCS #1 or PKCS #8.
+  core.String clientKey;
+
+  /// This is always sql#demoteMasterMysqlReplicaConfiguration.
+  core.String kind;
+
+  /// The password for the replication connection.
+  core.String password;
+
+  /// The username for the replication connection.
+  core.String username;
+
+  DemoteMasterMySqlReplicaConfiguration();
+
+  DemoteMasterMySqlReplicaConfiguration.fromJson(core.Map _json) {
+    if (_json.containsKey("caCertificate")) {
+      caCertificate = _json["caCertificate"];
+    }
+    if (_json.containsKey("clientCertificate")) {
+      clientCertificate = _json["clientCertificate"];
+    }
+    if (_json.containsKey("clientKey")) {
+      clientKey = _json["clientKey"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("password")) {
+      password = _json["password"];
+    }
+    if (_json.containsKey("username")) {
+      username = _json["username"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (caCertificate != null) {
+      _json["caCertificate"] = caCertificate;
+    }
+    if (clientCertificate != null) {
+      _json["clientCertificate"] = clientCertificate;
+    }
+    if (clientKey != null) {
+      _json["clientKey"] = clientKey;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (password != null) {
+      _json["password"] = password;
+    }
+    if (username != null) {
+      _json["username"] = username;
+    }
+    return _json;
+  }
+}
+
 /// Options for exporting data as CSV.
 class ExportContextCsvExportOptions {
   /// The select query used to extract the data.
@@ -3378,6 +3867,30 @@ class InstancesCloneRequest {
         new core.Map<core.String, core.Object>();
     if (cloneContext != null) {
       _json["cloneContext"] = (cloneContext).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Database demote master request.
+class InstancesDemoteMasterRequest {
+  /// Contains details about the demoteMaster operation.
+  DemoteMasterContext demoteMasterContext;
+
+  InstancesDemoteMasterRequest();
+
+  InstancesDemoteMasterRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("demoteMasterContext")) {
+      demoteMasterContext =
+          new DemoteMasterContext.fromJson(_json["demoteMasterContext"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (demoteMasterContext != null) {
+      _json["demoteMasterContext"] = (demoteMasterContext).toJson();
     }
     return _json;
   }

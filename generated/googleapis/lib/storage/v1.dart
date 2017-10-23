@@ -83,8 +83,11 @@ class BucketAccessControlsResourceApi {
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
   /// allAuthenticatedUsers.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
@@ -92,7 +95,7 @@ class BucketAccessControlsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String bucket, core.String entity,
-      {core.String userProject}) {
+      {core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -108,6 +111,9 @@ class BucketAccessControlsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -136,8 +142,11 @@ class BucketAccessControlsResourceApi {
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
   /// allAuthenticatedUsers.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [BucketAccessControl].
   ///
@@ -147,7 +156,7 @@ class BucketAccessControlsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BucketAccessControl> get(core.String bucket, core.String entity,
-      {core.String userProject}) {
+      {core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -163,6 +172,9 @@ class BucketAccessControlsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b/' +
@@ -187,8 +199,11 @@ class BucketAccessControlsResourceApi {
   ///
   /// [bucket] - Name of a bucket.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [BucketAccessControl].
   ///
@@ -199,7 +214,7 @@ class BucketAccessControlsResourceApi {
   /// this method will complete with the same error.
   async.Future<BucketAccessControl> insert(
       BucketAccessControl request, core.String bucket,
-      {core.String userProject}) {
+      {core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -215,6 +230,9 @@ class BucketAccessControlsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/acl';
@@ -234,8 +252,11 @@ class BucketAccessControlsResourceApi {
   ///
   /// [bucket] - Name of a bucket.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [BucketAccessControls].
   ///
@@ -245,7 +266,7 @@ class BucketAccessControlsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BucketAccessControls> list(core.String bucket,
-      {core.String userProject}) {
+      {core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -258,6 +279,9 @@ class BucketAccessControlsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/acl';
@@ -284,8 +308,11 @@ class BucketAccessControlsResourceApi {
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
   /// allAuthenticatedUsers.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [BucketAccessControl].
   ///
@@ -296,7 +323,7 @@ class BucketAccessControlsResourceApi {
   /// this method will complete with the same error.
   async.Future<BucketAccessControl> patch(
       BucketAccessControl request, core.String bucket, core.String entity,
-      {core.String userProject}) {
+      {core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -315,6 +342,9 @@ class BucketAccessControlsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b/' +
@@ -343,8 +373,11 @@ class BucketAccessControlsResourceApi {
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
   /// allAuthenticatedUsers.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [BucketAccessControl].
   ///
@@ -355,7 +388,7 @@ class BucketAccessControlsResourceApi {
   /// this method will complete with the same error.
   async.Future<BucketAccessControl> update(
       BucketAccessControl request, core.String bucket, core.String entity,
-      {core.String userProject}) {
+      {core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -374,6 +407,9 @@ class BucketAccessControlsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b/' +
@@ -408,8 +444,11 @@ class BucketsResourceApi {
   /// [ifMetagenerationNotMatch] - If set, only deletes the bucket if its
   /// metageneration does not match this value.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
@@ -419,7 +458,8 @@ class BucketsResourceApi {
   async.Future delete(core.String bucket,
       {core.String ifMetagenerationMatch,
       core.String ifMetagenerationNotMatch,
-      core.String userProject}) {
+      core.String userProject,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -438,6 +478,9 @@ class BucketsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -472,8 +515,11 @@ class BucketsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [Bucket].
   ///
@@ -486,7 +532,8 @@ class BucketsResourceApi {
       {core.String ifMetagenerationMatch,
       core.String ifMetagenerationNotMatch,
       core.String projection,
-      core.String userProject}) {
+      core.String userProject,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -509,6 +556,9 @@ class BucketsResourceApi {
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
 
@@ -527,8 +577,11 @@ class BucketsResourceApi {
   ///
   /// [bucket] - Name of a bucket.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [Policy].
   ///
@@ -538,7 +591,7 @@ class BucketsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String bucket,
-      {core.String userProject}) {
+      {core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -551,6 +604,9 @@ class BucketsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/iam';
@@ -607,8 +663,10 @@ class BucketsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [Bucket].
   ///
@@ -621,7 +679,8 @@ class BucketsResourceApi {
       {core.String predefinedAcl,
       core.String predefinedDefaultObjectAcl,
       core.String projection,
-      core.String userProject}) {
+      core.String userProject,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -647,6 +706,9 @@ class BucketsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b';
@@ -679,8 +741,10 @@ class BucketsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [Buckets].
   ///
@@ -694,7 +758,8 @@ class BucketsResourceApi {
       core.String pageToken,
       core.String prefix,
       core.String projection,
-      core.String userProject}) {
+      core.String userProject,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -720,6 +785,9 @@ class BucketsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b';
@@ -784,8 +852,11 @@ class BucketsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [Bucket].
   ///
@@ -800,7 +871,8 @@ class BucketsResourceApi {
       core.String predefinedAcl,
       core.String predefinedDefaultObjectAcl,
       core.String projection,
-      core.String userProject}) {
+      core.String userProject,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -832,6 +904,9 @@ class BucketsResourceApi {
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
 
@@ -852,8 +927,11 @@ class BucketsResourceApi {
   ///
   /// [bucket] - Name of a bucket.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [Policy].
   ///
@@ -863,7 +941,7 @@ class BucketsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(Policy request, core.String bucket,
-      {core.String userProject}) {
+      {core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -879,6 +957,9 @@ class BucketsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/iam';
@@ -901,8 +982,11 @@ class BucketsResourceApi {
   ///
   /// [permissions] - Permissions to test.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [TestIamPermissionsResponse].
   ///
@@ -913,7 +997,7 @@ class BucketsResourceApi {
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
       core.String bucket, core.List<core.String> permissions,
-      {core.String userProject}) {
+      {core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -930,6 +1014,9 @@ class BucketsResourceApi {
     _queryParams["permissions"] = permissions;
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b/' +
@@ -996,8 +1083,11 @@ class BucketsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [Bucket].
   ///
@@ -1012,7 +1102,8 @@ class BucketsResourceApi {
       core.String predefinedAcl,
       core.String predefinedDefaultObjectAcl,
       core.String projection,
-      core.String userProject}) {
+      core.String userProject,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1044,6 +1135,9 @@ class BucketsResourceApi {
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
 
@@ -1068,12 +1162,15 @@ class ChannelsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future stop(Channel request) {
+  async.Future stop(Channel request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1083,6 +1180,9 @@ class ChannelsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1116,8 +1216,11 @@ class DefaultObjectAccessControlsResourceApi {
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
   /// allAuthenticatedUsers.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
@@ -1125,7 +1228,7 @@ class DefaultObjectAccessControlsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String bucket, core.String entity,
-      {core.String userProject}) {
+      {core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1141,6 +1244,9 @@ class DefaultObjectAccessControlsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1170,8 +1276,11 @@ class DefaultObjectAccessControlsResourceApi {
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
   /// allAuthenticatedUsers.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ObjectAccessControl].
   ///
@@ -1181,7 +1290,7 @@ class DefaultObjectAccessControlsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ObjectAccessControl> get(core.String bucket, core.String entity,
-      {core.String userProject}) {
+      {core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1197,6 +1306,9 @@ class DefaultObjectAccessControlsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b/' +
@@ -1221,8 +1333,11 @@ class DefaultObjectAccessControlsResourceApi {
   ///
   /// [bucket] - Name of a bucket.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ObjectAccessControl].
   ///
@@ -1233,7 +1348,7 @@ class DefaultObjectAccessControlsResourceApi {
   /// this method will complete with the same error.
   async.Future<ObjectAccessControl> insert(
       ObjectAccessControl request, core.String bucket,
-      {core.String userProject}) {
+      {core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1249,6 +1364,9 @@ class DefaultObjectAccessControlsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -1275,8 +1393,11 @@ class DefaultObjectAccessControlsResourceApi {
   /// [ifMetagenerationNotMatch] - If present, only return default ACL listing
   /// if the bucket's current metageneration does not match the given value.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ObjectAccessControls].
   ///
@@ -1288,7 +1409,8 @@ class DefaultObjectAccessControlsResourceApi {
   async.Future<ObjectAccessControls> list(core.String bucket,
       {core.String ifMetagenerationMatch,
       core.String ifMetagenerationNotMatch,
-      core.String userProject}) {
+      core.String userProject,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1307,6 +1429,9 @@ class DefaultObjectAccessControlsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -1334,8 +1459,11 @@ class DefaultObjectAccessControlsResourceApi {
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
   /// allAuthenticatedUsers.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ObjectAccessControl].
   ///
@@ -1346,7 +1474,7 @@ class DefaultObjectAccessControlsResourceApi {
   /// this method will complete with the same error.
   async.Future<ObjectAccessControl> patch(
       ObjectAccessControl request, core.String bucket, core.String entity,
-      {core.String userProject}) {
+      {core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1365,6 +1493,9 @@ class DefaultObjectAccessControlsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b/' +
@@ -1393,8 +1524,11 @@ class DefaultObjectAccessControlsResourceApi {
   /// user-emailAddress, group-groupId, group-emailAddress, allUsers, or
   /// allAuthenticatedUsers.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ObjectAccessControl].
   ///
@@ -1405,7 +1539,7 @@ class DefaultObjectAccessControlsResourceApi {
   /// this method will complete with the same error.
   async.Future<ObjectAccessControl> update(
       ObjectAccessControl request, core.String bucket, core.String entity,
-      {core.String userProject}) {
+      {core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1424,6 +1558,9 @@ class DefaultObjectAccessControlsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b/' +
@@ -1454,8 +1591,11 @@ class NotificationsResourceApi {
   ///
   /// [notification] - ID of the notification to delete.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
@@ -1463,7 +1603,7 @@ class NotificationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String bucket, core.String notification,
-      {core.String userProject}) {
+      {core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1479,6 +1619,9 @@ class NotificationsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1505,8 +1648,11 @@ class NotificationsResourceApi {
   ///
   /// [notification] - Notification ID
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [Notification].
   ///
@@ -1516,7 +1662,7 @@ class NotificationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Notification> get(core.String bucket, core.String notification,
-      {core.String userProject}) {
+      {core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1532,6 +1678,9 @@ class NotificationsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b/' +
@@ -1556,8 +1705,11 @@ class NotificationsResourceApi {
   ///
   /// [bucket] - The parent bucket of the notification.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [Notification].
   ///
@@ -1567,7 +1719,7 @@ class NotificationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Notification> insert(Notification request, core.String bucket,
-      {core.String userProject}) {
+      {core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1583,6 +1735,9 @@ class NotificationsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b/' +
@@ -1604,8 +1759,11 @@ class NotificationsResourceApi {
   ///
   /// [bucket] - Name of a Google Cloud Storage bucket.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [Notifications].
   ///
@@ -1615,7 +1773,7 @@ class NotificationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Notifications> list(core.String bucket,
-      {core.String userProject}) {
+      {core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1628,6 +1786,9 @@ class NotificationsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b/' +
@@ -1667,8 +1828,11 @@ class ObjectAccessControlsResourceApi {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
@@ -1677,7 +1841,7 @@ class ObjectAccessControlsResourceApi {
   /// this method will complete with the same error.
   async.Future delete(
       core.String bucket, core.String object, core.String entity,
-      {core.String generation, core.String userProject}) {
+      {core.String generation, core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1699,6 +1863,9 @@ class ObjectAccessControlsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1735,8 +1902,11 @@ class ObjectAccessControlsResourceApi {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ObjectAccessControl].
   ///
@@ -1747,7 +1917,7 @@ class ObjectAccessControlsResourceApi {
   /// this method will complete with the same error.
   async.Future<ObjectAccessControl> get(
       core.String bucket, core.String object, core.String entity,
-      {core.String generation, core.String userProject}) {
+      {core.String generation, core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1769,6 +1939,9 @@ class ObjectAccessControlsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b/' +
@@ -1801,8 +1974,11 @@ class ObjectAccessControlsResourceApi {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ObjectAccessControl].
   ///
@@ -1813,7 +1989,7 @@ class ObjectAccessControlsResourceApi {
   /// this method will complete with the same error.
   async.Future<ObjectAccessControl> insert(
       ObjectAccessControl request, core.String bucket, core.String object,
-      {core.String generation, core.String userProject}) {
+      {core.String generation, core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1835,6 +2011,9 @@ class ObjectAccessControlsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b/' +
@@ -1864,8 +2043,11 @@ class ObjectAccessControlsResourceApi {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ObjectAccessControls].
   ///
@@ -1876,7 +2058,7 @@ class ObjectAccessControlsResourceApi {
   /// this method will complete with the same error.
   async.Future<ObjectAccessControls> list(
       core.String bucket, core.String object,
-      {core.String generation, core.String userProject}) {
+      {core.String generation, core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1895,6 +2077,9 @@ class ObjectAccessControlsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b/' +
@@ -1931,8 +2116,11 @@ class ObjectAccessControlsResourceApi {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ObjectAccessControl].
   ///
@@ -1943,7 +2131,7 @@ class ObjectAccessControlsResourceApi {
   /// this method will complete with the same error.
   async.Future<ObjectAccessControl> patch(ObjectAccessControl request,
       core.String bucket, core.String object, core.String entity,
-      {core.String generation, core.String userProject}) {
+      {core.String generation, core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1968,6 +2156,9 @@ class ObjectAccessControlsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b/' +
@@ -2004,8 +2195,11 @@ class ObjectAccessControlsResourceApi {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ObjectAccessControl].
   ///
@@ -2016,7 +2210,7 @@ class ObjectAccessControlsResourceApi {
   /// this method will complete with the same error.
   async.Future<ObjectAccessControl> update(ObjectAccessControl request,
       core.String bucket, core.String object, core.String entity,
-      {core.String generation, core.String userProject}) {
+      {core.String generation, core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2041,6 +2235,9 @@ class ObjectAccessControlsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b/' +
@@ -2104,8 +2301,11 @@ class ObjectsResourceApi {
   /// that will be used to encrypt the object. Overrides the object metadata's
   /// kms_key_name value, if any.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// [downloadOptions] - Options for downloading. A download can be either a
   /// Metadata (default) or Media download. Partial Media downloads are possible
@@ -2129,6 +2329,7 @@ class ObjectsResourceApi {
       core.String ifMetagenerationMatch,
       core.String kmsKeyName,
       core.String userProject,
+      core.String $fields,
       commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
@@ -2161,6 +2362,9 @@ class ObjectsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = downloadOptions;
@@ -2260,8 +2464,11 @@ class ObjectsResourceApi {
   /// [sourceGeneration] - If present, selects a specific revision of the source
   /// object (as opposed to the latest version, the default).
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// [downloadOptions] - Options for downloading. A download can be either a
   /// Metadata (default) or Media download. Partial Media downloads are possible
@@ -2296,6 +2503,7 @@ class ObjectsResourceApi {
       core.String projection,
       core.String sourceGeneration,
       core.String userProject,
+      core.String $fields,
       commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
@@ -2360,6 +2568,9 @@ class ObjectsResourceApi {
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _downloadOptions = downloadOptions;
 
@@ -2414,8 +2625,11 @@ class ObjectsResourceApi {
   /// [ifMetagenerationNotMatch] - Makes the operation conditional on whether
   /// the object's current metageneration does not match the given value.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
@@ -2428,7 +2642,8 @@ class ObjectsResourceApi {
       core.String ifGenerationNotMatch,
       core.String ifMetagenerationMatch,
       core.String ifMetagenerationNotMatch,
-      core.String userProject}) {
+      core.String userProject,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2459,6 +2674,9 @@ class ObjectsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2509,8 +2727,11 @@ class ObjectsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// [downloadOptions] - Options for downloading. A download can be either a
   /// Metadata (default) or Media download. Partial Media downloads are possible
@@ -2535,6 +2756,7 @@ class ObjectsResourceApi {
       core.String ifMetagenerationNotMatch,
       core.String projection,
       core.String userProject,
+      core.String $fields,
       commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
@@ -2571,6 +2793,9 @@ class ObjectsResourceApi {
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _downloadOptions = downloadOptions;
 
@@ -2605,8 +2830,11 @@ class ObjectsResourceApi {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [Policy].
   ///
@@ -2616,7 +2844,7 @@ class ObjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(core.String bucket, core.String object,
-      {core.String generation, core.String userProject}) {
+      {core.String generation, core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2635,6 +2863,9 @@ class ObjectsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b/' +
@@ -2713,8 +2944,11 @@ class ObjectsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// [uploadMedia] - The media to upload.
   ///
@@ -2748,6 +2982,7 @@ class ObjectsResourceApi {
       core.String predefinedAcl,
       core.String projection,
       core.String userProject,
+      core.String $fields,
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia,
       commons.DownloadOptions downloadOptions:
@@ -2794,6 +3029,9 @@ class ObjectsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -2853,11 +3091,14 @@ class ObjectsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
   ///
   /// [versions] - If true, lists all versions of an object as distinct results.
   /// The default is false. For more information, see Object Versioning.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [Objects].
   ///
@@ -2873,7 +3114,8 @@ class ObjectsResourceApi {
       core.String prefix,
       core.String projection,
       core.String userProject,
-      core.bool versions}) {
+      core.bool versions,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2904,6 +3146,9 @@ class ObjectsResourceApi {
     }
     if (versions != null) {
       _queryParams["versions"] = ["${versions}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o';
@@ -2966,8 +3211,11 @@ class ObjectsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [Object].
   ///
@@ -2985,7 +3233,8 @@ class ObjectsResourceApi {
       core.String ifMetagenerationNotMatch,
       core.String predefinedAcl,
       core.String projection,
-      core.String userProject}) {
+      core.String userProject,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3025,6 +3274,9 @@ class ObjectsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b/' +
@@ -3133,8 +3385,11 @@ class ObjectsResourceApi {
   /// [sourceGeneration] - If present, selects a specific revision of the source
   /// object (as opposed to the latest version, the default).
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [RewriteResponse].
   ///
@@ -3163,7 +3418,8 @@ class ObjectsResourceApi {
       core.String projection,
       core.String rewriteToken,
       core.String sourceGeneration,
-      core.String userProject}) {
+      core.String userProject,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3235,6 +3491,9 @@ class ObjectsResourceApi {
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'b/' +
         commons.Escaper.ecapeVariable('$sourceBucket') +
@@ -3268,8 +3527,11 @@ class ObjectsResourceApi {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [Policy].
   ///
@@ -3280,7 +3542,7 @@ class ObjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
       Policy request, core.String bucket, core.String object,
-      {core.String generation, core.String userProject}) {
+      {core.String generation, core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3302,6 +3564,9 @@ class ObjectsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b/' +
@@ -3334,8 +3599,11 @@ class ObjectsResourceApi {
   /// [generation] - If present, selects a specific revision of this object (as
   /// opposed to the latest version, the default).
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [TestIamPermissionsResponse].
   ///
@@ -3349,7 +3617,8 @@ class ObjectsResourceApi {
       core.String object,
       core.List<core.String> permissions,
       {core.String generation,
-      core.String userProject}) {
+      core.String userProject,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3372,6 +3641,9 @@ class ObjectsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b/' +
@@ -3439,8 +3711,11 @@ class ObjectsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// [downloadOptions] - Options for downloading. A download can be either a
   /// Metadata (default) or Media download. Partial Media downloads are possible
@@ -3466,6 +3741,7 @@ class ObjectsResourceApi {
       core.String predefinedAcl,
       core.String projection,
       core.String userProject,
+      core.String $fields,
       commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
@@ -3507,6 +3783,9 @@ class ObjectsResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = downloadOptions;
@@ -3559,11 +3838,14 @@ class ObjectsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request. Required for
+  /// Requester Pays buckets.
   ///
   /// [versions] - If true, lists all versions of an object as distinct results.
   /// The default is false. For more information, see Object Versioning.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [Channel].
   ///
@@ -3579,7 +3861,8 @@ class ObjectsResourceApi {
       core.String prefix,
       core.String projection,
       core.String userProject,
-      core.bool versions}) {
+      core.bool versions,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3613,6 +3896,9 @@ class ObjectsResourceApi {
     }
     if (versions != null) {
       _queryParams["versions"] = ["${versions}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/watch';
@@ -3649,8 +3935,10 @@ class ProjectsServiceAccountResourceApi {
   ///
   /// [projectId] - Project ID
   ///
-  /// [userProject] - The project to be billed for this request, for Requester
-  /// Pays buckets.
+  /// [userProject] - The project to be billed for this request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ServiceAccount].
   ///
@@ -3660,7 +3948,7 @@ class ProjectsServiceAccountResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ServiceAccount> get(core.String projectId,
-      {core.String userProject}) {
+      {core.String userProject, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3673,6 +3961,9 @@ class ProjectsServiceAccountResourceApi {
     }
     if (userProject != null) {
       _queryParams["userProject"] = [userProject];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +

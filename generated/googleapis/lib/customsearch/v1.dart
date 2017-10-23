@@ -193,6 +193,9 @@ class CseResourceApi {
   ///
   /// [start] - The index of the first result to return
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Search].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -230,7 +233,8 @@ class CseResourceApi {
       core.String siteSearch,
       core.String siteSearchFilter,
       core.String sort,
-      core.int start}) {
+      core.int start,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -331,6 +335,9 @@ class CseResourceApi {
     }
     if (start != null) {
       _queryParams["start"] = ["${start}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1';

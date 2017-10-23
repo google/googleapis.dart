@@ -71,14 +71,14 @@ checkLabel(api.Label o) {
   buildCounterLabel--;
 }
 
-buildUnnamed3564() {
+buildUnnamed3582() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3564(core.List<core.String> o) {
+checkUnnamed3582(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -89,7 +89,7 @@ buildRegionViewsAddResourcesRequest() {
   var o = new api.RegionViewsAddResourcesRequest();
   buildCounterRegionViewsAddResourcesRequest++;
   if (buildCounterRegionViewsAddResourcesRequest < 3) {
-    o.resources = buildUnnamed3564();
+    o.resources = buildUnnamed3582();
   }
   buildCounterRegionViewsAddResourcesRequest--;
   return o;
@@ -98,7 +98,7 @@ buildRegionViewsAddResourcesRequest() {
 checkRegionViewsAddResourcesRequest(api.RegionViewsAddResourcesRequest o) {
   buildCounterRegionViewsAddResourcesRequest++;
   if (buildCounterRegionViewsAddResourcesRequest < 3) {
-    checkUnnamed3564(o.resources);
+    checkUnnamed3582(o.resources);
   }
   buildCounterRegionViewsAddResourcesRequest--;
 }
@@ -122,14 +122,14 @@ checkRegionViewsInsertResponse(api.RegionViewsInsertResponse o) {
   buildCounterRegionViewsInsertResponse--;
 }
 
-buildUnnamed3565() {
+buildUnnamed3583() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3565(core.List<core.String> o) {
+checkUnnamed3583(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -140,7 +140,7 @@ buildRegionViewsListResourcesResponse() {
   var o = new api.RegionViewsListResourcesResponse();
   buildCounterRegionViewsListResourcesResponse++;
   if (buildCounterRegionViewsListResourcesResponse < 3) {
-    o.members = buildUnnamed3565();
+    o.members = buildUnnamed3583();
     o.nextPageToken = "foo";
   }
   buildCounterRegionViewsListResourcesResponse--;
@@ -150,20 +150,20 @@ buildRegionViewsListResourcesResponse() {
 checkRegionViewsListResourcesResponse(api.RegionViewsListResourcesResponse o) {
   buildCounterRegionViewsListResourcesResponse++;
   if (buildCounterRegionViewsListResourcesResponse < 3) {
-    checkUnnamed3565(o.members);
+    checkUnnamed3583(o.members);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterRegionViewsListResourcesResponse--;
 }
 
-buildUnnamed3566() {
+buildUnnamed3584() {
   var o = new core.List<api.ResourceView>();
   o.add(buildResourceView());
   o.add(buildResourceView());
   return o;
 }
 
-checkUnnamed3566(core.List<api.ResourceView> o) {
+checkUnnamed3584(core.List<api.ResourceView> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceView(o[0]);
   checkResourceView(o[1]);
@@ -175,7 +175,7 @@ buildRegionViewsListResponse() {
   buildCounterRegionViewsListResponse++;
   if (buildCounterRegionViewsListResponse < 3) {
     o.nextPageToken = "foo";
-    o.resourceViews = buildUnnamed3566();
+    o.resourceViews = buildUnnamed3584();
   }
   buildCounterRegionViewsListResponse--;
   return o;
@@ -185,19 +185,19 @@ checkRegionViewsListResponse(api.RegionViewsListResponse o) {
   buildCounterRegionViewsListResponse++;
   if (buildCounterRegionViewsListResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3566(o.resourceViews);
+    checkUnnamed3584(o.resourceViews);
   }
   buildCounterRegionViewsListResponse--;
 }
 
-buildUnnamed3567() {
+buildUnnamed3585() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3567(core.List<core.String> o) {
+checkUnnamed3585(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -208,7 +208,7 @@ buildRegionViewsRemoveResourcesRequest() {
   var o = new api.RegionViewsRemoveResourcesRequest();
   buildCounterRegionViewsRemoveResourcesRequest++;
   if (buildCounterRegionViewsRemoveResourcesRequest < 3) {
-    o.resources = buildUnnamed3567();
+    o.resources = buildUnnamed3585();
   }
   buildCounterRegionViewsRemoveResourcesRequest--;
   return o;
@@ -218,32 +218,32 @@ checkRegionViewsRemoveResourcesRequest(
     api.RegionViewsRemoveResourcesRequest o) {
   buildCounterRegionViewsRemoveResourcesRequest++;
   if (buildCounterRegionViewsRemoveResourcesRequest < 3) {
-    checkUnnamed3567(o.resources);
+    checkUnnamed3585(o.resources);
   }
   buildCounterRegionViewsRemoveResourcesRequest--;
 }
 
-buildUnnamed3568() {
+buildUnnamed3586() {
   var o = new core.List<api.Label>();
   o.add(buildLabel());
   o.add(buildLabel());
   return o;
 }
 
-checkUnnamed3568(core.List<api.Label> o) {
+checkUnnamed3586(core.List<api.Label> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLabel(o[0]);
   checkLabel(o[1]);
 }
 
-buildUnnamed3569() {
+buildUnnamed3587() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3569(core.List<core.String> o) {
+checkUnnamed3587(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -258,9 +258,9 @@ buildResourceView() {
     o.description = "foo";
     o.id = "foo";
     o.kind = "foo";
-    o.labels = buildUnnamed3568();
+    o.labels = buildUnnamed3586();
     o.lastModified = "foo";
-    o.members = buildUnnamed3569();
+    o.members = buildUnnamed3587();
     o.name = "foo";
     o.numMembers = 42;
     o.selfLink = "foo";
@@ -276,9 +276,9 @@ checkResourceView(api.ResourceView o) {
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed3568(o.labels);
+    checkUnnamed3586(o.labels);
     unittest.expect(o.lastModified, unittest.equals('foo'));
-    checkUnnamed3569(o.members);
+    checkUnnamed3587(o.members);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.numMembers, unittest.equals(42));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -286,14 +286,14 @@ checkResourceView(api.ResourceView o) {
   buildCounterResourceView--;
 }
 
-buildUnnamed3570() {
+buildUnnamed3588() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3570(core.List<core.String> o) {
+checkUnnamed3588(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -304,7 +304,7 @@ buildZoneViewsAddResourcesRequest() {
   var o = new api.ZoneViewsAddResourcesRequest();
   buildCounterZoneViewsAddResourcesRequest++;
   if (buildCounterZoneViewsAddResourcesRequest < 3) {
-    o.resources = buildUnnamed3570();
+    o.resources = buildUnnamed3588();
   }
   buildCounterZoneViewsAddResourcesRequest--;
   return o;
@@ -313,7 +313,7 @@ buildZoneViewsAddResourcesRequest() {
 checkZoneViewsAddResourcesRequest(api.ZoneViewsAddResourcesRequest o) {
   buildCounterZoneViewsAddResourcesRequest++;
   if (buildCounterZoneViewsAddResourcesRequest < 3) {
-    checkUnnamed3570(o.resources);
+    checkUnnamed3588(o.resources);
   }
   buildCounterZoneViewsAddResourcesRequest--;
 }
@@ -337,14 +337,14 @@ checkZoneViewsInsertResponse(api.ZoneViewsInsertResponse o) {
   buildCounterZoneViewsInsertResponse--;
 }
 
-buildUnnamed3571() {
+buildUnnamed3589() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3571(core.List<core.String> o) {
+checkUnnamed3589(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -355,7 +355,7 @@ buildZoneViewsListResourcesResponse() {
   var o = new api.ZoneViewsListResourcesResponse();
   buildCounterZoneViewsListResourcesResponse++;
   if (buildCounterZoneViewsListResourcesResponse < 3) {
-    o.members = buildUnnamed3571();
+    o.members = buildUnnamed3589();
     o.nextPageToken = "foo";
   }
   buildCounterZoneViewsListResourcesResponse--;
@@ -365,20 +365,20 @@ buildZoneViewsListResourcesResponse() {
 checkZoneViewsListResourcesResponse(api.ZoneViewsListResourcesResponse o) {
   buildCounterZoneViewsListResourcesResponse++;
   if (buildCounterZoneViewsListResourcesResponse < 3) {
-    checkUnnamed3571(o.members);
+    checkUnnamed3589(o.members);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterZoneViewsListResourcesResponse--;
 }
 
-buildUnnamed3572() {
+buildUnnamed3590() {
   var o = new core.List<api.ResourceView>();
   o.add(buildResourceView());
   o.add(buildResourceView());
   return o;
 }
 
-checkUnnamed3572(core.List<api.ResourceView> o) {
+checkUnnamed3590(core.List<api.ResourceView> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceView(o[0]);
   checkResourceView(o[1]);
@@ -390,7 +390,7 @@ buildZoneViewsListResponse() {
   buildCounterZoneViewsListResponse++;
   if (buildCounterZoneViewsListResponse < 3) {
     o.nextPageToken = "foo";
-    o.resourceViews = buildUnnamed3572();
+    o.resourceViews = buildUnnamed3590();
   }
   buildCounterZoneViewsListResponse--;
   return o;
@@ -400,19 +400,19 @@ checkZoneViewsListResponse(api.ZoneViewsListResponse o) {
   buildCounterZoneViewsListResponse++;
   if (buildCounterZoneViewsListResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3572(o.resourceViews);
+    checkUnnamed3590(o.resourceViews);
   }
   buildCounterZoneViewsListResponse--;
 }
 
-buildUnnamed3573() {
+buildUnnamed3591() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3573(core.List<core.String> o) {
+checkUnnamed3591(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -423,7 +423,7 @@ buildZoneViewsRemoveResourcesRequest() {
   var o = new api.ZoneViewsRemoveResourcesRequest();
   buildCounterZoneViewsRemoveResourcesRequest++;
   if (buildCounterZoneViewsRemoveResourcesRequest < 3) {
-    o.resources = buildUnnamed3573();
+    o.resources = buildUnnamed3591();
   }
   buildCounterZoneViewsRemoveResourcesRequest--;
   return o;
@@ -432,7 +432,7 @@ buildZoneViewsRemoveResourcesRequest() {
 checkZoneViewsRemoveResourcesRequest(api.ZoneViewsRemoveResourcesRequest o) {
   buildCounterZoneViewsRemoveResourcesRequest++;
   if (buildCounterZoneViewsRemoveResourcesRequest < 3) {
-    checkUnnamed3573(o.resources);
+    checkUnnamed3591(o.resources);
   }
   buildCounterZoneViewsRemoveResourcesRequest--;
 }
@@ -543,6 +543,7 @@ main() {
       var arg_projectName = "foo";
       var arg_region = "foo";
       var arg_resourceViewName = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.RegionViewsAddResourcesRequest.fromJson(json);
         checkRegionViewsAddResourcesRequest(obj);
@@ -573,6 +574,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -582,7 +584,8 @@ main() {
       }), true);
       res
           .addresources(
-              arg_request, arg_projectName, arg_region, arg_resourceViewName)
+              arg_request, arg_projectName, arg_region, arg_resourceViewName,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
     });
 
@@ -593,6 +596,7 @@ main() {
       var arg_projectName = "foo";
       var arg_region = "foo";
       var arg_resourceViewName = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -620,6 +624,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -628,7 +633,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .delete(arg_projectName, arg_region, arg_resourceViewName)
+          .delete(arg_projectName, arg_region, arg_resourceViewName,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
     });
 
@@ -639,6 +645,7 @@ main() {
       var arg_projectName = "foo";
       var arg_region = "foo";
       var arg_resourceViewName = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -666,6 +673,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -674,7 +682,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_projectName, arg_region, arg_resourceViewName)
+          .get(arg_projectName, arg_region, arg_resourceViewName,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ResourceView response) {
         checkResourceView(response);
       })));
@@ -687,6 +696,7 @@ main() {
       var arg_request = buildResourceView();
       var arg_projectName = "foo";
       var arg_region = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ResourceView.fromJson(json);
         checkResourceView(obj);
@@ -717,6 +727,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -724,8 +735,11 @@ main() {
         var resp = convert.JSON.encode(buildRegionViewsInsertResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request, arg_projectName, arg_region).then(
-          unittest.expectAsync1(((api.RegionViewsInsertResponse response) {
+      res
+          .insert(arg_request, arg_projectName, arg_region,
+              $fields: arg_$fields)
+          .then(
+              unittest.expectAsync1(((api.RegionViewsInsertResponse response) {
         checkRegionViewsInsertResponse(response);
       })));
     });
@@ -738,6 +752,7 @@ main() {
       var arg_region = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -769,6 +784,7 @@ main() {
             unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -778,7 +794,9 @@ main() {
       }), true);
       res
           .list(arg_projectName, arg_region,
-              maxResults: arg_maxResults, pageToken: arg_pageToken)
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.RegionViewsListResponse response) {
         checkRegionViewsListResponse(response);
       })));
@@ -793,6 +811,7 @@ main() {
       var arg_resourceViewName = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -824,6 +843,7 @@ main() {
             unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -833,7 +853,9 @@ main() {
       }), true);
       res
           .listresources(arg_projectName, arg_region, arg_resourceViewName,
-              maxResults: arg_maxResults, pageToken: arg_pageToken)
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              $fields: arg_$fields)
           .then(unittest
               .expectAsync1(((api.RegionViewsListResourcesResponse response) {
         checkRegionViewsListResourcesResponse(response);
@@ -848,6 +870,7 @@ main() {
       var arg_projectName = "foo";
       var arg_region = "foo";
       var arg_resourceViewName = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.RegionViewsRemoveResourcesRequest.fromJson(json);
         checkRegionViewsRemoveResourcesRequest(obj);
@@ -878,6 +901,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -887,7 +911,8 @@ main() {
       }), true);
       res
           .removeresources(
-              arg_request, arg_projectName, arg_region, arg_resourceViewName)
+              arg_request, arg_projectName, arg_region, arg_resourceViewName,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
     });
   });
@@ -900,6 +925,7 @@ main() {
       var arg_projectName = "foo";
       var arg_zone = "foo";
       var arg_resourceViewName = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ZoneViewsAddResourcesRequest.fromJson(json);
         checkZoneViewsAddResourcesRequest(obj);
@@ -930,6 +956,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -939,7 +966,8 @@ main() {
       }), true);
       res
           .addresources(
-              arg_request, arg_projectName, arg_zone, arg_resourceViewName)
+              arg_request, arg_projectName, arg_zone, arg_resourceViewName,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
     });
 
@@ -949,6 +977,7 @@ main() {
       var arg_projectName = "foo";
       var arg_zone = "foo";
       var arg_resourceViewName = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -976,6 +1005,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -984,7 +1014,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .delete(arg_projectName, arg_zone, arg_resourceViewName)
+          .delete(arg_projectName, arg_zone, arg_resourceViewName,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
     });
 
@@ -994,6 +1025,7 @@ main() {
       var arg_projectName = "foo";
       var arg_zone = "foo";
       var arg_resourceViewName = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1021,6 +1053,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1029,7 +1062,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_projectName, arg_zone, arg_resourceViewName)
+          .get(arg_projectName, arg_zone, arg_resourceViewName,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ResourceView response) {
         checkResourceView(response);
       })));
@@ -1041,6 +1075,7 @@ main() {
       var arg_request = buildResourceView();
       var arg_projectName = "foo";
       var arg_zone = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ResourceView.fromJson(json);
         checkResourceView(obj);
@@ -1071,6 +1106,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1079,7 +1115,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .insert(arg_request, arg_projectName, arg_zone)
+          .insert(arg_request, arg_projectName, arg_zone, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ZoneViewsInsertResponse response) {
         checkZoneViewsInsertResponse(response);
       })));
@@ -1092,6 +1128,7 @@ main() {
       var arg_zone = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1123,6 +1160,7 @@ main() {
             unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1132,7 +1170,9 @@ main() {
       }), true);
       res
           .list(arg_projectName, arg_zone,
-              maxResults: arg_maxResults, pageToken: arg_pageToken)
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ZoneViewsListResponse response) {
         checkZoneViewsListResponse(response);
       })));
@@ -1146,6 +1186,7 @@ main() {
       var arg_resourceViewName = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1177,6 +1218,7 @@ main() {
             unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1186,7 +1228,9 @@ main() {
       }), true);
       res
           .listresources(arg_projectName, arg_zone, arg_resourceViewName,
-              maxResults: arg_maxResults, pageToken: arg_pageToken)
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              $fields: arg_$fields)
           .then(unittest
               .expectAsync1(((api.ZoneViewsListResourcesResponse response) {
         checkZoneViewsListResourcesResponse(response);
@@ -1200,6 +1244,7 @@ main() {
       var arg_projectName = "foo";
       var arg_zone = "foo";
       var arg_resourceViewName = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ZoneViewsRemoveResourcesRequest.fromJson(json);
         checkZoneViewsRemoveResourcesRequest(obj);
@@ -1230,6 +1275,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1239,7 +1285,8 @@ main() {
       }), true);
       res
           .removeresources(
-              arg_request, arg_projectName, arg_zone, arg_resourceViewName)
+              arg_request, arg_projectName, arg_zone, arg_resourceViewName,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
     });
   });

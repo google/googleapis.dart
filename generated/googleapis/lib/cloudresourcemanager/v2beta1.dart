@@ -75,6 +75,9 @@ class FoldersResourceApi {
   /// [parent] - The resource name of the new Folder's parent.
   /// Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -82,7 +85,8 @@ class FoldersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> create(Folder request, {core.String parent}) {
+  async.Future<Operation> create(Folder request,
+      {core.String parent, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -95,6 +99,9 @@ class FoldersResourceApi {
     }
     if (parent != null) {
       _queryParams["parent"] = [parent];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/folders';
@@ -122,6 +129,9 @@ class FoldersResourceApi {
   /// Must be of the form `folders/{folder_id}`.
   /// Value must have pattern "^folders/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Folder].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -129,7 +139,7 @@ class FoldersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Folder> delete(core.String name) {
+  async.Future<Folder> delete(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -139,6 +149,9 @@ class FoldersResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -164,6 +177,9 @@ class FoldersResourceApi {
   /// Must be of the form `folders/{folder_id}`.
   /// Value must have pattern "^folders/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Folder].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -171,7 +187,7 @@ class FoldersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Folder> get(core.String name) {
+  async.Future<Folder> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -181,6 +197,9 @@ class FoldersResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -209,6 +228,9 @@ class FoldersResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^folders/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Policy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -217,7 +239,8 @@ class FoldersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
-      GetIamPolicyRequest request, core.String resource) {
+      GetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -230,6 +253,9 @@ class FoldersResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -274,6 +300,9 @@ class FoldersResourceApi {
   /// should
   /// be returned.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListFoldersResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -285,7 +314,8 @@ class FoldersResourceApi {
       {core.String pageToken,
       core.int pageSize,
       core.String parent,
-      core.bool showDeleted}) {
+      core.bool showDeleted,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -304,6 +334,9 @@ class FoldersResourceApi {
     }
     if (showDeleted != null) {
       _queryParams["showDeleted"] = ["${showDeleted}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/folders';
@@ -342,6 +375,9 @@ class FoldersResourceApi {
   /// Must be of the form folders/{folder_id}
   /// Value must have pattern "^folders/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -349,7 +385,8 @@ class FoldersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> move(MoveFolderRequest request, core.String name) {
+  async.Future<Operation> move(MoveFolderRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -362,6 +399,9 @@ class FoldersResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -402,6 +442,9 @@ class FoldersResourceApi {
   /// [updateMask] - Fields to be updated.
   /// Only the `display_name` can be updated.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Folder].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -410,7 +453,7 @@ class FoldersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Folder> patch(Folder request, core.String name,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -426,6 +469,9 @@ class FoldersResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -450,6 +496,9 @@ class FoldersResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SearchFoldersResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -457,7 +506,8 @@ class FoldersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SearchFoldersResponse> search(SearchFoldersRequest request) {
+  async.Future<SearchFoldersResponse> search(SearchFoldersRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -467,6 +517,9 @@ class FoldersResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/folders:search';
@@ -495,6 +548,9 @@ class FoldersResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^folders/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Policy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -503,7 +559,8 @@ class FoldersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      SetIamPolicyRequest request, core.String resource) {
+      SetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -516,6 +573,9 @@ class FoldersResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -546,6 +606,9 @@ class FoldersResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^folders/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TestIamPermissionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -554,7 +617,8 @@ class FoldersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource) {
+      TestIamPermissionsRequest request, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -567,6 +631,9 @@ class FoldersResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' +
@@ -600,6 +667,9 @@ class FoldersResourceApi {
   /// Must be of the form `folders/{folder_id}`.
   /// Value must have pattern "^folders/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Folder].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -607,8 +677,8 @@ class FoldersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Folder> undelete(
-      UndeleteFolderRequest request, core.String name) {
+  async.Future<Folder> undelete(UndeleteFolderRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -621,6 +691,9 @@ class FoldersResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/' +

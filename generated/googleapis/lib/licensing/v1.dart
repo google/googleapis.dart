@@ -48,13 +48,17 @@ class LicenseAssignmentsResourceApi {
   ///
   /// [userId] - email id or unique Id of the user
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(
-      core.String productId, core.String skuId, core.String userId) {
+      core.String productId, core.String skuId, core.String userId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -70,6 +74,9 @@ class LicenseAssignmentsResourceApi {
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -99,6 +106,9 @@ class LicenseAssignmentsResourceApi {
   ///
   /// [userId] - email id or unique Id of the user
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LicenseAssignment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -107,7 +117,8 @@ class LicenseAssignmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LicenseAssignment> get(
-      core.String productId, core.String skuId, core.String userId) {
+      core.String productId, core.String skuId, core.String userId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -123,6 +134,9 @@ class LicenseAssignmentsResourceApi {
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$productId') +
@@ -150,6 +164,9 @@ class LicenseAssignmentsResourceApi {
   ///
   /// [skuId] - Name for sku
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LicenseAssignment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -157,8 +174,9 @@ class LicenseAssignmentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LicenseAssignment> insert(LicenseAssignmentInsert request,
-      core.String productId, core.String skuId) {
+  async.Future<LicenseAssignment> insert(
+      LicenseAssignmentInsert request, core.String productId, core.String skuId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -174,6 +192,9 @@ class LicenseAssignmentsResourceApi {
     }
     if (skuId == null) {
       throw new core.ArgumentError("Parameter skuId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$productId') +
@@ -206,6 +227,9 @@ class LicenseAssignmentsResourceApi {
   /// [pageToken] - Token to fetch the next page.Optional. By default server
   /// will return first page
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LicenseAssignmentList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -215,7 +239,7 @@ class LicenseAssignmentsResourceApi {
   /// this method will complete with the same error.
   async.Future<LicenseAssignmentList> listForProduct(
       core.String productId, core.String customerId,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -235,6 +259,9 @@ class LicenseAssignmentsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$productId') + '/users';
@@ -266,6 +293,9 @@ class LicenseAssignmentsResourceApi {
   /// [pageToken] - Token to fetch the next page.Optional. By default server
   /// will return first page
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LicenseAssignmentList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -275,7 +305,7 @@ class LicenseAssignmentsResourceApi {
   /// this method will complete with the same error.
   async.Future<LicenseAssignmentList> listForProductAndSku(
       core.String productId, core.String skuId, core.String customerId,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -298,6 +328,9 @@ class LicenseAssignmentsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$productId') +
@@ -326,6 +359,9 @@ class LicenseAssignmentsResourceApi {
   ///
   /// [userId] - email id or unique Id of the user
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LicenseAssignment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -334,7 +370,8 @@ class LicenseAssignmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LicenseAssignment> patch(LicenseAssignment request,
-      core.String productId, core.String skuId, core.String userId) {
+      core.String productId, core.String skuId, core.String userId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -353,6 +390,9 @@ class LicenseAssignmentsResourceApi {
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$productId') +
@@ -382,6 +422,9 @@ class LicenseAssignmentsResourceApi {
   ///
   /// [userId] - email id or unique Id of the user
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LicenseAssignment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -390,7 +433,8 @@ class LicenseAssignmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LicenseAssignment> update(LicenseAssignment request,
-      core.String productId, core.String skuId, core.String userId) {
+      core.String productId, core.String skuId, core.String userId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -409,6 +453,9 @@ class LicenseAssignmentsResourceApi {
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$productId') +

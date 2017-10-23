@@ -252,14 +252,14 @@ checkHeldOrgUnit(api.HeldOrgUnit o) {
   buildCounterHeldOrgUnit--;
 }
 
-buildUnnamed1685() {
+buildUnnamed1677() {
   var o = new core.List<api.HeldAccount>();
   o.add(buildHeldAccount());
   o.add(buildHeldAccount());
   return o;
 }
 
-checkUnnamed1685(core.List<api.HeldAccount> o) {
+checkUnnamed1677(core.List<api.HeldAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHeldAccount(o[0]);
   checkHeldAccount(o[1]);
@@ -270,7 +270,7 @@ buildHold() {
   var o = new api.Hold();
   buildCounterHold++;
   if (buildCounterHold < 3) {
-    o.accounts = buildUnnamed1685();
+    o.accounts = buildUnnamed1677();
     o.corpus = "foo";
     o.holdId = "foo";
     o.name = "foo";
@@ -285,7 +285,7 @@ buildHold() {
 checkHold(api.Hold o) {
   buildCounterHold++;
   if (buildCounterHold < 3) {
-    checkUnnamed1685(o.accounts);
+    checkUnnamed1677(o.accounts);
     unittest.expect(o.corpus, unittest.equals('foo'));
     unittest.expect(o.holdId, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -296,14 +296,14 @@ checkHold(api.Hold o) {
   buildCounterHold--;
 }
 
-buildUnnamed1686() {
+buildUnnamed1678() {
   var o = new core.List<api.HeldAccount>();
   o.add(buildHeldAccount());
   o.add(buildHeldAccount());
   return o;
 }
 
-checkUnnamed1686(core.List<api.HeldAccount> o) {
+checkUnnamed1678(core.List<api.HeldAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHeldAccount(o[0]);
   checkHeldAccount(o[1]);
@@ -314,7 +314,7 @@ buildListHeldAccountsResponse() {
   var o = new api.ListHeldAccountsResponse();
   buildCounterListHeldAccountsResponse++;
   if (buildCounterListHeldAccountsResponse < 3) {
-    o.accounts = buildUnnamed1686();
+    o.accounts = buildUnnamed1678();
   }
   buildCounterListHeldAccountsResponse--;
   return o;
@@ -323,19 +323,19 @@ buildListHeldAccountsResponse() {
 checkListHeldAccountsResponse(api.ListHeldAccountsResponse o) {
   buildCounterListHeldAccountsResponse++;
   if (buildCounterListHeldAccountsResponse < 3) {
-    checkUnnamed1686(o.accounts);
+    checkUnnamed1678(o.accounts);
   }
   buildCounterListHeldAccountsResponse--;
 }
 
-buildUnnamed1687() {
+buildUnnamed1679() {
   var o = new core.List<api.Hold>();
   o.add(buildHold());
   o.add(buildHold());
   return o;
 }
 
-checkUnnamed1687(core.List<api.Hold> o) {
+checkUnnamed1679(core.List<api.Hold> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHold(o[0]);
   checkHold(o[1]);
@@ -346,7 +346,7 @@ buildListHoldsResponse() {
   var o = new api.ListHoldsResponse();
   buildCounterListHoldsResponse++;
   if (buildCounterListHoldsResponse < 3) {
-    o.holds = buildUnnamed1687();
+    o.holds = buildUnnamed1679();
     o.nextPageToken = "foo";
   }
   buildCounterListHoldsResponse--;
@@ -356,20 +356,20 @@ buildListHoldsResponse() {
 checkListHoldsResponse(api.ListHoldsResponse o) {
   buildCounterListHoldsResponse++;
   if (buildCounterListHoldsResponse < 3) {
-    checkUnnamed1687(o.holds);
+    checkUnnamed1679(o.holds);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListHoldsResponse--;
 }
 
-buildUnnamed1688() {
+buildUnnamed1680() {
   var o = new core.List<api.Matter>();
   o.add(buildMatter());
   o.add(buildMatter());
   return o;
 }
 
-checkUnnamed1688(core.List<api.Matter> o) {
+checkUnnamed1680(core.List<api.Matter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMatter(o[0]);
   checkMatter(o[1]);
@@ -380,7 +380,7 @@ buildListMattersResponse() {
   var o = new api.ListMattersResponse();
   buildCounterListMattersResponse++;
   if (buildCounterListMattersResponse < 3) {
-    o.matters = buildUnnamed1688();
+    o.matters = buildUnnamed1680();
     o.nextPageToken = "foo";
   }
   buildCounterListMattersResponse--;
@@ -390,20 +390,20 @@ buildListMattersResponse() {
 checkListMattersResponse(api.ListMattersResponse o) {
   buildCounterListMattersResponse++;
   if (buildCounterListMattersResponse < 3) {
-    checkUnnamed1688(o.matters);
+    checkUnnamed1680(o.matters);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListMattersResponse--;
 }
 
-buildUnnamed1689() {
+buildUnnamed1681() {
   var o = new core.List<api.MatterPermission>();
   o.add(buildMatterPermission());
   o.add(buildMatterPermission());
   return o;
 }
 
-checkUnnamed1689(core.List<api.MatterPermission> o) {
+checkUnnamed1681(core.List<api.MatterPermission> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMatterPermission(o[0]);
   checkMatterPermission(o[1]);
@@ -416,7 +416,7 @@ buildMatter() {
   if (buildCounterMatter < 3) {
     o.description = "foo";
     o.matterId = "foo";
-    o.matterPermissions = buildUnnamed1689();
+    o.matterPermissions = buildUnnamed1681();
     o.name = "foo";
     o.state = "foo";
   }
@@ -429,7 +429,7 @@ checkMatter(api.Matter o) {
   if (buildCounterMatter < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.matterId, unittest.equals('foo'));
-    checkUnnamed1689(o.matterPermissions);
+    checkUnnamed1681(o.matterPermissions);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
   }
@@ -692,6 +692,7 @@ main() {
       api.MattersResourceApi res = new api.VaultApi(mock).matters;
       var arg_request = buildAddMatterPermissionsRequest();
       var arg_matterId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.AddMatterPermissionsRequest.fromJson(json);
         checkAddMatterPermissionsRequest(obj);
@@ -734,6 +735,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -742,7 +744,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .addPermissions(arg_request, arg_matterId)
+          .addPermissions(arg_request, arg_matterId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.MatterPermission response) {
         checkMatterPermission(response);
       })));
@@ -753,6 +755,7 @@ main() {
       api.MattersResourceApi res = new api.VaultApi(mock).matters;
       var arg_request = buildCloseMatterRequest();
       var arg_matterId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.CloseMatterRequest.fromJson(json);
         checkCloseMatterRequest(obj);
@@ -795,6 +798,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -803,7 +807,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .close(arg_request, arg_matterId)
+          .close(arg_request, arg_matterId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.CloseMatterResponse response) {
         checkCloseMatterResponse(response);
       })));
@@ -813,6 +817,7 @@ main() {
       var mock = new HttpServerMock();
       api.MattersResourceApi res = new api.VaultApi(mock).matters;
       var arg_request = buildMatter();
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Matter.fromJson(json);
         checkMatter(obj);
@@ -846,6 +851,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -854,7 +860,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .create(arg_request)
+          .create(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Matter response) {
         checkMatter(response);
       })));
@@ -864,6 +870,7 @@ main() {
       var mock = new HttpServerMock();
       api.MattersResourceApi res = new api.VaultApi(mock).matters;
       var arg_matterId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -897,6 +904,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -905,7 +913,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .delete(arg_matterId)
+          .delete(arg_matterId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Matter response) {
         checkMatter(response);
       })));
@@ -916,6 +924,7 @@ main() {
       api.MattersResourceApi res = new api.VaultApi(mock).matters;
       var arg_matterId = "foo";
       var arg_view = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -950,6 +959,7 @@ main() {
           }
         }
         unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -958,7 +968,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_matterId, view: arg_view)
+          .get(arg_matterId, view: arg_view, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Matter response) {
         checkMatter(response);
       })));
@@ -967,10 +977,11 @@ main() {
     unittest.test("method--list", () {
       var mock = new HttpServerMock();
       api.MattersResourceApi res = new api.VaultApi(mock).matters;
+      var arg_state = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
       var arg_view = "foo";
-      var arg_state = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1001,12 +1012,13 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["state"].first, unittest.equals(arg_state));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
-        unittest.expect(queryMap["state"].first, unittest.equals(arg_state));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1016,10 +1028,11 @@ main() {
       }), true);
       res
           .list(
+              state: arg_state,
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
               view: arg_view,
-              state: arg_state)
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ListMattersResponse response) {
         checkListMattersResponse(response);
       })));
@@ -1030,6 +1043,7 @@ main() {
       api.MattersResourceApi res = new api.VaultApi(mock).matters;
       var arg_request = buildRemoveMatterPermissionsRequest();
       var arg_matterId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.RemoveMatterPermissionsRequest.fromJson(json);
         checkRemoveMatterPermissionsRequest(obj);
@@ -1072,6 +1086,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1080,7 +1095,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .removePermissions(arg_request, arg_matterId)
+          .removePermissions(arg_request, arg_matterId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Empty response) {
         checkEmpty(response);
       })));
@@ -1091,6 +1106,7 @@ main() {
       api.MattersResourceApi res = new api.VaultApi(mock).matters;
       var arg_request = buildReopenMatterRequest();
       var arg_matterId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ReopenMatterRequest.fromJson(json);
         checkReopenMatterRequest(obj);
@@ -1133,6 +1149,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1141,7 +1158,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .reopen(arg_request, arg_matterId)
+          .reopen(arg_request, arg_matterId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ReopenMatterResponse response) {
         checkReopenMatterResponse(response);
       })));
@@ -1152,6 +1169,7 @@ main() {
       api.MattersResourceApi res = new api.VaultApi(mock).matters;
       var arg_request = buildUndeleteMatterRequest();
       var arg_matterId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.UndeleteMatterRequest.fromJson(json);
         checkUndeleteMatterRequest(obj);
@@ -1194,6 +1212,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1202,7 +1221,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .undelete(arg_request, arg_matterId)
+          .undelete(arg_request, arg_matterId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Matter response) {
         checkMatter(response);
       })));
@@ -1213,6 +1232,7 @@ main() {
       api.MattersResourceApi res = new api.VaultApi(mock).matters;
       var arg_request = buildMatter();
       var arg_matterId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Matter.fromJson(json);
         checkMatter(obj);
@@ -1249,6 +1269,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1257,7 +1278,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .update(arg_request, arg_matterId)
+          .update(arg_request, arg_matterId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Matter response) {
         checkMatter(response);
       })));
@@ -1270,6 +1291,7 @@ main() {
       api.MattersHoldsResourceApi res = new api.VaultApi(mock).matters.holds;
       var arg_request = buildHold();
       var arg_matterId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Hold.fromJson(json);
         checkHold(obj);
@@ -1312,6 +1334,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1320,7 +1343,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .create(arg_request, arg_matterId)
+          .create(arg_request, arg_matterId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Hold response) {
         checkHold(response);
       })));
@@ -1331,6 +1354,7 @@ main() {
       api.MattersHoldsResourceApi res = new api.VaultApi(mock).matters.holds;
       var arg_matterId = "foo";
       var arg_holdId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1373,6 +1397,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1381,7 +1406,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .delete(arg_matterId, arg_holdId)
+          .delete(arg_matterId, arg_holdId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Empty response) {
         checkEmpty(response);
       })));
@@ -1392,6 +1417,7 @@ main() {
       api.MattersHoldsResourceApi res = new api.VaultApi(mock).matters.holds;
       var arg_matterId = "foo";
       var arg_holdId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1434,6 +1460,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1442,7 +1469,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_matterId, arg_holdId)
+          .get(arg_matterId, arg_holdId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Hold response) {
         checkHold(response);
       })));
@@ -1454,6 +1481,7 @@ main() {
       var arg_matterId = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1497,6 +1525,7 @@ main() {
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1505,7 +1534,10 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .list(arg_matterId, pageToken: arg_pageToken, pageSize: arg_pageSize)
+          .list(arg_matterId,
+              pageToken: arg_pageToken,
+              pageSize: arg_pageSize,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ListHoldsResponse response) {
         checkListHoldsResponse(response);
       })));
@@ -1517,6 +1549,7 @@ main() {
       var arg_request = buildHold();
       var arg_matterId = "foo";
       var arg_holdId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Hold.fromJson(json);
         checkHold(obj);
@@ -1562,6 +1595,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1570,7 +1604,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .update(arg_request, arg_matterId, arg_holdId)
+          .update(arg_request, arg_matterId, arg_holdId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Hold response) {
         checkHold(response);
       })));
@@ -1585,6 +1619,7 @@ main() {
       var arg_request = buildHeldAccount();
       var arg_matterId = "foo";
       var arg_holdId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.HeldAccount.fromJson(json);
         checkHeldAccount(obj);
@@ -1636,6 +1671,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1644,7 +1680,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .create(arg_request, arg_matterId, arg_holdId)
+          .create(arg_request, arg_matterId, arg_holdId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.HeldAccount response) {
         checkHeldAccount(response);
       })));
@@ -1657,6 +1693,7 @@ main() {
       var arg_matterId = "foo";
       var arg_holdId = "foo";
       var arg_accountId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1708,6 +1745,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1716,7 +1754,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .delete(arg_matterId, arg_holdId, arg_accountId)
+          .delete(arg_matterId, arg_holdId, arg_accountId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Empty response) {
         checkEmpty(response);
       })));
@@ -1728,6 +1766,7 @@ main() {
           new api.VaultApi(mock).matters.holds.accounts;
       var arg_matterId = "foo";
       var arg_holdId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1776,6 +1815,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1784,7 +1824,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .list(arg_matterId, arg_holdId)
+          .list(arg_matterId, arg_holdId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ListHeldAccountsResponse response) {
         checkListHeldAccountsResponse(response);
       })));

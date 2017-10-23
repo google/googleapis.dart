@@ -50,53 +50,53 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed833() {
+buildUnnamed818() {
   var o = new core.List<api.StringCount>();
   o.add(buildStringCount());
   o.add(buildStringCount());
   return o;
 }
 
-checkUnnamed833(core.List<api.StringCount> o) {
+checkUnnamed818(core.List<api.StringCount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStringCount(o[0]);
   checkStringCount(o[1]);
 }
 
-buildUnnamed834() {
+buildUnnamed819() {
   var o = new core.List<api.StringCount>();
   o.add(buildStringCount());
   o.add(buildStringCount());
   return o;
 }
 
-checkUnnamed834(core.List<api.StringCount> o) {
+checkUnnamed819(core.List<api.StringCount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStringCount(o[0]);
   checkStringCount(o[1]);
 }
 
-buildUnnamed835() {
+buildUnnamed820() {
   var o = new core.List<api.StringCount>();
   o.add(buildStringCount());
   o.add(buildStringCount());
   return o;
 }
 
-checkUnnamed835(core.List<api.StringCount> o) {
+checkUnnamed820(core.List<api.StringCount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStringCount(o[0]);
   checkStringCount(o[1]);
 }
 
-buildUnnamed836() {
+buildUnnamed821() {
   var o = new core.List<api.StringCount>();
   o.add(buildStringCount());
   o.add(buildStringCount());
   return o;
 }
 
-checkUnnamed836(core.List<api.StringCount> o) {
+checkUnnamed821(core.List<api.StringCount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStringCount(o[0]);
   checkStringCount(o[1]);
@@ -107,11 +107,11 @@ buildAnalyticsSnapshot() {
   var o = new api.AnalyticsSnapshot();
   buildCounterAnalyticsSnapshot++;
   if (buildCounterAnalyticsSnapshot < 3) {
-    o.browsers = buildUnnamed833();
-    o.countries = buildUnnamed834();
+    o.browsers = buildUnnamed818();
+    o.countries = buildUnnamed819();
     o.longUrlClicks = "foo";
-    o.platforms = buildUnnamed835();
-    o.referrers = buildUnnamed836();
+    o.platforms = buildUnnamed820();
+    o.referrers = buildUnnamed821();
     o.shortUrlClicks = "foo";
   }
   buildCounterAnalyticsSnapshot--;
@@ -121,11 +121,11 @@ buildAnalyticsSnapshot() {
 checkAnalyticsSnapshot(api.AnalyticsSnapshot o) {
   buildCounterAnalyticsSnapshot++;
   if (buildCounterAnalyticsSnapshot < 3) {
-    checkUnnamed833(o.browsers);
-    checkUnnamed834(o.countries);
+    checkUnnamed818(o.browsers);
+    checkUnnamed819(o.countries);
     unittest.expect(o.longUrlClicks, unittest.equals('foo'));
-    checkUnnamed835(o.platforms);
-    checkUnnamed836(o.referrers);
+    checkUnnamed820(o.platforms);
+    checkUnnamed821(o.referrers);
     unittest.expect(o.shortUrlClicks, unittest.equals('foo'));
   }
   buildCounterAnalyticsSnapshot--;
@@ -208,14 +208,14 @@ checkUrl(api.Url o) {
   buildCounterUrl--;
 }
 
-buildUnnamed837() {
+buildUnnamed822() {
   var o = new core.List<api.Url>();
   o.add(buildUrl());
   o.add(buildUrl());
   return o;
 }
 
-checkUnnamed837(core.List<api.Url> o) {
+checkUnnamed822(core.List<api.Url> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrl(o[0]);
   checkUrl(o[1]);
@@ -226,7 +226,7 @@ buildUrlHistory() {
   var o = new api.UrlHistory();
   buildCounterUrlHistory++;
   if (buildCounterUrlHistory < 3) {
-    o.items = buildUnnamed837();
+    o.items = buildUnnamed822();
     o.itemsPerPage = 42;
     o.kind = "foo";
     o.nextPageToken = "foo";
@@ -239,7 +239,7 @@ buildUrlHistory() {
 checkUrlHistory(api.UrlHistory o) {
   buildCounterUrlHistory++;
   if (buildCounterUrlHistory < 3) {
-    checkUnnamed837(o.items);
+    checkUnnamed822(o.items);
     unittest.expect(o.itemsPerPage, unittest.equals(42));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -295,6 +295,7 @@ main() {
       api.UrlResourceApi res = new api.UrlshortenerApi(mock).url;
       var arg_shortUrl = "foo";
       var arg_projection = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -332,6 +333,7 @@ main() {
             queryMap["shortUrl"].first, unittest.equals(arg_shortUrl));
         unittest.expect(
             queryMap["projection"].first, unittest.equals(arg_projection));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -340,7 +342,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_shortUrl, projection: arg_projection)
+          .get(arg_shortUrl, projection: arg_projection, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Url response) {
         checkUrl(response);
       })));
@@ -350,6 +352,7 @@ main() {
       var mock = new HttpServerMock();
       api.UrlResourceApi res = new api.UrlshortenerApi(mock).url;
       var arg_request = buildUrl();
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Url.fromJson(json);
         checkUrl(obj);
@@ -386,6 +389,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -393,7 +397,9 @@ main() {
         var resp = convert.JSON.encode(buildUrl());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.insert(arg_request).then(unittest.expectAsync1(((api.Url response) {
+      res
+          .insert(arg_request, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((api.Url response) {
         checkUrl(response);
       })));
     });
@@ -403,6 +409,7 @@ main() {
       api.UrlResourceApi res = new api.UrlshortenerApi(mock).url;
       var arg_projection = "foo";
       var arg_start_token = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -440,6 +447,7 @@ main() {
             queryMap["projection"].first, unittest.equals(arg_projection));
         unittest.expect(
             queryMap["start-token"].first, unittest.equals(arg_start_token));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -448,7 +456,10 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .list(projection: arg_projection, start_token: arg_start_token)
+          .list(
+              projection: arg_projection,
+              start_token: arg_start_token,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.UrlHistory response) {
         checkUrlHistory(response);
       })));

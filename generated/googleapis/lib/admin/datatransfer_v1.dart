@@ -48,6 +48,9 @@ class ApplicationsResourceApi {
   ///
   /// [applicationId] - ID of the application resource to be retrieved.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Application].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -55,7 +58,8 @@ class ApplicationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Application> get(core.String applicationId) {
+  async.Future<Application> get(core.String applicationId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -65,6 +69,9 @@ class ApplicationsResourceApi {
 
     if (applicationId == null) {
       throw new core.ArgumentError("Parameter applicationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'applications/' + commons.Escaper.ecapeVariable('$applicationId');
@@ -89,6 +96,9 @@ class ApplicationsResourceApi {
   ///
   /// [pageToken] - Token to specify next page in the list.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ApplicationsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -97,7 +107,10 @@ class ApplicationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ApplicationsListResponse> list(
-      {core.String customerId, core.int maxResults, core.String pageToken}) {
+      {core.String customerId,
+      core.int maxResults,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -113,6 +126,9 @@ class ApplicationsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'applications';
@@ -140,6 +156,9 @@ class TransfersResourceApi {
   /// [dataTransferId] - ID of the resource to be retrieved. This is returned in
   /// the response from the insert method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DataTransfer].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -147,7 +166,8 @@ class TransfersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DataTransfer> get(core.String dataTransferId) {
+  async.Future<DataTransfer> get(core.String dataTransferId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -157,6 +177,9 @@ class TransfersResourceApi {
 
     if (dataTransferId == null) {
       throw new core.ArgumentError("Parameter dataTransferId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'transfers/' + commons.Escaper.ecapeVariable('$dataTransferId');
@@ -176,6 +199,9 @@ class TransfersResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DataTransfer].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -183,7 +209,8 @@ class TransfersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DataTransfer> insert(DataTransfer request) {
+  async.Future<DataTransfer> insert(DataTransfer request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -193,6 +220,9 @@ class TransfersResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'transfers';
@@ -224,6 +254,9 @@ class TransfersResourceApi {
   ///
   /// [status] - Status of the transfer.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DataTransfersListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -237,7 +270,8 @@ class TransfersResourceApi {
       core.String newOwnerUserId,
       core.String oldOwnerUserId,
       core.String pageToken,
-      core.String status}) {
+      core.String status,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -262,6 +296,9 @@ class TransfersResourceApi {
     }
     if (status != null) {
       _queryParams["status"] = [status];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'transfers';

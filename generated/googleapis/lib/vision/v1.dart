@@ -48,6 +48,9 @@ class ImagesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BatchAnnotateImagesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -56,7 +59,8 @@ class ImagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchAnnotateImagesResponse> annotate(
-      BatchAnnotateImagesRequest request) {
+      BatchAnnotateImagesRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -66,6 +70,9 @@ class ImagesResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/images:annotate';
@@ -1797,7 +1804,9 @@ class Property {
 /// methods over safe-search verticals (for example, adult, spoof, medical,
 /// violence).
 class SafeSearchAnnotation {
-  /// Represents the adult content likelihood for the image.
+  /// Represents the adult content likelihood for the image. Adult content may
+  /// contain elements such as nudity, pornographic images or cartoons, or
+  /// sexual activities.
   /// Possible string values are:
   /// - "UNKNOWN" : Unknown likelihood.
   /// - "VERY_UNLIKELY" : It is very unlikely that the image belongs to the
@@ -1844,7 +1853,7 @@ class SafeSearchAnnotation {
   /// specified vertical.
   core.String spoof;
 
-  /// Violence likelihood.
+  /// Likelihood that this image contains violent content.
   /// Possible string values are:
   /// - "UNKNOWN" : Unknown likelihood.
   /// - "VERY_UNLIKELY" : It is very unlikely that the image belongs to the

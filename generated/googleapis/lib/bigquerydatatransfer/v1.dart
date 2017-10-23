@@ -73,6 +73,9 @@ class ProjectsDataSourcesResourceApi {
   /// `projects/{project_id}/dataSources/{data_source_id}`
   /// Value must have pattern "^projects/[^/]+/dataSources/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CheckValidCredsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -81,7 +84,8 @@ class ProjectsDataSourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CheckValidCredsResponse> checkValidCreds(
-      CheckValidCredsRequest request, core.String name) {
+      CheckValidCredsRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -94,6 +98,9 @@ class ProjectsDataSourcesResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -119,6 +126,9 @@ class ProjectsDataSourcesResourceApi {
   /// `projects/{project_id}/dataSources/{data_source_id}`
   /// Value must have pattern "^projects/[^/]+/dataSources/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DataSource].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -126,7 +136,7 @@ class ProjectsDataSourcesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DataSource> get(core.String name) {
+  async.Future<DataSource> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -136,6 +146,9 @@ class ProjectsDataSourcesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -159,6 +172,9 @@ class ProjectsDataSourcesResourceApi {
   /// Must be in the form: `projects/{project_id}`
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - Page size. The default page size is the maximum value of 1000
+  /// results.
+  ///
   /// [pageToken] - Pagination token, which can be used to request a specific
   /// page
   /// of `ListDataSourcesRequest` list results. For multiple-page
@@ -166,8 +182,8 @@ class ProjectsDataSourcesResourceApi {
   /// a `next_page` token, which can be used as the
   /// `page_token` value to request the next page of list results.
   ///
-  /// [pageSize] - Page size. The default page size is the maximum value of 1000
-  /// results.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListDataSourcesResponse].
   ///
@@ -177,7 +193,7 @@ class ProjectsDataSourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDataSourcesResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -188,11 +204,14 @@ class ProjectsDataSourcesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -227,6 +246,9 @@ class ProjectsLocationsResourceApi {
   /// [name] - Resource name for the location.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Location].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -234,7 +256,7 @@ class ProjectsLocationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(core.String name) {
+  async.Future<Location> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -244,6 +266,9 @@ class ProjectsLocationsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -270,6 +295,9 @@ class ProjectsLocationsResourceApi {
   ///
   /// [pageSize] - The standard list page size.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListLocationsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -278,7 +306,10 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String filter, core.String pageToken, core.int pageSize}) {
+      {core.String filter,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -297,6 +328,9 @@ class ProjectsLocationsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -334,6 +368,9 @@ class ProjectsLocationsDataSourcesResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/dataSources/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CheckValidCredsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -342,7 +379,8 @@ class ProjectsLocationsDataSourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CheckValidCredsResponse> checkValidCreds(
-      CheckValidCredsRequest request, core.String name) {
+      CheckValidCredsRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -355,6 +393,9 @@ class ProjectsLocationsDataSourcesResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -381,6 +422,9 @@ class ProjectsLocationsDataSourcesResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/dataSources/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DataSource].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -388,7 +432,7 @@ class ProjectsLocationsDataSourcesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DataSource> get(core.String name) {
+  async.Future<DataSource> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -398,6 +442,9 @@ class ProjectsLocationsDataSourcesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -431,6 +478,9 @@ class ProjectsLocationsDataSourcesResourceApi {
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListDataSourcesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -439,7 +489,7 @@ class ProjectsLocationsDataSourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDataSourcesResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -455,6 +505,9 @@ class ProjectsLocationsDataSourcesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -513,6 +566,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
   ///   returned in the title bar of the browser, with the page text prompting
   ///   the user to copy the code and paste it in the application.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TransferConfig].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -522,7 +578,7 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// this method will complete with the same error.
   async.Future<TransferConfig> create(
       TransferConfig request, core.String parent,
-      {core.String authorizationCode}) {
+      {core.String authorizationCode, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -538,6 +594,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
     }
     if (authorizationCode != null) {
       _queryParams["authorizationCode"] = [authorizationCode];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -564,6 +623,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -571,7 +633,7 @@ class ProjectsLocationsTransferConfigsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name) {
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -581,6 +643,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -604,6 +669,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TransferConfig].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -611,7 +679,7 @@ class ProjectsLocationsTransferConfigsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TransferConfig> get(core.String name) {
+  async.Future<TransferConfig> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -621,6 +689,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -642,9 +713,6 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// should be returned: `projects/{project_id}`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
-  /// [dataSourceIds] - When specified, only configurations of requested data
-  /// sources are returned.
-  ///
   /// [pageToken] - Pagination token, which can be used to request a specific
   /// page
   /// of `ListTransfersRequest` list results. For multiple-page
@@ -655,6 +723,12 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
   /// results.
   ///
+  /// [dataSourceIds] - When specified, only configurations of requested data
+  /// sources are returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListTransferConfigsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -663,9 +737,10 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferConfigsResponse> list(core.String parent,
-      {core.List<core.String> dataSourceIds,
-      core.String pageToken,
-      core.int pageSize}) {
+      {core.String pageToken,
+      core.int pageSize,
+      core.List<core.String> dataSourceIds,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -676,14 +751,17 @@ class ProjectsLocationsTransferConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (dataSourceIds != null) {
-      _queryParams["dataSourceIds"] = dataSourceIds;
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (dataSourceIds != null) {
+      _queryParams["dataSourceIds"] = dataSourceIds;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -736,6 +814,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
   ///
   /// [updateMask] - Required list of fields to be updated in this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TransferConfig].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -744,7 +825,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TransferConfig> patch(TransferConfig request, core.String name,
-      {core.String authorizationCode, core.String updateMask}) {
+      {core.String authorizationCode,
+      core.String updateMask,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -763,6 +846,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -790,6 +876,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ScheduleTransferRunsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -798,7 +887,8 @@ class ProjectsLocationsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ScheduleTransferRunsResponse> scheduleRuns(
-      ScheduleTransferRunsRequest request, core.String parent) {
+      ScheduleTransferRunsRequest request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -811,6 +901,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -849,6 +942,9 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -856,7 +952,7 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name) {
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -866,6 +962,9 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -889,6 +988,9 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TransferRun].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -896,7 +998,7 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TransferRun> get(core.String name) {
+  async.Future<TransferRun> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -906,6 +1008,9 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -930,6 +1035,12 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
   ///
+  /// [pageSize] - Page size. The default page size is the maximum value of 1000
+  /// results.
+  ///
+  /// [states] - When specified, only transfer runs with requested states are
+  /// returned.
+  ///
   /// [runAttempt] - Indicates how run attempts are to be pulled.
   /// Possible string values are:
   /// - "RUN_ATTEMPT_UNSPECIFIED" : A RUN_ATTEMPT_UNSPECIFIED.
@@ -942,11 +1053,8 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   /// a `next_page` token, which can be used as the
   /// `page_token` value to request the next page of list results.
   ///
-  /// [pageSize] - Page size. The default page size is the maximum value of 1000
-  /// results.
-  ///
-  /// [states] - When specified, only transfer runs with requested states are
-  /// returned.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListTransferRunsResponse].
   ///
@@ -956,10 +1064,11 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferRunsResponse> list(core.String parent,
-      {core.String runAttempt,
+      {core.int pageSize,
+      core.List<core.String> states,
+      core.String runAttempt,
       core.String pageToken,
-      core.int pageSize,
-      core.List<core.String> states}) {
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -970,17 +1079,20 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (states != null) {
+      _queryParams["states"] = states;
+    }
     if (runAttempt != null) {
       _queryParams["runAttempt"] = [runAttempt];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (states != null) {
-      _queryParams["states"] = states;
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/runs';
@@ -1026,6 +1138,9 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
   /// and ERROR
   /// messages are returned.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListTransferLogsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1036,7 +1151,8 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
   async.Future<ListTransferLogsResponse> list(core.String parent,
       {core.String pageToken,
       core.int pageSize,
-      core.List<core.String> messageTypes}) {
+      core.List<core.String> messageTypes,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1055,6 +1171,9 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
     }
     if (messageTypes != null) {
       _queryParams["messageTypes"] = messageTypes;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1114,6 +1233,9 @@ class ProjectsTransferConfigsResourceApi {
   ///   returned in the title bar of the browser, with the page text prompting
   ///   the user to copy the code and paste it in the application.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TransferConfig].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1123,7 +1245,7 @@ class ProjectsTransferConfigsResourceApi {
   /// this method will complete with the same error.
   async.Future<TransferConfig> create(
       TransferConfig request, core.String parent,
-      {core.String authorizationCode}) {
+      {core.String authorizationCode, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1139,6 +1261,9 @@ class ProjectsTransferConfigsResourceApi {
     }
     if (authorizationCode != null) {
       _queryParams["authorizationCode"] = [authorizationCode];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1164,6 +1289,9 @@ class ProjectsTransferConfigsResourceApi {
   /// `projects/{project_id}/transferConfigs/{config_id}`
   /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1171,7 +1299,7 @@ class ProjectsTransferConfigsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name) {
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1181,6 +1309,9 @@ class ProjectsTransferConfigsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1203,6 +1334,9 @@ class ProjectsTransferConfigsResourceApi {
   /// `projects/{project_id}/transferConfigs/{config_id}`
   /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TransferConfig].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1210,7 +1344,7 @@ class ProjectsTransferConfigsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TransferConfig> get(core.String name) {
+  async.Future<TransferConfig> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1220,6 +1354,9 @@ class ProjectsTransferConfigsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1241,6 +1378,12 @@ class ProjectsTransferConfigsResourceApi {
   /// should be returned: `projects/{project_id}`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - Page size. The default page size is the maximum value of 1000
+  /// results.
+  ///
+  /// [dataSourceIds] - When specified, only configurations of requested data
+  /// sources are returned.
+  ///
   /// [pageToken] - Pagination token, which can be used to request a specific
   /// page
   /// of `ListTransfersRequest` list results. For multiple-page
@@ -1248,11 +1391,8 @@ class ProjectsTransferConfigsResourceApi {
   /// a `next_page` token, which can be used as the
   /// `page_token` value to request the next page of list results.
   ///
-  /// [pageSize] - Page size. The default page size is the maximum value of 1000
-  /// results.
-  ///
-  /// [dataSourceIds] - When specified, only configurations of requested data
-  /// sources are returned.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListTransferConfigsResponse].
   ///
@@ -1262,9 +1402,10 @@ class ProjectsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferConfigsResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
-      core.List<core.String> dataSourceIds}) {
+      {core.int pageSize,
+      core.List<core.String> dataSourceIds,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1275,14 +1416,17 @@ class ProjectsTransferConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (dataSourceIds != null) {
       _queryParams["dataSourceIds"] = dataSourceIds;
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1334,6 +1478,9 @@ class ProjectsTransferConfigsResourceApi {
   ///   returned in the title bar of the browser, with the page text prompting
   ///   the user to copy the code and paste it in the application.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TransferConfig].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1342,7 +1489,9 @@ class ProjectsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TransferConfig> patch(TransferConfig request, core.String name,
-      {core.String updateMask, core.String authorizationCode}) {
+      {core.String updateMask,
+      core.String authorizationCode,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1361,6 +1510,9 @@ class ProjectsTransferConfigsResourceApi {
     }
     if (authorizationCode != null) {
       _queryParams["authorizationCode"] = [authorizationCode];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1387,6 +1539,9 @@ class ProjectsTransferConfigsResourceApi {
   /// `projects/{project_id}/transferConfigs/{config_id}`.
   /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ScheduleTransferRunsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1395,7 +1550,8 @@ class ProjectsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ScheduleTransferRunsResponse> scheduleRuns(
-      ScheduleTransferRunsRequest request, core.String parent) {
+      ScheduleTransferRunsRequest request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1408,6 +1564,9 @@ class ProjectsTransferConfigsResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1444,6 +1603,9 @@ class ProjectsTransferConfigsRunsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1451,7 +1613,7 @@ class ProjectsTransferConfigsRunsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name) {
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1461,6 +1623,9 @@ class ProjectsTransferConfigsRunsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1484,6 +1649,9 @@ class ProjectsTransferConfigsRunsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TransferRun].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1491,7 +1659,7 @@ class ProjectsTransferConfigsRunsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TransferRun> get(core.String name) {
+  async.Future<TransferRun> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1501,6 +1669,9 @@ class ProjectsTransferConfigsRunsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1542,6 +1713,9 @@ class ProjectsTransferConfigsRunsResourceApi {
   /// - "RUN_ATTEMPT_UNSPECIFIED" : A RUN_ATTEMPT_UNSPECIFIED.
   /// - "LATEST" : A LATEST.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListTransferRunsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1553,7 +1727,8 @@ class ProjectsTransferConfigsRunsResourceApi {
       {core.String pageToken,
       core.int pageSize,
       core.List<core.String> states,
-      core.String runAttempt}) {
+      core.String runAttempt,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1575,6 +1750,9 @@ class ProjectsTransferConfigsRunsResourceApi {
     }
     if (runAttempt != null) {
       _queryParams["runAttempt"] = [runAttempt];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/runs';
@@ -1620,6 +1798,9 @@ class ProjectsTransferConfigsRunsTransferLogsResourceApi {
   /// and ERROR
   /// messages are returned.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListTransferLogsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1630,7 +1811,8 @@ class ProjectsTransferConfigsRunsTransferLogsResourceApi {
   async.Future<ListTransferLogsResponse> list(core.String parent,
       {core.String pageToken,
       core.int pageSize,
-      core.List<core.String> messageTypes}) {
+      core.List<core.String> messageTypes,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1649,6 +1831,9 @@ class ProjectsTransferConfigsRunsTransferLogsResourceApi {
     }
     if (messageTypes != null) {
       _queryParams["messageTypes"] = messageTypes;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +

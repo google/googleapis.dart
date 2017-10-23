@@ -1,3 +1,22 @@
+## 0.46.0
+
+* [api] admin:directory_v1
+* [api] bigquery:v2
+* [api] cloudfunctions:v1
+* [api] cloudtrace:v2
+* [api] compute:v1
+* [api] datastore:v1
+* [api] firebasedynamiclinks:v1
+* [api] firebaserules:v1
+* [api] manufacturers:v1
+* [api] monitoring:v3
+* [api] partners:v2
+* [api] slides:v1
+* [api] speech:v1
+* [api-breaking] cloudtrace:v2
+* [api-breaking] manufacturers:v1
+* [api-breaking] servicecontrol:v1
+
 ## 0.45.0
 * [api-new] cloudiot:v1
 * [api-new] testing:v1

@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed714() {
+buildUnnamed699() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed714(core.List<core.String> o) {
+checkUnnamed699(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -71,7 +71,7 @@ buildApiDataRow() {
     o.clicks = 42.0;
     o.ctr = 42.0;
     o.impressions = 42.0;
-    o.keys = buildUnnamed714();
+    o.keys = buildUnnamed699();
     o.position = 42.0;
   }
   buildCounterApiDataRow--;
@@ -84,7 +84,7 @@ checkApiDataRow(api.ApiDataRow o) {
     unittest.expect(o.clicks, unittest.equals(42.0));
     unittest.expect(o.ctr, unittest.equals(42.0));
     unittest.expect(o.impressions, unittest.equals(42.0));
-    checkUnnamed714(o.keys);
+    checkUnnamed699(o.keys);
     unittest.expect(o.position, unittest.equals(42.0));
   }
   buildCounterApiDataRow--;
@@ -113,14 +113,14 @@ checkApiDimensionFilter(api.ApiDimensionFilter o) {
   buildCounterApiDimensionFilter--;
 }
 
-buildUnnamed715() {
+buildUnnamed700() {
   var o = new core.List<api.ApiDimensionFilter>();
   o.add(buildApiDimensionFilter());
   o.add(buildApiDimensionFilter());
   return o;
 }
 
-checkUnnamed715(core.List<api.ApiDimensionFilter> o) {
+checkUnnamed700(core.List<api.ApiDimensionFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApiDimensionFilter(o[0]);
   checkApiDimensionFilter(o[1]);
@@ -131,7 +131,7 @@ buildApiDimensionFilterGroup() {
   var o = new api.ApiDimensionFilterGroup();
   buildCounterApiDimensionFilterGroup++;
   if (buildCounterApiDimensionFilterGroup < 3) {
-    o.filters = buildUnnamed715();
+    o.filters = buildUnnamed700();
     o.groupType = "foo";
   }
   buildCounterApiDimensionFilterGroup--;
@@ -141,33 +141,33 @@ buildApiDimensionFilterGroup() {
 checkApiDimensionFilterGroup(api.ApiDimensionFilterGroup o) {
   buildCounterApiDimensionFilterGroup++;
   if (buildCounterApiDimensionFilterGroup < 3) {
-    checkUnnamed715(o.filters);
+    checkUnnamed700(o.filters);
     unittest.expect(o.groupType, unittest.equals('foo'));
   }
   buildCounterApiDimensionFilterGroup--;
 }
 
-buildUnnamed716() {
+buildUnnamed701() {
   var o = new core.List<api.ApiDimensionFilterGroup>();
   o.add(buildApiDimensionFilterGroup());
   o.add(buildApiDimensionFilterGroup());
   return o;
 }
 
-checkUnnamed716(core.List<api.ApiDimensionFilterGroup> o) {
+checkUnnamed701(core.List<api.ApiDimensionFilterGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApiDimensionFilterGroup(o[0]);
   checkApiDimensionFilterGroup(o[1]);
 }
 
-buildUnnamed717() {
+buildUnnamed702() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed717(core.List<core.String> o) {
+checkUnnamed702(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -179,8 +179,8 @@ buildSearchAnalyticsQueryRequest() {
   buildCounterSearchAnalyticsQueryRequest++;
   if (buildCounterSearchAnalyticsQueryRequest < 3) {
     o.aggregationType = "foo";
-    o.dimensionFilterGroups = buildUnnamed716();
-    o.dimensions = buildUnnamed717();
+    o.dimensionFilterGroups = buildUnnamed701();
+    o.dimensions = buildUnnamed702();
     o.endDate = "foo";
     o.rowLimit = 42;
     o.searchType = "foo";
@@ -195,8 +195,8 @@ checkSearchAnalyticsQueryRequest(api.SearchAnalyticsQueryRequest o) {
   buildCounterSearchAnalyticsQueryRequest++;
   if (buildCounterSearchAnalyticsQueryRequest < 3) {
     unittest.expect(o.aggregationType, unittest.equals('foo'));
-    checkUnnamed716(o.dimensionFilterGroups);
-    checkUnnamed717(o.dimensions);
+    checkUnnamed701(o.dimensionFilterGroups);
+    checkUnnamed702(o.dimensions);
     unittest.expect(o.endDate, unittest.equals('foo'));
     unittest.expect(o.rowLimit, unittest.equals(42));
     unittest.expect(o.searchType, unittest.equals('foo'));
@@ -206,14 +206,14 @@ checkSearchAnalyticsQueryRequest(api.SearchAnalyticsQueryRequest o) {
   buildCounterSearchAnalyticsQueryRequest--;
 }
 
-buildUnnamed718() {
+buildUnnamed703() {
   var o = new core.List<api.ApiDataRow>();
   o.add(buildApiDataRow());
   o.add(buildApiDataRow());
   return o;
 }
 
-checkUnnamed718(core.List<api.ApiDataRow> o) {
+checkUnnamed703(core.List<api.ApiDataRow> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApiDataRow(o[0]);
   checkApiDataRow(o[1]);
@@ -225,7 +225,7 @@ buildSearchAnalyticsQueryResponse() {
   buildCounterSearchAnalyticsQueryResponse++;
   if (buildCounterSearchAnalyticsQueryResponse < 3) {
     o.responseAggregationType = "foo";
-    o.rows = buildUnnamed718();
+    o.rows = buildUnnamed703();
   }
   buildCounterSearchAnalyticsQueryResponse--;
   return o;
@@ -235,19 +235,19 @@ checkSearchAnalyticsQueryResponse(api.SearchAnalyticsQueryResponse o) {
   buildCounterSearchAnalyticsQueryResponse++;
   if (buildCounterSearchAnalyticsQueryResponse < 3) {
     unittest.expect(o.responseAggregationType, unittest.equals('foo'));
-    checkUnnamed718(o.rows);
+    checkUnnamed703(o.rows);
   }
   buildCounterSearchAnalyticsQueryResponse--;
 }
 
-buildUnnamed719() {
+buildUnnamed704() {
   var o = new core.List<api.WmxSitemap>();
   o.add(buildWmxSitemap());
   o.add(buildWmxSitemap());
   return o;
 }
 
-checkUnnamed719(core.List<api.WmxSitemap> o) {
+checkUnnamed704(core.List<api.WmxSitemap> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWmxSitemap(o[0]);
   checkWmxSitemap(o[1]);
@@ -258,7 +258,7 @@ buildSitemapsListResponse() {
   var o = new api.SitemapsListResponse();
   buildCounterSitemapsListResponse++;
   if (buildCounterSitemapsListResponse < 3) {
-    o.sitemap = buildUnnamed719();
+    o.sitemap = buildUnnamed704();
   }
   buildCounterSitemapsListResponse--;
   return o;
@@ -267,19 +267,19 @@ buildSitemapsListResponse() {
 checkSitemapsListResponse(api.SitemapsListResponse o) {
   buildCounterSitemapsListResponse++;
   if (buildCounterSitemapsListResponse < 3) {
-    checkUnnamed719(o.sitemap);
+    checkUnnamed704(o.sitemap);
   }
   buildCounterSitemapsListResponse--;
 }
 
-buildUnnamed720() {
+buildUnnamed705() {
   var o = new core.List<api.WmxSite>();
   o.add(buildWmxSite());
   o.add(buildWmxSite());
   return o;
 }
 
-checkUnnamed720(core.List<api.WmxSite> o) {
+checkUnnamed705(core.List<api.WmxSite> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWmxSite(o[0]);
   checkWmxSite(o[1]);
@@ -290,7 +290,7 @@ buildSitesListResponse() {
   var o = new api.SitesListResponse();
   buildCounterSitesListResponse++;
   if (buildCounterSitesListResponse < 3) {
-    o.siteEntry = buildUnnamed720();
+    o.siteEntry = buildUnnamed705();
   }
   buildCounterSitesListResponse--;
   return o;
@@ -299,7 +299,7 @@ buildSitesListResponse() {
 checkSitesListResponse(api.SitesListResponse o) {
   buildCounterSitesListResponse++;
   if (buildCounterSitesListResponse < 3) {
-    checkUnnamed720(o.siteEntry);
+    checkUnnamed705(o.siteEntry);
   }
   buildCounterSitesListResponse--;
 }
@@ -326,14 +326,14 @@ checkUrlCrawlErrorCount(api.UrlCrawlErrorCount o) {
   buildCounterUrlCrawlErrorCount--;
 }
 
-buildUnnamed721() {
+buildUnnamed706() {
   var o = new core.List<api.UrlCrawlErrorCount>();
   o.add(buildUrlCrawlErrorCount());
   o.add(buildUrlCrawlErrorCount());
   return o;
 }
 
-checkUnnamed721(core.List<api.UrlCrawlErrorCount> o) {
+checkUnnamed706(core.List<api.UrlCrawlErrorCount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrlCrawlErrorCount(o[0]);
   checkUrlCrawlErrorCount(o[1]);
@@ -345,7 +345,7 @@ buildUrlCrawlErrorCountsPerType() {
   buildCounterUrlCrawlErrorCountsPerType++;
   if (buildCounterUrlCrawlErrorCountsPerType < 3) {
     o.category = "foo";
-    o.entries = buildUnnamed721();
+    o.entries = buildUnnamed706();
     o.platform = "foo";
   }
   buildCounterUrlCrawlErrorCountsPerType--;
@@ -356,20 +356,20 @@ checkUrlCrawlErrorCountsPerType(api.UrlCrawlErrorCountsPerType o) {
   buildCounterUrlCrawlErrorCountsPerType++;
   if (buildCounterUrlCrawlErrorCountsPerType < 3) {
     unittest.expect(o.category, unittest.equals('foo'));
-    checkUnnamed721(o.entries);
+    checkUnnamed706(o.entries);
     unittest.expect(o.platform, unittest.equals('foo'));
   }
   buildCounterUrlCrawlErrorCountsPerType--;
 }
 
-buildUnnamed722() {
+buildUnnamed707() {
   var o = new core.List<api.UrlCrawlErrorCountsPerType>();
   o.add(buildUrlCrawlErrorCountsPerType());
   o.add(buildUrlCrawlErrorCountsPerType());
   return o;
 }
 
-checkUnnamed722(core.List<api.UrlCrawlErrorCountsPerType> o) {
+checkUnnamed707(core.List<api.UrlCrawlErrorCountsPerType> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrlCrawlErrorCountsPerType(o[0]);
   checkUrlCrawlErrorCountsPerType(o[1]);
@@ -380,7 +380,7 @@ buildUrlCrawlErrorsCountsQueryResponse() {
   var o = new api.UrlCrawlErrorsCountsQueryResponse();
   buildCounterUrlCrawlErrorsCountsQueryResponse++;
   if (buildCounterUrlCrawlErrorsCountsQueryResponse < 3) {
-    o.countPerTypes = buildUnnamed722();
+    o.countPerTypes = buildUnnamed707();
   }
   buildCounterUrlCrawlErrorsCountsQueryResponse--;
   return o;
@@ -390,7 +390,7 @@ checkUrlCrawlErrorsCountsQueryResponse(
     api.UrlCrawlErrorsCountsQueryResponse o) {
   buildCounterUrlCrawlErrorsCountsQueryResponse++;
   if (buildCounterUrlCrawlErrorsCountsQueryResponse < 3) {
-    checkUnnamed722(o.countPerTypes);
+    checkUnnamed707(o.countPerTypes);
   }
   buildCounterUrlCrawlErrorsCountsQueryResponse--;
 }
@@ -424,14 +424,14 @@ checkUrlCrawlErrorsSample(api.UrlCrawlErrorsSample o) {
   buildCounterUrlCrawlErrorsSample--;
 }
 
-buildUnnamed723() {
+buildUnnamed708() {
   var o = new core.List<api.UrlCrawlErrorsSample>();
   o.add(buildUrlCrawlErrorsSample());
   o.add(buildUrlCrawlErrorsSample());
   return o;
 }
 
-checkUnnamed723(core.List<api.UrlCrawlErrorsSample> o) {
+checkUnnamed708(core.List<api.UrlCrawlErrorsSample> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUrlCrawlErrorsSample(o[0]);
   checkUrlCrawlErrorsSample(o[1]);
@@ -442,7 +442,7 @@ buildUrlCrawlErrorsSamplesListResponse() {
   var o = new api.UrlCrawlErrorsSamplesListResponse();
   buildCounterUrlCrawlErrorsSamplesListResponse++;
   if (buildCounterUrlCrawlErrorsSamplesListResponse < 3) {
-    o.urlCrawlErrorSample = buildUnnamed723();
+    o.urlCrawlErrorSample = buildUnnamed708();
   }
   buildCounterUrlCrawlErrorsSamplesListResponse--;
   return o;
@@ -452,32 +452,32 @@ checkUrlCrawlErrorsSamplesListResponse(
     api.UrlCrawlErrorsSamplesListResponse o) {
   buildCounterUrlCrawlErrorsSamplesListResponse++;
   if (buildCounterUrlCrawlErrorsSamplesListResponse < 3) {
-    checkUnnamed723(o.urlCrawlErrorSample);
+    checkUnnamed708(o.urlCrawlErrorSample);
   }
   buildCounterUrlCrawlErrorsSamplesListResponse--;
 }
 
-buildUnnamed724() {
+buildUnnamed709() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed724(core.List<core.String> o) {
+checkUnnamed709(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed725() {
+buildUnnamed710() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed725(core.List<core.String> o) {
+checkUnnamed710(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -488,8 +488,8 @@ buildUrlSampleDetails() {
   var o = new api.UrlSampleDetails();
   buildCounterUrlSampleDetails++;
   if (buildCounterUrlSampleDetails < 3) {
-    o.containingSitemaps = buildUnnamed724();
-    o.linkedFromUrls = buildUnnamed725();
+    o.containingSitemaps = buildUnnamed709();
+    o.linkedFromUrls = buildUnnamed710();
   }
   buildCounterUrlSampleDetails--;
   return o;
@@ -498,8 +498,8 @@ buildUrlSampleDetails() {
 checkUrlSampleDetails(api.UrlSampleDetails o) {
   buildCounterUrlSampleDetails++;
   if (buildCounterUrlSampleDetails < 3) {
-    checkUnnamed724(o.containingSitemaps);
-    checkUnnamed725(o.linkedFromUrls);
+    checkUnnamed709(o.containingSitemaps);
+    checkUnnamed710(o.linkedFromUrls);
   }
   buildCounterUrlSampleDetails--;
 }
@@ -525,14 +525,14 @@ checkWmxSite(api.WmxSite o) {
   buildCounterWmxSite--;
 }
 
-buildUnnamed726() {
+buildUnnamed711() {
   var o = new core.List<api.WmxSitemapContent>();
   o.add(buildWmxSitemapContent());
   o.add(buildWmxSitemapContent());
   return o;
 }
 
-checkUnnamed726(core.List<api.WmxSitemapContent> o) {
+checkUnnamed711(core.List<api.WmxSitemapContent> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWmxSitemapContent(o[0]);
   checkWmxSitemapContent(o[1]);
@@ -543,7 +543,7 @@ buildWmxSitemap() {
   var o = new api.WmxSitemap();
   buildCounterWmxSitemap++;
   if (buildCounterWmxSitemap < 3) {
-    o.contents = buildUnnamed726();
+    o.contents = buildUnnamed711();
     o.errors = "foo";
     o.isPending = true;
     o.isSitemapsIndex = true;
@@ -560,7 +560,7 @@ buildWmxSitemap() {
 checkWmxSitemap(api.WmxSitemap o) {
   buildCounterWmxSitemap++;
   if (buildCounterWmxSitemap < 3) {
-    checkUnnamed726(o.contents);
+    checkUnnamed711(o.contents);
     unittest.expect(o.errors, unittest.equals('foo'));
     unittest.expect(o.isPending, unittest.isTrue);
     unittest.expect(o.isSitemapsIndex, unittest.isTrue);
@@ -734,6 +734,7 @@ main() {
           new api.WebmastersApi(mock).searchanalytics;
       var arg_request = buildSearchAnalyticsQueryRequest();
       var arg_siteUrl = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SearchAnalyticsQueryRequest.fromJson(json);
         checkSearchAnalyticsQueryRequest(obj);
@@ -779,6 +780,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -786,7 +788,7 @@ main() {
         var resp = convert.JSON.encode(buildSearchAnalyticsQueryResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.query(arg_request, arg_siteUrl).then(
+      res.query(arg_request, arg_siteUrl, $fields: arg_$fields).then(
           unittest.expectAsync1(((api.SearchAnalyticsQueryResponse response) {
         checkSearchAnalyticsQueryResponse(response);
       })));
@@ -799,6 +801,7 @@ main() {
       api.SitemapsResourceApi res = new api.WebmastersApi(mock).sitemaps;
       var arg_siteUrl = "foo";
       var arg_feedpath = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -844,6 +847,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -851,7 +855,9 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_siteUrl, arg_feedpath).then(unittest.expectAsync1((_) {}));
+      res
+          .delete(arg_siteUrl, arg_feedpath, $fields: arg_$fields)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
@@ -859,6 +865,7 @@ main() {
       api.SitemapsResourceApi res = new api.WebmastersApi(mock).sitemaps;
       var arg_siteUrl = "foo";
       var arg_feedpath = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -904,6 +911,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -912,7 +920,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_siteUrl, arg_feedpath)
+          .get(arg_siteUrl, arg_feedpath, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.WmxSitemap response) {
         checkWmxSitemap(response);
       })));
@@ -923,6 +931,7 @@ main() {
       api.SitemapsResourceApi res = new api.WebmastersApi(mock).sitemaps;
       var arg_siteUrl = "foo";
       var arg_sitemapIndex = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -967,6 +976,7 @@ main() {
         }
         unittest.expect(
             queryMap["sitemapIndex"].first, unittest.equals(arg_sitemapIndex));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -975,7 +985,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .list(arg_siteUrl, sitemapIndex: arg_sitemapIndex)
+          .list(arg_siteUrl,
+              sitemapIndex: arg_sitemapIndex, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.SitemapsListResponse response) {
         checkSitemapsListResponse(response);
       })));
@@ -986,6 +997,7 @@ main() {
       api.SitemapsResourceApi res = new api.WebmastersApi(mock).sitemaps;
       var arg_siteUrl = "foo";
       var arg_feedpath = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1031,6 +1043,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1038,7 +1051,9 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.submit(arg_siteUrl, arg_feedpath).then(unittest.expectAsync1((_) {}));
+      res
+          .submit(arg_siteUrl, arg_feedpath, $fields: arg_$fields)
+          .then(unittest.expectAsync1((_) {}));
     });
   });
 
@@ -1047,6 +1062,7 @@ main() {
       var mock = new HttpServerMock();
       api.SitesResourceApi res = new api.WebmastersApi(mock).sites;
       var arg_siteUrl = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1083,6 +1099,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1090,13 +1107,16 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.add(arg_siteUrl).then(unittest.expectAsync1((_) {}));
+      res
+          .add(arg_siteUrl, $fields: arg_$fields)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--delete", () {
       var mock = new HttpServerMock();
       api.SitesResourceApi res = new api.WebmastersApi(mock).sites;
       var arg_siteUrl = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1133,6 +1153,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1140,13 +1161,16 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_siteUrl).then(unittest.expectAsync1((_) {}));
+      res
+          .delete(arg_siteUrl, $fields: arg_$fields)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
       var mock = new HttpServerMock();
       api.SitesResourceApi res = new api.WebmastersApi(mock).sites;
       var arg_siteUrl = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1183,6 +1207,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1190,7 +1215,9 @@ main() {
         var resp = convert.JSON.encode(buildWmxSite());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_siteUrl).then(unittest.expectAsync1(((api.WmxSite response) {
+      res
+          .get(arg_siteUrl, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((api.WmxSite response) {
         checkWmxSite(response);
       })));
     });
@@ -1198,6 +1225,7 @@ main() {
     unittest.test("method--list", () {
       var mock = new HttpServerMock();
       api.SitesResourceApi res = new api.WebmastersApi(mock).sites;
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1231,6 +1259,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1238,7 +1267,9 @@ main() {
         var resp = convert.JSON.encode(buildSitesListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list().then(unittest.expectAsync1(((api.SitesListResponse response) {
+      res
+          .list($fields: arg_$fields)
+          .then(unittest.expectAsync1(((api.SitesListResponse response) {
         checkSitesListResponse(response);
       })));
     });
@@ -1253,6 +1284,7 @@ main() {
       var arg_category = "foo";
       var arg_latestCountsOnly = true;
       var arg_platform = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1301,6 +1333,7 @@ main() {
             unittest.equals("$arg_latestCountsOnly"));
         unittest.expect(
             queryMap["platform"].first, unittest.equals(arg_platform));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1313,7 +1346,8 @@ main() {
           .query(arg_siteUrl,
               category: arg_category,
               latestCountsOnly: arg_latestCountsOnly,
-              platform: arg_platform)
+              platform: arg_platform,
+              $fields: arg_$fields)
           .then(unittest
               .expectAsync1(((api.UrlCrawlErrorsCountsQueryResponse response) {
         checkUrlCrawlErrorsCountsQueryResponse(response);
@@ -1330,6 +1364,7 @@ main() {
       var arg_url = "foo";
       var arg_category = "foo";
       var arg_platform = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1379,6 +1414,7 @@ main() {
             queryMap["category"].first, unittest.equals(arg_category));
         unittest.expect(
             queryMap["platform"].first, unittest.equals(arg_platform));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1387,7 +1423,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_siteUrl, arg_url, arg_category, arg_platform)
+          .get(arg_siteUrl, arg_url, arg_category, arg_platform,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.UrlCrawlErrorsSample response) {
         checkUrlCrawlErrorsSample(response);
       })));
@@ -1400,6 +1437,7 @@ main() {
       var arg_siteUrl = "foo";
       var arg_category = "foo";
       var arg_platform = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1446,6 +1484,7 @@ main() {
             queryMap["category"].first, unittest.equals(arg_category));
         unittest.expect(
             queryMap["platform"].first, unittest.equals(arg_platform));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1454,8 +1493,10 @@ main() {
             convert.JSON.encode(buildUrlCrawlErrorsSamplesListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list(arg_siteUrl, arg_category, arg_platform).then(unittest
-          .expectAsync1(((api.UrlCrawlErrorsSamplesListResponse response) {
+      res
+          .list(arg_siteUrl, arg_category, arg_platform, $fields: arg_$fields)
+          .then(unittest
+              .expectAsync1(((api.UrlCrawlErrorsSamplesListResponse response) {
         checkUrlCrawlErrorsSamplesListResponse(response);
       })));
     });
@@ -1468,6 +1509,7 @@ main() {
       var arg_url = "foo";
       var arg_category = "foo";
       var arg_platform = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1517,6 +1559,7 @@ main() {
             queryMap["category"].first, unittest.equals(arg_category));
         unittest.expect(
             queryMap["platform"].first, unittest.equals(arg_platform));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1525,7 +1568,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .markAsFixed(arg_siteUrl, arg_url, arg_category, arg_platform)
+          .markAsFixed(arg_siteUrl, arg_url, arg_category, arg_platform,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
     });
   });

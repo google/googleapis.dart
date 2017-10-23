@@ -49,6 +49,9 @@ class BeaconinfoResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GetInfoForObservedBeaconsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -57,7 +60,8 @@ class BeaconinfoResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetInfoForObservedBeaconsResponse> getforobserved(
-      GetInfoForObservedBeaconsRequest request) {
+      GetInfoForObservedBeaconsRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -67,6 +71,9 @@ class BeaconinfoResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/beaconinfo:getforobserved';
@@ -120,6 +127,9 @@ class BeaconsResourceApi {
   /// must match the project that owns the beacon.
   /// Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -128,7 +138,7 @@ class BeaconsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> activate(core.String beaconName,
-      {core.String projectId}) {
+      {core.String projectId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -141,6 +151,9 @@ class BeaconsResourceApi {
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -184,6 +197,9 @@ class BeaconsResourceApi {
   /// match the project that owns the beacon.
   /// Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -192,7 +208,7 @@ class BeaconsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> deactivate(core.String beaconName,
-      {core.String projectId}) {
+      {core.String projectId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -205,6 +221,9 @@ class BeaconsResourceApi {
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -248,6 +267,9 @@ class BeaconsResourceApi {
   /// must match the project that owns the beacon.
   /// Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -256,7 +278,7 @@ class BeaconsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> decommission(core.String beaconName,
-      {core.String projectId}) {
+      {core.String projectId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -269,6 +291,9 @@ class BeaconsResourceApi {
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -309,6 +334,9 @@ class BeaconsResourceApi {
   /// that is making the request is used.
   /// Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -316,7 +344,8 @@ class BeaconsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String beaconName, {core.String projectId}) {
+  async.Future<Empty> delete(core.String beaconName,
+      {core.String projectId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -329,6 +358,9 @@ class BeaconsResourceApi {
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$beaconName');
@@ -372,6 +404,9 @@ class BeaconsResourceApi {
   /// project that owns the beacon.
   /// Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Beacon].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -379,7 +414,8 @@ class BeaconsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Beacon> get(core.String beaconName, {core.String projectId}) {
+  async.Future<Beacon> get(core.String beaconName,
+      {core.String projectId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -392,6 +428,9 @@ class BeaconsResourceApi {
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$beaconName');
@@ -497,6 +536,9 @@ class BeaconsResourceApi {
   /// credential that made the request is used as the project.
   /// Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListBeaconsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -508,7 +550,8 @@ class BeaconsResourceApi {
       {core.String pageToken,
       core.int pageSize,
       core.String q,
-      core.String projectId}) {
+      core.String projectId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -527,6 +570,9 @@ class BeaconsResourceApi {
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/beacons';
@@ -558,6 +604,9 @@ class BeaconsResourceApi {
   /// is used.
   /// Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Beacon].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -565,7 +614,8 @@ class BeaconsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Beacon> register(Beacon request, {core.String projectId}) {
+  async.Future<Beacon> register(Beacon request,
+      {core.String projectId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -578,6 +628,9 @@ class BeaconsResourceApi {
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/beacons:register';
@@ -624,6 +677,9 @@ class BeaconsResourceApi {
   /// must match the project that owns the beacon.
   /// Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Beacon].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -632,7 +688,7 @@ class BeaconsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Beacon> update(Beacon request, core.String beaconName,
-      {core.String projectId}) {
+      {core.String projectId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -648,6 +704,9 @@ class BeaconsResourceApi {
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$beaconName');
@@ -707,6 +766,9 @@ class BeaconsAttachmentsResourceApi {
   /// making the request is used.
   /// Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DeleteAttachmentsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -715,7 +777,9 @@ class BeaconsAttachmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DeleteAttachmentsResponse> batchDelete(core.String beaconName,
-      {core.String namespacedType, core.String projectId}) {
+      {core.String namespacedType,
+      core.String projectId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -731,6 +795,9 @@ class BeaconsAttachmentsResourceApi {
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -785,6 +852,9 @@ class BeaconsAttachmentsResourceApi {
   /// is used.
   /// Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BeaconAttachment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -794,7 +864,7 @@ class BeaconsAttachmentsResourceApi {
   /// this method will complete with the same error.
   async.Future<BeaconAttachment> create(
       BeaconAttachment request, core.String beaconName,
-      {core.String projectId}) {
+      {core.String projectId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -810,6 +880,9 @@ class BeaconsAttachmentsResourceApi {
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -851,6 +924,9 @@ class BeaconsAttachmentsResourceApi {
   /// that is making the request is used.
   /// Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -859,7 +935,7 @@ class BeaconsAttachmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String attachmentName,
-      {core.String projectId}) {
+      {core.String projectId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -872,6 +948,9 @@ class BeaconsAttachmentsResourceApi {
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -911,11 +990,6 @@ class BeaconsAttachmentsResourceApi {
   /// Required.
   /// Value must have pattern "^beacons/[^/]+$".
   ///
-  /// [namespacedType] - Specifies the namespace and type of attachment to
-  /// include in response in
-  /// <var>namespace/type</var> format. Accepts `* / * ` to specify
-  /// "all types in all namespaces".
-  ///
   /// [projectId] - The project id to list beacon attachments under. This field
   /// can be
   /// used when "*" is specified to mean all attachment namespaces. Projects
@@ -923,6 +997,14 @@ class BeaconsAttachmentsResourceApi {
   /// specified and the projectId string is empty, then the project
   /// making the request is used.
   /// Optional.
+  ///
+  /// [namespacedType] - Specifies the namespace and type of attachment to
+  /// include in response in
+  /// <var>namespace/type</var> format. Accepts `* / * ` to specify
+  /// "all types in all namespaces".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListBeaconAttachmentsResponse].
   ///
@@ -932,7 +1014,9 @@ class BeaconsAttachmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBeaconAttachmentsResponse> list(core.String beaconName,
-      {core.String namespacedType, core.String projectId}) {
+      {core.String projectId,
+      core.String namespacedType,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -943,11 +1027,14 @@ class BeaconsAttachmentsResourceApi {
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
     }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
+    }
     if (namespacedType != null) {
       _queryParams["namespacedType"] = [namespacedType];
     }
-    if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -997,6 +1084,7 @@ class BeaconsDiagnosticsResourceApi {
   /// - "ALERT_UNSPECIFIED" : A ALERT_UNSPECIFIED.
   /// - "WRONG_LOCATION" : A WRONG_LOCATION.
   /// - "LOW_BATTERY" : A LOW_BATTERY.
+  /// - "LOW_ACTIVITY" : A LOW_ACTIVITY.
   ///
   /// [pageSize] - Specifies the maximum number of results to return. Defaults
   /// to
@@ -1006,6 +1094,9 @@ class BeaconsDiagnosticsResourceApi {
   /// If not set,
   /// then the project making the request will be used for looking up
   /// diagnostic records. Optional.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListDiagnosticsResponse].
   ///
@@ -1018,7 +1109,8 @@ class BeaconsDiagnosticsResourceApi {
       {core.String pageToken,
       core.String alertFilter,
       core.int pageSize,
-      core.String projectId}) {
+      core.String projectId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1040,6 +1132,9 @@ class BeaconsDiagnosticsResourceApi {
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/' +
@@ -1075,6 +1170,9 @@ class NamespacesResourceApi {
   /// [projectId] - The project id to list namespaces under.
   /// Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListNamespacesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1082,7 +1180,8 @@ class NamespacesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListNamespacesResponse> list({core.String projectId}) {
+  async.Future<ListNamespacesResponse> list(
+      {core.String projectId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1092,6 +1191,9 @@ class NamespacesResourceApi {
 
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/namespaces';
@@ -1123,6 +1225,9 @@ class NamespacesResourceApi {
   /// must match the project that owns the beacon.
   /// Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Namespace].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1131,7 +1236,7 @@ class NamespacesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Namespace> update(Namespace request, core.String namespaceName,
-      {core.String projectId}) {
+      {core.String projectId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1147,6 +1252,9 @@ class NamespacesResourceApi {
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$namespaceName');
@@ -1176,6 +1284,9 @@ class V1beta1ResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EphemeralIdRegistrationParams].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1183,13 +1294,18 @@ class V1beta1ResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<EphemeralIdRegistrationParams> getEidparams() {
+  async.Future<EphemeralIdRegistrationParams> getEidparams(
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'v1beta1/eidparams';
 

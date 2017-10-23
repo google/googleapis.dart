@@ -168,14 +168,14 @@ checkRenewalSettings(api.RenewalSettings o) {
   buildCounterRenewalSettings--;
 }
 
-buildUnnamed2562() {
+buildUnnamed2577() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2562(core.List<core.String> o) {
+checkUnnamed2577(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -186,7 +186,7 @@ buildResellernotifyGetwatchdetailsResponse() {
   var o = new api.ResellernotifyGetwatchdetailsResponse();
   buildCounterResellernotifyGetwatchdetailsResponse++;
   if (buildCounterResellernotifyGetwatchdetailsResponse < 3) {
-    o.serviceAccountEmailAddresses = buildUnnamed2562();
+    o.serviceAccountEmailAddresses = buildUnnamed2577();
     o.topicName = "foo";
   }
   buildCounterResellernotifyGetwatchdetailsResponse--;
@@ -197,7 +197,7 @@ checkResellernotifyGetwatchdetailsResponse(
     api.ResellernotifyGetwatchdetailsResponse o) {
   buildCounterResellernotifyGetwatchdetailsResponse++;
   if (buildCounterResellernotifyGetwatchdetailsResponse < 3) {
-    checkUnnamed2562(o.serviceAccountEmailAddresses);
+    checkUnnamed2577(o.serviceAccountEmailAddresses);
     unittest.expect(o.topicName, unittest.equals('foo'));
   }
   buildCounterResellernotifyGetwatchdetailsResponse--;
@@ -292,14 +292,14 @@ checkSubscriptionPlan(api.SubscriptionPlan o) {
   buildCounterSubscriptionPlan--;
 }
 
-buildUnnamed2563() {
+buildUnnamed2578() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed2563(core.List<core.String> o) {
+checkUnnamed2578(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -367,7 +367,7 @@ buildSubscription() {
     o.skuName = "foo";
     o.status = "foo";
     o.subscriptionId = "foo";
-    o.suspensionReasons = buildUnnamed2563();
+    o.suspensionReasons = buildUnnamed2578();
     o.transferInfo = buildSubscriptionTransferInfo();
     o.trialSettings = buildSubscriptionTrialSettings();
   }
@@ -393,21 +393,21 @@ checkSubscription(api.Subscription o) {
     unittest.expect(o.skuName, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
     unittest.expect(o.subscriptionId, unittest.equals('foo'));
-    checkUnnamed2563(o.suspensionReasons);
+    checkUnnamed2578(o.suspensionReasons);
     checkSubscriptionTransferInfo(o.transferInfo);
     checkSubscriptionTrialSettings(o.trialSettings);
   }
   buildCounterSubscription--;
 }
 
-buildUnnamed2564() {
+buildUnnamed2579() {
   var o = new core.List<api.Subscription>();
   o.add(buildSubscription());
   o.add(buildSubscription());
   return o;
 }
 
-checkUnnamed2564(core.List<api.Subscription> o) {
+checkUnnamed2579(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscription(o[0]);
   checkSubscription(o[1]);
@@ -420,7 +420,7 @@ buildSubscriptions() {
   if (buildCounterSubscriptions < 3) {
     o.kind = "foo";
     o.nextPageToken = "foo";
-    o.subscriptions = buildUnnamed2564();
+    o.subscriptions = buildUnnamed2579();
   }
   buildCounterSubscriptions--;
   return o;
@@ -431,7 +431,7 @@ checkSubscriptions(api.Subscriptions o) {
   if (buildCounterSubscriptions < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2564(o.subscriptions);
+    checkUnnamed2579(o.subscriptions);
   }
   buildCounterSubscriptions--;
 }
@@ -547,6 +547,7 @@ main() {
       var mock = new HttpServerMock();
       api.CustomersResourceApi res = new api.ResellerApi(mock).customers;
       var arg_customerId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -583,6 +584,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -591,7 +593,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_customerId)
+          .get(arg_customerId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Customer response) {
         checkCustomer(response);
       })));
@@ -602,6 +604,7 @@ main() {
       api.CustomersResourceApi res = new api.ResellerApi(mock).customers;
       var arg_request = buildCustomer();
       var arg_customerAuthToken = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Customer.fromJson(json);
         checkCustomer(obj);
@@ -640,6 +643,7 @@ main() {
         }
         unittest.expect(queryMap["customerAuthToken"].first,
             unittest.equals(arg_customerAuthToken));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -648,7 +652,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .insert(arg_request, customerAuthToken: arg_customerAuthToken)
+          .insert(arg_request,
+              customerAuthToken: arg_customerAuthToken, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Customer response) {
         checkCustomer(response);
       })));
@@ -659,6 +664,7 @@ main() {
       api.CustomersResourceApi res = new api.ResellerApi(mock).customers;
       var arg_request = buildCustomer();
       var arg_customerId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Customer.fromJson(json);
         checkCustomer(obj);
@@ -698,6 +704,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -706,7 +713,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .patch(arg_request, arg_customerId)
+          .patch(arg_request, arg_customerId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Customer response) {
         checkCustomer(response);
       })));
@@ -717,6 +724,7 @@ main() {
       api.CustomersResourceApi res = new api.ResellerApi(mock).customers;
       var arg_request = buildCustomer();
       var arg_customerId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Customer.fromJson(json);
         checkCustomer(obj);
@@ -756,6 +764,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -764,7 +773,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .update(arg_request, arg_customerId)
+          .update(arg_request, arg_customerId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Customer response) {
         checkCustomer(response);
       })));
@@ -776,6 +785,7 @@ main() {
       var mock = new HttpServerMock();
       api.ResellernotifyResourceApi res =
           new api.ResellerApi(mock).resellernotify;
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -809,6 +819,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -817,7 +828,7 @@ main() {
             convert.JSON.encode(buildResellernotifyGetwatchdetailsResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getwatchdetails().then(unittest
+      res.getwatchdetails($fields: arg_$fields).then(unittest
           .expectAsync1(((api.ResellernotifyGetwatchdetailsResponse response) {
         checkResellernotifyGetwatchdetailsResponse(response);
       })));
@@ -828,6 +839,7 @@ main() {
       api.ResellernotifyResourceApi res =
           new api.ResellerApi(mock).resellernotify;
       var arg_serviceAccountEmailAddress = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -863,6 +875,7 @@ main() {
         }
         unittest.expect(queryMap["serviceAccountEmailAddress"].first,
             unittest.equals(arg_serviceAccountEmailAddress));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -871,7 +884,9 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .register(serviceAccountEmailAddress: arg_serviceAccountEmailAddress)
+          .register(
+              serviceAccountEmailAddress: arg_serviceAccountEmailAddress,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ResellernotifyResource response) {
         checkResellernotifyResource(response);
       })));
@@ -882,6 +897,7 @@ main() {
       api.ResellernotifyResourceApi res =
           new api.ResellerApi(mock).resellernotify;
       var arg_serviceAccountEmailAddress = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -917,6 +933,7 @@ main() {
         }
         unittest.expect(queryMap["serviceAccountEmailAddress"].first,
             unittest.equals(arg_serviceAccountEmailAddress));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -926,7 +943,8 @@ main() {
       }), true);
       res
           .unregister(
-              serviceAccountEmailAddress: arg_serviceAccountEmailAddress)
+              serviceAccountEmailAddress: arg_serviceAccountEmailAddress,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ResellernotifyResource response) {
         checkResellernotifyResource(response);
       })));
@@ -940,6 +958,7 @@ main() {
           new api.ResellerApi(mock).subscriptions;
       var arg_customerId = "foo";
       var arg_subscriptionId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -991,6 +1010,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -999,7 +1019,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .activate(arg_customerId, arg_subscriptionId)
+          .activate(arg_customerId, arg_subscriptionId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Subscription response) {
         checkSubscription(response);
       })));
@@ -1012,6 +1032,7 @@ main() {
       var arg_request = buildChangePlanRequest();
       var arg_customerId = "foo";
       var arg_subscriptionId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ChangePlanRequest.fromJson(json);
         checkChangePlanRequest(obj);
@@ -1066,6 +1087,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1074,7 +1096,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .changePlan(arg_request, arg_customerId, arg_subscriptionId)
+          .changePlan(arg_request, arg_customerId, arg_subscriptionId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Subscription response) {
         checkSubscription(response);
       })));
@@ -1087,6 +1110,7 @@ main() {
       var arg_request = buildRenewalSettings();
       var arg_customerId = "foo";
       var arg_subscriptionId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.RenewalSettings.fromJson(json);
         checkRenewalSettings(obj);
@@ -1141,6 +1165,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1150,7 +1175,8 @@ main() {
       }), true);
       res
           .changeRenewalSettings(
-              arg_request, arg_customerId, arg_subscriptionId)
+              arg_request, arg_customerId, arg_subscriptionId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Subscription response) {
         checkSubscription(response);
       })));
@@ -1163,6 +1189,7 @@ main() {
       var arg_request = buildSeats();
       var arg_customerId = "foo";
       var arg_subscriptionId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Seats.fromJson(json);
         checkSeats(obj);
@@ -1217,6 +1244,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1225,7 +1253,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .changeSeats(arg_request, arg_customerId, arg_subscriptionId)
+          .changeSeats(arg_request, arg_customerId, arg_subscriptionId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Subscription response) {
         checkSubscription(response);
       })));
@@ -1238,6 +1267,7 @@ main() {
       var arg_customerId = "foo";
       var arg_subscriptionId = "foo";
       var arg_deletionType = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1285,6 +1315,7 @@ main() {
         }
         unittest.expect(
             queryMap["deletionType"].first, unittest.equals(arg_deletionType));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1293,7 +1324,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .delete(arg_customerId, arg_subscriptionId, arg_deletionType)
+          .delete(arg_customerId, arg_subscriptionId, arg_deletionType,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
     });
 
@@ -1303,6 +1335,7 @@ main() {
           new api.ResellerApi(mock).subscriptions;
       var arg_customerId = "foo";
       var arg_subscriptionId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1348,6 +1381,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1356,7 +1390,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_customerId, arg_subscriptionId)
+          .get(arg_customerId, arg_subscriptionId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Subscription response) {
         checkSubscription(response);
       })));
@@ -1369,6 +1403,7 @@ main() {
       var arg_request = buildSubscription();
       var arg_customerId = "foo";
       var arg_customerAuthToken = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Subscription.fromJson(json);
         checkSubscription(obj);
@@ -1416,6 +1451,7 @@ main() {
         }
         unittest.expect(queryMap["customerAuthToken"].first,
             unittest.equals(arg_customerAuthToken));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1425,7 +1461,7 @@ main() {
       }), true);
       res
           .insert(arg_request, arg_customerId,
-              customerAuthToken: arg_customerAuthToken)
+              customerAuthToken: arg_customerAuthToken, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Subscription response) {
         checkSubscription(response);
       })));
@@ -1440,6 +1476,7 @@ main() {
       var arg_customerNamePrefix = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1483,6 +1520,7 @@ main() {
             unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1496,7 +1534,8 @@ main() {
               customerId: arg_customerId,
               customerNamePrefix: arg_customerNamePrefix,
               maxResults: arg_maxResults,
-              pageToken: arg_pageToken)
+              pageToken: arg_pageToken,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Subscriptions response) {
         checkSubscriptions(response);
       })));
@@ -1508,6 +1547,7 @@ main() {
           new api.ResellerApi(mock).subscriptions;
       var arg_customerId = "foo";
       var arg_subscriptionId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1559,6 +1599,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1567,7 +1608,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .startPaidService(arg_customerId, arg_subscriptionId)
+          .startPaidService(arg_customerId, arg_subscriptionId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Subscription response) {
         checkSubscription(response);
       })));
@@ -1579,6 +1621,7 @@ main() {
           new api.ResellerApi(mock).subscriptions;
       var arg_customerId = "foo";
       var arg_subscriptionId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1630,6 +1673,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1638,7 +1682,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .suspend(arg_customerId, arg_subscriptionId)
+          .suspend(arg_customerId, arg_subscriptionId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Subscription response) {
         checkSubscription(response);
       })));

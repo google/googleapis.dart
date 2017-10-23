@@ -87,6 +87,9 @@ class PresentationsResourceApi {
   ///
   /// [presentationId] - The presentation to apply the updates to.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BatchUpdatePresentationResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -95,7 +98,8 @@ class PresentationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchUpdatePresentationResponse> batchUpdate(
-      BatchUpdatePresentationRequest request, core.String presentationId) {
+      BatchUpdatePresentationRequest request, core.String presentationId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -108,6 +112,9 @@ class PresentationsResourceApi {
     }
     if (presentationId == null) {
       throw new core.ArgumentError("Parameter presentationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/presentations/' +
@@ -132,6 +139,9 @@ class PresentationsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Presentation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -139,7 +149,8 @@ class PresentationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Presentation> create(Presentation request) {
+  async.Future<Presentation> create(Presentation request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -149,6 +160,9 @@ class PresentationsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/presentations';
@@ -169,6 +183,9 @@ class PresentationsResourceApi {
   /// [presentationId] - The ID of the presentation to retrieve.
   /// Value must have pattern "^[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Presentation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -176,7 +193,8 @@ class PresentationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Presentation> get(core.String presentationId) {
+  async.Future<Presentation> get(core.String presentationId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -186,6 +204,9 @@ class PresentationsResourceApi {
 
     if (presentationId == null) {
       throw new core.ArgumentError("Parameter presentationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/presentations/' +
@@ -215,6 +236,9 @@ class PresentationsPagesResourceApi {
   ///
   /// [pageObjectId] - The object ID of the page to retrieve.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Page].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -222,7 +246,8 @@ class PresentationsPagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Page> get(core.String presentationId, core.String pageObjectId) {
+  async.Future<Page> get(core.String presentationId, core.String pageObjectId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -235,6 +260,9 @@ class PresentationsPagesResourceApi {
     }
     if (pageObjectId == null) {
       throw new core.ArgumentError("Parameter pageObjectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/presentations/' +
@@ -275,6 +303,9 @@ class PresentationsPagesResourceApi {
   /// Possible string values are:
   /// - "PNG" : A PNG.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Thumbnail].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -285,7 +316,8 @@ class PresentationsPagesResourceApi {
   async.Future<Thumbnail> getThumbnail(
       core.String presentationId, core.String pageObjectId,
       {core.String thumbnailProperties_thumbnailSize,
-      core.String thumbnailProperties_mimeType}) {
+      core.String thumbnailProperties_mimeType,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -308,6 +340,9 @@ class PresentationsPagesResourceApi {
       _queryParams["thumbnailProperties.mimeType"] = [
         thumbnailProperties_mimeType
       ];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/presentations/' +
@@ -2153,6 +2188,76 @@ class Group {
   }
 }
 
+/// Groups objects to create an object group. For example, groups PageElements
+/// to create a Group on the same page as all the children.
+class GroupObjectsRequest {
+  /// The object IDs of the objects to group.
+  ///
+  /// Only page elements can be grouped. There should be at least two page
+  /// elements on the same page that are not already in another group. Some page
+  /// elements, such as videos, tables and placeholder shapes cannot be grouped.
+  core.List<core.String> childrenObjectIds;
+
+  /// A user-supplied object ID for the group to be created.
+  ///
+  /// If you specify an ID, it must be unique among all pages and page elements
+  /// in the presentation. The ID must start with an alphanumeric character or
+  /// an
+  /// underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
+  /// may include those as well as a hyphen or colon (matches regex
+  /// `[a-zA-Z0-9_-:]`).
+  /// The length of the ID must not be less than 5 or greater than 50.
+  ///
+  /// If you don't specify an ID, a unique one is generated.
+  core.String groupObjectId;
+
+  GroupObjectsRequest();
+
+  GroupObjectsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("childrenObjectIds")) {
+      childrenObjectIds = _json["childrenObjectIds"];
+    }
+    if (_json.containsKey("groupObjectId")) {
+      groupObjectId = _json["groupObjectId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (childrenObjectIds != null) {
+      _json["childrenObjectIds"] = childrenObjectIds;
+    }
+    if (groupObjectId != null) {
+      _json["groupObjectId"] = groupObjectId;
+    }
+    return _json;
+  }
+}
+
+/// The result of grouping objects.
+class GroupObjectsResponse {
+  /// The object ID of the created group.
+  core.String objectId;
+
+  GroupObjectsResponse();
+
+  GroupObjectsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("objectId")) {
+      objectId = _json["objectId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (objectId != null) {
+      _json["objectId"] = objectId;
+    }
+    return _json;
+  }
+}
+
 /// A PageElement kind representing an
 /// image.
 class Image {
@@ -2206,7 +2311,7 @@ class ImageProperties {
   /// The hyperlink destination of the image. If unset, there is no link.
   Link link;
 
-  /// The outline of the image. If not set, the the image has no outline.
+  /// The outline of the image. If not set, the image has no outline.
   Outline outline;
 
   /// The recolor effect of the image. If not set, the image is not recolored.
@@ -2950,6 +3055,43 @@ class MasterProperties {
         new core.Map<core.String, core.Object>();
     if (displayName != null) {
       _json["displayName"] = displayName;
+    }
+    return _json;
+  }
+}
+
+/// Merges cells in a Table.
+class MergeTableCellsRequest {
+  /// The object ID of the table.
+  core.String objectId;
+
+  /// The table range specifying which cells of the table to merge.
+  ///
+  /// Any text in the cells being merged will be concatenated and stored in the
+  /// upper-left ("head") cell of the range. If the range is non-rectangular
+  /// (which can occur in some cases where the range covers cells that are
+  /// already merged), a 400 bad request error is returned.
+  TableRange tableRange;
+
+  MergeTableCellsRequest();
+
+  MergeTableCellsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("objectId")) {
+      objectId = _json["objectId"];
+    }
+    if (_json.containsKey("tableRange")) {
+      tableRange = new TableRange.fromJson(_json["tableRange"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (objectId != null) {
+      _json["objectId"] = objectId;
+    }
+    if (tableRange != null) {
+      _json["tableRange"] = (tableRange).toJson();
     }
     return _json;
   }
@@ -4501,6 +4643,9 @@ class Request {
   /// Duplicates a slide or page element.
   DuplicateObjectRequest duplicateObject;
 
+  /// Groups objects, such as page elements.
+  GroupObjectsRequest groupObjects;
+
   /// Inserts columns into a table.
   InsertTableColumnsRequest insertTableColumns;
 
@@ -4509,6 +4654,9 @@ class Request {
 
   /// Inserts text into a shape or table cell.
   InsertTextRequest insertText;
+
+  /// Merges cells in a Table.
+  MergeTableCellsRequest mergeTableCells;
 
   /// Refreshes a Google Sheets chart.
   RefreshSheetsChartRequest refreshSheetsChart;
@@ -4521,6 +4669,12 @@ class Request {
 
   /// Replaces all instances of specified text.
   ReplaceAllTextRequest replaceAllText;
+
+  /// Ungroups objects, such as groups.
+  UngroupObjectsRequest ungroupObjects;
+
+  /// Unmerges cells in a Table.
+  UnmergeTableCellsRequest unmergeTableCells;
 
   /// Updates the properties of an Image.
   UpdateImagePropertiesRequest updateImageProperties;
@@ -4543,8 +4697,18 @@ class Request {
   /// Updates the position of a set of slides in the presentation.
   UpdateSlidesPositionRequest updateSlidesPosition;
 
+  /// Updates the properties of the table borders in a Table.
+  UpdateTableBorderPropertiesRequest updateTableBorderProperties;
+
   /// Updates the properties of a TableCell.
   UpdateTableCellPropertiesRequest updateTableCellProperties;
+
+  /// Updates the properties of a Table
+  /// column.
+  UpdateTableColumnPropertiesRequest updateTableColumnProperties;
+
+  /// Updates the properties of a Table row.
+  UpdateTableRowPropertiesRequest updateTableRowProperties;
 
   /// Updates the styling of text within a Shape or Table.
   UpdateTextStyleRequest updateTextStyle;
@@ -4603,6 +4767,9 @@ class Request {
       duplicateObject =
           new DuplicateObjectRequest.fromJson(_json["duplicateObject"]);
     }
+    if (_json.containsKey("groupObjects")) {
+      groupObjects = new GroupObjectsRequest.fromJson(_json["groupObjects"]);
+    }
     if (_json.containsKey("insertTableColumns")) {
       insertTableColumns =
           new InsertTableColumnsRequest.fromJson(_json["insertTableColumns"]);
@@ -4613,6 +4780,10 @@ class Request {
     }
     if (_json.containsKey("insertText")) {
       insertText = new InsertTextRequest.fromJson(_json["insertText"]);
+    }
+    if (_json.containsKey("mergeTableCells")) {
+      mergeTableCells =
+          new MergeTableCellsRequest.fromJson(_json["mergeTableCells"]);
     }
     if (_json.containsKey("refreshSheetsChart")) {
       refreshSheetsChart =
@@ -4630,6 +4801,14 @@ class Request {
     if (_json.containsKey("replaceAllText")) {
       replaceAllText =
           new ReplaceAllTextRequest.fromJson(_json["replaceAllText"]);
+    }
+    if (_json.containsKey("ungroupObjects")) {
+      ungroupObjects =
+          new UngroupObjectsRequest.fromJson(_json["ungroupObjects"]);
+    }
+    if (_json.containsKey("unmergeTableCells")) {
+      unmergeTableCells =
+          new UnmergeTableCellsRequest.fromJson(_json["unmergeTableCells"]);
     }
     if (_json.containsKey("updateImageProperties")) {
       updateImageProperties = new UpdateImagePropertiesRequest.fromJson(
@@ -4660,9 +4839,23 @@ class Request {
       updateSlidesPosition = new UpdateSlidesPositionRequest.fromJson(
           _json["updateSlidesPosition"]);
     }
+    if (_json.containsKey("updateTableBorderProperties")) {
+      updateTableBorderProperties =
+          new UpdateTableBorderPropertiesRequest.fromJson(
+              _json["updateTableBorderProperties"]);
+    }
     if (_json.containsKey("updateTableCellProperties")) {
       updateTableCellProperties = new UpdateTableCellPropertiesRequest.fromJson(
           _json["updateTableCellProperties"]);
+    }
+    if (_json.containsKey("updateTableColumnProperties")) {
+      updateTableColumnProperties =
+          new UpdateTableColumnPropertiesRequest.fromJson(
+              _json["updateTableColumnProperties"]);
+    }
+    if (_json.containsKey("updateTableRowProperties")) {
+      updateTableRowProperties = new UpdateTableRowPropertiesRequest.fromJson(
+          _json["updateTableRowProperties"]);
     }
     if (_json.containsKey("updateTextStyle")) {
       updateTextStyle =
@@ -4719,6 +4912,9 @@ class Request {
     if (duplicateObject != null) {
       _json["duplicateObject"] = (duplicateObject).toJson();
     }
+    if (groupObjects != null) {
+      _json["groupObjects"] = (groupObjects).toJson();
+    }
     if (insertTableColumns != null) {
       _json["insertTableColumns"] = (insertTableColumns).toJson();
     }
@@ -4727,6 +4923,9 @@ class Request {
     }
     if (insertText != null) {
       _json["insertText"] = (insertText).toJson();
+    }
+    if (mergeTableCells != null) {
+      _json["mergeTableCells"] = (mergeTableCells).toJson();
     }
     if (refreshSheetsChart != null) {
       _json["refreshSheetsChart"] = (refreshSheetsChart).toJson();
@@ -4740,6 +4939,12 @@ class Request {
     }
     if (replaceAllText != null) {
       _json["replaceAllText"] = (replaceAllText).toJson();
+    }
+    if (ungroupObjects != null) {
+      _json["ungroupObjects"] = (ungroupObjects).toJson();
+    }
+    if (unmergeTableCells != null) {
+      _json["unmergeTableCells"] = (unmergeTableCells).toJson();
     }
     if (updateImageProperties != null) {
       _json["updateImageProperties"] = (updateImageProperties).toJson();
@@ -4763,8 +4968,19 @@ class Request {
     if (updateSlidesPosition != null) {
       _json["updateSlidesPosition"] = (updateSlidesPosition).toJson();
     }
+    if (updateTableBorderProperties != null) {
+      _json["updateTableBorderProperties"] =
+          (updateTableBorderProperties).toJson();
+    }
     if (updateTableCellProperties != null) {
       _json["updateTableCellProperties"] = (updateTableCellProperties).toJson();
+    }
+    if (updateTableColumnProperties != null) {
+      _json["updateTableColumnProperties"] =
+          (updateTableColumnProperties).toJson();
+    }
+    if (updateTableRowProperties != null) {
+      _json["updateTableRowProperties"] = (updateTableRowProperties).toJson();
     }
     if (updateTextStyle != null) {
       _json["updateTextStyle"] = (updateTextStyle).toJson();
@@ -4801,6 +5017,9 @@ class Response {
 
   /// The result of duplicating an object.
   DuplicateObjectResponse duplicateObject;
+
+  /// The result of grouping objects.
+  GroupObjectsResponse groupObjects;
 
   /// The result of replacing all shapes matching some criteria with an
   /// image.
@@ -4841,6 +5060,9 @@ class Response {
     if (_json.containsKey("duplicateObject")) {
       duplicateObject =
           new DuplicateObjectResponse.fromJson(_json["duplicateObject"]);
+    }
+    if (_json.containsKey("groupObjects")) {
+      groupObjects = new GroupObjectsResponse.fromJson(_json["groupObjects"]);
     }
     if (_json.containsKey("replaceAllShapesWithImage")) {
       replaceAllShapesWithImage =
@@ -4884,6 +5106,9 @@ class Response {
     }
     if (duplicateObject != null) {
       _json["duplicateObject"] = (duplicateObject).toJson();
+    }
+    if (groupObjects != null) {
+      _json["groupObjects"] = (groupObjects).toJson();
     }
     if (replaceAllShapesWithImage != null) {
       _json["replaceAllShapesWithImage"] = (replaceAllShapesWithImage).toJson();
@@ -5455,7 +5680,7 @@ class Shape {
 class ShapeBackgroundFill {
   /// The background fill property state.
   ///
-  /// Updating the the fill on a shape will implicitly update this field to
+  /// Updating the fill on a shape will implicitly update this field to
   /// `RENDERED`, unless another value is specified in the same request. To
   /// have no fill on a shape, set this field to `NOT_RENDERED`. In this case,
   /// any other fill fields set in the same request will be ignored.
@@ -5867,6 +6092,14 @@ class Table {
   /// Number of columns in the table.
   core.int columns;
 
+  /// Properties of horizontal cell borders.
+  ///
+  /// A table's horizontal cell borders are represented as a grid. The grid has
+  /// one more row than the number of rows in the table and the same number of
+  /// columns as the table. For example, if the table is 3 x 3, its horizontal
+  /// borders will be represented as a grid with 4 rows and 3 columns.
+  core.List<TableBorderRow> horizontalBorderRows;
+
   /// Number of rows in the table.
   core.int rows;
 
@@ -5880,11 +6113,25 @@ class Table {
   /// than 1.
   core.List<TableRow> tableRows;
 
+  /// Properties of vertical cell borders.
+  ///
+  /// A table's vertical cell borders are represented as a grid. The grid has
+  /// the
+  /// same number of rows as the table and one more column than the number of
+  /// columns in the table. For example, if the table is 3 x 3, its vertical
+  /// borders will be represented as a grid with 3 rows and 4 columns.
+  core.List<TableBorderRow> verticalBorderRows;
+
   Table();
 
   Table.fromJson(core.Map _json) {
     if (_json.containsKey("columns")) {
       columns = _json["columns"];
+    }
+    if (_json.containsKey("horizontalBorderRows")) {
+      horizontalBorderRows = _json["horizontalBorderRows"]
+          .map((value) => new TableBorderRow.fromJson(value))
+          .toList();
     }
     if (_json.containsKey("rows")) {
       rows = _json["rows"];
@@ -5899,6 +6146,11 @@ class Table {
           .map((value) => new TableRow.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("verticalBorderRows")) {
+      verticalBorderRows = _json["verticalBorderRows"]
+          .map((value) => new TableBorderRow.fromJson(value))
+          .toList();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -5906,6 +6158,10 @@ class Table {
         new core.Map<core.String, core.Object>();
     if (columns != null) {
       _json["columns"] = columns;
+    }
+    if (horizontalBorderRows != null) {
+      _json["horizontalBorderRows"] =
+          horizontalBorderRows.map((value) => (value).toJson()).toList();
     }
     if (rows != null) {
       _json["rows"] = rows;
@@ -5916,6 +6172,153 @@ class Table {
     }
     if (tableRows != null) {
       _json["tableRows"] = tableRows.map((value) => (value).toJson()).toList();
+    }
+    if (verticalBorderRows != null) {
+      _json["verticalBorderRows"] =
+          verticalBorderRows.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// The properties of each border cell.
+class TableBorderCell {
+  /// The location of the border within the border table.
+  TableCellLocation location;
+
+  /// The border properties.
+  TableBorderProperties tableBorderProperties;
+
+  TableBorderCell();
+
+  TableBorderCell.fromJson(core.Map _json) {
+    if (_json.containsKey("location")) {
+      location = new TableCellLocation.fromJson(_json["location"]);
+    }
+    if (_json.containsKey("tableBorderProperties")) {
+      tableBorderProperties =
+          new TableBorderProperties.fromJson(_json["tableBorderProperties"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (location != null) {
+      _json["location"] = (location).toJson();
+    }
+    if (tableBorderProperties != null) {
+      _json["tableBorderProperties"] = (tableBorderProperties).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The fill of the border.
+class TableBorderFill {
+  /// Solid fill.
+  SolidFill solidFill;
+
+  TableBorderFill();
+
+  TableBorderFill.fromJson(core.Map _json) {
+    if (_json.containsKey("solidFill")) {
+      solidFill = new SolidFill.fromJson(_json["solidFill"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (solidFill != null) {
+      _json["solidFill"] = (solidFill).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The border styling properties of the
+/// TableBorderCell.
+class TableBorderProperties {
+  /// The dash style of the border.
+  /// Possible string values are:
+  /// - "DASH_STYLE_UNSPECIFIED" : Unspecified dash style.
+  /// - "SOLID" : Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value
+  /// 'solid'.
+  /// This is the default dash style.
+  /// - "DOT" : Dotted line. Corresponds to ECMA-376 ST_PresetLineDashVal value
+  /// 'dot'.
+  /// - "DASH" : Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value
+  /// 'dash'.
+  /// - "DASH_DOT" : Alternating dashes and dots. Corresponds to ECMA-376
+  /// ST_PresetLineDashVal
+  /// value 'dashDot'.
+  /// - "LONG_DASH" : Line with large dashes. Corresponds to ECMA-376
+  /// ST_PresetLineDashVal
+  /// value 'lgDash'.
+  /// - "LONG_DASH_DOT" : Alternating large dashes and dots. Corresponds to
+  /// ECMA-376
+  /// ST_PresetLineDashVal value 'lgDashDot'.
+  core.String dashStyle;
+
+  /// The fill of the table border.
+  TableBorderFill tableBorderFill;
+
+  /// The thickness of the border.
+  Dimension weight;
+
+  TableBorderProperties();
+
+  TableBorderProperties.fromJson(core.Map _json) {
+    if (_json.containsKey("dashStyle")) {
+      dashStyle = _json["dashStyle"];
+    }
+    if (_json.containsKey("tableBorderFill")) {
+      tableBorderFill = new TableBorderFill.fromJson(_json["tableBorderFill"]);
+    }
+    if (_json.containsKey("weight")) {
+      weight = new Dimension.fromJson(_json["weight"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dashStyle != null) {
+      _json["dashStyle"] = dashStyle;
+    }
+    if (tableBorderFill != null) {
+      _json["tableBorderFill"] = (tableBorderFill).toJson();
+    }
+    if (weight != null) {
+      _json["weight"] = (weight).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Contents of each border row in a table.
+class TableBorderRow {
+  /// Properties of each border cell. When a border's adjacent table cells are
+  /// merged, it is not included in the response.
+  core.List<TableBorderCell> tableBorderCells;
+
+  TableBorderRow();
+
+  TableBorderRow.fromJson(core.Map _json) {
+    if (_json.containsKey("tableBorderCells")) {
+      tableBorderCells = _json["tableBorderCells"]
+          .map((value) => new TableBorderCell.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (tableBorderCells != null) {
+      _json["tableBorderCells"] =
+          tableBorderCells.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -5985,7 +6388,7 @@ class TableCell {
 class TableCellBackgroundFill {
   /// The background fill property state.
   ///
-  /// Updating the the fill on a table cell will implicitly update this field
+  /// Updating the fill on a table cell will implicitly update this field
   /// to `RENDERED`, unless another value is specified in the same request. To
   /// have no fill on a table cell, set this field to `NOT_RENDERED`. In this
   /// case, any other fill fields set in the same request will be ignored.
@@ -6184,6 +6587,9 @@ class TableRow {
   /// the number of columns of the entire table.
   core.List<TableCell> tableCells;
 
+  /// Properties of the row.
+  TableRowProperties tableRowProperties;
+
   TableRow();
 
   TableRow.fromJson(core.Map _json) {
@@ -6194,6 +6600,10 @@ class TableRow {
       tableCells = _json["tableCells"]
           .map((value) => new TableCell.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("tableRowProperties")) {
+      tableRowProperties =
+          new TableRowProperties.fromJson(_json["tableRowProperties"]);
     }
   }
 
@@ -6206,6 +6616,35 @@ class TableRow {
     if (tableCells != null) {
       _json["tableCells"] =
           tableCells.map((value) => (value).toJson()).toList();
+    }
+    if (tableRowProperties != null) {
+      _json["tableRowProperties"] = (tableRowProperties).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Properties of each row in a table.
+class TableRowProperties {
+  /// Minimum height of the row. The row will be rendered in the Slides editor
+  /// at
+  /// a height equal to or greater than this value in order to show all the text
+  /// in the row's cell(s).
+  Dimension minRowHeight;
+
+  TableRowProperties();
+
+  TableRowProperties.fromJson(core.Map _json) {
+    if (_json.containsKey("minRowHeight")) {
+      minRowHeight = new Dimension.fromJson(_json["minRowHeight"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (minRowHeight != null) {
+      _json["minRowHeight"] = (minRowHeight).toJson();
     }
     return _json;
   }
@@ -6670,6 +7109,73 @@ class Thumbnail {
   }
 }
 
+/// Ungroups objects, such as groups.
+class UngroupObjectsRequest {
+  /// The object IDs of the objects to ungroup.
+  ///
+  /// Only groups that are not inside other
+  /// groups can be ungrouped. All the groups
+  /// should be on the same page. The group itself is deleted. The visual sizes
+  /// and positions of all the children are preserved.
+  core.List<core.String> objectIds;
+
+  UngroupObjectsRequest();
+
+  UngroupObjectsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("objectIds")) {
+      objectIds = _json["objectIds"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (objectIds != null) {
+      _json["objectIds"] = objectIds;
+    }
+    return _json;
+  }
+}
+
+/// Unmerges cells in a Table.
+class UnmergeTableCellsRequest {
+  /// The object ID of the table.
+  core.String objectId;
+
+  /// The table range specifying which cells of the table to unmerge.
+  ///
+  /// All merged cells in this range will be unmerged, and cells that are
+  /// already
+  /// unmerged will not be affected. If the range has no merged cells, the
+  /// request will do nothing. If there is text in any of the merged cells, the
+  /// text will remain in the upper-left ("head") cell of the resulting block of
+  /// unmerged cells.
+  TableRange tableRange;
+
+  UnmergeTableCellsRequest();
+
+  UnmergeTableCellsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("objectId")) {
+      objectId = _json["objectId"];
+    }
+    if (_json.containsKey("tableRange")) {
+      tableRange = new TableRange.fromJson(_json["tableRange"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (objectId != null) {
+      _json["objectId"] = objectId;
+    }
+    if (tableRange != null) {
+      _json["tableRange"] = (tableRange).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Update the properties of an Image.
 class UpdateImagePropertiesRequest {
   /// The fields that should be updated.
@@ -7035,6 +7541,90 @@ class UpdateSlidesPositionRequest {
   }
 }
 
+/// Updates the properties of the table borders in a Table.
+class UpdateTableBorderPropertiesRequest {
+  /// The border position in the table range the updates should apply to. If a
+  /// border position is not specified, the updates will apply to all borders in
+  /// the table range.
+  /// Possible string values are:
+  /// - "ALL" : All borders in the range.
+  /// - "BOTTOM" : Borders at the bottom of the range.
+  /// - "INNER" : Borders on the inside of the range.
+  /// - "INNER_HORIZONTAL" : Horizontal borders on the inside of the range.
+  /// - "INNER_VERTICAL" : Vertical borders on the inside of the range.
+  /// - "LEFT" : Borders at the left of the range.
+  /// - "OUTER" : Borders along the outside of the range.
+  /// - "RIGHT" : Borders at the right of the range.
+  /// - "TOP" : Borders at the top of the range.
+  core.String borderPosition;
+
+  /// The fields that should be updated.
+  ///
+  /// At least one field must be specified. The root `tableBorderProperties` is
+  /// implied and should not be specified. A single `"*"` can be used as
+  /// short-hand for listing every field.
+  ///
+  /// For example to update the table border solid fill color, set
+  /// `fields` to `"tableBorderFill.solidFill.color"`.
+  ///
+  /// To reset a property to its default value, include its field name in the
+  /// field mask but leave the field itself unset.
+  core.String fields;
+
+  /// The object ID of the table.
+  core.String objectId;
+
+  /// The table border properties to update.
+  TableBorderProperties tableBorderProperties;
+
+  /// The table range representing the subset of the table to which the updates
+  /// are applied. If a table range is not specified, the updates will apply to
+  /// the entire table.
+  TableRange tableRange;
+
+  UpdateTableBorderPropertiesRequest();
+
+  UpdateTableBorderPropertiesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("borderPosition")) {
+      borderPosition = _json["borderPosition"];
+    }
+    if (_json.containsKey("fields")) {
+      fields = _json["fields"];
+    }
+    if (_json.containsKey("objectId")) {
+      objectId = _json["objectId"];
+    }
+    if (_json.containsKey("tableBorderProperties")) {
+      tableBorderProperties =
+          new TableBorderProperties.fromJson(_json["tableBorderProperties"]);
+    }
+    if (_json.containsKey("tableRange")) {
+      tableRange = new TableRange.fromJson(_json["tableRange"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (borderPosition != null) {
+      _json["borderPosition"] = borderPosition;
+    }
+    if (fields != null) {
+      _json["fields"] = fields;
+    }
+    if (objectId != null) {
+      _json["objectId"] = objectId;
+    }
+    if (tableBorderProperties != null) {
+      _json["tableBorderProperties"] = (tableBorderProperties).toJson();
+    }
+    if (tableRange != null) {
+      _json["tableRange"] = (tableRange).toJson();
+    }
+    return _json;
+  }
+}
+
 /// Update the properties of a TableCell.
 class UpdateTableCellPropertiesRequest {
   /// The fields that should be updated.
@@ -7093,6 +7683,132 @@ class UpdateTableCellPropertiesRequest {
     }
     if (tableRange != null) {
       _json["tableRange"] = (tableRange).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Updates the properties of a Table column.
+class UpdateTableColumnPropertiesRequest {
+  /// The list of zero-based indices specifying which columns to update. If no
+  /// indices are provided, all columns in the table will be updated.
+  core.List<core.int> columnIndices;
+
+  /// The fields that should be updated.
+  ///
+  /// At least one field must be specified. The root `tableColumnProperties` is
+  /// implied and should not be specified. A single `"*"` can be used as
+  /// short-hand for listing every field.
+  ///
+  /// For example to update the column width, set `fields` to `"column_width"`.
+  ///
+  /// If '"column_width"' is included in the field mask but the property is left
+  /// unset, the column width will default to 406,400 EMU (32 points).
+  core.String fields;
+
+  /// The object ID of the table.
+  core.String objectId;
+
+  /// The table column properties to update.
+  ///
+  /// If the value of `table_column_properties#column_width` in the request is
+  /// less than 406,400 EMU (32 points), a 400 bad request error is returned.
+  TableColumnProperties tableColumnProperties;
+
+  UpdateTableColumnPropertiesRequest();
+
+  UpdateTableColumnPropertiesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("columnIndices")) {
+      columnIndices = _json["columnIndices"];
+    }
+    if (_json.containsKey("fields")) {
+      fields = _json["fields"];
+    }
+    if (_json.containsKey("objectId")) {
+      objectId = _json["objectId"];
+    }
+    if (_json.containsKey("tableColumnProperties")) {
+      tableColumnProperties =
+          new TableColumnProperties.fromJson(_json["tableColumnProperties"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (columnIndices != null) {
+      _json["columnIndices"] = columnIndices;
+    }
+    if (fields != null) {
+      _json["fields"] = fields;
+    }
+    if (objectId != null) {
+      _json["objectId"] = objectId;
+    }
+    if (tableColumnProperties != null) {
+      _json["tableColumnProperties"] = (tableColumnProperties).toJson();
+    }
+    return _json;
+  }
+}
+
+/// Updates the properties of a Table row.
+class UpdateTableRowPropertiesRequest {
+  /// The fields that should be updated.
+  ///
+  /// At least one field must be specified. The root `tableRowProperties` is
+  /// implied and should not be specified. A single `"*"` can be used as
+  /// short-hand for listing every field.
+  ///
+  /// For example to update the minimum row height, set `fields` to
+  /// `"min_row_height"`.
+  ///
+  /// If '"min_row_height"' is included in the field mask but the property is
+  /// left unset, the minimum row height will default to 0.
+  core.String fields;
+
+  /// The object ID of the table.
+  core.String objectId;
+
+  /// The list of zero-based indices specifying which rows to update. If no
+  /// indices are provided, all rows in the table will be updated.
+  core.List<core.int> rowIndices;
+
+  /// The table row properties to update.
+  TableRowProperties tableRowProperties;
+
+  UpdateTableRowPropertiesRequest();
+
+  UpdateTableRowPropertiesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("fields")) {
+      fields = _json["fields"];
+    }
+    if (_json.containsKey("objectId")) {
+      objectId = _json["objectId"];
+    }
+    if (_json.containsKey("rowIndices")) {
+      rowIndices = _json["rowIndices"];
+    }
+    if (_json.containsKey("tableRowProperties")) {
+      tableRowProperties =
+          new TableRowProperties.fromJson(_json["tableRowProperties"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (fields != null) {
+      _json["fields"] = fields;
+    }
+    if (objectId != null) {
+      _json["objectId"] = objectId;
+    }
+    if (rowIndices != null) {
+      _json["rowIndices"] = rowIndices;
+    }
+    if (tableRowProperties != null) {
+      _json["tableRowProperties"] = (tableRowProperties).toJson();
     }
     return _json;
   }

@@ -81,6 +81,9 @@ class ConversionResourceApi {
   ///
   /// [criterionId] - Numeric ID of the criterion.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ConversionList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -99,7 +102,8 @@ class ConversionResourceApi {
       {core.String adGroupId,
       core.String adId,
       core.String campaignId,
-      core.String criterionId}) {
+      core.String criterionId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -144,6 +148,9 @@ class ConversionResourceApi {
     if (criterionId != null) {
       _queryParams["criterionId"] = [criterionId];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'agency/' +
         commons.Escaper.ecapeVariable('$agencyId') +
@@ -168,6 +175,9 @@ class ConversionResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ConversionList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -175,7 +185,8 @@ class ConversionResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ConversionList> insert(ConversionList request) {
+  async.Future<ConversionList> insert(ConversionList request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -185,6 +196,9 @@ class ConversionResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'conversion';
@@ -225,6 +239,9 @@ class ConversionResourceApi {
   /// [startRow] - The 0-based starting index for retrieving conversions
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ConversionList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -240,7 +257,8 @@ class ConversionResourceApi {
       core.String engineAccountId,
       core.int rowCount,
       core.int startDate,
-      core.int startRow) {
+      core.int startRow,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -279,6 +297,9 @@ class ConversionResourceApi {
       throw new core.ArgumentError("Parameter startRow is required.");
     }
     _queryParams["startRow"] = ["${startRow}"];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'conversion';
 
@@ -297,6 +318,9 @@ class ConversionResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ConversionList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -304,7 +328,8 @@ class ConversionResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ConversionList> update(ConversionList request) {
+  async.Future<ConversionList> update(ConversionList request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -314,6 +339,9 @@ class ConversionResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'conversion';
@@ -334,6 +362,9 @@ class ConversionResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UpdateAvailabilityResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -342,7 +373,8 @@ class ConversionResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UpdateAvailabilityResponse> updateAvailability(
-      UpdateAvailabilityRequest request) {
+      UpdateAvailabilityRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -352,6 +384,9 @@ class ConversionResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'conversion/updateAvailability';
@@ -378,6 +413,9 @@ class ReportsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Report].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -385,7 +423,8 @@ class ReportsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Report> generate(ReportRequest request_1) {
+  async.Future<Report> generate(ReportRequest request_1,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -395,6 +434,9 @@ class ReportsResourceApi {
 
     if (request_1 != null) {
       _body = convert.JSON.encode((request_1).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'reports/generate';
@@ -414,6 +456,9 @@ class ReportsResourceApi {
   ///
   /// [reportId] - ID of the report request being polled.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Report].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -421,7 +466,7 @@ class ReportsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Report> get(core.String reportId) {
+  async.Future<Report> get(core.String reportId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -431,6 +476,9 @@ class ReportsResourceApi {
 
     if (reportId == null) {
       throw new core.ArgumentError("Parameter reportId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'reports/' + commons.Escaper.ecapeVariable('$reportId');
@@ -452,6 +500,9 @@ class ReportsResourceApi {
   ///
   /// [reportFragment] - The index of the report fragment to download.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [downloadOptions] - Options for downloading. A download can be either a
   /// Metadata (default) or Media download. Partial Media downloads are possible
   /// as well.
@@ -462,7 +513,8 @@ class ReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future getFile(core.String reportId, core.int reportFragment,
-      {commons.DownloadOptions downloadOptions:
+      {core.String $fields,
+      commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -476,6 +528,9 @@ class ReportsResourceApi {
     }
     if (reportFragment == null) {
       throw new core.ArgumentError("Parameter reportFragment is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = downloadOptions;
@@ -505,6 +560,9 @@ class ReportsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Report].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -512,7 +570,7 @@ class ReportsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Report> request(ReportRequest request_1) {
+  async.Future<Report> request(ReportRequest request_1, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -522,6 +580,9 @@ class ReportsResourceApi {
 
     if (request_1 != null) {
       _body = convert.JSON.encode((request_1).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'reports';
@@ -549,6 +610,9 @@ class SavedColumnsResourceApi {
   ///
   /// [advertiserId] - DS ID of the advertiser.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SavedColumnList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -557,7 +621,8 @@ class SavedColumnsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SavedColumnList> list(
-      core.String agencyId, core.String advertiserId) {
+      core.String agencyId, core.String advertiserId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -570,6 +635,9 @@ class SavedColumnsResourceApi {
     }
     if (advertiserId == null) {
       throw new core.ArgumentError("Parameter advertiserId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'agency/' +

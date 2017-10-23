@@ -94,14 +94,14 @@ checkClaimDeviceResponse(api.ClaimDeviceResponse o) {
   buildCounterClaimDeviceResponse--;
 }
 
-buildUnnamed47() {
+buildUnnamed28() {
   var o = new core.List<api.PartnerClaim>();
   o.add(buildPartnerClaim());
   o.add(buildPartnerClaim());
   return o;
 }
 
-checkUnnamed47(core.List<api.PartnerClaim> o) {
+checkUnnamed28(core.List<api.PartnerClaim> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPartnerClaim(o[0]);
   checkPartnerClaim(o[1]);
@@ -112,7 +112,7 @@ buildClaimDevicesRequest() {
   var o = new api.ClaimDevicesRequest();
   buildCounterClaimDevicesRequest++;
   if (buildCounterClaimDevicesRequest < 3) {
-    o.claims = buildUnnamed47();
+    o.claims = buildUnnamed28();
   }
   buildCounterClaimDevicesRequest--;
   return o;
@@ -121,32 +121,32 @@ buildClaimDevicesRequest() {
 checkClaimDevicesRequest(api.ClaimDevicesRequest o) {
   buildCounterClaimDevicesRequest++;
   if (buildCounterClaimDevicesRequest < 3) {
-    checkUnnamed47(o.claims);
+    checkUnnamed28(o.claims);
   }
   buildCounterClaimDevicesRequest--;
 }
 
-buildUnnamed48() {
+buildUnnamed29() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed48(core.List<core.String> o) {
+checkUnnamed29(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed49() {
+buildUnnamed30() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed49(core.List<core.String> o) {
+checkUnnamed30(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -157,11 +157,11 @@ buildCompany() {
   var o = new api.Company();
   buildCounterCompany++;
   if (buildCounterCompany < 3) {
-    o.adminEmails = buildUnnamed48();
+    o.adminEmails = buildUnnamed29();
     o.companyId = "foo";
     o.companyName = "foo";
     o.name = "foo";
-    o.ownerEmails = buildUnnamed49();
+    o.ownerEmails = buildUnnamed30();
   }
   buildCounterCompany--;
   return o;
@@ -170,11 +170,11 @@ buildCompany() {
 checkCompany(api.Company o) {
   buildCounterCompany++;
   if (buildCounterCompany < 3) {
-    checkUnnamed48(o.adminEmails);
+    checkUnnamed29(o.adminEmails);
     unittest.expect(o.companyId, unittest.equals('foo'));
     unittest.expect(o.companyName, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed49(o.ownerEmails);
+    checkUnnamed30(o.ownerEmails);
   }
   buildCounterCompany--;
 }
@@ -198,14 +198,14 @@ checkCreateCustomerRequest(api.CreateCustomerRequest o) {
   buildCounterCreateCustomerRequest--;
 }
 
-buildUnnamed50() {
+buildUnnamed31() {
   var o = new core.List<api.DeviceClaim>();
   o.add(buildDeviceClaim());
   o.add(buildDeviceClaim());
   return o;
 }
 
-checkUnnamed50(core.List<api.DeviceClaim> o) {
+checkUnnamed31(core.List<api.DeviceClaim> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDeviceClaim(o[0]);
   checkDeviceClaim(o[1]);
@@ -216,7 +216,7 @@ buildDevice() {
   var o = new api.Device();
   buildCounterDevice++;
   if (buildCounterDevice < 3) {
-    o.claims = buildUnnamed50();
+    o.claims = buildUnnamed31();
     o.configuration = "foo";
     o.deviceId = "foo";
     o.deviceIdentifier = buildDeviceIdentifier();
@@ -230,7 +230,7 @@ buildDevice() {
 checkDevice(api.Device o) {
   buildCounterDevice++;
   if (buildCounterDevice < 3) {
-    checkUnnamed50(o.claims);
+    checkUnnamed31(o.claims);
     unittest.expect(o.configuration, unittest.equals('foo'));
     unittest.expect(o.deviceId, unittest.equals('foo'));
     checkDeviceIdentifier(o.deviceIdentifier);
@@ -286,14 +286,14 @@ checkDeviceIdentifier(api.DeviceIdentifier o) {
   buildCounterDeviceIdentifier--;
 }
 
-buildUnnamed51() {
+buildUnnamed32() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed51(core.Map<core.String, core.String> o) {
+checkUnnamed32(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -304,7 +304,7 @@ buildDeviceMetadata() {
   var o = new api.DeviceMetadata();
   buildCounterDeviceMetadata++;
   if (buildCounterDeviceMetadata < 3) {
-    o.entries = buildUnnamed51();
+    o.entries = buildUnnamed32();
   }
   buildCounterDeviceMetadata--;
   return o;
@@ -313,7 +313,7 @@ buildDeviceMetadata() {
 checkDeviceMetadata(api.DeviceMetadata o) {
   buildCounterDeviceMetadata++;
   if (buildCounterDeviceMetadata < 3) {
-    checkUnnamed51(o.entries);
+    checkUnnamed32(o.entries);
   }
   buildCounterDeviceMetadata--;
 }
@@ -342,14 +342,14 @@ checkDevicesLongRunningOperationMetadata(
   buildCounterDevicesLongRunningOperationMetadata--;
 }
 
-buildUnnamed52() {
+buildUnnamed33() {
   var o = new core.List<api.OperationPerDevice>();
   o.add(buildOperationPerDevice());
   o.add(buildOperationPerDevice());
   return o;
 }
 
-checkUnnamed52(core.List<api.OperationPerDevice> o) {
+checkUnnamed33(core.List<api.OperationPerDevice> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationPerDevice(o[0]);
   checkOperationPerDevice(o[1]);
@@ -360,7 +360,7 @@ buildDevicesLongRunningOperationResponse() {
   var o = new api.DevicesLongRunningOperationResponse();
   buildCounterDevicesLongRunningOperationResponse++;
   if (buildCounterDevicesLongRunningOperationResponse < 3) {
-    o.perDeviceStatus = buildUnnamed52();
+    o.perDeviceStatus = buildUnnamed33();
     o.successCount = 42;
   }
   buildCounterDevicesLongRunningOperationResponse--;
@@ -371,7 +371,7 @@ checkDevicesLongRunningOperationResponse(
     api.DevicesLongRunningOperationResponse o) {
   buildCounterDevicesLongRunningOperationResponse++;
   if (buildCounterDevicesLongRunningOperationResponse < 3) {
-    checkUnnamed52(o.perDeviceStatus);
+    checkUnnamed33(o.perDeviceStatus);
     unittest.expect(o.successCount, unittest.equals(42));
   }
   buildCounterDevicesLongRunningOperationResponse--;
@@ -416,14 +416,14 @@ checkFindDevicesByDeviceIdentifierRequest(
   buildCounterFindDevicesByDeviceIdentifierRequest--;
 }
 
-buildUnnamed53() {
+buildUnnamed34() {
   var o = new core.List<api.Device>();
   o.add(buildDevice());
   o.add(buildDevice());
   return o;
 }
 
-checkUnnamed53(core.List<api.Device> o) {
+checkUnnamed34(core.List<api.Device> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDevice(o[0]);
   checkDevice(o[1]);
@@ -434,7 +434,7 @@ buildFindDevicesByDeviceIdentifierResponse() {
   var o = new api.FindDevicesByDeviceIdentifierResponse();
   buildCounterFindDevicesByDeviceIdentifierResponse++;
   if (buildCounterFindDevicesByDeviceIdentifierResponse < 3) {
-    o.devices = buildUnnamed53();
+    o.devices = buildUnnamed34();
     o.nextPageToken = "foo";
   }
   buildCounterFindDevicesByDeviceIdentifierResponse--;
@@ -445,20 +445,20 @@ checkFindDevicesByDeviceIdentifierResponse(
     api.FindDevicesByDeviceIdentifierResponse o) {
   buildCounterFindDevicesByDeviceIdentifierResponse++;
   if (buildCounterFindDevicesByDeviceIdentifierResponse < 3) {
-    checkUnnamed53(o.devices);
+    checkUnnamed34(o.devices);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterFindDevicesByDeviceIdentifierResponse--;
 }
 
-buildUnnamed54() {
+buildUnnamed35() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed54(core.List<core.String> o) {
+checkUnnamed35(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -469,7 +469,7 @@ buildFindDevicesByOwnerRequest() {
   var o = new api.FindDevicesByOwnerRequest();
   buildCounterFindDevicesByOwnerRequest++;
   if (buildCounterFindDevicesByOwnerRequest < 3) {
-    o.customerId = buildUnnamed54();
+    o.customerId = buildUnnamed35();
     o.limit = "foo";
     o.pageToken = "foo";
     o.sectionType = "foo";
@@ -481,7 +481,7 @@ buildFindDevicesByOwnerRequest() {
 checkFindDevicesByOwnerRequest(api.FindDevicesByOwnerRequest o) {
   buildCounterFindDevicesByOwnerRequest++;
   if (buildCounterFindDevicesByOwnerRequest < 3) {
-    checkUnnamed54(o.customerId);
+    checkUnnamed35(o.customerId);
     unittest.expect(o.limit, unittest.equals('foo'));
     unittest.expect(o.pageToken, unittest.equals('foo'));
     unittest.expect(o.sectionType, unittest.equals('foo'));
@@ -489,14 +489,14 @@ checkFindDevicesByOwnerRequest(api.FindDevicesByOwnerRequest o) {
   buildCounterFindDevicesByOwnerRequest--;
 }
 
-buildUnnamed55() {
+buildUnnamed36() {
   var o = new core.List<api.Device>();
   o.add(buildDevice());
   o.add(buildDevice());
   return o;
 }
 
-checkUnnamed55(core.List<api.Device> o) {
+checkUnnamed36(core.List<api.Device> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDevice(o[0]);
   checkDevice(o[1]);
@@ -507,7 +507,7 @@ buildFindDevicesByOwnerResponse() {
   var o = new api.FindDevicesByOwnerResponse();
   buildCounterFindDevicesByOwnerResponse++;
   if (buildCounterFindDevicesByOwnerResponse < 3) {
-    o.devices = buildUnnamed55();
+    o.devices = buildUnnamed36();
     o.nextPageToken = "foo";
   }
   buildCounterFindDevicesByOwnerResponse--;
@@ -517,20 +517,20 @@ buildFindDevicesByOwnerResponse() {
 checkFindDevicesByOwnerResponse(api.FindDevicesByOwnerResponse o) {
   buildCounterFindDevicesByOwnerResponse++;
   if (buildCounterFindDevicesByOwnerResponse < 3) {
-    checkUnnamed55(o.devices);
+    checkUnnamed36(o.devices);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterFindDevicesByOwnerResponse--;
 }
 
-buildUnnamed56() {
+buildUnnamed37() {
   var o = new core.List<api.Company>();
   o.add(buildCompany());
   o.add(buildCompany());
   return o;
 }
 
-checkUnnamed56(core.List<api.Company> o) {
+checkUnnamed37(core.List<api.Company> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCompany(o[0]);
   checkCompany(o[1]);
@@ -541,7 +541,7 @@ buildListCustomersResponse() {
   var o = new api.ListCustomersResponse();
   buildCounterListCustomersResponse++;
   if (buildCounterListCustomersResponse < 3) {
-    o.customers = buildUnnamed56();
+    o.customers = buildUnnamed37();
   }
   buildCounterListCustomersResponse--;
   return o;
@@ -550,12 +550,12 @@ buildListCustomersResponse() {
 checkListCustomersResponse(api.ListCustomersResponse o) {
   buildCounterListCustomersResponse++;
   if (buildCounterListCustomersResponse < 3) {
-    checkUnnamed56(o.customers);
+    checkUnnamed37(o.customers);
   }
   buildCounterListCustomersResponse--;
 }
 
-buildUnnamed57() {
+buildUnnamed38() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -570,7 +570,7 @@ buildUnnamed57() {
   return o;
 }
 
-checkUnnamed57(core.Map<core.String, core.Object> o) {
+checkUnnamed38(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -584,7 +584,7 @@ checkUnnamed57(core.Map<core.String, core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed58() {
+buildUnnamed39() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -599,7 +599,7 @@ buildUnnamed58() {
   return o;
 }
 
-checkUnnamed58(core.Map<core.String, core.Object> o) {
+checkUnnamed39(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["x"]) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -620,9 +620,9 @@ buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed57();
+    o.metadata = buildUnnamed38();
     o.name = "foo";
-    o.response = buildUnnamed58();
+    o.response = buildUnnamed39();
   }
   buildCounterOperation--;
   return o;
@@ -633,9 +633,9 @@ checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkStatus(o.error);
-    checkUnnamed57(o.metadata);
+    checkUnnamed38(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed58(o.response);
+    checkUnnamed39(o.response);
   }
   buildCounterOperation--;
 }
@@ -738,7 +738,7 @@ checkPerDeviceStatusInBatch(api.PerDeviceStatusInBatch o) {
   buildCounterPerDeviceStatusInBatch--;
 }
 
-buildUnnamed59() {
+buildUnnamed40() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -753,7 +753,7 @@ buildUnnamed59() {
   return o;
 }
 
-checkUnnamed59(core.Map<core.String, core.Object> o) {
+checkUnnamed40(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o["x"]) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -767,17 +767,17 @@ checkUnnamed59(core.Map<core.String, core.Object> o) {
   unittest.expect(casted6["string"], unittest.equals('foo'));
 }
 
-buildUnnamed60() {
+buildUnnamed41() {
   var o = new core.List<core.Map<core.String, core.Object>>();
-  o.add(buildUnnamed59());
-  o.add(buildUnnamed59());
+  o.add(buildUnnamed40());
+  o.add(buildUnnamed40());
   return o;
 }
 
-checkUnnamed60(core.List<core.Map<core.String, core.Object>> o) {
+checkUnnamed41(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed59(o[0]);
-  checkUnnamed59(o[1]);
+  checkUnnamed40(o[0]);
+  checkUnnamed40(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -786,7 +786,7 @@ buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed60();
+    o.details = buildUnnamed41();
     o.message = "foo";
   }
   buildCounterStatus--;
@@ -797,7 +797,7 @@ checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed60(o.details);
+    checkUnnamed41(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterStatus--;
@@ -826,14 +826,14 @@ checkUnclaimDeviceRequest(api.UnclaimDeviceRequest o) {
   buildCounterUnclaimDeviceRequest--;
 }
 
-buildUnnamed61() {
+buildUnnamed42() {
   var o = new core.List<api.PartnerUnclaim>();
   o.add(buildPartnerUnclaim());
   o.add(buildPartnerUnclaim());
   return o;
 }
 
-checkUnnamed61(core.List<api.PartnerUnclaim> o) {
+checkUnnamed42(core.List<api.PartnerUnclaim> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPartnerUnclaim(o[0]);
   checkPartnerUnclaim(o[1]);
@@ -844,7 +844,7 @@ buildUnclaimDevicesRequest() {
   var o = new api.UnclaimDevicesRequest();
   buildCounterUnclaimDevicesRequest++;
   if (buildCounterUnclaimDevicesRequest < 3) {
-    o.unclaims = buildUnnamed61();
+    o.unclaims = buildUnnamed42();
   }
   buildCounterUnclaimDevicesRequest--;
   return o;
@@ -853,19 +853,19 @@ buildUnclaimDevicesRequest() {
 checkUnclaimDevicesRequest(api.UnclaimDevicesRequest o) {
   buildCounterUnclaimDevicesRequest++;
   if (buildCounterUnclaimDevicesRequest < 3) {
-    checkUnnamed61(o.unclaims);
+    checkUnnamed42(o.unclaims);
   }
   buildCounterUnclaimDevicesRequest--;
 }
 
-buildUnnamed62() {
+buildUnnamed43() {
   var o = new core.List<api.UpdateMetadataArguments>();
   o.add(buildUpdateMetadataArguments());
   o.add(buildUpdateMetadataArguments());
   return o;
 }
 
-checkUnnamed62(core.List<api.UpdateMetadataArguments> o) {
+checkUnnamed43(core.List<api.UpdateMetadataArguments> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUpdateMetadataArguments(o[0]);
   checkUpdateMetadataArguments(o[1]);
@@ -876,7 +876,7 @@ buildUpdateDeviceMetadataInBatchRequest() {
   var o = new api.UpdateDeviceMetadataInBatchRequest();
   buildCounterUpdateDeviceMetadataInBatchRequest++;
   if (buildCounterUpdateDeviceMetadataInBatchRequest < 3) {
-    o.updates = buildUnnamed62();
+    o.updates = buildUnnamed43();
   }
   buildCounterUpdateDeviceMetadataInBatchRequest--;
   return o;
@@ -886,7 +886,7 @@ checkUpdateDeviceMetadataInBatchRequest(
     api.UpdateDeviceMetadataInBatchRequest o) {
   buildCounterUpdateDeviceMetadataInBatchRequest++;
   if (buildCounterUpdateDeviceMetadataInBatchRequest < 3) {
-    checkUnnamed62(o.updates);
+    checkUnnamed43(o.updates);
   }
   buildCounterUpdateDeviceMetadataInBatchRequest--;
 }
@@ -1166,6 +1166,7 @@ main() {
       api.OperationsResourceApi res =
           new api.AndroiddeviceprovisioningApi(mock).operations;
       var arg_name = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1197,6 +1198,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1204,7 +1206,9 @@ main() {
         var resp = convert.JSON.encode(buildOperation());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_name).then(unittest.expectAsync1(((api.Operation response) {
+      res
+          .get(arg_name, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
     });
@@ -1217,6 +1221,7 @@ main() {
           new api.AndroiddeviceprovisioningApi(mock).partners.customers;
       var arg_request = buildCreateCustomerRequest();
       var arg_parent = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.CreateCustomerRequest.fromJson(json);
         checkCreateCustomerRequest(obj);
@@ -1251,6 +1256,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1259,7 +1265,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .create(arg_request, arg_parent)
+          .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Company response) {
         checkCompany(response);
       })));
@@ -1270,6 +1276,7 @@ main() {
       api.PartnersCustomersResourceApi res =
           new api.AndroiddeviceprovisioningApi(mock).partners.customers;
       var arg_partnerId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1301,6 +1308,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1309,7 +1317,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .list(arg_partnerId)
+          .list(arg_partnerId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ListCustomersResponse response) {
         checkListCustomersResponse(response);
       })));
@@ -1323,6 +1331,7 @@ main() {
           new api.AndroiddeviceprovisioningApi(mock).partners.devices;
       var arg_request = buildClaimDeviceRequest();
       var arg_partnerId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ClaimDeviceRequest.fromJson(json);
         checkClaimDeviceRequest(obj);
@@ -1357,6 +1366,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1365,7 +1375,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .claim(arg_request, arg_partnerId)
+          .claim(arg_request, arg_partnerId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ClaimDeviceResponse response) {
         checkClaimDeviceResponse(response);
       })));
@@ -1377,6 +1387,7 @@ main() {
           new api.AndroiddeviceprovisioningApi(mock).partners.devices;
       var arg_request = buildClaimDevicesRequest();
       var arg_partnerId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ClaimDevicesRequest.fromJson(json);
         checkClaimDevicesRequest(obj);
@@ -1411,6 +1422,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1419,7 +1431,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .claimAsync(arg_request, arg_partnerId)
+          .claimAsync(arg_request, arg_partnerId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
@@ -1431,6 +1443,7 @@ main() {
           new api.AndroiddeviceprovisioningApi(mock).partners.devices;
       var arg_request = buildFindDevicesByDeviceIdentifierRequest();
       var arg_partnerId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.FindDevicesByDeviceIdentifierRequest.fromJson(json);
         checkFindDevicesByDeviceIdentifierRequest(obj);
@@ -1465,6 +1478,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1473,8 +1487,10 @@ main() {
             convert.JSON.encode(buildFindDevicesByDeviceIdentifierResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.findByIdentifier(arg_request, arg_partnerId).then(unittest
-          .expectAsync1(((api.FindDevicesByDeviceIdentifierResponse response) {
+      res
+          .findByIdentifier(arg_request, arg_partnerId, $fields: arg_$fields)
+          .then(unittest.expectAsync1(
+              ((api.FindDevicesByDeviceIdentifierResponse response) {
         checkFindDevicesByDeviceIdentifierResponse(response);
       })));
     });
@@ -1485,6 +1501,7 @@ main() {
           new api.AndroiddeviceprovisioningApi(mock).partners.devices;
       var arg_request = buildFindDevicesByOwnerRequest();
       var arg_partnerId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.FindDevicesByOwnerRequest.fromJson(json);
         checkFindDevicesByOwnerRequest(obj);
@@ -1519,6 +1536,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1526,7 +1544,7 @@ main() {
         var resp = convert.JSON.encode(buildFindDevicesByOwnerResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.findByOwner(arg_request, arg_partnerId).then(
+      res.findByOwner(arg_request, arg_partnerId, $fields: arg_$fields).then(
           unittest.expectAsync1(((api.FindDevicesByOwnerResponse response) {
         checkFindDevicesByOwnerResponse(response);
       })));
@@ -1537,6 +1555,7 @@ main() {
       api.PartnersDevicesResourceApi res =
           new api.AndroiddeviceprovisioningApi(mock).partners.devices;
       var arg_name = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1568,6 +1587,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1575,7 +1595,9 @@ main() {
         var resp = convert.JSON.encode(buildDevice());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_name).then(unittest.expectAsync1(((api.Device response) {
+      res
+          .get(arg_name, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((api.Device response) {
         checkDevice(response);
       })));
     });
@@ -1587,6 +1609,7 @@ main() {
       var arg_request = buildUpdateDeviceMetadataRequest();
       var arg_metadataOwnerId = "foo";
       var arg_deviceId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.UpdateDeviceMetadataRequest.fromJson(json);
         checkUpdateDeviceMetadataRequest(obj);
@@ -1621,6 +1644,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1629,7 +1653,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .metadata(arg_request, arg_metadataOwnerId, arg_deviceId)
+          .metadata(arg_request, arg_metadataOwnerId, arg_deviceId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.DeviceMetadata response) {
         checkDeviceMetadata(response);
       })));
@@ -1641,6 +1666,7 @@ main() {
           new api.AndroiddeviceprovisioningApi(mock).partners.devices;
       var arg_request = buildUnclaimDeviceRequest();
       var arg_partnerId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.UnclaimDeviceRequest.fromJson(json);
         checkUnclaimDeviceRequest(obj);
@@ -1675,6 +1701,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1683,7 +1710,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .unclaim(arg_request, arg_partnerId)
+          .unclaim(arg_request, arg_partnerId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Empty response) {
         checkEmpty(response);
       })));
@@ -1695,6 +1722,7 @@ main() {
           new api.AndroiddeviceprovisioningApi(mock).partners.devices;
       var arg_request = buildUnclaimDevicesRequest();
       var arg_partnerId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.UnclaimDevicesRequest.fromJson(json);
         checkUnclaimDevicesRequest(obj);
@@ -1729,6 +1757,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1737,7 +1766,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .unclaimAsync(arg_request, arg_partnerId)
+          .unclaimAsync(arg_request, arg_partnerId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
@@ -1749,6 +1778,7 @@ main() {
           new api.AndroiddeviceprovisioningApi(mock).partners.devices;
       var arg_request = buildUpdateDeviceMetadataInBatchRequest();
       var arg_partnerId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.UpdateDeviceMetadataInBatchRequest.fromJson(json);
         checkUpdateDeviceMetadataInBatchRequest(obj);
@@ -1783,6 +1813,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1791,7 +1822,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .updateMetadataAsync(arg_request, arg_partnerId)
+          .updateMetadataAsync(arg_request, arg_partnerId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));

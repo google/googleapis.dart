@@ -54,6 +54,9 @@ class ActivitiesResourceApi {
   ///
   /// [activityId] - The ID of the activity to get.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Activity].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -61,7 +64,7 @@ class ActivitiesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Activity> get(core.String activityId) {
+  async.Future<Activity> get(core.String activityId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -71,6 +74,9 @@ class ActivitiesResourceApi {
 
     if (activityId == null) {
       throw new core.ArgumentError("Parameter activityId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'activities/' + commons.Escaper.ecapeVariable('$activityId');
@@ -105,6 +111,9 @@ class ActivitiesResourceApi {
   /// result sets. To get the next page of results, set this parameter to the
   /// value of "nextPageToken" from the previous response.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ActivityFeed].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -113,7 +122,7 @@ class ActivitiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ActivityFeed> list(core.String userId, core.String collection,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -132,6 +141,9 @@ class ActivitiesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'people/' +
@@ -172,6 +184,9 @@ class ActivitiesResourceApi {
   /// value of "nextPageToken" from the previous response. This token can be of
   /// any length.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ActivityFeed].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -183,7 +198,8 @@ class ActivitiesResourceApi {
       {core.String language,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -206,6 +222,9 @@ class ActivitiesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'activities';
@@ -231,6 +250,9 @@ class CommentsResourceApi {
   ///
   /// [commentId] - The ID of the comment to get.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Comment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -238,7 +260,7 @@ class CommentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Comment> get(core.String commentId) {
+  async.Future<Comment> get(core.String commentId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -248,6 +270,9 @@ class CommentsResourceApi {
 
     if (commentId == null) {
       throw new core.ArgumentError("Parameter commentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'comments/' + commons.Escaper.ecapeVariable('$commentId');
@@ -281,6 +306,9 @@ class CommentsResourceApi {
   /// - "ascending" : Sort oldest comments first.
   /// - "descending" : Sort newest comments first.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CommentFeed].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -289,7 +317,10 @@ class CommentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CommentFeed> list(core.String activityId,
-      {core.int maxResults, core.String pageToken, core.String sortOrder}) {
+      {core.int maxResults,
+      core.String pageToken,
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -308,6 +339,9 @@ class CommentsResourceApi {
     }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'activities/' +
@@ -338,6 +372,9 @@ class PeopleResourceApi {
   /// [userId] - The ID of the person to get the profile for. The special value
   /// "me" can be used to indicate the authenticated user.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Person].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -345,7 +382,7 @@ class PeopleResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Person> get(core.String userId) {
+  async.Future<Person> get(core.String userId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -355,6 +392,9 @@ class PeopleResourceApi {
 
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'people/' + commons.Escaper.ecapeVariable('$userId');
@@ -397,6 +437,9 @@ class PeopleResourceApi {
   /// result sets. To get the next page of results, set this parameter to the
   /// value of "nextPageToken" from the previous response.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PeopleFeed].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -405,7 +448,10 @@ class PeopleResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PeopleFeed> list(core.String userId, core.String collection,
-      {core.int maxResults, core.String orderBy, core.String pageToken}) {
+      {core.int maxResults,
+      core.String orderBy,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -427,6 +473,9 @@ class PeopleResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'people/' +
@@ -464,6 +513,9 @@ class PeopleResourceApi {
   /// result sets. To get the next page of results, set this parameter to the
   /// value of "nextPageToken" from the previous response.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PeopleFeed].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -473,7 +525,7 @@ class PeopleResourceApi {
   /// this method will complete with the same error.
   async.Future<PeopleFeed> listByActivity(
       core.String activityId, core.String collection,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -492,6 +544,9 @@ class PeopleResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'activities/' +
@@ -528,6 +583,9 @@ class PeopleResourceApi {
   /// value of "nextPageToken" from the previous response. This token can be of
   /// any length.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PeopleFeed].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -536,7 +594,10 @@ class PeopleResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PeopleFeed> search(core.String query,
-      {core.String language, core.int maxResults, core.String pageToken}) {
+      {core.String language,
+      core.int maxResults,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -556,6 +617,9 @@ class PeopleResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'people';

@@ -65,6 +65,9 @@ class RollingUpdatesResourceApi {
   ///
   /// [rollingUpdate] - The name of the update.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -73,7 +76,8 @@ class RollingUpdatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> cancel(
-      core.String project, core.String zone, core.String rollingUpdate) {
+      core.String project, core.String zone, core.String rollingUpdate,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -89,6 +93,9 @@ class RollingUpdatesResourceApi {
     }
     if (rollingUpdate == null) {
       throw new core.ArgumentError("Parameter rollingUpdate is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -119,6 +126,9 @@ class RollingUpdatesResourceApi {
   ///
   /// [rollingUpdate] - The name of the update.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RollingUpdate].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -127,7 +137,8 @@ class RollingUpdatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RollingUpdate> get(
-      core.String project, core.String zone, core.String rollingUpdate) {
+      core.String project, core.String zone, core.String rollingUpdate,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -143,6 +154,9 @@ class RollingUpdatesResourceApi {
     }
     if (rollingUpdate == null) {
       throw new core.ArgumentError("Parameter rollingUpdate is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -172,6 +186,9 @@ class RollingUpdatesResourceApi {
   ///
   /// [zone] - The name of the zone in which the update's target resides.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -180,7 +197,8 @@ class RollingUpdatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(
-      RollingUpdate request, core.String project, core.String zone) {
+      RollingUpdate request, core.String project, core.String zone,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -196,6 +214,9 @@ class RollingUpdatesResourceApi {
     }
     if (zone == null) {
       throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -232,6 +253,9 @@ class RollingUpdatesResourceApi {
   /// [pageToken] - Optional. Tag returned by a previous list request truncated
   /// by maxResults. Used to continue a previous list request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RollingUpdateList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -240,7 +264,10 @@ class RollingUpdatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RollingUpdateList> list(core.String project, core.String zone,
-      {core.String filter, core.int maxResults, core.String pageToken}) {
+      {core.String filter,
+      core.int maxResults,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -262,6 +289,9 @@ class RollingUpdatesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -299,6 +329,9 @@ class RollingUpdatesResourceApi {
   /// [pageToken] - Optional. Tag returned by a previous list request truncated
   /// by maxResults. Used to continue a previous list request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InstanceUpdateList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -308,7 +341,10 @@ class RollingUpdatesResourceApi {
   /// this method will complete with the same error.
   async.Future<InstanceUpdateList> listInstanceUpdates(
       core.String project, core.String zone, core.String rollingUpdate,
-      {core.String filter, core.int maxResults, core.String pageToken}) {
+      {core.String filter,
+      core.int maxResults,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -333,6 +369,9 @@ class RollingUpdatesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -364,6 +403,9 @@ class RollingUpdatesResourceApi {
   ///
   /// [rollingUpdate] - The name of the update.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -372,7 +414,8 @@ class RollingUpdatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> pause(
-      core.String project, core.String zone, core.String rollingUpdate) {
+      core.String project, core.String zone, core.String rollingUpdate,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -388,6 +431,9 @@ class RollingUpdatesResourceApi {
     }
     if (rollingUpdate == null) {
       throw new core.ArgumentError("Parameter rollingUpdate is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -419,6 +465,9 @@ class RollingUpdatesResourceApi {
   ///
   /// [rollingUpdate] - The name of the update.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -427,7 +476,8 @@ class RollingUpdatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> resume(
-      core.String project, core.String zone, core.String rollingUpdate) {
+      core.String project, core.String zone, core.String rollingUpdate,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -443,6 +493,9 @@ class RollingUpdatesResourceApi {
     }
     if (rollingUpdate == null) {
       throw new core.ArgumentError("Parameter rollingUpdate is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -474,6 +527,9 @@ class RollingUpdatesResourceApi {
   ///
   /// [rollingUpdate] - The name of the update.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -482,7 +538,8 @@ class RollingUpdatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> rollback(
-      core.String project, core.String zone, core.String rollingUpdate) {
+      core.String project, core.String zone, core.String rollingUpdate,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -498,6 +555,9 @@ class RollingUpdatesResourceApi {
     }
     if (rollingUpdate == null) {
       throw new core.ArgumentError("Parameter rollingUpdate is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -534,6 +594,9 @@ class ZoneOperationsResourceApi {
   ///
   /// [operation] - Name of the operation resource to return.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -542,7 +605,8 @@ class ZoneOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> get(
-      core.String project, core.String zone, core.String operation) {
+      core.String project, core.String zone, core.String operation,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -558,6 +622,9 @@ class ZoneOperationsResourceApi {
     }
     if (operation == null) {
       throw new core.ArgumentError("Parameter operation is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -595,6 +662,9 @@ class ZoneOperationsResourceApi {
   /// [pageToken] - Optional. Tag returned by a previous list request truncated
   /// by maxResults. Used to continue a previous list request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OperationList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -603,7 +673,10 @@ class ZoneOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<OperationList> list(core.String project, core.String zone,
-      {core.String filter, core.int maxResults, core.String pageToken}) {
+      {core.String filter,
+      core.int maxResults,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -625,6 +698,9 @@ class ZoneOperationsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
