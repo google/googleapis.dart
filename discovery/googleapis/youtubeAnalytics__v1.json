@@ -27,7 +27,7 @@
     "description": "Retrieves your YouTube Analytics data.",
     "discoveryVersion": "v1",
     "documentationLink": "http://developers.google.com/youtube/analytics/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/odQlSBZwvr1oGd-NR5p1NlMc2Os\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/TgTBlKfEt-YuRxUqImxk_SW_j5o\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/youtube-16.png",
         "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -381,7 +381,7 @@
             }
         }
     },
-    "revision": "20171003",
+    "revision": "20171018",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Group": {

@@ -65,12 +65,16 @@ class GlobalAccountsOperationsResourceApi {
   /// [operation] - Name of the Operations resource to delete.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String project, core.String operation) {
+  async.Future delete(core.String project, core.String operation,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -83,6 +87,9 @@ class GlobalAccountsOperationsResourceApi {
     }
     if (operation == null) {
       throw new core.ArgumentError("Parameter operation is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -111,6 +118,9 @@ class GlobalAccountsOperationsResourceApi {
   /// [operation] - Name of the Operations resource to return.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -118,7 +128,8 @@ class GlobalAccountsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String project, core.String operation) {
+  async.Future<Operation> get(core.String project, core.String operation,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -131,6 +142,9 @@ class GlobalAccountsOperationsResourceApi {
     }
     if (operation == null) {
       throw new core.ArgumentError("Parameter operation is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -203,6 +217,9 @@ class GlobalAccountsOperationsResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OperationList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -214,7 +231,8 @@ class GlobalAccountsOperationsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -236,6 +254,9 @@ class GlobalAccountsOperationsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/operations';
@@ -268,6 +289,9 @@ class GroupsResourceApi {
   /// [groupName] - Name of the group for this request.
   /// Value must have pattern "[a-z][-a-z0-9_]{0,31}".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -276,7 +300,8 @@ class GroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> addMember(GroupsAddMemberRequest request,
-      core.String project, core.String groupName) {
+      core.String project, core.String groupName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -292,6 +317,9 @@ class GroupsResourceApi {
     }
     if (groupName == null) {
       throw new core.ArgumentError("Parameter groupName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -319,6 +347,9 @@ class GroupsResourceApi {
   /// [groupName] - Name of the Group resource to delete.
   /// Value must have pattern "[a-z][-a-z0-9_]{0,31}".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -326,7 +357,8 @@ class GroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> delete(core.String project, core.String groupName) {
+  async.Future<Operation> delete(core.String project, core.String groupName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -339,6 +371,9 @@ class GroupsResourceApi {
     }
     if (groupName == null) {
       throw new core.ArgumentError("Parameter groupName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -365,6 +400,9 @@ class GroupsResourceApi {
   /// [groupName] - Name of the Group resource to return.
   /// Value must have pattern "[a-z][-a-z0-9_]{0,31}".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Group].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -372,7 +410,8 @@ class GroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Group> get(core.String project, core.String groupName) {
+  async.Future<Group> get(core.String project, core.String groupName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -385,6 +424,9 @@ class GroupsResourceApi {
     }
     if (groupName == null) {
       throw new core.ArgumentError("Parameter groupName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -411,6 +453,9 @@ class GroupsResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -418,7 +463,8 @@ class GroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> insert(Group request, core.String project) {
+  async.Future<Operation> insert(Group request, core.String project,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -431,6 +477,9 @@ class GroupsResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/groups';
@@ -500,6 +549,9 @@ class GroupsResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GroupList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -511,7 +563,8 @@ class GroupsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -533,6 +586,9 @@ class GroupsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/groups';
@@ -559,6 +615,9 @@ class GroupsResourceApi {
   /// [groupName] - Name of the group for this request.
   /// Value must have pattern "[a-z][-a-z0-9_]{0,31}".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -567,7 +626,8 @@ class GroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> removeMember(GroupsRemoveMemberRequest request,
-      core.String project, core.String groupName) {
+      core.String project, core.String groupName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -583,6 +643,9 @@ class GroupsResourceApi {
     }
     if (groupName == null) {
       throw new core.ArgumentError("Parameter groupName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -626,6 +689,9 @@ class LinuxResourceApi {
   /// [login] - Whether the view was requested as part of a user-initiated
   /// login.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LinuxGetAuthorizedKeysViewResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -638,7 +704,8 @@ class LinuxResourceApi {
       core.String zone,
       core.String user,
       core.String instance,
-      {core.bool login}) {
+      {core.bool login,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -661,6 +728,9 @@ class LinuxResourceApi {
     _queryParams["instance"] = [instance];
     if (login != null) {
       _queryParams["login"] = ["${login}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -742,6 +812,9 @@ class LinuxResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LinuxGetLinuxAccountViewsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -754,7 +827,8 @@ class LinuxResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -783,6 +857,9 @@ class LinuxResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -820,6 +897,9 @@ class UsersResourceApi {
   /// [user] - Name of the user for this request.
   /// Value must have pattern "[a-z][-a-z0-9_]{0,31}".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -828,7 +908,8 @@ class UsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> addPublicKey(
-      PublicKey request, core.String project, core.String user) {
+      PublicKey request, core.String project, core.String user,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -844,6 +925,9 @@ class UsersResourceApi {
     }
     if (user == null) {
       throw new core.ArgumentError("Parameter user is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -871,6 +955,9 @@ class UsersResourceApi {
   /// [user] - Name of the user resource to delete.
   /// Value must have pattern "[a-z][-a-z0-9_]{0,31}".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -878,7 +965,8 @@ class UsersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> delete(core.String project, core.String user) {
+  async.Future<Operation> delete(core.String project, core.String user,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -891,6 +979,9 @@ class UsersResourceApi {
     }
     if (user == null) {
       throw new core.ArgumentError("Parameter user is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -917,6 +1008,9 @@ class UsersResourceApi {
   /// [user] - Name of the user resource to return.
   /// Value must have pattern "[a-z][-a-z0-9_]{0,31}".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [User].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -924,7 +1018,8 @@ class UsersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<User> get(core.String project, core.String user) {
+  async.Future<User> get(core.String project, core.String user,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -937,6 +1032,9 @@ class UsersResourceApi {
     }
     if (user == null) {
       throw new core.ArgumentError("Parameter user is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -963,6 +1061,9 @@ class UsersResourceApi {
   /// Value must have pattern
   /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -970,7 +1071,8 @@ class UsersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> insert(User request, core.String project) {
+  async.Future<Operation> insert(User request, core.String project,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -983,6 +1085,9 @@ class UsersResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/users';
@@ -1052,6 +1157,9 @@ class UsersResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UserList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1063,7 +1171,8 @@ class UsersResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1085,6 +1194,9 @@ class UsersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/users';
@@ -1114,6 +1226,9 @@ class UsersResourceApi {
   /// MD5 digest of the public key.
   /// Value must have pattern "[a-f0-9]{32}".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1122,7 +1237,8 @@ class UsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> removePublicKey(
-      core.String project, core.String user, core.String fingerprint) {
+      core.String project, core.String user, core.String fingerprint,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1140,6 +1256,9 @@ class UsersResourceApi {
       throw new core.ArgumentError("Parameter fingerprint is required.");
     }
     _queryParams["fingerprint"] = [fingerprint];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = commons.Escaper.ecapeVariable('$project') +
         '/global/users/' +

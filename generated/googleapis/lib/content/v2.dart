@@ -53,6 +53,9 @@ class AccountsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AccountsAuthInfoResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -60,13 +63,17 @@ class AccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AccountsAuthInfoResponse> authinfo() {
+  async.Future<AccountsAuthInfoResponse> authinfo({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'accounts/authinfo';
 
@@ -95,6 +102,9 @@ class AccountsResourceApi {
   /// flag removes any existing claim on the requested website by another
   /// account and replaces it with a claim from this account.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AccountsClaimWebsiteResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -104,7 +114,7 @@ class AccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<AccountsClaimWebsiteResponse> claimwebsite(
       core.String merchantId, core.String accountId,
-      {core.bool overwrite}) {
+      {core.bool overwrite, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -120,6 +130,9 @@ class AccountsResourceApi {
     }
     if (overwrite != null) {
       _queryParams["overwrite"] = ["${overwrite}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -146,6 +159,9 @@ class AccountsResourceApi {
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AccountsCustomBatchResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -155,7 +171,8 @@ class AccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<AccountsCustomBatchResponse> custombatch(
       AccountsCustomBatchRequest request,
-      {core.bool dryRun}) {
+      {core.bool dryRun,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -168,6 +185,9 @@ class AccountsResourceApi {
     }
     if (dryRun != null) {
       _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/batch';
@@ -196,13 +216,16 @@ class AccountsResourceApi {
   /// [force] - Flag to delete sub-accounts with products. The default value is
   /// false.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String merchantId, core.String accountId,
-      {core.bool dryRun, core.bool force}) {
+      {core.bool dryRun, core.bool force, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -221,6 +244,9 @@ class AccountsResourceApi {
     }
     if (force != null) {
       _queryParams["force"] = ["${force}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -249,6 +275,9 @@ class AccountsResourceApi {
   ///
   /// [accountId] - The ID of the account.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Account].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -256,7 +285,8 @@ class AccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Account> get(core.String merchantId, core.String accountId) {
+  async.Future<Account> get(core.String merchantId, core.String accountId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -269,6 +299,9 @@ class AccountsResourceApi {
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -295,6 +328,9 @@ class AccountsResourceApi {
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Account].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -303,7 +339,7 @@ class AccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Account> insert(Account request, core.String merchantId,
-      {core.bool dryRun}) {
+      {core.bool dryRun, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -319,6 +355,9 @@ class AccountsResourceApi {
     }
     if (dryRun != null) {
       _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounts';
@@ -344,6 +383,9 @@ class AccountsResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AccountsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -352,7 +394,7 @@ class AccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountsListResponse> list(core.String merchantId,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -368,6 +410,9 @@ class AccountsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounts';
@@ -397,6 +442,9 @@ class AccountsResourceApi {
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Account].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -406,7 +454,7 @@ class AccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<Account> patch(
       Account request, core.String merchantId, core.String accountId,
-      {core.bool dryRun}) {
+      {core.bool dryRun, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -425,6 +473,9 @@ class AccountsResourceApi {
     }
     if (dryRun != null) {
       _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -455,6 +506,9 @@ class AccountsResourceApi {
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Account].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -464,7 +518,7 @@ class AccountsResourceApi {
   /// this method will complete with the same error.
   async.Future<Account> update(
       Account request, core.String merchantId, core.String accountId,
-      {core.bool dryRun}) {
+      {core.bool dryRun, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -483,6 +537,9 @@ class AccountsResourceApi {
     }
     if (dryRun != null) {
       _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -508,6 +565,9 @@ class AccountstatusesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AccountstatusesCustomBatchResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -516,7 +576,8 @@ class AccountstatusesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountstatusesCustomBatchResponse> custombatch(
-      AccountstatusesCustomBatchRequest request) {
+      AccountstatusesCustomBatchRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -526,6 +587,9 @@ class AccountstatusesResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accountstatuses/batch';
@@ -551,6 +615,9 @@ class AccountstatusesResourceApi {
   ///
   /// [accountId] - The ID of the account.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AccountStatus].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -558,8 +625,8 @@ class AccountstatusesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AccountStatus> get(
-      core.String merchantId, core.String accountId) {
+  async.Future<AccountStatus> get(core.String merchantId, core.String accountId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -572,6 +639,9 @@ class AccountstatusesResourceApi {
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -599,6 +669,9 @@ class AccountstatusesResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AccountstatusesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -607,7 +680,7 @@ class AccountstatusesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountstatusesListResponse> list(core.String merchantId,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -623,6 +696,9 @@ class AccountstatusesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/accountstatuses';
@@ -652,6 +728,9 @@ class AccounttaxResourceApi {
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AccounttaxCustomBatchResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -661,7 +740,8 @@ class AccounttaxResourceApi {
   /// this method will complete with the same error.
   async.Future<AccounttaxCustomBatchResponse> custombatch(
       AccounttaxCustomBatchRequest request,
-      {core.bool dryRun}) {
+      {core.bool dryRun,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -674,6 +754,9 @@ class AccounttaxResourceApi {
     }
     if (dryRun != null) {
       _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounttax/batch';
@@ -700,6 +783,9 @@ class AccounttaxResourceApi {
   /// [accountId] - The ID of the account for which to get/update account tax
   /// settings.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AccountTax].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -707,7 +793,8 @@ class AccounttaxResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AccountTax> get(core.String merchantId, core.String accountId) {
+  async.Future<AccountTax> get(core.String merchantId, core.String accountId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -720,6 +807,9 @@ class AccounttaxResourceApi {
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -747,6 +837,9 @@ class AccounttaxResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AccounttaxListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -755,7 +848,7 @@ class AccounttaxResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccounttaxListResponse> list(core.String merchantId,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -771,6 +864,9 @@ class AccounttaxResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/accounttax';
@@ -801,6 +897,9 @@ class AccounttaxResourceApi {
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AccountTax].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -810,7 +909,7 @@ class AccounttaxResourceApi {
   /// this method will complete with the same error.
   async.Future<AccountTax> patch(
       AccountTax request, core.String merchantId, core.String accountId,
-      {core.bool dryRun}) {
+      {core.bool dryRun, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -829,6 +928,9 @@ class AccounttaxResourceApi {
     }
     if (dryRun != null) {
       _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -860,6 +962,9 @@ class AccounttaxResourceApi {
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AccountTax].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -869,7 +974,7 @@ class AccounttaxResourceApi {
   /// this method will complete with the same error.
   async.Future<AccountTax> update(
       AccountTax request, core.String merchantId, core.String accountId,
-      {core.bool dryRun}) {
+      {core.bool dryRun, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -888,6 +993,9 @@ class AccounttaxResourceApi {
     }
     if (dryRun != null) {
       _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -915,6 +1023,9 @@ class DatafeedsResourceApi {
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DatafeedsCustomBatchResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -924,7 +1035,8 @@ class DatafeedsResourceApi {
   /// this method will complete with the same error.
   async.Future<DatafeedsCustomBatchResponse> custombatch(
       DatafeedsCustomBatchRequest request,
-      {core.bool dryRun}) {
+      {core.bool dryRun,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -937,6 +1049,9 @@ class DatafeedsResourceApi {
     }
     if (dryRun != null) {
       _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'datafeeds/batch';
@@ -962,13 +1077,16 @@ class DatafeedsResourceApi {
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String merchantId, core.String datafeedId,
-      {core.bool dryRun}) {
+      {core.bool dryRun, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -984,6 +1102,9 @@ class DatafeedsResourceApi {
     }
     if (dryRun != null) {
       _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1010,6 +1131,9 @@ class DatafeedsResourceApi {
   ///
   /// [datafeedId] - null
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Datafeed].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1017,7 +1141,8 @@ class DatafeedsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Datafeed> get(core.String merchantId, core.String datafeedId) {
+  async.Future<Datafeed> get(core.String merchantId, core.String datafeedId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1030,6 +1155,9 @@ class DatafeedsResourceApi {
     }
     if (datafeedId == null) {
       throw new core.ArgumentError("Parameter datafeedId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -1056,6 +1184,9 @@ class DatafeedsResourceApi {
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Datafeed].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1064,7 +1195,7 @@ class DatafeedsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Datafeed> insert(Datafeed request, core.String merchantId,
-      {core.bool dryRun}) {
+      {core.bool dryRun, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1080,6 +1211,9 @@ class DatafeedsResourceApi {
     }
     if (dryRun != null) {
       _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/datafeeds';
@@ -1105,6 +1239,9 @@ class DatafeedsResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DatafeedsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1113,7 +1250,7 @@ class DatafeedsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DatafeedsListResponse> list(core.String merchantId,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1129,6 +1266,9 @@ class DatafeedsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/datafeeds';
@@ -1156,6 +1296,9 @@ class DatafeedsResourceApi {
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Datafeed].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1165,7 +1308,7 @@ class DatafeedsResourceApi {
   /// this method will complete with the same error.
   async.Future<Datafeed> patch(
       Datafeed request, core.String merchantId, core.String datafeedId,
-      {core.bool dryRun}) {
+      {core.bool dryRun, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1184,6 +1327,9 @@ class DatafeedsResourceApi {
     }
     if (dryRun != null) {
       _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -1212,6 +1358,9 @@ class DatafeedsResourceApi {
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Datafeed].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1221,7 +1370,7 @@ class DatafeedsResourceApi {
   /// this method will complete with the same error.
   async.Future<Datafeed> update(
       Datafeed request, core.String merchantId, core.String datafeedId,
-      {core.bool dryRun}) {
+      {core.bool dryRun, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1240,6 +1389,9 @@ class DatafeedsResourceApi {
     }
     if (dryRun != null) {
       _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -1266,6 +1418,9 @@ class DatafeedstatusesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DatafeedstatusesCustomBatchResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1274,7 +1429,8 @@ class DatafeedstatusesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DatafeedstatusesCustomBatchResponse> custombatch(
-      DatafeedstatusesCustomBatchRequest request) {
+      DatafeedstatusesCustomBatchRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1284,6 +1440,9 @@ class DatafeedstatusesResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'datafeedstatuses/batch';
@@ -1317,6 +1476,9 @@ class DatafeedstatusesResourceApi {
   /// parameter is required for feeds targeting multiple countries and
   /// languages, since a feed may have a different status for each target.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DatafeedStatus].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1326,7 +1488,7 @@ class DatafeedstatusesResourceApi {
   /// this method will complete with the same error.
   async.Future<DatafeedStatus> get(
       core.String merchantId, core.String datafeedId,
-      {core.String country, core.String language}) {
+      {core.String country, core.String language, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1345,6 +1507,9 @@ class DatafeedstatusesResourceApi {
     }
     if (language != null) {
       _queryParams["language"] = [language];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -1372,6 +1537,9 @@ class DatafeedstatusesResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DatafeedstatusesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1380,7 +1548,7 @@ class DatafeedstatusesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DatafeedstatusesListResponse> list(core.String merchantId,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1396,6 +1564,9 @@ class DatafeedstatusesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/datafeedstatuses';
@@ -1426,6 +1597,9 @@ class InventoryResourceApi {
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InventoryCustomBatchResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1435,7 +1609,8 @@ class InventoryResourceApi {
   /// this method will complete with the same error.
   async.Future<InventoryCustomBatchResponse> custombatch(
       InventoryCustomBatchRequest request,
-      {core.bool dryRun}) {
+      {core.bool dryRun,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1448,6 +1623,9 @@ class InventoryResourceApi {
     }
     if (dryRun != null) {
       _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'inventory/batch';
@@ -1481,6 +1659,9 @@ class InventoryResourceApi {
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [InventorySetResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1490,7 +1671,7 @@ class InventoryResourceApi {
   /// this method will complete with the same error.
   async.Future<InventorySetResponse> set(InventorySetRequest request,
       core.String merchantId, core.String storeCode, core.String productId,
-      {core.bool dryRun}) {
+      {core.bool dryRun, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1512,6 +1693,9 @@ class InventoryResourceApi {
     }
     if (dryRun != null) {
       _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -1546,6 +1730,9 @@ class OrdersResourceApi {
   ///
   /// [orderId] - The ID of the order.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OrdersAcknowledgeResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1556,7 +1743,8 @@ class OrdersResourceApi {
   async.Future<OrdersAcknowledgeResponse> acknowledge(
       OrdersAcknowledgeRequest request,
       core.String merchantId,
-      core.String orderId) {
+      core.String orderId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1572,6 +1760,9 @@ class OrdersResourceApi {
     }
     if (orderId == null) {
       throw new core.ArgumentError("Parameter orderId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -1599,6 +1790,9 @@ class OrdersResourceApi {
   ///
   /// [orderId] - The ID of the test order to modify.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OrdersAdvanceTestOrderResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1607,7 +1801,8 @@ class OrdersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<OrdersAdvanceTestOrderResponse> advancetestorder(
-      core.String merchantId, core.String orderId) {
+      core.String merchantId, core.String orderId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1620,6 +1815,9 @@ class OrdersResourceApi {
     }
     if (orderId == null) {
       throw new core.ArgumentError("Parameter orderId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -1648,6 +1846,9 @@ class OrdersResourceApi {
   ///
   /// [orderId] - The ID of the order to cancel.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OrdersCancelResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1655,8 +1856,9 @@ class OrdersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<OrdersCancelResponse> cancel(OrdersCancelRequest request,
-      core.String merchantId, core.String orderId) {
+  async.Future<OrdersCancelResponse> cancel(
+      OrdersCancelRequest request, core.String merchantId, core.String orderId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1672,6 +1874,9 @@ class OrdersResourceApi {
     }
     if (orderId == null) {
       throw new core.ArgumentError("Parameter orderId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -1699,6 +1904,9 @@ class OrdersResourceApi {
   ///
   /// [orderId] - The ID of the order.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OrdersCancelLineItemResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1709,7 +1917,8 @@ class OrdersResourceApi {
   async.Future<OrdersCancelLineItemResponse> cancellineitem(
       OrdersCancelLineItemRequest request,
       core.String merchantId,
-      core.String orderId) {
+      core.String orderId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1725,6 +1934,9 @@ class OrdersResourceApi {
     }
     if (orderId == null) {
       throw new core.ArgumentError("Parameter orderId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -1751,6 +1963,9 @@ class OrdersResourceApi {
   ///
   /// [merchantId] - The ID of the managing account.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OrdersCreateTestOrderResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1759,7 +1974,8 @@ class OrdersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<OrdersCreateTestOrderResponse> createtestorder(
-      OrdersCreateTestOrderRequest request, core.String merchantId) {
+      OrdersCreateTestOrderRequest request, core.String merchantId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1772,6 +1988,9 @@ class OrdersResourceApi {
     }
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/testorders';
@@ -1793,6 +2012,9 @@ class OrdersResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OrdersCustomBatchResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1801,7 +2023,8 @@ class OrdersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<OrdersCustomBatchResponse> custombatch(
-      OrdersCustomBatchRequest request) {
+      OrdersCustomBatchRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1811,6 +2034,9 @@ class OrdersResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'orders/batch';
@@ -1834,6 +2060,9 @@ class OrdersResourceApi {
   ///
   /// [orderId] - The ID of the order.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Order].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1841,7 +2070,8 @@ class OrdersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Order> get(core.String merchantId, core.String orderId) {
+  async.Future<Order> get(core.String merchantId, core.String orderId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1854,6 +2084,9 @@ class OrdersResourceApi {
     }
     if (orderId == null) {
       throw new core.ArgumentError("Parameter orderId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -1878,6 +2111,9 @@ class OrdersResourceApi {
   ///
   /// [merchantOrderId] - The merchant order id to be looked for.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OrdersGetByMerchantOrderIdResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1886,7 +2122,8 @@ class OrdersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<OrdersGetByMerchantOrderIdResponse> getbymerchantorderid(
-      core.String merchantId, core.String merchantOrderId) {
+      core.String merchantId, core.String merchantOrderId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1899,6 +2136,9 @@ class OrdersResourceApi {
     }
     if (merchantOrderId == null) {
       throw new core.ArgumentError("Parameter merchantOrderId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -1930,6 +2170,9 @@ class OrdersResourceApi {
   /// - "template1b"
   /// - "template2"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OrdersGetTestOrderTemplateResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1938,7 +2181,8 @@ class OrdersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<OrdersGetTestOrderTemplateResponse> gettestordertemplate(
-      core.String merchantId, core.String templateName) {
+      core.String merchantId, core.String templateName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1951,6 +2195,9 @@ class OrdersResourceApi {
     }
     if (templateName == null) {
       throw new core.ArgumentError("Parameter templateName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -2010,6 +2257,9 @@ class OrdersResourceApi {
   /// partiallyShipped, and completed is a shortcut for shipped ,
   /// partiallyDelivered, delivered, partiallyReturned, returned, and canceled.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OrdersListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2024,7 +2274,8 @@ class OrdersResourceApi {
       core.String pageToken,
       core.String placedDateEnd,
       core.String placedDateStart,
-      core.List<core.String> statuses}) {
+      core.List<core.String> statuses,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2056,6 +2307,9 @@ class OrdersResourceApi {
     if (statuses != null) {
       _queryParams["statuses"] = statuses;
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/orders';
 
@@ -2079,6 +2333,9 @@ class OrdersResourceApi {
   ///
   /// [orderId] - The ID of the order to refund.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OrdersRefundResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2086,8 +2343,9 @@ class OrdersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<OrdersRefundResponse> refund(OrdersRefundRequest request,
-      core.String merchantId, core.String orderId) {
+  async.Future<OrdersRefundResponse> refund(
+      OrdersRefundRequest request, core.String merchantId, core.String orderId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2103,6 +2361,9 @@ class OrdersResourceApi {
     }
     if (orderId == null) {
       throw new core.ArgumentError("Parameter orderId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -2130,6 +2391,9 @@ class OrdersResourceApi {
   ///
   /// [orderId] - The ID of the order.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OrdersReturnLineItemResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2140,7 +2404,8 @@ class OrdersResourceApi {
   async.Future<OrdersReturnLineItemResponse> returnlineitem(
       OrdersReturnLineItemRequest request,
       core.String merchantId,
-      core.String orderId) {
+      core.String orderId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2156,6 +2421,9 @@ class OrdersResourceApi {
     }
     if (orderId == null) {
       throw new core.ArgumentError("Parameter orderId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -2184,6 +2452,9 @@ class OrdersResourceApi {
   ///
   /// [orderId] - The ID of the order.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OrdersShipLineItemsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2194,7 +2465,8 @@ class OrdersResourceApi {
   async.Future<OrdersShipLineItemsResponse> shiplineitems(
       OrdersShipLineItemsRequest request,
       core.String merchantId,
-      core.String orderId) {
+      core.String orderId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2210,6 +2482,9 @@ class OrdersResourceApi {
     }
     if (orderId == null) {
       throw new core.ArgumentError("Parameter orderId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -2238,6 +2513,9 @@ class OrdersResourceApi {
   ///
   /// [orderId] - The ID of the order.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OrdersUpdateMerchantOrderIdResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2248,7 +2526,8 @@ class OrdersResourceApi {
   async.Future<OrdersUpdateMerchantOrderIdResponse> updatemerchantorderid(
       OrdersUpdateMerchantOrderIdRequest request,
       core.String merchantId,
-      core.String orderId) {
+      core.String orderId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2264,6 +2543,9 @@ class OrdersResourceApi {
     }
     if (orderId == null) {
       throw new core.ArgumentError("Parameter orderId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -2292,6 +2574,9 @@ class OrdersResourceApi {
   ///
   /// [orderId] - The ID of the order.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OrdersUpdateShipmentResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2302,7 +2587,8 @@ class OrdersResourceApi {
   async.Future<OrdersUpdateShipmentResponse> updateshipment(
       OrdersUpdateShipmentRequest request,
       core.String merchantId,
-      core.String orderId) {
+      core.String orderId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2318,6 +2604,9 @@ class OrdersResourceApi {
     }
     if (orderId == null) {
       throw new core.ArgumentError("Parameter orderId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -2350,6 +2639,9 @@ class ProductsResourceApi {
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ProductsCustomBatchResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2359,7 +2651,8 @@ class ProductsResourceApi {
   /// this method will complete with the same error.
   async.Future<ProductsCustomBatchResponse> custombatch(
       ProductsCustomBatchRequest request,
-      {core.bool dryRun}) {
+      {core.bool dryRun,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2372,6 +2665,9 @@ class ProductsResourceApi {
     }
     if (dryRun != null) {
       _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'products/batch';
@@ -2397,13 +2693,16 @@ class ProductsResourceApi {
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String merchantId, core.String productId,
-      {core.bool dryRun}) {
+      {core.bool dryRun, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2419,6 +2718,9 @@ class ProductsResourceApi {
     }
     if (dryRun != null) {
       _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2445,6 +2747,9 @@ class ProductsResourceApi {
   ///
   /// [productId] - The ID of the product.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Product].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2452,7 +2757,8 @@ class ProductsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Product> get(core.String merchantId, core.String productId) {
+  async.Future<Product> get(core.String merchantId, core.String productId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2465,6 +2771,9 @@ class ProductsResourceApi {
     }
     if (productId == null) {
       throw new core.ArgumentError("Parameter productId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -2493,6 +2802,9 @@ class ProductsResourceApi {
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Product].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2501,7 +2813,7 @@ class ProductsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Product> insert(Product request, core.String merchantId,
-      {core.bool dryRun}) {
+      {core.bool dryRun, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2517,6 +2829,9 @@ class ProductsResourceApi {
     }
     if (dryRun != null) {
       _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/products';
@@ -2546,6 +2861,9 @@ class ProductsResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ProductsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2556,7 +2874,8 @@ class ProductsResourceApi {
   async.Future<ProductsListResponse> list(core.String merchantId,
       {core.bool includeInvalidInsertedItems,
       core.int maxResults,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2577,6 +2896,9 @@ class ProductsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/products';
@@ -2606,6 +2928,9 @@ class ProductstatusesResourceApi {
   /// [includeAttributes] - Flag to include full product data in the results of
   /// this request. The default value is false.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ProductstatusesCustomBatchResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2615,7 +2940,8 @@ class ProductstatusesResourceApi {
   /// this method will complete with the same error.
   async.Future<ProductstatusesCustomBatchResponse> custombatch(
       ProductstatusesCustomBatchRequest request,
-      {core.bool includeAttributes}) {
+      {core.bool includeAttributes,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2628,6 +2954,9 @@ class ProductstatusesResourceApi {
     }
     if (includeAttributes != null) {
       _queryParams["includeAttributes"] = ["${includeAttributes}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'productstatuses/batch';
@@ -2654,6 +2983,9 @@ class ProductstatusesResourceApi {
   /// [includeAttributes] - Flag to include full product data in the result of
   /// this get request. The default value is false.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ProductStatus].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2662,7 +2994,7 @@ class ProductstatusesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ProductStatus> get(core.String merchantId, core.String productId,
-      {core.bool includeAttributes}) {
+      {core.bool includeAttributes, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2678,6 +3010,9 @@ class ProductstatusesResourceApi {
     }
     if (includeAttributes != null) {
       _queryParams["includeAttributes"] = ["${includeAttributes}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -2712,6 +3047,9 @@ class ProductstatusesResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ProductstatusesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2723,7 +3061,8 @@ class ProductstatusesResourceApi {
       {core.bool includeAttributes,
       core.bool includeInvalidInsertedItems,
       core.int maxResults,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2747,6 +3086,9 @@ class ProductstatusesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/productstatuses';
@@ -2777,6 +3119,9 @@ class ShippingsettingsResourceApi {
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ShippingsettingsCustomBatchResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2786,7 +3131,8 @@ class ShippingsettingsResourceApi {
   /// this method will complete with the same error.
   async.Future<ShippingsettingsCustomBatchResponse> custombatch(
       ShippingsettingsCustomBatchRequest request,
-      {core.bool dryRun}) {
+      {core.bool dryRun,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2799,6 +3145,9 @@ class ShippingsettingsResourceApi {
     }
     if (dryRun != null) {
       _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'shippingsettings/batch';
@@ -2825,6 +3174,9 @@ class ShippingsettingsResourceApi {
   /// [accountId] - The ID of the account for which to get/update shipping
   /// settings.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ShippingSettings].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2833,7 +3185,8 @@ class ShippingsettingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ShippingSettings> get(
-      core.String merchantId, core.String accountId) {
+      core.String merchantId, core.String accountId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2846,6 +3199,9 @@ class ShippingsettingsResourceApi {
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -2868,6 +3224,9 @@ class ShippingsettingsResourceApi {
   /// [merchantId] - The ID of the account for which to retrieve the supported
   /// carriers.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ShippingsettingsGetSupportedCarriersResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2876,7 +3235,7 @@ class ShippingsettingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ShippingsettingsGetSupportedCarriersResponse>
-      getsupportedcarriers(core.String merchantId) {
+      getsupportedcarriers(core.String merchantId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2886,6 +3245,9 @@ class ShippingsettingsResourceApi {
 
     if (merchantId == null) {
       throw new core.ArgumentError("Parameter merchantId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/supportedCarriers';
@@ -2912,6 +3274,9 @@ class ShippingsettingsResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ShippingsettingsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2920,7 +3285,7 @@ class ShippingsettingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ShippingsettingsListResponse> list(core.String merchantId,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2936,6 +3301,9 @@ class ShippingsettingsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') + '/shippingsettings';
@@ -2967,6 +3335,9 @@ class ShippingsettingsResourceApi {
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ShippingSettings].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2976,7 +3347,7 @@ class ShippingsettingsResourceApi {
   /// this method will complete with the same error.
   async.Future<ShippingSettings> patch(
       ShippingSettings request, core.String merchantId, core.String accountId,
-      {core.bool dryRun}) {
+      {core.bool dryRun, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2995,6 +3366,9 @@ class ShippingsettingsResourceApi {
     }
     if (dryRun != null) {
       _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -3026,6 +3400,9 @@ class ShippingsettingsResourceApi {
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ShippingSettings].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3035,7 +3412,7 @@ class ShippingsettingsResourceApi {
   /// this method will complete with the same error.
   async.Future<ShippingSettings> update(
       ShippingSettings request, core.String merchantId, core.String accountId,
-      {core.bool dryRun}) {
+      {core.bool dryRun, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3054,6 +3431,9 @@ class ShippingsettingsResourceApi {
     }
     if (dryRun != null) {
       _queryParams["dryRun"] = ["${dryRun}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$merchantId') +
@@ -4547,8 +4927,8 @@ class Datafeed {
   /// the data feed.
   core.String attributeLanguage;
 
-  /// [DEPRECATED] Please use target.language instead. The two-letter ISO 639-1
-  /// language of the items in the feed. Must be a valid language for
+  /// [DEPRECATED] Please use targets[].language instead. The two-letter ISO
+  /// 639-1 language of the items in the feed. Must be a valid language for
   /// targetCountry.
   core.String contentLanguage;
 
@@ -4568,8 +4948,8 @@ class Datafeed {
   /// The ID of the data feed.
   core.String id;
 
-  /// [DEPRECATED] Please use target.includedDestination instead. The list of
-  /// intended destinations (corresponds to checked check boxes in Merchant
+  /// [DEPRECATED] Please use targets[].includedDestinations instead. The list
+  /// of intended destinations (corresponds to checked check boxes in Merchant
   /// Center).
   core.List<core.String> intendedDestinations;
 
@@ -4580,7 +4960,7 @@ class Datafeed {
   /// A descriptive name of the data feed.
   core.String name;
 
-  /// [DEPRECATED] Please use target.country instead. The country where the
+  /// [DEPRECATED] Please use targets[].country instead. The country where the
   /// items in the feed will be included in the search index, represented as a
   /// CLDR territory code.
   core.String targetCountry;
@@ -5625,6 +6005,7 @@ class Headers {
   /// non-empty. Can only be set if all other fields are not set.
   core.List<core.String> postalCodeGroupNames;
 
+  /// A list of inclusive order price upper bounds. The last price's value can
   /// be "infinity". For example [{"value": "10", "currency": "USD"}, {"value":
   /// "500", "currency": "USD"}, {"value": "infinity", "currency": "USD"}]
   /// represents the headers "<= $10", " $500". All prices within a service must
@@ -5632,6 +6013,7 @@ class Headers {
   /// fields are not set.
   core.List<Price> prices;
 
+  /// A list of inclusive order weight upper bounds. The last weight's value can
   /// be "infinity". For example [{"value": "10", "unit": "kg"}, {"value": "50",
   /// "unit": "kg"}, {"value": "infinity", "unit": "kg"}] represents the headers
   /// "<= 10kg", " 50kg". All weights within a service must have the same unit.

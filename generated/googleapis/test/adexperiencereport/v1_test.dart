@@ -50,14 +50,14 @@ http.StreamedResponse stringResponse(core.int status,
   return new http.StreamedResponse(stream, status, headers: headers);
 }
 
-buildUnnamed1826() {
+buildUnnamed1824() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1826(core.List<core.String> o) {
+checkUnnamed1824(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -72,7 +72,7 @@ buildPlatformSummary() {
     o.enforcementTime = "foo";
     o.filterStatus = "foo";
     o.lastChangeTime = "foo";
-    o.region = buildUnnamed1826();
+    o.region = buildUnnamed1824();
     o.reportUrl = "foo";
     o.underReview = true;
   }
@@ -87,7 +87,7 @@ checkPlatformSummary(api.PlatformSummary o) {
     unittest.expect(o.enforcementTime, unittest.equals('foo'));
     unittest.expect(o.filterStatus, unittest.equals('foo'));
     unittest.expect(o.lastChangeTime, unittest.equals('foo'));
-    checkUnnamed1826(o.region);
+    checkUnnamed1824(o.region);
     unittest.expect(o.reportUrl, unittest.equals('foo'));
     unittest.expect(o.underReview, unittest.isTrue);
   }
@@ -117,14 +117,14 @@ checkSiteSummaryResponse(api.SiteSummaryResponse o) {
   buildCounterSiteSummaryResponse--;
 }
 
-buildUnnamed1827() {
+buildUnnamed1825() {
   var o = new core.List<api.SiteSummaryResponse>();
   o.add(buildSiteSummaryResponse());
   o.add(buildSiteSummaryResponse());
   return o;
 }
 
-checkUnnamed1827(core.List<api.SiteSummaryResponse> o) {
+checkUnnamed1825(core.List<api.SiteSummaryResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSiteSummaryResponse(o[0]);
   checkSiteSummaryResponse(o[1]);
@@ -135,7 +135,7 @@ buildViolatingSitesResponse() {
   var o = new api.ViolatingSitesResponse();
   buildCounterViolatingSitesResponse++;
   if (buildCounterViolatingSitesResponse < 3) {
-    o.violatingSites = buildUnnamed1827();
+    o.violatingSites = buildUnnamed1825();
   }
   buildCounterViolatingSitesResponse--;
   return o;
@@ -144,7 +144,7 @@ buildViolatingSitesResponse() {
 checkViolatingSitesResponse(api.ViolatingSitesResponse o) {
   buildCounterViolatingSitesResponse++;
   if (buildCounterViolatingSitesResponse < 3) {
-    checkUnnamed1827(o.violatingSites);
+    checkUnnamed1825(o.violatingSites);
   }
   buildCounterViolatingSitesResponse--;
 }
@@ -179,6 +179,7 @@ main() {
       var mock = new HttpServerMock();
       api.SitesResourceApi res = new api.AdexperiencereportApi(mock).sites;
       var arg_name = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -210,6 +211,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -218,7 +220,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_name)
+          .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.SiteSummaryResponse response) {
         checkSiteSummaryResponse(response);
       })));
@@ -230,6 +232,7 @@ main() {
       var mock = new HttpServerMock();
       api.ViolatingSitesResourceApi res =
           new api.AdexperiencereportApi(mock).violatingSites;
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -260,6 +263,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -268,7 +272,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .list()
+          .list($fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ViolatingSitesResponse response) {
         checkViolatingSitesResponse(response);
       })));

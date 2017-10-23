@@ -45,6 +45,9 @@ class LineitemsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DownloadLineItemsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -53,7 +56,8 @@ class LineitemsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DownloadLineItemsResponse> downloadlineitems(
-      DownloadLineItemsRequest request) {
+      DownloadLineItemsRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -63,6 +67,9 @@ class LineitemsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'lineitems/downloadlineitems';
@@ -83,6 +90,9 @@ class LineitemsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UploadLineItemsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -91,7 +101,8 @@ class LineitemsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UploadLineItemsResponse> uploadlineitems(
-      UploadLineItemsRequest request) {
+      UploadLineItemsRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -101,6 +112,9 @@ class LineitemsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'lineitems/uploadlineitems';
@@ -126,6 +140,9 @@ class QueriesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Query].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -133,7 +150,7 @@ class QueriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Query> createquery(Query request) {
+  async.Future<Query> createquery(Query request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -143,6 +160,9 @@ class QueriesResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'query';
@@ -162,12 +182,15 @@ class QueriesResourceApi {
   ///
   /// [queryId] - Query ID to delete.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future deletequery(core.String queryId) {
+  async.Future deletequery(core.String queryId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -177,6 +200,9 @@ class QueriesResourceApi {
 
     if (queryId == null) {
       throw new core.ArgumentError("Parameter queryId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -198,6 +224,9 @@ class QueriesResourceApi {
   ///
   /// [queryId] - Query ID to retrieve.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Query].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -205,7 +234,7 @@ class QueriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Query> getquery(core.String queryId) {
+  async.Future<Query> getquery(core.String queryId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -215,6 +244,9 @@ class QueriesResourceApi {
 
     if (queryId == null) {
       throw new core.ArgumentError("Parameter queryId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'query/' + commons.Escaper.ecapeVariable('$queryId');
@@ -232,6 +264,9 @@ class QueriesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListQueriesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -239,13 +274,17 @@ class QueriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListQueriesResponse> listqueries() {
+  async.Future<ListQueriesResponse> listqueries({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'queries';
 
@@ -266,12 +305,16 @@ class QueriesResourceApi {
   ///
   /// [queryId] - Query ID to run.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future runquery(RunQueryRequest request, core.String queryId) {
+  async.Future runquery(RunQueryRequest request, core.String queryId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -284,6 +327,9 @@ class QueriesResourceApi {
     }
     if (queryId == null) {
       throw new core.ArgumentError("Parameter queryId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -311,6 +357,9 @@ class ReportsResourceApi {
   ///
   /// [queryId] - Query ID with which the reports are associated.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListReportsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -318,7 +367,8 @@ class ReportsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListReportsResponse> listreports(core.String queryId) {
+  async.Future<ListReportsResponse> listreports(core.String queryId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -328,6 +378,9 @@ class ReportsResourceApi {
 
     if (queryId == null) {
       throw new core.ArgumentError("Parameter queryId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'queries/' + commons.Escaper.ecapeVariable('$queryId') + '/reports';
@@ -353,6 +406,9 @@ class SdfResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DownloadResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -360,7 +416,8 @@ class SdfResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DownloadResponse> download(DownloadRequest request) {
+  async.Future<DownloadResponse> download(DownloadRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -370,6 +427,9 @@ class SdfResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'sdf/download';

@@ -16,32 +16,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "alt": {
-            "default": "json",
-            "description": "Data format for response.",
-            "enum": [
-                "json",
-                "media",
-                "proto"
-            ],
-            "enumDescriptions": [
-                "Responses with Content-Type of application/json",
-                "Media download with context-dependent Content-Type",
-                "Responses with Content-Type of application/x-protobuf"
-            ],
-            "location": "query",
-            "type": "string"
-        },
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
-        },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-            "location": "query",
-            "type": "string"
-        },
         "quotaUser": {
             "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
             "location": "query",
@@ -53,13 +27,13 @@
             "location": "query",
             "type": "boolean"
         },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
+        "bearer_token": {
+            "description": "OAuth bearer token.",
             "location": "query",
             "type": "string"
         },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
         },
@@ -74,13 +48,18 @@
             "location": "query",
             "type": "boolean"
         },
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
         "fields": {
             "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+        "callback": {
+            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -97,8 +76,29 @@
             "location": "query",
             "type": "string"
         },
-        "callback": {
-            "description": "JSONP",
+        "alt": {
+            "default": "json",
+            "description": "Data format for response.",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         }
@@ -128,7 +128,7 @@
             }
         }
     },
-    "revision": "20170927",
+    "revision": "20171016",
     "rootUrl": "https://searchconsole.googleapis.com/",
     "schemas": {
         "MobileFriendlyIssue": {
@@ -164,10 +164,6 @@
             "description": "Mobile-friendly test response, including mobile-friendly issues and resource\nissues.",
             "id": "RunMobileFriendlyTestResponse",
             "properties": {
-                "screenshot": {
-                    "$ref": "Image",
-                    "description": "Screenshot of the requested URL."
-                },
                 "testStatus": {
                     "$ref": "TestStatus",
                     "description": "Final state of the test, can be either complete or an error."
@@ -199,6 +195,10 @@
                         "$ref": "MobileFriendlyIssue"
                     },
                     "type": "array"
+                },
+                "screenshot": {
+                    "$ref": "Image",
+                    "description": "Screenshot of the requested URL."
                 }
             },
             "type": "object"
@@ -229,6 +229,10 @@
             "description": "Final state of the test, including error details if necessary.",
             "id": "TestStatus",
             "properties": {
+                "details": {
+                    "description": "Error details if applicable.",
+                    "type": "string"
+                },
                 "status": {
                     "description": "Status of the test.",
                     "enum": [
@@ -243,26 +247,6 @@
                         "Inspection terminated in an error state. This indicates a problem in\nGoogle's infrastructure, not a user error. Please try again later.",
                         "Google can not access the URL because of a user error such as a robots.txt\nblockage, a 403 or 500 code etc. Please make sure that the URL provided is\naccessible by Googlebot and is not password protected."
                     ],
-                    "type": "string"
-                },
-                "details": {
-                    "description": "Error details if applicable.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Image": {
-            "description": "Describe image data.",
-            "id": "Image",
-            "properties": {
-                "mimeType": {
-                    "description": "The mime-type of the image data.",
-                    "type": "string"
-                },
-                "data": {
-                    "description": "Image data in format determined by the mime type. Currently, the format\nwill always be \"image/png\", but this might change in the future.",
-                    "format": "byte",
                     "type": "string"
                 }
             },
@@ -279,6 +263,22 @@
                 "requestScreenshot": {
                     "description": "Whether or not screenshot is requested. Default is false.",
                     "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "Image": {
+            "description": "Describe image data.",
+            "id": "Image",
+            "properties": {
+                "data": {
+                    "description": "Image data in format determined by the mime type. Currently, the format\nwill always be \"image/png\", but this might change in the future.",
+                    "format": "byte",
+                    "type": "string"
+                },
+                "mimeType": {
+                    "description": "The mime-type of the image data.",
+                    "type": "string"
                 }
             },
             "type": "object"

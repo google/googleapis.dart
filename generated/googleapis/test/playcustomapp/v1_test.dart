@@ -90,6 +90,7 @@ main() {
           new api.PlaycustomappApi(mock).accounts.customApps;
       var arg_request = buildCustomApp();
       var arg_account = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.CustomApp.fromJson(json);
         checkCustomApp(obj);
@@ -120,6 +121,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -128,7 +130,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .create(arg_request, arg_account)
+          .create(arg_request, arg_account, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.CustomApp response) {
         checkCustomApp(response);
       })));

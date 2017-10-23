@@ -62,6 +62,9 @@ class ProjectsZonesResourceApi {
   /// [zone](/compute/docs/zones#available)
   /// to return operations for.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ServerConfig].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -70,7 +73,8 @@ class ProjectsZonesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ServerConfig> getServerconfig(
-      core.String projectId, core.String zone) {
+      core.String projectId, core.String zone,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -83,6 +87,9 @@ class ProjectsZonesResourceApi {
     }
     if (zone == null) {
       throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -125,6 +132,9 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// [clusterId] - The name of the cluster to upgrade.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -133,7 +143,8 @@ class ProjectsZonesClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> addons(SetAddonsConfigRequest request,
-      core.String projectId, core.String zone, core.String clusterId) {
+      core.String projectId, core.String zone, core.String clusterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -152,6 +163,9 @@ class ProjectsZonesClustersResourceApi {
     }
     if (clusterId == null) {
       throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -186,6 +200,9 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// [clusterId] - The name of the cluster.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -194,7 +211,8 @@ class ProjectsZonesClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> completeIpRotation(CompleteIPRotationRequest request,
-      core.String projectId, core.String zone, core.String clusterId) {
+      core.String projectId, core.String zone, core.String clusterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -213,6 +231,9 @@ class ProjectsZonesClustersResourceApi {
     }
     if (clusterId == null) {
       throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -257,6 +278,9 @@ class ProjectsZonesClustersResourceApi {
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -265,7 +289,8 @@ class ProjectsZonesClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> create(
-      CreateClusterRequest request, core.String projectId, core.String zone) {
+      CreateClusterRequest request, core.String projectId, core.String zone,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -281,6 +306,9 @@ class ProjectsZonesClustersResourceApi {
     }
     if (zone == null) {
       throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -319,6 +347,9 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// [clusterId] - The name of the cluster to delete.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -327,7 +358,8 @@ class ProjectsZonesClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(
-      core.String projectId, core.String zone, core.String clusterId) {
+      core.String projectId, core.String zone, core.String clusterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -343,6 +375,9 @@ class ProjectsZonesClustersResourceApi {
     }
     if (clusterId == null) {
       throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -374,6 +409,9 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// [clusterId] - The name of the cluster to retrieve.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Cluster].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -382,7 +420,8 @@ class ProjectsZonesClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Cluster> get(
-      core.String projectId, core.String zone, core.String clusterId) {
+      core.String projectId, core.String zone, core.String clusterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -398,6 +437,9 @@ class ProjectsZonesClustersResourceApi {
     }
     if (clusterId == null) {
       throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -431,6 +473,9 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// [clusterId] - The name of the cluster to update.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -439,7 +484,8 @@ class ProjectsZonesClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> legacyAbac(SetLegacyAbacRequest request,
-      core.String projectId, core.String zone, core.String clusterId) {
+      core.String projectId, core.String zone, core.String clusterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -458,6 +504,9 @@ class ProjectsZonesClustersResourceApi {
     }
     if (clusterId == null) {
       throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -489,6 +538,9 @@ class ProjectsZonesClustersResourceApi {
   /// [zone](/compute/docs/zones#available) in which the cluster
   /// resides, or "-" for all zones.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListClustersResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -497,7 +549,8 @@ class ProjectsZonesClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListClustersResponse> list(
-      core.String projectId, core.String zone) {
+      core.String projectId, core.String zone,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -510,6 +563,9 @@ class ProjectsZonesClustersResourceApi {
     }
     if (zone == null) {
       throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -542,6 +598,9 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// [clusterId] - The name of the cluster to upgrade.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -550,7 +609,8 @@ class ProjectsZonesClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> locations(SetLocationsRequest request,
-      core.String projectId, core.String zone, core.String clusterId) {
+      core.String projectId, core.String zone, core.String clusterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -569,6 +629,9 @@ class ProjectsZonesClustersResourceApi {
     }
     if (clusterId == null) {
       throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -603,6 +666,9 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// [clusterId] - The name of the cluster to upgrade.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -611,7 +677,8 @@ class ProjectsZonesClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> logging(SetLoggingServiceRequest request,
-      core.String projectId, core.String zone, core.String clusterId) {
+      core.String projectId, core.String zone, core.String clusterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -630,6 +697,9 @@ class ProjectsZonesClustersResourceApi {
     }
     if (clusterId == null) {
       throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -664,6 +734,9 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// [clusterId] - The name of the cluster to upgrade.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -672,7 +745,8 @@ class ProjectsZonesClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> master(UpdateMasterRequest request,
-      core.String projectId, core.String zone, core.String clusterId) {
+      core.String projectId, core.String zone, core.String clusterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -691,6 +765,9 @@ class ProjectsZonesClustersResourceApi {
     }
     if (clusterId == null) {
       throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -725,6 +802,9 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// [clusterId] - The name of the cluster to upgrade.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -733,7 +813,8 @@ class ProjectsZonesClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> monitoring(SetMonitoringServiceRequest request,
-      core.String projectId, core.String zone, core.String clusterId) {
+      core.String projectId, core.String zone, core.String clusterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -752,6 +833,9 @@ class ProjectsZonesClustersResourceApi {
     }
     if (clusterId == null) {
       throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -786,6 +870,9 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// [clusterId] - The name of the cluster.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -794,7 +881,8 @@ class ProjectsZonesClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> resourceLabels(SetLabelsRequest request,
-      core.String projectId, core.String zone, core.String clusterId) {
+      core.String projectId, core.String zone, core.String clusterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -813,6 +901,9 @@ class ProjectsZonesClustersResourceApi {
     }
     if (clusterId == null) {
       throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -847,6 +938,9 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// [clusterId] - The name of the cluster to update.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -858,7 +952,8 @@ class ProjectsZonesClustersResourceApi {
       SetMaintenancePolicyRequest request,
       core.String projectId,
       core.String zone,
-      core.String clusterId) {
+      core.String clusterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -877,6 +972,9 @@ class ProjectsZonesClustersResourceApi {
     }
     if (clusterId == null) {
       throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -913,6 +1011,9 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// [clusterId] - The name of the cluster to upgrade.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -921,7 +1022,8 @@ class ProjectsZonesClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> setMasterAuth(SetMasterAuthRequest request,
-      core.String projectId, core.String zone, core.String clusterId) {
+      core.String projectId, core.String zone, core.String clusterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -940,6 +1042,9 @@ class ProjectsZonesClustersResourceApi {
     }
     if (clusterId == null) {
       throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -974,6 +1079,9 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// [clusterId] - The name of the cluster.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -982,7 +1090,8 @@ class ProjectsZonesClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> setNetworkPolicy(SetNetworkPolicyRequest request,
-      core.String projectId, core.String zone, core.String clusterId) {
+      core.String projectId, core.String zone, core.String clusterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1001,6 +1110,9 @@ class ProjectsZonesClustersResourceApi {
     }
     if (clusterId == null) {
       throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -1035,6 +1147,9 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// [clusterId] - The name of the cluster.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1043,7 +1158,8 @@ class ProjectsZonesClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> startIpRotation(StartIPRotationRequest request,
-      core.String projectId, core.String zone, core.String clusterId) {
+      core.String projectId, core.String zone, core.String clusterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1062,6 +1178,9 @@ class ProjectsZonesClustersResourceApi {
     }
     if (clusterId == null) {
       throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -1096,6 +1215,9 @@ class ProjectsZonesClustersResourceApi {
   ///
   /// [clusterId] - The name of the cluster to upgrade.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1104,7 +1226,8 @@ class ProjectsZonesClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> update(UpdateClusterRequest request,
-      core.String projectId, core.String zone, core.String clusterId) {
+      core.String projectId, core.String zone, core.String clusterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1123,6 +1246,9 @@ class ProjectsZonesClustersResourceApi {
     }
     if (clusterId == null) {
       throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -1165,6 +1291,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   ///
   /// [nodePoolId] - The name of the node pool to upgrade.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1177,7 +1306,8 @@ class ProjectsZonesClustersNodePoolsResourceApi {
       core.String projectId,
       core.String zone,
       core.String clusterId,
-      core.String nodePoolId) {
+      core.String nodePoolId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1199,6 +1329,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
     }
     if (nodePoolId == null) {
       throw new core.ArgumentError("Parameter nodePoolId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -1235,6 +1368,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   ///
   /// [clusterId] - The name of the cluster.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1243,7 +1379,8 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> create(CreateNodePoolRequest request,
-      core.String projectId, core.String zone, core.String clusterId) {
+      core.String projectId, core.String zone, core.String clusterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1262,6 +1399,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
     }
     if (clusterId == null) {
       throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -1296,6 +1436,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   ///
   /// [nodePoolId] - The name of the node pool to delete.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1304,7 +1447,8 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String projectId, core.String zone,
-      core.String clusterId, core.String nodePoolId) {
+      core.String clusterId, core.String nodePoolId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1323,6 +1467,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
     }
     if (nodePoolId == null) {
       throw new core.ArgumentError("Parameter nodePoolId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -1358,6 +1505,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   ///
   /// [nodePoolId] - The name of the node pool.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [NodePool].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1366,7 +1516,8 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<NodePool> get(core.String projectId, core.String zone,
-      core.String clusterId, core.String nodePoolId) {
+      core.String clusterId, core.String nodePoolId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1385,6 +1536,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
     }
     if (nodePoolId == null) {
       throw new core.ArgumentError("Parameter nodePoolId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -1418,6 +1572,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   ///
   /// [clusterId] - The name of the cluster.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListNodePoolsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1426,7 +1583,8 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListNodePoolsResponse> list(
-      core.String projectId, core.String zone, core.String clusterId) {
+      core.String projectId, core.String zone, core.String clusterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1442,6 +1600,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
     }
     if (clusterId == null) {
       throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -1479,6 +1640,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   ///
   /// [nodePoolId] - The name of the node pool to rollback.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1491,7 +1655,8 @@ class ProjectsZonesClustersNodePoolsResourceApi {
       core.String projectId,
       core.String zone,
       core.String clusterId,
-      core.String nodePoolId) {
+      core.String nodePoolId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1513,6 +1678,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
     }
     if (nodePoolId == null) {
       throw new core.ArgumentError("Parameter nodePoolId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -1551,6 +1719,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   ///
   /// [nodePoolId] - The name of the node pool to update.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1563,7 +1734,8 @@ class ProjectsZonesClustersNodePoolsResourceApi {
       core.String projectId,
       core.String zone,
       core.String clusterId,
-      core.String nodePoolId) {
+      core.String nodePoolId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1585,6 +1757,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
     }
     if (nodePoolId == null) {
       throw new core.ArgumentError("Parameter nodePoolId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -1623,6 +1798,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   ///
   /// [nodePoolId] - The name of the node pool to update.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1635,7 +1813,8 @@ class ProjectsZonesClustersNodePoolsResourceApi {
       core.String projectId,
       core.String zone,
       core.String clusterId,
-      core.String nodePoolId) {
+      core.String nodePoolId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1657,6 +1836,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
     }
     if (nodePoolId == null) {
       throw new core.ArgumentError("Parameter nodePoolId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -1695,6 +1877,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
   ///
   /// [nodePoolId] - The name of the node pool to upgrade.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1707,7 +1892,8 @@ class ProjectsZonesClustersNodePoolsResourceApi {
       core.String projectId,
       core.String zone,
       core.String clusterId,
-      core.String nodePoolId) {
+      core.String nodePoolId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1729,6 +1915,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
     }
     if (nodePoolId == null) {
       throw new core.ArgumentError("Parameter nodePoolId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -1771,6 +1960,9 @@ class ProjectsZonesOperationsResourceApi {
   ///
   /// [operationId] - The server-assigned `name` of the operation.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1779,7 +1971,8 @@ class ProjectsZonesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> cancel(CancelOperationRequest request,
-      core.String projectId, core.String zone, core.String operationId) {
+      core.String projectId, core.String zone, core.String operationId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1798,6 +1991,9 @@ class ProjectsZonesOperationsResourceApi {
     }
     if (operationId == null) {
       throw new core.ArgumentError("Parameter operationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -1830,6 +2026,9 @@ class ProjectsZonesOperationsResourceApi {
   ///
   /// [operationId] - The server-assigned `name` of the operation.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1838,7 +2037,8 @@ class ProjectsZonesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> get(
-      core.String projectId, core.String zone, core.String operationId) {
+      core.String projectId, core.String zone, core.String operationId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1854,6 +2054,9 @@ class ProjectsZonesOperationsResourceApi {
     }
     if (operationId == null) {
       throw new core.ArgumentError("Parameter operationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -1883,6 +2086,9 @@ class ProjectsZonesOperationsResourceApi {
   /// [zone](/compute/docs/zones#available)
   /// to return operations for, or `-` for all zones.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListOperationsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1891,7 +2097,8 @@ class ProjectsZonesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
-      core.String projectId, core.String zone) {
+      core.String projectId, core.String zone,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1904,6 +2111,9 @@ class ProjectsZonesOperationsResourceApi {
     }
     if (zone == null) {
       throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -4177,11 +4387,16 @@ class SetMaintenancePolicyRequest {
 
 /// SetMasterAuthRequest updates the admin password of a cluster.
 class SetMasterAuthRequest {
-  /// The exact form of action to be taken on the master auth
+  /// The exact form of action to be taken on the master auth.
   /// Possible string values are:
-  /// - "UNKNOWN" : Operation is unknown and will error out
+  /// - "UNKNOWN" : Operation is unknown and will error out.
   /// - "SET_PASSWORD" : Set the password to a user generated value.
   /// - "GENERATE_PASSWORD" : Generate a new password and set it to that.
+  /// - "SET_USERNAME" : Set the username.  If an empty username is provided,
+  /// basic authentication
+  /// is disabled for the cluster.  If a non-empty username is provided, basic
+  /// authentication is enabled, with either a provided password or a generated
+  /// one.
   core.String action;
 
   /// A description of the update.

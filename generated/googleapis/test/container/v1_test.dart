@@ -172,53 +172,53 @@ checkClientCertificateConfig(api.ClientCertificateConfig o) {
   buildCounterClientCertificateConfig--;
 }
 
+buildUnnamed1915() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed1915(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed1916() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed1916(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 buildUnnamed1917() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed1917(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-buildUnnamed1918() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed1918(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-buildUnnamed1919() {
   var o = new core.List<api.NodePool>();
   o.add(buildNodePool());
   o.add(buildNodePool());
   return o;
 }
 
-checkUnnamed1919(core.List<api.NodePool> o) {
+checkUnnamed1917(core.List<api.NodePool> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNodePool(o[0]);
   checkNodePool(o[1]);
 }
 
-buildUnnamed1920() {
+buildUnnamed1918() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1920(core.Map<core.String, core.String> o) {
+checkUnnamed1918(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -241,11 +241,11 @@ buildCluster() {
     o.expireTime = "foo";
     o.initialClusterVersion = "foo";
     o.initialNodeCount = 42;
-    o.instanceGroupUrls = buildUnnamed1917();
+    o.instanceGroupUrls = buildUnnamed1915();
     o.ipAllocationPolicy = buildIPAllocationPolicy();
     o.labelFingerprint = "foo";
     o.legacyAbac = buildLegacyAbac();
-    o.locations = buildUnnamed1918();
+    o.locations = buildUnnamed1916();
     o.loggingService = "foo";
     o.maintenancePolicy = buildMaintenancePolicy();
     o.masterAuth = buildMasterAuth();
@@ -256,8 +256,8 @@ buildCluster() {
     o.networkPolicy = buildNetworkPolicy();
     o.nodeConfig = buildNodeConfig();
     o.nodeIpv4CidrSize = 42;
-    o.nodePools = buildUnnamed1919();
-    o.resourceLabels = buildUnnamed1920();
+    o.nodePools = buildUnnamed1917();
+    o.resourceLabels = buildUnnamed1918();
     o.selfLink = "foo";
     o.servicesIpv4Cidr = "foo";
     o.status = "foo";
@@ -284,11 +284,11 @@ checkCluster(api.Cluster o) {
     unittest.expect(o.expireTime, unittest.equals('foo'));
     unittest.expect(o.initialClusterVersion, unittest.equals('foo'));
     unittest.expect(o.initialNodeCount, unittest.equals(42));
-    checkUnnamed1917(o.instanceGroupUrls);
+    checkUnnamed1915(o.instanceGroupUrls);
     checkIPAllocationPolicy(o.ipAllocationPolicy);
     unittest.expect(o.labelFingerprint, unittest.equals('foo'));
     checkLegacyAbac(o.legacyAbac);
-    checkUnnamed1918(o.locations);
+    checkUnnamed1916(o.locations);
     unittest.expect(o.loggingService, unittest.equals('foo'));
     checkMaintenancePolicy(o.maintenancePolicy);
     checkMasterAuth(o.masterAuth);
@@ -299,8 +299,8 @@ checkCluster(api.Cluster o) {
     checkNetworkPolicy(o.networkPolicy);
     checkNodeConfig(o.nodeConfig);
     unittest.expect(o.nodeIpv4CidrSize, unittest.equals(42));
-    checkUnnamed1919(o.nodePools);
-    checkUnnamed1920(o.resourceLabels);
+    checkUnnamed1917(o.nodePools);
+    checkUnnamed1918(o.resourceLabels);
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.servicesIpv4Cidr, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
@@ -311,14 +311,14 @@ checkCluster(api.Cluster o) {
   buildCounterCluster--;
 }
 
-buildUnnamed1921() {
+buildUnnamed1919() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1921(core.List<core.String> o) {
+checkUnnamed1919(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -331,7 +331,7 @@ buildClusterUpdate() {
   if (buildCounterClusterUpdate < 3) {
     o.desiredAddonsConfig = buildAddonsConfig();
     o.desiredImageType = "foo";
-    o.desiredLocations = buildUnnamed1921();
+    o.desiredLocations = buildUnnamed1919();
     o.desiredMasterAuthorizedNetworksConfig =
         buildMasterAuthorizedNetworksConfig();
     o.desiredMasterVersion = "foo";
@@ -349,7 +349,7 @@ checkClusterUpdate(api.ClusterUpdate o) {
   if (buildCounterClusterUpdate < 3) {
     checkAddonsConfig(o.desiredAddonsConfig);
     unittest.expect(o.desiredImageType, unittest.equals('foo'));
-    checkUnnamed1921(o.desiredLocations);
+    checkUnnamed1919(o.desiredLocations);
     checkMasterAuthorizedNetworksConfig(
         o.desiredMasterAuthorizedNetworksConfig);
     unittest.expect(o.desiredMasterVersion, unittest.equals('foo'));
@@ -565,17 +565,83 @@ checkLegacyAbac(api.LegacyAbac o) {
   buildCounterLegacyAbac--;
 }
 
-buildUnnamed1922() {
+buildUnnamed1920() {
   var o = new core.List<api.Cluster>();
   o.add(buildCluster());
   o.add(buildCluster());
   return o;
 }
 
-checkUnnamed1922(core.List<api.Cluster> o) {
+checkUnnamed1920(core.List<api.Cluster> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCluster(o[0]);
   checkCluster(o[1]);
+}
+
+buildUnnamed1921() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed1921(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterListClustersResponse = 0;
+buildListClustersResponse() {
+  var o = new api.ListClustersResponse();
+  buildCounterListClustersResponse++;
+  if (buildCounterListClustersResponse < 3) {
+    o.clusters = buildUnnamed1920();
+    o.missingZones = buildUnnamed1921();
+  }
+  buildCounterListClustersResponse--;
+  return o;
+}
+
+checkListClustersResponse(api.ListClustersResponse o) {
+  buildCounterListClustersResponse++;
+  if (buildCounterListClustersResponse < 3) {
+    checkUnnamed1920(o.clusters);
+    checkUnnamed1921(o.missingZones);
+  }
+  buildCounterListClustersResponse--;
+}
+
+buildUnnamed1922() {
+  var o = new core.List<api.NodePool>();
+  o.add(buildNodePool());
+  o.add(buildNodePool());
+  return o;
+}
+
+checkUnnamed1922(core.List<api.NodePool> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkNodePool(o[0]);
+  checkNodePool(o[1]);
+}
+
+core.int buildCounterListNodePoolsResponse = 0;
+buildListNodePoolsResponse() {
+  var o = new api.ListNodePoolsResponse();
+  buildCounterListNodePoolsResponse++;
+  if (buildCounterListNodePoolsResponse < 3) {
+    o.nodePools = buildUnnamed1922();
+  }
+  buildCounterListNodePoolsResponse--;
+  return o;
+}
+
+checkListNodePoolsResponse(api.ListNodePoolsResponse o) {
+  buildCounterListNodePoolsResponse++;
+  if (buildCounterListNodePoolsResponse < 3) {
+    checkUnnamed1922(o.nodePools);
+  }
+  buildCounterListNodePoolsResponse--;
 }
 
 buildUnnamed1923() {
@@ -591,80 +657,14 @@ checkUnnamed1923(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.int buildCounterListClustersResponse = 0;
-buildListClustersResponse() {
-  var o = new api.ListClustersResponse();
-  buildCounterListClustersResponse++;
-  if (buildCounterListClustersResponse < 3) {
-    o.clusters = buildUnnamed1922();
-    o.missingZones = buildUnnamed1923();
-  }
-  buildCounterListClustersResponse--;
-  return o;
-}
-
-checkListClustersResponse(api.ListClustersResponse o) {
-  buildCounterListClustersResponse++;
-  if (buildCounterListClustersResponse < 3) {
-    checkUnnamed1922(o.clusters);
-    checkUnnamed1923(o.missingZones);
-  }
-  buildCounterListClustersResponse--;
-}
-
 buildUnnamed1924() {
-  var o = new core.List<api.NodePool>();
-  o.add(buildNodePool());
-  o.add(buildNodePool());
-  return o;
-}
-
-checkUnnamed1924(core.List<api.NodePool> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkNodePool(o[0]);
-  checkNodePool(o[1]);
-}
-
-core.int buildCounterListNodePoolsResponse = 0;
-buildListNodePoolsResponse() {
-  var o = new api.ListNodePoolsResponse();
-  buildCounterListNodePoolsResponse++;
-  if (buildCounterListNodePoolsResponse < 3) {
-    o.nodePools = buildUnnamed1924();
-  }
-  buildCounterListNodePoolsResponse--;
-  return o;
-}
-
-checkListNodePoolsResponse(api.ListNodePoolsResponse o) {
-  buildCounterListNodePoolsResponse++;
-  if (buildCounterListNodePoolsResponse < 3) {
-    checkUnnamed1924(o.nodePools);
-  }
-  buildCounterListNodePoolsResponse--;
-}
-
-buildUnnamed1925() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed1925(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-buildUnnamed1926() {
   var o = new core.List<api.Operation>();
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-checkUnnamed1926(core.List<api.Operation> o) {
+checkUnnamed1924(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -675,8 +675,8 @@ buildListOperationsResponse() {
   var o = new api.ListOperationsResponse();
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    o.missingZones = buildUnnamed1925();
-    o.operations = buildUnnamed1926();
+    o.missingZones = buildUnnamed1923();
+    o.operations = buildUnnamed1924();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -685,8 +685,8 @@ buildListOperationsResponse() {
 checkListOperationsResponse(api.ListOperationsResponse o) {
   buildCounterListOperationsResponse++;
   if (buildCounterListOperationsResponse < 3) {
-    checkUnnamed1925(o.missingZones);
-    checkUnnamed1926(o.operations);
+    checkUnnamed1923(o.missingZones);
+    checkUnnamed1924(o.operations);
   }
   buildCounterListOperationsResponse--;
 }
@@ -758,14 +758,14 @@ checkMasterAuth(api.MasterAuth o) {
   buildCounterMasterAuth--;
 }
 
-buildUnnamed1927() {
+buildUnnamed1925() {
   var o = new core.List<api.CidrBlock>();
   o.add(buildCidrBlock());
   o.add(buildCidrBlock());
   return o;
 }
 
-checkUnnamed1927(core.List<api.CidrBlock> o) {
+checkUnnamed1925(core.List<api.CidrBlock> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCidrBlock(o[0]);
   checkCidrBlock(o[1]);
@@ -776,7 +776,7 @@ buildMasterAuthorizedNetworksConfig() {
   var o = new api.MasterAuthorizedNetworksConfig();
   buildCounterMasterAuthorizedNetworksConfig++;
   if (buildCounterMasterAuthorizedNetworksConfig < 3) {
-    o.cidrBlocks = buildUnnamed1927();
+    o.cidrBlocks = buildUnnamed1925();
     o.enabled = true;
   }
   buildCounterMasterAuthorizedNetworksConfig--;
@@ -786,7 +786,7 @@ buildMasterAuthorizedNetworksConfig() {
 checkMasterAuthorizedNetworksConfig(api.MasterAuthorizedNetworksConfig o) {
   buildCounterMasterAuthorizedNetworksConfig++;
   if (buildCounterMasterAuthorizedNetworksConfig < 3) {
-    checkUnnamed1927(o.cidrBlocks);
+    checkUnnamed1925(o.cidrBlocks);
     unittest.expect(o.enabled, unittest.isTrue);
   }
   buildCounterMasterAuthorizedNetworksConfig--;
@@ -832,66 +832,66 @@ checkNetworkPolicyConfig(api.NetworkPolicyConfig o) {
   buildCounterNetworkPolicyConfig--;
 }
 
-buildUnnamed1928() {
+buildUnnamed1926() {
   var o = new core.List<api.AcceleratorConfig>();
   o.add(buildAcceleratorConfig());
   o.add(buildAcceleratorConfig());
   return o;
 }
 
-checkUnnamed1928(core.List<api.AcceleratorConfig> o) {
+checkUnnamed1926(core.List<api.AcceleratorConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAcceleratorConfig(o[0]);
   checkAcceleratorConfig(o[1]);
 }
 
+buildUnnamed1927() {
+  var o = new core.Map<core.String, core.String>();
+  o["x"] = "foo";
+  o["y"] = "foo";
+  return o;
+}
+
+checkUnnamed1927(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o["x"], unittest.equals('foo'));
+  unittest.expect(o["y"], unittest.equals('foo'));
+}
+
+buildUnnamed1928() {
+  var o = new core.Map<core.String, core.String>();
+  o["x"] = "foo";
+  o["y"] = "foo";
+  return o;
+}
+
+checkUnnamed1928(core.Map<core.String, core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o["x"], unittest.equals('foo'));
+  unittest.expect(o["y"], unittest.equals('foo'));
+}
+
 buildUnnamed1929() {
-  var o = new core.Map<core.String, core.String>();
-  o["x"] = "foo";
-  o["y"] = "foo";
-  return o;
-}
-
-checkUnnamed1929(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
-}
-
-buildUnnamed1930() {
-  var o = new core.Map<core.String, core.String>();
-  o["x"] = "foo";
-  o["y"] = "foo";
-  return o;
-}
-
-checkUnnamed1930(core.Map<core.String, core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o["x"], unittest.equals('foo'));
-  unittest.expect(o["y"], unittest.equals('foo'));
-}
-
-buildUnnamed1931() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1931(core.List<core.String> o) {
+checkUnnamed1929(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1932() {
+buildUnnamed1930() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1932(core.List<core.String> o) {
+checkUnnamed1930(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -902,18 +902,18 @@ buildNodeConfig() {
   var o = new api.NodeConfig();
   buildCounterNodeConfig++;
   if (buildCounterNodeConfig < 3) {
-    o.accelerators = buildUnnamed1928();
+    o.accelerators = buildUnnamed1926();
     o.diskSizeGb = 42;
     o.imageType = "foo";
-    o.labels = buildUnnamed1929();
+    o.labels = buildUnnamed1927();
     o.localSsdCount = 42;
     o.machineType = "foo";
-    o.metadata = buildUnnamed1930();
+    o.metadata = buildUnnamed1928();
     o.minCpuPlatform = "foo";
-    o.oauthScopes = buildUnnamed1931();
+    o.oauthScopes = buildUnnamed1929();
     o.preemptible = true;
     o.serviceAccount = "foo";
-    o.tags = buildUnnamed1932();
+    o.tags = buildUnnamed1930();
   }
   buildCounterNodeConfig--;
   return o;
@@ -922,18 +922,18 @@ buildNodeConfig() {
 checkNodeConfig(api.NodeConfig o) {
   buildCounterNodeConfig++;
   if (buildCounterNodeConfig < 3) {
-    checkUnnamed1928(o.accelerators);
+    checkUnnamed1926(o.accelerators);
     unittest.expect(o.diskSizeGb, unittest.equals(42));
     unittest.expect(o.imageType, unittest.equals('foo'));
-    checkUnnamed1929(o.labels);
+    checkUnnamed1927(o.labels);
     unittest.expect(o.localSsdCount, unittest.equals(42));
     unittest.expect(o.machineType, unittest.equals('foo'));
-    checkUnnamed1930(o.metadata);
+    checkUnnamed1928(o.metadata);
     unittest.expect(o.minCpuPlatform, unittest.equals('foo'));
-    checkUnnamed1931(o.oauthScopes);
+    checkUnnamed1929(o.oauthScopes);
     unittest.expect(o.preemptible, unittest.isTrue);
     unittest.expect(o.serviceAccount, unittest.equals('foo'));
-    checkUnnamed1932(o.tags);
+    checkUnnamed1930(o.tags);
   }
   buildCounterNodeConfig--;
 }
@@ -961,14 +961,14 @@ checkNodeManagement(api.NodeManagement o) {
   buildCounterNodeManagement--;
 }
 
-buildUnnamed1933() {
+buildUnnamed1931() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1933(core.List<core.String> o) {
+checkUnnamed1931(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -982,7 +982,7 @@ buildNodePool() {
     o.autoscaling = buildNodePoolAutoscaling();
     o.config = buildNodeConfig();
     o.initialNodeCount = 42;
-    o.instanceGroupUrls = buildUnnamed1933();
+    o.instanceGroupUrls = buildUnnamed1931();
     o.management = buildNodeManagement();
     o.name = "foo";
     o.selfLink = "foo";
@@ -1000,7 +1000,7 @@ checkNodePool(api.NodePool o) {
     checkNodePoolAutoscaling(o.autoscaling);
     checkNodeConfig(o.config);
     unittest.expect(o.initialNodeCount, unittest.equals(42));
-    checkUnnamed1933(o.instanceGroupUrls);
+    checkUnnamed1931(o.instanceGroupUrls);
     checkNodeManagement(o.management);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -1086,6 +1086,32 @@ checkRollbackNodePoolUpgradeRequest(api.RollbackNodePoolUpgradeRequest o) {
   buildCounterRollbackNodePoolUpgradeRequest--;
 }
 
+buildUnnamed1932() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed1932(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+buildUnnamed1933() {
+  var o = new core.List<core.String>();
+  o.add("foo");
+  o.add("foo");
+  return o;
+}
+
+checkUnnamed1933(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 buildUnnamed1934() {
   var o = new core.List<core.String>();
   o.add("foo");
@@ -1099,32 +1125,6 @@ checkUnnamed1934(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed1935() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed1935(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-buildUnnamed1936() {
-  var o = new core.List<core.String>();
-  o.add("foo");
-  o.add("foo");
-  return o;
-}
-
-checkUnnamed1936(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
 core.int buildCounterServerConfig = 0;
 buildServerConfig() {
   var o = new api.ServerConfig();
@@ -1132,9 +1132,9 @@ buildServerConfig() {
   if (buildCounterServerConfig < 3) {
     o.defaultClusterVersion = "foo";
     o.defaultImageType = "foo";
-    o.validImageTypes = buildUnnamed1934();
-    o.validMasterVersions = buildUnnamed1935();
-    o.validNodeVersions = buildUnnamed1936();
+    o.validImageTypes = buildUnnamed1932();
+    o.validMasterVersions = buildUnnamed1933();
+    o.validNodeVersions = buildUnnamed1934();
   }
   buildCounterServerConfig--;
   return o;
@@ -1145,9 +1145,9 @@ checkServerConfig(api.ServerConfig o) {
   if (buildCounterServerConfig < 3) {
     unittest.expect(o.defaultClusterVersion, unittest.equals('foo'));
     unittest.expect(o.defaultImageType, unittest.equals('foo'));
-    checkUnnamed1934(o.validImageTypes);
-    checkUnnamed1935(o.validMasterVersions);
-    checkUnnamed1936(o.validNodeVersions);
+    checkUnnamed1932(o.validImageTypes);
+    checkUnnamed1933(o.validMasterVersions);
+    checkUnnamed1934(o.validNodeVersions);
   }
   buildCounterServerConfig--;
 }
@@ -1171,14 +1171,14 @@ checkSetAddonsConfigRequest(api.SetAddonsConfigRequest o) {
   buildCounterSetAddonsConfigRequest--;
 }
 
-buildUnnamed1937() {
+buildUnnamed1935() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed1937(core.Map<core.String, core.String> o) {
+checkUnnamed1935(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
@@ -1190,7 +1190,7 @@ buildSetLabelsRequest() {
   buildCounterSetLabelsRequest++;
   if (buildCounterSetLabelsRequest < 3) {
     o.labelFingerprint = "foo";
-    o.resourceLabels = buildUnnamed1937();
+    o.resourceLabels = buildUnnamed1935();
   }
   buildCounterSetLabelsRequest--;
   return o;
@@ -1200,7 +1200,7 @@ checkSetLabelsRequest(api.SetLabelsRequest o) {
   buildCounterSetLabelsRequest++;
   if (buildCounterSetLabelsRequest < 3) {
     unittest.expect(o.labelFingerprint, unittest.equals('foo'));
-    checkUnnamed1937(o.resourceLabels);
+    checkUnnamed1935(o.resourceLabels);
   }
   buildCounterSetLabelsRequest--;
 }
@@ -1224,14 +1224,14 @@ checkSetLegacyAbacRequest(api.SetLegacyAbacRequest o) {
   buildCounterSetLegacyAbacRequest--;
 }
 
-buildUnnamed1938() {
+buildUnnamed1936() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed1938(core.List<core.String> o) {
+checkUnnamed1936(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1242,7 +1242,7 @@ buildSetLocationsRequest() {
   var o = new api.SetLocationsRequest();
   buildCounterSetLocationsRequest++;
   if (buildCounterSetLocationsRequest < 3) {
-    o.locations = buildUnnamed1938();
+    o.locations = buildUnnamed1936();
   }
   buildCounterSetLocationsRequest--;
   return o;
@@ -1251,7 +1251,7 @@ buildSetLocationsRequest() {
 checkSetLocationsRequest(api.SetLocationsRequest o) {
   buildCounterSetLocationsRequest++;
   if (buildCounterSetLocationsRequest < 3) {
-    checkUnnamed1938(o.locations);
+    checkUnnamed1936(o.locations);
   }
   buildCounterSetLocationsRequest--;
 }
@@ -1892,6 +1892,7 @@ main() {
           new api.ContainerApi(mock).projects.zones;
       var arg_projectId = "foo";
       var arg_zone = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1940,6 +1941,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1948,7 +1950,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .getServerconfig(arg_projectId, arg_zone)
+          .getServerconfig(arg_projectId, arg_zone, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ServerConfig response) {
         checkServerConfig(response);
       })));
@@ -1964,6 +1966,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetAddonsConfigRequest.fromJson(json);
         checkSetAddonsConfigRequest(obj);
@@ -2024,6 +2027,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2032,7 +2036,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .addons(arg_request, arg_projectId, arg_zone, arg_clusterId)
+          .addons(arg_request, arg_projectId, arg_zone, arg_clusterId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
@@ -2046,6 +2051,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.CompleteIPRotationRequest.fromJson(json);
         checkCompleteIPRotationRequest(obj);
@@ -2106,6 +2112,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2115,7 +2122,8 @@ main() {
       }), true);
       res
           .completeIpRotation(
-              arg_request, arg_projectId, arg_zone, arg_clusterId)
+              arg_request, arg_projectId, arg_zone, arg_clusterId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
@@ -2128,6 +2136,7 @@ main() {
       var arg_request = buildCreateClusterRequest();
       var arg_projectId = "foo";
       var arg_zone = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.CreateClusterRequest.fromJson(json);
         checkCreateClusterRequest(obj);
@@ -2179,6 +2188,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2187,7 +2197,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .create(arg_request, arg_projectId, arg_zone)
+          .create(arg_request, arg_projectId, arg_zone, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
@@ -2200,6 +2210,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2251,6 +2262,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2259,7 +2271,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .delete(arg_projectId, arg_zone, arg_clusterId)
+          .delete(arg_projectId, arg_zone, arg_clusterId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
@@ -2272,6 +2284,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2323,6 +2336,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2331,7 +2345,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_projectId, arg_zone, arg_clusterId)
+          .get(arg_projectId, arg_zone, arg_clusterId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Cluster response) {
         checkCluster(response);
       })));
@@ -2345,6 +2359,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetLegacyAbacRequest.fromJson(json);
         checkSetLegacyAbacRequest(obj);
@@ -2405,6 +2420,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2413,7 +2429,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .legacyAbac(arg_request, arg_projectId, arg_zone, arg_clusterId)
+          .legacyAbac(arg_request, arg_projectId, arg_zone, arg_clusterId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
@@ -2425,6 +2442,7 @@ main() {
           new api.ContainerApi(mock).projects.zones.clusters;
       var arg_projectId = "foo";
       var arg_zone = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2473,6 +2491,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2481,7 +2500,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .list(arg_projectId, arg_zone)
+          .list(arg_projectId, arg_zone, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ListClustersResponse response) {
         checkListClustersResponse(response);
       })));
@@ -2495,6 +2514,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetLocationsRequest.fromJson(json);
         checkSetLocationsRequest(obj);
@@ -2555,6 +2575,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2563,7 +2584,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .locations(arg_request, arg_projectId, arg_zone, arg_clusterId)
+          .locations(arg_request, arg_projectId, arg_zone, arg_clusterId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
@@ -2577,6 +2599,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetLoggingServiceRequest.fromJson(json);
         checkSetLoggingServiceRequest(obj);
@@ -2637,6 +2660,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2645,7 +2669,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .logging(arg_request, arg_projectId, arg_zone, arg_clusterId)
+          .logging(arg_request, arg_projectId, arg_zone, arg_clusterId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
@@ -2659,6 +2684,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.UpdateMasterRequest.fromJson(json);
         checkUpdateMasterRequest(obj);
@@ -2719,6 +2745,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2727,7 +2754,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .master(arg_request, arg_projectId, arg_zone, arg_clusterId)
+          .master(arg_request, arg_projectId, arg_zone, arg_clusterId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
@@ -2741,6 +2769,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetMonitoringServiceRequest.fromJson(json);
         checkSetMonitoringServiceRequest(obj);
@@ -2801,6 +2830,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2809,7 +2839,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .monitoring(arg_request, arg_projectId, arg_zone, arg_clusterId)
+          .monitoring(arg_request, arg_projectId, arg_zone, arg_clusterId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
@@ -2823,6 +2854,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetLabelsRequest.fromJson(json);
         checkSetLabelsRequest(obj);
@@ -2883,6 +2915,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2891,7 +2924,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .resourceLabels(arg_request, arg_projectId, arg_zone, arg_clusterId)
+          .resourceLabels(arg_request, arg_projectId, arg_zone, arg_clusterId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
@@ -2905,6 +2939,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetMaintenancePolicyRequest.fromJson(json);
         checkSetMaintenancePolicyRequest(obj);
@@ -2965,6 +3000,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2974,7 +3010,8 @@ main() {
       }), true);
       res
           .setMaintenancePolicy(
-              arg_request, arg_projectId, arg_zone, arg_clusterId)
+              arg_request, arg_projectId, arg_zone, arg_clusterId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
@@ -2988,6 +3025,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetMasterAuthRequest.fromJson(json);
         checkSetMasterAuthRequest(obj);
@@ -3048,6 +3086,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -3056,7 +3095,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .setMasterAuth(arg_request, arg_projectId, arg_zone, arg_clusterId)
+          .setMasterAuth(arg_request, arg_projectId, arg_zone, arg_clusterId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
@@ -3070,6 +3110,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetNetworkPolicyRequest.fromJson(json);
         checkSetNetworkPolicyRequest(obj);
@@ -3130,6 +3171,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -3138,7 +3180,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .setNetworkPolicy(arg_request, arg_projectId, arg_zone, arg_clusterId)
+          .setNetworkPolicy(arg_request, arg_projectId, arg_zone, arg_clusterId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
@@ -3152,6 +3195,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.StartIPRotationRequest.fromJson(json);
         checkStartIPRotationRequest(obj);
@@ -3212,6 +3256,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -3220,7 +3265,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .startIpRotation(arg_request, arg_projectId, arg_zone, arg_clusterId)
+          .startIpRotation(arg_request, arg_projectId, arg_zone, arg_clusterId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
@@ -3234,6 +3280,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.UpdateClusterRequest.fromJson(json);
         checkUpdateClusterRequest(obj);
@@ -3288,6 +3335,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -3296,7 +3344,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .update(arg_request, arg_projectId, arg_zone, arg_clusterId)
+          .update(arg_request, arg_projectId, arg_zone, arg_clusterId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
@@ -3313,6 +3362,7 @@ main() {
       var arg_zone = "foo";
       var arg_clusterId = "foo";
       var arg_nodePoolId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetNodePoolAutoscalingRequest.fromJson(json);
         checkSetNodePoolAutoscalingRequest(obj);
@@ -3382,6 +3432,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -3391,7 +3442,8 @@ main() {
       }), true);
       res
           .autoscaling(arg_request, arg_projectId, arg_zone, arg_clusterId,
-              arg_nodePoolId)
+              arg_nodePoolId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
@@ -3405,6 +3457,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.CreateNodePoolRequest.fromJson(json);
         checkCreateNodePoolRequest(obj);
@@ -3465,6 +3518,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -3473,7 +3527,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .create(arg_request, arg_projectId, arg_zone, arg_clusterId)
+          .create(arg_request, arg_projectId, arg_zone, arg_clusterId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
@@ -3487,6 +3542,7 @@ main() {
       var arg_zone = "foo";
       var arg_clusterId = "foo";
       var arg_nodePoolId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3547,6 +3603,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -3555,7 +3612,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .delete(arg_projectId, arg_zone, arg_clusterId, arg_nodePoolId)
+          .delete(arg_projectId, arg_zone, arg_clusterId, arg_nodePoolId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
@@ -3569,6 +3627,7 @@ main() {
       var arg_zone = "foo";
       var arg_clusterId = "foo";
       var arg_nodePoolId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3629,6 +3688,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -3637,7 +3697,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_projectId, arg_zone, arg_clusterId, arg_nodePoolId)
+          .get(arg_projectId, arg_zone, arg_clusterId, arg_nodePoolId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.NodePool response) {
         checkNodePool(response);
       })));
@@ -3650,6 +3711,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_clusterId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3707,6 +3769,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -3715,7 +3778,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .list(arg_projectId, arg_zone, arg_clusterId)
+          .list(arg_projectId, arg_zone, arg_clusterId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ListNodePoolsResponse response) {
         checkListNodePoolsResponse(response);
       })));
@@ -3730,6 +3793,7 @@ main() {
       var arg_zone = "foo";
       var arg_clusterId = "foo";
       var arg_nodePoolId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.RollbackNodePoolUpgradeRequest.fromJson(json);
         checkRollbackNodePoolUpgradeRequest(obj);
@@ -3799,6 +3863,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -3808,7 +3873,8 @@ main() {
       }), true);
       res
           .rollback(arg_request, arg_projectId, arg_zone, arg_clusterId,
-              arg_nodePoolId)
+              arg_nodePoolId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
@@ -3823,6 +3889,7 @@ main() {
       var arg_zone = "foo";
       var arg_clusterId = "foo";
       var arg_nodePoolId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetNodePoolManagementRequest.fromJson(json);
         checkSetNodePoolManagementRequest(obj);
@@ -3892,6 +3959,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -3901,7 +3969,8 @@ main() {
       }), true);
       res
           .setManagement(arg_request, arg_projectId, arg_zone, arg_clusterId,
-              arg_nodePoolId)
+              arg_nodePoolId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
@@ -3916,6 +3985,7 @@ main() {
       var arg_zone = "foo";
       var arg_clusterId = "foo";
       var arg_nodePoolId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SetNodePoolSizeRequest.fromJson(json);
         checkSetNodePoolSizeRequest(obj);
@@ -3985,6 +4055,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -3994,7 +4065,8 @@ main() {
       }), true);
       res
           .setSize(arg_request, arg_projectId, arg_zone, arg_clusterId,
-              arg_nodePoolId)
+              arg_nodePoolId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
@@ -4009,6 +4081,7 @@ main() {
       var arg_zone = "foo";
       var arg_clusterId = "foo";
       var arg_nodePoolId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.UpdateNodePoolRequest.fromJson(json);
         checkUpdateNodePoolRequest(obj);
@@ -4078,6 +4151,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -4087,7 +4161,8 @@ main() {
       }), true);
       res
           .update(arg_request, arg_projectId, arg_zone, arg_clusterId,
-              arg_nodePoolId)
+              arg_nodePoolId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
@@ -4103,6 +4178,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_operationId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.CancelOperationRequest.fromJson(json);
         checkCancelOperationRequest(obj);
@@ -4163,6 +4239,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -4171,7 +4248,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .cancel(arg_request, arg_projectId, arg_zone, arg_operationId)
+          .cancel(arg_request, arg_projectId, arg_zone, arg_operationId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Empty response) {
         checkEmpty(response);
       })));
@@ -4184,6 +4262,7 @@ main() {
       var arg_projectId = "foo";
       var arg_zone = "foo";
       var arg_operationId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4235,6 +4314,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -4243,7 +4323,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_projectId, arg_zone, arg_operationId)
+          .get(arg_projectId, arg_zone, arg_operationId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Operation response) {
         checkOperation(response);
       })));
@@ -4255,6 +4335,7 @@ main() {
           new api.ContainerApi(mock).projects.zones.operations;
       var arg_projectId = "foo";
       var arg_zone = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4303,6 +4384,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -4311,7 +4393,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .list(arg_projectId, arg_zone)
+          .list(arg_projectId, arg_zone, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ListOperationsResponse response) {
         checkListOperationsResponse(response);
       })));

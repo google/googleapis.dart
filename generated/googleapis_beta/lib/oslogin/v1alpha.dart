@@ -58,6 +58,9 @@ class UsersResourceApi {
   /// [name] - The unique ID for the user in format `users/{user}`.
   /// Value must have pattern "^users/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LoginProfile].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -65,7 +68,8 @@ class UsersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LoginProfile> getLoginProfile(core.String name) {
+  async.Future<LoginProfile> getLoginProfile(core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -75,6 +79,9 @@ class UsersResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1alpha/' +
@@ -101,6 +108,9 @@ class UsersResourceApi {
   /// [parent] - The unique ID for the user in format `users/{user}`.
   /// Value must have pattern "^users/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ImportSshPublicKeyResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -109,7 +119,8 @@ class UsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ImportSshPublicKeyResponse> importSshPublicKey(
-      SshPublicKey request, core.String parent) {
+      SshPublicKey request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -122,6 +133,9 @@ class UsersResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1alpha/' +
@@ -155,6 +169,9 @@ class UsersSshPublicKeysResourceApi {
   /// `users/{user}/sshPublicKeys/{fingerprint}`.
   /// Value must have pattern "^users/[^/]+/sshPublicKeys/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -162,7 +179,7 @@ class UsersSshPublicKeysResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name) {
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -172,6 +189,9 @@ class UsersSshPublicKeysResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -195,6 +215,9 @@ class UsersSshPublicKeysResourceApi {
   /// format `users/{user}/sshPublicKeys/{fingerprint}`.
   /// Value must have pattern "^users/[^/]+/sshPublicKeys/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SshPublicKey].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -202,7 +225,7 @@ class UsersSshPublicKeysResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SshPublicKey> get(core.String name) {
+  async.Future<SshPublicKey> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -212,6 +235,9 @@ class UsersSshPublicKeysResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -241,6 +267,9 @@ class UsersSshPublicKeysResourceApi {
   /// [updateMask] - Mask to control which fields get updated. Updates all if
   /// not present.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SshPublicKey].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -249,7 +278,7 @@ class UsersSshPublicKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SshPublicKey> patch(SshPublicKey request, core.String name,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -265,6 +294,9 @@ class UsersSshPublicKeysResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');

@@ -42,6 +42,9 @@ class Oauth2Api {
 
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Jwk].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -49,13 +52,17 @@ class Oauth2Api {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Jwk> getCertForOpenIdConnect() {
+  async.Future<Jwk> getCertForOpenIdConnect({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'oauth2/v2/certs';
 
@@ -76,6 +83,9 @@ class Oauth2Api {
   ///
   /// [tokenHandle] - null
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Tokeninfo].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -84,7 +94,10 @@ class Oauth2Api {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Tokeninfo> tokeninfo(
-      {core.String accessToken, core.String idToken, core.String tokenHandle}) {
+      {core.String accessToken,
+      core.String idToken,
+      core.String tokenHandle,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -100,6 +113,9 @@ class Oauth2Api {
     }
     if (tokenHandle != null) {
       _queryParams["token_handle"] = [tokenHandle];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'oauth2/v2/tokeninfo';
@@ -123,6 +139,9 @@ class UserinfoResourceApi {
 
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Userinfoplus].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -130,13 +149,17 @@ class UserinfoResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Userinfoplus> get() {
+  async.Future<Userinfoplus> get({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'oauth2/v2/userinfo';
 
@@ -165,6 +188,9 @@ class UserinfoV2MeResourceApi {
 
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Userinfoplus].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -172,13 +198,17 @@ class UserinfoV2MeResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Userinfoplus> get() {
+  async.Future<Userinfoplus> get({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'userinfo/v2/me';
 

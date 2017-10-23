@@ -47,6 +47,9 @@ class WebfontsResourceApi {
   /// - "style" : Sort by number of styles
   /// - "trending" : Sort by trending
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [WebfontList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -54,7 +57,7 @@ class WebfontsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<WebfontList> list({core.String sort}) {
+  async.Future<WebfontList> list({core.String sort, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -64,6 +67,9 @@ class WebfontsResourceApi {
 
     if (sort != null) {
       _queryParams["sort"] = [sort];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'webfonts';

@@ -90,6 +90,9 @@ class BillingAccountsExclusionsResourceApi {
   /// Examples: "projects/my-logging-project", "organizations/123456789".
   /// Value must have pattern "^billingAccounts/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogExclusion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -97,7 +100,8 @@ class BillingAccountsExclusionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogExclusion> create(LogExclusion request, core.String parent) {
+  async.Future<LogExclusion> create(LogExclusion request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -110,6 +114,9 @@ class BillingAccountsExclusionsResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' +
@@ -137,6 +144,9 @@ class BillingAccountsExclusionsResourceApi {
   /// Example: "projects/my-project-id/exclusions/my-exclusion-id".
   /// Value must have pattern "^billingAccounts/[^/]+/exclusions/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -144,7 +154,7 @@ class BillingAccountsExclusionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name) {
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -154,6 +164,9 @@ class BillingAccountsExclusionsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -179,6 +192,9 @@ class BillingAccountsExclusionsResourceApi {
   /// Example: "projects/my-project-id/exclusions/my-exclusion-id".
   /// Value must have pattern "^billingAccounts/[^/]+/exclusions/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogExclusion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -186,7 +202,7 @@ class BillingAccountsExclusionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogExclusion> get(core.String name) {
+  async.Future<LogExclusion> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -196,6 +212,9 @@ class BillingAccountsExclusionsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -231,6 +250,9 @@ class BillingAccountsExclusionsResourceApi {
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListExclusionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -239,7 +261,7 @@ class BillingAccountsExclusionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListExclusionsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -255,6 +277,9 @@ class BillingAccountsExclusionsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' +
@@ -291,6 +316,9 @@ class BillingAccountsExclusionsResourceApi {
   /// request.For example, to change the filter and description of an exclusion,
   /// specify an update_mask of "filter,description".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogExclusion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -299,7 +327,7 @@ class BillingAccountsExclusionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogExclusion> patch(LogExclusion request, core.String name,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -315,6 +343,9 @@ class BillingAccountsExclusionsResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -352,6 +383,9 @@ class BillingAccountsLogsResourceApi {
   /// For more information about log names, see LogEntry.
   /// Value must have pattern "^billingAccounts/[^/]+/logs/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -359,7 +393,7 @@ class BillingAccountsLogsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String logName) {
+  async.Future<Empty> delete(core.String logName, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -369,6 +403,9 @@ class BillingAccountsLogsResourceApi {
 
     if (logName == null) {
       throw new core.ArgumentError("Parameter logName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$logName');
@@ -404,6 +441,9 @@ class BillingAccountsLogsResourceApi {
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListLogsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -412,7 +452,7 @@ class BillingAccountsLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -428,6 +468,9 @@ class BillingAccountsLogsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/logs';
@@ -476,6 +519,9 @@ class BillingAccountsSinksResourceApi {
   /// be a unique service account used only for exports from the new sink. For
   /// more information, see writer_identity in LogSink.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogSink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -484,7 +530,7 @@ class BillingAccountsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogSink> create(LogSink request, core.String parent,
-      {core.bool uniqueWriterIdentity}) {
+      {core.bool uniqueWriterIdentity, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -500,6 +546,9 @@ class BillingAccountsSinksResourceApi {
     }
     if (uniqueWriterIdentity != null) {
       _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
@@ -527,6 +576,9 @@ class BillingAccountsSinksResourceApi {
   /// Example: "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^billingAccounts/[^/]+/sinks/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -534,7 +586,7 @@ class BillingAccountsSinksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String sinkName) {
+  async.Future<Empty> delete(core.String sinkName, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -544,6 +596,9 @@ class BillingAccountsSinksResourceApi {
 
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
@@ -569,6 +624,9 @@ class BillingAccountsSinksResourceApi {
   /// Example: "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^billingAccounts/[^/]+/sinks/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogSink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -576,7 +634,7 @@ class BillingAccountsSinksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogSink> get(core.String sinkName) {
+  async.Future<LogSink> get(core.String sinkName, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -586,6 +644,9 @@ class BillingAccountsSinksResourceApi {
 
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
@@ -620,6 +681,9 @@ class BillingAccountsSinksResourceApi {
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListSinksResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -628,7 +692,7 @@ class BillingAccountsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -644,6 +708,9 @@ class BillingAccountsSinksResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
@@ -675,16 +742,6 @@ class BillingAccountsSinksResourceApi {
   /// Example: "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^billingAccounts/[^/]+/sinks/[^/]+$".
   ///
-  /// [updateMask] - Optional. Field mask that specifies the fields in sink that
-  /// need an update. A sink field will be overwritten if, and only if, it is in
-  /// the update mask. name and output only fields cannot be updated.An empty
-  /// updateMask is temporarily treated as using the following mask for
-  /// backwards compatibility purposes:  destination,filter,includeChildren At
-  /// some point in the future, behavior will be removed and specifying an empty
-  /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
-  /// updateMask=filter.
-  ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
   /// writer_identity in the updated sink depends on both the old and new values
@@ -696,6 +753,19 @@ class BillingAccountsSinksResourceApi {
   /// It is an error if the old value is true and the new value is set to false
   /// or defaulted to false.
   ///
+  /// [updateMask] - Optional. Field mask that specifies the fields in sink that
+  /// need an update. A sink field will be overwritten if, and only if, it is in
+  /// the update mask. name and output only fields cannot be updated.An empty
+  /// updateMask is temporarily treated as using the following mask for
+  /// backwards compatibility purposes:  destination,filter,includeChildren At
+  /// some point in the future, behavior will be removed and specifying an empty
+  /// updateMask will be an error.For a detailed FieldMask definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
+  /// updateMask=filter.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogSink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -704,7 +774,9 @@ class BillingAccountsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogSink> patch(LogSink request, core.String sinkName,
-      {core.String updateMask, core.bool uniqueWriterIdentity}) {
+      {core.bool uniqueWriterIdentity,
+      core.String updateMask,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -718,11 +790,14 @@ class BillingAccountsSinksResourceApi {
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
     }
+    if (uniqueWriterIdentity != null) {
+      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
     }
-    if (uniqueWriterIdentity != null) {
-      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
@@ -754,16 +829,6 @@ class BillingAccountsSinksResourceApi {
   /// Example: "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^billingAccounts/[^/]+/sinks/[^/]+$".
   ///
-  /// [updateMask] - Optional. Field mask that specifies the fields in sink that
-  /// need an update. A sink field will be overwritten if, and only if, it is in
-  /// the update mask. name and output only fields cannot be updated.An empty
-  /// updateMask is temporarily treated as using the following mask for
-  /// backwards compatibility purposes:  destination,filter,includeChildren At
-  /// some point in the future, behavior will be removed and specifying an empty
-  /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
-  /// updateMask=filter.
-  ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
   /// writer_identity in the updated sink depends on both the old and new values
@@ -775,6 +840,19 @@ class BillingAccountsSinksResourceApi {
   /// It is an error if the old value is true and the new value is set to false
   /// or defaulted to false.
   ///
+  /// [updateMask] - Optional. Field mask that specifies the fields in sink that
+  /// need an update. A sink field will be overwritten if, and only if, it is in
+  /// the update mask. name and output only fields cannot be updated.An empty
+  /// updateMask is temporarily treated as using the following mask for
+  /// backwards compatibility purposes:  destination,filter,includeChildren At
+  /// some point in the future, behavior will be removed and specifying an empty
+  /// updateMask will be an error.For a detailed FieldMask definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
+  /// updateMask=filter.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogSink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -783,7 +861,9 @@ class BillingAccountsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogSink> update(LogSink request, core.String sinkName,
-      {core.String updateMask, core.bool uniqueWriterIdentity}) {
+      {core.bool uniqueWriterIdentity,
+      core.String updateMask,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -797,11 +877,14 @@ class BillingAccountsSinksResourceApi {
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
     }
+    if (uniqueWriterIdentity != null) {
+      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
     }
-    if (uniqueWriterIdentity != null) {
-      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
@@ -828,6 +911,9 @@ class EntriesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListLogEntriesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -835,7 +921,8 @@ class EntriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListLogEntriesResponse> list(ListLogEntriesRequest request) {
+  async.Future<ListLogEntriesResponse> list(ListLogEntriesRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -845,6 +932,9 @@ class EntriesResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/entries:list';
@@ -867,6 +957,9 @@ class EntriesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [WriteLogEntriesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -874,7 +967,8 @@ class EntriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<WriteLogEntriesResponse> write(WriteLogEntriesRequest request) {
+  async.Future<WriteLogEntriesResponse> write(WriteLogEntriesRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -884,6 +978,9 @@ class EntriesResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/entries:write';
@@ -931,6 +1028,9 @@ class FoldersExclusionsResourceApi {
   /// Examples: "projects/my-logging-project", "organizations/123456789".
   /// Value must have pattern "^folders/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogExclusion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -938,7 +1038,8 @@ class FoldersExclusionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogExclusion> create(LogExclusion request, core.String parent) {
+  async.Future<LogExclusion> create(LogExclusion request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -951,6 +1052,9 @@ class FoldersExclusionsResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' +
@@ -978,6 +1082,9 @@ class FoldersExclusionsResourceApi {
   /// Example: "projects/my-project-id/exclusions/my-exclusion-id".
   /// Value must have pattern "^folders/[^/]+/exclusions/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -985,7 +1092,7 @@ class FoldersExclusionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name) {
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -995,6 +1102,9 @@ class FoldersExclusionsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1020,6 +1130,9 @@ class FoldersExclusionsResourceApi {
   /// Example: "projects/my-project-id/exclusions/my-exclusion-id".
   /// Value must have pattern "^folders/[^/]+/exclusions/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogExclusion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1027,7 +1140,7 @@ class FoldersExclusionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogExclusion> get(core.String name) {
+  async.Future<LogExclusion> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1037,6 +1150,9 @@ class FoldersExclusionsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1072,6 +1188,9 @@ class FoldersExclusionsResourceApi {
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListExclusionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1080,7 +1199,7 @@ class FoldersExclusionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListExclusionsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1096,6 +1215,9 @@ class FoldersExclusionsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' +
@@ -1132,6 +1254,9 @@ class FoldersExclusionsResourceApi {
   /// request.For example, to change the filter and description of an exclusion,
   /// specify an update_mask of "filter,description".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogExclusion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1140,7 +1265,7 @@ class FoldersExclusionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogExclusion> patch(LogExclusion request, core.String name,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1156,6 +1281,9 @@ class FoldersExclusionsResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1192,6 +1320,9 @@ class FoldersLogsResourceApi {
   /// For more information about log names, see LogEntry.
   /// Value must have pattern "^folders/[^/]+/logs/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1199,7 +1330,7 @@ class FoldersLogsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String logName) {
+  async.Future<Empty> delete(core.String logName, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1209,6 +1340,9 @@ class FoldersLogsResourceApi {
 
     if (logName == null) {
       throw new core.ArgumentError("Parameter logName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$logName');
@@ -1244,6 +1378,9 @@ class FoldersLogsResourceApi {
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListLogsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1252,7 +1389,7 @@ class FoldersLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1268,6 +1405,9 @@ class FoldersLogsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/logs';
@@ -1315,6 +1455,9 @@ class FoldersSinksResourceApi {
   /// be a unique service account used only for exports from the new sink. For
   /// more information, see writer_identity in LogSink.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogSink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1323,7 +1466,7 @@ class FoldersSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogSink> create(LogSink request, core.String parent,
-      {core.bool uniqueWriterIdentity}) {
+      {core.bool uniqueWriterIdentity, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1339,6 +1482,9 @@ class FoldersSinksResourceApi {
     }
     if (uniqueWriterIdentity != null) {
       _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
@@ -1366,6 +1512,9 @@ class FoldersSinksResourceApi {
   /// Example: "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^folders/[^/]+/sinks/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1373,7 +1522,7 @@ class FoldersSinksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String sinkName) {
+  async.Future<Empty> delete(core.String sinkName, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1383,6 +1532,9 @@ class FoldersSinksResourceApi {
 
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
@@ -1408,6 +1560,9 @@ class FoldersSinksResourceApi {
   /// Example: "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^folders/[^/]+/sinks/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogSink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1415,7 +1570,7 @@ class FoldersSinksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogSink> get(core.String sinkName) {
+  async.Future<LogSink> get(core.String sinkName, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1425,6 +1580,9 @@ class FoldersSinksResourceApi {
 
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
@@ -1459,6 +1617,9 @@ class FoldersSinksResourceApi {
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListSinksResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1467,7 +1628,7 @@ class FoldersSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1483,6 +1644,9 @@ class FoldersSinksResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
@@ -1514,16 +1678,6 @@ class FoldersSinksResourceApi {
   /// Example: "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^folders/[^/]+/sinks/[^/]+$".
   ///
-  /// [updateMask] - Optional. Field mask that specifies the fields in sink that
-  /// need an update. A sink field will be overwritten if, and only if, it is in
-  /// the update mask. name and output only fields cannot be updated.An empty
-  /// updateMask is temporarily treated as using the following mask for
-  /// backwards compatibility purposes:  destination,filter,includeChildren At
-  /// some point in the future, behavior will be removed and specifying an empty
-  /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
-  /// updateMask=filter.
-  ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
   /// writer_identity in the updated sink depends on both the old and new values
@@ -1535,6 +1689,19 @@ class FoldersSinksResourceApi {
   /// It is an error if the old value is true and the new value is set to false
   /// or defaulted to false.
   ///
+  /// [updateMask] - Optional. Field mask that specifies the fields in sink that
+  /// need an update. A sink field will be overwritten if, and only if, it is in
+  /// the update mask. name and output only fields cannot be updated.An empty
+  /// updateMask is temporarily treated as using the following mask for
+  /// backwards compatibility purposes:  destination,filter,includeChildren At
+  /// some point in the future, behavior will be removed and specifying an empty
+  /// updateMask will be an error.For a detailed FieldMask definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
+  /// updateMask=filter.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogSink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1543,7 +1710,9 @@ class FoldersSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogSink> patch(LogSink request, core.String sinkName,
-      {core.String updateMask, core.bool uniqueWriterIdentity}) {
+      {core.bool uniqueWriterIdentity,
+      core.String updateMask,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1557,11 +1726,14 @@ class FoldersSinksResourceApi {
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
     }
+    if (uniqueWriterIdentity != null) {
+      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
     }
-    if (uniqueWriterIdentity != null) {
-      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
@@ -1593,16 +1765,6 @@ class FoldersSinksResourceApi {
   /// Example: "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^folders/[^/]+/sinks/[^/]+$".
   ///
-  /// [updateMask] - Optional. Field mask that specifies the fields in sink that
-  /// need an update. A sink field will be overwritten if, and only if, it is in
-  /// the update mask. name and output only fields cannot be updated.An empty
-  /// updateMask is temporarily treated as using the following mask for
-  /// backwards compatibility purposes:  destination,filter,includeChildren At
-  /// some point in the future, behavior will be removed and specifying an empty
-  /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
-  /// updateMask=filter.
-  ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
   /// writer_identity in the updated sink depends on both the old and new values
@@ -1614,6 +1776,19 @@ class FoldersSinksResourceApi {
   /// It is an error if the old value is true and the new value is set to false
   /// or defaulted to false.
   ///
+  /// [updateMask] - Optional. Field mask that specifies the fields in sink that
+  /// need an update. A sink field will be overwritten if, and only if, it is in
+  /// the update mask. name and output only fields cannot be updated.An empty
+  /// updateMask is temporarily treated as using the following mask for
+  /// backwards compatibility purposes:  destination,filter,includeChildren At
+  /// some point in the future, behavior will be removed and specifying an empty
+  /// updateMask will be an error.For a detailed FieldMask definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
+  /// updateMask=filter.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogSink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1622,7 +1797,9 @@ class FoldersSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogSink> update(LogSink request, core.String sinkName,
-      {core.String updateMask, core.bool uniqueWriterIdentity}) {
+      {core.bool uniqueWriterIdentity,
+      core.String updateMask,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1636,11 +1813,14 @@ class FoldersSinksResourceApi {
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
     }
+    if (uniqueWriterIdentity != null) {
+      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
     }
-    if (uniqueWriterIdentity != null) {
-      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
@@ -1675,6 +1855,9 @@ class MonitoredResourceDescriptorsResourceApi {
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListMonitoredResourceDescriptorsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1683,7 +1866,7 @@ class MonitoredResourceDescriptorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMonitoredResourceDescriptorsResponse> list(
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1696,6 +1879,9 @@ class MonitoredResourceDescriptorsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/monitoredResourceDescriptors';
@@ -1746,6 +1932,9 @@ class OrganizationsExclusionsResourceApi {
   /// Examples: "projects/my-logging-project", "organizations/123456789".
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogExclusion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1753,7 +1942,8 @@ class OrganizationsExclusionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogExclusion> create(LogExclusion request, core.String parent) {
+  async.Future<LogExclusion> create(LogExclusion request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1766,6 +1956,9 @@ class OrganizationsExclusionsResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' +
@@ -1793,6 +1986,9 @@ class OrganizationsExclusionsResourceApi {
   /// Example: "projects/my-project-id/exclusions/my-exclusion-id".
   /// Value must have pattern "^organizations/[^/]+/exclusions/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1800,7 +1996,7 @@ class OrganizationsExclusionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name) {
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1810,6 +2006,9 @@ class OrganizationsExclusionsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1835,6 +2034,9 @@ class OrganizationsExclusionsResourceApi {
   /// Example: "projects/my-project-id/exclusions/my-exclusion-id".
   /// Value must have pattern "^organizations/[^/]+/exclusions/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogExclusion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1842,7 +2044,7 @@ class OrganizationsExclusionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogExclusion> get(core.String name) {
+  async.Future<LogExclusion> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1852,6 +2054,9 @@ class OrganizationsExclusionsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1887,6 +2092,9 @@ class OrganizationsExclusionsResourceApi {
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListExclusionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1895,7 +2103,7 @@ class OrganizationsExclusionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListExclusionsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1911,6 +2119,9 @@ class OrganizationsExclusionsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' +
@@ -1947,6 +2158,9 @@ class OrganizationsExclusionsResourceApi {
   /// request.For example, to change the filter and description of an exclusion,
   /// specify an update_mask of "filter,description".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogExclusion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1955,7 +2169,7 @@ class OrganizationsExclusionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogExclusion> patch(LogExclusion request, core.String name,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1971,6 +2185,9 @@ class OrganizationsExclusionsResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -2008,6 +2225,9 @@ class OrganizationsLogsResourceApi {
   /// For more information about log names, see LogEntry.
   /// Value must have pattern "^organizations/[^/]+/logs/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2015,7 +2235,7 @@ class OrganizationsLogsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String logName) {
+  async.Future<Empty> delete(core.String logName, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2025,6 +2245,9 @@ class OrganizationsLogsResourceApi {
 
     if (logName == null) {
       throw new core.ArgumentError("Parameter logName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$logName');
@@ -2060,6 +2283,9 @@ class OrganizationsLogsResourceApi {
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListLogsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2068,7 +2294,7 @@ class OrganizationsLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2084,6 +2310,9 @@ class OrganizationsLogsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/logs';
@@ -2132,6 +2361,9 @@ class OrganizationsSinksResourceApi {
   /// be a unique service account used only for exports from the new sink. For
   /// more information, see writer_identity in LogSink.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogSink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2140,7 +2372,7 @@ class OrganizationsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogSink> create(LogSink request, core.String parent,
-      {core.bool uniqueWriterIdentity}) {
+      {core.bool uniqueWriterIdentity, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2156,6 +2388,9 @@ class OrganizationsSinksResourceApi {
     }
     if (uniqueWriterIdentity != null) {
       _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
@@ -2183,6 +2418,9 @@ class OrganizationsSinksResourceApi {
   /// Example: "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^organizations/[^/]+/sinks/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2190,7 +2428,7 @@ class OrganizationsSinksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String sinkName) {
+  async.Future<Empty> delete(core.String sinkName, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2200,6 +2438,9 @@ class OrganizationsSinksResourceApi {
 
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
@@ -2225,6 +2466,9 @@ class OrganizationsSinksResourceApi {
   /// Example: "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^organizations/[^/]+/sinks/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogSink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2232,7 +2476,7 @@ class OrganizationsSinksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogSink> get(core.String sinkName) {
+  async.Future<LogSink> get(core.String sinkName, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2242,6 +2486,9 @@ class OrganizationsSinksResourceApi {
 
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
@@ -2276,6 +2523,9 @@ class OrganizationsSinksResourceApi {
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListSinksResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2284,7 +2534,7 @@ class OrganizationsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2300,6 +2550,9 @@ class OrganizationsSinksResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
@@ -2331,16 +2584,6 @@ class OrganizationsSinksResourceApi {
   /// Example: "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^organizations/[^/]+/sinks/[^/]+$".
   ///
-  /// [updateMask] - Optional. Field mask that specifies the fields in sink that
-  /// need an update. A sink field will be overwritten if, and only if, it is in
-  /// the update mask. name and output only fields cannot be updated.An empty
-  /// updateMask is temporarily treated as using the following mask for
-  /// backwards compatibility purposes:  destination,filter,includeChildren At
-  /// some point in the future, behavior will be removed and specifying an empty
-  /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
-  /// updateMask=filter.
-  ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
   /// writer_identity in the updated sink depends on both the old and new values
@@ -2352,6 +2595,19 @@ class OrganizationsSinksResourceApi {
   /// It is an error if the old value is true and the new value is set to false
   /// or defaulted to false.
   ///
+  /// [updateMask] - Optional. Field mask that specifies the fields in sink that
+  /// need an update. A sink field will be overwritten if, and only if, it is in
+  /// the update mask. name and output only fields cannot be updated.An empty
+  /// updateMask is temporarily treated as using the following mask for
+  /// backwards compatibility purposes:  destination,filter,includeChildren At
+  /// some point in the future, behavior will be removed and specifying an empty
+  /// updateMask will be an error.For a detailed FieldMask definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
+  /// updateMask=filter.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogSink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2360,7 +2616,9 @@ class OrganizationsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogSink> patch(LogSink request, core.String sinkName,
-      {core.String updateMask, core.bool uniqueWriterIdentity}) {
+      {core.bool uniqueWriterIdentity,
+      core.String updateMask,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2374,11 +2632,14 @@ class OrganizationsSinksResourceApi {
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
     }
+    if (uniqueWriterIdentity != null) {
+      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
     }
-    if (uniqueWriterIdentity != null) {
-      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
@@ -2410,16 +2671,6 @@ class OrganizationsSinksResourceApi {
   /// Example: "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^organizations/[^/]+/sinks/[^/]+$".
   ///
-  /// [updateMask] - Optional. Field mask that specifies the fields in sink that
-  /// need an update. A sink field will be overwritten if, and only if, it is in
-  /// the update mask. name and output only fields cannot be updated.An empty
-  /// updateMask is temporarily treated as using the following mask for
-  /// backwards compatibility purposes:  destination,filter,includeChildren At
-  /// some point in the future, behavior will be removed and specifying an empty
-  /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
-  /// updateMask=filter.
-  ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
   /// writer_identity in the updated sink depends on both the old and new values
@@ -2431,6 +2682,19 @@ class OrganizationsSinksResourceApi {
   /// It is an error if the old value is true and the new value is set to false
   /// or defaulted to false.
   ///
+  /// [updateMask] - Optional. Field mask that specifies the fields in sink that
+  /// need an update. A sink field will be overwritten if, and only if, it is in
+  /// the update mask. name and output only fields cannot be updated.An empty
+  /// updateMask is temporarily treated as using the following mask for
+  /// backwards compatibility purposes:  destination,filter,includeChildren At
+  /// some point in the future, behavior will be removed and specifying an empty
+  /// updateMask will be an error.For a detailed FieldMask definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
+  /// updateMask=filter.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogSink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2439,7 +2703,9 @@ class OrganizationsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogSink> update(LogSink request, core.String sinkName,
-      {core.String updateMask, core.bool uniqueWriterIdentity}) {
+      {core.bool uniqueWriterIdentity,
+      core.String updateMask,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2453,11 +2719,14 @@ class OrganizationsSinksResourceApi {
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
     }
+    if (uniqueWriterIdentity != null) {
+      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
     }
-    if (uniqueWriterIdentity != null) {
-      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
@@ -2508,6 +2777,9 @@ class ProjectsExclusionsResourceApi {
   /// Examples: "projects/my-logging-project", "organizations/123456789".
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogExclusion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2515,7 +2787,8 @@ class ProjectsExclusionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogExclusion> create(LogExclusion request, core.String parent) {
+  async.Future<LogExclusion> create(LogExclusion request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2528,6 +2801,9 @@ class ProjectsExclusionsResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' +
@@ -2555,6 +2831,9 @@ class ProjectsExclusionsResourceApi {
   /// Example: "projects/my-project-id/exclusions/my-exclusion-id".
   /// Value must have pattern "^projects/[^/]+/exclusions/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2562,7 +2841,7 @@ class ProjectsExclusionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name) {
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2572,6 +2851,9 @@ class ProjectsExclusionsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -2597,6 +2879,9 @@ class ProjectsExclusionsResourceApi {
   /// Example: "projects/my-project-id/exclusions/my-exclusion-id".
   /// Value must have pattern "^projects/[^/]+/exclusions/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogExclusion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2604,7 +2889,7 @@ class ProjectsExclusionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogExclusion> get(core.String name) {
+  async.Future<LogExclusion> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2614,6 +2899,9 @@ class ProjectsExclusionsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -2649,6 +2937,9 @@ class ProjectsExclusionsResourceApi {
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListExclusionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2657,7 +2948,7 @@ class ProjectsExclusionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListExclusionsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2673,6 +2964,9 @@ class ProjectsExclusionsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' +
@@ -2709,6 +3003,9 @@ class ProjectsExclusionsResourceApi {
   /// request.For example, to change the filter and description of an exclusion,
   /// specify an update_mask of "filter,description".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogExclusion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2717,7 +3014,7 @@ class ProjectsExclusionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogExclusion> patch(LogExclusion request, core.String name,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2733,6 +3030,9 @@ class ProjectsExclusionsResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -2769,6 +3069,9 @@ class ProjectsLogsResourceApi {
   /// For more information about log names, see LogEntry.
   /// Value must have pattern "^projects/[^/]+/logs/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2776,7 +3079,7 @@ class ProjectsLogsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String logName) {
+  async.Future<Empty> delete(core.String logName, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2786,6 +3089,9 @@ class ProjectsLogsResourceApi {
 
     if (logName == null) {
       throw new core.ArgumentError("Parameter logName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$logName');
@@ -2821,6 +3127,9 @@ class ProjectsLogsResourceApi {
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListLogsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2829,7 +3138,7 @@ class ProjectsLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2845,6 +3154,9 @@ class ProjectsLogsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/logs';
@@ -2875,6 +3187,9 @@ class ProjectsMetricsResourceApi {
   /// The new metric must be provided in the request.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogMetric].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2882,7 +3197,8 @@ class ProjectsMetricsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogMetric> create(LogMetric request, core.String parent) {
+  async.Future<LogMetric> create(LogMetric request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2895,6 +3211,9 @@ class ProjectsMetricsResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -2918,6 +3237,9 @@ class ProjectsMetricsResourceApi {
   ///
   /// Value must have pattern "^projects/[^/]+/metrics/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2925,7 +3247,7 @@ class ProjectsMetricsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String metricName) {
+  async.Future<Empty> delete(core.String metricName, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2935,6 +3257,9 @@ class ProjectsMetricsResourceApi {
 
     if (metricName == null) {
       throw new core.ArgumentError("Parameter metricName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$metricName');
@@ -2957,6 +3282,9 @@ class ProjectsMetricsResourceApi {
   ///
   /// Value must have pattern "^projects/[^/]+/metrics/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogMetric].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2964,7 +3292,7 @@ class ProjectsMetricsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogMetric> get(core.String metricName) {
+  async.Future<LogMetric> get(core.String metricName, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2974,6 +3302,9 @@ class ProjectsMetricsResourceApi {
 
     if (metricName == null) {
       throw new core.ArgumentError("Parameter metricName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$metricName');
@@ -3005,6 +3336,9 @@ class ProjectsMetricsResourceApi {
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListLogMetricsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3013,7 +3347,7 @@ class ProjectsMetricsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLogMetricsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3029,6 +3363,9 @@ class ProjectsMetricsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -3056,6 +3393,9 @@ class ProjectsMetricsResourceApi {
   /// [PROJECT_ID], then a new metric is created.
   /// Value must have pattern "^projects/[^/]+/metrics/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogMetric].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3063,7 +3403,8 @@ class ProjectsMetricsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogMetric> update(LogMetric request, core.String metricName) {
+  async.Future<LogMetric> update(LogMetric request, core.String metricName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3076,6 +3417,9 @@ class ProjectsMetricsResourceApi {
     }
     if (metricName == null) {
       throw new core.ArgumentError("Parameter metricName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$metricName');
@@ -3123,6 +3467,9 @@ class ProjectsSinksResourceApi {
   /// be a unique service account used only for exports from the new sink. For
   /// more information, see writer_identity in LogSink.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogSink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3131,7 +3478,7 @@ class ProjectsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogSink> create(LogSink request, core.String parent,
-      {core.bool uniqueWriterIdentity}) {
+      {core.bool uniqueWriterIdentity, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3147,6 +3494,9 @@ class ProjectsSinksResourceApi {
     }
     if (uniqueWriterIdentity != null) {
       _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
@@ -3174,6 +3524,9 @@ class ProjectsSinksResourceApi {
   /// Example: "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^projects/[^/]+/sinks/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3181,7 +3534,7 @@ class ProjectsSinksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String sinkName) {
+  async.Future<Empty> delete(core.String sinkName, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3191,6 +3544,9 @@ class ProjectsSinksResourceApi {
 
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
@@ -3216,6 +3572,9 @@ class ProjectsSinksResourceApi {
   /// Example: "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^projects/[^/]+/sinks/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogSink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3223,7 +3582,7 @@ class ProjectsSinksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LogSink> get(core.String sinkName) {
+  async.Future<LogSink> get(core.String sinkName, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3233,6 +3592,9 @@ class ProjectsSinksResourceApi {
 
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
@@ -3267,6 +3629,9 @@ class ProjectsSinksResourceApi {
   /// request. Non-positive values are ignored. The presence of nextPageToken in
   /// the response indicates that more results might be available.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListSinksResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3275,7 +3640,7 @@ class ProjectsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3291,6 +3656,9 @@ class ProjectsSinksResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
@@ -3322,16 +3690,6 @@ class ProjectsSinksResourceApi {
   /// Example: "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^projects/[^/]+/sinks/[^/]+$".
   ///
-  /// [updateMask] - Optional. Field mask that specifies the fields in sink that
-  /// need an update. A sink field will be overwritten if, and only if, it is in
-  /// the update mask. name and output only fields cannot be updated.An empty
-  /// updateMask is temporarily treated as using the following mask for
-  /// backwards compatibility purposes:  destination,filter,includeChildren At
-  /// some point in the future, behavior will be removed and specifying an empty
-  /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
-  /// updateMask=filter.
-  ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
   /// writer_identity in the updated sink depends on both the old and new values
@@ -3343,6 +3701,19 @@ class ProjectsSinksResourceApi {
   /// It is an error if the old value is true and the new value is set to false
   /// or defaulted to false.
   ///
+  /// [updateMask] - Optional. Field mask that specifies the fields in sink that
+  /// need an update. A sink field will be overwritten if, and only if, it is in
+  /// the update mask. name and output only fields cannot be updated.An empty
+  /// updateMask is temporarily treated as using the following mask for
+  /// backwards compatibility purposes:  destination,filter,includeChildren At
+  /// some point in the future, behavior will be removed and specifying an empty
+  /// updateMask will be an error.For a detailed FieldMask definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
+  /// updateMask=filter.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogSink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3351,7 +3722,9 @@ class ProjectsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogSink> patch(LogSink request, core.String sinkName,
-      {core.String updateMask, core.bool uniqueWriterIdentity}) {
+      {core.bool uniqueWriterIdentity,
+      core.String updateMask,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3365,11 +3738,14 @@ class ProjectsSinksResourceApi {
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
     }
+    if (uniqueWriterIdentity != null) {
+      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
     }
-    if (uniqueWriterIdentity != null) {
-      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
@@ -3401,16 +3777,6 @@ class ProjectsSinksResourceApi {
   /// Example: "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^projects/[^/]+/sinks/[^/]+$".
   ///
-  /// [updateMask] - Optional. Field mask that specifies the fields in sink that
-  /// need an update. A sink field will be overwritten if, and only if, it is in
-  /// the update mask. name and output only fields cannot be updated.An empty
-  /// updateMask is temporarily treated as using the following mask for
-  /// backwards compatibility purposes:  destination,filter,includeChildren At
-  /// some point in the future, behavior will be removed and specifying an empty
-  /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
-  /// updateMask=filter.
-  ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
   /// writer_identity in the updated sink depends on both the old and new values
@@ -3422,6 +3788,19 @@ class ProjectsSinksResourceApi {
   /// It is an error if the old value is true and the new value is set to false
   /// or defaulted to false.
   ///
+  /// [updateMask] - Optional. Field mask that specifies the fields in sink that
+  /// need an update. A sink field will be overwritten if, and only if, it is in
+  /// the update mask. name and output only fields cannot be updated.An empty
+  /// updateMask is temporarily treated as using the following mask for
+  /// backwards compatibility purposes:  destination,filter,includeChildren At
+  /// some point in the future, behavior will be removed and specifying an empty
+  /// updateMask will be an error.For a detailed FieldMask definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
+  /// updateMask=filter.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LogSink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3430,7 +3809,9 @@ class ProjectsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogSink> update(LogSink request, core.String sinkName,
-      {core.String updateMask, core.bool uniqueWriterIdentity}) {
+      {core.bool uniqueWriterIdentity,
+      core.String updateMask,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3444,11 +3825,14 @@ class ProjectsSinksResourceApi {
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
     }
+    if (uniqueWriterIdentity != null) {
+      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
     }
-    if (uniqueWriterIdentity != null) {
-      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
@@ -4892,6 +5276,8 @@ class MetricDescriptor {
 
   /// A concise name for the metric, which can be displayed in user interfaces.
   /// Use sentence case without an ending period, for example "Request count".
+  /// This field is optional but it is recommended to be set for any metrics
+  /// associated with user-visible concepts, such as Quota.
   core.String displayName;
 
   /// The set of labels that can be used to describe a specific instance of this
@@ -4913,13 +5299,7 @@ class MetricDescriptor {
   /// and sets a new start time for the following points.
   core.String metricKind;
 
-  /// The resource name of the metric descriptor. Depending on the
-  /// implementation, the name typically includes: (1) the parent resource name
-  /// that defines the scope of the metric type or of its data; and (2) the
-  /// metric's URL-encoded type, which also appears in the type field of this
-  /// descriptor. For example, following is the resource name of a custom metric
-  /// within the GCP project my-project-id:
-  /// "projects/my-project-id/metricDescriptors/custom.googleapis.com%2Finvoice%2Fpaid%2Famount"
+  /// The resource name of the metric descriptor.
   core.String name;
 
   /// The metric type, including its DNS name prefix. The type is not

@@ -140,6 +140,9 @@ class CoursesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Course].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -147,7 +150,7 @@ class CoursesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Course> create(Course request) {
+  async.Future<Course> create(Course request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -157,6 +160,9 @@ class CoursesResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses';
@@ -185,6 +191,9 @@ class CoursesResourceApi {
   /// This identifier can be either the Classroom-assigned identifier or an
   /// alias.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -192,7 +201,7 @@ class CoursesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String id) {
+  async.Future<Empty> delete(core.String id, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -202,6 +211,9 @@ class CoursesResourceApi {
 
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
@@ -230,6 +242,9 @@ class CoursesResourceApi {
   /// This identifier can be either the Classroom-assigned identifier or an
   /// alias.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Course].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -237,7 +252,7 @@ class CoursesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Course> get(core.String id) {
+  async.Future<Course> get(core.String id, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -247,6 +262,9 @@ class CoursesResourceApi {
 
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
@@ -307,6 +325,9 @@ class CoursesResourceApi {
   /// * the email address of the user
   /// * the string literal `"me"`, indicating the requesting user
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListCoursesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -319,7 +340,8 @@ class CoursesResourceApi {
       core.String pageToken,
       core.int pageSize,
       core.List<core.String> courseStates,
-      core.String teacherId}) {
+      core.String teacherId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -341,6 +363,9 @@ class CoursesResourceApi {
     }
     if (teacherId != null) {
       _queryParams["teacherId"] = [teacherId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses';
@@ -396,6 +421,9 @@ class CoursesResourceApi {
   ///
   /// `updateMask=<field1>,<field2>,...`
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Course].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -404,7 +432,7 @@ class CoursesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Course> patch(Course request, core.String id,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -420,6 +448,9 @@ class CoursesResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
@@ -452,6 +483,9 @@ class CoursesResourceApi {
   /// This identifier can be either the Classroom-assigned identifier or an
   /// alias.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Course].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -459,7 +493,8 @@ class CoursesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Course> update(Course request, core.String id) {
+  async.Future<Course> update(Course request, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -472,6 +507,9 @@ class CoursesResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
@@ -512,6 +550,9 @@ class CoursesAliasesResourceApi {
   /// This identifier can be either the Classroom-assigned identifier or an
   /// alias.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CourseAlias].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -519,7 +560,8 @@ class CoursesAliasesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CourseAlias> create(CourseAlias request, core.String courseId) {
+  async.Future<CourseAlias> create(CourseAlias request, core.String courseId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -532,6 +574,9 @@ class CoursesAliasesResourceApi {
     }
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -567,6 +612,9 @@ class CoursesAliasesResourceApi {
   /// [alias] - Alias to delete.
   /// This may not be the Classroom-assigned identifier.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -574,7 +622,8 @@ class CoursesAliasesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String courseId, core.String alias) {
+  async.Future<Empty> delete(core.String courseId, core.String alias,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -587,6 +636,9 @@ class CoursesAliasesResourceApi {
     }
     if (alias == null) {
       throw new core.ArgumentError("Parameter alias is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -632,6 +684,9 @@ class CoursesAliasesResourceApi {
   ///
   /// The server may return fewer than the specified number of results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListCourseAliasesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -640,7 +695,7 @@ class CoursesAliasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCourseAliasesResponse> list(core.String courseId,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -656,6 +711,9 @@ class CoursesAliasesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -699,6 +757,9 @@ class CoursesAnnouncementsResourceApi {
   /// This identifier can be either the Classroom-assigned identifier or an
   /// alias.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Announcement].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -706,8 +767,8 @@ class CoursesAnnouncementsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Announcement> create(
-      Announcement request, core.String courseId) {
+  async.Future<Announcement> create(Announcement request, core.String courseId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -720,6 +781,9 @@ class CoursesAnnouncementsResourceApi {
     }
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -759,6 +823,9 @@ class CoursesAnnouncementsResourceApi {
   /// [id] - Identifier of the announcement to delete.
   /// This identifier is a Classroom-assigned identifier.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -766,7 +833,8 @@ class CoursesAnnouncementsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String courseId, core.String id) {
+  async.Future<Empty> delete(core.String courseId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -779,6 +847,9 @@ class CoursesAnnouncementsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -813,6 +884,9 @@ class CoursesAnnouncementsResourceApi {
   ///
   /// [id] - Identifier of the announcement.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Announcement].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -820,7 +894,8 @@ class CoursesAnnouncementsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Announcement> get(core.String courseId, core.String id) {
+  async.Future<Announcement> get(core.String courseId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -833,6 +908,9 @@ class CoursesAnnouncementsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -867,10 +945,6 @@ class CoursesAnnouncementsResourceApi {
   /// This identifier can be either the Classroom-assigned identifier or an
   /// alias.
   ///
-  /// [announcementStates] - Restriction on the `state` of announcements
-  /// returned.
-  /// If this argument is left unspecified, the default value is `PUBLISHED`.
-  ///
   /// [pageToken] - nextPageToken
   /// value returned from a previous
   /// list call,
@@ -892,6 +966,13 @@ class CoursesAnnouncementsResourceApi {
   ///
   /// The server may return fewer than the specified number of results.
   ///
+  /// [announcementStates] - Restriction on the `state` of announcements
+  /// returned.
+  /// If this argument is left unspecified, the default value is `PUBLISHED`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListAnnouncementsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -900,10 +981,11 @@ class CoursesAnnouncementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAnnouncementsResponse> list(core.String courseId,
-      {core.List<core.String> announcementStates,
-      core.String pageToken,
+      {core.String pageToken,
       core.String orderBy,
-      core.int pageSize}) {
+      core.int pageSize,
+      core.List<core.String> announcementStates,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -914,9 +996,6 @@ class CoursesAnnouncementsResourceApi {
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
     }
-    if (announcementStates != null) {
-      _queryParams["announcementStates"] = announcementStates;
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -925,6 +1004,12 @@ class CoursesAnnouncementsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (announcementStates != null) {
+      _queryParams["announcementStates"] = announcementStates;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -964,6 +1049,9 @@ class CoursesAnnouncementsResourceApi {
   ///
   /// [id] - Identifier of the announcement.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Announcement].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -974,7 +1062,8 @@ class CoursesAnnouncementsResourceApi {
   async.Future<Announcement> modifyAssignees(
       ModifyAnnouncementAssigneesRequest request,
       core.String courseId,
-      core.String id) {
+      core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -990,6 +1079,9 @@ class CoursesAnnouncementsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -1044,6 +1136,9 @@ class CoursesAnnouncementsResourceApi {
   /// * `state`
   /// * `scheduled_time`
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Announcement].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1053,7 +1148,7 @@ class CoursesAnnouncementsResourceApi {
   /// this method will complete with the same error.
   async.Future<Announcement> patch(
       Announcement request, core.String courseId, core.String id,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1072,6 +1167,9 @@ class CoursesAnnouncementsResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -1126,6 +1224,9 @@ class CoursesCourseWorkResourceApi {
   /// This identifier can be either the Classroom-assigned identifier or an
   /// alias.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CourseWork].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1133,7 +1234,8 @@ class CoursesCourseWorkResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CourseWork> create(CourseWork request, core.String courseId) {
+  async.Future<CourseWork> create(CourseWork request, core.String courseId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1146,6 +1248,9 @@ class CoursesCourseWorkResourceApi {
     }
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -1185,6 +1290,9 @@ class CoursesCourseWorkResourceApi {
   /// [id] - Identifier of the course work to delete.
   /// This identifier is a Classroom-assigned identifier.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1192,7 +1300,8 @@ class CoursesCourseWorkResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String courseId, core.String id) {
+  async.Future<Empty> delete(core.String courseId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1205,6 +1314,9 @@ class CoursesCourseWorkResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -1239,6 +1351,9 @@ class CoursesCourseWorkResourceApi {
   ///
   /// [id] - Identifier of the course work.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CourseWork].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1246,7 +1361,8 @@ class CoursesCourseWorkResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CourseWork> get(core.String courseId, core.String id) {
+  async.Future<CourseWork> get(core.String courseId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1259,6 +1375,9 @@ class CoursesCourseWorkResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -1319,6 +1438,9 @@ class CoursesCourseWorkResourceApi {
   /// is returned. If unspecified, items with a work status of `PUBLISHED`
   /// is returned.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListCourseWorkResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1330,7 +1452,8 @@ class CoursesCourseWorkResourceApi {
       {core.String pageToken,
       core.String orderBy,
       core.int pageSize,
-      core.List<core.String> courseWorkStates}) {
+      core.List<core.String> courseWorkStates,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1352,6 +1475,9 @@ class CoursesCourseWorkResourceApi {
     }
     if (courseWorkStates != null) {
       _queryParams["courseWorkStates"] = courseWorkStates;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -1390,6 +1516,9 @@ class CoursesCourseWorkResourceApi {
   ///
   /// [id] - Identifier of the coursework.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CourseWork].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1400,7 +1529,8 @@ class CoursesCourseWorkResourceApi {
   async.Future<CourseWork> modifyAssignees(
       ModifyCourseWorkAssigneesRequest request,
       core.String courseId,
-      core.String id) {
+      core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1416,6 +1546,9 @@ class CoursesCourseWorkResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -1485,6 +1618,9 @@ class CoursesCourseWorkResourceApi {
   /// * `scheduled_time`
   /// * `submission_modification_mode`
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CourseWork].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1494,7 +1630,7 @@ class CoursesCourseWorkResourceApi {
   /// this method will complete with the same error.
   async.Future<CourseWork> patch(
       CourseWork request, core.String courseId, core.String id,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1513,6 +1649,9 @@ class CoursesCourseWorkResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -1556,6 +1695,9 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   ///
   /// [id] - Identifier of the student submission.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [StudentSubmission].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1564,7 +1706,8 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<StudentSubmission> get(
-      core.String courseId, core.String courseWorkId, core.String id) {
+      core.String courseId, core.String courseWorkId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1580,6 +1723,9 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -1624,6 +1770,15 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// This may be set to the string literal `"-"` to request student work for
   /// all course work in the specified course.
   ///
+  /// [userId] - Optional argument to restrict returned student work to those
+  /// owned by the
+  /// student with the specified identifier. The identifier can be one of the
+  /// following:
+  ///
+  /// * the numeric identifier for the user
+  /// * the email address of the user
+  /// * the string literal `"me"`, indicating the requesting user
+  ///
   /// [late] - Requested lateness value. If specified, returned student
   /// submissions are
   /// restricted by the requested value.
@@ -1651,14 +1806,8 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// submissions
   /// match one of the specified submission states.
   ///
-  /// [userId] - Optional argument to restrict returned student work to those
-  /// owned by the
-  /// student with the specified identifier. The identifier can be one of the
-  /// following:
-  ///
-  /// * the numeric identifier for the user
-  /// * the email address of the user
-  /// * the string literal `"me"`, indicating the requesting user
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListStudentSubmissionsResponse].
   ///
@@ -1669,11 +1818,12 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListStudentSubmissionsResponse> list(
       core.String courseId, core.String courseWorkId,
-      {core.String late,
+      {core.String userId,
+      core.String late,
       core.String pageToken,
       core.int pageSize,
       core.List<core.String> states,
-      core.String userId}) {
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1687,6 +1837,9 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     if (courseWorkId == null) {
       throw new core.ArgumentError("Parameter courseWorkId is required.");
     }
+    if (userId != null) {
+      _queryParams["userId"] = [userId];
+    }
     if (late != null) {
       _queryParams["late"] = [late];
     }
@@ -1699,8 +1852,8 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     if (states != null) {
       _queryParams["states"] = states;
     }
-    if (userId != null) {
-      _queryParams["userId"] = [userId];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -1751,6 +1904,9 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   ///
   /// [id] - Identifier of the student submission.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [StudentSubmission].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1762,7 +1918,8 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
       ModifyAttachmentsRequest request,
       core.String courseId,
       core.String courseWorkId,
-      core.String id) {
+      core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1781,6 +1938,9 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -1841,6 +2001,9 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// * `draft_grade`
   /// * `assigned_grade`
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [StudentSubmission].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1850,7 +2013,7 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// this method will complete with the same error.
   async.Future<StudentSubmission> patch(StudentSubmission request,
       core.String courseId, core.String courseWorkId, core.String id,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1872,6 +2035,9 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -1926,6 +2092,9 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   ///
   /// [id] - Identifier of the student submission.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1934,7 +2103,8 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> reclaim(ReclaimStudentSubmissionRequest request,
-      core.String courseId, core.String courseWorkId, core.String id) {
+      core.String courseId, core.String courseWorkId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1953,6 +2123,9 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -2009,6 +2182,9 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   ///
   /// [id] - Identifier of the student submission.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2017,7 +2193,8 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> return_(ReturnStudentSubmissionRequest request,
-      core.String courseId, core.String courseWorkId, core.String id) {
+      core.String courseId, core.String courseWorkId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2036,6 +2213,9 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -2089,6 +2269,9 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   ///
   /// [id] - Identifier of the student submission.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2097,7 +2280,8 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> turnIn(TurnInStudentSubmissionRequest request,
-      core.String courseId, core.String courseWorkId, core.String id) {
+      core.String courseId, core.String courseWorkId, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2116,6 +2300,9 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -2169,6 +2356,9 @@ class CoursesStudentsResourceApi {
   /// corresponds to the requesting user; it may be omitted if the requesting
   /// user has administrative permissions to create students for any user.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Student].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2177,7 +2367,7 @@ class CoursesStudentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Student> create(Student request, core.String courseId,
-      {core.String enrollmentCode}) {
+      {core.String enrollmentCode, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2193,6 +2383,9 @@ class CoursesStudentsResourceApi {
     }
     if (enrollmentCode != null) {
       _queryParams["enrollmentCode"] = [enrollmentCode];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -2231,6 +2424,9 @@ class CoursesStudentsResourceApi {
   /// * the email address of the user
   /// * the string literal `"me"`, indicating the requesting user
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2238,7 +2434,8 @@ class CoursesStudentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String courseId, core.String userId) {
+  async.Future<Empty> delete(core.String courseId, core.String userId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2251,6 +2448,9 @@ class CoursesStudentsResourceApi {
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -2290,6 +2490,9 @@ class CoursesStudentsResourceApi {
   /// * the email address of the user
   /// * the string literal `"me"`, indicating the requesting user
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Student].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2297,7 +2500,8 @@ class CoursesStudentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Student> get(core.String courseId, core.String userId) {
+  async.Future<Student> get(core.String courseId, core.String userId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2310,6 +2514,9 @@ class CoursesStudentsResourceApi {
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -2352,6 +2559,9 @@ class CoursesStudentsResourceApi {
   ///
   /// The server may return fewer than the specified number of results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListStudentsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2360,7 +2570,7 @@ class CoursesStudentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListStudentsResponse> list(core.String courseId,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2376,6 +2586,9 @@ class CoursesStudentsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -2421,6 +2634,9 @@ class CoursesTeachersResourceApi {
   /// This identifier can be either the Classroom-assigned identifier or an
   /// alias.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Teacher].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2428,7 +2644,8 @@ class CoursesTeachersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Teacher> create(Teacher request, core.String courseId) {
+  async.Future<Teacher> create(Teacher request, core.String courseId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2441,6 +2658,9 @@ class CoursesTeachersResourceApi {
     }
     if (courseId == null) {
       throw new core.ArgumentError("Parameter courseId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -2481,6 +2701,9 @@ class CoursesTeachersResourceApi {
   /// * the email address of the user
   /// * the string literal `"me"`, indicating the requesting user
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2488,7 +2711,8 @@ class CoursesTeachersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String courseId, core.String userId) {
+  async.Future<Empty> delete(core.String courseId, core.String userId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2501,6 +2725,9 @@ class CoursesTeachersResourceApi {
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -2540,6 +2767,9 @@ class CoursesTeachersResourceApi {
   /// * the email address of the user
   /// * the string literal `"me"`, indicating the requesting user
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Teacher].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2547,7 +2777,8 @@ class CoursesTeachersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Teacher> get(core.String courseId, core.String userId) {
+  async.Future<Teacher> get(core.String courseId, core.String userId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2560,6 +2791,9 @@ class CoursesTeachersResourceApi {
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -2602,6 +2836,9 @@ class CoursesTeachersResourceApi {
   ///
   /// The server may return fewer than the specified number of results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListTeachersResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2610,7 +2847,7 @@ class CoursesTeachersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTeachersResponse> list(core.String courseId,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2626,6 +2863,9 @@ class CoursesTeachersResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/courses/' +
@@ -2667,6 +2907,9 @@ class InvitationsResourceApi {
   ///
   /// [id] - Identifier of the invitation to accept.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2674,7 +2917,7 @@ class InvitationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> accept(core.String id) {
+  async.Future<Empty> accept(core.String id, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2684,6 +2927,9 @@ class InvitationsResourceApi {
 
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/invitations/' + commons.Escaper.ecapeVariable('$id') + ':accept';
@@ -2714,6 +2960,9 @@ class InvitationsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Invitation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2721,7 +2970,7 @@ class InvitationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Invitation> create(Invitation request) {
+  async.Future<Invitation> create(Invitation request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2731,6 +2980,9 @@ class InvitationsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/invitations';
@@ -2757,6 +3009,9 @@ class InvitationsResourceApi {
   ///
   /// [id] - Identifier of the invitation to delete.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2764,7 +3019,7 @@ class InvitationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String id) {
+  async.Future<Empty> delete(core.String id, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2774,6 +3029,9 @@ class InvitationsResourceApi {
 
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/invitations/' + commons.Escaper.ecapeVariable('$id');
@@ -2799,6 +3057,9 @@ class InvitationsResourceApi {
   ///
   /// [id] - Identifier of the invitation to return.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Invitation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2806,7 +3067,7 @@ class InvitationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Invitation> get(core.String id) {
+  async.Future<Invitation> get(core.String id, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2816,6 +3077,9 @@ class InvitationsResourceApi {
 
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/invitations/' + commons.Escaper.ecapeVariable('$id');
@@ -2865,6 +3129,9 @@ class InvitationsResourceApi {
   /// specified
   /// identifier.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListInvitationsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2876,7 +3143,8 @@ class InvitationsResourceApi {
       {core.String pageToken,
       core.String userId,
       core.int pageSize,
-      core.String courseId}) {
+      core.String courseId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2895,6 +3163,9 @@ class InvitationsResourceApi {
     }
     if (courseId != null) {
       _queryParams["courseId"] = [courseId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/invitations';
@@ -2931,24 +3202,27 @@ class RegistrationsResourceApi {
   /// This method may return the following error codes:
   ///
   /// * `PERMISSION_DENIED` if:
-  ///   * the authenticated user does not have permission to receive
-  ///     notifications from the requested field; or
+  ///     * the authenticated user does not have permission to receive
+  ///       notifications from the requested field; or
   /// * the credential provided does not include the appropriate scope for the
-  ///     requested feed.
-  ///   * another access error is encountered.
+  ///       requested feed.
+  ///     * another access error is encountered.
   /// * `INVALID_ARGUMENT` if:
-  ///   * no `destination` is specified, or the specified `destination` is not
-  ///     valid; or
-  ///   * no `feed` is specified, or the specified `feed` is not valid.
+  /// * no `destination` is specified, or the specified `destination` is not
+  ///       valid; or
+  ///     * no `feed` is specified, or the specified `feed` is not valid.
   /// * `NOT_FOUND` if:
   /// * the specified `feed` cannot be located, or the requesting user does not
-  ///     have permission to determine whether or not it exists; or
-  ///   * the specified `destination` cannot be located, or Classroom has not
-  ///     been granted permission to publish to it.
+  ///       have permission to determine whether or not it exists; or
+  ///     * the specified `destination` cannot be located, or Classroom has not
+  ///       been granted permission to publish to it.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [Registration].
   ///
@@ -2957,7 +3231,8 @@ class RegistrationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Registration> create(Registration request) {
+  async.Future<Registration> create(Registration request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2967,6 +3242,9 @@ class RegistrationsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/registrations';
@@ -2988,6 +3266,9 @@ class RegistrationsResourceApi {
   /// [registrationId] - The `registration_id` of the `Registration` to be
   /// deleted.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2995,7 +3276,8 @@ class RegistrationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String registrationId) {
+  async.Future<Empty> delete(core.String registrationId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3005,6 +3287,9 @@ class RegistrationsResourceApi {
 
     if (registrationId == null) {
       throw new core.ArgumentError("Parameter registrationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -3048,6 +3333,9 @@ class UserProfilesResourceApi {
   /// * the email address of the user
   /// * the string literal `"me"`, indicating the requesting user
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UserProfile].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3055,7 +3343,7 @@ class UserProfilesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserProfile> get(core.String userId) {
+  async.Future<UserProfile> get(core.String userId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3065,6 +3353,9 @@ class UserProfilesResourceApi {
 
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/userProfiles/' + commons.Escaper.ecapeVariable('$userId');
@@ -3123,6 +3414,9 @@ class UserProfilesGuardianInvitationsResourceApi {
   ///
   /// [studentId] - ID of the student (in standard format)
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GuardianInvitation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3131,7 +3425,8 @@ class UserProfilesGuardianInvitationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GuardianInvitation> create(
-      GuardianInvitation request, core.String studentId) {
+      GuardianInvitation request, core.String studentId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3144,6 +3439,9 @@ class UserProfilesGuardianInvitationsResourceApi {
     }
     if (studentId == null) {
       throw new core.ArgumentError("Parameter studentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/userProfiles/' +
@@ -3182,6 +3480,9 @@ class UserProfilesGuardianInvitationsResourceApi {
   /// [invitationId] - The `id` field of the `GuardianInvitation` being
   /// requested.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GuardianInvitation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3190,7 +3491,8 @@ class UserProfilesGuardianInvitationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GuardianInvitation> get(
-      core.String studentId, core.String invitationId) {
+      core.String studentId, core.String invitationId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3203,6 +3505,9 @@ class UserProfilesGuardianInvitationsResourceApi {
     }
     if (invitationId == null) {
       throw new core.ArgumentError("Parameter invitationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/userProfiles/' +
@@ -3271,6 +3576,9 @@ class UserProfilesGuardianInvitationsResourceApi {
   /// `invited_email_address`
   /// will be returned.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListGuardianInvitationsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3282,7 +3590,8 @@ class UserProfilesGuardianInvitationsResourceApi {
       {core.String pageToken,
       core.int pageSize,
       core.List<core.String> states,
-      core.String invitedEmailAddress}) {
+      core.String invitedEmailAddress,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3304,6 +3613,9 @@ class UserProfilesGuardianInvitationsResourceApi {
     }
     if (invitedEmailAddress != null) {
       _queryParams["invitedEmailAddress"] = [invitedEmailAddress];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/userProfiles/' +
@@ -3361,6 +3673,9 @@ class UserProfilesGuardianInvitationsResourceApi {
   ///
   /// `updateMask=<field1>,<field2>,...`
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GuardianInvitation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3370,7 +3685,7 @@ class UserProfilesGuardianInvitationsResourceApi {
   /// this method will complete with the same error.
   async.Future<GuardianInvitation> patch(GuardianInvitation request,
       core.String studentId, core.String invitationId,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3389,6 +3704,9 @@ class UserProfilesGuardianInvitationsResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/userProfiles/' +
@@ -3443,6 +3761,9 @@ class UserProfilesGuardiansResourceApi {
   ///
   /// [guardianId] - The `id` field from a `Guardian`.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3450,7 +3771,8 @@ class UserProfilesGuardiansResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String studentId, core.String guardianId) {
+  async.Future<Empty> delete(core.String studentId, core.String guardianId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3463,6 +3785,9 @@ class UserProfilesGuardiansResourceApi {
     }
     if (guardianId == null) {
       throw new core.ArgumentError("Parameter guardianId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/userProfiles/' +
@@ -3506,6 +3831,9 @@ class UserProfilesGuardiansResourceApi {
   ///
   /// [guardianId] - The `id` field from a `Guardian`.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Guardian].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3513,7 +3841,8 @@ class UserProfilesGuardiansResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Guardian> get(core.String studentId, core.String guardianId) {
+  async.Future<Guardian> get(core.String studentId, core.String guardianId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3526,6 +3855,9 @@ class UserProfilesGuardiansResourceApi {
     }
     if (guardianId == null) {
       throw new core.ArgumentError("Parameter guardianId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/userProfiles/' +
@@ -3593,6 +3925,9 @@ class UserProfilesGuardiansResourceApi {
   /// to, resulting in this guardian link.
   /// This filter can only be used by domain administrators.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListGuardiansResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3603,7 +3938,8 @@ class UserProfilesGuardiansResourceApi {
   async.Future<ListGuardiansResponse> list(core.String studentId,
       {core.String pageToken,
       core.int pageSize,
-      core.String invitedEmailAddress}) {
+      core.String invitedEmailAddress,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3622,6 +3958,9 @@ class UserProfilesGuardiansResourceApi {
     }
     if (invitedEmailAddress != null) {
       _queryParams["invitedEmailAddress"] = [invitedEmailAddress];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/userProfiles/' +

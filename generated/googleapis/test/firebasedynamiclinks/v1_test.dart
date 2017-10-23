@@ -119,14 +119,14 @@ checkCreateShortDynamicLinkRequest(api.CreateShortDynamicLinkRequest o) {
   buildCounterCreateShortDynamicLinkRequest--;
 }
 
-buildUnnamed2241() {
+buildUnnamed2239() {
   var o = new core.List<api.DynamicLinkWarning>();
   o.add(buildDynamicLinkWarning());
   o.add(buildDynamicLinkWarning());
   return o;
 }
 
-checkUnnamed2241(core.List<api.DynamicLinkWarning> o) {
+checkUnnamed2239(core.List<api.DynamicLinkWarning> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDynamicLinkWarning(o[0]);
   checkDynamicLinkWarning(o[1]);
@@ -139,7 +139,7 @@ buildCreateShortDynamicLinkResponse() {
   if (buildCounterCreateShortDynamicLinkResponse < 3) {
     o.previewLink = "foo";
     o.shortLink = "foo";
-    o.warning = buildUnnamed2241();
+    o.warning = buildUnnamed2239();
   }
   buildCounterCreateShortDynamicLinkResponse--;
   return o;
@@ -150,9 +150,28 @@ checkCreateShortDynamicLinkResponse(api.CreateShortDynamicLinkResponse o) {
   if (buildCounterCreateShortDynamicLinkResponse < 3) {
     unittest.expect(o.previewLink, unittest.equals('foo'));
     unittest.expect(o.shortLink, unittest.equals('foo'));
-    checkUnnamed2241(o.warning);
+    checkUnnamed2239(o.warning);
   }
   buildCounterCreateShortDynamicLinkResponse--;
+}
+
+core.int buildCounterDesktopInfo = 0;
+buildDesktopInfo() {
+  var o = new api.DesktopInfo();
+  buildCounterDesktopInfo++;
+  if (buildCounterDesktopInfo < 3) {
+    o.desktopFallbackLink = "foo";
+  }
+  buildCounterDesktopInfo--;
+  return o;
+}
+
+checkDesktopInfo(api.DesktopInfo o) {
+  buildCounterDesktopInfo++;
+  if (buildCounterDesktopInfo < 3) {
+    unittest.expect(o.desktopFallbackLink, unittest.equals('foo'));
+  }
+  buildCounterDesktopInfo--;
 }
 
 core.int buildCounterDeviceInfo = 0;
@@ -212,6 +231,7 @@ buildDynamicLinkInfo() {
   if (buildCounterDynamicLinkInfo < 3) {
     o.analyticsInfo = buildAnalyticsInfo();
     o.androidInfo = buildAndroidInfo();
+    o.desktopInfo = buildDesktopInfo();
     o.dynamicLinkDomain = "foo";
     o.iosInfo = buildIosInfo();
     o.link = "foo";
@@ -227,6 +247,7 @@ checkDynamicLinkInfo(api.DynamicLinkInfo o) {
   if (buildCounterDynamicLinkInfo < 3) {
     checkAnalyticsInfo(o.analyticsInfo);
     checkAndroidInfo(o.androidInfo);
+    checkDesktopInfo(o.desktopInfo);
     unittest.expect(o.dynamicLinkDomain, unittest.equals('foo'));
     checkIosInfo(o.iosInfo);
     unittest.expect(o.link, unittest.equals('foo'));
@@ -236,14 +257,14 @@ checkDynamicLinkInfo(api.DynamicLinkInfo o) {
   buildCounterDynamicLinkInfo--;
 }
 
-buildUnnamed2242() {
+buildUnnamed2240() {
   var o = new core.List<api.DynamicLinkEventStat>();
   o.add(buildDynamicLinkEventStat());
   o.add(buildDynamicLinkEventStat());
   return o;
 }
 
-checkUnnamed2242(core.List<api.DynamicLinkEventStat> o) {
+checkUnnamed2240(core.List<api.DynamicLinkEventStat> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDynamicLinkEventStat(o[0]);
   checkDynamicLinkEventStat(o[1]);
@@ -254,7 +275,7 @@ buildDynamicLinkStats() {
   var o = new api.DynamicLinkStats();
   buildCounterDynamicLinkStats++;
   if (buildCounterDynamicLinkStats < 3) {
-    o.linkEventStats = buildUnnamed2242();
+    o.linkEventStats = buildUnnamed2240();
   }
   buildCounterDynamicLinkStats--;
   return o;
@@ -263,7 +284,7 @@ buildDynamicLinkStats() {
 checkDynamicLinkStats(api.DynamicLinkStats o) {
   buildCounterDynamicLinkStats++;
   if (buildCounterDynamicLinkStats < 3) {
-    checkUnnamed2242(o.linkEventStats);
+    checkUnnamed2240(o.linkEventStats);
   }
   buildCounterDynamicLinkStats--;
 }
@@ -546,6 +567,14 @@ main() {
     });
   });
 
+  unittest.group("obj-schema-DesktopInfo", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildDesktopInfo();
+      var od = new api.DesktopInfo.fromJson(o.toJson());
+      checkDesktopInfo(od);
+    });
+  });
+
   unittest.group("obj-schema-DeviceInfo", () {
     unittest.test("to-json--from-json", () {
       var o = buildDeviceInfo();
@@ -657,6 +686,7 @@ main() {
       api.ShortLinksResourceApi res =
           new api.FirebasedynamiclinksApi(mock).shortLinks;
       var arg_request = buildCreateShortDynamicLinkRequest();
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.CreateShortDynamicLinkRequest.fromJson(json);
         checkCreateShortDynamicLinkRequest(obj);
@@ -690,6 +720,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -697,7 +728,7 @@ main() {
         var resp = convert.JSON.encode(buildCreateShortDynamicLinkResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.create(arg_request).then(
+      res.create(arg_request, $fields: arg_$fields).then(
           unittest.expectAsync1(((api.CreateShortDynamicLinkResponse response) {
         checkCreateShortDynamicLinkResponse(response);
       })));
@@ -710,6 +741,7 @@ main() {
       api.V1ResourceApi res = new api.FirebasedynamiclinksApi(mock).v1;
       var arg_dynamicLink = "foo";
       var arg_durationDays = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -751,6 +783,7 @@ main() {
         }
         unittest.expect(
             queryMap["durationDays"].first, unittest.equals(arg_durationDays));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -759,7 +792,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .getLinkStats(arg_dynamicLink, durationDays: arg_durationDays)
+          .getLinkStats(arg_dynamicLink,
+              durationDays: arg_durationDays, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.DynamicLinkStats response) {
         checkDynamicLinkStats(response);
       })));
@@ -769,6 +803,7 @@ main() {
       var mock = new HttpServerMock();
       api.V1ResourceApi res = new api.FirebasedynamiclinksApi(mock).v1;
       var arg_request = buildGetIosPostInstallAttributionRequest();
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.GetIosPostInstallAttributionRequest.fromJson(json);
         checkGetIosPostInstallAttributionRequest(obj);
@@ -802,6 +837,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -810,7 +846,7 @@ main() {
             convert.JSON.encode(buildGetIosPostInstallAttributionResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.installAttribution(arg_request).then(unittest
+      res.installAttribution(arg_request, $fields: arg_$fields).then(unittest
           .expectAsync1(((api.GetIosPostInstallAttributionResponse response) {
         checkGetIosPostInstallAttributionResponse(response);
       })));

@@ -85,6 +85,9 @@ class SpreadsheetsResourceApi {
   ///
   /// [spreadsheetId] - The spreadsheet to apply the updates to.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BatchUpdateSpreadsheetResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -93,7 +96,8 @@ class SpreadsheetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchUpdateSpreadsheetResponse> batchUpdate(
-      BatchUpdateSpreadsheetRequest request, core.String spreadsheetId) {
+      BatchUpdateSpreadsheetRequest request, core.String spreadsheetId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -106,6 +110,9 @@ class SpreadsheetsResourceApi {
     }
     if (spreadsheetId == null) {
       throw new core.ArgumentError("Parameter spreadsheetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v4/spreadsheets/' +
@@ -128,6 +135,9 @@ class SpreadsheetsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Spreadsheet].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -135,7 +145,7 @@ class SpreadsheetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Spreadsheet> create(Spreadsheet request) {
+  async.Future<Spreadsheet> create(Spreadsheet request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -145,6 +155,9 @@ class SpreadsheetsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v4/spreadsheets';
@@ -189,6 +202,9 @@ class SpreadsheetsResourceApi {
   ///
   /// [ranges] - The ranges to retrieve from the spreadsheet.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Spreadsheet].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -197,7 +213,9 @@ class SpreadsheetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Spreadsheet> get(core.String spreadsheetId,
-      {core.bool includeGridData, core.List<core.String> ranges}) {
+      {core.bool includeGridData,
+      core.List<core.String> ranges,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -213,6 +231,9 @@ class SpreadsheetsResourceApi {
     }
     if (ranges != null) {
       _queryParams["ranges"] = ranges;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v4/spreadsheets/' + commons.Escaper.ecapeVariable('$spreadsheetId');
@@ -255,6 +276,9 @@ class SpreadsheetsResourceApi {
   ///
   /// [spreadsheetId] - The spreadsheet to request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Spreadsheet].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -263,7 +287,8 @@ class SpreadsheetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Spreadsheet> getByDataFilter(
-      GetSpreadsheetByDataFilterRequest request, core.String spreadsheetId) {
+      GetSpreadsheetByDataFilterRequest request, core.String spreadsheetId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -276,6 +301,9 @@ class SpreadsheetsResourceApi {
     }
     if (spreadsheetId == null) {
       throw new core.ArgumentError("Parameter spreadsheetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v4/spreadsheets/' +
@@ -308,6 +336,9 @@ class SpreadsheetsDeveloperMetadataResourceApi {
   ///
   /// [metadataId] - The ID of the developer metadata to retrieve.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DeveloperMetadata].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -316,7 +347,8 @@ class SpreadsheetsDeveloperMetadataResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DeveloperMetadata> get(
-      core.String spreadsheetId, core.int metadataId) {
+      core.String spreadsheetId, core.int metadataId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -329,6 +361,9 @@ class SpreadsheetsDeveloperMetadataResourceApi {
     }
     if (metadataId == null) {
       throw new core.ArgumentError("Parameter metadataId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v4/spreadsheets/' +
@@ -357,6 +392,9 @@ class SpreadsheetsDeveloperMetadataResourceApi {
   ///
   /// [spreadsheetId] - The ID of the spreadsheet to retrieve metadata from.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SearchDeveloperMetadataResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -365,7 +403,8 @@ class SpreadsheetsDeveloperMetadataResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SearchDeveloperMetadataResponse> search(
-      SearchDeveloperMetadataRequest request, core.String spreadsheetId) {
+      SearchDeveloperMetadataRequest request, core.String spreadsheetId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -378,6 +417,9 @@ class SpreadsheetsDeveloperMetadataResourceApi {
     }
     if (spreadsheetId == null) {
       throw new core.ArgumentError("Parameter spreadsheetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v4/spreadsheets/' +
@@ -412,6 +454,9 @@ class SpreadsheetsSheetsResourceApi {
   ///
   /// [sheetId] - The ID of the sheet to copy.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SheetProperties].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -422,7 +467,8 @@ class SpreadsheetsSheetsResourceApi {
   async.Future<SheetProperties> copyTo(
       CopySheetToAnotherSpreadsheetRequest request,
       core.String spreadsheetId,
-      core.int sheetId) {
+      core.int sheetId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -438,6 +484,9 @@ class SpreadsheetsSheetsResourceApi {
     }
     if (sheetId == null) {
       throw new core.ArgumentError("Parameter sheetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v4/spreadsheets/' +
@@ -521,6 +570,9 @@ class SpreadsheetsValuesResourceApi {
   /// - "SERIAL_NUMBER" : A SERIAL_NUMBER.
   /// - "FORMATTED_STRING" : A FORMATTED_STRING.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AppendValuesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -534,7 +586,8 @@ class SpreadsheetsValuesResourceApi {
       core.String responseValueRenderOption,
       core.String insertDataOption,
       core.String valueInputOption,
-      core.String responseDateTimeRenderOption}) {
+      core.String responseDateTimeRenderOption,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -568,6 +621,9 @@ class SpreadsheetsValuesResourceApi {
         responseDateTimeRenderOption
       ];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
@@ -595,6 +651,9 @@ class SpreadsheetsValuesResourceApi {
   ///
   /// [spreadsheetId] - The ID of the spreadsheet to update.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BatchClearValuesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -603,7 +662,8 @@ class SpreadsheetsValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchClearValuesResponse> batchClear(
-      BatchClearValuesRequest request, core.String spreadsheetId) {
+      BatchClearValuesRequest request, core.String spreadsheetId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -616,6 +676,9 @@ class SpreadsheetsValuesResourceApi {
     }
     if (spreadsheetId == null) {
       throw new core.ArgumentError("Parameter spreadsheetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v4/spreadsheets/' +
@@ -644,6 +707,9 @@ class SpreadsheetsValuesResourceApi {
   ///
   /// [spreadsheetId] - The ID of the spreadsheet to update.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BatchClearValuesByDataFilterResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -652,7 +718,8 @@ class SpreadsheetsValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchClearValuesByDataFilterResponse> batchClearByDataFilter(
-      BatchClearValuesByDataFilterRequest request, core.String spreadsheetId) {
+      BatchClearValuesByDataFilterRequest request, core.String spreadsheetId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -665,6 +732,9 @@ class SpreadsheetsValuesResourceApi {
     }
     if (spreadsheetId == null) {
       throw new core.ArgumentError("Parameter spreadsheetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v4/spreadsheets/' +
@@ -688,20 +758,6 @@ class SpreadsheetsValuesResourceApi {
   ///
   /// [spreadsheetId] - The ID of the spreadsheet to retrieve data from.
   ///
-  /// [majorDimension] - The major dimension that results should use.
-  ///
-  /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
-  /// then requesting `range=A1:B2,majorDimension=ROWS` will return
-  /// `[[1,2],[3,4]]`,
-  /// whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
-  /// `[[1,3],[2,4]]`.
-  /// Possible string values are:
-  /// - "DIMENSION_UNSPECIFIED" : A DIMENSION_UNSPECIFIED.
-  /// - "ROWS" : A ROWS.
-  /// - "COLUMNS" : A COLUMNS.
-  ///
-  /// [ranges] - The A1 notation of the values to retrieve.
-  ///
   /// [dateTimeRenderOption] - How dates, times, and durations should be
   /// represented in the output.
   /// This is ignored if value_render_option is
@@ -719,6 +775,23 @@ class SpreadsheetsValuesResourceApi {
   /// - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
   /// - "FORMULA" : A FORMULA.
   ///
+  /// [majorDimension] - The major dimension that results should use.
+  ///
+  /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
+  /// then requesting `range=A1:B2,majorDimension=ROWS` will return
+  /// `[[1,2],[3,4]]`,
+  /// whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
+  /// `[[1,3],[2,4]]`.
+  /// Possible string values are:
+  /// - "DIMENSION_UNSPECIFIED" : A DIMENSION_UNSPECIFIED.
+  /// - "ROWS" : A ROWS.
+  /// - "COLUMNS" : A COLUMNS.
+  ///
+  /// [ranges] - The A1 notation of the values to retrieve.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BatchGetValuesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -727,10 +800,11 @@ class SpreadsheetsValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchGetValuesResponse> batchGet(core.String spreadsheetId,
-      {core.String majorDimension,
+      {core.String dateTimeRenderOption,
+      core.String valueRenderOption,
+      core.String majorDimension,
       core.List<core.String> ranges,
-      core.String dateTimeRenderOption,
-      core.String valueRenderOption}) {
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -741,17 +815,20 @@ class SpreadsheetsValuesResourceApi {
     if (spreadsheetId == null) {
       throw new core.ArgumentError("Parameter spreadsheetId is required.");
     }
+    if (dateTimeRenderOption != null) {
+      _queryParams["dateTimeRenderOption"] = [dateTimeRenderOption];
+    }
+    if (valueRenderOption != null) {
+      _queryParams["valueRenderOption"] = [valueRenderOption];
+    }
     if (majorDimension != null) {
       _queryParams["majorDimension"] = [majorDimension];
     }
     if (ranges != null) {
       _queryParams["ranges"] = ranges;
     }
-    if (dateTimeRenderOption != null) {
-      _queryParams["dateTimeRenderOption"] = [dateTimeRenderOption];
-    }
-    if (valueRenderOption != null) {
-      _queryParams["valueRenderOption"] = [valueRenderOption];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v4/spreadsheets/' +
@@ -779,6 +856,9 @@ class SpreadsheetsValuesResourceApi {
   ///
   /// [spreadsheetId] - The ID of the spreadsheet to retrieve data from.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BatchGetValuesByDataFilterResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -787,7 +867,8 @@ class SpreadsheetsValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchGetValuesByDataFilterResponse> batchGetByDataFilter(
-      BatchGetValuesByDataFilterRequest request, core.String spreadsheetId) {
+      BatchGetValuesByDataFilterRequest request, core.String spreadsheetId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -800,6 +881,9 @@ class SpreadsheetsValuesResourceApi {
     }
     if (spreadsheetId == null) {
       throw new core.ArgumentError("Parameter spreadsheetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v4/spreadsheets/' +
@@ -827,6 +911,9 @@ class SpreadsheetsValuesResourceApi {
   ///
   /// [spreadsheetId] - The ID of the spreadsheet to update.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BatchUpdateValuesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -835,7 +922,8 @@ class SpreadsheetsValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchUpdateValuesResponse> batchUpdate(
-      BatchUpdateValuesRequest request, core.String spreadsheetId) {
+      BatchUpdateValuesRequest request, core.String spreadsheetId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -848,6 +936,9 @@ class SpreadsheetsValuesResourceApi {
     }
     if (spreadsheetId == null) {
       throw new core.ArgumentError("Parameter spreadsheetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v4/spreadsheets/' +
@@ -875,6 +966,9 @@ class SpreadsheetsValuesResourceApi {
   ///
   /// [spreadsheetId] - The ID of the spreadsheet to update.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BatchUpdateValuesByDataFilterResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -883,7 +977,8 @@ class SpreadsheetsValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchUpdateValuesByDataFilterResponse> batchUpdateByDataFilter(
-      BatchUpdateValuesByDataFilterRequest request, core.String spreadsheetId) {
+      BatchUpdateValuesByDataFilterRequest request, core.String spreadsheetId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -896,6 +991,9 @@ class SpreadsheetsValuesResourceApi {
     }
     if (spreadsheetId == null) {
       throw new core.ArgumentError("Parameter spreadsheetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v4/spreadsheets/' +
@@ -925,6 +1023,9 @@ class SpreadsheetsValuesResourceApi {
   ///
   /// [range] - The A1 notation of the values to clear.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ClearValuesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -932,8 +1033,9 @@ class SpreadsheetsValuesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ClearValuesResponse> clear(ClearValuesRequest request,
-      core.String spreadsheetId, core.String range) {
+  async.Future<ClearValuesResponse> clear(
+      ClearValuesRequest request, core.String spreadsheetId, core.String range,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -949,6 +1051,9 @@ class SpreadsheetsValuesResourceApi {
     }
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v4/spreadsheets/' +
@@ -975,6 +1080,18 @@ class SpreadsheetsValuesResourceApi {
   ///
   /// [range] - The A1 notation of the values to retrieve.
   ///
+  /// [majorDimension] - The major dimension that results should use.
+  ///
+  /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
+  /// then requesting `range=A1:B2,majorDimension=ROWS` will return
+  /// `[[1,2],[3,4]]`,
+  /// whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
+  /// `[[1,3],[2,4]]`.
+  /// Possible string values are:
+  /// - "DIMENSION_UNSPECIFIED" : A DIMENSION_UNSPECIFIED.
+  /// - "ROWS" : A ROWS.
+  /// - "COLUMNS" : A COLUMNS.
+  ///
   /// [dateTimeRenderOption] - How dates, times, and durations should be
   /// represented in the output.
   /// This is ignored if value_render_option is
@@ -992,17 +1109,8 @@ class SpreadsheetsValuesResourceApi {
   /// - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
   /// - "FORMULA" : A FORMULA.
   ///
-  /// [majorDimension] - The major dimension that results should use.
-  ///
-  /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
-  /// then requesting `range=A1:B2,majorDimension=ROWS` will return
-  /// `[[1,2],[3,4]]`,
-  /// whereas requesting `range=A1:B2,majorDimension=COLUMNS` will return
-  /// `[[1,3],[2,4]]`.
-  /// Possible string values are:
-  /// - "DIMENSION_UNSPECIFIED" : A DIMENSION_UNSPECIFIED.
-  /// - "ROWS" : A ROWS.
-  /// - "COLUMNS" : A COLUMNS.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ValueRange].
   ///
@@ -1012,9 +1120,10 @@ class SpreadsheetsValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ValueRange> get(core.String spreadsheetId, core.String range,
-      {core.String dateTimeRenderOption,
+      {core.String majorDimension,
+      core.String dateTimeRenderOption,
       core.String valueRenderOption,
-      core.String majorDimension}) {
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1028,14 +1137,17 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
+    if (majorDimension != null) {
+      _queryParams["majorDimension"] = [majorDimension];
+    }
     if (dateTimeRenderOption != null) {
       _queryParams["dateTimeRenderOption"] = [dateTimeRenderOption];
     }
     if (valueRenderOption != null) {
       _queryParams["valueRenderOption"] = [valueRenderOption];
     }
-    if (majorDimension != null) {
-      _queryParams["majorDimension"] = [majorDimension];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v4/spreadsheets/' +
@@ -1096,6 +1208,9 @@ class SpreadsheetsValuesResourceApi {
   /// - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
   /// - "FORMULA" : A FORMULA.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UpdateValuesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1108,7 +1223,8 @@ class SpreadsheetsValuesResourceApi {
       {core.String valueInputOption,
       core.String responseDateTimeRenderOption,
       core.bool includeValuesInResponse,
-      core.String responseValueRenderOption}) {
+      core.String responseValueRenderOption,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1138,6 +1254,9 @@ class SpreadsheetsValuesResourceApi {
     }
     if (responseValueRenderOption != null) {
       _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v4/spreadsheets/' +
@@ -7651,8 +7770,7 @@ class PivotValue {
   /// with an `=` character.
   core.String formula;
 
-  /// A name to use for the value. This is only used if formula was set.
-  /// Otherwise, the column name is used.
+  /// A name to use for the value.
   core.String name;
 
   /// The column offset of the source range that this value reads from.

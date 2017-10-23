@@ -73,14 +73,14 @@ checkTaskLinks(api.TaskLinks o) {
   buildCounterTaskLinks--;
 }
 
-buildUnnamed2865() {
+buildUnnamed2880() {
   var o = new core.List<api.TaskLinks>();
   o.add(buildTaskLinks());
   o.add(buildTaskLinks());
   return o;
 }
 
-checkUnnamed2865(core.List<api.TaskLinks> o) {
+checkUnnamed2880(core.List<api.TaskLinks> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTaskLinks(o[0]);
   checkTaskLinks(o[1]);
@@ -98,7 +98,7 @@ buildTask() {
     o.hidden = true;
     o.id = "foo";
     o.kind = "foo";
-    o.links = buildUnnamed2865();
+    o.links = buildUnnamed2880();
     o.notes = "foo";
     o.parent = "foo";
     o.position = "foo";
@@ -123,7 +123,7 @@ checkTask(api.Task o) {
     unittest.expect(o.hidden, unittest.isTrue);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed2865(o.links);
+    checkUnnamed2880(o.links);
     unittest.expect(o.notes, unittest.equals('foo'));
     unittest.expect(o.parent, unittest.equals('foo'));
     unittest.expect(o.position, unittest.equals('foo'));
@@ -166,14 +166,14 @@ checkTaskList(api.TaskList o) {
   buildCounterTaskList--;
 }
 
-buildUnnamed2866() {
+buildUnnamed2881() {
   var o = new core.List<api.TaskList>();
   o.add(buildTaskList());
   o.add(buildTaskList());
   return o;
 }
 
-checkUnnamed2866(core.List<api.TaskList> o) {
+checkUnnamed2881(core.List<api.TaskList> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTaskList(o[0]);
   checkTaskList(o[1]);
@@ -185,7 +185,7 @@ buildTaskLists() {
   buildCounterTaskLists++;
   if (buildCounterTaskLists < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed2866();
+    o.items = buildUnnamed2881();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -197,21 +197,21 @@ checkTaskLists(api.TaskLists o) {
   buildCounterTaskLists++;
   if (buildCounterTaskLists < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed2866(o.items);
+    checkUnnamed2881(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterTaskLists--;
 }
 
-buildUnnamed2867() {
+buildUnnamed2882() {
   var o = new core.List<api.Task>();
   o.add(buildTask());
   o.add(buildTask());
   return o;
 }
 
-checkUnnamed2867(core.List<api.Task> o) {
+checkUnnamed2882(core.List<api.Task> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTask(o[0]);
   checkTask(o[1]);
@@ -223,7 +223,7 @@ buildTasks() {
   buildCounterTasks++;
   if (buildCounterTasks < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed2867();
+    o.items = buildUnnamed2882();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -235,7 +235,7 @@ checkTasks(api.Tasks o) {
   buildCounterTasks++;
   if (buildCounterTasks < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed2867(o.items);
+    checkUnnamed2882(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -288,6 +288,7 @@ main() {
       var mock = new HttpServerMock();
       api.TasklistsResourceApi res = new api.TasksApi(mock).tasklists;
       var arg_tasklist = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -324,6 +325,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -331,13 +333,16 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_tasklist).then(unittest.expectAsync1((_) {}));
+      res
+          .delete(arg_tasklist, $fields: arg_$fields)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
       var mock = new HttpServerMock();
       api.TasklistsResourceApi res = new api.TasksApi(mock).tasklists;
       var arg_tasklist = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -374,6 +379,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -382,7 +388,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_tasklist)
+          .get(arg_tasklist, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.TaskList response) {
         checkTaskList(response);
       })));
@@ -392,6 +398,7 @@ main() {
       var mock = new HttpServerMock();
       api.TasklistsResourceApi res = new api.TasksApi(mock).tasklists;
       var arg_request = buildTaskList();
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.TaskList.fromJson(json);
         checkTaskList(obj);
@@ -428,6 +435,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -436,7 +444,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .insert(arg_request)
+          .insert(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.TaskList response) {
         checkTaskList(response);
       })));
@@ -447,6 +455,7 @@ main() {
       api.TasklistsResourceApi res = new api.TasksApi(mock).tasklists;
       var arg_maxResults = "foo";
       var arg_pageToken = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -484,6 +493,7 @@ main() {
             queryMap["maxResults"].first, unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -492,7 +502,10 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .list(maxResults: arg_maxResults, pageToken: arg_pageToken)
+          .list(
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.TaskLists response) {
         checkTaskLists(response);
       })));
@@ -503,6 +516,7 @@ main() {
       api.TasklistsResourceApi res = new api.TasksApi(mock).tasklists;
       var arg_request = buildTaskList();
       var arg_tasklist = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.TaskList.fromJson(json);
         checkTaskList(obj);
@@ -542,6 +556,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -550,7 +565,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .patch(arg_request, arg_tasklist)
+          .patch(arg_request, arg_tasklist, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.TaskList response) {
         checkTaskList(response);
       })));
@@ -561,6 +576,7 @@ main() {
       api.TasklistsResourceApi res = new api.TasksApi(mock).tasklists;
       var arg_request = buildTaskList();
       var arg_tasklist = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.TaskList.fromJson(json);
         checkTaskList(obj);
@@ -600,6 +616,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -608,7 +625,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .update(arg_request, arg_tasklist)
+          .update(arg_request, arg_tasklist, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.TaskList response) {
         checkTaskList(response);
       })));
@@ -620,6 +637,7 @@ main() {
       var mock = new HttpServerMock();
       api.TasksResourceApi res = new api.TasksApi(mock).tasks;
       var arg_tasklist = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -662,6 +680,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -669,7 +688,9 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.clear(arg_tasklist).then(unittest.expectAsync1((_) {}));
+      res
+          .clear(arg_tasklist, $fields: arg_$fields)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--delete", () {
@@ -677,6 +698,7 @@ main() {
       api.TasksResourceApi res = new api.TasksApi(mock).tasks;
       var arg_tasklist = "foo";
       var arg_task = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -722,6 +744,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -729,7 +752,9 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_tasklist, arg_task).then(unittest.expectAsync1((_) {}));
+      res
+          .delete(arg_tasklist, arg_task, $fields: arg_$fields)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
@@ -737,6 +762,7 @@ main() {
       api.TasksResourceApi res = new api.TasksApi(mock).tasks;
       var arg_tasklist = "foo";
       var arg_task = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -782,6 +808,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -790,7 +817,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_tasklist, arg_task)
+          .get(arg_tasklist, arg_task, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Task response) {
         checkTask(response);
       })));
@@ -803,6 +830,7 @@ main() {
       var arg_tasklist = "foo";
       var arg_parent = "foo";
       var arg_previous = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Task.fromJson(json);
         checkTask(obj);
@@ -851,6 +879,7 @@ main() {
         unittest.expect(queryMap["parent"].first, unittest.equals(arg_parent));
         unittest.expect(
             queryMap["previous"].first, unittest.equals(arg_previous));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -860,7 +889,7 @@ main() {
       }), true);
       res
           .insert(arg_request, arg_tasklist,
-              parent: arg_parent, previous: arg_previous)
+              parent: arg_parent, previous: arg_previous, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Task response) {
         checkTask(response);
       })));
@@ -880,6 +909,7 @@ main() {
       var arg_showDeleted = true;
       var arg_showHidden = true;
       var arg_updatedMin = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -940,6 +970,7 @@ main() {
             queryMap["showHidden"].first, unittest.equals("$arg_showHidden"));
         unittest.expect(
             queryMap["updatedMin"].first, unittest.equals(arg_updatedMin));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -958,7 +989,8 @@ main() {
               showCompleted: arg_showCompleted,
               showDeleted: arg_showDeleted,
               showHidden: arg_showHidden,
-              updatedMin: arg_updatedMin)
+              updatedMin: arg_updatedMin,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Tasks response) {
         checkTasks(response);
       })));
@@ -971,6 +1003,7 @@ main() {
       var arg_task = "foo";
       var arg_parent = "foo";
       var arg_previous = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1025,6 +1058,7 @@ main() {
         unittest.expect(queryMap["parent"].first, unittest.equals(arg_parent));
         unittest.expect(
             queryMap["previous"].first, unittest.equals(arg_previous));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1034,7 +1068,7 @@ main() {
       }), true);
       res
           .move(arg_tasklist, arg_task,
-              parent: arg_parent, previous: arg_previous)
+              parent: arg_parent, previous: arg_previous, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Task response) {
         checkTask(response);
       })));
@@ -1046,6 +1080,7 @@ main() {
       var arg_request = buildTask();
       var arg_tasklist = "foo";
       var arg_task = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Task.fromJson(json);
         checkTask(obj);
@@ -1094,6 +1129,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1102,7 +1138,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .patch(arg_request, arg_tasklist, arg_task)
+          .patch(arg_request, arg_tasklist, arg_task, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Task response) {
         checkTask(response);
       })));
@@ -1114,6 +1150,7 @@ main() {
       var arg_request = buildTask();
       var arg_tasklist = "foo";
       var arg_task = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.Task.fromJson(json);
         checkTask(obj);
@@ -1162,6 +1199,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1170,7 +1208,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .update(arg_request, arg_tasklist, arg_task)
+          .update(arg_request, arg_tasklist, arg_task, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Task response) {
         checkTask(response);
       })));

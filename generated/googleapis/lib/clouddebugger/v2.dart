@@ -71,6 +71,9 @@ class ControllerDebuggeesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RegisterDebuggeeResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -79,7 +82,8 @@ class ControllerDebuggeesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RegisterDebuggeeResponse> register(
-      RegisterDebuggeeRequest request) {
+      RegisterDebuggeeRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -89,6 +93,9 @@ class ControllerDebuggeesResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/controller/debuggees/register';
@@ -143,6 +150,9 @@ class ControllerDebuggeesBreakpointsResourceApi {
   /// expired. The value should be set from the `next_wait_token` field in
   /// the last response. The initial value should be set to `"init"`.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListActiveBreakpointsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -151,7 +161,9 @@ class ControllerDebuggeesBreakpointsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListActiveBreakpointsResponse> list(core.String debuggeeId,
-      {core.bool successOnTimeout, core.String waitToken}) {
+      {core.bool successOnTimeout,
+      core.String waitToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -167,6 +179,9 @@ class ControllerDebuggeesBreakpointsResourceApi {
     }
     if (waitToken != null) {
       _queryParams["waitToken"] = [waitToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/controller/debuggees/' +
@@ -200,6 +215,9 @@ class ControllerDebuggeesBreakpointsResourceApi {
   ///
   /// [id] - Breakpoint identifier, unique in the scope of the debuggee.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UpdateActiveBreakpointResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -210,7 +228,8 @@ class ControllerDebuggeesBreakpointsResourceApi {
   async.Future<UpdateActiveBreakpointResponse> update(
       UpdateActiveBreakpointRequest request,
       core.String debuggeeId,
-      core.String id) {
+      core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -226,6 +245,9 @@ class ControllerDebuggeesBreakpointsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/controller/debuggees/' +
@@ -266,15 +288,18 @@ class DebuggerDebuggeesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [includeInactive] - When set to `true`, the result includes all debuggees.
-  /// Otherwise, the
-  /// result includes only debuggees that are active.
-  ///
   /// [project] - Project number of a Google Cloud project whose debuggees to
   /// list.
   ///
   /// [clientVersion] - The client version making the call.
   /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
+  ///
+  /// [includeInactive] - When set to `true`, the result includes all debuggees.
+  /// Otherwise, the
+  /// result includes only debuggees that are active.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListDebuggeesResponse].
   ///
@@ -284,9 +309,10 @@ class DebuggerDebuggeesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDebuggeesResponse> list(
-      {core.bool includeInactive,
-      core.String project,
-      core.String clientVersion}) {
+      {core.String project,
+      core.String clientVersion,
+      core.bool includeInactive,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -294,14 +320,17 @@ class DebuggerDebuggeesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (includeInactive != null) {
-      _queryParams["includeInactive"] = ["${includeInactive}"];
-    }
     if (project != null) {
       _queryParams["project"] = [project];
     }
     if (clientVersion != null) {
       _queryParams["clientVersion"] = [clientVersion];
+    }
+    if (includeInactive != null) {
+      _queryParams["includeInactive"] = ["${includeInactive}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/debugger/debuggees';
@@ -333,6 +362,9 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// [clientVersion] - The client version making the call.
   /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -341,7 +373,7 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String debuggeeId, core.String breakpointId,
-      {core.String clientVersion}) {
+      {core.String clientVersion, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -357,6 +389,9 @@ class DebuggerDebuggeesBreakpointsResourceApi {
     }
     if (clientVersion != null) {
       _queryParams["clientVersion"] = [clientVersion];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/debugger/debuggees/' +
@@ -384,6 +419,9 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// [clientVersion] - The client version making the call.
   /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GetBreakpointResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -393,7 +431,7 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// this method will complete with the same error.
   async.Future<GetBreakpointResponse> get(
       core.String debuggeeId, core.String breakpointId,
-      {core.String clientVersion}) {
+      {core.String clientVersion, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -409,6 +447,9 @@ class DebuggerDebuggeesBreakpointsResourceApi {
     }
     if (clientVersion != null) {
       _queryParams["clientVersion"] = [clientVersion];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/debugger/debuggees/' +
@@ -451,13 +492,16 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// - "CAPTURE" : A CAPTURE.
   /// - "LOG" : A LOG.
   ///
+  /// [includeAllUsers] - When set to `true`, the response includes the list of
+  /// breakpoints set by
+  /// any user. Otherwise, it includes only breakpoints set by the caller.
+  ///
   /// [includeInactive] - When set to `true`, the response includes active and
   /// inactive
   /// breakpoints. Otherwise, it includes only active breakpoints.
   ///
-  /// [includeAllUsers] - When set to `true`, the response includes the list of
-  /// breakpoints set by
-  /// any user. Otherwise, it includes only breakpoints set by the caller.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListBreakpointsResponse].
   ///
@@ -471,8 +515,9 @@ class DebuggerDebuggeesBreakpointsResourceApi {
       core.String waitToken,
       core.String clientVersion,
       core.String action_value,
+      core.bool includeAllUsers,
       core.bool includeInactive,
-      core.bool includeAllUsers}) {
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -495,11 +540,14 @@ class DebuggerDebuggeesBreakpointsResourceApi {
     if (action_value != null) {
       _queryParams["action.value"] = [action_value];
     }
+    if (includeAllUsers != null) {
+      _queryParams["includeAllUsers"] = ["${includeAllUsers}"];
+    }
     if (includeInactive != null) {
       _queryParams["includeInactive"] = ["${includeInactive}"];
     }
-    if (includeAllUsers != null) {
-      _queryParams["includeAllUsers"] = ["${includeAllUsers}"];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/debugger/debuggees/' +
@@ -526,6 +574,9 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// [clientVersion] - The client version making the call.
   /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SetBreakpointResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -535,7 +586,7 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// this method will complete with the same error.
   async.Future<SetBreakpointResponse> set(
       Breakpoint request, core.String debuggeeId,
-      {core.String clientVersion}) {
+      {core.String clientVersion, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -551,6 +602,9 @@ class DebuggerDebuggeesBreakpointsResourceApi {
     }
     if (clientVersion != null) {
       _queryParams["clientVersion"] = [clientVersion];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/debugger/debuggees/' +

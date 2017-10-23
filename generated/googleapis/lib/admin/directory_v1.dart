@@ -145,6 +145,8 @@ class AdminApi {
       new NotificationsResourceApi(_requester);
   OrgunitsResourceApi get orgunits => new OrgunitsResourceApi(_requester);
   PrivilegesResourceApi get privileges => new PrivilegesResourceApi(_requester);
+  ResolvedAppAccessSettingsResourceApi get resolvedAppAccessSettings =>
+      new ResolvedAppAccessSettingsResourceApi(_requester);
   ResourcesResourceApi get resources => new ResourcesResourceApi(_requester);
   RoleAssignmentsResourceApi get roleAssignments =>
       new RoleAssignmentsResourceApi(_requester);
@@ -176,12 +178,16 @@ class AspsResourceApi {
   ///
   /// [codeId] - The unique ID of the ASP to be deleted.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String userKey, core.int codeId) {
+  async.Future delete(core.String userKey, core.int codeId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -194,6 +200,9 @@ class AspsResourceApi {
     }
     if (codeId == null) {
       throw new core.ArgumentError("Parameter codeId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -221,6 +230,9 @@ class AspsResourceApi {
   ///
   /// [codeId] - The unique ID of the ASP.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Asp].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -228,7 +240,8 @@ class AspsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Asp> get(core.String userKey, core.int codeId) {
+  async.Future<Asp> get(core.String userKey, core.int codeId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -241,6 +254,9 @@ class AspsResourceApi {
     }
     if (codeId == null) {
       throw new core.ArgumentError("Parameter codeId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/' +
@@ -264,6 +280,9 @@ class AspsResourceApi {
   /// [userKey] - Identifies the user in the API request. The value can be the
   /// user's primary email address, alias email address, or unique user ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Asps].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -271,7 +290,7 @@ class AspsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Asps> list(core.String userKey) {
+  async.Future<Asps> list(core.String userKey, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -281,6 +300,9 @@ class AspsResourceApi {
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userKey') + '/asps';
@@ -306,12 +328,15 @@ class ChannelsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future stop(Channel request) {
+  async.Future stop(Channel request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -321,6 +346,9 @@ class ChannelsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -352,13 +380,17 @@ class ChromeosdevicesResourceApi {
   ///
   /// [resourceId] - Immutable ID of Chrome OS Device
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future action(ChromeOsDeviceAction request, core.String customerId,
-      core.String resourceId) {
+      core.String resourceId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -374,6 +406,9 @@ class ChromeosdevicesResourceApi {
     }
     if (resourceId == null) {
       throw new core.ArgumentError("Parameter resourceId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -407,6 +442,9 @@ class ChromeosdevicesResourceApi {
   /// serialNumber, status, and user)
   /// - "FULL" : Includes all metadata fields
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ChromeOsDevice].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -415,7 +453,7 @@ class ChromeosdevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ChromeOsDevice> get(core.String customerId, core.String deviceId,
-      {core.String projection}) {
+      {core.String projection, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -431,6 +469,9 @@ class ChromeosdevicesResourceApi {
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -485,6 +526,9 @@ class ChromeosdevicesResourceApi {
   /// - "ASCENDING" : Ascending order.
   /// - "DESCENDING" : Descending order.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ChromeOsDevices].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -499,7 +543,8 @@ class ChromeosdevicesResourceApi {
       core.String pageToken,
       core.String projection,
       core.String query,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -531,6 +576,9 @@ class ChromeosdevicesResourceApi {
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'customer/' +
         commons.Escaper.ecapeVariable('$customerId') +
@@ -555,13 +603,17 @@ class ChromeosdevicesResourceApi {
   ///
   /// [orgUnitPath] - Full path of the target organization unit or its Id
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future moveDevicesToOu(ChromeOsMoveDevicesToOu request,
-      core.String customerId, core.String orgUnitPath) {
+      core.String customerId, core.String orgUnitPath,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -579,6 +631,9 @@ class ChromeosdevicesResourceApi {
       throw new core.ArgumentError("Parameter orgUnitPath is required.");
     }
     _queryParams["orgUnitPath"] = [orgUnitPath];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _downloadOptions = null;
 
@@ -611,6 +666,9 @@ class ChromeosdevicesResourceApi {
   /// serialNumber, status, and user)
   /// - "FULL" : Includes all metadata fields
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ChromeOsDevice].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -620,7 +678,7 @@ class ChromeosdevicesResourceApi {
   /// this method will complete with the same error.
   async.Future<ChromeOsDevice> patch(
       ChromeOsDevice request, core.String customerId, core.String deviceId,
-      {core.String projection}) {
+      {core.String projection, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -639,6 +697,9 @@ class ChromeosdevicesResourceApi {
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -671,6 +732,9 @@ class ChromeosdevicesResourceApi {
   /// serialNumber, status, and user)
   /// - "FULL" : Includes all metadata fields
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ChromeOsDevice].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -680,7 +744,7 @@ class ChromeosdevicesResourceApi {
   /// this method will complete with the same error.
   async.Future<ChromeOsDevice> update(
       ChromeOsDevice request, core.String customerId, core.String deviceId,
-      {core.String projection}) {
+      {core.String projection, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -699,6 +763,9 @@ class ChromeosdevicesResourceApi {
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -727,6 +794,9 @@ class CustomersResourceApi {
   ///
   /// [customerKey] - Id of the customer to be retrieved
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Customer].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -734,7 +804,7 @@ class CustomersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Customer> get(core.String customerKey) {
+  async.Future<Customer> get(core.String customerKey, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -744,6 +814,9 @@ class CustomersResourceApi {
 
     if (customerKey == null) {
       throw new core.ArgumentError("Parameter customerKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customers/' + commons.Escaper.ecapeVariable('$customerKey');
@@ -765,6 +838,9 @@ class CustomersResourceApi {
   ///
   /// [customerKey] - Id of the customer to be updated
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Customer].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -772,7 +848,8 @@ class CustomersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Customer> patch(Customer request, core.String customerKey) {
+  async.Future<Customer> patch(Customer request, core.String customerKey,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -785,6 +862,9 @@ class CustomersResourceApi {
     }
     if (customerKey == null) {
       throw new core.ArgumentError("Parameter customerKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customers/' + commons.Escaper.ecapeVariable('$customerKey');
@@ -806,6 +886,9 @@ class CustomersResourceApi {
   ///
   /// [customerKey] - Id of the customer to be updated
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Customer].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -813,7 +896,8 @@ class CustomersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Customer> update(Customer request, core.String customerKey) {
+  async.Future<Customer> update(Customer request, core.String customerKey,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -826,6 +910,9 @@ class CustomersResourceApi {
     }
     if (customerKey == null) {
       throw new core.ArgumentError("Parameter customerKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customers/' + commons.Escaper.ecapeVariable('$customerKey');
@@ -853,12 +940,16 @@ class DomainAliasesResourceApi {
   ///
   /// [domainAliasName] - Name of domain alias to be retrieved.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String customer, core.String domainAliasName) {
+  async.Future delete(core.String customer, core.String domainAliasName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -871,6 +962,9 @@ class DomainAliasesResourceApi {
     }
     if (domainAliasName == null) {
       throw new core.ArgumentError("Parameter domainAliasName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -897,6 +991,9 @@ class DomainAliasesResourceApi {
   ///
   /// [domainAliasName] - Name of domain alias to be retrieved.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DomainAlias].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -905,7 +1002,8 @@ class DomainAliasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DomainAlias> get(
-      core.String customer, core.String domainAliasName) {
+      core.String customer, core.String domainAliasName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -918,6 +1016,9 @@ class DomainAliasesResourceApi {
     }
     if (domainAliasName == null) {
       throw new core.ArgumentError("Parameter domainAliasName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -942,6 +1043,9 @@ class DomainAliasesResourceApi {
   ///
   /// [customer] - Immutable ID of the G Suite account.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DomainAlias].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -949,7 +1053,8 @@ class DomainAliasesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DomainAlias> insert(DomainAlias request, core.String customer) {
+  async.Future<DomainAlias> insert(DomainAlias request, core.String customer,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -962,6 +1067,9 @@ class DomainAliasesResourceApi {
     }
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -986,6 +1094,9 @@ class DomainAliasesResourceApi {
   /// [parentDomainName] - Name of the parent domain for which domain aliases
   /// are to be fetched.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DomainAliases].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -994,7 +1105,7 @@ class DomainAliasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DomainAliases> list(core.String customer,
-      {core.String parentDomainName}) {
+      {core.String parentDomainName, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1007,6 +1118,9 @@ class DomainAliasesResourceApi {
     }
     if (parentDomainName != null) {
       _queryParams["parentDomainName"] = [parentDomainName];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -1036,12 +1150,16 @@ class DomainsResourceApi {
   ///
   /// [domainName] - Name of domain to be deleted
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String customer, core.String domainName) {
+  async.Future delete(core.String customer, core.String domainName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1054,6 +1172,9 @@ class DomainsResourceApi {
     }
     if (domainName == null) {
       throw new core.ArgumentError("Parameter domainName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1080,6 +1201,9 @@ class DomainsResourceApi {
   ///
   /// [domainName] - Name of domain to be retrieved
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Domains].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1087,7 +1211,8 @@ class DomainsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Domains> get(core.String customer, core.String domainName) {
+  async.Future<Domains> get(core.String customer, core.String domainName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1100,6 +1225,9 @@ class DomainsResourceApi {
     }
     if (domainName == null) {
       throw new core.ArgumentError("Parameter domainName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -1124,6 +1252,9 @@ class DomainsResourceApi {
   ///
   /// [customer] - Immutable ID of the G Suite account.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Domains].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1131,7 +1262,8 @@ class DomainsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Domains> insert(Domains request, core.String customer) {
+  async.Future<Domains> insert(Domains request, core.String customer,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1144,6 +1276,9 @@ class DomainsResourceApi {
     }
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -1164,6 +1299,9 @@ class DomainsResourceApi {
   ///
   /// [customer] - Immutable ID of the G Suite account.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Domains2].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1171,7 +1309,7 @@ class DomainsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Domains2> list(core.String customer) {
+  async.Future<Domains2> list(core.String customer, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1181,6 +1319,9 @@ class DomainsResourceApi {
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -1210,12 +1351,15 @@ class GroupsResourceApi {
   ///
   /// [groupKey] - Email or immutable Id of the group
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String groupKey) {
+  async.Future delete(core.String groupKey, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1225,6 +1369,9 @@ class GroupsResourceApi {
 
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1246,6 +1393,9 @@ class GroupsResourceApi {
   ///
   /// [groupKey] - Email or immutable Id of the group
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Group].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1253,7 +1403,7 @@ class GroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Group> get(core.String groupKey) {
+  async.Future<Group> get(core.String groupKey, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1263,6 +1413,9 @@ class GroupsResourceApi {
 
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'groups/' + commons.Escaper.ecapeVariable('$groupKey');
@@ -1282,6 +1435,9 @@ class GroupsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Group].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1289,7 +1445,7 @@ class GroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Group> insert(Group request) {
+  async.Future<Group> insert(Group request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1299,6 +1455,9 @@ class GroupsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'groups';
@@ -1331,6 +1490,9 @@ class GroupsResourceApi {
   /// be listed, the given user is a member of. If Id, it should match with id
   /// of user object
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Groups].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1343,7 +1505,8 @@ class GroupsResourceApi {
       core.String domain,
       core.int maxResults,
       core.String pageToken,
-      core.String userKey}) {
+      core.String userKey,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1366,6 +1529,9 @@ class GroupsResourceApi {
     if (userKey != null) {
       _queryParams["userKey"] = [userKey];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'groups';
 
@@ -1387,6 +1553,9 @@ class GroupsResourceApi {
   /// [groupKey] - Email or immutable Id of the group. If Id, it should match
   /// with id of group object
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Group].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1394,7 +1563,8 @@ class GroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Group> patch(Group request, core.String groupKey) {
+  async.Future<Group> patch(Group request, core.String groupKey,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1407,6 +1577,9 @@ class GroupsResourceApi {
     }
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'groups/' + commons.Escaper.ecapeVariable('$groupKey');
@@ -1429,6 +1602,9 @@ class GroupsResourceApi {
   /// [groupKey] - Email or immutable Id of the group. If Id, it should match
   /// with id of group object
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Group].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1436,7 +1612,8 @@ class GroupsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Group> update(Group request, core.String groupKey) {
+  async.Future<Group> update(Group request, core.String groupKey,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1449,6 +1626,9 @@ class GroupsResourceApi {
     }
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'groups/' + commons.Escaper.ecapeVariable('$groupKey');
@@ -1476,12 +1656,16 @@ class GroupsAliasesResourceApi {
   ///
   /// [alias] - The alias to be removed
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String groupKey, core.String alias) {
+  async.Future delete(core.String groupKey, core.String alias,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1494,6 +1678,9 @@ class GroupsAliasesResourceApi {
     }
     if (alias == null) {
       throw new core.ArgumentError("Parameter alias is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1520,6 +1707,9 @@ class GroupsAliasesResourceApi {
   ///
   /// [groupKey] - Email or immutable Id of the group
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Alias].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1527,7 +1717,8 @@ class GroupsAliasesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Alias> insert(Alias request, core.String groupKey) {
+  async.Future<Alias> insert(Alias request, core.String groupKey,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1540,6 +1731,9 @@ class GroupsAliasesResourceApi {
     }
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'groups/' + commons.Escaper.ecapeVariable('$groupKey') + '/aliases';
@@ -1559,6 +1753,9 @@ class GroupsAliasesResourceApi {
   ///
   /// [groupKey] - Email or immutable Id of the group
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Aliases].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1566,7 +1763,7 @@ class GroupsAliasesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Aliases> list(core.String groupKey) {
+  async.Future<Aliases> list(core.String groupKey, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1576,6 +1773,9 @@ class GroupsAliasesResourceApi {
 
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'groups/' + commons.Escaper.ecapeVariable('$groupKey') + '/aliases';
@@ -1603,12 +1803,16 @@ class MembersResourceApi {
   ///
   /// [memberKey] - Email or immutable Id of the member
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String groupKey, core.String memberKey) {
+  async.Future delete(core.String groupKey, core.String memberKey,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1621,6 +1825,9 @@ class MembersResourceApi {
     }
     if (memberKey == null) {
       throw new core.ArgumentError("Parameter memberKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1647,6 +1854,9 @@ class MembersResourceApi {
   ///
   /// [memberKey] - Email or immutable Id of the member
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Member].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1654,7 +1864,8 @@ class MembersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Member> get(core.String groupKey, core.String memberKey) {
+  async.Future<Member> get(core.String groupKey, core.String memberKey,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1667,6 +1878,9 @@ class MembersResourceApi {
     }
     if (memberKey == null) {
       throw new core.ArgumentError("Parameter memberKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'groups/' +
@@ -1691,6 +1905,9 @@ class MembersResourceApi {
   ///
   /// [groupKey] - Email or immutable Id of the group
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Member].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1698,7 +1915,8 @@ class MembersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Member> insert(Member request, core.String groupKey) {
+  async.Future<Member> insert(Member request, core.String groupKey,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1711,6 +1929,9 @@ class MembersResourceApi {
     }
     if (groupKey == null) {
       throw new core.ArgumentError("Parameter groupKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'groups/' + commons.Escaper.ecapeVariable('$groupKey') + '/members';
@@ -1736,6 +1957,9 @@ class MembersResourceApi {
   ///
   /// [roles] - Comma separated role values to filter list results on.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Members].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1744,7 +1968,10 @@ class MembersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Members> list(core.String groupKey,
-      {core.int maxResults, core.String pageToken, core.String roles}) {
+      {core.int maxResults,
+      core.String pageToken,
+      core.String roles,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1763,6 +1990,9 @@ class MembersResourceApi {
     }
     if (roles != null) {
       _queryParams["roles"] = [roles];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'groups/' + commons.Escaper.ecapeVariable('$groupKey') + '/members';
@@ -1789,6 +2019,9 @@ class MembersResourceApi {
   /// [memberKey] - Email or immutable Id of the user. If Id, it should match
   /// with id of member object
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Member].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1797,7 +2030,8 @@ class MembersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Member> patch(
-      Member request, core.String groupKey, core.String memberKey) {
+      Member request, core.String groupKey, core.String memberKey,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1813,6 +2047,9 @@ class MembersResourceApi {
     }
     if (memberKey == null) {
       throw new core.ArgumentError("Parameter memberKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'groups/' +
@@ -1841,6 +2078,9 @@ class MembersResourceApi {
   /// [memberKey] - Email or immutable Id of the user. If Id, it should match
   /// with id of member object
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Member].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1849,7 +2089,8 @@ class MembersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Member> update(
-      Member request, core.String groupKey, core.String memberKey) {
+      Member request, core.String groupKey, core.String memberKey,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1865,6 +2106,9 @@ class MembersResourceApi {
     }
     if (memberKey == null) {
       throw new core.ArgumentError("Parameter memberKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'groups/' +
@@ -1897,13 +2141,17 @@ class MobiledevicesResourceApi {
   ///
   /// [resourceId] - Immutable ID of Mobile Device
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future action(MobileDeviceAction request, core.String customerId,
-      core.String resourceId) {
+      core.String resourceId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1919,6 +2167,9 @@ class MobiledevicesResourceApi {
     }
     if (resourceId == null) {
       throw new core.ArgumentError("Parameter resourceId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1946,12 +2197,16 @@ class MobiledevicesResourceApi {
   ///
   /// [resourceId] - Immutable ID of Mobile Device
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String customerId, core.String resourceId) {
+  async.Future delete(core.String customerId, core.String resourceId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1964,6 +2219,9 @@ class MobiledevicesResourceApi {
     }
     if (resourceId == null) {
       throw new core.ArgumentError("Parameter resourceId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1996,6 +2254,9 @@ class MobiledevicesResourceApi {
   /// model, status, type, and status)
   /// - "FULL" : Includes all metadata fields
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [MobileDevice].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2004,7 +2265,7 @@ class MobiledevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<MobileDevice> get(core.String customerId, core.String resourceId,
-      {core.String projection}) {
+      {core.String projection, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2020,6 +2281,9 @@ class MobiledevicesResourceApi {
     }
     if (projection != null) {
       _queryParams["projection"] = [projection];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -2072,6 +2336,9 @@ class MobiledevicesResourceApi {
   /// - "ASCENDING" : Ascending order.
   /// - "DESCENDING" : Descending order.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [MobileDevices].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2085,7 +2352,8 @@ class MobiledevicesResourceApi {
       core.String pageToken,
       core.String projection,
       core.String query,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2113,6 +2381,9 @@ class MobiledevicesResourceApi {
     }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -2143,12 +2414,16 @@ class NotificationsResourceApi {
   ///
   /// [notificationId] - The unique ID of the notification.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String customer, core.String notificationId) {
+  async.Future delete(core.String customer, core.String notificationId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2161,6 +2436,9 @@ class NotificationsResourceApi {
     }
     if (notificationId == null) {
       throw new core.ArgumentError("Parameter notificationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2188,6 +2466,9 @@ class NotificationsResourceApi {
   ///
   /// [notificationId] - The unique ID of the notification.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Notification].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2196,7 +2477,8 @@ class NotificationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Notification> get(
-      core.String customer, core.String notificationId) {
+      core.String customer, core.String notificationId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2209,6 +2491,9 @@ class NotificationsResourceApi {
     }
     if (notificationId == null) {
       throw new core.ArgumentError("Parameter notificationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -2239,6 +2524,9 @@ class NotificationsResourceApi {
   ///
   /// [pageToken] - The token to specify the page of results to retrieve.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Notifications].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2247,7 +2535,10 @@ class NotificationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Notifications> list(core.String customer,
-      {core.String language, core.int maxResults, core.String pageToken}) {
+      {core.String language,
+      core.int maxResults,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2266,6 +2557,9 @@ class NotificationsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -2291,6 +2585,9 @@ class NotificationsResourceApi {
   ///
   /// [notificationId] - The unique ID of the notification.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Notification].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2299,7 +2596,8 @@ class NotificationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Notification> patch(
-      Notification request, core.String customer, core.String notificationId) {
+      Notification request, core.String customer, core.String notificationId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2315,6 +2613,9 @@ class NotificationsResourceApi {
     }
     if (notificationId == null) {
       throw new core.ArgumentError("Parameter notificationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -2341,6 +2642,9 @@ class NotificationsResourceApi {
   ///
   /// [notificationId] - The unique ID of the notification.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Notification].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2349,7 +2653,8 @@ class NotificationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Notification> update(
-      Notification request, core.String customer, core.String notificationId) {
+      Notification request, core.String customer, core.String notificationId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2365,6 +2670,9 @@ class NotificationsResourceApi {
     }
     if (notificationId == null) {
       throw new core.ArgumentError("Parameter notificationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -2395,13 +2703,17 @@ class OrgunitsResourceApi {
   ///
   /// [orgUnitPath] - Full path of the organization unit or its Id
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(
-      core.String customerId, core.List<core.String> orgUnitPath) {
+      core.String customerId, core.List<core.String> orgUnitPath,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2414,6 +2726,9 @@ class OrgunitsResourceApi {
     }
     if (orgUnitPath == null || orgUnitPath.isEmpty) {
       throw new core.ArgumentError("Parameter orgUnitPath is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2443,6 +2758,9 @@ class OrgunitsResourceApi {
   ///
   /// [orgUnitPath] - Full path of the organization unit or its Id
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OrgUnit].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2451,7 +2769,8 @@ class OrgunitsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<OrgUnit> get(
-      core.String customerId, core.List<core.String> orgUnitPath) {
+      core.String customerId, core.List<core.String> orgUnitPath,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2464,6 +2783,9 @@ class OrgunitsResourceApi {
     }
     if (orgUnitPath == null || orgUnitPath.isEmpty) {
       throw new core.ArgumentError("Parameter orgUnitPath is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -2491,6 +2813,9 @@ class OrgunitsResourceApi {
   ///
   /// [customerId] - Immutable ID of the G Suite account
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OrgUnit].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2498,7 +2823,8 @@ class OrgunitsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<OrgUnit> insert(OrgUnit request, core.String customerId) {
+  async.Future<OrgUnit> insert(OrgUnit request, core.String customerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2511,6 +2837,9 @@ class OrgunitsResourceApi {
     }
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -2540,6 +2869,9 @@ class OrgunitsResourceApi {
   /// - "all" : All sub-organization units.
   /// - "children" : Immediate children only (default).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OrgUnits].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2548,7 +2880,7 @@ class OrgunitsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<OrgUnits> list(core.String customerId,
-      {core.String orgUnitPath, core.String type}) {
+      {core.String orgUnitPath, core.String type, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2564,6 +2896,9 @@ class OrgunitsResourceApi {
     }
     if (type != null) {
       _queryParams["type"] = [type];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -2589,6 +2924,9 @@ class OrgunitsResourceApi {
   ///
   /// [orgUnitPath] - Full path of the organization unit or its Id
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OrgUnit].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2597,7 +2935,8 @@ class OrgunitsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<OrgUnit> patch(OrgUnit request, core.String customerId,
-      core.List<core.String> orgUnitPath) {
+      core.List<core.String> orgUnitPath,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2613,6 +2952,9 @@ class OrgunitsResourceApi {
     }
     if (orgUnitPath == null || orgUnitPath.isEmpty) {
       throw new core.ArgumentError("Parameter orgUnitPath is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -2642,6 +2984,9 @@ class OrgunitsResourceApi {
   ///
   /// [orgUnitPath] - Full path of the organization unit or its Id
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OrgUnit].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2650,7 +2995,8 @@ class OrgunitsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<OrgUnit> update(OrgUnit request, core.String customerId,
-      core.List<core.String> orgUnitPath) {
+      core.List<core.String> orgUnitPath,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2666,6 +3012,9 @@ class OrgunitsResourceApi {
     }
     if (orgUnitPath == null || orgUnitPath.isEmpty) {
       throw new core.ArgumentError("Parameter orgUnitPath is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -2697,6 +3046,9 @@ class PrivilegesResourceApi {
   ///
   /// [customer] - Immutable ID of the G Suite account.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Privileges].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2704,7 +3056,7 @@ class PrivilegesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Privileges> list(core.String customer) {
+  async.Future<Privileges> list(core.String customer, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2714,6 +3066,9 @@ class PrivilegesResourceApi {
 
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -2727,6 +3082,87 @@ class PrivilegesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Privileges.fromJson(data));
+  }
+}
+
+class ResolvedAppAccessSettingsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ResolvedAppAccessSettingsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Retrieves resolved app access settings of the logged in user.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AppAccessCollections].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AppAccessCollections> GetSettings({core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'resolvedappaccesssettings';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new AppAccessCollections.fromJson(data));
+  }
+
+  /// Retrieves the list of apps trusted by the admin of the logged in user.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TrustedApps].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TrustedApps> ListTrustedApps({core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'trustedapps';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new TrustedApps.fromJson(data));
   }
 }
 
@@ -2755,12 +3191,16 @@ class ResourcesCalendarsResourceApi {
   ///
   /// [calendarResourceId] - The unique ID of the calendar resource to delete.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String customer, core.String calendarResourceId) {
+  async.Future delete(core.String customer, core.String calendarResourceId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2773,6 +3213,9 @@ class ResourcesCalendarsResourceApi {
     }
     if (calendarResourceId == null) {
       throw new core.ArgumentError("Parameter calendarResourceId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2801,6 +3244,9 @@ class ResourcesCalendarsResourceApi {
   ///
   /// [calendarResourceId] - The unique ID of the calendar resource to retrieve.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CalendarResource].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2809,7 +3255,8 @@ class ResourcesCalendarsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CalendarResource> get(
-      core.String customer, core.String calendarResourceId) {
+      core.String customer, core.String calendarResourceId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2822,6 +3269,9 @@ class ResourcesCalendarsResourceApi {
     }
     if (calendarResourceId == null) {
       throw new core.ArgumentError("Parameter calendarResourceId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -2848,6 +3298,9 @@ class ResourcesCalendarsResourceApi {
   /// account administrator, you can also use the my_customer alias to represent
   /// your account's customer ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CalendarResource].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2856,7 +3309,8 @@ class ResourcesCalendarsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CalendarResource> insert(
-      CalendarResource request, core.String customer) {
+      CalendarResource request, core.String customer,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2869,6 +3323,9 @@ class ResourcesCalendarsResourceApi {
     }
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -2897,6 +3354,9 @@ class ResourcesCalendarsResourceApi {
   ///
   /// [pageToken] - Token to specify the next page in the list.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CalendarResources].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2905,7 +3365,7 @@ class ResourcesCalendarsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CalendarResources> list(core.String customer,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2922,6 +3382,9 @@ class ResourcesCalendarsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'customer/' +
         commons.Escaper.ecapeVariable('$customer') +
@@ -2936,7 +3399,11 @@ class ResourcesCalendarsResourceApi {
     return _response.then((data) => new CalendarResources.fromJson(data));
   }
 
-  /// Updates a calendar resource. This method supports patch semantics.
+  /// Updates a calendar resource.
+  ///
+  /// This method supports patch semantics, meaning you only need to include the
+  /// fields you wish to update. Fields that are not present in the request will
+  /// be preserved. This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2948,6 +3415,9 @@ class ResourcesCalendarsResourceApi {
   ///
   /// [calendarResourceId] - The unique ID of the calendar resource to update.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CalendarResource].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2956,7 +3426,8 @@ class ResourcesCalendarsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CalendarResource> patch(CalendarResource request,
-      core.String customer, core.String calendarResourceId) {
+      core.String customer, core.String calendarResourceId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2972,6 +3443,9 @@ class ResourcesCalendarsResourceApi {
     }
     if (calendarResourceId == null) {
       throw new core.ArgumentError("Parameter calendarResourceId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -2990,6 +3464,10 @@ class ResourcesCalendarsResourceApi {
 
   /// Updates a calendar resource.
   ///
+  /// This method supports patch semantics, meaning you only need to include the
+  /// fields you wish to update. Fields that are not present in the request will
+  /// be preserved.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -3000,6 +3478,9 @@ class ResourcesCalendarsResourceApi {
   ///
   /// [calendarResourceId] - The unique ID of the calendar resource to update.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CalendarResource].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3008,7 +3489,8 @@ class ResourcesCalendarsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CalendarResource> update(CalendarResource request,
-      core.String customer, core.String calendarResourceId) {
+      core.String customer, core.String calendarResourceId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3024,6 +3506,9 @@ class ResourcesCalendarsResourceApi {
     }
     if (calendarResourceId == null) {
       throw new core.ArgumentError("Parameter calendarResourceId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -3054,12 +3539,16 @@ class RoleAssignmentsResourceApi {
   ///
   /// [roleAssignmentId] - Immutable ID of the role assignment.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String customer, core.String roleAssignmentId) {
+  async.Future delete(core.String customer, core.String roleAssignmentId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3072,6 +3561,9 @@ class RoleAssignmentsResourceApi {
     }
     if (roleAssignmentId == null) {
       throw new core.ArgumentError("Parameter roleAssignmentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3098,6 +3590,9 @@ class RoleAssignmentsResourceApi {
   ///
   /// [roleAssignmentId] - Immutable ID of the role assignment.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RoleAssignment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3106,7 +3601,8 @@ class RoleAssignmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RoleAssignment> get(
-      core.String customer, core.String roleAssignmentId) {
+      core.String customer, core.String roleAssignmentId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3119,6 +3615,9 @@ class RoleAssignmentsResourceApi {
     }
     if (roleAssignmentId == null) {
       throw new core.ArgumentError("Parameter roleAssignmentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -3143,6 +3642,9 @@ class RoleAssignmentsResourceApi {
   ///
   /// [customer] - Immutable ID of the G Suite account.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RoleAssignment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3151,7 +3653,8 @@ class RoleAssignmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RoleAssignment> insert(
-      RoleAssignment request, core.String customer) {
+      RoleAssignment request, core.String customer,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3164,6 +3667,9 @@ class RoleAssignmentsResourceApi {
     }
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -3197,6 +3703,9 @@ class RoleAssignmentsResourceApi {
   /// unique user ID. If included in the request, returns role assignments only
   /// for this user.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RoleAssignments].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3208,7 +3717,8 @@ class RoleAssignmentsResourceApi {
       {core.int maxResults,
       core.String pageToken,
       core.String roleId,
-      core.String userKey}) {
+      core.String userKey,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3230,6 +3740,9 @@ class RoleAssignmentsResourceApi {
     }
     if (userKey != null) {
       _queryParams["userKey"] = [userKey];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -3259,12 +3772,16 @@ class RolesResourceApi {
   ///
   /// [roleId] - Immutable ID of the role.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String customer, core.String roleId) {
+  async.Future delete(core.String customer, core.String roleId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3277,6 +3794,9 @@ class RolesResourceApi {
     }
     if (roleId == null) {
       throw new core.ArgumentError("Parameter roleId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3303,6 +3823,9 @@ class RolesResourceApi {
   ///
   /// [roleId] - Immutable ID of the role.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Role].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3310,7 +3833,8 @@ class RolesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Role> get(core.String customer, core.String roleId) {
+  async.Future<Role> get(core.String customer, core.String roleId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3323,6 +3847,9 @@ class RolesResourceApi {
     }
     if (roleId == null) {
       throw new core.ArgumentError("Parameter roleId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -3347,6 +3874,9 @@ class RolesResourceApi {
   ///
   /// [customer] - Immutable ID of the G Suite account.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Role].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3354,7 +3884,8 @@ class RolesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Role> insert(Role request, core.String customer) {
+  async.Future<Role> insert(Role request, core.String customer,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3367,6 +3898,9 @@ class RolesResourceApi {
     }
     if (customer == null) {
       throw new core.ArgumentError("Parameter customer is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/roles';
@@ -3391,6 +3925,9 @@ class RolesResourceApi {
   ///
   /// [pageToken] - Token to specify the next page in the list.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Roles].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3399,7 +3936,7 @@ class RolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Roles> list(core.String customer,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3415,6 +3952,9 @@ class RolesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' + commons.Escaper.ecapeVariable('$customer') + '/roles';
@@ -3438,6 +3978,9 @@ class RolesResourceApi {
   ///
   /// [roleId] - Immutable ID of the role.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Role].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3446,7 +3989,8 @@ class RolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Role> patch(
-      Role request, core.String customer, core.String roleId) {
+      Role request, core.String customer, core.String roleId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3462,6 +4006,9 @@ class RolesResourceApi {
     }
     if (roleId == null) {
       throw new core.ArgumentError("Parameter roleId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -3488,6 +4035,9 @@ class RolesResourceApi {
   ///
   /// [roleId] - Immutable ID of the role.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Role].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3496,7 +4046,8 @@ class RolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Role> update(
-      Role request, core.String customer, core.String roleId) {
+      Role request, core.String customer, core.String roleId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3512,6 +4063,9 @@ class RolesResourceApi {
     }
     if (roleId == null) {
       throw new core.ArgumentError("Parameter roleId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -3542,12 +4096,16 @@ class SchemasResourceApi {
   ///
   /// [schemaKey] - Name or immutable Id of the schema
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String customerId, core.String schemaKey) {
+  async.Future delete(core.String customerId, core.String schemaKey,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3560,6 +4118,9 @@ class SchemasResourceApi {
     }
     if (schemaKey == null) {
       throw new core.ArgumentError("Parameter schemaKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3586,6 +4147,9 @@ class SchemasResourceApi {
   ///
   /// [schemaKey] - Name or immutable Id of the schema
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Schema].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3593,7 +4157,8 @@ class SchemasResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Schema> get(core.String customerId, core.String schemaKey) {
+  async.Future<Schema> get(core.String customerId, core.String schemaKey,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3606,6 +4171,9 @@ class SchemasResourceApi {
     }
     if (schemaKey == null) {
       throw new core.ArgumentError("Parameter schemaKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -3630,6 +4198,9 @@ class SchemasResourceApi {
   ///
   /// [customerId] - Immutable ID of the G Suite account
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Schema].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3637,7 +4208,8 @@ class SchemasResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Schema> insert(Schema request, core.String customerId) {
+  async.Future<Schema> insert(Schema request, core.String customerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3650,6 +4222,9 @@ class SchemasResourceApi {
     }
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -3670,6 +4245,9 @@ class SchemasResourceApi {
   ///
   /// [customerId] - Immutable ID of the G Suite account
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Schemas].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3677,7 +4255,7 @@ class SchemasResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Schemas> list(core.String customerId) {
+  async.Future<Schemas> list(core.String customerId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3687,6 +4265,9 @@ class SchemasResourceApi {
 
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -3711,6 +4292,9 @@ class SchemasResourceApi {
   ///
   /// [schemaKey] - Name or immutable Id of the schema.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Schema].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3719,7 +4303,8 @@ class SchemasResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Schema> patch(
-      Schema request, core.String customerId, core.String schemaKey) {
+      Schema request, core.String customerId, core.String schemaKey,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3735,6 +4320,9 @@ class SchemasResourceApi {
     }
     if (schemaKey == null) {
       throw new core.ArgumentError("Parameter schemaKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -3761,6 +4349,9 @@ class SchemasResourceApi {
   ///
   /// [schemaKey] - Name or immutable Id of the schema.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Schema].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3769,7 +4360,8 @@ class SchemasResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Schema> update(
-      Schema request, core.String customerId, core.String schemaKey) {
+      Schema request, core.String customerId, core.String schemaKey,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3785,6 +4377,9 @@ class SchemasResourceApi {
     }
     if (schemaKey == null) {
       throw new core.ArgumentError("Parameter schemaKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customer/' +
@@ -3816,12 +4411,16 @@ class TokensResourceApi {
   ///
   /// [clientId] - The Client ID of the application the token is issued to.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String userKey, core.String clientId) {
+  async.Future delete(core.String userKey, core.String clientId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3834,6 +4433,9 @@ class TokensResourceApi {
     }
     if (clientId == null) {
       throw new core.ArgumentError("Parameter clientId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3861,6 +4463,9 @@ class TokensResourceApi {
   ///
   /// [clientId] - The Client ID of the application the token is issued to.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Token].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3868,7 +4473,8 @@ class TokensResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Token> get(core.String userKey, core.String clientId) {
+  async.Future<Token> get(core.String userKey, core.String clientId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3881,6 +4487,9 @@ class TokensResourceApi {
     }
     if (clientId == null) {
       throw new core.ArgumentError("Parameter clientId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/' +
@@ -3905,6 +4514,9 @@ class TokensResourceApi {
   /// [userKey] - Identifies the user in the API request. The value can be the
   /// user's primary email address, alias email address, or unique user ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Tokens].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3912,7 +4524,7 @@ class TokensResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Tokens> list(core.String userKey) {
+  async.Future<Tokens> list(core.String userKey, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3922,6 +4534,9 @@ class TokensResourceApi {
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userKey') + '/tokens';
@@ -3951,12 +4566,15 @@ class UsersResourceApi {
   ///
   /// [userKey] - Email or immutable Id of the user
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String userKey) {
+  async.Future delete(core.String userKey, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3966,6 +4584,9 @@ class UsersResourceApi {
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -4003,6 +4624,9 @@ class UsersResourceApi {
   /// - "admin_view" : Fetches the ADMIN_VIEW of the user.
   /// - "domain_public" : Fetches the DOMAIN_PUBLIC view of the user.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [User].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4013,7 +4637,8 @@ class UsersResourceApi {
   async.Future<User> get(core.String userKey,
       {core.String customFieldMask,
       core.String projection,
-      core.String viewType}) {
+      core.String viewType,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4033,6 +4658,9 @@ class UsersResourceApi {
     if (viewType != null) {
       _queryParams["viewType"] = [viewType];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userKey');
 
@@ -4051,6 +4679,9 @@ class UsersResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [User].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4058,7 +4689,7 @@ class UsersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<User> insert(User request) {
+  async.Future<User> insert(User request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4068,6 +4699,9 @@ class UsersResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users';
@@ -4139,6 +4773,9 @@ class UsersResourceApi {
   /// - "admin_view" : Fetches the ADMIN_VIEW of the user.
   /// - "domain_public" : Fetches the DOMAIN_PUBLIC view of the user.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Users].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4158,7 +4795,8 @@ class UsersResourceApi {
       core.String query,
       core.String showDeleted,
       core.String sortOrder,
-      core.String viewType}) {
+      core.String viewType,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4202,6 +4840,9 @@ class UsersResourceApi {
     if (viewType != null) {
       _queryParams["viewType"] = [viewType];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'users';
 
@@ -4222,12 +4863,16 @@ class UsersResourceApi {
   ///
   /// [userKey] - Email or immutable Id of the user as admin
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future makeAdmin(UserMakeAdmin request, core.String userKey) {
+  async.Future makeAdmin(UserMakeAdmin request, core.String userKey,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4240,6 +4885,9 @@ class UsersResourceApi {
     }
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -4264,6 +4912,9 @@ class UsersResourceApi {
   /// [userKey] - Email or immutable Id of the user. If Id, it should match with
   /// id of user object
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [User].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4271,7 +4922,8 @@ class UsersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<User> patch(User request, core.String userKey) {
+  async.Future<User> patch(User request, core.String userKey,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4284,6 +4936,9 @@ class UsersResourceApi {
     }
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userKey');
@@ -4305,12 +4960,16 @@ class UsersResourceApi {
   ///
   /// [userKey] - The immutable id of the user
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future undelete(UserUndelete request, core.String userKey) {
+  async.Future undelete(UserUndelete request, core.String userKey,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4323,6 +4982,9 @@ class UsersResourceApi {
     }
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -4347,6 +5009,9 @@ class UsersResourceApi {
   /// [userKey] - Email or immutable Id of the user. If Id, it should match with
   /// id of user object
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [User].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4354,7 +5019,8 @@ class UsersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<User> update(User request, core.String userKey) {
+  async.Future<User> update(User request, core.String userKey,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4367,6 +5033,9 @@ class UsersResourceApi {
     }
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userKey');
@@ -4440,6 +5109,9 @@ class UsersResourceApi {
   /// - "admin_view" : Fetches the ADMIN_VIEW of the user.
   /// - "domain_public" : Fetches the DOMAIN_PUBLIC view of the user.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Channel].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4459,7 +5131,8 @@ class UsersResourceApi {
       core.String query,
       core.String showDeleted,
       core.String sortOrder,
-      core.String viewType}) {
+      core.String viewType,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4506,6 +5179,9 @@ class UsersResourceApi {
     if (viewType != null) {
       _queryParams["viewType"] = [viewType];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'users/watch';
 
@@ -4532,12 +5208,16 @@ class UsersAliasesResourceApi {
   ///
   /// [alias] - The alias to be removed
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String userKey, core.String alias) {
+  async.Future delete(core.String userKey, core.String alias,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4550,6 +5230,9 @@ class UsersAliasesResourceApi {
     }
     if (alias == null) {
       throw new core.ArgumentError("Parameter alias is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -4576,6 +5259,9 @@ class UsersAliasesResourceApi {
   ///
   /// [userKey] - Email or immutable Id of the user
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Alias].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4583,7 +5269,8 @@ class UsersAliasesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Alias> insert(Alias request, core.String userKey) {
+  async.Future<Alias> insert(Alias request, core.String userKey,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4596,6 +5283,9 @@ class UsersAliasesResourceApi {
     }
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userKey') + '/aliases';
@@ -4620,6 +5310,9 @@ class UsersAliasesResourceApi {
   /// - "add" : Alias Created Event
   /// - "delete" : Alias Deleted Event
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Aliases].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4627,7 +5320,8 @@ class UsersAliasesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Aliases> list(core.String userKey, {core.String event}) {
+  async.Future<Aliases> list(core.String userKey,
+      {core.String event, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4640,6 +5334,9 @@ class UsersAliasesResourceApi {
     }
     if (event != null) {
       _queryParams["event"] = [event];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userKey') + '/aliases';
@@ -4666,6 +5363,9 @@ class UsersAliasesResourceApi {
   /// - "add" : Alias Created Event
   /// - "delete" : Alias Deleted Event
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Channel].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4674,7 +5374,7 @@ class UsersAliasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Channel> watch(Channel request, core.String userKey,
-      {core.String event}) {
+      {core.String event, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4690,6 +5390,9 @@ class UsersAliasesResourceApi {
     }
     if (event != null) {
       _queryParams["event"] = [event];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -4716,12 +5419,15 @@ class UsersPhotosResourceApi {
   ///
   /// [userKey] - Email or immutable Id of the user
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String userKey) {
+  async.Future delete(core.String userKey, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4731,6 +5437,9 @@ class UsersPhotosResourceApi {
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -4754,6 +5463,9 @@ class UsersPhotosResourceApi {
   ///
   /// [userKey] - Email or immutable Id of the user
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UserPhoto].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4761,7 +5473,7 @@ class UsersPhotosResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserPhoto> get(core.String userKey) {
+  async.Future<UserPhoto> get(core.String userKey, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4771,6 +5483,9 @@ class UsersPhotosResourceApi {
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/' +
@@ -4794,6 +5509,9 @@ class UsersPhotosResourceApi {
   ///
   /// [userKey] - Email or immutable Id of the user
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UserPhoto].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4801,7 +5519,8 @@ class UsersPhotosResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserPhoto> patch(UserPhoto request, core.String userKey) {
+  async.Future<UserPhoto> patch(UserPhoto request, core.String userKey,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4814,6 +5533,9 @@ class UsersPhotosResourceApi {
     }
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/' +
@@ -4837,6 +5559,9 @@ class UsersPhotosResourceApi {
   ///
   /// [userKey] - Email or immutable Id of the user
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UserPhoto].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4844,7 +5569,8 @@ class UsersPhotosResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserPhoto> update(UserPhoto request, core.String userKey) {
+  async.Future<UserPhoto> update(UserPhoto request, core.String userKey,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4857,6 +5583,9 @@ class UsersPhotosResourceApi {
     }
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/' +
@@ -4885,12 +5614,15 @@ class VerificationCodesResourceApi {
   ///
   /// [userKey] - Email or immutable Id of the user
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future generate(core.String userKey) {
+  async.Future generate(core.String userKey, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4900,6 +5632,9 @@ class VerificationCodesResourceApi {
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -4923,12 +5658,15 @@ class VerificationCodesResourceApi {
   ///
   /// [userKey] - Email or immutable Id of the user
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future invalidate(core.String userKey) {
+  async.Future invalidate(core.String userKey, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4938,6 +5676,9 @@ class VerificationCodesResourceApi {
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -4963,6 +5704,9 @@ class VerificationCodesResourceApi {
   /// [userKey] - Identifies the user in the API request. The value can be the
   /// user's primary email address, alias email address, or unique user ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [VerificationCodes].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4970,7 +5714,8 @@ class VerificationCodesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<VerificationCodes> list(core.String userKey) {
+  async.Future<VerificationCodes> list(core.String userKey,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4980,6 +5725,9 @@ class VerificationCodesResourceApi {
 
     if (userKey == null) {
       throw new core.ArgumentError("Parameter userKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/' +
@@ -5094,6 +5842,96 @@ class Aliases {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+/// JSON template for App Access Collections Resource object in Directory API.
+class AppAccessCollections {
+  /// List of blocked api access buckets.
+  core.List<core.String> blockedApiAccessBuckets;
+
+  /// Boolean to indicate whether to enforce app access settings on Android
+  /// Drive or not.
+  core.bool enforceSettingsForAndroidDrive;
+
+  /// Error message provided by the Admin that will be shown to the user when an
+  /// app is blocked.
+  core.String errorMessage;
+
+  /// ETag of the resource.
+  core.String etag;
+
+  /// Identifies the resource as an app access collection. Value:
+  /// admin#directory#appaccesscollection
+  core.String kind;
+
+  /// Unique ID of app access collection. (Readonly)
+  core.String resourceId;
+
+  /// Resource name given by the customer while creating/updating. Should be
+  /// unique under given customer.
+  core.String resourceName;
+
+  /// Boolean that indicates whether to trust domain owned apps.
+  core.bool trustDomainOwnedApps;
+
+  AppAccessCollections();
+
+  AppAccessCollections.fromJson(core.Map _json) {
+    if (_json.containsKey("blockedApiAccessBuckets")) {
+      blockedApiAccessBuckets = _json["blockedApiAccessBuckets"];
+    }
+    if (_json.containsKey("enforceSettingsForAndroidDrive")) {
+      enforceSettingsForAndroidDrive = _json["enforceSettingsForAndroidDrive"];
+    }
+    if (_json.containsKey("errorMessage")) {
+      errorMessage = _json["errorMessage"];
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("resourceId")) {
+      resourceId = _json["resourceId"];
+    }
+    if (_json.containsKey("resourceName")) {
+      resourceName = _json["resourceName"];
+    }
+    if (_json.containsKey("trustDomainOwnedApps")) {
+      trustDomainOwnedApps = _json["trustDomainOwnedApps"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (blockedApiAccessBuckets != null) {
+      _json["blockedApiAccessBuckets"] = blockedApiAccessBuckets;
+    }
+    if (enforceSettingsForAndroidDrive != null) {
+      _json["enforceSettingsForAndroidDrive"] = enforceSettingsForAndroidDrive;
+    }
+    if (errorMessage != null) {
+      _json["errorMessage"] = errorMessage;
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (resourceId != null) {
+      _json["resourceId"] = resourceId;
+    }
+    if (resourceName != null) {
+      _json["resourceName"] = resourceName;
+    }
+    if (trustDomainOwnedApps != null) {
+      _json["trustDomainOwnedApps"] = trustDomainOwnedApps;
     }
     return _json;
   }
@@ -8196,6 +9034,114 @@ class Tokens {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+/// JSON template for Trusted App Ids Resource object in Directory API.
+class TrustedAppId {
+  /// Android package name.
+  core.String androidPackageName;
+
+  /// SHA1 signature of the app certificate.
+  core.String certificateHashSHA1;
+
+  /// SHA256 signature of the app certificate.
+  core.String certificateHashSHA256;
+  core.String etag;
+
+  /// Identifies the resource as a trusted AppId.
+  core.String kind;
+
+  TrustedAppId();
+
+  TrustedAppId.fromJson(core.Map _json) {
+    if (_json.containsKey("androidPackageName")) {
+      androidPackageName = _json["androidPackageName"];
+    }
+    if (_json.containsKey("certificateHashSHA1")) {
+      certificateHashSHA1 = _json["certificateHashSHA1"];
+    }
+    if (_json.containsKey("certificateHashSHA256")) {
+      certificateHashSHA256 = _json["certificateHashSHA256"];
+    }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (androidPackageName != null) {
+      _json["androidPackageName"] = androidPackageName;
+    }
+    if (certificateHashSHA1 != null) {
+      _json["certificateHashSHA1"] = certificateHashSHA1;
+    }
+    if (certificateHashSHA256 != null) {
+      _json["certificateHashSHA256"] = certificateHashSHA256;
+    }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    return _json;
+  }
+}
+
+/// JSON template for Trusted Apps response object of a user in Directory API.
+class TrustedApps {
+  /// ETag of the resource.
+  core.String etag;
+
+  /// Identifies the resource as trusted apps response.
+  core.String kind;
+  core.String nextPageToken;
+
+  /// Trusted Apps list.
+  core.List<TrustedAppId> trustedApps;
+
+  TrustedApps();
+
+  TrustedApps.fromJson(core.Map _json) {
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("trustedApps")) {
+      trustedApps = _json["trustedApps"]
+          .map((value) => new TrustedAppId.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (trustedApps != null) {
+      _json["trustedApps"] =
+          trustedApps.map((value) => (value).toJson()).toList();
     }
     return _json;
   }

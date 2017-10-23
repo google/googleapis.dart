@@ -62,6 +62,9 @@ class AccountsCustomAppsResourceApi {
   ///
   /// [account] - Developer account ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [uploadMedia] - The media to upload.
   ///
   /// [uploadOptions] - Options for the media upload. Streaming Media without
@@ -76,7 +79,8 @@ class AccountsCustomAppsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CustomApp> create(CustomApp request, core.String account,
-      {commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      {core.String $fields,
+      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -90,6 +94,9 @@ class AccountsCustomAppsResourceApi {
     }
     if (account == null) {
       throw new core.ArgumentError("Parameter account is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _uploadMedia = uploadMedia;

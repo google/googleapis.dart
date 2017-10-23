@@ -64,6 +64,9 @@ class AppsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -71,7 +74,7 @@ class AppsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> create(Application request) {
+  async.Future<Operation> create(Application request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -81,6 +84,9 @@ class AppsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta5/apps';
@@ -108,6 +114,9 @@ class AppsResourceApi {
   /// this parameter can cause the request to take longer to complete. Note:
   /// This parameter will be deprecated in a future version of the API.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Application].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -116,7 +125,7 @@ class AppsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Application> get(core.String appsId,
-      {core.bool ensureResourcesExist}) {
+      {core.bool ensureResourcesExist, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -129,6 +138,9 @@ class AppsResourceApi {
     }
     if (ensureResourcesExist != null) {
       _queryParams["ensureResourcesExist"] = ["${ensureResourcesExist}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta5/apps/' + commons.Escaper.ecapeVariable('$appsId');
@@ -158,6 +170,9 @@ class AppsResourceApi {
   ///
   /// [mask] - Standard field mask for the set of fields to be updated.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -166,7 +181,7 @@ class AppsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> patch(Application request, core.String appsId,
-      {core.String mask}) {
+      {core.String mask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -182,6 +197,9 @@ class AppsResourceApi {
     }
     if (mask != null) {
       _queryParams["mask"] = [mask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta5/apps/' + commons.Escaper.ecapeVariable('$appsId');
@@ -209,6 +227,9 @@ class AppsLocationsResourceApi {
   ///
   /// [locationsId] - Part of `name`. See documentation of `appsId`.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Location].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -216,7 +237,8 @@ class AppsLocationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(core.String appsId, core.String locationsId) {
+  async.Future<Location> get(core.String appsId, core.String locationsId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -229,6 +251,9 @@ class AppsLocationsResourceApi {
     }
     if (locationsId == null) {
       throw new core.ArgumentError("Parameter locationsId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta5/apps/' +
@@ -252,11 +277,14 @@ class AppsLocationsResourceApi {
   /// [appsId] - Part of `name`. The resource that owns the locations
   /// collection, if applicable.
   ///
+  /// [pageSize] - The standard list page size.
+  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
   ///
-  /// [pageSize] - The standard list page size.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListLocationsResponse].
   ///
@@ -266,7 +294,10 @@ class AppsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String appsId,
-      {core.String filter, core.String pageToken, core.int pageSize}) {
+      {core.int pageSize,
+      core.String filter,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -277,14 +308,17 @@ class AppsLocationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta5/apps/' +
@@ -316,6 +350,9 @@ class AppsOperationsResourceApi {
   ///
   /// [operationsId] - Part of `name`. See documentation of `appsId`.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -323,7 +360,8 @@ class AppsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String appsId, core.String operationsId) {
+  async.Future<Operation> get(core.String appsId, core.String operationsId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -336,6 +374,9 @@ class AppsOperationsResourceApi {
     }
     if (operationsId == null) {
       throw new core.ArgumentError("Parameter operationsId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta5/apps/' +
@@ -366,11 +407,14 @@ class AppsOperationsResourceApi {
   ///
   /// [appsId] - Part of `name`. The name of the operation's parent resource.
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListOperationsResponse].
   ///
@@ -380,7 +424,10 @@ class AppsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String appsId,
-      {core.String filter, core.String pageToken, core.int pageSize}) {
+      {core.String pageToken,
+      core.int pageSize,
+      core.String filter,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -391,14 +438,17 @@ class AppsOperationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta5/apps/' +
@@ -432,6 +482,9 @@ class AppsServicesResourceApi {
   ///
   /// [servicesId] - Part of `name`. See documentation of `appsId`.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -439,7 +492,8 @@ class AppsServicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> delete(core.String appsId, core.String servicesId) {
+  async.Future<Operation> delete(core.String appsId, core.String servicesId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -452,6 +506,9 @@ class AppsServicesResourceApi {
     }
     if (servicesId == null) {
       throw new core.ArgumentError("Parameter servicesId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta5/apps/' +
@@ -477,6 +534,9 @@ class AppsServicesResourceApi {
   ///
   /// [servicesId] - Part of `name`. See documentation of `appsId`.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Service].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -484,7 +544,8 @@ class AppsServicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Service> get(core.String appsId, core.String servicesId) {
+  async.Future<Service> get(core.String appsId, core.String servicesId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -497,6 +558,9 @@ class AppsServicesResourceApi {
     }
     if (servicesId == null) {
       throw new core.ArgumentError("Parameter servicesId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta5/apps/' +
@@ -520,9 +584,12 @@ class AppsServicesResourceApi {
   /// [appsId] - Part of `name`. Name of the resource requested. Example:
   /// apps/myapp.
   ///
+  /// [pageSize] - Maximum results to return per page.
+  ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
-  /// [pageSize] - Maximum results to return per page.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListServicesResponse].
   ///
@@ -532,7 +599,7 @@ class AppsServicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListServicesResponse> list(core.String appsId,
-      {core.String pageToken, core.int pageSize}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -543,11 +610,14 @@ class AppsServicesResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta5/apps/' +
@@ -590,6 +660,9 @@ class AppsServicesResourceApi {
   ///
   /// [mask] - Standard field mask for the set of fields to be updated.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -599,7 +672,7 @@ class AppsServicesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(
       Service request, core.String appsId, core.String servicesId,
-      {core.bool migrateTraffic, core.String mask}) {
+      {core.bool migrateTraffic, core.String mask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -621,6 +694,9 @@ class AppsServicesResourceApi {
     }
     if (mask != null) {
       _queryParams["mask"] = [mask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta5/apps/' +
@@ -658,6 +734,9 @@ class AppsServicesVersionsResourceApi {
   ///
   /// [servicesId] - Part of `name`. See documentation of `appsId`.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -666,7 +745,8 @@ class AppsServicesVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> create(
-      Version request, core.String appsId, core.String servicesId) {
+      Version request, core.String appsId, core.String servicesId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -682,6 +762,9 @@ class AppsServicesVersionsResourceApi {
     }
     if (servicesId == null) {
       throw new core.ArgumentError("Parameter servicesId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta5/apps/' +
@@ -710,6 +793,9 @@ class AppsServicesVersionsResourceApi {
   ///
   /// [versionsId] - Part of `name`. See documentation of `appsId`.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -718,7 +804,8 @@ class AppsServicesVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(
-      core.String appsId, core.String servicesId, core.String versionsId) {
+      core.String appsId, core.String servicesId, core.String versionsId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -734,6 +821,9 @@ class AppsServicesVersionsResourceApi {
     }
     if (versionsId == null) {
       throw new core.ArgumentError("Parameter versionsId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta5/apps/' +
@@ -769,6 +859,9 @@ class AppsServicesVersionsResourceApi {
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Version].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -778,7 +871,7 @@ class AppsServicesVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Version> get(
       core.String appsId, core.String servicesId, core.String versionsId,
-      {core.String view}) {
+      {core.String view, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -797,6 +890,9 @@ class AppsServicesVersionsResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta5/apps/' +
@@ -824,14 +920,17 @@ class AppsServicesVersionsResourceApi {
   ///
   /// [servicesId] - Part of `name`. See documentation of `appsId`.
   ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
-  ///
   /// [pageSize] - Maximum results to return per page.
   ///
   /// [view] - Controls the set of fields returned in the List response.
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListVersionsResponse].
   ///
@@ -842,7 +941,10 @@ class AppsServicesVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListVersionsResponse> list(
       core.String appsId, core.String servicesId,
-      {core.String pageToken, core.int pageSize, core.String view}) {
+      {core.int pageSize,
+      core.String view,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -856,14 +958,17 @@ class AppsServicesVersionsResourceApi {
     if (servicesId == null) {
       throw new core.ArgumentError("Parameter servicesId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta5/apps/' +
@@ -913,6 +1018,9 @@ class AppsServicesVersionsResourceApi {
   ///
   /// [mask] - Standard field mask for the set of fields to be updated.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -922,7 +1030,7 @@ class AppsServicesVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(Version request, core.String appsId,
       core.String servicesId, core.String versionsId,
-      {core.String mask}) {
+      {core.String mask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -944,6 +1052,9 @@ class AppsServicesVersionsResourceApi {
     }
     if (mask != null) {
       _queryParams["mask"] = [mask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta5/apps/' +
@@ -989,6 +1100,9 @@ class AppsServicesVersionsInstancesResourceApi {
   ///
   /// [instancesId] - Part of `name`. See documentation of `appsId`.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1001,7 +1115,8 @@ class AppsServicesVersionsInstancesResourceApi {
       core.String appsId,
       core.String servicesId,
       core.String versionsId,
-      core.String instancesId) {
+      core.String instancesId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1023,6 +1138,9 @@ class AppsServicesVersionsInstancesResourceApi {
     }
     if (instancesId == null) {
       throw new core.ArgumentError("Parameter instancesId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta5/apps/' +
@@ -1057,6 +1175,9 @@ class AppsServicesVersionsInstancesResourceApi {
   ///
   /// [instancesId] - Part of `name`. See documentation of `appsId`.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1065,7 +1186,8 @@ class AppsServicesVersionsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String appsId, core.String servicesId,
-      core.String versionsId, core.String instancesId) {
+      core.String versionsId, core.String instancesId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1084,6 +1206,9 @@ class AppsServicesVersionsInstancesResourceApi {
     }
     if (instancesId == null) {
       throw new core.ArgumentError("Parameter instancesId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta5/apps/' +
@@ -1117,6 +1242,9 @@ class AppsServicesVersionsInstancesResourceApi {
   ///
   /// [instancesId] - Part of `name`. See documentation of `appsId`.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Instance].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1125,7 +1253,8 @@ class AppsServicesVersionsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Instance> get(core.String appsId, core.String servicesId,
-      core.String versionsId, core.String instancesId) {
+      core.String versionsId, core.String instancesId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1144,6 +1273,9 @@ class AppsServicesVersionsInstancesResourceApi {
     }
     if (instancesId == null) {
       throw new core.ArgumentError("Parameter instancesId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta5/apps/' +
@@ -1177,9 +1309,12 @@ class AppsServicesVersionsInstancesResourceApi {
   ///
   /// [versionsId] - Part of `name`. See documentation of `appsId`.
   ///
+  /// [pageSize] - Maximum results to return per page.
+  ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
-  /// [pageSize] - Maximum results to return per page.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListInstancesResponse].
   ///
@@ -1190,7 +1325,7 @@ class AppsServicesVersionsInstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(
       core.String appsId, core.String servicesId, core.String versionsId,
-      {core.String pageToken, core.int pageSize}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1207,11 +1342,14 @@ class AppsServicesVersionsInstancesResourceApi {
     if (versionsId == null) {
       throw new core.ArgumentError("Parameter versionsId is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1beta5/apps/' +

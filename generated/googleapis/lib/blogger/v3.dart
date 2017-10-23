@@ -59,6 +59,9 @@ class BlogUserInfosResourceApi {
   ///
   /// [maxPosts] - Maximum number of posts to pull back with the blog.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BlogUserInfo].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -67,7 +70,7 @@ class BlogUserInfosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BlogUserInfo> get(core.String userId, core.String blogId,
-      {core.int maxPosts}) {
+      {core.int maxPosts, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -83,6 +86,9 @@ class BlogUserInfosResourceApi {
     }
     if (maxPosts != null) {
       _queryParams["maxPosts"] = ["${maxPosts}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/' +
@@ -120,6 +126,9 @@ class BlogsResourceApi {
   /// - "AUTHOR" : Author level detail.
   /// - "READER" : Reader level detail.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Blog].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -128,7 +137,7 @@ class BlogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Blog> get(core.String blogId,
-      {core.int maxPosts, core.String view}) {
+      {core.int maxPosts, core.String view, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -144,6 +153,9 @@ class BlogsResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId');
@@ -170,6 +182,9 @@ class BlogsResourceApi {
   /// - "AUTHOR" : Author level detail.
   /// - "READER" : Reader level detail.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Blog].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -177,7 +192,8 @@ class BlogsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Blog> getByUrl(core.String url, {core.String view}) {
+  async.Future<Blog> getByUrl(core.String url,
+      {core.String view, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -191,6 +207,9 @@ class BlogsResourceApi {
     _queryParams["url"] = [url];
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'blogs/byurl';
@@ -228,6 +247,9 @@ class BlogsResourceApi {
   /// - "AUTHOR" : Author level detail.
   /// - "READER" : Reader level detail.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BlogList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -239,7 +261,8 @@ class BlogsResourceApi {
       {core.bool fetchUserInfo,
       core.List<core.String> role,
       core.List<core.String> status,
-      core.String view}) {
+      core.String view,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -261,6 +284,9 @@ class BlogsResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userId') + '/blogs';
@@ -290,6 +316,9 @@ class CommentsResourceApi {
   ///
   /// [commentId] - The ID of the comment to mark as not spam.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Comment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -298,7 +327,8 @@ class CommentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Comment> approve(
-      core.String blogId, core.String postId, core.String commentId) {
+      core.String blogId, core.String postId, core.String commentId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -314,6 +344,9 @@ class CommentsResourceApi {
     }
     if (commentId == null) {
       throw new core.ArgumentError("Parameter commentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'blogs/' +
@@ -343,13 +376,17 @@ class CommentsResourceApi {
   ///
   /// [commentId] - The ID of the comment to delete.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(
-      core.String blogId, core.String postId, core.String commentId) {
+      core.String blogId, core.String postId, core.String commentId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -365,6 +402,9 @@ class CommentsResourceApi {
     }
     if (commentId == null) {
       throw new core.ArgumentError("Parameter commentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -404,6 +444,9 @@ class CommentsResourceApi {
   /// - "AUTHOR" : Author level detail
   /// - "READER" : Admin level detail
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Comment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -413,7 +456,7 @@ class CommentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Comment> get(
       core.String blogId, core.String postId, core.String commentId,
-      {core.String view}) {
+      {core.String view, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -432,6 +475,9 @@ class CommentsResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'blogs/' +
@@ -479,6 +525,9 @@ class CommentsResourceApi {
   /// - "AUTHOR" : Author level detail
   /// - "READER" : Reader level detail
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CommentList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -493,7 +542,8 @@ class CommentsResourceApi {
       core.String pageToken,
       core.DateTime startDate,
       core.List<core.String> status,
-      core.String view}) {
+      core.String view,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -527,6 +577,9 @@ class CommentsResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'blogs/' +
@@ -564,6 +617,9 @@ class CommentsResourceApi {
   ///
   /// [status] - null
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CommentList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -577,7 +633,8 @@ class CommentsResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.DateTime startDate,
-      core.List<core.String> status}) {
+      core.List<core.String> status,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -606,6 +663,9 @@ class CommentsResourceApi {
     if (status != null) {
       _queryParams["status"] = status;
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/comments';
 
@@ -628,6 +688,9 @@ class CommentsResourceApi {
   ///
   /// [commentId] - The ID of the comment to mark as spam.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Comment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -636,7 +699,8 @@ class CommentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Comment> markAsSpam(
-      core.String blogId, core.String postId, core.String commentId) {
+      core.String blogId, core.String postId, core.String commentId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -652,6 +716,9 @@ class CommentsResourceApi {
     }
     if (commentId == null) {
       throw new core.ArgumentError("Parameter commentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'blogs/' +
@@ -681,6 +748,9 @@ class CommentsResourceApi {
   ///
   /// [commentId] - The ID of the comment to delete content from.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Comment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -689,7 +759,8 @@ class CommentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Comment> removeContent(
-      core.String blogId, core.String postId, core.String commentId) {
+      core.String blogId, core.String postId, core.String commentId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -705,6 +776,9 @@ class CommentsResourceApi {
     }
     if (commentId == null) {
       throw new core.ArgumentError("Parameter commentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'blogs/' +
@@ -738,6 +812,9 @@ class PageViewsResourceApi {
   ///
   /// [range] - null
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Pageviews].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -746,7 +823,7 @@ class PageViewsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Pageviews> get(core.String blogId,
-      {core.List<core.String> range}) {
+      {core.List<core.String> range, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -759,6 +836,9 @@ class PageViewsResourceApi {
     }
     if (range != null) {
       _queryParams["range"] = range;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pageviews';
@@ -786,12 +866,16 @@ class PagesResourceApi {
   ///
   /// [pageId] - The ID of the Page.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String blogId, core.String pageId) {
+  async.Future delete(core.String blogId, core.String pageId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -804,6 +888,9 @@ class PagesResourceApi {
     }
     if (pageId == null) {
       throw new core.ArgumentError("Parameter pageId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -836,6 +923,9 @@ class PagesResourceApi {
   /// - "AUTHOR" : Author level detail
   /// - "READER" : Reader level detail
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Page].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -844,7 +934,7 @@ class PagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Page> get(core.String blogId, core.String pageId,
-      {core.String view}) {
+      {core.String view, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -860,6 +950,9 @@ class PagesResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'blogs/' +
@@ -886,6 +979,9 @@ class PagesResourceApi {
   ///
   /// [isDraft] - Whether to create the page as a draft (default: false).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Page].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -894,7 +990,7 @@ class PagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Page> insert(Page request, core.String blogId,
-      {core.bool isDraft}) {
+      {core.bool isDraft, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -910,6 +1006,9 @@ class PagesResourceApi {
     }
     if (isDraft != null) {
       _queryParams["isDraft"] = ["${isDraft}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages';
@@ -944,6 +1043,9 @@ class PagesResourceApi {
   /// - "AUTHOR" : Author level detail
   /// - "READER" : Reader level detail
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PageList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -956,7 +1058,8 @@ class PagesResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.List<core.String> status,
-      core.String view}) {
+      core.String view,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -981,6 +1084,9 @@ class PagesResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages';
@@ -1010,6 +1116,9 @@ class PagesResourceApi {
   /// [revert_1] - Whether a revert action should be performed when the page is
   /// updated (default: false).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Page].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1018,7 +1127,7 @@ class PagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Page> patch(Page request, core.String blogId, core.String pageId,
-      {core.bool publish_1, core.bool revert_1}) {
+      {core.bool publish_1, core.bool revert_1, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1040,6 +1149,9 @@ class PagesResourceApi {
     }
     if (revert_1 != null) {
       _queryParams["revert"] = ["${revert_1}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'blogs/' +
@@ -1064,6 +1176,9 @@ class PagesResourceApi {
   ///
   /// [pageId] - The ID of the page.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Page].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1071,7 +1186,8 @@ class PagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Page> publish(core.String blogId, core.String pageId) {
+  async.Future<Page> publish(core.String blogId, core.String pageId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1084,6 +1200,9 @@ class PagesResourceApi {
     }
     if (pageId == null) {
       throw new core.ArgumentError("Parameter pageId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'blogs/' +
@@ -1109,6 +1228,9 @@ class PagesResourceApi {
   ///
   /// [pageId] - The ID of the page.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Page].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1116,7 +1238,8 @@ class PagesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Page> revert(core.String blogId, core.String pageId) {
+  async.Future<Page> revert(core.String blogId, core.String pageId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1129,6 +1252,9 @@ class PagesResourceApi {
     }
     if (pageId == null) {
       throw new core.ArgumentError("Parameter pageId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'blogs/' +
@@ -1162,6 +1288,9 @@ class PagesResourceApi {
   /// [revert_1] - Whether a revert action should be performed when the page is
   /// updated (default: false).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Page].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1171,7 +1300,7 @@ class PagesResourceApi {
   /// this method will complete with the same error.
   async.Future<Page> update(
       Page request, core.String blogId, core.String pageId,
-      {core.bool publish_1, core.bool revert_1}) {
+      {core.bool publish_1, core.bool revert_1, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1193,6 +1322,9 @@ class PagesResourceApi {
     }
     if (revert_1 != null) {
       _queryParams["revert"] = ["${revert_1}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'blogs/' +
@@ -1231,6 +1363,9 @@ class PostUserInfosResourceApi {
   ///
   /// [maxComments] - Maximum number of comments to pull back on a post.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PostUserInfo].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1240,7 +1375,7 @@ class PostUserInfosResourceApi {
   /// this method will complete with the same error.
   async.Future<PostUserInfo> get(
       core.String userId, core.String blogId, core.String postId,
-      {core.int maxComments}) {
+      {core.int maxComments, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1259,6 +1394,9 @@ class PostUserInfosResourceApi {
     }
     if (maxComments != null) {
       _queryParams["maxComments"] = ["${maxComments}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/' +
@@ -1318,6 +1456,9 @@ class PostUserInfosResourceApi {
   /// - "AUTHOR" : Author level detail
   /// - "READER" : Reader level detail
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PostUserInfosList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1334,7 +1475,8 @@ class PostUserInfosResourceApi {
       core.String pageToken,
       core.DateTime startDate,
       core.List<core.String> status,
-      core.String view}) {
+      core.String view,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1375,6 +1517,9 @@ class PostUserInfosResourceApi {
     if (view != null) {
       _queryParams["view"] = [view];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -1405,12 +1550,16 @@ class PostsResourceApi {
   ///
   /// [postId] - The ID of the Post.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String blogId, core.String postId) {
+  async.Future delete(core.String blogId, core.String postId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1423,6 +1572,9 @@ class PostsResourceApi {
     }
     if (postId == null) {
       throw new core.ArgumentError("Parameter postId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1465,6 +1617,9 @@ class PostsResourceApi {
   /// - "AUTHOR" : Author level detail
   /// - "READER" : Reader level detail
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Post].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1476,7 +1631,8 @@ class PostsResourceApi {
       {core.bool fetchBody,
       core.bool fetchImages,
       core.int maxComments,
-      core.String view}) {
+      core.String view,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1501,6 +1657,9 @@ class PostsResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'blogs/' +
@@ -1534,6 +1693,9 @@ class PostsResourceApi {
   /// - "AUTHOR" : Author level detail
   /// - "READER" : Reader level detail
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Post].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1542,7 +1704,7 @@ class PostsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Post> getByPath(core.String blogId, core.String path,
-      {core.int maxComments, core.String view}) {
+      {core.int maxComments, core.String view, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1562,6 +1724,9 @@ class PostsResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -1592,6 +1757,9 @@ class PostsResourceApi {
   ///
   /// [isDraft] - Whether to create the post as a draft (default: false).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Post].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1600,7 +1768,10 @@ class PostsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Post> insert(Post request, core.String blogId,
-      {core.bool fetchBody, core.bool fetchImages, core.bool isDraft}) {
+      {core.bool fetchBody,
+      core.bool fetchImages,
+      core.bool isDraft,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1622,6 +1793,9 @@ class PostsResourceApi {
     }
     if (isDraft != null) {
       _queryParams["isDraft"] = ["${isDraft}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
@@ -1673,6 +1847,9 @@ class PostsResourceApi {
   /// - "AUTHOR" : Author level detail
   /// - "READER" : Reader level detail
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PostList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1690,7 +1867,8 @@ class PostsResourceApi {
       core.String pageToken,
       core.DateTime startDate,
       core.List<core.String> status,
-      core.String view}) {
+      core.String view,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1731,6 +1909,9 @@ class PostsResourceApi {
     if (view != null) {
       _queryParams["view"] = [view];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
 
@@ -1768,6 +1949,9 @@ class PostsResourceApi {
   /// [revert_1] - Whether a revert action should be performed when the post is
   /// updated (default: false).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Post].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1780,7 +1964,8 @@ class PostsResourceApi {
       core.bool fetchImages,
       core.int maxComments,
       core.bool publish_1,
-      core.bool revert_1}) {
+      core.bool revert_1,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1812,6 +1997,9 @@ class PostsResourceApi {
     if (revert_1 != null) {
       _queryParams["revert"] = ["${revert_1}"];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -1841,6 +2029,9 @@ class PostsResourceApi {
   /// at the a previously saved schedule date (if present), or the current time.
   /// If a future date is given, the post will be scheduled to be published.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Post].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1849,7 +2040,7 @@ class PostsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Post> publish(core.String blogId, core.String postId,
-      {core.DateTime publishDate}) {
+      {core.DateTime publishDate, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1865,6 +2056,9 @@ class PostsResourceApi {
     }
     if (publishDate != null) {
       _queryParams["publishDate"] = [(publishDate).toIso8601String()];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'blogs/' +
@@ -1890,6 +2084,9 @@ class PostsResourceApi {
   ///
   /// [postId] - The ID of the Post.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Post].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1897,7 +2094,8 @@ class PostsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Post> revert(core.String blogId, core.String postId) {
+  async.Future<Post> revert(core.String blogId, core.String postId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1910,6 +2108,9 @@ class PostsResourceApi {
     }
     if (postId == null) {
       throw new core.ArgumentError("Parameter postId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'blogs/' +
@@ -1944,6 +2145,9 @@ class PostsResourceApi {
   /// - "published" : Order by the date the post was published
   /// - "updated" : Order by the date the post was last updated
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PostList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1952,7 +2156,7 @@ class PostsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PostList> search(core.String blogId, core.String q,
-      {core.bool fetchBodies, core.String orderBy}) {
+      {core.bool fetchBodies, core.String orderBy, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1972,6 +2176,9 @@ class PostsResourceApi {
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -2011,6 +2218,9 @@ class PostsResourceApi {
   /// [revert_1] - Whether a revert action should be performed when the post is
   /// updated (default: false).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Post].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2024,7 +2234,8 @@ class PostsResourceApi {
       core.bool fetchImages,
       core.int maxComments,
       core.bool publish_1,
-      core.bool revert_1}) {
+      core.bool revert_1,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2056,6 +2267,9 @@ class PostsResourceApi {
     if (revert_1 != null) {
       _queryParams["revert"] = ["${revert_1}"];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -2083,6 +2297,9 @@ class UsersResourceApi {
   ///
   /// [userId] - The ID of the user to get.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [User].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2090,7 +2307,7 @@ class UsersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<User> get(core.String userId) {
+  async.Future<User> get(core.String userId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2100,6 +2317,9 @@ class UsersResourceApi {
 
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'users/' + commons.Escaper.ecapeVariable('$userId');

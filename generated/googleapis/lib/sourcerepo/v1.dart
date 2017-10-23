@@ -70,6 +70,9 @@ class ProjectsReposResourceApi {
   /// `projects/<project>`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Repo].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -77,7 +80,8 @@ class ProjectsReposResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Repo> create(Repo request, core.String parent) {
+  async.Future<Repo> create(Repo request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -90,6 +94,9 @@ class ProjectsReposResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/repos';
@@ -111,6 +118,9 @@ class ProjectsReposResourceApi {
   /// `projects/<project>/repos/<repo>`.
   /// Value must have pattern "^projects/[^/]+/repos/.+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -118,7 +128,7 @@ class ProjectsReposResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name) {
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -128,6 +138,9 @@ class ProjectsReposResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -149,6 +162,9 @@ class ProjectsReposResourceApi {
   /// `projects/<project>/repos/<repo>`.
   /// Value must have pattern "^projects/[^/]+/repos/.+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Repo].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -156,7 +172,7 @@ class ProjectsReposResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Repo> get(core.String name) {
+  async.Future<Repo> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -166,6 +182,9 @@ class ProjectsReposResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -190,6 +209,9 @@ class ProjectsReposResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^projects/[^/]+/repos/.+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Policy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -197,7 +219,8 @@ class ProjectsReposResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Policy> getIamPolicy(core.String resource) {
+  async.Future<Policy> getIamPolicy(core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -207,6 +230,9 @@ class ProjectsReposResourceApi {
 
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -239,6 +265,9 @@ class ProjectsReposResourceApi {
   /// [pageSize] - Maximum number of repositories to return; between 1 and 500.
   /// If not set or zero, defaults to 100 at the server.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListReposResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -247,7 +276,7 @@ class ProjectsReposResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListReposResponse> list(core.String name,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -263,6 +292,9 @@ class ProjectsReposResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/repos';
@@ -288,6 +320,9 @@ class ProjectsReposResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^projects/[^/]+/repos/.+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Policy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -296,7 +331,8 @@ class ProjectsReposResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      SetIamPolicyRequest request, core.String resource) {
+      SetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -309,6 +345,9 @@ class ProjectsReposResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -337,6 +376,9 @@ class ProjectsReposResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^projects/[^/]+/repos/.+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TestIamPermissionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -345,7 +387,8 @@ class ProjectsReposResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource) {
+      TestIamPermissionsRequest request, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -358,6 +401,9 @@ class ProjectsReposResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -724,7 +770,7 @@ class MirrorConfig {
   core.String url;
 
   /// ID of the webhook listening to updates to trigger mirroring.
-  /// Removing this webook from the other hosting service will stop
+  /// Removing this webhook from the other hosting service will stop
   /// Google Cloud Source Repositories from receiving notifications,
   /// and thereby disabling mirroring.
   core.String webhookId;

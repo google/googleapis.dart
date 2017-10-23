@@ -149,27 +149,27 @@ checkRunMobileFriendlyTestRequest(api.RunMobileFriendlyTestRequest o) {
   buildCounterRunMobileFriendlyTestRequest--;
 }
 
-buildUnnamed1273() {
+buildUnnamed1260() {
   var o = new core.List<api.MobileFriendlyIssue>();
   o.add(buildMobileFriendlyIssue());
   o.add(buildMobileFriendlyIssue());
   return o;
 }
 
-checkUnnamed1273(core.List<api.MobileFriendlyIssue> o) {
+checkUnnamed1260(core.List<api.MobileFriendlyIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMobileFriendlyIssue(o[0]);
   checkMobileFriendlyIssue(o[1]);
 }
 
-buildUnnamed1274() {
+buildUnnamed1261() {
   var o = new core.List<api.ResourceIssue>();
   o.add(buildResourceIssue());
   o.add(buildResourceIssue());
   return o;
 }
 
-checkUnnamed1274(core.List<api.ResourceIssue> o) {
+checkUnnamed1261(core.List<api.ResourceIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceIssue(o[0]);
   checkResourceIssue(o[1]);
@@ -181,8 +181,8 @@ buildRunMobileFriendlyTestResponse() {
   buildCounterRunMobileFriendlyTestResponse++;
   if (buildCounterRunMobileFriendlyTestResponse < 3) {
     o.mobileFriendliness = "foo";
-    o.mobileFriendlyIssues = buildUnnamed1273();
-    o.resourceIssues = buildUnnamed1274();
+    o.mobileFriendlyIssues = buildUnnamed1260();
+    o.resourceIssues = buildUnnamed1261();
     o.screenshot = buildImage();
     o.testStatus = buildTestStatus();
   }
@@ -194,8 +194,8 @@ checkRunMobileFriendlyTestResponse(api.RunMobileFriendlyTestResponse o) {
   buildCounterRunMobileFriendlyTestResponse++;
   if (buildCounterRunMobileFriendlyTestResponse < 3) {
     unittest.expect(o.mobileFriendliness, unittest.equals('foo'));
-    checkUnnamed1273(o.mobileFriendlyIssues);
-    checkUnnamed1274(o.resourceIssues);
+    checkUnnamed1260(o.mobileFriendlyIssues);
+    checkUnnamed1261(o.resourceIssues);
     checkImage(o.screenshot);
     checkTestStatus(o.testStatus);
   }
@@ -286,6 +286,7 @@ main() {
       api.UrlTestingToolsMobileFriendlyTestResourceApi res =
           new api.SearchconsoleApi(mock).urlTestingTools.mobileFriendlyTest;
       var arg_request = buildRunMobileFriendlyTestRequest();
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.RunMobileFriendlyTestRequest.fromJson(json);
         checkRunMobileFriendlyTestRequest(obj);
@@ -319,6 +320,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -326,7 +328,7 @@ main() {
         var resp = convert.JSON.encode(buildRunMobileFriendlyTestResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.run(arg_request).then(
+      res.run(arg_request, $fields: arg_$fields).then(
           unittest.expectAsync1(((api.RunMobileFriendlyTestResponse response) {
         checkRunMobileFriendlyTestResponse(response);
       })));

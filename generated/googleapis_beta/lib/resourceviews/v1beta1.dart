@@ -72,16 +72,17 @@ class RegionViewsResourceApi {
   ///
   /// [resourceViewName] - The name of the resource view.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future addresources(
-      RegionViewsAddResourcesRequest request,
-      core.String projectName,
-      core.String region,
-      core.String resourceViewName) {
+  async.Future addresources(RegionViewsAddResourcesRequest request,
+      core.String projectName, core.String region, core.String resourceViewName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -100,6 +101,9 @@ class RegionViewsResourceApi {
     }
     if (resourceViewName == null) {
       throw new core.ArgumentError("Parameter resourceViewName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -130,13 +134,17 @@ class RegionViewsResourceApi {
   ///
   /// [resourceViewName] - The name of the resource view.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String projectName, core.String region,
-      core.String resourceViewName) {
+  async.Future delete(
+      core.String projectName, core.String region, core.String resourceViewName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -152,6 +160,9 @@ class RegionViewsResourceApi {
     }
     if (resourceViewName == null) {
       throw new core.ArgumentError("Parameter resourceViewName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -181,6 +192,9 @@ class RegionViewsResourceApi {
   ///
   /// [resourceViewName] - The name of the resource view.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ResourceView].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -188,8 +202,9 @@ class RegionViewsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ResourceView> get(core.String projectName, core.String region,
-      core.String resourceViewName) {
+  async.Future<ResourceView> get(
+      core.String projectName, core.String region, core.String resourceViewName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -205,6 +220,9 @@ class RegionViewsResourceApi {
     }
     if (resourceViewName == null) {
       throw new core.ArgumentError("Parameter resourceViewName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectName') +
@@ -232,6 +250,9 @@ class RegionViewsResourceApi {
   ///
   /// [region] - The region name of the resource view.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RegionViewsInsertResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -240,7 +261,8 @@ class RegionViewsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RegionViewsInsertResponse> insert(
-      ResourceView request, core.String projectName, core.String region) {
+      ResourceView request, core.String projectName, core.String region,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -256,6 +278,9 @@ class RegionViewsResourceApi {
     }
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectName') +
@@ -289,6 +314,9 @@ class RegionViewsResourceApi {
   /// request. This token can be used to request the next page of results from a
   /// previous list request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RegionViewsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -298,7 +326,7 @@ class RegionViewsResourceApi {
   /// this method will complete with the same error.
   async.Future<RegionViewsListResponse> list(
       core.String projectName, core.String region,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -317,6 +345,9 @@ class RegionViewsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectName') +
@@ -351,6 +382,9 @@ class RegionViewsResourceApi {
   /// request. This token can be used to request the next page of results from a
   /// previous list request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RegionViewsListResourcesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -360,7 +394,7 @@ class RegionViewsResourceApi {
   /// this method will complete with the same error.
   async.Future<RegionViewsListResourcesResponse> listresources(
       core.String projectName, core.String region, core.String resourceViewName,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -382,6 +416,9 @@ class RegionViewsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectName') +
@@ -413,16 +450,17 @@ class RegionViewsResourceApi {
   ///
   /// [resourceViewName] - The name of the resource view.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future removeresources(
-      RegionViewsRemoveResourcesRequest request,
-      core.String projectName,
-      core.String region,
-      core.String resourceViewName) {
+  async.Future removeresources(RegionViewsRemoveResourcesRequest request,
+      core.String projectName, core.String region, core.String resourceViewName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -441,6 +479,9 @@ class RegionViewsResourceApi {
     }
     if (resourceViewName == null) {
       throw new core.ArgumentError("Parameter resourceViewName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -479,13 +520,17 @@ class ZoneViewsResourceApi {
   ///
   /// [resourceViewName] - The name of the resource view.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future addresources(ZoneViewsAddResourcesRequest request,
-      core.String projectName, core.String zone, core.String resourceViewName) {
+      core.String projectName, core.String zone, core.String resourceViewName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -504,6 +549,9 @@ class ZoneViewsResourceApi {
     }
     if (resourceViewName == null) {
       throw new core.ArgumentError("Parameter resourceViewName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -534,13 +582,17 @@ class ZoneViewsResourceApi {
   ///
   /// [resourceViewName] - The name of the resource view.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(
-      core.String projectName, core.String zone, core.String resourceViewName) {
+      core.String projectName, core.String zone, core.String resourceViewName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -556,6 +608,9 @@ class ZoneViewsResourceApi {
     }
     if (resourceViewName == null) {
       throw new core.ArgumentError("Parameter resourceViewName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -585,6 +640,9 @@ class ZoneViewsResourceApi {
   ///
   /// [resourceViewName] - The name of the resource view.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ResourceView].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -593,7 +651,8 @@ class ZoneViewsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ResourceView> get(
-      core.String projectName, core.String zone, core.String resourceViewName) {
+      core.String projectName, core.String zone, core.String resourceViewName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -609,6 +668,9 @@ class ZoneViewsResourceApi {
     }
     if (resourceViewName == null) {
       throw new core.ArgumentError("Parameter resourceViewName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectName') +
@@ -636,6 +698,9 @@ class ZoneViewsResourceApi {
   ///
   /// [zone] - The zone name of the resource view.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ZoneViewsInsertResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -644,7 +709,8 @@ class ZoneViewsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ZoneViewsInsertResponse> insert(
-      ResourceView request, core.String projectName, core.String zone) {
+      ResourceView request, core.String projectName, core.String zone,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -660,6 +726,9 @@ class ZoneViewsResourceApi {
     }
     if (zone == null) {
       throw new core.ArgumentError("Parameter zone is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectName') +
@@ -692,6 +761,9 @@ class ZoneViewsResourceApi {
   /// request. This token can be used to request the next page of results from a
   /// previous list request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ZoneViewsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -701,7 +773,7 @@ class ZoneViewsResourceApi {
   /// this method will complete with the same error.
   async.Future<ZoneViewsListResponse> list(
       core.String projectName, core.String zone,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -720,6 +792,9 @@ class ZoneViewsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectName') +
@@ -754,6 +829,9 @@ class ZoneViewsResourceApi {
   /// request. This token can be used to request the next page of results from a
   /// previous list request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ZoneViewsListResourcesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -763,7 +841,7 @@ class ZoneViewsResourceApi {
   /// this method will complete with the same error.
   async.Future<ZoneViewsListResourcesResponse> listresources(
       core.String projectName, core.String zone, core.String resourceViewName,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -785,6 +863,9 @@ class ZoneViewsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectName') +
@@ -816,13 +897,17 @@ class ZoneViewsResourceApi {
   ///
   /// [resourceViewName] - The name of the resource view.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future removeresources(ZoneViewsRemoveResourcesRequest request,
-      core.String projectName, core.String zone, core.String resourceViewName) {
+      core.String projectName, core.String zone, core.String resourceViewName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -841,6 +926,9 @@ class ZoneViewsResourceApi {
     }
     if (resourceViewName == null) {
       throw new core.ArgumentError("Parameter resourceViewName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;

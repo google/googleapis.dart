@@ -139,6 +139,9 @@ class DataGaResourceApi {
   /// [start_index] - An index of the first entity to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GaData].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -156,7 +159,8 @@ class DataGaResourceApi {
       core.String samplingLevel,
       core.String segment,
       core.String sort,
-      core.int start_index}) {
+      core.int start_index,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -206,6 +210,9 @@ class DataGaResourceApi {
     }
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'data/ga';
@@ -275,6 +282,9 @@ class DataMcfResourceApi {
   /// [start_index] - An index of the first entity to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [McfData].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -289,7 +299,8 @@ class DataMcfResourceApi {
       core.int max_results,
       core.String samplingLevel,
       core.String sort,
-      core.int start_index}) {
+      core.int start_index,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -330,6 +341,9 @@ class DataMcfResourceApi {
     }
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'data/mcf';
@@ -375,6 +389,9 @@ class DataRealtimeResourceApi {
   /// the sort order for real time data.
   /// Value must have pattern "(-)?((ga:.+)|(rt:.+))".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RealtimeData].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -386,7 +403,8 @@ class DataRealtimeResourceApi {
       {core.String dimensions,
       core.String filters,
       core.int max_results,
-      core.String sort}) {
+      core.String sort,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -413,6 +431,9 @@ class DataRealtimeResourceApi {
     }
     if (sort != null) {
       _queryParams["sort"] = [sort];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'data/realtime';
@@ -489,6 +510,9 @@ class ManagementAccountSummariesResourceApi {
   /// [start_index] - An index of the first entity to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AccountSummaries].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -497,7 +521,7 @@ class ManagementAccountSummariesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AccountSummaries> list(
-      {core.int max_results, core.int start_index}) {
+      {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -510,6 +534,9 @@ class ManagementAccountSummariesResourceApi {
     }
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accountSummaries';
@@ -538,12 +565,16 @@ class ManagementAccountUserLinksResourceApi {
   ///
   /// [linkId] - Link ID to delete the user link for.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String accountId, core.String linkId) {
+  async.Future delete(core.String accountId, core.String linkId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -556,6 +587,9 @@ class ManagementAccountUserLinksResourceApi {
     }
     if (linkId == null) {
       throw new core.ArgumentError("Parameter linkId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -582,6 +616,9 @@ class ManagementAccountUserLinksResourceApi {
   ///
   /// [accountId] - Account ID to create the user link for.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EntityUserLink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -590,7 +627,8 @@ class ManagementAccountUserLinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EntityUserLink> insert(
-      EntityUserLink request, core.String accountId) {
+      EntityUserLink request, core.String accountId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -603,6 +641,9 @@ class ManagementAccountUserLinksResourceApi {
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -631,6 +672,9 @@ class ManagementAccountUserLinksResourceApi {
   /// this parameter as a pagination mechanism along with the max-results
   /// parameter.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EntityUserLinks].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -639,7 +683,7 @@ class ManagementAccountUserLinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EntityUserLinks> list(core.String accountId,
-      {core.int max_results, core.int start_index}) {
+      {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -655,6 +699,9 @@ class ManagementAccountUserLinksResourceApi {
     }
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -680,6 +727,9 @@ class ManagementAccountUserLinksResourceApi {
   ///
   /// [linkId] - Link ID to update the account-user link for.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EntityUserLink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -688,7 +738,8 @@ class ManagementAccountUserLinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EntityUserLink> update(
-      EntityUserLink request, core.String accountId, core.String linkId) {
+      EntityUserLink request, core.String accountId, core.String linkId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -704,6 +755,9 @@ class ManagementAccountUserLinksResourceApi {
     }
     if (linkId == null) {
       throw new core.ArgumentError("Parameter linkId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -737,6 +791,9 @@ class ManagementAccountsResourceApi {
   /// [start_index] - An index of the first account to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Accounts].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -744,7 +801,8 @@ class ManagementAccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Accounts> list({core.int max_results, core.int start_index}) {
+  async.Future<Accounts> list(
+      {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -757,6 +815,9 @@ class ManagementAccountsResourceApi {
     }
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts';
@@ -794,6 +855,9 @@ class ManagementCustomDataSourcesResourceApi {
   /// retrieve. Use this parameter as a pagination mechanism along with the
   /// max-results parameter.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CustomDataSources].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -803,7 +867,7 @@ class ManagementCustomDataSourcesResourceApi {
   /// this method will complete with the same error.
   async.Future<CustomDataSources> list(
       core.String accountId, core.String webPropertyId,
-      {core.int max_results, core.int start_index}) {
+      {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -822,6 +886,9 @@ class ManagementCustomDataSourcesResourceApi {
     }
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -856,6 +923,9 @@ class ManagementCustomDimensionsResourceApi {
   ///
   /// [customDimensionId] - The ID of the custom dimension to retrieve.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CustomDimension].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -864,7 +934,8 @@ class ManagementCustomDimensionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CustomDimension> get(core.String accountId,
-      core.String webPropertyId, core.String customDimensionId) {
+      core.String webPropertyId, core.String customDimensionId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -880,6 +951,9 @@ class ManagementCustomDimensionsResourceApi {
     }
     if (customDimensionId == null) {
       throw new core.ArgumentError("Parameter customDimensionId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -908,6 +982,9 @@ class ManagementCustomDimensionsResourceApi {
   ///
   /// [webPropertyId] - Web property ID for the custom dimension to create.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CustomDimension].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -915,8 +992,9 @@ class ManagementCustomDimensionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CustomDimension> insert(CustomDimension request,
-      core.String accountId, core.String webPropertyId) {
+  async.Future<CustomDimension> insert(
+      CustomDimension request, core.String accountId, core.String webPropertyId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -932,6 +1010,9 @@ class ManagementCustomDimensionsResourceApi {
     }
     if (webPropertyId == null) {
       throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -963,6 +1044,9 @@ class ManagementCustomDimensionsResourceApi {
   /// [start_index] - An index of the first entity to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CustomDimensions].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -972,7 +1056,7 @@ class ManagementCustomDimensionsResourceApi {
   /// this method will complete with the same error.
   async.Future<CustomDimensions> list(
       core.String accountId, core.String webPropertyId,
-      {core.int max_results, core.int start_index}) {
+      {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -991,6 +1075,9 @@ class ManagementCustomDimensionsResourceApi {
     }
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -1026,6 +1113,9 @@ class ManagementCustomDimensionsResourceApi {
   /// related to the custom dimension being linked to a custom data source /
   /// data set.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CustomDimension].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1038,7 +1128,8 @@ class ManagementCustomDimensionsResourceApi {
       core.String accountId,
       core.String webPropertyId,
       core.String customDimensionId,
-      {core.bool ignoreCustomDataSourceLinks}) {
+      {core.bool ignoreCustomDataSourceLinks,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1062,6 +1153,9 @@ class ManagementCustomDimensionsResourceApi {
       _queryParams["ignoreCustomDataSourceLinks"] = [
         "${ignoreCustomDataSourceLinks}"
       ];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -1097,6 +1191,9 @@ class ManagementCustomDimensionsResourceApi {
   /// related to the custom dimension being linked to a custom data source /
   /// data set.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CustomDimension].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1109,7 +1206,8 @@ class ManagementCustomDimensionsResourceApi {
       core.String accountId,
       core.String webPropertyId,
       core.String customDimensionId,
-      {core.bool ignoreCustomDataSourceLinks}) {
+      {core.bool ignoreCustomDataSourceLinks,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1133,6 +1231,9 @@ class ManagementCustomDimensionsResourceApi {
       _queryParams["ignoreCustomDataSourceLinks"] = [
         "${ignoreCustomDataSourceLinks}"
       ];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -1168,6 +1269,9 @@ class ManagementCustomMetricsResourceApi {
   ///
   /// [customMetricId] - The ID of the custom metric to retrieve.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CustomMetric].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1176,7 +1280,8 @@ class ManagementCustomMetricsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CustomMetric> get(core.String accountId,
-      core.String webPropertyId, core.String customMetricId) {
+      core.String webPropertyId, core.String customMetricId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1192,6 +1297,9 @@ class ManagementCustomMetricsResourceApi {
     }
     if (customMetricId == null) {
       throw new core.ArgumentError("Parameter customMetricId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -1220,6 +1328,9 @@ class ManagementCustomMetricsResourceApi {
   ///
   /// [webPropertyId] - Web property ID for the custom dimension to create.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CustomMetric].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1228,7 +1339,8 @@ class ManagementCustomMetricsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CustomMetric> insert(
-      CustomMetric request, core.String accountId, core.String webPropertyId) {
+      CustomMetric request, core.String accountId, core.String webPropertyId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1244,6 +1356,9 @@ class ManagementCustomMetricsResourceApi {
     }
     if (webPropertyId == null) {
       throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -1275,6 +1390,9 @@ class ManagementCustomMetricsResourceApi {
   /// [start_index] - An index of the first entity to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CustomMetrics].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1284,7 +1402,7 @@ class ManagementCustomMetricsResourceApi {
   /// this method will complete with the same error.
   async.Future<CustomMetrics> list(
       core.String accountId, core.String webPropertyId,
-      {core.int max_results, core.int start_index}) {
+      {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1303,6 +1421,9 @@ class ManagementCustomMetricsResourceApi {
     }
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -1336,6 +1457,9 @@ class ManagementCustomMetricsResourceApi {
   /// related to the custom metric being linked to a custom data source / data
   /// set.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CustomMetric].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1345,7 +1469,7 @@ class ManagementCustomMetricsResourceApi {
   /// this method will complete with the same error.
   async.Future<CustomMetric> patch(CustomMetric request, core.String accountId,
       core.String webPropertyId, core.String customMetricId,
-      {core.bool ignoreCustomDataSourceLinks}) {
+      {core.bool ignoreCustomDataSourceLinks, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1369,6 +1493,9 @@ class ManagementCustomMetricsResourceApi {
       _queryParams["ignoreCustomDataSourceLinks"] = [
         "${ignoreCustomDataSourceLinks}"
       ];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -1403,6 +1530,9 @@ class ManagementCustomMetricsResourceApi {
   /// related to the custom metric being linked to a custom data source / data
   /// set.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CustomMetric].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1412,7 +1542,7 @@ class ManagementCustomMetricsResourceApi {
   /// this method will complete with the same error.
   async.Future<CustomMetric> update(CustomMetric request, core.String accountId,
       core.String webPropertyId, core.String customMetricId,
-      {core.bool ignoreCustomDataSourceLinks}) {
+      {core.bool ignoreCustomDataSourceLinks, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1436,6 +1566,9 @@ class ManagementCustomMetricsResourceApi {
       _queryParams["ignoreCustomDataSourceLinks"] = [
         "${ignoreCustomDataSourceLinks}"
       ];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -1473,13 +1606,17 @@ class ManagementExperimentsResourceApi {
   ///
   /// [experimentId] - ID of the experiment to delete
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String accountId, core.String webPropertyId,
-      core.String profileId, core.String experimentId) {
+      core.String profileId, core.String experimentId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1498,6 +1635,9 @@ class ManagementExperimentsResourceApi {
     }
     if (experimentId == null) {
       throw new core.ArgumentError("Parameter experimentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1532,6 +1672,9 @@ class ManagementExperimentsResourceApi {
   ///
   /// [experimentId] - Experiment ID to retrieve the experiment for.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Experiment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1540,7 +1683,8 @@ class ManagementExperimentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Experiment> get(core.String accountId, core.String webPropertyId,
-      core.String profileId, core.String experimentId) {
+      core.String profileId, core.String experimentId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1559,6 +1703,9 @@ class ManagementExperimentsResourceApi {
     }
     if (experimentId == null) {
       throw new core.ArgumentError("Parameter experimentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -1591,6 +1738,9 @@ class ManagementExperimentsResourceApi {
   ///
   /// [profileId] - View (Profile) ID to create the experiment for.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Experiment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1599,7 +1749,8 @@ class ManagementExperimentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Experiment> insert(Experiment request, core.String accountId,
-      core.String webPropertyId, core.String profileId) {
+      core.String webPropertyId, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1618,6 +1769,9 @@ class ManagementExperimentsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -1656,6 +1810,9 @@ class ManagementExperimentsResourceApi {
   /// [start_index] - An index of the first experiment to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Experiments].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1665,7 +1822,7 @@ class ManagementExperimentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Experiments> list(
       core.String accountId, core.String webPropertyId, core.String profileId,
-      {core.int max_results, core.int start_index}) {
+      {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1687,6 +1844,9 @@ class ManagementExperimentsResourceApi {
     }
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -1720,6 +1880,9 @@ class ManagementExperimentsResourceApi {
   ///
   /// [experimentId] - Experiment ID of the experiment to update.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Experiment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1732,7 +1895,8 @@ class ManagementExperimentsResourceApi {
       core.String accountId,
       core.String webPropertyId,
       core.String profileId,
-      core.String experimentId) {
+      core.String experimentId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1754,6 +1918,9 @@ class ManagementExperimentsResourceApi {
     }
     if (experimentId == null) {
       throw new core.ArgumentError("Parameter experimentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -1788,6 +1955,9 @@ class ManagementExperimentsResourceApi {
   ///
   /// [experimentId] - Experiment ID of the experiment to update.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Experiment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1800,7 +1970,8 @@ class ManagementExperimentsResourceApi {
       core.String accountId,
       core.String webPropertyId,
       core.String profileId,
-      core.String experimentId) {
+      core.String experimentId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1822,6 +1993,9 @@ class ManagementExperimentsResourceApi {
     }
     if (experimentId == null) {
       throw new core.ArgumentError("Parameter experimentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -1857,6 +2031,9 @@ class ManagementFiltersResourceApi {
   ///
   /// [filterId] - ID of the filter to be deleted.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Filter].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1864,7 +2041,8 @@ class ManagementFiltersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Filter> delete(core.String accountId, core.String filterId) {
+  async.Future<Filter> delete(core.String accountId, core.String filterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1877,6 +2055,9 @@ class ManagementFiltersResourceApi {
     }
     if (filterId == null) {
       throw new core.ArgumentError("Parameter filterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -1901,6 +2082,9 @@ class ManagementFiltersResourceApi {
   ///
   /// [filterId] - Filter ID to retrieve filters for.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Filter].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1908,7 +2092,8 @@ class ManagementFiltersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Filter> get(core.String accountId, core.String filterId) {
+  async.Future<Filter> get(core.String accountId, core.String filterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1921,6 +2106,9 @@ class ManagementFiltersResourceApi {
     }
     if (filterId == null) {
       throw new core.ArgumentError("Parameter filterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -1945,6 +2133,9 @@ class ManagementFiltersResourceApi {
   ///
   /// [accountId] - Account ID to create filter for.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Filter].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1952,7 +2143,8 @@ class ManagementFiltersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Filter> insert(Filter request, core.String accountId) {
+  async.Future<Filter> insert(Filter request, core.String accountId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1965,6 +2157,9 @@ class ManagementFiltersResourceApi {
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -1992,6 +2187,9 @@ class ManagementFiltersResourceApi {
   /// [start_index] - An index of the first entity to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Filters].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2000,7 +2198,7 @@ class ManagementFiltersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Filters> list(core.String accountId,
-      {core.int max_results, core.int start_index}) {
+      {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2016,6 +2214,9 @@ class ManagementFiltersResourceApi {
     }
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -2041,6 +2242,9 @@ class ManagementFiltersResourceApi {
   ///
   /// [filterId] - ID of the filter to be updated.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Filter].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2049,7 +2253,8 @@ class ManagementFiltersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Filter> patch(
-      Filter request, core.String accountId, core.String filterId) {
+      Filter request, core.String accountId, core.String filterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2065,6 +2270,9 @@ class ManagementFiltersResourceApi {
     }
     if (filterId == null) {
       throw new core.ArgumentError("Parameter filterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -2091,6 +2299,9 @@ class ManagementFiltersResourceApi {
   ///
   /// [filterId] - ID of the filter to be updated.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Filter].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2099,7 +2310,8 @@ class ManagementFiltersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Filter> update(
-      Filter request, core.String accountId, core.String filterId) {
+      Filter request, core.String accountId, core.String filterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2115,6 +2327,9 @@ class ManagementFiltersResourceApi {
     }
     if (filterId == null) {
       throw new core.ArgumentError("Parameter filterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -2149,6 +2364,9 @@ class ManagementGoalsResourceApi {
   ///
   /// [goalId] - Goal ID to retrieve the goal for.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Goal].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2157,7 +2375,8 @@ class ManagementGoalsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Goal> get(core.String accountId, core.String webPropertyId,
-      core.String profileId, core.String goalId) {
+      core.String profileId, core.String goalId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2176,6 +2395,9 @@ class ManagementGoalsResourceApi {
     }
     if (goalId == null) {
       throw new core.ArgumentError("Parameter goalId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -2208,6 +2430,9 @@ class ManagementGoalsResourceApi {
   ///
   /// [profileId] - View (Profile) ID to create the goal for.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Goal].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2216,7 +2441,8 @@ class ManagementGoalsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Goal> insert(Goal request, core.String accountId,
-      core.String webPropertyId, core.String profileId) {
+      core.String webPropertyId, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2235,6 +2461,9 @@ class ManagementGoalsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -2275,6 +2504,9 @@ class ManagementGoalsResourceApi {
   /// [start_index] - An index of the first goal to retrieve. Use this parameter
   /// as a pagination mechanism along with the max-results parameter.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Goals].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2284,7 +2516,7 @@ class ManagementGoalsResourceApi {
   /// this method will complete with the same error.
   async.Future<Goals> list(
       core.String accountId, core.String webPropertyId, core.String profileId,
-      {core.int max_results, core.int start_index}) {
+      {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2306,6 +2538,9 @@ class ManagementGoalsResourceApi {
     }
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -2339,6 +2574,9 @@ class ManagementGoalsResourceApi {
   ///
   /// [goalId] - Index of the goal to be updated.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Goal].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2347,7 +2585,8 @@ class ManagementGoalsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Goal> patch(Goal request, core.String accountId,
-      core.String webPropertyId, core.String profileId, core.String goalId) {
+      core.String webPropertyId, core.String profileId, core.String goalId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2369,6 +2608,9 @@ class ManagementGoalsResourceApi {
     }
     if (goalId == null) {
       throw new core.ArgumentError("Parameter goalId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -2403,6 +2645,9 @@ class ManagementGoalsResourceApi {
   ///
   /// [goalId] - Index of the goal to be updated.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Goal].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2411,7 +2656,8 @@ class ManagementGoalsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Goal> update(Goal request, core.String accountId,
-      core.String webPropertyId, core.String profileId, core.String goalId) {
+      core.String webPropertyId, core.String profileId, core.String goalId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2433,6 +2679,9 @@ class ManagementGoalsResourceApi {
     }
     if (goalId == null) {
       throw new core.ArgumentError("Parameter goalId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -2477,13 +2726,17 @@ class ManagementProfileFilterLinksResourceApi {
   /// [linkId] - ID of the profile filter link to delete.
   /// Value must have pattern "\d+:\d+".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String accountId, core.String webPropertyId,
-      core.String profileId, core.String linkId) {
+      core.String profileId, core.String linkId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2502,6 +2755,9 @@ class ManagementProfileFilterLinksResourceApi {
     }
     if (linkId == null) {
       throw new core.ArgumentError("Parameter linkId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2540,6 +2796,9 @@ class ManagementProfileFilterLinksResourceApi {
   /// [linkId] - ID of the profile filter link.
   /// Value must have pattern "\d+:\d+".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ProfileFilterLink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2548,7 +2807,8 @@ class ManagementProfileFilterLinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ProfileFilterLink> get(core.String accountId,
-      core.String webPropertyId, core.String profileId, core.String linkId) {
+      core.String webPropertyId, core.String profileId, core.String linkId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2567,6 +2827,9 @@ class ManagementProfileFilterLinksResourceApi {
     }
     if (linkId == null) {
       throw new core.ArgumentError("Parameter linkId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -2602,6 +2865,9 @@ class ManagementProfileFilterLinksResourceApi {
   /// [profileId] - Profile ID to create filter link for.
   /// Value must have pattern "\d+".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ProfileFilterLink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2610,7 +2876,8 @@ class ManagementProfileFilterLinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ProfileFilterLink> insert(ProfileFilterLink request,
-      core.String accountId, core.String webPropertyId, core.String profileId) {
+      core.String accountId, core.String webPropertyId, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2629,6 +2896,9 @@ class ManagementProfileFilterLinksResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -2669,6 +2939,9 @@ class ManagementProfileFilterLinksResourceApi {
   /// [start_index] - An index of the first entity to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ProfileFilterLinks].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2678,7 +2951,7 @@ class ManagementProfileFilterLinksResourceApi {
   /// this method will complete with the same error.
   async.Future<ProfileFilterLinks> list(
       core.String accountId, core.String webPropertyId, core.String profileId,
-      {core.int max_results, core.int start_index}) {
+      {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2700,6 +2973,9 @@ class ManagementProfileFilterLinksResourceApi {
     }
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -2738,6 +3014,9 @@ class ManagementProfileFilterLinksResourceApi {
   /// [linkId] - ID of the profile filter link to be updated.
   /// Value must have pattern "\d+:\d+".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ProfileFilterLink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2750,7 +3029,8 @@ class ManagementProfileFilterLinksResourceApi {
       core.String accountId,
       core.String webPropertyId,
       core.String profileId,
-      core.String linkId) {
+      core.String linkId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2772,6 +3052,9 @@ class ManagementProfileFilterLinksResourceApi {
     }
     if (linkId == null) {
       throw new core.ArgumentError("Parameter linkId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -2810,6 +3093,9 @@ class ManagementProfileFilterLinksResourceApi {
   /// [linkId] - ID of the profile filter link to be updated.
   /// Value must have pattern "\d+:\d+".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ProfileFilterLink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2822,7 +3108,8 @@ class ManagementProfileFilterLinksResourceApi {
       core.String accountId,
       core.String webPropertyId,
       core.String profileId,
-      core.String linkId) {
+      core.String linkId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2844,6 +3131,9 @@ class ManagementProfileFilterLinksResourceApi {
     }
     if (linkId == null) {
       throw new core.ArgumentError("Parameter linkId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -2883,13 +3173,17 @@ class ManagementProfileUserLinksResourceApi {
   ///
   /// [linkId] - Link ID to delete the user link for.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String accountId, core.String webPropertyId,
-      core.String profileId, core.String linkId) {
+      core.String profileId, core.String linkId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2908,6 +3202,9 @@ class ManagementProfileUserLinksResourceApi {
     }
     if (linkId == null) {
       throw new core.ArgumentError("Parameter linkId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2942,6 +3239,9 @@ class ManagementProfileUserLinksResourceApi {
   ///
   /// [profileId] - View (Profile) ID to create the user link for.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EntityUserLink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2950,7 +3250,8 @@ class ManagementProfileUserLinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EntityUserLink> insert(EntityUserLink request,
-      core.String accountId, core.String webPropertyId, core.String profileId) {
+      core.String accountId, core.String webPropertyId, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2969,6 +3270,9 @@ class ManagementProfileUserLinksResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -3009,6 +3313,9 @@ class ManagementProfileUserLinksResourceApi {
   /// this parameter as a pagination mechanism along with the max-results
   /// parameter.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EntityUserLinks].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3018,7 +3325,7 @@ class ManagementProfileUserLinksResourceApi {
   /// this method will complete with the same error.
   async.Future<EntityUserLinks> list(
       core.String accountId, core.String webPropertyId, core.String profileId,
-      {core.int max_results, core.int start_index}) {
+      {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3040,6 +3347,9 @@ class ManagementProfileUserLinksResourceApi {
     }
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -3073,6 +3383,9 @@ class ManagementProfileUserLinksResourceApi {
   ///
   /// [linkId] - Link ID to update the user link for.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EntityUserLink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3085,7 +3398,8 @@ class ManagementProfileUserLinksResourceApi {
       core.String accountId,
       core.String webPropertyId,
       core.String profileId,
-      core.String linkId) {
+      core.String linkId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3107,6 +3421,9 @@ class ManagementProfileUserLinksResourceApi {
     }
     if (linkId == null) {
       throw new core.ArgumentError("Parameter linkId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -3144,13 +3461,17 @@ class ManagementProfilesResourceApi {
   ///
   /// [profileId] - ID of the view (profile) to be deleted.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(
-      core.String accountId, core.String webPropertyId, core.String profileId) {
+      core.String accountId, core.String webPropertyId, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3166,6 +3487,9 @@ class ManagementProfilesResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3199,6 +3523,9 @@ class ManagementProfilesResourceApi {
   /// [profileId] - View (Profile) ID to retrieve the view (profile) for.
   /// Value must have pattern "[0-9]+".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Profile].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3207,7 +3534,8 @@ class ManagementProfilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Profile> get(
-      core.String accountId, core.String webPropertyId, core.String profileId) {
+      core.String accountId, core.String webPropertyId, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3223,6 +3551,9 @@ class ManagementProfilesResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -3251,6 +3582,9 @@ class ManagementProfilesResourceApi {
   ///
   /// [webPropertyId] - Web property ID to create the view (profile) for.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Profile].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3259,7 +3593,8 @@ class ManagementProfilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Profile> insert(
-      Profile request, core.String accountId, core.String webPropertyId) {
+      Profile request, core.String accountId, core.String webPropertyId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3275,6 +3610,9 @@ class ManagementProfilesResourceApi {
     }
     if (webPropertyId == null) {
       throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -3310,6 +3648,9 @@ class ManagementProfilesResourceApi {
   /// [start_index] - An index of the first entity to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Profiles].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3318,7 +3659,7 @@ class ManagementProfilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Profiles> list(core.String accountId, core.String webPropertyId,
-      {core.int max_results, core.int start_index}) {
+      {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3337,6 +3678,9 @@ class ManagementProfilesResourceApi {
     }
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -3366,6 +3710,9 @@ class ManagementProfilesResourceApi {
   ///
   /// [profileId] - ID of the view (profile) to be updated.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Profile].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3374,7 +3721,8 @@ class ManagementProfilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Profile> patch(Profile request, core.String accountId,
-      core.String webPropertyId, core.String profileId) {
+      core.String webPropertyId, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3393,6 +3741,9 @@ class ManagementProfilesResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -3423,6 +3774,9 @@ class ManagementProfilesResourceApi {
   ///
   /// [profileId] - ID of the view (profile) to be updated.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Profile].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3431,7 +3785,8 @@ class ManagementProfilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Profile> update(Profile request, core.String accountId,
-      core.String webPropertyId, core.String profileId) {
+      core.String webPropertyId, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3450,6 +3805,9 @@ class ManagementProfilesResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -3486,13 +3844,17 @@ class ManagementRemarketingAudienceResourceApi {
   ///
   /// [remarketingAudienceId] - The ID of the remarketing audience to delete.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String accountId, core.String webPropertyId,
-      core.String remarketingAudienceId) {
+      core.String remarketingAudienceId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3509,6 +3871,9 @@ class ManagementRemarketingAudienceResourceApi {
     if (remarketingAudienceId == null) {
       throw new core.ArgumentError(
           "Parameter remarketingAudienceId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3540,6 +3905,9 @@ class ManagementRemarketingAudienceResourceApi {
   ///
   /// [remarketingAudienceId] - The ID of the remarketing audience to retrieve.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RemarketingAudience].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3548,7 +3916,8 @@ class ManagementRemarketingAudienceResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RemarketingAudience> get(core.String accountId,
-      core.String webPropertyId, core.String remarketingAudienceId) {
+      core.String webPropertyId, core.String remarketingAudienceId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3565,6 +3934,9 @@ class ManagementRemarketingAudienceResourceApi {
     if (remarketingAudienceId == null) {
       throw new core.ArgumentError(
           "Parameter remarketingAudienceId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -3594,6 +3966,9 @@ class ManagementRemarketingAudienceResourceApi {
   /// [webPropertyId] - Web property ID for which to create the remarketing
   /// audience.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RemarketingAudience].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3602,7 +3977,8 @@ class ManagementRemarketingAudienceResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RemarketingAudience> insert(RemarketingAudience request,
-      core.String accountId, core.String webPropertyId) {
+      core.String accountId, core.String webPropertyId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3618,6 +3994,9 @@ class ManagementRemarketingAudienceResourceApi {
     }
     if (webPropertyId == null) {
       throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -3652,6 +4031,9 @@ class ManagementRemarketingAudienceResourceApi {
   ///
   /// [type] - null
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RemarketingAudiences].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3661,7 +4043,10 @@ class ManagementRemarketingAudienceResourceApi {
   /// this method will complete with the same error.
   async.Future<RemarketingAudiences> list(
       core.String accountId, core.String webPropertyId,
-      {core.int max_results, core.int start_index, core.String type}) {
+      {core.int max_results,
+      core.int start_index,
+      core.String type,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3683,6 +4068,9 @@ class ManagementRemarketingAudienceResourceApi {
     }
     if (type != null) {
       _queryParams["type"] = [type];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -3714,6 +4102,9 @@ class ManagementRemarketingAudienceResourceApi {
   ///
   /// [remarketingAudienceId] - The ID of the remarketing audience to update.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RemarketingAudience].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3725,7 +4116,8 @@ class ManagementRemarketingAudienceResourceApi {
       RemarketingAudience request,
       core.String accountId,
       core.String webPropertyId,
-      core.String remarketingAudienceId) {
+      core.String remarketingAudienceId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3745,6 +4137,9 @@ class ManagementRemarketingAudienceResourceApi {
     if (remarketingAudienceId == null) {
       throw new core.ArgumentError(
           "Parameter remarketingAudienceId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -3776,6 +4171,9 @@ class ManagementRemarketingAudienceResourceApi {
   ///
   /// [remarketingAudienceId] - The ID of the remarketing audience to update.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RemarketingAudience].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3787,7 +4185,8 @@ class ManagementRemarketingAudienceResourceApi {
       RemarketingAudience request,
       core.String accountId,
       core.String webPropertyId,
-      core.String remarketingAudienceId) {
+      core.String remarketingAudienceId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3807,6 +4206,9 @@ class ManagementRemarketingAudienceResourceApi {
     if (remarketingAudienceId == null) {
       throw new core.ArgumentError(
           "Parameter remarketingAudienceId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -3842,6 +4244,9 @@ class ManagementSegmentsResourceApi {
   /// [start_index] - An index of the first segment to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Segments].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3849,7 +4254,8 @@ class ManagementSegmentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Segments> list({core.int max_results, core.int start_index}) {
+  async.Future<Segments> list(
+      {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3862,6 +4268,9 @@ class ManagementSegmentsResourceApi {
     }
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/segments';
@@ -3894,13 +4303,17 @@ class ManagementUnsampledReportsResourceApi {
   ///
   /// [unsampledReportId] - ID of the unsampled report to be deleted.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String accountId, core.String webPropertyId,
-      core.String profileId, core.String unsampledReportId) {
+      core.String profileId, core.String unsampledReportId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3919,6 +4332,9 @@ class ManagementUnsampledReportsResourceApi {
     }
     if (unsampledReportId == null) {
       throw new core.ArgumentError("Parameter unsampledReportId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3953,6 +4369,9 @@ class ManagementUnsampledReportsResourceApi {
   ///
   /// [unsampledReportId] - ID of the unsampled report to retrieve.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UnsampledReport].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3964,7 +4383,8 @@ class ManagementUnsampledReportsResourceApi {
       core.String accountId,
       core.String webPropertyId,
       core.String profileId,
-      core.String unsampledReportId) {
+      core.String unsampledReportId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3983,6 +4403,9 @@ class ManagementUnsampledReportsResourceApi {
     }
     if (unsampledReportId == null) {
       throw new core.ArgumentError("Parameter unsampledReportId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -4015,6 +4438,9 @@ class ManagementUnsampledReportsResourceApi {
   ///
   /// [profileId] - View (Profile) ID to create the unsampled report for.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UnsampledReport].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4023,7 +4449,8 @@ class ManagementUnsampledReportsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UnsampledReport> insert(UnsampledReport request,
-      core.String accountId, core.String webPropertyId, core.String profileId) {
+      core.String accountId, core.String webPropertyId, core.String profileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4042,6 +4469,9 @@ class ManagementUnsampledReportsResourceApi {
     }
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -4081,6 +4511,9 @@ class ManagementUnsampledReportsResourceApi {
   /// this parameter as a pagination mechanism along with the max-results
   /// parameter.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UnsampledReports].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4090,7 +4523,7 @@ class ManagementUnsampledReportsResourceApi {
   /// this method will complete with the same error.
   async.Future<UnsampledReports> list(
       core.String accountId, core.String webPropertyId, core.String profileId,
-      {core.int max_results, core.int start_index}) {
+      {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4112,6 +4545,9 @@ class ManagementUnsampledReportsResourceApi {
     }
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -4154,6 +4590,9 @@ class ManagementUploadsResourceApi {
   /// deleted.
   /// Value must have pattern ".{22}".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
@@ -4163,7 +4602,8 @@ class ManagementUploadsResourceApi {
       AnalyticsDataimportDeleteUploadDataRequest request,
       core.String accountId,
       core.String webPropertyId,
-      core.String customDataSourceId) {
+      core.String customDataSourceId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4182,6 +4622,9 @@ class ManagementUploadsResourceApi {
     }
     if (customDataSourceId == null) {
       throw new core.ArgumentError("Parameter customDataSourceId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -4219,6 +4662,9 @@ class ManagementUploadsResourceApi {
   /// [uploadId] - Upload Id to retrieve.
   /// Value must have pattern ".{22}".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Upload].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4227,7 +4673,8 @@ class ManagementUploadsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Upload> get(core.String accountId, core.String webPropertyId,
-      core.String customDataSourceId, core.String uploadId) {
+      core.String customDataSourceId, core.String uploadId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4246,6 +4693,9 @@ class ManagementUploadsResourceApi {
     }
     if (uploadId == null) {
       throw new core.ArgumentError("Parameter uploadId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -4284,6 +4734,9 @@ class ManagementUploadsResourceApi {
   /// [start_index] - A 1-based index of the first upload to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Uploads].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4293,7 +4746,7 @@ class ManagementUploadsResourceApi {
   /// this method will complete with the same error.
   async.Future<Uploads> list(core.String accountId, core.String webPropertyId,
       core.String customDataSourceId,
-      {core.int max_results, core.int start_index}) {
+      {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4315,6 +4768,9 @@ class ManagementUploadsResourceApi {
     }
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -4347,6 +4803,9 @@ class ManagementUploadsResourceApi {
   /// [customDataSourceId] - Custom data source Id to which the data being
   /// uploaded belongs.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [uploadMedia] - The media to upload.
   ///
   /// [uploadOptions] - Options for the media upload. Streaming Media without
@@ -4362,7 +4821,8 @@ class ManagementUploadsResourceApi {
   /// this method will complete with the same error.
   async.Future<Upload> uploadData(core.String accountId,
       core.String webPropertyId, core.String customDataSourceId,
-      {commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      {core.String $fields,
+      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -4379,6 +4839,9 @@ class ManagementUploadsResourceApi {
     }
     if (customDataSourceId == null) {
       throw new core.ArgumentError("Parameter customDataSourceId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -4436,13 +4899,17 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
   ///
   /// [webPropertyAdWordsLinkId] - Web property AdWords link ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String accountId, core.String webPropertyId,
-      core.String webPropertyAdWordsLinkId) {
+      core.String webPropertyAdWordsLinkId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4459,6 +4926,9 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     if (webPropertyAdWordsLinkId == null) {
       throw new core.ArgumentError(
           "Parameter webPropertyAdWordsLinkId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -4489,6 +4959,9 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
   ///
   /// [webPropertyAdWordsLinkId] - Web property-AdWords link ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EntityAdWordsLink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4497,7 +4970,8 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EntityAdWordsLink> get(core.String accountId,
-      core.String webPropertyId, core.String webPropertyAdWordsLinkId) {
+      core.String webPropertyId, core.String webPropertyAdWordsLinkId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4514,6 +4988,9 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     if (webPropertyAdWordsLinkId == null) {
       throw new core.ArgumentError(
           "Parameter webPropertyAdWordsLinkId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -4542,6 +5019,9 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
   ///
   /// [webPropertyId] - Web property ID to create the link for.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EntityAdWordsLink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4550,7 +5030,8 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EntityAdWordsLink> insert(EntityAdWordsLink request,
-      core.String accountId, core.String webPropertyId) {
+      core.String accountId, core.String webPropertyId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4566,6 +5047,9 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     }
     if (webPropertyId == null) {
       throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -4599,6 +5083,9 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
   /// retrieve. Use this parameter as a pagination mechanism along with the
   /// max-results parameter.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EntityAdWordsLinks].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4608,7 +5095,7 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
   /// this method will complete with the same error.
   async.Future<EntityAdWordsLinks> list(
       core.String accountId, core.String webPropertyId,
-      {core.int max_results, core.int start_index}) {
+      {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4627,6 +5114,9 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     }
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -4657,6 +5147,9 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
   ///
   /// [webPropertyAdWordsLinkId] - Web property-AdWords link ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EntityAdWordsLink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4668,7 +5161,8 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
       EntityAdWordsLink request,
       core.String accountId,
       core.String webPropertyId,
-      core.String webPropertyAdWordsLinkId) {
+      core.String webPropertyAdWordsLinkId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4688,6 +5182,9 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     if (webPropertyAdWordsLinkId == null) {
       throw new core.ArgumentError(
           "Parameter webPropertyAdWordsLinkId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -4718,6 +5215,9 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
   ///
   /// [webPropertyAdWordsLinkId] - Web property-AdWords link ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EntityAdWordsLink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4729,7 +5229,8 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
       EntityAdWordsLink request,
       core.String accountId,
       core.String webPropertyId,
-      core.String webPropertyAdWordsLinkId) {
+      core.String webPropertyAdWordsLinkId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4749,6 +5250,9 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
     if (webPropertyAdWordsLinkId == null) {
       throw new core.ArgumentError(
           "Parameter webPropertyAdWordsLinkId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -4784,6 +5288,9 @@ class ManagementWebpropertiesResourceApi {
   /// [webPropertyId] - ID to retrieve the web property for.
   /// Value must have pattern "UA-[0-9]+-[0-9]+".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Webproperty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4792,7 +5299,8 @@ class ManagementWebpropertiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Webproperty> get(
-      core.String accountId, core.String webPropertyId) {
+      core.String accountId, core.String webPropertyId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4805,6 +5313,9 @@ class ManagementWebpropertiesResourceApi {
     }
     if (webPropertyId == null) {
       throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -4831,6 +5342,9 @@ class ManagementWebpropertiesResourceApi {
   ///
   /// [accountId] - Account ID to create the web property for.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Webproperty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4838,7 +5352,8 @@ class ManagementWebpropertiesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Webproperty> insert(Webproperty request, core.String accountId) {
+  async.Future<Webproperty> insert(Webproperty request, core.String accountId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4851,6 +5366,9 @@ class ManagementWebpropertiesResourceApi {
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -4880,6 +5398,9 @@ class ManagementWebpropertiesResourceApi {
   /// [start_index] - An index of the first entity to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Webproperties].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4888,7 +5409,7 @@ class ManagementWebpropertiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Webproperties> list(core.String accountId,
-      {core.int max_results, core.int start_index}) {
+      {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4904,6 +5425,9 @@ class ManagementWebpropertiesResourceApi {
     }
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -4929,6 +5453,9 @@ class ManagementWebpropertiesResourceApi {
   ///
   /// [webPropertyId] - Web property ID
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Webproperty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4937,7 +5464,8 @@ class ManagementWebpropertiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Webproperty> patch(
-      Webproperty request, core.String accountId, core.String webPropertyId) {
+      Webproperty request, core.String accountId, core.String webPropertyId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4953,6 +5481,9 @@ class ManagementWebpropertiesResourceApi {
     }
     if (webPropertyId == null) {
       throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -4979,6 +5510,9 @@ class ManagementWebpropertiesResourceApi {
   ///
   /// [webPropertyId] - Web property ID
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Webproperty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4987,7 +5521,8 @@ class ManagementWebpropertiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Webproperty> update(
-      Webproperty request, core.String accountId, core.String webPropertyId) {
+      Webproperty request, core.String accountId, core.String webPropertyId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5003,6 +5538,9 @@ class ManagementWebpropertiesResourceApi {
     }
     if (webPropertyId == null) {
       throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -5036,13 +5574,17 @@ class ManagementWebpropertyUserLinksResourceApi {
   ///
   /// [linkId] - Link ID to delete the user link for.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(
-      core.String accountId, core.String webPropertyId, core.String linkId) {
+      core.String accountId, core.String webPropertyId, core.String linkId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5058,6 +5600,9 @@ class ManagementWebpropertyUserLinksResourceApi {
     }
     if (linkId == null) {
       throw new core.ArgumentError("Parameter linkId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -5088,6 +5633,9 @@ class ManagementWebpropertyUserLinksResourceApi {
   ///
   /// [webPropertyId] - Web Property ID to create the user link for.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EntityUserLink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5095,8 +5643,9 @@ class ManagementWebpropertyUserLinksResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<EntityUserLink> insert(EntityUserLink request,
-      core.String accountId, core.String webPropertyId) {
+  async.Future<EntityUserLink> insert(
+      EntityUserLink request, core.String accountId, core.String webPropertyId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5112,6 +5661,9 @@ class ManagementWebpropertyUserLinksResourceApi {
     }
     if (webPropertyId == null) {
       throw new core.ArgumentError("Parameter webPropertyId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -5146,6 +5698,9 @@ class ManagementWebpropertyUserLinksResourceApi {
   /// Use this parameter as a pagination mechanism along with the max-results
   /// parameter.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EntityUserLinks].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5155,7 +5710,7 @@ class ManagementWebpropertyUserLinksResourceApi {
   /// this method will complete with the same error.
   async.Future<EntityUserLinks> list(
       core.String accountId, core.String webPropertyId,
-      {core.int max_results, core.int start_index}) {
+      {core.int max_results, core.int start_index, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5174,6 +5729,9 @@ class ManagementWebpropertyUserLinksResourceApi {
     }
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -5203,6 +5761,9 @@ class ManagementWebpropertyUserLinksResourceApi {
   ///
   /// [linkId] - Link ID to update the account-user link for.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EntityUserLink].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5211,7 +5772,8 @@ class ManagementWebpropertyUserLinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EntityUserLink> update(EntityUserLink request,
-      core.String accountId, core.String webPropertyId, core.String linkId) {
+      core.String accountId, core.String webPropertyId, core.String linkId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5230,6 +5792,9 @@ class ManagementWebpropertyUserLinksResourceApi {
     }
     if (linkId == null) {
       throw new core.ArgumentError("Parameter linkId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'management/accounts/' +
@@ -5271,6 +5836,9 @@ class MetadataColumnsResourceApi {
   /// to the Core Reporting API
   /// Value must have pattern "ga".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Columns].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5278,7 +5846,7 @@ class MetadataColumnsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Columns> list(core.String reportType) {
+  async.Future<Columns> list(core.String reportType, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5288,6 +5856,9 @@ class MetadataColumnsResourceApi {
 
     if (reportType == null) {
       throw new core.ArgumentError("Parameter reportType is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -5314,6 +5885,9 @@ class ProvisioningResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AccountTicket].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -5321,7 +5895,8 @@ class ProvisioningResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AccountTicket> createAccountTicket(AccountTicket request) {
+  async.Future<AccountTicket> createAccountTicket(AccountTicket request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -5331,6 +5906,9 @@ class ProvisioningResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'provisioning/createAccountTicket';

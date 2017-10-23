@@ -84,6 +84,9 @@ class AnnotationsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BatchCreateAnnotationsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -92,7 +95,8 @@ class AnnotationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchCreateAnnotationsResponse> batchCreate(
-      BatchCreateAnnotationsRequest request) {
+      BatchCreateAnnotationsRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -102,6 +106,9 @@ class AnnotationsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/annotations:batchCreate';
@@ -143,6 +150,9 @@ class AnnotationsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Annotation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -150,7 +160,7 @@ class AnnotationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Annotation> create(Annotation request) {
+  async.Future<Annotation> create(Annotation request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -160,6 +170,9 @@ class AnnotationsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/annotations';
@@ -180,6 +193,9 @@ class AnnotationsResourceApi {
   ///
   /// [annotationId] - The ID of the annotation to be deleted.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -187,7 +203,7 @@ class AnnotationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String annotationId) {
+  async.Future<Empty> delete(core.String annotationId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -197,6 +213,9 @@ class AnnotationsResourceApi {
 
     if (annotationId == null) {
       throw new core.ArgumentError("Parameter annotationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/annotations/' + commons.Escaper.ecapeVariable('$annotationId');
@@ -217,6 +236,9 @@ class AnnotationsResourceApi {
   ///
   /// [annotationId] - The ID of the annotation to be retrieved.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Annotation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -224,7 +246,8 @@ class AnnotationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Annotation> get(core.String annotationId) {
+  async.Future<Annotation> get(core.String annotationId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -234,6 +257,9 @@ class AnnotationsResourceApi {
 
     if (annotationId == null) {
       throw new core.ArgumentError("Parameter annotationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/annotations/' + commons.Escaper.ecapeVariable('$annotationId');
@@ -259,6 +285,9 @@ class AnnotationsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SearchAnnotationsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -267,7 +296,8 @@ class AnnotationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SearchAnnotationsResponse> search(
-      SearchAnnotationsRequest request) {
+      SearchAnnotationsRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -277,6 +307,9 @@ class AnnotationsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/annotations/search';
@@ -308,6 +341,9 @@ class AnnotationsResourceApi {
   /// info. If unspecified, all mutable
   /// fields will be updated.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Annotation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -316,7 +352,7 @@ class AnnotationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Annotation> update(Annotation request, core.String annotationId,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -332,6 +368,9 @@ class AnnotationsResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/annotations/' + commons.Escaper.ecapeVariable('$annotationId');
@@ -366,6 +405,9 @@ class AnnotationsetsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AnnotationSet].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -373,7 +415,8 @@ class AnnotationsetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AnnotationSet> create(AnnotationSet request) {
+  async.Future<AnnotationSet> create(AnnotationSet request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -383,6 +426,9 @@ class AnnotationsetsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/annotationsets';
@@ -403,6 +449,9 @@ class AnnotationsetsResourceApi {
   ///
   /// [annotationSetId] - The ID of the annotation set to be deleted.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -410,7 +459,8 @@ class AnnotationsetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String annotationSetId) {
+  async.Future<Empty> delete(core.String annotationSetId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -420,6 +470,9 @@ class AnnotationsetsResourceApi {
 
     if (annotationSetId == null) {
       throw new core.ArgumentError("Parameter annotationSetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/annotationsets/' +
@@ -441,6 +494,9 @@ class AnnotationsetsResourceApi {
   ///
   /// [annotationSetId] - The ID of the annotation set to be retrieved.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AnnotationSet].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -448,7 +504,8 @@ class AnnotationsetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AnnotationSet> get(core.String annotationSetId) {
+  async.Future<AnnotationSet> get(core.String annotationSetId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -458,6 +515,9 @@ class AnnotationsetsResourceApi {
 
     if (annotationSetId == null) {
       throw new core.ArgumentError("Parameter annotationSetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/annotationsets/' +
@@ -484,6 +544,9 @@ class AnnotationsetsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SearchAnnotationSetsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -492,7 +555,8 @@ class AnnotationsetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SearchAnnotationSetsResponse> search(
-      SearchAnnotationSetsRequest request) {
+      SearchAnnotationSetsRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -502,6 +566,9 @@ class AnnotationsetsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/annotationsets/search';
@@ -534,6 +601,9 @@ class AnnotationsetsResourceApi {
   /// info. If unspecified, all
   /// mutable fields will be updated.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AnnotationSet].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -543,7 +613,7 @@ class AnnotationsetsResourceApi {
   /// this method will complete with the same error.
   async.Future<AnnotationSet> update(
       AnnotationSet request, core.String annotationSetId,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -559,6 +629,9 @@ class AnnotationsetsResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/annotationsets/' +
@@ -589,6 +662,9 @@ class CallsetsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CallSet].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -596,7 +672,7 @@ class CallsetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CallSet> create(CallSet request) {
+  async.Future<CallSet> create(CallSet request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -606,6 +682,9 @@ class CallsetsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/callsets';
@@ -629,6 +708,9 @@ class CallsetsResourceApi {
   ///
   /// [callSetId] - The ID of the call set to be deleted.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -636,7 +718,7 @@ class CallsetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String callSetId) {
+  async.Future<Empty> delete(core.String callSetId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -646,6 +728,9 @@ class CallsetsResourceApi {
 
     if (callSetId == null) {
       throw new core.ArgumentError("Parameter callSetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/callsets/' + commons.Escaper.ecapeVariable('$callSetId');
@@ -669,6 +754,9 @@ class CallsetsResourceApi {
   ///
   /// [callSetId] - The ID of the call set.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CallSet].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -676,7 +764,7 @@ class CallsetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CallSet> get(core.String callSetId) {
+  async.Future<CallSet> get(core.String callSetId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -686,6 +774,9 @@ class CallsetsResourceApi {
 
     if (callSetId == null) {
       throw new core.ArgumentError("Parameter callSetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/callsets/' + commons.Escaper.ecapeVariable('$callSetId');
@@ -719,6 +810,9 @@ class CallsetsResourceApi {
   /// acceptable value is "name". If unspecified, all mutable fields will be
   /// updated.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CallSet].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -727,7 +821,7 @@ class CallsetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CallSet> patch(CallSet request, core.String callSetId,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -743,6 +837,9 @@ class CallsetsResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/callsets/' + commons.Escaper.ecapeVariable('$callSetId');
@@ -769,6 +866,9 @@ class CallsetsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SearchCallSetsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -776,7 +876,8 @@ class CallsetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SearchCallSetsResponse> search(SearchCallSetsRequest request) {
+  async.Future<SearchCallSetsResponse> search(SearchCallSetsRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -786,6 +887,9 @@ class CallsetsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/callsets/search';
@@ -815,6 +919,9 @@ class DatasetsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Dataset].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -822,7 +929,7 @@ class DatasetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Dataset> create(Dataset request) {
+  async.Future<Dataset> create(Dataset request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -832,6 +939,9 @@ class DatasetsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/datasets';
@@ -860,6 +970,9 @@ class DatasetsResourceApi {
   ///
   /// [datasetId] - The ID of the dataset to be deleted.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -867,7 +980,7 @@ class DatasetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String datasetId) {
+  async.Future<Empty> delete(core.String datasetId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -877,6 +990,9 @@ class DatasetsResourceApi {
 
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/datasets/' + commons.Escaper.ecapeVariable('$datasetId');
@@ -900,6 +1016,9 @@ class DatasetsResourceApi {
   ///
   /// [datasetId] - The ID of the dataset.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Dataset].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -907,7 +1026,7 @@ class DatasetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Dataset> get(core.String datasetId) {
+  async.Future<Dataset> get(core.String datasetId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -917,6 +1036,9 @@ class DatasetsResourceApi {
 
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/datasets/' + commons.Escaper.ecapeVariable('$datasetId');
@@ -949,6 +1071,9 @@ class DatasetsResourceApi {
   /// `datasets/<dataset ID>`.
   /// Value must have pattern "^datasets/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Policy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -957,7 +1082,8 @@ class DatasetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> getIamPolicy(
-      GetIamPolicyRequest request, core.String resource) {
+      GetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -970,6 +1096,9 @@ class DatasetsResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -993,16 +1122,19 @@ class DatasetsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageToken] - The continuation token, which is used to page through large
+  /// result sets.
+  /// To get the next page of results, set this parameter to the value of
+  /// `nextPageToken` from the previous response.
+  ///
   /// [pageSize] - The maximum number of results to return in a single page. If
   /// unspecified,
   /// defaults to 50. The maximum value is 1024.
   ///
   /// [projectId] - Required. The Google Cloud project ID to list datasets for.
   ///
-  /// [pageToken] - The continuation token, which is used to page through large
-  /// result sets.
-  /// To get the next page of results, set this parameter to the value of
-  /// `nextPageToken` from the previous response.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListDatasetsResponse].
   ///
@@ -1012,7 +1144,10 @@ class DatasetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDatasetsResponse> list(
-      {core.int pageSize, core.String projectId, core.String pageToken}) {
+      {core.String pageToken,
+      core.int pageSize,
+      core.String projectId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1020,14 +1155,17 @@ class DatasetsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/datasets';
@@ -1061,6 +1199,9 @@ class DatasetsResourceApi {
   /// acceptable value is "name". If unspecified, all mutable fields will be
   /// updated.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Dataset].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1069,7 +1210,7 @@ class DatasetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Dataset> patch(Dataset request, core.String datasetId,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1085,6 +1226,9 @@ class DatasetsResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/datasets/' + commons.Escaper.ecapeVariable('$datasetId');
@@ -1117,6 +1261,9 @@ class DatasetsResourceApi {
   /// `datasets/<dataset ID>`.
   /// Value must have pattern "^datasets/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Policy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1125,7 +1272,8 @@ class DatasetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      SetIamPolicyRequest request, core.String resource) {
+      SetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1138,6 +1286,9 @@ class DatasetsResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1170,6 +1321,9 @@ class DatasetsResourceApi {
   /// `datasets/<dataset ID>`.
   /// Value must have pattern "^datasets/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TestIamPermissionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1178,7 +1332,8 @@ class DatasetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource) {
+      TestIamPermissionsRequest request, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1191,6 +1346,9 @@ class DatasetsResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1221,6 +1379,9 @@ class DatasetsResourceApi {
   ///
   /// [datasetId] - The ID of the dataset to be undeleted.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Dataset].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1229,7 +1390,8 @@ class DatasetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Dataset> undelete(
-      UndeleteDatasetRequest request, core.String datasetId) {
+      UndeleteDatasetRequest request, core.String datasetId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1242,6 +1404,9 @@ class DatasetsResourceApi {
     }
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/datasets/' +
@@ -1276,6 +1441,9 @@ class OperationsResourceApi {
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern "^operations/.+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1283,7 +1451,8 @@ class OperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> cancel(CancelOperationRequest request, core.String name) {
+  async.Future<Empty> cancel(CancelOperationRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1296,6 +1465,9 @@ class OperationsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
@@ -1318,6 +1490,9 @@ class OperationsResourceApi {
   /// [name] - The name of the operation resource.
   /// Value must have pattern "^operations/.+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1325,7 +1500,7 @@ class OperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name) {
+  async.Future<Operation> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1335,6 +1510,9 @@ class OperationsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1381,6 +1559,9 @@ class OperationsResourceApi {
   /// defaults to
   /// 256. The maximum value is 2048.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListOperationsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1389,7 +1570,10 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter, core.String pageToken, core.int pageSize}) {
+      {core.String filter,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1408,6 +1592,9 @@ class OperationsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1442,6 +1629,9 @@ class ReadgroupsetsResourceApi {
   /// must have WRITE
   /// permissions to the dataset associated with this read group set.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1449,7 +1639,8 @@ class ReadgroupsetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String readGroupSetId) {
+  async.Future<Empty> delete(core.String readGroupSetId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1459,6 +1650,9 @@ class ReadgroupsetsResourceApi {
 
     if (readGroupSetId == null) {
       throw new core.ArgumentError("Parameter readGroupSetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -1492,6 +1686,9 @@ class ReadgroupsetsResourceApi {
   /// caller must have
   /// READ access to this read group set.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1500,7 +1697,8 @@ class ReadgroupsetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> export(
-      ExportReadGroupSetRequest request, core.String readGroupSetId) {
+      ExportReadGroupSetRequest request, core.String readGroupSetId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1513,6 +1711,9 @@ class ReadgroupsetsResourceApi {
     }
     if (readGroupSetId == null) {
       throw new core.ArgumentError("Parameter readGroupSetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/readgroupsets/' +
@@ -1538,6 +1739,9 @@ class ReadgroupsetsResourceApi {
   ///
   /// [readGroupSetId] - The ID of the read group set.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ReadGroupSet].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1545,7 +1749,8 @@ class ReadgroupsetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ReadGroupSet> get(core.String readGroupSetId) {
+  async.Future<ReadGroupSet> get(core.String readGroupSetId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1555,6 +1760,9 @@ class ReadgroupsetsResourceApi {
 
     if (readGroupSetId == null) {
       throw new core.ArgumentError("Parameter readGroupSetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -1593,6 +1801,9 @@ class ReadgroupsetsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1600,7 +1811,8 @@ class ReadgroupsetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> import(ImportReadGroupSetsRequest request) {
+  async.Future<Operation> import(ImportReadGroupSetsRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1610,6 +1822,9 @@ class ReadgroupsetsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/readgroupsets:import';
@@ -1648,6 +1863,9 @@ class ReadgroupsetsResourceApi {
   /// Leaving `updateMask` unset is equivalent to specifying all mutable
   /// fields.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ReadGroupSet].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1657,7 +1875,7 @@ class ReadgroupsetsResourceApi {
   /// this method will complete with the same error.
   async.Future<ReadGroupSet> patch(
       ReadGroupSet request, core.String readGroupSetId,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1673,6 +1891,9 @@ class ReadgroupsetsResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -1700,6 +1921,9 @@ class ReadgroupsetsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SearchReadGroupSetsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1708,7 +1932,8 @@ class ReadgroupsetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SearchReadGroupSetsResponse> search(
-      SearchReadGroupSetsRequest request) {
+      SearchReadGroupSetsRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1718,6 +1943,9 @@ class ReadgroupsetsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/readgroupsets/search';
@@ -1789,6 +2017,9 @@ class ReadgroupsetsCoveragebucketsResourceApi {
   /// set associated
   /// with this query. Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListCoverageBucketsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1802,7 +2033,8 @@ class ReadgroupsetsCoveragebucketsResourceApi {
       core.int pageSize,
       core.String start,
       core.String targetBucketWidth,
-      core.String referenceName}) {
+      core.String referenceName,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1830,6 +2062,9 @@ class ReadgroupsetsCoveragebucketsResourceApi {
     }
     if (referenceName != null) {
       _queryParams["referenceName"] = [referenceName];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/readgroupsets/' +
@@ -1884,6 +2119,9 @@ class ReadsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SearchReadsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1891,7 +2129,8 @@ class ReadsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SearchReadsResponse> search(SearchReadsRequest request) {
+  async.Future<SearchReadsResponse> search(SearchReadsRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1901,6 +2140,9 @@ class ReadsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/reads/search';
@@ -1936,6 +2178,9 @@ class ReferencesResourceApi {
   ///
   /// [referenceId] - The ID of the reference.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Reference].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1943,7 +2188,7 @@ class ReferencesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Reference> get(core.String referenceId) {
+  async.Future<Reference> get(core.String referenceId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1953,6 +2198,9 @@ class ReferencesResourceApi {
 
     if (referenceId == null) {
       throw new core.ArgumentError("Parameter referenceId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/references/' + commons.Escaper.ecapeVariable('$referenceId');
@@ -1979,6 +2227,9 @@ class ReferencesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SearchReferencesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1986,8 +2237,8 @@ class ReferencesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SearchReferencesResponse> search(
-      SearchReferencesRequest request) {
+  async.Future<SearchReferencesResponse> search(SearchReferencesRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1997,6 +2248,9 @@ class ReferencesResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/references/search';
@@ -2030,6 +2284,11 @@ class ReferencesBasesResourceApi {
   ///
   /// [referenceId] - The ID of the reference.
   ///
+  /// [pageToken] - The continuation token, which is used to page through large
+  /// result sets.
+  /// To get the next page of results, set this parameter to the value of
+  /// `nextPageToken` from the previous response.
+  ///
   /// [pageSize] - The maximum number of bases to return in a single page. If
   /// unspecified,
   /// defaults to 200Kbp (kilo base pairs). The maximum value is 10Mbp (mega
@@ -2042,10 +2301,8 @@ class ReferencesBasesResourceApi {
   /// the length
   /// of this reference.
   ///
-  /// [pageToken] - The continuation token, which is used to page through large
-  /// result sets.
-  /// To get the next page of results, set this parameter to the value of
-  /// `nextPageToken` from the previous response.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListBasesResponse].
   ///
@@ -2055,10 +2312,11 @@ class ReferencesBasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBasesResponse> list(core.String referenceId,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String start,
       core.String end,
-      core.String pageToken}) {
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2069,6 +2327,9 @@ class ReferencesBasesResourceApi {
     if (referenceId == null) {
       throw new core.ArgumentError("Parameter referenceId is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
@@ -2078,8 +2339,8 @@ class ReferencesBasesResourceApi {
     if (end != null) {
       _queryParams["end"] = [end];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/references/' +
@@ -2114,6 +2375,9 @@ class ReferencesetsResourceApi {
   ///
   /// [referenceSetId] - The ID of the reference set.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ReferenceSet].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2121,7 +2385,8 @@ class ReferencesetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ReferenceSet> get(core.String referenceSetId) {
+  async.Future<ReferenceSet> get(core.String referenceSetId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2131,6 +2396,9 @@ class ReferencesetsResourceApi {
 
     if (referenceSetId == null) {
       throw new core.ArgumentError("Parameter referenceSetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -2158,6 +2426,9 @@ class ReferencesetsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SearchReferenceSetsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2166,7 +2437,8 @@ class ReferencesetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SearchReferenceSetsResponse> search(
-      SearchReferenceSetsRequest request) {
+      SearchReferenceSetsRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2176,6 +2448,9 @@ class ReferencesetsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/referencesets/search';
@@ -2206,6 +2481,9 @@ class VariantsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Variant].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2213,7 +2491,7 @@ class VariantsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Variant> create(Variant request) {
+  async.Future<Variant> create(Variant request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2223,6 +2501,9 @@ class VariantsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/variants';
@@ -2246,6 +2527,9 @@ class VariantsResourceApi {
   ///
   /// [variantId] - The ID of the variant to be deleted.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2253,7 +2537,7 @@ class VariantsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String variantId) {
+  async.Future<Empty> delete(core.String variantId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2263,6 +2547,9 @@ class VariantsResourceApi {
 
     if (variantId == null) {
       throw new core.ArgumentError("Parameter variantId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/variants/' + commons.Escaper.ecapeVariable('$variantId');
@@ -2286,6 +2573,9 @@ class VariantsResourceApi {
   ///
   /// [variantId] - The ID of the variant.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Variant].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2293,7 +2583,7 @@ class VariantsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Variant> get(core.String variantId) {
+  async.Future<Variant> get(core.String variantId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2303,6 +2593,9 @@ class VariantsResourceApi {
 
     if (variantId == null) {
       throw new core.ArgumentError("Parameter variantId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/variants/' + commons.Escaper.ecapeVariable('$variantId');
@@ -2341,6 +2634,9 @@ class VariantsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2348,7 +2644,8 @@ class VariantsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> import(ImportVariantsRequest request) {
+  async.Future<Operation> import(ImportVariantsRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2358,6 +2655,9 @@ class VariantsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/variants:import';
@@ -2467,6 +2767,9 @@ class VariantsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2474,7 +2777,8 @@ class VariantsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> merge(MergeVariantsRequest request) {
+  async.Future<Empty> merge(MergeVariantsRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2484,6 +2788,9 @@ class VariantsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/variants:merge';
@@ -2518,6 +2825,9 @@ class VariantsResourceApi {
   /// info. Acceptable values are "names" and
   /// "info". If unspecified, all mutable fields will be updated.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Variant].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2526,7 +2836,7 @@ class VariantsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Variant> patch(Variant request, core.String variantId,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2542,6 +2852,9 @@ class VariantsResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/variants/' + commons.Escaper.ecapeVariable('$variantId');
@@ -2568,6 +2881,9 @@ class VariantsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SearchVariantsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2575,7 +2891,8 @@ class VariantsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SearchVariantsResponse> search(SearchVariantsRequest request) {
+  async.Future<SearchVariantsResponse> search(SearchVariantsRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2585,6 +2902,9 @@ class VariantsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/variants/search';
@@ -2618,6 +2938,9 @@ class VariantsetsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [VariantSet].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2625,7 +2948,7 @@ class VariantsetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<VariantSet> create(VariantSet request) {
+  async.Future<VariantSet> create(VariantSet request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2635,6 +2958,9 @@ class VariantsetsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/variantsets';
@@ -2659,6 +2985,9 @@ class VariantsetsResourceApi {
   ///
   /// [variantSetId] - The ID of the variant set to be deleted.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2666,7 +2995,7 @@ class VariantsetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String variantSetId) {
+  async.Future<Empty> delete(core.String variantSetId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2676,6 +3005,9 @@ class VariantsetsResourceApi {
 
     if (variantSetId == null) {
       throw new core.ArgumentError("Parameter variantSetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/variantsets/' + commons.Escaper.ecapeVariable('$variantSetId');
@@ -2703,6 +3035,9 @@ class VariantsetsResourceApi {
   /// data which
   /// should be exported. The caller must have READ access to this variant set.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2711,7 +3046,8 @@ class VariantsetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> export(
-      ExportVariantSetRequest request, core.String variantSetId) {
+      ExportVariantSetRequest request, core.String variantSetId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2724,6 +3060,9 @@ class VariantsetsResourceApi {
     }
     if (variantSetId == null) {
       throw new core.ArgumentError("Parameter variantSetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/variantsets/' +
@@ -2749,6 +3088,9 @@ class VariantsetsResourceApi {
   ///
   /// [variantSetId] - Required. The ID of the variant set.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [VariantSet].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2756,7 +3098,8 @@ class VariantsetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<VariantSet> get(core.String variantSetId) {
+  async.Future<VariantSet> get(core.String variantSetId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2766,6 +3109,9 @@ class VariantsetsResourceApi {
 
     if (variantSetId == null) {
       throw new core.ArgumentError("Parameter variantSetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/variantsets/' + commons.Escaper.ecapeVariable('$variantSetId');
@@ -2801,6 +3147,9 @@ class VariantsetsResourceApi {
   /// Leaving `updateMask` unset is equivalent to specifying all mutable
   /// fields.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [VariantSet].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2809,7 +3158,7 @@ class VariantsetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<VariantSet> patch(VariantSet request, core.String variantSetId,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2825,6 +3174,9 @@ class VariantsetsResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/variantsets/' + commons.Escaper.ecapeVariable('$variantSetId');
@@ -2851,6 +3203,9 @@ class VariantsetsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SearchVariantSetsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2859,7 +3214,8 @@ class VariantsetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SearchVariantSetsResponse> search(
-      SearchVariantSetsRequest request) {
+      SearchVariantSetsRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2869,6 +3225,9 @@ class VariantsetsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/variantsets/search';

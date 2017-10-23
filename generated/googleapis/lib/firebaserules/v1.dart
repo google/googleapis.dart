@@ -86,6 +86,9 @@ class ProjectsResourceApi {
   /// Format: `projects/{project_id}/rulesets/{ruleset_id}`
   /// Value must have pattern "^projects/.+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TestRulesetResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -94,7 +97,8 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestRulesetResponse> test(
-      TestRulesetRequest request, core.String name) {
+      TestRulesetRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -107,6 +111,9 @@ class ProjectsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':test';
@@ -159,6 +166,9 @@ class ProjectsReleasesResourceApi {
   /// Format: `projects/{project_id}`
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Release].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -166,7 +176,8 @@ class ProjectsReleasesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Release> create(Release request, core.String name) {
+  async.Future<Release> create(Release request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -179,6 +190,9 @@ class ProjectsReleasesResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/releases';
@@ -201,6 +215,9 @@ class ProjectsReleasesResourceApi {
   /// Format: `projects/{project_id}/releases/{release_id}`
   /// Value must have pattern "^projects/[^/]+/releases/.+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -208,7 +225,7 @@ class ProjectsReleasesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name) {
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -218,6 +235,9 @@ class ProjectsReleasesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -240,6 +260,9 @@ class ProjectsReleasesResourceApi {
   /// Format: `projects/{project_id}/releases/{release_id}`
   /// Value must have pattern "^projects/[^/]+/releases/.+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Release].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -247,7 +270,7 @@ class ProjectsReleasesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Release> get(core.String name) {
+  async.Future<Release> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -257,6 +280,9 @@ class ProjectsReleasesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -287,6 +313,9 @@ class ProjectsReleasesResourceApi {
   /// - "FIREBASE_RULES_EXECUTABLE_V1" : A FIREBASE_RULES_EXECUTABLE_V1.
   /// - "FIREBASE_RULES_EXECUTABLE_V2" : A FIREBASE_RULES_EXECUTABLE_V2.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GetReleaseExecutableResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -295,7 +324,7 @@ class ProjectsReleasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetReleaseExecutableResponse> getExecutable(core.String name,
-      {core.String executableVersion}) {
+      {core.String executableVersion, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -308,6 +337,9 @@ class ProjectsReleasesResourceApi {
     }
     if (executableVersion != null) {
       _queryParams["executableVersion"] = [executableVersion];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -370,6 +402,9 @@ class ProjectsReleasesResourceApi {
   /// the releases, the caller should iterate until the `page_token` on the
   /// response is empty.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListReleasesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -378,7 +413,10 @@ class ProjectsReleasesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListReleasesResponse> list(core.String name,
-      {core.String filter, core.String pageToken, core.int pageSize}) {
+      {core.String filter,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -398,6 +436,9 @@ class ProjectsReleasesResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/releases';
 
@@ -408,6 +449,61 @@ class ProjectsReleasesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new ListReleasesResponse.fromJson(data));
+  }
+
+  /// Update a `Release` via PATCH.
+  ///
+  /// Only updates to the `ruleset_name` and `test_suite_name` fields will be
+  /// honored. `Release` rename is not supported. To create a `Release` use the
+  /// CreateRelease method.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name for the project which owns this `Release`.
+  ///
+  /// Format: `projects/{project_id}`
+  /// Value must have pattern "^projects/[^/]+/releases/.+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Release].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Release> patch(UpdateReleaseRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Release.fromJson(data));
   }
 
   /// Update a `Release`.
@@ -447,6 +543,9 @@ class ProjectsReleasesResourceApi {
   /// Format: `projects/{project_id}/releases/{release_id}`
   /// Value must have pattern "^projects/[^/]+/releases/.+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Release].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -454,7 +553,8 @@ class ProjectsReleasesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Release> update(Release request, core.String name) {
+  async.Future<Release> update(Release request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -467,6 +567,9 @@ class ProjectsReleasesResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -504,6 +607,9 @@ class ProjectsRulesetsResourceApi {
   /// Format: `projects/{project_id}`
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Ruleset].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -511,7 +617,8 @@ class ProjectsRulesetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Ruleset> create(Ruleset request, core.String name) {
+  async.Future<Ruleset> create(Ruleset request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -524,6 +631,9 @@ class ProjectsRulesetsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/rulesets';
@@ -548,6 +658,9 @@ class ProjectsRulesetsResourceApi {
   /// Format: `projects/{project_id}/rulesets/{ruleset_id}`
   /// Value must have pattern "^projects/[^/]+/rulesets/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -555,7 +668,7 @@ class ProjectsRulesetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name) {
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -565,6 +678,9 @@ class ProjectsRulesetsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -587,6 +703,9 @@ class ProjectsRulesetsResourceApi {
   /// Format: `projects/{project_id}/rulesets/{ruleset_id}`
   /// Value must have pattern "^projects/[^/]+/rulesets/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Ruleset].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -594,7 +713,7 @@ class ProjectsRulesetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Ruleset> get(core.String name) {
+  async.Future<Ruleset> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -604,6 +723,9 @@ class ProjectsRulesetsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -631,14 +753,6 @@ class ProjectsRulesetsResourceApi {
   /// Format: `projects/{project_id}`
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - Next page token for loading the next batch of `Ruleset`
-  /// instances.
-  ///
-  /// [pageSize] - Page size to load. Maximum of 100. Defaults to 10.
-  /// Note: `page_size` is just a hint and the service may choose to load less
-  /// than `page_size` due to the size of the output. To traverse all of the
-  /// releases, caller should iterate until the `page_token` is empty.
-  ///
   /// [filter] - `Ruleset` filter. The list method supports filters with
   /// restrictions on
   /// `Ruleset.name`.
@@ -648,6 +762,17 @@ class ProjectsRulesetsResourceApi {
   ///
   /// Example: `create_time > date("2017-01-01") AND name=UUID-*`
   ///
+  /// [pageToken] - Next page token for loading the next batch of `Ruleset`
+  /// instances.
+  ///
+  /// [pageSize] - Page size to load. Maximum of 100. Defaults to 10.
+  /// Note: `page_size` is just a hint and the service may choose to load less
+  /// than `page_size` due to the size of the output. To traverse all of the
+  /// releases, caller should iterate until the `page_token` is empty.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListRulesetsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -656,7 +781,10 @@ class ProjectsRulesetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRulesetsResponse> list(core.String name,
-      {core.String pageToken, core.int pageSize, core.String filter}) {
+      {core.String filter,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -667,14 +795,17 @@ class ProjectsRulesetsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/rulesets';
@@ -1574,6 +1705,38 @@ class TestSuite {
         new core.Map<core.String, core.Object>();
     if (testCases != null) {
       _json["testCases"] = testCases.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// The request for FirebaseRulesService.UpdateReleasePatch.
+class UpdateReleaseRequest {
+  /// `Release` to update.
+  Release release;
+
+  /// Specifies which fields to update.
+  core.String updateMask;
+
+  UpdateReleaseRequest();
+
+  UpdateReleaseRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("release")) {
+      release = new Release.fromJson(_json["release"]);
+    }
+    if (_json.containsKey("updateMask")) {
+      updateMask = _json["updateMask"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (release != null) {
+      _json["release"] = (release).toJson();
+    }
+    if (updateMask != null) {
+      _json["updateMask"] = updateMask;
     }
     return _json;
   }

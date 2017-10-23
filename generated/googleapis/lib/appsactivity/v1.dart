@@ -82,6 +82,9 @@ class ActivitiesResourceApi {
   /// [userId] - Indicates the user to return activity for. Use the special
   /// value me to indicate the currently authenticated user.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListActivitiesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -96,7 +99,8 @@ class ActivitiesResourceApi {
       core.int pageSize,
       core.String pageToken,
       core.String source,
-      core.String userId}) {
+      core.String userId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -124,6 +128,9 @@ class ActivitiesResourceApi {
     }
     if (userId != null) {
       _queryParams["userId"] = [userId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'activities';

@@ -52,6 +52,9 @@ class CustomersResourceApi {
   /// customerId as a key for persistent data. If the domain name for a
   /// customerId is changed, the Google system automatically updates.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Customer].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -59,7 +62,7 @@ class CustomersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Customer> get(core.String customerId) {
+  async.Future<Customer> get(core.String customerId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -69,6 +72,9 @@ class CustomersResourceApi {
 
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId');
@@ -95,6 +101,9 @@ class CustomersResourceApi {
   /// the subscription transfer. For more information, see the administrator
   /// help center.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Customer].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -103,7 +112,7 @@ class CustomersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Customer> insert(Customer request,
-      {core.String customerAuthToken}) {
+      {core.String customerAuthToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -116,6 +125,9 @@ class CustomersResourceApi {
     }
     if (customerAuthToken != null) {
       _queryParams["customerAuthToken"] = [customerAuthToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customers';
@@ -141,6 +153,9 @@ class CustomersResourceApi {
   /// customerId as a key for persistent data. If the domain name for a
   /// customerId is changed, the Google system automatically updates.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Customer].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -148,7 +163,8 @@ class CustomersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Customer> patch(Customer request, core.String customerId) {
+  async.Future<Customer> patch(Customer request, core.String customerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -161,6 +177,9 @@ class CustomersResourceApi {
     }
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId');
@@ -185,6 +204,9 @@ class CustomersResourceApi {
   /// customerId as a key for persistent data. If the domain name for a
   /// customerId is changed, the Google system automatically updates.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Customer].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -192,7 +214,8 @@ class CustomersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Customer> update(Customer request, core.String customerId) {
+  async.Future<Customer> update(Customer request, core.String customerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -205,6 +228,9 @@ class CustomersResourceApi {
     }
     if (customerId == null) {
       throw new core.ArgumentError("Parameter customerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customers/' + commons.Escaper.ecapeVariable('$customerId');
@@ -228,6 +254,9 @@ class ResellernotifyResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ResellernotifyGetwatchdetailsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -235,13 +264,18 @@ class ResellernotifyResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ResellernotifyGetwatchdetailsResponse> getwatchdetails() {
+  async.Future<ResellernotifyGetwatchdetailsResponse> getwatchdetails(
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'resellernotify/getwatchdetails';
 
@@ -262,6 +296,9 @@ class ResellernotifyResourceApi {
   /// [serviceAccountEmailAddress] - The service account which will own the
   /// created Cloud-PubSub topic.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ResellernotifyResource].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -270,7 +307,7 @@ class ResellernotifyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ResellernotifyResource> register(
-      {core.String serviceAccountEmailAddress}) {
+      {core.String serviceAccountEmailAddress, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -280,6 +317,9 @@ class ResellernotifyResourceApi {
 
     if (serviceAccountEmailAddress != null) {
       _queryParams["serviceAccountEmailAddress"] = [serviceAccountEmailAddress];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'resellernotify/register';
@@ -300,6 +340,9 @@ class ResellernotifyResourceApi {
   /// [serviceAccountEmailAddress] - The service account which owns the
   /// Cloud-PubSub topic.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ResellernotifyResource].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -308,7 +351,7 @@ class ResellernotifyResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ResellernotifyResource> unregister(
-      {core.String serviceAccountEmailAddress}) {
+      {core.String serviceAccountEmailAddress, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -318,6 +361,9 @@ class ResellernotifyResourceApi {
 
     if (serviceAccountEmailAddress != null) {
       _queryParams["serviceAccountEmailAddress"] = [serviceAccountEmailAddress];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'resellernotify/unregister';
@@ -352,6 +398,9 @@ class SubscriptionsResourceApi {
   /// use this ID as a key for persistent data. And the subscriptionId can be
   /// found using the retrieve all reseller subscriptions method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Subscription].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -360,7 +409,8 @@ class SubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Subscription> activate(
-      core.String customerId, core.String subscriptionId) {
+      core.String customerId, core.String subscriptionId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -373,6 +423,9 @@ class SubscriptionsResourceApi {
     }
     if (subscriptionId == null) {
       throw new core.ArgumentError("Parameter subscriptionId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customers/' +
@@ -409,6 +462,9 @@ class SubscriptionsResourceApi {
   /// use this ID as a key for persistent data. And the subscriptionId can be
   /// found using the retrieve all reseller subscriptions method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Subscription].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -417,7 +473,8 @@ class SubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Subscription> changePlan(ChangePlanRequest request,
-      core.String customerId, core.String subscriptionId) {
+      core.String customerId, core.String subscriptionId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -433,6 +490,9 @@ class SubscriptionsResourceApi {
     }
     if (subscriptionId == null) {
       throw new core.ArgumentError("Parameter subscriptionId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customers/' +
@@ -468,6 +528,9 @@ class SubscriptionsResourceApi {
   /// use this ID as a key for persistent data. And the subscriptionId can be
   /// found using the retrieve all reseller subscriptions method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Subscription].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -476,7 +539,8 @@ class SubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Subscription> changeRenewalSettings(RenewalSettings request,
-      core.String customerId, core.String subscriptionId) {
+      core.String customerId, core.String subscriptionId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -492,6 +556,9 @@ class SubscriptionsResourceApi {
     }
     if (subscriptionId == null) {
       throw new core.ArgumentError("Parameter subscriptionId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customers/' +
@@ -526,6 +593,9 @@ class SubscriptionsResourceApi {
   /// use this ID as a key for persistent data. And the subscriptionId can be
   /// found using the retrieve all reseller subscriptions method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Subscription].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -534,7 +604,8 @@ class SubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Subscription> changeSeats(
-      Seats request, core.String customerId, core.String subscriptionId) {
+      Seats request, core.String customerId, core.String subscriptionId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -550,6 +621,9 @@ class SubscriptionsResourceApi {
     }
     if (subscriptionId == null) {
       throw new core.ArgumentError("Parameter subscriptionId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customers/' +
@@ -615,13 +689,17 @@ class SubscriptionsResourceApi {
   /// The customer can then choose to set up billing directly with Google by
   /// using a credit card, or they can transfer to another reseller.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String customerId, core.String subscriptionId,
-      core.String deletionType) {
+      core.String deletionType,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -639,6 +717,9 @@ class SubscriptionsResourceApi {
       throw new core.ArgumentError("Parameter deletionType is required.");
     }
     _queryParams["deletionType"] = [deletionType];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _downloadOptions = null;
 
@@ -671,6 +752,9 @@ class SubscriptionsResourceApi {
   /// use this ID as a key for persistent data. And the subscriptionId can be
   /// found using the retrieve all reseller subscriptions method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Subscription].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -679,7 +763,8 @@ class SubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Subscription> get(
-      core.String customerId, core.String subscriptionId) {
+      core.String customerId, core.String subscriptionId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -692,6 +777,9 @@ class SubscriptionsResourceApi {
     }
     if (subscriptionId == null) {
       throw new core.ArgumentError("Parameter subscriptionId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customers/' +
@@ -726,6 +814,9 @@ class SubscriptionsResourceApi {
   /// the subscription transfer. For more information, see the administrator
   /// help center.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Subscription].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -735,7 +826,7 @@ class SubscriptionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Subscription> insert(
       Subscription request, core.String customerId,
-      {core.String customerAuthToken}) {
+      {core.String customerAuthToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -751,6 +842,9 @@ class SubscriptionsResourceApi {
     }
     if (customerAuthToken != null) {
       _queryParams["customerAuthToken"] = [customerAuthToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customers/' +
@@ -800,6 +894,9 @@ class SubscriptionsResourceApi {
   ///
   /// [pageToken] - Token to specify next page in the list
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Subscriptions].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -812,7 +909,8 @@ class SubscriptionsResourceApi {
       core.String customerId,
       core.String customerNamePrefix,
       core.int maxResults,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -834,6 +932,9 @@ class SubscriptionsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'subscriptions';
@@ -863,6 +964,9 @@ class SubscriptionsResourceApi {
   /// use this ID as a key for persistent data. And the subscriptionId can be
   /// found using the retrieve all reseller subscriptions method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Subscription].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -871,7 +975,8 @@ class SubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Subscription> startPaidService(
-      core.String customerId, core.String subscriptionId) {
+      core.String customerId, core.String subscriptionId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -884,6 +989,9 @@ class SubscriptionsResourceApi {
     }
     if (subscriptionId == null) {
       throw new core.ArgumentError("Parameter subscriptionId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customers/' +
@@ -916,6 +1024,9 @@ class SubscriptionsResourceApi {
   /// use this ID as a key for persistent data. And the subscriptionId can be
   /// found using the retrieve all reseller subscriptions method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Subscription].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -924,7 +1035,8 @@ class SubscriptionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Subscription> suspend(
-      core.String customerId, core.String subscriptionId) {
+      core.String customerId, core.String subscriptionId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -937,6 +1049,9 @@ class SubscriptionsResourceApi {
     }
     if (subscriptionId == null) {
       throw new core.ArgumentError("Parameter subscriptionId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'customers/' +

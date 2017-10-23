@@ -60,6 +60,9 @@ class PagespeedapiResourceApi {
   /// - "desktop" : Fetch and analyze the URL for desktop browsers
   /// - "mobile" : Fetch and analyze the URL for mobile devices
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Result].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -72,7 +75,8 @@ class PagespeedapiResourceApi {
       core.String locale,
       core.List<core.String> rule,
       core.bool screenshot,
-      core.String strategy}) {
+      core.String strategy,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -100,6 +104,9 @@ class PagespeedapiResourceApi {
     }
     if (strategy != null) {
       _queryParams["strategy"] = [strategy];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'runPagespeed';

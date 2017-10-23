@@ -51,6 +51,9 @@ class ProjectsResourceApi {
   ///
   /// Required.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ProjectSettings].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -58,7 +61,8 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ProjectSettings> getSettings(core.String projectId) {
+  async.Future<ProjectSettings> getSettings(core.String projectId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -68,6 +72,9 @@ class ProjectsResourceApi {
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectId') + '/settings';
@@ -114,6 +121,9 @@ class ProjectsResourceApi {
   ///
   /// Required.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ProjectSettings].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -121,7 +131,8 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ProjectSettings> initializeSettings(core.String projectId) {
+  async.Future<ProjectSettings> initializeSettings(core.String projectId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -131,6 +142,9 @@ class ProjectsResourceApi {
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectId') + ':initializeSettings';
@@ -177,6 +191,9 @@ class ProjectsHistoriesResourceApi {
   ///
   /// Optional, but strongly recommended.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [History].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -185,7 +202,7 @@ class ProjectsHistoriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<History> create(History request, core.String projectId,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -201,6 +218,9 @@ class ProjectsHistoriesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectId') + '/histories';
@@ -232,6 +252,9 @@ class ProjectsHistoriesResourceApi {
   ///
   /// Required.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [History].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -239,7 +262,8 @@ class ProjectsHistoriesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<History> get(core.String projectId, core.String historyId) {
+  async.Future<History> get(core.String projectId, core.String historyId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -252,6 +276,9 @@ class ProjectsHistoriesResourceApi {
     }
     if (historyId == null) {
       throw new core.ArgumentError("Parameter historyId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectId') +
@@ -301,6 +328,9 @@ class ProjectsHistoriesResourceApi {
   ///
   /// Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListHistoriesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -309,7 +339,10 @@ class ProjectsHistoriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListHistoriesResponse> list(core.String projectId,
-      {core.String filterByName, core.int pageSize, core.String pageToken}) {
+      {core.String filterByName,
+      core.int pageSize,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -328,6 +361,9 @@ class ProjectsHistoriesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectId') + '/histories';
@@ -380,6 +416,9 @@ class ProjectsHistoriesExecutionsResourceApi {
   ///
   /// Optional, but strongly recommended.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Execution].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -389,7 +428,7 @@ class ProjectsHistoriesExecutionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Execution> create(
       Execution request, core.String projectId, core.String historyId,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -408,6 +447,9 @@ class ProjectsHistoriesExecutionsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectId') +
@@ -446,6 +488,9 @@ class ProjectsHistoriesExecutionsResourceApi {
   ///
   /// Required.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Execution].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -454,7 +499,8 @@ class ProjectsHistoriesExecutionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Execution> get(
-      core.String projectId, core.String historyId, core.String executionId) {
+      core.String projectId, core.String historyId, core.String executionId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -470,6 +516,9 @@ class ProjectsHistoriesExecutionsResourceApi {
     }
     if (executionId == null) {
       throw new core.ArgumentError("Parameter executionId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectId') +
@@ -520,6 +569,9 @@ class ProjectsHistoriesExecutionsResourceApi {
   ///
   /// Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListExecutionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -529,7 +581,7 @@ class ProjectsHistoriesExecutionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListExecutionsResponse> list(
       core.String projectId, core.String historyId,
-      {core.int pageSize, core.String pageToken}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -548,6 +600,9 @@ class ProjectsHistoriesExecutionsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectId') +
@@ -588,6 +643,9 @@ class ProjectsHistoriesExecutionsResourceApi {
   ///
   /// Optional, but strongly recommended.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Execution].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -597,7 +655,7 @@ class ProjectsHistoriesExecutionsResourceApi {
   /// this method will complete with the same error.
   async.Future<Execution> patch(Execution request, core.String projectId,
       core.String historyId, core.String executionId,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -619,6 +677,9 @@ class ProjectsHistoriesExecutionsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectId') +
@@ -663,6 +724,9 @@ class ProjectsHistoriesExecutionsClustersResourceApi {
   ///
   /// Required.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ScreenshotCluster].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -671,7 +735,8 @@ class ProjectsHistoriesExecutionsClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ScreenshotCluster> get(core.String projectId,
-      core.String historyId, core.String executionId, core.String clusterId) {
+      core.String historyId, core.String executionId, core.String clusterId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -690,6 +755,9 @@ class ProjectsHistoriesExecutionsClustersResourceApi {
     }
     if (clusterId == null) {
       throw new core.ArgumentError("Parameter clusterId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectId') +
@@ -732,6 +800,9 @@ class ProjectsHistoriesExecutionsClustersResourceApi {
   ///
   /// Required.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListScreenshotClustersResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -740,7 +811,8 @@ class ProjectsHistoriesExecutionsClustersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListScreenshotClustersResponse> list(
-      core.String projectId, core.String historyId, core.String executionId) {
+      core.String projectId, core.String historyId, core.String executionId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -756,6 +828,9 @@ class ProjectsHistoriesExecutionsClustersResourceApi {
     }
     if (executionId == null) {
       throw new core.ArgumentError("Parameter executionId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectId') +
@@ -825,6 +900,9 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
   ///
   /// Optional, but strongly recommended.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Step].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -834,7 +912,7 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
   /// this method will complete with the same error.
   async.Future<Step> create(Step request, core.String projectId,
       core.String historyId, core.String executionId,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -856,6 +934,9 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectId') +
@@ -900,6 +981,9 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
   ///
   /// Required.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Step].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -908,7 +992,8 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Step> get(core.String projectId, core.String historyId,
-      core.String executionId, core.String stepId) {
+      core.String executionId, core.String stepId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -927,6 +1012,9 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
     }
     if (stepId == null) {
       throw new core.ArgumentError("Parameter stepId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectId') +
@@ -961,6 +1049,9 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
   ///
   /// [stepId] - A tool results step ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PerfMetricsSummary].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -969,7 +1060,8 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<PerfMetricsSummary> getPerfMetricsSummary(core.String projectId,
-      core.String historyId, core.String executionId, core.String stepId) {
+      core.String historyId, core.String executionId, core.String stepId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -988,6 +1080,9 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
     }
     if (stepId == null) {
       throw new core.ArgumentError("Parameter stepId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectId') +
@@ -1046,6 +1141,9 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
   ///
   /// Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListStepsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1055,7 +1153,7 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListStepsResponse> list(
       core.String projectId, core.String historyId, core.String executionId,
-      {core.int pageSize, core.String pageToken}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1077,6 +1175,9 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectId') +
@@ -1130,6 +1231,9 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
   ///
   /// Optional, but strongly recommended.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Step].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1139,7 +1243,7 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
   /// this method will complete with the same error.
   async.Future<Step> patch(Step request, core.String projectId,
       core.String historyId, core.String executionId, core.String stepId,
-      {core.String requestId}) {
+      {core.String requestId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1164,6 +1268,9 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectId') +
@@ -1213,6 +1320,9 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
   ///
   /// Required.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Step].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1225,7 +1335,8 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
       core.String projectId,
       core.String historyId,
       core.String executionId,
-      core.String stepId) {
+      core.String stepId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1247,6 +1358,9 @@ class ProjectsHistoriesExecutionsStepsResourceApi {
     }
     if (stepId == null) {
       throw new core.ArgumentError("Parameter stepId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectId') +
@@ -1293,6 +1407,9 @@ class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi {
   ///
   /// [stepId] - A tool results step ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PerfMetricsSummary].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1305,7 +1422,8 @@ class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi {
       core.String projectId,
       core.String historyId,
       core.String executionId,
-      core.String stepId) {
+      core.String stepId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1327,6 +1445,9 @@ class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResourceApi {
     }
     if (stepId == null) {
       throw new core.ArgumentError("Parameter stepId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectId') +
@@ -1378,6 +1499,9 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi {
   ///
   /// [stepId] - A tool results step ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PerfSampleSeries].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1390,7 +1514,8 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi {
       core.String projectId,
       core.String historyId,
       core.String executionId,
-      core.String stepId) {
+      core.String stepId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1412,6 +1537,9 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi {
     }
     if (stepId == null) {
       throw new core.ArgumentError("Parameter stepId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectId') +
@@ -1449,6 +1577,9 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi {
   ///
   /// [sampleSeriesId] - A sample series id
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PerfSampleSeries].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1461,7 +1592,8 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi {
       core.String historyId,
       core.String executionId,
       core.String stepId,
-      core.String sampleSeriesId) {
+      core.String sampleSeriesId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1483,6 +1615,9 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi {
     }
     if (sampleSeriesId == null) {
       throw new core.ArgumentError("Parameter sampleSeriesId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectId') +
@@ -1526,6 +1661,9 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi {
   /// [filter] - Specify one or more PerfMetricType values such as CPU to filter
   /// the result
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListPerfSampleSeriesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1535,7 +1673,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListPerfSampleSeriesResponse> list(core.String projectId,
       core.String historyId, core.String executionId, core.String stepId,
-      {core.List<core.String> filter}) {
+      {core.List<core.String> filter, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1557,6 +1695,9 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResourceApi {
     }
     if (filter != null) {
       _queryParams["filter"] = filter;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectId') +
@@ -1610,6 +1751,9 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
   ///
   /// [sampleSeriesId] - A sample series id
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BatchCreatePerfSamplesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1623,7 +1767,8 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
       core.String historyId,
       core.String executionId,
       core.String stepId,
-      core.String sampleSeriesId) {
+      core.String sampleSeriesId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1648,6 +1793,9 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
     }
     if (sampleSeriesId == null) {
       throw new core.ArgumentError("Parameter sampleSeriesId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectId') +
@@ -1701,6 +1849,9 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
   /// [pageToken] - Optional, the next_page_token returned in the previous
   /// response
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListPerfSamplesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1715,7 +1866,8 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
       core.String stepId,
       core.String sampleSeriesId,
       {core.int pageSize,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1743,6 +1895,9 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectId') +
@@ -1809,6 +1964,9 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResourceApi {
   ///
   /// Optional.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListStepThumbnailsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1818,7 +1976,7 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListStepThumbnailsResponse> list(core.String projectId,
       core.String historyId, core.String executionId, core.String stepId,
-      {core.int pageSize, core.String pageToken}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1843,6 +2001,9 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$projectId') +
@@ -2690,6 +2851,165 @@ class FileReference {
   }
 }
 
+/// Graphics statistics for the App. The information is collected from 'adb
+/// shell dumpsys graphicsstats'. For more info see:
+/// https://developer.android.com/training/testing/performance.html Statistics
+/// will only be present for API 23+.
+class GraphicsStats {
+  /// Histogram of frame render times. There should be 154 buckets ranging from
+  /// [5ms, 6ms) to [4950ms, infinity)
+  core.List<GraphicsStatsBucket> buckets;
+
+  /// Total "high input latency" events.
+  core.String highInputLatencyCount;
+
+  /// Total frames with slow render time. Should be <= total_frames.
+  core.String jankyFrames;
+
+  /// Total "missed vsync" events.
+  core.String missedVsyncCount;
+
+  /// 50th percentile frame render time in milliseconds.
+  core.String p50Millis;
+
+  /// 90th percentile frame render time in milliseconds.
+  core.String p90Millis;
+
+  /// 95th percentile frame render time in milliseconds.
+  core.String p95Millis;
+
+  /// 99th percentile frame render time in milliseconds.
+  core.String p99Millis;
+
+  /// Total "slow bitmap upload" events.
+  core.String slowBitmapUploadCount;
+
+  /// Total "slow draw" events.
+  core.String slowDrawCount;
+
+  /// Total "slow UI thread" events.
+  core.String slowUiThreadCount;
+
+  /// Total frames rendered by package.
+  core.String totalFrames;
+
+  GraphicsStats();
+
+  GraphicsStats.fromJson(core.Map _json) {
+    if (_json.containsKey("buckets")) {
+      buckets = _json["buckets"]
+          .map((value) => new GraphicsStatsBucket.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("highInputLatencyCount")) {
+      highInputLatencyCount = _json["highInputLatencyCount"];
+    }
+    if (_json.containsKey("jankyFrames")) {
+      jankyFrames = _json["jankyFrames"];
+    }
+    if (_json.containsKey("missedVsyncCount")) {
+      missedVsyncCount = _json["missedVsyncCount"];
+    }
+    if (_json.containsKey("p50Millis")) {
+      p50Millis = _json["p50Millis"];
+    }
+    if (_json.containsKey("p90Millis")) {
+      p90Millis = _json["p90Millis"];
+    }
+    if (_json.containsKey("p95Millis")) {
+      p95Millis = _json["p95Millis"];
+    }
+    if (_json.containsKey("p99Millis")) {
+      p99Millis = _json["p99Millis"];
+    }
+    if (_json.containsKey("slowBitmapUploadCount")) {
+      slowBitmapUploadCount = _json["slowBitmapUploadCount"];
+    }
+    if (_json.containsKey("slowDrawCount")) {
+      slowDrawCount = _json["slowDrawCount"];
+    }
+    if (_json.containsKey("slowUiThreadCount")) {
+      slowUiThreadCount = _json["slowUiThreadCount"];
+    }
+    if (_json.containsKey("totalFrames")) {
+      totalFrames = _json["totalFrames"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (buckets != null) {
+      _json["buckets"] = buckets.map((value) => (value).toJson()).toList();
+    }
+    if (highInputLatencyCount != null) {
+      _json["highInputLatencyCount"] = highInputLatencyCount;
+    }
+    if (jankyFrames != null) {
+      _json["jankyFrames"] = jankyFrames;
+    }
+    if (missedVsyncCount != null) {
+      _json["missedVsyncCount"] = missedVsyncCount;
+    }
+    if (p50Millis != null) {
+      _json["p50Millis"] = p50Millis;
+    }
+    if (p90Millis != null) {
+      _json["p90Millis"] = p90Millis;
+    }
+    if (p95Millis != null) {
+      _json["p95Millis"] = p95Millis;
+    }
+    if (p99Millis != null) {
+      _json["p99Millis"] = p99Millis;
+    }
+    if (slowBitmapUploadCount != null) {
+      _json["slowBitmapUploadCount"] = slowBitmapUploadCount;
+    }
+    if (slowDrawCount != null) {
+      _json["slowDrawCount"] = slowDrawCount;
+    }
+    if (slowUiThreadCount != null) {
+      _json["slowUiThreadCount"] = slowUiThreadCount;
+    }
+    if (totalFrames != null) {
+      _json["totalFrames"] = totalFrames;
+    }
+    return _json;
+  }
+}
+
+class GraphicsStatsBucket {
+  /// Number of frames in the bucket.
+  core.String frameCount;
+
+  /// Lower bound of render time in milliseconds.
+  core.String renderMillis;
+
+  GraphicsStatsBucket();
+
+  GraphicsStatsBucket.fromJson(core.Map _json) {
+    if (_json.containsKey("frameCount")) {
+      frameCount = _json["frameCount"];
+    }
+    if (_json.containsKey("renderMillis")) {
+      renderMillis = _json["renderMillis"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (frameCount != null) {
+      _json["frameCount"] = frameCount;
+    }
+    if (renderMillis != null) {
+      _json["renderMillis"] = renderMillis;
+    }
+    return _json;
+  }
+}
+
 /// A History represents a sorted list of Executions ordered by the
 /// start_timestamp_millis field (descending). It can be used to group all the
 /// Executions of a continuous build.
@@ -3241,6 +3561,10 @@ class PerfMetricsSummary {
   /// A tool results execution ID.
   core.String executionId;
 
+  /// Graphics statistics for the entire run. Statistics are reset at the
+  /// beginning of the run and collected at the end of the run.
+  GraphicsStats graphicsStats;
+
   /// A tool results history ID.
   core.String historyId;
 
@@ -3264,6 +3588,9 @@ class PerfMetricsSummary {
     }
     if (_json.containsKey("executionId")) {
       executionId = _json["executionId"];
+    }
+    if (_json.containsKey("graphicsStats")) {
+      graphicsStats = new GraphicsStats.fromJson(_json["graphicsStats"]);
     }
     if (_json.containsKey("historyId")) {
       historyId = _json["historyId"];
@@ -3290,6 +3617,9 @@ class PerfMetricsSummary {
     }
     if (executionId != null) {
       _json["executionId"] = executionId;
+    }
+    if (graphicsStats != null) {
+      _json["graphicsStats"] = (graphicsStats).toJson();
     }
     if (historyId != null) {
       _json["historyId"] = historyId;
@@ -4284,9 +4614,11 @@ class TestIssue {
   /// Type of issue. Required.
   /// Possible string values are:
   /// - "anr"
+  /// - "compatibleWithOrchestrator"
   /// - "fatalException"
   /// - "nativeCrash"
   /// - "unspecifiedType"
+  /// - "unusedRoboDirective"
   core.String type;
 
   /// Warning message with additional details of the issue. Should always be a

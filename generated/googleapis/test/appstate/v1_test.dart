@@ -75,14 +75,14 @@ checkGetResponse(api.GetResponse o) {
   buildCounterGetResponse--;
 }
 
-buildUnnamed2628() {
+buildUnnamed2643() {
   var o = new core.List<api.GetResponse>();
   o.add(buildGetResponse());
   o.add(buildGetResponse());
   return o;
 }
 
-checkUnnamed2628(core.List<api.GetResponse> o) {
+checkUnnamed2643(core.List<api.GetResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGetResponse(o[0]);
   checkGetResponse(o[1]);
@@ -93,7 +93,7 @@ buildListResponse() {
   var o = new api.ListResponse();
   buildCounterListResponse++;
   if (buildCounterListResponse < 3) {
-    o.items = buildUnnamed2628();
+    o.items = buildUnnamed2643();
     o.kind = "foo";
     o.maximumKeyCount = 42;
   }
@@ -104,7 +104,7 @@ buildListResponse() {
 checkListResponse(api.ListResponse o) {
   buildCounterListResponse++;
   if (buildCounterListResponse < 3) {
-    checkUnnamed2628(o.items);
+    checkUnnamed2643(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.maximumKeyCount, unittest.equals(42));
   }
@@ -194,6 +194,7 @@ main() {
       api.StatesResourceApi res = new api.AppstateApi(mock).states;
       var arg_stateKey = 42;
       var arg_currentDataVersion = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -238,6 +239,7 @@ main() {
         }
         unittest.expect(queryMap["currentDataVersion"].first,
             unittest.equals(arg_currentDataVersion));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -246,7 +248,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .clear(arg_stateKey, currentDataVersion: arg_currentDataVersion)
+          .clear(arg_stateKey,
+              currentDataVersion: arg_currentDataVersion, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.WriteResult response) {
         checkWriteResult(response);
       })));
@@ -256,6 +259,7 @@ main() {
       var mock = new HttpServerMock();
       api.StatesResourceApi res = new api.AppstateApi(mock).states;
       var arg_stateKey = 42;
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -292,6 +296,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -299,13 +304,16 @@ main() {
         var resp = "";
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_stateKey).then(unittest.expectAsync1((_) {}));
+      res
+          .delete(arg_stateKey, $fields: arg_$fields)
+          .then(unittest.expectAsync1((_) {}));
     });
 
     unittest.test("method--get", () {
       var mock = new HttpServerMock();
       api.StatesResourceApi res = new api.AppstateApi(mock).states;
       var arg_stateKey = 42;
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -342,6 +350,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -350,7 +359,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_stateKey)
+          .get(arg_stateKey, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.GetResponse response) {
         checkGetResponse(response);
       })));
@@ -360,6 +369,7 @@ main() {
       var mock = new HttpServerMock();
       api.StatesResourceApi res = new api.AppstateApi(mock).states;
       var arg_includeData = true;
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -395,6 +405,7 @@ main() {
         }
         unittest.expect(
             queryMap["includeData"].first, unittest.equals("$arg_includeData"));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -403,7 +414,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .list(includeData: arg_includeData)
+          .list(includeData: arg_includeData, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ListResponse response) {
         checkListResponse(response);
       })));
@@ -415,6 +426,7 @@ main() {
       var arg_request = buildUpdateRequest();
       var arg_stateKey = 42;
       var arg_currentStateVersion = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.UpdateRequest.fromJson(json);
         checkUpdateRequest(obj);
@@ -456,6 +468,7 @@ main() {
         }
         unittest.expect(queryMap["currentStateVersion"].first,
             unittest.equals(arg_currentStateVersion));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -465,7 +478,8 @@ main() {
       }), true);
       res
           .update(arg_request, arg_stateKey,
-              currentStateVersion: arg_currentStateVersion)
+              currentStateVersion: arg_currentStateVersion,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.WriteResult response) {
         checkWriteResult(response);
       })));

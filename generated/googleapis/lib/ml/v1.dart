@@ -52,6 +52,9 @@ class ProjectsResourceApi {
   /// [name] - Required. The project name.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleCloudMlV1GetConfigResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -59,7 +62,8 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudMlV1GetConfigResponse> getConfig(core.String name) {
+  async.Future<GoogleCloudMlV1GetConfigResponse> getConfig(core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -69,6 +73,9 @@ class ProjectsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -98,6 +105,9 @@ class ProjectsResourceApi {
   /// resource.
   /// Value must have pattern "^projects/.+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleApiHttpBody].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -106,7 +116,8 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleApiHttpBody> predict(
-      GoogleCloudMlV1PredictRequest request, core.String name) {
+      GoogleCloudMlV1PredictRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -119,6 +130,9 @@ class ProjectsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':predict';
@@ -147,6 +161,9 @@ class ProjectsJobsResourceApi {
   /// [name] - Required. The name of the job to cancel.
   /// Value must have pattern "^projects/[^/]+/jobs/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleProtobufEmpty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -155,7 +172,8 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleProtobufEmpty> cancel(
-      GoogleCloudMlV1CancelJobRequest request, core.String name) {
+      GoogleCloudMlV1CancelJobRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -168,6 +186,9 @@ class ProjectsJobsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
@@ -190,6 +211,9 @@ class ProjectsJobsResourceApi {
   /// [parent] - Required. The project name.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleCloudMlV1Job].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -198,7 +222,8 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1Job> create(
-      GoogleCloudMlV1Job request, core.String parent) {
+      GoogleCloudMlV1Job request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -211,6 +236,9 @@ class ProjectsJobsResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jobs';
@@ -231,6 +259,9 @@ class ProjectsJobsResourceApi {
   /// [name] - Required. The name of the job to get the description of.
   /// Value must have pattern "^projects/[^/]+/jobs/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleCloudMlV1Job].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -238,7 +269,8 @@ class ProjectsJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudMlV1Job> get(core.String name) {
+  async.Future<GoogleCloudMlV1Job> get(core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -248,6 +280,9 @@ class ProjectsJobsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -272,6 +307,9 @@ class ProjectsJobsResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^projects/[^/]+/jobs/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleIamV1Policy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -279,7 +317,8 @@ class ProjectsJobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleIamV1Policy> getIamPolicy(core.String resource) {
+  async.Future<GoogleIamV1Policy> getIamPolicy(core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -289,6 +328,9 @@ class ProjectsJobsResourceApi {
 
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -311,6 +353,8 @@ class ProjectsJobsResourceApi {
   /// [parent] - Required. The name of the project for which to list jobs.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [filter] - Optional. Specifies the subset of jobs to retrieve.
+  ///
   /// [pageToken] - Optional. A page token to request the next page of results.
   ///
   /// You get the token from the `next_page_token` field of the response from
@@ -323,7 +367,8 @@ class ProjectsJobsResourceApi {
   ///
   /// The default value is 20, and the maximum page size is 100.
   ///
-  /// [filter] - Optional. Specifies the subset of jobs to retrieve.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [GoogleCloudMlV1ListJobsResponse].
   ///
@@ -333,7 +378,10 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListJobsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String filter}) {
+      {core.String filter,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -344,14 +392,17 @@ class ProjectsJobsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jobs';
@@ -378,6 +429,9 @@ class ProjectsJobsResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^projects/[^/]+/jobs/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleIamV1Policy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -386,7 +440,8 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleIamV1Policy> setIamPolicy(
-      GoogleIamV1SetIamPolicyRequest request, core.String resource) {
+      GoogleIamV1SetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -399,6 +454,9 @@ class ProjectsJobsResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -431,6 +489,9 @@ class ProjectsJobsResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^projects/[^/]+/jobs/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -439,7 +500,8 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
-      GoogleIamV1TestIamPermissionsRequest request, core.String resource) {
+      GoogleIamV1TestIamPermissionsRequest request, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -452,6 +514,9 @@ class ProjectsJobsResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -490,6 +555,9 @@ class ProjectsModelsResourceApi {
   /// [parent] - Required. The project name.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleCloudMlV1Model].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -498,7 +566,8 @@ class ProjectsModelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1Model> create(
-      GoogleCloudMlV1Model request, core.String parent) {
+      GoogleCloudMlV1Model request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -511,6 +580,9 @@ class ProjectsModelsResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/models';
@@ -535,6 +607,9 @@ class ProjectsModelsResourceApi {
   /// [name] - Required. The name of the model.
   /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleLongrunningOperation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -542,7 +617,8 @@ class ProjectsModelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> delete(core.String name) {
+  async.Future<GoogleLongrunningOperation> delete(core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -552,6 +628,9 @@ class ProjectsModelsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -575,6 +654,9 @@ class ProjectsModelsResourceApi {
   /// [name] - Required. The name of the model.
   /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleCloudMlV1Model].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -582,7 +664,8 @@ class ProjectsModelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudMlV1Model> get(core.String name) {
+  async.Future<GoogleCloudMlV1Model> get(core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -592,6 +675,9 @@ class ProjectsModelsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -616,6 +702,9 @@ class ProjectsModelsResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleIamV1Policy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -623,7 +712,8 @@ class ProjectsModelsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleIamV1Policy> getIamPolicy(core.String resource) {
+  async.Future<GoogleIamV1Policy> getIamPolicy(core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -633,6 +723,9 @@ class ProjectsModelsResourceApi {
 
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -659,17 +752,20 @@ class ProjectsModelsResourceApi {
   /// listed.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - Optional. A page token to request the next page of results.
-  ///
-  /// You get the token from the `next_page_token` field of the response from
-  /// the previous call.
-  ///
   /// [pageSize] - Optional. The number of models to retrieve per "page" of
   /// results. If there
   /// are more remaining results than this number, the response message will
   /// contain a valid value in the `next_page_token` field.
   ///
   /// The default value is 20, and the maximum page size is 100.
+  ///
+  /// [pageToken] - Optional. A page token to request the next page of results.
+  ///
+  /// You get the token from the `next_page_token` field of the response from
+  /// the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [GoogleCloudMlV1ListModelsResponse].
   ///
@@ -679,7 +775,7 @@ class ProjectsModelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListModelsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -690,11 +786,14 @@ class ProjectsModelsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/models';
@@ -742,6 +841,9 @@ class ProjectsModelsResourceApi {
   /// Currently the supported update masks are `description`,
   /// `default_version.name`, `labels`, and `etag`.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleLongrunningOperation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -751,7 +853,7 @@ class ProjectsModelsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> patch(
       GoogleCloudMlV1Model request, core.String name,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -767,6 +869,9 @@ class ProjectsModelsResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -793,6 +898,9 @@ class ProjectsModelsResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleIamV1Policy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -801,7 +909,8 @@ class ProjectsModelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleIamV1Policy> setIamPolicy(
-      GoogleIamV1SetIamPolicyRequest request, core.String resource) {
+      GoogleIamV1SetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -814,6 +923,9 @@ class ProjectsModelsResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -846,6 +958,9 @@ class ProjectsModelsResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -854,7 +969,8 @@ class ProjectsModelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
-      GoogleIamV1TestIamPermissionsRequest request, core.String resource) {
+      GoogleIamV1TestIamPermissionsRequest request, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -867,6 +983,9 @@ class ProjectsModelsResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -906,6 +1025,9 @@ class ProjectsModelsVersionsResourceApi {
   /// [parent] - Required. The name of the model.
   /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleLongrunningOperation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -914,7 +1036,8 @@ class ProjectsModelsVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> create(
-      GoogleCloudMlV1Version request, core.String parent) {
+      GoogleCloudMlV1Version request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -927,6 +1050,9 @@ class ProjectsModelsVersionsResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -958,6 +1084,9 @@ class ProjectsModelsVersionsResourceApi {
   /// [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list).
   /// Value must have pattern "^projects/[^/]+/models/[^/]+/versions/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleLongrunningOperation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -965,7 +1094,8 @@ class ProjectsModelsVersionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> delete(core.String name) {
+  async.Future<GoogleLongrunningOperation> delete(core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -975,6 +1105,9 @@ class ProjectsModelsVersionsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1001,6 +1134,9 @@ class ProjectsModelsVersionsResourceApi {
   /// [name] - Required. The name of the version.
   /// Value must have pattern "^projects/[^/]+/models/[^/]+/versions/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleCloudMlV1Version].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1008,7 +1144,8 @@ class ProjectsModelsVersionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudMlV1Version> get(core.String name) {
+  async.Future<GoogleCloudMlV1Version> get(core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1018,6 +1155,9 @@ class ProjectsModelsVersionsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1054,6 +1194,9 @@ class ProjectsModelsVersionsResourceApi {
   ///
   /// The default value is 20, and the maximum page size is 100.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleCloudMlV1ListVersionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1062,7 +1205,7 @@ class ProjectsModelsVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListVersionsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1078,6 +1221,9 @@ class ProjectsModelsVersionsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -1123,6 +1269,9 @@ class ProjectsModelsVersionsResourceApi {
   /// Currently the only supported update masks are `description`, `labels`, and
   /// `etag`.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleLongrunningOperation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1132,7 +1281,7 @@ class ProjectsModelsVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningOperation> patch(
       GoogleCloudMlV1Version request, core.String name,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1148,6 +1297,9 @@ class ProjectsModelsVersionsResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1181,6 +1333,9 @@ class ProjectsModelsVersionsResourceApi {
   /// [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list).
   /// Value must have pattern "^projects/[^/]+/models/[^/]+/versions/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleCloudMlV1Version].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1189,7 +1344,8 @@ class ProjectsModelsVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1Version> setDefault(
-      GoogleCloudMlV1SetDefaultVersionRequest request, core.String name) {
+      GoogleCloudMlV1SetDefaultVersionRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1202,6 +1358,9 @@ class ProjectsModelsVersionsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -1239,6 +1398,9 @@ class ProjectsOperationsResourceApi {
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern "^projects/[^/]+/operations/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleProtobufEmpty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1246,7 +1408,8 @@ class ProjectsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> cancel(core.String name) {
+  async.Future<GoogleProtobufEmpty> cancel(core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1256,6 +1419,9 @@ class ProjectsOperationsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
@@ -1279,6 +1445,9 @@ class ProjectsOperationsResourceApi {
   /// [name] - The name of the operation resource to be deleted.
   /// Value must have pattern "^projects/[^/]+/operations/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleProtobufEmpty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1286,7 +1455,8 @@ class ProjectsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleProtobufEmpty> delete(core.String name) {
+  async.Future<GoogleProtobufEmpty> delete(core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1296,6 +1466,9 @@ class ProjectsOperationsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1318,6 +1491,9 @@ class ProjectsOperationsResourceApi {
   /// [name] - The name of the operation resource.
   /// Value must have pattern "^projects/[^/]+/operations/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleLongrunningOperation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1325,7 +1501,8 @@ class ProjectsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> get(core.String name) {
+  async.Future<GoogleLongrunningOperation> get(core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1335,6 +1512,9 @@ class ProjectsOperationsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1366,11 +1546,14 @@ class ProjectsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - The standard list page size.
+  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
   ///
-  /// [pageSize] - The standard list page size.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [GoogleLongrunningListOperationsResponse].
   ///
@@ -1380,7 +1563,10 @@ class ProjectsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.String filter, core.String pageToken, core.int pageSize}) {
+      {core.int pageSize,
+      core.String filter,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1391,14 +1577,17 @@ class ProjectsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =

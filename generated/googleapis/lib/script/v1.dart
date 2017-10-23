@@ -90,6 +90,9 @@ class ScriptsResourceApi {
   /// script ID, open
   /// the project in the script editor and select **File > Project properties**.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -97,7 +100,8 @@ class ScriptsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> run(ExecutionRequest request, core.String scriptId) {
+  async.Future<Operation> run(ExecutionRequest request, core.String scriptId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -110,6 +114,9 @@ class ScriptsResourceApi {
     }
     if (scriptId == null) {
       throw new core.ArgumentError("Parameter scriptId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/scripts/' + commons.Escaper.ecapeVariable('$scriptId') + ':run';

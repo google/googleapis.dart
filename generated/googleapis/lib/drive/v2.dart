@@ -104,6 +104,9 @@ class AboutResourceApi {
   /// [startChangeId] - Change ID to start counting from when calculating number
   /// of remaining change IDs
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [About].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -114,7 +117,8 @@ class AboutResourceApi {
   async.Future<About> get(
       {core.bool includeSubscribed,
       core.String maxChangeIdCount,
-      core.String startChangeId}) {
+      core.String startChangeId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -130,6 +134,9 @@ class AboutResourceApi {
     }
     if (startChangeId != null) {
       _queryParams["startChangeId"] = [startChangeId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'about';
@@ -155,6 +162,9 @@ class AppsResourceApi {
   ///
   /// [appId] - The ID of the app.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [App].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -162,7 +172,7 @@ class AppsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<App> get(core.String appId) {
+  async.Future<App> get(core.String appId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -172,6 +182,9 @@ class AppsResourceApi {
 
     if (appId == null) {
       throw new core.ArgumentError("Parameter appId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'apps/' + commons.Escaper.ecapeVariable('$appId');
@@ -205,6 +218,9 @@ class AppsResourceApi {
   /// some extensions from Unicode's LDML format
   /// (http://www.unicode.org/reports/tr35/).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AppList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -215,7 +231,8 @@ class AppsResourceApi {
   async.Future<AppList> list(
       {core.String appFilterExtensions,
       core.String appFilterMimeTypes,
-      core.String languageCode}) {
+      core.String languageCode,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -231,6 +248,9 @@ class AppsResourceApi {
     }
     if (languageCode != null) {
       _queryParams["languageCode"] = [languageCode];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'apps';
@@ -261,6 +281,9 @@ class ChangesResourceApi {
   ///
   /// [teamDriveId] - The Team Drive from which the change will be returned.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Change].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -269,7 +292,9 @@ class ChangesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Change> get(core.String changeId,
-      {core.bool supportsTeamDrives, core.String teamDriveId}) {
+      {core.bool supportsTeamDrives,
+      core.String teamDriveId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -285,6 +310,9 @@ class ChangesResourceApi {
     }
     if (teamDriveId != null) {
       _queryParams["teamDriveId"] = [teamDriveId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'changes/' + commons.Escaper.ecapeVariable('$changeId');
@@ -308,6 +336,9 @@ class ChangesResourceApi {
   /// [teamDriveId] - The ID of the Team Drive for which the starting pageToken
   /// for listing future changes from that Team Drive will be returned.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [StartPageToken].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -316,7 +347,9 @@ class ChangesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<StartPageToken> getStartPageToken(
-      {core.bool supportsTeamDrives, core.String teamDriveId}) {
+      {core.bool supportsTeamDrives,
+      core.String teamDriveId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -329,6 +362,9 @@ class ChangesResourceApi {
     }
     if (teamDriveId != null) {
       _queryParams["teamDriveId"] = [teamDriveId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'changes/startPageToken';
@@ -381,6 +417,9 @@ class ChangesResourceApi {
   /// specified the change IDs will be reflective of the Team Drive; use the
   /// combined Team Drive ID and change ID as an identifier.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ChangeList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -398,7 +437,8 @@ class ChangesResourceApi {
       core.String spaces,
       core.String startChangeId,
       core.bool supportsTeamDrives,
-      core.String teamDriveId}) {
+      core.String teamDriveId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -435,6 +475,9 @@ class ChangesResourceApi {
     }
     if (teamDriveId != null) {
       _queryParams["teamDriveId"] = [teamDriveId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'changes';
@@ -489,6 +532,9 @@ class ChangesResourceApi {
   /// specified the change IDs will be reflective of the Team Drive; use the
   /// combined Team Drive ID and change ID as an identifier.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Channel].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -506,7 +552,8 @@ class ChangesResourceApi {
       core.String spaces,
       core.String startChangeId,
       core.bool supportsTeamDrives,
-      core.String teamDriveId}) {
+      core.String teamDriveId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -547,6 +594,9 @@ class ChangesResourceApi {
     if (teamDriveId != null) {
       _queryParams["teamDriveId"] = [teamDriveId];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'changes/watch';
 
@@ -571,12 +621,15 @@ class ChannelsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future stop(Channel request) {
+  async.Future stop(Channel request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -586,6 +639,9 @@ class ChannelsResourceApi {
 
     if (request != null) {
       _body = convert_1.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -615,12 +671,16 @@ class ChildrenResourceApi {
   ///
   /// [childId] - The ID of the child.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String folderId, core.String childId) {
+  async.Future delete(core.String folderId, core.String childId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -633,6 +693,9 @@ class ChildrenResourceApi {
     }
     if (childId == null) {
       throw new core.ArgumentError("Parameter childId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -659,6 +722,9 @@ class ChildrenResourceApi {
   ///
   /// [childId] - The ID of the child.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ChildReference].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -666,7 +732,8 @@ class ChildrenResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ChildReference> get(core.String folderId, core.String childId) {
+  async.Future<ChildReference> get(core.String folderId, core.String childId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -679,6 +746,9 @@ class ChildrenResourceApi {
     }
     if (childId == null) {
       throw new core.ArgumentError("Parameter childId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' +
@@ -706,6 +776,9 @@ class ChildrenResourceApi {
   /// [supportsTeamDrives] - Whether the requesting application supports Team
   /// Drives.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ChildReference].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -715,7 +788,7 @@ class ChildrenResourceApi {
   /// this method will complete with the same error.
   async.Future<ChildReference> insert(
       ChildReference request, core.String folderId,
-      {core.bool supportsTeamDrives}) {
+      {core.bool supportsTeamDrives, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -731,6 +804,9 @@ class ChildrenResourceApi {
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$folderId') + '/children';
@@ -765,6 +841,9 @@ class ChildrenResourceApi {
   ///
   /// [q] - Query string for searching children.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ChildList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -776,7 +855,8 @@ class ChildrenResourceApi {
       {core.int maxResults,
       core.String orderBy,
       core.String pageToken,
-      core.String q}) {
+      core.String q,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -798,6 +878,9 @@ class ChildrenResourceApi {
     }
     if (q != null) {
       _queryParams["q"] = [q];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$folderId') + '/children';
@@ -825,12 +908,16 @@ class CommentsResourceApi {
   ///
   /// [commentId] - The ID of the comment.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String fileId, core.String commentId) {
+  async.Future delete(core.String fileId, core.String commentId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -843,6 +930,9 @@ class CommentsResourceApi {
     }
     if (commentId == null) {
       throw new core.ArgumentError("Parameter commentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -872,6 +962,9 @@ class CommentsResourceApi {
   /// [includeDeleted] - If set, this will succeed when retrieving a deleted
   /// comment, and will include any deleted replies.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Comment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -880,7 +973,7 @@ class CommentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Comment> get(core.String fileId, core.String commentId,
-      {core.bool includeDeleted}) {
+      {core.bool includeDeleted, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -896,6 +989,9 @@ class CommentsResourceApi {
     }
     if (includeDeleted != null) {
       _queryParams["includeDeleted"] = ["${includeDeleted}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' +
@@ -920,6 +1016,9 @@ class CommentsResourceApi {
   ///
   /// [fileId] - The ID of the file.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Comment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -927,7 +1026,8 @@ class CommentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Comment> insert(Comment request, core.String fileId) {
+  async.Future<Comment> insert(Comment request, core.String fileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -940,6 +1040,9 @@ class CommentsResourceApi {
     }
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments';
@@ -973,6 +1076,9 @@ class CommentsResourceApi {
   /// [updatedMin] - Only discussions that were updated after this timestamp
   /// will be returned. Formatted as an RFC 3339 timestamp.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CommentList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -984,7 +1090,8 @@ class CommentsResourceApi {
       {core.bool includeDeleted,
       core.int maxResults,
       core.String pageToken,
-      core.String updatedMin}) {
+      core.String updatedMin,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1006,6 +1113,9 @@ class CommentsResourceApi {
     }
     if (updatedMin != null) {
       _queryParams["updatedMin"] = [updatedMin];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments';
@@ -1029,6 +1139,9 @@ class CommentsResourceApi {
   ///
   /// [commentId] - The ID of the comment.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Comment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1037,7 +1150,8 @@ class CommentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Comment> patch(
-      Comment request, core.String fileId, core.String commentId) {
+      Comment request, core.String fileId, core.String commentId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1053,6 +1167,9 @@ class CommentsResourceApi {
     }
     if (commentId == null) {
       throw new core.ArgumentError("Parameter commentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' +
@@ -1079,6 +1196,9 @@ class CommentsResourceApi {
   ///
   /// [commentId] - The ID of the comment.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Comment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1087,7 +1207,8 @@ class CommentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Comment> update(
-      Comment request, core.String fileId, core.String commentId) {
+      Comment request, core.String fileId, core.String commentId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1103,6 +1224,9 @@ class CommentsResourceApi {
     }
     if (commentId == null) {
       throw new core.ArgumentError("Parameter commentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' +
@@ -1158,6 +1282,9 @@ class FilesResourceApi {
   /// default visibility/sharing policies.
   /// - "PRIVATE" : The new file will be visible to only the owner.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [File].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1173,7 +1300,8 @@ class FilesResourceApi {
       core.bool supportsTeamDrives,
       core.String timedTextLanguage,
       core.String timedTextTrackName,
-      core.String visibility}) {
+      core.String visibility,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1211,6 +1339,9 @@ class FilesResourceApi {
     if (visibility != null) {
       _queryParams["visibility"] = [visibility];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/copy';
 
@@ -1234,12 +1365,16 @@ class FilesResourceApi {
   /// [supportsTeamDrives] - Whether the requesting application supports Team
   /// Drives.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String fileId, {core.bool supportsTeamDrives}) {
+  async.Future delete(core.String fileId,
+      {core.bool supportsTeamDrives, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1252,6 +1387,9 @@ class FilesResourceApi {
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1271,18 +1409,25 @@ class FilesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future emptyTrash() {
+  async.Future emptyTrash({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _downloadOptions = null;
 
@@ -1306,6 +1451,9 @@ class FilesResourceApi {
   ///
   /// [mimeType] - The MIME type of the format requested for this export.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [downloadOptions] - Options for downloading. A download can be either a
   /// Metadata (default) or Media download. Partial Media downloads are possible
   /// as well.
@@ -1316,7 +1464,8 @@ class FilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future export(core.String fileId, core.String mimeType,
-      {commons.DownloadOptions downloadOptions:
+      {core.String $fields,
+      commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1332,6 +1481,9 @@ class FilesResourceApi {
       throw new core.ArgumentError("Parameter mimeType is required.");
     }
     _queryParams["mimeType"] = [mimeType];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _downloadOptions = downloadOptions;
 
@@ -1361,6 +1513,9 @@ class FilesResourceApi {
   /// [space] - The space in which the IDs can be used to create new files.
   /// Supported values are 'drive' and 'appDataFolder'.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GeneratedIds].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1369,7 +1524,7 @@ class FilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GeneratedIds> generateIds(
-      {core.int maxResults, core.String space}) {
+      {core.int maxResults, core.String space, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1382,6 +1537,9 @@ class FilesResourceApi {
     }
     if (space != null) {
       _queryParams["space"] = [space];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/generateIds';
@@ -1419,6 +1577,9 @@ class FilesResourceApi {
   /// modifiedDateBehavior=noChange, updateViewedDate=true and an empty request
   /// body.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [downloadOptions] - Options for downloading. A download can be either a
   /// Metadata (default) or Media download. Partial Media downloads are possible
   /// as well.
@@ -1440,6 +1601,7 @@ class FilesResourceApi {
       core.String revisionId,
       core.bool supportsTeamDrives,
       core.bool updateViewedDate,
+      core.String $fields,
       commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
@@ -1466,6 +1628,9 @@ class FilesResourceApi {
     }
     if (updateViewedDate != null) {
       _queryParams["updateViewedDate"] = ["${updateViewedDate}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = downloadOptions;
@@ -1520,6 +1685,9 @@ class FilesResourceApi {
   /// default visibility/sharing policies.
   /// - "PRIVATE" : The new file will be visible to only the owner.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [uploadMedia] - The media to upload.
   ///
   /// [uploadOptions] - Options for the media upload. Streaming Media without
@@ -1543,6 +1711,7 @@ class FilesResourceApi {
       core.String timedTextTrackName,
       core.bool useContentAsIndexableText,
       core.String visibility,
+      core.String $fields,
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
@@ -1583,6 +1752,9 @@ class FilesResourceApi {
     }
     if (visibility != null) {
       _queryParams["visibility"] = [visibility];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -1654,6 +1826,9 @@ class FilesResourceApi {
   ///
   /// [teamDriveId] - ID of Team Drive to search.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FileList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1672,7 +1847,8 @@ class FilesResourceApi {
       core.String q,
       core.String spaces,
       core.bool supportsTeamDrives,
-      core.String teamDriveId}) {
+      core.String teamDriveId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1712,6 +1888,9 @@ class FilesResourceApi {
     }
     if (teamDriveId != null) {
       _queryParams["teamDriveId"] = [teamDriveId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files';
@@ -1786,6 +1965,9 @@ class FilesResourceApi {
   /// [useContentAsIndexableText] - Whether to use the content as indexable
   /// text.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [File].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1807,7 +1989,8 @@ class FilesResourceApi {
       core.String timedTextLanguage,
       core.String timedTextTrackName,
       core.bool updateViewedDate,
-      core.bool useContentAsIndexableText}) {
+      core.bool useContentAsIndexableText,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1865,6 +2048,9 @@ class FilesResourceApi {
         "${useContentAsIndexableText}"
       ];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId');
 
@@ -1886,6 +2072,9 @@ class FilesResourceApi {
   /// [supportsTeamDrives] - Whether the requesting application supports Team
   /// Drives.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [File].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1893,7 +2082,8 @@ class FilesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<File> touch(core.String fileId, {core.bool supportsTeamDrives}) {
+  async.Future<File> touch(core.String fileId,
+      {core.bool supportsTeamDrives, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1906,6 +2096,9 @@ class FilesResourceApi {
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/touch';
@@ -1929,6 +2122,9 @@ class FilesResourceApi {
   /// [supportsTeamDrives] - Whether the requesting application supports Team
   /// Drives.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [File].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1936,7 +2132,8 @@ class FilesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<File> trash(core.String fileId, {core.bool supportsTeamDrives}) {
+  async.Future<File> trash(core.String fileId,
+      {core.bool supportsTeamDrives, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1949,6 +2146,9 @@ class FilesResourceApi {
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/trash';
@@ -1971,6 +2171,9 @@ class FilesResourceApi {
   /// [supportsTeamDrives] - Whether the requesting application supports Team
   /// Drives.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [File].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1979,7 +2182,7 @@ class FilesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<File> untrash(core.String fileId,
-      {core.bool supportsTeamDrives}) {
+      {core.bool supportsTeamDrives, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1992,6 +2195,9 @@ class FilesResourceApi {
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/untrash';
@@ -2065,6 +2271,9 @@ class FilesResourceApi {
   /// [useContentAsIndexableText] - Whether to use the content as indexable
   /// text.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [uploadMedia] - The media to upload.
   ///
   /// [uploadOptions] - Options for the media upload. Streaming Media without
@@ -2093,6 +2302,7 @@ class FilesResourceApi {
       core.String timedTextTrackName,
       core.bool updateViewedDate,
       core.bool useContentAsIndexableText,
+      core.String $fields,
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
@@ -2152,6 +2362,9 @@ class FilesResourceApi {
         "${useContentAsIndexableText}"
       ];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _uploadMedia = uploadMedia;
     _uploadOptions = uploadOptions;
@@ -2201,6 +2414,9 @@ class FilesResourceApi {
   /// modifiedDateBehavior=noChange, updateViewedDate=true and an empty request
   /// body.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [downloadOptions] - Options for downloading. A download can be either a
   /// Metadata (default) or Media download. Partial Media downloads are possible
   /// as well.
@@ -2222,6 +2438,7 @@ class FilesResourceApi {
       core.String revisionId,
       core.bool supportsTeamDrives,
       core.bool updateViewedDate,
+      core.String $fields,
       commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
@@ -2251,6 +2468,9 @@ class FilesResourceApi {
     }
     if (updateViewedDate != null) {
       _queryParams["updateViewedDate"] = ["${updateViewedDate}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = downloadOptions;
@@ -2285,12 +2505,16 @@ class ParentsResourceApi {
   ///
   /// [parentId] - The ID of the parent.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String fileId, core.String parentId) {
+  async.Future delete(core.String fileId, core.String parentId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2303,6 +2527,9 @@ class ParentsResourceApi {
     }
     if (parentId == null) {
       throw new core.ArgumentError("Parameter parentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2329,6 +2556,9 @@ class ParentsResourceApi {
   ///
   /// [parentId] - The ID of the parent.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ParentReference].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2336,7 +2566,8 @@ class ParentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ParentReference> get(core.String fileId, core.String parentId) {
+  async.Future<ParentReference> get(core.String fileId, core.String parentId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2349,6 +2580,9 @@ class ParentsResourceApi {
     }
     if (parentId == null) {
       throw new core.ArgumentError("Parameter parentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' +
@@ -2376,6 +2610,9 @@ class ParentsResourceApi {
   /// [supportsTeamDrives] - Whether the requesting application supports Team
   /// Drives.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ParentReference].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2385,7 +2622,7 @@ class ParentsResourceApi {
   /// this method will complete with the same error.
   async.Future<ParentReference> insert(
       ParentReference request, core.String fileId,
-      {core.bool supportsTeamDrives}) {
+      {core.bool supportsTeamDrives, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2401,6 +2638,9 @@ class ParentsResourceApi {
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/parents';
@@ -2420,6 +2660,9 @@ class ParentsResourceApi {
   ///
   /// [fileId] - The ID of the file.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ParentList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2427,7 +2670,7 @@ class ParentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ParentList> list(core.String fileId) {
+  async.Future<ParentList> list(core.String fileId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2437,6 +2680,9 @@ class ParentsResourceApi {
 
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/parents';
@@ -2467,13 +2713,16 @@ class PermissionsResourceApi {
   /// [supportsTeamDrives] - Whether the requesting application supports Team
   /// Drives.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String fileId, core.String permissionId,
-      {core.bool supportsTeamDrives}) {
+      {core.bool supportsTeamDrives, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2489,6 +2738,9 @@ class PermissionsResourceApi {
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2518,6 +2770,9 @@ class PermissionsResourceApi {
   /// [supportsTeamDrives] - Whether the requesting application supports Team
   /// Drives.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Permission].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2526,7 +2781,7 @@ class PermissionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Permission> get(core.String fileId, core.String permissionId,
-      {core.bool supportsTeamDrives}) {
+      {core.bool supportsTeamDrives, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2542,6 +2797,9 @@ class PermissionsResourceApi {
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' +
@@ -2564,6 +2822,9 @@ class PermissionsResourceApi {
   ///
   /// [email] - The email address for which to return a permission ID
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PermissionId].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2571,7 +2832,8 @@ class PermissionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PermissionId> getIdForEmail(core.String email) {
+  async.Future<PermissionId> getIdForEmail(core.String email,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2581,6 +2843,9 @@ class PermissionsResourceApi {
 
     if (email == null) {
       throw new core.ArgumentError("Parameter email is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'permissionIds/' + commons.Escaper.ecapeVariable('$email');
@@ -2611,6 +2876,9 @@ class PermissionsResourceApi {
   /// [supportsTeamDrives] - Whether the requesting application supports Team
   /// Drives.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Permission].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2621,7 +2889,8 @@ class PermissionsResourceApi {
   async.Future<Permission> insert(Permission request, core.String fileId,
       {core.String emailMessage,
       core.bool sendNotificationEmails,
-      core.bool supportsTeamDrives}) {
+      core.bool supportsTeamDrives,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2643,6 +2912,9 @@ class PermissionsResourceApi {
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions';
@@ -2675,6 +2947,9 @@ class PermissionsResourceApi {
   /// [supportsTeamDrives] - Whether the requesting application supports Team
   /// Drives.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PermissionList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2685,7 +2960,8 @@ class PermissionsResourceApi {
   async.Future<PermissionList> list(core.String fileId,
       {core.int maxResults,
       core.String pageToken,
-      core.bool supportsTeamDrives}) {
+      core.bool supportsTeamDrives,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2704,6 +2980,9 @@ class PermissionsResourceApi {
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions';
@@ -2736,6 +3015,9 @@ class PermissionsResourceApi {
   /// current owners to writers. Does nothing if the specified role is not
   /// 'owner'.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Permission].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2747,7 +3029,8 @@ class PermissionsResourceApi {
       Permission request, core.String fileId, core.String permissionId,
       {core.bool removeExpiration,
       core.bool supportsTeamDrives,
-      core.bool transferOwnership}) {
+      core.bool transferOwnership,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2772,6 +3055,9 @@ class PermissionsResourceApi {
     }
     if (transferOwnership != null) {
       _queryParams["transferOwnership"] = ["${transferOwnership}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' +
@@ -2807,6 +3093,9 @@ class PermissionsResourceApi {
   /// current owners to writers. Does nothing if the specified role is not
   /// 'owner'.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Permission].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2818,7 +3107,8 @@ class PermissionsResourceApi {
       Permission request, core.String fileId, core.String permissionId,
       {core.bool removeExpiration,
       core.bool supportsTeamDrives,
-      core.bool transferOwnership}) {
+      core.bool transferOwnership,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2843,6 +3133,9 @@ class PermissionsResourceApi {
     }
     if (transferOwnership != null) {
       _queryParams["transferOwnership"] = ["${transferOwnership}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' +
@@ -2875,13 +3168,16 @@ class PropertiesResourceApi {
   ///
   /// [visibility] - The visibility of the property.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String fileId, core.String propertyKey,
-      {core.String visibility}) {
+      {core.String visibility, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2897,6 +3193,9 @@ class PropertiesResourceApi {
     }
     if (visibility != null) {
       _queryParams["visibility"] = [visibility];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2925,6 +3224,9 @@ class PropertiesResourceApi {
   ///
   /// [visibility] - The visibility of the property.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Property].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2933,7 +3235,7 @@ class PropertiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Property> get(core.String fileId, core.String propertyKey,
-      {core.String visibility}) {
+      {core.String visibility, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2949,6 +3251,9 @@ class PropertiesResourceApi {
     }
     if (visibility != null) {
       _queryParams["visibility"] = [visibility];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' +
@@ -2973,6 +3278,9 @@ class PropertiesResourceApi {
   ///
   /// [fileId] - The ID of the file.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Property].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2980,7 +3288,8 @@ class PropertiesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Property> insert(Property request, core.String fileId) {
+  async.Future<Property> insert(Property request, core.String fileId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2993,6 +3302,9 @@ class PropertiesResourceApi {
     }
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/properties';
@@ -3012,6 +3324,9 @@ class PropertiesResourceApi {
   ///
   /// [fileId] - The ID of the file.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PropertyList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3019,7 +3334,7 @@ class PropertiesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PropertyList> list(core.String fileId) {
+  async.Future<PropertyList> list(core.String fileId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3029,6 +3344,9 @@ class PropertiesResourceApi {
 
     if (fileId == null) {
       throw new core.ArgumentError("Parameter fileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/properties';
@@ -3055,6 +3373,9 @@ class PropertiesResourceApi {
   ///
   /// [visibility] - The visibility of the property.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Property].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3064,7 +3385,7 @@ class PropertiesResourceApi {
   /// this method will complete with the same error.
   async.Future<Property> patch(
       Property request, core.String fileId, core.String propertyKey,
-      {core.String visibility}) {
+      {core.String visibility, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3083,6 +3404,9 @@ class PropertiesResourceApi {
     }
     if (visibility != null) {
       _queryParams["visibility"] = [visibility];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' +
@@ -3111,6 +3435,9 @@ class PropertiesResourceApi {
   ///
   /// [visibility] - The visibility of the property.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Property].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3120,7 +3447,7 @@ class PropertiesResourceApi {
   /// this method will complete with the same error.
   async.Future<Property> update(
       Property request, core.String fileId, core.String propertyKey,
-      {core.String visibility}) {
+      {core.String visibility, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3139,6 +3466,9 @@ class PropertiesResourceApi {
     }
     if (visibility != null) {
       _queryParams["visibility"] = [visibility];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' +
@@ -3174,6 +3504,9 @@ class RealtimeResourceApi {
   /// with each change. If this parameter is excluded, the most recent data
   /// model will be returned.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [downloadOptions] - Options for downloading. A download can be either a
   /// Metadata (default) or Media download. Partial Media downloads are possible
   /// as well.
@@ -3185,6 +3518,7 @@ class RealtimeResourceApi {
   /// this method will complete with the same error.
   async.Future get(core.String fileId,
       {core.int revision,
+      core.String $fields,
       commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
@@ -3199,6 +3533,9 @@ class RealtimeResourceApi {
     }
     if (revision != null) {
       _queryParams["revision"] = ["${revision}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = downloadOptions;
@@ -3233,6 +3570,9 @@ class RealtimeResourceApi {
   /// model after the provided revision. If not set, the uploaded model replaces
   /// the current model on the server.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [uploadMedia] - The media to upload.
   ///
   /// [uploadOptions] - Options for the media upload. Streaming Media without
@@ -3246,6 +3586,7 @@ class RealtimeResourceApi {
   /// this method will complete with the same error.
   async.Future update(core.String fileId,
       {core.String baseRevision,
+      core.String $fields,
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
@@ -3260,6 +3601,9 @@ class RealtimeResourceApi {
     }
     if (baseRevision != null) {
       _queryParams["baseRevision"] = [baseRevision];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -3303,13 +3647,17 @@ class RepliesResourceApi {
   ///
   /// [replyId] - The ID of the reply.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(
-      core.String fileId, core.String commentId, core.String replyId) {
+      core.String fileId, core.String commentId, core.String replyId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3325,6 +3673,9 @@ class RepliesResourceApi {
     }
     if (replyId == null) {
       throw new core.ArgumentError("Parameter replyId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3358,6 +3709,9 @@ class RepliesResourceApi {
   /// [includeDeleted] - If set, this will succeed when retrieving a deleted
   /// reply.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CommentReply].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3367,7 +3721,7 @@ class RepliesResourceApi {
   /// this method will complete with the same error.
   async.Future<CommentReply> get(
       core.String fileId, core.String commentId, core.String replyId,
-      {core.bool includeDeleted}) {
+      {core.bool includeDeleted, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3386,6 +3740,9 @@ class RepliesResourceApi {
     }
     if (includeDeleted != null) {
       _queryParams["includeDeleted"] = ["${includeDeleted}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' +
@@ -3414,6 +3771,9 @@ class RepliesResourceApi {
   ///
   /// [commentId] - The ID of the comment.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CommentReply].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3422,7 +3782,8 @@ class RepliesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CommentReply> insert(
-      CommentReply request, core.String fileId, core.String commentId) {
+      CommentReply request, core.String fileId, core.String commentId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3438,6 +3799,9 @@ class RepliesResourceApi {
     }
     if (commentId == null) {
       throw new core.ArgumentError("Parameter commentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' +
@@ -3474,6 +3838,9 @@ class RepliesResourceApi {
   /// sets. To get the next page of results, set this parameter to the value of
   /// "nextPageToken" from the previous response.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CommentReplyList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3482,7 +3849,10 @@ class RepliesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CommentReplyList> list(core.String fileId, core.String commentId,
-      {core.bool includeDeleted, core.int maxResults, core.String pageToken}) {
+      {core.bool includeDeleted,
+      core.int maxResults,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3504,6 +3874,9 @@ class RepliesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' +
@@ -3533,6 +3906,9 @@ class RepliesResourceApi {
   ///
   /// [replyId] - The ID of the reply.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CommentReply].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3541,7 +3917,8 @@ class RepliesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CommentReply> patch(CommentReply request, core.String fileId,
-      core.String commentId, core.String replyId) {
+      core.String commentId, core.String replyId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3560,6 +3937,9 @@ class RepliesResourceApi {
     }
     if (replyId == null) {
       throw new core.ArgumentError("Parameter replyId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' +
@@ -3590,6 +3970,9 @@ class RepliesResourceApi {
   ///
   /// [replyId] - The ID of the reply.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CommentReply].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3598,7 +3981,8 @@ class RepliesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CommentReply> update(CommentReply request, core.String fileId,
-      core.String commentId, core.String replyId) {
+      core.String commentId, core.String replyId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3617,6 +4001,9 @@ class RepliesResourceApi {
     }
     if (replyId == null) {
       throw new core.ArgumentError("Parameter replyId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' +
@@ -3649,12 +4036,16 @@ class RevisionsResourceApi {
   ///
   /// [revisionId] - The ID of the revision.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String fileId, core.String revisionId) {
+  async.Future delete(core.String fileId, core.String revisionId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3667,6 +4058,9 @@ class RevisionsResourceApi {
     }
     if (revisionId == null) {
       throw new core.ArgumentError("Parameter revisionId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3693,6 +4087,9 @@ class RevisionsResourceApi {
   ///
   /// [revisionId] - The ID of the revision.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Revision].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3700,7 +4097,8 @@ class RevisionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Revision> get(core.String fileId, core.String revisionId) {
+  async.Future<Revision> get(core.String fileId, core.String revisionId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3713,6 +4111,9 @@ class RevisionsResourceApi {
     }
     if (revisionId == null) {
       throw new core.ArgumentError("Parameter revisionId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' +
@@ -3742,6 +4143,9 @@ class RevisionsResourceApi {
   /// set this parameter to the value of "nextPageToken" from the previous
   /// response.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RevisionList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3750,7 +4154,7 @@ class RevisionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RevisionList> list(core.String fileId,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3766,6 +4170,9 @@ class RevisionsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/revisions';
@@ -3789,6 +4196,9 @@ class RevisionsResourceApi {
   ///
   /// [revisionId] - The ID for the revision.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Revision].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3797,7 +4207,8 @@ class RevisionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Revision> patch(
-      Revision request, core.String fileId, core.String revisionId) {
+      Revision request, core.String fileId, core.String revisionId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3813,6 +4224,9 @@ class RevisionsResourceApi {
     }
     if (revisionId == null) {
       throw new core.ArgumentError("Parameter revisionId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' +
@@ -3839,6 +4253,9 @@ class RevisionsResourceApi {
   ///
   /// [revisionId] - The ID for the revision.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Revision].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3847,7 +4264,8 @@ class RevisionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Revision> update(
-      Revision request, core.String fileId, core.String revisionId) {
+      Revision request, core.String fileId, core.String revisionId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3863,6 +4281,9 @@ class RevisionsResourceApi {
     }
     if (revisionId == null) {
       throw new core.ArgumentError("Parameter revisionId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'files/' +
@@ -3892,12 +4313,15 @@ class TeamdrivesResourceApi {
   ///
   /// [teamDriveId] - The ID of the Team Drive
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String teamDriveId) {
+  async.Future delete(core.String teamDriveId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3907,6 +4331,9 @@ class TeamdrivesResourceApi {
 
     if (teamDriveId == null) {
       throw new core.ArgumentError("Parameter teamDriveId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -3928,6 +4355,9 @@ class TeamdrivesResourceApi {
   ///
   /// [teamDriveId] - The ID of the Team Drive
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TeamDrive].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3935,7 +4365,7 @@ class TeamdrivesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TeamDrive> get(core.String teamDriveId) {
+  async.Future<TeamDrive> get(core.String teamDriveId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3945,6 +4375,9 @@ class TeamdrivesResourceApi {
 
     if (teamDriveId == null) {
       throw new core.ArgumentError("Parameter teamDriveId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'teamdrives/' + commons.Escaper.ecapeVariable('$teamDriveId');
@@ -3970,6 +4403,9 @@ class TeamdrivesResourceApi {
   /// duplicates by attempting to create the same Team Drive. If the Team Drive
   /// already exists a 409 error will be returned.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TeamDrive].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3977,7 +4413,8 @@ class TeamdrivesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TeamDrive> insert(TeamDrive request, core.String requestId) {
+  async.Future<TeamDrive> insert(TeamDrive request, core.String requestId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3992,6 +4429,9 @@ class TeamdrivesResourceApi {
       throw new core.ArgumentError("Parameter requestId is required.");
     }
     _queryParams["requestId"] = [requestId];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'teamdrives';
 
@@ -4013,6 +4453,9 @@ class TeamdrivesResourceApi {
   ///
   /// [pageToken] - Page token for Team Drives.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TeamDriveList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4021,7 +4464,7 @@ class TeamdrivesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TeamDriveList> list(
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4034,6 +4477,9 @@ class TeamdrivesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'teamdrives';
@@ -4055,6 +4501,9 @@ class TeamdrivesResourceApi {
   ///
   /// [teamDriveId] - The ID of the Team Drive
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TeamDrive].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -4062,7 +4511,8 @@ class TeamdrivesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TeamDrive> update(TeamDrive request, core.String teamDriveId) {
+  async.Future<TeamDrive> update(TeamDrive request, core.String teamDriveId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -4075,6 +4525,9 @@ class TeamdrivesResourceApi {
     }
     if (teamDriveId == null) {
       throw new core.ArgumentError("Parameter teamDriveId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'teamdrives/' + commons.Escaper.ecapeVariable('$teamDriveId');

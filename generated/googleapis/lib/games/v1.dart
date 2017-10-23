@@ -80,6 +80,9 @@ class AchievementDefinitionsResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AchievementDefinitionsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -91,7 +94,8 @@ class AchievementDefinitionsResourceApi {
       {core.String consistencyToken,
       core.String language,
       core.int maxResults,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -110,6 +114,9 @@ class AchievementDefinitionsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'achievements';
@@ -145,6 +152,9 @@ class AchievementsResourceApi {
   /// by the caller. This number is used at the server to ensure that the
   /// request is handled correctly across retries.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AchievementIncrementResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -154,7 +164,9 @@ class AchievementsResourceApi {
   /// this method will complete with the same error.
   async.Future<AchievementIncrementResponse> increment(
       core.String achievementId, core.int stepsToIncrement,
-      {core.String consistencyToken, core.String requestId}) {
+      {core.String consistencyToken,
+      core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -174,6 +186,9 @@ class AchievementsResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'achievements/' +
@@ -218,6 +233,9 @@ class AchievementsResourceApi {
   /// - "REVEALED" : List only revealed achievements.
   /// - "UNLOCKED" : List only unlocked achievements.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PlayerAchievementListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -230,7 +248,8 @@ class AchievementsResourceApi {
       core.String language,
       core.int maxResults,
       core.String pageToken,
-      core.String state}) {
+      core.String state,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -256,6 +275,9 @@ class AchievementsResourceApi {
     if (state != null) {
       _queryParams["state"] = [state];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'players/' +
         commons.Escaper.ecapeVariable('$playerId') +
@@ -280,6 +302,9 @@ class AchievementsResourceApi {
   ///
   /// [consistencyToken] - The last-seen mutation timestamp.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AchievementRevealResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -288,7 +313,7 @@ class AchievementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AchievementRevealResponse> reveal(core.String achievementId,
-      {core.String consistencyToken}) {
+      {core.String consistencyToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -301,6 +326,9 @@ class AchievementsResourceApi {
     }
     if (consistencyToken != null) {
       _queryParams["consistencyToken"] = [consistencyToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'achievements/' +
@@ -330,6 +358,9 @@ class AchievementsResourceApi {
   ///
   /// [consistencyToken] - The last-seen mutation timestamp.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AchievementSetStepsAtLeastResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -339,7 +370,7 @@ class AchievementsResourceApi {
   /// this method will complete with the same error.
   async.Future<AchievementSetStepsAtLeastResponse> setStepsAtLeast(
       core.String achievementId, core.int steps,
-      {core.String consistencyToken}) {
+      {core.String consistencyToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -356,6 +387,9 @@ class AchievementsResourceApi {
     _queryParams["steps"] = ["${steps}"];
     if (consistencyToken != null) {
       _queryParams["consistencyToken"] = [consistencyToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'achievements/' +
@@ -380,6 +414,9 @@ class AchievementsResourceApi {
   ///
   /// [consistencyToken] - The last-seen mutation timestamp.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AchievementUnlockResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -388,7 +425,7 @@ class AchievementsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AchievementUnlockResponse> unlock(core.String achievementId,
-      {core.String consistencyToken}) {
+      {core.String consistencyToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -401,6 +438,9 @@ class AchievementsResourceApi {
     }
     if (consistencyToken != null) {
       _queryParams["consistencyToken"] = [consistencyToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'achievements/' +
@@ -425,6 +465,9 @@ class AchievementsResourceApi {
   ///
   /// [consistencyToken] - The last-seen mutation timestamp.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AchievementUpdateMultipleResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -434,7 +477,8 @@ class AchievementsResourceApi {
   /// this method will complete with the same error.
   async.Future<AchievementUpdateMultipleResponse> updateMultiple(
       AchievementUpdateMultipleRequest request,
-      {core.String consistencyToken}) {
+      {core.String consistencyToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -447,6 +491,9 @@ class AchievementsResourceApi {
     }
     if (consistencyToken != null) {
       _queryParams["consistencyToken"] = [consistencyToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'achievements/updateMultiple';
@@ -488,6 +535,9 @@ class ApplicationsResourceApi {
   /// - "IOS" : Retrieve applications that can be played on iOS.
   /// - "WEB_APP" : Retrieve applications that can be played on desktop web.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Application].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -498,7 +548,8 @@ class ApplicationsResourceApi {
   async.Future<Application> get(core.String applicationId,
       {core.String consistencyToken,
       core.String language,
-      core.String platformType}) {
+      core.String platformType,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -517,6 +568,9 @@ class ApplicationsResourceApi {
     }
     if (platformType != null) {
       _queryParams["platformType"] = [platformType];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'applications/' + commons.Escaper.ecapeVariable('$applicationId');
@@ -537,12 +591,15 @@ class ApplicationsResourceApi {
   ///
   /// [consistencyToken] - The last-seen mutation timestamp.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future played({core.String consistencyToken}) {
+  async.Future played({core.String consistencyToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -552,6 +609,9 @@ class ApplicationsResourceApi {
 
     if (consistencyToken != null) {
       _queryParams["consistencyToken"] = [consistencyToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -578,6 +638,9 @@ class ApplicationsResourceApi {
   ///
   /// [consistencyToken] - The last-seen mutation timestamp.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ApplicationVerifyResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -586,7 +649,7 @@ class ApplicationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ApplicationVerifyResponse> verify(core.String applicationId,
-      {core.String consistencyToken}) {
+      {core.String consistencyToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -599,6 +662,9 @@ class ApplicationsResourceApi {
     }
     if (consistencyToken != null) {
       _queryParams["consistencyToken"] = [consistencyToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'applications/' +
@@ -638,6 +704,9 @@ class EventsResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PlayerEventListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -649,7 +718,8 @@ class EventsResourceApi {
       {core.String consistencyToken,
       core.String language,
       core.int maxResults,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -668,6 +738,9 @@ class EventsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'events';
@@ -697,6 +770,9 @@ class EventsResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EventDefinitionListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -708,7 +784,8 @@ class EventsResourceApi {
       {core.String consistencyToken,
       core.String language,
       core.int maxResults,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -727,6 +804,9 @@ class EventsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'eventDefinitions';
@@ -753,6 +833,9 @@ class EventsResourceApi {
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EventUpdateResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -761,7 +844,9 @@ class EventsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EventUpdateResponse> record(EventRecordRequest request,
-      {core.String consistencyToken, core.String language}) {
+      {core.String consistencyToken,
+      core.String language,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -777,6 +862,9 @@ class EventsResourceApi {
     }
     if (language != null) {
       _queryParams["language"] = [language];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'events';
@@ -807,6 +895,9 @@ class LeaderboardsResourceApi {
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Leaderboard].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -815,7 +906,9 @@ class LeaderboardsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Leaderboard> get(core.String leaderboardId,
-      {core.String consistencyToken, core.String language}) {
+      {core.String consistencyToken,
+      core.String language,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -831,6 +924,9 @@ class LeaderboardsResourceApi {
     }
     if (language != null) {
       _queryParams["language"] = [language];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId');
@@ -860,6 +956,9 @@ class LeaderboardsResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LeaderboardListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -871,7 +970,8 @@ class LeaderboardsResourceApi {
       {core.String consistencyToken,
       core.String language,
       core.int maxResults,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -890,6 +990,9 @@ class LeaderboardsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'leaderboards';
@@ -915,6 +1018,9 @@ class MetagameResourceApi {
   ///
   /// [consistencyToken] - The last-seen mutation timestamp.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [MetagameConfig].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -923,7 +1029,7 @@ class MetagameResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<MetagameConfig> getMetagameConfig(
-      {core.String consistencyToken}) {
+      {core.String consistencyToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -933,6 +1039,9 @@ class MetagameResourceApi {
 
     if (consistencyToken != null) {
       _queryParams["consistencyToken"] = [consistencyToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'metagameConfig';
@@ -971,6 +1080,9 @@ class MetagameResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CategoryListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -983,7 +1095,8 @@ class MetagameResourceApi {
       {core.String consistencyToken,
       core.String language,
       core.int maxResults,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1008,6 +1121,9 @@ class MetagameResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'players/' +
@@ -1043,6 +1159,9 @@ class PlayersResourceApi {
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Player].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1051,7 +1170,9 @@ class PlayersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Player> get(core.String playerId,
-      {core.String consistencyToken, core.String language}) {
+      {core.String consistencyToken,
+      core.String language,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1067,6 +1188,9 @@ class PlayersResourceApi {
     }
     if (language != null) {
       _queryParams["language"] = [language];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'players/' + commons.Escaper.ecapeVariable('$playerId');
@@ -1108,6 +1232,9 @@ class PlayersResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PlayerListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1119,7 +1246,8 @@ class PlayersResourceApi {
       {core.String consistencyToken,
       core.String language,
       core.int maxResults,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1141,6 +1269,9 @@ class PlayersResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'players/me/players/' + commons.Escaper.ecapeVariable('$collection');
@@ -1169,12 +1300,16 @@ class PushtokensResourceApi {
   ///
   /// [consistencyToken] - The last-seen mutation timestamp.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future remove(PushTokenId request, {core.String consistencyToken}) {
+  async.Future remove(PushTokenId request,
+      {core.String consistencyToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1187,6 +1322,9 @@ class PushtokensResourceApi {
     }
     if (consistencyToken != null) {
       _queryParams["consistencyToken"] = [consistencyToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1210,12 +1348,16 @@ class PushtokensResourceApi {
   ///
   /// [consistencyToken] - The last-seen mutation timestamp.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future update(PushToken request, {core.String consistencyToken}) {
+  async.Future update(PushToken request,
+      {core.String consistencyToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1228,6 +1370,9 @@ class PushtokensResourceApi {
     }
     if (consistencyToken != null) {
       _queryParams["consistencyToken"] = [consistencyToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1264,6 +1409,9 @@ class QuestMilestonesResourceApi {
   ///
   /// [consistencyToken] - The last-seen mutation timestamp.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
@@ -1271,7 +1419,7 @@ class QuestMilestonesResourceApi {
   /// this method will complete with the same error.
   async.Future claim(
       core.String questId, core.String milestoneId, core.String requestId,
-      {core.String consistencyToken}) {
+      {core.String consistencyToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1291,6 +1439,9 @@ class QuestMilestonesResourceApi {
     _queryParams["requestId"] = [requestId];
     if (consistencyToken != null) {
       _queryParams["consistencyToken"] = [consistencyToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1328,6 +1479,9 @@ class QuestsResourceApi {
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Quest].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1336,7 +1490,9 @@ class QuestsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Quest> accept(core.String questId,
-      {core.String consistencyToken, core.String language}) {
+      {core.String consistencyToken,
+      core.String language,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1352,6 +1508,9 @@ class QuestsResourceApi {
     }
     if (language != null) {
       _queryParams["language"] = [language];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'quests/' + commons.Escaper.ecapeVariable('$questId') + '/accept';
@@ -1386,6 +1545,9 @@ class QuestsResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [QuestListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1397,7 +1559,8 @@ class QuestsResourceApi {
       {core.String consistencyToken,
       core.String language,
       core.int maxResults,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1419,6 +1582,9 @@ class QuestsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'players/' + commons.Escaper.ecapeVariable('$playerId') + '/quests';
@@ -1452,6 +1618,9 @@ class RevisionsResourceApi {
   ///
   /// [consistencyToken] - The last-seen mutation timestamp.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RevisionCheckResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1460,7 +1629,7 @@ class RevisionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RevisionCheckResponse> check(core.String clientRevision,
-      {core.String consistencyToken}) {
+      {core.String consistencyToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1474,6 +1643,9 @@ class RevisionsResourceApi {
     _queryParams["clientRevision"] = [clientRevision];
     if (consistencyToken != null) {
       _queryParams["consistencyToken"] = [consistencyToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'revisions/check';
@@ -1505,6 +1677,9 @@ class RoomsResourceApi {
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Room].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1513,7 +1688,9 @@ class RoomsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Room> create(RoomCreateRequest request,
-      {core.String consistencyToken, core.String language}) {
+      {core.String consistencyToken,
+      core.String language,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1529,6 +1706,9 @@ class RoomsResourceApi {
     }
     if (language != null) {
       _queryParams["language"] = [language];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'rooms/create';
@@ -1554,6 +1734,9 @@ class RoomsResourceApi {
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Room].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1562,7 +1745,9 @@ class RoomsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Room> decline(core.String roomId,
-      {core.String consistencyToken, core.String language}) {
+      {core.String consistencyToken,
+      core.String language,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1578,6 +1763,9 @@ class RoomsResourceApi {
     }
     if (language != null) {
       _queryParams["language"] = [language];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'rooms/' + commons.Escaper.ecapeVariable('$roomId') + '/decline';
@@ -1600,12 +1788,16 @@ class RoomsResourceApi {
   ///
   /// [consistencyToken] - The last-seen mutation timestamp.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future dismiss(core.String roomId, {core.String consistencyToken}) {
+  async.Future dismiss(core.String roomId,
+      {core.String consistencyToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1618,6 +1810,9 @@ class RoomsResourceApi {
     }
     if (consistencyToken != null) {
       _queryParams["consistencyToken"] = [consistencyToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1644,6 +1839,9 @@ class RoomsResourceApi {
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Room].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1652,7 +1850,9 @@ class RoomsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Room> get(core.String roomId,
-      {core.String consistencyToken, core.String language}) {
+      {core.String consistencyToken,
+      core.String language,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1668,6 +1868,9 @@ class RoomsResourceApi {
     }
     if (language != null) {
       _queryParams["language"] = [language];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'rooms/' + commons.Escaper.ecapeVariable('$roomId');
@@ -1695,6 +1898,9 @@ class RoomsResourceApi {
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Room].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1703,7 +1909,9 @@ class RoomsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Room> join(RoomJoinRequest request, core.String roomId,
-      {core.String consistencyToken, core.String language}) {
+      {core.String consistencyToken,
+      core.String language,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1722,6 +1930,9 @@ class RoomsResourceApi {
     }
     if (language != null) {
       _queryParams["language"] = [language];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'rooms/' + commons.Escaper.ecapeVariable('$roomId') + '/join';
@@ -1749,6 +1960,9 @@ class RoomsResourceApi {
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Room].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1757,7 +1971,9 @@ class RoomsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Room> leave(RoomLeaveRequest request, core.String roomId,
-      {core.String consistencyToken, core.String language}) {
+      {core.String consistencyToken,
+      core.String language,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1776,6 +1992,9 @@ class RoomsResourceApi {
     }
     if (language != null) {
       _queryParams["language"] = [language];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'rooms/' + commons.Escaper.ecapeVariable('$roomId') + '/leave';
@@ -1805,6 +2024,9 @@ class RoomsResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RoomList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1816,7 +2038,8 @@ class RoomsResourceApi {
       {core.String consistencyToken,
       core.String language,
       core.int maxResults,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1835,6 +2058,9 @@ class RoomsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'rooms';
@@ -1863,6 +2089,9 @@ class RoomsResourceApi {
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RoomStatus].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1872,7 +2101,9 @@ class RoomsResourceApi {
   /// this method will complete with the same error.
   async.Future<RoomStatus> reportStatus(
       RoomP2PStatuses request, core.String roomId,
-      {core.String consistencyToken, core.String language}) {
+      {core.String consistencyToken,
+      core.String language,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1891,6 +2122,9 @@ class RoomsResourceApi {
     }
     if (language != null) {
       _queryParams["language"] = [language];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -1953,6 +2187,9 @@ class ScoresResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PlayerLeaderboardScoreListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1966,7 +2203,8 @@ class ScoresResourceApi {
       core.String includeRankType,
       core.String language,
       core.int maxResults,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1997,6 +2235,9 @@ class ScoresResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'players/' +
@@ -2046,6 +2287,9 @@ class ScoresResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LeaderboardScores].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2058,7 +2302,8 @@ class ScoresResourceApi {
       {core.String consistencyToken,
       core.String language,
       core.int maxResults,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2087,6 +2332,9 @@ class ScoresResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'leaderboards/' +
@@ -2141,6 +2389,9 @@ class ScoresResourceApi {
   /// [returnTopIfAbsent] - True if the top scores should be returned when the
   /// player is not in the leaderboard. Defaults to true.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LeaderboardScores].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2155,7 +2406,8 @@ class ScoresResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.int resultsAbove,
-      core.bool returnTopIfAbsent}) {
+      core.bool returnTopIfAbsent,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2190,6 +2442,9 @@ class ScoresResourceApi {
     }
     if (returnTopIfAbsent != null) {
       _queryParams["returnTopIfAbsent"] = ["${returnTopIfAbsent}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'leaderboards/' +
@@ -2229,6 +2484,9 @@ class ScoresResourceApi {
   /// section 2.3 of RFC 3986.
   /// Value must have pattern "[a-zA-Z0-9-._~]{0,64}".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PlayerScoreResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2240,7 +2498,8 @@ class ScoresResourceApi {
       core.String leaderboardId, core.String score,
       {core.String consistencyToken,
       core.String language,
-      core.String scoreTag}) {
+      core.String scoreTag,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2263,6 +2522,9 @@ class ScoresResourceApi {
     }
     if (scoreTag != null) {
       _queryParams["scoreTag"] = [scoreTag];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'leaderboards/' +
@@ -2289,6 +2551,9 @@ class ScoresResourceApi {
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PlayerScoreListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2299,7 +2564,8 @@ class ScoresResourceApi {
   async.Future<PlayerScoreListResponse> submitMultiple(
       PlayerScoreSubmissionList request,
       {core.String consistencyToken,
-      core.String language}) {
+      core.String language,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2315,6 +2581,9 @@ class ScoresResourceApi {
     }
     if (language != null) {
       _queryParams["language"] = [language];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'leaderboards/scores';
@@ -2345,6 +2614,9 @@ class SnapshotsResourceApi {
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Snapshot].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2353,7 +2625,9 @@ class SnapshotsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Snapshot> get(core.String snapshotId,
-      {core.String consistencyToken, core.String language}) {
+      {core.String consistencyToken,
+      core.String language,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2369,6 +2643,9 @@ class SnapshotsResourceApi {
     }
     if (language != null) {
       _queryParams["language"] = [language];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'snapshots/' + commons.Escaper.ecapeVariable('$snapshotId');
@@ -2402,6 +2679,9 @@ class SnapshotsResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SnapshotListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2413,7 +2693,8 @@ class SnapshotsResourceApi {
       {core.String consistencyToken,
       core.String language,
       core.int maxResults,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2435,6 +2716,9 @@ class SnapshotsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -2464,12 +2748,16 @@ class TurnBasedMatchesResourceApi {
   ///
   /// [consistencyToken] - The last-seen mutation timestamp.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future cancel(core.String matchId, {core.String consistencyToken}) {
+  async.Future cancel(core.String matchId,
+      {core.String consistencyToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2482,6 +2770,9 @@ class TurnBasedMatchesResourceApi {
     }
     if (consistencyToken != null) {
       _queryParams["consistencyToken"] = [consistencyToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2510,6 +2801,9 @@ class TurnBasedMatchesResourceApi {
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TurnBasedMatch].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2518,7 +2812,9 @@ class TurnBasedMatchesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TurnBasedMatch> create(TurnBasedMatchCreateRequest request,
-      {core.String consistencyToken, core.String language}) {
+      {core.String consistencyToken,
+      core.String language,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2534,6 +2830,9 @@ class TurnBasedMatchesResourceApi {
     }
     if (language != null) {
       _queryParams["language"] = [language];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'turnbasedmatches/create';
@@ -2558,6 +2857,9 @@ class TurnBasedMatchesResourceApi {
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TurnBasedMatch].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2566,7 +2868,9 @@ class TurnBasedMatchesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TurnBasedMatch> decline(core.String matchId,
-      {core.String consistencyToken, core.String language}) {
+      {core.String consistencyToken,
+      core.String language,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2582,6 +2886,9 @@ class TurnBasedMatchesResourceApi {
     }
     if (language != null) {
       _queryParams["language"] = [language];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'turnbasedmatches/' +
@@ -2606,12 +2913,16 @@ class TurnBasedMatchesResourceApi {
   ///
   /// [consistencyToken] - The last-seen mutation timestamp.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future dismiss(core.String matchId, {core.String consistencyToken}) {
+  async.Future dismiss(core.String matchId,
+      {core.String consistencyToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2624,6 +2935,9 @@ class TurnBasedMatchesResourceApi {
     }
     if (consistencyToken != null) {
       _queryParams["consistencyToken"] = [consistencyToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2656,6 +2970,9 @@ class TurnBasedMatchesResourceApi {
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TurnBasedMatch].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2665,7 +2982,9 @@ class TurnBasedMatchesResourceApi {
   /// this method will complete with the same error.
   async.Future<TurnBasedMatch> finish(
       TurnBasedMatchResults request, core.String matchId,
-      {core.String consistencyToken, core.String language}) {
+      {core.String consistencyToken,
+      core.String language,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2684,6 +3003,9 @@ class TurnBasedMatchesResourceApi {
     }
     if (language != null) {
       _queryParams["language"] = [language];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'turnbasedmatches/' +
@@ -2712,6 +3034,9 @@ class TurnBasedMatchesResourceApi {
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TurnBasedMatch].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2722,7 +3047,8 @@ class TurnBasedMatchesResourceApi {
   async.Future<TurnBasedMatch> get(core.String matchId,
       {core.String consistencyToken,
       core.bool includeMatchData,
-      core.String language}) {
+      core.String language,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2741,6 +3067,9 @@ class TurnBasedMatchesResourceApi {
     }
     if (language != null) {
       _queryParams["language"] = [language];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'turnbasedmatches/' + commons.Escaper.ecapeVariable('$matchId');
@@ -2765,6 +3094,9 @@ class TurnBasedMatchesResourceApi {
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TurnBasedMatch].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2773,7 +3105,9 @@ class TurnBasedMatchesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TurnBasedMatch> join(core.String matchId,
-      {core.String consistencyToken, core.String language}) {
+      {core.String consistencyToken,
+      core.String language,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2789,6 +3123,9 @@ class TurnBasedMatchesResourceApi {
     }
     if (language != null) {
       _queryParams["language"] = [language];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'turnbasedmatches/' +
@@ -2816,6 +3153,9 @@ class TurnBasedMatchesResourceApi {
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TurnBasedMatch].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2824,7 +3164,9 @@ class TurnBasedMatchesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TurnBasedMatch> leave(core.String matchId,
-      {core.String consistencyToken, core.String language}) {
+      {core.String consistencyToken,
+      core.String language,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2840,6 +3182,9 @@ class TurnBasedMatchesResourceApi {
     }
     if (language != null) {
       _queryParams["language"] = [language];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'turnbasedmatches/' +
@@ -2874,6 +3219,9 @@ class TurnBasedMatchesResourceApi {
   /// join via automatching; this is only valid if automatch criteria is set on
   /// the match with remaining slots for automatched players.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TurnBasedMatch].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2885,7 +3233,8 @@ class TurnBasedMatchesResourceApi {
       core.String matchId, core.int matchVersion,
       {core.String consistencyToken,
       core.String language,
-      core.String pendingParticipantId}) {
+      core.String pendingParticipantId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2908,6 +3257,9 @@ class TurnBasedMatchesResourceApi {
     }
     if (pendingParticipantId != null) {
       _queryParams["pendingParticipantId"] = [pendingParticipantId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'turnbasedmatches/' +
@@ -2950,6 +3302,9 @@ class TurnBasedMatchesResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TurnBasedMatchList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2963,7 +3318,8 @@ class TurnBasedMatchesResourceApi {
       core.String language,
       core.int maxCompletedMatches,
       core.int maxResults,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2988,6 +3344,9 @@ class TurnBasedMatchesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'turnbasedmatches';
@@ -3019,6 +3378,9 @@ class TurnBasedMatchesResourceApi {
   /// by the caller. This number is used at the server to ensure that the
   /// request is handled correctly across retries.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TurnBasedMatchRematch].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3029,7 +3391,8 @@ class TurnBasedMatchesResourceApi {
   async.Future<TurnBasedMatchRematch> rematch(core.String matchId,
       {core.String consistencyToken,
       core.String language,
-      core.String requestId}) {
+      core.String requestId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3048,6 +3411,9 @@ class TurnBasedMatchesResourceApi {
     }
     if (requestId != null) {
       _queryParams["requestId"] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'turnbasedmatches/' +
@@ -3093,6 +3459,9 @@ class TurnBasedMatchesResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TurnBasedMatchSync].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3106,7 +3475,8 @@ class TurnBasedMatchesResourceApi {
       core.String language,
       core.int maxCompletedMatches,
       core.int maxResults,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3131,6 +3501,9 @@ class TurnBasedMatchesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'turnbasedmatches/sync';
@@ -3157,6 +3530,9 @@ class TurnBasedMatchesResourceApi {
   /// [language] - The preferred language to use for strings returned by this
   /// method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TurnBasedMatch].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -3166,7 +3542,9 @@ class TurnBasedMatchesResourceApi {
   /// this method will complete with the same error.
   async.Future<TurnBasedMatch> takeTurn(
       TurnBasedMatchTurn request, core.String matchId,
-      {core.String consistencyToken, core.String language}) {
+      {core.String consistencyToken,
+      core.String language,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3185,6 +3563,9 @@ class TurnBasedMatchesResourceApi {
     }
     if (language != null) {
       _queryParams["language"] = [language];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'turnbasedmatches/' +

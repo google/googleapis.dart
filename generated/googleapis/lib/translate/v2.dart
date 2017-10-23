@@ -51,6 +51,9 @@ class DetectionsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DetectionsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -58,7 +61,8 @@ class DetectionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DetectionsListResponse> detect(DetectLanguageRequest request) {
+  async.Future<DetectionsListResponse> detect(DetectLanguageRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -68,6 +72,9 @@ class DetectionsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/detect';
@@ -88,6 +95,9 @@ class DetectionsResourceApi {
   /// [q] - The input text upon which to perform language detection. Repeat this
   /// parameter to perform language detection on multiple text inputs.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DetectionsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -95,7 +105,8 @@ class DetectionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DetectionsListResponse> list(core.List<core.String> q) {
+  async.Future<DetectionsListResponse> list(core.List<core.String> q,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -107,6 +118,9 @@ class DetectionsResourceApi {
       throw new core.ArgumentError("Parameter q is required.");
     }
     _queryParams["q"] = q;
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'v2/detect';
 
@@ -129,11 +143,14 @@ class LanguagesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [model] - The model type for which supported languages should be returned.
+  ///
   /// [target] - The language to use to return localized, human readable names
   /// of supported
   /// languages.
   ///
-  /// [model] - The model type for which supported languages should be returned.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [LanguagesListResponse].
   ///
@@ -143,7 +160,7 @@ class LanguagesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LanguagesListResponse> list(
-      {core.String target, core.String model}) {
+      {core.String model, core.String target, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -151,11 +168,14 @@ class LanguagesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (model != null) {
+      _queryParams["model"] = [model];
+    }
     if (target != null) {
       _queryParams["target"] = [target];
     }
-    if (model != null) {
-      _queryParams["model"] = [model];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/languages';
@@ -187,6 +207,14 @@ class TranslationsResourceApi {
   /// one of the
   /// language codes listed in Language Support.
   ///
+  /// [source] - The language of the source text, set to one of the language
+  /// codes listed in
+  /// Language Support. If the source language is not specified, the API will
+  /// attempt to identify the source language automatically and return it within
+  /// the response.
+  ///
+  /// [cid] - The customization id for translate
+  ///
   /// [format] - The format of the source text, in either HTML (default) or
   /// plain-text. A
   /// value of "html" indicates HTML and a value of "text" indicates plain-text.
@@ -198,13 +226,8 @@ class TranslationsResourceApi {
   /// are
   /// listed in public documentation.
   ///
-  /// [source] - The language of the source text, set to one of the language
-  /// codes listed in
-  /// Language Support. If the source language is not specified, the API will
-  /// attempt to identify the source language automatically and return it within
-  /// the response.
-  ///
-  /// [cid] - The customization id for translate
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [TranslationsListResponse].
   ///
@@ -215,10 +238,11 @@ class TranslationsResourceApi {
   /// this method will complete with the same error.
   async.Future<TranslationsListResponse> list(
       core.List<core.String> q, core.String target,
-      {core.String format,
+      {core.String source,
+      core.List<core.String> cid,
+      core.String format,
       core.String model,
-      core.String source,
-      core.List<core.String> cid}) {
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -234,17 +258,20 @@ class TranslationsResourceApi {
       throw new core.ArgumentError("Parameter target is required.");
     }
     _queryParams["target"] = [target];
+    if (source != null) {
+      _queryParams["source"] = [source];
+    }
+    if (cid != null) {
+      _queryParams["cid"] = cid;
+    }
     if (format != null) {
       _queryParams["format"] = [format];
     }
     if (model != null) {
       _queryParams["model"] = [model];
     }
-    if (source != null) {
-      _queryParams["source"] = [source];
-    }
-    if (cid != null) {
-      _queryParams["cid"] = cid;
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2';
@@ -265,6 +292,9 @@ class TranslationsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TranslationsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -272,8 +302,8 @@ class TranslationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TranslationsListResponse> translate(
-      TranslateTextRequest request) {
+  async.Future<TranslationsListResponse> translate(TranslateTextRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -283,6 +313,9 @@ class TranslationsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2';

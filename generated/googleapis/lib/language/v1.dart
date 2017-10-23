@@ -50,6 +50,9 @@ class DocumentsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AnalyzeEntitiesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -58,7 +61,8 @@ class DocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AnalyzeEntitiesResponse> analyzeEntities(
-      AnalyzeEntitiesRequest request) {
+      AnalyzeEntitiesRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -68,6 +72,9 @@ class DocumentsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/documents:analyzeEntities';
@@ -88,6 +95,9 @@ class DocumentsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AnalyzeEntitySentimentResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -96,7 +106,8 @@ class DocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AnalyzeEntitySentimentResponse> analyzeEntitySentiment(
-      AnalyzeEntitySentimentRequest request) {
+      AnalyzeEntitySentimentRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -106,6 +117,9 @@ class DocumentsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/documents:analyzeEntitySentiment';
@@ -126,6 +140,9 @@ class DocumentsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AnalyzeSentimentResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -134,7 +151,8 @@ class DocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AnalyzeSentimentResponse> analyzeSentiment(
-      AnalyzeSentimentRequest request) {
+      AnalyzeSentimentRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -144,6 +162,9 @@ class DocumentsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/documents:analyzeSentiment';
@@ -166,6 +187,9 @@ class DocumentsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AnalyzeSyntaxResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -174,7 +198,8 @@ class DocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AnalyzeSyntaxResponse> analyzeSyntax(
-      AnalyzeSyntaxRequest request) {
+      AnalyzeSyntaxRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -184,6 +209,9 @@ class DocumentsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/documents:analyzeSyntax';
@@ -204,6 +232,9 @@ class DocumentsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AnnotateTextResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -211,7 +242,8 @@ class DocumentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AnnotateTextResponse> annotateText(AnnotateTextRequest request) {
+  async.Future<AnnotateTextResponse> annotateText(AnnotateTextRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -221,6 +253,9 @@ class DocumentsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/documents:annotateText';

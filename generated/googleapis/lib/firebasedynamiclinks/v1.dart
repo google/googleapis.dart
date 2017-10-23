@@ -50,6 +50,9 @@ class ShortLinksResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CreateShortDynamicLinkResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -58,7 +61,8 @@ class ShortLinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CreateShortDynamicLinkResponse> create(
-      CreateShortDynamicLinkRequest request) {
+      CreateShortDynamicLinkRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -68,6 +72,9 @@ class ShortLinksResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/shortLinks';
@@ -98,6 +105,9 @@ class V1ResourceApi {
   ///
   /// [durationDays] - The span of time requested in days.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DynamicLinkStats].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -106,7 +116,7 @@ class V1ResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DynamicLinkStats> getLinkStats(core.String dynamicLink,
-      {core.String durationDays}) {
+      {core.String durationDays, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -119,6 +129,9 @@ class V1ResourceApi {
     }
     if (durationDays != null) {
       _queryParams["durationDays"] = [durationDays];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariable('$dynamicLink') + '/linkStats';
@@ -138,6 +151,9 @@ class V1ResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GetIosPostInstallAttributionResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -146,7 +162,8 @@ class V1ResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetIosPostInstallAttributionResponse> installAttribution(
-      GetIosPostInstallAttributionRequest request) {
+      GetIosPostInstallAttributionRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -156,6 +173,9 @@ class V1ResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/installAttribution';
@@ -346,6 +366,29 @@ class CreateShortDynamicLinkResponse {
   }
 }
 
+/// Desktop related attributes to the Dynamic Link.
+class DesktopInfo {
+  /// Link to open on desktop.
+  core.String desktopFallbackLink;
+
+  DesktopInfo();
+
+  DesktopInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("desktopFallbackLink")) {
+      desktopFallbackLink = _json["desktopFallbackLink"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (desktopFallbackLink != null) {
+      _json["desktopFallbackLink"] = desktopFallbackLink;
+    }
+    return _json;
+  }
+}
+
 /// Signals associated with the device making the request.
 class DeviceInfo {
   /// Device model name.
@@ -477,6 +520,10 @@ class DynamicLinkInfo {
   /// [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).
   AndroidInfo androidInfo;
 
+  /// Desktop related information. See desktop related parameters in the
+  /// [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).
+  DesktopInfo desktopInfo;
+
   /// Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl
   /// [Learn
   /// more](https://firebase.google.com/docs/dynamic-links/android/receive)
@@ -514,6 +561,9 @@ class DynamicLinkInfo {
     if (_json.containsKey("androidInfo")) {
       androidInfo = new AndroidInfo.fromJson(_json["androidInfo"]);
     }
+    if (_json.containsKey("desktopInfo")) {
+      desktopInfo = new DesktopInfo.fromJson(_json["desktopInfo"]);
+    }
     if (_json.containsKey("dynamicLinkDomain")) {
       dynamicLinkDomain = _json["dynamicLinkDomain"];
     }
@@ -540,6 +590,9 @@ class DynamicLinkInfo {
     }
     if (androidInfo != null) {
       _json["androidInfo"] = (androidInfo).toJson();
+    }
+    if (desktopInfo != null) {
+      _json["desktopInfo"] = (desktopInfo).toJson();
     }
     if (dynamicLinkDomain != null) {
       _json["dynamicLinkDomain"] = dynamicLinkDomain;

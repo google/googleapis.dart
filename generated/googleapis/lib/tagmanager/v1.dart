@@ -72,6 +72,9 @@ class AccountsResourceApi {
   ///
   /// [accountId] - The GTM Account ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Account].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -79,7 +82,7 @@ class AccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Account> get(core.String accountId) {
+  async.Future<Account> get(core.String accountId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -89,6 +92,9 @@ class AccountsResourceApi {
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId');
@@ -106,6 +112,9 @@ class AccountsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListAccountsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -113,13 +122,17 @@ class AccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListAccountsResponse> list() {
+  async.Future<ListAccountsResponse> list({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'accounts';
 
@@ -143,6 +156,9 @@ class AccountsResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the account in storage.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Account].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -151,7 +167,7 @@ class AccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Account> update(Account request, core.String accountId,
-      {core.String fingerprint}) {
+      {core.String fingerprint, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -167,6 +183,9 @@ class AccountsResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId');
@@ -213,6 +232,9 @@ class AccountsContainersResourceApi {
   ///
   /// [accountId] - The GTM Account ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Container].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -220,7 +242,8 @@ class AccountsContainersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Container> create(Container request, core.String accountId) {
+  async.Future<Container> create(Container request, core.String accountId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -233,6 +256,9 @@ class AccountsContainersResourceApi {
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -256,12 +282,16 @@ class AccountsContainersResourceApi {
   ///
   /// [containerId] - The GTM Container ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String accountId, core.String containerId) {
+  async.Future delete(core.String accountId, core.String containerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -274,6 +304,9 @@ class AccountsContainersResourceApi {
     }
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -300,6 +333,9 @@ class AccountsContainersResourceApi {
   ///
   /// [containerId] - The GTM Container ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Container].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -307,7 +343,8 @@ class AccountsContainersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Container> get(core.String accountId, core.String containerId) {
+  async.Future<Container> get(core.String accountId, core.String containerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -320,6 +357,9 @@ class AccountsContainersResourceApi {
     }
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -342,6 +382,9 @@ class AccountsContainersResourceApi {
   ///
   /// [accountId] - The GTM Account ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListContainersResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -349,7 +392,8 @@ class AccountsContainersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListContainersResponse> list(core.String accountId) {
+  async.Future<ListContainersResponse> list(core.String accountId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -359,6 +403,9 @@ class AccountsContainersResourceApi {
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -387,6 +434,9 @@ class AccountsContainersResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the container in storage.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Container].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -396,7 +446,7 @@ class AccountsContainersResourceApi {
   /// this method will complete with the same error.
   async.Future<Container> update(
       Container request, core.String accountId, core.String containerId,
-      {core.String fingerprint}) {
+      {core.String fingerprint, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -415,6 +465,9 @@ class AccountsContainersResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -448,6 +501,9 @@ class AccountsContainersEnvironmentsResourceApi {
   ///
   /// [containerId] - The GTM Container ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Environment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -456,7 +512,8 @@ class AccountsContainersEnvironmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Environment> create(
-      Environment request, core.String accountId, core.String containerId) {
+      Environment request, core.String accountId, core.String containerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -472,6 +529,9 @@ class AccountsContainersEnvironmentsResourceApi {
     }
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -499,13 +559,17 @@ class AccountsContainersEnvironmentsResourceApi {
   ///
   /// [environmentId] - The GTM Environment ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String accountId, core.String containerId,
-      core.String environmentId) {
+  async.Future delete(
+      core.String accountId, core.String containerId, core.String environmentId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -521,6 +585,9 @@ class AccountsContainersEnvironmentsResourceApi {
     }
     if (environmentId == null) {
       throw new core.ArgumentError("Parameter environmentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -551,6 +618,9 @@ class AccountsContainersEnvironmentsResourceApi {
   ///
   /// [environmentId] - The GTM Environment ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Environment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -558,8 +628,9 @@ class AccountsContainersEnvironmentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Environment> get(core.String accountId, core.String containerId,
-      core.String environmentId) {
+  async.Future<Environment> get(
+      core.String accountId, core.String containerId, core.String environmentId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -575,6 +646,9 @@ class AccountsContainersEnvironmentsResourceApi {
     }
     if (environmentId == null) {
       throw new core.ArgumentError("Parameter environmentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -601,6 +675,9 @@ class AccountsContainersEnvironmentsResourceApi {
   ///
   /// [containerId] - The GTM Container ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListEnvironmentsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -609,7 +686,8 @@ class AccountsContainersEnvironmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListEnvironmentsResponse> list(
-      core.String accountId, core.String containerId) {
+      core.String accountId, core.String containerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -622,6 +700,9 @@ class AccountsContainersEnvironmentsResourceApi {
     }
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -655,6 +736,9 @@ class AccountsContainersEnvironmentsResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the environment in storage.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Environment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -664,7 +748,7 @@ class AccountsContainersEnvironmentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Environment> patch(Environment request, core.String accountId,
       core.String containerId, core.String environmentId,
-      {core.String fingerprint}) {
+      {core.String fingerprint, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -686,6 +770,9 @@ class AccountsContainersEnvironmentsResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -719,6 +806,9 @@ class AccountsContainersEnvironmentsResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the environment in storage.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Environment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -728,7 +818,7 @@ class AccountsContainersEnvironmentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Environment> update(Environment request, core.String accountId,
       core.String containerId, core.String environmentId,
-      {core.String fingerprint}) {
+      {core.String fingerprint, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -750,6 +840,9 @@ class AccountsContainersEnvironmentsResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -788,6 +881,9 @@ class AccountsContainersFoldersResourceApi {
   ///
   /// [containerId] - The GTM Container ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Folder].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -796,7 +892,8 @@ class AccountsContainersFoldersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Folder> create(
-      Folder request, core.String accountId, core.String containerId) {
+      Folder request, core.String accountId, core.String containerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -812,6 +909,9 @@ class AccountsContainersFoldersResourceApi {
     }
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -839,13 +939,17 @@ class AccountsContainersFoldersResourceApi {
   ///
   /// [folderId] - The GTM Folder ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(
-      core.String accountId, core.String containerId, core.String folderId) {
+      core.String accountId, core.String containerId, core.String folderId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -861,6 +965,9 @@ class AccountsContainersFoldersResourceApi {
     }
     if (folderId == null) {
       throw new core.ArgumentError("Parameter folderId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -891,6 +998,9 @@ class AccountsContainersFoldersResourceApi {
   ///
   /// [folderId] - The GTM Folder ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Folder].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -899,7 +1009,8 @@ class AccountsContainersFoldersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Folder> get(
-      core.String accountId, core.String containerId, core.String folderId) {
+      core.String accountId, core.String containerId, core.String folderId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -915,6 +1026,9 @@ class AccountsContainersFoldersResourceApi {
     }
     if (folderId == null) {
       throw new core.ArgumentError("Parameter folderId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -941,6 +1055,9 @@ class AccountsContainersFoldersResourceApi {
   ///
   /// [containerId] - The GTM Container ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListFoldersResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -949,7 +1066,8 @@ class AccountsContainersFoldersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListFoldersResponse> list(
-      core.String accountId, core.String containerId) {
+      core.String accountId, core.String containerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -962,6 +1080,9 @@ class AccountsContainersFoldersResourceApi {
     }
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -994,6 +1115,9 @@ class AccountsContainersFoldersResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the folder in storage.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Folder].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1003,7 +1127,7 @@ class AccountsContainersFoldersResourceApi {
   /// this method will complete with the same error.
   async.Future<Folder> update(Folder request, core.String accountId,
       core.String containerId, core.String folderId,
-      {core.String fingerprint}) {
+      {core.String fingerprint, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1025,6 +1149,9 @@ class AccountsContainersFoldersResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -1060,6 +1187,9 @@ class AccountsContainersFoldersEntitiesResourceApi {
   ///
   /// [folderId] - The GTM Folder ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FolderEntities].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1068,7 +1198,8 @@ class AccountsContainersFoldersEntitiesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FolderEntities> list(
-      core.String accountId, core.String containerId, core.String folderId) {
+      core.String accountId, core.String containerId, core.String folderId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1084,6 +1215,9 @@ class AccountsContainersFoldersEntitiesResourceApi {
     }
     if (folderId == null) {
       throw new core.ArgumentError("Parameter folderId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -1128,6 +1262,9 @@ class AccountsContainersMoveFoldersResourceApi {
   ///
   /// [variableId] - The variables to be moved to the folder.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
@@ -1137,7 +1274,8 @@ class AccountsContainersMoveFoldersResourceApi {
       core.String containerId, core.String folderId,
       {core.List<core.String> tagId,
       core.List<core.String> triggerId,
-      core.List<core.String> variableId}) {
+      core.List<core.String> variableId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1165,6 +1303,9 @@ class AccountsContainersMoveFoldersResourceApi {
     }
     if (variableId != null) {
       _queryParams["variableId"] = variableId;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1205,6 +1346,9 @@ class AccountsContainersReauthorizeEnvironmentsResourceApi {
   ///
   /// [environmentId] - The GTM Environment ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Environment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1213,7 +1357,8 @@ class AccountsContainersReauthorizeEnvironmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Environment> update(Environment request, core.String accountId,
-      core.String containerId, core.String environmentId) {
+      core.String containerId, core.String environmentId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1232,6 +1377,9 @@ class AccountsContainersReauthorizeEnvironmentsResourceApi {
     }
     if (environmentId == null) {
       throw new core.ArgumentError("Parameter environmentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -1267,6 +1415,9 @@ class AccountsContainersTagsResourceApi {
   ///
   /// [containerId] - The GTM Container ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Tag].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1275,7 +1426,8 @@ class AccountsContainersTagsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Tag> create(
-      Tag request, core.String accountId, core.String containerId) {
+      Tag request, core.String accountId, core.String containerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1291,6 +1443,9 @@ class AccountsContainersTagsResourceApi {
     }
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -1318,13 +1473,17 @@ class AccountsContainersTagsResourceApi {
   ///
   /// [tagId] - The GTM Tag ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(
-      core.String accountId, core.String containerId, core.String tagId) {
+      core.String accountId, core.String containerId, core.String tagId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1340,6 +1499,9 @@ class AccountsContainersTagsResourceApi {
     }
     if (tagId == null) {
       throw new core.ArgumentError("Parameter tagId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1370,6 +1532,9 @@ class AccountsContainersTagsResourceApi {
   ///
   /// [tagId] - The GTM Tag ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Tag].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1378,7 +1543,8 @@ class AccountsContainersTagsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Tag> get(
-      core.String accountId, core.String containerId, core.String tagId) {
+      core.String accountId, core.String containerId, core.String tagId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1394,6 +1560,9 @@ class AccountsContainersTagsResourceApi {
     }
     if (tagId == null) {
       throw new core.ArgumentError("Parameter tagId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -1420,6 +1589,9 @@ class AccountsContainersTagsResourceApi {
   ///
   /// [containerId] - The GTM Container ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListTagsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1428,7 +1600,8 @@ class AccountsContainersTagsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTagsResponse> list(
-      core.String accountId, core.String containerId) {
+      core.String accountId, core.String containerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1441,6 +1614,9 @@ class AccountsContainersTagsResourceApi {
     }
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -1473,6 +1649,9 @@ class AccountsContainersTagsResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the tag in storage.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Tag].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1482,7 +1661,7 @@ class AccountsContainersTagsResourceApi {
   /// this method will complete with the same error.
   async.Future<Tag> update(Tag request, core.String accountId,
       core.String containerId, core.String tagId,
-      {core.String fingerprint}) {
+      {core.String fingerprint, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1504,6 +1683,9 @@ class AccountsContainersTagsResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -1539,6 +1721,9 @@ class AccountsContainersTriggersResourceApi {
   ///
   /// [containerId] - The GTM Container ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Trigger].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1547,7 +1732,8 @@ class AccountsContainersTriggersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Trigger> create(
-      Trigger request, core.String accountId, core.String containerId) {
+      Trigger request, core.String accountId, core.String containerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1563,6 +1749,9 @@ class AccountsContainersTriggersResourceApi {
     }
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -1590,13 +1779,17 @@ class AccountsContainersTriggersResourceApi {
   ///
   /// [triggerId] - The GTM Trigger ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(
-      core.String accountId, core.String containerId, core.String triggerId) {
+      core.String accountId, core.String containerId, core.String triggerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1612,6 +1805,9 @@ class AccountsContainersTriggersResourceApi {
     }
     if (triggerId == null) {
       throw new core.ArgumentError("Parameter triggerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1642,6 +1838,9 @@ class AccountsContainersTriggersResourceApi {
   ///
   /// [triggerId] - The GTM Trigger ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Trigger].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1650,7 +1849,8 @@ class AccountsContainersTriggersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Trigger> get(
-      core.String accountId, core.String containerId, core.String triggerId) {
+      core.String accountId, core.String containerId, core.String triggerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1666,6 +1866,9 @@ class AccountsContainersTriggersResourceApi {
     }
     if (triggerId == null) {
       throw new core.ArgumentError("Parameter triggerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -1692,6 +1895,9 @@ class AccountsContainersTriggersResourceApi {
   ///
   /// [containerId] - The GTM Container ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListTriggersResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1700,7 +1906,8 @@ class AccountsContainersTriggersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTriggersResponse> list(
-      core.String accountId, core.String containerId) {
+      core.String accountId, core.String containerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1713,6 +1920,9 @@ class AccountsContainersTriggersResourceApi {
     }
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -1745,6 +1955,9 @@ class AccountsContainersTriggersResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the trigger in storage.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Trigger].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1754,7 +1967,7 @@ class AccountsContainersTriggersResourceApi {
   /// this method will complete with the same error.
   async.Future<Trigger> update(Trigger request, core.String accountId,
       core.String containerId, core.String triggerId,
-      {core.String fingerprint}) {
+      {core.String fingerprint, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1776,6 +1989,9 @@ class AccountsContainersTriggersResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -1811,6 +2027,9 @@ class AccountsContainersVariablesResourceApi {
   ///
   /// [containerId] - The GTM Container ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Variable].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1819,7 +2038,8 @@ class AccountsContainersVariablesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Variable> create(
-      Variable request, core.String accountId, core.String containerId) {
+      Variable request, core.String accountId, core.String containerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1835,6 +2055,9 @@ class AccountsContainersVariablesResourceApi {
     }
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -1862,13 +2085,17 @@ class AccountsContainersVariablesResourceApi {
   ///
   /// [variableId] - The GTM Variable ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(
-      core.String accountId, core.String containerId, core.String variableId) {
+      core.String accountId, core.String containerId, core.String variableId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1884,6 +2111,9 @@ class AccountsContainersVariablesResourceApi {
     }
     if (variableId == null) {
       throw new core.ArgumentError("Parameter variableId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1914,6 +2144,9 @@ class AccountsContainersVariablesResourceApi {
   ///
   /// [variableId] - The GTM Variable ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Variable].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1922,7 +2155,8 @@ class AccountsContainersVariablesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Variable> get(
-      core.String accountId, core.String containerId, core.String variableId) {
+      core.String accountId, core.String containerId, core.String variableId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1938,6 +2172,9 @@ class AccountsContainersVariablesResourceApi {
     }
     if (variableId == null) {
       throw new core.ArgumentError("Parameter variableId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -1964,6 +2201,9 @@ class AccountsContainersVariablesResourceApi {
   ///
   /// [containerId] - The GTM Container ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListVariablesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1972,7 +2212,8 @@ class AccountsContainersVariablesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListVariablesResponse> list(
-      core.String accountId, core.String containerId) {
+      core.String accountId, core.String containerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1985,6 +2226,9 @@ class AccountsContainersVariablesResourceApi {
     }
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -2017,6 +2261,9 @@ class AccountsContainersVariablesResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the variable in storage.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Variable].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2026,7 +2273,7 @@ class AccountsContainersVariablesResourceApi {
   /// this method will complete with the same error.
   async.Future<Variable> update(Variable request, core.String accountId,
       core.String containerId, core.String variableId,
-      {core.String fingerprint}) {
+      {core.String fingerprint, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2048,6 +2295,9 @@ class AccountsContainersVariablesResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -2083,6 +2333,9 @@ class AccountsContainersVersionsResourceApi {
   ///
   /// [containerId] - The GTM Container ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CreateContainerVersionResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2093,7 +2346,8 @@ class AccountsContainersVersionsResourceApi {
   async.Future<CreateContainerVersionResponse> create(
       CreateContainerVersionRequestVersionOptions request,
       core.String accountId,
-      core.String containerId) {
+      core.String containerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2109,6 +2363,9 @@ class AccountsContainersVersionsResourceApi {
     }
     if (containerId == null) {
       throw new core.ArgumentError("Parameter containerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -2137,13 +2394,17 @@ class AccountsContainersVersionsResourceApi {
   ///
   /// [containerVersionId] - The GTM Container Version ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String accountId, core.String containerId,
-      core.String containerVersionId) {
+      core.String containerVersionId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2159,6 +2420,9 @@ class AccountsContainersVersionsResourceApi {
     }
     if (containerVersionId == null) {
       throw new core.ArgumentError("Parameter containerVersionId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2190,6 +2454,9 @@ class AccountsContainersVersionsResourceApi {
   /// [containerVersionId] - The GTM Container Version ID. Specify published to
   /// retrieve the currently published version.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ContainerVersion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2198,7 +2465,8 @@ class AccountsContainersVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ContainerVersion> get(core.String accountId,
-      core.String containerId, core.String containerVersionId) {
+      core.String containerId, core.String containerVersionId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2214,6 +2482,9 @@ class AccountsContainersVersionsResourceApi {
     }
     if (containerVersionId == null) {
       throw new core.ArgumentError("Parameter containerVersionId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -2244,6 +2515,9 @@ class AccountsContainersVersionsResourceApi {
   ///
   /// [includeDeleted] - Also retrieve deleted (archived) versions when true.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListContainerVersionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2253,7 +2527,7 @@ class AccountsContainersVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListContainerVersionsResponse> list(
       core.String accountId, core.String containerId,
-      {core.bool headers, core.bool includeDeleted}) {
+      {core.bool headers, core.bool includeDeleted, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2272,6 +2546,9 @@ class AccountsContainersVersionsResourceApi {
     }
     if (includeDeleted != null) {
       _queryParams["includeDeleted"] = ["${includeDeleted}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -2303,6 +2580,9 @@ class AccountsContainersVersionsResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the container version in storage.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PublishContainerVersionResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2312,7 +2592,7 @@ class AccountsContainersVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<PublishContainerVersionResponse> publish(core.String accountId,
       core.String containerId, core.String containerVersionId,
-      {core.String fingerprint}) {
+      {core.String fingerprint, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2331,6 +2611,9 @@ class AccountsContainersVersionsResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -2364,6 +2647,9 @@ class AccountsContainersVersionsResourceApi {
   ///
   /// [containerVersionId] - The GTM Container Version ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ContainerVersion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2372,7 +2658,8 @@ class AccountsContainersVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ContainerVersion> restore(core.String accountId,
-      core.String containerId, core.String containerVersionId) {
+      core.String containerId, core.String containerVersionId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2388,6 +2675,9 @@ class AccountsContainersVersionsResourceApi {
     }
     if (containerVersionId == null) {
       throw new core.ArgumentError("Parameter containerVersionId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -2417,6 +2707,9 @@ class AccountsContainersVersionsResourceApi {
   ///
   /// [containerVersionId] - The GTM Container Version ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ContainerVersion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2425,7 +2718,8 @@ class AccountsContainersVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ContainerVersion> undelete(core.String accountId,
-      core.String containerId, core.String containerVersionId) {
+      core.String containerId, core.String containerVersionId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2441,6 +2735,9 @@ class AccountsContainersVersionsResourceApi {
     }
     if (containerVersionId == null) {
       throw new core.ArgumentError("Parameter containerVersionId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -2475,6 +2772,9 @@ class AccountsContainersVersionsResourceApi {
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the container version in storage.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ContainerVersion].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2487,7 +2787,8 @@ class AccountsContainersVersionsResourceApi {
       core.String accountId,
       core.String containerId,
       core.String containerVersionId,
-      {core.String fingerprint}) {
+      {core.String fingerprint,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2509,6 +2810,9 @@ class AccountsContainersVersionsResourceApi {
     }
     if (fingerprint != null) {
       _queryParams["fingerprint"] = [fingerprint];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -2542,6 +2846,9 @@ class AccountsPermissionsResourceApi {
   ///
   /// [accountId] - The GTM Account ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UserAccess].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2549,7 +2856,8 @@ class AccountsPermissionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserAccess> create(UserAccess request, core.String accountId) {
+  async.Future<UserAccess> create(UserAccess request, core.String accountId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2562,6 +2870,9 @@ class AccountsPermissionsResourceApi {
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -2586,12 +2897,16 @@ class AccountsPermissionsResourceApi {
   ///
   /// [permissionId] - The GTM User ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String accountId, core.String permissionId) {
+  async.Future delete(core.String accountId, core.String permissionId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2604,6 +2919,9 @@ class AccountsPermissionsResourceApi {
     }
     if (permissionId == null) {
       throw new core.ArgumentError("Parameter permissionId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -2630,6 +2948,9 @@ class AccountsPermissionsResourceApi {
   ///
   /// [permissionId] - The GTM User ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UserAccess].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2637,8 +2958,8 @@ class AccountsPermissionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UserAccess> get(
-      core.String accountId, core.String permissionId) {
+  async.Future<UserAccess> get(core.String accountId, core.String permissionId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2651,6 +2972,9 @@ class AccountsPermissionsResourceApi {
     }
     if (permissionId == null) {
       throw new core.ArgumentError("Parameter permissionId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -2675,6 +2999,9 @@ class AccountsPermissionsResourceApi {
   /// [accountId] - The GTM Account ID. @required
   /// tagmanager.accounts.permissions.list
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListAccountUsersResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2682,7 +3009,8 @@ class AccountsPermissionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListAccountUsersResponse> list(core.String accountId) {
+  async.Future<ListAccountUsersResponse> list(core.String accountId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2692,6 +3020,9 @@ class AccountsPermissionsResourceApi {
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -2718,6 +3049,9 @@ class AccountsPermissionsResourceApi {
   ///
   /// [permissionId] - The GTM User ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UserAccess].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -2726,7 +3060,8 @@ class AccountsPermissionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UserAccess> update(
-      UserAccess request, core.String accountId, core.String permissionId) {
+      UserAccess request, core.String accountId, core.String permissionId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2742,6 +3077,9 @@ class AccountsPermissionsResourceApi {
     }
     if (permissionId == null) {
       throw new core.ArgumentError("Parameter permissionId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +

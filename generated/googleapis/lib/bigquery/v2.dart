@@ -86,13 +86,16 @@ class DatasetsResourceApi {
   /// [deleteContents] - If True, delete all the tables in the dataset. If False
   /// and the dataset contains tables, the request will fail. Default is False
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String projectId, core.String datasetId,
-      {core.bool deleteContents}) {
+      {core.bool deleteContents, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -108,6 +111,9 @@ class DatasetsResourceApi {
     }
     if (deleteContents != null) {
       _queryParams["deleteContents"] = ["${deleteContents}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -134,6 +140,9 @@ class DatasetsResourceApi {
   ///
   /// [datasetId] - Dataset ID of the requested dataset
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Dataset].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -141,7 +150,8 @@ class DatasetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Dataset> get(core.String projectId, core.String datasetId) {
+  async.Future<Dataset> get(core.String projectId, core.String datasetId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -154,6 +164,9 @@ class DatasetsResourceApi {
     }
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -178,6 +191,9 @@ class DatasetsResourceApi {
   ///
   /// [projectId] - Project ID of the new dataset
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Dataset].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -185,7 +201,8 @@ class DatasetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Dataset> insert(Dataset request, core.String projectId) {
+  async.Future<Dataset> insert(Dataset request, core.String projectId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -198,6 +215,9 @@ class DatasetsResourceApi {
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -232,6 +252,9 @@ class DatasetsResourceApi {
   /// [pageToken] - Page token, returned by a previous call, to request the next
   /// page of results
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DatasetList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -243,7 +266,8 @@ class DatasetsResourceApi {
       {core.bool all,
       core.String filter,
       core.int maxResults,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -265,6 +289,9 @@ class DatasetsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -292,6 +319,9 @@ class DatasetsResourceApi {
   ///
   /// [datasetId] - Dataset ID of the dataset being updated
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Dataset].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -300,7 +330,8 @@ class DatasetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Dataset> patch(
-      Dataset request, core.String projectId, core.String datasetId) {
+      Dataset request, core.String projectId, core.String datasetId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -316,6 +347,9 @@ class DatasetsResourceApi {
     }
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -344,6 +378,9 @@ class DatasetsResourceApi {
   ///
   /// [datasetId] - Dataset ID of the dataset being updated
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Dataset].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -352,7 +389,8 @@ class DatasetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Dataset> update(
-      Dataset request, core.String projectId, core.String datasetId) {
+      Dataset request, core.String projectId, core.String datasetId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -368,6 +406,9 @@ class DatasetsResourceApi {
     }
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -400,6 +441,9 @@ class JobsResourceApi {
   ///
   /// [jobId] - [Required] Job ID of the job to cancel
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [JobCancelResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -408,7 +452,8 @@ class JobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<JobCancelResponse> cancel(
-      core.String projectId, core.String jobId) {
+      core.String projectId, core.String jobId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -421,6 +466,9 @@ class JobsResourceApi {
     }
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -448,6 +496,9 @@ class JobsResourceApi {
   ///
   /// [jobId] - [Required] Job ID of the requested job
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Job].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -455,7 +506,8 @@ class JobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Job> get(core.String projectId, core.String jobId) {
+  async.Future<Job> get(core.String projectId, core.String jobId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -468,6 +520,9 @@ class JobsResourceApi {
     }
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -503,6 +558,9 @@ class JobsResourceApi {
   /// before returning. Default is 10 seconds. If the timeout passes before the
   /// job completes, the 'jobComplete' field in the response will be false
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GetQueryResultsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -515,7 +573,8 @@ class JobsResourceApi {
       {core.int maxResults,
       core.String pageToken,
       core.String startIndex,
-      core.int timeoutMs}) {
+      core.int timeoutMs,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -541,6 +600,9 @@ class JobsResourceApi {
     if (timeoutMs != null) {
       _queryParams["timeoutMs"] = ["${timeoutMs}"];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -564,6 +626,9 @@ class JobsResourceApi {
   ///
   /// [projectId] - Project ID of the project that will be billed for the job
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [uploadMedia] - The media to upload.
   ///
   /// [uploadOptions] - Options for the media upload. Streaming Media without
@@ -578,7 +643,8 @@ class JobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Job> insert(Job request, core.String projectId,
-      {commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      {core.String $fields,
+      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -592,6 +658,9 @@ class JobsResourceApi {
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -644,6 +713,9 @@ class JobsResourceApi {
   ///
   /// [stateFilter] - Filter for job state
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [JobList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -656,7 +728,8 @@ class JobsResourceApi {
       core.int maxResults,
       core.String pageToken,
       core.String projection,
-      core.List<core.String> stateFilter}) {
+      core.List<core.String> stateFilter,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -682,6 +755,9 @@ class JobsResourceApi {
     if (stateFilter != null) {
       _queryParams["stateFilter"] = stateFilter;
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs';
 
@@ -703,6 +779,9 @@ class JobsResourceApi {
   ///
   /// [projectId] - Project ID of the project billed for the query
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [QueryResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -710,8 +789,8 @@ class JobsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<QueryResponse> query(
-      QueryRequest request, core.String projectId) {
+  async.Future<QueryResponse> query(QueryRequest request, core.String projectId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -724,6 +803,9 @@ class JobsResourceApi {
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -751,6 +833,9 @@ class ProjectsResourceApi {
   ///
   /// [projectId] - Project ID for which the service account is requested.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GetServiceAccountResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -759,7 +844,8 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GetServiceAccountResponse> getServiceAccount(
-      core.String projectId) {
+      core.String projectId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -769,6 +855,9 @@ class ProjectsResourceApi {
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -794,6 +883,9 @@ class ProjectsResourceApi {
   /// [pageToken] - Page token, returned by a previous call, to request the next
   /// page of results
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ProjectList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -801,7 +893,8 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ProjectList> list({core.int maxResults, core.String pageToken}) {
+  async.Future<ProjectList> list(
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -814,6 +907,9 @@ class ProjectsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects';
@@ -846,6 +942,9 @@ class TabledataResourceApi {
   ///
   /// [tableId] - Table ID of the destination table.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TableDataInsertAllResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -857,7 +956,8 @@ class TabledataResourceApi {
       TableDataInsertAllRequest request,
       core.String projectId,
       core.String datasetId,
-      core.String tableId) {
+      core.String tableId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -876,6 +976,9 @@ class TabledataResourceApi {
     }
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -917,6 +1020,9 @@ class TabledataResourceApi {
   ///
   /// [startIndex] - Zero-based index of the starting row to read
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TableDataList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -929,7 +1035,8 @@ class TabledataResourceApi {
       {core.int maxResults,
       core.String pageToken,
       core.String selectedFields,
-      core.String startIndex}) {
+      core.String startIndex,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -957,6 +1064,9 @@ class TabledataResourceApi {
     }
     if (startIndex != null) {
       _queryParams["startIndex"] = [startIndex];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -993,13 +1103,17 @@ class TablesResourceApi {
   ///
   /// [tableId] - Table ID of the table to delete
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(
-      core.String projectId, core.String datasetId, core.String tableId) {
+      core.String projectId, core.String datasetId, core.String tableId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1015,6 +1129,9 @@ class TablesResourceApi {
     }
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -1050,6 +1167,9 @@ class TablesResourceApi {
   /// [selectedFields] - List of fields to return (comma-separated). If
   /// unspecified, all fields are returned
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Table].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1059,7 +1179,7 @@ class TablesResourceApi {
   /// this method will complete with the same error.
   async.Future<Table> get(
       core.String projectId, core.String datasetId, core.String tableId,
-      {core.String selectedFields}) {
+      {core.String selectedFields, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1078,6 +1198,9 @@ class TablesResourceApi {
     }
     if (selectedFields != null) {
       _queryParams["selectedFields"] = [selectedFields];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -1106,6 +1229,9 @@ class TablesResourceApi {
   ///
   /// [datasetId] - Dataset ID of the new table
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Table].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1114,7 +1240,8 @@ class TablesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Table> insert(
-      Table request, core.String projectId, core.String datasetId) {
+      Table request, core.String projectId, core.String datasetId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1130,6 +1257,9 @@ class TablesResourceApi {
     }
     if (datasetId == null) {
       throw new core.ArgumentError("Parameter datasetId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -1161,6 +1291,9 @@ class TablesResourceApi {
   /// [pageToken] - Page token, returned by a previous call, to request the next
   /// page of results
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TableList].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1169,7 +1302,7 @@ class TablesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TableList> list(core.String projectId, core.String datasetId,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1188,6 +1321,9 @@ class TablesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -1220,6 +1356,9 @@ class TablesResourceApi {
   ///
   /// [tableId] - Table ID of the table to update
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Table].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1228,7 +1367,8 @@ class TablesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Table> patch(Table request, core.String projectId,
-      core.String datasetId, core.String tableId) {
+      core.String datasetId, core.String tableId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1247,6 +1387,9 @@ class TablesResourceApi {
     }
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -1279,6 +1422,9 @@ class TablesResourceApi {
   ///
   /// [tableId] - Table ID of the table to update
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Table].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1287,7 +1433,8 @@ class TablesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Table> update(Table request, core.String projectId,
-      core.String datasetId, core.String tableId) {
+      core.String datasetId, core.String tableId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1306,6 +1453,9 @@ class TablesResourceApi {
     }
     if (tableId == null) {
       throw new core.ArgumentError("Parameter tableId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'projects/' +
@@ -3087,16 +3237,16 @@ class JobConfigurationLoad {
   /// [Deprecated] The format of the schemaInline property.
   core.String schemaInlineFormat;
 
-  /// [Experimental] Allows the schema of the desitination table to be updated
-  /// as a side effect of the load job if a schema is autodetected or supplied
-  /// in the job configuration. Schema update options are supported in two
-  /// cases: when writeDisposition is WRITE_APPEND; when writeDisposition is
-  /// WRITE_TRUNCATE and the destination table is a partition of a table,
-  /// specified by partition decorators. For normal tables, WRITE_TRUNCATE will
-  /// always overwrite the schema. One or more of the following values are
-  /// specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the
-  /// schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the
-  /// original schema to nullable.
+  /// Allows the schema of the desitination table to be updated as a side effect
+  /// of the load job if a schema is autodetected or supplied in the job
+  /// configuration. Schema update options are supported in two cases: when
+  /// writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE
+  /// and the destination table is a partition of a table, specified by
+  /// partition decorators. For normal tables, WRITE_TRUNCATE will always
+  /// overwrite the schema. One or more of the following values are specified:
+  /// ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
+  /// ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original
+  /// schema to nullable.
   core.List<core.String> schemaUpdateOptions;
 
   /// [Optional] The number of rows at the top of a CSV file that BigQuery will
@@ -3120,8 +3270,8 @@ class JobConfigurationLoad {
   /// the '*' wildcard character is not allowed.
   core.List<core.String> sourceUris;
 
-  /// [Experimental] If specified, configures time-based partitioning for the
-  /// destination table.
+  /// If specified, configures time-based partitioning for the destination
+  /// table.
   TimePartitioning timePartitioning;
 
   /// [Optional] Specifies the action that occurs if the destination table
@@ -3347,15 +3497,15 @@ class JobConfigurationQuery {
   /// Query parameters for standard SQL queries.
   core.List<QueryParameter> queryParameters;
 
-  /// [Experimental] Allows the schema of the destination table to be updated as
-  /// a side effect of the query job. Schema update options are supported in two
-  /// cases: when writeDisposition is WRITE_APPEND; when writeDisposition is
-  /// WRITE_TRUNCATE and the destination table is a partition of a table,
-  /// specified by partition decorators. For normal tables, WRITE_TRUNCATE will
-  /// always overwrite the schema. One or more of the following values are
-  /// specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the
-  /// schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the
-  /// original schema to nullable.
+  /// Allows the schema of the destination table to be updated as a side effect
+  /// of the query job. Schema update options are supported in two cases: when
+  /// writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE
+  /// and the destination table is a partition of a table, specified by
+  /// partition decorators. For normal tables, WRITE_TRUNCATE will always
+  /// overwrite the schema. One or more of the following values are specified:
+  /// ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
+  /// ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original
+  /// schema to nullable.
   core.List<core.String> schemaUpdateOptions;
 
   /// [Optional] If querying an external data source outside of BigQuery,
@@ -3364,8 +3514,8 @@ class JobConfigurationQuery {
   /// as if it were a standard BigQuery table.
   core.Map<core.String, ExternalDataConfiguration> tableDefinitions;
 
-  /// [Experimental] If specified, configures time-based partitioning for the
-  /// destination table.
+  /// If specified, configures time-based partitioning for the destination
+  /// table.
   TimePartitioning timePartitioning;
 
   /// Specifies whether to use BigQuery's legacy SQL dialect for this query. The
@@ -4892,8 +5042,7 @@ class Table {
   /// [Required] Reference describing the ID of this table.
   TableReference tableReference;
 
-  /// [Experimental] If specified, configures time-based partitioning for this
-  /// table.
+  /// If specified, configures time-based partitioning for this table.
   TimePartitioning timePartitioning;
 
   /// [Output-only] Describes the table type. The following values are
@@ -5401,6 +5550,14 @@ class TableListTablesView {
 }
 
 class TableListTables {
+  /// The time when this table was created, in milliseconds since the epoch.
+  core.String creationTime;
+
+  /// [Optional] The time when this table expires, in milliseconds since the
+  /// epoch. If not present, the table will persist indefinitely. Expired tables
+  /// will be deleted and their storage reclaimed.
+  core.String expirationTime;
+
   /// The user-friendly name for this table.
   core.String friendlyName;
 
@@ -5417,7 +5574,7 @@ class TableListTables {
   /// A reference uniquely identifying the table.
   TableReference tableReference;
 
-  /// [Experimental] The time-based partitioning for this table.
+  /// The time-based partitioning for this table.
   TimePartitioning timePartitioning;
 
   /// The type of table. Possible values are: TABLE, VIEW.
@@ -5429,6 +5586,12 @@ class TableListTables {
   TableListTables();
 
   TableListTables.fromJson(core.Map _json) {
+    if (_json.containsKey("creationTime")) {
+      creationTime = _json["creationTime"];
+    }
+    if (_json.containsKey("expirationTime")) {
+      expirationTime = _json["expirationTime"];
+    }
     if (_json.containsKey("friendlyName")) {
       friendlyName = _json["friendlyName"];
     }
@@ -5459,6 +5622,12 @@ class TableListTables {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (creationTime != null) {
+      _json["creationTime"] = creationTime;
+    }
+    if (expirationTime != null) {
+      _json["expirationTime"] = expirationTime;
+    }
     if (friendlyName != null) {
       _json["friendlyName"] = friendlyName;
     }

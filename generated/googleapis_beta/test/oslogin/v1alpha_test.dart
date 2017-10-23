@@ -84,27 +84,27 @@ checkImportSshPublicKeyResponse(api.ImportSshPublicKeyResponse o) {
   buildCounterImportSshPublicKeyResponse--;
 }
 
-buildUnnamed3604() {
+buildUnnamed3622() {
   var o = new core.List<api.PosixAccount>();
   o.add(buildPosixAccount());
   o.add(buildPosixAccount());
   return o;
 }
 
-checkUnnamed3604(core.List<api.PosixAccount> o) {
+checkUnnamed3622(core.List<api.PosixAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPosixAccount(o[0]);
   checkPosixAccount(o[1]);
 }
 
-buildUnnamed3605() {
+buildUnnamed3623() {
   var o = new core.Map<core.String, api.SshPublicKey>();
   o["x"] = buildSshPublicKey();
   o["y"] = buildSshPublicKey();
   return o;
 }
 
-checkUnnamed3605(core.Map<core.String, api.SshPublicKey> o) {
+checkUnnamed3623(core.Map<core.String, api.SshPublicKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSshPublicKey(o["x"]);
   checkSshPublicKey(o["y"]);
@@ -116,8 +116,8 @@ buildLoginProfile() {
   buildCounterLoginProfile++;
   if (buildCounterLoginProfile < 3) {
     o.name = "foo";
-    o.posixAccounts = buildUnnamed3604();
-    o.sshPublicKeys = buildUnnamed3605();
+    o.posixAccounts = buildUnnamed3622();
+    o.sshPublicKeys = buildUnnamed3623();
     o.suspended = true;
   }
   buildCounterLoginProfile--;
@@ -128,8 +128,8 @@ checkLoginProfile(api.LoginProfile o) {
   buildCounterLoginProfile++;
   if (buildCounterLoginProfile < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed3604(o.posixAccounts);
-    checkUnnamed3605(o.sshPublicKeys);
+    checkUnnamed3622(o.posixAccounts);
+    checkUnnamed3623(o.sshPublicKeys);
     unittest.expect(o.suspended, unittest.isTrue);
   }
   buildCounterLoginProfile--;
@@ -237,6 +237,7 @@ main() {
       var mock = new HttpServerMock();
       api.UsersResourceApi res = new api.OsloginApi(mock).users;
       var arg_name = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -268,6 +269,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -276,7 +278,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .getLoginProfile(arg_name)
+          .getLoginProfile(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.LoginProfile response) {
         checkLoginProfile(response);
       })));
@@ -287,6 +289,7 @@ main() {
       api.UsersResourceApi res = new api.OsloginApi(mock).users;
       var arg_request = buildSshPublicKey();
       var arg_parent = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SshPublicKey.fromJson(json);
         checkSshPublicKey(obj);
@@ -321,6 +324,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -328,8 +332,10 @@ main() {
         var resp = convert.JSON.encode(buildImportSshPublicKeyResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.importSshPublicKey(arg_request, arg_parent).then(
-          unittest.expectAsync1(((api.ImportSshPublicKeyResponse response) {
+      res
+          .importSshPublicKey(arg_request, arg_parent, $fields: arg_$fields)
+          .then(
+              unittest.expectAsync1(((api.ImportSshPublicKeyResponse response) {
         checkImportSshPublicKeyResponse(response);
       })));
     });
@@ -341,6 +347,7 @@ main() {
       api.UsersSshPublicKeysResourceApi res =
           new api.OsloginApi(mock).users.sshPublicKeys;
       var arg_name = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -372,6 +379,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -379,7 +387,9 @@ main() {
         var resp = convert.JSON.encode(buildEmpty());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.delete(arg_name).then(unittest.expectAsync1(((api.Empty response) {
+      res
+          .delete(arg_name, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((api.Empty response) {
         checkEmpty(response);
       })));
     });
@@ -389,6 +399,7 @@ main() {
       api.UsersSshPublicKeysResourceApi res =
           new api.OsloginApi(mock).users.sshPublicKeys;
       var arg_name = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -420,6 +431,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -428,7 +440,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_name)
+          .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.SshPublicKey response) {
         checkSshPublicKey(response);
       })));
@@ -441,6 +453,7 @@ main() {
       var arg_request = buildSshPublicKey();
       var arg_name = "foo";
       var arg_updateMask = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SshPublicKey.fromJson(json);
         checkSshPublicKey(obj);
@@ -477,6 +490,7 @@ main() {
         }
         unittest.expect(
             queryMap["updateMask"].first, unittest.equals(arg_updateMask));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -485,7 +499,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .patch(arg_request, arg_name, updateMask: arg_updateMask)
+          .patch(arg_request, arg_name,
+              updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.SshPublicKey response) {
         checkSshPublicKey(response);
       })));

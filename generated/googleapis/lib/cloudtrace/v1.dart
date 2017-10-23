@@ -65,6 +65,9 @@ class ProjectsResourceApi {
   ///
   /// [projectId] - ID of the Cloud project where the trace data is stored.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -72,7 +75,8 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> patchTraces(Traces request, core.String projectId) {
+  async.Future<Empty> patchTraces(Traces request, core.String projectId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -85,6 +89,9 @@ class ProjectsResourceApi {
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -114,6 +121,9 @@ class ProjectsTracesResourceApi {
   ///
   /// [traceId] - ID of the trace to return.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Trace].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -121,7 +131,8 @@ class ProjectsTracesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Trace> get(core.String projectId, core.String traceId) {
+  async.Future<Trace> get(core.String projectId, core.String traceId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -134,6 +145,9 @@ class ProjectsTracesResourceApi {
     }
     if (traceId == null) {
       throw new core.ArgumentError("Parameter traceId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -155,14 +169,6 @@ class ProjectsTracesResourceApi {
   /// Request parameters:
   ///
   /// [projectId] - ID of the Cloud project where the trace data is stored.
-  ///
-  /// [pageToken] - Token identifying the page of results to return. If
-  /// provided, use the
-  /// value of the `next_page_token` field from a previous request. Optional.
-  ///
-  /// [startTime] - Start of the time interval (inclusive) during which the
-  /// trace data was
-  /// collected from the application.
   ///
   /// [pageSize] - Maximum number of traces to return. If not specified or <= 0,
   /// the
@@ -227,6 +233,17 @@ class ProjectsTracesResourceApi {
   /// data was
   /// collected from the application.
   ///
+  /// [pageToken] - Token identifying the page of results to return. If
+  /// provided, use the
+  /// value of the `next_page_token` field from a previous request. Optional.
+  ///
+  /// [startTime] - Start of the time interval (inclusive) during which the
+  /// trace data was
+  /// collected from the application.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListTracesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -235,13 +252,14 @@ class ProjectsTracesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTracesResponse> list(core.String projectId,
-      {core.String pageToken,
-      core.String startTime,
-      core.int pageSize,
+      {core.int pageSize,
       core.String view,
       core.String orderBy,
       core.String filter,
-      core.String endTime}) {
+      core.String endTime,
+      core.String pageToken,
+      core.String startTime,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -251,12 +269,6 @@ class ProjectsTracesResourceApi {
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (startTime != null) {
-      _queryParams["startTime"] = [startTime];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -272,6 +284,15 @@ class ProjectsTracesResourceApi {
     }
     if (endTime != null) {
       _queryParams["endTime"] = [endTime];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (startTime != null) {
+      _queryParams["startTime"] = [startTime];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +

@@ -54,6 +54,9 @@ class MetricDescriptorsResourceApi {
   /// [project] - The project id. The value can be the numeric project ID or
   /// string-based project name.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [MetricDescriptor].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -62,7 +65,8 @@ class MetricDescriptorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<MetricDescriptor> create(
-      MetricDescriptor request, core.String project) {
+      MetricDescriptor request, core.String project,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -75,6 +79,9 @@ class MetricDescriptorsResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/metricDescriptors';
@@ -96,6 +103,9 @@ class MetricDescriptorsResourceApi {
   ///
   /// [metric] - Name of the metric.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DeleteMetricDescriptorResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -104,7 +114,8 @@ class MetricDescriptorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DeleteMetricDescriptorResponse> delete(
-      core.String project, core.String metric) {
+      core.String project, core.String metric,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -117,6 +128,9 @@ class MetricDescriptorsResourceApi {
     }
     if (metric == null) {
       throw new core.ArgumentError("Parameter metric is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -160,6 +174,9 @@ class MetricDescriptorsResourceApi {
   /// omitted, all metrics are returned. If an empty string is passed with this
   /// field, no metrics are returned.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListMetricDescriptorsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -169,7 +186,10 @@ class MetricDescriptorsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListMetricDescriptorsResponse> list(
       ListMetricDescriptorsRequest request, core.String project,
-      {core.int count, core.String pageToken, core.String query}) {
+      {core.int count,
+      core.String pageToken,
+      core.String query,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -191,6 +211,9 @@ class MetricDescriptorsResourceApi {
     }
     if (query != null) {
       _queryParams["query"] = [query];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/metricDescriptors';
@@ -287,6 +310,9 @@ class TimeseriesResourceApi {
   /// is not allowed; you should use 17d instead.
   /// Value must have pattern "[0-9]+[mhdw]?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListTimeseriesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -302,7 +328,8 @@ class TimeseriesResourceApi {
       core.String oldest,
       core.String pageToken,
       core.String timespan,
-      core.String window}) {
+      core.String window,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -344,6 +371,9 @@ class TimeseriesResourceApi {
     if (window != null) {
       _queryParams["window"] = [window];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = commons.Escaper.ecapeVariable('$project') +
         '/timeseries/' +
@@ -373,6 +403,9 @@ class TimeseriesResourceApi {
   /// [project] - The project ID. The value can be the numeric project ID or
   /// string-based project name.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [WriteTimeseriesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -381,7 +414,8 @@ class TimeseriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<WriteTimeseriesResponse> write(
-      WriteTimeseriesRequest request, core.String project) {
+      WriteTimeseriesRequest request, core.String project,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -394,6 +428,9 @@ class TimeseriesResourceApi {
     }
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/timeseries:write';
@@ -490,6 +527,9 @@ class TimeseriesDescriptorsResourceApi {
   /// is not allowed; you should use 17d instead.
   /// Value must have pattern "[0-9]+[mhdw]?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListTimeseriesDescriptorsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -508,7 +548,8 @@ class TimeseriesDescriptorsResourceApi {
       core.String oldest,
       core.String pageToken,
       core.String timespan,
-      core.String window}) {
+      core.String window,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -549,6 +590,9 @@ class TimeseriesDescriptorsResourceApi {
     }
     if (window != null) {
       _queryParams["window"] = [window];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +

@@ -17,7 +17,7 @@
     "description": "Manipulates events and other calendar data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/google-apps/calendar/firstapp",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/2j8D2nFUEmPd5-ldLWN3HdwZdb0\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/RreKY-0_CLqkT_my5f8b1oQsH4w\"",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/calendar-16.png",
         "x32": "http://www.google.com/images/icons/product/calendar-32.png"
@@ -147,6 +147,11 @@
                             "location": "path",
                             "required": true,
                             "type": "string"
+                        },
+                        "sendNotifications": {
+                            "description": "Whether to send notifications about the calendar sharing change. Optional. The default is True.",
+                            "location": "query",
+                            "type": "boolean"
                         }
                     },
                     "path": "calendars/{calendarId}/acl",
@@ -226,6 +231,11 @@
                             "location": "path",
                             "required": true,
                             "type": "string"
+                        },
+                        "sendNotifications": {
+                            "description": "Whether to send notifications about the calendar sharing change. Note that there are no notifications on access removal. Optional. The default is True.",
+                            "location": "query",
+                            "type": "boolean"
                         }
                     },
                     "path": "calendars/{calendarId}/acl/{ruleId}",
@@ -259,6 +269,11 @@
                             "location": "path",
                             "required": true,
                             "type": "string"
+                        },
+                        "sendNotifications": {
+                            "description": "Whether to send notifications about the calendar sharing change. Note that there are no notifications on access removal. Optional. The default is True.",
+                            "location": "query",
+                            "type": "boolean"
                         }
                     },
                     "path": "calendars/{calendarId}/acl/{ruleId}",
@@ -1557,7 +1572,7 @@
             }
         }
     },
-    "revision": "20170924",
+    "revision": "20171017",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Acl": {

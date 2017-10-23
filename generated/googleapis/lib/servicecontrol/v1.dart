@@ -63,6 +63,9 @@ class ServicesResourceApi {
   ///
   /// See google.api.Service for the definition of a service name.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AllocateQuotaResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -71,7 +74,8 @@ class ServicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AllocateQuotaResponse> allocateQuota(
-      AllocateQuotaRequest request, core.String serviceName) {
+      AllocateQuotaRequest request, core.String serviceName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -84,6 +88,9 @@ class ServicesResourceApi {
     }
     if (serviceName == null) {
       throw new core.ArgumentError("Parameter serviceName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/services/' +
@@ -125,6 +132,9 @@ class ServicesResourceApi {
   /// [google.api.Service](https://cloud.google.com/service-management/reference/rpc/google.api#google.api.Service)
   /// for the definition of a service name.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CheckResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -133,7 +143,8 @@ class ServicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CheckResponse> check(
-      CheckRequest request, core.String serviceName) {
+      CheckRequest request, core.String serviceName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -146,6 +157,9 @@ class ServicesResourceApi {
     }
     if (serviceName == null) {
       throw new core.ArgumentError("Parameter serviceName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/services/' +
@@ -178,6 +192,9 @@ class ServicesResourceApi {
   ///
   /// See google.api.Service for the definition of a service name.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EndReconciliationResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -186,7 +203,8 @@ class ServicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EndReconciliationResponse> endReconciliation(
-      EndReconciliationRequest request, core.String serviceName) {
+      EndReconciliationRequest request, core.String serviceName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -199,6 +217,9 @@ class ServicesResourceApi {
     }
     if (serviceName == null) {
       throw new core.ArgumentError("Parameter serviceName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/services/' +
@@ -237,6 +258,9 @@ class ServicesResourceApi {
   ///
   /// See google.api.Service for the definition of a service name.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ReleaseQuotaResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -245,7 +269,8 @@ class ServicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ReleaseQuotaResponse> releaseQuota(
-      ReleaseQuotaRequest request, core.String serviceName) {
+      ReleaseQuotaRequest request, core.String serviceName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -258,6 +283,9 @@ class ServicesResourceApi {
     }
     if (serviceName == null) {
       throw new core.ArgumentError("Parameter serviceName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/services/' +
@@ -300,6 +328,9 @@ class ServicesResourceApi {
   /// [google.api.Service](https://cloud.google.com/service-management/reference/rpc/google.api#google.api.Service)
   /// for the definition of a service name.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ReportResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -308,7 +339,8 @@ class ServicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ReportResponse> report(
-      ReportRequest request, core.String serviceName) {
+      ReportRequest request, core.String serviceName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -321,6 +353,9 @@ class ServicesResourceApi {
     }
     if (serviceName == null) {
       throw new core.ArgumentError("Parameter serviceName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/services/' +
@@ -373,6 +408,9 @@ class ServicesResourceApi {
   ///
   /// See google.api.Service for the definition of a service name.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [StartReconciliationResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -381,7 +419,8 @@ class ServicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<StartReconciliationResponse> startReconciliation(
-      StartReconciliationRequest request, core.String serviceName) {
+      StartReconciliationRequest request, core.String serviceName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -394,6 +433,9 @@ class ServicesResourceApi {
     }
     if (serviceName == null) {
       throw new core.ArgumentError("Parameter serviceName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/services/' +
@@ -487,21 +529,13 @@ class AllocateQuotaResponse {
   /// Quota metrics to indicate the result of allocation. Depending on the
   /// request, one or more of the following metrics will be included:
   ///
-  /// 1. For rate quota, per quota group or per quota metric incremental usage
-  /// will be specified using the following delta metric:
+  /// 1. Per quota group or per quota metric incremental usage will be specified
+  /// using the following delta metric :
   ///   "serviceruntime.googleapis.com/api/consumer/quota_used_count"
   ///
-  /// 2. For allocation quota, per quota metric total usage will be specified
-  /// using the following gauge metric:
-  ///   "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"
-  ///
-  /// 3. For both rate quota and allocation quota, the quota limit reached
-  /// condition will be specified using the following boolean metric:
+  /// 2. The quota limit reached condition will be specified using the following
+  /// boolean metric :
   ///   "serviceruntime.googleapis.com/quota/exceeded"
-  ///
-  /// 4. For allocation quota, value for each quota limit associated with
-  /// the metrics will be specified using the following gauge metric:
-  ///   "serviceruntime.googleapis.com/quota/limit"
   core.List<MetricValueSet> quotaMetrics;
 
   /// ID of the actual config used to process the request.
@@ -570,7 +604,7 @@ class AuditLog {
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.List<core.Map<core.String, core.Object>> metadata;
+  core.Map<core.String, core.Object> metadata;
 
   /// The name of the service method or operation.
   /// For API calls, this should be the name of the API method.
@@ -2115,8 +2149,11 @@ class QuotaOperation {
 
   /// Fully qualified name of the API method for which this quota operation is
   /// requested. This name is used for matching quota rules or metric rules and
-  /// billing status rules defined in service configuration. This field is not
-  /// required if the quota operation is performed on non-API resources.
+  /// billing status rules defined in service configuration.
+  ///
+  /// This field should not be set if any of the following is true:
+  /// (1) the quota operation is performed on non-API resources.
+  /// (2) quota_metrics is set because the caller is doing quota override.
   ///
   /// Example of an RPC method name:
   ///     google.example.library.v1.LibraryService.CreateShelf
@@ -2142,6 +2179,8 @@ class QuotaOperation {
   /// label value combinations. If a request has such duplicated MetricValue
   /// instances, the entire request is rejected with
   /// an invalid argument error.
+  ///
+  /// This field is mutually exclusive with method_name.
   core.List<MetricValueSet> quotaMetrics;
 
   /// Quota mode for this operation.
@@ -2152,28 +2191,15 @@ class QuotaOperation {
   /// the service configuration or specified using the quota metrics. If the
   /// amount is higher than the available quota, allocation error will be
   /// returned and no quota will be allocated.
-  /// For ReleaseQuota request, this mode is supported only for precise quota
-  /// limits. In this case, this operation releases quota for the amount
-  /// specified in the service configuration or specified using the quota
-  /// metrics. If the release can make used quota negative, release error
-  /// will be returned and no quota will be released.
-  /// - "BEST_EFFORT" : For AllocateQuota request, this mode is supported only
-  /// for imprecise
-  /// quota limits. In this case, the operation allocates quota for the amount
-  /// specified in the service configuration or specified using the quota
-  /// metrics. If the amount is higher than the available quota, request does
-  /// not fail but all available quota will be allocated.
-  /// For ReleaseQuota request, this mode is supported for both precise quota
-  /// limits and imprecise quota limits. In this case, this operation releases
-  /// quota for the amount specified in the service configuration or specified
-  /// using the quota metrics. If the release can make used quota
-  /// negative, request does not fail but only the used quota will be
-  /// released. After the ReleaseQuota request completes, the used quota
-  /// will be 0, and never goes to negative.
+  /// - "BEST_EFFORT" : The operation allocates quota for the amount specified
+  /// in the service
+  /// configuration or specified using the quota metrics. If the amount is
+  /// higher than the available quota, request does not fail but all available
+  /// quota will be allocated.
   /// - "CHECK_ONLY" : For AllocateQuota request, only checks if there is enough
   /// quota
   /// available and does not change the available quota. No lock is placed on
-  /// the available quota either. Not supported for ReleaseQuota request.
+  /// the available quota either.
   core.String quotaMode;
 
   QuotaOperation();

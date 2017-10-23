@@ -74,12 +74,16 @@ class GroupItemsResourceApi {
   /// account that the user authenticates with must be linked to the specified
   /// YouTube content owner.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String id, {core.String onBehalfOfContentOwner}) {
+  async.Future delete(core.String id,
+      {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -93,6 +97,9 @@ class GroupItemsResourceApi {
     _queryParams["id"] = [id];
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -127,6 +134,9 @@ class GroupItemsResourceApi {
   /// account that the user authenticates with must be linked to the specified
   /// YouTube content owner.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GroupItem].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -135,7 +145,7 @@ class GroupItemsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GroupItem> insert(GroupItem request,
-      {core.String onBehalfOfContentOwner}) {
+      {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -148,6 +158,9 @@ class GroupItemsResourceApi {
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'groupItems';
@@ -181,6 +194,9 @@ class GroupItemsResourceApi {
   /// account that the user authenticates with must be linked to the specified
   /// YouTube content owner.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GroupItemListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -189,7 +205,7 @@ class GroupItemsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GroupItemListResponse> list(core.String groupId,
-      {core.String onBehalfOfContentOwner}) {
+      {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -203,6 +219,9 @@ class GroupItemsResourceApi {
     _queryParams["groupId"] = [groupId];
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'groupItems';
@@ -242,12 +261,16 @@ class GroupsResourceApi {
   /// account that the user authenticates with must be linked to the specified
   /// YouTube content owner.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String id, {core.String onBehalfOfContentOwner}) {
+  async.Future delete(core.String id,
+      {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -261,6 +284,9 @@ class GroupsResourceApi {
     _queryParams["id"] = [id];
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -295,6 +321,9 @@ class GroupsResourceApi {
   /// account that the user authenticates with must be linked to the specified
   /// YouTube content owner.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Group].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -303,7 +332,7 @@ class GroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Group> insert(Group request,
-      {core.String onBehalfOfContentOwner}) {
+      {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -316,6 +345,9 @@ class GroupsResourceApi {
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'groups';
@@ -359,6 +391,9 @@ class GroupsResourceApi {
   /// result set that should be returned. In an API response, the nextPageToken
   /// property identifies the next page that can be retrieved.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GroupListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -370,7 +405,8 @@ class GroupsResourceApi {
       {core.String id,
       core.bool mine,
       core.String onBehalfOfContentOwner,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -389,6 +425,9 @@ class GroupsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'groups';
@@ -421,6 +460,9 @@ class GroupsResourceApi {
   /// account that the user authenticates with must be linked to the specified
   /// YouTube content owner.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Group].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -429,7 +471,7 @@ class GroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Group> update(Group request,
-      {core.String onBehalfOfContentOwner}) {
+      {core.String onBehalfOfContentOwner, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -442,6 +484,9 @@ class GroupsResourceApi {
     }
     if (onBehalfOfContentOwner != null) {
       _queryParams["onBehalfOfContentOwner"] = [onBehalfOfContentOwner];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'groups';
@@ -526,6 +571,9 @@ class ReportsResourceApi {
   /// parameter as a pagination mechanism along with the max-results parameter
   /// (one-based, inclusive).
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ResultTable].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -541,7 +589,8 @@ class ReportsResourceApi {
       core.bool include_historical_channel_data,
       core.int max_results,
       core.String sort,
-      core.int start_index}) {
+      core.int start_index,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -587,6 +636,9 @@ class ReportsResourceApi {
     }
     if (start_index != null) {
       _queryParams["start-index"] = ["${start_index}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'reports';

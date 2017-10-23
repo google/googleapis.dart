@@ -70,6 +70,9 @@ class ProjectsTracesResourceApi {
   /// `projects/PROJECT_ID`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -78,7 +81,8 @@ class ProjectsTracesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> batchWrite(
-      BatchWriteSpansRequest request, core.String name) {
+      BatchWriteSpansRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -91,6 +95,9 @@ class ProjectsTracesResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' +
@@ -127,6 +134,9 @@ class ProjectsTracesSpansResourceApi {
   /// assigned when the span is created.
   /// Value must have pattern "^projects/[^/]+/traces/[^/]+/spans/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Span].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -134,7 +144,8 @@ class ProjectsTracesSpansResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Span> create(Span request, core.String name) {
+  async.Future<Span> create(Span request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -147,6 +158,9 @@ class ProjectsTracesSpansResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -419,6 +433,64 @@ class Links {
   }
 }
 
+/// An event describing a message sent/received between Spans.
+class MessageEvent {
+  /// The number of compressed bytes sent or received. If missing assumed to
+  /// be the same size as uncompressed.
+  core.String compressedSizeBytes;
+
+  /// An identifier for the MessageEvent's message that can be used to match
+  /// SENT and RECEIVED MessageEvents. It is recommended to be unique within
+  /// a Span.
+  core.String id;
+
+  /// Type of MessageEvent. Indicates whether the message was sent or
+  /// received.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unknown event type.
+  /// - "SENT" : Indicates a sent message.
+  /// - "RECEIVED" : Indicates a received message.
+  core.String type;
+
+  /// The number of uncompressed bytes sent or received.
+  core.String uncompressedSizeBytes;
+
+  MessageEvent();
+
+  MessageEvent.fromJson(core.Map _json) {
+    if (_json.containsKey("compressedSizeBytes")) {
+      compressedSizeBytes = _json["compressedSizeBytes"];
+    }
+    if (_json.containsKey("id")) {
+      id = _json["id"];
+    }
+    if (_json.containsKey("type")) {
+      type = _json["type"];
+    }
+    if (_json.containsKey("uncompressedSizeBytes")) {
+      uncompressedSizeBytes = _json["uncompressedSizeBytes"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (compressedSizeBytes != null) {
+      _json["compressedSizeBytes"] = compressedSizeBytes;
+    }
+    if (id != null) {
+      _json["id"] = id;
+    }
+    if (type != null) {
+      _json["type"] = type;
+    }
+    if (uncompressedSizeBytes != null) {
+      _json["uncompressedSizeBytes"] = uncompressedSizeBytes;
+    }
+    return _json;
+  }
+}
+
 /// Binary module.
 class Module {
   /// A unique identifier for the module, usually a hash of its
@@ -448,72 +520,6 @@ class Module {
     }
     if (module != null) {
       _json["module"] = (module).toJson();
-    }
-    return _json;
-  }
-}
-
-/// An event describing an RPC message sent or received on the network.
-class NetworkEvent {
-  /// The number of compressed bytes sent or received.
-  core.String compressedMessageSize;
-
-  /// An identifier for the message, which must be unique in this span.
-  core.String messageId;
-
-  /// For sent messages, this is the time at which the first bit was sent.
-  /// For received messages, this is the time at which the last bit was
-  /// received.
-  core.String time;
-
-  /// Type of NetworkEvent. Indicates whether the RPC message was sent or
-  /// received.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Unknown event type.
-  /// - "SENT" : Indicates a sent RPC message.
-  /// - "RECV" : Indicates a received RPC message.
-  core.String type;
-
-  /// The number of uncompressed bytes sent or received.
-  core.String uncompressedMessageSize;
-
-  NetworkEvent();
-
-  NetworkEvent.fromJson(core.Map _json) {
-    if (_json.containsKey("compressedMessageSize")) {
-      compressedMessageSize = _json["compressedMessageSize"];
-    }
-    if (_json.containsKey("messageId")) {
-      messageId = _json["messageId"];
-    }
-    if (_json.containsKey("time")) {
-      time = _json["time"];
-    }
-    if (_json.containsKey("type")) {
-      type = _json["type"];
-    }
-    if (_json.containsKey("uncompressedMessageSize")) {
-      uncompressedMessageSize = _json["uncompressedMessageSize"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (compressedMessageSize != null) {
-      _json["compressedMessageSize"] = compressedMessageSize;
-    }
-    if (messageId != null) {
-      _json["messageId"] = messageId;
-    }
-    if (time != null) {
-      _json["time"] = time;
-    }
-    if (type != null) {
-      _json["type"] = type;
-    }
-    if (uncompressedMessageSize != null) {
-      _json["uncompressedMessageSize"] = uncompressedMessageSize;
     }
     return _json;
   }
@@ -585,7 +591,7 @@ class Span {
   Status status;
 
   /// The included time events. There can be up to 32 annotations and 128
-  /// network
+  /// message
   /// events per span.
   TimeEvents timeEvents;
 
@@ -940,13 +946,13 @@ class Status {
   }
 }
 
-/// A time-stamped annotation or network event in the Span.
+/// A time-stamped annotation or message event in the Span.
 class TimeEvent {
   /// Text annotation with a set of attributes.
   Annotation annotation;
 
-  /// An event describing an RPC message sent/received on the network.
-  NetworkEvent networkEvent;
+  /// An event describing a message sent/received between Spans.
+  MessageEvent messageEvent;
 
   /// The timestamp indicating the time the event occurred.
   core.String time;
@@ -957,8 +963,8 @@ class TimeEvent {
     if (_json.containsKey("annotation")) {
       annotation = new Annotation.fromJson(_json["annotation"]);
     }
-    if (_json.containsKey("networkEvent")) {
-      networkEvent = new NetworkEvent.fromJson(_json["networkEvent"]);
+    if (_json.containsKey("messageEvent")) {
+      messageEvent = new MessageEvent.fromJson(_json["messageEvent"]);
     }
     if (_json.containsKey("time")) {
       time = _json["time"];
@@ -971,8 +977,8 @@ class TimeEvent {
     if (annotation != null) {
       _json["annotation"] = (annotation).toJson();
     }
-    if (networkEvent != null) {
-      _json["networkEvent"] = (networkEvent).toJson();
+    if (messageEvent != null) {
+      _json["messageEvent"] = (messageEvent).toJson();
     }
     if (time != null) {
       _json["time"] = time;
@@ -983,15 +989,15 @@ class TimeEvent {
 
 /// A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation
 /// on the span, consisting of either user-supplied key:value pairs, or
-/// details of an RPC message sent/received on the network.
+/// details of a message sent/received between Spans.
 class TimeEvents {
   /// The number of dropped annotations in all the included time events.
   /// If the value is 0, then no annotations were dropped.
   core.int droppedAnnotationsCount;
 
-  /// The number of dropped network events in all the included time events.
-  /// If the value is 0, then no network events were dropped.
-  core.int droppedNetworkEventsCount;
+  /// The number of dropped message events in all the included time events.
+  /// If the value is 0, then no message events were dropped.
+  core.int droppedMessageEventsCount;
 
   /// A collection of `TimeEvent`s.
   core.List<TimeEvent> timeEvent;
@@ -1002,8 +1008,8 @@ class TimeEvents {
     if (_json.containsKey("droppedAnnotationsCount")) {
       droppedAnnotationsCount = _json["droppedAnnotationsCount"];
     }
-    if (_json.containsKey("droppedNetworkEventsCount")) {
-      droppedNetworkEventsCount = _json["droppedNetworkEventsCount"];
+    if (_json.containsKey("droppedMessageEventsCount")) {
+      droppedMessageEventsCount = _json["droppedMessageEventsCount"];
     }
     if (_json.containsKey("timeEvent")) {
       timeEvent = _json["timeEvent"]
@@ -1018,8 +1024,8 @@ class TimeEvents {
     if (droppedAnnotationsCount != null) {
       _json["droppedAnnotationsCount"] = droppedAnnotationsCount;
     }
-    if (droppedNetworkEventsCount != null) {
-      _json["droppedNetworkEventsCount"] = droppedNetworkEventsCount;
+    if (droppedMessageEventsCount != null) {
+      _json["droppedMessageEventsCount"] = droppedMessageEventsCount;
     }
     if (timeEvent != null) {
       _json["timeEvent"] = timeEvent.map((value) => (value).toJson()).toList();

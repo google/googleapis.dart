@@ -24,6 +24,17 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
+        },
         "fields": {
             "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
@@ -68,13 +79,13 @@
             "location": "query",
             "type": "string"
         },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "description": "OAuth access token.",
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
@@ -89,26 +100,15 @@
             "location": "query",
             "type": "boolean"
         },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
         "bearer_token": {
             "description": "OAuth bearer token.",
             "location": "query",
             "type": "string"
         },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
-        },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
         }
     },
     "protocol": "rest",
@@ -117,264 +117,6 @@
             "resources": {
                 "regions": {
                     "resources": {
-                        "jobs": {
-                            "methods": {
-                                "submit": {
-                                    "description": "Submits a job to a cluster.",
-                                    "httpMethod": "POST",
-                                    "id": "dataproc.projects.regions.jobs.submit",
-                                    "parameterOrder": [
-                                        "projectId",
-                                        "region"
-                                    ],
-                                    "parameters": {
-                                        "region": {
-                                            "description": "Required. The Cloud Dataproc region in which to handle the request.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "projectId": {
-                                            "description": "Required. The ID of the Google Cloud Platform project that the job belongs to.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1/projects/{projectId}/regions/{region}/jobs:submit",
-                                    "request": {
-                                        "$ref": "SubmitJobRequest"
-                                    },
-                                    "response": {
-                                        "$ref": "Job"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
-                                },
-                                "delete": {
-                                    "description": "Deletes the job from the project. If the job is active, the delete fails, and the response returns FAILED_PRECONDITION.",
-                                    "httpMethod": "DELETE",
-                                    "id": "dataproc.projects.regions.jobs.delete",
-                                    "parameterOrder": [
-                                        "projectId",
-                                        "region",
-                                        "jobId"
-                                    ],
-                                    "parameters": {
-                                        "region": {
-                                            "description": "Required. The Cloud Dataproc region in which to handle the request.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "jobId": {
-                                            "description": "Required. The job ID.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "projectId": {
-                                            "description": "Required. The ID of the Google Cloud Platform project that the job belongs to.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1/projects/{projectId}/regions/{region}/jobs/{jobId}",
-                                    "response": {
-                                        "$ref": "Empty"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
-                                },
-                                "list": {
-                                    "description": "Lists regions/{region}/jobs in a project.",
-                                    "httpMethod": "GET",
-                                    "id": "dataproc.projects.regions.jobs.list",
-                                    "parameterOrder": [
-                                        "projectId",
-                                        "region"
-                                    ],
-                                    "parameters": {
-                                        "pageToken": {
-                                            "description": "Optional. The page token, returned by a previous call, to request the next page of results.",
-                                            "location": "query",
-                                            "type": "string"
-                                        },
-                                        "pageSize": {
-                                            "description": "Optional. The number of results to return in each response.",
-                                            "format": "int32",
-                                            "location": "query",
-                                            "type": "integer"
-                                        },
-                                        "region": {
-                                            "description": "Required. The Cloud Dataproc region in which to handle the request.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "clusterName": {
-                                            "description": "Optional. If set, the returned jobs list includes only jobs that were submitted to the named cluster.",
-                                            "location": "query",
-                                            "type": "string"
-                                        },
-                                        "projectId": {
-                                            "description": "Required. The ID of the Google Cloud Platform project that the job belongs to.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "filter": {
-                                            "description": "Optional. A filter constraining the jobs to list. Filters are case-sensitive and have the following syntax:field = value AND field = value ...where field is status.state or labels.[KEY], and [KEY] is a label key. value can be * to match all values. status.state can be either ACTIVE or INACTIVE. Only the logical AND operator is supported; space-separated items are treated as having an implicit AND operator.Example filter:status.state = ACTIVE AND labels.env = staging AND labels.starred = *",
-                                            "location": "query",
-                                            "type": "string"
-                                        },
-                                        "jobStateMatcher": {
-                                            "description": "Optional. Specifies enumerated categories of jobs to list (default = match ALL jobs).",
-                                            "enum": [
-                                                "ALL",
-                                                "ACTIVE",
-                                                "NON_ACTIVE"
-                                            ],
-                                            "location": "query",
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1/projects/{projectId}/regions/{region}/jobs",
-                                    "response": {
-                                        "$ref": "ListJobsResponse"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
-                                },
-                                "cancel": {
-                                    "description": "Starts a job cancellation request. To access the job resource after cancellation, call regions/{region}/jobs.list or regions/{region}/jobs.get.",
-                                    "httpMethod": "POST",
-                                    "id": "dataproc.projects.regions.jobs.cancel",
-                                    "parameterOrder": [
-                                        "projectId",
-                                        "region",
-                                        "jobId"
-                                    ],
-                                    "parameters": {
-                                        "region": {
-                                            "description": "Required. The Cloud Dataproc region in which to handle the request.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "jobId": {
-                                            "description": "Required. The job ID.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "projectId": {
-                                            "description": "Required. The ID of the Google Cloud Platform project that the job belongs to.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1/projects/{projectId}/regions/{region}/jobs/{jobId}:cancel",
-                                    "request": {
-                                        "$ref": "CancelJobRequest"
-                                    },
-                                    "response": {
-                                        "$ref": "Job"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
-                                },
-                                "patch": {
-                                    "description": "Updates a job in a project.",
-                                    "httpMethod": "PATCH",
-                                    "id": "dataproc.projects.regions.jobs.patch",
-                                    "parameterOrder": [
-                                        "projectId",
-                                        "region",
-                                        "jobId"
-                                    ],
-                                    "parameters": {
-                                        "updateMask": {
-                                            "description": "Required. Specifies the path, relative to <code>Job</code>, of the field to update. For example, to update the labels of a Job the <code>update_mask</code> parameter would be specified as <code>labels</code>, and the PATCH request body would specify the new value. <strong>Note:</strong> Currently, <code>labels</code> is the only field that can be updated.",
-                                            "format": "google-fieldmask",
-                                            "location": "query",
-                                            "type": "string"
-                                        },
-                                        "region": {
-                                            "description": "Required. The Cloud Dataproc region in which to handle the request.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "jobId": {
-                                            "description": "Required. The job ID.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "projectId": {
-                                            "description": "Required. The ID of the Google Cloud Platform project that the job belongs to.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1/projects/{projectId}/regions/{region}/jobs/{jobId}",
-                                    "request": {
-                                        "$ref": "Job"
-                                    },
-                                    "response": {
-                                        "$ref": "Job"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
-                                },
-                                "get": {
-                                    "description": "Gets the resource representation for a job in a project.",
-                                    "httpMethod": "GET",
-                                    "id": "dataproc.projects.regions.jobs.get",
-                                    "parameterOrder": [
-                                        "projectId",
-                                        "region",
-                                        "jobId"
-                                    ],
-                                    "parameters": {
-                                        "region": {
-                                            "description": "Required. The Cloud Dataproc region in which to handle the request.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "jobId": {
-                                            "description": "Required. The job ID.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "projectId": {
-                                            "description": "Required. The ID of the Google Cloud Platform project that the job belongs to.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1/projects/{projectId}/regions/{region}/jobs/{jobId}",
-                                    "response": {
-                                        "$ref": "Job"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
-                                }
-                            }
-                        },
                         "clusters": {
                             "methods": {
                                 "diagnose": {
@@ -427,6 +169,12 @@
                                         "clusterName"
                                     ],
                                     "parameters": {
+                                        "region": {
+                                            "description": "Required. The Cloud Dataproc region in which to handle the request.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
                                         "clusterName": {
                                             "description": "Required. The cluster name.",
                                             "location": "path",
@@ -435,12 +183,6 @@
                                         },
                                         "projectId": {
                                             "description": "Required. The ID of the Google Cloud Platform project that the cluster belongs to.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "region": {
-                                            "description": "Required. The Cloud Dataproc region in which to handle the request.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
@@ -463,6 +205,17 @@
                                         "region"
                                     ],
                                     "parameters": {
+                                        "region": {
+                                            "description": "Required. The Cloud Dataproc region in which to handle the request.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "filter": {
+                                            "description": "Optional. A filter constraining the clusters to list. Filters are case-sensitive and have the following syntax:field = value AND field = value ...where field is one of status.state, clusterName, or labels.[KEY], and [KEY] is a label key. value can be * to match all values. status.state can be one of the following: ACTIVE, INACTIVE, CREATING, RUNNING, ERROR, DELETING, or UPDATING. ACTIVE contains the CREATING, UPDATING, and RUNNING states. INACTIVE contains the DELETING and ERROR states. clusterName is the name of the cluster provided at creation time. Only the logical AND operator is supported; space-separated items are treated as having an implicit AND operator.Example filter:status.state = ACTIVE AND clusterName = mycluster AND labels.env = staging AND labels.starred = *",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
                                         "pageToken": {
                                             "description": "Optional. The standard List page token.",
                                             "location": "query",
@@ -476,17 +229,6 @@
                                         },
                                         "projectId": {
                                             "description": "Required. The ID of the Google Cloud Platform project that the cluster belongs to.",
-                                            "location": "path",
-                                            "required": true,
-                                            "type": "string"
-                                        },
-                                        "filter": {
-                                            "description": "Optional. A filter constraining the clusters to list. Filters are case-sensitive and have the following syntax:field = value AND field = value ...where field is one of status.state, clusterName, or labels.[KEY], and [KEY] is a label key. value can be * to match all values. status.state can be one of the following: ACTIVE, INACTIVE, CREATING, RUNNING, ERROR, DELETING, or UPDATING. ACTIVE contains the CREATING, UPDATING, and RUNNING states. INACTIVE contains the DELETING and ERROR states. clusterName is the name of the cluster provided at creation time. Only the logical AND operator is supported; space-separated items are treated as having an implicit AND operator.Example filter:status.state = ACTIVE AND clusterName = mycluster AND labels.env = staging AND labels.starred = *",
-                                            "location": "query",
-                                            "type": "string"
-                                        },
-                                        "region": {
-                                            "description": "Required. The Cloud Dataproc region in which to handle the request.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
@@ -543,10 +285,10 @@
                                         "clusterName"
                                     ],
                                     "parameters": {
-                                        "updateMask": {
-                                            "description": "Required. Specifies the path, relative to Cluster, of the field to update. For example, to change the number of workers in a cluster to 5, the update_mask parameter would be specified as config.worker_config.num_instances, and the PATCH request body would specify the new value, as follows:\n{\n  \"config\":{\n    \"workerConfig\":{\n      \"numInstances\":\"5\"\n    }\n  }\n}\nSimilarly, to change the number of preemptible workers in a cluster to 5, the update_mask parameter would be config.secondary_worker_config.num_instances, and the PATCH request body would be set as follows:\n{\n  \"config\":{\n    \"secondaryWorkerConfig\":{\n      \"numInstances\":\"5\"\n    }\n  }\n}\n<strong>Note:</strong> Currently, only the following fields can be updated:<table>  <tbody>  <tr>  <td><strong>Mask</strong></td>  <td><strong>Purpose</strong></td>  </tr>  <tr>  <td><strong><em>labels</em></strong></td>  <td>Update labels</td>  </tr>  <tr>  <td><strong><em>config.worker_config.num_instances</em></strong></td>  <td>Resize primary worker group</td>  </tr>  <tr>  <td><strong><em>config.secondary_worker_config.num_instances</em></strong></td>  <td>Resize secondary worker group</td>  </tr>  </tbody>  </table>",
-                                            "format": "google-fieldmask",
-                                            "location": "query",
+                                        "projectId": {
+                                            "description": "Required. The ID of the Google Cloud Platform project the cluster belongs to.",
+                                            "location": "path",
+                                            "required": true,
                                             "type": "string"
                                         },
                                         "region": {
@@ -555,14 +297,14 @@
                                             "required": true,
                                             "type": "string"
                                         },
-                                        "clusterName": {
-                                            "description": "Required. The cluster name.",
-                                            "location": "path",
-                                            "required": true,
+                                        "updateMask": {
+                                            "description": "Required. Specifies the path, relative to Cluster, of the field to update. For example, to change the number of workers in a cluster to 5, the update_mask parameter would be specified as config.worker_config.num_instances, and the PATCH request body would specify the new value, as follows:\n{\n  \"config\":{\n    \"workerConfig\":{\n      \"numInstances\":\"5\"\n    }\n  }\n}\nSimilarly, to change the number of preemptible workers in a cluster to 5, the update_mask parameter would be config.secondary_worker_config.num_instances, and the PATCH request body would be set as follows:\n{\n  \"config\":{\n    \"secondaryWorkerConfig\":{\n      \"numInstances\":\"5\"\n    }\n  }\n}\n<strong>Note:</strong> Currently, only the following fields can be updated:<table>  <tbody>  <tr>  <td><strong>Mask</strong></td>  <td><strong>Purpose</strong></td>  </tr>  <tr>  <td><strong><em>labels</em></strong></td>  <td>Update labels</td>  </tr>  <tr>  <td><strong><em>config.worker_config.num_instances</em></strong></td>  <td>Resize primary worker group</td>  </tr>  <tr>  <td><strong><em>config.secondary_worker_config.num_instances</em></strong></td>  <td>Resize secondary worker group</td>  </tr>  </tbody>  </table>",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
                                             "type": "string"
                                         },
-                                        "projectId": {
-                                            "description": "Required. The ID of the Google Cloud Platform project the cluster belongs to.",
+                                        "clusterName": {
+                                            "description": "Required. The cluster name.",
                                             "location": "path",
                                             "required": true,
                                             "type": "string"
@@ -668,6 +410,46 @@
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
+                                "list": {
+                                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE: the name binding allows API services to override the binding to use different resource name schemes, such as users/*/operations. To override the binding, API services can add a binding such as \"/v1/{name=users/*}/operations\" to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                    "httpMethod": "GET",
+                                    "id": "dataproc.projects.regions.operations.list",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "filter": {
+                                            "description": "The standard list filter.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "description": "The name of the operation's parent resource.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/regions/[^/]+/operations$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "pageToken": {
+                                            "description": "The standard list page token.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "pageSize": {
+                                            "description": "The standard list page size.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "response": {
+                                        "$ref": "ListOperationsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
                                 "get": {
                                     "description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
                                     "httpMethod": "GET",
@@ -691,42 +473,260 @@
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
+                                }
+                            }
+                        },
+                        "jobs": {
+                            "methods": {
+                                "submit": {
+                                    "description": "Submits a job to a cluster.",
+                                    "httpMethod": "POST",
+                                    "id": "dataproc.projects.regions.jobs.submit",
+                                    "parameterOrder": [
+                                        "projectId",
+                                        "region"
+                                    ],
+                                    "parameters": {
+                                        "projectId": {
+                                            "description": "Required. The ID of the Google Cloud Platform project that the job belongs to.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "region": {
+                                            "description": "Required. The Cloud Dataproc region in which to handle the request.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/projects/{projectId}/regions/{region}/jobs:submit",
+                                    "request": {
+                                        "$ref": "SubmitJobRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "Job"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "delete": {
+                                    "description": "Deletes the job from the project. If the job is active, the delete fails, and the response returns FAILED_PRECONDITION.",
+                                    "httpMethod": "DELETE",
+                                    "id": "dataproc.projects.regions.jobs.delete",
+                                    "parameterOrder": [
+                                        "projectId",
+                                        "region",
+                                        "jobId"
+                                    ],
+                                    "parameters": {
+                                        "projectId": {
+                                            "description": "Required. The ID of the Google Cloud Platform project that the job belongs to.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "jobId": {
+                                            "description": "Required. The job ID.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "region": {
+                                            "description": "Required. The Cloud Dataproc region in which to handle the request.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/projects/{projectId}/regions/{region}/jobs/{jobId}",
+                                    "response": {
+                                        "$ref": "Empty"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
                                 },
                                 "list": {
-                                    "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED.NOTE: the name binding allows API services to override the binding to use different resource name schemes, such as users/*/operations. To override the binding, API services can add a binding such as \"/v1/{name=users/*}/operations\" to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                                    "description": "Lists regions/{region}/jobs in a project.",
                                     "httpMethod": "GET",
-                                    "id": "dataproc.projects.regions.operations.list",
+                                    "id": "dataproc.projects.regions.jobs.list",
                                     "parameterOrder": [
-                                        "name"
+                                        "projectId",
+                                        "region"
                                     ],
                                     "parameters": {
                                         "filter": {
-                                            "description": "The standard list filter.",
+                                            "description": "Optional. A filter constraining the jobs to list. Filters are case-sensitive and have the following syntax:field = value AND field = value ...where field is status.state or labels.[KEY], and [KEY] is a label key. value can be * to match all values. status.state can be either ACTIVE or INACTIVE. Only the logical AND operator is supported; space-separated items are treated as having an implicit AND operator.Example filter:status.state = ACTIVE AND labels.env = staging AND labels.starred = *",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "jobStateMatcher": {
+                                            "description": "Optional. Specifies enumerated categories of jobs to list (default = match ALL jobs).",
+                                            "enum": [
+                                                "ALL",
+                                                "ACTIVE",
+                                                "NON_ACTIVE"
+                                            ],
                                             "location": "query",
                                             "type": "string"
                                         },
                                         "pageToken": {
-                                            "description": "The standard list page token.",
+                                            "description": "Optional. The page token, returned by a previous call, to request the next page of results.",
                                             "location": "query",
-                                            "type": "string"
-                                        },
-                                        "name": {
-                                            "description": "The name of the operation's parent resource.",
-                                            "location": "path",
-                                            "pattern": "^projects/[^/]+/regions/[^/]+/operations$",
-                                            "required": true,
                                             "type": "string"
                                         },
                                         "pageSize": {
-                                            "description": "The standard list page size.",
+                                            "description": "Optional. The number of results to return in each response.",
                                             "format": "int32",
                                             "location": "query",
                                             "type": "integer"
+                                        },
+                                        "region": {
+                                            "description": "Required. The Cloud Dataproc region in which to handle the request.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "clusterName": {
+                                            "description": "Optional. If set, the returned jobs list includes only jobs that were submitted to the named cluster.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "projectId": {
+                                            "description": "Required. The ID of the Google Cloud Platform project that the job belongs to.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
                                         }
                                     },
-                                    "path": "v1/{+name}",
+                                    "path": "v1/projects/{projectId}/regions/{region}/jobs",
                                     "response": {
-                                        "$ref": "ListOperationsResponse"
+                                        "$ref": "ListJobsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "cancel": {
+                                    "description": "Starts a job cancellation request. To access the job resource after cancellation, call regions/{region}/jobs.list or regions/{region}/jobs.get.",
+                                    "httpMethod": "POST",
+                                    "id": "dataproc.projects.regions.jobs.cancel",
+                                    "parameterOrder": [
+                                        "projectId",
+                                        "region",
+                                        "jobId"
+                                    ],
+                                    "parameters": {
+                                        "projectId": {
+                                            "description": "Required. The ID of the Google Cloud Platform project that the job belongs to.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "jobId": {
+                                            "description": "Required. The job ID.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "region": {
+                                            "description": "Required. The Cloud Dataproc region in which to handle the request.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/projects/{projectId}/regions/{region}/jobs/{jobId}:cancel",
+                                    "request": {
+                                        "$ref": "CancelJobRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "Job"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "get": {
+                                    "description": "Gets the resource representation for a job in a project.",
+                                    "httpMethod": "GET",
+                                    "id": "dataproc.projects.regions.jobs.get",
+                                    "parameterOrder": [
+                                        "projectId",
+                                        "region",
+                                        "jobId"
+                                    ],
+                                    "parameters": {
+                                        "projectId": {
+                                            "description": "Required. The ID of the Google Cloud Platform project that the job belongs to.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "jobId": {
+                                            "description": "Required. The job ID.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "region": {
+                                            "description": "Required. The Cloud Dataproc region in which to handle the request.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/projects/{projectId}/regions/{region}/jobs/{jobId}",
+                                    "response": {
+                                        "$ref": "Job"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "patch": {
+                                    "description": "Updates a job in a project.",
+                                    "httpMethod": "PATCH",
+                                    "id": "dataproc.projects.regions.jobs.patch",
+                                    "parameterOrder": [
+                                        "projectId",
+                                        "region",
+                                        "jobId"
+                                    ],
+                                    "parameters": {
+                                        "region": {
+                                            "description": "Required. The Cloud Dataproc region in which to handle the request.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "updateMask": {
+                                            "description": "Required. Specifies the path, relative to <code>Job</code>, of the field to update. For example, to update the labels of a Job the <code>update_mask</code> parameter would be specified as <code>labels</code>, and the PATCH request body would specify the new value. <strong>Note:</strong> Currently, <code>labels</code> is the only field that can be updated.",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "projectId": {
+                                            "description": "Required. The ID of the Google Cloud Platform project that the job belongs to.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "jobId": {
+                                            "description": "Required. The job ID.",
+                                            "location": "path",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/projects/{projectId}/regions/{region}/jobs/{jobId}",
+                                    "request": {
+                                        "$ref": "Job"
+                                    },
+                                    "response": {
+                                        "$ref": "Job"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -739,213 +739,23 @@
             }
         }
     },
-    "revision": "20170926",
+    "revision": "20171016",
     "rootUrl": "https://dataproc.googleapis.com/",
     "schemas": {
-        "Cluster": {
-            "description": "Describes the identifying information, config, and status of a cluster of Google Compute Engine instances.",
-            "id": "Cluster",
-            "properties": {
-                "labels": {
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.",
-                    "type": "object"
-                },
-                "status": {
-                    "$ref": "ClusterStatus",
-                    "description": "Output-only. Cluster status."
-                },
-                "metrics": {
-                    "$ref": "ClusterMetrics",
-                    "description": "Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release."
-                },
-                "statusHistory": {
-                    "description": "Output-only. The previous cluster status.",
-                    "items": {
-                        "$ref": "ClusterStatus"
-                    },
-                    "type": "array"
-                },
-                "config": {
-                    "$ref": "ClusterConfig",
-                    "description": "Required. The cluster config. Note that Cloud Dataproc may set default values, and values may change when clusters are updated."
-                },
-                "clusterName": {
-                    "description": "Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.",
-                    "type": "string"
-                },
-                "clusterUuid": {
-                    "description": "Output-only. A cluster UUID (Unique Universal Identifier). Cloud Dataproc generates this value when it creates the cluster.",
-                    "type": "string"
-                },
-                "projectId": {
-                    "description": "Required. The Google Cloud Platform project ID that the cluster belongs to.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ListOperationsResponse": {
-            "description": "The response message for Operations.ListOperations.",
-            "id": "ListOperationsResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "The standard List next-page token.",
-                    "type": "string"
-                },
-                "operations": {
-                    "description": "A list of operations that matches the specified filter in the request.",
-                    "items": {
-                        "$ref": "Operation"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "SoftwareConfig": {
-            "description": "Specifies the selection and config of software inside the cluster.",
-            "id": "SoftwareConfig",
-            "properties": {
-                "properties": {
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Optional. The properties to set on daemon config files.Property keys are specified in prefix:property format, such as core:fs.defaultFS. The following are supported prefixes and their mappings:\ncapacity-scheduler: capacity-scheduler.xml\ncore: core-site.xml\ndistcp: distcp-default.xml\nhdfs: hdfs-site.xml\nhive: hive-site.xml\nmapred: mapred-site.xml\npig: pig.properties\nspark: spark-defaults.conf\nyarn: yarn-site.xmlFor more information, see Cluster properties.",
-                    "type": "object"
-                },
-                "imageVersion": {
-                    "description": "Optional. The version of software inside the cluster. It must match the regular expression [0-9]+\\.[0-9]+. If unspecified, it defaults to the latest version (see Cloud Dataproc Versioning).",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "JobPlacement": {
-            "description": "Cloud Dataproc job config.",
-            "id": "JobPlacement",
-            "properties": {
-                "clusterUuid": {
-                    "description": "Output-only. A cluster UUID generated by the Cloud Dataproc service when the job is submitted.",
-                    "type": "string"
-                },
-                "clusterName": {
-                    "description": "Required. The name of the cluster where the job will be submitted.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "PigJob": {
-            "description": "A Cloud Dataproc job for running Apache Pig (https://pig.apache.org/) queries on YARN.",
-            "id": "PigJob",
-            "properties": {
-                "continueOnFailure": {
-                    "description": "Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.",
-                    "type": "boolean"
-                },
-                "queryFileUri": {
-                    "description": "The HCFS URI of the script that contains the Pig queries.",
-                    "type": "string"
-                },
-                "queryList": {
-                    "$ref": "QueryList",
-                    "description": "A list of queries."
-                },
-                "jarFileUris": {
-                    "description": "Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "scriptVariables": {
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Optional. Mapping of query variable names to values (equivalent to the Pig command: name=[value]).",
-                    "type": "object"
-                },
-                "loggingConfig": {
-                    "$ref": "LoggingConfig",
-                    "description": "Optional. The runtime log config for job execution."
-                },
-                "properties": {
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.",
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
-        "ClusterStatus": {
-            "description": "The status of a cluster and its instances.",
-            "id": "ClusterStatus",
-            "properties": {
-                "substate": {
-                    "description": "Output-only. Additional state information that includes status reported by the agent.",
-                    "enum": [
-                        "UNSPECIFIED",
-                        "UNHEALTHY",
-                        "STALE_STATUS"
-                    ],
-                    "enumDescriptions": [
-                        "",
-                        "The cluster is known to be in an unhealthy state (for example, critical daemons are not running or HDFS capacity is exhausted).Applies to RUNNING state.",
-                        "The agent-reported status is out of date (may occur if Cloud Dataproc loses communication with Agent).Applies to RUNNING state."
-                    ],
-                    "type": "string"
-                },
-                "stateStartTime": {
-                    "description": "Output-only. Time when this state was entered.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "detail": {
-                    "description": "Output-only. Optional details of cluster's state.",
-                    "type": "string"
-                },
-                "state": {
-                    "description": "Output-only. The cluster's state.",
-                    "enum": [
-                        "UNKNOWN",
-                        "CREATING",
-                        "RUNNING",
-                        "ERROR",
-                        "DELETING",
-                        "UPDATING"
-                    ],
-                    "enumDescriptions": [
-                        "The cluster state is unknown.",
-                        "The cluster is being created and set up. It is not ready for use.",
-                        "The cluster is currently running and healthy. It is ready for use.",
-                        "The cluster encountered an error. It is not ready for use.",
-                        "The cluster is being deleted. It cannot be used.",
-                        "The cluster is being updated. It continues to accept and process jobs."
-                    ],
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "ListClustersResponse": {
             "description": "The list of all clusters in a project.",
             "id": "ListClustersResponse",
             "properties": {
-                "nextPageToken": {
-                    "description": "Output-only. This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent ListClustersRequest.",
-                    "type": "string"
-                },
                 "clusters": {
                     "description": "Output-only. The clusters in the project.",
                     "items": {
                         "$ref": "Cluster"
                     },
                     "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "Output-only. This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent ListClustersRequest.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1008,18 +818,6 @@
             "description": "A Cloud Dataproc job resource.",
             "id": "Job",
             "properties": {
-                "hadoopJob": {
-                    "$ref": "HadoopJob",
-                    "description": "Job is a Hadoop job."
-                },
-                "placement": {
-                    "$ref": "JobPlacement",
-                    "description": "Required. Job information, including how, when, and where to run the job."
-                },
-                "status": {
-                    "$ref": "JobStatus",
-                    "description": "Output-only. The job status. Additional application-specific status information may be contained in the <code>type_job</code> and <code>yarn_applications</code> fields."
-                },
                 "driverControlFilesUri": {
                     "description": "Output-only. If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri.",
                     "type": "string"
@@ -1054,13 +852,13 @@
                     },
                     "type": "array"
                 },
-                "sparkJob": {
-                    "$ref": "SparkJob",
-                    "description": "Job is a Spark job."
-                },
                 "sparkSqlJob": {
                     "$ref": "SparkSqlJob",
                     "description": "Job is a SparkSql job."
+                },
+                "sparkJob": {
+                    "$ref": "SparkJob",
+                    "description": "Job is a Spark job."
                 },
                 "yarnApplications": {
                     "description": "Output-only. The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It may be changed before final release.",
@@ -1076,6 +874,18 @@
                 "reference": {
                     "$ref": "JobReference",
                     "description": "Optional. The fully qualified reference to the job, which can be used to obtain the equivalent REST path of the job resource. If this property is not specified when a job is created, the server generates a <code>job_id</code>."
+                },
+                "hadoopJob": {
+                    "$ref": "HadoopJob",
+                    "description": "Job is a Hadoop job."
+                },
+                "status": {
+                    "$ref": "JobStatus",
+                    "description": "Output-only. The job status. Additional application-specific status information may be contained in the <code>type_job</code> and <code>yarn_applications</code> fields."
+                },
+                "placement": {
+                    "$ref": "JobPlacement",
+                    "description": "Required. Job information, including how, when, and where to run the job."
                 }
             },
             "type": "object"
@@ -1084,8 +894,25 @@
             "description": "Cloud Dataproc job status.",
             "id": "JobStatus",
             "properties": {
-                "details": {
-                    "description": "Output-only. Optional job state details, such as an error description if the state is <code>ERROR</code>.",
+                "stateStartTime": {
+                    "description": "Output-only. The time when this state was entered.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "substate": {
+                    "description": "Output-only. Additional state information, which includes status reported by the agent.",
+                    "enum": [
+                        "UNSPECIFIED",
+                        "SUBMITTED",
+                        "QUEUED",
+                        "STALE_STATUS"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "The Job is submitted to the agent.Applies to RUNNING state.",
+                        "The Job has been received and is awaiting execution (it may be waiting for a condition to be met). See the \"details\" field for the reason for the delay.Applies to RUNNING state.",
+                        "The agent-reported status is out of date, which may be caused by a loss of communication between the agent and Cloud Dataproc. If the agent does not send a timely update, the job will fail.Applies to RUNNING state."
+                    ],
                     "type": "string"
                 },
                 "state": {
@@ -1116,25 +943,8 @@
                     ],
                     "type": "string"
                 },
-                "substate": {
-                    "description": "Output-only. Additional state information, which includes status reported by the agent.",
-                    "enum": [
-                        "UNSPECIFIED",
-                        "SUBMITTED",
-                        "QUEUED",
-                        "STALE_STATUS"
-                    ],
-                    "enumDescriptions": [
-                        "",
-                        "The Job is submitted to the agent.Applies to RUNNING state.",
-                        "The Job has been received and is awaiting execution (it may be waiting for a condition to be met). See the \"details\" field for the reason for the delay.Applies to RUNNING state.",
-                        "The agent-reported status is out of date, which may be caused by a loss of communication between the agent and Cloud Dataproc. If the agent does not send a timely update, the job will fail.Applies to RUNNING state."
-                    ],
-                    "type": "string"
-                },
-                "stateStartTime": {
-                    "description": "Output-only. The time when this state was entered.",
-                    "format": "google-datetime",
+                "details": {
+                    "description": "Output-only. Optional job state details, such as an error description if the state is <code>ERROR</code>.",
                     "type": "string"
                 }
             },
@@ -1159,10 +969,6 @@
             "description": "The status of the operation.",
             "id": "ClusterOperationStatus",
             "properties": {
-                "details": {
-                    "description": "Output-only.A message containing any operation metadata details.",
-                    "type": "string"
-                },
                 "state": {
                     "description": "Output-only. A message containing the operation state.",
                     "enum": [
@@ -1179,6 +985,10 @@
                     ],
                     "type": "string"
                 },
+                "details": {
+                    "description": "Output-only.A message containing any operation metadata details.",
+                    "type": "string"
+                },
                 "innerState": {
                     "description": "Output-only. A message containing the detailed operation state.",
                     "type": "string"
@@ -1187,6 +997,74 @@
                     "description": "Output-only. The time this state was entered.",
                     "format": "google-datetime",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "HadoopJob": {
+            "description": "A Cloud Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).",
+            "id": "HadoopJob",
+            "properties": {
+                "loggingConfig": {
+                    "$ref": "LoggingConfig",
+                    "description": "Optional. The runtime log config for job execution."
+                },
+                "properties": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.",
+                    "type": "object"
+                },
+                "args": {
+                    "description": "Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "fileUris": {
+                    "description": "Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "mainClass": {
+                    "description": "The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in jar_file_uris.",
+                    "type": "string"
+                },
+                "archiveUris": {
+                    "description": "Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "mainJarFileUri": {
+                    "description": "The HCFS URI of the jar file containing the main class. Examples:  'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar'  'hdfs:/tmp/test-samples/custom-wordcount.jar'  'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'",
+                    "type": "string"
+                },
+                "jarFileUris": {
+                    "description": "Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "QueryList": {
+            "description": "A list of queries to run on a cluster.",
+            "id": "QueryList",
+            "properties": {
+                "queries": {
+                    "description": "Required. The queries to execute. You do not need to terminate a query with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of an Cloud Dataproc API snippet that uses a QueryList to specify a HiveJob:\n\"hiveJob\": {\n  \"queryList\": {\n    \"queries\": [\n      \"query1\",\n      \"query2\",\n      \"query3;query4\",\n    ]\n  }\n}\n",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -1233,74 +1111,6 @@
                     "description": "Required. The numerical progress of the application, from 1 to 100.",
                     "format": "float",
                     "type": "number"
-                }
-            },
-            "type": "object"
-        },
-        "QueryList": {
-            "description": "A list of queries to run on a cluster.",
-            "id": "QueryList",
-            "properties": {
-                "queries": {
-                    "description": "Required. The queries to execute. You do not need to terminate a query with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of an Cloud Dataproc API snippet that uses a QueryList to specify a HiveJob:\n\"hiveJob\": {\n  \"queryList\": {\n    \"queries\": [\n      \"query1\",\n      \"query2\",\n      \"query3;query4\",\n    ]\n  }\n}\n",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "HadoopJob": {
-            "description": "A Cloud Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).",
-            "id": "HadoopJob",
-            "properties": {
-                "mainClass": {
-                    "description": "The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in jar_file_uris.",
-                    "type": "string"
-                },
-                "archiveUris": {
-                    "description": "Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "mainJarFileUri": {
-                    "description": "The HCFS URI of the jar file containing the main class. Examples:  'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar'  'hdfs:/tmp/test-samples/custom-wordcount.jar'  'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'",
-                    "type": "string"
-                },
-                "jarFileUris": {
-                    "description": "Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "loggingConfig": {
-                    "$ref": "LoggingConfig",
-                    "description": "Optional. The runtime log config for job execution."
-                },
-                "properties": {
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.",
-                    "type": "object"
-                },
-                "args": {
-                    "description": "Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "fileUris": {
-                    "description": "Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
                 }
             },
             "type": "object"
@@ -1365,15 +1175,21 @@
                     },
                     "type": "array"
                 },
-                "clusterName": {
-                    "description": "Output-only. Name of the cluster for the operation.",
-                    "type": "string"
-                },
                 "clusterUuid": {
                     "description": "Output-only. Cluster UUID for the operation.",
                     "type": "string"
+                },
+                "clusterName": {
+                    "description": "Output-only. Name of the cluster for the operation.",
+                    "type": "string"
                 }
             },
+            "type": "object"
+        },
+        "Empty": {
+            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance:\nservice Foo {\n  rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n}\nThe JSON representation for Empty is empty JSON object {}.",
+            "id": "Empty",
+            "properties": {},
             "type": "object"
         },
         "HiveJob": {
@@ -1384,13 +1200,13 @@
                     "description": "Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.",
                     "type": "boolean"
                 },
-                "queryFileUri": {
-                    "description": "The HCFS URI of the script that contains Hive queries.",
-                    "type": "string"
-                },
                 "queryList": {
                     "$ref": "QueryList",
                     "description": "A list of queries."
+                },
+                "queryFileUri": {
+                    "description": "The HCFS URI of the script that contains Hive queries.",
+                    "type": "string"
                 },
                 "jarFileUris": {
                     "description": "Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.",
@@ -1414,12 +1230,6 @@
                     "type": "object"
                 }
             },
-            "type": "object"
-        },
-        "Empty": {
-            "description": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance:\nservice Foo {\n  rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n}\nThe JSON representation for Empty is empty JSON object {}.",
-            "id": "Empty",
-            "properties": {},
             "type": "object"
         },
         "DiagnoseClusterResults": {
@@ -1475,24 +1285,6 @@
             "description": "A Cloud Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/python-programming-guide.html) applications on YARN.",
             "id": "PySparkJob",
             "properties": {
-                "jarFileUris": {
-                    "description": "Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "loggingConfig": {
-                    "$ref": "LoggingConfig",
-                    "description": "Optional. The runtime log config for job execution."
-                },
-                "properties": {
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.",
-                    "type": "object"
-                },
                 "args": {
                     "description": "Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission.",
                     "items": {
@@ -1524,6 +1316,24 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "jarFileUris": {
+                    "description": "Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "loggingConfig": {
+                    "$ref": "LoggingConfig",
+                    "description": "Optional. The runtime log config for job execution."
+                },
+                "properties": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.",
+                    "type": "object"
                 }
             },
             "type": "object"
@@ -1576,29 +1386,6 @@
             },
             "type": "object"
         },
-        "ClusterMetrics": {
-            "description": "Contains cluster daemon metrics, such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release.",
-            "id": "ClusterMetrics",
-            "properties": {
-                "yarnMetrics": {
-                    "additionalProperties": {
-                        "format": "int64",
-                        "type": "string"
-                    },
-                    "description": "The YARN metrics.",
-                    "type": "object"
-                },
-                "hdfsMetrics": {
-                    "additionalProperties": {
-                        "format": "int64",
-                        "type": "string"
-                    },
-                    "description": "The HDFS metrics.",
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
         "AcceleratorConfig": {
             "description": "Specifies the type and number of accelerator cards attached to the instances of an instance group (see GPUs on Compute Engine).",
             "id": "AcceleratorConfig",
@@ -1611,6 +1398,29 @@
                 "acceleratorTypeUri": {
                     "description": "Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See Google Compute Engine AcceleratorTypes( /compute/docs/reference/beta/acceleratorTypes)Examples * https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80 * projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80 * nvidia-tesla-k80",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ClusterMetrics": {
+            "description": "Contains cluster daemon metrics, such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release.",
+            "id": "ClusterMetrics",
+            "properties": {
+                "hdfsMetrics": {
+                    "additionalProperties": {
+                        "format": "int64",
+                        "type": "string"
+                    },
+                    "description": "The HDFS metrics.",
+                    "type": "object"
+                },
+                "yarnMetrics": {
+                    "additionalProperties": {
+                        "format": "int64",
+                        "type": "string"
+                    },
+                    "description": "The YARN metrics.",
+                    "type": "object"
                 }
             },
             "type": "object"
@@ -1679,12 +1489,12 @@
             "description": "Encapsulates the full scoping used to reference a job.",
             "id": "JobReference",
             "properties": {
-                "jobId": {
-                    "description": "Optional. The job ID, which must be unique within the project. The job ID is generated by the server upon job submission or provided by the user as a means to perform retries without creating duplicate jobs. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum length is 100 characters.",
-                    "type": "string"
-                },
                 "projectId": {
                     "description": "Required. The ID of the Google Cloud Platform project that the job belongs to.",
+                    "type": "string"
+                },
+                "jobId": {
+                    "description": "Optional. The job ID, which must be unique within the project. The job ID is generated by the server upon job submission or provided by the user as a means to perform retries without creating duplicate jobs. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum length is 100 characters.",
                     "type": "string"
                 }
             },
@@ -1705,6 +1515,11 @@
             "description": "The Status type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). The error model is designed to be:\nSimple to use and understand for most users\nFlexible enough to meet unexpected needsOverviewThe Status message contains three pieces of data: error code, error message, and error details. The error code should be an enum value of google.rpc.Code, but it may accept additional error codes if needed. The error message should be a developer-facing English message that helps developers understand and resolve the error. If a localized user-facing error message is needed, put the localized message in the error details or localize it in the client. The optional error details may contain arbitrary information about the error. There is a predefined set of error detail types in the package google.rpc that can be used for common error conditions.Language mappingThe Status message is the logical representation of the error model, but it is not necessarily the actual wire format. When the Status message is exposed in different client libraries and different wire protocols, it can be mapped differently. For example, it will likely be mapped to some exceptions in Java, but more likely mapped to some error codes in C.Other usesThe error model and the Status message can be used in a variety of environments, either with or without APIs, to provide a consistent developer experience across different environments.Example uses of this error model include:\nPartial errors. If a service needs to return partial errors to the client, it may embed the Status in the normal response to indicate the partial errors.\nWorkflow errors. A typical workflow has multiple steps. Each step may have a Status message for error reporting.\nBatch operations. If a client uses batch request and batch response, the Status message should be used directly inside batch response, one for each error sub-response.\nAsynchronous operations. If an API call embeds asynchronous operation results in its response, the status of those operations should be represented directly using the Status message.\nLogging. If some API errors are stored in logs, the message Status could be used directly after any stripping needed for security/privacy reasons.",
             "id": "Status",
             "properties": {
+                "code": {
+                    "description": "The status code, which should be an enum value of google.rpc.Code.",
+                    "format": "int32",
+                    "type": "integer"
+                },
                 "message": {
                     "description": "A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.",
                     "type": "string"
@@ -1719,23 +1534,6 @@
                         "type": "object"
                     },
                     "type": "array"
-                },
-                "code": {
-                    "description": "The status code, which should be an enum value of google.rpc.Code.",
-                    "format": "int32",
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "JobScheduling": {
-            "description": "Job scheduling options.Beta Feature: These options are available for testing purposes only. They may be changed before final release.",
-            "id": "JobScheduling",
-            "properties": {
-                "maxFailuresPerHour": {
-                    "description": "Optional. Maximum number of times per hour a driver may be restarted as a result of driver terminating with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.",
-                    "format": "int32",
-                    "type": "integer"
                 }
             },
             "type": "object"
@@ -1744,13 +1542,6 @@
             "description": "Optional. The config settings for Google Compute Engine resources in an instance group, such as a master or worker group.",
             "id": "InstanceGroupConfig",
             "properties": {
-                "instanceNames": {
-                    "description": "Optional. The list of instance names. Cloud Dataproc derives the names from cluster_name, num_instances, and the instance group if not set by user (recommended practice is to let Cloud Dataproc derive the name).",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "accelerators": {
                     "description": "Optional. The Google Compute Engine accelerator configuration for these instances.Beta Feature: This feature is still under development. It may be changed before final release.",
                     "items": {
@@ -1767,6 +1558,14 @@
                     "$ref": "DiskConfig",
                     "description": "Optional. Disk option config settings."
                 },
+                "managedGroupConfig": {
+                    "$ref": "ManagedGroupConfig",
+                    "description": "Output-only. The config for Google Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups."
+                },
+                "isPreemptible": {
+                    "description": "Optional. Specifies that this instance group contains preemptible instances.",
+                    "type": "boolean"
+                },
                 "imageUri": {
                     "description": "Output-only. The Google Compute Engine image resource used for cluster instances. Inferred from SoftwareConfig.image_version.",
                     "type": "string"
@@ -1775,31 +1574,24 @@
                     "description": "Optional. The Google Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples:\nhttps://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2\nprojects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2\nn1-standard-2",
                     "type": "string"
                 },
-                "managedGroupConfig": {
-                    "$ref": "ManagedGroupConfig",
-                    "description": "Output-only. The config for Google Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups."
-                },
-                "isPreemptible": {
-                    "description": "Optional. Specifies that this instance group contains preemptible instances.",
-                    "type": "boolean"
+                "instanceNames": {
+                    "description": "Optional. The list of instance names. Cloud Dataproc derives the names from cluster_name, num_instances, and the instance group if not set by user (recommended practice is to let Cloud Dataproc derive the name).",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
         },
-        "ListJobsResponse": {
-            "description": "A list of jobs in a project.",
-            "id": "ListJobsResponse",
+        "JobScheduling": {
+            "description": "Job scheduling options.Beta Feature: These options are available for testing purposes only. They may be changed before final release.",
+            "id": "JobScheduling",
             "properties": {
-                "nextPageToken": {
-                    "description": "Optional. This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent <code>ListJobsRequest</code>.",
-                    "type": "string"
-                },
-                "jobs": {
-                    "description": "Output-only. Jobs list.",
-                    "items": {
-                        "$ref": "Job"
-                    },
-                    "type": "array"
+                "maxFailuresPerHour": {
+                    "description": "Optional. Maximum number of times per hour a driver may be restarted as a result of driver terminating with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -1820,6 +1612,24 @@
             },
             "type": "object"
         },
+        "ListJobsResponse": {
+            "description": "A list of jobs in a project.",
+            "id": "ListJobsResponse",
+            "properties": {
+                "jobs": {
+                    "description": "Output-only. Jobs list.",
+                    "items": {
+                        "$ref": "Job"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "Optional. This token is included in the response if there are more results to fetch. To fetch additional results, provide this value as the page_token in a subsequent <code>ListJobsRequest</code>.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "CancelJobRequest": {
             "description": "A request to cancel a job.",
             "id": "CancelJobRequest",
@@ -1830,12 +1640,13 @@
             "description": "A Cloud Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/) queries.",
             "id": "SparkSqlJob",
             "properties": {
-                "scriptVariables": {
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name=\"value\";).",
-                    "type": "object"
+                "queryFileUri": {
+                    "description": "The HCFS URI of the script that contains SQL queries.",
+                    "type": "string"
+                },
+                "queryList": {
+                    "$ref": "QueryList",
+                    "description": "A list of queries."
                 },
                 "jarFileUris": {
                     "description": "Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.",
@@ -1843,6 +1654,13 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "scriptVariables": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name=\"value\";).",
+                    "type": "object"
                 },
                 "loggingConfig": {
                     "$ref": "LoggingConfig",
@@ -1854,13 +1672,195 @@
                     },
                     "description": "Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten.",
                     "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "Cluster": {
+            "description": "Describes the identifying information, config, and status of a cluster of Google Compute Engine instances.",
+            "id": "Cluster",
+            "properties": {
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.",
+                    "type": "object"
+                },
+                "metrics": {
+                    "$ref": "ClusterMetrics",
+                    "description": "Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release."
+                },
+                "status": {
+                    "$ref": "ClusterStatus",
+                    "description": "Output-only. Cluster status."
+                },
+                "statusHistory": {
+                    "description": "Output-only. The previous cluster status.",
+                    "items": {
+                        "$ref": "ClusterStatus"
+                    },
+                    "type": "array"
+                },
+                "config": {
+                    "$ref": "ClusterConfig",
+                    "description": "Required. The cluster config. Note that Cloud Dataproc may set default values, and values may change when clusters are updated."
+                },
+                "clusterName": {
+                    "description": "Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.",
+                    "type": "string"
+                },
+                "clusterUuid": {
+                    "description": "Output-only. A cluster UUID (Unique Universal Identifier). Cloud Dataproc generates this value when it creates the cluster.",
+                    "type": "string"
+                },
+                "projectId": {
+                    "description": "Required. The Google Cloud Platform project ID that the cluster belongs to.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ListOperationsResponse": {
+            "description": "The response message for Operations.ListOperations.",
+            "id": "ListOperationsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "The standard List next-page token.",
+                    "type": "string"
+                },
+                "operations": {
+                    "description": "A list of operations that matches the specified filter in the request.",
+                    "items": {
+                        "$ref": "Operation"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SoftwareConfig": {
+            "description": "Specifies the selection and config of software inside the cluster.",
+            "id": "SoftwareConfig",
+            "properties": {
+                "imageVersion": {
+                    "description": "Optional. The version of software inside the cluster. It must match the regular expression [0-9]+\\.[0-9]+. If unspecified, it defaults to the latest version (see Cloud Dataproc Versioning).",
+                    "type": "string"
+                },
+                "properties": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. The properties to set on daemon config files.Property keys are specified in prefix:property format, such as core:fs.defaultFS. The following are supported prefixes and their mappings:\ncapacity-scheduler: capacity-scheduler.xml\ncore: core-site.xml\ndistcp: distcp-default.xml\nhdfs: hdfs-site.xml\nhive: hive-site.xml\nmapred: mapred-site.xml\npig: pig.properties\nspark: spark-defaults.conf\nyarn: yarn-site.xmlFor more information, see Cluster properties.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "JobPlacement": {
+            "description": "Cloud Dataproc job config.",
+            "id": "JobPlacement",
+            "properties": {
+                "clusterName": {
+                    "description": "Required. The name of the cluster where the job will be submitted.",
+                    "type": "string"
+                },
+                "clusterUuid": {
+                    "description": "Output-only. A cluster UUID generated by the Cloud Dataproc service when the job is submitted.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PigJob": {
+            "description": "A Cloud Dataproc job for running Apache Pig (https://pig.apache.org/) queries on YARN.",
+            "id": "PigJob",
+            "properties": {
+                "continueOnFailure": {
+                    "description": "Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.",
+                    "type": "boolean"
+                },
+                "queryFileUri": {
+                    "description": "The HCFS URI of the script that contains the Pig queries.",
+                    "type": "string"
                 },
                 "queryList": {
                     "$ref": "QueryList",
                     "description": "A list of queries."
                 },
-                "queryFileUri": {
-                    "description": "The HCFS URI of the script that contains SQL queries.",
+                "jarFileUris": {
+                    "description": "Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "scriptVariables": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. Mapping of query variable names to values (equivalent to the Pig command: name=[value]).",
+                    "type": "object"
+                },
+                "loggingConfig": {
+                    "$ref": "LoggingConfig",
+                    "description": "Optional. The runtime log config for job execution."
+                },
+                "properties": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ClusterStatus": {
+            "description": "The status of a cluster and its instances.",
+            "id": "ClusterStatus",
+            "properties": {
+                "detail": {
+                    "description": "Output-only. Optional details of cluster's state.",
+                    "type": "string"
+                },
+                "state": {
+                    "description": "Output-only. The cluster's state.",
+                    "enum": [
+                        "UNKNOWN",
+                        "CREATING",
+                        "RUNNING",
+                        "ERROR",
+                        "DELETING",
+                        "UPDATING"
+                    ],
+                    "enumDescriptions": [
+                        "The cluster state is unknown.",
+                        "The cluster is being created and set up. It is not ready for use.",
+                        "The cluster is currently running and healthy. It is ready for use.",
+                        "The cluster encountered an error. It is not ready for use.",
+                        "The cluster is being deleted. It cannot be used.",
+                        "The cluster is being updated. It continues to accept and process jobs."
+                    ],
+                    "type": "string"
+                },
+                "stateStartTime": {
+                    "description": "Output-only. Time when this state was entered.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "substate": {
+                    "description": "Output-only. Additional state information that includes status reported by the agent.",
+                    "enum": [
+                        "UNSPECIFIED",
+                        "UNHEALTHY",
+                        "STALE_STATUS"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "The cluster is known to be in an unhealthy state (for example, critical daemons are not running or HDFS capacity is exhausted).Applies to RUNNING state.",
+                        "The agent-reported status is out of date (may occur if Cloud Dataproc loses communication with Agent).Applies to RUNNING state."
+                    ],
                     "type": "string"
                 }
             },

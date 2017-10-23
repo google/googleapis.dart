@@ -65,6 +65,9 @@ class OrganizationsRolesResourceApi {
   /// `projects/{PROJECT_ID}`
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Role].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -72,7 +75,8 @@ class OrganizationsRolesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Role> create(CreateRoleRequest request, core.String parent) {
+  async.Future<Role> create(CreateRoleRequest request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -85,6 +89,9 @@ class OrganizationsRolesResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
@@ -118,6 +125,9 @@ class OrganizationsRolesResourceApi {
   ///
   /// [etag] - Used to perform a consistent read-modify-write.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Role].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -125,7 +135,8 @@ class OrganizationsRolesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Role> delete(core.String name, {core.String etag}) {
+  async.Future<Role> delete(core.String name,
+      {core.String etag, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -138,6 +149,9 @@ class OrganizationsRolesResourceApi {
     }
     if (etag != null) {
       _queryParams["etag"] = [etag];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -161,6 +175,9 @@ class OrganizationsRolesResourceApi {
   /// `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
   /// Value must have pattern "^organizations/[^/]+/roles/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Role].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -168,7 +185,7 @@ class OrganizationsRolesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Role> get(core.String name) {
+  async.Future<Role> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -178,6 +195,9 @@ class OrganizationsRolesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -202,6 +222,11 @@ class OrganizationsRolesResourceApi {
   /// `projects/{PROJECT_ID}`
   /// Value must have pattern "^organizations/[^/]+$".
   ///
+  /// [showDeleted] - Include Roles that have been deleted.
+  ///
+  /// [pageToken] - Optional pagination token returned in an earlier
+  /// ListRolesResponse.
+  ///
   /// [pageSize] - Optional limit on the number of roles to include in the
   /// response.
   ///
@@ -210,10 +235,8 @@ class OrganizationsRolesResourceApi {
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
   ///
-  /// [showDeleted] - Include Roles that have been deleted.
-  ///
-  /// [pageToken] - Optional pagination token returned in an earlier
-  /// ListRolesResponse.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListRolesResponse].
   ///
@@ -223,10 +246,11 @@ class OrganizationsRolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRolesResponse> list(core.String parent,
-      {core.int pageSize,
+      {core.bool showDeleted,
+      core.String pageToken,
+      core.int pageSize,
       core.String view,
-      core.bool showDeleted,
-      core.String pageToken}) {
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -237,17 +261,20 @@ class OrganizationsRolesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (showDeleted != null) {
+      _queryParams["showDeleted"] = ["${showDeleted}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (view != null) {
       _queryParams["view"] = [view];
     }
-    if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
@@ -275,6 +302,9 @@ class OrganizationsRolesResourceApi {
   ///
   /// [updateMask] - A mask describing which fields in the Role have changed.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Role].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -283,7 +313,7 @@ class OrganizationsRolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Role> patch(Role request, core.String name,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -299,6 +329,9 @@ class OrganizationsRolesResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -323,6 +356,9 @@ class OrganizationsRolesResourceApi {
   /// `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
   /// Value must have pattern "^organizations/[^/]+/roles/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Role].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -330,7 +366,8 @@ class OrganizationsRolesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Role> undelete(UndeleteRoleRequest request, core.String name) {
+  async.Future<Role> undelete(UndeleteRoleRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -343,6 +380,9 @@ class OrganizationsRolesResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
@@ -370,6 +410,9 @@ class PermissionsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [QueryTestablePermissionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -378,7 +421,8 @@ class PermissionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<QueryTestablePermissionsResponse> queryTestablePermissions(
-      QueryTestablePermissionsRequest request) {
+      QueryTestablePermissionsRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -388,6 +432,9 @@ class PermissionsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/permissions:queryTestablePermissions';
@@ -431,6 +478,9 @@ class ProjectsRolesResourceApi {
   /// `projects/{PROJECT_ID}`
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Role].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -438,7 +488,8 @@ class ProjectsRolesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Role> create(CreateRoleRequest request, core.String parent) {
+  async.Future<Role> create(CreateRoleRequest request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -451,6 +502,9 @@ class ProjectsRolesResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
@@ -484,6 +538,9 @@ class ProjectsRolesResourceApi {
   ///
   /// [etag] - Used to perform a consistent read-modify-write.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Role].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -491,7 +548,8 @@ class ProjectsRolesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Role> delete(core.String name, {core.String etag}) {
+  async.Future<Role> delete(core.String name,
+      {core.String etag, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -504,6 +562,9 @@ class ProjectsRolesResourceApi {
     }
     if (etag != null) {
       _queryParams["etag"] = [etag];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -527,6 +588,9 @@ class ProjectsRolesResourceApi {
   /// `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
   /// Value must have pattern "^projects/[^/]+/roles/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Role].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -534,7 +598,7 @@ class ProjectsRolesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Role> get(core.String name) {
+  async.Future<Role> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -544,6 +608,9 @@ class ProjectsRolesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -581,6 +648,9 @@ class ProjectsRolesResourceApi {
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListRolesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -592,7 +662,8 @@ class ProjectsRolesResourceApi {
       {core.bool showDeleted,
       core.String pageToken,
       core.int pageSize,
-      core.String view}) {
+      core.String view,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -614,6 +685,9 @@ class ProjectsRolesResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
@@ -641,6 +715,9 @@ class ProjectsRolesResourceApi {
   ///
   /// [updateMask] - A mask describing which fields in the Role have changed.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Role].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -649,7 +726,7 @@ class ProjectsRolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Role> patch(Role request, core.String name,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -665,6 +742,9 @@ class ProjectsRolesResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -689,6 +769,9 @@ class ProjectsRolesResourceApi {
   /// `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
   /// Value must have pattern "^projects/[^/]+/roles/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Role].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -696,7 +779,8 @@ class ProjectsRolesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Role> undelete(UndeleteRoleRequest request, core.String name) {
+  async.Future<Role> undelete(UndeleteRoleRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -709,6 +793,9 @@ class ProjectsRolesResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
@@ -744,6 +831,9 @@ class ProjectsServiceAccountsResourceApi {
   /// accounts, such as `projects/my-project-123`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ServiceAccount].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -752,7 +842,8 @@ class ProjectsServiceAccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ServiceAccount> create(
-      CreateServiceAccountRequest request, core.String name) {
+      CreateServiceAccountRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -765,6 +856,9 @@ class ProjectsServiceAccountsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -791,6 +885,9 @@ class ProjectsServiceAccountsResourceApi {
   /// `unique_id` of the service account.
   /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -798,7 +895,7 @@ class ProjectsServiceAccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name) {
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -808,6 +905,9 @@ class ProjectsServiceAccountsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -832,6 +932,9 @@ class ProjectsServiceAccountsResourceApi {
   /// `unique_id` of the service account.
   /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ServiceAccount].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -839,7 +942,7 @@ class ProjectsServiceAccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ServiceAccount> get(core.String name) {
+  async.Future<ServiceAccount> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -849,6 +952,9 @@ class ProjectsServiceAccountsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -872,6 +978,9 @@ class ProjectsServiceAccountsResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Policy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -879,7 +988,8 @@ class ProjectsServiceAccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Policy> getIamPolicy(core.String resource) {
+  async.Future<Policy> getIamPolicy(core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -889,6 +999,9 @@ class ProjectsServiceAccountsResourceApi {
 
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -922,6 +1035,9 @@ class ProjectsServiceAccountsResourceApi {
   /// ListServiceAccountsResponse.next_page_token
   /// in a subsequent request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListServiceAccountsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -930,7 +1046,7 @@ class ProjectsServiceAccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListServiceAccountsResponse> list(core.String name,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -946,6 +1062,9 @@ class ProjectsServiceAccountsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -974,6 +1093,9 @@ class ProjectsServiceAccountsResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Policy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -982,7 +1104,8 @@ class ProjectsServiceAccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      SetIamPolicyRequest request, core.String resource) {
+      SetIamPolicyRequest request, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -995,6 +1118,9 @@ class ProjectsServiceAccountsResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1023,6 +1149,9 @@ class ProjectsServiceAccountsResourceApi {
   /// `unique_id` of the service account.
   /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SignBlobResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1031,7 +1160,8 @@ class ProjectsServiceAccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SignBlobResponse> signBlob(
-      SignBlobRequest request, core.String name) {
+      SignBlobRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1044,6 +1174,9 @@ class ProjectsServiceAccountsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':signBlob';
@@ -1074,6 +1207,9 @@ class ProjectsServiceAccountsResourceApi {
   /// `unique_id` of the service account.
   /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SignJwtResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1082,7 +1218,8 @@ class ProjectsServiceAccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SignJwtResponse> signJwt(
-      SignJwtRequest request, core.String name) {
+      SignJwtRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1095,6 +1232,9 @@ class ProjectsServiceAccountsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':signJwt';
@@ -1120,6 +1260,9 @@ class ProjectsServiceAccountsResourceApi {
   /// See the operation documentation for the appropriate value for this field.
   /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TestIamPermissionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1128,7 +1271,8 @@ class ProjectsServiceAccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestIamPermissionsResponse> testIamPermissions(
-      TestIamPermissionsRequest request, core.String resource) {
+      TestIamPermissionsRequest request, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1141,6 +1285,9 @@ class ProjectsServiceAccountsResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -1178,6 +1325,9 @@ class ProjectsServiceAccountsResourceApi {
   /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
   /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ServiceAccount].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1185,8 +1335,8 @@ class ProjectsServiceAccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ServiceAccount> update(
-      ServiceAccount request, core.String name) {
+  async.Future<ServiceAccount> update(ServiceAccount request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1199,6 +1349,9 @@ class ProjectsServiceAccountsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1233,6 +1386,9 @@ class ProjectsServiceAccountsKeysResourceApi {
   /// `unique_id` of the service account.
   /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ServiceAccountKey].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1241,7 +1397,8 @@ class ProjectsServiceAccountsKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ServiceAccountKey> create(
-      CreateServiceAccountKeyRequest request, core.String name) {
+      CreateServiceAccountKeyRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1254,6 +1411,9 @@ class ProjectsServiceAccountsKeysResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/keys';
@@ -1280,6 +1440,9 @@ class ProjectsServiceAccountsKeysResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/serviceAccounts/[^/]+/keys/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1287,7 +1450,7 @@ class ProjectsServiceAccountsKeysResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name) {
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1297,6 +1460,9 @@ class ProjectsServiceAccountsKeysResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1332,6 +1498,9 @@ class ProjectsServiceAccountsKeysResourceApi {
   /// - "TYPE_X509_PEM_FILE" : A TYPE_X509_PEM_FILE.
   /// - "TYPE_RAW_PUBLIC_KEY" : A TYPE_RAW_PUBLIC_KEY.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ServiceAccountKey].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1340,7 +1509,7 @@ class ProjectsServiceAccountsKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ServiceAccountKey> get(core.String name,
-      {core.String publicKeyType}) {
+      {core.String publicKeyType, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1353,6 +1522,9 @@ class ProjectsServiceAccountsKeysResourceApi {
     }
     if (publicKeyType != null) {
       _queryParams["publicKeyType"] = [publicKeyType];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1383,6 +1555,9 @@ class ProjectsServiceAccountsKeysResourceApi {
   /// response. Duplicate key types are not allowed. If no key type
   /// is provided, all keys are returned.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListServiceAccountKeysResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1391,7 +1566,7 @@ class ProjectsServiceAccountsKeysResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListServiceAccountKeysResponse> list(core.String name,
-      {core.List<core.String> keyTypes}) {
+      {core.List<core.String> keyTypes, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1404,6 +1579,9 @@ class ProjectsServiceAccountsKeysResourceApi {
     }
     if (keyTypes != null) {
       _queryParams["keyTypes"] = keyTypes;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/keys';
@@ -1434,6 +1612,9 @@ class RolesResourceApi {
   /// `projects/{PROJECT_ID}/roles/{ROLE_NAME}`
   /// Value must have pattern "^roles/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Role].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1441,7 +1622,7 @@ class RolesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Role> get(core.String name) {
+  async.Future<Role> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1451,6 +1632,9 @@ class RolesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -1468,12 +1652,6 @@ class RolesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - Optional pagination token returned in an earlier
-  /// ListRolesResponse.
-  ///
-  /// [pageSize] - Optional limit on the number of roles to include in the
-  /// response.
-  ///
   /// [view] - Optional view for the returned Role objects.
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
@@ -1487,6 +1665,15 @@ class RolesResourceApi {
   ///
   /// [showDeleted] - Include Roles that have been deleted.
   ///
+  /// [pageToken] - Optional pagination token returned in an earlier
+  /// ListRolesResponse.
+  ///
+  /// [pageSize] - Optional limit on the number of roles to include in the
+  /// response.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListRolesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1495,11 +1682,12 @@ class RolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRolesResponse> list(
-      {core.String pageToken,
-      core.int pageSize,
-      core.String view,
+      {core.String view,
       core.String parent,
-      core.bool showDeleted}) {
+      core.bool showDeleted,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1507,12 +1695,6 @@ class RolesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (view != null) {
       _queryParams["view"] = [view];
     }
@@ -1521,6 +1703,15 @@ class RolesResourceApi {
     }
     if (showDeleted != null) {
       _queryParams["showDeleted"] = ["${showDeleted}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/roles';
@@ -1543,6 +1734,9 @@ class RolesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [QueryGrantableRolesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1551,7 +1745,8 @@ class RolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<QueryGrantableRolesResponse> queryGrantableRoles(
-      QueryGrantableRolesRequest request) {
+      QueryGrantableRolesRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1561,6 +1756,9 @@ class RolesResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/roles:queryGrantableRoles';

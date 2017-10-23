@@ -71,6 +71,9 @@ class ChangesResourceApi {
   /// identifier specified by the client. Must be unique for operation resources
   /// in the Operations collection.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Change].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -80,7 +83,7 @@ class ChangesResourceApi {
   /// this method will complete with the same error.
   async.Future<Change> create(
       Change request, core.String project, core.String managedZone,
-      {core.String clientOperationId}) {
+      {core.String clientOperationId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -99,6 +102,9 @@ class ChangesResourceApi {
     }
     if (clientOperationId != null) {
       _queryParams["clientOperationId"] = [clientOperationId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -131,6 +137,9 @@ class ChangesResourceApi {
   /// identifier specified by the client. Must be unique for operation resources
   /// in the Operations collection.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Change].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -140,7 +149,7 @@ class ChangesResourceApi {
   /// this method will complete with the same error.
   async.Future<Change> get(
       core.String project, core.String managedZone, core.String changeId,
-      {core.String clientOperationId}) {
+      {core.String clientOperationId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -159,6 +168,9 @@ class ChangesResourceApi {
     }
     if (clientOperationId != null) {
       _queryParams["clientOperationId"] = [clientOperationId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -197,6 +209,9 @@ class ChangesResourceApi {
   ///
   /// [sortOrder] - Sorting order direction: 'ascending' or 'descending'.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ChangesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -209,7 +224,8 @@ class ChangesResourceApi {
       {core.int maxResults,
       core.String pageToken,
       core.String sortBy,
-      core.String sortOrder}) {
+      core.String sortOrder,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -234,6 +250,9 @@ class ChangesResourceApi {
     }
     if (sortOrder != null) {
       _queryParams["sortOrder"] = [sortOrder];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -275,6 +294,9 @@ class DnsKeysResourceApi {
   /// and display for key signing keys. If omitted, the recommended digest type
   /// will be computed and displayed.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DnsKey].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -284,7 +306,9 @@ class DnsKeysResourceApi {
   /// this method will complete with the same error.
   async.Future<DnsKey> get(
       core.String project, core.String managedZone, core.String dnsKeyId,
-      {core.String clientOperationId, core.String digestType}) {
+      {core.String clientOperationId,
+      core.String digestType,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -306,6 +330,9 @@ class DnsKeysResourceApi {
     }
     if (digestType != null) {
       _queryParams["digestType"] = [digestType];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -342,6 +369,9 @@ class DnsKeysResourceApi {
   /// [pageToken] - Optional. A tag returned by a previous list request that was
   /// truncated. Use this parameter to continue a previous list request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DnsKeysListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -351,7 +381,10 @@ class DnsKeysResourceApi {
   /// this method will complete with the same error.
   async.Future<DnsKeysListResponse> list(
       core.String project, core.String managedZone,
-      {core.String digestType, core.int maxResults, core.String pageToken}) {
+      {core.String digestType,
+      core.int maxResults,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -373,6 +406,9 @@ class DnsKeysResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -410,6 +446,9 @@ class ManagedZoneOperationsResourceApi {
   /// identifier specified by the client. Must be unique for operation resources
   /// in the Operations collection.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -419,7 +458,7 @@ class ManagedZoneOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> get(
       core.String project, core.String managedZone, core.String operation,
-      {core.String clientOperationId}) {
+      {core.String clientOperationId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -438,6 +477,9 @@ class ManagedZoneOperationsResourceApi {
     }
     if (clientOperationId != null) {
       _queryParams["clientOperationId"] = [clientOperationId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -475,6 +517,9 @@ class ManagedZoneOperationsResourceApi {
   /// - "ID"
   /// - "START_TIME"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ManagedZoneOperationsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -484,7 +529,10 @@ class ManagedZoneOperationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ManagedZoneOperationsListResponse> list(
       core.String project, core.String managedZone,
-      {core.int maxResults, core.String pageToken, core.String sortBy}) {
+      {core.int maxResults,
+      core.String pageToken,
+      core.String sortBy,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -506,6 +554,9 @@ class ManagedZoneOperationsResourceApi {
     }
     if (sortBy != null) {
       _queryParams["sortBy"] = [sortBy];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -541,6 +592,9 @@ class ManagedZonesResourceApi {
   /// identifier specified by the client. Must be unique for operation resources
   /// in the Operations collection.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ManagedZone].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -549,7 +603,7 @@ class ManagedZonesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ManagedZone> create(ManagedZone request, core.String project,
-      {core.String clientOperationId}) {
+      {core.String clientOperationId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -565,6 +619,9 @@ class ManagedZonesResourceApi {
     }
     if (clientOperationId != null) {
       _queryParams["clientOperationId"] = [clientOperationId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/managedZones';
@@ -591,6 +648,9 @@ class ManagedZonesResourceApi {
   /// identifier specified by the client. Must be unique for operation resources
   /// in the Operations collection.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ManagedZonesDeleteResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -600,7 +660,7 @@ class ManagedZonesResourceApi {
   /// this method will complete with the same error.
   async.Future<ManagedZonesDeleteResponse> delete(
       core.String project, core.String managedZone,
-      {core.String clientOperationId}) {
+      {core.String clientOperationId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -616,6 +676,9 @@ class ManagedZonesResourceApi {
     }
     if (clientOperationId != null) {
       _queryParams["clientOperationId"] = [clientOperationId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -645,6 +708,9 @@ class ManagedZonesResourceApi {
   /// identifier specified by the client. Must be unique for operation resources
   /// in the Operations collection.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ManagedZone].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -653,7 +719,7 @@ class ManagedZonesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ManagedZone> get(core.String project, core.String managedZone,
-      {core.String clientOperationId}) {
+      {core.String clientOperationId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -669,6 +735,9 @@ class ManagedZonesResourceApi {
     }
     if (clientOperationId != null) {
       _queryParams["clientOperationId"] = [clientOperationId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -698,6 +767,9 @@ class ManagedZonesResourceApi {
   /// [pageToken] - Optional. A tag returned by a previous list request that was
   /// truncated. Use this parameter to continue a previous list request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ManagedZonesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -706,7 +778,10 @@ class ManagedZonesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ManagedZonesListResponse> list(core.String project,
-      {core.String dnsName, core.int maxResults, core.String pageToken}) {
+      {core.String dnsName,
+      core.int maxResults,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -725,6 +800,9 @@ class ManagedZonesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/managedZones';
@@ -754,6 +832,9 @@ class ManagedZonesResourceApi {
   /// identifier specified by the client. Must be unique for operation resources
   /// in the Operations collection.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -763,7 +844,7 @@ class ManagedZonesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(
       ManagedZone request, core.String project, core.String managedZone,
-      {core.String clientOperationId}) {
+      {core.String clientOperationId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -782,6 +863,9 @@ class ManagedZonesResourceApi {
     }
     if (clientOperationId != null) {
       _queryParams["clientOperationId"] = [clientOperationId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -812,6 +896,9 @@ class ManagedZonesResourceApi {
   /// identifier specified by the client. Must be unique for operation resources
   /// in the Operations collection.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -821,7 +908,7 @@ class ManagedZonesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> update(
       ManagedZone request, core.String project, core.String managedZone,
-      {core.String clientOperationId}) {
+      {core.String clientOperationId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -840,6 +927,9 @@ class ManagedZonesResourceApi {
     }
     if (clientOperationId != null) {
       _queryParams["clientOperationId"] = [clientOperationId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -871,6 +961,9 @@ class ProjectsResourceApi {
   /// identifier specified by the client. Must be unique for operation resources
   /// in the Operations collection.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Project].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -879,7 +972,7 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Project> get(core.String project,
-      {core.String clientOperationId}) {
+      {core.String clientOperationId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -892,6 +985,9 @@ class ProjectsResourceApi {
     }
     if (clientOperationId != null) {
       _queryParams["clientOperationId"] = [clientOperationId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project');
@@ -933,6 +1029,9 @@ class ResourceRecordSetsResourceApi {
   /// [type] - Restricts the list to return only records of this type. If
   /// present, the "name" parameter must also be present.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ResourceRecordSetsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -945,7 +1044,8 @@ class ResourceRecordSetsResourceApi {
       {core.int maxResults,
       core.String name,
       core.String pageToken,
-      core.String type}) {
+      core.String type,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -970,6 +1070,9 @@ class ResourceRecordSetsResourceApi {
     }
     if (type != null) {
       _queryParams["type"] = [type];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +

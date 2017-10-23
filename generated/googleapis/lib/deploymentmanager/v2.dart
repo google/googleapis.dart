@@ -69,6 +69,9 @@ class DeploymentsResourceApi {
   /// [deployment] - The name of the deployment for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -77,7 +80,8 @@ class DeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> cancelPreview(DeploymentsCancelPreviewRequest request,
-      core.String project, core.String deployment) {
+      core.String project, core.String deployment,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -93,6 +97,9 @@ class DeploymentsResourceApi {
     }
     if (deployment == null) {
       throw new core.ArgumentError("Parameter deployment is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -125,6 +132,9 @@ class DeploymentsResourceApi {
   /// - "ABANDON"
   /// - "DELETE"
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -133,7 +143,7 @@ class DeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> delete(core.String project, core.String deployment,
-      {core.String deletePolicy}) {
+      {core.String deletePolicy, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -149,6 +159,9 @@ class DeploymentsResourceApi {
     }
     if (deletePolicy != null) {
       _queryParams["deletePolicy"] = [deletePolicy];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -175,6 +188,9 @@ class DeploymentsResourceApi {
   /// [deployment] - The name of the deployment for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Deployment].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -182,7 +198,8 @@ class DeploymentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Deployment> get(core.String project, core.String deployment) {
+  async.Future<Deployment> get(core.String project, core.String deployment,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -195,6 +212,9 @@ class DeploymentsResourceApi {
     }
     if (deployment == null) {
       throw new core.ArgumentError("Parameter deployment is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -222,6 +242,9 @@ class DeploymentsResourceApi {
   /// [resource] - Name of the resource for this request.
   /// Value must have pattern "[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Policy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -229,7 +252,8 @@ class DeploymentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Policy> getIamPolicy(core.String project, core.String resource) {
+  async.Future<Policy> getIamPolicy(core.String project, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -242,6 +266,9 @@ class DeploymentsResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -278,6 +305,9 @@ class DeploymentsResourceApi {
   /// cancel the preview and you must separately delete this deployment if you
   /// want to remove it.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -286,7 +316,7 @@ class DeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> insert(Deployment request, core.String project,
-      {core.bool preview}) {
+      {core.bool preview, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -302,6 +332,9 @@ class DeploymentsResourceApi {
     }
     if (preview != null) {
       _queryParams["preview"] = ["${preview}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/deployments';
@@ -369,6 +402,9 @@ class DeploymentsResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DeploymentsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -380,7 +416,8 @@ class DeploymentsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -402,6 +439,9 @@ class DeploymentsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/deployments';
@@ -450,6 +490,9 @@ class DeploymentsResourceApi {
   /// exist after you cancel the preview and you must separately delete this
   /// deployment if you want to remove it.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -459,7 +502,10 @@ class DeploymentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(
       Deployment request, core.String project, core.String deployment,
-      {core.String createPolicy, core.String deletePolicy, core.bool preview}) {
+      {core.String createPolicy,
+      core.String deletePolicy,
+      core.bool preview,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -484,6 +530,9 @@ class DeploymentsResourceApi {
     }
     if (preview != null) {
       _queryParams["preview"] = ["${preview}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -513,6 +562,9 @@ class DeploymentsResourceApi {
   /// [resource] - Name of the resource for this request.
   /// Value must have pattern "[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Policy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -521,7 +573,8 @@ class DeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> setIamPolicy(
-      Policy request, core.String project, core.String resource) {
+      Policy request, core.String project, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -537,6 +590,9 @@ class DeploymentsResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -567,6 +623,9 @@ class DeploymentsResourceApi {
   /// [deployment] - The name of the deployment for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -575,7 +634,8 @@ class DeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> stop(DeploymentsStopRequest request,
-      core.String project, core.String deployment) {
+      core.String project, core.String deployment,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -591,6 +651,9 @@ class DeploymentsResourceApi {
     }
     if (deployment == null) {
       throw new core.ArgumentError("Parameter deployment is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -620,6 +683,9 @@ class DeploymentsResourceApi {
   /// [resource] - Name of the resource for this request.
   /// Value must have pattern "(?:[-a-z0-9_]{0,62}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TestPermissionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -628,9 +694,8 @@ class DeploymentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TestPermissionsResponse> testIamPermissions(
-      TestPermissionsRequest request,
-      core.String project,
-      core.String resource) {
+      TestPermissionsRequest request, core.String project, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -646,6 +711,9 @@ class DeploymentsResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -697,6 +765,9 @@ class DeploymentsResourceApi {
   /// exist after you cancel the preview and you must separately delete this
   /// deployment if you want to remove it.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -706,7 +777,10 @@ class DeploymentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> update(
       Deployment request, core.String project, core.String deployment,
-      {core.String createPolicy, core.String deletePolicy, core.bool preview}) {
+      {core.String createPolicy,
+      core.String deletePolicy,
+      core.bool preview,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -731,6 +805,9 @@ class DeploymentsResourceApi {
     }
     if (preview != null) {
       _queryParams["preview"] = ["${preview}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -766,6 +843,9 @@ class ManifestsResourceApi {
   /// [manifest] - The name of the manifest for this request.
   /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Manifest].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -774,7 +854,8 @@ class ManifestsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Manifest> get(
-      core.String project, core.String deployment, core.String manifest) {
+      core.String project, core.String deployment, core.String manifest,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -790,6 +871,9 @@ class ManifestsResourceApi {
     }
     if (manifest == null) {
       throw new core.ArgumentError("Parameter manifest is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -864,6 +948,9 @@ class ManifestsResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ManifestsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -876,7 +963,8 @@ class ManifestsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -901,6 +989,9 @@ class ManifestsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -933,6 +1024,9 @@ class OperationsResourceApi {
   ///
   /// [operation] - The name of the operation for this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -940,7 +1034,8 @@ class OperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String project, core.String operation) {
+  async.Future<Operation> get(core.String project, core.String operation,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -953,6 +1048,9 @@ class OperationsResourceApi {
     }
     if (operation == null) {
       throw new core.ArgumentError("Parameter operation is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -1022,6 +1120,9 @@ class OperationsResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [OperationsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1033,7 +1134,8 @@ class OperationsResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1055,6 +1157,9 @@ class OperationsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/operations';
@@ -1087,6 +1192,9 @@ class ResourcesResourceApi {
   ///
   /// [resource] - The name of the resource for this request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Resource].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1095,7 +1203,8 @@ class ResourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Resource> get(
-      core.String project, core.String deployment, core.String resource) {
+      core.String project, core.String deployment, core.String resource,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1111,6 +1220,9 @@ class ResourcesResourceApi {
     }
     if (resource == null) {
       throw new core.ArgumentError("Parameter resource is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -1185,6 +1297,9 @@ class ResourcesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ResourcesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1197,7 +1312,8 @@ class ResourcesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1222,6 +1338,9 @@ class ResourcesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') +
@@ -1298,6 +1417,9 @@ class TypesResourceApi {
   /// nextPageToken returned by a previous list request to get the next page of
   /// results.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TypesListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1309,7 +1431,8 @@ class TypesResourceApi {
       {core.String filter,
       core.int maxResults,
       core.String orderBy,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1331,6 +1454,9 @@ class TypesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = commons.Escaper.ecapeVariable('$project') + '/global/types';

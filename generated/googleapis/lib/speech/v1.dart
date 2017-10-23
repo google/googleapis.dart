@@ -55,6 +55,9 @@ class OperationsResourceApi {
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern "^[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -62,7 +65,8 @@ class OperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> cancel(CancelOperationRequest request, core.String name) {
+  async.Future<Empty> cancel(CancelOperationRequest request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -75,6 +79,9 @@ class OperationsResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/operations/' +
@@ -100,6 +107,9 @@ class OperationsResourceApi {
   /// [name] - The name of the operation resource to be deleted.
   /// Value must have pattern "^[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -107,7 +117,7 @@ class OperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name) {
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -117,6 +127,9 @@ class OperationsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/operations/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -139,6 +152,9 @@ class OperationsResourceApi {
   /// [name] - The name of the operation resource.
   /// Value must have pattern "^[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -146,7 +162,7 @@ class OperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name) {
+  async.Future<Operation> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -156,6 +172,9 @@ class OperationsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/operations/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -191,6 +210,9 @@ class OperationsResourceApi {
   ///
   /// [filter] - The standard list filter.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListOperationsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -202,7 +224,8 @@ class OperationsResourceApi {
       {core.String pageToken,
       core.String name,
       core.int pageSize,
-      core.String filter}) {
+      core.String filter,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -221,6 +244,9 @@ class OperationsResourceApi {
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/operations';
@@ -249,6 +275,9 @@ class SpeechResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -257,7 +286,8 @@ class SpeechResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> longrunningrecognize(
-      LongRunningRecognizeRequest request) {
+      LongRunningRecognizeRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -267,6 +297,9 @@ class SpeechResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/speech:longrunningrecognize';
@@ -287,6 +320,9 @@ class SpeechResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RecognizeResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -294,7 +330,8 @@ class SpeechResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RecognizeResponse> recognize(RecognizeRequest request) {
+  async.Future<RecognizeResponse> recognize(RecognizeRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -304,6 +341,9 @@ class SpeechResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/speech:recognize';
@@ -785,7 +825,8 @@ class SpeechRecognitionAlternative {
   /// indicates an estimated greater likelihood that the recognized words are
   /// correct. This field is typically provided only for the top hypothesis, and
   /// only for `is_final=true` results. Clients should not rely on the
-  /// `confidence` field as it is not guaranteed to be accurate or consistent.
+  /// `confidence` field as it is not guaranteed to be accurate, or even set, in
+  /// any of the results.
   /// The default of 0.0 is a sentinel value indicating `confidence` was not
   /// set.
   core.double confidence;
@@ -836,6 +877,12 @@ class SpeechRecognitionResult {
   /// alternative being the most probable, as ranked by the recognizer.
   core.List<SpeechRecognitionAlternative> alternatives;
 
+  /// For multi-channel audio, this is the channel number corresponding to the
+  /// recognized result for the audio from that channel.
+  /// For audio_channel_count = N, its output values can range from '0' to
+  /// 'N-1'.
+  core.int channelTag;
+
   SpeechRecognitionResult();
 
   SpeechRecognitionResult.fromJson(core.Map _json) {
@@ -843,6 +890,9 @@ class SpeechRecognitionResult {
       alternatives = _json["alternatives"]
           .map((value) => new SpeechRecognitionAlternative.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("channelTag")) {
+      channelTag = _json["channelTag"];
     }
   }
 
@@ -852,6 +902,9 @@ class SpeechRecognitionResult {
     if (alternatives != null) {
       _json["alternatives"] =
           alternatives.map((value) => (value).toJson()).toList();
+    }
+    if (channelTag != null) {
+      _json["channelTag"] = channelTag;
     }
     return _json;
   }

@@ -53,6 +53,9 @@ class ProjectsResourceApi {
   ///
   /// [projectId] - The ID of the project against which to make the request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AllocateIdsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -61,7 +64,8 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AllocateIdsResponse> allocateIds(
-      AllocateIdsRequest request, core.String projectId) {
+      AllocateIdsRequest request, core.String projectId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -74,6 +78,9 @@ class ProjectsResourceApi {
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -97,6 +104,9 @@ class ProjectsResourceApi {
   ///
   /// [projectId] - The ID of the project against which to make the request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BeginTransactionResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -105,7 +115,8 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BeginTransactionResponse> beginTransaction(
-      BeginTransactionRequest request, core.String projectId) {
+      BeginTransactionRequest request, core.String projectId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -118,6 +129,9 @@ class ProjectsResourceApi {
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -143,6 +157,9 @@ class ProjectsResourceApi {
   ///
   /// [projectId] - The ID of the project against which to make the request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CommitResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -151,7 +168,8 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CommitResponse> commit(
-      CommitRequest request, core.String projectId) {
+      CommitRequest request, core.String projectId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -164,6 +182,9 @@ class ProjectsResourceApi {
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -187,6 +208,9 @@ class ProjectsResourceApi {
   ///
   /// [projectId] - The ID of the project against which to make the request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LookupResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -195,7 +219,8 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LookupResponse> lookup(
-      LookupRequest request, core.String projectId) {
+      LookupRequest request, core.String projectId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -208,6 +233,9 @@ class ProjectsResourceApi {
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -223,7 +251,8 @@ class ProjectsResourceApi {
     return _response.then((data) => new LookupResponse.fromJson(data));
   }
 
-  /// Rolls back a transaction.
+  /// Prevents the supplied keys' IDs from being auto-allocated by Cloud
+  /// Datastore.
   ///
   /// [request] - The metadata request object.
   ///
@@ -231,15 +260,19 @@ class ProjectsResourceApi {
   ///
   /// [projectId] - The ID of the project against which to make the request.
   ///
-  /// Completes with a [RollbackResponse].
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ReserveIdsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RollbackResponse> rollback(
-      RollbackRequest request, core.String projectId) {
+  async.Future<ReserveIdsResponse> reserveIds(
+      ReserveIdsRequest request, core.String projectId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -252,6 +285,60 @@ class ProjectsResourceApi {
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        ':reserveIds';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ReserveIdsResponse.fromJson(data));
+  }
+
+  /// Rolls back a transaction.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - The ID of the project against which to make the request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RollbackResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RollbackResponse> rollback(
+      RollbackRequest request, core.String projectId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -275,6 +362,9 @@ class ProjectsResourceApi {
   ///
   /// [projectId] - The ID of the project against which to make the request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RunQueryResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -283,7 +373,8 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<RunQueryResponse> runQuery(
-      RunQueryRequest request, core.String projectId) {
+      RunQueryRequest request, core.String projectId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -296,6 +387,9 @@ class ProjectsResourceApi {
     }
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/projects/' +
@@ -334,6 +428,9 @@ class ProjectsOperationsResourceApi {
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern "^projects/[^/]+/operations/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -341,7 +438,7 @@ class ProjectsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> cancel(core.String name) {
+  async.Future<Empty> cancel(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -351,6 +448,9 @@ class ProjectsOperationsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
@@ -374,6 +474,9 @@ class ProjectsOperationsResourceApi {
   /// [name] - The name of the operation resource to be deleted.
   /// Value must have pattern "^projects/[^/]+/operations/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -381,7 +484,7 @@ class ProjectsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name) {
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -391,6 +494,9 @@ class ProjectsOperationsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -413,6 +519,9 @@ class ProjectsOperationsResourceApi {
   /// [name] - The name of the operation resource.
   /// Value must have pattern "^projects/[^/]+/operations/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [GoogleLongrunningOperation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -420,7 +529,8 @@ class ProjectsOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> get(core.String name) {
+  async.Future<GoogleLongrunningOperation> get(core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -430,6 +540,9 @@ class ProjectsOperationsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -461,11 +574,14 @@ class ProjectsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - The standard list page size.
+  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
   ///
-  /// [pageSize] - The standard list page size.
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [GoogleLongrunningListOperationsResponse].
   ///
@@ -475,7 +591,10 @@ class ProjectsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.String filter, core.String pageToken, core.int pageSize}) {
+      {core.int pageSize,
+      core.String filter,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -486,14 +605,17 @@ class ProjectsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -2434,6 +2556,52 @@ class ReadWrite {
     if (previousTransaction != null) {
       _json["previousTransaction"] = previousTransaction;
     }
+    return _json;
+  }
+}
+
+/// The request for Datastore.ReserveIds.
+class ReserveIdsRequest {
+  /// If not empty, the ID of the database against which to make the request.
+  core.String databaseId;
+
+  /// A list of keys with complete key paths whose numeric IDs should not be
+  /// auto-allocated.
+  core.List<Key> keys;
+
+  ReserveIdsRequest();
+
+  ReserveIdsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("databaseId")) {
+      databaseId = _json["databaseId"];
+    }
+    if (_json.containsKey("keys")) {
+      keys = _json["keys"].map((value) => new Key.fromJson(value)).toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (databaseId != null) {
+      _json["databaseId"] = databaseId;
+    }
+    if (keys != null) {
+      _json["keys"] = keys.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// The response for Datastore.ReserveIds.
+class ReserveIdsResponse {
+  ReserveIdsResponse();
+
+  ReserveIdsResponse.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }

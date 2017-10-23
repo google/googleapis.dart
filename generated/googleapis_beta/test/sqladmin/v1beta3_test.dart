@@ -116,14 +116,14 @@ checkBackupRun(api.BackupRun o) {
   buildCounterBackupRun--;
 }
 
-buildUnnamed3341() {
+buildUnnamed3356() {
   var o = new core.List<api.BackupRun>();
   o.add(buildBackupRun());
   o.add(buildBackupRun());
   return o;
 }
 
-checkUnnamed3341(core.List<api.BackupRun> o) {
+checkUnnamed3356(core.List<api.BackupRun> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBackupRun(o[0]);
   checkBackupRun(o[1]);
@@ -134,7 +134,7 @@ buildBackupRunsListResponse() {
   var o = new api.BackupRunsListResponse();
   buildCounterBackupRunsListResponse++;
   if (buildCounterBackupRunsListResponse < 3) {
-    o.items = buildUnnamed3341();
+    o.items = buildUnnamed3356();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -145,7 +145,7 @@ buildBackupRunsListResponse() {
 checkBackupRunsListResponse(api.BackupRunsListResponse o) {
   buildCounterBackupRunsListResponse++;
   if (buildCounterBackupRunsListResponse < 3) {
-    checkUnnamed3341(o.items);
+    checkUnnamed3356(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -221,27 +221,27 @@ checkDatabaseFlags(api.DatabaseFlags o) {
   buildCounterDatabaseFlags--;
 }
 
-buildUnnamed3342() {
+buildUnnamed3357() {
   var o = new core.List<api.IpMapping>();
   o.add(buildIpMapping());
   o.add(buildIpMapping());
   return o;
 }
 
-checkUnnamed3342(core.List<api.IpMapping> o) {
+checkUnnamed3357(core.List<api.IpMapping> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIpMapping(o[0]);
   checkIpMapping(o[1]);
 }
 
-buildUnnamed3343() {
+buildUnnamed3358() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3343(core.List<core.String> o) {
+checkUnnamed3358(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -258,14 +258,14 @@ buildDatabaseInstance() {
     o.etag = "foo";
     o.instance = "foo";
     o.instanceType = "foo";
-    o.ipAddresses = buildUnnamed3342();
+    o.ipAddresses = buildUnnamed3357();
     o.ipv6Address = "foo";
     o.kind = "foo";
     o.masterInstanceName = "foo";
     o.maxDiskSize = "foo";
     o.project = "foo";
     o.region = "foo";
-    o.replicaNames = buildUnnamed3343();
+    o.replicaNames = buildUnnamed3358();
     o.serverCaCert = buildSslCert();
     o.serviceAccountEmailAddress = "foo";
     o.settings = buildSettings();
@@ -284,14 +284,14 @@ checkDatabaseInstance(api.DatabaseInstance o) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.instance, unittest.equals('foo'));
     unittest.expect(o.instanceType, unittest.equals('foo'));
-    checkUnnamed3342(o.ipAddresses);
+    checkUnnamed3357(o.ipAddresses);
     unittest.expect(o.ipv6Address, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.masterInstanceName, unittest.equals('foo'));
     unittest.expect(o.maxDiskSize, unittest.equals('foo'));
     unittest.expect(o.project, unittest.equals('foo'));
     unittest.expect(o.region, unittest.equals('foo'));
-    checkUnnamed3343(o.replicaNames);
+    checkUnnamed3358(o.replicaNames);
     checkSslCert(o.serverCaCert);
     unittest.expect(o.serviceAccountEmailAddress, unittest.equals('foo'));
     checkSettings(o.settings);
@@ -300,27 +300,27 @@ checkDatabaseInstance(api.DatabaseInstance o) {
   buildCounterDatabaseInstance--;
 }
 
-buildUnnamed3344() {
+buildUnnamed3359() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3344(core.List<core.String> o) {
+checkUnnamed3359(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3345() {
+buildUnnamed3360() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3345(core.List<core.String> o) {
+checkUnnamed3360(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -331,9 +331,9 @@ buildExportContext() {
   var o = new api.ExportContext();
   buildCounterExportContext++;
   if (buildCounterExportContext < 3) {
-    o.database = buildUnnamed3344();
+    o.database = buildUnnamed3359();
     o.kind = "foo";
-    o.table = buildUnnamed3345();
+    o.table = buildUnnamed3360();
     o.uri = "foo";
   }
   buildCounterExportContext--;
@@ -343,35 +343,35 @@ buildExportContext() {
 checkExportContext(api.ExportContext o) {
   buildCounterExportContext++;
   if (buildCounterExportContext < 3) {
-    checkUnnamed3344(o.database);
+    checkUnnamed3359(o.database);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed3345(o.table);
+    checkUnnamed3360(o.table);
     unittest.expect(o.uri, unittest.equals('foo'));
   }
   buildCounterExportContext--;
 }
 
-buildUnnamed3346() {
+buildUnnamed3361() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3346(core.List<core.String> o) {
+checkUnnamed3361(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3347() {
+buildUnnamed3362() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3347(core.List<core.String> o) {
+checkUnnamed3362(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -382,8 +382,8 @@ buildFlag() {
   var o = new api.Flag();
   buildCounterFlag++;
   if (buildCounterFlag < 3) {
-    o.allowedStringValues = buildUnnamed3346();
-    o.appliesTo = buildUnnamed3347();
+    o.allowedStringValues = buildUnnamed3361();
+    o.appliesTo = buildUnnamed3362();
     o.kind = "foo";
     o.maxValue = "foo";
     o.minValue = "foo";
@@ -397,8 +397,8 @@ buildFlag() {
 checkFlag(api.Flag o) {
   buildCounterFlag++;
   if (buildCounterFlag < 3) {
-    checkUnnamed3346(o.allowedStringValues);
-    checkUnnamed3347(o.appliesTo);
+    checkUnnamed3361(o.allowedStringValues);
+    checkUnnamed3362(o.appliesTo);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.maxValue, unittest.equals('foo'));
     unittest.expect(o.minValue, unittest.equals('foo'));
@@ -408,14 +408,14 @@ checkFlag(api.Flag o) {
   buildCounterFlag--;
 }
 
-buildUnnamed3348() {
+buildUnnamed3363() {
   var o = new core.List<api.Flag>();
   o.add(buildFlag());
   o.add(buildFlag());
   return o;
 }
 
-checkUnnamed3348(core.List<api.Flag> o) {
+checkUnnamed3363(core.List<api.Flag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFlag(o[0]);
   checkFlag(o[1]);
@@ -426,7 +426,7 @@ buildFlagsListResponse() {
   var o = new api.FlagsListResponse();
   buildCounterFlagsListResponse++;
   if (buildCounterFlagsListResponse < 3) {
-    o.items = buildUnnamed3348();
+    o.items = buildUnnamed3363();
     o.kind = "foo";
   }
   buildCounterFlagsListResponse--;
@@ -436,20 +436,20 @@ buildFlagsListResponse() {
 checkFlagsListResponse(api.FlagsListResponse o) {
   buildCounterFlagsListResponse++;
   if (buildCounterFlagsListResponse < 3) {
-    checkUnnamed3348(o.items);
+    checkUnnamed3363(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterFlagsListResponse--;
 }
 
-buildUnnamed3349() {
+buildUnnamed3364() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3349(core.List<core.String> o) {
+checkUnnamed3364(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -462,7 +462,7 @@ buildImportContext() {
   if (buildCounterImportContext < 3) {
     o.database = "foo";
     o.kind = "foo";
-    o.uri = buildUnnamed3349();
+    o.uri = buildUnnamed3364();
   }
   buildCounterImportContext--;
   return o;
@@ -473,19 +473,19 @@ checkImportContext(api.ImportContext o) {
   if (buildCounterImportContext < 3) {
     unittest.expect(o.database, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed3349(o.uri);
+    checkUnnamed3364(o.uri);
   }
   buildCounterImportContext--;
 }
 
-buildUnnamed3350() {
+buildUnnamed3365() {
   var o = new core.List<api.OperationError>();
   o.add(buildOperationError());
   o.add(buildOperationError());
   return o;
 }
 
-checkUnnamed3350(core.List<api.OperationError> o) {
+checkUnnamed3365(core.List<api.OperationError> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationError(o[0]);
   checkOperationError(o[1]);
@@ -498,7 +498,7 @@ buildInstanceOperation() {
   if (buildCounterInstanceOperation < 3) {
     o.endTime = core.DateTime.parse("2002-02-27T14:01:02");
     o.enqueuedTime = core.DateTime.parse("2002-02-27T14:01:02");
-    o.error = buildUnnamed3350();
+    o.error = buildUnnamed3365();
     o.exportContext = buildExportContext();
     o.importContext = buildImportContext();
     o.instance = "foo";
@@ -520,7 +520,7 @@ checkInstanceOperation(api.InstanceOperation o) {
         o.endTime, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.enqueuedTime,
         unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    checkUnnamed3350(o.error);
+    checkUnnamed3365(o.error);
     checkExportContext(o.exportContext);
     checkImportContext(o.importContext);
     unittest.expect(o.instance, unittest.equals('foo'));
@@ -716,14 +716,14 @@ checkInstancesInsertResponse(api.InstancesInsertResponse o) {
   buildCounterInstancesInsertResponse--;
 }
 
-buildUnnamed3351() {
+buildUnnamed3366() {
   var o = new core.List<api.DatabaseInstance>();
   o.add(buildDatabaseInstance());
   o.add(buildDatabaseInstance());
   return o;
 }
 
-checkUnnamed3351(core.List<api.DatabaseInstance> o) {
+checkUnnamed3366(core.List<api.DatabaseInstance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDatabaseInstance(o[0]);
   checkDatabaseInstance(o[1]);
@@ -734,7 +734,7 @@ buildInstancesListResponse() {
   var o = new api.InstancesListResponse();
   buildCounterInstancesListResponse++;
   if (buildCounterInstancesListResponse < 3) {
-    o.items = buildUnnamed3351();
+    o.items = buildUnnamed3366();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -745,7 +745,7 @@ buildInstancesListResponse() {
 checkInstancesListResponse(api.InstancesListResponse o) {
   buildCounterInstancesListResponse++;
   if (buildCounterInstancesListResponse < 3) {
-    checkUnnamed3351(o.items);
+    checkUnnamed3366(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -878,14 +878,14 @@ checkInstancesUpdateResponse(api.InstancesUpdateResponse o) {
   buildCounterInstancesUpdateResponse--;
 }
 
-buildUnnamed3352() {
+buildUnnamed3367() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3352(core.List<core.String> o) {
+checkUnnamed3367(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -896,7 +896,7 @@ buildIpConfiguration() {
   var o = new api.IpConfiguration();
   buildCounterIpConfiguration++;
   if (buildCounterIpConfiguration < 3) {
-    o.authorizedNetworks = buildUnnamed3352();
+    o.authorizedNetworks = buildUnnamed3367();
     o.enabled = true;
     o.kind = "foo";
     o.requireSsl = true;
@@ -908,7 +908,7 @@ buildIpConfiguration() {
 checkIpConfiguration(api.IpConfiguration o) {
   buildCounterIpConfiguration++;
   if (buildCounterIpConfiguration < 3) {
-    checkUnnamed3352(o.authorizedNetworks);
+    checkUnnamed3367(o.authorizedNetworks);
     unittest.expect(o.enabled, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.requireSsl, unittest.isTrue);
@@ -982,14 +982,14 @@ checkOperationError(api.OperationError o) {
   buildCounterOperationError--;
 }
 
-buildUnnamed3353() {
+buildUnnamed3368() {
   var o = new core.List<api.InstanceOperation>();
   o.add(buildInstanceOperation());
   o.add(buildInstanceOperation());
   return o;
 }
 
-checkUnnamed3353(core.List<api.InstanceOperation> o) {
+checkUnnamed3368(core.List<api.InstanceOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInstanceOperation(o[0]);
   checkInstanceOperation(o[1]);
@@ -1000,7 +1000,7 @@ buildOperationsListResponse() {
   var o = new api.OperationsListResponse();
   buildCounterOperationsListResponse++;
   if (buildCounterOperationsListResponse < 3) {
-    o.items = buildUnnamed3353();
+    o.items = buildUnnamed3368();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -1011,7 +1011,7 @@ buildOperationsListResponse() {
 checkOperationsListResponse(api.OperationsListResponse o) {
   buildCounterOperationsListResponse++;
   if (buildCounterOperationsListResponse < 3) {
-    checkUnnamed3353(o.items);
+    checkUnnamed3368(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -1039,40 +1039,40 @@ checkSetRootPasswordContext(api.SetRootPasswordContext o) {
   buildCounterSetRootPasswordContext--;
 }
 
-buildUnnamed3354() {
+buildUnnamed3369() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3354(core.List<core.String> o) {
+checkUnnamed3369(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed3355() {
+buildUnnamed3370() {
   var o = new core.List<api.BackupConfiguration>();
   o.add(buildBackupConfiguration());
   o.add(buildBackupConfiguration());
   return o;
 }
 
-checkUnnamed3355(core.List<api.BackupConfiguration> o) {
+checkUnnamed3370(core.List<api.BackupConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBackupConfiguration(o[0]);
   checkBackupConfiguration(o[1]);
 }
 
-buildUnnamed3356() {
+buildUnnamed3371() {
   var o = new core.List<api.DatabaseFlags>();
   o.add(buildDatabaseFlags());
   o.add(buildDatabaseFlags());
   return o;
 }
 
-checkUnnamed3356(core.List<api.DatabaseFlags> o) {
+checkUnnamed3371(core.List<api.DatabaseFlags> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDatabaseFlags(o[0]);
   checkDatabaseFlags(o[1]);
@@ -1084,9 +1084,9 @@ buildSettings() {
   buildCounterSettings++;
   if (buildCounterSettings < 3) {
     o.activationPolicy = "foo";
-    o.authorizedGaeApplications = buildUnnamed3354();
-    o.backupConfiguration = buildUnnamed3355();
-    o.databaseFlags = buildUnnamed3356();
+    o.authorizedGaeApplications = buildUnnamed3369();
+    o.backupConfiguration = buildUnnamed3370();
+    o.databaseFlags = buildUnnamed3371();
     o.databaseReplicationEnabled = true;
     o.ipConfiguration = buildIpConfiguration();
     o.kind = "foo";
@@ -1104,9 +1104,9 @@ checkSettings(api.Settings o) {
   buildCounterSettings++;
   if (buildCounterSettings < 3) {
     unittest.expect(o.activationPolicy, unittest.equals('foo'));
-    checkUnnamed3354(o.authorizedGaeApplications);
-    checkUnnamed3355(o.backupConfiguration);
-    checkUnnamed3356(o.databaseFlags);
+    checkUnnamed3369(o.authorizedGaeApplications);
+    checkUnnamed3370(o.backupConfiguration);
+    checkUnnamed3371(o.databaseFlags);
     unittest.expect(o.databaseReplicationEnabled, unittest.isTrue);
     checkIpConfiguration(o.ipConfiguration);
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -1238,14 +1238,14 @@ checkSslCertsInsertResponse(api.SslCertsInsertResponse o) {
   buildCounterSslCertsInsertResponse--;
 }
 
-buildUnnamed3357() {
+buildUnnamed3372() {
   var o = new core.List<api.SslCert>();
   o.add(buildSslCert());
   o.add(buildSslCert());
   return o;
 }
 
-checkUnnamed3357(core.List<api.SslCert> o) {
+checkUnnamed3372(core.List<api.SslCert> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSslCert(o[0]);
   checkSslCert(o[1]);
@@ -1256,7 +1256,7 @@ buildSslCertsListResponse() {
   var o = new api.SslCertsListResponse();
   buildCounterSslCertsListResponse++;
   if (buildCounterSslCertsListResponse < 3) {
-    o.items = buildUnnamed3357();
+    o.items = buildUnnamed3372();
     o.kind = "foo";
   }
   buildCounterSslCertsListResponse--;
@@ -1266,20 +1266,20 @@ buildSslCertsListResponse() {
 checkSslCertsListResponse(api.SslCertsListResponse o) {
   buildCounterSslCertsListResponse++;
   if (buildCounterSslCertsListResponse < 3) {
-    checkUnnamed3357(o.items);
+    checkUnnamed3372(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterSslCertsListResponse--;
 }
 
-buildUnnamed3358() {
+buildUnnamed3373() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed3358(core.List<core.String> o) {
+checkUnnamed3373(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1293,7 +1293,7 @@ buildTier() {
     o.DiskQuota = "foo";
     o.RAM = "foo";
     o.kind = "foo";
-    o.region = buildUnnamed3358();
+    o.region = buildUnnamed3373();
     o.tier = "foo";
   }
   buildCounterTier--;
@@ -1306,20 +1306,20 @@ checkTier(api.Tier o) {
     unittest.expect(o.DiskQuota, unittest.equals('foo'));
     unittest.expect(o.RAM, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed3358(o.region);
+    checkUnnamed3373(o.region);
     unittest.expect(o.tier, unittest.equals('foo'));
   }
   buildCounterTier--;
 }
 
-buildUnnamed3359() {
+buildUnnamed3374() {
   var o = new core.List<api.Tier>();
   o.add(buildTier());
   o.add(buildTier());
   return o;
 }
 
-checkUnnamed3359(core.List<api.Tier> o) {
+checkUnnamed3374(core.List<api.Tier> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTier(o[0]);
   checkTier(o[1]);
@@ -1330,7 +1330,7 @@ buildTiersListResponse() {
   var o = new api.TiersListResponse();
   buildCounterTiersListResponse++;
   if (buildCounterTiersListResponse < 3) {
-    o.items = buildUnnamed3359();
+    o.items = buildUnnamed3374();
     o.kind = "foo";
   }
   buildCounterTiersListResponse--;
@@ -1340,7 +1340,7 @@ buildTiersListResponse() {
 checkTiersListResponse(api.TiersListResponse o) {
   buildCounterTiersListResponse++;
   if (buildCounterTiersListResponse < 3) {
-    checkUnnamed3359(o.items);
+    checkUnnamed3374(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterTiersListResponse--;
@@ -1699,6 +1699,7 @@ main() {
       var arg_instance = "foo";
       var arg_backupConfiguration = "foo";
       var arg_dueTime = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1755,6 +1756,7 @@ main() {
         }
         unittest.expect(
             queryMap["dueTime"].first, unittest.equals(arg_dueTime));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1763,7 +1765,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_project, arg_instance, arg_backupConfiguration, arg_dueTime)
+          .get(arg_project, arg_instance, arg_backupConfiguration, arg_dueTime,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.BackupRun response) {
         checkBackupRun(response);
       })));
@@ -1777,6 +1780,7 @@ main() {
       var arg_backupConfiguration = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1834,6 +1838,7 @@ main() {
             unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1843,7 +1848,9 @@ main() {
       }), true);
       res
           .list(arg_project, arg_instance, arg_backupConfiguration,
-              maxResults: arg_maxResults, pageToken: arg_pageToken)
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.BackupRunsListResponse response) {
         checkBackupRunsListResponse(response);
       })));
@@ -1854,6 +1861,7 @@ main() {
     unittest.test("method--list", () {
       var mock = new HttpServerMock();
       api.FlagsResourceApi res = new api.SqladminApi(mock).flags;
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1887,6 +1895,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1894,7 +1903,9 @@ main() {
         var resp = convert.JSON.encode(buildFlagsListResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list().then(unittest.expectAsync1(((api.FlagsListResponse response) {
+      res
+          .list($fields: arg_$fields)
+          .then(unittest.expectAsync1(((api.FlagsListResponse response) {
         checkFlagsListResponse(response);
       })));
     });
@@ -1906,6 +1917,7 @@ main() {
       api.InstancesResourceApi res = new api.SqladminApi(mock).instances;
       var arg_request = buildInstancesCloneRequest();
       var arg_project = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.InstancesCloneRequest.fromJson(json);
         checkInstancesCloneRequest(obj);
@@ -1951,6 +1963,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1959,7 +1972,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .clone(arg_request, arg_project)
+          .clone(arg_request, arg_project, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.InstancesCloneResponse response) {
         checkInstancesCloneResponse(response);
       })));
@@ -1970,6 +1983,7 @@ main() {
       api.InstancesResourceApi res = new api.SqladminApi(mock).instances;
       var arg_project = "foo";
       var arg_instance = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2015,6 +2029,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2023,7 +2038,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .delete(arg_project, arg_instance)
+          .delete(arg_project, arg_instance, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.InstancesDeleteResponse response) {
         checkInstancesDeleteResponse(response);
       })));
@@ -2035,6 +2050,7 @@ main() {
       var arg_request = buildInstancesExportRequest();
       var arg_project = "foo";
       var arg_instance = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.InstancesExportRequest.fromJson(json);
         checkInstancesExportRequest(obj);
@@ -2089,6 +2105,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2097,7 +2114,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .export(arg_request, arg_project, arg_instance)
+          .export(arg_request, arg_project, arg_instance, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.InstancesExportResponse response) {
         checkInstancesExportResponse(response);
       })));
@@ -2108,6 +2125,7 @@ main() {
       api.InstancesResourceApi res = new api.SqladminApi(mock).instances;
       var arg_project = "foo";
       var arg_instance = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2153,6 +2171,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2161,7 +2180,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_project, arg_instance)
+          .get(arg_project, arg_instance, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.DatabaseInstance response) {
         checkDatabaseInstance(response);
       })));
@@ -2173,6 +2192,7 @@ main() {
       var arg_request = buildInstancesImportRequest();
       var arg_project = "foo";
       var arg_instance = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.InstancesImportRequest.fromJson(json);
         checkInstancesImportRequest(obj);
@@ -2227,6 +2247,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2235,7 +2256,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .import(arg_request, arg_project, arg_instance)
+          .import(arg_request, arg_project, arg_instance, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.InstancesImportResponse response) {
         checkInstancesImportResponse(response);
       })));
@@ -2246,6 +2267,7 @@ main() {
       api.InstancesResourceApi res = new api.SqladminApi(mock).instances;
       var arg_request = buildDatabaseInstance();
       var arg_project = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.DatabaseInstance.fromJson(json);
         checkDatabaseInstance(obj);
@@ -2291,6 +2313,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2299,7 +2322,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .insert(arg_request, arg_project)
+          .insert(arg_request, arg_project, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.InstancesInsertResponse response) {
         checkInstancesInsertResponse(response);
       })));
@@ -2311,6 +2334,7 @@ main() {
       var arg_project = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2357,6 +2381,7 @@ main() {
             unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2366,7 +2391,9 @@ main() {
       }), true);
       res
           .list(arg_project,
-              maxResults: arg_maxResults, pageToken: arg_pageToken)
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.InstancesListResponse response) {
         checkInstancesListResponse(response);
       })));
@@ -2378,6 +2405,7 @@ main() {
       var arg_request = buildDatabaseInstance();
       var arg_project = "foo";
       var arg_instance = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.DatabaseInstance.fromJson(json);
         checkDatabaseInstance(obj);
@@ -2426,6 +2454,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2434,7 +2463,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .patch(arg_request, arg_project, arg_instance)
+          .patch(arg_request, arg_project, arg_instance, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.InstancesUpdateResponse response) {
         checkInstancesUpdateResponse(response);
       })));
@@ -2445,6 +2474,7 @@ main() {
       api.InstancesResourceApi res = new api.SqladminApi(mock).instances;
       var arg_project = "foo";
       var arg_instance = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2496,6 +2526,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2503,8 +2534,9 @@ main() {
         var resp = convert.JSON.encode(buildInstancesPromoteReplicaResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.promoteReplica(arg_project, arg_instance).then(unittest
-          .expectAsync1(((api.InstancesPromoteReplicaResponse response) {
+      res.promoteReplica(arg_project, arg_instance, $fields: arg_$fields).then(
+          unittest
+              .expectAsync1(((api.InstancesPromoteReplicaResponse response) {
         checkInstancesPromoteReplicaResponse(response);
       })));
     });
@@ -2514,6 +2546,7 @@ main() {
       api.InstancesResourceApi res = new api.SqladminApi(mock).instances;
       var arg_project = "foo";
       var arg_instance = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2565,6 +2598,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2572,8 +2606,9 @@ main() {
         var resp = convert.JSON.encode(buildInstancesResetSslConfigResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetSslConfig(arg_project, arg_instance).then(unittest
-          .expectAsync1(((api.InstancesResetSslConfigResponse response) {
+      res.resetSslConfig(arg_project, arg_instance, $fields: arg_$fields).then(
+          unittest
+              .expectAsync1(((api.InstancesResetSslConfigResponse response) {
         checkInstancesResetSslConfigResponse(response);
       })));
     });
@@ -2583,6 +2618,7 @@ main() {
       api.InstancesResourceApi res = new api.SqladminApi(mock).instances;
       var arg_project = "foo";
       var arg_instance = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2634,6 +2670,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2642,7 +2679,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .restart(arg_project, arg_instance)
+          .restart(arg_project, arg_instance, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.InstancesRestartResponse response) {
         checkInstancesRestartResponse(response);
       })));
@@ -2655,6 +2692,7 @@ main() {
       var arg_instance = "foo";
       var arg_backupConfiguration = "foo";
       var arg_dueTime = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2710,6 +2748,7 @@ main() {
             unittest.equals(arg_backupConfiguration));
         unittest.expect(
             queryMap["dueTime"].first, unittest.equals(arg_dueTime));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2719,7 +2758,8 @@ main() {
       }), true);
       res
           .restoreBackup(
-              arg_project, arg_instance, arg_backupConfiguration, arg_dueTime)
+              arg_project, arg_instance, arg_backupConfiguration, arg_dueTime,
+              $fields: arg_$fields)
           .then(unittest
               .expectAsync1(((api.InstancesRestoreBackupResponse response) {
         checkInstancesRestoreBackupResponse(response);
@@ -2732,6 +2772,7 @@ main() {
       var arg_request = buildInstanceSetRootPasswordRequest();
       var arg_project = "foo";
       var arg_instance = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.InstanceSetRootPasswordRequest.fromJson(json);
         checkInstanceSetRootPasswordRequest(obj);
@@ -2786,6 +2827,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2793,8 +2835,11 @@ main() {
         var resp = convert.JSON.encode(buildInstancesSetRootPasswordResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.setRootPassword(arg_request, arg_project, arg_instance).then(unittest
-          .expectAsync1(((api.InstancesSetRootPasswordResponse response) {
+      res
+          .setRootPassword(arg_request, arg_project, arg_instance,
+              $fields: arg_$fields)
+          .then(unittest
+              .expectAsync1(((api.InstancesSetRootPasswordResponse response) {
         checkInstancesSetRootPasswordResponse(response);
       })));
     });
@@ -2805,6 +2850,7 @@ main() {
       var arg_request = buildDatabaseInstance();
       var arg_project = "foo";
       var arg_instance = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.DatabaseInstance.fromJson(json);
         checkDatabaseInstance(obj);
@@ -2853,6 +2899,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2861,7 +2908,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .update(arg_request, arg_project, arg_instance)
+          .update(arg_request, arg_project, arg_instance, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.InstancesUpdateResponse response) {
         checkInstancesUpdateResponse(response);
       })));
@@ -2875,6 +2922,7 @@ main() {
       var arg_project = "foo";
       var arg_instance = "foo";
       var arg_operation = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2929,6 +2977,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -2937,7 +2986,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_project, arg_instance, arg_operation)
+          .get(arg_project, arg_instance, arg_operation, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.InstanceOperation response) {
         checkInstanceOperation(response);
       })));
@@ -2950,6 +2999,7 @@ main() {
       var arg_instance = "foo";
       var arg_maxResults = 42;
       var arg_pageToken = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3005,6 +3055,7 @@ main() {
             unittest.equals(arg_maxResults));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -3014,7 +3065,9 @@ main() {
       }), true);
       res
           .list(arg_project, arg_instance,
-              maxResults: arg_maxResults, pageToken: arg_pageToken)
+              maxResults: arg_maxResults,
+              pageToken: arg_pageToken,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.OperationsListResponse response) {
         checkOperationsListResponse(response);
       })));
@@ -3028,6 +3081,7 @@ main() {
       var arg_project = "foo";
       var arg_instance = "foo";
       var arg_sha1Fingerprint = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3082,6 +3136,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -3090,7 +3145,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .delete(arg_project, arg_instance, arg_sha1Fingerprint)
+          .delete(arg_project, arg_instance, arg_sha1Fingerprint,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.SslCertsDeleteResponse response) {
         checkSslCertsDeleteResponse(response);
       })));
@@ -3102,6 +3158,7 @@ main() {
       var arg_project = "foo";
       var arg_instance = "foo";
       var arg_sha1Fingerprint = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3156,6 +3213,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -3164,7 +3222,8 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .get(arg_project, arg_instance, arg_sha1Fingerprint)
+          .get(arg_project, arg_instance, arg_sha1Fingerprint,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.SslCert response) {
         checkSslCert(response);
       })));
@@ -3176,6 +3235,7 @@ main() {
       var arg_request = buildSslCertsInsertRequest();
       var arg_project = "foo";
       var arg_instance = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.SslCertsInsertRequest.fromJson(json);
         checkSslCertsInsertRequest(obj);
@@ -3230,6 +3290,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -3238,7 +3299,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .insert(arg_request, arg_project, arg_instance)
+          .insert(arg_request, arg_project, arg_instance, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.SslCertsInsertResponse response) {
         checkSslCertsInsertResponse(response);
       })));
@@ -3249,6 +3310,7 @@ main() {
       api.SslCertsResourceApi res = new api.SqladminApi(mock).sslCerts;
       var arg_project = "foo";
       var arg_instance = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3300,6 +3362,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -3308,7 +3371,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .list(arg_project, arg_instance)
+          .list(arg_project, arg_instance, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.SslCertsListResponse response) {
         checkSslCertsListResponse(response);
       })));
@@ -3320,6 +3383,7 @@ main() {
       var mock = new HttpServerMock();
       api.TiersResourceApi res = new api.SqladminApi(mock).tiers;
       var arg_project = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3362,6 +3426,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -3370,7 +3435,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .list(arg_project)
+          .list(arg_project, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.TiersListResponse response) {
         checkTiersListResponse(response);
       })));

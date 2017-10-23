@@ -70,6 +70,9 @@ class AccountsResourceApi {
   /// [accountId] - Account to get information about. Tip: 'myaccount' is a
   /// valid ID.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Account].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -77,7 +80,7 @@ class AccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Account> get(core.String accountId) {
+  async.Future<Account> get(core.String accountId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -87,6 +90,9 @@ class AccountsResourceApi {
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId');
@@ -112,6 +118,9 @@ class AccountsResourceApi {
   /// retrieve the next page, set this parameter to the value of "nextPageToken"
   /// from the previous response.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Accounts].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -119,7 +128,8 @@ class AccountsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Accounts> list({core.int maxResults, core.String pageToken}) {
+  async.Future<Accounts> list(
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -132,6 +142,9 @@ class AccountsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts';
@@ -166,6 +179,9 @@ class AccountsAdclientsResourceApi {
   /// retrieve the next page, set this parameter to the value of "nextPageToken"
   /// from the previous response.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AdClients].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -174,7 +190,7 @@ class AccountsAdclientsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AdClients> list(core.String accountId,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -190,6 +206,9 @@ class AccountsAdclientsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -221,6 +240,9 @@ class AccountsAlertsResourceApi {
   /// locale will be used if this is not supplied. The AdSense default (English)
   /// will be used if the supplied locale is invalid or unsupported.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Alerts].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -228,7 +250,8 @@ class AccountsAlertsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Alerts> list(core.String accountId, {core.String locale}) {
+  async.Future<Alerts> list(core.String accountId,
+      {core.String locale, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -241,6 +264,9 @@ class AccountsAlertsResourceApi {
     }
     if (locale != null) {
       _queryParams["locale"] = [locale];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -272,6 +298,9 @@ class AccountsCustomchannelsResourceApi {
   ///
   /// [customChannelId] - Custom channel to retrieve.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CustomChannel].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -280,7 +309,8 @@ class AccountsCustomchannelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CustomChannel> get(core.String accountId, core.String adClientId,
-      core.String customChannelId) {
+      core.String customChannelId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -296,6 +326,9 @@ class AccountsCustomchannelsResourceApi {
     }
     if (customChannelId == null) {
       throw new core.ArgumentError("Parameter customChannelId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -331,6 +364,9 @@ class AccountsCustomchannelsResourceApi {
   /// To retrieve the next page, set this parameter to the value of
   /// "nextPageToken" from the previous response.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [CustomChannels].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -340,7 +376,7 @@ class AccountsCustomchannelsResourceApi {
   /// this method will complete with the same error.
   async.Future<CustomChannels> list(
       core.String accountId, core.String adClientId,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -359,6 +395,9 @@ class AccountsCustomchannelsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -401,6 +440,9 @@ class AccountsMetadataDimensionsResourceApi {
   ///
   /// [accountId] - Account with visibility to the dimensions.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Metadata].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -408,7 +450,7 @@ class AccountsMetadataDimensionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Metadata> list(core.String accountId) {
+  async.Future<Metadata> list(core.String accountId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -418,6 +460,9 @@ class AccountsMetadataDimensionsResourceApi {
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -446,6 +491,9 @@ class AccountsMetadataMetricsResourceApi {
   ///
   /// [accountId] - Account with visibility to the metrics.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Metadata].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -453,7 +501,7 @@ class AccountsMetadataMetricsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Metadata> list(core.String accountId) {
+  async.Future<Metadata> list(core.String accountId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -463,6 +511,9 @@ class AccountsMetadataMetricsResourceApi {
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -493,6 +544,9 @@ class AccountsPreferreddealsResourceApi {
   ///
   /// [dealId] - Preferred deal to get information about.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PreferredDeal].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -500,7 +554,8 @@ class AccountsPreferreddealsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PreferredDeal> get(core.String accountId, core.String dealId) {
+  async.Future<PreferredDeal> get(core.String accountId, core.String dealId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -513,6 +568,9 @@ class AccountsPreferreddealsResourceApi {
     }
     if (dealId == null) {
       throw new core.ArgumentError("Parameter dealId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -535,6 +593,9 @@ class AccountsPreferreddealsResourceApi {
   ///
   /// [accountId] - Account owning the deals.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [PreferredDeals].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -542,7 +603,8 @@ class AccountsPreferreddealsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PreferredDeals> list(core.String accountId) {
+  async.Future<PreferredDeals> list(core.String accountId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -552,6 +614,9 @@ class AccountsPreferreddealsResourceApi {
 
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -618,6 +683,9 @@ class AccountsReportsResourceApi {
   /// [startIndex] - Index of the first row of report data to return.
   /// Value must be between "0" and "5000".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [downloadOptions] - Options for downloading. A download can be either a
   /// Metadata (default) or Media download. Partial Media downloads are possible
   /// as well.
@@ -642,6 +710,7 @@ class AccountsReportsResourceApi {
       core.List<core.String> metric,
       core.List<core.String> sort,
       core.int startIndex,
+      core.String $fields,
       commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
@@ -682,6 +751,9 @@ class AccountsReportsResourceApi {
     }
     if (startIndex != null) {
       _queryParams["startIndex"] = ["${startIndex}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = downloadOptions;
@@ -729,6 +801,9 @@ class AccountsReportsSavedResourceApi {
   /// [startIndex] - Index of the first row of report data to return.
   /// Value must be between "0" and "5000".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Report].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -738,7 +813,10 @@ class AccountsReportsSavedResourceApi {
   /// this method will complete with the same error.
   async.Future<Report> generate(
       core.String accountId, core.String savedReportId,
-      {core.String locale, core.int maxResults, core.int startIndex}) {
+      {core.String locale,
+      core.int maxResults,
+      core.int startIndex,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -760,6 +838,9 @@ class AccountsReportsSavedResourceApi {
     }
     if (startIndex != null) {
       _queryParams["startIndex"] = ["${startIndex}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -790,6 +871,9 @@ class AccountsReportsSavedResourceApi {
   /// retrieve the next page, set this parameter to the value of "nextPageToken"
   /// from the previous response.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SavedReports].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -798,7 +882,7 @@ class AccountsReportsSavedResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SavedReports> list(core.String accountId,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -814,6 +898,9 @@ class AccountsReportsSavedResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -853,6 +940,9 @@ class AccountsUrlchannelsResourceApi {
   /// retrieve the next page, set this parameter to the value of "nextPageToken"
   /// from the previous response.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UrlChannels].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -861,7 +951,7 @@ class AccountsUrlchannelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<UrlChannels> list(core.String accountId, core.String adClientId,
-      {core.int maxResults, core.String pageToken}) {
+      {core.int maxResults, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -880,6 +970,9 @@ class AccountsUrlchannelsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +

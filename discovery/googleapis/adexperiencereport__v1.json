@@ -46,6 +46,11 @@
             "location": "query",
             "type": "string"
         },
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
         "$.xgafv": {
             "description": "V1 error format.",
             "enum": [
@@ -56,11 +61,6 @@
                 "v1 error format",
                 "v2 error format"
             ],
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -101,13 +101,13 @@
             "location": "query",
             "type": "boolean"
         },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
         },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
+        "bearer_token": {
+            "description": "OAuth bearer token.",
             "location": "query",
             "type": "string"
         }
@@ -168,28 +168,6 @@
             "description": "Summary of the ad experience rating of a site for a specific platform.",
             "id": "PlatformSummary",
             "properties": {
-                "region": {
-                    "description": "The assigned regions for the site and platform.",
-                    "enumDescriptions": [
-                        "Ad standard not yet defined for your region.",
-                        "Region A.",
-                        "Region B."
-                    ],
-                    "items": {
-                        "enum": [
-                            "REGION_UNKNOWN",
-                            "REGION_A",
-                            "REGION_B"
-                        ],
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "enforcementTime": {
-                    "description": "The date on which ad filtering begins.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
                 "filterStatus": {
                     "description": "The ad filtering status of the site.",
                     "enum": [
@@ -236,6 +214,28 @@
                         "Failing."
                     ],
                     "type": "string"
+                },
+                "enforcementTime": {
+                    "description": "The date on which ad filtering begins.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "region": {
+                    "description": "The assigned regions for the site and platform.",
+                    "enumDescriptions": [
+                        "Ad standard not yet defined for your region.",
+                        "Region A.",
+                        "Region B."
+                    ],
+                    "items": {
+                        "enum": [
+                            "REGION_UNKNOWN",
+                            "REGION_A",
+                            "REGION_B"
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"

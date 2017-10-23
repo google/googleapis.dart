@@ -57,12 +57,15 @@ class AchievementConfigurationsResourceApi {
   ///
   /// [achievementId] - The ID of the achievement used by this method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String achievementId) {
+  async.Future delete(core.String achievementId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -72,6 +75,9 @@ class AchievementConfigurationsResourceApi {
 
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -93,6 +99,9 @@ class AchievementConfigurationsResourceApi {
   ///
   /// [achievementId] - The ID of the achievement used by this method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AchievementConfiguration].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -100,7 +109,8 @@ class AchievementConfigurationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AchievementConfiguration> get(core.String achievementId) {
+  async.Future<AchievementConfiguration> get(core.String achievementId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -110,6 +120,9 @@ class AchievementConfigurationsResourceApi {
 
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId');
@@ -133,6 +146,9 @@ class AchievementConfigurationsResourceApi {
   /// [applicationId] - The application ID from the Google Play developer
   /// console.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AchievementConfiguration].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -141,7 +157,8 @@ class AchievementConfigurationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AchievementConfiguration> insert(
-      AchievementConfiguration request, core.String applicationId) {
+      AchievementConfiguration request, core.String applicationId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -154,6 +171,9 @@ class AchievementConfigurationsResourceApi {
     }
     if (applicationId == null) {
       throw new core.ArgumentError("Parameter applicationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'applications/' +
@@ -184,6 +204,9 @@ class AchievementConfigurationsResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AchievementConfigurationListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -194,7 +217,8 @@ class AchievementConfigurationsResourceApi {
   async.Future<AchievementConfigurationListResponse> list(
       core.String applicationId,
       {core.int maxResults,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -210,6 +234,9 @@ class AchievementConfigurationsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'applications/' +
@@ -235,6 +262,9 @@ class AchievementConfigurationsResourceApi {
   ///
   /// [achievementId] - The ID of the achievement used by this method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AchievementConfiguration].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -243,7 +273,8 @@ class AchievementConfigurationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AchievementConfiguration> patch(
-      AchievementConfiguration request, core.String achievementId) {
+      AchievementConfiguration request, core.String achievementId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -256,6 +287,9 @@ class AchievementConfigurationsResourceApi {
     }
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId');
@@ -278,6 +312,9 @@ class AchievementConfigurationsResourceApi {
   ///
   /// [achievementId] - The ID of the achievement used by this method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AchievementConfiguration].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -286,7 +323,8 @@ class AchievementConfigurationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AchievementConfiguration> update(
-      AchievementConfiguration request, core.String achievementId) {
+      AchievementConfiguration request, core.String achievementId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -299,6 +337,9 @@ class AchievementConfigurationsResourceApi {
     }
     if (achievementId == null) {
       throw new core.ArgumentError("Parameter achievementId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'achievements/' + commons.Escaper.ecapeVariable('$achievementId');
@@ -331,6 +372,9 @@ class ImageConfigurationsResourceApi {
   /// - "ACHIEVEMENT_ICON" : The icon image for an achievement resource.
   /// - "LEADERBOARD_ICON" : The icon image for a leaderboard resource.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [uploadMedia] - The media to upload.
   ///
   /// [uploadOptions] - Options for the media upload. Streaming Media without
@@ -346,7 +390,8 @@ class ImageConfigurationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ImageConfiguration> upload(
       core.String resourceId, core.String imageType,
-      {commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      {core.String $fields,
+      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -360,6 +405,9 @@ class ImageConfigurationsResourceApi {
     }
     if (imageType == null) {
       throw new core.ArgumentError("Parameter imageType is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -404,12 +452,15 @@ class LeaderboardConfigurationsResourceApi {
   ///
   /// [leaderboardId] - The ID of the leaderboard.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String leaderboardId) {
+  async.Future delete(core.String leaderboardId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -419,6 +470,9 @@ class LeaderboardConfigurationsResourceApi {
 
     if (leaderboardId == null) {
       throw new core.ArgumentError("Parameter leaderboardId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -440,6 +494,9 @@ class LeaderboardConfigurationsResourceApi {
   ///
   /// [leaderboardId] - The ID of the leaderboard.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LeaderboardConfiguration].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -447,7 +504,8 @@ class LeaderboardConfigurationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LeaderboardConfiguration> get(core.String leaderboardId) {
+  async.Future<LeaderboardConfiguration> get(core.String leaderboardId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -457,6 +515,9 @@ class LeaderboardConfigurationsResourceApi {
 
     if (leaderboardId == null) {
       throw new core.ArgumentError("Parameter leaderboardId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId');
@@ -480,6 +541,9 @@ class LeaderboardConfigurationsResourceApi {
   /// [applicationId] - The application ID from the Google Play developer
   /// console.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LeaderboardConfiguration].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -488,7 +552,8 @@ class LeaderboardConfigurationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LeaderboardConfiguration> insert(
-      LeaderboardConfiguration request, core.String applicationId) {
+      LeaderboardConfiguration request, core.String applicationId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -501,6 +566,9 @@ class LeaderboardConfigurationsResourceApi {
     }
     if (applicationId == null) {
       throw new core.ArgumentError("Parameter applicationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'applications/' +
@@ -531,6 +599,9 @@ class LeaderboardConfigurationsResourceApi {
   ///
   /// [pageToken] - The token returned by the previous request.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LeaderboardConfigurationListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -541,7 +612,8 @@ class LeaderboardConfigurationsResourceApi {
   async.Future<LeaderboardConfigurationListResponse> list(
       core.String applicationId,
       {core.int maxResults,
-      core.String pageToken}) {
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -557,6 +629,9 @@ class LeaderboardConfigurationsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'applications/' +
@@ -582,6 +657,9 @@ class LeaderboardConfigurationsResourceApi {
   ///
   /// [leaderboardId] - The ID of the leaderboard.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LeaderboardConfiguration].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -590,7 +668,8 @@ class LeaderboardConfigurationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LeaderboardConfiguration> patch(
-      LeaderboardConfiguration request, core.String leaderboardId) {
+      LeaderboardConfiguration request, core.String leaderboardId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -603,6 +682,9 @@ class LeaderboardConfigurationsResourceApi {
     }
     if (leaderboardId == null) {
       throw new core.ArgumentError("Parameter leaderboardId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId');
@@ -625,6 +707,9 @@ class LeaderboardConfigurationsResourceApi {
   ///
   /// [leaderboardId] - The ID of the leaderboard.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LeaderboardConfiguration].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -633,7 +718,8 @@ class LeaderboardConfigurationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LeaderboardConfiguration> update(
-      LeaderboardConfiguration request, core.String leaderboardId) {
+      LeaderboardConfiguration request, core.String leaderboardId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -646,6 +732,9 @@ class LeaderboardConfigurationsResourceApi {
     }
     if (leaderboardId == null) {
       throw new core.ArgumentError("Parameter leaderboardId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'leaderboards/' + commons.Escaper.ecapeVariable('$leaderboardId');

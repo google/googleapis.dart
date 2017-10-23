@@ -25,6 +25,7 @@ class Adexchangebuyer2Api {
   final commons.ApiRequester _requester;
 
   AccountsResourceApi get accounts => new AccountsResourceApi(_requester);
+  BiddersResourceApi get bidders => new BiddersResourceApi(_requester);
 
   Adexchangebuyer2Api(http.Client client,
       {core.String rootUrl: "https://adexchangebuyer.googleapis.com/",
@@ -40,8 +41,6 @@ class AccountsResourceApi {
       new AccountsClientsResourceApi(_requester);
   AccountsCreativesResourceApi get creatives =>
       new AccountsCreativesResourceApi(_requester);
-  AccountsFilterSetsResourceApi get filterSets =>
-      new AccountsFilterSetsResourceApi(_requester);
 
   AccountsResourceApi(commons.ApiRequester client) : _requester = client;
 }
@@ -66,6 +65,9 @@ class AccountsClientsResourceApi {
   /// client buyer
   /// is a customer; the sponsor buyer to create a client for. (required)
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Client].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -73,7 +75,8 @@ class AccountsClientsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Client> create(Client request, core.String accountId) {
+  async.Future<Client> create(Client request, core.String accountId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -86,6 +89,9 @@ class AccountsClientsResourceApi {
     }
     if (accountId == null) {
       throw new core.ArgumentError("Parameter accountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -111,6 +117,9 @@ class AccountsClientsResourceApi {
   /// [clientAccountId] - Numerical account ID of the client buyer to retrieve.
   /// (required)
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Client].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -118,7 +127,8 @@ class AccountsClientsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Client> get(core.String accountId, core.String clientAccountId) {
+  async.Future<Client> get(core.String accountId, core.String clientAccountId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -131,6 +141,9 @@ class AccountsClientsResourceApi {
     }
     if (clientAccountId == null) {
       throw new core.ArgumentError("Parameter clientAccountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -165,6 +178,9 @@ class AccountsClientsResourceApi {
   /// requested.
   /// If unspecified, the server will pick an appropriate default.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListClientsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -173,7 +189,7 @@ class AccountsClientsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListClientsResponse> list(core.String accountId,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -189,6 +205,9 @@ class AccountsClientsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -217,6 +236,9 @@ class AccountsClientsResourceApi {
   /// [clientAccountId] - Unique numerical account ID of the client to update.
   /// (required)
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Client].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -225,7 +247,8 @@ class AccountsClientsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Client> update(
-      Client request, core.String accountId, core.String clientAccountId) {
+      Client request, core.String accountId, core.String clientAccountId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -241,6 +264,9 @@ class AccountsClientsResourceApi {
     }
     if (clientAccountId == null) {
       throw new core.ArgumentError("Parameter clientAccountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -277,6 +303,9 @@ class AccountsClientsInvitationsResourceApi {
   /// [clientAccountId] - Numerical account ID of the client buyer that the user
   /// should be associated with. (required)
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ClientUserInvitation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -285,7 +314,8 @@ class AccountsClientsInvitationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ClientUserInvitation> create(ClientUserInvitation request,
-      core.String accountId, core.String clientAccountId) {
+      core.String accountId, core.String clientAccountId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -301,6 +331,9 @@ class AccountsClientsInvitationsResourceApi {
     }
     if (clientAccountId == null) {
       throw new core.ArgumentError("Parameter clientAccountId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -332,6 +365,9 @@ class AccountsClientsInvitationsResourceApi {
   /// [invitationId] - Numerical identifier of the user invitation to retrieve.
   /// (required)
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ClientUserInvitation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -340,7 +376,8 @@ class AccountsClientsInvitationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ClientUserInvitation> get(core.String accountId,
-      core.String clientAccountId, core.String invitationId) {
+      core.String clientAccountId, core.String invitationId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -356,6 +393,9 @@ class AccountsClientsInvitationsResourceApi {
     }
     if (invitationId == null) {
       throw new core.ArgumentError("Parameter invitationId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -402,6 +442,9 @@ class AccountsClientsInvitationsResourceApi {
   /// requested.
   /// If unspecified, server will pick an appropriate default.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListClientUserInvitationsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -411,7 +454,7 @@ class AccountsClientsInvitationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListClientUserInvitationsResponse> list(
       core.String accountId, core.String clientAccountId,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -430,6 +473,9 @@ class AccountsClientsInvitationsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -467,6 +513,9 @@ class AccountsClientsUsersResourceApi {
   ///
   /// [userId] - Numerical identifier of the user to retrieve. (required)
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ClientUser].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -475,7 +524,8 @@ class AccountsClientsUsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ClientUser> get(
-      core.String accountId, core.String clientAccountId, core.String userId) {
+      core.String accountId, core.String clientAccountId, core.String userId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -491,6 +541,9 @@ class AccountsClientsUsersResourceApi {
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -536,6 +589,9 @@ class AccountsClientsUsersResourceApi {
   /// requested.
   /// If unspecified, the server will pick an appropriate default.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListClientUsersResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -545,7 +601,7 @@ class AccountsClientsUsersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListClientUsersResponse> list(
       core.String accountId, core.String clientAccountId,
-      {core.String pageToken, core.int pageSize}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -564,6 +620,9 @@ class AccountsClientsUsersResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -597,6 +656,9 @@ class AccountsClientsUsersResourceApi {
   ///
   /// [userId] - Numerical identifier of the user to retrieve. (required)
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ClientUser].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -605,7 +667,8 @@ class AccountsClientsUsersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ClientUser> update(ClientUser request, core.String accountId,
-      core.String clientAccountId, core.String userId) {
+      core.String clientAccountId, core.String userId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -624,6 +687,9 @@ class AccountsClientsUsersResourceApi {
     }
     if (userId == null) {
       throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -670,6 +736,9 @@ class AccountsCreativesResourceApi {
   /// - "NO_DUPLICATES" : A NO_DUPLICATES.
   /// - "FORCE_ENABLE_DUPLICATE_IDS" : A FORCE_ENABLE_DUPLICATE_IDS.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Creative].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -678,7 +747,7 @@ class AccountsCreativesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Creative> create(Creative request, core.String accountId,
-      {core.String duplicateIdMode}) {
+      {core.String duplicateIdMode, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -694,6 +763,9 @@ class AccountsCreativesResourceApi {
     }
     if (duplicateIdMode != null) {
       _queryParams["duplicateIdMode"] = [duplicateIdMode];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -717,6 +789,9 @@ class AccountsCreativesResourceApi {
   ///
   /// [creativeId] - The ID of the creative to retrieve.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Creative].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -724,7 +799,8 @@ class AccountsCreativesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Creative> get(core.String accountId, core.String creativeId) {
+  async.Future<Creative> get(core.String accountId, core.String creativeId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -737,6 +813,9 @@ class AccountsCreativesResourceApi {
     }
     if (creativeId == null) {
       throw new core.ArgumentError("Parameter creativeId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -790,6 +869,9 @@ class AccountsCreativesResourceApi {
   /// Example: 'accountId=12345 AND (dealsStatus:disapproved AND
   /// disapprovalReason:unacceptable_content) OR attribute:47'
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListCreativesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -798,7 +880,10 @@ class AccountsCreativesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCreativesResponse> list(core.String accountId,
-      {core.String pageToken, core.int pageSize, core.String query}) {
+      {core.String pageToken,
+      core.int pageSize,
+      core.String query,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -817,6 +902,9 @@ class AccountsCreativesResourceApi {
     }
     if (query != null) {
       _queryParams["query"] = [query];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -844,6 +932,9 @@ class AccountsCreativesResourceApi {
   /// [creativeId] - The creative ID of the creative to stop notifications for.
   /// Specify "-" to specify stopping account level notifications.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -852,7 +943,8 @@ class AccountsCreativesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> stopWatching(StopWatchingCreativeRequest request,
-      core.String accountId, core.String creativeId) {
+      core.String accountId, core.String creativeId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -868,6 +960,9 @@ class AccountsCreativesResourceApi {
     }
     if (creativeId == null) {
       throw new core.ArgumentError("Parameter creativeId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -901,6 +996,9 @@ class AccountsCreativesResourceApi {
   /// creatives.list
   /// method.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Creative].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -909,7 +1007,8 @@ class AccountsCreativesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Creative> update(
-      Creative request, core.String accountId, core.String creativeId) {
+      Creative request, core.String accountId, core.String creativeId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -925,6 +1024,9 @@ class AccountsCreativesResourceApi {
     }
     if (creativeId == null) {
       throw new core.ArgumentError("Parameter creativeId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -956,6 +1058,9 @@ class AccountsCreativesResourceApi {
   /// sent, only a single notification will be sent to the
   /// creative-level notification topic.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -964,7 +1069,8 @@ class AccountsCreativesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> watch(WatchCreativeRequest request, core.String accountId,
-      core.String creativeId) {
+      core.String creativeId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -980,6 +1086,9 @@ class AccountsCreativesResourceApi {
     }
     if (creativeId == null) {
       throw new core.ArgumentError("Parameter creativeId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -1014,6 +1123,9 @@ class AccountsCreativesDealAssociationsResourceApi {
   ///
   /// [creativeId] - The ID of the creative associated with the deal.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1022,7 +1134,8 @@ class AccountsCreativesDealAssociationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> add(AddDealAssociationRequest request,
-      core.String accountId, core.String creativeId) {
+      core.String accountId, core.String creativeId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1038,6 +1151,9 @@ class AccountsCreativesDealAssociationsResourceApi {
     }
     if (creativeId == null) {
       throw new core.ArgumentError("Parameter creativeId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -1090,6 +1206,9 @@ class AccountsCreativesDealAssociationsResourceApi {
   /// </ul>
   /// Example: 'dealsId=12345 AND dealsStatus:disapproved'
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListDealAssociationsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1099,7 +1218,10 @@ class AccountsCreativesDealAssociationsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListDealAssociationsResponse> list(
       core.String accountId, core.String creativeId,
-      {core.String pageToken, core.int pageSize, core.String query}) {
+      {core.String pageToken,
+      core.int pageSize,
+      core.String query,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1121,6 +1243,9 @@ class AccountsCreativesDealAssociationsResourceApi {
     }
     if (query != null) {
       _queryParams["query"] = [query];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -1149,6 +1274,9 @@ class AccountsCreativesDealAssociationsResourceApi {
   ///
   /// [creativeId] - The ID of the creative associated with the deal.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1157,7 +1285,8 @@ class AccountsCreativesDealAssociationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> remove(RemoveDealAssociationRequest request,
-      core.String accountId, core.String creativeId) {
+      core.String accountId, core.String creativeId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1173,6 +1302,9 @@ class AccountsCreativesDealAssociationsResourceApi {
     }
     if (creativeId == null) {
       throw new core.ArgumentError("Parameter creativeId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v2beta1/accounts/' +
@@ -1191,29 +1323,53 @@ class AccountsCreativesDealAssociationsResourceApi {
   }
 }
 
-class AccountsFilterSetsResourceApi {
+class BiddersResourceApi {
   final commons.ApiRequester _requester;
 
-  AccountsFilterSetsBidMetricsResourceApi get bidMetrics =>
-      new AccountsFilterSetsBidMetricsResourceApi(_requester);
-  AccountsFilterSetsBidResponseErrorsResourceApi get bidResponseErrors =>
-      new AccountsFilterSetsBidResponseErrorsResourceApi(_requester);
-  AccountsFilterSetsBidResponsesWithoutBidsResourceApi
-      get bidResponsesWithoutBids =>
-          new AccountsFilterSetsBidResponsesWithoutBidsResourceApi(_requester);
-  AccountsFilterSetsFilteredBidRequestsResourceApi get filteredBidRequests =>
-      new AccountsFilterSetsFilteredBidRequestsResourceApi(_requester);
-  AccountsFilterSetsFilteredBidsResourceApi get filteredBids =>
-      new AccountsFilterSetsFilteredBidsResourceApi(_requester);
-  AccountsFilterSetsImpressionMetricsResourceApi get impressionMetrics =>
-      new AccountsFilterSetsImpressionMetricsResourceApi(_requester);
-  AccountsFilterSetsLosingBidsResourceApi get losingBids =>
-      new AccountsFilterSetsLosingBidsResourceApi(_requester);
-  AccountsFilterSetsNonBillableWinningBidsResourceApi
-      get nonBillableWinningBids =>
-          new AccountsFilterSetsNonBillableWinningBidsResourceApi(_requester);
+  BiddersAccountsResourceApi get accounts =>
+      new BiddersAccountsResourceApi(_requester);
+  BiddersFilterSetsResourceApi get filterSets =>
+      new BiddersFilterSetsResourceApi(_requester);
 
-  AccountsFilterSetsResourceApi(commons.ApiRequester client)
+  BiddersResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class BiddersAccountsResourceApi {
+  final commons.ApiRequester _requester;
+
+  BiddersAccountsFilterSetsResourceApi get filterSets =>
+      new BiddersAccountsFilterSetsResourceApi(_requester);
+
+  BiddersAccountsResourceApi(commons.ApiRequester client) : _requester = client;
+}
+
+class BiddersAccountsFilterSetsResourceApi {
+  final commons.ApiRequester _requester;
+
+  BiddersAccountsFilterSetsBidMetricsResourceApi get bidMetrics =>
+      new BiddersAccountsFilterSetsBidMetricsResourceApi(_requester);
+  BiddersAccountsFilterSetsBidResponseErrorsResourceApi get bidResponseErrors =>
+      new BiddersAccountsFilterSetsBidResponseErrorsResourceApi(_requester);
+  BiddersAccountsFilterSetsBidResponsesWithoutBidsResourceApi
+      get bidResponsesWithoutBids =>
+          new BiddersAccountsFilterSetsBidResponsesWithoutBidsResourceApi(
+              _requester);
+  BiddersAccountsFilterSetsFilteredBidRequestsResourceApi
+      get filteredBidRequests =>
+          new BiddersAccountsFilterSetsFilteredBidRequestsResourceApi(
+              _requester);
+  BiddersAccountsFilterSetsFilteredBidsResourceApi get filteredBids =>
+      new BiddersAccountsFilterSetsFilteredBidsResourceApi(_requester);
+  BiddersAccountsFilterSetsImpressionMetricsResourceApi get impressionMetrics =>
+      new BiddersAccountsFilterSetsImpressionMetricsResourceApi(_requester);
+  BiddersAccountsFilterSetsLosingBidsResourceApi get losingBids =>
+      new BiddersAccountsFilterSetsLosingBidsResourceApi(_requester);
+  BiddersAccountsFilterSetsNonBillableWinningBidsResourceApi
+      get nonBillableWinningBids =>
+          new BiddersAccountsFilterSetsNonBillableWinningBidsResourceApi(
+              _requester);
+
+  BiddersAccountsFilterSetsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
   /// Creates the specified filter set for the account with the given account
@@ -1223,12 +1379,26 @@ class AccountsFilterSetsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [accountId] - Account ID of the buyer.
+  /// [ownerName] - Name of the owner (bidder or account) of the filter set to
+  /// be created.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123: "bidders/123"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456"
+  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+$".
   ///
   /// [isTransient] - Whether the filter set is transient, or should be
   /// persisted indefinitely.
   /// By default, filter sets are not transient.
   /// If transient, it will be available for at least 1 hour after creation.
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [FilterSet].
   ///
@@ -1237,8 +1407,8 @@ class AccountsFilterSetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FilterSet> create(FilterSet request, core.String accountId,
-      {core.bool isTransient}) {
+  async.Future<FilterSet> create(FilterSet request, core.String ownerName,
+      {core.bool isTransient, core.String accountId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1249,15 +1419,21 @@ class AccountsFilterSetsResourceApi {
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
     }
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
+    if (ownerName == null) {
+      throw new core.ArgumentError("Parameter ownerName is required.");
     }
     if (isTransient != null) {
       _queryParams["isTransient"] = ["${isTransient}"];
     }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
-    _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+    _url = 'v2beta1/' +
+        commons.Escaper.ecapeVariableReserved('$ownerName') +
         '/filterSets';
 
     var _response = _requester.request(_url, "POST",
@@ -1274,9 +1450,23 @@ class AccountsFilterSetsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [name] - Full name of the resource to delete.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123:
+  ///   "bidders/123/filterSets/abc"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123/filterSets/abc"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
+  ///
   /// [accountId] - Account ID of the buyer.
   ///
   /// [filterSetId] - The ID of the filter set to delete.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [Empty].
   ///
@@ -1285,7 +1475,8 @@ class AccountsFilterSetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String accountId, core.String filterSetId) {
+  async.Future<Empty> delete(core.String name,
+      {core.String accountId, core.String filterSetId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1293,17 +1484,20 @@ class AccountsFilterSetsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filterSetId == null) {
-      throw new core.ArgumentError("Parameter filterSetId is required.");
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if (filterSetId != null) {
+      _queryParams["filterSetId"] = [filterSetId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
-        '/filterSets/' +
-        commons.Escaper.ecapeVariable('$filterSetId');
+    _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     var _response = _requester.request(_url, "DELETE",
         body: _body,
@@ -1319,9 +1513,23 @@ class AccountsFilterSetsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [name] - Full name of the resource being requested.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123:
+  ///   "bidders/123/filterSets/abc"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123/filterSets/abc"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
+  ///
   /// [accountId] - Account ID of the buyer.
   ///
   /// [filterSetId] - The ID of the filter set to get.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [FilterSet].
   ///
@@ -1330,7 +1538,8 @@ class AccountsFilterSetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<FilterSet> get(core.String accountId, core.String filterSetId) {
+  async.Future<FilterSet> get(core.String name,
+      {core.String accountId, core.String filterSetId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1338,17 +1547,20 @@ class AccountsFilterSetsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filterSetId == null) {
-      throw new core.ArgumentError("Parameter filterSetId is required.");
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if (filterSetId != null) {
+      _queryParams["filterSetId"] = [filterSetId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
-        '/filterSets/' +
-        commons.Escaper.ecapeVariable('$filterSetId');
+    _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     var _response = _requester.request(_url, "GET",
         body: _body,
@@ -1363,7 +1575,16 @@ class AccountsFilterSetsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [accountId] - Account ID of the buyer.
+  /// [ownerName] - Name of the owner (bidder or account) of the filter sets to
+  /// be listed.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123: "bidders/123"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456"
+  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+$".
   ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
@@ -1377,6 +1598,11 @@ class AccountsFilterSetsResourceApi {
   /// requested.
   /// If unspecified, the server will pick an appropriate default.
   ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListFilterSetsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1384,8 +1610,11 @@ class AccountsFilterSetsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListFilterSetsResponse> list(core.String accountId,
-      {core.String pageToken, core.int pageSize}) {
+  async.Future<ListFilterSetsResponse> list(core.String ownerName,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String accountId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1393,8 +1622,8 @@ class AccountsFilterSetsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
+    if (ownerName == null) {
+      throw new core.ArgumentError("Parameter ownerName is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1402,9 +1631,15 @@ class AccountsFilterSetsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
-    _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
+    _url = 'v2beta1/' +
+        commons.Escaper.ecapeVariableReserved('$ownerName') +
         '/filterSets';
 
     var _response = _requester.request(_url, "GET",
@@ -1417,17 +1652,27 @@ class AccountsFilterSetsResourceApi {
   }
 }
 
-class AccountsFilterSetsBidMetricsResourceApi {
+class BiddersAccountsFilterSetsBidMetricsResourceApi {
   final commons.ApiRequester _requester;
 
-  AccountsFilterSetsBidMetricsResourceApi(commons.ApiRequester client)
+  BiddersAccountsFilterSetsBidMetricsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
   /// Lists all metrics that are measured in terms of number of bids.
   ///
   /// Request parameters:
   ///
-  /// [accountId] - Account ID of the buyer.
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123:
+  ///   "bidders/123/filterSets/abc"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123/filterSets/abc"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
   ///
   /// [filterSetId] - The ID of the filter set to apply.
   ///
@@ -1435,13 +1680,17 @@ class AccountsFilterSetsBidMetricsResourceApi {
   /// return.
   /// Typically, this is the value of
   /// ListBidMetricsResponse.nextPageToken
-  /// returned from the previous call to the
-  /// accounts.filterSets.bidMetrics.list
+  /// returned from the previous call to the bidMetrics.list
   /// method.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested.
   /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListBidMetricsResponse].
   ///
@@ -1450,9 +1699,12 @@ class AccountsFilterSetsBidMetricsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListBidMetricsResponse> list(
-      core.String accountId, core.String filterSetId,
-      {core.String pageToken, core.int pageSize}) {
+  async.Future<ListBidMetricsResponse> list(core.String filterSetName,
+      {core.String filterSetId,
+      core.String pageToken,
+      core.int pageSize,
+      core.String accountId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1460,11 +1712,11 @@ class AccountsFilterSetsBidMetricsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
+    if (filterSetName == null) {
+      throw new core.ArgumentError("Parameter filterSetName is required.");
     }
-    if (filterSetId == null) {
-      throw new core.ArgumentError("Parameter filterSetId is required.");
+    if (filterSetId != null) {
+      _queryParams["filterSetId"] = [filterSetId];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1472,11 +1724,15 @@ class AccountsFilterSetsBidMetricsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
-    _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
-        '/filterSets/' +
-        commons.Escaper.ecapeVariable('$filterSetId') +
+    _url = 'v2beta1/' +
+        commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/bidMetrics';
 
     var _response = _requester.request(_url, "GET",
@@ -1489,10 +1745,11 @@ class AccountsFilterSetsBidMetricsResourceApi {
   }
 }
 
-class AccountsFilterSetsBidResponseErrorsResourceApi {
+class BiddersAccountsFilterSetsBidResponseErrorsResourceApi {
   final commons.ApiRequester _requester;
 
-  AccountsFilterSetsBidResponseErrorsResourceApi(commons.ApiRequester client)
+  BiddersAccountsFilterSetsBidResponseErrorsResourceApi(
+      commons.ApiRequester client)
       : _requester = client;
 
   /// List all errors that occurred in bid responses, with the number of bid
@@ -1500,21 +1757,35 @@ class AccountsFilterSetsBidResponseErrorsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [accountId] - Account ID of the buyer.
-  ///
-  /// [filterSetId] - The ID of the filter set to apply.
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123:
+  ///   "bidders/123/filterSets/abc"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123/filterSets/abc"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
   ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   /// Typically, this is the value of
   /// ListBidResponseErrorsResponse.nextPageToken
-  /// returned from the previous call to the
-  /// accounts.filterSets.bidResponseErrors.list
+  /// returned from the previous call to the bidResponseErrors.list
   /// method.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested.
   /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [filterSetId] - The ID of the filter set to apply.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListBidResponseErrorsResponse].
   ///
@@ -1523,9 +1794,12 @@ class AccountsFilterSetsBidResponseErrorsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListBidResponseErrorsResponse> list(
-      core.String accountId, core.String filterSetId,
-      {core.String pageToken, core.int pageSize}) {
+  async.Future<ListBidResponseErrorsResponse> list(core.String filterSetName,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String accountId,
+      core.String filterSetId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1533,11 +1807,8 @@ class AccountsFilterSetsBidResponseErrorsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (filterSetId == null) {
-      throw new core.ArgumentError("Parameter filterSetId is required.");
+    if (filterSetName == null) {
+      throw new core.ArgumentError("Parameter filterSetName is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1545,11 +1816,18 @@ class AccountsFilterSetsBidResponseErrorsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if (filterSetId != null) {
+      _queryParams["filterSetId"] = [filterSetId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
-    _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
-        '/filterSets/' +
-        commons.Escaper.ecapeVariable('$filterSetId') +
+    _url = 'v2beta1/' +
+        commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/bidResponseErrors';
 
     var _response = _requester.request(_url, "GET",
@@ -1563,10 +1841,10 @@ class AccountsFilterSetsBidResponseErrorsResourceApi {
   }
 }
 
-class AccountsFilterSetsBidResponsesWithoutBidsResourceApi {
+class BiddersAccountsFilterSetsBidResponsesWithoutBidsResourceApi {
   final commons.ApiRequester _requester;
 
-  AccountsFilterSetsBidResponsesWithoutBidsResourceApi(
+  BiddersAccountsFilterSetsBidResponsesWithoutBidsResourceApi(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -1576,7 +1854,17 @@ class AccountsFilterSetsBidResponsesWithoutBidsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [accountId] - Account ID of the buyer.
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123:
+  ///   "bidders/123/filterSets/abc"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123/filterSets/abc"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
   ///
   /// [filterSetId] - The ID of the filter set to apply.
   ///
@@ -1584,13 +1872,17 @@ class AccountsFilterSetsBidResponsesWithoutBidsResourceApi {
   /// return.
   /// Typically, this is the value of
   /// ListBidResponsesWithoutBidsResponse.nextPageToken
-  /// returned from the previous call to the
-  /// accounts.filterSets.bidResponsesWithoutBids.list
+  /// returned from the previous call to the bidResponsesWithoutBids.list
   /// method.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested.
   /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListBidResponsesWithoutBidsResponse].
   ///
@@ -1600,8 +1892,12 @@ class AccountsFilterSetsBidResponsesWithoutBidsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBidResponsesWithoutBidsResponse> list(
-      core.String accountId, core.String filterSetId,
-      {core.String pageToken, core.int pageSize}) {
+      core.String filterSetName,
+      {core.String filterSetId,
+      core.String pageToken,
+      core.int pageSize,
+      core.String accountId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1609,11 +1905,11 @@ class AccountsFilterSetsBidResponsesWithoutBidsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
+    if (filterSetName == null) {
+      throw new core.ArgumentError("Parameter filterSetName is required.");
     }
-    if (filterSetId == null) {
-      throw new core.ArgumentError("Parameter filterSetId is required.");
+    if (filterSetId != null) {
+      _queryParams["filterSetId"] = [filterSetId];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1621,11 +1917,15 @@ class AccountsFilterSetsBidResponsesWithoutBidsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
-    _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
-        '/filterSets/' +
-        commons.Escaper.ecapeVariable('$filterSetId') +
+    _url = 'v2beta1/' +
+        commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/bidResponsesWithoutBids';
 
     var _response = _requester.request(_url, "GET",
@@ -1639,10 +1939,11 @@ class AccountsFilterSetsBidResponsesWithoutBidsResourceApi {
   }
 }
 
-class AccountsFilterSetsFilteredBidRequestsResourceApi {
+class BiddersAccountsFilterSetsFilteredBidRequestsResourceApi {
   final commons.ApiRequester _requester;
 
-  AccountsFilterSetsFilteredBidRequestsResourceApi(commons.ApiRequester client)
+  BiddersAccountsFilterSetsFilteredBidRequestsResourceApi(
+      commons.ApiRequester client)
       : _requester = client;
 
   /// List all reasons that caused a bid request not to be sent for an
@@ -1650,21 +1951,35 @@ class AccountsFilterSetsFilteredBidRequestsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [accountId] - Account ID of the buyer.
-  ///
-  /// [filterSetId] - The ID of the filter set to apply.
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123:
+  ///   "bidders/123/filterSets/abc"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123/filterSets/abc"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
   ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   /// Typically, this is the value of
   /// ListFilteredBidRequestsResponse.nextPageToken
-  /// returned from the previous call to the
-  /// accounts.filterSets.filteredBidRequests.list
+  /// returned from the previous call to the filteredBidRequests.list
   /// method.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested.
   /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [filterSetId] - The ID of the filter set to apply.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListFilteredBidRequestsResponse].
   ///
@@ -1673,9 +1988,12 @@ class AccountsFilterSetsFilteredBidRequestsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListFilteredBidRequestsResponse> list(
-      core.String accountId, core.String filterSetId,
-      {core.String pageToken, core.int pageSize}) {
+  async.Future<ListFilteredBidRequestsResponse> list(core.String filterSetName,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String accountId,
+      core.String filterSetId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1683,11 +2001,8 @@ class AccountsFilterSetsFilteredBidRequestsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (filterSetId == null) {
-      throw new core.ArgumentError("Parameter filterSetId is required.");
+    if (filterSetName == null) {
+      throw new core.ArgumentError("Parameter filterSetName is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1695,11 +2010,18 @@ class AccountsFilterSetsFilteredBidRequestsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if (filterSetId != null) {
+      _queryParams["filterSetId"] = [filterSetId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
-    _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
-        '/filterSets/' +
-        commons.Escaper.ecapeVariable('$filterSetId') +
+    _url = 'v2beta1/' +
+        commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/filteredBidRequests';
 
     var _response = _requester.request(_url, "GET",
@@ -1713,15 +2035,15 @@ class AccountsFilterSetsFilteredBidRequestsResourceApi {
   }
 }
 
-class AccountsFilterSetsFilteredBidsResourceApi {
+class BiddersAccountsFilterSetsFilteredBidsResourceApi {
   final commons.ApiRequester _requester;
 
-  AccountsFilterSetsFilteredBidsCreativesResourceApi get creatives =>
-      new AccountsFilterSetsFilteredBidsCreativesResourceApi(_requester);
-  AccountsFilterSetsFilteredBidsDetailsResourceApi get details =>
-      new AccountsFilterSetsFilteredBidsDetailsResourceApi(_requester);
+  BiddersAccountsFilterSetsFilteredBidsCreativesResourceApi get creatives =>
+      new BiddersAccountsFilterSetsFilteredBidsCreativesResourceApi(_requester);
+  BiddersAccountsFilterSetsFilteredBidsDetailsResourceApi get details =>
+      new BiddersAccountsFilterSetsFilteredBidsDetailsResourceApi(_requester);
 
-  AccountsFilterSetsFilteredBidsResourceApi(commons.ApiRequester client)
+  BiddersAccountsFilterSetsFilteredBidsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
   /// List all reasons for which bids were filtered, with the number of bids
@@ -1729,7 +2051,17 @@ class AccountsFilterSetsFilteredBidsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [accountId] - Account ID of the buyer.
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123:
+  ///   "bidders/123/filterSets/abc"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123/filterSets/abc"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
   ///
   /// [filterSetId] - The ID of the filter set to apply.
   ///
@@ -1737,13 +2069,17 @@ class AccountsFilterSetsFilteredBidsResourceApi {
   /// return.
   /// Typically, this is the value of
   /// ListFilteredBidsResponse.nextPageToken
-  /// returned from the previous call to the
-  /// accounts.filterSets.filteredBids.list
+  /// returned from the previous call to the filteredBids.list
   /// method.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested.
   /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListFilteredBidsResponse].
   ///
@@ -1752,9 +2088,12 @@ class AccountsFilterSetsFilteredBidsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListFilteredBidsResponse> list(
-      core.String accountId, core.String filterSetId,
-      {core.String pageToken, core.int pageSize}) {
+  async.Future<ListFilteredBidsResponse> list(core.String filterSetName,
+      {core.String filterSetId,
+      core.String pageToken,
+      core.int pageSize,
+      core.String accountId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1762,11 +2101,11 @@ class AccountsFilterSetsFilteredBidsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
+    if (filterSetName == null) {
+      throw new core.ArgumentError("Parameter filterSetName is required.");
     }
-    if (filterSetId == null) {
-      throw new core.ArgumentError("Parameter filterSetId is required.");
+    if (filterSetId != null) {
+      _queryParams["filterSetId"] = [filterSetId];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1774,11 +2113,15 @@ class AccountsFilterSetsFilteredBidsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
-    _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
-        '/filterSets/' +
-        commons.Escaper.ecapeVariable('$filterSetId') +
+    _url = 'v2beta1/' +
+        commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/filteredBids';
 
     var _response = _requester.request(_url, "GET",
@@ -1792,10 +2135,10 @@ class AccountsFilterSetsFilteredBidsResourceApi {
   }
 }
 
-class AccountsFilterSetsFilteredBidsCreativesResourceApi {
+class BiddersAccountsFilterSetsFilteredBidsCreativesResourceApi {
   final commons.ApiRequester _requester;
 
-  AccountsFilterSetsFilteredBidsCreativesResourceApi(
+  BiddersAccountsFilterSetsFilteredBidsCreativesResourceApi(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -1804,9 +2147,17 @@ class AccountsFilterSetsFilteredBidsCreativesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [accountId] - Account ID of the buyer.
-  ///
-  /// [filterSetId] - The ID of the filter set to apply.
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123:
+  ///   "bidders/123/filterSets/abc"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123/filterSets/abc"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
   ///
   /// [creativeStatusId] - The ID of the creative status for which to retrieve a
   /// breakdown by
@@ -1814,17 +2165,23 @@ class AccountsFilterSetsFilteredBidsCreativesResourceApi {
   /// See
   /// [creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/creative-status-codes).
   ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [filterSetId] - The ID of the filter set to apply.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   /// Typically, this is the value of
   /// ListCreativeStatusBreakdownByCreativeResponse.nextPageToken
-  /// returned from the previous call to the
-  /// accounts.filterSets.filteredBids.creatives.list
+  /// returned from the previous call to the filteredBids.creatives.list
   /// method.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested.
   /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListCreativeStatusBreakdownByCreativeResponse].
   ///
@@ -1834,8 +2191,12 @@ class AccountsFilterSetsFilteredBidsCreativesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCreativeStatusBreakdownByCreativeResponse> list(
-      core.String accountId, core.String filterSetId, core.int creativeStatusId,
-      {core.String pageToken, core.int pageSize}) {
+      core.String filterSetName, core.int creativeStatusId,
+      {core.String accountId,
+      core.String filterSetId,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1843,14 +2204,17 @@ class AccountsFilterSetsFilteredBidsCreativesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (filterSetId == null) {
-      throw new core.ArgumentError("Parameter filterSetId is required.");
+    if (filterSetName == null) {
+      throw new core.ArgumentError("Parameter filterSetName is required.");
     }
     if (creativeStatusId == null) {
       throw new core.ArgumentError("Parameter creativeStatusId is required.");
+    }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if (filterSetId != null) {
+      _queryParams["filterSetId"] = [filterSetId];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1858,11 +2222,12 @@ class AccountsFilterSetsFilteredBidsCreativesResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
-    _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
-        '/filterSets/' +
-        commons.Escaper.ecapeVariable('$filterSetId') +
+    _url = 'v2beta1/' +
+        commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/filteredBids/' +
         commons.Escaper.ecapeVariable('$creativeStatusId') +
         '/creatives';
@@ -1878,10 +2243,11 @@ class AccountsFilterSetsFilteredBidsCreativesResourceApi {
   }
 }
 
-class AccountsFilterSetsFilteredBidsDetailsResourceApi {
+class BiddersAccountsFilterSetsFilteredBidsDetailsResourceApi {
   final commons.ApiRequester _requester;
 
-  AccountsFilterSetsFilteredBidsDetailsResourceApi(commons.ApiRequester client)
+  BiddersAccountsFilterSetsFilteredBidsDetailsResourceApi(
+      commons.ApiRequester client)
       : _requester = client;
 
   /// List all details associated with a specific reason for which bids were
@@ -1889,9 +2255,17 @@ class AccountsFilterSetsFilteredBidsDetailsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [accountId] - Account ID of the buyer.
-  ///
-  /// [filterSetId] - The ID of the filter set to apply.
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123:
+  ///   "bidders/123/filterSets/abc"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123/filterSets/abc"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
   ///
   /// [creativeStatusId] - The ID of the creative status for which to retrieve a
   /// breakdown by detail.
@@ -1900,17 +2274,23 @@ class AccountsFilterSetsFilteredBidsDetailsResourceApi {
   /// Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and
   /// 87.
   ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [filterSetId] - The ID of the filter set to apply.
+  ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   /// Typically, this is the value of
   /// ListCreativeStatusBreakdownByDetailResponse.nextPageToken
-  /// returned from the previous call to the
-  /// accounts.filterSets.filteredBids.details.list
+  /// returned from the previous call to the filteredBids.details.list
   /// method.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested.
   /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListCreativeStatusBreakdownByDetailResponse].
   ///
@@ -1920,8 +2300,12 @@ class AccountsFilterSetsFilteredBidsDetailsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCreativeStatusBreakdownByDetailResponse> list(
-      core.String accountId, core.String filterSetId, core.int creativeStatusId,
-      {core.String pageToken, core.int pageSize}) {
+      core.String filterSetName, core.int creativeStatusId,
+      {core.String accountId,
+      core.String filterSetId,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1929,14 +2313,17 @@ class AccountsFilterSetsFilteredBidsDetailsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (filterSetId == null) {
-      throw new core.ArgumentError("Parameter filterSetId is required.");
+    if (filterSetName == null) {
+      throw new core.ArgumentError("Parameter filterSetName is required.");
     }
     if (creativeStatusId == null) {
       throw new core.ArgumentError("Parameter creativeStatusId is required.");
+    }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if (filterSetId != null) {
+      _queryParams["filterSetId"] = [filterSetId];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1944,11 +2331,12 @@ class AccountsFilterSetsFilteredBidsDetailsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
-    _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
-        '/filterSets/' +
-        commons.Escaper.ecapeVariable('$filterSetId') +
+    _url = 'v2beta1/' +
+        commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/filteredBids/' +
         commons.Escaper.ecapeVariable('$creativeStatusId') +
         '/details';
@@ -1964,31 +2352,46 @@ class AccountsFilterSetsFilteredBidsDetailsResourceApi {
   }
 }
 
-class AccountsFilterSetsImpressionMetricsResourceApi {
+class BiddersAccountsFilterSetsImpressionMetricsResourceApi {
   final commons.ApiRequester _requester;
 
-  AccountsFilterSetsImpressionMetricsResourceApi(commons.ApiRequester client)
+  BiddersAccountsFilterSetsImpressionMetricsResourceApi(
+      commons.ApiRequester client)
       : _requester = client;
 
   /// Lists all metrics that are measured in terms of number of impressions.
   ///
   /// Request parameters:
   ///
-  /// [accountId] - Account ID of the buyer.
-  ///
-  /// [filterSetId] - The ID of the filter set to apply.
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123:
+  ///   "bidders/123/filterSets/abc"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123/filterSets/abc"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
   ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   /// Typically, this is the value of
   /// ListImpressionMetricsResponse.nextPageToken
-  /// returned from the previous call to the
-  /// accounts.filterSets.impressionMetrics.list
+  /// returned from the previous call to the impressionMetrics.list
   /// method.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested.
   /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [filterSetId] - The ID of the filter set to apply.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListImpressionMetricsResponse].
   ///
@@ -1997,9 +2400,12 @@ class AccountsFilterSetsImpressionMetricsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListImpressionMetricsResponse> list(
-      core.String accountId, core.String filterSetId,
-      {core.String pageToken, core.int pageSize}) {
+  async.Future<ListImpressionMetricsResponse> list(core.String filterSetName,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String accountId,
+      core.String filterSetId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2007,11 +2413,8 @@ class AccountsFilterSetsImpressionMetricsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (filterSetId == null) {
-      throw new core.ArgumentError("Parameter filterSetId is required.");
+    if (filterSetName == null) {
+      throw new core.ArgumentError("Parameter filterSetName is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -2019,11 +2422,18 @@ class AccountsFilterSetsImpressionMetricsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if (filterSetId != null) {
+      _queryParams["filterSetId"] = [filterSetId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
-    _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
-        '/filterSets/' +
-        commons.Escaper.ecapeVariable('$filterSetId') +
+    _url = 'v2beta1/' +
+        commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/impressionMetrics';
 
     var _response = _requester.request(_url, "GET",
@@ -2037,10 +2447,10 @@ class AccountsFilterSetsImpressionMetricsResourceApi {
   }
 }
 
-class AccountsFilterSetsLosingBidsResourceApi {
+class BiddersAccountsFilterSetsLosingBidsResourceApi {
   final commons.ApiRequester _requester;
 
-  AccountsFilterSetsLosingBidsResourceApi(commons.ApiRequester client)
+  BiddersAccountsFilterSetsLosingBidsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
   /// List all reasons for which bids lost in the auction, with the number of
@@ -2048,21 +2458,35 @@ class AccountsFilterSetsLosingBidsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [accountId] - Account ID of the buyer.
-  ///
-  /// [filterSetId] - The ID of the filter set to apply.
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123:
+  ///   "bidders/123/filterSets/abc"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123/filterSets/abc"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
   ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   /// Typically, this is the value of
   /// ListLosingBidsResponse.nextPageToken
-  /// returned from the previous call to the
-  /// accounts.filterSets.losingBids.list
+  /// returned from the previous call to the losingBids.list
   /// method.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested.
   /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [filterSetId] - The ID of the filter set to apply.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListLosingBidsResponse].
   ///
@@ -2071,9 +2495,12 @@ class AccountsFilterSetsLosingBidsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListLosingBidsResponse> list(
-      core.String accountId, core.String filterSetId,
-      {core.String pageToken, core.int pageSize}) {
+  async.Future<ListLosingBidsResponse> list(core.String filterSetName,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String accountId,
+      core.String filterSetId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2081,11 +2508,8 @@ class AccountsFilterSetsLosingBidsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (filterSetId == null) {
-      throw new core.ArgumentError("Parameter filterSetId is required.");
+    if (filterSetName == null) {
+      throw new core.ArgumentError("Parameter filterSetName is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -2093,11 +2517,18 @@ class AccountsFilterSetsLosingBidsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if (filterSetId != null) {
+      _queryParams["filterSetId"] = [filterSetId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
-    _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
-        '/filterSets/' +
-        commons.Escaper.ecapeVariable('$filterSetId') +
+    _url = 'v2beta1/' +
+        commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/losingBids';
 
     var _response = _requester.request(_url, "GET",
@@ -2110,10 +2541,10 @@ class AccountsFilterSetsLosingBidsResourceApi {
   }
 }
 
-class AccountsFilterSetsNonBillableWinningBidsResourceApi {
+class BiddersAccountsFilterSetsNonBillableWinningBidsResourceApi {
   final commons.ApiRequester _requester;
 
-  AccountsFilterSetsNonBillableWinningBidsResourceApi(
+  BiddersAccountsFilterSetsNonBillableWinningBidsResourceApi(
       commons.ApiRequester client)
       : _requester = client;
 
@@ -2122,21 +2553,35 @@ class AccountsFilterSetsNonBillableWinningBidsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [accountId] - Account ID of the buyer.
-  ///
-  /// [filterSetId] - The ID of the filter set to apply.
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123:
+  ///   "bidders/123/filterSets/abc"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123/filterSets/abc"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
   ///
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   /// Typically, this is the value of
   /// ListNonBillableWinningBidsResponse.nextPageToken
-  /// returned from the previous call to the
-  /// accounts.filterSets.nonBillableWinningBids.list
+  /// returned from the previous call to the nonBillableWinningBids.list
   /// method.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested.
   /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [filterSetId] - The ID of the filter set to apply.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
   ///
   /// Completes with a [ListNonBillableWinningBidsResponse].
   ///
@@ -2146,8 +2591,12 @@ class AccountsFilterSetsNonBillableWinningBidsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListNonBillableWinningBidsResponse> list(
-      core.String accountId, core.String filterSetId,
-      {core.String pageToken, core.int pageSize}) {
+      core.String filterSetName,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String accountId,
+      core.String filterSetId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2155,11 +2604,8 @@ class AccountsFilterSetsNonBillableWinningBidsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (accountId == null) {
-      throw new core.ArgumentError("Parameter accountId is required.");
-    }
-    if (filterSetId == null) {
-      throw new core.ArgumentError("Parameter filterSetId is required.");
+    if (filterSetName == null) {
+      throw new core.ArgumentError("Parameter filterSetName is required.");
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -2167,11 +2613,1497 @@ class AccountsFilterSetsNonBillableWinningBidsResourceApi {
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if (filterSetId != null) {
+      _queryParams["filterSetId"] = [filterSetId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
-    _url = 'v2beta1/accounts/' +
-        commons.Escaper.ecapeVariable('$accountId') +
-        '/filterSets/' +
-        commons.Escaper.ecapeVariable('$filterSetId') +
+    _url = 'v2beta1/' +
+        commons.Escaper.ecapeVariableReserved('$filterSetName') +
+        '/nonBillableWinningBids';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListNonBillableWinningBidsResponse.fromJson(data));
+  }
+}
+
+class BiddersFilterSetsResourceApi {
+  final commons.ApiRequester _requester;
+
+  BiddersFilterSetsBidMetricsResourceApi get bidMetrics =>
+      new BiddersFilterSetsBidMetricsResourceApi(_requester);
+  BiddersFilterSetsBidResponseErrorsResourceApi get bidResponseErrors =>
+      new BiddersFilterSetsBidResponseErrorsResourceApi(_requester);
+  BiddersFilterSetsBidResponsesWithoutBidsResourceApi
+      get bidResponsesWithoutBids =>
+          new BiddersFilterSetsBidResponsesWithoutBidsResourceApi(_requester);
+  BiddersFilterSetsFilteredBidRequestsResourceApi get filteredBidRequests =>
+      new BiddersFilterSetsFilteredBidRequestsResourceApi(_requester);
+  BiddersFilterSetsFilteredBidsResourceApi get filteredBids =>
+      new BiddersFilterSetsFilteredBidsResourceApi(_requester);
+  BiddersFilterSetsImpressionMetricsResourceApi get impressionMetrics =>
+      new BiddersFilterSetsImpressionMetricsResourceApi(_requester);
+  BiddersFilterSetsLosingBidsResourceApi get losingBids =>
+      new BiddersFilterSetsLosingBidsResourceApi(_requester);
+  BiddersFilterSetsNonBillableWinningBidsResourceApi
+      get nonBillableWinningBids =>
+          new BiddersFilterSetsNonBillableWinningBidsResourceApi(_requester);
+
+  BiddersFilterSetsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates the specified filter set for the account with the given account
+  /// ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [ownerName] - Name of the owner (bidder or account) of the filter set to
+  /// be created.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123: "bidders/123"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456"
+  /// Value must have pattern "^bidders/[^/]+$".
+  ///
+  /// [filterSet_relativeDateRange_offsetDays] - The end date of the filter set,
+  /// specified as the number of days before
+  /// today. E.g. for a range where the last date is today, 0.
+  ///
+  /// [isTransient] - Whether the filter set is transient, or should be
+  /// persisted indefinitely.
+  /// By default, filter sets are not transient.
+  /// If transient, it will be available for at least 1 hour after creation.
+  ///
+  /// [filterSet_buyerAccountId] - The ID of the buyer account on which to
+  /// filter; optional.
+  ///
+  /// [filterSet_ownerAccountId] - The account ID of the buyer who owns this
+  /// filter set.
+  /// The value of this field is ignored in create operations.
+  ///
+  /// [filterSet_absoluteDateRange_startDate_day] - Day of month. Must be from 1
+  /// to 31 and valid for the year and month, or 0
+  /// if specifying a year/month where the day is not significant.
+  ///
+  /// [filterSet_realtimeTimeRange_startTimestamp] - The start timestamp of the
+  /// real-time RTB metrics aggregation.
+  ///
+  /// [filterSet_absoluteDateRange_startDate_month] - Month of year. Must be
+  /// from 1 to 12.
+  ///
+  /// [filterSet_absoluteDateRange_endDate_day] - Day of month. Must be from 1
+  /// to 31 and valid for the year and month, or 0
+  /// if specifying a year/month where the day is not significant.
+  ///
+  /// [filterSet_absoluteDateRange_startDate_year] - Year of date. Must be from
+  /// 1 to 9999, or 0 if specifying a date without
+  /// a year.
+  ///
+  /// [filterSet_name] - A user-defined name of the filter set. Filter set names
+  /// must be unique
+  /// globally and match one of the patterns:
+  ///
+  /// - `bidders / * /filterSets / * ` (for accessing bidder-level
+  /// troubleshooting
+  /// data)
+  /// - `bidders / * /accounts / * /filterSets / * ` (for accessing buyer-level
+  /// troubleshooting data)
+  ///
+  /// [filterSet_platforms] - The list of platforms on which to filter; may be
+  /// empty. The filters
+  /// represented by multiple platforms are ORed together (i.e. if non-empty,
+  /// results must match any one of the platforms).
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [filterSet_relativeDateRange_durationDays] - The number of days in the
+  /// requested date range. E.g. for a range spanning
+  /// today, 1. For a range spanning the last 7 days, 7.
+  ///
+  /// [filterSet_dealId] - The ID of the deal on which to filter; optional.
+  ///
+  /// [filterSet_absoluteDateRange_endDate_year] - Year of date. Must be from 1
+  /// to 9999, or 0 if specifying a date without
+  /// a year.
+  ///
+  /// [filterSet_environment] - The environment on which to filter; optional.
+  /// Possible string values are:
+  /// - "ENVIRONMENT_UNSPECIFIED" : A ENVIRONMENT_UNSPECIFIED.
+  /// - "WEB" : A WEB.
+  /// - "APP" : A APP.
+  ///
+  /// [filterSet_absoluteDateRange_endDate_month] - Month of year. Must be from
+  /// 1 to 12.
+  ///
+  /// [filterSet_sellerNetworkIds] - The list of IDs of the seller (publisher)
+  /// networks on which to filter;
+  /// may be empty. The filters represented by multiple seller network IDs are
+  /// ORed together (i.e. if non-empty, results must match any one of the
+  /// publisher networks).
+  /// See
+  /// [seller-network-ids](https://developers.google.com/ad-exchange/rtb/downloads/seller-network-ids)
+  /// file for the set of existing seller network IDs.
+  ///
+  /// [filterSet_filterSetId] - The ID of the filter set; unique within the
+  /// account of the filter set
+  /// owner.
+  /// The value of this field is ignored in create operations.
+  ///
+  /// [filterSet_format] - The format on which to filter; optional.
+  /// Possible string values are:
+  /// - "FORMAT_UNSPECIFIED" : A FORMAT_UNSPECIFIED.
+  /// - "DISPLAY" : A DISPLAY.
+  /// - "VIDEO" : A VIDEO.
+  ///
+  /// [filterSet_timeSeriesGranularity] - The granularity of time intervals if a
+  /// time series breakdown is desired;
+  /// optional.
+  /// Possible string values are:
+  /// - "TIME_SERIES_GRANULARITY_UNSPECIFIED" : A
+  /// TIME_SERIES_GRANULARITY_UNSPECIFIED.
+  /// - "HOURLY" : A HOURLY.
+  /// - "DAILY" : A DAILY.
+  ///
+  /// [filterSet_creativeId] - The ID of the creative on which to filter;
+  /// optional.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FilterSet].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FilterSet> create(core.String ownerName,
+      {core.int filterSet_relativeDateRange_offsetDays,
+      core.bool isTransient,
+      core.String filterSet_buyerAccountId,
+      core.String filterSet_ownerAccountId,
+      core.int filterSet_absoluteDateRange_startDate_day,
+      core.String filterSet_realtimeTimeRange_startTimestamp,
+      core.int filterSet_absoluteDateRange_startDate_month,
+      core.int filterSet_absoluteDateRange_endDate_day,
+      core.int filterSet_absoluteDateRange_startDate_year,
+      core.String filterSet_name,
+      core.List<core.String> filterSet_platforms,
+      core.String accountId,
+      core.int filterSet_relativeDateRange_durationDays,
+      core.String filterSet_dealId,
+      core.int filterSet_absoluteDateRange_endDate_year,
+      core.String filterSet_environment,
+      core.int filterSet_absoluteDateRange_endDate_month,
+      core.List<core.int> filterSet_sellerNetworkIds,
+      core.String filterSet_filterSetId,
+      core.String filterSet_format,
+      core.String filterSet_timeSeriesGranularity,
+      core.String filterSet_creativeId,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (ownerName == null) {
+      throw new core.ArgumentError("Parameter ownerName is required.");
+    }
+    if (filterSet_relativeDateRange_offsetDays != null) {
+      _queryParams["filterSet.relativeDateRange.offsetDays"] = [
+        "${filterSet_relativeDateRange_offsetDays}"
+      ];
+    }
+    if (isTransient != null) {
+      _queryParams["isTransient"] = ["${isTransient}"];
+    }
+    if (filterSet_buyerAccountId != null) {
+      _queryParams["filterSet.buyerAccountId"] = [filterSet_buyerAccountId];
+    }
+    if (filterSet_ownerAccountId != null) {
+      _queryParams["filterSet.ownerAccountId"] = [filterSet_ownerAccountId];
+    }
+    if (filterSet_absoluteDateRange_startDate_day != null) {
+      _queryParams["filterSet.absoluteDateRange.startDate.day"] = [
+        "${filterSet_absoluteDateRange_startDate_day}"
+      ];
+    }
+    if (filterSet_realtimeTimeRange_startTimestamp != null) {
+      _queryParams["filterSet.realtimeTimeRange.startTimestamp"] = [
+        filterSet_realtimeTimeRange_startTimestamp
+      ];
+    }
+    if (filterSet_absoluteDateRange_startDate_month != null) {
+      _queryParams["filterSet.absoluteDateRange.startDate.month"] = [
+        "${filterSet_absoluteDateRange_startDate_month}"
+      ];
+    }
+    if (filterSet_absoluteDateRange_endDate_day != null) {
+      _queryParams["filterSet.absoluteDateRange.endDate.day"] = [
+        "${filterSet_absoluteDateRange_endDate_day}"
+      ];
+    }
+    if (filterSet_absoluteDateRange_startDate_year != null) {
+      _queryParams["filterSet.absoluteDateRange.startDate.year"] = [
+        "${filterSet_absoluteDateRange_startDate_year}"
+      ];
+    }
+    if (filterSet_name != null) {
+      _queryParams["filterSet.name"] = [filterSet_name];
+    }
+    if (filterSet_platforms != null) {
+      _queryParams["filterSet.platforms"] = filterSet_platforms;
+    }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if (filterSet_relativeDateRange_durationDays != null) {
+      _queryParams["filterSet.relativeDateRange.durationDays"] = [
+        "${filterSet_relativeDateRange_durationDays}"
+      ];
+    }
+    if (filterSet_dealId != null) {
+      _queryParams["filterSet.dealId"] = [filterSet_dealId];
+    }
+    if (filterSet_absoluteDateRange_endDate_year != null) {
+      _queryParams["filterSet.absoluteDateRange.endDate.year"] = [
+        "${filterSet_absoluteDateRange_endDate_year}"
+      ];
+    }
+    if (filterSet_environment != null) {
+      _queryParams["filterSet.environment"] = [filterSet_environment];
+    }
+    if (filterSet_absoluteDateRange_endDate_month != null) {
+      _queryParams["filterSet.absoluteDateRange.endDate.month"] = [
+        "${filterSet_absoluteDateRange_endDate_month}"
+      ];
+    }
+    if (filterSet_sellerNetworkIds != null) {
+      _queryParams["filterSet.sellerNetworkIds"] =
+          filterSet_sellerNetworkIds.map((item) => "${item}").toList();
+    }
+    if (filterSet_filterSetId != null) {
+      _queryParams["filterSet.filterSetId"] = [filterSet_filterSetId];
+    }
+    if (filterSet_format != null) {
+      _queryParams["filterSet.format"] = [filterSet_format];
+    }
+    if (filterSet_timeSeriesGranularity != null) {
+      _queryParams["filterSet.timeSeriesGranularity"] = [
+        filterSet_timeSeriesGranularity
+      ];
+    }
+    if (filterSet_creativeId != null) {
+      _queryParams["filterSet.creativeId"] = [filterSet_creativeId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/' +
+        commons.Escaper.ecapeVariableReserved('$ownerName') +
+        '/filterSets';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new FilterSet.fromJson(data));
+  }
+
+  /// Deletes the requested filter set from the account with the given account
+  /// ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Full name of the resource to delete.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123:
+  ///   "bidders/123/filterSets/abc"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123/filterSets/abc"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+  /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
+  ///
+  /// [filterSetId] - The ID of the filter set to delete.
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name,
+      {core.String filterSetId, core.String accountId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (filterSetId != null) {
+      _queryParams["filterSetId"] = [filterSetId];
+    }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Retrieves the requested filter set for the account with the given account
+  /// ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Full name of the resource being requested.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123:
+  ///   "bidders/123/filterSets/abc"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123/filterSets/abc"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+  /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
+  ///
+  /// [filterSetId] - The ID of the filter set to get.
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FilterSet].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FilterSet> get(core.String name,
+      {core.String filterSetId, core.String accountId, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (filterSetId != null) {
+      _queryParams["filterSetId"] = [filterSetId];
+    }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new FilterSet.fromJson(data));
+  }
+
+  /// Lists all filter sets for the account with the given account ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [ownerName] - Name of the owner (bidder or account) of the filter sets to
+  /// be listed.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123: "bidders/123"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456"
+  /// Value must have pattern "^bidders/[^/]+$".
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return.
+  /// Typically, this is the value of
+  /// ListFilterSetsResponse.nextPageToken
+  /// returned from the previous call to the
+  /// accounts.filterSets.list
+  /// method.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListFilterSetsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListFilterSetsResponse> list(core.String ownerName,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String accountId,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (ownerName == null) {
+      throw new core.ArgumentError("Parameter ownerName is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/' +
+        commons.Escaper.ecapeVariableReserved('$ownerName') +
+        '/filterSets';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListFilterSetsResponse.fromJson(data));
+  }
+}
+
+class BiddersFilterSetsBidMetricsResourceApi {
+  final commons.ApiRequester _requester;
+
+  BiddersFilterSetsBidMetricsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists all metrics that are measured in terms of number of bids.
+  ///
+  /// Request parameters:
+  ///
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123:
+  ///   "bidders/123/filterSets/abc"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123/filterSets/abc"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+  /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return.
+  /// Typically, this is the value of
+  /// ListBidMetricsResponse.nextPageToken
+  /// returned from the previous call to the bidMetrics.list
+  /// method.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [filterSetId] - The ID of the filter set to apply.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBidMetricsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBidMetricsResponse> list(core.String filterSetName,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String accountId,
+      core.String filterSetId,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (filterSetName == null) {
+      throw new core.ArgumentError("Parameter filterSetName is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if (filterSetId != null) {
+      _queryParams["filterSetId"] = [filterSetId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/' +
+        commons.Escaper.ecapeVariableReserved('$filterSetName') +
+        '/bidMetrics';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListBidMetricsResponse.fromJson(data));
+  }
+}
+
+class BiddersFilterSetsBidResponseErrorsResourceApi {
+  final commons.ApiRequester _requester;
+
+  BiddersFilterSetsBidResponseErrorsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// List all errors that occurred in bid responses, with the number of bid
+  /// responses affected for each reason.
+  ///
+  /// Request parameters:
+  ///
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123:
+  ///   "bidders/123/filterSets/abc"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123/filterSets/abc"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+  /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return.
+  /// Typically, this is the value of
+  /// ListBidResponseErrorsResponse.nextPageToken
+  /// returned from the previous call to the bidResponseErrors.list
+  /// method.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [filterSetId] - The ID of the filter set to apply.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBidResponseErrorsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBidResponseErrorsResponse> list(core.String filterSetName,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String accountId,
+      core.String filterSetId,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (filterSetName == null) {
+      throw new core.ArgumentError("Parameter filterSetName is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if (filterSetId != null) {
+      _queryParams["filterSetId"] = [filterSetId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/' +
+        commons.Escaper.ecapeVariableReserved('$filterSetName') +
+        '/bidResponseErrors';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListBidResponseErrorsResponse.fromJson(data));
+  }
+}
+
+class BiddersFilterSetsBidResponsesWithoutBidsResourceApi {
+  final commons.ApiRequester _requester;
+
+  BiddersFilterSetsBidResponsesWithoutBidsResourceApi(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// List all reasons for which bid responses were considered to have no
+  /// applicable bids, with the number of bid responses affected for each
+  /// reason.
+  ///
+  /// Request parameters:
+  ///
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123:
+  ///   "bidders/123/filterSets/abc"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123/filterSets/abc"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+  /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
+  ///
+  /// [filterSetId] - The ID of the filter set to apply.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return.
+  /// Typically, this is the value of
+  /// ListBidResponsesWithoutBidsResponse.nextPageToken
+  /// returned from the previous call to the bidResponsesWithoutBids.list
+  /// method.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBidResponsesWithoutBidsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBidResponsesWithoutBidsResponse> list(
+      core.String filterSetName,
+      {core.String filterSetId,
+      core.String pageToken,
+      core.int pageSize,
+      core.String accountId,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (filterSetName == null) {
+      throw new core.ArgumentError("Parameter filterSetName is required.");
+    }
+    if (filterSetId != null) {
+      _queryParams["filterSetId"] = [filterSetId];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/' +
+        commons.Escaper.ecapeVariableReserved('$filterSetName') +
+        '/bidResponsesWithoutBids';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListBidResponsesWithoutBidsResponse.fromJson(data));
+  }
+}
+
+class BiddersFilterSetsFilteredBidRequestsResourceApi {
+  final commons.ApiRequester _requester;
+
+  BiddersFilterSetsFilteredBidRequestsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// List all reasons that caused a bid request not to be sent for an
+  /// impression, with the number of bid requests not sent for each reason.
+  ///
+  /// Request parameters:
+  ///
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123:
+  ///   "bidders/123/filterSets/abc"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123/filterSets/abc"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+  /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
+  ///
+  /// [filterSetId] - The ID of the filter set to apply.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return.
+  /// Typically, this is the value of
+  /// ListFilteredBidRequestsResponse.nextPageToken
+  /// returned from the previous call to the filteredBidRequests.list
+  /// method.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListFilteredBidRequestsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListFilteredBidRequestsResponse> list(core.String filterSetName,
+      {core.String filterSetId,
+      core.String pageToken,
+      core.int pageSize,
+      core.String accountId,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (filterSetName == null) {
+      throw new core.ArgumentError("Parameter filterSetName is required.");
+    }
+    if (filterSetId != null) {
+      _queryParams["filterSetId"] = [filterSetId];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/' +
+        commons.Escaper.ecapeVariableReserved('$filterSetName') +
+        '/filteredBidRequests';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListFilteredBidRequestsResponse.fromJson(data));
+  }
+}
+
+class BiddersFilterSetsFilteredBidsResourceApi {
+  final commons.ApiRequester _requester;
+
+  BiddersFilterSetsFilteredBidsCreativesResourceApi get creatives =>
+      new BiddersFilterSetsFilteredBidsCreativesResourceApi(_requester);
+  BiddersFilterSetsFilteredBidsDetailsResourceApi get details =>
+      new BiddersFilterSetsFilteredBidsDetailsResourceApi(_requester);
+
+  BiddersFilterSetsFilteredBidsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// List all reasons for which bids were filtered, with the number of bids
+  /// filtered for each reason.
+  ///
+  /// Request parameters:
+  ///
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123:
+  ///   "bidders/123/filterSets/abc"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123/filterSets/abc"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+  /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
+  ///
+  /// [filterSetId] - The ID of the filter set to apply.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return.
+  /// Typically, this is the value of
+  /// ListFilteredBidsResponse.nextPageToken
+  /// returned from the previous call to the filteredBids.list
+  /// method.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListFilteredBidsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListFilteredBidsResponse> list(core.String filterSetName,
+      {core.String filterSetId,
+      core.String pageToken,
+      core.int pageSize,
+      core.String accountId,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (filterSetName == null) {
+      throw new core.ArgumentError("Parameter filterSetName is required.");
+    }
+    if (filterSetId != null) {
+      _queryParams["filterSetId"] = [filterSetId];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/' +
+        commons.Escaper.ecapeVariableReserved('$filterSetName') +
+        '/filteredBids';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListFilteredBidsResponse.fromJson(data));
+  }
+}
+
+class BiddersFilterSetsFilteredBidsCreativesResourceApi {
+  final commons.ApiRequester _requester;
+
+  BiddersFilterSetsFilteredBidsCreativesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// List all creatives associated with a specific reason for which bids were
+  /// filtered, with the number of bids filtered for each creative.
+  ///
+  /// Request parameters:
+  ///
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123:
+  ///   "bidders/123/filterSets/abc"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123/filterSets/abc"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+  /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
+  ///
+  /// [creativeStatusId] - The ID of the creative status for which to retrieve a
+  /// breakdown by
+  /// creative.
+  /// See
+  /// [creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/creative-status-codes).
+  ///
+  /// [filterSetId] - The ID of the filter set to apply.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return.
+  /// Typically, this is the value of
+  /// ListCreativeStatusBreakdownByCreativeResponse.nextPageToken
+  /// returned from the previous call to the filteredBids.creatives.list
+  /// method.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListCreativeStatusBreakdownByCreativeResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListCreativeStatusBreakdownByCreativeResponse> list(
+      core.String filterSetName, core.int creativeStatusId,
+      {core.String filterSetId,
+      core.String pageToken,
+      core.int pageSize,
+      core.String accountId,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (filterSetName == null) {
+      throw new core.ArgumentError("Parameter filterSetName is required.");
+    }
+    if (creativeStatusId == null) {
+      throw new core.ArgumentError("Parameter creativeStatusId is required.");
+    }
+    if (filterSetId != null) {
+      _queryParams["filterSetId"] = [filterSetId];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/' +
+        commons.Escaper.ecapeVariableReserved('$filterSetName') +
+        '/filteredBids/' +
+        commons.Escaper.ecapeVariable('$creativeStatusId') +
+        '/creatives';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) =>
+        new ListCreativeStatusBreakdownByCreativeResponse.fromJson(data));
+  }
+}
+
+class BiddersFilterSetsFilteredBidsDetailsResourceApi {
+  final commons.ApiRequester _requester;
+
+  BiddersFilterSetsFilteredBidsDetailsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// List all details associated with a specific reason for which bids were
+  /// filtered, with the number of bids filtered for each detail.
+  ///
+  /// Request parameters:
+  ///
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123:
+  ///   "bidders/123/filterSets/abc"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123/filterSets/abc"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+  /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
+  ///
+  /// [creativeStatusId] - The ID of the creative status for which to retrieve a
+  /// breakdown by detail.
+  /// See
+  /// [creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/creative-status-codes).
+  /// Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and
+  /// 87.
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [filterSetId] - The ID of the filter set to apply.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return.
+  /// Typically, this is the value of
+  /// ListCreativeStatusBreakdownByDetailResponse.nextPageToken
+  /// returned from the previous call to the filteredBids.details.list
+  /// method.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListCreativeStatusBreakdownByDetailResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListCreativeStatusBreakdownByDetailResponse> list(
+      core.String filterSetName, core.int creativeStatusId,
+      {core.String accountId,
+      core.String filterSetId,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (filterSetName == null) {
+      throw new core.ArgumentError("Parameter filterSetName is required.");
+    }
+    if (creativeStatusId == null) {
+      throw new core.ArgumentError("Parameter creativeStatusId is required.");
+    }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if (filterSetId != null) {
+      _queryParams["filterSetId"] = [filterSetId];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/' +
+        commons.Escaper.ecapeVariableReserved('$filterSetName') +
+        '/filteredBids/' +
+        commons.Escaper.ecapeVariable('$creativeStatusId') +
+        '/details';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) =>
+        new ListCreativeStatusBreakdownByDetailResponse.fromJson(data));
+  }
+}
+
+class BiddersFilterSetsImpressionMetricsResourceApi {
+  final commons.ApiRequester _requester;
+
+  BiddersFilterSetsImpressionMetricsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists all metrics that are measured in terms of number of impressions.
+  ///
+  /// Request parameters:
+  ///
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123:
+  ///   "bidders/123/filterSets/abc"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123/filterSets/abc"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+  /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return.
+  /// Typically, this is the value of
+  /// ListImpressionMetricsResponse.nextPageToken
+  /// returned from the previous call to the impressionMetrics.list
+  /// method.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [filterSetId] - The ID of the filter set to apply.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListImpressionMetricsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListImpressionMetricsResponse> list(core.String filterSetName,
+      {core.String pageToken,
+      core.int pageSize,
+      core.String accountId,
+      core.String filterSetId,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (filterSetName == null) {
+      throw new core.ArgumentError("Parameter filterSetName is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if (filterSetId != null) {
+      _queryParams["filterSetId"] = [filterSetId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/' +
+        commons.Escaper.ecapeVariableReserved('$filterSetName') +
+        '/impressionMetrics';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListImpressionMetricsResponse.fromJson(data));
+  }
+}
+
+class BiddersFilterSetsLosingBidsResourceApi {
+  final commons.ApiRequester _requester;
+
+  BiddersFilterSetsLosingBidsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// List all reasons for which bids lost in the auction, with the number of
+  /// bids that lost for each reason.
+  ///
+  /// Request parameters:
+  ///
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123:
+  ///   "bidders/123/filterSets/abc"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123/filterSets/abc"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+  /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
+  ///
+  /// [filterSetId] - The ID of the filter set to apply.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return.
+  /// Typically, this is the value of
+  /// ListLosingBidsResponse.nextPageToken
+  /// returned from the previous call to the losingBids.list
+  /// method.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLosingBidsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLosingBidsResponse> list(core.String filterSetName,
+      {core.String filterSetId,
+      core.String pageToken,
+      core.int pageSize,
+      core.String accountId,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (filterSetName == null) {
+      throw new core.ArgumentError("Parameter filterSetName is required.");
+    }
+    if (filterSetId != null) {
+      _queryParams["filterSetId"] = [filterSetId];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/' +
+        commons.Escaper.ecapeVariableReserved('$filterSetName') +
+        '/losingBids';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListLosingBidsResponse.fromJson(data));
+  }
+}
+
+class BiddersFilterSetsNonBillableWinningBidsResourceApi {
+  final commons.ApiRequester _requester;
+
+  BiddersFilterSetsNonBillableWinningBidsResourceApi(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// List all reasons for which winning bids were not billable, with the number
+  /// of bids not billed for each reason.
+  ///
+  /// Request parameters:
+  ///
+  /// [filterSetName] - Name of the filter set that should be applied to the
+  /// requested metrics.
+  /// For example:
+  /// - For a bidder-level filter set for bidder 123:
+  ///   "bidders/123/filterSets/abc"
+  /// - For an account-level filter set for the buyer account representing
+  /// bidder
+  ///   123: "bidders/123/accounts/123/filterSets/abc"
+  /// - For an account-level filter set for the child seat buyer account 456
+  ///   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"
+  /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
+  ///
+  /// [filterSetId] - The ID of the filter set to apply.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return.
+  /// Typically, this is the value of
+  /// ListNonBillableWinningBidsResponse.nextPageToken
+  /// returned from the previous call to the nonBillableWinningBids.list
+  /// method.
+  ///
+  /// [pageSize] - Requested page size. The server may return fewer results than
+  /// requested.
+  /// If unspecified, the server will pick an appropriate default.
+  ///
+  /// [accountId] - Account ID of the buyer.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListNonBillableWinningBidsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListNonBillableWinningBidsResponse> list(
+      core.String filterSetName,
+      {core.String filterSetId,
+      core.String pageToken,
+      core.int pageSize,
+      core.String accountId,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (filterSetName == null) {
+      throw new core.ArgumentError("Parameter filterSetName is required.");
+    }
+    if (filterSetId != null) {
+      _queryParams["filterSetId"] = [filterSetId];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (accountId != null) {
+      _queryParams["accountId"] = [accountId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2beta1/' +
+        commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/nonBillableWinningBids';
 
     var _response = _requester.request(_url, "GET",
@@ -3505,6 +5437,16 @@ class FilterSet {
   /// - "VIDEO" : The ad impression is video format.
   core.String format;
 
+  /// A user-defined name of the filter set. Filter set names must be unique
+  /// globally and match one of the patterns:
+  ///
+  /// - `bidders / * /filterSets / * ` (for accessing bidder-level
+  /// troubleshooting
+  /// data)
+  /// - `bidders / * /accounts / * /filterSets / * ` (for accessing buyer-level
+  /// troubleshooting data)
+  core.String name;
+
   /// The account ID of the buyer who owns this filter set.
   /// The value of this field is ignored in create operations.
   core.String ownerAccountId;
@@ -3567,6 +5509,9 @@ class FilterSet {
     if (_json.containsKey("format")) {
       format = _json["format"];
     }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
     if (_json.containsKey("ownerAccountId")) {
       ownerAccountId = _json["ownerAccountId"];
     }
@@ -3612,6 +5557,9 @@ class FilterSet {
     }
     if (format != null) {
       _json["format"] = format;
+    }
+    if (name != null) {
+      _json["name"] = name;
     }
     if (ownerAccountId != null) {
       _json["ownerAccountId"] = ownerAccountId;
@@ -3927,8 +5875,7 @@ class ListBidMetricsResponse {
   /// A token to retrieve the next page of results.
   /// Pass this value in the
   /// ListBidMetricsRequest.pageToken
-  /// field in the subsequent call to the
-  /// accounts.filterSets.bidMetrics.list
+  /// field in the subsequent call to the bidMetrics.list
   /// method to retrieve the next page of results.
   core.String nextPageToken;
 
@@ -3968,8 +5915,7 @@ class ListBidResponseErrorsResponse {
   /// A token to retrieve the next page of results.
   /// Pass this value in the
   /// ListBidResponseErrorsRequest.pageToken
-  /// field in the subsequent call to the
-  /// accounts.filterSets.bidResponseErrors.list
+  /// field in the subsequent call to the bidResponseErrors.list
   /// method to retrieve the next page of results.
   core.String nextPageToken;
 
@@ -4010,8 +5956,7 @@ class ListBidResponsesWithoutBidsResponse {
   /// A token to retrieve the next page of results.
   /// Pass this value in the
   /// ListBidResponsesWithoutBidsRequest.pageToken
-  /// field in the subsequent call to the
-  /// accounts.filterSets.bidResponsesWithoutBids.list
+  /// field in the subsequent call to the bidResponsesWithoutBids.list
   /// method to retrieve the next page of results.
   core.String nextPageToken;
 
@@ -4171,8 +6116,7 @@ class ListCreativeStatusBreakdownByCreativeResponse {
   /// A token to retrieve the next page of results.
   /// Pass this value in the
   /// ListCreativeStatusBreakdownByCreativeRequest.pageToken
-  /// field in the subsequent call to the
-  /// accounts.filterSets.filteredBids.creatives.list
+  /// field in the subsequent call to the filteredBids.creatives.list
   /// method to retrieve the next page of results.
   core.String nextPageToken;
 
@@ -4235,8 +6179,7 @@ class ListCreativeStatusBreakdownByDetailResponse {
   /// A token to retrieve the next page of results.
   /// Pass this value in the
   /// ListCreativeStatusBreakdownByDetailRequest.pageToken
-  /// field in the subsequent call to the
-  /// accounts.filterSets.filteredBids.details.list
+  /// field in the subsequent call to the filteredBids.details.list
   /// method to retrieve the next page of results.
   core.String nextPageToken;
 
@@ -4401,8 +6344,7 @@ class ListFilteredBidRequestsResponse {
   /// A token to retrieve the next page of results.
   /// Pass this value in the
   /// ListFilteredBidRequestsRequest.pageToken
-  /// field in the subsequent call to the
-  /// accounts.filterSets.filteredBidRequests.list
+  /// field in the subsequent call to the filteredBidRequests.list
   /// method to retrieve the next page of results.
   core.String nextPageToken;
 
@@ -4443,8 +6385,7 @@ class ListFilteredBidsResponse {
   /// A token to retrieve the next page of results.
   /// Pass this value in the
   /// ListFilteredBidsRequest.pageToken
-  /// field in the subsequent call to the
-  /// accounts.filterSets.filteredBids.list
+  /// field in the subsequent call to the filteredBids.list
   /// method to retrieve the next page of results.
   core.String nextPageToken;
 
@@ -4484,8 +6425,7 @@ class ListImpressionMetricsResponse {
   /// A token to retrieve the next page of results.
   /// Pass this value in the
   /// ListImpressionMetricsRequest.pageToken
-  /// field in the subsequent call to the
-  /// accounts.filterSets.impressionMetrics.list
+  /// field in the subsequent call to the impressionMetrics.list
   /// method to retrieve the next page of results.
   core.String nextPageToken;
 
@@ -4525,8 +6465,7 @@ class ListLosingBidsResponse {
   /// A token to retrieve the next page of results.
   /// Pass this value in the
   /// ListLosingBidsRequest.pageToken
-  /// field in the subsequent call to the
-  /// accounts.filterSets.losingBids.list
+  /// field in the subsequent call to the losingBids.list
   /// method to retrieve the next page of results.
   core.String nextPageToken;
 
@@ -4564,8 +6503,7 @@ class ListNonBillableWinningBidsResponse {
   /// A token to retrieve the next page of results.
   /// Pass this value in the
   /// ListNonBillableWinningBidsRequest.pageToken
-  /// field in the subsequent call to the
-  /// accounts.filterSets.nonBillableWinningBids.list
+  /// field in the subsequent call to the nonBillableWinningBids.list
   /// method to retrieve the next page of results.
   core.String nextPageToken;
 

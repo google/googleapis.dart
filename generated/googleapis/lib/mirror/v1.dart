@@ -67,6 +67,9 @@ class AccountsResourceApi {
   /// [accountName] - The name of the account to be passed to the Android
   /// Account Manager.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Account].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -75,7 +78,8 @@ class AccountsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Account> insert(Account request, core.String userToken,
-      core.String accountType, core.String accountName) {
+      core.String accountType, core.String accountName,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -94,6 +98,9 @@ class AccountsResourceApi {
     }
     if (accountName == null) {
       throw new core.ArgumentError("Parameter accountName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'accounts/' +
@@ -124,12 +131,15 @@ class ContactsResourceApi {
   ///
   /// [id] - The ID of the contact.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String id) {
+  async.Future delete(core.String id, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -139,6 +149,9 @@ class ContactsResourceApi {
 
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -160,6 +173,9 @@ class ContactsResourceApi {
   ///
   /// [id] - The ID of the contact.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Contact].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -167,7 +183,7 @@ class ContactsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Contact> get(core.String id) {
+  async.Future<Contact> get(core.String id, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -177,6 +193,9 @@ class ContactsResourceApi {
 
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'contacts/' + commons.Escaper.ecapeVariable('$id');
@@ -196,6 +215,9 @@ class ContactsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Contact].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -203,7 +225,7 @@ class ContactsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Contact> insert(Contact request) {
+  async.Future<Contact> insert(Contact request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -213,6 +235,9 @@ class ContactsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'contacts';
@@ -230,6 +255,9 @@ class ContactsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ContactsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -237,13 +265,17 @@ class ContactsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ContactsListResponse> list() {
+  async.Future<ContactsListResponse> list({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'contacts';
 
@@ -264,6 +296,9 @@ class ContactsResourceApi {
   ///
   /// [id] - The ID of the contact.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Contact].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -271,7 +306,8 @@ class ContactsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Contact> patch(Contact request, core.String id) {
+  async.Future<Contact> patch(Contact request, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -284,6 +320,9 @@ class ContactsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'contacts/' + commons.Escaper.ecapeVariable('$id');
@@ -305,6 +344,9 @@ class ContactsResourceApi {
   ///
   /// [id] - The ID of the contact.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Contact].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -312,7 +354,8 @@ class ContactsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Contact> update(Contact request, core.String id) {
+  async.Future<Contact> update(Contact request, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -325,6 +368,9 @@ class ContactsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'contacts/' + commons.Escaper.ecapeVariable('$id');
@@ -350,6 +396,9 @@ class LocationsResourceApi {
   ///
   /// [id] - The ID of the location or latest for the last known location.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Location].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -357,7 +406,7 @@ class LocationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Location> get(core.String id) {
+  async.Future<Location> get(core.String id, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -367,6 +416,9 @@ class LocationsResourceApi {
 
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'locations/' + commons.Escaper.ecapeVariable('$id');
@@ -384,6 +436,9 @@ class LocationsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [LocationsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -391,13 +446,17 @@ class LocationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<LocationsListResponse> list() {
+  async.Future<LocationsListResponse> list({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'locations';
 
@@ -426,6 +485,9 @@ class SettingsResourceApi {
   /// - timezone - The key to the user’s current time zone region as defined in
   /// the tz database. Example: America/Los_Angeles.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Setting].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -433,7 +495,7 @@ class SettingsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Setting> get(core.String id) {
+  async.Future<Setting> get(core.String id, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -443,6 +505,9 @@ class SettingsResourceApi {
 
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'settings/' + commons.Escaper.ecapeVariable('$id');
@@ -468,12 +533,15 @@ class SubscriptionsResourceApi {
   ///
   /// [id] - The ID of the subscription.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String id) {
+  async.Future delete(core.String id, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -483,6 +551,9 @@ class SubscriptionsResourceApi {
 
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -504,6 +575,9 @@ class SubscriptionsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Subscription].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -511,7 +585,8 @@ class SubscriptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Subscription> insert(Subscription request) {
+  async.Future<Subscription> insert(Subscription request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -521,6 +596,9 @@ class SubscriptionsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'subscriptions';
@@ -538,6 +616,9 @@ class SubscriptionsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SubscriptionsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -545,13 +626,17 @@ class SubscriptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<SubscriptionsListResponse> list() {
+  async.Future<SubscriptionsListResponse> list({core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
     var _uploadOptions = null;
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
+
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'subscriptions';
 
@@ -573,6 +658,9 @@ class SubscriptionsResourceApi {
   ///
   /// [id] - The ID of the subscription.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Subscription].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -580,7 +668,8 @@ class SubscriptionsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Subscription> update(Subscription request, core.String id) {
+  async.Future<Subscription> update(Subscription request, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -593,6 +682,9 @@ class SubscriptionsResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'subscriptions/' + commons.Escaper.ecapeVariable('$id');
@@ -621,12 +713,15 @@ class TimelineResourceApi {
   ///
   /// [id] - The ID of the timeline item.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String id) {
+  async.Future delete(core.String id, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -636,6 +731,9 @@ class TimelineResourceApi {
 
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -657,6 +755,9 @@ class TimelineResourceApi {
   ///
   /// [id] - The ID of the timeline item.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TimelineItem].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -664,7 +765,7 @@ class TimelineResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TimelineItem> get(core.String id) {
+  async.Future<TimelineItem> get(core.String id, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -674,6 +775,9 @@ class TimelineResourceApi {
 
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'timeline/' + commons.Escaper.ecapeVariable('$id');
@@ -693,6 +797,9 @@ class TimelineResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [uploadMedia] - The media to upload.
   ///
   /// [uploadOptions] - Options for the media upload. Streaming Media without
@@ -707,7 +814,8 @@ class TimelineResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TimelineItem> insert(TimelineItem request,
-      {commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      {core.String $fields,
+      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -718,6 +826,9 @@ class TimelineResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -767,6 +878,9 @@ class TimelineResourceApi {
   /// [sourceItemId] - If provided, only items with the given sourceItemId will
   /// be returned.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TimelineListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -781,7 +895,8 @@ class TimelineResourceApi {
       core.String orderBy,
       core.String pageToken,
       core.bool pinnedOnly,
-      core.String sourceItemId}) {
+      core.String sourceItemId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -810,6 +925,9 @@ class TimelineResourceApi {
     if (sourceItemId != null) {
       _queryParams["sourceItemId"] = [sourceItemId];
     }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
 
     _url = 'timeline';
 
@@ -830,6 +948,9 @@ class TimelineResourceApi {
   ///
   /// [id] - The ID of the timeline item.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [TimelineItem].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -837,7 +958,8 @@ class TimelineResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TimelineItem> patch(TimelineItem request, core.String id) {
+  async.Future<TimelineItem> patch(TimelineItem request, core.String id,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -850,6 +972,9 @@ class TimelineResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'timeline/' + commons.Escaper.ecapeVariable('$id');
@@ -871,6 +996,9 @@ class TimelineResourceApi {
   ///
   /// [id] - The ID of the timeline item.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [uploadMedia] - The media to upload.
   ///
   /// [uploadOptions] - Options for the media upload. Streaming Media without
@@ -885,7 +1013,8 @@ class TimelineResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TimelineItem> update(TimelineItem request, core.String id,
-      {commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      {core.String $fields,
+      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -899,6 +1028,9 @@ class TimelineResourceApi {
     }
     if (id == null) {
       throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -938,12 +1070,16 @@ class TimelineAttachmentsResourceApi {
   ///
   /// [attachmentId] - The ID of the attachment.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(core.String itemId, core.String attachmentId) {
+  async.Future delete(core.String itemId, core.String attachmentId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -956,6 +1092,9 @@ class TimelineAttachmentsResourceApi {
     }
     if (attachmentId == null) {
       throw new core.ArgumentError("Parameter attachmentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = null;
@@ -982,6 +1121,9 @@ class TimelineAttachmentsResourceApi {
   ///
   /// [attachmentId] - The ID of the attachment.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [downloadOptions] - Options for downloading. A download can be either a
   /// Metadata (default) or Media download. Partial Media downloads are possible
   /// as well.
@@ -998,7 +1140,8 @@ class TimelineAttachmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future get(core.String itemId, core.String attachmentId,
-      {commons.DownloadOptions downloadOptions:
+      {core.String $fields,
+      commons.DownloadOptions downloadOptions:
           commons.DownloadOptions.Metadata}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1012,6 +1155,9 @@ class TimelineAttachmentsResourceApi {
     }
     if (attachmentId == null) {
       throw new core.ArgumentError("Parameter attachmentId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _downloadOptions = downloadOptions;
@@ -1041,6 +1187,9 @@ class TimelineAttachmentsResourceApi {
   ///
   /// [itemId] - The ID of the timeline item the attachment belongs to.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// [uploadMedia] - The media to upload.
   ///
   /// [uploadOptions] - Options for the media upload. Streaming Media without
@@ -1055,7 +1204,8 @@ class TimelineAttachmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Attachment> insert(core.String itemId,
-      {commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
+      {core.String $fields,
+      commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
       commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1066,6 +1216,9 @@ class TimelineAttachmentsResourceApi {
 
     if (itemId == null) {
       throw new core.ArgumentError("Parameter itemId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _uploadMedia = uploadMedia;
@@ -1100,6 +1253,9 @@ class TimelineAttachmentsResourceApi {
   ///
   /// [itemId] - The ID of the timeline item whose attachments should be listed.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [AttachmentsListResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1107,7 +1263,8 @@ class TimelineAttachmentsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AttachmentsListResponse> list(core.String itemId) {
+  async.Future<AttachmentsListResponse> list(core.String itemId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1117,6 +1274,9 @@ class TimelineAttachmentsResourceApi {
 
     if (itemId == null) {
       throw new core.ArgumentError("Parameter itemId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =

@@ -43,6 +43,9 @@ class OperationsResourceApi {
   /// [name] - The name of the operation resource.
   /// Value must have pattern "^operations/.+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -50,7 +53,7 @@ class OperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name) {
+  async.Future<Operation> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -60,6 +63,9 @@ class OperationsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -106,6 +112,9 @@ class PartnersCustomersResourceApi {
   /// identifies the reseller.
   /// Value must have pattern "^partners/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Company].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -114,7 +123,8 @@ class PartnersCustomersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Company> create(
-      CreateCustomerRequest request, core.String parent) {
+      CreateCustomerRequest request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -127,6 +137,9 @@ class PartnersCustomersResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -150,6 +163,9 @@ class PartnersCustomersResourceApi {
   /// [partnerId] - The ID of the partner.
   /// Value must have pattern "^[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListCustomersResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -157,7 +173,8 @@ class PartnersCustomersResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListCustomersResponse> list(core.String partnerId) {
+  async.Future<ListCustomersResponse> list(core.String partnerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -167,6 +184,9 @@ class PartnersCustomersResourceApi {
 
     if (partnerId == null) {
       throw new core.ArgumentError("Parameter partnerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/partners/' +
@@ -197,6 +217,9 @@ class PartnersDevicesResourceApi {
   /// [partnerId] - ID of the partner.
   /// Value must have pattern "^[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ClaimDeviceResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -205,7 +228,8 @@ class PartnersDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ClaimDeviceResponse> claim(
-      ClaimDeviceRequest request, core.String partnerId) {
+      ClaimDeviceRequest request, core.String partnerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -218,6 +242,9 @@ class PartnersDevicesResourceApi {
     }
     if (partnerId == null) {
       throw new core.ArgumentError("Parameter partnerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/partners/' +
@@ -242,6 +269,9 @@ class PartnersDevicesResourceApi {
   /// [partnerId] - Partner ID.
   /// Value must have pattern "^[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -250,7 +280,8 @@ class PartnersDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> claimAsync(
-      ClaimDevicesRequest request, core.String partnerId) {
+      ClaimDevicesRequest request, core.String partnerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -263,6 +294,9 @@ class PartnersDevicesResourceApi {
     }
     if (partnerId == null) {
       throw new core.ArgumentError("Parameter partnerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/partners/' +
@@ -287,6 +321,9 @@ class PartnersDevicesResourceApi {
   /// [partnerId] - ID of the partner.
   /// Value must have pattern "^[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FindDevicesByDeviceIdentifierResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -295,7 +332,8 @@ class PartnersDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FindDevicesByDeviceIdentifierResponse> findByIdentifier(
-      FindDevicesByDeviceIdentifierRequest request, core.String partnerId) {
+      FindDevicesByDeviceIdentifierRequest request, core.String partnerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -308,6 +346,9 @@ class PartnersDevicesResourceApi {
     }
     if (partnerId == null) {
       throw new core.ArgumentError("Parameter partnerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/partners/' +
@@ -333,6 +374,9 @@ class PartnersDevicesResourceApi {
   /// [partnerId] - ID of the partner.
   /// Value must have pattern "^[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [FindDevicesByOwnerResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -341,7 +385,8 @@ class PartnersDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<FindDevicesByOwnerResponse> findByOwner(
-      FindDevicesByOwnerRequest request, core.String partnerId) {
+      FindDevicesByOwnerRequest request, core.String partnerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -354,6 +399,9 @@ class PartnersDevicesResourceApi {
     }
     if (partnerId == null) {
       throw new core.ArgumentError("Parameter partnerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/partners/' +
@@ -377,6 +425,9 @@ class PartnersDevicesResourceApi {
   /// [name] - Resource name in `partners/[PARTNER_ID]/devices/[DEVICE_ID]`.
   /// Value must have pattern "^partners/[^/]+/devices/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Device].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -384,7 +435,7 @@ class PartnersDevicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Device> get(core.String name) {
+  async.Future<Device> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -394,6 +445,9 @@ class PartnersDevicesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -420,6 +474,9 @@ class PartnersDevicesResourceApi {
   /// [deviceId] - ID of the partner.
   /// Value must have pattern "^[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [DeviceMetadata].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -428,7 +485,8 @@ class PartnersDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DeviceMetadata> metadata(UpdateDeviceMetadataRequest request,
-      core.String metadataOwnerId, core.String deviceId) {
+      core.String metadataOwnerId, core.String deviceId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -444,6 +502,9 @@ class PartnersDevicesResourceApi {
     }
     if (deviceId == null) {
       throw new core.ArgumentError("Parameter deviceId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/partners/' +
@@ -471,6 +532,9 @@ class PartnersDevicesResourceApi {
   /// [partnerId] - ID of the partner.
   /// Value must have pattern "^[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -479,7 +543,8 @@ class PartnersDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> unclaim(
-      UnclaimDeviceRequest request, core.String partnerId) {
+      UnclaimDeviceRequest request, core.String partnerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -492,6 +557,9 @@ class PartnersDevicesResourceApi {
     }
     if (partnerId == null) {
       throw new core.ArgumentError("Parameter partnerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/partners/' +
@@ -516,6 +584,9 @@ class PartnersDevicesResourceApi {
   /// [partnerId] - Partner ID.
   /// Value must have pattern "^[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -524,7 +595,8 @@ class PartnersDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> unclaimAsync(
-      UnclaimDevicesRequest request, core.String partnerId) {
+      UnclaimDevicesRequest request, core.String partnerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -537,6 +609,9 @@ class PartnersDevicesResourceApi {
     }
     if (partnerId == null) {
       throw new core.ArgumentError("Parameter partnerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/partners/' +
@@ -561,6 +636,9 @@ class PartnersDevicesResourceApi {
   /// [partnerId] - Partner ID.
   /// Value must have pattern "^[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -569,7 +647,8 @@ class PartnersDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> updateMetadataAsync(
-      UpdateDeviceMetadataInBatchRequest request, core.String partnerId) {
+      UpdateDeviceMetadataInBatchRequest request, core.String partnerId,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -582,6 +661,9 @@ class PartnersDevicesResourceApi {
     }
     if (partnerId == null) {
       throw new core.ArgumentError("Parameter partnerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/partners/' +

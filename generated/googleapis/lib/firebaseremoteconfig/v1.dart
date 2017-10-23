@@ -43,6 +43,9 @@ class ProjectsResourceApi {
   /// See note at the beginning of this file regarding project ids.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RemoteConfig].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -50,7 +53,8 @@ class ProjectsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RemoteConfig> getRemoteConfig(core.String project) {
+  async.Future<RemoteConfig> getRemoteConfig(core.String project,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -60,6 +64,9 @@ class ProjectsResourceApi {
 
     if (project == null) {
       throw new core.ArgumentError("Parameter project is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -111,6 +118,9 @@ class ProjectsResourceApi {
   /// may still result after flipping to <code>false</code>, even if getting a
   /// "200 OK" when calling with <code>true</code>.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [RemoteConfig].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -120,7 +130,7 @@ class ProjectsResourceApi {
   /// this method will complete with the same error.
   async.Future<RemoteConfig> updateRemoteConfig(
       RemoteConfig request, core.String project,
-      {core.bool validateOnly}) {
+      {core.bool validateOnly, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -136,6 +146,9 @@ class ProjectsResourceApi {
     }
     if (validateOnly != null) {
       _queryParams["validateOnly"] = ["${validateOnly}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +

@@ -79,14 +79,14 @@ checkJwkKeys(api.JwkKeys o) {
   buildCounterJwkKeys--;
 }
 
-buildUnnamed2629() {
+buildUnnamed2644() {
   var o = new core.List<api.JwkKeys>();
   o.add(buildJwkKeys());
   o.add(buildJwkKeys());
   return o;
 }
 
-checkUnnamed2629(core.List<api.JwkKeys> o) {
+checkUnnamed2644(core.List<api.JwkKeys> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkJwkKeys(o[0]);
   checkJwkKeys(o[1]);
@@ -97,7 +97,7 @@ buildJwk() {
   var o = new api.Jwk();
   buildCounterJwk++;
   if (buildCounterJwk < 3) {
-    o.keys = buildUnnamed2629();
+    o.keys = buildUnnamed2644();
   }
   buildCounterJwk--;
   return o;
@@ -106,7 +106,7 @@ buildJwk() {
 checkJwk(api.Jwk o) {
   buildCounterJwk++;
   if (buildCounterJwk < 3) {
-    checkUnnamed2629(o.keys);
+    checkUnnamed2644(o.keys);
   }
   buildCounterJwk--;
 }
@@ -222,6 +222,7 @@ main() {
     unittest.test("method--getCertForOpenIdConnect", () {
       var mock = new HttpServerMock();
       api.Oauth2Api res = new api.Oauth2Api(mock);
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -252,6 +253,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -260,7 +262,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .getCertForOpenIdConnect()
+          .getCertForOpenIdConnect($fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Jwk response) {
         checkJwk(response);
       })));
@@ -272,6 +274,7 @@ main() {
       var arg_accessToken = "foo";
       var arg_idToken = "foo";
       var arg_tokenHandle = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -308,6 +311,7 @@ main() {
             queryMap["id_token"].first, unittest.equals(arg_idToken));
         unittest.expect(
             queryMap["token_handle"].first, unittest.equals(arg_tokenHandle));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -319,7 +323,8 @@ main() {
           .tokeninfo(
               accessToken: arg_accessToken,
               idToken: arg_idToken,
-              tokenHandle: arg_tokenHandle)
+              tokenHandle: arg_tokenHandle,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Tokeninfo response) {
         checkTokeninfo(response);
       })));
@@ -330,6 +335,7 @@ main() {
     unittest.test("method--get", () {
       var mock = new HttpServerMock();
       api.UserinfoResourceApi res = new api.Oauth2Api(mock).userinfo;
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -360,6 +366,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -367,7 +374,9 @@ main() {
         var resp = convert.JSON.encode(buildUserinfoplus());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get().then(unittest.expectAsync1(((api.Userinfoplus response) {
+      res
+          .get($fields: arg_$fields)
+          .then(unittest.expectAsync1(((api.Userinfoplus response) {
         checkUserinfoplus(response);
       })));
     });
@@ -377,6 +386,7 @@ main() {
     unittest.test("method--get", () {
       var mock = new HttpServerMock();
       api.UserinfoV2MeResourceApi res = new api.Oauth2Api(mock).userinfo.v2.me;
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -407,6 +417,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -414,7 +425,9 @@ main() {
         var resp = convert.JSON.encode(buildUserinfoplus());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get().then(unittest.expectAsync1(((api.Userinfoplus response) {
+      res
+          .get($fields: arg_$fields)
+          .then(unittest.expectAsync1(((api.Userinfoplus response) {
         checkUserinfoplus(response);
       })));
     });

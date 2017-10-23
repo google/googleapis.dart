@@ -79,27 +79,27 @@ checkAvailability(api.Availability o) {
   buildCounterAvailability--;
 }
 
-buildUnnamed1483() {
+buildUnnamed1470() {
   var o = new core.List<api.CustomDimension>();
   o.add(buildCustomDimension());
   o.add(buildCustomDimension());
   return o;
 }
 
-checkUnnamed1483(core.List<api.CustomDimension> o) {
+checkUnnamed1470(core.List<api.CustomDimension> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCustomDimension(o[0]);
   checkCustomDimension(o[1]);
 }
 
-buildUnnamed1484() {
+buildUnnamed1471() {
   var o = new core.List<api.CustomMetric>();
   o.add(buildCustomMetric());
   o.add(buildCustomMetric());
   return o;
 }
 
-checkUnnamed1484(core.List<api.CustomMetric> o) {
+checkUnnamed1471(core.List<api.CustomMetric> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCustomMetric(o[0]);
   checkCustomMetric(o[1]);
@@ -124,8 +124,8 @@ buildConversion() {
     o.countMillis = "foo";
     o.criterionId = "foo";
     o.currencyCode = "foo";
-    o.customDimension = buildUnnamed1483();
-    o.customMetric = buildUnnamed1484();
+    o.customDimension = buildUnnamed1470();
+    o.customMetric = buildUnnamed1471();
     o.deviceType = "foo";
     o.dsConversionId = "foo";
     o.engineAccountId = "foo";
@@ -165,8 +165,8 @@ checkConversion(api.Conversion o) {
     unittest.expect(o.countMillis, unittest.equals('foo'));
     unittest.expect(o.criterionId, unittest.equals('foo'));
     unittest.expect(o.currencyCode, unittest.equals('foo'));
-    checkUnnamed1483(o.customDimension);
-    checkUnnamed1484(o.customMetric);
+    checkUnnamed1470(o.customDimension);
+    checkUnnamed1471(o.customMetric);
     unittest.expect(o.deviceType, unittest.equals('foo'));
     unittest.expect(o.dsConversionId, unittest.equals('foo'));
     unittest.expect(o.engineAccountId, unittest.equals('foo'));
@@ -188,14 +188,14 @@ checkConversion(api.Conversion o) {
   buildCounterConversion--;
 }
 
-buildUnnamed1485() {
+buildUnnamed1472() {
   var o = new core.List<api.Conversion>();
   o.add(buildConversion());
   o.add(buildConversion());
   return o;
 }
 
-checkUnnamed1485(core.List<api.Conversion> o) {
+checkUnnamed1472(core.List<api.Conversion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkConversion(o[0]);
   checkConversion(o[1]);
@@ -206,7 +206,7 @@ buildConversionList() {
   var o = new api.ConversionList();
   buildCounterConversionList++;
   if (buildCounterConversionList < 3) {
-    o.conversion = buildUnnamed1485();
+    o.conversion = buildUnnamed1472();
     o.kind = "foo";
   }
   buildCounterConversionList--;
@@ -216,7 +216,7 @@ buildConversionList() {
 checkConversionList(api.ConversionList o) {
   buildCounterConversionList++;
   if (buildCounterConversionList < 3) {
-    checkUnnamed1485(o.conversion);
+    checkUnnamed1472(o.conversion);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterConversionList--;
@@ -285,27 +285,27 @@ checkReportFiles(api.ReportFiles o) {
   buildCounterReportFiles--;
 }
 
-buildUnnamed1486() {
+buildUnnamed1473() {
   var o = new core.List<api.ReportFiles>();
   o.add(buildReportFiles());
   o.add(buildReportFiles());
   return o;
 }
 
-checkUnnamed1486(core.List<api.ReportFiles> o) {
+checkUnnamed1473(core.List<api.ReportFiles> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportFiles(o[0]);
   checkReportFiles(o[1]);
 }
 
-buildUnnamed1487() {
+buildUnnamed1474() {
   var o = new core.List<api.ReportRow>();
   o.add(buildReportRow());
   o.add(buildReportRow());
   return o;
 }
 
-checkUnnamed1487(core.List<api.ReportRow> o) {
+checkUnnamed1474(core.List<api.ReportRow> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportRow(o[0]);
   checkReportRow(o[1]);
@@ -316,13 +316,13 @@ buildReport() {
   var o = new api.Report();
   buildCounterReport++;
   if (buildCounterReport < 3) {
-    o.files = buildUnnamed1486();
+    o.files = buildUnnamed1473();
     o.id = "foo";
     o.isReportReady = true;
     o.kind = "foo";
     o.request = buildReportRequest();
     o.rowCount = 42;
-    o.rows = buildUnnamed1487();
+    o.rows = buildUnnamed1474();
     o.statisticsCurrencyCode = "foo";
     o.statisticsTimeZone = "foo";
   }
@@ -333,13 +333,13 @@ buildReport() {
 checkReport(api.Report o) {
   buildCounterReport++;
   if (buildCounterReport < 3) {
-    checkUnnamed1486(o.files);
+    checkUnnamed1473(o.files);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.isReportReady, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkReportRequest(o.request);
     unittest.expect(o.rowCount, unittest.equals(42));
-    checkUnnamed1487(o.rows);
+    checkUnnamed1474(o.rows);
     unittest.expect(o.statisticsCurrencyCode, unittest.equals('foo'));
     unittest.expect(o.statisticsTimeZone, unittest.equals('foo'));
   }
@@ -383,20 +383,20 @@ checkReportApiColumnSpec(api.ReportApiColumnSpec o) {
   buildCounterReportApiColumnSpec--;
 }
 
-buildUnnamed1488() {
+buildUnnamed1475() {
   var o = new core.List<api.ReportApiColumnSpec>();
   o.add(buildReportApiColumnSpec());
   o.add(buildReportApiColumnSpec());
   return o;
 }
 
-checkUnnamed1488(core.List<api.ReportApiColumnSpec> o) {
+checkUnnamed1475(core.List<api.ReportApiColumnSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportApiColumnSpec(o[0]);
   checkReportApiColumnSpec(o[1]);
 }
 
-buildUnnamed1489() {
+buildUnnamed1476() {
   var o = new core.List<core.Object>();
   o.add({
     'list': [1, 2, 3],
@@ -411,7 +411,7 @@ buildUnnamed1489() {
   return o;
 }
 
-checkUnnamed1489(core.List<core.Object> o) {
+checkUnnamed1476(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -432,7 +432,7 @@ buildReportRequestFilters() {
   if (buildCounterReportRequestFilters < 3) {
     o.column = buildReportApiColumnSpec();
     o.operator = "foo";
-    o.values = buildUnnamed1489();
+    o.values = buildUnnamed1476();
   }
   buildCounterReportRequestFilters--;
   return o;
@@ -443,19 +443,19 @@ checkReportRequestFilters(api.ReportRequestFilters o) {
   if (buildCounterReportRequestFilters < 3) {
     checkReportApiColumnSpec(o.column);
     unittest.expect(o.operator, unittest.equals('foo'));
-    checkUnnamed1489(o.values);
+    checkUnnamed1476(o.values);
   }
   buildCounterReportRequestFilters--;
 }
 
-buildUnnamed1490() {
+buildUnnamed1477() {
   var o = new core.List<api.ReportRequestFilters>();
   o.add(buildReportRequestFilters());
   o.add(buildReportRequestFilters());
   return o;
 }
 
-checkUnnamed1490(core.List<api.ReportRequestFilters> o) {
+checkUnnamed1477(core.List<api.ReportRequestFilters> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportRequestFilters(o[0]);
   checkReportRequestFilters(o[1]);
@@ -482,14 +482,14 @@ checkReportRequestOrderBy(api.ReportRequestOrderBy o) {
   buildCounterReportRequestOrderBy--;
 }
 
-buildUnnamed1491() {
+buildUnnamed1478() {
   var o = new core.List<api.ReportRequestOrderBy>();
   o.add(buildReportRequestOrderBy());
   o.add(buildReportRequestOrderBy());
   return o;
 }
 
-checkUnnamed1491(core.List<api.ReportRequestOrderBy> o) {
+checkUnnamed1478(core.List<api.ReportRequestOrderBy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReportRequestOrderBy(o[0]);
   checkReportRequestOrderBy(o[1]);
@@ -559,13 +559,13 @@ buildReportRequest() {
   var o = new api.ReportRequest();
   buildCounterReportRequest++;
   if (buildCounterReportRequest < 3) {
-    o.columns = buildUnnamed1488();
+    o.columns = buildUnnamed1475();
     o.downloadFormat = "foo";
-    o.filters = buildUnnamed1490();
+    o.filters = buildUnnamed1477();
     o.includeDeletedEntities = true;
     o.includeRemovedEntities = true;
     o.maxRowsPerFile = 42;
-    o.orderBy = buildUnnamed1491();
+    o.orderBy = buildUnnamed1478();
     o.reportScope = buildReportRequestReportScope();
     o.reportType = "foo";
     o.rowCount = 42;
@@ -581,13 +581,13 @@ buildReportRequest() {
 checkReportRequest(api.ReportRequest o) {
   buildCounterReportRequest++;
   if (buildCounterReportRequest < 3) {
-    checkUnnamed1488(o.columns);
+    checkUnnamed1475(o.columns);
     unittest.expect(o.downloadFormat, unittest.equals('foo'));
-    checkUnnamed1490(o.filters);
+    checkUnnamed1477(o.filters);
     unittest.expect(o.includeDeletedEntities, unittest.isTrue);
     unittest.expect(o.includeRemovedEntities, unittest.isTrue);
     unittest.expect(o.maxRowsPerFile, unittest.equals(42));
-    checkUnnamed1491(o.orderBy);
+    checkUnnamed1478(o.orderBy);
     checkReportRequestReportScope(o.reportScope);
     unittest.expect(o.reportType, unittest.equals('foo'));
     unittest.expect(o.rowCount, unittest.equals(42));
@@ -651,14 +651,14 @@ checkSavedColumn(api.SavedColumn o) {
   buildCounterSavedColumn--;
 }
 
-buildUnnamed1492() {
+buildUnnamed1479() {
   var o = new core.List<api.SavedColumn>();
   o.add(buildSavedColumn());
   o.add(buildSavedColumn());
   return o;
 }
 
-checkUnnamed1492(core.List<api.SavedColumn> o) {
+checkUnnamed1479(core.List<api.SavedColumn> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSavedColumn(o[0]);
   checkSavedColumn(o[1]);
@@ -669,7 +669,7 @@ buildSavedColumnList() {
   var o = new api.SavedColumnList();
   buildCounterSavedColumnList++;
   if (buildCounterSavedColumnList < 3) {
-    o.items = buildUnnamed1492();
+    o.items = buildUnnamed1479();
     o.kind = "foo";
   }
   buildCounterSavedColumnList--;
@@ -679,20 +679,20 @@ buildSavedColumnList() {
 checkSavedColumnList(api.SavedColumnList o) {
   buildCounterSavedColumnList++;
   if (buildCounterSavedColumnList < 3) {
-    checkUnnamed1492(o.items);
+    checkUnnamed1479(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterSavedColumnList--;
 }
 
-buildUnnamed1493() {
+buildUnnamed1480() {
   var o = new core.List<api.Availability>();
   o.add(buildAvailability());
   o.add(buildAvailability());
   return o;
 }
 
-checkUnnamed1493(core.List<api.Availability> o) {
+checkUnnamed1480(core.List<api.Availability> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAvailability(o[0]);
   checkAvailability(o[1]);
@@ -703,7 +703,7 @@ buildUpdateAvailabilityRequest() {
   var o = new api.UpdateAvailabilityRequest();
   buildCounterUpdateAvailabilityRequest++;
   if (buildCounterUpdateAvailabilityRequest < 3) {
-    o.availabilities = buildUnnamed1493();
+    o.availabilities = buildUnnamed1480();
   }
   buildCounterUpdateAvailabilityRequest--;
   return o;
@@ -712,19 +712,19 @@ buildUpdateAvailabilityRequest() {
 checkUpdateAvailabilityRequest(api.UpdateAvailabilityRequest o) {
   buildCounterUpdateAvailabilityRequest++;
   if (buildCounterUpdateAvailabilityRequest < 3) {
-    checkUnnamed1493(o.availabilities);
+    checkUnnamed1480(o.availabilities);
   }
   buildCounterUpdateAvailabilityRequest--;
 }
 
-buildUnnamed1494() {
+buildUnnamed1481() {
   var o = new core.List<api.Availability>();
   o.add(buildAvailability());
   o.add(buildAvailability());
   return o;
 }
 
-checkUnnamed1494(core.List<api.Availability> o) {
+checkUnnamed1481(core.List<api.Availability> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAvailability(o[0]);
   checkAvailability(o[1]);
@@ -735,7 +735,7 @@ buildUpdateAvailabilityResponse() {
   var o = new api.UpdateAvailabilityResponse();
   buildCounterUpdateAvailabilityResponse++;
   if (buildCounterUpdateAvailabilityResponse < 3) {
-    o.availabilities = buildUnnamed1494();
+    o.availabilities = buildUnnamed1481();
   }
   buildCounterUpdateAvailabilityResponse--;
   return o;
@@ -744,7 +744,7 @@ buildUpdateAvailabilityResponse() {
 checkUpdateAvailabilityResponse(api.UpdateAvailabilityResponse o) {
   buildCounterUpdateAvailabilityResponse++;
   if (buildCounterUpdateAvailabilityResponse < 3) {
-    checkUnnamed1494(o.availabilities);
+    checkUnnamed1481(o.availabilities);
   }
   buildCounterUpdateAvailabilityResponse--;
 }
@@ -910,6 +910,7 @@ main() {
       var arg_adId = "foo";
       var arg_campaignId = "foo";
       var arg_criterionId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -985,6 +986,7 @@ main() {
             queryMap["campaignId"].first, unittest.equals(arg_campaignId));
         unittest.expect(
             queryMap["criterionId"].first, unittest.equals(arg_criterionId));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -998,7 +1000,8 @@ main() {
               adGroupId: arg_adGroupId,
               adId: arg_adId,
               campaignId: arg_campaignId,
-              criterionId: arg_criterionId)
+              criterionId: arg_criterionId,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ConversionList response) {
         checkConversionList(response);
       })));
@@ -1009,6 +1012,7 @@ main() {
       api.ConversionResourceApi res =
           new api.DoubleclicksearchApi(mock).conversion;
       var arg_request = buildConversionList();
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ConversionList.fromJson(json);
         checkConversionList(obj);
@@ -1045,6 +1049,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1053,7 +1058,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .insert(arg_request)
+          .insert(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ConversionList response) {
         checkConversionList(response);
       })));
@@ -1071,6 +1076,7 @@ main() {
       var arg_rowCount = 42;
       var arg_startDate = 42;
       var arg_startRow = 42;
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ConversionList.fromJson(json);
         checkConversionList(obj);
@@ -1121,6 +1127,7 @@ main() {
             unittest.equals(arg_startDate));
         unittest.expect(core.int.parse(queryMap["startRow"].first),
             unittest.equals(arg_startRow));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1130,7 +1137,8 @@ main() {
       }), true);
       res
           .patch(arg_request, arg_advertiserId, arg_agencyId, arg_endDate,
-              arg_engineAccountId, arg_rowCount, arg_startDate, arg_startRow)
+              arg_engineAccountId, arg_rowCount, arg_startDate, arg_startRow,
+              $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ConversionList response) {
         checkConversionList(response);
       })));
@@ -1141,6 +1149,7 @@ main() {
       api.ConversionResourceApi res =
           new api.DoubleclicksearchApi(mock).conversion;
       var arg_request = buildConversionList();
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ConversionList.fromJson(json);
         checkConversionList(obj);
@@ -1177,6 +1186,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1185,7 +1195,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .update(arg_request)
+          .update(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ConversionList response) {
         checkConversionList(response);
       })));
@@ -1196,6 +1206,7 @@ main() {
       api.ConversionResourceApi res =
           new api.DoubleclicksearchApi(mock).conversion;
       var arg_request = buildUpdateAvailabilityRequest();
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.UpdateAvailabilityRequest.fromJson(json);
         checkUpdateAvailabilityRequest(obj);
@@ -1232,6 +1243,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1239,7 +1251,7 @@ main() {
         var resp = convert.JSON.encode(buildUpdateAvailabilityResponse());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.updateAvailability(arg_request).then(
+      res.updateAvailability(arg_request, $fields: arg_$fields).then(
           unittest.expectAsync1(((api.UpdateAvailabilityResponse response) {
         checkUpdateAvailabilityResponse(response);
       })));
@@ -1251,6 +1263,7 @@ main() {
       var mock = new HttpServerMock();
       api.ReportsResourceApi res = new api.DoubleclicksearchApi(mock).reports;
       var arg_request_1 = buildReportRequest();
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ReportRequest.fromJson(json);
         checkReportRequest(obj);
@@ -1287,6 +1300,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1295,7 +1309,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .generate(arg_request_1)
+          .generate(arg_request_1, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Report response) {
         checkReport(response);
       })));
@@ -1305,6 +1319,7 @@ main() {
       var mock = new HttpServerMock();
       api.ReportsResourceApi res = new api.DoubleclicksearchApi(mock).reports;
       var arg_reportId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1341,6 +1356,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1348,7 +1364,9 @@ main() {
         var resp = convert.JSON.encode(buildReport());
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get(arg_reportId).then(unittest.expectAsync1(((api.Report response) {
+      res
+          .get(arg_reportId, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((api.Report response) {
         checkReport(response);
       })));
     });
@@ -1361,6 +1379,7 @@ main() {
       api.ReportsResourceApi res = new api.DoubleclicksearchApi(mock).reports;
       var arg_reportId = "foo";
       var arg_reportFragment = 42;
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1406,6 +1425,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1414,7 +1434,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .getFile(arg_reportId, arg_reportFragment)
+          .getFile(arg_reportId, arg_reportFragment, $fields: arg_$fields)
           .then(unittest.expectAsync1((_) {}));
     });
 
@@ -1422,6 +1442,7 @@ main() {
       var mock = new HttpServerMock();
       api.ReportsResourceApi res = new api.DoubleclicksearchApi(mock).reports;
       var arg_request_1 = buildReportRequest();
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.ReportRequest.fromJson(json);
         checkReportRequest(obj);
@@ -1458,6 +1479,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1466,7 +1488,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .request(arg_request_1)
+          .request(arg_request_1, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.Report response) {
         checkReport(response);
       })));
@@ -1480,6 +1502,7 @@ main() {
           new api.DoubleclicksearchApi(mock).savedColumns;
       var arg_agencyId = "foo";
       var arg_advertiserId = "foo";
+      var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1531,6 +1554,7 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
           "content-type": "application/json; charset=utf-8",
@@ -1539,7 +1563,7 @@ main() {
         return new async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .list(arg_agencyId, arg_advertiserId)
+          .list(arg_agencyId, arg_advertiserId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.SavedColumnList response) {
         checkSavedColumnList(response);
       })));

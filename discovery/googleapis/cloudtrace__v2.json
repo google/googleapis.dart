@@ -28,6 +28,40 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "$.xgafv": {
+            "description": "V1 error format.",
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
         "alt": {
             "default": "json",
             "description": "Data format for response.",
@@ -77,40 +111,6 @@
         },
         "upload_protocol": {
             "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
-            "location": "query",
-            "type": "string"
-        },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "$.xgafv": {
-            "description": "V1 error format.",
-            "enum": [
-                "1",
-                "2"
-            ],
-            "enumDescriptions": [
-                "v1 error format",
-                "v2 error format"
-            ],
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
             "location": "query",
             "type": "string"
         }
@@ -188,29 +188,29 @@
             }
         }
     },
-    "revision": "20170927",
+    "revision": "20171016",
     "rootUrl": "https://cloudtrace.googleapis.com/",
     "schemas": {
         "TimeEvents": {
-            "description": "A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation\non the span, consisting of either user-supplied key:value pairs, or\ndetails of an RPC message sent/received on the network.",
+            "description": "A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation\non the span, consisting of either user-supplied key:value pairs, or\ndetails of a message sent/received between Spans.",
             "id": "TimeEvents",
             "properties": {
+                "droppedAnnotationsCount": {
+                    "description": "The number of dropped annotations in all the included time events.\nIf the value is 0, then no annotations were dropped.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "droppedMessageEventsCount": {
+                    "description": "The number of dropped message events in all the included time events.\nIf the value is 0, then no message events were dropped.",
+                    "format": "int32",
+                    "type": "integer"
+                },
                 "timeEvent": {
                     "description": "A collection of `TimeEvent`s.",
                     "items": {
                         "$ref": "TimeEvent"
                     },
                     "type": "array"
-                },
-                "droppedNetworkEventsCount": {
-                    "description": "The number of dropped network events in all the included time events.\nIf the value is 0, then no network events were dropped.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "droppedAnnotationsCount": {
-                    "description": "The number of dropped annotations in all the included time events.\nIf the value is 0, then no annotations were dropped.",
-                    "format": "int32",
-                    "type": "integer"
                 }
             },
             "type": "object"
@@ -219,13 +219,13 @@
             "description": "Binary module.",
             "id": "Module",
             "properties": {
-                "module": {
-                    "$ref": "TruncatableString",
-                    "description": "For example: main binary, kernel modules, and dynamic libraries\nsuch as libc.so, sharedlib.so (up to 256 bytes)."
-                },
                 "buildId": {
                     "$ref": "TruncatableString",
                     "description": "A unique identifier for the module, usually a hash of its\ncontents (up to 128 bytes)."
+                },
+                "module": {
+                    "$ref": "TruncatableString",
+                    "description": "For example: main binary, kernel modules, and dynamic libraries\nsuch as libc.so, sharedlib.so (up to 256 bytes)."
                 }
             },
             "type": "object"
@@ -281,6 +281,10 @@
             "description": "A span represents a single operation within a trace. Spans can be\nnested to form a trace tree. Often, a trace contains a root span\nthat describes the end-to-end latency, and one or more subspans for\nits sub-operations. A trace can also contain multiple root spans,\nor none at all. Spans do not need to be contiguous&mdash;there may be\ngaps or overlaps between spans in a trace.",
             "id": "Span",
             "properties": {
+                "links": {
+                    "$ref": "Links",
+                    "description": "A maximum of 128 links are allowed per Span."
+                },
                 "attributes": {
                     "$ref": "Attributes",
                     "description": "A set of attributes on the span. There is a limit of 32 attributes per\nspan."
@@ -291,7 +295,7 @@
                 },
                 "childSpanCount": {
                     "description": "An optional number of child spans that were generated while this span\nwas active. If set, allows implementation to detect missing child spans.",
-                    "format": "uint32",
+                    "format": "int32",
                     "type": "integer"
                 },
                 "sameProcessAsParentSpan": {
@@ -330,11 +334,7 @@
                 },
                 "timeEvents": {
                     "$ref": "TimeEvents",
-                    "description": "The included time events. There can be up to 32 annotations and 128 network\nevents per span."
-                },
-                "links": {
-                    "$ref": "Links",
-                    "description": "A maximum of 128 links are allowed per Span."
+                    "description": "The included time events. There can be up to 32 annotations and 128 message\nevents per span."
                 }
             },
             "type": "object"
@@ -363,17 +363,17 @@
             "description": "A set of attributes, each in the format `[KEY]:[VALUE]`.",
             "id": "Attributes",
             "properties": {
+                "droppedAttributesCount": {
+                    "description": "The number of attributes that were discarded. Attributes can be discarded\nbecause their keys are too long or because there are too many attributes.\nIf this value is 0 then all attributes are valid.",
+                    "format": "int32",
+                    "type": "integer"
+                },
                 "attributeMap": {
                     "additionalProperties": {
                         "$ref": "AttributeValue"
                     },
                     "description": "The set of attributes. Each attribute's key can be up to 128 bytes\nlong. The value can be a string up to 256 bytes, an integer, or the\nBoolean values `true` and `false`. For example:\n\n    \"/instance_id\": \"my-instance\"\n    \"/http/user_agent\": \"\"\n    \"/http/request_bytes\": 300\n    \"abc.com/myattribute\": true",
                     "type": "object"
-                },
-                "droppedAttributesCount": {
-                    "description": "The number of attributes that were discarded. Attributes can be discarded\nbecause their keys are too long or because there are too many attributes.\nIf this value is 0 then all attributes are valid.",
-                    "format": "int32",
-                    "type": "integer"
                 }
             },
             "type": "object"
@@ -401,14 +401,14 @@
             "description": "Represents a string that might be shortened to a specified length.",
             "id": "TruncatableString",
             "properties": {
-                "value": {
-                    "description": "The shortened string. For example, if the original string was 500\nbytes long and the limit of the string was 128 bytes, then this\nvalue contains the first 128 bytes of the 500-byte string. Note that\ntruncation always happens on the character boundary, to ensure that\ntruncated string is still valid UTF8. In case of multi-byte characters,\nsize of truncated string can be less than truncation limit.",
-                    "type": "string"
-                },
                 "truncatedByteCount": {
                     "description": "The number of bytes removed from the original string. If this\nvalue is 0, then the string was not shortened.",
                     "format": "int32",
                     "type": "integer"
+                },
+                "value": {
+                    "description": "The shortened string. For example, if the original string was 500\nbytes long and the limit of the string was 128 bytes, then this\nvalue contains the first 128 bytes of the 500-byte string. Note that\ntruncation always happens on the character boundary, to ensure that\ntruncated string is still valid UTF8. In case of multi-byte characters,\nsize of truncated string can be less than truncation limit.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -423,24 +423,24 @@
                 },
                 "stackTraceHashId": {
                     "description": "The hash ID is used to conserve network bandwidth for duplicate\nstack traces within a single trace.\n\nOften multiple spans will have identical stack traces.\nThe first occurrence of a stack trace should contain both the\n`stackFrame` content and a value in `stackTraceHashId`.\n\nSubsequent spans within the same request can refer\nto that stack trace by only setting `stackTraceHashId`.",
-                    "format": "uint64",
+                    "format": "int64",
                     "type": "string"
                 }
             },
             "type": "object"
         },
         "TimeEvent": {
-            "description": "A time-stamped annotation or network event in the Span.",
+            "description": "A time-stamped annotation or message event in the Span.",
             "id": "TimeEvent",
             "properties": {
+                "messageEvent": {
+                    "$ref": "MessageEvent",
+                    "description": "An event describing a message sent/received between Spans."
+                },
                 "time": {
                     "description": "The timestamp indicating the time the event occurred.",
                     "format": "google-datetime",
                     "type": "string"
-                },
-                "networkEvent": {
-                    "$ref": "NetworkEvent",
-                    "description": "An event describing an RPC message sent/received on the network."
                 },
                 "annotation": {
                     "$ref": "Annotation",
@@ -449,42 +449,37 @@
             },
             "type": "object"
         },
-        "NetworkEvent": {
-            "description": "An event describing an RPC message sent or received on the network.",
-            "id": "NetworkEvent",
+        "MessageEvent": {
+            "description": "An event describing a message sent/received between Spans.",
+            "id": "MessageEvent",
             "properties": {
-                "messageId": {
-                    "description": "An identifier for the message, which must be unique in this span.",
-                    "format": "uint64",
-                    "type": "string"
-                },
-                "compressedMessageSize": {
-                    "description": "The number of compressed bytes sent or received.",
-                    "format": "uint64",
-                    "type": "string"
-                },
-                "time": {
-                    "description": "For sent messages, this is the time at which the first bit was sent.\nFor received messages, this is the time at which the last bit was\nreceived.",
-                    "format": "google-datetime",
-                    "type": "string"
-                },
-                "uncompressedMessageSize": {
-                    "description": "The number of uncompressed bytes sent or received.",
-                    "format": "uint64",
-                    "type": "string"
-                },
                 "type": {
-                    "description": "Type of NetworkEvent. Indicates whether the RPC message was sent or\nreceived.",
+                    "description": "Type of MessageEvent. Indicates whether the message was sent or\nreceived.",
                     "enum": [
                         "TYPE_UNSPECIFIED",
                         "SENT",
-                        "RECV"
+                        "RECEIVED"
                     ],
                     "enumDescriptions": [
                         "Unknown event type.",
-                        "Indicates a sent RPC message.",
-                        "Indicates a received RPC message."
+                        "Indicates a sent message.",
+                        "Indicates a received message."
                     ],
+                    "type": "string"
+                },
+                "id": {
+                    "description": "An identifier for the MessageEvent's message that can be used to match\nSENT and RECEIVED MessageEvents. It is recommended to be unique within\na Span.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "compressedSizeBytes": {
+                    "description": "The number of compressed bytes sent or received. If missing assumed to\nbe the same size as uncompressed.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "uncompressedSizeBytes": {
+                    "description": "The number of uncompressed bytes sent or received.",
+                    "format": "int64",
                     "type": "string"
                 }
             },
@@ -494,14 +489,6 @@
             "description": "Represents a single stack frame in a stack trace.",
             "id": "StackFrame",
             "properties": {
-                "originalFunctionName": {
-                    "$ref": "TruncatableString",
-                    "description": "An un-mangled function name, if `function_name` is\n[mangled](http://www.avabodh.com/cxxin/namemangling.html). The name can\nbe fully-qualified (up to 1024 bytes)."
-                },
-                "functionName": {
-                    "$ref": "TruncatableString",
-                    "description": "The fully-qualified name that uniquely identifies the function or\nmethod that is active in this frame (up to 1024 bytes)."
-                },
                 "lineNumber": {
                     "description": "The line number in `file_name` where the function call appears.",
                     "format": "int64",
@@ -523,6 +510,14 @@
                 "sourceVersion": {
                     "$ref": "TruncatableString",
                     "description": "The version of the deployed source code (up to 128 bytes)."
+                },
+                "originalFunctionName": {
+                    "$ref": "TruncatableString",
+                    "description": "An un-mangled function name, if `function_name` is\n[mangled](http://www.avabodh.com/cxxin/namemangling.html). The name can\nbe fully-qualified (up to 1024 bytes)."
+                },
+                "functionName": {
+                    "$ref": "TruncatableString",
+                    "description": "The fully-qualified name that uniquely identifies the function or\nmethod that is active in this frame (up to 1024 bytes)."
                 }
             },
             "type": "object"
@@ -579,17 +574,17 @@
             "description": "A collection of stack frames, which can be truncated.",
             "id": "StackFrames",
             "properties": {
+                "droppedFramesCount": {
+                    "description": "The number of stack frames that were dropped because there\nwere too many stack frames.\nIf this value is 0, then no stack frames were dropped.",
+                    "format": "int32",
+                    "type": "integer"
+                },
                 "frame": {
                     "description": "Stack frames in this call stack.",
                     "items": {
                         "$ref": "StackFrame"
                     },
                     "type": "array"
-                },
-                "droppedFramesCount": {
-                    "description": "The number of stack frames that were dropped because there\nwere too many stack frames.\nIf this value is 0, then no stack frames were dropped.",
-                    "format": "int32",
-                    "type": "integer"
                 }
             },
             "type": "object"

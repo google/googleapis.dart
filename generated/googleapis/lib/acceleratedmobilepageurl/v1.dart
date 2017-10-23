@@ -40,6 +40,9 @@ class AmpUrlsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BatchGetAmpUrlsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -47,8 +50,8 @@ class AmpUrlsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<BatchGetAmpUrlsResponse> batchGet(
-      BatchGetAmpUrlsRequest request) {
+  async.Future<BatchGetAmpUrlsResponse> batchGet(BatchGetAmpUrlsRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -58,6 +61,9 @@ class AmpUrlsResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/ampUrls:batchGet';

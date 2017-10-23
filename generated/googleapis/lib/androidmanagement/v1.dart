@@ -64,6 +64,9 @@ class EnterprisesResourceApi {
   /// [projectId] - The id of the Google Cloud Platform project which will own
   /// the enterprise.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Enterprise].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -74,7 +77,8 @@ class EnterprisesResourceApi {
   async.Future<Enterprise> create(Enterprise request,
       {core.String signupUrlName,
       core.String enterpriseToken,
-      core.String projectId}) {
+      core.String projectId,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -93,6 +97,9 @@ class EnterprisesResourceApi {
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/enterprises';
@@ -113,6 +120,9 @@ class EnterprisesResourceApi {
   /// [name] - The name of the enterprise in the form enterprises/{enterpriseId}
   /// Value must have pattern "^enterprises/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Enterprise].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -120,7 +130,7 @@ class EnterprisesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Enterprise> get(core.String name) {
+  async.Future<Enterprise> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -130,6 +140,9 @@ class EnterprisesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -155,6 +168,9 @@ class EnterprisesResourceApi {
   /// [updateMask] - The field mask indicating the fields to update. If not set,
   /// all modifiable fields will be modified.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Enterprise].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -163,7 +179,7 @@ class EnterprisesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Enterprise> patch(Enterprise request, core.String name,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -179,6 +195,9 @@ class EnterprisesResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -211,6 +230,9 @@ class EnterprisesApplicationsResourceApi {
   /// a BCP47 tag (e.g. "en-US", "de"). If not specified the default language of
   /// the application will be used.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Application].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -218,7 +240,8 @@ class EnterprisesApplicationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Application> get(core.String name, {core.String languageCode}) {
+  async.Future<Application> get(core.String name,
+      {core.String languageCode, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -231,6 +254,9 @@ class EnterprisesApplicationsResourceApi {
     }
     if (languageCode != null) {
       _queryParams["languageCode"] = [languageCode];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -262,6 +288,9 @@ class EnterprisesDevicesResourceApi {
   /// enterprises/{enterpriseId}/devices/{deviceId}
   /// Value must have pattern "^enterprises/[^/]+/devices/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -269,7 +298,7 @@ class EnterprisesDevicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name) {
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -279,6 +308,9 @@ class EnterprisesDevicesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -300,6 +332,9 @@ class EnterprisesDevicesResourceApi {
   /// enterprises/{enterpriseId}/devices/{deviceId}
   /// Value must have pattern "^enterprises/[^/]+/devices/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Device].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -307,7 +342,7 @@ class EnterprisesDevicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Device> get(core.String name) {
+  async.Future<Device> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -317,6 +352,9 @@ class EnterprisesDevicesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -342,6 +380,9 @@ class EnterprisesDevicesResourceApi {
   /// enterprises/{enterpriseId}/devices/{deviceId}
   /// Value must have pattern "^enterprises/[^/]+/devices/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -349,7 +390,8 @@ class EnterprisesDevicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> issueCommand(Command request, core.String name) {
+  async.Future<Operation> issueCommand(Command request, core.String name,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -362,6 +404,9 @@ class EnterprisesDevicesResourceApi {
     }
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -391,6 +436,9 @@ class EnterprisesDevicesResourceApi {
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListDevicesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -399,7 +447,7 @@ class EnterprisesDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDevicesResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -415,6 +463,9 @@ class EnterprisesDevicesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -442,6 +493,9 @@ class EnterprisesDevicesResourceApi {
   /// [updateMask] - The field mask indicating the fields to update. If not set,
   /// all modifiable fields will be modified.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Device].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -450,7 +504,7 @@ class EnterprisesDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Device> patch(Device request, core.String name,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -466,6 +520,9 @@ class EnterprisesDevicesResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -502,6 +559,9 @@ class EnterprisesDevicesOperationsResourceApi {
   /// Value must have pattern
   /// "^enterprises/[^/]+/devices/[^/]+/operations/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -509,7 +569,7 @@ class EnterprisesDevicesOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> cancel(core.String name) {
+  async.Future<Empty> cancel(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -519,6 +579,9 @@ class EnterprisesDevicesOperationsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
@@ -543,6 +606,9 @@ class EnterprisesDevicesOperationsResourceApi {
   /// Value must have pattern
   /// "^enterprises/[^/]+/devices/[^/]+/operations/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -550,7 +616,7 @@ class EnterprisesDevicesOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name) {
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -560,6 +626,9 @@ class EnterprisesDevicesOperationsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -583,6 +652,9 @@ class EnterprisesDevicesOperationsResourceApi {
   /// Value must have pattern
   /// "^enterprises/[^/]+/devices/[^/]+/operations/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Operation].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -590,7 +662,7 @@ class EnterprisesDevicesOperationsResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Operation> get(core.String name) {
+  async.Future<Operation> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -600,6 +672,9 @@ class EnterprisesDevicesOperationsResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -634,6 +709,9 @@ class EnterprisesDevicesOperationsResourceApi {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListOperationsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -642,7 +720,10 @@ class EnterprisesDevicesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.int pageSize, core.String filter, core.String pageToken}) {
+      {core.int pageSize,
+      core.String filter,
+      core.String pageToken,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -661,6 +742,9 @@ class EnterprisesDevicesOperationsResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -691,6 +775,9 @@ class EnterprisesEnrollmentTokensResourceApi {
   /// enterprises/{enterpriseId}
   /// Value must have pattern "^enterprises/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [EnrollmentToken].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -699,7 +786,8 @@ class EnterprisesEnrollmentTokensResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<EnrollmentToken> create(
-      EnrollmentToken request, core.String parent) {
+      EnrollmentToken request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -712,6 +800,9 @@ class EnterprisesEnrollmentTokensResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' +
@@ -735,6 +826,9 @@ class EnterprisesEnrollmentTokensResourceApi {
   /// enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}
   /// Value must have pattern "^enterprises/[^/]+/enrollmentTokens/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -742,7 +836,7 @@ class EnterprisesEnrollmentTokensResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name) {
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -752,6 +846,9 @@ class EnterprisesEnrollmentTokensResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -781,6 +878,9 @@ class EnterprisesPoliciesResourceApi {
   /// enterprises/{enterpriseId}/policies/{policyId}
   /// Value must have pattern "^enterprises/[^/]+/policies/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -788,7 +888,7 @@ class EnterprisesPoliciesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name) {
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -798,6 +898,9 @@ class EnterprisesPoliciesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -819,6 +922,9 @@ class EnterprisesPoliciesResourceApi {
   /// enterprises/{enterpriseId}/policies/{policyId}
   /// Value must have pattern "^enterprises/[^/]+/policies/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Policy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -826,7 +932,7 @@ class EnterprisesPoliciesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Policy> get(core.String name) {
+  async.Future<Policy> get(core.String name, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -836,6 +942,9 @@ class EnterprisesPoliciesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -863,6 +972,9 @@ class EnterprisesPoliciesResourceApi {
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListPoliciesResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -871,7 +983,7 @@ class EnterprisesPoliciesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListPoliciesResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -887,6 +999,9 @@ class EnterprisesPoliciesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -914,6 +1029,9 @@ class EnterprisesPoliciesResourceApi {
   /// [updateMask] - The field mask indicating the fields to update. If not set,
   /// all modifiable fields will be modified.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Policy].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -922,7 +1040,7 @@ class EnterprisesPoliciesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Policy> patch(Policy request, core.String name,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -938,6 +1056,9 @@ class EnterprisesPoliciesResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
@@ -969,6 +1090,9 @@ class EnterprisesWebTokensResourceApi {
   /// enterprises/{enterpriseId}
   /// Value must have pattern "^enterprises/[^/]+$".
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [WebToken].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -976,7 +1100,8 @@ class EnterprisesWebTokensResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<WebToken> create(WebToken request, core.String parent) {
+  async.Future<WebToken> create(WebToken request, core.String parent,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -989,6 +1114,9 @@ class EnterprisesWebTokensResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url =
@@ -1023,6 +1151,9 @@ class SignupUrlsResourceApi {
   /// [projectId] - The id of the Google Cloud Platform project which will own
   /// the enterprise.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [SignupUrl].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -1031,7 +1162,7 @@ class SignupUrlsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<SignupUrl> create(
-      {core.String callbackUrl, core.String projectId}) {
+      {core.String callbackUrl, core.String projectId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1044,6 +1175,9 @@ class SignupUrlsResourceApi {
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/signupUrls';
@@ -1494,12 +1628,12 @@ class Device {
   core.bool policyCompliant;
 
   /// The name of the policy that is intended to be applied to the device. If
-  /// empty, the policy with id default is applied. This field may be modified
-  /// by an update request. The name of the policy is in the form
-  /// enterprises/{enterpriseId}/policies/{policyId}. It is also permissible to
-  /// only specify the policyId when updating this field as long as the policyId
-  /// contains no slashes since the rest of the policy name can be inferred from
-  /// context.
+  /// empty, the policy_name for the user that owns this device is applied. This
+  /// field may be modified by an update request. The name of the policy is in
+  /// the form enterprises/{enterpriseId}/policies/{policyId}. It is also
+  /// permissible to only specify the policyId when updating this field as long
+  /// as the policyId contains no slashes since the rest of the policy name can
+  /// be inferred from context.
   core.String policyName;
 
   /// Power management events on the device in chronological order. This
@@ -1532,9 +1666,8 @@ class Device {
   /// will be in this state until they have applied policy.
   core.String state;
 
-  /// The resource name of the user of the device in the form
-  /// enterprises/{enterpriseId}/users/{userId}. This is the name of the device
-  /// account automatically created for this device.
+  /// The resource name of the user that owns this device in the form
+  /// enterprises/{enterpriseId}/users/{userId}.
   core.String userName;
 
   Device();
@@ -1846,8 +1979,10 @@ class EnrollmentToken {
 
   /// The name of the policy that will be initially applied to the enrolled
   /// device in the form enterprises/{enterpriseId}/policies/{policyId}. If not
-  /// specified, the policy with id default is applied. It is permissible to
-  /// only specify the policyId when updating this field as long as the policyId
+  /// specified, the policy_name for the user that owns the device is applied.
+  /// If user_name also isn't specified, the policy defaults to
+  /// enterprises/{enterpriseId}/policies/default. It is permissible to only
+  /// specify the policyId when updating this field as long as the policyId
   /// contains no slashes since the rest of the policy name can be inferred from
   /// context.
   core.String policyName;
@@ -3258,8 +3393,8 @@ class Policy {
   core.List<core.String> stayOnPluggedModes;
 
   /// The system update policy, which controls how OS updates are applied. If
-  /// the update type is WINDOWED and the device has a device account, the
-  /// update window will automatically apply to Play app updates as well.
+  /// the update type is WINDOWED, the update window will automatically apply to
+  /// Play app updates as well.
   SystemUpdate systemUpdate;
 
   /// Whether the microphone is muted and adjusting microphone volume is
@@ -3817,11 +3952,10 @@ class SystemUpdate {
   /// for the device, which typically requires the user to accept system
   /// updates.
   /// - "AUTOMATIC" : Install automatically as soon as an update is available.
-  /// - "WINDOWED" : Install automatically within a daily maintenance window. If
-  /// the device has a device account, this also configures Play apps to be
-  /// updated within the window. This is strongly recommended for kiosk devices
-  /// because this is the only way apps persistently pinned to the foreground
-  /// can be updated by Play.
+  /// - "WINDOWED" : Install automatically within a daily maintenance window.
+  /// This also configures Play apps to be updated within the window. This is
+  /// strongly recommended for kiosk devices because this is the only way apps
+  /// persistently pinned to the foreground can be updated by Play.
   /// - "POSTPONE" : Postpone automatic install up to a maximum of 30 days.
   core.String type;
 

@@ -63,6 +63,9 @@ class PhotoResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Photo].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -70,7 +73,7 @@ class PhotoResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Photo> create(Photo request) {
+  async.Future<Photo> create(Photo request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -80,6 +83,9 @@ class PhotoResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/photo';
@@ -105,6 +111,9 @@ class PhotoResourceApi {
   ///
   /// [photoId] - Required. ID of the Photo.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Empty].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -112,7 +121,7 @@ class PhotoResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String photoId) {
+  async.Future<Empty> delete(core.String photoId, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -122,6 +131,9 @@ class PhotoResourceApi {
 
     if (photoId == null) {
       throw new core.ArgumentError("Parameter photoId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/photo/' + commons.Escaper.ecapeVariable('$photoId');
@@ -156,6 +168,9 @@ class PhotoResourceApi {
   /// - "BASIC" : A BASIC.
   /// - "INCLUDE_DOWNLOAD_URL" : A INCLUDE_DOWNLOAD_URL.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Photo].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -163,7 +178,8 @@ class PhotoResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Photo> get(core.String photoId, {core.String view}) {
+  async.Future<Photo> get(core.String photoId,
+      {core.String view, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -176,6 +192,9 @@ class PhotoResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/photo/' + commons.Escaper.ecapeVariable('$photoId');
@@ -215,6 +234,9 @@ class PhotoResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [UploadRef].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -222,7 +244,7 @@ class PhotoResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<UploadRef> startUpload(Empty request) {
+  async.Future<UploadRef> startUpload(Empty request, {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -232,6 +254,9 @@ class PhotoResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/photo:startUpload';
@@ -301,6 +326,9 @@ class PhotoResourceApi {
   /// empty,
   /// all connections will be removed.</aside>
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [Photo].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -309,7 +337,7 @@ class PhotoResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Photo> update(Photo request, core.String id,
-      {core.String updateMask}) {
+      {core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -325,6 +353,9 @@ class PhotoResourceApi {
     }
     if (updateMask != null) {
       _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/photo/' + commons.Escaper.ecapeVariable('$id');
@@ -365,6 +396,9 @@ class PhotosResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BatchDeletePhotosResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -373,7 +407,8 @@ class PhotosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchDeletePhotosResponse> batchDelete(
-      BatchDeletePhotosRequest request) {
+      BatchDeletePhotosRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -383,6 +418,9 @@ class PhotosResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/photos:batchDelete';
@@ -427,6 +465,9 @@ class PhotosResourceApi {
   /// GET requests, the URL query parameter should be
   /// `photoIds=<id1>&photoIds=<id2>&...`.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BatchGetPhotosResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -435,7 +476,9 @@ class PhotosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchGetPhotosResponse> batchGet(
-      {core.String view, core.List<core.String> photoIds}) {
+      {core.String view,
+      core.List<core.String> photoIds,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -448,6 +491,9 @@ class PhotosResourceApi {
     }
     if (photoIds != null) {
       _queryParams["photoIds"] = photoIds;
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/photos:batchGet';
@@ -494,6 +540,9 @@ class PhotosResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [BatchUpdatePhotosResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -502,7 +551,8 @@ class PhotosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchUpdatePhotosResponse> batchUpdate(
-      BatchUpdatePhotosRequest request) {
+      BatchUpdatePhotosRequest request,
+      {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -512,6 +562,9 @@ class PhotosResourceApi {
 
     if (request != null) {
       _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/photos:batchUpdate';
@@ -555,6 +608,9 @@ class PhotosResourceApi {
   /// - "BASIC" : A BASIC.
   /// - "INCLUDE_DOWNLOAD_URL" : A INCLUDE_DOWNLOAD_URL.
   ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
   /// Completes with a [ListPhotosResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -566,7 +622,8 @@ class PhotosResourceApi {
       {core.String filter,
       core.String pageToken,
       core.int pageSize,
-      core.String view}) {
+      core.String view,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -585,6 +642,9 @@ class PhotosResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
     }
 
     _url = 'v1/photos';
