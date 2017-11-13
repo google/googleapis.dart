@@ -458,10 +458,6 @@ class BeaconsResourceApi {
   /// [pageToken] - A pagination token obtained from a previous request to list
   /// beacons.
   ///
-  /// [pageSize] - The maximum number of records to return for this request, up
-  /// to a
-  /// server-defined upper limit.
-  ///
   /// [q] - Filter query string that supports the following field filters:
   ///
   /// * **description:`"<string>"`**
@@ -531,6 +527,10 @@ class BeaconsResourceApi {
   /// `GET
   /// /v1beta1/beacons?q=status:active%20lat:51.123%20lng:-1.095%20radius:1000`
   ///
+  /// [pageSize] - The maximum number of records to return for this request, up
+  /// to a
+  /// server-defined upper limit.
+  ///
   /// [projectId] - The project id to list beacons under. If not present then
   /// the project
   /// credential that made the request is used as the project.
@@ -548,8 +548,8 @@ class BeaconsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListBeaconsResponse> list(
       {core.String pageToken,
-      core.int pageSize,
       core.String q,
+      core.int pageSize,
       core.String projectId,
       core.String $fields}) {
     var _url = null;
@@ -562,11 +562,11 @@ class BeaconsResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (q != null) {
       _queryParams["q"] = [q];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
@@ -990,6 +990,11 @@ class BeaconsAttachmentsResourceApi {
   /// Required.
   /// Value must have pattern "^beacons/[^/]+$".
   ///
+  /// [namespacedType] - Specifies the namespace and type of attachment to
+  /// include in response in
+  /// <var>namespace/type</var> format. Accepts `* / * ` to specify
+  /// "all types in all namespaces".
+  ///
   /// [projectId] - The project id to list beacon attachments under. This field
   /// can be
   /// used when "*" is specified to mean all attachment namespaces. Projects
@@ -997,11 +1002,6 @@ class BeaconsAttachmentsResourceApi {
   /// specified and the projectId string is empty, then the project
   /// making the request is used.
   /// Optional.
-  ///
-  /// [namespacedType] - Specifies the namespace and type of attachment to
-  /// include in response in
-  /// <var>namespace/type</var> format. Accepts `* / * ` to specify
-  /// "all types in all namespaces".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1014,8 +1014,8 @@ class BeaconsAttachmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBeaconAttachmentsResponse> list(core.String beaconName,
-      {core.String projectId,
-      core.String namespacedType,
+      {core.String namespacedType,
+      core.String projectId,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1027,11 +1027,11 @@ class BeaconsAttachmentsResourceApi {
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
     }
-    if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
-    }
     if (namespacedType != null) {
       _queryParams["namespacedType"] = [namespacedType];
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1073,9 +1073,9 @@ class BeaconsDiagnosticsResourceApi {
   /// [beaconName] - Beacon that the diagnostics are for.
   /// Value must have pattern "^beacons/[^/]+$".
   ///
-  /// [pageToken] - Requests results that occur after the `page_token`, obtained
-  /// from the
-  /// response to a previous request. Optional.
+  /// [pageSize] - Specifies the maximum number of results to return. Defaults
+  /// to
+  /// 10. Maximum 1000. Optional.
   ///
   /// [alertFilter] - Requests only beacons that have the given alert. For
   /// example, to find
@@ -1086,14 +1086,14 @@ class BeaconsDiagnosticsResourceApi {
   /// - "LOW_BATTERY" : A LOW_BATTERY.
   /// - "LOW_ACTIVITY" : A LOW_ACTIVITY.
   ///
-  /// [pageSize] - Specifies the maximum number of results to return. Defaults
-  /// to
-  /// 10. Maximum 1000. Optional.
-  ///
   /// [projectId] - Requests only diagnostic records for the given project id.
   /// If not set,
   /// then the project making the request will be used for looking up
   /// diagnostic records. Optional.
+  ///
+  /// [pageToken] - Requests results that occur after the `page_token`, obtained
+  /// from the
+  /// response to a previous request. Optional.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1106,10 +1106,10 @@ class BeaconsDiagnosticsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDiagnosticsResponse> list(core.String beaconName,
-      {core.String pageToken,
+      {core.int pageSize,
       core.String alertFilter,
-      core.int pageSize,
       core.String projectId,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1121,17 +1121,17 @@ class BeaconsDiagnosticsResourceApi {
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (alertFilter != null) {
       _queryParams["alertFilter"] = [alertFilter];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

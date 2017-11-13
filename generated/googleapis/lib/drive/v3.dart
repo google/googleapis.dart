@@ -1539,6 +1539,11 @@ class PermissionsResourceApi {
   /// and downgrade the current owner to a writer. This parameter is required as
   /// an acknowledgement of the side effect.
   ///
+  /// [useDomainAdminAccess] - Whether the request should be treated as if it
+  /// was issued by a domain administrator; if set to true, then the requester
+  /// will be granted access if they are an administrator of the domain to which
+  /// the item belongs.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1554,6 +1559,7 @@ class PermissionsResourceApi {
       core.bool sendNotificationEmail,
       core.bool supportsTeamDrives,
       core.bool transferOwnership,
+      core.bool useDomainAdminAccess,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1579,6 +1585,9 @@ class PermissionsResourceApi {
     }
     if (transferOwnership != null) {
       _queryParams["transferOwnership"] = ["${transferOwnership}"];
+    }
+    if (useDomainAdminAccess != null) {
+      _queryParams["useDomainAdminAccess"] = ["${useDomainAdminAccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1606,6 +1615,11 @@ class PermissionsResourceApi {
   /// [supportsTeamDrives] - Whether the requesting application supports Team
   /// Drives.
   ///
+  /// [useDomainAdminAccess] - Whether the request should be treated as if it
+  /// was issued by a domain administrator; if set to true, then the requester
+  /// will be granted access if they are an administrator of the domain to which
+  /// the item belongs.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1615,7 +1629,9 @@ class PermissionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future delete(core.String fileId, core.String permissionId,
-      {core.bool supportsTeamDrives, core.String $fields}) {
+      {core.bool supportsTeamDrives,
+      core.bool useDomainAdminAccess,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1631,6 +1647,9 @@ class PermissionsResourceApi {
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+    }
+    if (useDomainAdminAccess != null) {
+      _queryParams["useDomainAdminAccess"] = ["${useDomainAdminAccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1663,6 +1682,11 @@ class PermissionsResourceApi {
   /// [supportsTeamDrives] - Whether the requesting application supports Team
   /// Drives.
   ///
+  /// [useDomainAdminAccess] - Whether the request should be treated as if it
+  /// was issued by a domain administrator; if set to true, then the requester
+  /// will be granted access if they are an administrator of the domain to which
+  /// the item belongs.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1674,7 +1698,9 @@ class PermissionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Permission> get(core.String fileId, core.String permissionId,
-      {core.bool supportsTeamDrives, core.String $fields}) {
+      {core.bool supportsTeamDrives,
+      core.bool useDomainAdminAccess,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1690,6 +1716,9 @@ class PermissionsResourceApi {
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+    }
+    if (useDomainAdminAccess != null) {
+      _queryParams["useDomainAdminAccess"] = ["${useDomainAdminAccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1728,6 +1757,11 @@ class PermissionsResourceApi {
   /// [supportsTeamDrives] - Whether the requesting application supports Team
   /// Drives.
   ///
+  /// [useDomainAdminAccess] - Whether the request should be treated as if it
+  /// was issued by a domain administrator; if set to true, then the requester
+  /// will be granted access if they are an administrator of the domain to which
+  /// the item belongs.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1742,6 +1776,7 @@ class PermissionsResourceApi {
       {core.int pageSize,
       core.String pageToken,
       core.bool supportsTeamDrives,
+      core.bool useDomainAdminAccess,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1761,6 +1796,9 @@ class PermissionsResourceApi {
     }
     if (supportsTeamDrives != null) {
       _queryParams["supportsTeamDrives"] = ["${supportsTeamDrives}"];
+    }
+    if (useDomainAdminAccess != null) {
+      _queryParams["useDomainAdminAccess"] = ["${useDomainAdminAccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1796,6 +1834,11 @@ class PermissionsResourceApi {
   /// and downgrade the current owner to a writer. This parameter is required as
   /// an acknowledgement of the side effect.
   ///
+  /// [useDomainAdminAccess] - Whether the request should be treated as if it
+  /// was issued by a domain administrator; if set to true, then the requester
+  /// will be granted access if they are an administrator of the domain to which
+  /// the item belongs.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1811,6 +1854,7 @@ class PermissionsResourceApi {
       {core.bool removeExpiration,
       core.bool supportsTeamDrives,
       core.bool transferOwnership,
+      core.bool useDomainAdminAccess,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1836,6 +1880,9 @@ class PermissionsResourceApi {
     }
     if (transferOwnership != null) {
       _queryParams["transferOwnership"] = ["${transferOwnership}"];
+    }
+    if (useDomainAdminAccess != null) {
+      _queryParams["useDomainAdminAccess"] = ["${useDomainAdminAccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2536,6 +2583,11 @@ class TeamdrivesResourceApi {
   ///
   /// [teamDriveId] - The ID of the Team Drive
   ///
+  /// [useDomainAdminAccess] - Whether the request should be treated as if it
+  /// was issued by a domain administrator; if set to true, then the requester
+  /// will be granted access if they are an administrator of the domain to which
+  /// the Team Drive belongs.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2546,7 +2598,8 @@ class TeamdrivesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<TeamDrive> get(core.String teamDriveId, {core.String $fields}) {
+  async.Future<TeamDrive> get(core.String teamDriveId,
+      {core.bool useDomainAdminAccess, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2556,6 +2609,9 @@ class TeamdrivesResourceApi {
 
     if (teamDriveId == null) {
       throw new core.ArgumentError("Parameter teamDriveId is required.");
+    }
+    if (useDomainAdminAccess != null) {
+      _queryParams["useDomainAdminAccess"] = ["${useDomainAdminAccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2581,6 +2637,12 @@ class TeamdrivesResourceApi {
   ///
   /// [pageToken] - Page token for Team Drives.
   ///
+  /// [q] - Query string for searching Team Drives.
+  ///
+  /// [useDomainAdminAccess] - Whether the request should be treated as if it
+  /// was issued by a domain administrator; if set to true, then all Team Drives
+  /// of the domain in which the requester is an administrator are returned.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2592,7 +2654,11 @@ class TeamdrivesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TeamDriveList> list(
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.int pageSize,
+      core.String pageToken,
+      core.String q,
+      core.bool useDomainAdminAccess,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2605,6 +2671,12 @@ class TeamdrivesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (q != null) {
+      _queryParams["q"] = [q];
+    }
+    if (useDomainAdminAccess != null) {
+      _queryParams["useDomainAdminAccess"] = ["${useDomainAdminAccess}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -5372,6 +5444,9 @@ class TeamDrive {
   /// drive.teamdrives.update request that does not set themeId.
   core.String colorRgb;
 
+  /// The time at which the Team Drive was created (RFC 3339 date-time).
+  core.DateTime createdTime;
+
   /// The ID of this Team Drive which is also the ID of the top level folder for
   /// this Team Drive.
   core.String id;
@@ -5407,6 +5482,9 @@ class TeamDrive {
     if (_json.containsKey("colorRgb")) {
       colorRgb = _json["colorRgb"];
     }
+    if (_json.containsKey("createdTime")) {
+      createdTime = core.DateTime.parse(_json["createdTime"]);
+    }
     if (_json.containsKey("id")) {
       id = _json["id"];
     }
@@ -5435,6 +5513,9 @@ class TeamDrive {
     }
     if (colorRgb != null) {
       _json["colorRgb"] = colorRgb;
+    }
+    if (createdTime != null) {
+      _json["createdTime"] = (createdTime).toIso8601String();
     }
     if (id != null) {
       _json["id"] = id;

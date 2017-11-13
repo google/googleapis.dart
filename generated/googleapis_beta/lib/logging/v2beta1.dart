@@ -776,14 +776,14 @@ class ProjectsMetricsResourceApi {
   ///
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
-  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -796,7 +796,7 @@ class ProjectsMetricsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLogMetricsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -807,11 +807,11 @@ class ProjectsMetricsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1144,16 +1144,6 @@ class ProjectsSinksResourceApi {
   /// Example: "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^projects/[^/]+/sinks/[^/]+$".
   ///
-  /// [updateMask] - Optional. Field mask that specifies the fields in sink that
-  /// need an update. A sink field will be overwritten if, and only if, it is in
-  /// the update mask. name and output only fields cannot be updated.An empty
-  /// updateMask is temporarily treated as using the following mask for
-  /// backwards compatibility purposes:  destination,filter,includeChildren At
-  /// some point in the future, behavior will be removed and specifying an empty
-  /// updateMask will be an error.For a detailed FieldMask definition, see
-  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
-  /// updateMask=filter.
-  ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
   /// writer_identity in the updated sink depends on both the old and new values
@@ -1164,6 +1154,16 @@ class ProjectsSinksResourceApi {
   /// is changed to a unique service account.
   /// It is an error if the old value is true and the new value is set to false
   /// or defaulted to false.
+  ///
+  /// [updateMask] - Optional. Field mask that specifies the fields in sink that
+  /// need an update. A sink field will be overwritten if, and only if, it is in
+  /// the update mask. name and output only fields cannot be updated.An empty
+  /// updateMask is temporarily treated as using the following mask for
+  /// backwards compatibility purposes:  destination,filter,includeChildren At
+  /// some point in the future, behavior will be removed and specifying an empty
+  /// updateMask will be an error.For a detailed FieldMask definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
+  /// updateMask=filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1176,8 +1176,8 @@ class ProjectsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LogSink> update(LogSink request, core.String sinkName,
-      {core.String updateMask,
-      core.bool uniqueWriterIdentity,
+      {core.bool uniqueWriterIdentity,
+      core.String updateMask,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1192,11 +1192,11 @@ class ProjectsSinksResourceApi {
     if (sinkName == null) {
       throw new core.ArgumentError("Parameter sinkName is required.");
     }
-    if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
-    }
     if (uniqueWriterIdentity != null) {
       _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1980,6 +1980,12 @@ class LogEntry {
   /// if any.
   LogEntrySourceLocation sourceLocation;
 
+  /// Optional. Id of the span within the trace associated with the log entry.
+  /// e.g. "0000000000000042" For Stackdriver trace spans, this is the same
+  /// format that the Stackdriver trace API uses. The ID is a 16-character
+  /// hexadecimal encoding of an 8-byte array.
+  core.String spanId;
+
   /// The log entry payload, represented as a Unicode string (UTF-8).
   core.String textPayload;
 
@@ -2035,6 +2041,9 @@ class LogEntry {
       sourceLocation =
           new LogEntrySourceLocation.fromJson(_json["sourceLocation"]);
     }
+    if (_json.containsKey("spanId")) {
+      spanId = _json["spanId"];
+    }
     if (_json.containsKey("textPayload")) {
       textPayload = _json["textPayload"];
     }
@@ -2081,6 +2090,9 @@ class LogEntry {
     }
     if (sourceLocation != null) {
       _json["sourceLocation"] = (sourceLocation).toJson();
+    }
+    if (spanId != null) {
+      _json["spanId"] = spanId;
     }
     if (textPayload != null) {
       _json["textPayload"] = textPayload;

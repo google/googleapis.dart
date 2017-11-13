@@ -29,7 +29,7 @@
     "description": "Creates and runs virtual machines on Google Cloud Platform.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/compute/docs/reference/latest/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/ccMQJOTqWSBs7vqsZTir487_SNI\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/9nzbQecasoV32btb2e-rm3_3jLA\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/compute_engine-16.png",
         "x32": "https://www.google.com/images/icons/product/compute_engine-32.png"
@@ -13570,7 +13570,7 @@
             }
         }
     },
-    "revision": "20171010",
+    "revision": "20171026",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AcceleratorConfig": {
@@ -23416,6 +23416,7 @@
                         "INSTANCE_GROUPS",
                         "INSTANCE_GROUP_MANAGERS",
                         "INSTANCE_TEMPLATES",
+                        "INTERCONNECTS",
                         "IN_USE_ADDRESSES",
                         "LOCAL_SSD_TOTAL_GB",
                         "NETWORKS",
@@ -23445,6 +23446,7 @@
                         "VPN_TUNNELS"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",

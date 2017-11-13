@@ -168,14 +168,14 @@ checkGroupItem(api.GroupItem o) {
   buildCounterGroupItem--;
 }
 
-buildUnnamed254() {
+buildUnnamed258() {
   var o = new core.List<api.GroupItem>();
   o.add(buildGroupItem());
   o.add(buildGroupItem());
   return o;
 }
 
-checkUnnamed254(core.List<api.GroupItem> o) {
+checkUnnamed258(core.List<api.GroupItem> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroupItem(o[0]);
   checkGroupItem(o[1]);
@@ -187,7 +187,7 @@ buildGroupItemListResponse() {
   buildCounterGroupItemListResponse++;
   if (buildCounterGroupItemListResponse < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed254();
+    o.items = buildUnnamed258();
     o.kind = "foo";
   }
   buildCounterGroupItemListResponse--;
@@ -198,20 +198,20 @@ checkGroupItemListResponse(api.GroupItemListResponse o) {
   buildCounterGroupItemListResponse++;
   if (buildCounterGroupItemListResponse < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed254(o.items);
+    checkUnnamed258(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterGroupItemListResponse--;
 }
 
-buildUnnamed255() {
+buildUnnamed259() {
   var o = new core.List<api.Group>();
   o.add(buildGroup());
   o.add(buildGroup());
   return o;
 }
 
-checkUnnamed255(core.List<api.Group> o) {
+checkUnnamed259(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGroup(o[0]);
   checkGroup(o[1]);
@@ -223,7 +223,7 @@ buildGroupListResponse() {
   buildCounterGroupListResponse++;
   if (buildCounterGroupListResponse < 3) {
     o.etag = "foo";
-    o.items = buildUnnamed255();
+    o.items = buildUnnamed259();
     o.kind = "foo";
     o.nextPageToken = "foo";
   }
@@ -235,7 +235,7 @@ checkGroupListResponse(api.GroupListResponse o) {
   buildCounterGroupListResponse++;
   if (buildCounterGroupListResponse < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed255(o.items);
+    checkUnnamed259(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -265,20 +265,20 @@ checkResultTableColumnHeaders(api.ResultTableColumnHeaders o) {
   buildCounterResultTableColumnHeaders--;
 }
 
-buildUnnamed256() {
+buildUnnamed260() {
   var o = new core.List<api.ResultTableColumnHeaders>();
   o.add(buildResultTableColumnHeaders());
   o.add(buildResultTableColumnHeaders());
   return o;
 }
 
-checkUnnamed256(core.List<api.ResultTableColumnHeaders> o) {
+checkUnnamed260(core.List<api.ResultTableColumnHeaders> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResultTableColumnHeaders(o[0]);
   checkResultTableColumnHeaders(o[1]);
 }
 
-buildUnnamed257() {
+buildUnnamed261() {
   var o = new core.List<core.Object>();
   o.add({
     'list': [1, 2, 3],
@@ -293,7 +293,7 @@ buildUnnamed257() {
   return o;
 }
 
-checkUnnamed257(core.List<core.Object> o) {
+checkUnnamed261(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o[0]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -307,17 +307,17 @@ checkUnnamed257(core.List<core.Object> o) {
   unittest.expect(casted2["string"], unittest.equals('foo'));
 }
 
-buildUnnamed258() {
+buildUnnamed262() {
   var o = new core.List<core.List<core.Object>>();
-  o.add(buildUnnamed257());
-  o.add(buildUnnamed257());
+  o.add(buildUnnamed261());
+  o.add(buildUnnamed261());
   return o;
 }
 
-checkUnnamed258(core.List<core.List<core.Object>> o) {
+checkUnnamed262(core.List<core.List<core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed257(o[0]);
-  checkUnnamed257(o[1]);
+  checkUnnamed261(o[0]);
+  checkUnnamed261(o[1]);
 }
 
 core.int buildCounterResultTable = 0;
@@ -325,9 +325,9 @@ buildResultTable() {
   var o = new api.ResultTable();
   buildCounterResultTable++;
   if (buildCounterResultTable < 3) {
-    o.columnHeaders = buildUnnamed256();
+    o.columnHeaders = buildUnnamed260();
     o.kind = "foo";
-    o.rows = buildUnnamed258();
+    o.rows = buildUnnamed262();
   }
   buildCounterResultTable--;
   return o;
@@ -336,9 +336,9 @@ buildResultTable() {
 checkResultTable(api.ResultTable o) {
   buildCounterResultTable++;
   if (buildCounterResultTable < 3) {
-    checkUnnamed256(o.columnHeaders);
+    checkUnnamed260(o.columnHeaders);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed258(o.rows);
+    checkUnnamed262(o.rows);
   }
   buildCounterResultTable--;
 }

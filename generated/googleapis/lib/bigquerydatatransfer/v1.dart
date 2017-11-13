@@ -172,15 +172,15 @@ class ProjectsDataSourcesResourceApi {
   /// Must be in the form: `projects/{project_id}`
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Page size. The default page size is the maximum value of 1000
-  /// results.
-  ///
   /// [pageToken] - Pagination token, which can be used to request a specific
   /// page
   /// of `ListDataSourcesRequest` list results. For multiple-page
   /// results, `ListDataSourcesResponse` outputs
   /// a `next_page` token, which can be used as the
   /// `page_token` value to request the next page of list results.
+  ///
+  /// [pageSize] - Page size. The default page size is the maximum value of 1000
+  /// results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -193,7 +193,7 @@ class ProjectsDataSourcesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDataSourcesResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -204,11 +204,11 @@ class ProjectsDataSourcesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1035,12 +1035,6 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
   ///
-  /// [pageSize] - Page size. The default page size is the maximum value of 1000
-  /// results.
-  ///
-  /// [states] - When specified, only transfer runs with requested states are
-  /// returned.
-  ///
   /// [runAttempt] - Indicates how run attempts are to be pulled.
   /// Possible string values are:
   /// - "RUN_ATTEMPT_UNSPECIFIED" : A RUN_ATTEMPT_UNSPECIFIED.
@@ -1053,6 +1047,12 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   /// a `next_page` token, which can be used as the
   /// `page_token` value to request the next page of list results.
   ///
+  /// [states] - When specified, only transfer runs with requested states are
+  /// returned.
+  ///
+  /// [pageSize] - Page size. The default page size is the maximum value of 1000
+  /// results.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1064,10 +1064,10 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferRunsResponse> list(core.String parent,
-      {core.int pageSize,
-      core.List<core.String> states,
-      core.String runAttempt,
+      {core.String runAttempt,
       core.String pageToken,
+      core.List<core.String> states,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1079,17 +1079,17 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (states != null) {
-      _queryParams["states"] = states;
-    }
     if (runAttempt != null) {
       _queryParams["runAttempt"] = [runAttempt];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (states != null) {
+      _queryParams["states"] = states;
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1378,18 +1378,18 @@ class ProjectsTransferConfigsResourceApi {
   /// should be returned: `projects/{project_id}`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Page size. The default page size is the maximum value of 1000
-  /// results.
-  ///
-  /// [dataSourceIds] - When specified, only configurations of requested data
-  /// sources are returned.
-  ///
   /// [pageToken] - Pagination token, which can be used to request a specific
   /// page
   /// of `ListTransfersRequest` list results. For multiple-page
   /// results, `ListTransfersResponse` outputs
   /// a `next_page` token, which can be used as the
   /// `page_token` value to request the next page of list results.
+  ///
+  /// [pageSize] - Page size. The default page size is the maximum value of 1000
+  /// results.
+  ///
+  /// [dataSourceIds] - When specified, only configurations of requested data
+  /// sources are returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1402,9 +1402,9 @@ class ProjectsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferConfigsResponse> list(core.String parent,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.List<core.String> dataSourceIds,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1416,14 +1416,14 @@ class ProjectsTransferConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (dataSourceIds != null) {
       _queryParams["dataSourceIds"] = dataSourceIds;
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1458,8 +1458,6 @@ class ProjectsTransferConfigsResourceApi {
   /// config.
   /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
   ///
-  /// [updateMask] - Required list of fields to be updated in this request.
-  ///
   /// [authorizationCode] - Optional OAuth2 authorization code to use with this
   /// transfer configuration.
   /// If it is provided, the transfer configuration will be associated with the
@@ -1478,6 +1476,8 @@ class ProjectsTransferConfigsResourceApi {
   ///   returned in the title bar of the browser, with the page text prompting
   ///   the user to copy the code and paste it in the application.
   ///
+  /// [updateMask] - Required list of fields to be updated in this request.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1489,8 +1489,8 @@ class ProjectsTransferConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TransferConfig> patch(TransferConfig request, core.String name,
-      {core.String updateMask,
-      core.String authorizationCode,
+      {core.String authorizationCode,
+      core.String updateMask,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1505,11 +1505,11 @@ class ProjectsTransferConfigsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
-    }
     if (authorizationCode != null) {
       _queryParams["authorizationCode"] = [authorizationCode];
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1695,6 +1695,11 @@ class ProjectsTransferConfigsRunsResourceApi {
   /// `projects/{project_id}/transferConfigs/{config_id}`.
   /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
   ///
+  /// [runAttempt] - Indicates how run attempts are to be pulled.
+  /// Possible string values are:
+  /// - "RUN_ATTEMPT_UNSPECIFIED" : A RUN_ATTEMPT_UNSPECIFIED.
+  /// - "LATEST" : A LATEST.
+  ///
   /// [pageToken] - Pagination token, which can be used to request a specific
   /// page
   /// of `ListTransferRunsRequest` list results. For multiple-page
@@ -1702,16 +1707,11 @@ class ProjectsTransferConfigsRunsResourceApi {
   /// a `next_page` token, which can be used as the
   /// `page_token` value to request the next page of list results.
   ///
-  /// [pageSize] - Page size. The default page size is the maximum value of 1000
-  /// results.
-  ///
   /// [states] - When specified, only transfer runs with requested states are
   /// returned.
   ///
-  /// [runAttempt] - Indicates how run attempts are to be pulled.
-  /// Possible string values are:
-  /// - "RUN_ATTEMPT_UNSPECIFIED" : A RUN_ATTEMPT_UNSPECIFIED.
-  /// - "LATEST" : A LATEST.
+  /// [pageSize] - Page size. The default page size is the maximum value of 1000
+  /// results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1724,10 +1724,10 @@ class ProjectsTransferConfigsRunsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferRunsResponse> list(core.String parent,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.String runAttempt,
+      core.String pageToken,
       core.List<core.String> states,
-      core.String runAttempt,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1739,17 +1739,17 @@ class ProjectsTransferConfigsRunsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (runAttempt != null) {
+      _queryParams["runAttempt"] = [runAttempt];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (states != null) {
       _queryParams["states"] = states;
     }
-    if (runAttempt != null) {
-      _queryParams["runAttempt"] = [runAttempt];
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1784,6 +1784,10 @@ class ProjectsTransferConfigsRunsTransferLogsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
   ///
+  /// [messageTypes] - Message types to return. If not populated - INFO, WARNING
+  /// and ERROR
+  /// messages are returned.
+  ///
   /// [pageToken] - Pagination token, which can be used to request a specific
   /// page
   /// of `ListTransferLogsRequest` list results. For multiple-page
@@ -1793,10 +1797,6 @@ class ProjectsTransferConfigsRunsTransferLogsResourceApi {
   ///
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
   /// results.
-  ///
-  /// [messageTypes] - Message types to return. If not populated - INFO, WARNING
-  /// and ERROR
-  /// messages are returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1809,9 +1809,9 @@ class ProjectsTransferConfigsRunsTransferLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferLogsResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.List<core.String> messageTypes,
+      core.String pageToken,
       core.int pageSize,
-      core.List<core.String> messageTypes,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1823,14 +1823,14 @@ class ProjectsTransferConfigsRunsTransferLogsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (messageTypes != null) {
+      _queryParams["messageTypes"] = messageTypes;
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (messageTypes != null) {
-      _queryParams["messageTypes"] = messageTypes;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2608,6 +2608,108 @@ class ScheduleTransferRunsResponse {
   }
 }
 
+/// The `Status` type defines a logical error model that is suitable for
+/// different
+/// programming environments, including REST APIs and RPC APIs. It is used by
+/// [gRPC](https://github.com/grpc). The error model is designed to be:
+///
+/// - Simple to use and understand for most users
+/// - Flexible enough to meet unexpected needs
+///
+/// # Overview
+///
+/// The `Status` message contains three pieces of data: error code, error
+/// message,
+/// and error details. The error code should be an enum value of
+/// google.rpc.Code, but it may accept additional error codes if needed.  The
+/// error message should be a developer-facing English message that helps
+/// developers *understand* and *resolve* the error. If a localized user-facing
+/// error message is needed, put the localized message in the error details or
+/// localize it in the client. The optional error details may contain arbitrary
+/// information about the error. There is a predefined set of error detail types
+/// in the package `google.rpc` that can be used for common error conditions.
+///
+/// # Language mapping
+///
+/// The `Status` message is the logical representation of the error model, but
+/// it
+/// is not necessarily the actual wire format. When the `Status` message is
+/// exposed in different client libraries and different wire protocols, it can
+/// be
+/// mapped differently. For example, it will likely be mapped to some exceptions
+/// in Java, but more likely mapped to some error codes in C.
+///
+/// # Other uses
+///
+/// The error model and the `Status` message can be used in a variety of
+/// environments, either with or without APIs, to provide a
+/// consistent developer experience across different environments.
+///
+/// Example uses of this error model include:
+///
+/// - Partial errors. If a service needs to return partial errors to the client,
+/// it may embed the `Status` in the normal response to indicate the partial
+///     errors.
+///
+/// - Workflow errors. A typical workflow has multiple steps. Each step may
+///     have a `Status` message for error reporting.
+///
+/// - Batch operations. If a client uses batch request and batch response, the
+///     `Status` message should be used directly inside batch response, one for
+///     each error sub-response.
+///
+/// - Asynchronous operations. If an API call embeds asynchronous operation
+///     results in its response, the status of those operations should be
+///     represented directly using the `Status` message.
+///
+/// - Logging. If some API errors are stored in logs, the message `Status` could
+/// be used directly after any stripping needed for security/privacy reasons.
+class Status {
+  /// The status code, which should be an enum value of google.rpc.Code.
+  core.int code;
+
+  /// A list of messages that carry the error details.  There is a common set of
+  /// message types for APIs to use.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object>> details;
+
+  /// A developer-facing error message, which should be in English. Any
+  /// user-facing error message should be localized and sent in the
+  /// google.rpc.Status.details field, or localized by the client.
+  core.String message;
+
+  Status();
+
+  Status.fromJson(core.Map _json) {
+    if (_json.containsKey("code")) {
+      code = _json["code"];
+    }
+    if (_json.containsKey("details")) {
+      details = _json["details"];
+    }
+    if (_json.containsKey("message")) {
+      message = _json["message"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (code != null) {
+      _json["code"] = code;
+    }
+    if (details != null) {
+      _json["details"] = details;
+    }
+    if (message != null) {
+      _json["message"] = message;
+    }
+    return _json;
+  }
+}
+
 /// Represents a data transfer configuration. A transfer configuration
 /// contains all metadata needed to perform a data transfer. For example,
 /// `destination_dataset_id` specifies where data should be stored.
@@ -2828,12 +2930,10 @@ class TransferMessage {
 }
 
 /// Represents a data transfer run.
+/// Next id: 23
 class TransferRun {
   /// Output only. Data source id.
   core.String dataSourceId;
-
-  /// Output only. Region in which BigQuery dataset is located.
-  core.String datasetRegion;
 
   /// The BigQuery target dataset id.
   core.String destinationDatasetId;
@@ -2841,6 +2941,9 @@ class TransferRun {
   /// Output only. Time when transfer run ended.
   /// Parameter ignored by server for input requests.
   core.String endTime;
+
+  /// Status of the transfer run.
+  Status errorStatus;
 
   /// The resource name of the transfer run.
   /// Transfer run names have the form
@@ -2872,7 +2975,7 @@ class TransferRun {
   /// Parameter ignored by server for input requests.
   core.String startTime;
 
-  /// Output only. Data transfer run state. Ignored for input requests.
+  /// Data transfer run state. Ignored for input requests.
   /// Possible string values are:
   /// - "TRANSFER_STATE_UNSPECIFIED" : State placeholder.
   /// - "INACTIVE" : Data transfer is inactive.
@@ -2890,6 +2993,7 @@ class TransferRun {
   /// Output only. Unique ID of the user on whose behalf transfer is done.
   /// Applicable only to data sources that do not support service accounts.
   /// When set to 0, the data source service account credentials are used.
+  /// May be negative.
   core.String userId;
 
   TransferRun();
@@ -2898,14 +3002,14 @@ class TransferRun {
     if (_json.containsKey("dataSourceId")) {
       dataSourceId = _json["dataSourceId"];
     }
-    if (_json.containsKey("datasetRegion")) {
-      datasetRegion = _json["datasetRegion"];
-    }
     if (_json.containsKey("destinationDatasetId")) {
       destinationDatasetId = _json["destinationDatasetId"];
     }
     if (_json.containsKey("endTime")) {
       endTime = _json["endTime"];
+    }
+    if (_json.containsKey("errorStatus")) {
+      errorStatus = new Status.fromJson(_json["errorStatus"]);
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -2942,14 +3046,14 @@ class TransferRun {
     if (dataSourceId != null) {
       _json["dataSourceId"] = dataSourceId;
     }
-    if (datasetRegion != null) {
-      _json["datasetRegion"] = datasetRegion;
-    }
     if (destinationDatasetId != null) {
       _json["destinationDatasetId"] = destinationDatasetId;
     }
     if (endTime != null) {
       _json["endTime"] = endTime;
+    }
+    if (errorStatus != null) {
+      _json["errorStatus"] = (errorStatus).toJson();
     }
     if (name != null) {
       _json["name"] = name;

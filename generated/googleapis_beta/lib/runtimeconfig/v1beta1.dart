@@ -278,13 +278,13 @@ class ProjectsConfigsResourceApi {
   /// for this request, in the format `projects/[PROJECT_ID]`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - Specifies a page token to use. Set `pageToken` to a
-  /// `nextPageToken`
-  /// returned by a previous list request to get the next page of results.
-  ///
   /// [pageSize] - Specifies the number of results to return per page. If there
   /// are fewer
   /// elements than the specified number, returns all elements.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to a
+  /// `nextPageToken`
+  /// returned by a previous list request to get the next page of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -297,7 +297,7 @@ class ProjectsConfigsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListConfigsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -308,11 +308,11 @@ class ProjectsConfigsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -819,15 +819,15 @@ class ProjectsConfigsVariablesResourceApi {
   ///
   /// `projects/example-project/config/[CONFIG_NAME]/variables/example-variable`.
   ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to a
+  /// `nextPageToken`
+  /// returned by a previous list request to get the next page of results.
+  ///
   /// [returnValues] - The flag indicates whether the user wants to return
   /// values of variables.
   /// If true, then only those variables that user has IAM GetVariable
   /// permission
   /// will be returned along with their values.
-  ///
-  /// [pageToken] - Specifies a page token to use. Set `pageToken` to a
-  /// `nextPageToken`
-  /// returned by a previous list request to get the next page of results.
   ///
   /// [pageSize] - Specifies the number of results to return per page. If there
   /// are fewer
@@ -845,8 +845,8 @@ class ProjectsConfigsVariablesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListVariablesResponse> list(core.String parent,
       {core.String filter,
-      core.bool returnValues,
       core.String pageToken,
+      core.bool returnValues,
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
@@ -862,11 +862,11 @@ class ProjectsConfigsVariablesResourceApi {
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (returnValues != null) {
-      _queryParams["returnValues"] = ["${returnValues}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (returnValues != null) {
+      _queryParams["returnValues"] = ["${returnValues}"];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -1818,8 +1818,9 @@ class RuntimeConfig {
   ///     projects/[PROJECT_ID]/configs/[CONFIG_NAME]
   ///
   /// The `[PROJECT_ID]` must be a valid project ID, and `[CONFIG_NAME]` is an
-  /// arbitrary name that matches RFC 1035 segment specification. The length of
-  /// `[CONFIG_NAME]` must be less than 64 bytes.
+  /// arbitrary name that matches
+  /// [0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])? regular expression.
+  /// The length of `[CONFIG_NAME]` must be less than 64 characters.
   ///
   /// You pick the RuntimeConfig resource name, but the server will validate
   /// that
@@ -2048,8 +2049,9 @@ class Variable {
   /// the
   /// `[VARIABLE_NAME]` itself, so `[VARIABLE_NAME]` must contain at least one
   /// non-slash character. Multiple slashes are coalesced into single slash
-  /// character. Each path segment should follow RFC 1035 segment specification.
-  /// The length of a `[VARIABLE_NAME]` must be less than 256 bytes.
+  /// character. Each path segment should match
+  /// [0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])? regular expression.
+  /// The length of a `[VARIABLE_NAME]` must be less than 256 characters.
   ///
   /// Once you create a variable, you cannot change the variable name.
   core.String name;

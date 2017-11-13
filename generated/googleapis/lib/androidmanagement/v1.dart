@@ -3090,6 +3090,10 @@ class PasswordRequirements {
   /// Possible string values are:
   /// - "PASSWORD_QUALITY_UNSPECIFIED" : There are no requirements for the
   /// password.
+  /// - "BIOMETRIC_WEAK" : There must be at least low-security biometric
+  /// recognition technology to secure the device. This includes technologies
+  /// that can recognize the identity of an individual to about a 3 digit PIN
+  /// (false detection is less than 1 in 1,000).
   /// - "SOMETHING" : There must be a password, but there are no restrictions on
   /// its characters.
   /// - "NUMERIC" : The password must contain numeric characters.

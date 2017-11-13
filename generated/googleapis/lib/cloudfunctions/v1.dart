@@ -97,13 +97,13 @@ class OperationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [filter] - The standard list filter.
+  /// [pageSize] - The standard list page size.
   ///
-  /// [pageToken] - The standard list page token.
+  /// [filter] - The standard list filter.
   ///
   /// [name] - The name of the operation's parent resource.
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -116,10 +116,10 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
-      {core.String filter,
-      core.String pageToken,
+      {core.int pageSize,
+      core.String filter,
       core.String name,
-      core.int pageSize,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -128,17 +128,17 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if (name != null) {
       _queryParams["name"] = [name];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -181,11 +181,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -198,9 +198,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -212,14 +212,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -573,12 +573,12 @@ class ProjectsLocationsFunctionsResourceApi {
   /// location.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [pageSize] - Maximum number of functions to return per call.
+  ///
   /// [pageToken] - The value returned by the last
   /// `ListFunctionsResponse`; indicates that
   /// this is a continuation of a prior `ListFunctions` call, and that the
   /// system should return the next page of data.
-  ///
-  /// [pageSize] - Maximum number of functions to return per call.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -591,7 +591,7 @@ class ProjectsLocationsFunctionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListFunctionsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -602,11 +602,11 @@ class ProjectsLocationsFunctionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -972,7 +972,7 @@ class EventTrigger {
   ///
   /// If no string is provided, the default service implementing the API will
   /// be used. For example, `storage.googleapis.com` is the default for all
-  /// event types in the 'google.storage` namespace.
+  /// event types in the `google.storage` namespace.
   core.String service;
 
   EventTrigger();
@@ -1408,6 +1408,9 @@ class OperationMetadataV1 {
   /// - "DELETE_FUNCTION" : Triggered by DeleteFunction call.
   core.String type;
 
+  /// The last update timestamp of the operation.
+  core.String updateTime;
+
   /// Version id of the function created or updated by an API call.
   /// This field is only pupulated for Create and Update operations.
   core.String versionId;
@@ -1423,6 +1426,9 @@ class OperationMetadataV1 {
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
     }
     if (_json.containsKey("versionId")) {
       versionId = _json["versionId"];
@@ -1440,6 +1446,9 @@ class OperationMetadataV1 {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
     }
     if (versionId != null) {
       _json["versionId"] = versionId;
@@ -1468,6 +1477,9 @@ class OperationMetadataV1Beta2 {
   /// - "DELETE_FUNCTION" : Triggered by DeleteFunction call.
   core.String type;
 
+  /// The last update timestamp of the operation.
+  core.String updateTime;
+
   /// Version id of the function created or updated by an API call.
   /// This field is only pupulated for Create and Update operations.
   core.String versionId;
@@ -1483,6 +1495,9 @@ class OperationMetadataV1Beta2 {
     }
     if (_json.containsKey("type")) {
       type = _json["type"];
+    }
+    if (_json.containsKey("updateTime")) {
+      updateTime = _json["updateTime"];
     }
     if (_json.containsKey("versionId")) {
       versionId = _json["versionId"];
@@ -1500,6 +1515,9 @@ class OperationMetadataV1Beta2 {
     }
     if (type != null) {
       _json["type"] = type;
+    }
+    if (updateTime != null) {
+      _json["updateTime"] = updateTime;
     }
     if (versionId != null) {
       _json["versionId"] = versionId;

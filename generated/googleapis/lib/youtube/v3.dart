@@ -10465,6 +10465,7 @@ class ContentRating {
   /// - "oflcR18"
   /// - "oflcRp13"
   /// - "oflcRp16"
+  /// - "oflcRp18"
   /// - "oflcUnrated"
   core.String oflcRating;
 
@@ -14093,6 +14094,7 @@ class LiveStreamConfigurationIssue {
   /// - "videoBitrateMismatch"
   /// - "videoCodec"
   /// - "videoCodecMismatch"
+  /// - "videoIngestionFasterThanRealtime"
   /// - "videoIngestionStarved"
   /// - "videoInterlaceMismatch"
   /// - "videoProfileMismatch"

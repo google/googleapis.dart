@@ -87,14 +87,12 @@ class AccountsResourceApi {
         .then((data) => new AccountsAuthInfoResponse.fromJson(data));
   }
 
-  /// Claims the website of a Merchant Center sub-account. This method can only
-  /// be called for accounts to which the managing account has access: either
-  /// the managing account itself for any Merchant Center account, or any
-  /// sub-account when the managing account is a multi-client account.
+  /// Claims the website of a Merchant Center sub-account.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the managing account. If this account is not a
+  /// multi-client account, then this parameter must be the same as accountId.
   ///
   /// [accountId] - The ID of the account whose website is claimed.
   ///
@@ -202,12 +200,12 @@ class AccountsResourceApi {
         .then((data) => new AccountsCustomBatchResponse.fromJson(data));
   }
 
-  /// Deletes a Merchant Center sub-account. This method can only be called for
-  /// multi-client accounts.
+  /// Deletes a Merchant Center sub-account.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the managing account. This must be a multi-client
+  /// account.
   ///
   /// [accountId] - The ID of the account.
   ///
@@ -264,14 +262,12 @@ class AccountsResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Retrieves a Merchant Center account. This method can only be called for
-  /// accounts to which the managing account has access: either the managing
-  /// account itself for any Merchant Center account, or any sub-account when
-  /// the managing account is a multi-client account.
+  /// Retrieves a Merchant Center account.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the managing account. If this account is not a
+  /// multi-client account, then this parameter must be the same as accountId.
   ///
   /// [accountId] - The ID of the account.
   ///
@@ -317,14 +313,14 @@ class AccountsResourceApi {
     return _response.then((data) => new Account.fromJson(data));
   }
 
-  /// Creates a Merchant Center sub-account. This method can only be called for
-  /// multi-client accounts.
+  /// Creates a Merchant Center sub-account.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the managing account. This must be a multi-client
+  /// account.
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
@@ -371,12 +367,12 @@ class AccountsResourceApi {
     return _response.then((data) => new Account.fromJson(data));
   }
 
-  /// Lists the sub-accounts in your Merchant Center account. This method can
-  /// only be called for multi-client accounts.
+  /// Lists the sub-accounts in your Merchant Center account.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the managing account. This must be a multi-client
+  /// account.
   ///
   /// [maxResults] - The maximum number of accounts to return in the response,
   /// used for paging.
@@ -426,17 +422,14 @@ class AccountsResourceApi {
     return _response.then((data) => new AccountsListResponse.fromJson(data));
   }
 
-  /// Updates a Merchant Center account. This method can only be called for
-  /// accounts to which the managing account has access: either the managing
-  /// account itself for any Merchant Center account, or any sub-account when
-  /// the managing account is a multi-client account. This method supports patch
-  /// semantics.
+  /// Updates a Merchant Center account. This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the managing account. If this account is not a
+  /// multi-client account, then this parameter must be the same as accountId.
   ///
   /// [accountId] - The ID of the account.
   ///
@@ -491,16 +484,14 @@ class AccountsResourceApi {
     return _response.then((data) => new Account.fromJson(data));
   }
 
-  /// Updates a Merchant Center account. This method can only be called for
-  /// accounts to which the managing account has access: either the managing
-  /// account itself for any Merchant Center account, or any sub-account when
-  /// the managing account is a multi-client account.
+  /// Updates a Merchant Center account.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the managing account. If this account is not a
+  /// multi-client account, then this parameter must be the same as accountId.
   ///
   /// [accountId] - The ID of the account.
   ///
@@ -604,14 +595,12 @@ class AccountstatusesResourceApi {
         .then((data) => new AccountstatusesCustomBatchResponse.fromJson(data));
   }
 
-  /// Retrieves the status of a Merchant Center account. This method can only be
-  /// called for accounts to which the managing account has access: either the
-  /// managing account itself for any Merchant Center account, or any
-  /// sub-account when the managing account is a multi-client account.
+  /// Retrieves the status of a Merchant Center account.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the managing account. If this account is not a
+  /// multi-client account, then this parameter must be the same as accountId.
   ///
   /// [accountId] - The ID of the account.
   ///
@@ -658,11 +647,11 @@ class AccountstatusesResourceApi {
   }
 
   /// Lists the statuses of the sub-accounts in your Merchant Center account.
-  /// This method can only be called for multi-client accounts.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the managing account. This must be a multi-client
+  /// account.
   ///
   /// [maxResults] - The maximum number of account statuses to return in the
   /// response, used for paging.
@@ -771,14 +760,12 @@ class AccounttaxResourceApi {
         .then((data) => new AccounttaxCustomBatchResponse.fromJson(data));
   }
 
-  /// Retrieves the tax settings of the account. This method can only be called
-  /// for accounts to which the managing account has access: either the managing
-  /// account itself for any Merchant Center account, or any sub-account when
-  /// the managing account is a multi-client account.
+  /// Retrieves the tax settings of the account.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the managing account. If this account is not a
+  /// multi-client account, then this parameter must be the same as accountId.
   ///
   /// [accountId] - The ID of the account for which to get/update account tax
   /// settings.
@@ -826,11 +813,12 @@ class AccounttaxResourceApi {
   }
 
   /// Lists the tax settings of the sub-accounts in your Merchant Center
-  /// account. This method can only be called for multi-client accounts.
+  /// account.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the managing account. This must be a multi-client
+  /// account.
   ///
   /// [maxResults] - The maximum number of tax settings to return in the
   /// response, used for paging.
@@ -880,17 +868,15 @@ class AccounttaxResourceApi {
     return _response.then((data) => new AccounttaxListResponse.fromJson(data));
   }
 
-  /// Updates the tax settings of the account. This method can only be called
-  /// for accounts to which the managing account has access: either the managing
-  /// account itself for any Merchant Center account, or any sub-account when
-  /// the managing account is a multi-client account. This method supports patch
+  /// Updates the tax settings of the account. This method supports patch
   /// semantics.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the managing account. If this account is not a
+  /// multi-client account, then this parameter must be the same as accountId.
   ///
   /// [accountId] - The ID of the account for which to get/update account tax
   /// settings.
@@ -946,16 +932,14 @@ class AccounttaxResourceApi {
     return _response.then((data) => new AccountTax.fromJson(data));
   }
 
-  /// Updates the tax settings of the account. This method can only be called
-  /// for accounts to which the managing account has access: either the managing
-  /// account itself for any Merchant Center account, or any sub-account when
-  /// the managing account is a multi-client account.
+  /// Updates the tax settings of the account.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the managing account. If this account is not a
+  /// multi-client account, then this parameter must be the same as accountId.
   ///
   /// [accountId] - The ID of the account for which to get/update account tax
   /// settings.
@@ -1066,14 +1050,14 @@ class DatafeedsResourceApi {
         .then((data) => new DatafeedsCustomBatchResponse.fromJson(data));
   }
 
-  /// Deletes a datafeed configuration from your Merchant Center account. This
-  /// method can only be called for non-multi-client accounts.
+  /// Deletes a datafeed configuration from your Merchant Center account.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - null
+  /// [merchantId] - The ID of the account that manages the datafeed. This
+  /// account cannot be a multi-client account.
   ///
-  /// [datafeedId] - null
+  /// [datafeedId] - The ID of the datafeed.
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
@@ -1122,14 +1106,14 @@ class DatafeedsResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Retrieves a datafeed configuration from your Merchant Center account. This
-  /// method can only be called for non-multi-client accounts.
+  /// Retrieves a datafeed configuration from your Merchant Center account.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - null
+  /// [merchantId] - The ID of the account that manages the datafeed. This
+  /// account cannot be a multi-client account.
   ///
-  /// [datafeedId] - null
+  /// [datafeedId] - The ID of the datafeed.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1173,14 +1157,14 @@ class DatafeedsResourceApi {
     return _response.then((data) => new Datafeed.fromJson(data));
   }
 
-  /// Registers a datafeed configuration with your Merchant Center account. This
-  /// method can only be called for non-multi-client accounts.
+  /// Registers a datafeed configuration with your Merchant Center account.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - null
+  /// [merchantId] - The ID of the account that manages the datafeed. This
+  /// account cannot be a multi-client account.
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
@@ -1227,12 +1211,12 @@ class DatafeedsResourceApi {
     return _response.then((data) => new Datafeed.fromJson(data));
   }
 
-  /// Lists the datafeeds in your Merchant Center account. This method can only
-  /// be called for non-multi-client accounts.
+  /// Lists the datafeeds in your Merchant Center account.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the datafeeds. This
+  /// account cannot be a multi-client account.
   ///
   /// [maxResults] - The maximum number of products to return in the response,
   /// used for paging.
@@ -1283,16 +1267,16 @@ class DatafeedsResourceApi {
   }
 
   /// Updates a datafeed configuration of your Merchant Center account. This
-  /// method can only be called for non-multi-client accounts. This method
-  /// supports patch semantics.
+  /// method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - null
+  /// [merchantId] - The ID of the account that manages the datafeed. This
+  /// account cannot be a multi-client account.
   ///
-  /// [datafeedId] - null
+  /// [datafeedId] - The ID of the datafeed.
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
@@ -1345,16 +1329,16 @@ class DatafeedsResourceApi {
     return _response.then((data) => new Datafeed.fromJson(data));
   }
 
-  /// Updates a datafeed configuration of your Merchant Center account. This
-  /// method can only be called for non-multi-client accounts.
+  /// Updates a datafeed configuration of your Merchant Center account.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - null
+  /// [merchantId] - The ID of the account that manages the datafeed. This
+  /// account cannot be a multi-client account.
   ///
-  /// [datafeedId] - null
+  /// [datafeedId] - The ID of the datafeed.
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
@@ -1457,14 +1441,14 @@ class DatafeedstatusesResourceApi {
         .then((data) => new DatafeedstatusesCustomBatchResponse.fromJson(data));
   }
 
-  /// Retrieves the status of a datafeed from your Merchant Center account. This
-  /// method can only be called for non-multi-client accounts.
+  /// Retrieves the status of a datafeed from your Merchant Center account.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - null
+  /// [merchantId] - The ID of the account that manages the datafeed. This
+  /// account cannot be a multi-client account.
   ///
-  /// [datafeedId] - null
+  /// [datafeedId] - The ID of the datafeed.
   ///
   /// [country] - The country for which to get the datafeed status. If this
   /// parameter is provided then language must also be provided. Note that this
@@ -1525,12 +1509,12 @@ class DatafeedstatusesResourceApi {
     return _response.then((data) => new DatafeedStatus.fromJson(data));
   }
 
-  /// Lists the statuses of the datafeeds in your Merchant Center account. This
-  /// method can only be called for non-multi-client accounts.
+  /// Lists the statuses of the datafeeds in your Merchant Center account.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the datafeeds. This
+  /// account cannot be a multi-client account.
   ///
   /// [maxResults] - The maximum number of products to return in the response,
   /// used for paging.
@@ -1589,7 +1573,7 @@ class InventoryResourceApi {
 
   /// Updates price and availability for multiple products or stores in a single
   /// request. This operation does not update the expiration date of the
-  /// products. This method can only be called for non-multi-client accounts.
+  /// products.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1641,20 +1625,20 @@ class InventoryResourceApi {
   }
 
   /// Updates price and availability of a product in your Merchant Center
-  /// account. This operation does not update the expiration date of the
-  /// product. This method can only be called for non-multi-client accounts.
+  /// account.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that contains the product. This
+  /// account cannot be a multi-client account.
   ///
   /// [storeCode] - The code of the store for which to update price and
   /// availability. Use online to update price and availability of an online
   /// product.
   ///
-  /// [productId] - The ID of the product for which to update price and
+  /// [productId] - The REST id of the product for which to update price and
   /// availability.
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
@@ -1719,14 +1703,14 @@ class OrdersResourceApi {
 
   OrdersResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Marks an order as acknowledged. This method can only be called for
-  /// non-multi-client accounts.
+  /// Marks an order as acknowledged.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
   ///
   /// [orderId] - The ID of the order.
   ///
@@ -1781,12 +1765,12 @@ class OrdersResourceApi {
   }
 
   /// Sandbox only. Moves a test order from state "inProgress" to state
-  /// "pendingShipment". This method can only be called for non-multi-client
-  /// accounts.
+  /// "pendingShipment".
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
   ///
   /// [orderId] - The ID of the test order to modify.
   ///
@@ -1835,14 +1819,14 @@ class OrdersResourceApi {
         .then((data) => new OrdersAdvanceTestOrderResponse.fromJson(data));
   }
 
-  /// Cancels all line items in an order, making a full refund. This method can
-  /// only be called for non-multi-client accounts.
+  /// Cancels all line items in an order, making a full refund.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
   ///
   /// [orderId] - The ID of the order to cancel.
   ///
@@ -1893,14 +1877,14 @@ class OrdersResourceApi {
     return _response.then((data) => new OrdersCancelResponse.fromJson(data));
   }
 
-  /// Cancels a line item, making a full refund. This method can only be called
-  /// for non-multi-client accounts.
+  /// Cancels a line item, making a full refund.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
   ///
   /// [orderId] - The ID of the order.
   ///
@@ -1954,14 +1938,14 @@ class OrdersResourceApi {
         .then((data) => new OrdersCancelLineItemResponse.fromJson(data));
   }
 
-  /// Sandbox only. Creates a test order. This method can only be called for
-  /// non-multi-client accounts.
+  /// Sandbox only. Creates a test order.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that should manage the order. This
+  /// cannot be a multi-client account.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2005,8 +1989,7 @@ class OrdersResourceApi {
         .then((data) => new OrdersCreateTestOrderResponse.fromJson(data));
   }
 
-  /// Retrieves or modifies multiple orders in a single request. This method can
-  /// only be called for non-multi-client accounts.
+  /// Retrieves or modifies multiple orders in a single request.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2051,12 +2034,12 @@ class OrdersResourceApi {
         .then((data) => new OrdersCustomBatchResponse.fromJson(data));
   }
 
-  /// Retrieves an order from your Merchant Center account. This method can only
-  /// be called for non-multi-client accounts.
+  /// Retrieves an order from your Merchant Center account.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
   ///
   /// [orderId] - The ID of the order.
   ///
@@ -2102,12 +2085,12 @@ class OrdersResourceApi {
     return _response.then((data) => new Order.fromJson(data));
   }
 
-  /// Retrieves an order using merchant order id. This method can only be called
-  /// for non-multi-client accounts.
+  /// Retrieves an order using merchant order id.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
   ///
   /// [merchantOrderId] - The merchant order id to be looked for.
   ///
@@ -2156,12 +2139,12 @@ class OrdersResourceApi {
   }
 
   /// Sandbox only. Retrieves an order template that can be used to quickly
-  /// create a new order in sandbox. This method can only be called for
-  /// non-multi-client accounts.
+  /// create a new order in sandbox.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that should manage the order. This
+  /// cannot be a multi-client account.
   ///
   /// [templateName] - The name of the template to retrieve.
   /// Possible string values are:
@@ -2214,12 +2197,12 @@ class OrdersResourceApi {
         .then((data) => new OrdersGetTestOrderTemplateResponse.fromJson(data));
   }
 
-  /// Lists the orders in your Merchant Center account. This method can only be
-  /// called for non-multi-client accounts.
+  /// Lists the orders in your Merchant Center account.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
   ///
   /// [acknowledged] - Obtains orders that match the acknowledgement status.
   /// When set to true, obtains orders that have been acknowledged. When false,
@@ -2322,14 +2305,14 @@ class OrdersResourceApi {
     return _response.then((data) => new OrdersListResponse.fromJson(data));
   }
 
-  /// Refund a portion of the order, up to the full amount paid. This method can
-  /// only be called for non-multi-client accounts.
+  /// Refund a portion of the order, up to the full amount paid.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
   ///
   /// [orderId] - The ID of the order to refund.
   ///
@@ -2380,14 +2363,14 @@ class OrdersResourceApi {
     return _response.then((data) => new OrdersRefundResponse.fromJson(data));
   }
 
-  /// Returns a line item. This method can only be called for non-multi-client
-  /// accounts.
+  /// Returns a line item.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
   ///
   /// [orderId] - The ID of the order.
   ///
@@ -2441,14 +2424,14 @@ class OrdersResourceApi {
         .then((data) => new OrdersReturnLineItemResponse.fromJson(data));
   }
 
-  /// Marks line item(s) as shipped. This method can only be called for
-  /// non-multi-client accounts.
+  /// Marks line item(s) as shipped.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
   ///
   /// [orderId] - The ID of the order.
   ///
@@ -2502,14 +2485,14 @@ class OrdersResourceApi {
         .then((data) => new OrdersShipLineItemsResponse.fromJson(data));
   }
 
-  /// Updates the merchant order ID for a given order. This method can only be
-  /// called for non-multi-client accounts.
+  /// Updates the merchant order ID for a given order.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
   ///
   /// [orderId] - The ID of the order.
   ///
@@ -2563,14 +2546,14 @@ class OrdersResourceApi {
         .then((data) => new OrdersUpdateMerchantOrderIdResponse.fromJson(data));
   }
 
-  /// Updates a shipment's status, carrier, and/or tracking ID. This method can
-  /// only be called for non-multi-client accounts.
+  /// Updates a shipment's status, carrier, and/or tracking ID.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
   ///
   /// [orderId] - The ID of the order.
   ///
@@ -2631,7 +2614,6 @@ class ProductsResourceApi {
   ProductsResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Retrieves, inserts, and deletes multiple products in a single request.
-  /// This method can only be called for non-multi-client accounts.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2682,14 +2664,14 @@ class ProductsResourceApi {
         .then((data) => new ProductsCustomBatchResponse.fromJson(data));
   }
 
-  /// Deletes a product from your Merchant Center account. This method can only
-  /// be called for non-multi-client accounts.
+  /// Deletes a product from your Merchant Center account.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that contains the product. This
+  /// account cannot be a multi-client account.
   ///
-  /// [productId] - The ID of the product.
+  /// [productId] - The REST id of the product.
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
@@ -2738,14 +2720,14 @@ class ProductsResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Retrieves a product from your Merchant Center account. This method can
-  /// only be called for non-multi-client accounts.
+  /// Retrieves a product from your Merchant Center account.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that contains the product. This
+  /// account cannot be a multi-client account.
   ///
-  /// [productId] - The ID of the product.
+  /// [productId] - The REST id of the product.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2791,14 +2773,14 @@ class ProductsResourceApi {
 
   /// Uploads a product to your Merchant Center account. If an item with the
   /// same channel, contentLanguage, offerId, and targetCountry already exists,
-  /// this method updates that entry. This method can only be called for
-  /// non-multi-client accounts.
+  /// this method updates that entry.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that contains the product. This
+  /// account cannot be a multi-client account.
   ///
   /// [dryRun] - Flag to run the request in dry-run mode.
   ///
@@ -2845,12 +2827,12 @@ class ProductsResourceApi {
     return _response.then((data) => new Product.fromJson(data));
   }
 
-  /// Lists the products in your Merchant Center account. This method can only
-  /// be called for non-multi-client accounts.
+  /// Lists the products in your Merchant Center account.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that contains the products. This
+  /// account cannot be a multi-client account.
   ///
   /// [includeInvalidInsertedItems] - Flag to include the invalid inserted items
   /// in the result of the list request. By default the invalid items are not
@@ -2918,8 +2900,7 @@ class ProductstatusesResourceApi {
 
   ProductstatusesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Gets the statuses of multiple products in a single request. This method
-  /// can only be called for non-multi-client accounts.
+  /// Gets the statuses of multiple products in a single request.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2971,14 +2952,14 @@ class ProductstatusesResourceApi {
         .then((data) => new ProductstatusesCustomBatchResponse.fromJson(data));
   }
 
-  /// Gets the status of a product from your Merchant Center account. This
-  /// method can only be called for non-multi-client accounts.
+  /// Gets the status of a product from your Merchant Center account.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that contains the product. This
+  /// account cannot be a multi-client account.
   ///
-  /// [productId] - The ID of the product.
+  /// [productId] - The REST id of the product.
   ///
   /// [includeAttributes] - Flag to include full product data in the result of
   /// this get request. The default value is false.
@@ -3028,12 +3009,12 @@ class ProductstatusesResourceApi {
     return _response.then((data) => new ProductStatus.fromJson(data));
   }
 
-  /// Lists the statuses of the products in your Merchant Center account. This
-  /// method can only be called for non-multi-client accounts.
+  /// Lists the statuses of the products in your Merchant Center account.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that contains the products. This
+  /// account cannot be a multi-client account.
   ///
   /// [includeAttributes] - Flag to include full product data in the results of
   /// the list request. The default value is false.
@@ -3162,14 +3143,12 @@ class ShippingsettingsResourceApi {
         .then((data) => new ShippingsettingsCustomBatchResponse.fromJson(data));
   }
 
-  /// Retrieves the shipping settings of the account. This method can only be
-  /// called for accounts to which the managing account has access: either the
-  /// managing account itself for any Merchant Center account, or any
-  /// sub-account when the managing account is a multi-client account.
+  /// Retrieves the shipping settings of the account.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the managing account. If this account is not a
+  /// multi-client account, then this parameter must be the same as accountId.
   ///
   /// [accountId] - The ID of the account for which to get/update shipping
   /// settings.
@@ -3263,11 +3242,12 @@ class ShippingsettingsResourceApi {
   }
 
   /// Lists the shipping settings of the sub-accounts in your Merchant Center
-  /// account. This method can only be called for multi-client accounts.
+  /// account.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the managing account. This must be a multi-client
+  /// account.
   ///
   /// [maxResults] - The maximum number of shipping settings to return in the
   /// response, used for paging.
@@ -3318,17 +3298,15 @@ class ShippingsettingsResourceApi {
         .then((data) => new ShippingsettingsListResponse.fromJson(data));
   }
 
-  /// Updates the shipping settings of the account. This method can only be
-  /// called for accounts to which the managing account has access: either the
-  /// managing account itself for any Merchant Center account, or any
-  /// sub-account when the managing account is a multi-client account. This
-  /// method supports patch semantics.
+  /// Updates the shipping settings of the account. This method supports patch
+  /// semantics.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the managing account. If this account is not a
+  /// multi-client account, then this parameter must be the same as accountId.
   ///
   /// [accountId] - The ID of the account for which to get/update shipping
   /// settings.
@@ -3384,16 +3362,14 @@ class ShippingsettingsResourceApi {
     return _response.then((data) => new ShippingSettings.fromJson(data));
   }
 
-  /// Updates the shipping settings of the account. This method can only be
-  /// called for accounts to which the managing account has access: either the
-  /// managing account itself for any Merchant Center account, or any
-  /// sub-account when the managing account is a multi-client account.
+  /// Updates the shipping settings of the account.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the managing account. If this account is not a
+  /// multi-client account, then this parameter must be the same as accountId.
   ///
   /// [accountId] - The ID of the account for which to get/update shipping
   /// settings.
@@ -7029,9 +7005,6 @@ class OrderLineItem {
   /// Cancellations of the line item.
   core.List<OrderCancellation> cancellations;
 
-  /// The channel type of the order: "purchaseOnGoogle" or "googleExpress".
-  core.String channelType;
-
   /// The id of the line item.
   core.String id;
 
@@ -7081,9 +7054,6 @@ class OrderLineItem {
       cancellations = _json["cancellations"]
           .map((value) => new OrderCancellation.fromJson(value))
           .toList();
-    }
-    if (_json.containsKey("channelType")) {
-      channelType = _json["channelType"];
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -7135,9 +7105,6 @@ class OrderLineItem {
     if (cancellations != null) {
       _json["cancellations"] =
           cancellations.map((value) => (value).toJson()).toList();
-    }
-    if (channelType != null) {
-      _json["channelType"] = channelType;
     }
     if (id != null) {
       _json["id"] = id;
@@ -7940,7 +7907,8 @@ class OrderShipment {
 }
 
 class OrderShipmentLineItemShipment {
-  /// The id of the line item that is shipped.
+  /// The id of the line item that is shipped. Either lineItemId or productId is
+  /// required.
   core.String lineItemId;
 
   /// The quantity that is shipped.
@@ -8053,7 +8021,8 @@ class OrdersCancelLineItemRequest {
   /// The amount must not be larger than the net amount left on the order.
   Price amount;
 
-  /// The ID of the line item to cancel.
+  /// The ID of the line item to cancel. Either lineItemId or productId is
+  /// required.
   core.String lineItemId;
 
   /// The ID of the operation. Unique across all operations for a given order.
@@ -8475,7 +8444,8 @@ class OrdersCustomBatchRequestEntryCancelLineItem {
   /// The amount must not be larger than the net amount left on the order.
   Price amount;
 
-  /// The ID of the line item to cancel.
+  /// The ID of the line item to cancel. Either lineItemId or productId is
+  /// required.
   core.String lineItemId;
 
   /// The quantity to cancel.
@@ -8570,7 +8540,8 @@ class OrdersCustomBatchRequestEntryRefund {
 }
 
 class OrdersCustomBatchRequestEntryReturnLineItem {
-  /// The ID of the line item to return.
+  /// The ID of the line item to return. Either lineItemId or productId is
+  /// required.
   core.String lineItemId;
 
   /// The quantity to return.
@@ -9062,7 +9033,8 @@ class OrdersRefundResponse {
 }
 
 class OrdersReturnLineItemRequest {
-  /// The ID of the line item to return.
+  /// The ID of the line item to return. Either lineItemId or productId is
+  /// required.
   core.String lineItemId;
 
   /// The ID of the operation. Unique across all operations for a given order.
@@ -9647,7 +9619,10 @@ class Product {
   /// Global Trade Item Number (GTIN) of the item.
   core.String gtin;
 
-  /// The REST id of the product.
+  /// The REST id of the product. Content API methods that operate on products
+  /// take this as their productId parameter.
+  /// The REST id for a product is of the form
+  /// channel:contentLanguage:targetCountry:offerId.
   core.String id;
 
   /// False when the item does not have unique product identifiers appropriate
@@ -9697,10 +9672,12 @@ class Product {
   /// The number of identical products in a merchant-defined multipack.
   core.String multipack;
 
-  /// An identifier of the item. Leading and trailing whitespaces are stripped
-  /// and multiple whitespaces are replaced by a single whitespace upon
+  /// A unique identifier for the item. Leading and trailing whitespaces are
+  /// stripped and multiple whitespaces are replaced by a single whitespace upon
   /// submission. Only valid unicode characters are accepted. See the products
   /// feed specification for details.
+  /// Note: Content API methods that operate on products take the REST id of the
+  /// product, not this identifier.
   core.String offerId;
 
   /// Whether an item is available for purchase only online.

@@ -576,6 +576,19 @@ class GetReportsRequest {
   /// `dateRanges`, `viewId`, `segments`, `samplingLevel`, and `cohortGroup`.
   core.List<ReportRequest> reportRequests;
 
+  /// Enables
+  /// [resource based
+  /// quotas](/analytics/devguides/reporting/core/v4/limits-quotas#analytics_reporting_api_v4),
+  /// (defaults to `False`). If this field is set to `True` the
+  /// per view (profile) quotas are governed by the computational
+  /// cost of the request. Note that using cost based quotas will
+  /// higher enable sampling rates. (10 Million for `SMALL`,
+  /// 100M for `LARGE`. See the
+  /// [limits and quotas
+  /// documentation](/analytics/devguides/reporting/core/v4/limits-quotas#analytics_reporting_api_v4)
+  /// for details.
+  core.bool useResourceQuotas;
+
   GetReportsRequest();
 
   GetReportsRequest.fromJson(core.Map _json) {
@@ -583,6 +596,9 @@ class GetReportsRequest {
       reportRequests = _json["reportRequests"]
           .map((value) => new ReportRequest.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("useResourceQuotas")) {
+      useResourceQuotas = _json["useResourceQuotas"];
     }
   }
 
@@ -593,6 +609,9 @@ class GetReportsRequest {
       _json["reportRequests"] =
           reportRequests.map((value) => (value).toJson()).toList();
     }
+    if (useResourceQuotas != null) {
+      _json["useResourceQuotas"] = useResourceQuotas;
+    }
     return _json;
   }
 }
@@ -600,23 +619,44 @@ class GetReportsRequest {
 /// The main response class which holds the reports from the Reporting API
 /// `batchGet` call.
 class GetReportsResponse {
+  /// The amount of resource quota tokens deducted to execute the query.
+  /// Includes
+  /// all responses.
+  core.int queryCost;
+
   /// Responses corresponding to each of the request.
   core.List<Report> reports;
+
+  /// The amount of resource quota remaining for the property.
+  ResourceQuotasRemaining resourceQuotasRemaining;
 
   GetReportsResponse();
 
   GetReportsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("queryCost")) {
+      queryCost = _json["queryCost"];
+    }
     if (_json.containsKey("reports")) {
       reports =
           _json["reports"].map((value) => new Report.fromJson(value)).toList();
+    }
+    if (_json.containsKey("resourceQuotasRemaining")) {
+      resourceQuotasRemaining = new ResourceQuotasRemaining.fromJson(
+          _json["resourceQuotasRemaining"]);
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (queryCost != null) {
+      _json["queryCost"] = queryCost;
+    }
     if (reports != null) {
       _json["reports"] = reports.map((value) => (value).toJson()).toList();
+    }
+    if (resourceQuotasRemaining != null) {
+      _json["resourceQuotasRemaining"] = (resourceQuotasRemaining).toJson();
     }
     return _json;
   }
@@ -1609,6 +1649,39 @@ class ReportRow {
     }
     if (metrics != null) {
       _json["metrics"] = metrics.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// The resource quota tokens remaining for the property after the request is
+/// completed.
+class ResourceQuotasRemaining {
+  /// Daily resource quota remaining remaining.
+  core.int dailyQuotaTokensRemaining;
+
+  /// Hourly resource quota tokens remaining.
+  core.int hourlyQuotaTokensRemaining;
+
+  ResourceQuotasRemaining();
+
+  ResourceQuotasRemaining.fromJson(core.Map _json) {
+    if (_json.containsKey("dailyQuotaTokensRemaining")) {
+      dailyQuotaTokensRemaining = _json["dailyQuotaTokensRemaining"];
+    }
+    if (_json.containsKey("hourlyQuotaTokensRemaining")) {
+      hourlyQuotaTokensRemaining = _json["hourlyQuotaTokensRemaining"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (dailyQuotaTokensRemaining != null) {
+      _json["dailyQuotaTokensRemaining"] = dailyQuotaTokensRemaining;
+    }
+    if (hourlyQuotaTokensRemaining != null) {
+      _json["hourlyQuotaTokensRemaining"] = hourlyQuotaTokensRemaining;
     }
     return _json;
   }

@@ -2064,6 +2064,10 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
   /// - "containerVersion"
   /// - "debugMode"
   /// - "deviceName"
+  /// - "elementVisibilityFirstTime"
+  /// - "elementVisibilityRatio"
+  /// - "elementVisibilityRecentTime"
+  /// - "elementVisibilityTime"
   /// - "environmentName"
   /// - "errorLine"
   /// - "errorMessage"
@@ -2114,10 +2118,12 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
   /// - "randomNumber"
   /// - "referrer"
   /// - "resolution"
+  /// - "scrollDepthDirection"
+  /// - "scrollDepthThreshold"
+  /// - "scrollDepthUnits"
   /// - "sdkVersion"
   /// - "videoCurrentTime"
   /// - "videoDuration"
-  /// - "videoElapsedTime"
   /// - "videoPercent"
   /// - "videoProvider"
   /// - "videoStatus"
@@ -3973,6 +3979,10 @@ class BuiltInVariable {
   /// - "containerVersion"
   /// - "debugMode"
   /// - "deviceName"
+  /// - "elementVisibilityFirstTime"
+  /// - "elementVisibilityRatio"
+  /// - "elementVisibilityRecentTime"
+  /// - "elementVisibilityTime"
   /// - "environmentName"
   /// - "errorLine"
   /// - "errorMessage"
@@ -4023,10 +4033,12 @@ class BuiltInVariable {
   /// - "randomNumber"
   /// - "referrer"
   /// - "resolution"
+  /// - "scrollDepthDirection"
+  /// - "scrollDepthThreshold"
+  /// - "scrollDepthUnits"
   /// - "sdkVersion"
   /// - "videoCurrentTime"
   /// - "videoDuration"
-  /// - "videoElapsedTime"
   /// - "videoPercent"
   /// - "videoProvider"
   /// - "videoStatus"
@@ -5972,6 +5984,9 @@ class Tag {
   /// GTM Tag's API relative path.
   core.String path;
 
+  /// Indicates whether the tag is paused, which prevents the tag from firing.
+  core.bool paused;
+
   /// User defined numeric priority of the tag. Tags are fired asynchronously in
   /// order of priority. Tags with higher numeric value fire first. A tag's
   /// priority can be a positive or negative value. The default value is 0.
@@ -6053,6 +6068,9 @@ class Tag {
     if (_json.containsKey("path")) {
       path = _json["path"];
     }
+    if (_json.containsKey("paused")) {
+      paused = _json["paused"];
+    }
     if (_json.containsKey("priority")) {
       priority = new Parameter.fromJson(_json["priority"]);
     }
@@ -6130,6 +6148,9 @@ class Tag {
     }
     if (path != null) {
       _json["path"] = path;
+    }
+    if (paused != null) {
+      _json["paused"] = paused;
     }
     if (priority != null) {
       _json["priority"] = (priority).toJson();
@@ -6402,6 +6423,7 @@ class Trigger {
   /// - "click"
   /// - "customEvent"
   /// - "domReady"
+  /// - "elementVisibility"
   /// - "eventTypeUnspecified"
   /// - "firebaseAppException"
   /// - "firebaseAppUpdate"
@@ -6420,6 +6442,7 @@ class Trigger {
   /// - "jsError"
   /// - "linkClick"
   /// - "pageview"
+  /// - "scrollDepth"
   /// - "timer"
   /// - "windowLoaded"
   /// - "youTubeVideo"

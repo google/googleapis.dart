@@ -38,7 +38,7 @@
     "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/drive/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/ckAfwZJKFW_oyZryoWrrcHFmz5I\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/F3cMZraaitMrbJJU63m0qV_j_To\"",
     "icons": {
         "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png",
         "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png"
@@ -1878,6 +1878,12 @@
                             "description": "Whether the requesting application supports Team Drives.",
                             "location": "query",
                             "type": "boolean"
+                        },
+                        "useDomainAdminAccess": {
+                            "default": "false",
+                            "description": "Whether the request should be treated as if it was issued by a domain administrator; if set to true, then the requester will be granted access if they are an administrator of the domain to which the item belongs.",
+                            "location": "query",
+                            "type": "boolean"
                         }
                     },
                     "path": "files/{fileId}/permissions/{permissionId}",
@@ -1910,6 +1916,12 @@
                         "supportsTeamDrives": {
                             "default": "false",
                             "description": "Whether the requesting application supports Team Drives.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "useDomainAdminAccess": {
+                            "default": "false",
+                            "description": "Whether the request should be treated as if it was issued by a domain administrator; if set to true, then the requester will be granted access if they are an administrator of the domain to which the item belongs.",
                             "location": "query",
                             "type": "boolean"
                         }
@@ -1987,6 +1999,12 @@
                             "description": "Whether the requesting application supports Team Drives.",
                             "location": "query",
                             "type": "boolean"
+                        },
+                        "useDomainAdminAccess": {
+                            "default": "false",
+                            "description": "Whether the request should be treated as if it was issued by a domain administrator; if set to true, then the requester will be granted access if they are an administrator of the domain to which the item belongs.",
+                            "location": "query",
+                            "type": "boolean"
                         }
                     },
                     "path": "files/{fileId}/permissions",
@@ -2031,6 +2049,12 @@
                         "supportsTeamDrives": {
                             "default": "false",
                             "description": "Whether the requesting application supports Team Drives.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "useDomainAdminAccess": {
+                            "default": "false",
+                            "description": "Whether the request should be treated as if it was issued by a domain administrator; if set to true, then the requester will be granted access if they are an administrator of the domain to which the item belongs.",
                             "location": "query",
                             "type": "boolean"
                         }
@@ -2086,6 +2110,12 @@
                             "description": "Whether changing a role to 'owner' downgrades the current owners to writers. Does nothing if the specified role is not 'owner'.",
                             "location": "query",
                             "type": "boolean"
+                        },
+                        "useDomainAdminAccess": {
+                            "default": "false",
+                            "description": "Whether the request should be treated as if it was issued by a domain administrator; if set to true, then the requester will be granted access if they are an administrator of the domain to which the item belongs.",
+                            "location": "query",
+                            "type": "boolean"
                         }
                     },
                     "path": "files/{fileId}/permissions/{permissionId}",
@@ -2136,6 +2166,12 @@
                         "transferOwnership": {
                             "default": "false",
                             "description": "Whether changing a role to 'owner' downgrades the current owners to writers. Does nothing if the specified role is not 'owner'.",
+                            "location": "query",
+                            "type": "boolean"
+                        },
+                        "useDomainAdminAccess": {
+                            "default": "false",
+                            "description": "Whether the request should be treated as if it was issued by a domain administrator; if set to true, then the requester will be granted access if they are an administrator of the domain to which the item belongs.",
                             "location": "query",
                             "type": "boolean"
                         }
@@ -2924,6 +2960,12 @@
                             "location": "path",
                             "required": true,
                             "type": "string"
+                        },
+                        "useDomainAdminAccess": {
+                            "default": "false",
+                            "description": "Whether the request should be treated as if it was issued by a domain administrator; if set to true, then the requester will be granted access if they are an administrator of the domain to which the Team Drive belongs.",
+                            "location": "query",
+                            "type": "boolean"
                         }
                     },
                     "path": "teamdrives/{teamDriveId}",
@@ -2979,6 +3021,17 @@
                             "description": "Page token for Team Drives.",
                             "location": "query",
                             "type": "string"
+                        },
+                        "q": {
+                            "description": "Query string for searching Team Drives.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "useDomainAdminAccess": {
+                            "default": "false",
+                            "description": "Whether the request should be treated as if it was issued by a domain administrator; if set to true, then all Team Drives of the domain in which the requester is an administrator are returned.",
+                            "location": "query",
+                            "type": "boolean"
                         }
                     },
                     "path": "teamdrives",
@@ -3019,7 +3072,7 @@
             }
         }
     },
-    "revision": "20171013",
+    "revision": "20171103",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "About": {
@@ -4968,6 +5021,11 @@
                 },
                 "colorRgb": {
                     "description": "The color of this Team Drive as an RGB hex string. It can only be set on a drive.teamdrives.update request that does not set themeId.",
+                    "type": "string"
+                },
+                "createdDate": {
+                    "description": "The time at which the Team Drive was created (RFC 3339 date-time).",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "id": {

@@ -1986,11 +1986,6 @@ class ReadgroupsetsCoveragebucketsResourceApi {
   /// [readGroupSetId] - Required. The ID of the read group set over which
   /// coverage is requested.
   ///
-  /// [end] - The end position of the range on the reference, 0-based exclusive.
-  /// If
-  /// specified, `referenceName` must also be specified. If unset or 0, defaults
-  /// to the length of the reference.
-  ///
   /// [pageToken] - The continuation token, which is used to page through large
   /// result sets.
   /// To get the next page of results, set this parameter to the value of
@@ -2017,6 +2012,11 @@ class ReadgroupsetsCoveragebucketsResourceApi {
   /// set associated
   /// with this query. Optional.
   ///
+  /// [end] - The end position of the range on the reference, 0-based exclusive.
+  /// If
+  /// specified, `referenceName` must also be specified. If unset or 0, defaults
+  /// to the length of the reference.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2028,12 +2028,12 @@ class ReadgroupsetsCoveragebucketsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListCoverageBucketsResponse> list(core.String readGroupSetId,
-      {core.String end,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
       core.String start,
       core.String targetBucketWidth,
       core.String referenceName,
+      core.String end,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -2044,9 +2044,6 @@ class ReadgroupsetsCoveragebucketsResourceApi {
 
     if (readGroupSetId == null) {
       throw new core.ArgumentError("Parameter readGroupSetId is required.");
-    }
-    if (end != null) {
-      _queryParams["end"] = [end];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -2062,6 +2059,9 @@ class ReadgroupsetsCoveragebucketsResourceApi {
     }
     if (referenceName != null) {
       _queryParams["referenceName"] = [referenceName];
+    }
+    if (end != null) {
+      _queryParams["end"] = [end];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

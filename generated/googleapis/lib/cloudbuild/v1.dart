@@ -460,6 +460,92 @@ class ProjectsBuildsResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then((data) => new ListBuildsResponse.fromJson(data));
   }
+
+  /// Creates a new build based on the given build.
+  ///
+  /// This API creates a new build using the original build request,  which may
+  /// or may not result in an identical build.
+  ///
+  /// For triggered builds:
+  ///
+  /// * Triggered builds resolve to a precise revision, so a retry of a
+  /// triggered
+  /// build will result in a build that uses the same revision.
+  ///
+  /// For non-triggered builds that specify RepoSource:
+  ///
+  /// * If the original build built from the tip of a branch, the retried build
+  /// will build from the tip of that branch, which may not be the same revision
+  /// as the original build.
+  /// * If the original build specified a commit sha or revision ID, the retried
+  /// build will use the identical source.
+  ///
+  /// For builds that specify StorageSource:
+  ///
+  /// * If the original build pulled source from Cloud Storage without
+  /// specifying
+  /// the generation of the object, the new build will use the current object,
+  /// which may be different from the original build source.
+  /// * If the original build pulled source from Cloud Storage and specified the
+  /// generation of the object, the new build will attempt to use the same
+  /// object, which may or may not be available depending on the bucket's
+  /// lifecycle management settings.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - ID of the project.
+  ///
+  /// [id] - Build ID of the original build.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> retry(
+      RetryBuildRequest request, core.String projectId, core.String id,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/builds/' +
+        commons.Escaper.ecapeVariable('$id') +
+        ':retry';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
+  }
 }
 
 class ProjectsTriggersResourceApi {
@@ -731,6 +817,64 @@ class ProjectsTriggersResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new BuildTrigger.fromJson(data));
+  }
+
+  /// Runs a BuildTrigger at a particular source revision.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - ID of the project.
+  ///
+  /// [triggerId] - ID of the trigger.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> run(
+      RepoSource request, core.String projectId, core.String triggerId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (projectId == null) {
+      throw new core.ArgumentError("Parameter projectId is required.");
+    }
+    if (triggerId == null) {
+      throw new core.ArgumentError("Parameter triggerId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/projects/' +
+        commons.Escaper.ecapeVariable('$projectId') +
+        '/triggers/' +
+        commons.Escaper.ecapeVariable('$triggerId') +
+        ':run';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Operation.fromJson(data));
   }
 }
 
@@ -1012,6 +1156,17 @@ class BuildOperationMetadata {
 
 /// Optional arguments to enable specific features of builds.
 class BuildOptions {
+  /// LogStreamingOption to define build log streaming behavior to Google Cloud
+  /// Storage.
+  /// Possible string values are:
+  /// - "STREAM_DEFAULT" : Service may automatically determine build log
+  /// streaming behavior.
+  /// - "STREAM_ON" : Build logs should be streamed to Google Cloud Storage.
+  /// - "STREAM_OFF" : Build logs should not be streamed to Google Cloud
+  /// Storage; they will be
+  /// written when the build is completed.
+  core.String logStreamingOption;
+
   /// Requested verifiability options.
   /// Possible string values are:
   /// - "NOT_VERIFIED" : Not a verifiable build. (default)
@@ -1032,6 +1187,9 @@ class BuildOptions {
   BuildOptions();
 
   BuildOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("logStreamingOption")) {
+      logStreamingOption = _json["logStreamingOption"];
+    }
     if (_json.containsKey("requestedVerifyOption")) {
       requestedVerifyOption = _json["requestedVerifyOption"];
     }
@@ -1046,6 +1204,9 @@ class BuildOptions {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (logStreamingOption != null) {
+      _json["logStreamingOption"] = logStreamingOption;
+    }
     if (requestedVerifyOption != null) {
       _json["requestedVerifyOption"] = requestedVerifyOption;
     }
@@ -1624,6 +1785,9 @@ class RepoSource {
   /// Explicit commit SHA to build.
   core.String commitSha;
 
+  /// Directory, relative to the source root, in which to run the build.
+  core.String dir;
+
   /// ID of the project that owns the repo. If omitted, the project ID
   /// requesting
   /// the build is assumed.
@@ -1644,6 +1808,9 @@ class RepoSource {
     if (_json.containsKey("commitSha")) {
       commitSha = _json["commitSha"];
     }
+    if (_json.containsKey("dir")) {
+      dir = _json["dir"];
+    }
     if (_json.containsKey("projectId")) {
       projectId = _json["projectId"];
     }
@@ -1663,6 +1830,9 @@ class RepoSource {
     }
     if (commitSha != null) {
       _json["commitSha"] = commitSha;
+    }
+    if (dir != null) {
+      _json["dir"] = dir;
     }
     if (projectId != null) {
       _json["projectId"] = projectId;
@@ -1707,6 +1877,19 @@ class Results {
     if (images != null) {
       _json["images"] = images.map((value) => (value).toJson()).toList();
     }
+    return _json;
+  }
+}
+
+/// RetryBuildRequest specifies a build to retry.
+class RetryBuildRequest {
+  RetryBuildRequest();
+
+  RetryBuildRequest.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
     return _json;
   }
 }

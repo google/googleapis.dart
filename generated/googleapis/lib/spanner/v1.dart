@@ -432,6 +432,10 @@ class ProjectsInstancesResourceApi {
   /// requested. Values are of the form `projects/<project>`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageToken] - If non-empty, `page_token` should contain a
+  /// next_page_token from a
+  /// previous ListInstancesResponse.
+  ///
   /// [pageSize] - Number of instances to be returned in the response. If 0 or
   /// less, defaults
   /// to the server's maximum allowed page size.
@@ -440,26 +444,22 @@ class ProjectsInstancesResourceApi {
   /// rules are
   /// case insensitive. The fields eligible for filtering are:
   ///
-  ///   * name
-  ///   * display_name
-  ///   * labels.key where key is the name of a label
+  ///   * `name`
+  ///   * `display_name`
+  ///   * `labels.key` where key is the name of a label
   ///
   /// Some examples of using filters are:
   ///
-  ///   * name:* --> The instance has a name.
-  ///   * name:Howl --> The instance's name contains the string "howl".
-  ///   * name:HOWL --> Equivalent to above.
-  ///   * NAME:howl --> Equivalent to above.
-  ///   * labels.env:* --> The instance has the label "env".
-  ///   * labels.env:dev --> The instance has the label "env" and the value of
+  ///   * `name:*` --> The instance has a name.
+  ///   * `name:Howl` --> The instance's name contains the string "howl".
+  ///   * `name:HOWL` --> Equivalent to above.
+  ///   * `NAME:howl` --> Equivalent to above.
+  ///   * `labels.env:*` --> The instance has the label "env".
+  /// * `labels.env:dev` --> The instance has the label "env" and the value of
   ///                        the label contains the string "dev".
-  ///   * name:howl labels.env:dev --> The instance's name contains "howl" and
+  /// * `name:howl labels.env:dev` --> The instance's name contains "howl" and
   ///                                  it has the label "env" with its value
   ///                                  containing "dev".
-  ///
-  /// [pageToken] - If non-empty, `page_token` should contain a
-  /// next_page_token from a
-  /// previous ListInstancesResponse.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -472,9 +472,9 @@ class ProjectsInstancesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(core.String parent,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -486,14 +486,14 @@ class ProjectsInstancesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1877,6 +1877,10 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/instances/[^/]+/databases/[^/]+$".
   ///
+  /// [pageToken] - If non-empty, `page_token` should contain a
+  /// next_page_token from a previous
+  /// ListSessionsResponse.
+  ///
   /// [pageSize] - Number of sessions to be returned in the response. If 0 or
   /// less, defaults
   /// to the server's maximum allowed page size.
@@ -1885,17 +1889,13 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// rules are
   /// case insensitive. The fields eligible for filtering are:
   ///
-  ///   * labels.key where key is the name of a label
+  ///   * `labels.key` where key is the name of a label
   ///
   /// Some examples of using filters are:
   ///
-  ///   * labels.env:* --> The session has the label "env".
-  ///   * labels.env:dev --> The session has the label "env" and the value of
+  ///   * `labels.env:*` --> The session has the label "env".
+  ///   * `labels.env:dev` --> The session has the label "env" and the value of
   ///                        the label contains the string "dev".
-  ///
-  /// [pageToken] - If non-empty, `page_token` should contain a
-  /// next_page_token from a previous
-  /// ListSessionsResponse.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1908,9 +1908,9 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSessionsResponse> list(core.String database,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String filter,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1922,14 +1922,14 @@ class ProjectsInstancesDatabasesSessionsResourceApi {
     if (database == null) {
       throw new core.ArgumentError("Parameter database is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2296,11 +2296,11 @@ class ProjectsInstancesOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+/instances/[^/]+/operations$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2313,9 +2313,9 @@ class ProjectsInstancesOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -2327,14 +2327,14 @@ class ProjectsInstancesOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3079,21 +3079,9 @@ class Instance {
   /// Required. The number of nodes allocated to this instance. This may be zero
   /// in API responses for instances that are not yet in state `READY`.
   ///
-  /// Each Spanner node can provide up to 10,000 QPS of reads or 2000 QPS of
-  /// writes (writing single rows at 1KB data per row), and 2 TiB storage.
-  ///
-  /// For optimal performance, we recommend provisioning enough nodes to keep
-  /// overall CPU utilization under 75%.
-  ///
-  /// A minimum of 3 nodes is recommended for production environments.  This
-  /// minimum is required for SLAs to apply to your instance.
-  ///
-  /// Note that Cloud Spanner performance is highly dependent on workload,
-  /// schema
-  /// design, and dataset characteristics. The performance numbers above are
-  /// estimates, and assume [best
-  /// practices](https://cloud.google.com/spanner/docs/bulk-loading)
-  /// are followed.
+  /// See [the
+  /// documentation](https://cloud.google.com/spanner/docs/instances#node_count)
+  /// for more information about nodes.
   core.int nodeCount;
 
   /// Output only. The current instance state. For
@@ -4155,6 +4143,9 @@ class ReadOnly {
   /// previously committed transaction whose timestamp is known.
   ///
   /// Note that this option can only be used in single-use transactions.
+  ///
+  /// A timestamp in RFC3339 UTC \"Zulu\" format, accurate to nanoseconds.
+  /// Example: `"2014-10-02T15:01:23.045123456Z"`.
   core.String minReadTimestamp;
 
   /// Executes all reads at the given timestamp. Unlike other modes,
@@ -4166,6 +4157,9 @@ class ReadOnly {
   /// Useful for large scale consistent reads such as mapreduces, or
   /// for coordinating many reads against a consistent snapshot of the
   /// data.
+  ///
+  /// A timestamp in RFC3339 UTC \"Zulu\" format, accurate to nanoseconds.
+  /// Example: `"2014-10-02T15:01:23.045123456Z"`.
   core.String readTimestamp;
 
   /// If true, the Cloud Spanner-selected read timestamp is included in
@@ -4250,7 +4244,6 @@ class ReadRequest {
 
   /// If greater than zero, only the first `limit` rows are yielded. If `limit`
   /// is zero, the default is no limit.
-  /// A limit cannot be specified if partition_token is set.
   core.String limit;
 
   /// If this request is resuming a previously interrupted read,
@@ -4526,10 +4519,13 @@ class Session {
   ///    the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`.
   ///  * Label values must be between 0 and 63 characters long and must conform
   ///    to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
-  ///  * No more than 20 labels can be associated with a given session.
+  ///  * No more than 64 labels can be associated with a given session.
+  ///
+  /// See https://goo.gl/xmQnxf for more information on and examples of labels.
   core.Map<core.String, core.String> labels;
 
-  /// The name of the session.
+  /// The name of the session. This is always system-assigned; values provided
+  /// when creating a session are ignored.
   core.String name;
 
   Session();
@@ -4834,6 +4830,9 @@ class Transaction {
   /// For snapshot read-only transactions, the read timestamp chosen
   /// for the transaction. Not returned by default: see
   /// TransactionOptions.ReadOnly.return_read_timestamp.
+  ///
+  /// A timestamp in RFC3339 UTC \"Zulu\" format, accurate to nanoseconds.
+  /// Example: `"2014-10-02T15:01:23.045123456Z"`.
   core.String readTimestamp;
 
   Transaction();

@@ -4579,6 +4579,9 @@ class Tag {
   /// Parent folder id.
   core.String parentFolderId;
 
+  /// True if the tag is paused.
+  core.bool paused;
+
   /// User defined numeric priority of the tag. Tags are fired asynchronously in
   /// order of priority. Tags with higher numeric value fire first. A tag's
   /// priority can be a positive or negative value. The default value is 0.
@@ -4650,6 +4653,9 @@ class Tag {
     if (_json.containsKey("parentFolderId")) {
       parentFolderId = _json["parentFolderId"];
     }
+    if (_json.containsKey("paused")) {
+      paused = _json["paused"];
+    }
     if (_json.containsKey("priority")) {
       priority = new Parameter.fromJson(_json["priority"]);
     }
@@ -4718,6 +4724,9 @@ class Tag {
     }
     if (parentFolderId != null) {
       _json["parentFolderId"] = parentFolderId;
+    }
+    if (paused != null) {
+      _json["paused"] = paused;
     }
     if (priority != null) {
       _json["priority"] = (priority).toJson();
@@ -4797,14 +4806,13 @@ class Trigger {
   /// GTM Container ID.
   core.String containerId;
 
+  /// A visibility trigger minimum continuous visible time (in milliseconds).
+  /// Only valid for AMP Visibility trigger.
+  Parameter continuousTimeMinMilliseconds;
+
   /// Used in the case of custom event, which is fired iff all Conditions are
   /// true.
   core.List<Condition> customEventFilter;
-
-  /// Reloads the videos in the page that don't already have the YT API enabled.
-  /// If false, only capture events from videos that already have the API
-  /// enabled. Only valid for YouTube triggers.
-  Parameter enableAllVideos;
 
   /// Name of the GTM event that is fired. Only valid for Timer triggers.
   Parameter eventName;
@@ -4816,39 +4824,68 @@ class Trigger {
   /// is recomputed whenever the trigger is modified.
   core.String fingerprint;
 
+  /// List of integer percentage values for scroll triggers. The trigger will
+  /// fire when each percentage is reached when the view is scrolled
+  /// horizontally. Only valid for AMP scroll triggers.
+  Parameter horizontalScrollPercentageList;
+
   /// Time between triggering recurring Timer Events (in milliseconds). Only
   /// valid for Timer triggers.
   Parameter interval;
+
+  /// Time between Timer Events to fire (in seconds). Only valid for AMP Timer
+  /// trigger.
+  Parameter intervalSeconds;
 
   /// Limit of the number of GTM events this Timer Trigger will fire. If no
   /// limit is set, we will continue to fire GTM events until the user leaves
   /// the page. Only valid for Timer triggers.
   Parameter limit;
 
+  /// Max time to fire Timer Events (in seconds). Only valid for AMP Timer
+  /// trigger.
+  Parameter maxTimerLengthSeconds;
+
   /// Trigger display name.
   core.String name;
 
+  /// Additional parameters.
+  core.List<Parameter> parameter;
+
   /// Parent folder id.
   core.String parentFolderId;
+
+  /// A click trigger CSS selector (i.e. "a", "button" etc.). Only valid for AMP
+  /// Click trigger.
+  Parameter selector;
+
+  /// A visibility trigger minimum total visible time (in milliseconds). Only
+  /// valid for AMP Visibility trigger.
+  Parameter totalTimeMinMilliseconds;
 
   /// The Trigger ID uniquely identifies the GTM Trigger.
   core.String triggerId;
 
   /// Defines the data layer event that causes this trigger.
   /// Possible string values are:
-  /// - "ajaxSubmission"
   /// - "always"
+  /// - "ampClick"
+  /// - "ampScroll"
+  /// - "ampTimer"
+  /// - "ampVisibility"
   /// - "click"
   /// - "customEvent"
   /// - "domReady"
+  /// - "elementVisibility"
   /// - "formSubmission"
   /// - "historyChange"
   /// - "jsError"
   /// - "linkClick"
   /// - "pageview"
+  /// - "scrollDepth"
   /// - "timer"
   /// - "windowLoaded"
-  /// - "youTube"
+  /// - "youTubeVideo"
   core.String type;
 
   /// Globally unique id of the trigger that auto-generates this (a Form Submit,
@@ -4859,10 +4896,22 @@ class Trigger {
   /// and Timer triggers.
   Parameter uniqueTriggerId;
 
-  /// List of integer percentage values. The trigger will fire as each
-  /// percentage is reached in any instrumented videos. Only valid for YouTube
-  /// triggers.
-  Parameter videoPercentageList;
+  /// List of integer percentage values for scroll triggers. The trigger will
+  /// fire when each percentage is reached when the view is scrolled vertically.
+  /// Only valid for AMP scroll triggers.
+  Parameter verticalScrollPercentageList;
+
+  /// A visibility trigger CSS selector (i.e. "#id"). Only valid for AMP
+  /// Visibility trigger.
+  Parameter visibilitySelector;
+
+  /// A visibility trigger maximum percent visibility. Only valid for AMP
+  /// Visibility trigger.
+  Parameter visiblePercentageMax;
+
+  /// A visibility trigger minimum percent visibility. Only valid for AMP
+  /// Visibility trigger.
+  Parameter visiblePercentageMin;
 
   /// Whether or not we should delay the form submissions or link opening until
   /// all of the tags have fired (by preventing the default action and later
@@ -4892,13 +4941,14 @@ class Trigger {
     if (_json.containsKey("containerId")) {
       containerId = _json["containerId"];
     }
+    if (_json.containsKey("continuousTimeMinMilliseconds")) {
+      continuousTimeMinMilliseconds =
+          new Parameter.fromJson(_json["continuousTimeMinMilliseconds"]);
+    }
     if (_json.containsKey("customEventFilter")) {
       customEventFilter = _json["customEventFilter"]
           .map((value) => new Condition.fromJson(value))
           .toList();
-    }
-    if (_json.containsKey("enableAllVideos")) {
-      enableAllVideos = new Parameter.fromJson(_json["enableAllVideos"]);
     }
     if (_json.containsKey("eventName")) {
       eventName = new Parameter.fromJson(_json["eventName"]);
@@ -4911,17 +4961,40 @@ class Trigger {
     if (_json.containsKey("fingerprint")) {
       fingerprint = _json["fingerprint"];
     }
+    if (_json.containsKey("horizontalScrollPercentageList")) {
+      horizontalScrollPercentageList =
+          new Parameter.fromJson(_json["horizontalScrollPercentageList"]);
+    }
     if (_json.containsKey("interval")) {
       interval = new Parameter.fromJson(_json["interval"]);
+    }
+    if (_json.containsKey("intervalSeconds")) {
+      intervalSeconds = new Parameter.fromJson(_json["intervalSeconds"]);
     }
     if (_json.containsKey("limit")) {
       limit = new Parameter.fromJson(_json["limit"]);
     }
+    if (_json.containsKey("maxTimerLengthSeconds")) {
+      maxTimerLengthSeconds =
+          new Parameter.fromJson(_json["maxTimerLengthSeconds"]);
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
+    if (_json.containsKey("parameter")) {
+      parameter = _json["parameter"]
+          .map((value) => new Parameter.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("parentFolderId")) {
       parentFolderId = _json["parentFolderId"];
+    }
+    if (_json.containsKey("selector")) {
+      selector = new Parameter.fromJson(_json["selector"]);
+    }
+    if (_json.containsKey("totalTimeMinMilliseconds")) {
+      totalTimeMinMilliseconds =
+          new Parameter.fromJson(_json["totalTimeMinMilliseconds"]);
     }
     if (_json.containsKey("triggerId")) {
       triggerId = _json["triggerId"];
@@ -4932,9 +5005,20 @@ class Trigger {
     if (_json.containsKey("uniqueTriggerId")) {
       uniqueTriggerId = new Parameter.fromJson(_json["uniqueTriggerId"]);
     }
-    if (_json.containsKey("videoPercentageList")) {
-      videoPercentageList =
-          new Parameter.fromJson(_json["videoPercentageList"]);
+    if (_json.containsKey("verticalScrollPercentageList")) {
+      verticalScrollPercentageList =
+          new Parameter.fromJson(_json["verticalScrollPercentageList"]);
+    }
+    if (_json.containsKey("visibilitySelector")) {
+      visibilitySelector = new Parameter.fromJson(_json["visibilitySelector"]);
+    }
+    if (_json.containsKey("visiblePercentageMax")) {
+      visiblePercentageMax =
+          new Parameter.fromJson(_json["visiblePercentageMax"]);
+    }
+    if (_json.containsKey("visiblePercentageMin")) {
+      visiblePercentageMin =
+          new Parameter.fromJson(_json["visiblePercentageMin"]);
     }
     if (_json.containsKey("waitForTags")) {
       waitForTags = new Parameter.fromJson(_json["waitForTags"]);
@@ -4960,12 +5044,13 @@ class Trigger {
     if (containerId != null) {
       _json["containerId"] = containerId;
     }
+    if (continuousTimeMinMilliseconds != null) {
+      _json["continuousTimeMinMilliseconds"] =
+          (continuousTimeMinMilliseconds).toJson();
+    }
     if (customEventFilter != null) {
       _json["customEventFilter"] =
           customEventFilter.map((value) => (value).toJson()).toList();
-    }
-    if (enableAllVideos != null) {
-      _json["enableAllVideos"] = (enableAllVideos).toJson();
     }
     if (eventName != null) {
       _json["eventName"] = (eventName).toJson();
@@ -4976,17 +5061,36 @@ class Trigger {
     if (fingerprint != null) {
       _json["fingerprint"] = fingerprint;
     }
+    if (horizontalScrollPercentageList != null) {
+      _json["horizontalScrollPercentageList"] =
+          (horizontalScrollPercentageList).toJson();
+    }
     if (interval != null) {
       _json["interval"] = (interval).toJson();
+    }
+    if (intervalSeconds != null) {
+      _json["intervalSeconds"] = (intervalSeconds).toJson();
     }
     if (limit != null) {
       _json["limit"] = (limit).toJson();
     }
+    if (maxTimerLengthSeconds != null) {
+      _json["maxTimerLengthSeconds"] = (maxTimerLengthSeconds).toJson();
+    }
     if (name != null) {
       _json["name"] = name;
     }
+    if (parameter != null) {
+      _json["parameter"] = parameter.map((value) => (value).toJson()).toList();
+    }
     if (parentFolderId != null) {
       _json["parentFolderId"] = parentFolderId;
+    }
+    if (selector != null) {
+      _json["selector"] = (selector).toJson();
+    }
+    if (totalTimeMinMilliseconds != null) {
+      _json["totalTimeMinMilliseconds"] = (totalTimeMinMilliseconds).toJson();
     }
     if (triggerId != null) {
       _json["triggerId"] = triggerId;
@@ -4997,8 +5101,18 @@ class Trigger {
     if (uniqueTriggerId != null) {
       _json["uniqueTriggerId"] = (uniqueTriggerId).toJson();
     }
-    if (videoPercentageList != null) {
-      _json["videoPercentageList"] = (videoPercentageList).toJson();
+    if (verticalScrollPercentageList != null) {
+      _json["verticalScrollPercentageList"] =
+          (verticalScrollPercentageList).toJson();
+    }
+    if (visibilitySelector != null) {
+      _json["visibilitySelector"] = (visibilitySelector).toJson();
+    }
+    if (visiblePercentageMax != null) {
+      _json["visiblePercentageMax"] = (visiblePercentageMax).toJson();
+    }
+    if (visiblePercentageMin != null) {
+      _json["visiblePercentageMin"] = (visiblePercentageMin).toJson();
     }
     if (waitForTags != null) {
       _json["waitForTags"] = (waitForTags).toJson();

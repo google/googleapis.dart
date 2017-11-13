@@ -198,13 +198,13 @@ class OperationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [filter] - The standard list filter.
+  /// [name] - The name of the operation's parent resource.
   ///
   /// [pageToken] - The standard list page token.
   ///
-  /// [name] - The name of the operation's parent resource.
-  ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -217,10 +217,10 @@ class OperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
-      {core.String filter,
+      {core.String name,
       core.String pageToken,
-      core.String name,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -229,17 +229,17 @@ class OperationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
+    if (name != null) {
+      _queryParams["name"] = [name];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (name != null) {
-      _queryParams["name"] = [name];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

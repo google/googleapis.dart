@@ -1,6 +1,6 @@
 // This is a generated file (see the discoveryapis_generator project).
 
-library googleapis.dfareporting.v2_8;
+library googleapis.dfareporting.v3_0;
 
 import 'dart:core' as core;
 import 'dart:async' as async;
@@ -20,7 +20,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         PartialDownloadOptions,
         ByteRange;
 
-const core.String USER_AGENT = 'dart-api-client dfareporting/v2.8';
+const core.String USER_AGENT = 'dart-api-client dfareporting/v3.0';
 
 /// Manages your DoubleClick Campaign Manager ad campaigns and reports.
 class DfareportingApi {
@@ -51,6 +51,8 @@ class DfareportingApi {
   AdsResourceApi get ads => new AdsResourceApi(_requester);
   AdvertiserGroupsResourceApi get advertiserGroups =>
       new AdvertiserGroupsResourceApi(_requester);
+  AdvertiserLandingPagesResourceApi get advertiserLandingPages =>
+      new AdvertiserLandingPagesResourceApi(_requester);
   AdvertisersResourceApi get advertisers =>
       new AdvertisersResourceApi(_requester);
   BrowsersResourceApi get browsers => new BrowsersResourceApi(_requester);
@@ -93,8 +95,6 @@ class DfareportingApi {
       new FloodlightConfigurationsResourceApi(_requester);
   InventoryItemsResourceApi get inventoryItems =>
       new InventoryItemsResourceApi(_requester);
-  LandingPagesResourceApi get landingPages =>
-      new LandingPagesResourceApi(_requester);
   LanguagesResourceApi get languages => new LanguagesResourceApi(_requester);
   MetrosResourceApi get metros => new MetrosResourceApi(_requester);
   MobileCarriersResourceApi get mobileCarriers =>
@@ -142,7 +142,7 @@ class DfareportingApi {
 
   DfareportingApi(http.Client client,
       {core.String rootUrl: "https://www.googleapis.com/",
-      core.String servicePath: "dfareporting/v2.8/"})
+      core.String servicePath: "dfareporting/v3.0/"})
       : _requester =
             new commons.ApiRequester(client, rootUrl, servicePath, USER_AGENT);
 }
@@ -1799,6 +1799,336 @@ class AdvertiserGroupsResourceApi {
   }
 }
 
+class AdvertiserLandingPagesResourceApi {
+  final commons.ApiRequester _requester;
+
+  AdvertiserLandingPagesResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets one landing page by ID.
+  ///
+  /// Request parameters:
+  ///
+  /// [profileId] - User profile ID associated with this request.
+  ///
+  /// [id] - Landing page ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LandingPage].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LandingPage> get(core.String profileId, core.String id,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'userprofiles/' +
+        commons.Escaper.ecapeVariable('$profileId') +
+        '/advertiserLandingPages/' +
+        commons.Escaper.ecapeVariable('$id');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LandingPage.fromJson(data));
+  }
+
+  /// Inserts a new landing page.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [profileId] - User profile ID associated with this request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LandingPage].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LandingPage> insert(LandingPage request, core.String profileId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'userprofiles/' +
+        commons.Escaper.ecapeVariable('$profileId') +
+        '/advertiserLandingPages';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LandingPage.fromJson(data));
+  }
+
+  /// Retrieves a list of landing pages.
+  ///
+  /// Request parameters:
+  ///
+  /// [profileId] - User profile ID associated with this request.
+  ///
+  /// [advertiserIds] - Select only landing pages that belong to these
+  /// advertisers.
+  ///
+  /// [archived] - Select only archived landing pages. Don't set this field to
+  /// select both archived and non-archived landing pages.
+  ///
+  /// [ids] - Select only landing pages with these IDs.
+  ///
+  /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "1000".
+  ///
+  /// [pageToken] - Value of the nextPageToken from the previous result page.
+  ///
+  /// [searchString] - Allows searching for landing pages by name or ID.
+  /// Wildcards (*) are allowed. For example, "landingpage*2017" will return
+  /// landing pages with names like "landingpage July 2017", "landingpage March
+  /// 2017", or simply "landingpage 2017". Most of the searches also add
+  /// wildcards implicitly at the start and the end of the search string. For
+  /// example, a search string of "landingpage" will match campaigns with name
+  /// "my landingpage", "landingpage 2015", or simply "landingpage".
+  ///
+  /// [sortField] - Field by which to sort the list.
+  /// Possible string values are:
+  /// - "ID"
+  /// - "NAME"
+  ///
+  /// [sortOrder] - Order of sorted results.
+  /// Possible string values are:
+  /// - "ASCENDING"
+  /// - "DESCENDING"
+  ///
+  /// [subaccountId] - Select only landing pages that belong to this subaccount.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AdvertiserLandingPagesListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AdvertiserLandingPagesListResponse> list(core.String profileId,
+      {core.List<core.String> advertiserIds,
+      core.bool archived,
+      core.List<core.String> ids,
+      core.int maxResults,
+      core.String pageToken,
+      core.String searchString,
+      core.String sortField,
+      core.String sortOrder,
+      core.String subaccountId,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (advertiserIds != null) {
+      _queryParams["advertiserIds"] = advertiserIds;
+    }
+    if (archived != null) {
+      _queryParams["archived"] = ["${archived}"];
+    }
+    if (ids != null) {
+      _queryParams["ids"] = ids;
+    }
+    if (maxResults != null) {
+      _queryParams["maxResults"] = ["${maxResults}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (searchString != null) {
+      _queryParams["searchString"] = [searchString];
+    }
+    if (sortField != null) {
+      _queryParams["sortField"] = [sortField];
+    }
+    if (sortOrder != null) {
+      _queryParams["sortOrder"] = [sortOrder];
+    }
+    if (subaccountId != null) {
+      _queryParams["subaccountId"] = [subaccountId];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'userprofiles/' +
+        commons.Escaper.ecapeVariable('$profileId') +
+        '/advertiserLandingPages';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new AdvertiserLandingPagesListResponse.fromJson(data));
+  }
+
+  /// Updates an existing landing page. This method supports patch semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [profileId] - User profile ID associated with this request.
+  ///
+  /// [id] - Landing page ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LandingPage].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LandingPage> patch(
+      LandingPage request, core.String profileId, core.String id,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if (id == null) {
+      throw new core.ArgumentError("Parameter id is required.");
+    }
+    _queryParams["id"] = [id];
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'userprofiles/' +
+        commons.Escaper.ecapeVariable('$profileId') +
+        '/advertiserLandingPages';
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LandingPage.fromJson(data));
+  }
+
+  /// Updates an existing landing page.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [profileId] - User profile ID associated with this request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LandingPage].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LandingPage> update(LandingPage request, core.String profileId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (profileId == null) {
+      throw new core.ArgumentError("Parameter profileId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'userprofiles/' +
+        commons.Escaper.ecapeVariable('$profileId') +
+        '/advertiserLandingPages';
+
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LandingPage.fromJson(data));
+  }
+}
+
 class AdvertisersResourceApi {
   final commons.ApiRequester _requester;
 
@@ -2415,11 +2745,6 @@ class CampaignsResourceApi {
   ///
   /// [profileId] - User profile ID associated with this request.
   ///
-  /// [defaultLandingPageName] - Default landing page name for this new
-  /// campaign. Must be less than 256 characters long.
-  ///
-  /// [defaultLandingPageUrl] - Default landing page URL for this new campaign.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2431,7 +2756,6 @@ class CampaignsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Campaign> insert(Campaign request, core.String profileId,
-      core.String defaultLandingPageName, core.String defaultLandingPageUrl,
       {core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -2446,16 +2770,6 @@ class CampaignsResourceApi {
     if (profileId == null) {
       throw new core.ArgumentError("Parameter profileId is required.");
     }
-    if (defaultLandingPageName == null) {
-      throw new core.ArgumentError(
-          "Parameter defaultLandingPageName is required.");
-    }
-    _queryParams["defaultLandingPageName"] = [defaultLandingPageName];
-    if (defaultLandingPageUrl == null) {
-      throw new core.ArgumentError(
-          "Parameter defaultLandingPageUrl is required.");
-    }
-    _queryParams["defaultLandingPageUrl"] = [defaultLandingPageUrl];
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
     }
@@ -3777,13 +4091,13 @@ class CreativeAssetsResourceApi {
           commons.Escaper.ecapeVariable('$advertiserId') +
           '/creativeAssets';
     } else if (_uploadOptions is commons.ResumableUploadOptions) {
-      _url = '/resumable/upload/dfareporting/v2.8/userprofiles/' +
+      _url = '/resumable/upload/dfareporting/v3.0/userprofiles/' +
           commons.Escaper.ecapeVariable('$profileId') +
           '/creativeAssets/' +
           commons.Escaper.ecapeVariable('$advertiserId') +
           '/creativeAssets';
     } else {
-      _url = '/upload/dfareporting/v2.8/userprofiles/' +
+      _url = '/upload/dfareporting/v3.0/userprofiles/' +
           commons.Escaper.ecapeVariable('$profileId') +
           '/creativeAssets/' +
           commons.Escaper.ecapeVariable('$advertiserId') +
@@ -7758,365 +8072,6 @@ class InventoryItemsResourceApi {
         downloadOptions: _downloadOptions);
     return _response
         .then((data) => new InventoryItemsListResponse.fromJson(data));
-  }
-}
-
-class LandingPagesResourceApi {
-  final commons.ApiRequester _requester;
-
-  LandingPagesResourceApi(commons.ApiRequester client) : _requester = client;
-
-  /// Deletes an existing campaign landing page.
-  ///
-  /// Request parameters:
-  ///
-  /// [profileId] - User profile ID associated with this request.
-  ///
-  /// [campaignId] - Landing page campaign ID.
-  ///
-  /// [id] - Landing page ID.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future delete(
-      core.String profileId, core.String campaignId, core.String id,
-      {core.String $fields}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
-    }
-    if (campaignId == null) {
-      throw new core.ArgumentError("Parameter campaignId is required.");
-    }
-    if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _downloadOptions = null;
-
-    _url = 'userprofiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
-        '/campaigns/' +
-        commons.Escaper.ecapeVariable('$campaignId') +
-        '/landingPages/' +
-        commons.Escaper.ecapeVariable('$id');
-
-    var _response = _requester.request(_url, "DELETE",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => null);
-  }
-
-  /// Gets one campaign landing page by ID.
-  ///
-  /// Request parameters:
-  ///
-  /// [profileId] - User profile ID associated with this request.
-  ///
-  /// [campaignId] - Landing page campaign ID.
-  ///
-  /// [id] - Landing page ID.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [LandingPage].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<LandingPage> get(
-      core.String profileId, core.String campaignId, core.String id,
-      {core.String $fields}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
-    }
-    if (campaignId == null) {
-      throw new core.ArgumentError("Parameter campaignId is required.");
-    }
-    if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'userprofiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
-        '/campaigns/' +
-        commons.Escaper.ecapeVariable('$campaignId') +
-        '/landingPages/' +
-        commons.Escaper.ecapeVariable('$id');
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LandingPage.fromJson(data));
-  }
-
-  /// Inserts a new landing page for the specified campaign.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [profileId] - User profile ID associated with this request.
-  ///
-  /// [campaignId] - Landing page campaign ID.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [LandingPage].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<LandingPage> insert(
-      LandingPage request, core.String profileId, core.String campaignId,
-      {core.String $fields}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
-    }
-    if (campaignId == null) {
-      throw new core.ArgumentError("Parameter campaignId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'userprofiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
-        '/campaigns/' +
-        commons.Escaper.ecapeVariable('$campaignId') +
-        '/landingPages';
-
-    var _response = _requester.request(_url, "POST",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LandingPage.fromJson(data));
-  }
-
-  /// Retrieves the list of landing pages for the specified campaign.
-  ///
-  /// Request parameters:
-  ///
-  /// [profileId] - User profile ID associated with this request.
-  ///
-  /// [campaignId] - Landing page campaign ID.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [LandingPagesListResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<LandingPagesListResponse> list(
-      core.String profileId, core.String campaignId,
-      {core.String $fields}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
-    }
-    if (campaignId == null) {
-      throw new core.ArgumentError("Parameter campaignId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'userprofiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
-        '/campaigns/' +
-        commons.Escaper.ecapeVariable('$campaignId') +
-        '/landingPages';
-
-    var _response = _requester.request(_url, "GET",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response
-        .then((data) => new LandingPagesListResponse.fromJson(data));
-  }
-
-  /// Updates an existing campaign landing page. This method supports patch
-  /// semantics.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [profileId] - User profile ID associated with this request.
-  ///
-  /// [campaignId] - Landing page campaign ID.
-  ///
-  /// [id] - Landing page ID.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [LandingPage].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<LandingPage> patch(LandingPage request, core.String profileId,
-      core.String campaignId, core.String id,
-      {core.String $fields}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
-    }
-    if (campaignId == null) {
-      throw new core.ArgumentError("Parameter campaignId is required.");
-    }
-    if (id == null) {
-      throw new core.ArgumentError("Parameter id is required.");
-    }
-    _queryParams["id"] = [id];
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'userprofiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
-        '/campaigns/' +
-        commons.Escaper.ecapeVariable('$campaignId') +
-        '/landingPages';
-
-    var _response = _requester.request(_url, "PATCH",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LandingPage.fromJson(data));
-  }
-
-  /// Updates an existing campaign landing page.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [profileId] - User profile ID associated with this request.
-  ///
-  /// [campaignId] - Landing page campaign ID.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [LandingPage].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<LandingPage> update(
-      LandingPage request, core.String profileId, core.String campaignId,
-      {core.String $fields}) {
-    var _url = null;
-    var _queryParams = new core.Map();
-    var _uploadMedia = null;
-    var _uploadOptions = null;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    var _body = null;
-
-    if (request != null) {
-      _body = convert.JSON.encode((request).toJson());
-    }
-    if (profileId == null) {
-      throw new core.ArgumentError("Parameter profileId is required.");
-    }
-    if (campaignId == null) {
-      throw new core.ArgumentError("Parameter campaignId is required.");
-    }
-    if ($fields != null) {
-      _queryParams["fields"] = [$fields];
-    }
-
-    _url = 'userprofiles/' +
-        commons.Escaper.ecapeVariable('$profileId') +
-        '/campaigns/' +
-        commons.Escaper.ecapeVariable('$campaignId') +
-        '/landingPages';
-
-    var _response = _requester.request(_url, "PUT",
-        body: _body,
-        queryParams: _queryParams,
-        uploadOptions: _uploadOptions,
-        uploadMedia: _uploadMedia,
-        downloadOptions: _downloadOptions);
-    return _response.then((data) => new LandingPage.fromJson(data));
   }
 }
 
@@ -15634,6 +15589,51 @@ class AdvertiserGroupsListResponse {
   }
 }
 
+/// Landing Page List Response
+class AdvertiserLandingPagesListResponse {
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "dfareporting#advertiserLandingPagesListResponse".
+  core.String kind;
+
+  /// Landing page collection
+  core.List<LandingPage> landingPages;
+
+  /// Pagination token to be used for the next list operation.
+  core.String nextPageToken;
+
+  AdvertiserLandingPagesListResponse();
+
+  AdvertiserLandingPagesListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("landingPages")) {
+      landingPages = _json["landingPages"]
+          .map((value) => new LandingPage.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (landingPages != null) {
+      _json["landingPages"] =
+          landingPages.map((value) => (value).toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
 /// Advertiser List Response
 class AdvertisersListResponse {
   /// Advertiser collection.
@@ -15943,6 +15943,9 @@ class Campaign {
   /// Click-through event tag ID override properties for this campaign.
   DefaultClickThroughEventTagProperties defaultClickThroughEventTagProperties;
 
+  /// The default landing page ID for this campaign.
+  core.String defaultLandingPageId;
+
   /// Date on which the campaign will stop running. On insert, the end date must
   /// be today or a future date. The end date must be later than or be the same
   /// as the start date. If, for example, you set 6/25/2015 as both the start
@@ -16056,6 +16059,9 @@ class Campaign {
           new DefaultClickThroughEventTagProperties.fromJson(
               _json["defaultClickThroughEventTagProperties"]);
     }
+    if (_json.containsKey("defaultLandingPageId")) {
+      defaultLandingPageId = _json["defaultLandingPageId"];
+    }
     if (_json.containsKey("endDate")) {
       endDate = core.DateTime.parse(_json["endDate"]);
     }
@@ -16156,6 +16162,9 @@ class Campaign {
     if (defaultClickThroughEventTagProperties != null) {
       _json["defaultClickThroughEventTagProperties"] =
           (defaultClickThroughEventTagProperties).toJson();
+    }
+    if (defaultLandingPageId != null) {
+      _json["defaultLandingPageId"] = defaultLandingPageId;
     }
     if (endDate != null) {
       _json["endDate"] =
@@ -16648,6 +16657,10 @@ class City {
 
 /// Creative Click Tag.
 class ClickTag {
+  /// Parameter value for the specified click tag. This field contains a
+  /// click-through url.
+  CreativeClickThroughUrl clickThroughUrl;
+
   /// Advertiser event name associated with the click tag. This field is used by
   /// DISPLAY_IMAGE_GALLERY and HTML5_BANNER creatives. Applicable to DISPLAY
   /// when the primary asset type is not HTML_IMAGE.
@@ -16658,35 +16671,32 @@ class ClickTag {
   /// creativeAssetId.name field.
   core.String name;
 
-  /// Parameter value for the specified click tag. This field contains a
-  /// click-through url.
-  core.String value;
-
   ClickTag();
 
   ClickTag.fromJson(core.Map _json) {
+    if (_json.containsKey("clickThroughUrl")) {
+      clickThroughUrl =
+          new CreativeClickThroughUrl.fromJson(_json["clickThroughUrl"]);
+    }
     if (_json.containsKey("eventName")) {
       eventName = _json["eventName"];
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
-    if (_json.containsKey("value")) {
-      value = _json["value"];
-    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (clickThroughUrl != null) {
+      _json["clickThroughUrl"] = (clickThroughUrl).toJson();
+    }
     if (eventName != null) {
       _json["eventName"] = eventName;
     }
     if (name != null) {
       _json["name"] = name;
-    }
-    if (value != null) {
-      _json["value"] = value;
     }
     return _json;
   }
@@ -17742,10 +17752,9 @@ class Creative {
   /// Applicable to the following creative types: FLASH_INPAGE.
   core.String backgroundColor;
 
-  /// Click-through URL for backup image. Applicable to the following creative
-  /// types: FLASH_INPAGE, and HTML5_BANNER. Applicable to DISPLAY when the
+  /// Click-through URL for backup image. Applicable to ENHANCED_BANNER when the
   /// primary asset type is not HTML_IMAGE.
-  core.String backupImageClickThroughUrl;
+  CreativeClickThroughUrl backupImageClickThroughUrl;
 
   /// List of feature dependencies that will cause a backup image to be served
   /// if the browser that serves the ad does not support them. Feature
@@ -17902,6 +17911,10 @@ class Creative {
   /// Override CSS value for rich media creatives. Applicable to the following
   /// creative types: all RICH_MEDIA.
   core.String overrideCss;
+
+  /// The asset ID of the polite load image asset. Applicable to the creative
+  /// type: DISPLAY.
+  core.String politeLoadAssetId;
 
   /// Amount of time to play the video before counting a view. Applicable to the
   /// following creative types: all INSTREAM_VIDEO.
@@ -18099,7 +18112,8 @@ class Creative {
       backgroundColor = _json["backgroundColor"];
     }
     if (_json.containsKey("backupImageClickThroughUrl")) {
-      backupImageClickThroughUrl = _json["backupImageClickThroughUrl"];
+      backupImageClickThroughUrl = new CreativeClickThroughUrl.fromJson(
+          _json["backupImageClickThroughUrl"]);
     }
     if (_json.containsKey("backupImageFeatures")) {
       backupImageFeatures = _json["backupImageFeatures"];
@@ -18188,6 +18202,9 @@ class Creative {
     }
     if (_json.containsKey("overrideCss")) {
       overrideCss = _json["overrideCss"];
+    }
+    if (_json.containsKey("politeLoadAssetId")) {
+      politeLoadAssetId = _json["politeLoadAssetId"];
     }
     if (_json.containsKey("progressOffset")) {
       progressOffset = new VideoOffset.fromJson(_json["progressOffset"]);
@@ -18313,7 +18330,8 @@ class Creative {
       _json["backgroundColor"] = backgroundColor;
     }
     if (backupImageClickThroughUrl != null) {
-      _json["backupImageClickThroughUrl"] = backupImageClickThroughUrl;
+      _json["backupImageClickThroughUrl"] =
+          (backupImageClickThroughUrl).toJson();
     }
     if (backupImageFeatures != null) {
       _json["backupImageFeatures"] = backupImageFeatures;
@@ -18393,6 +18411,9 @@ class Creative {
     }
     if (overrideCss != null) {
       _json["overrideCss"] = overrideCss;
+    }
+    if (politeLoadAssetId != null) {
+      _json["politeLoadAssetId"] = politeLoadAssetId;
     }
     if (progressOffset != null) {
       _json["progressOffset"] = (progressOffset).toJson();
@@ -18628,6 +18649,13 @@ class CreativeAsset {
   /// ASSET_DISPLAY_TYPE_EXPANDING or ASSET_DISPLAY_TYPE_PEEL_DOWN.
   OffsetPosition offset;
 
+  /// Orientation of video asset. This is a read-only, auto-generated field.
+  /// Possible string values are:
+  /// - "LANDSCAPE"
+  /// - "PORTRAIT"
+  /// - "SQUARE"
+  core.String orientation;
+
   /// Whether the backup asset is original or changed by the user in DCM.
   /// Applicable to the following creative types: all RICH_MEDIA.
   core.bool originalBackup;
@@ -18844,6 +18872,9 @@ class CreativeAsset {
     if (_json.containsKey("offset")) {
       offset = new OffsetPosition.fromJson(_json["offset"]);
     }
+    if (_json.containsKey("orientation")) {
+      orientation = _json["orientation"];
+    }
     if (_json.containsKey("originalBackup")) {
       originalBackup = _json["originalBackup"];
     }
@@ -18980,6 +19011,9 @@ class CreativeAsset {
     }
     if (offset != null) {
       _json["offset"] = (offset).toJson();
+    }
+    if (orientation != null) {
+      _json["orientation"] = orientation;
     }
     if (originalBackup != null) {
       _json["originalBackup"] = originalBackup;
@@ -19401,6 +19435,52 @@ class CreativeAssignment {
   }
 }
 
+/// Click-through URL
+class CreativeClickThroughUrl {
+  /// Read-only convenience field representing the actual URL that will be used
+  /// for this click-through. The URL is computed as follows:
+  /// - If landingPageId is specified then that landing page's URL is assigned
+  /// to this field.
+  /// - Otherwise, the customClickThroughUrl is assigned to this field.
+  core.String computedClickThroughUrl;
+
+  /// Custom click-through URL. Applicable if the landingPageId field is left
+  /// unset.
+  core.String customClickThroughUrl;
+
+  /// ID of the landing page for the click-through URL.
+  core.String landingPageId;
+
+  CreativeClickThroughUrl();
+
+  CreativeClickThroughUrl.fromJson(core.Map _json) {
+    if (_json.containsKey("computedClickThroughUrl")) {
+      computedClickThroughUrl = _json["computedClickThroughUrl"];
+    }
+    if (_json.containsKey("customClickThroughUrl")) {
+      customClickThroughUrl = _json["customClickThroughUrl"];
+    }
+    if (_json.containsKey("landingPageId")) {
+      landingPageId = _json["landingPageId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (computedClickThroughUrl != null) {
+      _json["computedClickThroughUrl"] = computedClickThroughUrl;
+    }
+    if (customClickThroughUrl != null) {
+      _json["customClickThroughUrl"] = customClickThroughUrl;
+    }
+    if (landingPageId != null) {
+      _json["landingPageId"] = landingPageId;
+    }
+    return _json;
+  }
+}
+
 /// Creative Custom Event.
 class CreativeCustomEvent {
   /// Unique ID of this event used by DDM Reporting and Data Transfer. This is a
@@ -19429,8 +19509,9 @@ class CreativeCustomEvent {
   /// - "ARTWORK_TYPE_MIXED"
   core.String artworkType;
 
-  /// Exit URL of the event. This field is used only for exit events.
-  core.String exitUrl;
+  /// Exit click-through URL for the event. This field is used only for exit
+  /// events.
+  CreativeClickThroughUrl exitClickThroughUrl;
 
   /// ID of this event. This is a required field and should not be modified
   /// after insertion.
@@ -19471,8 +19552,9 @@ class CreativeCustomEvent {
     if (_json.containsKey("artworkType")) {
       artworkType = _json["artworkType"];
     }
-    if (_json.containsKey("exitUrl")) {
-      exitUrl = _json["exitUrl"];
+    if (_json.containsKey("exitClickThroughUrl")) {
+      exitClickThroughUrl =
+          new CreativeClickThroughUrl.fromJson(_json["exitClickThroughUrl"]);
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -19507,8 +19589,8 @@ class CreativeCustomEvent {
     if (artworkType != null) {
       _json["artworkType"] = artworkType;
     }
-    if (exitUrl != null) {
-      _json["exitUrl"] = exitUrl;
+    if (exitClickThroughUrl != null) {
+      _json["exitClickThroughUrl"] = (exitClickThroughUrl).toJson();
     }
     if (id != null) {
       _json["id"] = id;
@@ -22219,6 +22301,11 @@ class FloodlightActivitiesGenerateTagResponse {
   /// the event snippet.
   core.String floodlightActivityTag;
 
+  /// The global snippet section of a global site tag. The global site tag sets
+  /// new cookies on your domain, which will store a unique identifier for a
+  /// user or the ad click that brought the user to your site. Learn more.
+  core.String globalSiteTagGlobalSnippet;
+
   /// Identifies what kind of resource this is. Value: the fixed string
   /// "dfareporting#floodlightActivitiesGenerateTagResponse".
   core.String kind;
@@ -22228,6 +22315,9 @@ class FloodlightActivitiesGenerateTagResponse {
   FloodlightActivitiesGenerateTagResponse.fromJson(core.Map _json) {
     if (_json.containsKey("floodlightActivityTag")) {
       floodlightActivityTag = _json["floodlightActivityTag"];
+    }
+    if (_json.containsKey("globalSiteTagGlobalSnippet")) {
+      globalSiteTagGlobalSnippet = _json["globalSiteTagGlobalSnippet"];
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -22239,6 +22329,9 @@ class FloodlightActivitiesGenerateTagResponse {
         new core.Map<core.String, core.Object>();
     if (floodlightActivityTag != null) {
       _json["floodlightActivityTag"] = floodlightActivityTag;
+    }
+    if (globalSiteTagGlobalSnippet != null) {
+      _json["globalSiteTagGlobalSnippet"] = globalSiteTagGlobalSnippet;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -22364,6 +22457,14 @@ class FloodlightActivity {
   /// read-only, auto-generated field.
   DimensionValue floodlightConfigurationIdDimensionValue;
 
+  /// The type of Floodlight tag this activity will generate. This is a required
+  /// field.
+  /// Possible string values are:
+  /// - "GLOBAL_SITE_TAG"
+  /// - "IFRAME"
+  /// - "IMAGE"
+  core.String floodlightTagType;
+
   /// Whether this activity is archived.
   core.bool hidden;
 
@@ -22373,9 +22474,6 @@ class FloodlightActivity {
   /// Dimension value for the ID of this floodlight activity. This is a
   /// read-only, auto-generated field.
   DimensionValue idDimensionValue;
-
-  /// Whether the image tag is enabled for this activity.
-  core.bool imageTagEnabled;
 
   /// Identifies what kind of resource this is. Value: the fixed string
   /// "dfareporting#floodlightActivity".
@@ -22473,6 +22571,9 @@ class FloodlightActivity {
       floodlightConfigurationIdDimensionValue = new DimensionValue.fromJson(
           _json["floodlightConfigurationIdDimensionValue"]);
     }
+    if (_json.containsKey("floodlightTagType")) {
+      floodlightTagType = _json["floodlightTagType"];
+    }
     if (_json.containsKey("hidden")) {
       hidden = _json["hidden"];
     }
@@ -22481,9 +22582,6 @@ class FloodlightActivity {
     }
     if (_json.containsKey("idDimensionValue")) {
       idDimensionValue = new DimensionValue.fromJson(_json["idDimensionValue"]);
-    }
-    if (_json.containsKey("imageTagEnabled")) {
-      imageTagEnabled = _json["imageTagEnabled"];
     }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
@@ -22569,6 +22667,9 @@ class FloodlightActivity {
       _json["floodlightConfigurationIdDimensionValue"] =
           (floodlightConfigurationIdDimensionValue).toJson();
     }
+    if (floodlightTagType != null) {
+      _json["floodlightTagType"] = floodlightTagType;
+    }
     if (hidden != null) {
       _json["hidden"] = hidden;
     }
@@ -22577,9 +22678,6 @@ class FloodlightActivity {
     }
     if (idDimensionValue != null) {
       _json["idDimensionValue"] = (idDimensionValue).toJson();
-    }
-    if (imageTagEnabled != null) {
-      _json["imageTagEnabled"] = imageTagEnabled;
     }
     if (kind != null) {
       _json["kind"] = kind;
@@ -23691,10 +23789,11 @@ class KeyValueTargetingExpression {
 /// Contains information about where a user's browser is taken after the user
 /// clicks an ad.
 class LandingPage {
-  /// Whether or not this landing page will be assigned to any ads or creatives
-  /// that do not have a landing page assigned explicitly. Only one default
-  /// landing page is allowed per campaign.
-  core.bool default_;
+  /// Advertiser ID of this landing page. This is a required field.
+  core.String advertiserId;
+
+  /// Whether this landing page has been archived.
+  core.bool archived;
 
   /// ID of this landing page. This is a read-only, auto-generated field.
   core.String id;
@@ -23704,8 +23803,7 @@ class LandingPage {
   core.String kind;
 
   /// Name of this landing page. This is a required field. It must be less than
-  /// 256 characters long, and must be unique among landing pages of the same
-  /// campaign.
+  /// 256 characters long.
   core.String name;
 
   /// URL of this landing page. This is a required field.
@@ -23714,8 +23812,11 @@ class LandingPage {
   LandingPage();
 
   LandingPage.fromJson(core.Map _json) {
-    if (_json.containsKey("default")) {
-      default_ = _json["default"];
+    if (_json.containsKey("advertiserId")) {
+      advertiserId = _json["advertiserId"];
+    }
+    if (_json.containsKey("archived")) {
+      archived = _json["archived"];
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -23734,8 +23835,11 @@ class LandingPage {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (default_ != null) {
-      _json["default"] = default_;
+    if (advertiserId != null) {
+      _json["advertiserId"] = advertiserId;
+    }
+    if (archived != null) {
+      _json["archived"] = archived;
     }
     if (id != null) {
       _json["id"] = id;
@@ -23748,42 +23852,6 @@ class LandingPage {
     }
     if (url != null) {
       _json["url"] = url;
-    }
-    return _json;
-  }
-}
-
-/// Landing Page List Response
-class LandingPagesListResponse {
-  /// Identifies what kind of resource this is. Value: the fixed string
-  /// "dfareporting#landingPagesListResponse".
-  core.String kind;
-
-  /// Landing page collection
-  core.List<LandingPage> landingPages;
-
-  LandingPagesListResponse();
-
-  LandingPagesListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey("kind")) {
-      kind = _json["kind"];
-    }
-    if (_json.containsKey("landingPages")) {
-      landingPages = _json["landingPages"]
-          .map((value) => new LandingPage.fromJson(value))
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (kind != null) {
-      _json["kind"] = kind;
-    }
-    if (landingPages != null) {
-      _json["landingPages"] =
-          landingPages.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -31321,6 +31389,14 @@ class VideoSettings {
   /// "dfareporting#videoSettings".
   core.String kind;
 
+  /// Orientation of a video placement. If this value is set, placement will
+  /// return assets matching the specified orientation.
+  /// Possible string values are:
+  /// - "ANY"
+  /// - "LANDSCAPE"
+  /// - "PORTRAIT"
+  core.String orientation;
+
   /// Settings for the skippability of video creatives served to this placement.
   /// If this object is provided, the creative-level skippable settings will be
   /// overridden.
@@ -31341,6 +31417,9 @@ class VideoSettings {
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
+    if (_json.containsKey("orientation")) {
+      orientation = _json["orientation"];
+    }
     if (_json.containsKey("skippableSettings")) {
       skippableSettings =
           new SkippableSetting.fromJson(_json["skippableSettings"]);
@@ -31359,6 +31438,9 @@ class VideoSettings {
     }
     if (kind != null) {
       _json["kind"] = kind;
+    }
+    if (orientation != null) {
+      _json["orientation"] = orientation;
     }
     if (skippableSettings != null) {
       _json["skippableSettings"] = (skippableSettings).toJson();

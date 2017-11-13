@@ -15,7 +15,7 @@
     "description": "Lets Android application developers access their Google Play accounts.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/android-publisher",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/QjVvqrUMRW1tTVdJHVqdnKd9gLQ\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/6dRjzWCszNTQjv1EQoJBlq-Xgrs\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/android-16.png",
         "x32": "https://www.google.com/images/icons/product/android-32.png"
@@ -1880,20 +1880,6 @@
         },
         "inappproducts": {
             "methods": {
-                "batch": {
-                    "httpMethod": "POST",
-                    "id": "androidpublisher.inappproducts.batch",
-                    "path": "inappproducts/batch",
-                    "request": {
-                        "$ref": "InappproductsBatchRequest"
-                    },
-                    "response": {
-                        "$ref": "InappproductsBatchResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/androidpublisher"
-                    ]
-                },
                 "delete": {
                     "description": "Delete an in-app product for an app.",
                     "httpMethod": "DELETE",
@@ -2488,7 +2474,7 @@
             }
         }
     },
-    "revision": "20170913",
+    "revision": "20171030",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Apk": {
@@ -3015,88 +3001,6 @@
             },
             "type": "object"
         },
-        "InappproductsBatchRequest": {
-            "id": "InappproductsBatchRequest",
-            "properties": {
-                "entrys": {
-                    "items": {
-                        "$ref": "InappproductsBatchRequestEntry"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "InappproductsBatchRequestEntry": {
-            "id": "InappproductsBatchRequestEntry",
-            "properties": {
-                "batchId": {
-                    "format": "uint32",
-                    "type": "integer"
-                },
-                "inappproductsinsertrequest": {
-                    "$ref": "InappproductsInsertRequest"
-                },
-                "inappproductsupdaterequest": {
-                    "$ref": "InappproductsUpdateRequest"
-                },
-                "methodName": {
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "InappproductsBatchResponse": {
-            "id": "InappproductsBatchResponse",
-            "properties": {
-                "entrys": {
-                    "items": {
-                        "$ref": "InappproductsBatchResponseEntry"
-                    },
-                    "type": "array"
-                },
-                "kind": {
-                    "default": "androidpublisher#inappproductsBatchResponse",
-                    "description": "Identifies what kind of resource this is. Value: the fixed string \"androidpublisher#inappproductsBatchResponse\".",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "InappproductsBatchResponseEntry": {
-            "id": "InappproductsBatchResponseEntry",
-            "properties": {
-                "batchId": {
-                    "format": "uint32",
-                    "type": "integer"
-                },
-                "inappproductsinsertresponse": {
-                    "$ref": "InappproductsInsertResponse"
-                },
-                "inappproductsupdateresponse": {
-                    "$ref": "InappproductsUpdateResponse"
-                }
-            },
-            "type": "object"
-        },
-        "InappproductsInsertRequest": {
-            "id": "InappproductsInsertRequest",
-            "properties": {
-                "inappproduct": {
-                    "$ref": "InAppProduct"
-                }
-            },
-            "type": "object"
-        },
-        "InappproductsInsertResponse": {
-            "id": "InappproductsInsertResponse",
-            "properties": {
-                "inappproduct": {
-                    "$ref": "InAppProduct"
-                }
-            },
-            "type": "object"
-        },
         "InappproductsListResponse": {
             "id": "InappproductsListResponse",
             "properties": {
@@ -3116,24 +3020,6 @@
                 },
                 "tokenPagination": {
                     "$ref": "TokenPagination"
-                }
-            },
-            "type": "object"
-        },
-        "InappproductsUpdateRequest": {
-            "id": "InappproductsUpdateRequest",
-            "properties": {
-                "inappproduct": {
-                    "$ref": "InAppProduct"
-                }
-            },
-            "type": "object"
-        },
-        "InappproductsUpdateResponse": {
-            "id": "InappproductsUpdateResponse",
-            "properties": {
-                "inappproduct": {
-                    "$ref": "InAppProduct"
                 }
             },
             "type": "object"

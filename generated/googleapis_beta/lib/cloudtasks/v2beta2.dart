@@ -100,11 +100,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -117,9 +117,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -131,14 +131,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -409,6 +409,18 @@ class ProjectsLocationsQueuesResourceApi {
   /// For example: `projects/PROJECT_ID/locations/LOCATION_ID`
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [filter] - `filter` can be used to specify a subset of queues. Any Queue
+  /// field can be used as a filter and several operators as supported.
+  /// For example: `<=, <, >=, >, !=, =, :`. The filter syntax is the same as
+  /// described in
+  /// [Stackdriver's Advanced Logs
+  /// Filters](/logging/docs/view/advanced_filters).
+  ///
+  /// Sample filter "app_engine_http_target: *".
+  ///
+  /// Note that using filters might cause fewer queues than the
+  /// requested_page size to be returned.
+  ///
   /// [pageToken] - A token identifying the page of results to return.
   ///
   /// To request the first page results, page_token must be empty. To
@@ -426,18 +438,6 @@ class ProjectsLocationsQueuesResourceApi {
   /// ListQueuesResponse.next_page_token to determine if more
   /// queues exist.
   ///
-  /// [filter] - `filter` can be used to specify a subset of queues. Any Queue
-  /// field can be used as a filter and several operators as supported.
-  /// For example: `<=, <, >=, >, !=, =, :`. The filter syntax is the same as
-  /// described in
-  /// [Stackdriver's Advanced Logs
-  /// Filters](/logging/docs/view/advanced_filters).
-  ///
-  /// Sample filter "app_engine_http_target: *".
-  ///
-  /// Note that using filters might cause fewer queues than the
-  /// requested_page size to be returned.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -449,9 +449,9 @@ class ProjectsLocationsQueuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListQueuesResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -463,14 +463,14 @@ class ProjectsLocationsQueuesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -578,13 +578,6 @@ class ProjectsLocationsQueuesResourceApi {
   /// queue is paused. The state of the queue is stored in
   /// Queue.queue_state; if paused it will be set to
   /// Queue.QueueState.PAUSED.
-  ///
-  /// WARNING: This method is only available to whitelisted
-  /// users. Using this method carries some risk. Read
-  /// [Overview of Queue Management and
-  /// queue.yaml](/cloud-tasks/docs/queue-yaml)
-  /// carefully and then sign up for
-  /// [whitelist access to this method](https://goo.gl/Fe5mUy).
   ///
   /// [request] - The metadata request object.
   ///
@@ -703,13 +696,6 @@ class ProjectsLocationsQueuesResourceApi {
   /// a queue is stored in Queue.queue_state; after calling this method it
   /// will be set to Queue.QueueState.RUNNING.
   ///
-  /// WARNING: This method is only available to whitelisted
-  /// users. Using this method carries some risk. Read
-  /// [Overview of Queue Management and
-  /// queue.yaml](/cloud-tasks/docs/queue-yaml)
-  /// carefully and then sign up for
-  /// [whitelist access to this method](https://goo.gl/Fe5mUy).
-  ///
   /// WARNING: Resuming many high-QPS queues at the same time can
   /// lead to target overloading. If you are resuming high-QPS
   /// queues, follow the 500/50/5 pattern described in
@@ -769,6 +755,9 @@ class ProjectsLocationsQueuesResourceApi {
 
   /// Sets the access control policy for a Queue. Replaces any existing
   /// policy.
+  ///
+  /// Note: The Cloud Console does not check queue-level IAM permissions yet.
+  /// Project-level permissions are required to use the Cloud Console.
   ///
   /// Authorization requires the following [Google IAM](/iam) permission on the
   /// specified resource parent:
@@ -1242,11 +1231,11 @@ class ProjectsLocationsQueuesTasksResourceApi {
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
   ///
-  /// [orderBy] -
-  /// Sort order used for the query. The fields supported for sorting
-  /// are Task.schedule_time and PullMessage.tag. All results will be
+  /// [orderBy] - Sort order used for the query. The only fields supported for
+  /// sorting
+  /// are `schedule_time` and `pull_message.tag`. All results will be
   /// returned in approximately ascending order. The default ordering is by
-  /// Task.schedule_time.
+  /// `schedule_time`.
   ///
   /// [pageToken] - A token identifying the page of results to return.
   ///

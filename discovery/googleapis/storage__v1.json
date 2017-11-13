@@ -26,7 +26,7 @@
     "description": "Stores and retrieves potentially large, immutable data objects.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/storage/docs/json_api/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/wG6rmEvDnTlddzJg86OD2al2nik\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/INmkTh2mO0thq3Agrhx1mHd0DoE\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/cloud_storage-16.png",
         "x32": "https://www.google.com/images/icons/product/cloud_storage-32.png"
@@ -496,7 +496,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request",
+                            "description": "The project to be billed for this request.",
                             "location": "query",
                             "type": "string"
                         }
@@ -1601,8 +1601,7 @@
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_write"
-                    ],
-                    "supportsMediaDownload": true
+                    ]
                 },
                 "copy": {
                     "description": "Copies a source object to a destination object. Optionally overrides metadata.",
@@ -1744,8 +1743,7 @@
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_write"
-                    ],
-                    "supportsMediaDownload": true
+                    ]
                 },
                 "delete": {
                     "description": "Deletes an object and its metadata. Deletions are permanent if versioning is not enabled for the bucket, or if the generation parameter is used.",
@@ -2059,7 +2057,6 @@
                         "https://www.googleapis.com/auth/devstorage.full_control",
                         "https://www.googleapis.com/auth/devstorage.read_write"
                     ],
-                    "supportsMediaDownload": true,
                     "supportsMediaUpload": true
                 },
                 "list": {
@@ -2137,7 +2134,7 @@
                     "supportsSubscription": true
                 },
                 "patch": {
-                    "description": "Updates an object's metadata. This method supports patch semantics.",
+                    "description": "Patches an object's metadata.",
                     "httpMethod": "PATCH",
                     "id": "storage.objects.patch",
                     "parameterOrder": [
@@ -2222,7 +2219,7 @@
                             "type": "string"
                         },
                         "userProject": {
-                            "description": "The project to be billed for this request. Required for Requester Pays buckets.",
+                            "description": "The project to be billed for this request, for Requester Pays buckets.",
                             "location": "query",
                             "type": "string"
                         }
@@ -2597,8 +2594,7 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/cloud-platform",
                         "https://www.googleapis.com/auth/devstorage.full_control"
-                    ],
-                    "supportsMediaDownload": true
+                    ]
                 },
                 "watchAll": {
                     "description": "Watch for changes on all objects in a bucket.",
@@ -2721,7 +2717,7 @@
             }
         }
     },
-    "revision": "20171004",
+    "revision": "20171018",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Bucket": {

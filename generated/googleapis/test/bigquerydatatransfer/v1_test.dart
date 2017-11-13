@@ -84,27 +84,27 @@ checkCheckValidCredsResponse(api.CheckValidCredsResponse o) {
   buildCounterCheckValidCredsResponse--;
 }
 
-buildUnnamed679() {
+buildUnnamed683() {
   var o = new core.List<api.DataSourceParameter>();
   o.add(buildDataSourceParameter());
   o.add(buildDataSourceParameter());
   return o;
 }
 
-checkUnnamed679(core.List<api.DataSourceParameter> o) {
+checkUnnamed683(core.List<api.DataSourceParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDataSourceParameter(o[0]);
   checkDataSourceParameter(o[1]);
 }
 
-buildUnnamed680() {
+buildUnnamed684() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed680(core.List<core.String> o) {
+checkUnnamed684(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -127,8 +127,8 @@ buildDataSource() {
     o.manualRunsDisabled = true;
     o.minimumScheduleInterval = "foo";
     o.name = "foo";
-    o.parameters = buildUnnamed679();
-    o.scopes = buildUnnamed680();
+    o.parameters = buildUnnamed683();
+    o.scopes = buildUnnamed684();
     o.supportsCustomSchedule = true;
     o.supportsMultipleTransfers = true;
     o.transferType = "foo";
@@ -153,8 +153,8 @@ checkDataSource(api.DataSource o) {
     unittest.expect(o.manualRunsDisabled, unittest.isTrue);
     unittest.expect(o.minimumScheduleInterval, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed679(o.parameters);
-    checkUnnamed680(o.scopes);
+    checkUnnamed683(o.parameters);
+    checkUnnamed684(o.scopes);
     unittest.expect(o.supportsCustomSchedule, unittest.isTrue);
     unittest.expect(o.supportsMultipleTransfers, unittest.isTrue);
     unittest.expect(o.transferType, unittest.equals('foo'));
@@ -163,27 +163,27 @@ checkDataSource(api.DataSource o) {
   buildCounterDataSource--;
 }
 
-buildUnnamed681() {
+buildUnnamed685() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed681(core.List<core.String> o) {
+checkUnnamed685(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed682() {
+buildUnnamed686() {
   var o = new core.List<api.DataSourceParameter>();
   o.add(buildDataSourceParameter());
   o.add(buildDataSourceParameter());
   return o;
 }
 
-checkUnnamed682(core.List<api.DataSourceParameter> o) {
+checkUnnamed686(core.List<api.DataSourceParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDataSourceParameter(o[0]);
   checkDataSourceParameter(o[1]);
@@ -194,10 +194,10 @@ buildDataSourceParameter() {
   var o = new api.DataSourceParameter();
   buildCounterDataSourceParameter++;
   if (buildCounterDataSourceParameter < 3) {
-    o.allowedValues = buildUnnamed681();
+    o.allowedValues = buildUnnamed685();
     o.description = "foo";
     o.displayName = "foo";
-    o.fields = buildUnnamed682();
+    o.fields = buildUnnamed686();
     o.immutable = true;
     o.maxValue = 42.0;
     o.minValue = 42.0;
@@ -217,10 +217,10 @@ buildDataSourceParameter() {
 checkDataSourceParameter(api.DataSourceParameter o) {
   buildCounterDataSourceParameter++;
   if (buildCounterDataSourceParameter < 3) {
-    checkUnnamed681(o.allowedValues);
+    checkUnnamed685(o.allowedValues);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkUnnamed682(o.fields);
+    checkUnnamed686(o.fields);
     unittest.expect(o.immutable, unittest.isTrue);
     unittest.expect(o.maxValue, unittest.equals(42.0));
     unittest.expect(o.minValue, unittest.equals(42.0));
@@ -251,14 +251,14 @@ checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-buildUnnamed683() {
+buildUnnamed687() {
   var o = new core.List<api.DataSource>();
   o.add(buildDataSource());
   o.add(buildDataSource());
   return o;
 }
 
-checkUnnamed683(core.List<api.DataSource> o) {
+checkUnnamed687(core.List<api.DataSource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDataSource(o[0]);
   checkDataSource(o[1]);
@@ -269,7 +269,7 @@ buildListDataSourcesResponse() {
   var o = new api.ListDataSourcesResponse();
   buildCounterListDataSourcesResponse++;
   if (buildCounterListDataSourcesResponse < 3) {
-    o.dataSources = buildUnnamed683();
+    o.dataSources = buildUnnamed687();
     o.nextPageToken = "foo";
   }
   buildCounterListDataSourcesResponse--;
@@ -279,20 +279,20 @@ buildListDataSourcesResponse() {
 checkListDataSourcesResponse(api.ListDataSourcesResponse o) {
   buildCounterListDataSourcesResponse++;
   if (buildCounterListDataSourcesResponse < 3) {
-    checkUnnamed683(o.dataSources);
+    checkUnnamed687(o.dataSources);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListDataSourcesResponse--;
 }
 
-buildUnnamed684() {
+buildUnnamed688() {
   var o = new core.List<api.Location>();
   o.add(buildLocation());
   o.add(buildLocation());
   return o;
 }
 
-checkUnnamed684(core.List<api.Location> o) {
+checkUnnamed688(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLocation(o[0]);
   checkLocation(o[1]);
@@ -303,7 +303,7 @@ buildListLocationsResponse() {
   var o = new api.ListLocationsResponse();
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    o.locations = buildUnnamed684();
+    o.locations = buildUnnamed688();
     o.nextPageToken = "foo";
   }
   buildCounterListLocationsResponse--;
@@ -313,20 +313,20 @@ buildListLocationsResponse() {
 checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse++;
   if (buildCounterListLocationsResponse < 3) {
-    checkUnnamed684(o.locations);
+    checkUnnamed688(o.locations);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListLocationsResponse--;
 }
 
-buildUnnamed685() {
+buildUnnamed689() {
   var o = new core.List<api.TransferConfig>();
   o.add(buildTransferConfig());
   o.add(buildTransferConfig());
   return o;
 }
 
-checkUnnamed685(core.List<api.TransferConfig> o) {
+checkUnnamed689(core.List<api.TransferConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTransferConfig(o[0]);
   checkTransferConfig(o[1]);
@@ -338,7 +338,7 @@ buildListTransferConfigsResponse() {
   buildCounterListTransferConfigsResponse++;
   if (buildCounterListTransferConfigsResponse < 3) {
     o.nextPageToken = "foo";
-    o.transferConfigs = buildUnnamed685();
+    o.transferConfigs = buildUnnamed689();
   }
   buildCounterListTransferConfigsResponse--;
   return o;
@@ -348,19 +348,19 @@ checkListTransferConfigsResponse(api.ListTransferConfigsResponse o) {
   buildCounterListTransferConfigsResponse++;
   if (buildCounterListTransferConfigsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed685(o.transferConfigs);
+    checkUnnamed689(o.transferConfigs);
   }
   buildCounterListTransferConfigsResponse--;
 }
 
-buildUnnamed686() {
+buildUnnamed690() {
   var o = new core.List<api.TransferMessage>();
   o.add(buildTransferMessage());
   o.add(buildTransferMessage());
   return o;
 }
 
-checkUnnamed686(core.List<api.TransferMessage> o) {
+checkUnnamed690(core.List<api.TransferMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTransferMessage(o[0]);
   checkTransferMessage(o[1]);
@@ -372,7 +372,7 @@ buildListTransferLogsResponse() {
   buildCounterListTransferLogsResponse++;
   if (buildCounterListTransferLogsResponse < 3) {
     o.nextPageToken = "foo";
-    o.transferMessages = buildUnnamed686();
+    o.transferMessages = buildUnnamed690();
   }
   buildCounterListTransferLogsResponse--;
   return o;
@@ -382,19 +382,19 @@ checkListTransferLogsResponse(api.ListTransferLogsResponse o) {
   buildCounterListTransferLogsResponse++;
   if (buildCounterListTransferLogsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed686(o.transferMessages);
+    checkUnnamed690(o.transferMessages);
   }
   buildCounterListTransferLogsResponse--;
 }
 
-buildUnnamed687() {
+buildUnnamed691() {
   var o = new core.List<api.TransferRun>();
   o.add(buildTransferRun());
   o.add(buildTransferRun());
   return o;
 }
 
-checkUnnamed687(core.List<api.TransferRun> o) {
+checkUnnamed691(core.List<api.TransferRun> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTransferRun(o[0]);
   checkTransferRun(o[1]);
@@ -406,7 +406,7 @@ buildListTransferRunsResponse() {
   buildCounterListTransferRunsResponse++;
   if (buildCounterListTransferRunsResponse < 3) {
     o.nextPageToken = "foo";
-    o.transferRuns = buildUnnamed687();
+    o.transferRuns = buildUnnamed691();
   }
   buildCounterListTransferRunsResponse--;
   return o;
@@ -416,25 +416,25 @@ checkListTransferRunsResponse(api.ListTransferRunsResponse o) {
   buildCounterListTransferRunsResponse++;
   if (buildCounterListTransferRunsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed687(o.transferRuns);
+    checkUnnamed691(o.transferRuns);
   }
   buildCounterListTransferRunsResponse--;
 }
 
-buildUnnamed688() {
+buildUnnamed692() {
   var o = new core.Map<core.String, core.String>();
   o["x"] = "foo";
   o["y"] = "foo";
   return o;
 }
 
-checkUnnamed688(core.Map<core.String, core.String> o) {
+checkUnnamed692(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o["x"], unittest.equals('foo'));
   unittest.expect(o["y"], unittest.equals('foo'));
 }
 
-buildUnnamed689() {
+buildUnnamed693() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -449,7 +449,7 @@ buildUnnamed689() {
   return o;
 }
 
-checkUnnamed689(core.Map<core.String, core.Object> o) {
+checkUnnamed693(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o["x"]) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -468,9 +468,9 @@ buildLocation() {
   var o = new api.Location();
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
-    o.labels = buildUnnamed688();
+    o.labels = buildUnnamed692();
     o.locationId = "foo";
-    o.metadata = buildUnnamed689();
+    o.metadata = buildUnnamed693();
     o.name = "foo";
   }
   buildCounterLocation--;
@@ -480,9 +480,9 @@ buildLocation() {
 checkLocation(api.Location o) {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
-    checkUnnamed688(o.labels);
+    checkUnnamed692(o.labels);
     unittest.expect(o.locationId, unittest.equals('foo'));
-    checkUnnamed689(o.metadata);
+    checkUnnamed693(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterLocation--;
@@ -509,14 +509,14 @@ checkScheduleTransferRunsRequest(api.ScheduleTransferRunsRequest o) {
   buildCounterScheduleTransferRunsRequest--;
 }
 
-buildUnnamed690() {
+buildUnnamed694() {
   var o = new core.List<api.TransferRun>();
   o.add(buildTransferRun());
   o.add(buildTransferRun());
   return o;
 }
 
-checkUnnamed690(core.List<api.TransferRun> o) {
+checkUnnamed694(core.List<api.TransferRun> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTransferRun(o[0]);
   checkTransferRun(o[1]);
@@ -527,7 +527,7 @@ buildScheduleTransferRunsResponse() {
   var o = new api.ScheduleTransferRunsResponse();
   buildCounterScheduleTransferRunsResponse++;
   if (buildCounterScheduleTransferRunsResponse < 3) {
-    o.runs = buildUnnamed690();
+    o.runs = buildUnnamed694();
   }
   buildCounterScheduleTransferRunsResponse--;
   return o;
@@ -536,12 +536,12 @@ buildScheduleTransferRunsResponse() {
 checkScheduleTransferRunsResponse(api.ScheduleTransferRunsResponse o) {
   buildCounterScheduleTransferRunsResponse++;
   if (buildCounterScheduleTransferRunsResponse < 3) {
-    checkUnnamed690(o.runs);
+    checkUnnamed694(o.runs);
   }
   buildCounterScheduleTransferRunsResponse--;
 }
 
-buildUnnamed691() {
+buildUnnamed695() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -556,7 +556,7 @@ buildUnnamed691() {
   return o;
 }
 
-checkUnnamed691(core.Map<core.String, core.Object> o) {
+checkUnnamed695(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o["x"]) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -568,6 +568,71 @@ checkUnnamed691(core.Map<core.String, core.Object> o) {
   unittest.expect(casted4["list"], unittest.equals([1, 2, 3]));
   unittest.expect(casted4["bool"], unittest.equals(true));
   unittest.expect(casted4["string"], unittest.equals('foo'));
+}
+
+buildUnnamed696() {
+  var o = new core.List<core.Map<core.String, core.Object>>();
+  o.add(buildUnnamed695());
+  o.add(buildUnnamed695());
+  return o;
+}
+
+checkUnnamed696(core.List<core.Map<core.String, core.Object>> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkUnnamed695(o[0]);
+  checkUnnamed695(o[1]);
+}
+
+core.int buildCounterStatus = 0;
+buildStatus() {
+  var o = new api.Status();
+  buildCounterStatus++;
+  if (buildCounterStatus < 3) {
+    o.code = 42;
+    o.details = buildUnnamed696();
+    o.message = "foo";
+  }
+  buildCounterStatus--;
+  return o;
+}
+
+checkStatus(api.Status o) {
+  buildCounterStatus++;
+  if (buildCounterStatus < 3) {
+    unittest.expect(o.code, unittest.equals(42));
+    checkUnnamed696(o.details);
+    unittest.expect(o.message, unittest.equals('foo'));
+  }
+  buildCounterStatus--;
+}
+
+buildUnnamed697() {
+  var o = new core.Map<core.String, core.Object>();
+  o["x"] = {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  };
+  o["y"] = {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo'
+  };
+  return o;
+}
+
+checkUnnamed697(core.Map<core.String, core.Object> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted5 = (o["x"]) as core.Map;
+  unittest.expect(casted5, unittest.hasLength(3));
+  unittest.expect(casted5["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted5["bool"], unittest.equals(true));
+  unittest.expect(casted5["string"], unittest.equals('foo'));
+  var casted6 = (o["y"]) as core.Map;
+  unittest.expect(casted6, unittest.hasLength(3));
+  unittest.expect(casted6["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted6["bool"], unittest.equals(true));
+  unittest.expect(casted6["string"], unittest.equals('foo'));
 }
 
 core.int buildCounterTransferConfig = 0;
@@ -583,7 +648,7 @@ buildTransferConfig() {
     o.displayName = "foo";
     o.name = "foo";
     o.nextRunTime = "foo";
-    o.params = buildUnnamed691();
+    o.params = buildUnnamed697();
     o.schedule = "foo";
     o.state = "foo";
     o.updateTime = "foo";
@@ -604,7 +669,7 @@ checkTransferConfig(api.TransferConfig o) {
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.nextRunTime, unittest.equals('foo'));
-    checkUnnamed691(o.params);
+    checkUnnamed697(o.params);
     unittest.expect(o.schedule, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
     unittest.expect(o.updateTime, unittest.equals('foo'));
@@ -636,7 +701,7 @@ checkTransferMessage(api.TransferMessage o) {
   buildCounterTransferMessage--;
 }
 
-buildUnnamed692() {
+buildUnnamed698() {
   var o = new core.Map<core.String, core.Object>();
   o["x"] = {
     'list': [1, 2, 3],
@@ -651,18 +716,18 @@ buildUnnamed692() {
   return o;
 }
 
-checkUnnamed692(core.Map<core.String, core.Object> o) {
+checkUnnamed698(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  var casted5 = (o["x"]) as core.Map;
-  unittest.expect(casted5, unittest.hasLength(3));
-  unittest.expect(casted5["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted5["bool"], unittest.equals(true));
-  unittest.expect(casted5["string"], unittest.equals('foo'));
-  var casted6 = (o["y"]) as core.Map;
-  unittest.expect(casted6, unittest.hasLength(3));
-  unittest.expect(casted6["list"], unittest.equals([1, 2, 3]));
-  unittest.expect(casted6["bool"], unittest.equals(true));
-  unittest.expect(casted6["string"], unittest.equals('foo'));
+  var casted7 = (o["x"]) as core.Map;
+  unittest.expect(casted7, unittest.hasLength(3));
+  unittest.expect(casted7["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted7["bool"], unittest.equals(true));
+  unittest.expect(casted7["string"], unittest.equals('foo'));
+  var casted8 = (o["y"]) as core.Map;
+  unittest.expect(casted8, unittest.hasLength(3));
+  unittest.expect(casted8["list"], unittest.equals([1, 2, 3]));
+  unittest.expect(casted8["bool"], unittest.equals(true));
+  unittest.expect(casted8["string"], unittest.equals('foo'));
 }
 
 core.int buildCounterTransferRun = 0;
@@ -671,11 +736,11 @@ buildTransferRun() {
   buildCounterTransferRun++;
   if (buildCounterTransferRun < 3) {
     o.dataSourceId = "foo";
-    o.datasetRegion = "foo";
     o.destinationDatasetId = "foo";
     o.endTime = "foo";
+    o.errorStatus = buildStatus();
     o.name = "foo";
-    o.params = buildUnnamed692();
+    o.params = buildUnnamed698();
     o.runTime = "foo";
     o.schedule = "foo";
     o.scheduleTime = "foo";
@@ -692,11 +757,11 @@ checkTransferRun(api.TransferRun o) {
   buildCounterTransferRun++;
   if (buildCounterTransferRun < 3) {
     unittest.expect(o.dataSourceId, unittest.equals('foo'));
-    unittest.expect(o.datasetRegion, unittest.equals('foo'));
     unittest.expect(o.destinationDatasetId, unittest.equals('foo'));
     unittest.expect(o.endTime, unittest.equals('foo'));
+    checkStatus(o.errorStatus);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed692(o.params);
+    checkUnnamed698(o.params);
     unittest.expect(o.runTime, unittest.equals('foo'));
     unittest.expect(o.schedule, unittest.equals('foo'));
     unittest.expect(o.scheduleTime, unittest.equals('foo'));
@@ -708,79 +773,79 @@ checkTransferRun(api.TransferRun o) {
   buildCounterTransferRun--;
 }
 
-buildUnnamed693() {
+buildUnnamed699() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed693(core.List<core.String> o) {
+checkUnnamed699(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed694() {
+buildUnnamed700() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed694(core.List<core.String> o) {
+checkUnnamed700(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed695() {
+buildUnnamed701() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed695(core.List<core.String> o) {
+checkUnnamed701(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed696() {
+buildUnnamed702() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed696(core.List<core.String> o) {
+checkUnnamed702(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed697() {
+buildUnnamed703() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed697(core.List<core.String> o) {
+checkUnnamed703(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-buildUnnamed698() {
+buildUnnamed704() {
   var o = new core.List<core.String>();
   o.add("foo");
   o.add("foo");
   return o;
 }
 
-checkUnnamed698(core.List<core.String> o) {
+checkUnnamed704(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -888,6 +953,14 @@ main() {
       var o = buildScheduleTransferRunsResponse();
       var od = new api.ScheduleTransferRunsResponse.fromJson(o.toJson());
       checkScheduleTransferRunsResponse(od);
+    });
+  });
+
+  unittest.group("obj-schema-Status", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildStatus();
+      var od = new api.Status.fromJson(o.toJson());
+      checkStatus(od);
     });
   });
 
@@ -1029,8 +1102,8 @@ main() {
       api.ProjectsDataSourcesResourceApi res =
           new api.BigquerydatatransferApi(mock).projects.dataSources;
       var arg_parent = "foo";
-      var arg_pageSize = 42;
       var arg_pageToken = "foo";
+      var arg_pageSize = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1063,10 +1136,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1077,8 +1150,8 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              pageSize: arg_pageSize,
               pageToken: arg_pageToken,
+              pageSize: arg_pageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ListDataSourcesResponse response) {
         checkListDataSourcesResponse(response);
@@ -1559,7 +1632,7 @@ main() {
       var arg_parent = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
-      var arg_dataSourceIds = buildUnnamed693();
+      var arg_dataSourceIds = buildUnnamed699();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1868,10 +1941,10 @@ main() {
               .transferConfigs
               .runs;
       var arg_parent = "foo";
-      var arg_pageSize = 42;
-      var arg_states = buildUnnamed694();
       var arg_runAttempt = "foo";
       var arg_pageToken = "foo";
+      var arg_states = buildUnnamed700();
+      var arg_pageSize = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -1904,13 +1977,13 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(core.int.parse(queryMap["pageSize"].first),
-            unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["states"], unittest.equals(arg_states));
         unittest.expect(
             queryMap["runAttempt"].first, unittest.equals(arg_runAttempt));
         unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["states"], unittest.equals(arg_states));
+        unittest.expect(core.int.parse(queryMap["pageSize"].first),
+            unittest.equals(arg_pageSize));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -1921,10 +1994,10 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              pageSize: arg_pageSize,
-              states: arg_states,
               runAttempt: arg_runAttempt,
               pageToken: arg_pageToken,
+              states: arg_states,
+              pageSize: arg_pageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ListTransferRunsResponse response) {
         checkListTransferRunsResponse(response);
@@ -1947,7 +2020,7 @@ main() {
       var arg_parent = "foo";
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
-      var arg_messageTypes = buildUnnamed695();
+      var arg_messageTypes = buildUnnamed701();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2176,9 +2249,9 @@ main() {
       api.ProjectsTransferConfigsResourceApi res =
           new api.BigquerydatatransferApi(mock).projects.transferConfigs;
       var arg_parent = "foo";
-      var arg_pageSize = 42;
-      var arg_dataSourceIds = buildUnnamed696();
       var arg_pageToken = "foo";
+      var arg_pageSize = 42;
+      var arg_dataSourceIds = buildUnnamed702();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2211,12 +2284,12 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
+        unittest.expect(
+            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(
             queryMap["dataSourceIds"], unittest.equals(arg_dataSourceIds));
-        unittest.expect(
-            queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2227,9 +2300,9 @@ main() {
       }), true);
       res
           .list(arg_parent,
+              pageToken: arg_pageToken,
               pageSize: arg_pageSize,
               dataSourceIds: arg_dataSourceIds,
-              pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest
               .expectAsync1(((api.ListTransferConfigsResponse response) {
@@ -2243,8 +2316,8 @@ main() {
           new api.BigquerydatatransferApi(mock).projects.transferConfigs;
       var arg_request = buildTransferConfig();
       var arg_name = "foo";
-      var arg_updateMask = "foo";
       var arg_authorizationCode = "foo";
+      var arg_updateMask = "foo";
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = new api.TransferConfig.fromJson(json);
@@ -2280,10 +2353,10 @@ main() {
                 core.Uri.decodeQueryComponent(keyvalue[1]));
           }
         }
-        unittest.expect(
-            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
         unittest.expect(queryMap["authorizationCode"].first,
             unittest.equals(arg_authorizationCode));
+        unittest.expect(
+            queryMap["updateMask"].first, unittest.equals(arg_updateMask));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2294,8 +2367,8 @@ main() {
       }), true);
       res
           .patch(arg_request, arg_name,
-              updateMask: arg_updateMask,
               authorizationCode: arg_authorizationCode,
+              updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.TransferConfig response) {
         checkTransferConfig(response);
@@ -2468,10 +2541,10 @@ main() {
       api.ProjectsTransferConfigsRunsResourceApi res =
           new api.BigquerydatatransferApi(mock).projects.transferConfigs.runs;
       var arg_parent = "foo";
-      var arg_pageToken = "foo";
-      var arg_pageSize = 42;
-      var arg_states = buildUnnamed697();
       var arg_runAttempt = "foo";
+      var arg_pageToken = "foo";
+      var arg_states = buildUnnamed703();
+      var arg_pageSize = 42;
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2505,12 +2578,12 @@ main() {
           }
         }
         unittest.expect(
+            queryMap["runAttempt"].first, unittest.equals(arg_runAttempt));
+        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(queryMap["states"], unittest.equals(arg_states));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(queryMap["states"], unittest.equals(arg_states));
-        unittest.expect(
-            queryMap["runAttempt"].first, unittest.equals(arg_runAttempt));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2521,10 +2594,10 @@ main() {
       }), true);
       res
           .list(arg_parent,
-              pageToken: arg_pageToken,
-              pageSize: arg_pageSize,
-              states: arg_states,
               runAttempt: arg_runAttempt,
+              pageToken: arg_pageToken,
+              states: arg_states,
+              pageSize: arg_pageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ListTransferRunsResponse response) {
         checkListTransferRunsResponse(response);
@@ -2543,9 +2616,9 @@ main() {
               .runs
               .transferLogs;
       var arg_parent = "foo";
+      var arg_messageTypes = buildUnnamed704();
       var arg_pageToken = "foo";
       var arg_pageSize = 42;
-      var arg_messageTypes = buildUnnamed698();
       var arg_$fields = "foo";
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2579,11 +2652,11 @@ main() {
           }
         }
         unittest.expect(
+            queryMap["messageTypes"], unittest.equals(arg_messageTypes));
+        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
-        unittest.expect(
-            queryMap["messageTypes"], unittest.equals(arg_messageTypes));
         unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
 
         var h = {
@@ -2594,9 +2667,9 @@ main() {
       }), true);
       res
           .list(arg_parent,
+              messageTypes: arg_messageTypes,
               pageToken: arg_pageToken,
               pageSize: arg_pageSize,
-              messageTypes: arg_messageTypes,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((api.ListTransferLogsResponse response) {
         checkListTransferLogsResponse(response);

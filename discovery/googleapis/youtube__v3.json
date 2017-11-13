@@ -30,7 +30,7 @@
     "description": "Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/v3",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/BJDboFk3u5Gn0XCcgzl-Emxo56M\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/4-8iVRS7XjXc8_q8wbRC_IRggBY\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/youtube-16.png",
         "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -3541,7 +3541,7 @@
             }
         }
     },
-    "revision": "20171003",
+    "revision": "20171101",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessPolicy": {
@@ -6516,9 +6516,11 @@
                         "oflcR18",
                         "oflcRp13",
                         "oflcRp16",
+                        "oflcRp18",
                         "oflcUnrated"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",
@@ -8318,6 +8320,7 @@
                         "videoBitrateMismatch",
                         "videoCodec",
                         "videoCodecMismatch",
+                        "videoIngestionFasterThanRealtime",
                         "videoIngestionStarved",
                         "videoInterlaceMismatch",
                         "videoProfileMismatch",
@@ -8325,6 +8328,7 @@
                         "videoResolutionUnsupported"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",

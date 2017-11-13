@@ -14,10 +14,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client cloudtrace/v2';
 
-/// Send and retrieve trace data from Stackdriver Trace. Data is generated and
-/// available by default for all App Engine applications. Data from other
-/// applications can be written to Stackdriver Trace for display, reporting, and
-/// analysis.
+/// Sends application trace data to Stackdriver Trace for viewing. Trace data is
+/// collected for all App Engine applications by default. Trace data from other
+/// applications can be provided using this API.
 class CloudtraceApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -55,19 +54,16 @@ class ProjectsTracesResourceApi {
 
   ProjectsTracesResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Sends new spans to Stackdriver Trace or updates existing traces. If the
-  /// name of a trace that you send matches that of an existing trace, new spans
-  /// are added to the existing trace. Attempt to update existing spans results
-  /// undefined behavior. If the name does not match, a new trace is created
-  /// with given set of spans.
+  /// Sends new spans to new or existing traces. You cannot update
+  /// existing spans.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Name of the project where the spans belong. The format
-  /// is
-  /// `projects/PROJECT_ID`.
+  /// [name] - Required. The name of the project where the spans belong. The
+  /// format is
+  /// `projects/[PROJECT_ID]`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -120,7 +116,7 @@ class ProjectsTracesSpansResourceApi {
   ProjectsTracesSpansResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Creates a new Span.
+  /// Creates a new span.
   ///
   /// [request] - The metadata request object.
   ///
@@ -129,10 +125,12 @@ class ProjectsTracesSpansResourceApi {
   /// [name] - The resource name of the span in the following format:
   ///
   /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique
-  /// identifier for a trace within a project.
-  /// [SPAN_ID] is a unique identifier for a span within a trace,
-  /// assigned when the span is created.
-  /// Value must have pattern "^projects/[^/]+/traces/[^/]+/spans/[^/]+$".
+  /// identifier for a trace within a project;
+  /// it is a 32-character hexadecimal encoding of a 16-byte array.
+  ///
+  /// [SPAN_ID] is a unique identifier for a span within a trace; it
+  /// is a 16-character hexadecimal encoding of an 8-byte array.
+  /// Value must have pattern "^projects/[^/]+/traces/[^/]+$".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -163,9 +161,9 @@ class ProjectsTracesSpansResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + '/spans';
 
-    var _response = _requester.request(_url, "PUT",
+    var _response = _requester.request(_url, "POST",
         body: _body,
         queryParams: _queryParams,
         uploadOptions: _uploadOptions,
@@ -177,7 +175,7 @@ class ProjectsTracesSpansResourceApi {
 
 /// Text annotation with a set of attributes.
 class Annotation {
-  /// A set of attributes on the annotation. There is a limit of 4 attributes
+  /// A set of attributes on the annotation. You can have up to 4 attributes
   /// per Annotation.
   Attributes attributes;
 
@@ -299,7 +297,8 @@ class Attributes {
 
 /// The request message for the `BatchWriteSpans` method.
 class BatchWriteSpansRequest {
-  /// A collection of spans.
+  /// A list of new spans. The span names must not match existing
+  /// spans, or the results are undefined.
   core.List<Span> spans;
 
   BatchWriteSpansRequest();
@@ -346,14 +345,14 @@ class Empty {
 /// where a single batch handler processes multiple requests from different
 /// traces or when the handler receives a request from a different project.
 class Link {
-  /// A set of attributes on the link. There is a limit of 32 attributes per
+  /// A set of attributes on the link. You have have up to  32 attributes per
   /// link.
   Attributes attributes;
 
-  /// `SPAN_ID` identifies a span within a trace.
+  /// The [SPAN_ID] for a span within a trace.
   core.String spanId;
 
-  /// `TRACE_ID` identifies a trace within a project.
+  /// The [TRACE_ID] for a trace within a project.
   core.String traceId;
 
   /// The relationship of the current span relative to the linked span.
@@ -532,7 +531,7 @@ class Module {
 /// or none at all. Spans do not need to be contiguous&mdash;there may be
 /// gaps or overlaps between spans in a trace.
 class Span {
-  /// A set of attributes on the span. There is a limit of 32 attributes per
+  /// A set of attributes on the span. You can have up to 32 attributes per
   /// span.
   Attributes attributes;
 
@@ -555,24 +554,27 @@ class Span {
   /// is the time when the server application handler stops running.
   core.String endTime;
 
-  /// A maximum of 128 links are allowed per Span.
+  /// Links associated with the span. You can have up to 128 links per Span.
   Links links;
 
   /// The resource name of the span in the following format:
   ///
   /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique
-  /// identifier for a trace within a project.
-  /// [SPAN_ID] is a unique identifier for a span within a trace,
-  /// assigned when the span is created.
+  /// identifier for a trace within a project;
+  /// it is a 32-character hexadecimal encoding of a 16-byte array.
+  ///
+  /// [SPAN_ID] is a unique identifier for a span within a trace; it
+  /// is a 16-character hexadecimal encoding of an 8-byte array.
   core.String name;
 
   /// The [SPAN_ID] of this span's parent span. If this is a root span,
   /// then this field must be empty.
   core.String parentSpanId;
 
-  /// A highly recommended but not required flag that identifies when a trace
-  /// crosses a process boundary. True when the parent_span belongs to the
-  /// same process as the current span.
+  /// (Optional) Set this parameter to indicate whether this span is in
+  /// the same process as its parent. If you do not set this parameter,
+  /// Stackdriver Trace is unable to take advantage of this helpful
+  /// information.
   core.bool sameProcessAsParentSpan;
 
   /// The [SPAN_ID] portion of the span's resource name.
@@ -590,8 +592,7 @@ class Span {
   /// An optional final status for this span.
   Status status;
 
-  /// The included time events. There can be up to 32 annotations and 128
-  /// message
+  /// A set of time events. You can have up to 32 annotations and 128 message
   /// events per span.
   TimeEvents timeEvents;
 
@@ -1040,12 +1041,13 @@ class TruncatableString {
   /// value is 0, then the string was not shortened.
   core.int truncatedByteCount;
 
-  /// The shortened string. For example, if the original string was 500
-  /// bytes long and the limit of the string was 128 bytes, then this
-  /// value contains the first 128 bytes of the 500-byte string. Note that
-  /// truncation always happens on the character boundary, to ensure that
-  /// truncated string is still valid UTF8. In case of multi-byte characters,
-  /// size of truncated string can be less than truncation limit.
+  /// The shortened string. For example, if the original string is 500
+  /// bytes long and the limit of the string is 128 bytes, then
+  /// `value` contains the first 128 bytes of the 500-byte string.
+  ///
+  /// Truncation always happens on a UTF8 character boundary. If there
+  /// are multi-byte characters in the string, then the length of the
+  /// shortened string might be less than the size limit.
   core.String value;
 
   TruncatableString();

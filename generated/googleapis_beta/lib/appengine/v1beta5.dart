@@ -277,11 +277,11 @@ class AppsLocationsResourceApi {
   /// [appsId] - Part of `name`. The resource that owns the locations
   /// collection, if applicable.
   ///
-  /// [pageSize] - The standard list page size.
-  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -294,9 +294,9 @@ class AppsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String appsId,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -308,14 +308,14 @@ class AppsLocationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -407,11 +407,11 @@ class AppsOperationsResourceApi {
   ///
   /// [appsId] - Part of `name`. The name of the operation's parent resource.
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -424,9 +424,9 @@ class AppsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String appsId,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -438,14 +438,14 @@ class AppsOperationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -584,9 +584,9 @@ class AppsServicesResourceApi {
   /// [appsId] - Part of `name`. Name of the resource requested. Example:
   /// apps/myapp.
   ///
-  /// [pageSize] - Maximum results to return per page.
-  ///
   /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [pageSize] - Maximum results to return per page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -599,7 +599,7 @@ class AppsServicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListServicesResponse> list(core.String appsId,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -610,11 +610,11 @@ class AppsServicesResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -920,14 +920,14 @@ class AppsServicesVersionsResourceApi {
   ///
   /// [servicesId] - Part of `name`. See documentation of `appsId`.
   ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
   /// [pageSize] - Maximum results to return per page.
   ///
   /// [view] - Controls the set of fields returned in the List response.
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
-  ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -941,9 +941,9 @@ class AppsServicesVersionsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListVersionsResponse> list(
       core.String appsId, core.String servicesId,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String view,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -958,14 +958,14 @@ class AppsServicesVersionsResourceApi {
     if (servicesId == null) {
       throw new core.ArgumentError("Parameter servicesId is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (view != null) {
       _queryParams["view"] = [view];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1309,9 +1309,9 @@ class AppsServicesVersionsInstancesResourceApi {
   ///
   /// [versionsId] - Part of `name`. See documentation of `appsId`.
   ///
-  /// [pageSize] - Maximum results to return per page.
-  ///
   /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [pageSize] - Maximum results to return per page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1325,7 +1325,7 @@ class AppsServicesVersionsInstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(
       core.String appsId, core.String servicesId, core.String versionsId,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1342,11 +1342,11 @@ class AppsServicesVersionsInstancesResourceApi {
     if (versionsId == null) {
       throw new core.ArgumentError("Parameter versionsId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1974,7 +1974,10 @@ class DiskUtilization {
 /// (https://cloud.google.com/service-management/overview).
 class EndpointsApiService {
   /// Endpoints service configuration id as specified by the Service Management
-  /// API. For example "2016-09-19r1"
+  /// API. For example "2016-09-19r1"By default, the Endpoints service
+  /// configuration id is fixed and config_id must be specified. To keep the
+  /// Endpoints service configuration id updated with each rollout, specify
+  /// RolloutStrategy.MANAGED and omit config_id.
   core.String configId;
 
   /// Endpoints service name which is the name of the "service" resource in the
@@ -2979,67 +2982,6 @@ class OperationMetadata {
     }
     if (operationType != null) {
       _json["operationType"] = operationType;
-    }
-    if (target != null) {
-      _json["target"] = target;
-    }
-    if (user != null) {
-      _json["user"] = user;
-    }
-    return _json;
-  }
-}
-
-/// Metadata for the given google.longrunning.Operation.
-class OperationMetadataExperimental {
-  /// Time that this operation completed.@OutputOnly
-  core.String endTime;
-
-  /// Time that this operation was created.@OutputOnly
-  core.String insertTime;
-
-  /// API method that initiated this operation. Example:
-  /// google.appengine.experimental.CustomDomains.CreateCustomDomain.@OutputOnly
-  core.String method;
-
-  /// Name of the resource that this operation is acting on. Example:
-  /// apps/myapp/customDomains/example.com.@OutputOnly
-  core.String target;
-
-  /// User who requested this operation.@OutputOnly
-  core.String user;
-
-  OperationMetadataExperimental();
-
-  OperationMetadataExperimental.fromJson(core.Map _json) {
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
-    }
-    if (_json.containsKey("insertTime")) {
-      insertTime = _json["insertTime"];
-    }
-    if (_json.containsKey("method")) {
-      method = _json["method"];
-    }
-    if (_json.containsKey("target")) {
-      target = _json["target"];
-    }
-    if (_json.containsKey("user")) {
-      user = _json["user"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (endTime != null) {
-      _json["endTime"] = endTime;
-    }
-    if (insertTime != null) {
-      _json["insertTime"] = insertTime;
-    }
-    if (method != null) {
-      _json["method"] = method;
     }
     if (target != null) {
       _json["target"] = target;

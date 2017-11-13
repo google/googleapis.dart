@@ -72,7 +72,7 @@ class ScriptsResourceApi {
   ScriptsResourceApi(commons.ApiRequester client) : _requester = client;
 
   /// Runs a function in an Apps Script project. The project must be deployed
-  /// for use with the Apps Script Execution API.
+  /// for use with the Apps Script API.
   ///
   /// This method requires authorization with an OAuth 2.0 token that includes
   /// at
@@ -131,12 +131,15 @@ class ScriptsResourceApi {
   }
 }
 
-/// An object that provides information about the nature of an error in the Apps
-/// Script Execution API. If an
-/// `run` call succeeds but the
-/// script function (or Apps Script itself) throws an exception, the response
-/// body's `error` field contains a
-/// `Status` object. The `Status` object's `details` field
+/// An object that provides information about the nature of an error resulting
+/// from an attempted execution of a script function using the Apps Script API.
+/// If a run or
+/// runAsync call
+/// succeeds but the script function (or Apps Script itself) throws an
+/// exception,
+/// the response body's error field
+/// contains a
+/// Status object. The `Status` object's `details` field
 /// contains an array with a single one of these `ExecutionError` objects.
 class ExecutionError {
   /// The error message thrown by Apps Script, usually localized into the user's
@@ -190,7 +193,7 @@ class ExecutionError {
 class ExecutionRequest {
   /// If `true` and the user is an owner of the script, the script runs at the
   /// most recently saved version rather than the version deployed for use with
-  /// the Execution API. Optional; default is `false`.
+  /// the Apps Script API. Optional; default is `false`.
   core.bool devMode;
 
   /// The name of the function to execute in the given script. The name does not
@@ -211,13 +214,13 @@ class ExecutionRequest {
   /// For Android add-ons only. An ID that represents the user's current session
   /// in the Android app for Google Docs or Sheets, included as extra data in
   /// the
-  /// [`Intent`](https://developer.android.com/guide/components/intents-filters.html)
+  /// [Intent](https://developer.android.com/guide/components/intents-filters.html)
   /// that launches the add-on. When an Android add-on is run with a session
   /// state, it gains the privileges of a
-  /// [bound](https://developers.google.com/apps-script/guides/bound) script
-  /// &mdash;
-  /// that is, it can access information like the user's current cursor position
-  /// (in Docs) or selected cell (in Sheets). To retrieve the state, call
+  /// [bound](https://developers.google.com/apps-script/guides/bound)
+  /// script&mdash;that is, it can access information like the user's current
+  /// cursor position (in Docs) or selected cell (in Sheets). To retrieve the
+  /// state, call
   /// `Intent.getStringExtra("com.google.android.apps.docs.addons.SessionState")`.
   /// Optional.
   core.String sessionState;
@@ -258,15 +261,13 @@ class ExecutionRequest {
   }
 }
 
-/// An object that provides the return value of a function executed through the
-/// Apps Script Execution API. If a
-/// `run` call succeeds and the
-/// script function returns successfully, the response body's
-/// `response` field contains this
+/// An object that provides the return value of a function executed using the
+/// Apps Script API. If the script function returns successfully, the response
+/// body's response field contains this
 /// `ExecutionResponse` object.
 class ExecutionResponse {
   /// The return value of the script function. The type matches the object type
-  /// returned in Apps Script. Functions called through the Execution API cannot
+  /// returned in Apps Script. Functions called using the Apps Script API cannot
   /// return Apps Script-specific objects (such as a `Document` or a
   /// `Calendar`);
   /// they can only return primitive types such as a `string`, `number`,
@@ -295,44 +296,47 @@ class ExecutionResponse {
   }
 }
 
-/// The response will not arrive until the function finishes executing. The
-/// maximum runtime is listed in the guide to [limitations in Apps
-/// Script](https://developers.google.com/apps-script/guides/services/quotas#current_limitations).
-/// <p>If the script function returns successfully, the `response` field will
-/// contain an `ExecutionResponse` object with the function's return value in
-/// the object's `result` field.</p>
-/// <p>If the script function (or Apps Script itself) throws an exception, the
-/// `error` field will contain a `Status` object. The `Status` object's
-/// `details` field will contain an array with a single `ExecutionError` object
-/// that provides information about the nature of the error.</p>
-/// <p>If the `run` call itself fails (for example, because of a malformed
-/// request or an authorization error), the method will return an HTTP response
-/// code in the 4XX range with a different format for the response body. Client
-/// libraries will automatically convert a 4XX response into an exception
-/// class.</p>
+/// A representation of a execution of an Apps Script function that is started
+/// using run or runAsync. The execution response does not arrive until the
+/// function finishes executing. The maximum execution runtime is listed in the
+/// [Apps Script quotas
+/// guide](/apps-script/guides/services/quotas#current_limitations). <p>After
+/// the execution is started, it can have one of four outcomes:</p> <ul> <li> If
+/// the script function returns successfully, the
+///   response field contains an
+///   ExecutionResponse object
+///   with the function's return value in the object's `result` field.</li>
+/// <li> If the script function (or Apps Script itself) throws an exception, the
+///   error field contains a
+///   Status object. The `Status` object's `details`
+///   field contains an array with a single
+///   ExecutionError object that
+///   provides information about the nature of the error.</li>
+/// <li> If the execution was asynchronous and has not yet completed,
+///   the done field is `false` and
+///   the neither the `response` nor `error` fields are present.</li>
+/// <li> If the `run` or `runAsync` call itself fails (for example, because of a
+///   malformed request or an authorization error), the method returns an HTTP
+///   response code in the 4XX range with a different format for the response
+///   body. Client libraries automatically convert a 4XX response into an
+///   exception class.</li>
+/// </ul>
 class Operation {
-  /// This field is only used with asynchronous executions and indicates whether
-  /// or not the script execution has completed. A completed execution has a
-  /// populated response field containing the `ExecutionResponse` from function
-  /// that was executed.
+  /// This field is only used with asynchronous executions. It indicates whether
+  /// the script execution has completed. A completed execution has a populated
+  /// `response` field containing the ExecutionResponse from function that was
+  /// executed.
   core.bool done;
 
-  /// If a `run` call succeeds but the script function (or Apps Script itself)
-  /// throws an exception, this field will contain a `Status` object. The
-  /// `Status` object's `details` field will contain an array with a single
-  /// `ExecutionError` object that provides information about the nature of the
+  /// If a `run` or `runAsync` call succeeds but the script function (or Apps
+  /// Script itself) throws an exception, this field contains a Status object.
+  /// The `Status` object's `details` field contains an array with a single
+  /// ExecutionError object that provides information about the nature of the
   /// error.
   Status error;
 
-  /// This field is not used.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object> metadata;
-
-  /// If the script function returns successfully, this field will contain an
-  /// `ExecutionResponse` object with the function's return value as the
-  /// object's `result` field.
+  /// If the script function returns successfully, this field contains an
+  /// ExecutionResponse object with the function's return value.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -347,9 +351,6 @@ class Operation {
     if (_json.containsKey("error")) {
       error = new Status.fromJson(_json["error"]);
     }
-    if (_json.containsKey("metadata")) {
-      metadata = _json["metadata"];
-    }
     if (_json.containsKey("response")) {
       response = _json["response"];
     }
@@ -363,9 +364,6 @@ class Operation {
     }
     if (error != null) {
       _json["error"] = (error).toJson();
-    }
-    if (metadata != null) {
-      _json["metadata"] = metadata;
     }
     if (response != null) {
       _json["response"] = response;
@@ -406,15 +404,16 @@ class ScriptStackTraceElement {
   }
 }
 
-/// If a `run` call succeeds but the script function (or Apps Script itself)
-/// throws an exception, the response body's `error` field will contain this
-/// `Status` object.
+/// If a `run` or `runAsync` call succeeds but the script function (or Apps
+/// Script itself) throws an exception, the response body's error field contains
+/// this `Status` object.
 class Status {
-  /// The status code. For this API, this value will always be 3, corresponding
-  /// to an <code>INVALID_ARGUMENT</code> error.
+  /// The status code. For this API, this value either: <ul> <li> 3, indicating
+  /// an `INVALID_ARGUMENT` error, or</li> <li> 1, indicating a `CANCELLED`
+  /// asynchronous execution.</li> </ul>
   core.int code;
 
-  /// An array that contains a single `ExecutionError` object that provides
+  /// An array that contains a single ExecutionError object that provides
   /// information about the nature of the error.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -423,8 +422,8 @@ class Status {
 
   /// A developer-facing error message, which is in English. Any user-facing
   /// error message is localized and sent in the
-  /// [`google.rpc.Status.details`](google.rpc.Status.details) field, or
-  /// localized by the client.
+  /// [google.rpc.Status.details](google.rpc.Status.details) field, or localized
+  /// by the client.
   core.String message;
 
   Status();

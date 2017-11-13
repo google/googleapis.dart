@@ -222,8 +222,6 @@ class OrganizationsRolesResourceApi {
   /// `projects/{PROJECT_ID}`
   /// Value must have pattern "^organizations/[^/]+$".
   ///
-  /// [showDeleted] - Include Roles that have been deleted.
-  ///
   /// [pageToken] - Optional pagination token returned in an earlier
   /// ListRolesResponse.
   ///
@@ -234,6 +232,8 @@ class OrganizationsRolesResourceApi {
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
+  ///
+  /// [showDeleted] - Include Roles that have been deleted.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -246,10 +246,10 @@ class OrganizationsRolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRolesResponse> list(core.String parent,
-      {core.bool showDeleted,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
       core.String view,
+      core.bool showDeleted,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -261,9 +261,6 @@ class OrganizationsRolesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -272,6 +269,9 @@ class OrganizationsRolesResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (showDeleted != null) {
+      _queryParams["showDeleted"] = ["${showDeleted}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -635,8 +635,6 @@ class ProjectsRolesResourceApi {
   /// `projects/{PROJECT_ID}`
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [showDeleted] - Include Roles that have been deleted.
-  ///
   /// [pageToken] - Optional pagination token returned in an earlier
   /// ListRolesResponse.
   ///
@@ -647,6 +645,8 @@ class ProjectsRolesResourceApi {
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
   /// - "FULL" : A FULL.
+  ///
+  /// [showDeleted] - Include Roles that have been deleted.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -659,10 +659,10 @@ class ProjectsRolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRolesResponse> list(core.String parent,
-      {core.bool showDeleted,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
       core.String view,
+      core.bool showDeleted,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -674,9 +674,6 @@ class ProjectsRolesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (showDeleted != null) {
-      _queryParams["showDeleted"] = ["${showDeleted}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -685,6 +682,9 @@ class ProjectsRolesResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (showDeleted != null) {
+      _queryParams["showDeleted"] = ["${showDeleted}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1652,11 +1652,6 @@ class RolesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [view] - Optional view for the returned Role objects.
-  /// Possible string values are:
-  /// - "BASIC" : A BASIC.
-  /// - "FULL" : A FULL.
-  ///
   /// [parent] - The resource name of the parent resource in one of the
   /// following formats:
   /// `` (empty string) -- this refers to curated roles.
@@ -1671,6 +1666,11 @@ class RolesResourceApi {
   /// [pageSize] - Optional limit on the number of roles to include in the
   /// response.
   ///
+  /// [view] - Optional view for the returned Role objects.
+  /// Possible string values are:
+  /// - "BASIC" : A BASIC.
+  /// - "FULL" : A FULL.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1682,11 +1682,11 @@ class RolesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListRolesResponse> list(
-      {core.String view,
-      core.String parent,
+      {core.String parent,
       core.bool showDeleted,
       core.String pageToken,
       core.int pageSize,
+      core.String view,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1695,9 +1695,6 @@ class RolesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (parent != null) {
       _queryParams["parent"] = [parent];
     }
@@ -1709,6 +1706,9 @@ class RolesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1958,6 +1958,7 @@ class CreateServiceAccountKeyRequest {
   /// - "KEY_ALG_UNSPECIFIED" : An unspecified key algorithm.
   /// - "KEY_ALG_RSA_1024" : 1k RSA Key.
   /// - "KEY_ALG_RSA_2048" : 2k RSA Key.
+  /// - "KEY_ALG_GCS_SYMMETRIC_HMAC" : HMAC.
   core.String keyAlgorithm;
 
   /// The output format of the private key. `GOOGLE_CREDENTIALS_FILE` is the
@@ -2694,9 +2695,8 @@ class Role {
 /// `unique_id`.
 ///
 /// If the account already exists, the account's resource name is returned
-/// in util::Status's ResourceInfo.resource_name in the format of
-/// projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}. The caller can
-/// use the name in other methods to access the account.
+/// in the format of projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}. The caller
+/// can use the name in other methods to access the account.
 ///
 /// All other methods can identify the service account using the format
 /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
@@ -2733,7 +2733,7 @@ class ServiceAccount {
   /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`.
   core.String name;
 
-  /// @OutputOnly. The OAuth2 client id for the service account.
+  /// @OutputOnly The OAuth2 client id for the service account.
   /// This is used in conjunction with the OAuth2 clientconfig API to make
   /// three legged OAuth2 (3LO) flows to access the data of Google users.
   core.String oauth2ClientId;
@@ -2820,6 +2820,7 @@ class ServiceAccountKey {
   /// - "KEY_ALG_UNSPECIFIED" : An unspecified key algorithm.
   /// - "KEY_ALG_RSA_1024" : 1k RSA Key.
   /// - "KEY_ALG_RSA_2048" : 2k RSA Key.
+  /// - "KEY_ALG_GCS_SYMMETRIC_HMAC" : HMAC.
   core.String keyAlgorithm;
 
   /// The resource name of the service account key in the following format

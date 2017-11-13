@@ -1,3 +1,35 @@
+## 0.47.0
+
+* [api-new] dfareporting:v3_0
+* [api] analyticsreporting:v4
+* [api] androidenterprise:v1
+* [api] bigquerydatatransfer:v1
+* [api] bigquery:v2
+* [api] classroom:v1
+* [api] cloudbuild:v1
+* [api] cloudfunctions:v1
+* [api] drive:v2
+* [api] drive:v3
+* [api] firebasedynamiclinks:v1
+* [api] firebaseremoteconfig:v1
+* [api] language:v1
+* [api] logging:v2
+* [api] ml:v1
+* [api] tagmanager:v1
+* [api] tagmanager:v2
+* [api-breaking] androidpublisher:v2
+* [api-breaking] appengine:v1
+* [api-breaking] bigquerydatatransfer:v1
+* [api-breaking] content:v2
+* [api-breaking] content:v2sandbox
+* [api-breaking] monitoring:v3
+* [api-breaking] script:v1
+* [api-breaking] servicemanagement:v1
+* [api-breaking] serviceuser:v1
+* [api-breaking] storage:v1
+* [api-breaking] tagmanager:v1
+* [api-removed] playmoviespartner:v1
+
 ## 0.46.0
 
 * [api] admin:directory_v1
