@@ -122,9 +122,9 @@ class OperationsResourceApi {
   /// * `serviceName={some-service}.googleapis.com AND (status=done OR
   /// startTime>="2017-02-01")`
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [name] - Not used.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The maximum number of operations to return. If unspecified,
   /// defaults to
@@ -142,8 +142,8 @@ class OperationsResourceApi {
   /// call, this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
       {core.String filter,
-      core.String pageToken,
       core.String name,
+      core.String pageToken,
       core.int pageSize,
       core.String $fields}) {
     var _url = null;
@@ -156,11 +156,11 @@ class OperationsResourceApi {
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (name != null) {
       _queryParams["name"] = [name];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
@@ -636,10 +636,6 @@ class ServicesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - Requested size of the next page of data.
-  ///
-  /// [producerProjectId] - Include services produced by the specified project.
-  ///
   /// [consumerId] - Include services consumed by the specified consumer.
   ///
   /// The Google Service Management implementation accepts the following
@@ -649,6 +645,10 @@ class ServicesResourceApi {
   /// [pageToken] - Token identifying which result to start with; returned by a
   /// previous list
   /// call.
+  ///
+  /// [pageSize] - Requested size of the next page of data.
+  ///
+  /// [producerProjectId] - Include services produced by the specified project.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -661,10 +661,10 @@ class ServicesResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListServicesResponse> list(
-      {core.int pageSize,
-      core.String producerProjectId,
-      core.String consumerId,
+      {core.String consumerId,
       core.String pageToken,
+      core.int pageSize,
+      core.String producerProjectId,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -673,17 +673,17 @@ class ServicesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (producerProjectId != null) {
-      _queryParams["producerProjectId"] = [producerProjectId];
-    }
     if (consumerId != null) {
       _queryParams["consumerId"] = [consumerId];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (producerProjectId != null) {
+      _queryParams["producerProjectId"] = [producerProjectId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1001,9 +1001,9 @@ class ServicesConfigsResourceApi {
   /// [overview](/service-management/overview)
   /// for naming requirements.  For example: `example.googleapis.com`.
   ///
-  /// [pageSize] - The max number of items to include in the response list.
-  ///
   /// [pageToken] - The token of the page to retrieve.
+  ///
+  /// [pageSize] - The max number of items to include in the response list.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1016,7 +1016,7 @@ class ServicesConfigsResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListServiceConfigsResponse> list(core.String serviceName,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1027,11 +1027,11 @@ class ServicesConfigsResourceApi {
     if (serviceName == null) {
       throw new core.ArgumentError("Parameter serviceName is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3156,12 +3156,6 @@ class Endpoint {
   /// allowed to proceed.
   core.bool allowCors;
 
-  /// The list of APIs served by this endpoint.
-  ///
-  /// If no APIs are specified this translates to "all APIs" exported by the
-  /// service, as defined in the top-level service configuration.
-  core.List<core.String> apis;
-
   /// The list of features enabled on this endpoint.
   core.List<core.String> features;
 
@@ -3185,9 +3179,6 @@ class Endpoint {
     if (_json.containsKey("allowCors")) {
       allowCors = _json["allowCors"];
     }
-    if (_json.containsKey("apis")) {
-      apis = _json["apis"];
-    }
     if (_json.containsKey("features")) {
       features = _json["features"];
     }
@@ -3207,9 +3198,6 @@ class Endpoint {
     }
     if (allowCors != null) {
       _json["allowCors"] = allowCors;
-    }
-    if (apis != null) {
-      _json["apis"] = apis;
     }
     if (features != null) {
       _json["features"] = features;

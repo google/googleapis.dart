@@ -54,7 +54,8 @@ class PhotoResourceApi {
   ///
   /// This method returns the following error codes:
   ///
-  /// * google.rpc.Code.INVALID_ARGUMENT if the request is malformed.
+  /// * google.rpc.Code.INVALID_ARGUMENT if the request is malformed or if
+  /// the uploaded photo is not a 360 photo.
   /// * google.rpc.Code.NOT_FOUND if the upload reference does not exist.
   /// * google.rpc.Code.RESOURCE_EXHAUSTED if the account has reached the
   /// storage limit.
@@ -454,16 +455,16 @@ class PhotosResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [photoIds] - Required. IDs of the Photos. For HTTP
+  /// GET requests, the URL query parameter should be
+  /// `photoIds=<id1>&photoIds=<id2>&...`.
+  ///
   /// [view] - Specifies if a download URL for the photo bytes should be
   /// returned in the
   /// Photo response.
   /// Possible string values are:
   /// - "BASIC" : A BASIC.
   /// - "INCLUDE_DOWNLOAD_URL" : A INCLUDE_DOWNLOAD_URL.
-  ///
-  /// [photoIds] - Required. IDs of the Photos. For HTTP
-  /// GET requests, the URL query parameter should be
-  /// `photoIds=<id1>&photoIds=<id2>&...`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -476,8 +477,8 @@ class PhotosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchGetPhotosResponse> batchGet(
-      {core.String view,
-      core.List<core.String> photoIds,
+      {core.List<core.String> photoIds,
+      core.String view,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -486,11 +487,11 @@ class PhotosResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (photoIds != null) {
       _queryParams["photoIds"] = photoIds;
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -584,11 +585,6 @@ class PhotosResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [filter] - The filter expression. For example:
-  /// `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.
-  ///
-  /// The only filter supported at the moment is `placeId`.
-  ///
   /// [pageToken] - The
   /// nextPageToken
   /// value returned from a previous
@@ -608,6 +604,11 @@ class PhotosResourceApi {
   /// - "BASIC" : A BASIC.
   /// - "INCLUDE_DOWNLOAD_URL" : A INCLUDE_DOWNLOAD_URL.
   ///
+  /// [filter] - The filter expression. For example:
+  /// `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.
+  ///
+  /// The only filter supported at the moment is `placeId`.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -619,10 +620,10 @@ class PhotosResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListPhotosResponse> list(
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
       core.String view,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -631,9 +632,6 @@ class PhotosResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -642,6 +640,9 @@ class PhotosResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -845,40 +846,6 @@ class Empty {
 /// specified otherwise, this must conform to the
 /// <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
 /// standard</a>. Values must be within normalized ranges.
-///
-/// Example of normalization code in Python:
-///
-///     def NormalizeLongitude(longitude):
-///       """Wraps decimal degrees longitude to [-180.0, 180.0]."""
-///       q, r = divmod(longitude, 360.0)
-///       if r > 180.0 or (r == 180.0 and q <= -1.0):
-///         return r - 360.0
-///       return r
-///
-///     def NormalizeLatLng(latitude, longitude):
-///       """Wraps decimal degrees latitude and longitude to
-///       [-90.0, 90.0] and [-180.0, 180.0], respectively."""
-///       r = latitude % 360.0
-///       if r <= 90.0:
-///         return r, NormalizeLongitude(longitude)
-///       elif r >= 270.0:
-///         return r - 360, NormalizeLongitude(longitude)
-///       else:
-///         return 180 - r, NormalizeLongitude(longitude + 180.0)
-///
-///     assert 180.0 == NormalizeLongitude(180.0)
-///     assert -180.0 == NormalizeLongitude(-180.0)
-///     assert -179.0 == NormalizeLongitude(181.0)
-///     assert (0.0, 0.0) == NormalizeLatLng(360.0, 0.0)
-///     assert (0.0, 0.0) == NormalizeLatLng(-360.0, 0.0)
-///     assert (85.0, 180.0) == NormalizeLatLng(95.0, 0.0)
-///     assert (-85.0, -170.0) == NormalizeLatLng(-95.0, 10.0)
-///     assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0)
-///     assert (-90.0, -10.0) == NormalizeLatLng(-90.0, -10.0)
-///     assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0)
-///     assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
-///     assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
-///     assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
 class LatLng {
   /// The latitude in degrees. It must be in the range [-90.0, +90.0].
   core.double latitude;
@@ -1269,7 +1236,7 @@ class Place {
 
 /// Raw pose measurement for an entity.
 class Pose {
-  /// Altitude of the pose in meters above ground level (as defined by WGS84).
+  /// Altitude of the pose in meters above WGS84 ellipsoid.
   /// NaN indicates an unmeasured quantity.
   core.double altitude;
 

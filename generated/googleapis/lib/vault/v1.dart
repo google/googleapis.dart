@@ -285,6 +285,15 @@ class MattersResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageSize] - The number of matters to return in the response.
+  /// Default and maximum are 100.
+  ///
+  /// [view] - Specifies which parts of the matter to return in response.
+  /// Possible string values are:
+  /// - "VIEW_UNSPECIFIED" : A VIEW_UNSPECIFIED.
+  /// - "BASIC" : A BASIC.
+  /// - "FULL" : A FULL.
+  ///
   /// [state] - If set, list only matters with that specific state. The default
   /// is listing
   /// matters of all states.
@@ -295,15 +304,6 @@ class MattersResourceApi {
   /// - "DELETED" : A DELETED.
   ///
   /// [pageToken] - The pagination token as returned in the response.
-  ///
-  /// [pageSize] - The number of matters to return in the response.
-  /// Default and maximum are 100.
-  ///
-  /// [view] - Specifies which parts of the matter to return in response.
-  /// Possible string values are:
-  /// - "VIEW_UNSPECIFIED" : A VIEW_UNSPECIFIED.
-  /// - "BASIC" : A BASIC.
-  /// - "FULL" : A FULL.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -316,10 +316,10 @@ class MattersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMattersResponse> list(
-      {core.String state,
-      core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String view,
+      core.String state,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -328,17 +328,17 @@ class MattersResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (state != null) {
-      _queryParams["state"] = [state];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (state != null) {
+      _queryParams["state"] = [state];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -725,12 +725,12 @@ class MattersHoldsResourceApi {
   ///
   /// [matterId] - The matter ID.
   ///
-  /// [pageToken] - The pagination token as returned in the response.
-  /// An empty token means start from the beginning.
-  ///
   /// [pageSize] - The number of holds to return in the response, between 0 and
   /// 100 inclusive.
   /// Leaving this empty, or as 0, is the same as page_size = 100.
+  ///
+  /// [pageToken] - The pagination token as returned in the response.
+  /// An empty token means start from the beginning.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -743,7 +743,7 @@ class MattersHoldsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListHoldsResponse> list(core.String matterId,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -754,11 +754,11 @@ class MattersHoldsResourceApi {
     if (matterId == null) {
       throw new core.ArgumentError("Parameter matterId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

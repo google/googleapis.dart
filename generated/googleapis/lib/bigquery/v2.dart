@@ -3237,7 +3237,7 @@ class JobConfigurationLoad {
   /// [Deprecated] The format of the schemaInline property.
   core.String schemaInlineFormat;
 
-  /// Allows the schema of the desitination table to be updated as a side effect
+  /// Allows the schema of the destination table to be updated as a side effect
   /// of the load job if a schema is autodetected or supplied in the job
   /// configuration. Schema update options are supported in two cases: when
   /// writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE
@@ -4048,6 +4048,20 @@ class JobStatistics2 {
   /// [Output-only] Whether the query result was fetched from the query cache.
   core.bool cacheHit;
 
+  /// [Output-only, Experimental] The DDL operation performed, possibly
+  /// dependent on the pre-existence of the DDL target. Possible values (new
+  /// values might be added in the future): "CREATE": The query created the DDL
+  /// target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT
+  /// EXISTS while the table already exists, or the query is DROP TABLE IF
+  /// EXISTS while the table does not exist. "REPLACE": The query replaced the
+  /// DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the
+  /// table already exists. "DROP": The query deleted the DDL target.
+  core.String ddlOperationPerformed;
+
+  /// [Output-only, Experimental] The DDL target table. Present only for
+  /// CREATE/DROP TABLE/VIEW queries.
+  TableReference ddlTargetTable;
+
   /// [Output-only] The number of rows affected by a DML statement. Present only
   /// for DML statements INSERT, UPDATE or DELETE.
   core.String numDmlAffectedRows;
@@ -4087,6 +4101,12 @@ class JobStatistics2 {
     }
     if (_json.containsKey("cacheHit")) {
       cacheHit = _json["cacheHit"];
+    }
+    if (_json.containsKey("ddlOperationPerformed")) {
+      ddlOperationPerformed = _json["ddlOperationPerformed"];
+    }
+    if (_json.containsKey("ddlTargetTable")) {
+      ddlTargetTable = new TableReference.fromJson(_json["ddlTargetTable"]);
     }
     if (_json.containsKey("numDmlAffectedRows")) {
       numDmlAffectedRows = _json["numDmlAffectedRows"];
@@ -4131,6 +4151,12 @@ class JobStatistics2 {
     }
     if (cacheHit != null) {
       _json["cacheHit"] = cacheHit;
+    }
+    if (ddlOperationPerformed != null) {
+      _json["ddlOperationPerformed"] = ddlOperationPerformed;
+    }
+    if (ddlTargetTable != null) {
+      _json["ddlTargetTable"] = (ddlTargetTable).toJson();
     }
     if (numDmlAffectedRows != null) {
       _json["numDmlAffectedRows"] = numDmlAffectedRows;

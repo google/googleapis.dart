@@ -14,10 +14,9 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client cloudtrace/v1';
 
-/// Send and retrieve trace data from Stackdriver Trace. Data is generated and
-/// available by default for all App Engine applications. Data from other
-/// applications can be written to Stackdriver Trace for display, reporting, and
-/// analysis.
+/// Sends application trace data to Stackdriver Trace for viewing. Trace data is
+/// collected for all App Engine applications by default. Trace data from other
+/// applications can be provided using this API.
 class CloudtraceApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -170,34 +169,6 @@ class ProjectsTracesResourceApi {
   ///
   /// [projectId] - ID of the Cloud project where the trace data is stored.
   ///
-  /// [pageSize] - Maximum number of traces to return. If not specified or <= 0,
-  /// the
-  /// implementation selects a reasonable value.  The implementation may
-  /// return fewer traces than the requested page size. Optional.
-  ///
-  /// [view] - Type of data returned for traces in the list. Optional. Default
-  /// is
-  /// `MINIMAL`.
-  /// Possible string values are:
-  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
-  /// - "MINIMAL" : A MINIMAL.
-  /// - "ROOTSPAN" : A ROOTSPAN.
-  /// - "COMPLETE" : A COMPLETE.
-  ///
-  /// [orderBy] - Field used to sort the returned traces. Optional.
-  /// Can be one of the following:
-  ///
-  /// *   `trace_id`
-  /// *   `name` (`name` field of root span in the trace)
-  /// *   `duration` (difference between `end_time` and `start_time` fields of
-  ///      the root span)
-  /// *   `start` (`start_time` field of the root span)
-  ///
-  /// Descending order can be specified by appending `desc` to the sort field
-  /// (for example, `name desc`).
-  ///
-  /// Only one sort field is permitted.
-  ///
   /// [filter] - An optional filter against labels for the request.
   ///
   /// By default, searches use prefix matching. To specify exact match, prepend
@@ -233,13 +204,41 @@ class ProjectsTracesResourceApi {
   /// data was
   /// collected from the application.
   ///
+  /// [startTime] - Start of the time interval (inclusive) during which the
+  /// trace data was
+  /// collected from the application.
+  ///
   /// [pageToken] - Token identifying the page of results to return. If
   /// provided, use the
   /// value of the `next_page_token` field from a previous request. Optional.
   ///
-  /// [startTime] - Start of the time interval (inclusive) during which the
-  /// trace data was
-  /// collected from the application.
+  /// [pageSize] - Maximum number of traces to return. If not specified or <= 0,
+  /// the
+  /// implementation selects a reasonable value.  The implementation may
+  /// return fewer traces than the requested page size. Optional.
+  ///
+  /// [view] - Type of data returned for traces in the list. Optional. Default
+  /// is
+  /// `MINIMAL`.
+  /// Possible string values are:
+  /// - "VIEW_TYPE_UNSPECIFIED" : A VIEW_TYPE_UNSPECIFIED.
+  /// - "MINIMAL" : A MINIMAL.
+  /// - "ROOTSPAN" : A ROOTSPAN.
+  /// - "COMPLETE" : A COMPLETE.
+  ///
+  /// [orderBy] - Field used to sort the returned traces. Optional.
+  /// Can be one of the following:
+  ///
+  /// *   `trace_id`
+  /// *   `name` (`name` field of root span in the trace)
+  /// *   `duration` (difference between `end_time` and `start_time` fields of
+  ///      the root span)
+  /// *   `start` (`start_time` field of the root span)
+  ///
+  /// Descending order can be specified by appending `desc` to the sort field
+  /// (for example, `name desc`).
+  ///
+  /// Only one sort field is permitted.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -252,13 +251,13 @@ class ProjectsTracesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTracesResponse> list(core.String projectId,
-      {core.int pageSize,
+      {core.String filter,
+      core.String endTime,
+      core.String startTime,
+      core.String pageToken,
+      core.int pageSize,
       core.String view,
       core.String orderBy,
-      core.String filter,
-      core.String endTime,
-      core.String pageToken,
-      core.String startTime,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -270,6 +269,18 @@ class ProjectsTracesResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (endTime != null) {
+      _queryParams["endTime"] = [endTime];
+    }
+    if (startTime != null) {
+      _queryParams["startTime"] = [startTime];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
@@ -278,18 +289,6 @@ class ProjectsTracesResourceApi {
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (endTime != null) {
-      _queryParams["endTime"] = [endTime];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (startTime != null) {
-      _queryParams["startTime"] = [startTime];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

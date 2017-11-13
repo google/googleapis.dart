@@ -288,6 +288,13 @@ class PresentationsPagesResourceApi {
   ///
   /// [pageObjectId] - The object ID of the page whose thumbnail to retrieve.
   ///
+  /// [thumbnailProperties_mimeType] - The optional mime type of the thumbnail
+  /// image.
+  ///
+  /// If you don't specify the mime type, the default mime type will be PNG.
+  /// Possible string values are:
+  /// - "PNG" : A PNG.
+  ///
   /// [thumbnailProperties_thumbnailSize] - The optional thumbnail image size.
   ///
   /// If you don't specify the size, the server chooses a default size of the
@@ -295,13 +302,6 @@ class PresentationsPagesResourceApi {
   /// Possible string values are:
   /// - "THUMBNAIL_SIZE_UNSPECIFIED" : A THUMBNAIL_SIZE_UNSPECIFIED.
   /// - "LARGE" : A LARGE.
-  ///
-  /// [thumbnailProperties_mimeType] - The optional mime type of the thumbnail
-  /// image.
-  ///
-  /// If you don't specify the mime type, the default mime type will be PNG.
-  /// Possible string values are:
-  /// - "PNG" : A PNG.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -315,8 +315,8 @@ class PresentationsPagesResourceApi {
   /// this method will complete with the same error.
   async.Future<Thumbnail> getThumbnail(
       core.String presentationId, core.String pageObjectId,
-      {core.String thumbnailProperties_thumbnailSize,
-      core.String thumbnailProperties_mimeType,
+      {core.String thumbnailProperties_mimeType,
+      core.String thumbnailProperties_thumbnailSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -331,14 +331,14 @@ class PresentationsPagesResourceApi {
     if (pageObjectId == null) {
       throw new core.ArgumentError("Parameter pageObjectId is required.");
     }
-    if (thumbnailProperties_thumbnailSize != null) {
-      _queryParams["thumbnailProperties.thumbnailSize"] = [
-        thumbnailProperties_thumbnailSize
-      ];
-    }
     if (thumbnailProperties_mimeType != null) {
       _queryParams["thumbnailProperties.mimeType"] = [
         thumbnailProperties_mimeType
+      ];
+    }
+    if (thumbnailProperties_thumbnailSize != null) {
+      _queryParams["thumbnailProperties.thumbnailSize"] = [
+        thumbnailProperties_thumbnailSize
       ];
     }
     if ($fields != null) {
@@ -718,7 +718,7 @@ class CreateImageRequest {
   /// cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
   /// format.
   ///
-  /// The provided URL can be at maximum 2K bytes large.
+  /// The provided URL can be at most 2 kB in length.
   core.String url;
 
   CreateImageRequest();
@@ -3260,9 +3260,9 @@ class Outline {
 
   /// The outline property state.
   ///
-  /// Updating the the outline on a page element will implicitly update this
-  /// field to`RENDERED`, unless another value is specified in the same request.
-  /// To have no outline on a page element, set this field to `NOT_RENDERED`. In
+  /// Updating the outline on a page element will implicitly update this field
+  /// to `RENDERED`, unless another value is specified in the same request. To
+  /// have no outline on a page element, set this field to `NOT_RENDERED`. In
   /// this case, any other outline fields set in the same request will be
   /// ignored.
   /// Possible string values are:
@@ -4347,7 +4347,7 @@ class ReplaceAllShapesWithImageRequest {
   /// cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
   /// format.
   ///
-  /// The provided URL can be at maximum 2K bytes large.
+  /// The provided URL can be at most 2 kB in length.
   core.String imageUrl;
 
   /// If non-empty, limits the matches to page elements only on the given pages.
@@ -5199,11 +5199,9 @@ class Shadow {
 
   /// The shadow property state.
   ///
-  /// Updating the the shadow on a page element will implicitly update this
-  /// field
-  /// to `RENDERED`, unless another value is specified in the same request. To
-  /// have no shadow on a page element, set this field to `NOT_RENDERED`. In
-  /// this
+  /// Updating the shadow on a page element will implicitly update this field to
+  /// `RENDERED`, unless another value is specified in the same request. To have
+  /// no shadow on a page element, set this field to `NOT_RENDERED`. In this
   /// case, any other shadow fields set in the same request will be ignored.
   /// Possible string values are:
   /// - "RENDERED" : If a property's state is RENDERED, then the element has the
@@ -6021,7 +6019,7 @@ class StretchedPictureFill {
   /// cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
   /// format.
   ///
-  /// The provided URL can be at maximum 2K bytes large.
+  /// The provided URL can be at most 2 kB in length.
   core.String contentUrl;
 
   /// The original size of the picture fill. This field is read-only.

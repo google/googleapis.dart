@@ -446,14 +446,14 @@ class AppsAuthorizedCertificatesResourceApi {
   /// [appsId] - Part of `parent`. Name of the parent Application resource.
   /// Example: apps/myapp.
   ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [pageSize] - Maximum results to return per page.
+  ///
   /// [view] - Controls the set of fields returned in the LIST response.
   /// Possible string values are:
   /// - "BASIC_CERTIFICATE" : A BASIC_CERTIFICATE.
   /// - "FULL_CERTIFICATE" : A FULL_CERTIFICATE.
-  ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
-  ///
-  /// [pageSize] - Maximum results to return per page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -466,9 +466,9 @@ class AppsAuthorizedCertificatesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListAuthorizedCertificatesResponse> list(core.String appsId,
-      {core.String view,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String view,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -480,14 +480,14 @@ class AppsAuthorizedCertificatesResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -660,6 +660,14 @@ class AppsDomainMappingsResourceApi {
   /// [appsId] - Part of `parent`. Name of the parent Application resource.
   /// Example: apps/myapp.
   ///
+  /// [overrideStrategy] - Whether the domain creation should override any
+  /// existing mappings for this domain. By default, overrides are rejected.
+  /// Possible string values are:
+  /// - "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY" : A
+  /// UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY.
+  /// - "STRICT" : A STRICT.
+  /// - "OVERRIDE" : A OVERRIDE.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -671,7 +679,7 @@ class AppsDomainMappingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> create(DomainMapping request, core.String appsId,
-      {core.String $fields}) {
+      {core.String overrideStrategy, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -684,6 +692,9 @@ class AppsDomainMappingsResourceApi {
     }
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (overrideStrategy != null) {
+      _queryParams["overrideStrategy"] = [overrideStrategy];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1167,13 +1178,13 @@ class AppsFirewallIngressRulesResourceApi {
   /// [appsId] - Part of `parent`. Name of the Firewall collection to retrieve.
   /// Example: apps/myapp/firewall/ingressRules.
   ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
-  ///
-  /// [pageSize] - Maximum results to return per page.
-  ///
   /// [matchingAddress] - A valid IP Address. If set, only rules matching this
   /// address will be returned. The first returned rule will be the rule that
   /// fires on requests from this IP.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
+  ///
+  /// [pageSize] - Maximum results to return per page.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1186,9 +1197,9 @@ class AppsFirewallIngressRulesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListIngressRulesResponse> list(core.String appsId,
-      {core.String pageToken,
+      {core.String matchingAddress,
+      core.String pageToken,
       core.int pageSize,
-      core.String matchingAddress,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1200,14 +1211,14 @@ class AppsFirewallIngressRulesResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
+    if (matchingAddress != null) {
+      _queryParams["matchingAddress"] = [matchingAddress];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (matchingAddress != null) {
-      _queryParams["matchingAddress"] = [matchingAddress];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2574,7 +2585,7 @@ class ApiEndpointHandler {
 }
 
 /// An Application resource contains the top-level configuration of an App
-/// Engine application. Next tag: 20
+/// Engine application.
 class Application {
   /// Google Apps authentication domain that controls which users can access
   /// this application.Defaults to open access for any Google Account.
@@ -4723,67 +4734,6 @@ class OperationMetadata {
     }
     if (operationType != null) {
       _json["operationType"] = operationType;
-    }
-    if (target != null) {
-      _json["target"] = target;
-    }
-    if (user != null) {
-      _json["user"] = user;
-    }
-    return _json;
-  }
-}
-
-/// Metadata for the given google.longrunning.Operation.
-class OperationMetadataExperimental {
-  /// Time that this operation completed.@OutputOnly
-  core.String endTime;
-
-  /// Time that this operation was created.@OutputOnly
-  core.String insertTime;
-
-  /// API method that initiated this operation. Example:
-  /// google.appengine.experimental.CustomDomains.CreateCustomDomain.@OutputOnly
-  core.String method;
-
-  /// Name of the resource that this operation is acting on. Example:
-  /// apps/myapp/customDomains/example.com.@OutputOnly
-  core.String target;
-
-  /// User who requested this operation.@OutputOnly
-  core.String user;
-
-  OperationMetadataExperimental();
-
-  OperationMetadataExperimental.fromJson(core.Map _json) {
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
-    }
-    if (_json.containsKey("insertTime")) {
-      insertTime = _json["insertTime"];
-    }
-    if (_json.containsKey("method")) {
-      method = _json["method"];
-    }
-    if (_json.containsKey("target")) {
-      target = _json["target"];
-    }
-    if (_json.containsKey("user")) {
-      user = _json["user"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (endTime != null) {
-      _json["endTime"] = endTime;
-    }
-    if (insertTime != null) {
-      _json["insertTime"] = insertTime;
-    }
-    if (method != null) {
-      _json["method"] = method;
     }
     if (target != null) {
       _json["target"] = target;

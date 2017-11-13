@@ -36,14 +36,14 @@ class OrdersResourceApi {
 
   OrdersResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Marks an order as acknowledged. This method can only be called for
-  /// non-multi-client accounts.
+  /// Marks an order as acknowledged.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
   ///
   /// [orderId] - The ID of the order.
   ///
@@ -98,12 +98,12 @@ class OrdersResourceApi {
   }
 
   /// Sandbox only. Moves a test order from state "inProgress" to state
-  /// "pendingShipment". This method can only be called for non-multi-client
-  /// accounts.
+  /// "pendingShipment".
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
   ///
   /// [orderId] - The ID of the test order to modify.
   ///
@@ -152,14 +152,14 @@ class OrdersResourceApi {
         .then((data) => new OrdersAdvanceTestOrderResponse.fromJson(data));
   }
 
-  /// Cancels all line items in an order, making a full refund. This method can
-  /// only be called for non-multi-client accounts.
+  /// Cancels all line items in an order, making a full refund.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
   ///
   /// [orderId] - The ID of the order to cancel.
   ///
@@ -210,14 +210,14 @@ class OrdersResourceApi {
     return _response.then((data) => new OrdersCancelResponse.fromJson(data));
   }
 
-  /// Cancels a line item, making a full refund. This method can only be called
-  /// for non-multi-client accounts.
+  /// Cancels a line item, making a full refund.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
   ///
   /// [orderId] - The ID of the order.
   ///
@@ -271,14 +271,14 @@ class OrdersResourceApi {
         .then((data) => new OrdersCancelLineItemResponse.fromJson(data));
   }
 
-  /// Sandbox only. Creates a test order. This method can only be called for
-  /// non-multi-client accounts.
+  /// Sandbox only. Creates a test order.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that should manage the order. This
+  /// cannot be a multi-client account.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -322,8 +322,7 @@ class OrdersResourceApi {
         .then((data) => new OrdersCreateTestOrderResponse.fromJson(data));
   }
 
-  /// Retrieves or modifies multiple orders in a single request. This method can
-  /// only be called for non-multi-client accounts.
+  /// Retrieves or modifies multiple orders in a single request.
   ///
   /// [request] - The metadata request object.
   ///
@@ -368,12 +367,12 @@ class OrdersResourceApi {
         .then((data) => new OrdersCustomBatchResponse.fromJson(data));
   }
 
-  /// Retrieves an order from your Merchant Center account. This method can only
-  /// be called for non-multi-client accounts.
+  /// Retrieves an order from your Merchant Center account.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
   ///
   /// [orderId] - The ID of the order.
   ///
@@ -419,12 +418,12 @@ class OrdersResourceApi {
     return _response.then((data) => new Order.fromJson(data));
   }
 
-  /// Retrieves an order using merchant order id. This method can only be called
-  /// for non-multi-client accounts.
+  /// Retrieves an order using merchant order id.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
   ///
   /// [merchantOrderId] - The merchant order id to be looked for.
   ///
@@ -473,12 +472,12 @@ class OrdersResourceApi {
   }
 
   /// Sandbox only. Retrieves an order template that can be used to quickly
-  /// create a new order in sandbox. This method can only be called for
-  /// non-multi-client accounts.
+  /// create a new order in sandbox.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that should manage the order. This
+  /// cannot be a multi-client account.
   ///
   /// [templateName] - The name of the template to retrieve.
   /// Possible string values are:
@@ -531,12 +530,12 @@ class OrdersResourceApi {
         .then((data) => new OrdersGetTestOrderTemplateResponse.fromJson(data));
   }
 
-  /// Lists the orders in your Merchant Center account. This method can only be
-  /// called for non-multi-client accounts.
+  /// Lists the orders in your Merchant Center account.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
   ///
   /// [acknowledged] - Obtains orders that match the acknowledgement status.
   /// When set to true, obtains orders that have been acknowledged. When false,
@@ -639,14 +638,14 @@ class OrdersResourceApi {
     return _response.then((data) => new OrdersListResponse.fromJson(data));
   }
 
-  /// Refund a portion of the order, up to the full amount paid. This method can
-  /// only be called for non-multi-client accounts.
+  /// Refund a portion of the order, up to the full amount paid.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
   ///
   /// [orderId] - The ID of the order to refund.
   ///
@@ -697,14 +696,14 @@ class OrdersResourceApi {
     return _response.then((data) => new OrdersRefundResponse.fromJson(data));
   }
 
-  /// Returns a line item. This method can only be called for non-multi-client
-  /// accounts.
+  /// Returns a line item.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
   ///
   /// [orderId] - The ID of the order.
   ///
@@ -758,14 +757,14 @@ class OrdersResourceApi {
         .then((data) => new OrdersReturnLineItemResponse.fromJson(data));
   }
 
-  /// Marks line item(s) as shipped. This method can only be called for
-  /// non-multi-client accounts.
+  /// Marks line item(s) as shipped.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
   ///
   /// [orderId] - The ID of the order.
   ///
@@ -819,14 +818,14 @@ class OrdersResourceApi {
         .then((data) => new OrdersShipLineItemsResponse.fromJson(data));
   }
 
-  /// Updates the merchant order ID for a given order. This method can only be
-  /// called for non-multi-client accounts.
+  /// Updates the merchant order ID for a given order.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
   ///
   /// [orderId] - The ID of the order.
   ///
@@ -880,14 +879,14 @@ class OrdersResourceApi {
         .then((data) => new OrdersUpdateMerchantOrderIdResponse.fromJson(data));
   }
 
-  /// Updates a shipment's status, carrier, and/or tracking ID. This method can
-  /// only be called for non-multi-client accounts.
+  /// Updates a shipment's status, carrier, and/or tracking ID.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [merchantId] - The ID of the managing account.
+  /// [merchantId] - The ID of the account that manages the order. This cannot
+  /// be a multi-client account.
   ///
   /// [orderId] - The ID of the order.
   ///
@@ -1460,9 +1459,6 @@ class OrderLineItem {
   /// Cancellations of the line item.
   core.List<OrderCancellation> cancellations;
 
-  /// The channel type of the order: "purchaseOnGoogle" or "googleExpress".
-  core.String channelType;
-
   /// The id of the line item.
   core.String id;
 
@@ -1512,9 +1508,6 @@ class OrderLineItem {
       cancellations = _json["cancellations"]
           .map((value) => new OrderCancellation.fromJson(value))
           .toList();
-    }
-    if (_json.containsKey("channelType")) {
-      channelType = _json["channelType"];
     }
     if (_json.containsKey("id")) {
       id = _json["id"];
@@ -1566,9 +1559,6 @@ class OrderLineItem {
     if (cancellations != null) {
       _json["cancellations"] =
           cancellations.map((value) => (value).toJson()).toList();
-    }
-    if (channelType != null) {
-      _json["channelType"] = channelType;
     }
     if (id != null) {
       _json["id"] = id;
@@ -2371,7 +2361,8 @@ class OrderShipment {
 }
 
 class OrderShipmentLineItemShipment {
-  /// The id of the line item that is shipped.
+  /// The id of the line item that is shipped. Either lineItemId or productId is
+  /// required.
   core.String lineItemId;
 
   /// The quantity that is shipped.
@@ -2484,7 +2475,8 @@ class OrdersCancelLineItemRequest {
   /// The amount must not be larger than the net amount left on the order.
   Price amount;
 
-  /// The ID of the line item to cancel.
+  /// The ID of the line item to cancel. Either lineItemId or productId is
+  /// required.
   core.String lineItemId;
 
   /// The ID of the operation. Unique across all operations for a given order.
@@ -2906,7 +2898,8 @@ class OrdersCustomBatchRequestEntryCancelLineItem {
   /// The amount must not be larger than the net amount left on the order.
   Price amount;
 
-  /// The ID of the line item to cancel.
+  /// The ID of the line item to cancel. Either lineItemId or productId is
+  /// required.
   core.String lineItemId;
 
   /// The quantity to cancel.
@@ -3001,7 +2994,8 @@ class OrdersCustomBatchRequestEntryRefund {
 }
 
 class OrdersCustomBatchRequestEntryReturnLineItem {
-  /// The ID of the line item to return.
+  /// The ID of the line item to return. Either lineItemId or productId is
+  /// required.
   core.String lineItemId;
 
   /// The quantity to return.
@@ -3493,7 +3487,8 @@ class OrdersRefundResponse {
 }
 
 class OrdersReturnLineItemRequest {
-  /// The ID of the line item to return.
+  /// The ID of the line item to return. Either lineItemId or productId is
+  /// required.
   core.String lineItemId;
 
   /// The ID of the operation. Unique across all operations for a given order.

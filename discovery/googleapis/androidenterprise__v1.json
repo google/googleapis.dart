@@ -15,7 +15,7 @@
     "description": "Manages the deployment of apps to Android for Work users.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/android/work/play/emm-api",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/TsxbKgj7gojF26M-3IrSBWAaJbQ\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/6QliEKdSl6_fhoCZMHfRJ84eei0\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/android-16.png",
         "x32": "https://www.google.com/images/icons/product/android-32.png"
@@ -2557,6 +2557,33 @@
                         "https://www.googleapis.com/auth/androidenterprise"
                     ]
                 },
+                "revokeDeviceAccess": {
+                    "description": "Revokes access to all devices currently provisioned to the user. The user will no longer be able to use the managed Play store on any of their managed devices.\n\nThis call only works with EMM-managed accounts.",
+                    "httpMethod": "DELETE",
+                    "id": "androidenterprise.users.revokeDeviceAccess",
+                    "parameterOrder": [
+                        "enterpriseId",
+                        "userId"
+                    ],
+                    "parameters": {
+                        "enterpriseId": {
+                            "description": "The ID of the enterprise.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "userId": {
+                            "description": "The ID of the user.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "enterprises/{enterpriseId}/users/{userId}/deviceAccess",
+                    "scopes": [
+                        "https://www.googleapis.com/auth/androidenterprise"
+                    ]
+                },
                 "revokeToken": {
                     "description": "Revokes a previously generated token (activation code) for the user.",
                     "httpMethod": "DELETE",
@@ -2653,7 +2680,7 @@
             }
         }
     },
-    "revision": "20171011",
+    "revision": "20171101",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Administrator": {

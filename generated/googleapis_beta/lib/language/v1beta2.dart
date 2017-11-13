@@ -1224,7 +1224,9 @@ class EntityMention {
 /// All available features for sentiment, syntax, and semantic analysis.
 /// Setting each one to true will enable that specific analysis for the input.
 class Features {
-  /// Classify the full document into categories.
+  /// Classify the full document into categories. If this is true,
+  /// the API will use the default model which classifies into a
+  /// [predefined taxonomy](/natural-language/docs/categories).
   core.bool classifyText;
 
   /// Extract document-level sentiment.

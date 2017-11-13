@@ -284,14 +284,14 @@ Official API documentation: https://cloud.google.com/resource-manager
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Stackdriver Trace API - cloudtrace v1
 
-Send and retrieve trace data from Stackdriver Trace. Data is generated and available by default for all App Engine applications. Data from other applications can be written to Stackdriver Trace for display, reporting, and analysis.
+Sends application trace data to Stackdriver Trace for viewing. Trace data is collected for all App Engine applications by default. Trace data from other applications can be provided using this API.
 
 
 Official API documentation: https://cloud.google.com/trace
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Stackdriver Trace API - cloudtrace v2
 
-Send and retrieve trace data from Stackdriver Trace. Data is generated and available by default for all App Engine applications. Data from other applications can be written to Stackdriver Trace for display, reporting, and analysis.
+Sends application trace data to Stackdriver Trace for viewing. Trace data is collected for all App Engine applications by default. Trace data from other applications can be provided using this API.
 
 
 Official API documentation: https://cloud.google.com/trace
@@ -350,6 +350,12 @@ Declares, configures, and deploys complex solutions on Google Cloud Platform.
 Official API documentation: https://cloud.google.com/deployment-manager/
 
 #### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v2.8
+
+Manages your DoubleClick Campaign Manager ad campaigns and reports.
+
+Official API documentation: https://developers.google.com/doubleclick-advertisers/
+
+#### ![Logo](https://www.google.com/images/icons/product/doubleclick-16.gif) DCM/DFA Reporting And Trafficking API - dfareporting v3.0
 
 Manages your DoubleClick Campaign Manager ad campaigns and reports.
 
@@ -566,12 +572,6 @@ An API to publish custom Android apps.
 
 Official API documentation: https://developers.google.com/android/work/play/custom-app-api
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Play Movies Partner API - playmoviespartner v1
-
-Gets the delivery status of titles for Google Play Movies Partners.
-
-Official API documentation: https://developers.google.com/playmoviespartner/
-
 #### ![Logo](http://www.google.com/images/icons/product/gplus-16.png) Google+ API - plus v1
 
 Builds on top of the Google+ platform.
@@ -615,7 +615,7 @@ Enables client applications to check web resources (most commonly URLs) against 
 
 Official API documentation: https://developers.google.com/safe-browsing/
 
-#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Apps Script Execution API - script v1
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Apps Script API - script v1
 
 An API for managing and executing Google Apps Script projects.
 

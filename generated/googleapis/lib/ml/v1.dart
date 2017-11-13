@@ -417,6 +417,82 @@ class ProjectsJobsResourceApi {
         .then((data) => new GoogleCloudMlV1ListJobsResponse.fromJson(data));
   }
 
+  /// Updates a specific job resource.
+  ///
+  /// Currently the only supported fields to update are `labels`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The job name.
+  /// Value must have pattern "^projects/[^/]+/jobs/[^/]+$".
+  ///
+  /// [updateMask] - Required. Specifies the path, relative to `Job`, of the
+  /// field to update.
+  /// To adopt etag mechanism, include `etag` field in the mask, and include the
+  /// `etag` value in your job resource.
+  ///
+  /// For example, to change the labels of a job, the `update_mask` parameter
+  /// would be specified as `labels`, `etag`, and the
+  /// `PATCH` request body would specify the new value, as follows:
+  ///     {
+  ///       "labels": {
+  ///          "owner": "Google",
+  ///          "color": "Blue"
+  ///       }
+  ///       "etag": "33a64df551425fcc55e4d42a148795d9f25f89d4"
+  ///     }
+  /// If `etag` matches the one on the server, the labels of the job will be
+  /// replaced with the given ones, and the server end `etag` will be
+  /// recalculated.
+  ///
+  /// Currently the only supported update masks are `labels` and `etag`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudMlV1Job].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudMlV1Job> patch(
+      GoogleCloudMlV1Job request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new GoogleCloudMlV1Job.fromJson(data));
+  }
+
   /// Sets the access control policy on the specified resource. Replaces any
   /// existing policy.
   ///
@@ -752,17 +828,19 @@ class ProjectsModelsResourceApi {
   /// listed.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [filter] - Optional. Specifies the subset of models to retrieve.
+  ///
+  /// [pageToken] - Optional. A page token to request the next page of results.
+  ///
+  /// You get the token from the `next_page_token` field of the response from
+  /// the previous call.
+  ///
   /// [pageSize] - Optional. The number of models to retrieve per "page" of
   /// results. If there
   /// are more remaining results than this number, the response message will
   /// contain a valid value in the `next_page_token` field.
   ///
   /// The default value is 20, and the maximum page size is 100.
-  ///
-  /// [pageToken] - Optional. A page token to request the next page of results.
-  ///
-  /// You get the token from the `next_page_token` field of the response from
-  /// the previous call.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -775,7 +853,10 @@ class ProjectsModelsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListModelsResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String filter,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -786,11 +867,14 @@ class ProjectsModelsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1182,6 +1266,8 @@ class ProjectsModelsVersionsResourceApi {
   /// [parent] - Required. The name of the model for which to list the version.
   /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
   ///
+  /// [filter] - Optional. Specifies the subset of versions to retrieve.
+  ///
   /// [pageToken] - Optional. A page token to request the next page of results.
   ///
   /// You get the token from the `next_page_token` field of the response from
@@ -1205,7 +1291,10 @@ class ProjectsModelsVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListVersionsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.String filter,
+      core.String pageToken,
+      core.int pageSize,
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1215,6 +1304,9 @@ class ProjectsModelsVersionsResourceApi {
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -1546,11 +1638,11 @@ class ProjectsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - The standard list page size.
-  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1563,9 +1655,9 @@ class ProjectsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.int pageSize,
-      core.String filter,
+      {core.String filter,
       core.String pageToken,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1577,14 +1669,14 @@ class ProjectsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1960,8 +2052,6 @@ class GoogleCloudMlV1HyperparameterSpec {
 }
 
 /// Represents a training or prediction job.
-///
-/// Next ID: 16
 class GoogleCloudMlV1Job {
   /// Output only. When the job was created.
   core.String createTime;
@@ -1972,8 +2062,32 @@ class GoogleCloudMlV1Job {
   /// Output only. The details of a failure or a cancellation.
   core.String errorMessage;
 
+  /// `etag` is used for optimistic concurrency control as a way to help
+  /// prevent simultaneous updates of a job from overwriting each other.
+  /// It is strongly suggested that systems make use of the `etag` in the
+  /// read-modify-write cycle to perform job updates in order to avoid race
+  /// conditions: An `etag` is returned in the response to `GetJob`, and
+  /// systems are expected to put that etag in the request to `UpdateJob` to
+  /// ensure that their change will be applied to the same version of the job.
+  core.String etag;
+  core.List<core.int> get etagAsBytes {
+    return convert.BASE64.decode(etag);
+  }
+
+  void set etagAsBytes(core.List<core.int> _bytes) {
+    etag =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
   /// Required. The user-specified id of the job.
   core.String jobId;
+
+  /// Optional. One or more labels that you can add, to organize your jobs.
+  /// Each label is a key-value pair, where both the key and the value are
+  /// arbitrary strings that you supply.
+  /// For more information, see the documentation on
+  /// <a href="/ml-engine/docs/how-tos/resource-labels">using labels</a>.
+  core.Map<core.String, core.String> labels;
 
   /// Input parameters to create a prediction job.
   GoogleCloudMlV1PredictionInput predictionInput;
@@ -2018,8 +2132,14 @@ class GoogleCloudMlV1Job {
     if (_json.containsKey("errorMessage")) {
       errorMessage = _json["errorMessage"];
     }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
     if (_json.containsKey("jobId")) {
       jobId = _json["jobId"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
     }
     if (_json.containsKey("predictionInput")) {
       predictionInput =
@@ -2057,8 +2177,14 @@ class GoogleCloudMlV1Job {
     if (errorMessage != null) {
       _json["errorMessage"] = errorMessage;
     }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
     if (jobId != null) {
       _json["jobId"] = jobId;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     if (predictionInput != null) {
       _json["predictionInput"] = (predictionInput).toJson();
@@ -2218,8 +2344,6 @@ class GoogleCloudMlV1ManualScaling {
 /// A model can have multiple versions, each of which is a deployed, trained
 /// model ready to receive prediction requests. The model itself is just a
 /// container.
-///
-/// Next ID: 8
 class GoogleCloudMlV1Model {
   /// Output only. The default version of the model. This version will be used
   /// to
@@ -2231,6 +2355,30 @@ class GoogleCloudMlV1Model {
 
   /// Optional. The description specified for the model when it was created.
   core.String description;
+
+  /// `etag` is used for optimistic concurrency control as a way to help
+  /// prevent simultaneous updates of a model from overwriting each other.
+  /// It is strongly suggested that systems make use of the `etag` in the
+  /// read-modify-write cycle to perform model updates in order to avoid race
+  /// conditions: An `etag` is returned in the response to `GetModel`, and
+  /// systems are expected to put that etag in the request to `UpdateModel` to
+  /// ensure that their change will be applied to the model as intended.
+  core.String etag;
+  core.List<core.int> get etagAsBytes {
+    return convert.BASE64.decode(etag);
+  }
+
+  void set etagAsBytes(core.List<core.int> _bytes) {
+    etag =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
+  /// Optional. One or more labels that you can add, to organize your models.
+  /// Each label is a key-value pair, where both the key and the value are
+  /// arbitrary strings that you supply.
+  /// For more information, see the documentation on
+  /// <a href="/ml-engine/docs/how-tos/resource-labels">using labels</a>.
+  core.Map<core.String, core.String> labels;
 
   /// Required. The name specified for the model when it was created.
   ///
@@ -2262,6 +2410,12 @@ class GoogleCloudMlV1Model {
     if (_json.containsKey("description")) {
       description = _json["description"];
     }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
@@ -2282,6 +2436,12 @@ class GoogleCloudMlV1Model {
     if (description != null) {
       _json["description"] = description;
     }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
+    }
     if (name != null) {
       _json["name"] = name;
     }
@@ -2296,8 +2456,6 @@ class GoogleCloudMlV1Model {
 }
 
 /// Represents the metadata of the long-running operation.
-///
-/// Next ID: 9
 class GoogleCloudMlV1OperationMetadata {
   /// The time the operation was submitted.
   core.String createTime;
@@ -2307,6 +2465,10 @@ class GoogleCloudMlV1OperationMetadata {
 
   /// Indicates whether a request to cancel this operation has been made.
   core.bool isCancellationRequested;
+
+  /// The user labels, inherited from the model or the model version being
+  /// operated on.
+  core.Map<core.String, core.String> labels;
 
   /// Contains the name of the model associated with the operation.
   core.String modelName;
@@ -2339,6 +2501,9 @@ class GoogleCloudMlV1OperationMetadata {
     if (_json.containsKey("isCancellationRequested")) {
       isCancellationRequested = _json["isCancellationRequested"];
     }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
+    }
     if (_json.containsKey("modelName")) {
       modelName = _json["modelName"];
     }
@@ -2364,6 +2529,9 @@ class GoogleCloudMlV1OperationMetadata {
     }
     if (isCancellationRequested != null) {
       _json["isCancellationRequested"] = isCancellationRequested;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     if (modelName != null) {
       _json["modelName"] = modelName;
@@ -2948,15 +3116,34 @@ class GoogleCloudMlV1TrainingInput {
   ///   <dt>standard_gpu</dt>
   ///   <dd>
   /// A machine equivalent to <code suppresswarning="true">standard</code> that
-  ///   also includes a
+  ///   also includes a single NVIDIA Tesla K80 GPU. See more about
   ///   <a href="/ml-engine/docs/how-tos/using-gpus">
-  ///   GPU that you can use in your trainer</a>.
+  ///   using GPUs for training your model</a>.
   ///   </dd>
   ///   <dt>complex_model_m_gpu</dt>
   ///   <dd>
   ///   A machine equivalent to
   ///   <code suppresswarning="true">complex_model_m</code> that also includes
-  ///   four GPUs.
+  ///   four NVIDIA Tesla K80 GPUs.
+  ///   </dd>
+  ///   <dt>complex_model_l_gpu</dt>
+  ///   <dd>
+  ///   A machine equivalent to
+  ///   <code suppresswarning="true">complex_model_l</code> that also includes
+  ///   eight NVIDIA Tesla K80 GPUs.
+  ///   </dd>
+  ///   <dt>standard_p100</dt>
+  ///   <dd>
+  /// A machine equivalent to <code suppresswarning="true">standard</code> that
+  ///   also includes a single NVIDIA Tesla P100 GPU. The availability of these
+  ///   GPUs is in the Alpha launch stage.
+  ///   </dd>
+  ///   <dt>complex_model_m_p100</dt>
+  ///   <dd>
+  ///   A machine equivalent to
+  ///   <code suppresswarning="true">complex_model_m</code> that also includes
+  ///   four NVIDIA Tesla P100 GPUs. The availability of these GPUs is in
+  ///   the Alpha launch stage.
   ///   </dd>
   /// </dl>
   ///
@@ -3203,7 +3390,6 @@ class GoogleCloudMlV1TrainingOutput {
 /// information about all of the versions of a given model by calling
 /// [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list).
 ///
-/// Next ID: 19
 /// LINT.IfChange
 class GoogleCloudMlV1Version {
   /// Automatically scale the number of nodes used to serve the model in
@@ -3235,12 +3421,36 @@ class GoogleCloudMlV1Version {
   /// Output only. The details of a failure or a cancellation.
   core.String errorMessage;
 
+  /// `etag` is used for optimistic concurrency control as a way to help
+  /// prevent simultaneous updates of a model from overwriting each other.
+  /// It is strongly suggested that systems make use of the `etag` in the
+  /// read-modify-write cycle to perform model updates in order to avoid race
+  /// conditions: An `etag` is returned in the response to `GetVersion`, and
+  /// systems are expected to put that etag in the request to `UpdateVersion` to
+  /// ensure that their change will be applied to the model as intended.
+  core.String etag;
+  core.List<core.int> get etagAsBytes {
+    return convert.BASE64.decode(etag);
+  }
+
+  void set etagAsBytes(core.List<core.int> _bytes) {
+    etag =
+        convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
+  }
+
   /// Output only. If true, this version will be used to handle prediction
   /// requests that do not specify a version.
   ///
   /// You can change the default version by calling
   /// [projects.methods.versions.setDefault](/ml-engine/reference/rest/v1/projects.models.versions/setDefault).
   core.bool isDefault;
+
+  /// Optional. One or more labels that you can add, to organize your model
+  /// versions. Each label is a key-value pair, where both the key and the value
+  /// are arbitrary strings that you supply.
+  /// For more information, see the documentation on
+  /// <a href="/ml-engine/docs/how-tos/resource-labels">using labels</a>.
+  core.Map<core.String, core.String> labels;
 
   /// Output only. The time the version was last used for prediction.
   core.String lastUseTime;
@@ -3291,8 +3501,14 @@ class GoogleCloudMlV1Version {
     if (_json.containsKey("errorMessage")) {
       errorMessage = _json["errorMessage"];
     }
+    if (_json.containsKey("etag")) {
+      etag = _json["etag"];
+    }
     if (_json.containsKey("isDefault")) {
       isDefault = _json["isDefault"];
+    }
+    if (_json.containsKey("labels")) {
+      labels = _json["labels"];
     }
     if (_json.containsKey("lastUseTime")) {
       lastUseTime = _json["lastUseTime"];
@@ -3330,8 +3546,14 @@ class GoogleCloudMlV1Version {
     if (errorMessage != null) {
       _json["errorMessage"] = errorMessage;
     }
+    if (etag != null) {
+      _json["etag"] = etag;
+    }
     if (isDefault != null) {
       _json["isDefault"] = isDefault;
+    }
+    if (labels != null) {
+      _json["labels"] = labels;
     }
     if (lastUseTime != null) {
       _json["lastUseTime"] = lastUseTime;

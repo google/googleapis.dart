@@ -3890,7 +3890,7 @@ class NodePool {
   /// node pool instance, if available.
   core.String statusMessage;
 
-  /// [Output only] The version of the Kubernetes of this node.
+  /// The version of the Kubernetes of this node.
   core.String version;
 
   NodePool();

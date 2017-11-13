@@ -319,6 +319,8 @@ class ProjectsRegionsClustersResourceApi {
   /// [region] - Required. The Cloud Dataproc region in which to handle the
   /// request.
   ///
+  /// [pageSize] - Optional. The standard List page size.
+  ///
   /// [filter] - Optional. A filter constraining the clusters to list. Filters
   /// are case-sensitive and have the following syntax:field = value AND field =
   /// value ...where field is one of status.state, clusterName, or labels.[KEY],
@@ -333,8 +335,6 @@ class ProjectsRegionsClustersResourceApi {
   ///
   /// [pageToken] - Optional. The standard List page token.
   ///
-  /// [pageSize] - Optional. The standard List page size.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -347,9 +347,9 @@ class ProjectsRegionsClustersResourceApi {
   /// this method will complete with the same error.
   async.Future<ListClustersResponse> list(
       core.String projectId, core.String region,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -364,14 +364,14 @@ class ProjectsRegionsClustersResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -703,17 +703,21 @@ class ProjectsRegionsJobsResourceApi {
   /// [region] - Required. The Cloud Dataproc region in which to handle the
   /// request.
   ///
+  /// [clusterName] - Optional. If set, the returned jobs list includes only
+  /// jobs that were submitted to the named cluster.
+  ///
   /// [filter] - Optional. A filter constraining the jobs to list. Filters are
   /// case-sensitive and have the following syntax:field = value AND field =
   /// value ...where field is status.state or labels.[KEY], and [KEY] is a label
   /// key. value can be * to match all values. status.state can be either ACTIVE
-  /// or INACTIVE. Only the logical AND operator is supported; space-separated
+  /// or NON_ACTIVE. Only the logical AND operator is supported; space-separated
   /// items are treated as having an implicit AND operator.Example
   /// filter:status.state = ACTIVE AND labels.env = staging AND labels.starred =
   /// *
   ///
   /// [jobStateMatcher] - Optional. Specifies enumerated categories of jobs to
-  /// list (default = match ALL jobs).
+  /// list. (default = match ALL jobs).If filter is provided, jobStateMatcher
+  /// will be ignored.
   /// Possible string values are:
   /// - "ALL" : A ALL.
   /// - "ACTIVE" : A ACTIVE.
@@ -723,9 +727,6 @@ class ProjectsRegionsJobsResourceApi {
   /// request the next page of results.
   ///
   /// [pageSize] - Optional. The number of results to return in each response.
-  ///
-  /// [clusterName] - Optional. If set, the returned jobs list includes only
-  /// jobs that were submitted to the named cluster.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -738,11 +739,11 @@ class ProjectsRegionsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(core.String projectId, core.String region,
-      {core.String filter,
+      {core.String clusterName,
+      core.String filter,
       core.String jobStateMatcher,
       core.String pageToken,
       core.int pageSize,
-      core.String clusterName,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -757,6 +758,9 @@ class ProjectsRegionsJobsResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
+    if (clusterName != null) {
+      _queryParams["clusterName"] = [clusterName];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
@@ -768,9 +772,6 @@ class ProjectsRegionsJobsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (clusterName != null) {
-      _queryParams["clusterName"] = [clusterName];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

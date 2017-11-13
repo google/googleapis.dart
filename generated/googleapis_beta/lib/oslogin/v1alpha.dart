@@ -14,7 +14,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 
 const core.String USER_AGENT = 'dart-api-client oslogin/v1alpha';
 
-/// Manages OS login configuration for Directory API users.
+/// Manages OS login configuration for Google account users.
 class OsloginApi {
   /// View and manage your data across Google Cloud Platform services
   static const CloudPlatformScope =
@@ -45,6 +45,8 @@ class OsloginApi {
 class UsersResourceApi {
   final commons.ApiRequester _requester;
 
+  UsersProjectsResourceApi get projects =>
+      new UsersProjectsResourceApi(_requester);
   UsersSshPublicKeysResourceApi get sshPublicKeys =>
       new UsersSshPublicKeysResourceApi(_requester);
 
@@ -108,6 +110,8 @@ class UsersResourceApi {
   /// [parent] - The unique ID for the user in format `users/{user}`.
   /// Value must have pattern "^users/[^/]+$".
   ///
+  /// [projectId] - The project ID of the Google Cloud Platform project.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -120,7 +124,7 @@ class UsersResourceApi {
   /// this method will complete with the same error.
   async.Future<ImportSshPublicKeyResponse> importSshPublicKey(
       SshPublicKey request, core.String parent,
-      {core.String $fields}) {
+      {core.String projectId, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -133,6 +137,9 @@ class UsersResourceApi {
     }
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -150,6 +157,58 @@ class UsersResourceApi {
         downloadOptions: _downloadOptions);
     return _response
         .then((data) => new ImportSshPublicKeyResponse.fromJson(data));
+  }
+}
+
+class UsersProjectsResourceApi {
+  final commons.ApiRequester _requester;
+
+  UsersProjectsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Deletes a POSIX account.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - A reference to the POSIX account to update. POSIX accounts are
+  /// identified
+  /// by the project ID they are associated with. A reference to the POSIX
+  /// account is in format `users/{user}/projects/{project}`.
+  /// Value must have pattern "^users/[^/]+/projects/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
   }
 }
 
@@ -355,8 +414,8 @@ class ImportSshPublicKeyResponse {
   }
 }
 
-/// The Directory API profile information used for logging in to a virtual
-/// machine on Google Compute Engine.
+/// The user profile information used for logging in to a virtual machine on
+/// Google Compute Engine.
 class LoginProfile {
   /// A unique user ID for identifying the user.
   core.String name;
@@ -415,8 +474,11 @@ class LoginProfile {
   }
 }
 
-/// The POSIX account information associated with a Directory API User.
+/// The POSIX account information associated with a Google account.
 class PosixAccount {
+  /// Output only. A POSIX account identifier.
+  core.String accountId;
+
   /// The GECOS (user information) entry for this account.
   core.String gecos;
 
@@ -445,6 +507,9 @@ class PosixAccount {
   PosixAccount();
 
   PosixAccount.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
     if (_json.containsKey("gecos")) {
       gecos = _json["gecos"];
     }
@@ -474,6 +539,9 @@ class PosixAccount {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
     if (gecos != null) {
       _json["gecos"] = gecos;
     }
@@ -502,13 +570,12 @@ class PosixAccount {
   }
 }
 
-/// The SSH public key information associated with a Directory API User.
+/// The SSH public key information associated with a Google account.
 class SshPublicKey {
   /// An expiration time in microseconds since epoch.
   core.String expirationTimeUsec;
 
-  /// The SHA-256 fingerprint of the SSH public key.
-  /// Output only.
+  /// Output only. The SHA-256 fingerprint of the SSH public key.
   core.String fingerprint;
 
   /// Public key text in SSH format, defined by

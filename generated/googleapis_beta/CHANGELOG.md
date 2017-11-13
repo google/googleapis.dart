@@ -1,3 +1,18 @@
+## 0.41.0
+
+* [api] appengine:v1beta4
+* [api] dataflow:v1b3
+* [api] logging:v2beta1
+* [api] oslogin:v1alpha
+* [api] oslogin:v1beta
+* [api] videointelligence:v1beta1
+* [api-breaking] appengine:v1beta
+* [api-breaking] appengine:v1beta4
+* [api-breaking] appengine:v1beta5
+* [api-breaking] dataflow:v1b3
+* [api-breaking] videointelligence:v1beta1
+* [api-removed] cloudmonitoring:v2beta2
+
 ## 0.40.1
 
 * [api] sqladmin:v1beta4

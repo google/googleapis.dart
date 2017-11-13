@@ -275,11 +275,11 @@ class AppsLocationsResourceApi {
   /// [appsId] - Part of `name`. The resource that owns the locations
   /// collection, if applicable.
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -292,9 +292,9 @@ class AppsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String appsId,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -306,14 +306,14 @@ class AppsLocationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1309,11 +1309,11 @@ class AppsOperationsResourceApi {
   ///
   /// [appsId] - Part of `name`. The name of the operation's parent resource.
   ///
+  /// [filter] - The standard list filter.
+  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
-  ///
-  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1326,9 +1326,9 @@ class AppsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String appsId,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1340,14 +1340,14 @@ class AppsOperationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1959,6 +1959,47 @@ class DiskUtilization {
     }
     if (targetWriteOpsPerSec != null) {
       _json["targetWriteOpsPerSec"] = targetWriteOpsPerSec;
+    }
+    return _json;
+  }
+}
+
+/// Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The
+/// Endpoints API Service provides tooling for serving Open API and gRPC
+/// endpoints via an NGINX proxy.The fields here refer to the name and
+/// configuration id of a "service" resource in the Service Management API
+/// (https://cloud.google.com/service-management/overview).
+class EndpointsApiService {
+  /// Endpoints service configuration id as specified by the Service Management
+  /// API. For example "2016-09-19r1"By default, the Endpoints service
+  /// configuration id is fixed and config_id must be specified. To keep the
+  /// Endpoints service configuration id updated with each rollout, specify
+  /// RolloutStrategy.MANAGED and omit config_id.
+  core.String configId;
+
+  /// Endpoints service name which is the name of the "service" resource in the
+  /// Service Management API. For example "myapi.endpoints.myproject.cloud.goog"
+  core.String name;
+
+  EndpointsApiService();
+
+  EndpointsApiService.fromJson(core.Map _json) {
+    if (_json.containsKey("configId")) {
+      configId = _json["configId"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (configId != null) {
+      _json["configId"] = configId;
+    }
+    if (name != null) {
+      _json["name"] = name;
     }
     return _json;
   }
@@ -2976,67 +3017,6 @@ class OperationMetadata {
 }
 
 /// Metadata for the given google.longrunning.Operation.
-class OperationMetadataExperimental {
-  /// Time that this operation completed.@OutputOnly
-  core.String endTime;
-
-  /// Time that this operation was created.@OutputOnly
-  core.String insertTime;
-
-  /// API method that initiated this operation. Example:
-  /// google.appengine.experimental.CustomDomains.CreateCustomDomain.@OutputOnly
-  core.String method;
-
-  /// Name of the resource that this operation is acting on. Example:
-  /// apps/myapp/customDomains/example.com.@OutputOnly
-  core.String target;
-
-  /// User who requested this operation.@OutputOnly
-  core.String user;
-
-  OperationMetadataExperimental();
-
-  OperationMetadataExperimental.fromJson(core.Map _json) {
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
-    }
-    if (_json.containsKey("insertTime")) {
-      insertTime = _json["insertTime"];
-    }
-    if (_json.containsKey("method")) {
-      method = _json["method"];
-    }
-    if (_json.containsKey("target")) {
-      target = _json["target"];
-    }
-    if (_json.containsKey("user")) {
-      user = _json["user"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (endTime != null) {
-      _json["endTime"] = endTime;
-    }
-    if (insertTime != null) {
-      _json["insertTime"] = insertTime;
-    }
-    if (method != null) {
-      _json["method"] = method;
-    }
-    if (target != null) {
-      _json["target"] = target;
-    }
-    if (user != null) {
-      _json["user"] = user;
-    }
-    return _json;
-  }
-}
-
-/// Metadata for the given google.longrunning.Operation.
 class OperationMetadataV1 {
   /// Time that this operation completed.@OutputOnly
   core.String endTime;
@@ -4004,6 +3984,11 @@ class Version {
   /// GET requests if view=FULL is set.
   Deployment deployment;
 
+  /// Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud
+  /// Endpoints Extensible Service Proxy will be provided to serve the API
+  /// implemented by the app.
+  EndpointsApiService endpointsApiService;
+
   /// App Engine execution environment to use for this version.Defaults to 1.
   core.String env;
 
@@ -4117,6 +4102,10 @@ class Version {
     if (_json.containsKey("deployment")) {
       deployment = new Deployment.fromJson(_json["deployment"]);
     }
+    if (_json.containsKey("endpointsApiService")) {
+      endpointsApiService =
+          new EndpointsApiService.fromJson(_json["endpointsApiService"]);
+    }
     if (_json.containsKey("env")) {
       env = _json["env"];
     }
@@ -4207,6 +4196,9 @@ class Version {
     }
     if (deployment != null) {
       _json["deployment"] = (deployment).toJson();
+    }
+    if (endpointsApiService != null) {
+      _json["endpointsApiService"] = (endpointsApiService).toJson();
     }
     if (env != null) {
       _json["env"] = env;

@@ -272,16 +272,16 @@ class ProjectsLocationsRegistriesResourceApi {
   /// `projects/example-project/locations/us-central1`.
   /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
   ///
+  /// [pageToken] - The value returned by the last
+  /// `ListDeviceRegistriesResponse`; indicates
+  /// that this is a continuation of a prior `ListDeviceRegistries` call, and
+  /// that the system should return the next page of data.
+  ///
   /// [pageSize] - The maximum number of registries to return in the response.
   /// If this value
   /// is zero, the service will select a default size. A call may return fewer
   /// objects than requested, but if there is a non-empty `page_token`, it
   /// indicates that more entries are available.
-  ///
-  /// [pageToken] - The value returned by the last
-  /// `ListDeviceRegistriesResponse`; indicates
-  /// that this is a continuation of a prior `ListDeviceRegistries` call, and
-  /// that the system should return the next page of data.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -294,7 +294,7 @@ class ProjectsLocationsRegistriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDeviceRegistriesResponse> list(core.String parent,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -305,11 +305,11 @@ class ProjectsLocationsRegistriesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -344,8 +344,8 @@ class ProjectsLocationsRegistriesResourceApi {
   /// mask.
   /// The field mask must not be empty, and it must not contain fields that
   /// are immutable or only set by the server.
-  /// Mutable top-level fields: `event_notification_config`, `mqtt_config`, and
-  /// `state_notification_config`.
+  /// Mutable top-level fields: `event_notification_config`, `http_config`,
+  /// `mqtt_config`, and `state_notification_config`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -630,6 +630,10 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$".
   ///
+  /// [fieldMask] - The fields of the `Device` resource to be returned in the
+  /// response. If the
+  /// field mask is unset or empty, all fields are returned.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -640,7 +644,8 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Device> get(core.String name, {core.String $fields}) {
+  async.Future<Device> get(core.String name,
+      {core.String fieldMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -650,6 +655,9 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (fieldMask != null) {
+      _queryParams["fieldMask"] = [fieldMask];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -675,10 +683,6 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
   ///
-  /// [deviceNumIds] - A list of device numerical ids. If empty, it will ignore
-  /// this field. This
-  /// field cannot hold more than 10,000 entries.
-  ///
   /// [pageToken] - The value returned by the last `ListDevicesResponse`;
   /// indicates
   /// that this is a continuation of a prior `ListDevices` call, and
@@ -700,6 +704,10 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// For example, `['device0', 'device12']`. This field cannot hold more than
   /// 10,000 entries.
   ///
+  /// [deviceNumIds] - A list of device numerical ids. If empty, it will ignore
+  /// this field. This
+  /// field cannot hold more than 10,000 entries.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -711,11 +719,11 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDevicesResponse> list(core.String parent,
-      {core.List<core.String> deviceNumIds,
-      core.String pageToken,
+      {core.String pageToken,
       core.String fieldMask,
       core.int pageSize,
       core.List<core.String> deviceIds,
+      core.List<core.String> deviceNumIds,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -726,9 +734,6 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
 
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
-    }
-    if (deviceNumIds != null) {
-      _queryParams["deviceNumIds"] = deviceNumIds;
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
@@ -741,6 +746,9 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
     }
     if (deviceIds != null) {
       _queryParams["deviceIds"] = deviceIds;
+    }
+    if (deviceNumIds != null) {
+      _queryParams["deviceNumIds"] = deviceNumIds;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

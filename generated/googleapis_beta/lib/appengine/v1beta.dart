@@ -661,6 +661,14 @@ class AppsDomainMappingsResourceApi {
   /// [appsId] - Part of `parent`. Name of the parent Application resource.
   /// Example: apps/myapp.
   ///
+  /// [overrideStrategy] - Whether the domain creation should override any
+  /// existing mappings for this domain. By default, overrides are rejected.
+  /// Possible string values are:
+  /// - "UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY" : A
+  /// UNSPECIFIED_DOMAIN_OVERRIDE_STRATEGY.
+  /// - "STRICT" : A STRICT.
+  /// - "OVERRIDE" : A OVERRIDE.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -672,7 +680,7 @@ class AppsDomainMappingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Operation> create(DomainMapping request, core.String appsId,
-      {core.String $fields}) {
+      {core.String overrideStrategy, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -685,6 +693,9 @@ class AppsDomainMappingsResourceApi {
     }
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
+    }
+    if (overrideStrategy != null) {
+      _queryParams["overrideStrategy"] = [overrideStrategy];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1662,9 +1673,9 @@ class AppsServicesResourceApi {
   /// [appsId] - Part of `parent`. Name of the parent Application resource.
   /// Example: apps/myapp.
   ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
-  ///
   /// [pageSize] - Maximum results to return per page.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1677,7 +1688,7 @@ class AppsServicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListServicesResponse> list(core.String appsId,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1688,11 +1699,11 @@ class AppsServicesResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2402,9 +2413,9 @@ class AppsServicesVersionsInstancesResourceApi {
   ///
   /// [versionsId] - Part of `parent`. See documentation of `appsId`.
   ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
-  ///
   /// [pageSize] - Maximum results to return per page.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2418,7 +2429,7 @@ class AppsServicesVersionsInstancesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListInstancesResponse> list(
       core.String appsId, core.String servicesId, core.String versionsId,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2435,11 +2446,11 @@ class AppsServicesVersionsInstancesResourceApi {
     if (versionsId == null) {
       throw new core.ArgumentError("Parameter versionsId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2579,7 +2590,7 @@ class ApiEndpointHandler {
 }
 
 /// An Application resource contains the top-level configuration of an App
-/// Engine application. Next tag: 20
+/// Engine application.
 class Application {
   /// Google Apps authentication domain that controls which users can access
   /// this application.Defaults to open access for any Google Account.
@@ -3459,7 +3470,10 @@ class Empty {
 /// (https://cloud.google.com/service-management/overview).
 class EndpointsApiService {
   /// Endpoints service configuration id as specified by the Service Management
-  /// API. For example "2016-09-19r1"
+  /// API. For example "2016-09-19r1"By default, the Endpoints service
+  /// configuration id is fixed and config_id must be specified. To keep the
+  /// Endpoints service configuration id updated with each rollout, specify
+  /// RolloutStrategy.MANAGED and omit config_id.
   core.String configId;
 
   /// Endpoints service name which is the name of the "service" resource in the
@@ -4520,6 +4534,16 @@ class ManagedCertificate {
   /// successfully provisioned certificate may still be serving.
   /// - "FAILED_PERMANENT" : All renewal attempts have been exhausted, likely
   /// due to an invalid DNS setup.
+  /// - "FAILED_RETRYING_CAA_FORBIDDEN" : Most recent renewal failed due to an
+  /// explicit CAA record that does not include the in-use CA, Let's Encrypt.
+  /// Renewals will continue to fail until the CAA is reconfigured. The last
+  /// successfully provisioned certificate may still be serving.
+  /// - "FAILED_RETRYING_CAA_CHECKING" : Most recent renewal failed due to a CAA
+  /// retrieval failure. This means that the domain's DNS provider does not
+  /// properly handle CAA records, failing requests for CAA records when no CAA
+  /// records are defined. Renewals will continue to fail until the DNS provider
+  /// is changed or a CAA record is added for the given domain. The last
+  /// successfully provisioned certificate may still be serving.
   core.String status;
 
   ManagedCertificate();
@@ -4831,67 +4855,6 @@ class OperationMetadata {
     }
     if (operationType != null) {
       _json["operationType"] = operationType;
-    }
-    if (target != null) {
-      _json["target"] = target;
-    }
-    if (user != null) {
-      _json["user"] = user;
-    }
-    return _json;
-  }
-}
-
-/// Metadata for the given google.longrunning.Operation.
-class OperationMetadataExperimental {
-  /// Time that this operation completed.@OutputOnly
-  core.String endTime;
-
-  /// Time that this operation was created.@OutputOnly
-  core.String insertTime;
-
-  /// API method that initiated this operation. Example:
-  /// google.appengine.experimental.CustomDomains.CreateCustomDomain.@OutputOnly
-  core.String method;
-
-  /// Name of the resource that this operation is acting on. Example:
-  /// apps/myapp/customDomains/example.com.@OutputOnly
-  core.String target;
-
-  /// User who requested this operation.@OutputOnly
-  core.String user;
-
-  OperationMetadataExperimental();
-
-  OperationMetadataExperimental.fromJson(core.Map _json) {
-    if (_json.containsKey("endTime")) {
-      endTime = _json["endTime"];
-    }
-    if (_json.containsKey("insertTime")) {
-      insertTime = _json["insertTime"];
-    }
-    if (_json.containsKey("method")) {
-      method = _json["method"];
-    }
-    if (_json.containsKey("target")) {
-      target = _json["target"];
-    }
-    if (_json.containsKey("user")) {
-      user = _json["user"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (endTime != null) {
-      _json["endTime"] = endTime;
-    }
-    if (insertTime != null) {
-      _json["insertTime"] = insertTime;
-    }
-    if (method != null) {
-      _json["method"] = method;
     }
     if (target != null) {
       _json["target"] = target;

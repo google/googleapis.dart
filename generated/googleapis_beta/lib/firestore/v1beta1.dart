@@ -238,13 +238,13 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// [collectionId] - The collection ID, relative to `parent`, to list. For
   /// example: `chatrooms`.
   ///
-  /// [documentId] - The client-assigned document ID to use for this document.
-  ///
-  /// Optional. If not specified, an ID will be assigned by the service.
-  ///
   /// [mask_fieldPaths] - The list of field paths in the mask. See
   /// Document.fields for a field
   /// path syntax reference.
+  ///
+  /// [documentId] - The client-assigned document ID to use for this document.
+  ///
+  /// Optional. If not specified, an ID will be assigned by the service.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -258,8 +258,8 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// this method will complete with the same error.
   async.Future<Document> createDocument(
       Document request, core.String parent, core.String collectionId,
-      {core.String documentId,
-      core.List<core.String> mask_fieldPaths,
+      {core.List<core.String> mask_fieldPaths,
+      core.String documentId,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -277,11 +277,11 @@ class ProjectsDatabasesDocumentsResourceApi {
     if (collectionId == null) {
       throw new core.ArgumentError("Parameter collectionId is required.");
     }
-    if (documentId != null) {
-      _queryParams["documentId"] = [documentId];
-    }
     if (mask_fieldPaths != null) {
       _queryParams["mask.fieldPaths"] = mask_fieldPaths;
+    }
+    if (documentId != null) {
+      _queryParams["documentId"] = [documentId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -310,13 +310,13 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.+$".
   ///
-  /// [currentDocument_updateTime] - When set, the target document must exist
-  /// and have been last updated at
-  /// that time.
-  ///
   /// [currentDocument_exists] - When set to `true`, the target document must
   /// exist.
   /// When set to `false`, the target document must not exist.
+  ///
+  /// [currentDocument_updateTime] - When set, the target document must exist
+  /// and have been last updated at
+  /// that time.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -329,8 +329,8 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> delete(core.String name,
-      {core.String currentDocument_updateTime,
-      core.bool currentDocument_exists,
+      {core.bool currentDocument_exists,
+      core.String currentDocument_updateTime,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -342,11 +342,11 @@ class ProjectsDatabasesDocumentsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (currentDocument_updateTime != null) {
-      _queryParams["currentDocument.updateTime"] = [currentDocument_updateTime];
-    }
     if (currentDocument_exists != null) {
       _queryParams["currentDocument.exists"] = ["${currentDocument_exists}"];
+    }
+    if (currentDocument_updateTime != null) {
+      _queryParams["currentDocument.updateTime"] = [currentDocument_updateTime];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -447,6 +447,15 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// example: `chatrooms`
   /// or `messages`.
   ///
+  /// [showMissing] - If the list should show missing documents. A missing
+  /// document is a
+  /// document that does not exist but has sub-documents. These documents will
+  /// be returned with a key but will not have fields, Document.create_time,
+  /// or Document.update_time set.
+  ///
+  /// Requests with `show_missing` may not specify `where` or
+  /// `order_by`.
+  ///
   /// [mask_fieldPaths] - The list of field paths in the mask. See
   /// Document.fields for a field
   /// path syntax reference.
@@ -458,20 +467,11 @@ class ProjectsDatabasesDocumentsResourceApi {
   ///
   /// [transaction] - Reads documents in a transaction.
   ///
-  /// [readTime] - Reads documents as they were at the given time.
-  /// This may not be older than 60 seconds.
-  ///
   /// [orderBy] - The order to sort results by. For example: `priority desc,
   /// name`.
   ///
-  /// [showMissing] - If the list should show missing documents. A missing
-  /// document is a
-  /// document that does not exist but has sub-documents. These documents will
-  /// be returned with a key but will not have fields, Document.create_time,
-  /// or Document.update_time set.
-  ///
-  /// Requests with `show_missing` may not specify `where` or
-  /// `order_by`.
+  /// [readTime] - Reads documents as they were at the given time.
+  /// This may not be older than 60 seconds.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -485,13 +485,13 @@ class ProjectsDatabasesDocumentsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListDocumentsResponse> list(
       core.String parent, core.String collectionId,
-      {core.List<core.String> mask_fieldPaths,
+      {core.bool showMissing,
+      core.List<core.String> mask_fieldPaths,
       core.String pageToken,
       core.int pageSize,
       core.String transaction,
-      core.String readTime,
       core.String orderBy,
-      core.bool showMissing,
+      core.String readTime,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -506,6 +506,9 @@ class ProjectsDatabasesDocumentsResourceApi {
     if (collectionId == null) {
       throw new core.ArgumentError("Parameter collectionId is required.");
     }
+    if (showMissing != null) {
+      _queryParams["showMissing"] = ["${showMissing}"];
+    }
     if (mask_fieldPaths != null) {
       _queryParams["mask.fieldPaths"] = mask_fieldPaths;
     }
@@ -518,14 +521,11 @@ class ProjectsDatabasesDocumentsResourceApi {
     if (transaction != null) {
       _queryParams["transaction"] = [transaction];
     }
-    if (readTime != null) {
-      _queryParams["readTime"] = [readTime];
-    }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
     }
-    if (showMissing != null) {
-      _queryParams["showMissing"] = ["${showMissing}"];
+    if (readTime != null) {
+      _queryParams["readTime"] = [readTime];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2193,40 +2193,6 @@ class IndexField {
 /// specified otherwise, this must conform to the
 /// <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
 /// standard</a>. Values must be within normalized ranges.
-///
-/// Example of normalization code in Python:
-///
-///     def NormalizeLongitude(longitude):
-///       """Wraps decimal degrees longitude to [-180.0, 180.0]."""
-///       q, r = divmod(longitude, 360.0)
-///       if r > 180.0 or (r == 180.0 and q <= -1.0):
-///         return r - 360.0
-///       return r
-///
-///     def NormalizeLatLng(latitude, longitude):
-///       """Wraps decimal degrees latitude and longitude to
-///       [-90.0, 90.0] and [-180.0, 180.0], respectively."""
-///       r = latitude % 360.0
-///       if r <= 90.0:
-///         return r, NormalizeLongitude(longitude)
-///       elif r >= 270.0:
-///         return r - 360, NormalizeLongitude(longitude)
-///       else:
-///         return 180 - r, NormalizeLongitude(longitude + 180.0)
-///
-///     assert 180.0 == NormalizeLongitude(180.0)
-///     assert -180.0 == NormalizeLongitude(-180.0)
-///     assert -179.0 == NormalizeLongitude(181.0)
-///     assert (0.0, 0.0) == NormalizeLatLng(360.0, 0.0)
-///     assert (0.0, 0.0) == NormalizeLatLng(-360.0, 0.0)
-///     assert (85.0, 180.0) == NormalizeLatLng(95.0, 0.0)
-///     assert (-85.0, -170.0) == NormalizeLatLng(-95.0, 10.0)
-///     assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0)
-///     assert (-90.0, -10.0) == NormalizeLatLng(-90.0, -10.0)
-///     assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0)
-///     assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
-///     assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
-///     assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
 class LatLng {
   /// The latitude in degrees. It must be in the range [-90.0, +90.0].
   core.double latitude;

@@ -168,7 +168,7 @@ class ProjectsResourceApi {
 /// *
 /// The RemoteConfig consists of a list of conditions (which can be
 /// thought of as named "if" statements) and a map of parameters (parameter key
-/// to a stucture containing an optional default value, as well as a optional
+/// to a structure containing an optional default value, as well as a optional
 /// submap of (condition name to value when that condition is true).
 class RemoteConfig {
   /// The list of named conditions. The order *does* affect the semantics.
@@ -236,6 +236,14 @@ class RemoteConfig {
 /// are
 /// part of a single RemoteConfig template.
 class RemoteConfigCondition {
+  /// Optional.
+  /// A description for this Condition. Length must be less than or equal to
+  /// 100 characters (or more precisely, unicode code points, which is defined
+  /// in
+  /// java/com/google/wireless/android/config/ConstsExporter.java).
+  /// A description may contain any Unicode characters
+  core.String description;
+
   /// Required.
   core.String expression;
 
@@ -272,6 +280,9 @@ class RemoteConfigCondition {
   RemoteConfigCondition();
 
   RemoteConfigCondition.fromJson(core.Map _json) {
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
     if (_json.containsKey("expression")) {
       expression = _json["expression"];
     }
@@ -286,6 +297,9 @@ class RemoteConfigCondition {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (description != null) {
+      _json["description"] = description;
+    }
     if (expression != null) {
       _json["expression"] = expression;
     }
@@ -314,6 +328,14 @@ class RemoteConfigParameter {
   /// evaluate to <code>true</code>.
   RemoteConfigParameterValue defaultValue;
 
+  /// Optional.
+  /// A description for this Parameter. Length must be less than or equal to
+  /// 100 characters (or more precisely, unicode code points, which is defined
+  /// in
+  /// java/com/google/wireless/android/config/ConstsExporter.java).
+  /// A description may contain any Unicode characters
+  core.String description;
+
   RemoteConfigParameter();
 
   RemoteConfigParameter.fromJson(core.Map _json) {
@@ -328,6 +350,9 @@ class RemoteConfigParameter {
       defaultValue =
           new RemoteConfigParameterValue.fromJson(_json["defaultValue"]);
     }
+    if (_json.containsKey("description")) {
+      description = _json["description"];
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -340,6 +365,9 @@ class RemoteConfigParameter {
     }
     if (defaultValue != null) {
       _json["defaultValue"] = (defaultValue).toJson();
+    }
+    if (description != null) {
+      _json["description"] = description;
     }
     return _json;
   }

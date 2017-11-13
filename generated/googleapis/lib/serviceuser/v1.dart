@@ -1375,12 +1375,6 @@ class Endpoint {
   /// allowed to proceed.
   core.bool allowCors;
 
-  /// The list of APIs served by this endpoint.
-  ///
-  /// If no APIs are specified this translates to "all APIs" exported by the
-  /// service, as defined in the top-level service configuration.
-  core.List<core.String> apis;
-
   /// The list of features enabled on this endpoint.
   core.List<core.String> features;
 
@@ -1404,9 +1398,6 @@ class Endpoint {
     if (_json.containsKey("allowCors")) {
       allowCors = _json["allowCors"];
     }
-    if (_json.containsKey("apis")) {
-      apis = _json["apis"];
-    }
     if (_json.containsKey("features")) {
       features = _json["features"];
     }
@@ -1426,9 +1417,6 @@ class Endpoint {
     }
     if (allowCors != null) {
       _json["allowCors"] = allowCors;
-    }
-    if (apis != null) {
-      _json["apis"] = apis;
     }
     if (features != null) {
       _json["features"] = features;

@@ -197,10 +197,10 @@ class SpreadsheetsResourceApi {
   ///
   /// [spreadsheetId] - The spreadsheet to request.
   ///
+  /// [ranges] - The ranges to retrieve from the spreadsheet.
+  ///
   /// [includeGridData] - True if grid data should be returned.
   /// This parameter is ignored if a field mask was set in the request.
-  ///
-  /// [ranges] - The ranges to retrieve from the spreadsheet.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -213,8 +213,8 @@ class SpreadsheetsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Spreadsheet> get(core.String spreadsheetId,
-      {core.bool includeGridData,
-      core.List<core.String> ranges,
+      {core.List<core.String> ranges,
+      core.bool includeGridData,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -226,11 +226,11 @@ class SpreadsheetsResourceApi {
     if (spreadsheetId == null) {
       throw new core.ArgumentError("Parameter spreadsheetId is required.");
     }
-    if (includeGridData != null) {
-      _queryParams["includeGridData"] = ["${includeGridData}"];
-    }
     if (ranges != null) {
       _queryParams["ranges"] = ranges;
+    }
+    if (includeGridData != null) {
+      _queryParams["includeGridData"] = ["${includeGridData}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -536,11 +536,6 @@ class SpreadsheetsValuesResourceApi {
   /// data.
   /// Values will be appended after the last row of the table.
   ///
-  /// [includeValuesInResponse] - Determines if the update response should
-  /// include the values
-  /// of the cells that were appended. By default, responses
-  /// do not include the updated values.
-  ///
   /// [responseValueRenderOption] - Determines how values in the response should
   /// be rendered.
   /// The default render option is ValueRenderOption.FORMATTED_VALUE.
@@ -570,6 +565,11 @@ class SpreadsheetsValuesResourceApi {
   /// - "SERIAL_NUMBER" : A SERIAL_NUMBER.
   /// - "FORMATTED_STRING" : A FORMATTED_STRING.
   ///
+  /// [includeValuesInResponse] - Determines if the update response should
+  /// include the values
+  /// of the cells that were appended. By default, responses
+  /// do not include the updated values.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -582,11 +582,11 @@ class SpreadsheetsValuesResourceApi {
   /// this method will complete with the same error.
   async.Future<AppendValuesResponse> append(
       ValueRange request, core.String spreadsheetId, core.String range,
-      {core.bool includeValuesInResponse,
-      core.String responseValueRenderOption,
+      {core.String responseValueRenderOption,
       core.String insertDataOption,
       core.String valueInputOption,
       core.String responseDateTimeRenderOption,
+      core.bool includeValuesInResponse,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -604,9 +604,6 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
-    if (includeValuesInResponse != null) {
-      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
-    }
     if (responseValueRenderOption != null) {
       _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
     }
@@ -620,6 +617,9 @@ class SpreadsheetsValuesResourceApi {
       _queryParams["responseDateTimeRenderOption"] = [
         responseDateTimeRenderOption
       ];
+    }
+    if (includeValuesInResponse != null) {
+      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -758,22 +758,7 @@ class SpreadsheetsValuesResourceApi {
   ///
   /// [spreadsheetId] - The ID of the spreadsheet to retrieve data from.
   ///
-  /// [dateTimeRenderOption] - How dates, times, and durations should be
-  /// represented in the output.
-  /// This is ignored if value_render_option is
-  /// FORMATTED_VALUE.
-  /// The default dateTime render option is
-  /// [DateTimeRenderOption.SERIAL_NUMBER].
-  /// Possible string values are:
-  /// - "SERIAL_NUMBER" : A SERIAL_NUMBER.
-  /// - "FORMATTED_STRING" : A FORMATTED_STRING.
-  ///
-  /// [valueRenderOption] - How values should be represented in the output.
-  /// The default render option is ValueRenderOption.FORMATTED_VALUE.
-  /// Possible string values are:
-  /// - "FORMATTED_VALUE" : A FORMATTED_VALUE.
-  /// - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
-  /// - "FORMULA" : A FORMULA.
+  /// [ranges] - The A1 notation of the values to retrieve.
   ///
   /// [majorDimension] - The major dimension that results should use.
   ///
@@ -787,7 +772,22 @@ class SpreadsheetsValuesResourceApi {
   /// - "ROWS" : A ROWS.
   /// - "COLUMNS" : A COLUMNS.
   ///
-  /// [ranges] - The A1 notation of the values to retrieve.
+  /// [valueRenderOption] - How values should be represented in the output.
+  /// The default render option is ValueRenderOption.FORMATTED_VALUE.
+  /// Possible string values are:
+  /// - "FORMATTED_VALUE" : A FORMATTED_VALUE.
+  /// - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
+  /// - "FORMULA" : A FORMULA.
+  ///
+  /// [dateTimeRenderOption] - How dates, times, and durations should be
+  /// represented in the output.
+  /// This is ignored if value_render_option is
+  /// FORMATTED_VALUE.
+  /// The default dateTime render option is
+  /// [DateTimeRenderOption.SERIAL_NUMBER].
+  /// Possible string values are:
+  /// - "SERIAL_NUMBER" : A SERIAL_NUMBER.
+  /// - "FORMATTED_STRING" : A FORMATTED_STRING.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -800,10 +800,10 @@ class SpreadsheetsValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchGetValuesResponse> batchGet(core.String spreadsheetId,
-      {core.String dateTimeRenderOption,
-      core.String valueRenderOption,
+      {core.List<core.String> ranges,
       core.String majorDimension,
-      core.List<core.String> ranges,
+      core.String valueRenderOption,
+      core.String dateTimeRenderOption,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -815,17 +815,17 @@ class SpreadsheetsValuesResourceApi {
     if (spreadsheetId == null) {
       throw new core.ArgumentError("Parameter spreadsheetId is required.");
     }
-    if (dateTimeRenderOption != null) {
-      _queryParams["dateTimeRenderOption"] = [dateTimeRenderOption];
-    }
-    if (valueRenderOption != null) {
-      _queryParams["valueRenderOption"] = [valueRenderOption];
+    if (ranges != null) {
+      _queryParams["ranges"] = ranges;
     }
     if (majorDimension != null) {
       _queryParams["majorDimension"] = [majorDimension];
     }
-    if (ranges != null) {
-      _queryParams["ranges"] = ranges;
+    if (valueRenderOption != null) {
+      _queryParams["valueRenderOption"] = [valueRenderOption];
+    }
+    if (dateTimeRenderOption != null) {
+      _queryParams["dateTimeRenderOption"] = [dateTimeRenderOption];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1080,6 +1080,23 @@ class SpreadsheetsValuesResourceApi {
   ///
   /// [range] - The A1 notation of the values to retrieve.
   ///
+  /// [valueRenderOption] - How values should be represented in the output.
+  /// The default render option is ValueRenderOption.FORMATTED_VALUE.
+  /// Possible string values are:
+  /// - "FORMATTED_VALUE" : A FORMATTED_VALUE.
+  /// - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
+  /// - "FORMULA" : A FORMULA.
+  ///
+  /// [dateTimeRenderOption] - How dates, times, and durations should be
+  /// represented in the output.
+  /// This is ignored if value_render_option is
+  /// FORMATTED_VALUE.
+  /// The default dateTime render option is
+  /// [DateTimeRenderOption.SERIAL_NUMBER].
+  /// Possible string values are:
+  /// - "SERIAL_NUMBER" : A SERIAL_NUMBER.
+  /// - "FORMATTED_STRING" : A FORMATTED_STRING.
+  ///
   /// [majorDimension] - The major dimension that results should use.
   ///
   /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,
@@ -1092,23 +1109,6 @@ class SpreadsheetsValuesResourceApi {
   /// - "ROWS" : A ROWS.
   /// - "COLUMNS" : A COLUMNS.
   ///
-  /// [dateTimeRenderOption] - How dates, times, and durations should be
-  /// represented in the output.
-  /// This is ignored if value_render_option is
-  /// FORMATTED_VALUE.
-  /// The default dateTime render option is
-  /// [DateTimeRenderOption.SERIAL_NUMBER].
-  /// Possible string values are:
-  /// - "SERIAL_NUMBER" : A SERIAL_NUMBER.
-  /// - "FORMATTED_STRING" : A FORMATTED_STRING.
-  ///
-  /// [valueRenderOption] - How values should be represented in the output.
-  /// The default render option is ValueRenderOption.FORMATTED_VALUE.
-  /// Possible string values are:
-  /// - "FORMATTED_VALUE" : A FORMATTED_VALUE.
-  /// - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
-  /// - "FORMULA" : A FORMULA.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1120,9 +1120,9 @@ class SpreadsheetsValuesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ValueRange> get(core.String spreadsheetId, core.String range,
-      {core.String majorDimension,
+      {core.String valueRenderOption,
       core.String dateTimeRenderOption,
-      core.String valueRenderOption,
+      core.String majorDimension,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1137,14 +1137,14 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
-    if (majorDimension != null) {
-      _queryParams["majorDimension"] = [majorDimension];
+    if (valueRenderOption != null) {
+      _queryParams["valueRenderOption"] = [valueRenderOption];
     }
     if (dateTimeRenderOption != null) {
       _queryParams["dateTimeRenderOption"] = [dateTimeRenderOption];
     }
-    if (valueRenderOption != null) {
-      _queryParams["valueRenderOption"] = [valueRenderOption];
+    if (majorDimension != null) {
+      _queryParams["majorDimension"] = [majorDimension];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1176,22 +1176,6 @@ class SpreadsheetsValuesResourceApi {
   ///
   /// [range] - The A1 notation of the values to update.
   ///
-  /// [valueInputOption] - How the input data should be interpreted.
-  /// Possible string values are:
-  /// - "INPUT_VALUE_OPTION_UNSPECIFIED" : A INPUT_VALUE_OPTION_UNSPECIFIED.
-  /// - "RAW" : A RAW.
-  /// - "USER_ENTERED" : A USER_ENTERED.
-  ///
-  /// [responseDateTimeRenderOption] - Determines how dates, times, and
-  /// durations in the response should be
-  /// rendered. This is ignored if response_value_render_option is
-  /// FORMATTED_VALUE.
-  /// The default dateTime render option is
-  /// [DateTimeRenderOption.SERIAL_NUMBER].
-  /// Possible string values are:
-  /// - "SERIAL_NUMBER" : A SERIAL_NUMBER.
-  /// - "FORMATTED_STRING" : A FORMATTED_STRING.
-  ///
   /// [includeValuesInResponse] - Determines if the update response should
   /// include the values
   /// of the cells that were updated. By default, responses
@@ -1208,6 +1192,22 @@ class SpreadsheetsValuesResourceApi {
   /// - "UNFORMATTED_VALUE" : A UNFORMATTED_VALUE.
   /// - "FORMULA" : A FORMULA.
   ///
+  /// [valueInputOption] - How the input data should be interpreted.
+  /// Possible string values are:
+  /// - "INPUT_VALUE_OPTION_UNSPECIFIED" : A INPUT_VALUE_OPTION_UNSPECIFIED.
+  /// - "RAW" : A RAW.
+  /// - "USER_ENTERED" : A USER_ENTERED.
+  ///
+  /// [responseDateTimeRenderOption] - Determines how dates, times, and
+  /// durations in the response should be
+  /// rendered. This is ignored if response_value_render_option is
+  /// FORMATTED_VALUE.
+  /// The default dateTime render option is
+  /// [DateTimeRenderOption.SERIAL_NUMBER].
+  /// Possible string values are:
+  /// - "SERIAL_NUMBER" : A SERIAL_NUMBER.
+  /// - "FORMATTED_STRING" : A FORMATTED_STRING.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1220,10 +1220,10 @@ class SpreadsheetsValuesResourceApi {
   /// this method will complete with the same error.
   async.Future<UpdateValuesResponse> update(
       ValueRange request, core.String spreadsheetId, core.String range,
-      {core.String valueInputOption,
-      core.String responseDateTimeRenderOption,
-      core.bool includeValuesInResponse,
+      {core.bool includeValuesInResponse,
       core.String responseValueRenderOption,
+      core.String valueInputOption,
+      core.String responseDateTimeRenderOption,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1241,6 +1241,12 @@ class SpreadsheetsValuesResourceApi {
     if (range == null) {
       throw new core.ArgumentError("Parameter range is required.");
     }
+    if (includeValuesInResponse != null) {
+      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
+    }
+    if (responseValueRenderOption != null) {
+      _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
+    }
     if (valueInputOption != null) {
       _queryParams["valueInputOption"] = [valueInputOption];
     }
@@ -1248,12 +1254,6 @@ class SpreadsheetsValuesResourceApi {
       _queryParams["responseDateTimeRenderOption"] = [
         responseDateTimeRenderOption
       ];
-    }
-    if (includeValuesInResponse != null) {
-      _queryParams["includeValuesInResponse"] = ["${includeValuesInResponse}"];
-    }
-    if (responseValueRenderOption != null) {
-      _queryParams["responseValueRenderOption"] = [responseValueRenderOption];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

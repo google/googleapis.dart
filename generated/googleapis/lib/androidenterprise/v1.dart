@@ -4581,6 +4581,62 @@ class UsersResourceApi {
     return _response.then((data) => new User.fromJson(data));
   }
 
+  /// Revokes access to all devices currently provisioned to the user. The user
+  /// will no longer be able to use the managed Play store on any of their
+  /// managed devices.
+  ///
+  /// This call only works with EMM-managed accounts.
+  ///
+  /// Request parameters:
+  ///
+  /// [enterpriseId] - The ID of the enterprise.
+  ///
+  /// [userId] - The ID of the user.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future revokeDeviceAccess(core.String enterpriseId, core.String userId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _downloadOptions = null;
+
+    _url = 'enterprises/' +
+        commons.Escaper.ecapeVariable('$enterpriseId') +
+        '/users/' +
+        commons.Escaper.ecapeVariable('$userId') +
+        '/deviceAccess';
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => null);
+  }
+
   /// Revokes a previously generated token (activation code) for the user.
   ///
   /// Request parameters:

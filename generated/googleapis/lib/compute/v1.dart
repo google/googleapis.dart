@@ -43070,6 +43070,7 @@ class Quota {
   /// - "INSTANCE_GROUPS"
   /// - "INSTANCE_GROUP_MANAGERS"
   /// - "INSTANCE_TEMPLATES"
+  /// - "INTERCONNECTS"
   /// - "IN_USE_ADDRESSES"
   /// - "LOCAL_SSD_TOTAL_GB"
   /// - "NETWORKS"

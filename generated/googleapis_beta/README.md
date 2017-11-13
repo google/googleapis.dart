@@ -99,12 +99,6 @@ Groups and counts similar errors from cloud services and applications, reports n
 
 Official API documentation: https://cloud.google.com/error-reporting/
 
-#### ![Logo](https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png) Cloud Monitoring API - cloudmonitoring v2beta2
-
-Accesses Google Cloud Monitoring data.
-
-Official API documentation: https://cloud.google.com/monitoring/v2beta2/
-
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud Resource Manager API - cloudresourcemanager v1beta1
 
 The Google Cloud Resource Manager API provides methods for creating, reading, and updating project metadata.
@@ -167,13 +161,13 @@ Official API documentation: https://cloud.google.com/logging/docs/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud OS Login API - oslogin v1alpha
 
-Manages OS login configuration for Directory API users.
+Manages OS login configuration for Google account users.
 
 Official API documentation: https://cloud.google.com/compute/docs/oslogin/rest/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud OS Login API - oslogin v1beta
 
-Manages OS login configuration for Directory API users.
+Manages OS login configuration for Google account users.
 
 Official API documentation: https://cloud.google.com/compute/docs/oslogin/rest/
 

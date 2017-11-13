@@ -268,6 +268,49 @@ class DocumentsResourceApi {
         downloadOptions: _downloadOptions);
     return _response.then((data) => new AnnotateTextResponse.fromJson(data));
   }
+
+  /// Classifies a document into categories.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ClassifyTextResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ClassifyTextResponse> classifyText(ClassifyTextRequest request,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/documents:classifyText';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ClassifyTextResponse.fromJson(data));
+  }
 }
 
 /// The entity analysis request message.
@@ -683,6 +726,9 @@ class AnnotateTextRequest {
 
 /// The text annotations response message.
 class AnnotateTextResponse {
+  /// Categories identified in the input document.
+  core.List<ClassificationCategory> categories;
+
   /// The overall sentiment for the document. Populated if the user enables
   /// AnnotateTextRequest.Features.extract_document_sentiment.
   Sentiment documentSentiment;
@@ -709,6 +755,11 @@ class AnnotateTextResponse {
   AnnotateTextResponse();
 
   AnnotateTextResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("categories")) {
+      categories = _json["categories"]
+          .map((value) => new ClassificationCategory.fromJson(value))
+          .toList();
+    }
     if (_json.containsKey("documentSentiment")) {
       documentSentiment = new Sentiment.fromJson(_json["documentSentiment"]);
     }
@@ -733,6 +784,10 @@ class AnnotateTextResponse {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (categories != null) {
+      _json["categories"] =
+          categories.map((value) => (value).toJson()).toList();
+    }
     if (documentSentiment != null) {
       _json["documentSentiment"] = (documentSentiment).toJson();
     }
@@ -747,6 +802,88 @@ class AnnotateTextResponse {
     }
     if (tokens != null) {
       _json["tokens"] = tokens.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Represents a category returned from the text classifier.
+class ClassificationCategory {
+  /// The classifier's confidence of the category. Number represents how certain
+  /// the classifier is that this category represents the given text.
+  core.double confidence;
+
+  /// The name of the category representing the document.
+  core.String name;
+
+  ClassificationCategory();
+
+  ClassificationCategory.fromJson(core.Map _json) {
+    if (_json.containsKey("confidence")) {
+      confidence = _json["confidence"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (confidence != null) {
+      _json["confidence"] = confidence;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/// The document classification request message.
+class ClassifyTextRequest {
+  /// Input document.
+  Document document;
+
+  ClassifyTextRequest();
+
+  ClassifyTextRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("document")) {
+      document = new Document.fromJson(_json["document"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (document != null) {
+      _json["document"] = (document).toJson();
+    }
+    return _json;
+  }
+}
+
+/// The document classification response message.
+class ClassifyTextResponse {
+  /// Categories representing the input document.
+  core.List<ClassificationCategory> categories;
+
+  ClassifyTextResponse();
+
+  ClassifyTextResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("categories")) {
+      categories = _json["categories"]
+          .map((value) => new ClassificationCategory.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (categories != null) {
+      _json["categories"] =
+          categories.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -1088,6 +1225,9 @@ class EntityMention {
 /// All available features for sentiment, syntax, and semantic analysis.
 /// Setting each one to true will enable that specific analysis for the input.
 class Features {
+  /// Classify the full document into categories.
+  core.bool classifyText;
+
   /// Extract document-level sentiment.
   core.bool extractDocumentSentiment;
 
@@ -1103,6 +1243,9 @@ class Features {
   Features();
 
   Features.fromJson(core.Map _json) {
+    if (_json.containsKey("classifyText")) {
+      classifyText = _json["classifyText"];
+    }
     if (_json.containsKey("extractDocumentSentiment")) {
       extractDocumentSentiment = _json["extractDocumentSentiment"];
     }
@@ -1120,6 +1263,9 @@ class Features {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (classifyText != null) {
+      _json["classifyText"] = classifyText;
+    }
     if (extractDocumentSentiment != null) {
       _json["extractDocumentSentiment"] = extractDocumentSentiment;
     }

@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.46.0
+    version: 0.47.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -54,6 +54,7 @@ packages:
     - datastore:v1 # https://developers.google.com/datastore/
     - deploymentmanager:v2  # https://cloud.google.com/deployment-manager/
     - dfareporting:v2.8  # https://developers.google.com/doubleclick-advertisers/reporting/
+    - dfareporting:v3.0  # https://developers.google.com/doubleclick-advertisers/reporting/
     - discovery:v1  # https://developers.google.com/discovery/
     - dns:v1  # https://cloud.google.com/dns/api/v1/
     - doubleclickbidmanager:v1  # https://developers.google.com/bid-manager/
@@ -89,12 +90,10 @@ packages:
     - partners:v2  # https://developers.google.com/partners/
     - people:v1 # https://developers.google.com/people/
     - playcustomapp:v1  # https://developers.google.com/android/work/play/custom-app-api
-    - playmoviespartner:v1  # https://developers.google.com/playmoviespartner/
     - plusDomains:v1  # https://developers.google.com/+/domains/
     - plus:v1  # https://developers.google.com/+/api/
     - prediction:v1.6  # https://developers.google.com/prediction/
     - pubsub:v1  # https://cloud.google.com/pubsub/
-    - qpxExpress:v1  # https://developers.google.com/qpx-express/
     - reseller:v1  # https://developers.google.com/admin-sdk/reseller/
     - runtimeconfig:v1  # https://cloud.google.com/deployment-manager/runtime-configurator/
     - safebrowsing:v4  # https://developers.google.com/safe-browsing/
@@ -128,7 +127,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.40.1
+    version: 0.41.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -140,7 +139,6 @@ packages:
     - appengine:v1beta5  # https://cloud.google.com/appengine/docs/admin-api/
     - appengine:v1beta  # https://cloud.google.com/appengine/docs/admin-api/
     - clouderrorreporting:v1beta1  # https://cloud.google.com/error-reporting/
-    - cloudmonitoring:v2beta2  # https://developers.google.com/cloud-monitoring/
     - cloudresourcemanager:v1beta1  # https://cloud.google.com/resource-manager
     - cloudtasks:v2beta2  # https://cloud.google.com/cloud-tasks/
     - clouduseraccounts:beta # https://cloud.google.com/compute/docs/access/user-accounts/api/latest/
@@ -183,6 +181,7 @@ skipped_apis:
 - compute:alpha # v1 included
 - compute:beta # v1 included
 - container:v1beta1 # v1 included
+- dns:v1beta2 # v1 included
 - dataproc:v1beta2  # v1 included
 - datastore:v1beta1  # v1 included
 - datastore:v1beta3  # v1 included
@@ -201,4 +200,5 @@ skipped_apis:
 - storage:v1beta1  # v1 included
 - storage:v1beta2  # v1 included
 - taskqueue:v1beta1  # v1beta2 included
+- vision:v1p1beta1  # v1 included
 - youtubeAnalytics:v1beta1  # v1 included

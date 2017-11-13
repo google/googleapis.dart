@@ -663,7 +663,7 @@ class BucketsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit owner, acl and defaultObjectAcl properties.
   ///
-  /// [userProject] - The project to be billed for this request
+  /// [userProject] - The project to be billed for this request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2307,31 +2307,21 @@ class ObjectsResourceApi {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// [downloadOptions] - Options for downloading. A download can be either a
-  /// Metadata (default) or Media download. Partial Media downloads are possible
-  /// as well.
-  ///
-  /// Completes with a
-  ///
-  /// - [Object] for Metadata downloads (see [downloadOptions]).
-  ///
-  /// - [commons.Media] for Media downloads (see [downloadOptions]).
+  /// Completes with a [Object].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future compose(ComposeRequest request, core.String destinationBucket,
-      core.String destinationObject,
+  async.Future<Object> compose(ComposeRequest request,
+      core.String destinationBucket, core.String destinationObject,
       {core.String destinationPredefinedAcl,
       core.String ifGenerationMatch,
       core.String ifMetagenerationMatch,
       core.String kmsKeyName,
       core.String userProject,
-      core.String $fields,
-      commons.DownloadOptions downloadOptions:
-          commons.DownloadOptions.Metadata}) {
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2367,8 +2357,6 @@ class ObjectsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _downloadOptions = downloadOptions;
-
     _url = 'b/' +
         commons.Escaper.ecapeVariable('$destinationBucket') +
         '/o/' +
@@ -2381,12 +2369,7 @@ class ObjectsResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    if (_downloadOptions == null ||
-        _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then((data) => new Object.fromJson(data));
-    } else {
-      return _response;
-    }
+    return _response.then((data) => new Object.fromJson(data));
   }
 
   /// Copies a source object to a destination object. Optionally overrides
@@ -2470,22 +2453,14 @@ class ObjectsResourceApi {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// [downloadOptions] - Options for downloading. A download can be either a
-  /// Metadata (default) or Media download. Partial Media downloads are possible
-  /// as well.
-  ///
-  /// Completes with a
-  ///
-  /// - [Object] for Metadata downloads (see [downloadOptions]).
-  ///
-  /// - [commons.Media] for Media downloads (see [downloadOptions]).
+  /// Completes with a [Object].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future copy(
+  async.Future<Object> copy(
       Object request,
       core.String sourceBucket,
       core.String sourceObject,
@@ -2503,9 +2478,7 @@ class ObjectsResourceApi {
       core.String projection,
       core.String sourceGeneration,
       core.String userProject,
-      core.String $fields,
-      commons.DownloadOptions downloadOptions:
-          commons.DownloadOptions.Metadata}) {
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -2572,8 +2545,6 @@ class ObjectsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _downloadOptions = downloadOptions;
-
     _url = 'b/' +
         commons.Escaper.ecapeVariable('$sourceBucket') +
         '/o/' +
@@ -2589,12 +2560,7 @@ class ObjectsResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    if (_downloadOptions == null ||
-        _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then((data) => new Object.fromJson(data));
-    } else {
-      return _response;
-    }
+    return _response.then((data) => new Object.fromJson(data));
   }
 
   /// Deletes an object and its metadata. Deletions are permanent if versioning
@@ -2956,22 +2922,14 @@ class ObjectsResourceApi {
   /// the length being known ahead of time is only supported via resumable
   /// uploads.
   ///
-  /// [downloadOptions] - Options for downloading. A download can be either a
-  /// Metadata (default) or Media download. Partial Media downloads are possible
-  /// as well.
-  ///
-  /// Completes with a
-  ///
-  /// - [Object] for Metadata downloads (see [downloadOptions]).
-  ///
-  /// - [commons.Media] for Media downloads (see [downloadOptions]).
+  /// Completes with a [Object].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future insert(Object request, core.String bucket,
+  async.Future<Object> insert(Object request, core.String bucket,
       {core.String contentEncoding,
       core.String ifGenerationMatch,
       core.String ifGenerationNotMatch,
@@ -2984,9 +2942,7 @@ class ObjectsResourceApi {
       core.String userProject,
       core.String $fields,
       commons.UploadOptions uploadOptions: commons.UploadOptions.Default,
-      commons.Media uploadMedia,
-      commons.DownloadOptions downloadOptions:
-          commons.DownloadOptions.Metadata}) {
+      commons.Media uploadMedia}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3036,7 +2992,6 @@ class ObjectsResourceApi {
 
     _uploadMedia = uploadMedia;
     _uploadOptions = uploadOptions;
-    _downloadOptions = downloadOptions;
 
     if (_uploadMedia == null) {
       _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o';
@@ -3056,12 +3011,7 @@ class ObjectsResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    if (_downloadOptions == null ||
-        _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then((data) => new Object.fromJson(data));
-    } else {
-      return _response;
-    }
+    return _response.then((data) => new Object.fromJson(data));
   }
 
   /// Retrieves a list of objects matching the criteria.
@@ -3162,7 +3112,7 @@ class ObjectsResourceApi {
     return _response.then((data) => new Objects.fromJson(data));
   }
 
-  /// Updates an object's metadata. This method supports patch semantics.
+  /// Patches an object's metadata.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3211,8 +3161,8 @@ class ObjectsResourceApi {
   /// - "full" : Include all properties.
   /// - "noAcl" : Omit the owner, acl property.
   ///
-  /// [userProject] - The project to be billed for this request. Required for
-  /// Requester Pays buckets.
+  /// [userProject] - The project to be billed for this request, for Requester
+  /// Pays buckets.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3717,22 +3667,15 @@ class ObjectsResourceApi {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// [downloadOptions] - Options for downloading. A download can be either a
-  /// Metadata (default) or Media download. Partial Media downloads are possible
-  /// as well.
-  ///
-  /// Completes with a
-  ///
-  /// - [Object] for Metadata downloads (see [downloadOptions]).
-  ///
-  /// - [commons.Media] for Media downloads (see [downloadOptions]).
+  /// Completes with a [Object].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future update(Object request, core.String bucket, core.String object,
+  async.Future<Object> update(
+      Object request, core.String bucket, core.String object,
       {core.String generation,
       core.String ifGenerationMatch,
       core.String ifGenerationNotMatch,
@@ -3741,9 +3684,7 @@ class ObjectsResourceApi {
       core.String predefinedAcl,
       core.String projection,
       core.String userProject,
-      core.String $fields,
-      commons.DownloadOptions downloadOptions:
-          commons.DownloadOptions.Metadata}) {
+      core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3788,8 +3729,6 @@ class ObjectsResourceApi {
       _queryParams["fields"] = [$fields];
     }
 
-    _downloadOptions = downloadOptions;
-
     _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/o/' +
@@ -3801,12 +3740,7 @@ class ObjectsResourceApi {
         uploadOptions: _uploadOptions,
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
-    if (_downloadOptions == null ||
-        _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then((data) => new Object.fromJson(data));
-    } else {
-      return _response;
-    }
+    return _response.then((data) => new Object.fromJson(data));
   }
 
   /// Watch for changes on all objects in a bucket.

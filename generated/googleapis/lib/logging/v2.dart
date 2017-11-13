@@ -41,12 +41,15 @@ class LoggingApi {
   BillingAccountsResourceApi get billingAccounts =>
       new BillingAccountsResourceApi(_requester);
   EntriesResourceApi get entries => new EntriesResourceApi(_requester);
+  ExclusionsResourceApi get exclusions => new ExclusionsResourceApi(_requester);
   FoldersResourceApi get folders => new FoldersResourceApi(_requester);
+  LogsResourceApi get logs => new LogsResourceApi(_requester);
   MonitoredResourceDescriptorsResourceApi get monitoredResourceDescriptors =>
       new MonitoredResourceDescriptorsResourceApi(_requester);
   OrganizationsResourceApi get organizations =>
       new OrganizationsResourceApi(_requester);
   ProjectsResourceApi get projects => new ProjectsResourceApi(_requester);
+  SinksResourceApi get sinks => new SinksResourceApi(_requester);
 
   LoggingApi(http.Client client,
       {core.String rootUrl: "https://logging.googleapis.com/",
@@ -432,14 +435,14 @@ class BillingAccountsLogsResourceApi {
   ///
   /// Value must have pattern "^billingAccounts/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -452,7 +455,7 @@ class BillingAccountsLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -463,11 +466,11 @@ class BillingAccountsLogsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -995,6 +998,297 @@ class EntriesResourceApi {
   }
 }
 
+class ExclusionsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ExclusionsResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a new exclusion in a specified parent resource. Only log entries
+  /// belonging to that resource can be excluded. You can have up to 10
+  /// exclusions in a resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource in which to create the exclusion:
+  /// "projects/[PROJECT_ID]"
+  /// "organizations/[ORGANIZATION_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]"
+  /// "folders/[FOLDER_ID]"
+  /// Examples: "projects/my-logging-project", "organizations/123456789".
+  /// Value must have pattern "^[^/]+/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogExclusion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogExclusion> create(LogExclusion request, core.String parent,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/exclusions';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogExclusion.fromJson(data));
+  }
+
+  /// Deletes an exclusion.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of an existing exclusion to delete:
+  /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+  /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+  /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+  /// Example: "projects/my-project-id/exclusions/my-exclusion-id".
+  /// Value must have pattern "^[^/]+/[^/]+/exclusions/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Gets the description of an exclusion.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of an existing exclusion:
+  /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+  /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+  /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+  /// Example: "projects/my-project-id/exclusions/my-exclusion-id".
+  /// Value must have pattern "^[^/]+/[^/]+/exclusions/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogExclusion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogExclusion> get(core.String name, {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogExclusion.fromJson(data));
+  }
+
+  /// Lists all the exclusions in a parent resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource whose exclusions are to be
+  /// listed.
+  /// "projects/[PROJECT_ID]"
+  /// "organizations/[ORGANIZATION_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]"
+  /// "folders/[FOLDER_ID]"
+  ///
+  /// Value must have pattern "^[^/]+/[^/]+$".
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListExclusionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListExclusionsResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/exclusions';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListExclusionsResponse.fromJson(data));
+  }
+
+  /// Changes one or more properties of an existing exclusion.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the exclusion to update:
+  /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+  /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+  /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+  /// Example: "projects/my-project-id/exclusions/my-exclusion-id".
+  /// Value must have pattern "^[^/]+/[^/]+/exclusions/[^/]+$".
+  ///
+  /// [updateMask] - Required. A nonempty list of fields to change in the
+  /// existing exclusion. New values for the fields are taken from the
+  /// corresponding fields in the LogExclusion included in this request. Fields
+  /// not mentioned in update_mask are not changed and are ignored in the
+  /// request.For example, to change the filter and description of an exclusion,
+  /// specify an update_mask of "filter,description".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogExclusion].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogExclusion> patch(LogExclusion request, core.String name,
+      {core.String updateMask, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogExclusion.fromJson(data));
+  }
+}
+
 class FoldersResourceApi {
   final commons.ApiRequester _requester;
 
@@ -1369,14 +1663,14 @@ class FoldersLogsResourceApi {
   ///
   /// Value must have pattern "^folders/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1389,7 +1683,7 @@ class FoldersLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1400,11 +1694,11 @@ class FoldersLogsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1608,14 +1902,14 @@ class FoldersSinksResourceApi {
   ///
   /// Value must have pattern "^folders/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1628,7 +1922,7 @@ class FoldersSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1639,11 +1933,11 @@ class FoldersSinksResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1835,16 +2129,76 @@ class FoldersSinksResourceApi {
   }
 }
 
-class MonitoredResourceDescriptorsResourceApi {
+class LogsResourceApi {
   final commons.ApiRequester _requester;
 
-  MonitoredResourceDescriptorsResourceApi(commons.ApiRequester client)
-      : _requester = client;
+  LogsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Lists the descriptors for monitored resource types used by Stackdriver
-  /// Logging.
+  /// Deletes all the log entries in a log. The log reappears if it receives new
+  /// entries. Log entries written shortly before the delete operation might not
+  /// be deleted.
   ///
   /// Request parameters:
+  ///
+  /// [logName] - Required. The resource name of the log to delete:
+  /// "projects/[PROJECT_ID]/logs/[LOG_ID]"
+  /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
+  /// "folders/[FOLDER_ID]/logs/[LOG_ID]"
+  /// [LOG_ID] must be URL-encoded. For example,
+  /// "projects/my-project-id/logs/syslog",
+  /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".
+  /// For more information about log names, see LogEntry.
+  /// Value must have pattern "^[^/]+/[^/]+/logs/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String logName, {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (logName == null) {
+      throw new core.ArgumentError("Parameter logName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$logName');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Lists the logs in projects, organizations, folders, or billing accounts.
+  /// Only logs that have entries are listed.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name that owns the logs:
+  /// "projects/[PROJECT_ID]"
+  /// "organizations/[ORGANIZATION_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]"
+  /// "folders/[FOLDER_ID]"
+  ///
+  /// Value must have pattern "^[^/]+/[^/]+$".
   ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
@@ -1858,14 +2212,14 @@ class MonitoredResourceDescriptorsResourceApi {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [ListMonitoredResourceDescriptorsResponse].
+  /// Completes with a [ListLogsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListMonitoredResourceDescriptorsResponse> list(
+  async.Future<ListLogsResponse> list(core.String parent,
       {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1874,11 +2228,75 @@ class MonitoredResourceDescriptorsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/logs';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListLogsResponse.fromJson(data));
+  }
+}
+
+class MonitoredResourceDescriptorsResourceApi {
+  final commons.ApiRequester _requester;
+
+  MonitoredResourceDescriptorsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the descriptors for monitored resource types used by Stackdriver
+  /// Logging.
+  ///
+  /// Request parameters:
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMonitoredResourceDescriptorsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMonitoredResourceDescriptorsResponse> list(
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3118,14 +3536,14 @@ class ProjectsLogsResourceApi {
   ///
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3138,7 +3556,7 @@ class ProjectsLogsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLogsResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3149,11 +3567,11 @@ class ProjectsLogsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3620,14 +4038,14 @@ class ProjectsSinksResourceApi {
   ///
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
   /// [pageToken] - Optional. If present, then retrieve the next batch of
   /// results from the preceding call to this method. pageToken must be the
   /// value of nextPageToken from the previous response. The values of other
   /// method parameters should be identical to those in the previous call.
-  ///
-  /// [pageSize] - Optional. The maximum number of results to return from this
-  /// request. Non-positive values are ignored. The presence of nextPageToken in
-  /// the response indicates that more results might be available.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3640,7 +4058,7 @@ class ProjectsSinksResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListSinksResponse> list(core.String parent,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -3651,11 +4069,11 @@ class ProjectsSinksResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -3776,6 +4194,332 @@ class ProjectsSinksResourceApi {
   /// "folders/[FOLDER_ID]/sinks/[SINK_ID]"
   /// Example: "projects/my-project-id/sinks/my-sink-id".
   /// Value must have pattern "^projects/[^/]+/sinks/[^/]+$".
+  ///
+  /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
+  /// this field. When updating a sink, the effect of this field on the value of
+  /// writer_identity in the updated sink depends on both the old and new values
+  /// of this field:
+  /// If the old and new values of this field are both false or both true, then
+  /// there is no change to the sink's writer_identity.
+  /// If the old value is false and the new value is true, then writer_identity
+  /// is changed to a unique service account.
+  /// It is an error if the old value is true and the new value is set to false
+  /// or defaulted to false.
+  ///
+  /// [updateMask] - Optional. Field mask that specifies the fields in sink that
+  /// need an update. A sink field will be overwritten if, and only if, it is in
+  /// the update mask. name and output only fields cannot be updated.An empty
+  /// updateMask is temporarily treated as using the following mask for
+  /// backwards compatibility purposes:  destination,filter,includeChildren At
+  /// some point in the future, behavior will be removed and specifying an empty
+  /// updateMask will be an error.For a detailed FieldMask definition, see
+  /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmaskExample:
+  /// updateMask=filter.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogSink].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogSink> update(LogSink request, core.String sinkName,
+      {core.bool uniqueWriterIdentity,
+      core.String updateMask,
+      core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (sinkName == null) {
+      throw new core.ArgumentError("Parameter sinkName is required.");
+    }
+    if (uniqueWriterIdentity != null) {
+      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
+
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogSink.fromJson(data));
+  }
+}
+
+class SinksResourceApi {
+  final commons.ApiRequester _requester;
+
+  SinksResourceApi(commons.ApiRequester client) : _requester = client;
+
+  /// Creates a sink that exports specified log entries to a destination. The
+  /// export of newly-ingested log entries begins immediately, unless the sink's
+  /// writer_identity is not permitted to write to the destination. A sink can
+  /// export log entries only from the resource owning the sink.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource in which to create the sink:
+  /// "projects/[PROJECT_ID]"
+  /// "organizations/[ORGANIZATION_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]"
+  /// "folders/[FOLDER_ID]"
+  /// Examples: "projects/my-logging-project", "organizations/123456789".
+  /// Value must have pattern "^[^/]+/[^/]+$".
+  ///
+  /// [uniqueWriterIdentity] - Optional. Determines the kind of IAM identity
+  /// returned as writer_identity in the new sink. If this value is omitted or
+  /// set to false, and if the sink's parent is a project, then the value
+  /// returned as writer_identity is the same group or service account used by
+  /// Stackdriver Logging before the addition of writer identities to this API.
+  /// The sink's destination must be in the same project as the sink itself.If
+  /// this field is set to true, or if the sink is owned by a non-project
+  /// resource such as an organization, then the value of writer_identity will
+  /// be a unique service account used only for exports from the new sink. For
+  /// more information, see writer_identity in LogSink.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogSink].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogSink> create(LogSink request, core.String parent,
+      {core.bool uniqueWriterIdentity, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (uniqueWriterIdentity != null) {
+      _queryParams["uniqueWriterIdentity"] = ["${uniqueWriterIdentity}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogSink.fromJson(data));
+  }
+
+  /// Deletes a sink. If the sink has a unique writer_identity, then that
+  /// service account is also deleted.
+  ///
+  /// Request parameters:
+  ///
+  /// [sinkName] - Required. The full resource name of the sink to delete,
+  /// including the parent resource and the sink identifier:
+  /// "projects/[PROJECT_ID]/sinks/[SINK_ID]"
+  /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
+  /// "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+  /// Example: "projects/my-project-id/sinks/my-sink-id".
+  /// Value must have pattern "^[^/]+/[^/]+/sinks/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String sinkName, {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (sinkName == null) {
+      throw new core.ArgumentError("Parameter sinkName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
+  /// Gets a sink.
+  ///
+  /// Request parameters:
+  ///
+  /// [sinkName] - Required. The resource name of the sink:
+  /// "projects/[PROJECT_ID]/sinks/[SINK_ID]"
+  /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
+  /// "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+  /// Example: "projects/my-project-id/sinks/my-sink-id".
+  /// Value must have pattern "^[^/]+/[^/]+/sinks/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [LogSink].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<LogSink> get(core.String sinkName, {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (sinkName == null) {
+      throw new core.ArgumentError("Parameter sinkName is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new LogSink.fromJson(data));
+  }
+
+  /// Lists sinks.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource whose sinks are to be listed:
+  /// "projects/[PROJECT_ID]"
+  /// "organizations/[ORGANIZATION_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]"
+  /// "folders/[FOLDER_ID]"
+  ///
+  /// Value must have pattern "^[^/]+/[^/]+$".
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. pageToken must be the
+  /// value of nextPageToken from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of nextPageToken in
+  /// the response indicates that more results might be available.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSinksResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSinksResponse> list(core.String parent,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (parent == null) {
+      throw new core.ArgumentError("Parameter parent is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListSinksResponse.fromJson(data));
+  }
+
+  /// Updates a sink. This method replaces the following fields in the existing
+  /// sink with values from the new sink: destination, and filter. The updated
+  /// sink might also have a new writer_identity; see the unique_writer_identity
+  /// field.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [sinkName] - Required. The full resource name of the sink to update,
+  /// including the parent resource and the sink identifier:
+  /// "projects/[PROJECT_ID]/sinks/[SINK_ID]"
+  /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+  /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
+  /// "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+  /// Example: "projects/my-project-id/sinks/my-sink-id".
+  /// Value must have pattern "^[^/]+/[^/]+/sinks/[^/]+$".
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -4650,6 +5394,12 @@ class LogEntry {
   /// if any.
   LogEntrySourceLocation sourceLocation;
 
+  /// Optional. Id of the span within the trace associated with the log entry.
+  /// e.g. "0000000000000042" For Stackdriver trace spans, this is the same
+  /// format that the Stackdriver trace API uses. The ID is a 16-character
+  /// hexadecimal encoding of an 8-byte array.
+  core.String spanId;
+
   /// The log entry payload, represented as a Unicode string (UTF-8).
   core.String textPayload;
 
@@ -4705,6 +5455,9 @@ class LogEntry {
       sourceLocation =
           new LogEntrySourceLocation.fromJson(_json["sourceLocation"]);
     }
+    if (_json.containsKey("spanId")) {
+      spanId = _json["spanId"];
+    }
     if (_json.containsKey("textPayload")) {
       textPayload = _json["textPayload"];
     }
@@ -4751,6 +5504,9 @@ class LogEntry {
     }
     if (sourceLocation != null) {
       _json["sourceLocation"] = (sourceLocation).toJson();
+    }
+    if (spanId != null) {
+      _json["spanId"] = spanId;
     }
     if (textPayload != null) {
       _json["textPayload"] = textPayload;
