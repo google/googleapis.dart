@@ -288,15 +288,15 @@ class DebuggerDebuggeesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [includeInactive] - When set to `true`, the result includes all debuggees.
-  /// Otherwise, the
-  /// result includes only debuggees that are active.
-  ///
   /// [project] - Project number of a Google Cloud project whose debuggees to
   /// list.
   ///
   /// [clientVersion] - The client version making the call.
   /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
+  ///
+  /// [includeInactive] - When set to `true`, the result includes all debuggees.
+  /// Otherwise, the
+  /// result includes only debuggees that are active.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -309,9 +309,9 @@ class DebuggerDebuggeesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDebuggeesResponse> list(
-      {core.bool includeInactive,
-      core.String project,
+      {core.String project,
       core.String clientVersion,
+      core.bool includeInactive,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -320,14 +320,14 @@ class DebuggerDebuggeesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (includeInactive != null) {
-      _queryParams["includeInactive"] = ["${includeInactive}"];
-    }
     if (project != null) {
       _queryParams["project"] = [project];
     }
     if (clientVersion != null) {
       _queryParams["clientVersion"] = [clientVersion];
+    }
+    if (includeInactive != null) {
+      _queryParams["includeInactive"] = ["${includeInactive}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -472,6 +472,15 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   ///
   /// [debuggeeId] - ID of the debuggee whose breakpoints to list.
   ///
+  /// [clientVersion] - The client version making the call.
+  /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
+  ///
+  /// [action_value] - Only breakpoints with the specified action will pass the
+  /// filter.
+  /// Possible string values are:
+  /// - "CAPTURE" : A CAPTURE.
+  /// - "LOG" : A LOG.
+  ///
   /// [includeInactive] - When set to `true`, the response includes active and
   /// inactive
   /// breakpoints. Otherwise, it includes only active breakpoints.
@@ -491,15 +500,6 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// `google.rpc.Code.ABORTED` (RPC) is returned on wait timeout, which
   /// should be called again with the same `wait_token`.
   ///
-  /// [clientVersion] - The client version making the call.
-  /// Schema: `domain/type/version` (e.g., `google.com/intellij/v1`).
-  ///
-  /// [action_value] - Only breakpoints with the specified action will pass the
-  /// filter.
-  /// Possible string values are:
-  /// - "CAPTURE" : A CAPTURE.
-  /// - "LOG" : A LOG.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -511,12 +511,12 @@ class DebuggerDebuggeesBreakpointsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBreakpointsResponse> list(core.String debuggeeId,
-      {core.bool includeInactive,
+      {core.String clientVersion,
+      core.String action_value,
+      core.bool includeInactive,
       core.bool includeAllUsers,
       core.bool stripResults,
       core.String waitToken,
-      core.String clientVersion,
-      core.String action_value,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -527,6 +527,12 @@ class DebuggerDebuggeesBreakpointsResourceApi {
 
     if (debuggeeId == null) {
       throw new core.ArgumentError("Parameter debuggeeId is required.");
+    }
+    if (clientVersion != null) {
+      _queryParams["clientVersion"] = [clientVersion];
+    }
+    if (action_value != null) {
+      _queryParams["action.value"] = [action_value];
     }
     if (includeInactive != null) {
       _queryParams["includeInactive"] = ["${includeInactive}"];
@@ -539,12 +545,6 @@ class DebuggerDebuggeesBreakpointsResourceApi {
     }
     if (waitToken != null) {
       _queryParams["waitToken"] = [waitToken];
-    }
-    if (clientVersion != null) {
-      _queryParams["clientVersion"] = [clientVersion];
-    }
-    if (action_value != null) {
-      _queryParams["action.value"] = [action_value];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

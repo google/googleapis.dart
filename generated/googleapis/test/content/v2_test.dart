@@ -96,6 +96,7 @@ buildAccount() {
   if (buildCounterAccount < 3) {
     o.adultContent = true;
     o.adwordsLinks = buildUnnamed337();
+    o.googleMyBusinessLink = buildAccountGoogleMyBusinessLink();
     o.id = "foo";
     o.kind = "foo";
     o.name = "foo";
@@ -114,6 +115,7 @@ checkAccount(api.Account o) {
   if (buildCounterAccount < 3) {
     unittest.expect(o.adultContent, unittest.isTrue);
     checkUnnamed337(o.adwordsLinks);
+    checkAccountGoogleMyBusinessLink(o.googleMyBusinessLink);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -145,6 +147,27 @@ checkAccountAdwordsLink(api.AccountAdwordsLink o) {
     unittest.expect(o.status, unittest.equals('foo'));
   }
   buildCounterAccountAdwordsLink--;
+}
+
+core.int buildCounterAccountGoogleMyBusinessLink = 0;
+buildAccountGoogleMyBusinessLink() {
+  var o = new api.AccountGoogleMyBusinessLink();
+  buildCounterAccountGoogleMyBusinessLink++;
+  if (buildCounterAccountGoogleMyBusinessLink < 3) {
+    o.gmbEmail = "foo";
+    o.status = "foo";
+  }
+  buildCounterAccountGoogleMyBusinessLink--;
+  return o;
+}
+
+checkAccountGoogleMyBusinessLink(api.AccountGoogleMyBusinessLink o) {
+  buildCounterAccountGoogleMyBusinessLink++;
+  if (buildCounterAccountGoogleMyBusinessLink < 3) {
+    unittest.expect(o.gmbEmail, unittest.equals('foo'));
+    unittest.expect(o.status, unittest.equals('foo'));
+  }
+  buildCounterAccountGoogleMyBusinessLink--;
 }
 
 core.int buildCounterAccountIdentifier = 0;
@@ -2785,6 +2808,7 @@ buildOrderShipmentLineItemShipment() {
   buildCounterOrderShipmentLineItemShipment++;
   if (buildCounterOrderShipmentLineItemShipment < 3) {
     o.lineItemId = "foo";
+    o.productId = "foo";
     o.quantity = 42;
   }
   buildCounterOrderShipmentLineItemShipment--;
@@ -2795,6 +2819,7 @@ checkOrderShipmentLineItemShipment(api.OrderShipmentLineItemShipment o) {
   buildCounterOrderShipmentLineItemShipment++;
   if (buildCounterOrderShipmentLineItemShipment < 3) {
     unittest.expect(o.lineItemId, unittest.equals('foo'));
+    unittest.expect(o.productId, unittest.equals('foo'));
     unittest.expect(o.quantity, unittest.equals(42));
   }
   buildCounterOrderShipmentLineItemShipment--;
@@ -2865,8 +2890,11 @@ buildOrdersCancelLineItemRequest() {
   buildCounterOrdersCancelLineItemRequest++;
   if (buildCounterOrdersCancelLineItemRequest < 3) {
     o.amount = buildPrice();
+    o.amountPretax = buildPrice();
+    o.amountTax = buildPrice();
     o.lineItemId = "foo";
     o.operationId = "foo";
+    o.productId = "foo";
     o.quantity = 42;
     o.reason = "foo";
     o.reasonText = "foo";
@@ -2879,8 +2907,11 @@ checkOrdersCancelLineItemRequest(api.OrdersCancelLineItemRequest o) {
   buildCounterOrdersCancelLineItemRequest++;
   if (buildCounterOrdersCancelLineItemRequest < 3) {
     checkPrice(o.amount);
+    checkPrice(o.amountPretax);
+    checkPrice(o.amountTax);
     unittest.expect(o.lineItemId, unittest.equals('foo'));
     unittest.expect(o.operationId, unittest.equals('foo'));
+    unittest.expect(o.productId, unittest.equals('foo'));
     unittest.expect(o.quantity, unittest.equals(42));
     unittest.expect(o.reason, unittest.equals('foo'));
     unittest.expect(o.reasonText, unittest.equals('foo'));
@@ -3096,7 +3127,10 @@ buildOrdersCustomBatchRequestEntryCancelLineItem() {
   buildCounterOrdersCustomBatchRequestEntryCancelLineItem++;
   if (buildCounterOrdersCustomBatchRequestEntryCancelLineItem < 3) {
     o.amount = buildPrice();
+    o.amountPretax = buildPrice();
+    o.amountTax = buildPrice();
     o.lineItemId = "foo";
+    o.productId = "foo";
     o.quantity = 42;
     o.reason = "foo";
     o.reasonText = "foo";
@@ -3110,7 +3144,10 @@ checkOrdersCustomBatchRequestEntryCancelLineItem(
   buildCounterOrdersCustomBatchRequestEntryCancelLineItem++;
   if (buildCounterOrdersCustomBatchRequestEntryCancelLineItem < 3) {
     checkPrice(o.amount);
+    checkPrice(o.amountPretax);
+    checkPrice(o.amountTax);
     unittest.expect(o.lineItemId, unittest.equals('foo'));
+    unittest.expect(o.productId, unittest.equals('foo'));
     unittest.expect(o.quantity, unittest.equals(42));
     unittest.expect(o.reason, unittest.equals('foo'));
     unittest.expect(o.reasonText, unittest.equals('foo'));
@@ -3124,6 +3161,8 @@ buildOrdersCustomBatchRequestEntryRefund() {
   buildCounterOrdersCustomBatchRequestEntryRefund++;
   if (buildCounterOrdersCustomBatchRequestEntryRefund < 3) {
     o.amount = buildPrice();
+    o.amountPretax = buildPrice();
+    o.amountTax = buildPrice();
     o.reason = "foo";
     o.reasonText = "foo";
   }
@@ -3136,6 +3175,8 @@ checkOrdersCustomBatchRequestEntryRefund(
   buildCounterOrdersCustomBatchRequestEntryRefund++;
   if (buildCounterOrdersCustomBatchRequestEntryRefund < 3) {
     checkPrice(o.amount);
+    checkPrice(o.amountPretax);
+    checkPrice(o.amountTax);
     unittest.expect(o.reason, unittest.equals('foo'));
     unittest.expect(o.reasonText, unittest.equals('foo'));
   }
@@ -3148,6 +3189,7 @@ buildOrdersCustomBatchRequestEntryReturnLineItem() {
   buildCounterOrdersCustomBatchRequestEntryReturnLineItem++;
   if (buildCounterOrdersCustomBatchRequestEntryReturnLineItem < 3) {
     o.lineItemId = "foo";
+    o.productId = "foo";
     o.quantity = 42;
     o.reason = "foo";
     o.reasonText = "foo";
@@ -3161,6 +3203,7 @@ checkOrdersCustomBatchRequestEntryReturnLineItem(
   buildCounterOrdersCustomBatchRequestEntryReturnLineItem++;
   if (buildCounterOrdersCustomBatchRequestEntryReturnLineItem < 3) {
     unittest.expect(o.lineItemId, unittest.equals('foo'));
+    unittest.expect(o.productId, unittest.equals('foo'));
     unittest.expect(o.quantity, unittest.equals(42));
     unittest.expect(o.reason, unittest.equals('foo'));
     unittest.expect(o.reasonText, unittest.equals('foo'));
@@ -3421,6 +3464,8 @@ buildOrdersRefundRequest() {
   buildCounterOrdersRefundRequest++;
   if (buildCounterOrdersRefundRequest < 3) {
     o.amount = buildPrice();
+    o.amountPretax = buildPrice();
+    o.amountTax = buildPrice();
     o.operationId = "foo";
     o.reason = "foo";
     o.reasonText = "foo";
@@ -3433,6 +3478,8 @@ checkOrdersRefundRequest(api.OrdersRefundRequest o) {
   buildCounterOrdersRefundRequest++;
   if (buildCounterOrdersRefundRequest < 3) {
     checkPrice(o.amount);
+    checkPrice(o.amountPretax);
+    checkPrice(o.amountTax);
     unittest.expect(o.operationId, unittest.equals('foo'));
     unittest.expect(o.reason, unittest.equals('foo'));
     unittest.expect(o.reasonText, unittest.equals('foo'));
@@ -3468,6 +3515,7 @@ buildOrdersReturnLineItemRequest() {
   if (buildCounterOrdersReturnLineItemRequest < 3) {
     o.lineItemId = "foo";
     o.operationId = "foo";
+    o.productId = "foo";
     o.quantity = 42;
     o.reason = "foo";
     o.reasonText = "foo";
@@ -3481,6 +3529,7 @@ checkOrdersReturnLineItemRequest(api.OrdersReturnLineItemRequest o) {
   if (buildCounterOrdersReturnLineItemRequest < 3) {
     unittest.expect(o.lineItemId, unittest.equals('foo'));
     unittest.expect(o.operationId, unittest.equals('foo'));
+    unittest.expect(o.productId, unittest.equals('foo'));
     unittest.expect(o.quantity, unittest.equals(42));
     unittest.expect(o.reason, unittest.equals('foo'));
     unittest.expect(o.reasonText, unittest.equals('foo'));
@@ -5238,6 +5287,7 @@ buildTestOrder() {
     o.customer = buildTestOrderCustomer();
     o.kind = "foo";
     o.lineItems = buildUnnamed432();
+    o.notificationMode = "foo";
     o.paymentMethod = buildTestOrderPaymentMethod();
     o.predefinedDeliveryAddress = "foo";
     o.promotions = buildUnnamed433();
@@ -5255,6 +5305,7 @@ checkTestOrder(api.TestOrder o) {
     checkTestOrderCustomer(o.customer);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkUnnamed432(o.lineItems);
+    unittest.expect(o.notificationMode, unittest.equals('foo'));
     checkTestOrderPaymentMethod(o.paymentMethod);
     unittest.expect(o.predefinedDeliveryAddress, unittest.equals('foo'));
     checkUnnamed433(o.promotions);
@@ -5473,6 +5524,14 @@ main() {
       var o = buildAccountAdwordsLink();
       var od = new api.AccountAdwordsLink.fromJson(o.toJson());
       checkAccountAdwordsLink(od);
+    });
+  });
+
+  unittest.group("obj-schema-AccountGoogleMyBusinessLink", () {
+    unittest.test("to-json--from-json", () {
+      var o = buildAccountGoogleMyBusinessLink();
+      var od = new api.AccountGoogleMyBusinessLink.fromJson(o.toJson());
+      checkAccountGoogleMyBusinessLink(od);
     });
   });
 

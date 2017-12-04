@@ -1192,6 +1192,38 @@ class SignupUrlsResourceApi {
   }
 }
 
+/// Configuration for an always-on VPN connection.
+class AlwaysOnVpnPackage {
+  /// Disallows networking when the VPN is not connected.
+  core.bool lockdownEnabled;
+
+  /// The package name of the VPN app.
+  core.String packageName;
+
+  AlwaysOnVpnPackage();
+
+  AlwaysOnVpnPackage.fromJson(core.Map _json) {
+    if (_json.containsKey("lockdownEnabled")) {
+      lockdownEnabled = _json["lockdownEnabled"];
+    }
+    if (_json.containsKey("packageName")) {
+      packageName = _json["packageName"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (lockdownEnabled != null) {
+      _json["lockdownEnabled"] = lockdownEnabled;
+    }
+    if (packageName != null) {
+      _json["packageName"] = packageName;
+    }
+    return _json;
+  }
+}
+
 /// A compliance rule condition which is satisfied if the Android Framework API
 /// level on the device does not meet a minimum requirement. There can only be
 /// one rule with this type of condition per policy.
@@ -3043,6 +3075,29 @@ class Operation {
   }
 }
 
+/// A list of package names.
+class PackageNameList {
+  /// A list of package names.
+  core.List<core.String> packageNames;
+
+  PackageNameList();
+
+  PackageNameList.fromJson(core.Map _json) {
+    if (_json.containsKey("packageNames")) {
+      packageNames = _json["packageNames"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (packageNames != null) {
+      _json["packageNames"] = packageNames;
+    }
+    return _json;
+  }
+}
+
 /// Requirements for the password used to unlock a device.
 class PasswordRequirements {
   /// A device will be wiped after too many incorrect device-unlock passwords
@@ -3278,11 +3333,19 @@ class PersistentPreferredActivity {
 
 /// A policy, which governs behavior for a device.
 class Policy {
+  /// Account types that cannot be managed by the user. <i>Requires the beta
+  /// version of Android Cloud Policy.</i>
+  core.List<core.String> accountTypesWithManagementDisabled;
+
   /// Whether adding new users and profiles is disabled.
   core.bool addUserDisabled;
 
   /// Whether adjusting the master volume is disabled.
   core.bool adjustVolumeDisabled;
+
+  /// Configuration for an always-on VPN connection. <i>Requires the beta
+  /// version of Android Cloud Policy.</i>
+  AlwaysOnVpnPackage alwaysOnVpnPackage;
 
   /// Policy applied to apps.
   core.List<ApplicationPolicy> applications;
@@ -3297,14 +3360,44 @@ class Policy {
   /// automatically uninstalled.
   core.bool blockApplicationsEnabled;
 
+  /// Whether configuring bluetooth is disabled. <i>Requires the beta version of
+  /// Android Cloud Policy.</i>
+  core.bool bluetoothConfigDisabled;
+
+  /// Whether bluetooth contact sharing is disabled. <i>Requires the beta
+  /// version of Android Cloud Policy.</i>
+  core.bool bluetoothContactSharingDisabled;
+
+  /// Whether bluetooth is disabled. Prefer this setting over
+  /// bluetooth_config_disabled because bluetooth_config_disabled can be
+  /// bypassed by the user. <i>Requires the beta version of Android Cloud
+  /// Policy.</i>
+  core.bool bluetoothDisabled;
+
   /// Whether all cameras on the device are disabled.
   core.bool cameraDisabled;
+
+  /// Whether configuring cell broadcast is disabled. <i>Requires the beta
+  /// version of Android Cloud Policy.</i>
+  core.bool cellBroadcastsConfigDisabled;
 
   /// Rules declaring which mitigating actions to take when a device is not
   /// compliant with its policy. When the conditions for multiple rules are
   /// satisfied, all of the mitigating actions for the rules are taken. There is
   /// a maximum limit of 100 rules.
   core.List<ComplianceRule> complianceRules;
+
+  /// Whether creating windows besides app windows is disabled. <i>Requires the
+  /// beta version of Android Cloud Policy.</i>
+  core.bool createWindowsDisabled;
+
+  /// Whether configuring user credentials is disabled. <i>Requires the beta
+  /// version of Android Cloud Policy.</i>
+  core.bool credentialsConfigDisabled;
+
+  /// Whether roaming data services are disabled. <i>Requires the beta version
+  /// of Android Cloud Policy.</i>
+  core.bool dataRoamingDisabled;
 
   /// Whether the user is allowed to enable debugging features.
   core.bool debuggingFeaturesAllowed;
@@ -3318,6 +3411,10 @@ class Policy {
   /// - "GRANT" : Automatically grant a permission.
   /// - "DENY" : Automatically deny a permission.
   core.String defaultPermissionPolicy;
+
+  /// Whether application verification is forced to be enabled. <i>Requires the
+  /// beta version of Android Cloud Policy.</i>
+  core.bool ensureVerifyAppsEnabled;
 
   /// Whether factory resetting from settings is disabled.
   core.bool factoryResetDisabled;
@@ -3333,6 +3430,10 @@ class Policy {
   /// game in Settings is disabled.
   core.bool funDisabled;
 
+  /// Whether user installation of apps is disabled. <i>Requires the beta
+  /// version of Android Cloud Policy.</i>
+  core.bool installAppsDisabled;
+
   /// Whether the user is allowed to enable the "Unknown Sources" setting, which
   /// allows installation of apps from unknown sources.
   core.bool installUnknownSourcesAllowed;
@@ -3340,12 +3441,28 @@ class Policy {
   /// Whether the keyguard is disabled.
   core.bool keyguardDisabled;
 
+  /// Disabled keyguard customizations, such as widgets. <i>Requires the beta
+  /// version of Android Cloud Policy.</i>
+  core.List<core.String> keyguardDisabledFeatures;
+
+  /// A message displayed to the user in the device administators settings
+  /// screen. <i>Requires the beta version of Android Cloud Policy.</i>
+  UserFacingMessage longSupportMessage;
+
   /// Maximum time in milliseconds for user activity until the device will lock.
   /// A value of 0 means there is no restriction.
   core.String maximumTimeToLock;
 
+  /// Whether configuring mobile networks is disabled. <i>Requires the beta
+  /// version of Android Cloud Policy.</i>
+  core.bool mobileNetworksConfigDisabled;
+
   /// Whether adding or removing accounts is disabled.
   core.bool modifyAccountsDisabled;
+
+  /// Whether the user mounting physical external media is disabled. <i>Requires
+  /// the beta version of Android Cloud Policy.</i>
+  core.bool mountPhysicalMediaDisabled;
 
   /// The name of the policy in the form
   /// enterprises/{enterpriseId}/policies/{policyId}
@@ -3361,6 +3478,10 @@ class Policy {
   /// settings.
   core.bool networkEscapeHatchEnabled;
 
+  /// Whether resetting network settings is disabled. <i>Requires the beta
+  /// version of Android Cloud Policy.</i>
+  core.bool networkResetDisabled;
+
   /// Network configuration for the device. See configure networks for more
   /// information.
   ///
@@ -3368,11 +3489,33 @@ class Policy {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> openNetworkConfiguration;
 
+  /// Whether using NFC to beam out data from apps is disabled. <i>Requires the
+  /// beta version of Android Cloud Policy.</i>
+  core.bool outgoingBeamDisabled;
+
+  /// Whether outgoing calls are disabled. <i>Requires the beta version of
+  /// Android Cloud Policy.</i>
+  core.bool outgoingCallsDisabled;
+
   /// Password requirements.
   PasswordRequirements passwordRequirements;
 
+  /// If present, only input methods provided by packages in this list are
+  /// permitted. If this field is present, but the list is empty, then only
+  /// system input methods are permitted. <i>Requires the beta version of
+  /// Android Cloud Policy.</i>
+  PackageNameList permittedInputMethods;
+
   /// Default intent handler activities.
   core.List<PersistentPreferredActivity> persistentPreferredActivities;
+
+  /// The network-independent global HTTP proxy. Typically proxies should be
+  /// configured per-network in open_network_configuration. However for unusual
+  /// configurations like general internal filtering a global HTTP proxy may be
+  /// useful. If the proxy is not accessible, network access may break. The
+  /// global proxy is only a recommendation and some apps may ignore it.
+  /// <i>Requires the beta version of Android Cloud Policy.</i>
+  ProxyInfo recommendedGlobalProxy;
 
   /// Whether removing other users is disabled.
   core.bool removeUserDisabled;
@@ -3382,6 +3525,23 @@ class Policy {
 
   /// Whether screen capture is disabled.
   core.bool screenCaptureDisabled;
+
+  /// Whether changing the user icon is disabled. <i>Requires the beta version
+  /// of Android Cloud Policy.</i>
+  core.bool setUserIconDisabled;
+
+  /// Whether changing the wallpaper is disabled. <i>Requires the beta version
+  /// of Android Cloud Policy.</i>
+  core.bool setWallpaperDisabled;
+
+  /// A message displayed to the user in the settings screen wherever
+  /// functionality has been disabled by the admin. <i>Requires the beta version
+  /// of Android Cloud Policy.</i>
+  UserFacingMessage shortSupportMessage;
+
+  /// Whether sending or receiving SMS messages is disabled. <i>Requires the
+  /// beta version of Android Cloud Policy.</i>
+  core.bool smsDisabled;
 
   /// Whether the status bar is disabled. This disables notifications, quick
   /// settings and other screen overlays that allow escape from full-screen
@@ -3401,13 +3561,29 @@ class Policy {
   /// Play app updates as well.
   SystemUpdate systemUpdate;
 
+  /// Whether configuring tethering and portable hotspots is disabled.
+  /// <i>Requires the beta version of Android Cloud Policy.</i>
+  core.bool tetheringConfigDisabled;
+
+  /// Whether user uninstallation of applications is disabled. <i>Requires the
+  /// beta version of Android Cloud Policy.</i>
+  core.bool uninstallAppsDisabled;
+
   /// Whether the microphone is muted and adjusting microphone volume is
   /// disabled.
   core.bool unmuteMicrophoneDisabled;
 
+  /// Whether transferring files over USB is disabled. <i>Requires the beta
+  /// version of Android Cloud Policy.</i>
+  core.bool usbFileTransferDisabled;
+
   /// The version of the policy. This is a read-only field. The version is
   /// incremented each time the policy is updated.
   core.String version;
+
+  /// Whether configuring VPN is disabled. <i>Requires the beta version of
+  /// Android Cloud Policy.</i>
+  core.bool vpnConfigDisabled;
 
   /// Whether configuring WiFi access points is disabled.
   core.bool wifiConfigDisabled;
@@ -3419,11 +3595,19 @@ class Policy {
   Policy();
 
   Policy.fromJson(core.Map _json) {
+    if (_json.containsKey("accountTypesWithManagementDisabled")) {
+      accountTypesWithManagementDisabled =
+          _json["accountTypesWithManagementDisabled"];
+    }
     if (_json.containsKey("addUserDisabled")) {
       addUserDisabled = _json["addUserDisabled"];
     }
     if (_json.containsKey("adjustVolumeDisabled")) {
       adjustVolumeDisabled = _json["adjustVolumeDisabled"];
+    }
+    if (_json.containsKey("alwaysOnVpnPackage")) {
+      alwaysOnVpnPackage =
+          new AlwaysOnVpnPackage.fromJson(_json["alwaysOnVpnPackage"]);
     }
     if (_json.containsKey("applications")) {
       applications = _json["applications"]
@@ -3436,19 +3620,44 @@ class Policy {
     if (_json.containsKey("blockApplicationsEnabled")) {
       blockApplicationsEnabled = _json["blockApplicationsEnabled"];
     }
+    if (_json.containsKey("bluetoothConfigDisabled")) {
+      bluetoothConfigDisabled = _json["bluetoothConfigDisabled"];
+    }
+    if (_json.containsKey("bluetoothContactSharingDisabled")) {
+      bluetoothContactSharingDisabled =
+          _json["bluetoothContactSharingDisabled"];
+    }
+    if (_json.containsKey("bluetoothDisabled")) {
+      bluetoothDisabled = _json["bluetoothDisabled"];
+    }
     if (_json.containsKey("cameraDisabled")) {
       cameraDisabled = _json["cameraDisabled"];
+    }
+    if (_json.containsKey("cellBroadcastsConfigDisabled")) {
+      cellBroadcastsConfigDisabled = _json["cellBroadcastsConfigDisabled"];
     }
     if (_json.containsKey("complianceRules")) {
       complianceRules = _json["complianceRules"]
           .map((value) => new ComplianceRule.fromJson(value))
           .toList();
     }
+    if (_json.containsKey("createWindowsDisabled")) {
+      createWindowsDisabled = _json["createWindowsDisabled"];
+    }
+    if (_json.containsKey("credentialsConfigDisabled")) {
+      credentialsConfigDisabled = _json["credentialsConfigDisabled"];
+    }
+    if (_json.containsKey("dataRoamingDisabled")) {
+      dataRoamingDisabled = _json["dataRoamingDisabled"];
+    }
     if (_json.containsKey("debuggingFeaturesAllowed")) {
       debuggingFeaturesAllowed = _json["debuggingFeaturesAllowed"];
     }
     if (_json.containsKey("defaultPermissionPolicy")) {
       defaultPermissionPolicy = _json["defaultPermissionPolicy"];
+    }
+    if (_json.containsKey("ensureVerifyAppsEnabled")) {
+      ensureVerifyAppsEnabled = _json["ensureVerifyAppsEnabled"];
     }
     if (_json.containsKey("factoryResetDisabled")) {
       factoryResetDisabled = _json["factoryResetDisabled"];
@@ -3459,17 +3668,33 @@ class Policy {
     if (_json.containsKey("funDisabled")) {
       funDisabled = _json["funDisabled"];
     }
+    if (_json.containsKey("installAppsDisabled")) {
+      installAppsDisabled = _json["installAppsDisabled"];
+    }
     if (_json.containsKey("installUnknownSourcesAllowed")) {
       installUnknownSourcesAllowed = _json["installUnknownSourcesAllowed"];
     }
     if (_json.containsKey("keyguardDisabled")) {
       keyguardDisabled = _json["keyguardDisabled"];
     }
+    if (_json.containsKey("keyguardDisabledFeatures")) {
+      keyguardDisabledFeatures = _json["keyguardDisabledFeatures"];
+    }
+    if (_json.containsKey("longSupportMessage")) {
+      longSupportMessage =
+          new UserFacingMessage.fromJson(_json["longSupportMessage"]);
+    }
     if (_json.containsKey("maximumTimeToLock")) {
       maximumTimeToLock = _json["maximumTimeToLock"];
     }
+    if (_json.containsKey("mobileNetworksConfigDisabled")) {
+      mobileNetworksConfigDisabled = _json["mobileNetworksConfigDisabled"];
+    }
     if (_json.containsKey("modifyAccountsDisabled")) {
       modifyAccountsDisabled = _json["modifyAccountsDisabled"];
+    }
+    if (_json.containsKey("mountPhysicalMediaDisabled")) {
+      mountPhysicalMediaDisabled = _json["mountPhysicalMediaDisabled"];
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -3477,17 +3702,34 @@ class Policy {
     if (_json.containsKey("networkEscapeHatchEnabled")) {
       networkEscapeHatchEnabled = _json["networkEscapeHatchEnabled"];
     }
+    if (_json.containsKey("networkResetDisabled")) {
+      networkResetDisabled = _json["networkResetDisabled"];
+    }
     if (_json.containsKey("openNetworkConfiguration")) {
       openNetworkConfiguration = _json["openNetworkConfiguration"];
+    }
+    if (_json.containsKey("outgoingBeamDisabled")) {
+      outgoingBeamDisabled = _json["outgoingBeamDisabled"];
+    }
+    if (_json.containsKey("outgoingCallsDisabled")) {
+      outgoingCallsDisabled = _json["outgoingCallsDisabled"];
     }
     if (_json.containsKey("passwordRequirements")) {
       passwordRequirements =
           new PasswordRequirements.fromJson(_json["passwordRequirements"]);
     }
+    if (_json.containsKey("permittedInputMethods")) {
+      permittedInputMethods =
+          new PackageNameList.fromJson(_json["permittedInputMethods"]);
+    }
     if (_json.containsKey("persistentPreferredActivities")) {
       persistentPreferredActivities = _json["persistentPreferredActivities"]
           .map((value) => new PersistentPreferredActivity.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("recommendedGlobalProxy")) {
+      recommendedGlobalProxy =
+          new ProxyInfo.fromJson(_json["recommendedGlobalProxy"]);
     }
     if (_json.containsKey("removeUserDisabled")) {
       removeUserDisabled = _json["removeUserDisabled"];
@@ -3497,6 +3739,19 @@ class Policy {
     }
     if (_json.containsKey("screenCaptureDisabled")) {
       screenCaptureDisabled = _json["screenCaptureDisabled"];
+    }
+    if (_json.containsKey("setUserIconDisabled")) {
+      setUserIconDisabled = _json["setUserIconDisabled"];
+    }
+    if (_json.containsKey("setWallpaperDisabled")) {
+      setWallpaperDisabled = _json["setWallpaperDisabled"];
+    }
+    if (_json.containsKey("shortSupportMessage")) {
+      shortSupportMessage =
+          new UserFacingMessage.fromJson(_json["shortSupportMessage"]);
+    }
+    if (_json.containsKey("smsDisabled")) {
+      smsDisabled = _json["smsDisabled"];
     }
     if (_json.containsKey("statusBarDisabled")) {
       statusBarDisabled = _json["statusBarDisabled"];
@@ -3511,11 +3766,23 @@ class Policy {
     if (_json.containsKey("systemUpdate")) {
       systemUpdate = new SystemUpdate.fromJson(_json["systemUpdate"]);
     }
+    if (_json.containsKey("tetheringConfigDisabled")) {
+      tetheringConfigDisabled = _json["tetheringConfigDisabled"];
+    }
+    if (_json.containsKey("uninstallAppsDisabled")) {
+      uninstallAppsDisabled = _json["uninstallAppsDisabled"];
+    }
     if (_json.containsKey("unmuteMicrophoneDisabled")) {
       unmuteMicrophoneDisabled = _json["unmuteMicrophoneDisabled"];
     }
+    if (_json.containsKey("usbFileTransferDisabled")) {
+      usbFileTransferDisabled = _json["usbFileTransferDisabled"];
+    }
     if (_json.containsKey("version")) {
       version = _json["version"];
+    }
+    if (_json.containsKey("vpnConfigDisabled")) {
+      vpnConfigDisabled = _json["vpnConfigDisabled"];
     }
     if (_json.containsKey("wifiConfigDisabled")) {
       wifiConfigDisabled = _json["wifiConfigDisabled"];
@@ -3528,11 +3795,18 @@ class Policy {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (accountTypesWithManagementDisabled != null) {
+      _json["accountTypesWithManagementDisabled"] =
+          accountTypesWithManagementDisabled;
+    }
     if (addUserDisabled != null) {
       _json["addUserDisabled"] = addUserDisabled;
     }
     if (adjustVolumeDisabled != null) {
       _json["adjustVolumeDisabled"] = adjustVolumeDisabled;
+    }
+    if (alwaysOnVpnPackage != null) {
+      _json["alwaysOnVpnPackage"] = (alwaysOnVpnPackage).toJson();
     }
     if (applications != null) {
       _json["applications"] =
@@ -3544,18 +3818,43 @@ class Policy {
     if (blockApplicationsEnabled != null) {
       _json["blockApplicationsEnabled"] = blockApplicationsEnabled;
     }
+    if (bluetoothConfigDisabled != null) {
+      _json["bluetoothConfigDisabled"] = bluetoothConfigDisabled;
+    }
+    if (bluetoothContactSharingDisabled != null) {
+      _json["bluetoothContactSharingDisabled"] =
+          bluetoothContactSharingDisabled;
+    }
+    if (bluetoothDisabled != null) {
+      _json["bluetoothDisabled"] = bluetoothDisabled;
+    }
     if (cameraDisabled != null) {
       _json["cameraDisabled"] = cameraDisabled;
+    }
+    if (cellBroadcastsConfigDisabled != null) {
+      _json["cellBroadcastsConfigDisabled"] = cellBroadcastsConfigDisabled;
     }
     if (complianceRules != null) {
       _json["complianceRules"] =
           complianceRules.map((value) => (value).toJson()).toList();
+    }
+    if (createWindowsDisabled != null) {
+      _json["createWindowsDisabled"] = createWindowsDisabled;
+    }
+    if (credentialsConfigDisabled != null) {
+      _json["credentialsConfigDisabled"] = credentialsConfigDisabled;
+    }
+    if (dataRoamingDisabled != null) {
+      _json["dataRoamingDisabled"] = dataRoamingDisabled;
     }
     if (debuggingFeaturesAllowed != null) {
       _json["debuggingFeaturesAllowed"] = debuggingFeaturesAllowed;
     }
     if (defaultPermissionPolicy != null) {
       _json["defaultPermissionPolicy"] = defaultPermissionPolicy;
+    }
+    if (ensureVerifyAppsEnabled != null) {
+      _json["ensureVerifyAppsEnabled"] = ensureVerifyAppsEnabled;
     }
     if (factoryResetDisabled != null) {
       _json["factoryResetDisabled"] = factoryResetDisabled;
@@ -3566,17 +3865,32 @@ class Policy {
     if (funDisabled != null) {
       _json["funDisabled"] = funDisabled;
     }
+    if (installAppsDisabled != null) {
+      _json["installAppsDisabled"] = installAppsDisabled;
+    }
     if (installUnknownSourcesAllowed != null) {
       _json["installUnknownSourcesAllowed"] = installUnknownSourcesAllowed;
     }
     if (keyguardDisabled != null) {
       _json["keyguardDisabled"] = keyguardDisabled;
     }
+    if (keyguardDisabledFeatures != null) {
+      _json["keyguardDisabledFeatures"] = keyguardDisabledFeatures;
+    }
+    if (longSupportMessage != null) {
+      _json["longSupportMessage"] = (longSupportMessage).toJson();
+    }
     if (maximumTimeToLock != null) {
       _json["maximumTimeToLock"] = maximumTimeToLock;
     }
+    if (mobileNetworksConfigDisabled != null) {
+      _json["mobileNetworksConfigDisabled"] = mobileNetworksConfigDisabled;
+    }
     if (modifyAccountsDisabled != null) {
       _json["modifyAccountsDisabled"] = modifyAccountsDisabled;
+    }
+    if (mountPhysicalMediaDisabled != null) {
+      _json["mountPhysicalMediaDisabled"] = mountPhysicalMediaDisabled;
     }
     if (name != null) {
       _json["name"] = name;
@@ -3584,16 +3898,31 @@ class Policy {
     if (networkEscapeHatchEnabled != null) {
       _json["networkEscapeHatchEnabled"] = networkEscapeHatchEnabled;
     }
+    if (networkResetDisabled != null) {
+      _json["networkResetDisabled"] = networkResetDisabled;
+    }
     if (openNetworkConfiguration != null) {
       _json["openNetworkConfiguration"] = openNetworkConfiguration;
     }
+    if (outgoingBeamDisabled != null) {
+      _json["outgoingBeamDisabled"] = outgoingBeamDisabled;
+    }
+    if (outgoingCallsDisabled != null) {
+      _json["outgoingCallsDisabled"] = outgoingCallsDisabled;
+    }
     if (passwordRequirements != null) {
       _json["passwordRequirements"] = (passwordRequirements).toJson();
+    }
+    if (permittedInputMethods != null) {
+      _json["permittedInputMethods"] = (permittedInputMethods).toJson();
     }
     if (persistentPreferredActivities != null) {
       _json["persistentPreferredActivities"] = persistentPreferredActivities
           .map((value) => (value).toJson())
           .toList();
+    }
+    if (recommendedGlobalProxy != null) {
+      _json["recommendedGlobalProxy"] = (recommendedGlobalProxy).toJson();
     }
     if (removeUserDisabled != null) {
       _json["removeUserDisabled"] = removeUserDisabled;
@@ -3603,6 +3932,18 @@ class Policy {
     }
     if (screenCaptureDisabled != null) {
       _json["screenCaptureDisabled"] = screenCaptureDisabled;
+    }
+    if (setUserIconDisabled != null) {
+      _json["setUserIconDisabled"] = setUserIconDisabled;
+    }
+    if (setWallpaperDisabled != null) {
+      _json["setWallpaperDisabled"] = setWallpaperDisabled;
+    }
+    if (shortSupportMessage != null) {
+      _json["shortSupportMessage"] = (shortSupportMessage).toJson();
+    }
+    if (smsDisabled != null) {
+      _json["smsDisabled"] = smsDisabled;
     }
     if (statusBarDisabled != null) {
       _json["statusBarDisabled"] = statusBarDisabled;
@@ -3616,11 +3957,23 @@ class Policy {
     if (systemUpdate != null) {
       _json["systemUpdate"] = (systemUpdate).toJson();
     }
+    if (tetheringConfigDisabled != null) {
+      _json["tetheringConfigDisabled"] = tetheringConfigDisabled;
+    }
+    if (uninstallAppsDisabled != null) {
+      _json["uninstallAppsDisabled"] = uninstallAppsDisabled;
+    }
     if (unmuteMicrophoneDisabled != null) {
       _json["unmuteMicrophoneDisabled"] = unmuteMicrophoneDisabled;
     }
+    if (usbFileTransferDisabled != null) {
+      _json["usbFileTransferDisabled"] = usbFileTransferDisabled;
+    }
     if (version != null) {
       _json["version"] = version;
+    }
+    if (vpnConfigDisabled != null) {
+      _json["vpnConfigDisabled"] = vpnConfigDisabled;
     }
     if (wifiConfigDisabled != null) {
       _json["wifiConfigDisabled"] = wifiConfigDisabled;
@@ -3678,6 +4031,59 @@ class PowerManagementEvent {
     }
     if (eventType != null) {
       _json["eventType"] = eventType;
+    }
+    return _json;
+  }
+}
+
+/// Configuration info for an HTTP proxy. For a direct proxy, set the host,
+/// port, and excluded_hosts fields. For a PAC script proxy, set the pac_uri
+/// field.
+class ProxyInfo {
+  /// For a direct proxy, the hosts for which the proxy is bypassed. The host
+  /// names may contain wildcards such as *.example.com.
+  core.List<core.String> excludedHosts;
+
+  /// The host of the direct proxy.
+  core.String host;
+
+  /// The URI of the PAC script used to configure the proxy.
+  core.String pacUri;
+
+  /// The port of the direct proxy.
+  core.int port;
+
+  ProxyInfo();
+
+  ProxyInfo.fromJson(core.Map _json) {
+    if (_json.containsKey("excludedHosts")) {
+      excludedHosts = _json["excludedHosts"];
+    }
+    if (_json.containsKey("host")) {
+      host = _json["host"];
+    }
+    if (_json.containsKey("pacUri")) {
+      pacUri = _json["pacUri"];
+    }
+    if (_json.containsKey("port")) {
+      port = _json["port"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (excludedHosts != null) {
+      _json["excludedHosts"] = excludedHosts;
+    }
+    if (host != null) {
+      _json["host"] = host;
+    }
+    if (pacUri != null) {
+      _json["pacUri"] = pacUri;
+    }
+    if (port != null) {
+      _json["port"] = port;
     }
     return _json;
   }

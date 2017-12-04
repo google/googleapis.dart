@@ -455,6 +455,11 @@ class BeaconsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [projectId] - The project id to list beacons under. If not present then
+  /// the project
+  /// credential that made the request is used as the project.
+  /// Optional.
+  ///
   /// [pageToken] - A pagination token obtained from a previous request to list
   /// beacons.
   ///
@@ -531,11 +536,6 @@ class BeaconsResourceApi {
   /// to a
   /// server-defined upper limit.
   ///
-  /// [projectId] - The project id to list beacons under. If not present then
-  /// the project
-  /// credential that made the request is used as the project.
-  /// Optional.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -547,10 +547,10 @@ class BeaconsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBeaconsResponse> list(
-      {core.String pageToken,
+      {core.String projectId,
+      core.String pageToken,
       core.String q,
       core.int pageSize,
-      core.String projectId,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -559,6 +559,9 @@ class BeaconsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (projectId != null) {
+      _queryParams["projectId"] = [projectId];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -567,9 +570,6 @@ class BeaconsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (projectId != null) {
-      _queryParams["projectId"] = [projectId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -990,11 +990,6 @@ class BeaconsAttachmentsResourceApi {
   /// Required.
   /// Value must have pattern "^beacons/[^/]+$".
   ///
-  /// [namespacedType] - Specifies the namespace and type of attachment to
-  /// include in response in
-  /// <var>namespace/type</var> format. Accepts `* / * ` to specify
-  /// "all types in all namespaces".
-  ///
   /// [projectId] - The project id to list beacon attachments under. This field
   /// can be
   /// used when "*" is specified to mean all attachment namespaces. Projects
@@ -1002,6 +997,11 @@ class BeaconsAttachmentsResourceApi {
   /// specified and the projectId string is empty, then the project
   /// making the request is used.
   /// Optional.
+  ///
+  /// [namespacedType] - Specifies the namespace and type of attachment to
+  /// include in response in
+  /// <var>namespace/type</var> format. Accepts `* / * ` to specify
+  /// "all types in all namespaces".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1014,8 +1014,8 @@ class BeaconsAttachmentsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBeaconAttachmentsResponse> list(core.String beaconName,
-      {core.String namespacedType,
-      core.String projectId,
+      {core.String projectId,
+      core.String namespacedType,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1027,11 +1027,11 @@ class BeaconsAttachmentsResourceApi {
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
     }
-    if (namespacedType != null) {
-      _queryParams["namespacedType"] = [namespacedType];
-    }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
+    }
+    if (namespacedType != null) {
+      _queryParams["namespacedType"] = [namespacedType];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1073,6 +1073,10 @@ class BeaconsDiagnosticsResourceApi {
   /// [beaconName] - Beacon that the diagnostics are for.
   /// Value must have pattern "^beacons/[^/]+$".
   ///
+  /// [pageToken] - Requests results that occur after the `page_token`, obtained
+  /// from the
+  /// response to a previous request. Optional.
+  ///
   /// [pageSize] - Specifies the maximum number of results to return. Defaults
   /// to
   /// 10. Maximum 1000. Optional.
@@ -1091,10 +1095,6 @@ class BeaconsDiagnosticsResourceApi {
   /// then the project making the request will be used for looking up
   /// diagnostic records. Optional.
   ///
-  /// [pageToken] - Requests results that occur after the `page_token`, obtained
-  /// from the
-  /// response to a previous request. Optional.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1106,10 +1106,10 @@ class BeaconsDiagnosticsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDiagnosticsResponse> list(core.String beaconName,
-      {core.int pageSize,
+      {core.String pageToken,
+      core.int pageSize,
       core.String alertFilter,
       core.String projectId,
-      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1121,6 +1121,9 @@ class BeaconsDiagnosticsResourceApi {
     if (beaconName == null) {
       throw new core.ArgumentError("Parameter beaconName is required.");
     }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
@@ -1129,9 +1132,6 @@ class BeaconsDiagnosticsResourceApi {
     }
     if (projectId != null) {
       _queryParams["projectId"] = [projectId];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1390,6 +1390,23 @@ class AttachmentInfo {
         convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
+  /// The distance away from the beacon at which this attachment should be
+  /// delivered to a mobile app.
+  ///
+  /// Setting this to a value greater than zero indicates that the app should
+  /// behave as if the beacon is "seen" when the mobile device is less than this
+  /// distance away from the beacon.
+  ///
+  /// Different attachments on the same beacon can have different max distances.
+  ///
+  /// Note that even though this value is expressed with fractional meter
+  /// precision, real-world behavior is likley to be much less precise than one
+  /// meter, due to the nature of current Bluetooth radio technology.
+  ///
+  /// Optional. When not set or zero, the attachment should be delivered at the
+  /// beacon's outer limit of detection.
+  core.double maxDistanceMeters;
+
   /// Specifies what kind of attachment this is. Tells a client how to
   /// interpret the `data` field. Format is <var>namespace/type</var>, for
   /// example <code>scrupulous-wombat-12345/welcome-message</code>
@@ -1401,6 +1418,9 @@ class AttachmentInfo {
     if (_json.containsKey("data")) {
       data = _json["data"];
     }
+    if (_json.containsKey("maxDistanceMeters")) {
+      maxDistanceMeters = _json["maxDistanceMeters"];
+    }
     if (_json.containsKey("namespacedType")) {
       namespacedType = _json["namespacedType"];
     }
@@ -1411,6 +1431,9 @@ class AttachmentInfo {
         new core.Map<core.String, core.Object>();
     if (data != null) {
       _json["data"] = data;
+    }
+    if (maxDistanceMeters != null) {
+      _json["maxDistanceMeters"] = maxDistanceMeters;
     }
     if (namespacedType != null) {
       _json["namespacedType"] = namespacedType;
@@ -2171,40 +2194,6 @@ class IndoorLevel {
 /// specified otherwise, this must conform to the
 /// <a href="http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf">WGS84
 /// standard</a>. Values must be within normalized ranges.
-///
-/// Example of normalization code in Python:
-///
-///     def NormalizeLongitude(longitude):
-///       """Wraps decimal degrees longitude to [-180.0, 180.0]."""
-///       q, r = divmod(longitude, 360.0)
-///       if r > 180.0 or (r == 180.0 and q <= -1.0):
-///         return r - 360.0
-///       return r
-///
-///     def NormalizeLatLng(latitude, longitude):
-///       """Wraps decimal degrees latitude and longitude to
-///       [-90.0, 90.0] and [-180.0, 180.0], respectively."""
-///       r = latitude % 360.0
-///       if r <= 90.0:
-///         return r, NormalizeLongitude(longitude)
-///       elif r >= 270.0:
-///         return r - 360, NormalizeLongitude(longitude)
-///       else:
-///         return 180 - r, NormalizeLongitude(longitude + 180.0)
-///
-///     assert 180.0 == NormalizeLongitude(180.0)
-///     assert -180.0 == NormalizeLongitude(-180.0)
-///     assert -179.0 == NormalizeLongitude(181.0)
-///     assert (0.0, 0.0) == NormalizeLatLng(360.0, 0.0)
-///     assert (0.0, 0.0) == NormalizeLatLng(-360.0, 0.0)
-///     assert (85.0, 180.0) == NormalizeLatLng(95.0, 0.0)
-///     assert (-85.0, -170.0) == NormalizeLatLng(-95.0, 10.0)
-///     assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0)
-///     assert (-90.0, -10.0) == NormalizeLatLng(-90.0, -10.0)
-///     assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0)
-///     assert (0.0, -170.0) == NormalizeLatLng(180.0, 10.0)
-///     assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0)
-///     assert (90.0, 10.0) == NormalizeLatLng(-270.0, 10.0)
 class LatLng {
   /// The latitude in degrees. It must be in the range [-90.0, +90.0].
   core.double latitude;

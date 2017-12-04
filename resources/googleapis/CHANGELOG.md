@@ -1,3 +1,23 @@
+## 0.47.1
+
+* [api-new] oslogin:v1
+* [api-new] poly:v1
+* [api-new] serviceconsumermanagement:v1
+* [api] admin:directory_v1
+* [api] androidenterprise:v1
+* [api] androidmanagement:v1
+* [api] appengine:v1
+* [api] cloudbuild:v1
+* [api] content:v2
+* [api] content:v2sandbox
+* [api] fusiontables:v2
+* [api] ml:v1
+* [api] monitoring:v3
+* [api] pubsub:v1
+* [api] slides:v1
+* [api] speech:v1
+* [api] youtube:v3
+
 ## 0.47.0
 
 * [api-new] dfareporting:v3_0

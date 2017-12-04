@@ -100,11 +100,11 @@ class ProjectsLocationsResourceApi {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [pageSize] - The standard list page size.
+  ///
   /// [filter] - The standard list filter.
   ///
   /// [pageToken] - The standard list page token.
-  ///
-  /// [pageSize] - The standard list page size.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -117,9 +117,9 @@ class ProjectsLocationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(core.String name,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -131,14 +131,14 @@ class ProjectsLocationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -169,12 +169,13 @@ class ProjectsLocationsQueuesResourceApi {
 
   /// Creates a queue.
   ///
-  /// WARNING: This method is only available to whitelisted
-  /// users. Using this method carries some risk. Read
+  /// WARNING: Using this method may have unintended side effects if you are
+  /// using an App Engine `queue.yaml` or `queue.xml` file to manage your
+  /// queues.
+  /// Read
   /// [Overview of Queue Management and
   /// queue.yaml](/cloud-tasks/docs/queue-yaml)
-  /// carefully and then sign up for
-  /// [whitelist access to this method](https://goo.gl/Fe5mUy).
+  /// carefully before using this method.
   ///
   /// [request] - The metadata request object.
   ///
@@ -239,12 +240,13 @@ class ProjectsLocationsQueuesResourceApi {
   /// Note: If you delete a queue, a queue with the same name can't be created
   /// for 7 days.
   ///
-  /// WARNING: This method is only available to whitelisted
-  /// users. Using this method carries some risk. Read
+  /// WARNING: Using this method may have unintended side effects if you are
+  /// using an App Engine `queue.yaml` or `queue.xml` file to manage your
+  /// queues.
+  /// Read
   /// [Overview of Queue Management and
   /// queue.yaml](/cloud-tasks/docs/queue-yaml)
-  /// carefully and then sign up for
-  /// [whitelist access to this method](https://goo.gl/Fe5mUy).
+  /// carefully before using this method.
   ///
   /// Request parameters:
   ///
@@ -494,12 +496,13 @@ class ProjectsLocationsQueuesResourceApi {
   /// This method creates the queue if it does not exist and updates
   /// the queue if it does exist.
   ///
-  /// WARNING: This method is only available to whitelisted
-  /// users. Using this method carries some risk. Read
+  /// WARNING: Using this method may have unintended side effects if you are
+  /// using an App Engine `queue.yaml` or `queue.xml` file to manage your
+  /// queues.
+  /// Read
   /// [Overview of Queue Management and
   /// queue.yaml](/cloud-tasks/docs/queue-yaml)
-  /// carefully and then sign up for
-  /// [whitelist access to this method](https://goo.gl/Fe5mUy).
+  /// carefully before using this method.
   ///
   /// [request] - The metadata request object.
   ///
@@ -510,13 +513,14 @@ class ProjectsLocationsQueuesResourceApi {
   /// The queue name must have the following format:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
   ///
-  /// * `PROJECT_ID` can contain uppercase and lowercase letters,
-  ///   numbers, hyphens, colons, and periods; that is, it must match
-  ///   the regular expression: `[a-zA-Z\\d-:\\.]+`.
-  /// * `QUEUE_ID` can contain uppercase and lowercase letters,
-  ///   numbers, and hyphens; that is, it must match the regular
-  ///   expression: `[a-zA-Z\\d-]+`. The maximum length is 100
-  ///   characters.
+  /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
+  ///    hyphens (-), colons (:), or periods (.).
+  /// * `LOCATION_ID` is the canonical ID for the queue's location.
+  ///    The list of available locations can be obtained by calling
+  ///    google.cloud.location.Locations.ListLocations.
+  ///    For more information, see https://cloud.google.com/about/locations/.
+  /// * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
+  ///   hyphens (-). The maximum length is 100 characters.
   ///
   /// Caller-specified and required in CreateQueueRequest, after which
   /// it becomes output only.
@@ -576,8 +580,8 @@ class ProjectsLocationsQueuesResourceApi {
   /// tasks in the queue until it is resumed via
   /// CloudTasks.ResumeQueue. Tasks can still be added when the
   /// queue is paused. The state of the queue is stored in
-  /// Queue.queue_state; if paused it will be set to
-  /// Queue.QueueState.PAUSED.
+  /// Queue.state; if paused it will be set to
+  /// Queue.State.PAUSED.
   ///
   /// [request] - The metadata request object.
   ///
@@ -692,9 +696,9 @@ class ProjectsLocationsQueuesResourceApi {
   /// Resume a queue.
   ///
   /// This method resumes a queue after it has been
-  /// Queue.QueueState.PAUSED or Queue.QueueState.DISABLED. The state of
-  /// a queue is stored in Queue.queue_state; after calling this method it
-  /// will be set to Queue.QueueState.RUNNING.
+  /// Queue.State.PAUSED or Queue.State.DISABLED. The state of
+  /// a queue is stored in Queue.state; after calling this method it
+  /// will be set to Queue.State.RUNNING.
   ///
   /// WARNING: Resuming many high-QPS queues at the same time can
   /// lead to target overloading. If you are resuming high-QPS
@@ -896,6 +900,11 @@ class ProjectsLocationsQueuesTasksResourceApi {
   /// PullTasksResponse. After the task is acknowledged, it will
   /// not be returned by a later CloudTasks.PullTasks,
   /// CloudTasks.GetTask, or CloudTasks.ListTasks.
+  ///
+  /// To acknowledge multiple tasks at the same time, use
+  /// [HTTP batching](/storage/docs/json_api/v1/how-tos/batch)
+  /// or the batching documentation for your client library, for example
+  /// https://developers.google.com/api-client-library/python/guide/batch.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1448,7 +1457,7 @@ class ProjectsLocationsQueuesTasksResourceApi {
   /// dispatched now.
   ///
   /// When this method is called, Cloud Tasks will dispatch the task to its
-  /// target, even if the queue is Queue.QueueState.PAUSED.
+  /// target, even if the queue is Queue.State.PAUSED.
   ///
   /// The dispatched task is returned. That is, the task that is returned
   /// contains the Task.task_status after the task is dispatched but
@@ -1465,6 +1474,8 @@ class ProjectsLocationsQueuesTasksResourceApi {
   /// failed. google.rpc.Code.FAILED_PRECONDITION is returned when
   /// CloudTasks.RunTask is called on task that is dispatched or
   /// already running.
+  ///
+  /// CloudTasks.RunTask cannot be called on pull tasks.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1641,8 +1652,6 @@ class AppEngineHttpRequest {
   /// The app's request handler for the task's target URL must be able to handle
   /// HTTP requests with this http_method, otherwise the task attempt will fail
   /// with error code 405 (Method Not Allowed). See
-  /// the Request-Line is not allowed for the resource identified by the
-  /// Request-URI". See
   /// [Writing a push task request
   /// handler](/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler)
   /// and the documentation for the request handlers in the language your app is
@@ -1803,9 +1812,9 @@ class AppEngineQueueConfig {
 /// and [App Engine Flex request
 /// routing](/appengine/docs/flexible/python/how-requests-are-routed).
 class AppEngineRouting {
-  /// Output only.
+  /// Output only. The host that the task is sent to.
   ///
-  /// The host that the task is sent to. For more information, see
+  /// For more information, see
   /// [How Requests are
   /// Routed](/appengine/docs/standard/python/how-requests-are-routed).
   ///
@@ -2024,31 +2033,23 @@ class AppEngineTaskTarget {
 
 /// The status of a task attempt.
 class AttemptStatus {
-  /// Output only.
-  ///
-  /// The time that this attempt was dispatched.
+  /// Output only. The time that this attempt was dispatched.
   ///
   /// `dispatch_time` will be truncated to the nearest microsecond.
   core.String dispatchTime;
 
-  /// Output only.
-  ///
-  /// The response from the target for this attempt.
+  /// Output only. The response from the target for this attempt.
   ///
   /// If the task has not been attempted or the task is currently running
   /// then the response status is google.rpc.Code.UNKNOWN.
   Status responseStatus;
 
-  /// Output only.
-  ///
-  /// The time that this attempt response was received.
+  /// Output only. The time that this attempt response was received.
   ///
   /// `response_time` will be truncated to the nearest microsecond.
   core.String responseTime;
 
-  /// Output only.
-  ///
-  /// The time that this attempt was scheduled.
+  /// Output only. The time that this attempt was scheduled.
   ///
   /// `schedule_time` will be truncated to the nearest microsecond.
   core.String scheduleTime;
@@ -2164,12 +2165,11 @@ class CancelLeaseRequest {
   /// - "BASIC" : The basic view omits fields which can be large or can contain
   /// sensitive data.
   ///
-  /// This view does not include the payload.
+  /// This view does not include (AppEngineHttpRequest.payload
+  /// and PullMessage.payload). These payloads are desirable to
+  /// return only when needed, because they can be large and because
+  /// of the sensitivity of the data that you choose to store in it.
   /// - "FULL" : All information is returned.
-  ///
-  /// Payloads might be desirable to return only when needed, because
-  /// they can be large and because of the sensitivity of the data
-  /// that you choose to store in it.
   ///
   /// Authorization for Task.View.FULL requires
   /// `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)
@@ -2227,12 +2227,11 @@ class CreateTaskRequest {
   /// - "BASIC" : The basic view omits fields which can be large or can contain
   /// sensitive data.
   ///
-  /// This view does not include the payload.
+  /// This view does not include (AppEngineHttpRequest.payload
+  /// and PullMessage.payload). These payloads are desirable to
+  /// return only when needed, because they can be large and because
+  /// of the sensitivity of the data that you choose to store in it.
   /// - "FULL" : All information is returned.
-  ///
-  /// Payloads might be desirable to return only when needed, because
-  /// they can be large and because of the sensitivity of the data
-  /// that you choose to store in it.
   ///
   /// Authorization for Task.View.FULL requires
   /// `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)
@@ -2628,10 +2627,16 @@ class PullMessage {
         convert.BASE64.encode(_bytes).replaceAll("/", "_").replaceAll("+", "-");
   }
 
-  /// A meta-data tag for this task.
+  /// The task's tag.
   ///
-  /// This value is used by CloudTasks.PullTasks calls when
-  /// PullTasksRequest.filter is `tag=<tag>`.
+  /// Tags allow similar tasks to be processed in a batch. If you label
+  /// tasks with a tag, your task worker can pull tasks
+  /// with the same tag using PullTasksRequest.filter. For example,
+  /// if you want to aggregate the events associated with a specific
+  /// user once a day, you could tag tasks with the user ID.
+  ///
+  /// The task's tag can only be set when the
+  /// task is created.
   ///
   /// The tag must be less than 500 bytes.
   core.String tag;
@@ -2808,12 +2813,11 @@ class PullTasksRequest {
   /// - "BASIC" : The basic view omits fields which can be large or can contain
   /// sensitive data.
   ///
-  /// This view does not include the payload.
+  /// This view does not include (AppEngineHttpRequest.payload
+  /// and PullMessage.payload). These payloads are desirable to
+  /// return only when needed, because they can be large and because
+  /// of the sensitivity of the data that you choose to store in it.
   /// - "FULL" : All information is returned.
-  ///
-  /// Payloads might be desirable to return only when needed, because
-  /// they can be large and because of the sensitivity of the data
-  /// that you choose to store in it.
   ///
   /// Authorization for Task.View.FULL requires
   /// `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)
@@ -2909,13 +2913,14 @@ class Queue {
   /// The queue name must have the following format:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
   ///
-  /// * `PROJECT_ID` can contain uppercase and lowercase letters,
-  ///   numbers, hyphens, colons, and periods; that is, it must match
-  ///   the regular expression: `[a-zA-Z\\d-:\\.]+`.
-  /// * `QUEUE_ID` can contain uppercase and lowercase letters,
-  ///   numbers, and hyphens; that is, it must match the regular
-  ///   expression: `[a-zA-Z\\d-]+`. The maximum length is 100
-  ///   characters.
+  /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
+  ///    hyphens (-), colons (:), or periods (.).
+  /// * `LOCATION_ID` is the canonical ID for the queue's location.
+  ///    The list of available locations can be obtained by calling
+  ///    google.cloud.location.Locations.ListLocations.
+  ///    For more information, see https://cloud.google.com/about/locations/.
+  /// * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
+  ///   hyphens (-). The maximum length is 100 characters.
   ///
   /// Caller-specified and required in CreateQueueRequest, after which
   /// it becomes output only.
@@ -2929,10 +2934,10 @@ class Queue {
   /// A pull queue is a queue that has a PullTarget.
   PullTarget pullTarget;
 
-  /// Output only.
+  /// Output only. The last time this queue was purged.
   ///
-  /// The last time this queue was purged. All tasks that were
-  /// created before this time were purged.
+  /// All tasks that were created before this time
+  /// were purged.
   ///
   /// A queue can be purged using CloudTasks.PurgeQueue, the
   /// [App Engine Task Queue SDK, or the Cloud
@@ -2941,38 +2946,6 @@ class Queue {
   /// Purge time will be truncated to the nearest microsecond. Purge
   /// time will be zero if the queue has never been purged.
   core.String purgeTime;
-
-  /// Output only.
-  ///
-  /// The state of the queue.
-  ///
-  /// `queue_state` can only be changed by called
-  /// CloudTasks.PauseQueue, CloudTasks.ResumeQueue, or uploading
-  /// [queue.yaml](/appengine/docs/python/config/queueref).
-  /// CloudTasks.UpdateQueue cannot be used to change `queue_state`.
-  /// Possible string values are:
-  /// - "QUEUE_STATE_UNSPECIFIED" : Unspecified state.
-  /// - "RUNNING" : The queue is running. Tasks can be dispatched.
-  /// - "PAUSED" : Tasks are paused by the user. If the queue is paused then
-  /// Cloud
-  /// Tasks will stop delivering tasks from it, but more tasks can
-  /// still be added to it by the user. When a pull queue is paused,
-  /// all CloudTasks.PullTasks calls will return a
-  /// `FAILED_PRECONDITION` error.
-  /// - "DISABLED" : The queue is disabled.
-  ///
-  /// A queue becomes `DISABLED` when
-  /// [queue.yaml](/appengine/docs/python/config/queueref) or
-  /// [queue.xml](appengine/docs/standard/java/config/queueref) is uploaded
-  /// which does not contain the queue. You cannot directly disable a queue.
-  ///
-  /// When a queue is disabled, tasks can still be added to a queue
-  /// but the tasks are not dispatched and CloudTasks.PullTasks calls
-  /// return a `FAILED_PRECONDITION` error.
-  ///
-  /// To permanently delete this queue and all of its tasks, call
-  /// CloudTasks.DeleteQueue.
-  core.String queueState;
 
   /// Rate limits for task dispatches.
   ///
@@ -3000,6 +2973,36 @@ class Queue {
   /// documentation](/appengine/docs/standard/python/taskqueue/push/retrying-tasks).
   RetryConfig retryConfig;
 
+  /// Output only. The state of the queue.
+  ///
+  /// `state` can only be changed by called
+  /// CloudTasks.PauseQueue, CloudTasks.ResumeQueue, or uploading
+  /// [queue.yaml](/appengine/docs/python/config/queueref).
+  /// CloudTasks.UpdateQueue cannot be used to change `state`.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state.
+  /// - "RUNNING" : The queue is running. Tasks can be dispatched.
+  /// - "PAUSED" : Tasks are paused by the user. If the queue is paused then
+  /// Cloud
+  /// Tasks will stop delivering tasks from it, but more tasks can
+  /// still be added to it by the user. When a pull queue is paused,
+  /// all CloudTasks.PullTasks calls will return a
+  /// `FAILED_PRECONDITION` error.
+  /// - "DISABLED" : The queue is disabled.
+  ///
+  /// A queue becomes `DISABLED` when
+  /// [queue.yaml](/appengine/docs/python/config/queueref) or
+  /// [queue.xml](appengine/docs/standard/java/config/queueref) is uploaded
+  /// which does not contain the queue. You cannot directly disable a queue.
+  ///
+  /// When a queue is disabled, tasks can still be added to a queue
+  /// but the tasks are not dispatched and CloudTasks.PullTasks calls
+  /// return a `FAILED_PRECONDITION` error.
+  ///
+  /// To permanently delete this queue and all of its tasks, call
+  /// CloudTasks.DeleteQueue.
+  core.String state;
+
   Queue();
 
   Queue.fromJson(core.Map _json) {
@@ -3023,14 +3026,14 @@ class Queue {
     if (_json.containsKey("purgeTime")) {
       purgeTime = _json["purgeTime"];
     }
-    if (_json.containsKey("queueState")) {
-      queueState = _json["queueState"];
-    }
     if (_json.containsKey("rateLimits")) {
       rateLimits = new RateLimits.fromJson(_json["rateLimits"]);
     }
     if (_json.containsKey("retryConfig")) {
       retryConfig = new RetryConfig.fromJson(_json["retryConfig"]);
+    }
+    if (_json.containsKey("state")) {
+      state = _json["state"];
     }
   }
 
@@ -3055,14 +3058,14 @@ class Queue {
     if (purgeTime != null) {
       _json["purgeTime"] = purgeTime;
     }
-    if (queueState != null) {
-      _json["queueState"] = queueState;
-    }
     if (rateLimits != null) {
       _json["rateLimits"] = (rateLimits).toJson();
     }
     if (retryConfig != null) {
       _json["retryConfig"] = (retryConfig).toJson();
+    }
+    if (state != null) {
+      _json["state"] = state;
     }
     return _json;
   }
@@ -3074,13 +3077,13 @@ class Queue {
 /// queue, regardless of whether the dispatch is a first task attempt or a
 /// retry.
 class RateLimits {
-  /// Output only.
+  /// Output only. The max burst size.
   ///
-  /// The max burst size limits how fast the queue is processed when
-  /// many tasks are in the queue and the rate is high. This field
-  /// allows the queue to have a high rate so processing starts shortly
-  /// after a task is enqueued, but still limits resource usage when
-  /// many tasks are enqueued in a short period of time.
+  /// Max burst size limits how fast the queue is processed when many
+  /// tasks are in the queue and the rate is high. This field allows
+  /// the queue to have a high rate so processing starts shortly after
+  /// a task is enqueued, but still limits resource usage when many
+  /// tasks are enqueued in a short period of time.
   ///
   /// * For App Engine queues, if
   ///   RateLimits.max_tasks_dispatched_per_second is 1, this
@@ -3121,6 +3124,8 @@ class RateLimits {
   ///
   /// * For App Engine queues, this field is 1 by default.
   /// * For pull queues, this field is output only and always 10,000.
+  /// In addition to the `max_tasks_dispatched_per_second` limit, a maximum of
+  ///   10 QPS of CloudTasks.PullTasks requests are allowed per queue.
   ///
   /// This field has the same meaning as
   /// [rate in
@@ -3165,8 +3170,8 @@ class RenewLeaseRequest {
   ///
   ///
   /// The maximum lease duration is 1 week.
-  /// `new_lease_duration` will be truncated to the nearest second.
-  core.String newLeaseDuration;
+  /// `lease_duration` will be truncated to the nearest second.
+  core.String leaseDuration;
 
   /// The response_view specifies which subset of the Task will be
   /// returned.
@@ -3185,12 +3190,11 @@ class RenewLeaseRequest {
   /// - "BASIC" : The basic view omits fields which can be large or can contain
   /// sensitive data.
   ///
-  /// This view does not include the payload.
+  /// This view does not include (AppEngineHttpRequest.payload
+  /// and PullMessage.payload). These payloads are desirable to
+  /// return only when needed, because they can be large and because
+  /// of the sensitivity of the data that you choose to store in it.
   /// - "FULL" : All information is returned.
-  ///
-  /// Payloads might be desirable to return only when needed, because
-  /// they can be large and because of the sensitivity of the data
-  /// that you choose to store in it.
   ///
   /// Authorization for Task.View.FULL requires
   /// `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)
@@ -3208,8 +3212,8 @@ class RenewLeaseRequest {
   RenewLeaseRequest();
 
   RenewLeaseRequest.fromJson(core.Map _json) {
-    if (_json.containsKey("newLeaseDuration")) {
-      newLeaseDuration = _json["newLeaseDuration"];
+    if (_json.containsKey("leaseDuration")) {
+      leaseDuration = _json["leaseDuration"];
     }
     if (_json.containsKey("responseView")) {
       responseView = _json["responseView"];
@@ -3222,8 +3226,8 @@ class RenewLeaseRequest {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
-    if (newLeaseDuration != null) {
-      _json["newLeaseDuration"] = newLeaseDuration;
+    if (leaseDuration != null) {
+      _json["leaseDuration"] = leaseDuration;
     }
     if (responseView != null) {
       _json["responseView"] = responseView;
@@ -3274,12 +3278,21 @@ class RetryConfig {
   /// queue.yaml](/appengine/docs/standard/python/config/queueref#retry_parameters).
   core.String maxBackoff;
 
-  /// The time between retries increases exponentially `max_doublings` times.
-  /// `max_doublings` is maximum number of times that the interval between
-  /// failed
-  /// task retries will be doubled before the interval increases linearly.
-  /// After max_doublings intervals, the retry interval will be
-  /// 2^(max_doublings - 1) * RetryConfig.min_backoff.
+  /// The time between retries will double `max_doublings` times.
+  ///
+  /// A task's retry interval starts at RetryConfig.min_backoff,
+  /// then doubles `max_doublings` times, then increases linearly, and
+  /// finally retries retries at intervals of
+  /// RetryConfig.max_backoff up to max_attempts times.
+  ///
+  /// For example, if RetryConfig.min_backoff is 10s,
+  /// RetryConfig.max_backoff is 300s, and `max_doublings` is 3,
+  /// then the a task will first be retried in 10s. The retry interval
+  /// will double three times, and then increase linearly by 2^3 * 10s.
+  /// Finally, the task will retry at intervals of
+  /// RetryConfig.max_backoff until the task has been attempted
+  /// `max_attempts` times. Thus, the requests will retry at 10s, 20s,
+  /// 40s, 80s, 160s, 240s, 300s, 300s, ....
   ///
   /// * For [App Engine queues](google.cloud.tasks.v2beta2.AppEngineHttpTarget),
   ///   this field is 16 by default.
@@ -3397,12 +3410,11 @@ class RunTaskRequest {
   /// - "BASIC" : The basic view omits fields which can be large or can contain
   /// sensitive data.
   ///
-  /// This view does not include the payload.
+  /// This view does not include (AppEngineHttpRequest.payload
+  /// and PullMessage.payload). These payloads are desirable to
+  /// return only when needed, because they can be large and because
+  /// of the sensitivity of the data that you choose to store in it.
   /// - "FULL" : All information is returned.
-  ///
-  /// Payloads might be desirable to return only when needed, because
-  /// they can be large and because of the sensitivity of the data
-  /// that you choose to store in it.
   ///
   /// Authorization for Task.View.FULL requires
   /// `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)
@@ -3566,9 +3578,7 @@ class Task {
   /// Deprecated. Use Task.app_engine_http_request.
   AppEngineTaskTarget appEngineTaskTarget;
 
-  /// Output only.
-  ///
-  /// The time that the task was created.
+  /// Output only. The time that the task was created.
   ///
   /// `create_time` will be truncated to the nearest second.
   core.String createTime;
@@ -3578,17 +3588,16 @@ class Task {
   /// The task name must have the following format:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
   ///
-  /// * `PROJECT_ID` can contain uppercase and lowercase letters,
-  ///   numbers, hyphens, colons, and periods; that is, it must match
-  ///   the regular expression: `[a-zA-Z\\d-:\\.]+`.
-  /// * `QUEUE_ID` can contain uppercase and lowercase letters,
-  ///   numbers, and hyphens; that is, it must match the regular
-  ///   expression: `[a-zA-Z\\d-]+`. The maximum length is 100
-  ///   characters.
-  /// * `TASK_ID` contain uppercase and lowercase letters, numbers,
-  ///   underscores, and hyphens; that is, it must match the regular
-  ///   expression: `[a-zA-Z\\d_-]+`. The maximum length is 500
-  ///   characters.
+  /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),
+  ///    hyphens (-), colons (:), or periods (.).
+  /// * `LOCATION_ID` is the canonical ID for the task's location.
+  ///    The list of available locations can be obtained by calling
+  ///    google.cloud.location.Locations.ListLocations.
+  ///    For more information, see https://cloud.google.com/about/locations/.
+  /// * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
+  ///   hyphens (-). The maximum length is 100 characters.
+  /// * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]),
+  ///   hyphens (-), or underscores (_). The maximum length is 500 characters.
   ///
   /// Optionally caller-specified in CreateTaskRequest.
   core.String name;
@@ -3615,26 +3624,21 @@ class Task {
   /// `schedule_time` will be truncated to the nearest microsecond.
   core.String scheduleTime;
 
-  /// Output only.
-  ///
-  /// Task status.
+  /// Output only. The task status.
   TaskStatus taskStatus;
 
-  /// Output only.
-  ///
-  /// The view specifies which subset of the Task has been
-  /// returned.
+  /// Output only. The view specifies which subset of the Task has
+  /// been returned.
   /// Possible string values are:
   /// - "VIEW_UNSPECIFIED" : Unspecified. Defaults to BASIC.
   /// - "BASIC" : The basic view omits fields which can be large or can contain
   /// sensitive data.
   ///
-  /// This view does not include the payload.
+  /// This view does not include (AppEngineHttpRequest.payload
+  /// and PullMessage.payload). These payloads are desirable to
+  /// return only when needed, because they can be large and because
+  /// of the sensitivity of the data that you choose to store in it.
   /// - "FULL" : All information is returned.
-  ///
-  /// Payloads might be desirable to return only when needed, because
-  /// they can be large and because of the sensitivity of the data
-  /// that you choose to store in it.
   ///
   /// Authorization for Task.View.FULL requires
   /// `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)
@@ -3711,23 +3715,19 @@ class Task {
 
 /// Status of the task.
 class TaskStatus {
-  /// Output only.
+  /// Output only. The number of attempts dispatched.
   ///
-  /// The number of attempts dispatched. This count includes tasks which have
-  /// been dispatched but haven't received a response.
+  /// This count includes tasks which have been dispatched but haven't
+  /// received a response.
   core.String attemptDispatchCount;
 
-  /// Output only.
-  ///
-  /// The number of attempts which have received a response.
+  /// Output only. The number of attempts which have received a response.
   ///
   /// This field is not calculated for
   /// [pull tasks](google.cloud.tasks.v2beta2.PullTaskTarget).
   core.String attemptResponseCount;
 
-  /// Output only.
-  ///
-  /// The status of the task's first attempt.
+  /// Output only. The status of the task's first attempt.
   ///
   /// Only AttemptStatus.dispatch_time will be set.
   /// The other AttemptStatus information is not retained by Cloud Tasks.
@@ -3736,9 +3736,7 @@ class TaskStatus {
   /// [pull tasks](google.cloud.tasks.v2beta2.PullTaskTarget).
   AttemptStatus firstAttemptStatus;
 
-  /// Output only.
-  ///
-  /// The status of the task's last attempt.
+  /// Output only. The status of the task's last attempt.
   ///
   /// This field is not calculated for
   /// [pull tasks](google.cloud.tasks.v2beta2.PullTaskTarget).

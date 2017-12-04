@@ -30,7 +30,7 @@
     "description": "Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/youtube/v3",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/4-8iVRS7XjXc8_q8wbRC_IRggBY\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/QsthGWG9JYScjn9llsqMMChWCIQ\"",
     "icons": {
         "x16": "https://www.google.com/images/icons/product/youtube-16.png",
         "x32": "https://www.google.com/images/icons/product/youtube-32.png"
@@ -3541,7 +3541,7 @@
             }
         }
     },
-    "revision": "20171101",
+    "revision": "20171129",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "AccessPolicy": {
@@ -4177,9 +4177,11 @@
                     "description": "The frame rate of the inbound video data.",
                     "enum": [
                         "30fps",
-                        "60fps"
+                        "60fps",
+                        "variable"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         ""
                     ],
@@ -4216,9 +4218,11 @@
                         "240p",
                         "360p",
                         "480p",
-                        "720p"
+                        "720p",
+                        "variable"
                     ],
                     "enumDescriptions": [
+                        "",
                         "",
                         "",
                         "",
@@ -7392,6 +7396,10 @@
                     ],
                     "type": "string"
                 },
+                "enableAutoStart": {
+                    "description": "This setting indicates whether auto start is enabled for this broadcast.",
+                    "type": "boolean"
+                },
                 "enableClosedCaptions": {
                     "description": "This setting indicates whether HTTP POST closed captioning is enabled for this broadcast. The ingestion URL of the closed captions is returned through the liveStreams API. This is mutually exclusive with using the closed_captions_type property, and is equivalent to setting closed_captions_type to CLOSED_CAPTIONS_HTTP_POST.",
                     "type": "boolean"
@@ -9634,6 +9642,19 @@
             "description": "A video resource represents a YouTube video.",
             "id": "Video",
             "properties": {
+                "accessToken": {
+                    "annotations": {
+                        "required": [
+                            "youtube.videos.getRating",
+                            "youtube.videos.list",
+                            "youtube.videos.rate",
+                            "youtube.videos.reportAbuse",
+                            "youtube.videos.update"
+                        ]
+                    },
+                    "description": "The access token to uniquely identify a revocable unlisted video.",
+                    "type": "string"
+                },
                 "ageGating": {
                     "$ref": "VideoAgeGating",
                     "description": "Age restriction details related to a video. This data can only be retrieved by the video owner."

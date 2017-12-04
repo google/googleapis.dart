@@ -7781,6 +7781,7 @@ class CdnSettings {
   /// Possible string values are:
   /// - "30fps"
   /// - "60fps"
+  /// - "variable"
   core.String frameRate;
 
   /// The ingestionInfo object contains information that YouTube provides that
@@ -7802,6 +7803,7 @@ class CdnSettings {
   /// - "360p"
   /// - "480p"
   /// - "720p"
+  /// - "variable"
   core.String resolution;
 
   CdnSettings();
@@ -12358,6 +12360,9 @@ class LiveBroadcastContentDetails {
   /// - "closedCaptionsHttpPost"
   core.String closedCaptionsType;
 
+  /// This setting indicates whether auto start is enabled for this broadcast.
+  core.bool enableAutoStart;
+
   /// This setting indicates whether HTTP POST closed captioning is enabled for
   /// this broadcast. The ingestion URL of the closed captions is returned
   /// through the liveStreams API. This is mutually exclusive with using the
@@ -12453,6 +12458,9 @@ class LiveBroadcastContentDetails {
     if (_json.containsKey("closedCaptionsType")) {
       closedCaptionsType = _json["closedCaptionsType"];
     }
+    if (_json.containsKey("enableAutoStart")) {
+      enableAutoStart = _json["enableAutoStart"];
+    }
     if (_json.containsKey("enableClosedCaptions")) {
       enableClosedCaptions = _json["enableClosedCaptions"];
     }
@@ -12500,6 +12508,9 @@ class LiveBroadcastContentDetails {
     }
     if (closedCaptionsType != null) {
       _json["closedCaptionsType"] = closedCaptionsType;
+    }
+    if (enableAutoStart != null) {
+      _json["enableAutoStart"] = enableAutoStart;
     }
     if (enableClosedCaptions != null) {
       _json["enableClosedCaptions"] = enableClosedCaptions;
@@ -16760,6 +16771,9 @@ class TokenPagination {
 
 /// A video resource represents a YouTube video.
 class Video {
+  /// The access token to uniquely identify a revocable unlisted video.
+  core.String accessToken;
+
   /// Age restriction details related to a video. This data can only be
   /// retrieved by the video owner.
   VideoAgeGating ageGating;
@@ -16843,6 +16857,9 @@ class Video {
   Video();
 
   Video.fromJson(core.Map _json) {
+    if (_json.containsKey("accessToken")) {
+      accessToken = _json["accessToken"];
+    }
     if (_json.containsKey("ageGating")) {
       ageGating = new VideoAgeGating.fromJson(_json["ageGating"]);
     }
@@ -16912,6 +16929,9 @@ class Video {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (accessToken != null) {
+      _json["accessToken"] = accessToken;
+    }
     if (ageGating != null) {
       _json["ageGating"] = (ageGating).toJson();
     }

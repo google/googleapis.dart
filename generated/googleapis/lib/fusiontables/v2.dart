@@ -1336,6 +1336,50 @@ class TableResourceApi {
     return _response.then((data) => new Table.fromJson(data));
   }
 
+  /// Replaces rows of the table with the rows of the spreadsheet that is first
+  /// imported from. Current rows remain visible until all replacement rows are
+  /// ready.
+  ///
+  /// Request parameters:
+  ///
+  /// [tableId] - Table whose rows will be replaced from the spreadsheet.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Task].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Task> refetchSheet(core.String tableId, {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (tableId == null) {
+      throw new core.ArgumentError("Parameter tableId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'tables/' + commons.Escaper.ecapeVariable('$tableId') + '/refetch';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Task.fromJson(data));
+  }
+
   /// Replaces rows of an existing table. Current rows remain visible until all
   /// replacement rows are ready.
   ///

@@ -258,12 +258,12 @@ class ProjectsReposResourceApi {
   /// `projects/<project>`.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [pageSize] - Maximum number of repositories to return; between 1 and 500.
-  /// If not set or zero, defaults to 100 at the server.
-  ///
   /// [pageToken] - Resume listing repositories where a prior ListReposResponse
   /// left off. This is an opaque token that must be obtained from
   /// a recent, prior ListReposResponse's next_page_token field.
+  ///
+  /// [pageSize] - Maximum number of repositories to return; between 1 and 500.
+  /// If not set or zero, defaults to 100 at the server.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -276,7 +276,7 @@ class ProjectsReposResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListReposResponse> list(core.String name,
-      {core.int pageSize, core.String pageToken, core.String $fields}) {
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -287,11 +287,11 @@ class ProjectsReposResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -922,6 +922,7 @@ class Policy {
 /// A repository (or repo) is a Git repository storing versioned source content.
 class Repo {
   /// How this repository mirrors a repository managed by another service.
+  /// Read-only field.
   MirrorConfig mirrorConfig;
 
   /// Resource name of the repository, of the form
@@ -929,11 +930,12 @@ class Repo {
   /// eg, `projects/myproject/repos/name/with/slash`
   core.String name;
 
-  /// The disk usage of the repo, in bytes.
-  /// Only returned by GetRepo.
+  /// The disk usage of the repo, in bytes. Read-only field. Size is only
+  /// returned by GetRepo.
   core.String size;
 
   /// URL to clone the repository from Google Cloud Source Repositories.
+  /// Read-only field.
   core.String url;
 
   Repo();

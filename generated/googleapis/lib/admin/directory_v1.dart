@@ -507,7 +507,7 @@ class ChromeosdevicesResourceApi {
   /// - "status" : Chromebook status.
   /// - "supportEndDate" : Chromebook support end date.
   ///
-  /// [orgUnitPath] - Full path of the organization unit or its Id
+  /// [orgUnitPath] - Full path of the organizational unit or its ID
   ///
   /// [pageToken] - Token to specify next page in the list
   ///
@@ -593,7 +593,7 @@ class ChromeosdevicesResourceApi {
     return _response.then((data) => new ChromeOsDevices.fromJson(data));
   }
 
-  /// Move or insert multiple Chrome OS Devices to Organization Unit
+  /// Move or insert multiple Chrome OS Devices to organizational unit
   ///
   /// [request] - The metadata request object.
   ///
@@ -601,7 +601,7 @@ class ChromeosdevicesResourceApi {
   ///
   /// [customerId] - Immutable ID of the G Suite account
   ///
-  /// [orgUnitPath] - Full path of the target organization unit or its Id
+  /// [orgUnitPath] - Full path of the target organizational unit or its ID
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1349,7 +1349,7 @@ class GroupsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable Id of the group
+  /// [groupKey] - Email or immutable ID of the group
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1391,7 +1391,7 @@ class GroupsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable Id of the group
+  /// [groupKey] - Email or immutable ID of the group
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1486,8 +1486,8 @@ class GroupsResourceApi {
   ///
   /// [pageToken] - Token to specify next page in the list
   ///
-  /// [userKey] - Email or immutable Id of the user if only those groups are to
-  /// be listed, the given user is a member of. If Id, it should match with id
+  /// [userKey] - Email or immutable ID of the user if only those groups are to
+  /// be listed, the given user is a member of. If ID, it should match with id
   /// of user object
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1550,7 +1550,7 @@ class GroupsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable Id of the group. If Id, it should match
+  /// [groupKey] - Email or immutable ID of the group. If ID, it should match
   /// with id of group object
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1599,7 +1599,7 @@ class GroupsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable Id of the group. If Id, it should match
+  /// [groupKey] - Email or immutable ID of the group. If ID, it should match
   /// with id of group object
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1652,7 +1652,7 @@ class GroupsAliasesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable Id of the group
+  /// [groupKey] - Email or immutable ID of the group
   ///
   /// [alias] - The alias to be removed
   ///
@@ -1705,7 +1705,7 @@ class GroupsAliasesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable Id of the group
+  /// [groupKey] - Email or immutable ID of the group
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1751,7 +1751,7 @@ class GroupsAliasesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable Id of the group
+  /// [groupKey] - Email or immutable ID of the group
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1799,9 +1799,9 @@ class MembersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable Id of the group
+  /// [groupKey] - Email or immutable ID of the group
   ///
-  /// [memberKey] - Email or immutable Id of the member
+  /// [memberKey] - Email or immutable ID of the member
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1850,9 +1850,9 @@ class MembersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable Id of the group
+  /// [groupKey] - Email or immutable ID of the group
   ///
-  /// [memberKey] - Email or immutable Id of the member
+  /// [memberKey] - Email or immutable ID of the member
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1897,13 +1897,65 @@ class MembersResourceApi {
     return _response.then((data) => new Member.fromJson(data));
   }
 
+  /// Checks Membership of an user within a Group
+  ///
+  /// Request parameters:
+  ///
+  /// [groupKey] - Email or immutable Id of the group
+  ///
+  /// [memberKey] - Email or immutable Id of the member
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MembersHasMember].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MembersHasMember> hasMember(
+      core.String groupKey, core.String memberKey,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (groupKey == null) {
+      throw new core.ArgumentError("Parameter groupKey is required.");
+    }
+    if (memberKey == null) {
+      throw new core.ArgumentError("Parameter memberKey is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'groups/' +
+        commons.Escaper.ecapeVariable('$groupKey') +
+        '/hasMember/' +
+        commons.Escaper.ecapeVariable('$memberKey');
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new MembersHasMember.fromJson(data));
+  }
+
   /// Add user to the specified group.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable Id of the group
+  /// [groupKey] - Email or immutable ID of the group
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1949,7 +2001,7 @@ class MembersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable Id of the group
+  /// [groupKey] - Email or immutable ID of the group
   ///
   /// [maxResults] - Maximum number of results to return. Default is 200
   ///
@@ -2013,10 +2065,10 @@ class MembersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable Id of the group. If Id, it should match
+  /// [groupKey] - Email or immutable ID of the group. If ID, it should match
   /// with id of group object
   ///
-  /// [memberKey] - Email or immutable Id of the user. If Id, it should match
+  /// [memberKey] - Email or immutable ID of the user. If ID, it should match
   /// with id of member object
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2072,10 +2124,10 @@ class MembersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable Id of the group. If Id, it should match
+  /// [groupKey] - Email or immutable ID of the group. If ID, it should match
   /// with id of group object
   ///
-  /// [memberKey] - Email or immutable Id of the user. If Id, it should match
+  /// [memberKey] - Email or immutable ID of the user. If ID, it should match
   /// with id of member object
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2695,13 +2747,13 @@ class OrgunitsResourceApi {
 
   OrgunitsResourceApi(commons.ApiRequester client) : _requester = client;
 
-  /// Remove Organization Unit
+  /// Remove organizational unit
   ///
   /// Request parameters:
   ///
   /// [customerId] - Immutable ID of the G Suite account
   ///
-  /// [orgUnitPath] - Full path of the organization unit or its Id
+  /// [orgUnitPath] - Full path of the organizational unit or its ID
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2750,13 +2802,13 @@ class OrgunitsResourceApi {
     return _response.then((data) => null);
   }
 
-  /// Retrieve Organization Unit
+  /// Retrieve organizational unit
   ///
   /// Request parameters:
   ///
   /// [customerId] - Immutable ID of the G Suite account
   ///
-  /// [orgUnitPath] - Full path of the organization unit or its Id
+  /// [orgUnitPath] - Full path of the organizational unit or its ID
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2805,7 +2857,7 @@ class OrgunitsResourceApi {
     return _response.then((data) => new OrgUnit.fromJson(data));
   }
 
-  /// Add Organization Unit
+  /// Add organizational unit
   ///
   /// [request] - The metadata request object.
   ///
@@ -2855,18 +2907,18 @@ class OrgunitsResourceApi {
     return _response.then((data) => new OrgUnit.fromJson(data));
   }
 
-  /// Retrieve all Organization Units
+  /// Retrieve all organizational units
   ///
   /// Request parameters:
   ///
   /// [customerId] - Immutable ID of the G Suite account
   ///
-  /// [orgUnitPath] - the URL-encoded organization unit's path or its Id
+  /// [orgUnitPath] - the URL-encoded organizational unit's path or its ID
   ///
   /// [type] - Whether to return all sub-organizations or just immediate
   /// children
   /// Possible string values are:
-  /// - "all" : All sub-organization units.
+  /// - "all" : All sub-organizational units.
   /// - "children" : Immediate children only (default).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2914,7 +2966,7 @@ class OrgunitsResourceApi {
     return _response.then((data) => new OrgUnits.fromJson(data));
   }
 
-  /// Update Organization Unit. This method supports patch semantics.
+  /// Update organizational unit. This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2922,7 +2974,7 @@ class OrgunitsResourceApi {
   ///
   /// [customerId] - Immutable ID of the G Suite account
   ///
-  /// [orgUnitPath] - Full path of the organization unit or its Id
+  /// [orgUnitPath] - Full path of the organizational unit or its ID
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2974,7 +3026,7 @@ class OrgunitsResourceApi {
     return _response.then((data) => new OrgUnit.fromJson(data));
   }
 
-  /// Update Organization Unit
+  /// Update organizational unit
   ///
   /// [request] - The metadata request object.
   ///
@@ -2982,7 +3034,7 @@ class OrgunitsResourceApi {
   ///
   /// [customerId] - Immutable ID of the G Suite account
   ///
-  /// [orgUnitPath] - Full path of the organization unit or its Id
+  /// [orgUnitPath] - Full path of the organizational unit or its ID
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4094,7 +4146,7 @@ class SchemasResourceApi {
   ///
   /// [customerId] - Immutable ID of the G Suite account
   ///
-  /// [schemaKey] - Name or immutable Id of the schema
+  /// [schemaKey] - Name or immutable ID of the schema
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4145,7 +4197,7 @@ class SchemasResourceApi {
   ///
   /// [customerId] - Immutable ID of the G Suite account
   ///
-  /// [schemaKey] - Name or immutable Id of the schema
+  /// [schemaKey] - Name or immutable ID of the schema
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4290,7 +4342,7 @@ class SchemasResourceApi {
   ///
   /// [customerId] - Immutable ID of the G Suite account
   ///
-  /// [schemaKey] - Name or immutable Id of the schema.
+  /// [schemaKey] - Name or immutable ID of the schema.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4347,7 +4399,7 @@ class SchemasResourceApi {
   ///
   /// [customerId] - Immutable ID of the G Suite account
   ///
-  /// [schemaKey] - Name or immutable Id of the schema.
+  /// [schemaKey] - Name or immutable ID of the schema.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4564,7 +4616,7 @@ class UsersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable Id of the user
+  /// [userKey] - Email or immutable ID of the user
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4606,7 +4658,7 @@ class UsersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable Id of the user
+  /// [userKey] - Email or immutable ID of the user
   ///
   /// [customFieldMask] - Comma-separated list of schema names. All fields from
   /// these schemas are fetched. This should only be set when projection=custom.
@@ -4861,7 +4913,7 @@ class UsersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable Id of the user as admin
+  /// [userKey] - Email or immutable ID of the user as admin
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4909,7 +4961,7 @@ class UsersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable Id of the user. If Id, it should match with
+  /// [userKey] - Email or immutable ID of the user. If ID, it should match with
   /// id of user object
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5006,7 +5058,7 @@ class UsersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable Id of the user. If Id, it should match with
+  /// [userKey] - Email or immutable ID of the user. If ID, it should match with
   /// id of user object
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5204,7 +5256,7 @@ class UsersAliasesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable Id of the user
+  /// [userKey] - Email or immutable ID of the user
   ///
   /// [alias] - The alias to be removed
   ///
@@ -5257,7 +5309,7 @@ class UsersAliasesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable Id of the user
+  /// [userKey] - Email or immutable ID of the user
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5303,7 +5355,7 @@ class UsersAliasesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable Id of the user
+  /// [userKey] - Email or immutable ID of the user
   ///
   /// [event] - Event on which subscription is intended (if subscribing)
   /// Possible string values are:
@@ -5356,7 +5408,7 @@ class UsersAliasesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable Id of the user
+  /// [userKey] - Email or immutable ID of the user
   ///
   /// [event] - Event on which subscription is intended (if subscribing)
   /// Possible string values are:
@@ -5417,7 +5469,7 @@ class UsersPhotosResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable Id of the user
+  /// [userKey] - Email or immutable ID of the user
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5461,7 +5513,7 @@ class UsersPhotosResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable Id of the user
+  /// [userKey] - Email or immutable ID of the user
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5507,7 +5559,7 @@ class UsersPhotosResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable Id of the user
+  /// [userKey] - Email or immutable ID of the user
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5557,7 +5609,7 @@ class UsersPhotosResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable Id of the user
+  /// [userKey] - Email or immutable ID of the user
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5612,7 +5664,7 @@ class VerificationCodesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable Id of the user
+  /// [userKey] - Email or immutable ID of the user
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5656,7 +5708,7 @@ class VerificationCodesResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable Id of the user
+  /// [userKey] - Email or immutable ID of the user
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7441,6 +7493,29 @@ class Members {
     }
     if (nextPageToken != null) {
       _json["nextPageToken"] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/// JSON template for Has Member response in Directory API.
+class MembersHasMember {
+  /// Identifies whether given user is a member or not.
+  core.bool isMember;
+
+  MembersHasMember();
+
+  MembersHasMember.fromJson(core.Map _json) {
+    if (_json.containsKey("isMember")) {
+      isMember = _json["isMember"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (isMember != null) {
+      _json["isMember"] = isMember;
     }
     return _json;
   }
@@ -10522,6 +10597,9 @@ class UserPhoto {
 /// JSON template for a POSIX account entry. Description of the field family:
 /// go/fbs-posix.
 class UserPosixAccount {
+  /// A POSIX account field identifier. (Read-only)
+  core.String accountId;
+
   /// The GECOS (user information) for this account.
   core.String gecos;
 
@@ -10549,6 +10627,9 @@ class UserPosixAccount {
   UserPosixAccount();
 
   UserPosixAccount.fromJson(core.Map _json) {
+    if (_json.containsKey("accountId")) {
+      accountId = _json["accountId"];
+    }
     if (_json.containsKey("gecos")) {
       gecos = _json["gecos"];
     }
@@ -10578,6 +10659,9 @@ class UserPosixAccount {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (accountId != null) {
+      _json["accountId"] = accountId;
+    }
     if (gecos != null) {
       _json["gecos"] = gecos;
     }

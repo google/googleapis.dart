@@ -389,8 +389,8 @@ main() {
       var arg_projectId = "foo";
       var arg_filter = "foo";
       var arg_endTime = "foo";
-      var arg_startTime = "foo";
       var arg_pageToken = "foo";
+      var arg_startTime = "foo";
       var arg_pageSize = 42;
       var arg_view = "foo";
       var arg_orderBy = "foo";
@@ -438,9 +438,9 @@ main() {
         unittest.expect(
             queryMap["endTime"].first, unittest.equals(arg_endTime));
         unittest.expect(
-            queryMap["startTime"].first, unittest.equals(arg_startTime));
-        unittest.expect(
             queryMap["pageToken"].first, unittest.equals(arg_pageToken));
+        unittest.expect(
+            queryMap["startTime"].first, unittest.equals(arg_startTime));
         unittest.expect(core.int.parse(queryMap["pageSize"].first),
             unittest.equals(arg_pageSize));
         unittest.expect(queryMap["view"].first, unittest.equals(arg_view));
@@ -458,8 +458,8 @@ main() {
           .list(arg_projectId,
               filter: arg_filter,
               endTime: arg_endTime,
-              startTime: arg_startTime,
               pageToken: arg_pageToken,
+              startTime: arg_startTime,
               pageSize: arg_pageSize,
               view: arg_view,
               orderBy: arg_orderBy,

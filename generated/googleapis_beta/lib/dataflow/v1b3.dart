@@ -124,14 +124,6 @@ class ProjectsJobsResourceApi {
   ///
   /// [projectId] - The project which owns the jobs.
   ///
-  /// [view] - Level of information requested in response. Default is
-  /// `JOB_VIEW_SUMMARY`.
-  /// Possible string values are:
-  /// - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
-  /// - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
-  /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
-  /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
-  ///
   /// [filter] - The kind of filter to use.
   /// Possible string values are:
   /// - "UNKNOWN" : A UNKNOWN.
@@ -149,6 +141,14 @@ class ProjectsJobsResourceApi {
   /// The actual number of jobs returned will be the lesser of max_responses
   /// and an unspecified server-defined limit.
   ///
+  /// [view] - Level of information requested in response. Default is
+  /// `JOB_VIEW_SUMMARY`.
+  /// Possible string values are:
+  /// - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
+  /// - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
+  /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
+  /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -160,11 +160,11 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> aggregated(core.String projectId,
-      {core.String view,
-      core.String filter,
+      {core.String filter,
       core.String location,
       core.String pageToken,
       core.int pageSize,
+      core.String view,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -175,9 +175,6 @@ class ProjectsJobsResourceApi {
 
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
@@ -190,6 +187,9 @@ class ProjectsJobsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -217,6 +217,8 @@ class ProjectsJobsResourceApi {
   /// [projectId] - The ID of the Cloud Platform project that the job belongs
   /// to.
   ///
+  /// [replaceJobId] - Deprecated. This field is now in the Job message.
+  ///
   /// [view] - The level of information requested in response.
   /// Possible string values are:
   /// - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
@@ -225,8 +227,6 @@ class ProjectsJobsResourceApi {
   /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
   ///
   /// [location] - The location that contains this job.
-  ///
-  /// [replaceJobId] - Deprecated. This field is now in the Job message.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -239,9 +239,9 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Job> create(Job request, core.String projectId,
-      {core.String view,
+      {core.String replaceJobId,
+      core.String view,
       core.String location,
-      core.String replaceJobId,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -256,14 +256,14 @@ class ProjectsJobsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (replaceJobId != null) {
+      _queryParams["replaceJobId"] = [replaceJobId];
+    }
     if (view != null) {
       _queryParams["view"] = [view];
     }
     if (location != null) {
       _queryParams["location"] = [location];
-    }
-    if (replaceJobId != null) {
-      _queryParams["replaceJobId"] = [replaceJobId];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -357,10 +357,10 @@ class ProjectsJobsResourceApi {
   ///
   /// [jobId] - The job to get messages for.
   ///
-  /// [location] - The location which contains the job specified by job_id.
-  ///
   /// [startTime] - Return only metric data that has changed since this time.
   /// Default is to return all information about all metrics for the job.
+  ///
+  /// [location] - The location which contains the job specified by job_id.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -373,7 +373,7 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<JobMetrics> getMetrics(core.String projectId, core.String jobId,
-      {core.String location, core.String startTime, core.String $fields}) {
+      {core.String startTime, core.String location, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -387,11 +387,11 @@ class ProjectsJobsResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-    if (location != null) {
-      _queryParams["location"] = [location];
-    }
     if (startTime != null) {
       _queryParams["startTime"] = [startTime];
+    }
+    if (location != null) {
+      _queryParams["location"] = [location];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -704,19 +704,6 @@ class ProjectsJobsMessagesResourceApi {
   ///
   /// [jobId] - The job to get messages about.
   ///
-  /// [pageSize] - If specified, determines the maximum number of messages to
-  /// return.  If unspecified, the service may choose an appropriate
-  /// default, or may return an arbitrarily large number of results.
-  ///
-  /// [minimumImportance] - Filter to only get messages with importance >= level
-  /// Possible string values are:
-  /// - "JOB_MESSAGE_IMPORTANCE_UNKNOWN" : A JOB_MESSAGE_IMPORTANCE_UNKNOWN.
-  /// - "JOB_MESSAGE_DEBUG" : A JOB_MESSAGE_DEBUG.
-  /// - "JOB_MESSAGE_DETAILED" : A JOB_MESSAGE_DETAILED.
-  /// - "JOB_MESSAGE_BASIC" : A JOB_MESSAGE_BASIC.
-  /// - "JOB_MESSAGE_WARNING" : A JOB_MESSAGE_WARNING.
-  /// - "JOB_MESSAGE_ERROR" : A JOB_MESSAGE_ERROR.
-  ///
   /// [location] - The location which contains the job specified by job_id.
   ///
   /// [endTime] - Return only messages with timestamps < end_time. The default
@@ -732,6 +719,19 @@ class ProjectsJobsMessagesResourceApi {
   /// by an earlier call. This will cause the next page of results to
   /// be returned.
   ///
+  /// [pageSize] - If specified, determines the maximum number of messages to
+  /// return.  If unspecified, the service may choose an appropriate
+  /// default, or may return an arbitrarily large number of results.
+  ///
+  /// [minimumImportance] - Filter to only get messages with importance >= level
+  /// Possible string values are:
+  /// - "JOB_MESSAGE_IMPORTANCE_UNKNOWN" : A JOB_MESSAGE_IMPORTANCE_UNKNOWN.
+  /// - "JOB_MESSAGE_DEBUG" : A JOB_MESSAGE_DEBUG.
+  /// - "JOB_MESSAGE_DETAILED" : A JOB_MESSAGE_DETAILED.
+  /// - "JOB_MESSAGE_BASIC" : A JOB_MESSAGE_BASIC.
+  /// - "JOB_MESSAGE_WARNING" : A JOB_MESSAGE_WARNING.
+  /// - "JOB_MESSAGE_ERROR" : A JOB_MESSAGE_ERROR.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -744,12 +744,12 @@ class ProjectsJobsMessagesResourceApi {
   /// this method will complete with the same error.
   async.Future<ListJobMessagesResponse> list(
       core.String projectId, core.String jobId,
-      {core.int pageSize,
-      core.String minimumImportance,
-      core.String location,
+      {core.String location,
       core.String endTime,
       core.String startTime,
       core.String pageToken,
+      core.int pageSize,
+      core.String minimumImportance,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -764,12 +764,6 @@ class ProjectsJobsMessagesResourceApi {
     if (jobId == null) {
       throw new core.ArgumentError("Parameter jobId is required.");
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (minimumImportance != null) {
-      _queryParams["minimumImportance"] = [minimumImportance];
-    }
     if (location != null) {
       _queryParams["location"] = [location];
     }
@@ -781,6 +775,12 @@ class ProjectsJobsMessagesResourceApi {
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (minimumImportance != null) {
+      _queryParams["minimumImportance"] = [minimumImportance];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1025,14 +1025,14 @@ class ProjectsLocationsJobsResourceApi {
   ///
   /// [location] - The location that contains this job.
   ///
+  /// [replaceJobId] - Deprecated. This field is now in the Job message.
+  ///
   /// [view] - The level of information requested in response.
   /// Possible string values are:
   /// - "JOB_VIEW_UNKNOWN" : A JOB_VIEW_UNKNOWN.
   /// - "JOB_VIEW_SUMMARY" : A JOB_VIEW_SUMMARY.
   /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
   /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
-  ///
-  /// [replaceJobId] - Deprecated. This field is now in the Job message.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1046,7 +1046,7 @@ class ProjectsLocationsJobsResourceApi {
   /// this method will complete with the same error.
   async.Future<Job> create(
       Job request, core.String projectId, core.String location,
-      {core.String view, core.String replaceJobId, core.String $fields}) {
+      {core.String replaceJobId, core.String view, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1063,11 +1063,11 @@ class ProjectsLocationsJobsResourceApi {
     if (location == null) {
       throw new core.ArgumentError("Parameter location is required.");
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (replaceJobId != null) {
       _queryParams["replaceJobId"] = [replaceJobId];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1232,13 +1232,6 @@ class ProjectsLocationsJobsResourceApi {
   ///
   /// [location] - The location that contains this job.
   ///
-  /// [filter] - The kind of filter to use.
-  /// Possible string values are:
-  /// - "UNKNOWN" : A UNKNOWN.
-  /// - "ALL" : A ALL.
-  /// - "TERMINATED" : A TERMINATED.
-  /// - "ACTIVE" : A ACTIVE.
-  ///
   /// [pageToken] - Set this to the 'next_page_token' field of a previous
   /// response
   /// to request additional results in a long list.
@@ -1255,6 +1248,13 @@ class ProjectsLocationsJobsResourceApi {
   /// - "JOB_VIEW_ALL" : A JOB_VIEW_ALL.
   /// - "JOB_VIEW_DESCRIPTION" : A JOB_VIEW_DESCRIPTION.
   ///
+  /// [filter] - The kind of filter to use.
+  /// Possible string values are:
+  /// - "UNKNOWN" : A UNKNOWN.
+  /// - "ALL" : A ALL.
+  /// - "TERMINATED" : A TERMINATED.
+  /// - "ACTIVE" : A ACTIVE.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1267,10 +1267,10 @@ class ProjectsLocationsJobsResourceApi {
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(
       core.String projectId, core.String location,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
       core.String view,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1285,9 +1285,6 @@ class ProjectsLocationsJobsResourceApi {
     if (location == null) {
       throw new core.ArgumentError("Parameter location is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -1296,6 +1293,9 @@ class ProjectsLocationsJobsResourceApi {
     }
     if (view != null) {
       _queryParams["view"] = [view];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1851,13 +1851,13 @@ class ProjectsLocationsTemplatesResourceApi {
   ///
   /// [location] - The location to which to direct the request.
   ///
-  /// [view] - The view to retrieve. Defaults to METADATA_ONLY.
-  /// Possible string values are:
-  /// - "METADATA_ONLY" : A METADATA_ONLY.
-  ///
   /// [gcsPath] - Required. A Cloud Storage path to the template from which to
   /// create the job.
   /// Must be a valid Cloud Storage URL, beginning with `gs://`.
+  ///
+  /// [view] - The view to retrieve. Defaults to METADATA_ONLY.
+  /// Possible string values are:
+  /// - "METADATA_ONLY" : A METADATA_ONLY.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1871,7 +1871,7 @@ class ProjectsLocationsTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<GetTemplateResponse> get(
       core.String projectId, core.String location,
-      {core.String view, core.String gcsPath, core.String $fields}) {
+      {core.String gcsPath, core.String view, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1885,11 +1885,11 @@ class ProjectsLocationsTemplatesResourceApi {
     if (location == null) {
       throw new core.ArgumentError("Parameter location is required.");
     }
-    if (view != null) {
-      _queryParams["view"] = [view];
-    }
     if (gcsPath != null) {
       _queryParams["gcsPath"] = [gcsPath];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2120,16 +2120,16 @@ class ProjectsTemplatesResourceApi {
   /// [projectId] - Required. The ID of the Cloud Platform project that the job
   /// belongs to.
   ///
+  /// [gcsPath] - Required. A Cloud Storage path to the template from which to
+  /// create
+  /// the job.
+  /// Must be valid Cloud Storage URL, beginning with 'gs://'.
+  ///
   /// [location] - The location to which to direct the request.
   ///
   /// [validateOnly] - If true, the request is validated but not actually
   /// executed.
   /// Defaults to false.
-  ///
-  /// [gcsPath] - Required. A Cloud Storage path to the template from which to
-  /// create
-  /// the job.
-  /// Must be valid Cloud Storage URL, beginning with 'gs://'.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2143,9 +2143,9 @@ class ProjectsTemplatesResourceApi {
   /// this method will complete with the same error.
   async.Future<LaunchTemplateResponse> launch(
       LaunchTemplateParameters request, core.String projectId,
-      {core.String location,
+      {core.String gcsPath,
+      core.String location,
       core.bool validateOnly,
-      core.String gcsPath,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -2160,14 +2160,14 @@ class ProjectsTemplatesResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
+    if (gcsPath != null) {
+      _queryParams["gcsPath"] = [gcsPath];
+    }
     if (location != null) {
       _queryParams["location"] = [location];
     }
     if (validateOnly != null) {
       _queryParams["validateOnly"] = ["${validateOnly}"];
-    }
-    if (gcsPath != null) {
-      _queryParams["gcsPath"] = [gcsPath];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2786,6 +2786,14 @@ class CounterStructuredName {
   /// Name of the stage. An execution step contains multiple component steps.
   core.String executionStepName;
 
+  /// Index of an input collection that's being read from/written to as a side
+  /// input.
+  /// The index identifies a step's side inputs starting by 1 (e.g. the first
+  /// side input has input_index 1, the third has input_index 3).
+  /// Side inputs are identified by a pair of (original_step_name, input_index).
+  /// This field helps uniquely identify them.
+  core.int inputIndex;
+
   /// Counter name. Not necessarily globally-unique, but unique within the
   /// context of the other fields.
   /// Required.
@@ -2801,7 +2809,8 @@ class CounterStructuredName {
   core.String originNamespace;
 
   /// The step name requesting an operation, such as GBK.
-  /// I.e. the ParDo causing a read/write from shuffle to occur.
+  /// I.e. the ParDo causing a read/write from shuffle to occur, or a
+  /// read from side inputs.
   core.String originalRequestingStepName;
 
   /// System generated name of the original step in the user's graph, before
@@ -2815,12 +2824,6 @@ class CounterStructuredName {
   /// - "VALUE" : Counter reports a value.
   core.String portion;
 
-  /// ID of a side input being read from/written to. Side inputs are identified
-  /// by a pair of (reader, input_index). The reader is usually equal to the
-  /// original name, but it may be different, if a ParDo emits its Iterator /
-  /// Map side input object.
-  SideInputId sideInput;
-
   /// ID of a particular worker.
   core.String workerId;
 
@@ -2832,6 +2835,9 @@ class CounterStructuredName {
     }
     if (_json.containsKey("executionStepName")) {
       executionStepName = _json["executionStepName"];
+    }
+    if (_json.containsKey("inputIndex")) {
+      inputIndex = _json["inputIndex"];
     }
     if (_json.containsKey("name")) {
       name = _json["name"];
@@ -2851,9 +2857,6 @@ class CounterStructuredName {
     if (_json.containsKey("portion")) {
       portion = _json["portion"];
     }
-    if (_json.containsKey("sideInput")) {
-      sideInput = new SideInputId.fromJson(_json["sideInput"]);
-    }
     if (_json.containsKey("workerId")) {
       workerId = _json["workerId"];
     }
@@ -2867,6 +2870,9 @@ class CounterStructuredName {
     }
     if (executionStepName != null) {
       _json["executionStepName"] = executionStepName;
+    }
+    if (inputIndex != null) {
+      _json["inputIndex"] = inputIndex;
     }
     if (name != null) {
       _json["name"] = name;
@@ -2885,9 +2891,6 @@ class CounterStructuredName {
     }
     if (portion != null) {
       _json["portion"] = portion;
-    }
-    if (sideInput != null) {
-      _json["sideInput"] = (sideInput).toJson();
     }
     if (workerId != null) {
       _json["workerId"] = workerId;
@@ -6708,38 +6711,6 @@ class ShellTask {
     }
     if (exitCode != null) {
       _json["exitCode"] = exitCode;
-    }
-    return _json;
-  }
-}
-
-/// Uniquely identifies a side input.
-class SideInputId {
-  /// The step that receives and usually consumes this side input.
-  core.String declaringStepName;
-
-  /// The index of the side input, from the list of non_parallel_inputs.
-  core.int inputIndex;
-
-  SideInputId();
-
-  SideInputId.fromJson(core.Map _json) {
-    if (_json.containsKey("declaringStepName")) {
-      declaringStepName = _json["declaringStepName"];
-    }
-    if (_json.containsKey("inputIndex")) {
-      inputIndex = _json["inputIndex"];
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final core.Map<core.String, core.Object> _json =
-        new core.Map<core.String, core.Object>();
-    if (declaringStepName != null) {
-      _json["declaringStepName"] = declaringStepName;
-    }
-    if (inputIndex != null) {
-      _json["inputIndex"] = inputIndex;
     }
     return _json;
   }

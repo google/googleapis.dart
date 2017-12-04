@@ -683,6 +683,15 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// Value must have pattern
   /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
   ///
+  /// [deviceIds] - A list of device string identifiers. If empty, it will
+  /// ignore this field.
+  /// For example, `['device0', 'device12']`. This field cannot hold more than
+  /// 10,000 entries.
+  ///
+  /// [deviceNumIds] - A list of device numerical ids. If empty, it will ignore
+  /// this field. This
+  /// field cannot hold more than 10,000 entries.
+  ///
   /// [pageToken] - The value returned by the last `ListDevicesResponse`;
   /// indicates
   /// that this is a continuation of a prior `ListDevices` call, and
@@ -699,15 +708,6 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// objects than requested, but if there is a non-empty `page_token`, it
   /// indicates that more entries are available.
   ///
-  /// [deviceIds] - A list of device string identifiers. If empty, it will
-  /// ignore this field.
-  /// For example, `['device0', 'device12']`. This field cannot hold more than
-  /// 10,000 entries.
-  ///
-  /// [deviceNumIds] - A list of device numerical ids. If empty, it will ignore
-  /// this field. This
-  /// field cannot hold more than 10,000 entries.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -719,11 +719,11 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDevicesResponse> list(core.String parent,
-      {core.String pageToken,
+      {core.List<core.String> deviceIds,
+      core.List<core.String> deviceNumIds,
+      core.String pageToken,
       core.String fieldMask,
       core.int pageSize,
-      core.List<core.String> deviceIds,
-      core.List<core.String> deviceNumIds,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -735,6 +735,12 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
+    if (deviceIds != null) {
+      _queryParams["deviceIds"] = deviceIds;
+    }
+    if (deviceNumIds != null) {
+      _queryParams["deviceNumIds"] = deviceNumIds;
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
@@ -743,12 +749,6 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (deviceIds != null) {
-      _queryParams["deviceIds"] = deviceIds;
-    }
-    if (deviceNumIds != null) {
-      _queryParams["deviceNumIds"] = deviceNumIds;
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1576,7 +1576,11 @@ class DeviceRegistry {
   /// The configuration for notification of telemetry events received from the
   /// device. All telemetry events that were successfully published by the
   /// device and acknowledged by Cloud IoT Core are guaranteed to be
-  /// delivered to Cloud Pub/Sub. Only the first configuration is used.
+  /// delivered to Cloud Pub/Sub. Only the first configuration is used. If you
+  /// try to publish a device telemetry event using MQTT without specifying a
+  /// Cloud Pub/Sub topic for the device's registry, the connection closes
+  /// automatically. If you try to do so using an HTTP connection, an error
+  /// is returned.
   core.List<EventNotificationConfig> eventNotificationConfigs;
 
   /// The DeviceService (HTTP) configuration for this device registry.

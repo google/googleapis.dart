@@ -107,7 +107,7 @@ class PartnersCustomersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource ID in format
+  /// [parent] - Required. The parent resource ID in the format
   /// `partners/[PARTNER_ID]` that
   /// identifies the reseller.
   /// Value must have pattern "^partners/[^/]+$".
@@ -691,7 +691,7 @@ class ClaimDeviceRequest {
   /// The section to claim.
   /// Possible string values are:
   /// - "SECTION_TYPE_UNSPECIFIED" : Unspecified section type.
-  /// - "SECTION_TYPE_ZERO_TOUCH" : Zero touch section type.
+  /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
   core.String sectionType;
 
   ClaimDeviceRequest();
@@ -877,25 +877,34 @@ class CreateCustomerRequest {
   }
 }
 
-/// An Android device.
+/// An Android device registered for zero-touch enrollment.
 class Device {
-  /// Claims.
+  /// Output only. The provisioning claims for a device. Devices claimed for
+  /// zero-touch enrollment have a claim with the type
+  /// `SECTION_TYPE_ZERO_TOUCH`.
+  /// Call
+  /// `partners.devices.unclaim`
+  /// or
+  /// `partners.devices.unclaimAsync`
+  /// to remove the device from zero-touch enrollment.
   core.List<DeviceClaim> claims;
 
-  /// The resource name of the configuration.
-  /// Only set for customers.
+  /// Not available to resellers.
   core.String configuration;
 
-  /// Device ID.
+  /// Output only. The ID of the device. Assigned by the server.
   core.String deviceId;
 
-  /// Device identifier.
+  /// The hardware IDs that identify a manufactured device. To learn more, read
+  /// [Identifiers](/zero-touch/guides/identifiers).
   DeviceIdentifier deviceIdentifier;
 
-  /// Device metadata.
+  /// The metadata attached to the device. Structured as key-value pairs. To
+  /// learn more, read [Device metadata](/zero-touch/guides/metadata).
   DeviceMetadata deviceMetadata;
 
-  /// Resource name in `partners/[PARTNER_ID]/devices/[DEVICE_ID]`.
+  /// Output only. The API resource name in the format
+  /// `partners/[PARTNER_ID]/devices/[DEVICE_ID]`. Assigned by the server.
   core.String name;
 
   Device();
@@ -949,15 +958,18 @@ class Device {
   }
 }
 
-/// Information about a device claimed for a partner.
+/// A record of a device claimed by a reseller for a customer. Devices claimed
+/// for zero-touch enrollment have a claim with the type
+/// `SECTION_TYPE_ZERO_TOUCH`. To learn more, read
+/// [Claim devices for customers](/zero-touch/guides/how-it-works#claim).
 class DeviceClaim {
-  /// Owner ID.
+  /// The ID of the Customer that purchased the device.
   core.String ownerCompanyId;
 
-  /// Section type of the device claim.
+  /// Output only. The type of claim made on the device.
   /// Possible string values are:
   /// - "SECTION_TYPE_UNSPECIFIED" : Unspecified section type.
-  /// - "SECTION_TYPE_ZERO_TOUCH" : Zero touch section type.
+  /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
   core.String sectionType;
 
   DeviceClaim();
@@ -984,20 +996,22 @@ class DeviceClaim {
   }
 }
 
-/// Identifies a unique device.
+/// Encapsulates hardware and product IDs to identify a manufactured device. To
+/// learn more, read [Identifiers](/zero-touch/guides/identifiers).
 class DeviceIdentifier {
-  /// IMEI number.
+  /// The device’s IMEI number. Validated on input.
   core.String imei;
 
-  /// Manufacturer name to match `android.os.Build.MANUFACTURER` (required).
-  /// Allowed values listed in
-  /// [manufacturer names](/zero-touch/resources/manufacturer-names).
+  /// Required. The device manufacturer’s name. Matches the device's built-in
+  /// value returned from `android.os.Build.MANUFACTURER`. Allowed values are
+  /// listed in [manufacturer names](/zero-touch/resources/manufacturer-names).
   core.String manufacturer;
 
-  /// MEID number.
+  /// The device’s MEID number.
   core.String meid;
 
-  /// Serial number (optional).
+  /// The manufacturer's serial number for the device. This value might not be
+  /// unique.
   core.String serialNumber;
 
   DeviceIdentifier();
@@ -1036,9 +1050,10 @@ class DeviceIdentifier {
   }
 }
 
-/// A key-value pair of the device metadata.
+/// Metadata entries that can be attached to a `Device`. To learn more, read
+/// [Device metadata](/zero-touch/guides/metadata).
 class DeviceMetadata {
-  /// Metadata entries
+  /// Metadata entries recorded as key-value pairs.
   core.Map<core.String, core.String> entries;
 
   DeviceMetadata();
@@ -1254,7 +1269,7 @@ class FindDevicesByOwnerRequest {
   /// The section type.
   /// Possible string values are:
   /// - "SECTION_TYPE_UNSPECIFIED" : Unspecified section type.
-  /// - "SECTION_TYPE_ZERO_TOUCH" : Zero touch section type.
+  /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
   core.String sectionType;
 
   FindDevicesByOwnerRequest();
@@ -1494,7 +1509,7 @@ class PartnerClaim {
   /// Section type to claim.
   /// Possible string values are:
   /// - "SECTION_TYPE_UNSPECIFIED" : Unspecified section type.
-  /// - "SECTION_TYPE_ZERO_TOUCH" : Zero touch section type.
+  /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
   core.String sectionType;
 
   PartnerClaim();
@@ -1545,7 +1560,7 @@ class PartnerUnclaim {
   /// Section type to unclaim.
   /// Possible string values are:
   /// - "SECTION_TYPE_UNSPECIFIED" : Unspecified section type.
-  /// - "SECTION_TYPE_ZERO_TOUCH" : Zero touch section type.
+  /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
   core.String sectionType;
 
   PartnerUnclaim();
@@ -1756,7 +1771,7 @@ class UnclaimDeviceRequest {
   /// The section type to unclaim for.
   /// Possible string values are:
   /// - "SECTION_TYPE_UNSPECIFIED" : Unspecified section type.
-  /// - "SECTION_TYPE_ZERO_TOUCH" : Zero touch section type.
+  /// - "SECTION_TYPE_ZERO_TOUCH" : Zero-touch enrollment section type.
   core.String sectionType;
 
   UnclaimDeviceRequest();

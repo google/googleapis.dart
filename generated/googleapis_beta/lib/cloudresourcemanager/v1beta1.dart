@@ -157,15 +157,6 @@ class OrganizationsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - A pagination token returned from a previous call to
-  /// `ListOrganizations`
-  /// that indicates from where listing should continue.
-  /// This field is optional.
-  ///
-  /// [pageSize] - The maximum number of Organizations to return in the
-  /// response.
-  /// This field is optional.
-  ///
   /// [filter] - An optional query string used to filter the Organizations to
   /// return in
   /// the response. Filter rules are case-insensitive.
@@ -183,6 +174,15 @@ class OrganizationsResourceApi {
   ///
   /// This field is optional.
   ///
+  /// [pageToken] - A pagination token returned from a previous call to
+  /// `ListOrganizations`
+  /// that indicates from where listing should continue.
+  /// This field is optional.
+  ///
+  /// [pageSize] - The maximum number of Organizations to return in the
+  /// response.
+  /// This field is optional.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -194,9 +194,9 @@ class OrganizationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOrganizationsResponse> list(
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -205,14 +205,14 @@ class OrganizationsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -689,6 +689,12 @@ class ProjectsResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageSize] - The maximum number of Projects to return in the response.
+  /// The server can return fewer Projects than requested.
+  /// If unspecified, server picks an appropriate default.
+  ///
+  /// Optional.
+  ///
   /// [filter] - An expression for filtering the results of the request.  Filter
   /// rules are
   /// case insensitive. The fields eligible for filtering are:
@@ -728,12 +734,6 @@ class ProjectsResourceApi {
   ///
   /// Optional.
   ///
-  /// [pageSize] - The maximum number of Projects to return in the response.
-  /// The server can return fewer Projects than requested.
-  /// If unspecified, server picks an appropriate default.
-  ///
-  /// Optional.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -745,9 +745,9 @@ class ProjectsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListProjectsResponse> list(
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -756,14 +756,14 @@ class ProjectsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

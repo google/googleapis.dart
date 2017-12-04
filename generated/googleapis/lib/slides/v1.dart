@@ -5737,6 +5737,26 @@ class ShapeBackgroundFill {
 /// Determining the rendered value of the property depends on the corresponding
 /// property_state field value.
 class ShapeProperties {
+  /// The alignment of the content in the shape. If unspecified,
+  /// the alignment is inherited from a parent placeholder if it exists. If the
+  /// shape has no parent, the default alignment matches the alignment for new
+  /// shapes created in the Slides editor.
+  /// Possible string values are:
+  /// - "CONTENT_ALIGNMENT_UNSPECIFIED" : An unspecified content alignment. The
+  /// content alignment is inherited from
+  /// the parent if it exists.
+  /// - "CONTENT_ALIGNMENT_UNSUPPORTED" : An unsupported content alignment.
+  /// - "TOP" : An alignment that aligns the content to the top of the content
+  /// holder.
+  /// Corresponds to ECMA-376 ST_TextAnchoringType 't'.
+  /// - "MIDDLE" : An alignment that aligns the content to the middle of the
+  /// content
+  /// holder. Corresponds to ECMA-376 ST_TextAnchoringType 'ctr'.
+  /// - "BOTTOM" : An alignment that aligns the content to the bottom of the
+  /// content
+  /// holder. Corresponds to ECMA-376 ST_TextAnchoringType 'b'.
+  core.String contentAlignment;
+
   /// The hyperlink destination of the shape. If unset, there is no link. Links
   /// are not inherited from parent placeholders.
   Link link;
@@ -5762,6 +5782,9 @@ class ShapeProperties {
   ShapeProperties();
 
   ShapeProperties.fromJson(core.Map _json) {
+    if (_json.containsKey("contentAlignment")) {
+      contentAlignment = _json["contentAlignment"];
+    }
     if (_json.containsKey("link")) {
       link = new Link.fromJson(_json["link"]);
     }
@@ -5780,6 +5803,9 @@ class ShapeProperties {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (contentAlignment != null) {
+      _json["contentAlignment"] = contentAlignment;
+    }
     if (link != null) {
       _json["link"] = (link).toJson();
     }
@@ -6471,6 +6497,24 @@ class TableCellLocation {
 
 /// The properties of the TableCell.
 class TableCellProperties {
+  /// The alignment of the content in the table cell. The default alignment
+  /// matches the alignment for newly created table cells in the Slides editor.
+  /// Possible string values are:
+  /// - "CONTENT_ALIGNMENT_UNSPECIFIED" : An unspecified content alignment. The
+  /// content alignment is inherited from
+  /// the parent if it exists.
+  /// - "CONTENT_ALIGNMENT_UNSUPPORTED" : An unsupported content alignment.
+  /// - "TOP" : An alignment that aligns the content to the top of the content
+  /// holder.
+  /// Corresponds to ECMA-376 ST_TextAnchoringType 't'.
+  /// - "MIDDLE" : An alignment that aligns the content to the middle of the
+  /// content
+  /// holder. Corresponds to ECMA-376 ST_TextAnchoringType 'ctr'.
+  /// - "BOTTOM" : An alignment that aligns the content to the bottom of the
+  /// content
+  /// holder. Corresponds to ECMA-376 ST_TextAnchoringType 'b'.
+  core.String contentAlignment;
+
   /// The background fill of the table cell. The default fill matches the fill
   /// for newly created table cells in the Slides editor.
   TableCellBackgroundFill tableCellBackgroundFill;
@@ -6478,6 +6522,9 @@ class TableCellProperties {
   TableCellProperties();
 
   TableCellProperties.fromJson(core.Map _json) {
+    if (_json.containsKey("contentAlignment")) {
+      contentAlignment = _json["contentAlignment"];
+    }
     if (_json.containsKey("tableCellBackgroundFill")) {
       tableCellBackgroundFill = new TableCellBackgroundFill.fromJson(
           _json["tableCellBackgroundFill"]);
@@ -6487,6 +6534,9 @@ class TableCellProperties {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (contentAlignment != null) {
+      _json["contentAlignment"] = contentAlignment;
+    }
     if (tableCellBackgroundFill != null) {
       _json["tableCellBackgroundFill"] = (tableCellBackgroundFill).toJson();
     }

@@ -636,6 +636,10 @@ class ServicesResourceApi {
   ///
   /// Request parameters:
   ///
+  /// [pageSize] - Requested size of the next page of data.
+  ///
+  /// [producerProjectId] - Include services produced by the specified project.
+  ///
   /// [consumerId] - Include services consumed by the specified consumer.
   ///
   /// The Google Service Management implementation accepts the following
@@ -645,10 +649,6 @@ class ServicesResourceApi {
   /// [pageToken] - Token identifying which result to start with; returned by a
   /// previous list
   /// call.
-  ///
-  /// [pageSize] - Requested size of the next page of data.
-  ///
-  /// [producerProjectId] - Include services produced by the specified project.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -661,10 +661,10 @@ class ServicesResourceApi {
   /// If the used [http_1.Client] completes with an error when making a REST
   /// call, this method will complete with the same error.
   async.Future<ListServicesResponse> list(
-      {core.String consumerId,
-      core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String producerProjectId,
+      core.String consumerId,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -673,17 +673,17 @@ class ServicesResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (consumerId != null) {
-      _queryParams["consumerId"] = [consumerId];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (producerProjectId != null) {
       _queryParams["producerProjectId"] = [producerProjectId];
+    }
+    if (consumerId != null) {
+      _queryParams["consumerId"] = [consumerId];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

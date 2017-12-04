@@ -201,8 +201,6 @@ class TransferJobsResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - The list page token.
-  ///
   /// [pageSize] - The list page size. The max allowed value is 256.
   ///
   /// [filter] - A list of query parameters specified as JSON text in the form
@@ -216,6 +214,8 @@ class TransferJobsResourceApi {
   /// and `job_statuses` are optional.  The valid values for `job_statuses` are
   /// case-insensitive: `ENABLED`, `DISABLED`, and `DELETED`.
   ///
+  /// [pageToken] - The list page token.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -227,9 +227,9 @@ class TransferJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTransferJobsResponse> list(
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -238,14 +238,14 @@ class TransferJobsResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1609,8 +1609,8 @@ class TransferCounters {
   core.String bytesFailedToDeleteFromSink;
 
   /// Bytes found in the data source that are scheduled to be transferred,
-  /// which will be copied, excluded based on conditions, or skipped due to
-  /// failures.
+  /// excluding any that are filtered based on object conditions or skipped due
+  /// to sync.
   core.String bytesFoundFromSource;
 
   /// Bytes found only in the data sink that are scheduled to be deleted.
@@ -1636,8 +1636,8 @@ class TransferCounters {
   core.String objectsFailedToDeleteFromSink;
 
   /// Objects found in the data source that are scheduled to be transferred,
-  /// which will be copied, excluded based on conditions, or skipped due to
-  /// failures.
+  /// excluding any that are filtered based on object conditions or skipped due
+  /// to sync.
   core.String objectsFoundFromSource;
 
   /// Objects found only in the data sink that are scheduled to be deleted.

@@ -771,12 +771,12 @@ class RiskAnalysisOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^riskAnalysis/operations$".
   ///
+  /// [pageSize] - The list page size. The maximum allowed value is 256 and the
+  /// default is 100.
+  ///
   /// [filter] - Filters by `done`. That is, `done=true` or `done=false`.
   ///
   /// [pageToken] - The standard list page token.
-  ///
-  /// [pageSize] - The list page size. The maximum allowed value is 256 and the
-  /// default is 100.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -789,9 +789,9 @@ class RiskAnalysisOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.String filter,
+      {core.int pageSize,
+      core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -803,14 +803,14 @@ class RiskAnalysisOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
-    }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1099,6 +1099,59 @@ class GooglePrivacyDlpV2beta1AnalyzeDataSourceRiskRequest {
     }
     if (sourceTable != null) {
       _json["sourceTable"] = (sourceTable).toJson();
+    }
+    return _json;
+  }
+}
+
+/// An auxiliary table contains statistical information on the relative
+/// frequency of different quasi-identifiers values. It has one or several
+/// quasi-identifiers columns, and one column that indicates the relative
+/// frequency of each quasi-identifier tuple.
+/// If a tuple is present in the data but not in the auxiliary table, the
+/// corresponding relative frequency is assumed to be zero (and thus, the
+/// tuple is highly reidentifiable).
+class GooglePrivacyDlpV2beta1AuxiliaryTable {
+  /// Quasi-identifier columns. [required]
+  core.List<GooglePrivacyDlpV2beta1QuasiIdField> quasiIds;
+
+  /// The relative frequency column must contain a floating-point number
+  /// between 0 and 1 (inclusive). Null values are assumed to be zero.
+  /// [required]
+  GooglePrivacyDlpV2beta1FieldId relativeFrequency;
+
+  /// Auxiliary table location. [required]
+  GooglePrivacyDlpV2beta1BigQueryTable table;
+
+  GooglePrivacyDlpV2beta1AuxiliaryTable();
+
+  GooglePrivacyDlpV2beta1AuxiliaryTable.fromJson(core.Map _json) {
+    if (_json.containsKey("quasiIds")) {
+      quasiIds = _json["quasiIds"]
+          .map((value) =>
+              new GooglePrivacyDlpV2beta1QuasiIdField.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("relativeFrequency")) {
+      relativeFrequency = new GooglePrivacyDlpV2beta1FieldId.fromJson(
+          _json["relativeFrequency"]);
+    }
+    if (_json.containsKey("table")) {
+      table = new GooglePrivacyDlpV2beta1BigQueryTable.fromJson(_json["table"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (quasiIds != null) {
+      _json["quasiIds"] = quasiIds.map((value) => (value).toJson()).toList();
+    }
+    if (relativeFrequency != null) {
+      _json["relativeFrequency"] = (relativeFrequency).toJson();
+    }
+    if (table != null) {
+      _json["table"] = (table).toJson();
     }
     return _json;
   }
@@ -3257,19 +3310,17 @@ class GooglePrivacyDlpV2beta1InspectResult {
 
 /// k-anonymity metric, used for analysis of reidentification risk.
 class GooglePrivacyDlpV2beta1KAnonymityConfig {
-  /// Optional message indicating that each distinct `EntityId` should not
+  /// Optional message indicating that each distinct entity_id should not
   /// contribute to the k-anonymity count more than once per equivalence class.
   /// If an entity_id appears on several rows with different quasi-identifier
-  /// tuples, it will contribute to each count exactly once. This can lead to
-  /// unexpected results, consider for example the following table:
-  ///   entity_id | quasi_id
-  ///   --------------------
-  ///           1 |    "foo"
-  ///           2 |    "bar"
-  ///           3 |    "foo"
-  ///           3 |    "bar"
-  /// The anonymity value associated to entity_id 3 will be 2, even if it is
-  /// the only entity_id to be associated to both values "foo" and "bar".
+  /// tuples, it will contribute to each count exactly once.
+  ///
+  /// This can lead to unexpected results. Consider a table where ID 1 is
+  /// associated to quasi-identifier "foo", ID 2 to "bar", and ID 3 to *both*
+  /// quasi-identifiers "foo" and "bar" (on separate rows), and where this ID
+  /// is used as entity_id. Then, the anonymity value associated to ID 3 will
+  /// be 2, even if it is the only ID to be associated to both values "foo" and
+  /// "bar".
   GooglePrivacyDlpV2beta1EntityId entityId;
 
   /// Set of fields to compute k-anonymity over. When multiple fields are
@@ -3427,6 +3478,200 @@ class GooglePrivacyDlpV2beta1KAnonymityResult {
           equivalenceClassHistogramBuckets
               .map((value) => (value).toJson())
               .toList();
+    }
+    return _json;
+  }
+}
+
+/// Reidentifiability metric. This corresponds to a risk model similar to what
+/// is called "journalist risk" in the literature, except the attack dataset is
+/// statistically modeled instead of being perfectly known. This can be done
+/// using publicly available data (like the US Census), or using a custom
+/// statistical model (indicated as one or several BigQuery tables), or by
+/// extrapolating from the distribution of values in the input dataset.
+class GooglePrivacyDlpV2beta1KMapEstimationConfig {
+  /// Several auxiliary tables can be used in the analysis. Each custom_tag
+  /// used to tag a quasi-identifiers column must appear in exactly one column
+  /// of one auxiliary table.
+  core.List<GooglePrivacyDlpV2beta1AuxiliaryTable> auxiliaryTables;
+
+  /// Fields considered to be quasi-identifiers. No two columns can have the
+  /// same tag. [required]
+  core.List<GooglePrivacyDlpV2beta1TaggedField> quasiIds;
+
+  /// ISO 3166-1 alpha-2 region code to use in the statistical modeling.
+  /// Required if no column is tagged with a region-specific InfoType (like
+  /// US_ZIP_5) or a region code.
+  core.String regionCode;
+
+  GooglePrivacyDlpV2beta1KMapEstimationConfig();
+
+  GooglePrivacyDlpV2beta1KMapEstimationConfig.fromJson(core.Map _json) {
+    if (_json.containsKey("auxiliaryTables")) {
+      auxiliaryTables = _json["auxiliaryTables"]
+          .map((value) =>
+              new GooglePrivacyDlpV2beta1AuxiliaryTable.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("quasiIds")) {
+      quasiIds = _json["quasiIds"]
+          .map(
+              (value) => new GooglePrivacyDlpV2beta1TaggedField.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("regionCode")) {
+      regionCode = _json["regionCode"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (auxiliaryTables != null) {
+      _json["auxiliaryTables"] =
+          auxiliaryTables.map((value) => (value).toJson()).toList();
+    }
+    if (quasiIds != null) {
+      _json["quasiIds"] = quasiIds.map((value) => (value).toJson()).toList();
+    }
+    if (regionCode != null) {
+      _json["regionCode"] = regionCode;
+    }
+    return _json;
+  }
+}
+
+/// A KMapEstimationHistogramBucket message with the following values:
+///   min_anonymity: 3
+///   max_anonymity: 5
+///   frequency: 42
+/// means that there are 42 records whose quasi-identifier values correspond
+/// to 3, 4 or 5 people in the overlying population. An important particular
+/// case is when min_anonymity = max_anonymity = 1: the frequency field then
+/// corresponds to the number of uniquely identifiable records.
+class GooglePrivacyDlpV2beta1KMapEstimationHistogramBucket {
+  /// Number of records within these anonymity bounds.
+  core.String bucketSize;
+
+  /// Sample of quasi-identifier tuple values in this bucket. The total
+  /// number of classes returned per bucket is capped at 20.
+  core.List<GooglePrivacyDlpV2beta1KMapEstimationQuasiIdValues> bucketValues;
+
+  /// Always greater than or equal to min_anonymity.
+  core.String maxAnonymity;
+
+  /// Always positive.
+  core.String minAnonymity;
+
+  GooglePrivacyDlpV2beta1KMapEstimationHistogramBucket();
+
+  GooglePrivacyDlpV2beta1KMapEstimationHistogramBucket.fromJson(
+      core.Map _json) {
+    if (_json.containsKey("bucketSize")) {
+      bucketSize = _json["bucketSize"];
+    }
+    if (_json.containsKey("bucketValues")) {
+      bucketValues = _json["bucketValues"]
+          .map((value) =>
+              new GooglePrivacyDlpV2beta1KMapEstimationQuasiIdValues.fromJson(
+                  value))
+          .toList();
+    }
+    if (_json.containsKey("maxAnonymity")) {
+      maxAnonymity = _json["maxAnonymity"];
+    }
+    if (_json.containsKey("minAnonymity")) {
+      minAnonymity = _json["minAnonymity"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (bucketSize != null) {
+      _json["bucketSize"] = bucketSize;
+    }
+    if (bucketValues != null) {
+      _json["bucketValues"] =
+          bucketValues.map((value) => (value).toJson()).toList();
+    }
+    if (maxAnonymity != null) {
+      _json["maxAnonymity"] = maxAnonymity;
+    }
+    if (minAnonymity != null) {
+      _json["minAnonymity"] = minAnonymity;
+    }
+    return _json;
+  }
+}
+
+/// A tuple of values for the quasi-identifier columns.
+class GooglePrivacyDlpV2beta1KMapEstimationQuasiIdValues {
+  /// The estimated anonymity for these quasi-identifier values.
+  core.String estimatedAnonymity;
+
+  /// The quasi-identifier values.
+  core.List<GooglePrivacyDlpV2beta1Value> quasiIdsValues;
+
+  GooglePrivacyDlpV2beta1KMapEstimationQuasiIdValues();
+
+  GooglePrivacyDlpV2beta1KMapEstimationQuasiIdValues.fromJson(core.Map _json) {
+    if (_json.containsKey("estimatedAnonymity")) {
+      estimatedAnonymity = _json["estimatedAnonymity"];
+    }
+    if (_json.containsKey("quasiIdsValues")) {
+      quasiIdsValues = _json["quasiIdsValues"]
+          .map((value) => new GooglePrivacyDlpV2beta1Value.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (estimatedAnonymity != null) {
+      _json["estimatedAnonymity"] = estimatedAnonymity;
+    }
+    if (quasiIdsValues != null) {
+      _json["quasiIdsValues"] =
+          quasiIdsValues.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Result of the reidentifiability analysis. Note that these results are an
+/// estimation, not exact values.
+class GooglePrivacyDlpV2beta1KMapEstimationResult {
+  /// The intervals [min_anonymity, max_anonymity] do not overlap. If a value
+  /// doesn't correspond to any such interval, the associated frequency is
+  /// zero. For example, the following records:
+  ///   {min_anonymity: 1, max_anonymity: 1, frequency: 17}
+  ///   {min_anonymity: 2, max_anonymity: 3, frequency: 42}
+  ///   {min_anonymity: 5, max_anonymity: 10, frequency: 99}
+  /// mean that there are no record with an estimated anonymity of 4, 5, or
+  /// larger than 10.
+  core.List<GooglePrivacyDlpV2beta1KMapEstimationHistogramBucket>
+      kMapEstimationHistogram;
+
+  GooglePrivacyDlpV2beta1KMapEstimationResult();
+
+  GooglePrivacyDlpV2beta1KMapEstimationResult.fromJson(core.Map _json) {
+    if (_json.containsKey("kMapEstimationHistogram")) {
+      kMapEstimationHistogram = _json["kMapEstimationHistogram"]
+          .map((value) =>
+              new GooglePrivacyDlpV2beta1KMapEstimationHistogramBucket.fromJson(
+                  value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kMapEstimationHistogram != null) {
+      _json["kMapEstimationHistogram"] =
+          kMapEstimationHistogram.map((value) => (value).toJson()).toList();
     }
     return _json;
   }
@@ -4247,6 +4492,7 @@ class GooglePrivacyDlpV2beta1PrimitiveTransformation {
 class GooglePrivacyDlpV2beta1PrivacyMetric {
   GooglePrivacyDlpV2beta1CategoricalStatsConfig categoricalStatsConfig;
   GooglePrivacyDlpV2beta1KAnonymityConfig kAnonymityConfig;
+  GooglePrivacyDlpV2beta1KMapEstimationConfig kMapEstimationConfig;
   GooglePrivacyDlpV2beta1LDiversityConfig lDiversityConfig;
   GooglePrivacyDlpV2beta1NumericalStatsConfig numericalStatsConfig;
 
@@ -4261,6 +4507,11 @@ class GooglePrivacyDlpV2beta1PrivacyMetric {
     if (_json.containsKey("kAnonymityConfig")) {
       kAnonymityConfig = new GooglePrivacyDlpV2beta1KAnonymityConfig.fromJson(
           _json["kAnonymityConfig"]);
+    }
+    if (_json.containsKey("kMapEstimationConfig")) {
+      kMapEstimationConfig =
+          new GooglePrivacyDlpV2beta1KMapEstimationConfig.fromJson(
+              _json["kMapEstimationConfig"]);
     }
     if (_json.containsKey("lDiversityConfig")) {
       lDiversityConfig = new GooglePrivacyDlpV2beta1LDiversityConfig.fromJson(
@@ -4281,6 +4532,9 @@ class GooglePrivacyDlpV2beta1PrivacyMetric {
     }
     if (kAnonymityConfig != null) {
       _json["kAnonymityConfig"] = (kAnonymityConfig).toJson();
+    }
+    if (kMapEstimationConfig != null) {
+      _json["kMapEstimationConfig"] = (kMapEstimationConfig).toJson();
     }
     if (lDiversityConfig != null) {
       _json["lDiversityConfig"] = (lDiversityConfig).toJson();
@@ -4335,6 +4589,36 @@ class GooglePrivacyDlpV2beta1PropertyReference {
         new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/// A quasi-identifier column has a custom_tag, used to know which column
+/// in the data corresponds to which column in the statistical model.
+class GooglePrivacyDlpV2beta1QuasiIdField {
+  core.String customTag;
+  GooglePrivacyDlpV2beta1FieldId field;
+
+  GooglePrivacyDlpV2beta1QuasiIdField();
+
+  GooglePrivacyDlpV2beta1QuasiIdField.fromJson(core.Map _json) {
+    if (_json.containsKey("customTag")) {
+      customTag = _json["customTag"];
+    }
+    if (_json.containsKey("field")) {
+      field = new GooglePrivacyDlpV2beta1FieldId.fromJson(_json["field"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (customTag != null) {
+      _json["customTag"] = customTag;
+    }
+    if (field != null) {
+      _json["field"] = (field).toJson();
     }
     return _json;
   }
@@ -4722,6 +5006,7 @@ class GooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata {
 class GooglePrivacyDlpV2beta1RiskAnalysisOperationResult {
   GooglePrivacyDlpV2beta1CategoricalStatsResult categoricalStatsResult;
   GooglePrivacyDlpV2beta1KAnonymityResult kAnonymityResult;
+  GooglePrivacyDlpV2beta1KMapEstimationResult kMapEstimationResult;
   GooglePrivacyDlpV2beta1LDiversityResult lDiversityResult;
   GooglePrivacyDlpV2beta1NumericalStatsResult numericalStatsResult;
 
@@ -4736,6 +5021,11 @@ class GooglePrivacyDlpV2beta1RiskAnalysisOperationResult {
     if (_json.containsKey("kAnonymityResult")) {
       kAnonymityResult = new GooglePrivacyDlpV2beta1KAnonymityResult.fromJson(
           _json["kAnonymityResult"]);
+    }
+    if (_json.containsKey("kMapEstimationResult")) {
+      kMapEstimationResult =
+          new GooglePrivacyDlpV2beta1KMapEstimationResult.fromJson(
+              _json["kMapEstimationResult"]);
     }
     if (_json.containsKey("lDiversityResult")) {
       lDiversityResult = new GooglePrivacyDlpV2beta1LDiversityResult.fromJson(
@@ -4756,6 +5046,9 @@ class GooglePrivacyDlpV2beta1RiskAnalysisOperationResult {
     }
     if (kAnonymityResult != null) {
       _json["kAnonymityResult"] = (kAnonymityResult).toJson();
+    }
+    if (kMapEstimationResult != null) {
+      _json["kMapEstimationResult"] = (kMapEstimationResult).toJson();
     }
     if (lDiversityResult != null) {
       _json["lDiversityResult"] = (lDiversityResult).toJson();
@@ -4931,6 +5224,62 @@ class GooglePrivacyDlpV2beta1TableLocation {
         new core.Map<core.String, core.Object>();
     if (rowIndex != null) {
       _json["rowIndex"] = rowIndex;
+    }
+    return _json;
+  }
+}
+
+/// A column with a semantic tag attached.
+class GooglePrivacyDlpV2beta1TaggedField {
+  /// A column can be tagged with a custom tag. In this case, the user must
+  /// indicate an auxiliary table that contains statistical information on
+  /// the possible values of this column (below).
+  core.String customTag;
+
+  /// Identifies the column. [required]
+  GooglePrivacyDlpV2beta1FieldId field;
+
+  /// If no semantic tag is indicated, we infer the statistical model from
+  /// the distribution of values in the input data
+  GoogleProtobufEmpty inferred;
+
+  /// A column can be tagged with a InfoType to use the relevant public
+  /// dataset as a statistical model of population, if available. We
+  /// currently support US ZIP codes, region codes, ages and genders.
+  GooglePrivacyDlpV2beta1InfoType infoType;
+
+  GooglePrivacyDlpV2beta1TaggedField();
+
+  GooglePrivacyDlpV2beta1TaggedField.fromJson(core.Map _json) {
+    if (_json.containsKey("customTag")) {
+      customTag = _json["customTag"];
+    }
+    if (_json.containsKey("field")) {
+      field = new GooglePrivacyDlpV2beta1FieldId.fromJson(_json["field"]);
+    }
+    if (_json.containsKey("inferred")) {
+      inferred = new GoogleProtobufEmpty.fromJson(_json["inferred"]);
+    }
+    if (_json.containsKey("infoType")) {
+      infoType =
+          new GooglePrivacyDlpV2beta1InfoType.fromJson(_json["infoType"]);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (customTag != null) {
+      _json["customTag"] = customTag;
+    }
+    if (field != null) {
+      _json["field"] = (field).toJson();
+    }
+    if (inferred != null) {
+      _json["inferred"] = (inferred).toJson();
+    }
+    if (infoType != null) {
+      _json["infoType"] = (infoType).toJson();
     }
     return _json;
   }
