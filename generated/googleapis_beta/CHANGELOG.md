@@ -1,3 +1,15 @@
+## 0.42.0
+* [api-new] dialogflow:v2beta1
+* [api-new] tpu:v1alpha1
+* [api] appengine:v1beta
+* [api] cloudtasks:v2beta2
+* [api] dataflow:v1b3
+* [api] dlp:v2beta1
+* [api] proximitybeacon:v1beta1
+* [api] speech:v1beta1
+* [api-breaking] cloudtasks:v2beta2
+* [api-breaking] dataflow:v1b3
+
 ## 0.41.0
 
 * [api] appengine:v1beta4

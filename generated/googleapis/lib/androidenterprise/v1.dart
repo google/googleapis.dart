@@ -37,6 +37,8 @@ class AndroidenterpriseApi {
           new ManagedconfigurationsfordeviceResourceApi(_requester);
   ManagedconfigurationsforuserResourceApi get managedconfigurationsforuser =>
       new ManagedconfigurationsforuserResourceApi(_requester);
+  ManagedconfigurationssettingsResourceApi get managedconfigurationssettings =>
+      new ManagedconfigurationssettingsResourceApi(_requester);
   PermissionsResourceApi get permissions =>
       new PermissionsResourceApi(_requester);
   ProductsResourceApi get products => new ProductsResourceApi(_requester);
@@ -236,6 +238,79 @@ class DevicesResourceApi {
     return _response.then((data) => new DevicesListResponse.fromJson(data));
   }
 
+  /// Updates the device policy. This method supports patch semantics.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [enterpriseId] - The ID of the enterprise.
+  ///
+  /// [userId] - The ID of the user.
+  ///
+  /// [deviceId] - The ID of the device.
+  ///
+  /// [updateMask] - Mask that identifies which fields to update. If not set,
+  /// all modifiable fields will be modified.
+  ///
+  /// When set in a query parameter, this field should be specified as
+  /// updateMask=<field1>,<field2>,...
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Device].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Device> patch(Device request, core.String enterpriseId,
+      core.String userId, core.String deviceId,
+      {core.String updateMask, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if (deviceId == null) {
+      throw new core.ArgumentError("Parameter deviceId is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'enterprises/' +
+        commons.Escaper.ecapeVariable('$enterpriseId') +
+        '/users/' +
+        commons.Escaper.ecapeVariable('$userId') +
+        '/devices/' +
+        commons.Escaper.ecapeVariable('$deviceId');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Device.fromJson(data));
+  }
+
   /// Sets whether a device's access to Google services is enabled or disabled.
   /// The device state takes effect only if enforcing EMM policies on Android
   /// devices is enabled in the Google Admin Console. Otherwise, the device
@@ -303,6 +378,79 @@ class DevicesResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new DeviceState.fromJson(data));
+  }
+
+  /// Updates the device policy
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [enterpriseId] - The ID of the enterprise.
+  ///
+  /// [userId] - The ID of the user.
+  ///
+  /// [deviceId] - The ID of the device.
+  ///
+  /// [updateMask] - Mask that identifies which fields to update. If not set,
+  /// all modifiable fields will be modified.
+  ///
+  /// When set in a query parameter, this field should be specified as
+  /// updateMask=<field1>,<field2>,...
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Device].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Device> update(Device request, core.String enterpriseId,
+      core.String userId, core.String deviceId,
+      {core.String updateMask, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (userId == null) {
+      throw new core.ArgumentError("Parameter userId is required.");
+    }
+    if (deviceId == null) {
+      throw new core.ArgumentError("Parameter deviceId is required.");
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'enterprises/' +
+        commons.Escaper.ecapeVariable('$enterpriseId') +
+        '/users/' +
+        commons.Escaper.ecapeVariable('$userId') +
+        '/devices/' +
+        commons.Escaper.ecapeVariable('$deviceId');
+
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Device.fromJson(data));
   }
 }
 
@@ -2632,8 +2780,12 @@ class ManagedconfigurationsforuserResourceApi {
         (data) => new ManagedConfigurationsForUserListResponse.fromJson(data));
   }
 
-  /// Adds or updates a per-user managed configuration for an app for the
-  /// specified user. This method supports patch semantics.
+  /// Adds or updates the managed configuration settings for an app for the
+  /// specified user. If you support the Managed configurations iframe, you can
+  /// apply managed configurations to a user by specifying an mcmId and its
+  /// associated configuration variables (if any) in the request. Alternatively,
+  /// all EMMs can apply managed configurations by passing a list of managed
+  /// properties. This method supports patch semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2702,8 +2854,12 @@ class ManagedconfigurationsforuserResourceApi {
     return _response.then((data) => new ManagedConfiguration.fromJson(data));
   }
 
-  /// Adds or updates a per-user managed configuration for an app for the
-  /// specified user.
+  /// Adds or updates the managed configuration settings for an app for the
+  /// specified user. If you support the Managed configurations iframe, you can
+  /// apply managed configurations to a user by specifying an mcmId and its
+  /// associated configuration variables (if any) in the request. Alternatively,
+  /// all EMMs can apply managed configurations by passing a list of managed
+  /// properties.
   ///
   /// [request] - The metadata request object.
   ///
@@ -2770,6 +2926,69 @@ class ManagedconfigurationsforuserResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new ManagedConfiguration.fromJson(data));
+  }
+}
+
+class ManagedconfigurationssettingsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ManagedconfigurationssettingsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists all the managed configurations settings for the specified app. Only
+  /// the ID and the name is set.
+  ///
+  /// Request parameters:
+  ///
+  /// [enterpriseId] - The ID of the enterprise.
+  ///
+  /// [productId] - The ID of the product for which the managed configurations
+  /// settings applies to.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ManagedConfigurationsSettingsListResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ManagedConfigurationsSettingsListResponse> list(
+      core.String enterpriseId, core.String productId,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (enterpriseId == null) {
+      throw new core.ArgumentError("Parameter enterpriseId is required.");
+    }
+    if (productId == null) {
+      throw new core.ArgumentError("Parameter productId is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'enterprises/' +
+        commons.Escaper.ecapeVariable('$enterpriseId') +
+        '/products/' +
+        commons.Escaper.ecapeVariable('$productId') +
+        '/managedConfigurationsSettings';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then(
+        (data) => new ManagedConfigurationsSettingsListResponse.fromJson(data));
   }
 }
 
@@ -5320,11 +5539,56 @@ class AuthenticationToken {
   }
 }
 
+/// A configuration variables resource contains the managed configuration
+/// settings ID to be applied to a single user, as well as the variable set that
+/// is attributed to the user. The variable set will be used to replace
+/// placeholders in the managed configuration settings.
+class ConfigurationVariables {
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "androidenterprise#configurationVariables".
+  core.String kind;
+
+  /// The ID of the managed configurations settings.
+  core.String mcmId;
+
+  /// The variable set that is attributed to the user.
+  core.List<VariableSet> variableSet;
+
+  ConfigurationVariables();
+
+  ConfigurationVariables.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("mcmId")) {
+      mcmId = _json["mcmId"];
+    }
+    if (_json.containsKey("variableSet")) {
+      variableSet = _json["variableSet"]
+          .map((value) => new VariableSet.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (mcmId != null) {
+      _json["mcmId"] = mcmId;
+    }
+    if (variableSet != null) {
+      _json["variableSet"] =
+          variableSet.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// A Devices resource represents a mobile device managed by the EMM and
 /// belonging to a specific enterprise user.
-///
-/// This collection cannot be modified via the API. It is automatically
-/// populated as devices are set up to be managed.
 class Device {
   /// The Google Play Services Android ID for the device encoded as a lowercase
   /// hex string. For example, "123456789abcdef0".
@@ -5349,6 +5613,9 @@ class Device {
   /// Google Play, but the profile is itself not owned by a DPC.
   core.String managementType;
 
+  /// The policy enforced on the device.
+  Policy policy;
+
   Device();
 
   Device.fromJson(core.Map _json) {
@@ -5360,6 +5627,9 @@ class Device {
     }
     if (_json.containsKey("managementType")) {
       managementType = _json["managementType"];
+    }
+    if (_json.containsKey("policy")) {
+      policy = new Policy.fromJson(_json["policy"]);
     }
   }
 
@@ -5374,6 +5644,9 @@ class Device {
     }
     if (managementType != null) {
       _json["managementType"] = managementType;
+    }
+    if (policy != null) {
+      _json["policy"] = (policy).toJson();
     }
     return _json;
   }
@@ -6125,10 +6398,14 @@ class LocalizedText {
   }
 }
 
-/// A managed configuration resource contains the set of managed properties that
-/// have been configured for an Android app. The app's developer would have
-/// defined configurable properties in the managed configurations schema.
+/// A managed configuration resource contains the set of managed properties
+/// defined by the app developer in the app's managed configurations schema, as
+/// well as any configuration variables defined for the user.
 class ManagedConfiguration {
+  /// Contains the ID of the managed configuration profile and the set of
+  /// configuration variables (if any) defined for the user.
+  ConfigurationVariables configurationVariables;
+
   /// Identifies what kind of resource this is. Value: the fixed string
   /// "androidenterprise#managedConfiguration".
   core.String kind;
@@ -6143,6 +6420,10 @@ class ManagedConfiguration {
   ManagedConfiguration();
 
   ManagedConfiguration.fromJson(core.Map _json) {
+    if (_json.containsKey("configurationVariables")) {
+      configurationVariables =
+          new ConfigurationVariables.fromJson(_json["configurationVariables"]);
+    }
     if (_json.containsKey("kind")) {
       kind = _json["kind"];
     }
@@ -6159,6 +6440,9 @@ class ManagedConfiguration {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (configurationVariables != null) {
+      _json["configurationVariables"] = (configurationVariables).toJson();
+    }
     if (kind != null) {
       _json["kind"] = kind;
     }
@@ -6241,6 +6525,101 @@ class ManagedConfigurationsForUserListResponse {
     if (managedConfigurationForUser != null) {
       _json["managedConfigurationForUser"] =
           managedConfigurationForUser.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A managed configurations settings resource contains the set of managed
+/// properties that have been configured for an Android app to be applied to a
+/// set of users. The app's developer would have defined configurable properties
+/// in the managed configurations schema.
+class ManagedConfigurationsSettings {
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "androidenterprise#managedConfigurationsSettings".
+  core.String kind;
+
+  /// The set of managed properties for this configuration.
+  core.List<ManagedProperty> managedProperty;
+
+  /// The ID of the managed configurations settings.
+  core.String mcmId;
+
+  /// The name of the managed configurations settings.
+  core.String name;
+
+  ManagedConfigurationsSettings();
+
+  ManagedConfigurationsSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("managedProperty")) {
+      managedProperty = _json["managedProperty"]
+          .map((value) => new ManagedProperty.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("mcmId")) {
+      mcmId = _json["mcmId"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (managedProperty != null) {
+      _json["managedProperty"] =
+          managedProperty.map((value) => (value).toJson()).toList();
+    }
+    if (mcmId != null) {
+      _json["mcmId"] = mcmId;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/// The managed configurations settings for a product.
+class ManagedConfigurationsSettingsListResponse {
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "androidenterprise#managedConfigurationsSettingsListResponse".
+  core.String kind;
+
+  /// A managed configurations settings for an app that may be assigned to a
+  /// group of users in an enterprise.
+  core.List<ManagedConfigurationsSettings> managedConfigurationsSettings;
+
+  ManagedConfigurationsSettingsListResponse();
+
+  ManagedConfigurationsSettingsListResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("managedConfigurationsSettings")) {
+      managedConfigurationsSettings = _json["managedConfigurationsSettings"]
+          .map((value) => new ManagedConfigurationsSettings.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (managedConfigurationsSettings != null) {
+      _json["managedConfigurationsSettings"] = managedConfigurationsSettings
+          .map((value) => (value).toJson())
+          .toList();
     }
     return _json;
   }
@@ -6711,6 +7090,49 @@ class Permission {
   }
 }
 
+/// The device policy for a given managed device.
+class Policy {
+  /// The availability granted to the device for the specified products. "all"
+  /// gives the device access to all products, regardless of approval status.
+  /// "allApproved" entitles the device to access all products that are approved
+  /// for the enterprise. "allApproved" and "all" do not enable automatic
+  /// visibility of "alpha" or "beta" tracks. "whitelist" grants the device
+  /// access the products specified in productPolicy[]. Only products that are
+  /// approved or products that were previously approved (products with revoked
+  /// approval) by the enterprise can be whitelisted. If no value is provided,
+  /// the availability set at the user level is applied by default.
+  core.String productAvailabilityPolicy;
+
+  /// The list of product policies.
+  core.List<ProductPolicy> productPolicy;
+
+  Policy();
+
+  Policy.fromJson(core.Map _json) {
+    if (_json.containsKey("productAvailabilityPolicy")) {
+      productAvailabilityPolicy = _json["productAvailabilityPolicy"];
+    }
+    if (_json.containsKey("productPolicy")) {
+      productPolicy = _json["productPolicy"]
+          .map((value) => new ProductPolicy.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (productAvailabilityPolicy != null) {
+      _json["productAvailabilityPolicy"] = productAvailabilityPolicy;
+    }
+    if (productPolicy != null) {
+      _json["productPolicy"] =
+          productPolicy.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// A Products resource represents an app in the Google Play store that is
 /// available to at least some users in the enterprise. (Some apps are
 /// restricted to a single enterprise, and no information about them is made
@@ -7021,6 +7443,52 @@ class ProductPermissions {
     }
     if (productId != null) {
       _json["productId"] = productId;
+    }
+    return _json;
+  }
+}
+
+/// The policy for a product.
+class ProductPolicy {
+  /// The ID of the product. For example, "app:com.google.android.gm".
+  core.String productId;
+
+  /// Grants visibility to the specified track(s) of the product to the device.
+  /// The track available to the device is based on the following order of
+  /// preference: alpha, beta, production. For example, if an app has a prod
+  /// version, a beta version and an alpha version and the enterprise has been
+  /// granted visibility to both the alpha and beta tracks, if tracks is
+  /// {"beta", "production"} then the beta version of the app is made available
+  /// to the device. If there are no app versions in the specified track adding
+  /// the "alpha" and "beta" values to the list of tracks will have no effect.
+  /// Note that the enterprise requires access to alpha and/or beta tracks
+  /// before users can be granted visibility to apps in those tracks.
+  ///
+  /// The allowed sets are: {} (considered equivalent to {"production"})
+  /// {"production"} {"beta", "production"} {"alpha", "beta", "production"} The
+  /// order of elements is not relevant. Any other set of tracks will be
+  /// rejected with an error.
+  core.List<core.String> tracks;
+
+  ProductPolicy();
+
+  ProductPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
+    }
+    if (_json.containsKey("tracks")) {
+      tracks = _json["tracks"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (productId != null) {
+      _json["productId"] = productId;
+    }
+    if (tracks != null) {
+      _json["tracks"] = tracks;
     }
     return _json;
   }
@@ -7937,6 +8405,51 @@ class UsersListResponse {
     }
     if (user != null) {
       _json["user"] = user.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A variable set is a key-value pair of EMM-provided placeholders and its
+/// corresponding value, which is attributed to a user. For example, $FIRSTNAME
+/// could be a placeholder, and its value could be Alice. Placeholders should
+/// start with a '$' sign and should be alphanumeric only.
+class VariableSet {
+  /// Identifies what kind of resource this is. Value: the fixed string
+  /// "androidenterprise#variableSet".
+  core.String kind;
+
+  /// The placeholder string; defined by EMM.
+  core.String placeholder;
+
+  /// The value of the placeholder, specific to the user.
+  core.String userValue;
+
+  VariableSet();
+
+  VariableSet.fromJson(core.Map _json) {
+    if (_json.containsKey("kind")) {
+      kind = _json["kind"];
+    }
+    if (_json.containsKey("placeholder")) {
+      placeholder = _json["placeholder"];
+    }
+    if (_json.containsKey("userValue")) {
+      userValue = _json["userValue"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (kind != null) {
+      _json["kind"] = kind;
+    }
+    if (placeholder != null) {
+      _json["placeholder"] = placeholder;
+    }
+    if (userValue != null) {
+      _json["userValue"] = userValue;
     }
     return _json;
   }

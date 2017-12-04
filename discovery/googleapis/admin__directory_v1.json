@@ -93,7 +93,7 @@
     "description": "The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/admin-sdk/directory/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/QstgUNJM9z5P2QKTjvsIeuLGaOE\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/wCcRyDpa6JwxkLwmzDkr55huG84\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -378,7 +378,7 @@
                             "type": "string"
                         },
                         "orgUnitPath": {
-                            "description": "Full path of the organization unit or its Id",
+                            "description": "Full path of the organizational unit or its ID",
                             "location": "query",
                             "type": "string"
                         },
@@ -429,7 +429,7 @@
                     ]
                 },
                 "moveDevicesToOu": {
-                    "description": "Move or insert multiple Chrome OS Devices to Organization Unit",
+                    "description": "Move or insert multiple Chrome OS Devices to organizational unit",
                     "httpMethod": "POST",
                     "id": "directory.chromeosdevices.moveDevicesToOu",
                     "parameterOrder": [
@@ -444,7 +444,7 @@
                             "type": "string"
                         },
                         "orgUnitPath": {
-                            "description": "Full path of the target organization unit or its Id",
+                            "description": "Full path of the target organizational unit or its ID",
                             "location": "query",
                             "required": true,
                             "type": "string"
@@ -872,7 +872,7 @@
                     ],
                     "parameters": {
                         "groupKey": {
-                            "description": "Email or immutable Id of the group",
+                            "description": "Email or immutable ID of the group",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -892,7 +892,7 @@
                     ],
                     "parameters": {
                         "groupKey": {
-                            "description": "Email or immutable Id of the group",
+                            "description": "Email or immutable ID of the group",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -950,7 +950,7 @@
                             "type": "string"
                         },
                         "userKey": {
-                            "description": "Email or immutable Id of the user if only those groups are to be listed, the given user is a member of. If Id, it should match with id of user object",
+                            "description": "Email or immutable ID of the user if only those groups are to be listed, the given user is a member of. If ID, it should match with id of user object",
                             "location": "query",
                             "type": "string"
                         }
@@ -973,7 +973,7 @@
                     ],
                     "parameters": {
                         "groupKey": {
-                            "description": "Email or immutable Id of the group. If Id, it should match with id of group object",
+                            "description": "Email or immutable ID of the group. If ID, it should match with id of group object",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -999,7 +999,7 @@
                     ],
                     "parameters": {
                         "groupKey": {
-                            "description": "Email or immutable Id of the group. If Id, it should match with id of group object",
+                            "description": "Email or immutable ID of the group. If ID, it should match with id of group object",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1036,7 +1036,7 @@
                                     "type": "string"
                                 },
                                 "groupKey": {
-                                    "description": "Email or immutable Id of the group",
+                                    "description": "Email or immutable ID of the group",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -1056,7 +1056,7 @@
                             ],
                             "parameters": {
                                 "groupKey": {
-                                    "description": "Email or immutable Id of the group",
+                                    "description": "Email or immutable ID of the group",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -1082,7 +1082,7 @@
                             ],
                             "parameters": {
                                 "groupKey": {
-                                    "description": "Email or immutable Id of the group",
+                                    "description": "Email or immutable ID of the group",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -1114,13 +1114,13 @@
                     ],
                     "parameters": {
                         "groupKey": {
-                            "description": "Email or immutable Id of the group",
+                            "description": "Email or immutable ID of the group",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         },
                         "memberKey": {
-                            "description": "Email or immutable Id of the member",
+                            "description": "Email or immutable ID of the member",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1142,6 +1142,39 @@
                     ],
                     "parameters": {
                         "groupKey": {
+                            "description": "Email or immutable ID of the group",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "memberKey": {
+                            "description": "Email or immutable ID of the member",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "groups/{groupKey}/members/{memberKey}",
+                    "response": {
+                        "$ref": "Member"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/admin.directory.group",
+                        "https://www.googleapis.com/auth/admin.directory.group.member",
+                        "https://www.googleapis.com/auth/admin.directory.group.member.readonly",
+                        "https://www.googleapis.com/auth/admin.directory.group.readonly"
+                    ]
+                },
+                "hasMember": {
+                    "description": "Checks Membership of an user within a Group",
+                    "httpMethod": "GET",
+                    "id": "directory.members.hasMember",
+                    "parameterOrder": [
+                        "groupKey",
+                        "memberKey"
+                    ],
+                    "parameters": {
+                        "groupKey": {
                             "description": "Email or immutable Id of the group",
                             "location": "path",
                             "required": true,
@@ -1154,9 +1187,9 @@
                             "type": "string"
                         }
                     },
-                    "path": "groups/{groupKey}/members/{memberKey}",
+                    "path": "groups/{groupKey}/hasMember/{memberKey}",
                     "response": {
-                        "$ref": "Member"
+                        "$ref": "MembersHasMember"
                     },
                     "scopes": [
                         "https://www.googleapis.com/auth/admin.directory.group",
@@ -1174,7 +1207,7 @@
                     ],
                     "parameters": {
                         "groupKey": {
-                            "description": "Email or immutable Id of the group",
+                            "description": "Email or immutable ID of the group",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1201,7 +1234,7 @@
                     ],
                     "parameters": {
                         "groupKey": {
-                            "description": "Email or immutable Id of the group",
+                            "description": "Email or immutable ID of the group",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1245,13 +1278,13 @@
                     ],
                     "parameters": {
                         "groupKey": {
-                            "description": "Email or immutable Id of the group. If Id, it should match with id of group object",
+                            "description": "Email or immutable ID of the group. If ID, it should match with id of group object",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         },
                         "memberKey": {
-                            "description": "Email or immutable Id of the user. If Id, it should match with id of member object",
+                            "description": "Email or immutable ID of the user. If ID, it should match with id of member object",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1279,13 +1312,13 @@
                     ],
                     "parameters": {
                         "groupKey": {
-                            "description": "Email or immutable Id of the group. If Id, it should match with id of group object",
+                            "description": "Email or immutable ID of the group. If ID, it should match with id of group object",
                             "location": "path",
                             "required": true,
                             "type": "string"
                         },
                         "memberKey": {
-                            "description": "Email or immutable Id of the user. If Id, it should match with id of member object",
+                            "description": "Email or immutable ID of the user. If ID, it should match with id of member object",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -1674,7 +1707,7 @@
         "orgunits": {
             "methods": {
                 "delete": {
-                    "description": "Remove Organization Unit",
+                    "description": "Remove organizational unit",
                     "httpMethod": "DELETE",
                     "id": "directory.orgunits.delete",
                     "parameterOrder": [
@@ -1689,7 +1722,7 @@
                             "type": "string"
                         },
                         "orgUnitPath": {
-                            "description": "Full path of the organization unit or its Id",
+                            "description": "Full path of the organizational unit or its ID",
                             "location": "path",
                             "repeated": true,
                             "required": true,
@@ -1702,7 +1735,7 @@
                     ]
                 },
                 "get": {
-                    "description": "Retrieve Organization Unit",
+                    "description": "Retrieve organizational unit",
                     "httpMethod": "GET",
                     "id": "directory.orgunits.get",
                     "parameterOrder": [
@@ -1717,7 +1750,7 @@
                             "type": "string"
                         },
                         "orgUnitPath": {
-                            "description": "Full path of the organization unit or its Id",
+                            "description": "Full path of the organizational unit or its ID",
                             "location": "path",
                             "repeated": true,
                             "required": true,
@@ -1734,7 +1767,7 @@
                     ]
                 },
                 "insert": {
-                    "description": "Add Organization Unit",
+                    "description": "Add organizational unit",
                     "httpMethod": "POST",
                     "id": "directory.orgunits.insert",
                     "parameterOrder": [
@@ -1760,7 +1793,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Retrieve all Organization Units",
+                    "description": "Retrieve all organizational units",
                     "httpMethod": "GET",
                     "id": "directory.orgunits.list",
                     "parameterOrder": [
@@ -1775,7 +1808,7 @@
                         },
                         "orgUnitPath": {
                             "default": "",
-                            "description": "the URL-encoded organization unit's path or its Id",
+                            "description": "the URL-encoded organizational unit's path or its ID",
                             "location": "query",
                             "type": "string"
                         },
@@ -1786,7 +1819,7 @@
                                 "children"
                             ],
                             "enumDescriptions": [
-                                "All sub-organization units.",
+                                "All sub-organizational units.",
                                 "Immediate children only (default)."
                             ],
                             "location": "query",
@@ -1803,7 +1836,7 @@
                     ]
                 },
                 "patch": {
-                    "description": "Update Organization Unit. This method supports patch semantics.",
+                    "description": "Update organizational unit. This method supports patch semantics.",
                     "httpMethod": "PATCH",
                     "id": "directory.orgunits.patch",
                     "parameterOrder": [
@@ -1818,7 +1851,7 @@
                             "type": "string"
                         },
                         "orgUnitPath": {
-                            "description": "Full path of the organization unit or its Id",
+                            "description": "Full path of the organizational unit or its ID",
                             "location": "path",
                             "repeated": true,
                             "required": true,
@@ -1837,7 +1870,7 @@
                     ]
                 },
                 "update": {
-                    "description": "Update Organization Unit",
+                    "description": "Update organizational unit",
                     "httpMethod": "PUT",
                     "id": "directory.orgunits.update",
                     "parameterOrder": [
@@ -1852,7 +1885,7 @@
                             "type": "string"
                         },
                         "orgUnitPath": {
-                            "description": "Full path of the organization unit or its Id",
+                            "description": "Full path of the organizational unit or its ID",
                             "location": "path",
                             "repeated": true,
                             "required": true,
@@ -2461,7 +2494,7 @@
                             "type": "string"
                         },
                         "schemaKey": {
-                            "description": "Name or immutable Id of the schema",
+                            "description": "Name or immutable ID of the schema",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -2488,7 +2521,7 @@
                             "type": "string"
                         },
                         "schemaKey": {
-                            "description": "Name or immutable Id of the schema",
+                            "description": "Name or immutable ID of the schema",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -2569,7 +2602,7 @@
                             "type": "string"
                         },
                         "schemaKey": {
-                            "description": "Name or immutable Id of the schema.",
+                            "description": "Name or immutable ID of the schema.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -2602,7 +2635,7 @@
                             "type": "string"
                         },
                         "schemaKey": {
-                            "description": "Name or immutable Id of the schema.",
+                            "description": "Name or immutable ID of the schema.",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -2716,7 +2749,7 @@
                     ],
                     "parameters": {
                         "userKey": {
-                            "description": "Email or immutable Id of the user",
+                            "description": "Email or immutable ID of the user",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -2757,7 +2790,7 @@
                             "type": "string"
                         },
                         "userKey": {
-                            "description": "Email or immutable Id of the user",
+                            "description": "Email or immutable ID of the user",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -2941,7 +2974,7 @@
                     ],
                     "parameters": {
                         "userKey": {
-                            "description": "Email or immutable Id of the user as admin",
+                            "description": "Email or immutable ID of the user as admin",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -2964,7 +2997,7 @@
                     ],
                     "parameters": {
                         "userKey": {
-                            "description": "Email or immutable Id of the user. If Id, it should match with id of user object",
+                            "description": "Email or immutable ID of the user. If ID, it should match with id of user object",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -3013,7 +3046,7 @@
                     ],
                     "parameters": {
                         "userKey": {
-                            "description": "Email or immutable Id of the user. If Id, it should match with id of user object",
+                            "description": "Email or immutable ID of the user. If ID, it should match with id of user object",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -3185,7 +3218,7 @@
                                     "type": "string"
                                 },
                                 "userKey": {
-                                    "description": "Email or immutable Id of the user",
+                                    "description": "Email or immutable ID of the user",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -3206,7 +3239,7 @@
                             ],
                             "parameters": {
                                 "userKey": {
-                                    "description": "Email or immutable Id of the user",
+                                    "description": "Email or immutable ID of the user",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -3246,7 +3279,7 @@
                                     "type": "string"
                                 },
                                 "userKey": {
-                                    "description": "Email or immutable Id of the user",
+                                    "description": "Email or immutable ID of the user",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -3286,7 +3319,7 @@
                                     "type": "string"
                                 },
                                 "userKey": {
-                                    "description": "Email or immutable Id of the user",
+                                    "description": "Email or immutable ID of the user",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -3321,7 +3354,7 @@
                             ],
                             "parameters": {
                                 "userKey": {
-                                    "description": "Email or immutable Id of the user",
+                                    "description": "Email or immutable ID of the user",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -3341,7 +3374,7 @@
                             ],
                             "parameters": {
                                 "userKey": {
-                                    "description": "Email or immutable Id of the user",
+                                    "description": "Email or immutable ID of the user",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -3365,7 +3398,7 @@
                             ],
                             "parameters": {
                                 "userKey": {
-                                    "description": "Email or immutable Id of the user",
+                                    "description": "Email or immutable ID of the user",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -3391,7 +3424,7 @@
                             ],
                             "parameters": {
                                 "userKey": {
-                                    "description": "Email or immutable Id of the user",
+                                    "description": "Email or immutable ID of the user",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -3423,7 +3456,7 @@
                     ],
                     "parameters": {
                         "userKey": {
-                            "description": "Email or immutable Id of the user",
+                            "description": "Email or immutable ID of the user",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -3443,7 +3476,7 @@
                     ],
                     "parameters": {
                         "userKey": {
-                            "description": "Email or immutable Id of the user",
+                            "description": "Email or immutable ID of the user",
                             "location": "path",
                             "required": true,
                             "type": "string"
@@ -3480,7 +3513,7 @@
             }
         }
     },
-    "revision": "20171006",
+    "revision": "20171113",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Alias": {
@@ -4326,6 +4359,18 @@
                 "nextPageToken": {
                     "description": "Token used to access next page of this result.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "MembersHasMember": {
+            "description": "JSON template for Has Member response in Directory API.",
+            "id": "MembersHasMember",
+            "properties": {
+                "isMember": {
+                    "description": "Identifies whether given user is a member or not.",
+                    "readOnly": true,
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -5828,6 +5873,11 @@
             "description": "JSON template for a POSIX account entry. Description of the field family: go/fbs-posix.",
             "id": "UserPosixAccount",
             "properties": {
+                "accountId": {
+                    "description": "A POSIX account field identifier. (Read-only)",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "gecos": {
                     "description": "The GECOS (user information) for this account.",
                     "type": "string"

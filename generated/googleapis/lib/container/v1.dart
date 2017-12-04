@@ -2395,9 +2395,7 @@ class Cluster {
   /// auto-generated name. Do not use this and a node_pool at the same time.
   core.int initialNodeCount;
 
-  /// [Output only] The resource URLs of [instance
-  /// groups](/compute/docs/instance-groups/) associated with this
-  /// cluster.
+  /// Deprecated. Use node_pools.instance_group_urls.
   core.List<core.String> instanceGroupUrls;
 
   /// Configuration for cluster IP allocation.
@@ -3849,9 +3847,9 @@ class NodePool {
   /// firewall and routes quota.
   core.int initialNodeCount;
 
-  /// [Output only] The resource URLs of [instance
-  /// groups](/compute/docs/instance-groups/) associated with this
-  /// node pool.
+  /// [Output only] The resource URLs of the [managed instance
+  /// groups](/compute/docs/instance-groups/creating-groups-of-managed-instances)
+  /// associated with this node pool.
   core.List<core.String> instanceGroupUrls;
 
   /// NodeManagement configuration for this NodePool.

@@ -18,7 +18,7 @@
     "description": "Help the third party sites to implement federated login.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/identity-toolkit/v3/",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/-CIGDhyktArHgwyopFUaXBy_0sc\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/5REpmDGFG7X9F_txWwyqL9Yixn0\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -385,7 +385,7 @@
             }
         }
     },
-    "revision": "20170927",
+    "revision": "20171122",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "CreateAuthUriResponse": {

@@ -828,9 +828,9 @@ class AppsDomainMappingsResourceApi {
   /// [appsId] - Part of `parent`. Name of the parent Application resource.
   /// Example: apps/myapp.
   ///
-  /// [pageToken] - Continuation token for fetching the next page of results.
-  ///
   /// [pageSize] - Maximum results to return per page.
+  ///
+  /// [pageToken] - Continuation token for fetching the next page of results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -843,7 +843,7 @@ class AppsDomainMappingsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListDomainMappingsResponse> list(core.String appsId,
-      {core.String pageToken, core.int pageSize, core.String $fields}) {
+      {core.int pageSize, core.String pageToken, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -854,11 +854,11 @@ class AppsDomainMappingsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1493,11 +1493,11 @@ class AppsOperationsResourceApi {
   ///
   /// [appsId] - Part of `name`. The name of the operation's parent resource.
   ///
-  /// [pageToken] - The standard list page token.
-  ///
   /// [pageSize] - The standard list page size.
   ///
   /// [filter] - The standard list filter.
+  ///
+  /// [pageToken] - The standard list page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1510,9 +1510,9 @@ class AppsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(core.String appsId,
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String filter,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1524,14 +1524,14 @@ class AppsOperationsResourceApi {
     if (appsId == null) {
       throw new core.ArgumentError("Parameter appsId is required.");
     }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
     if (filter != null) {
       _queryParams["filter"] = [filter];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1727,8 +1727,6 @@ class AppsServicesResourceApi {
   ///
   /// [servicesId] - Part of `name`. See documentation of `appsId`.
   ///
-  /// [updateMask] - Standard field mask for the set of fields to be updated.
-  ///
   /// [migrateTraffic] - Set to true to gradually shift traffic to one or more
   /// versions that you specify. By default, traffic is shifted immediately. For
   /// gradual traffic migration, the target versions must be located within
@@ -1743,6 +1741,8 @@ class AppsServicesResourceApi {
   /// Splitting Traffic
   /// (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).
   ///
+  /// [updateMask] - Standard field mask for the set of fields to be updated.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1755,7 +1755,7 @@ class AppsServicesResourceApi {
   /// this method will complete with the same error.
   async.Future<Operation> patch(
       Service request, core.String appsId, core.String servicesId,
-      {core.String updateMask, core.bool migrateTraffic, core.String $fields}) {
+      {core.bool migrateTraffic, core.String updateMask, core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
     var _uploadMedia = null;
@@ -1772,11 +1772,11 @@ class AppsServicesResourceApi {
     if (servicesId == null) {
       throw new core.ArgumentError("Parameter servicesId is required.");
     }
-    if (updateMask != null) {
-      _queryParams["updateMask"] = [updateMask];
-    }
     if (migrateTraffic != null) {
       _queryParams["migrateTraffic"] = ["${migrateTraffic}"];
+    }
+    if (updateMask != null) {
+      _queryParams["updateMask"] = [updateMask];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2926,6 +2926,9 @@ class AutomaticScaling {
   /// Target scaling by request utilization.
   RequestUtilization requestUtilization;
 
+  /// Scheduler settings for standard environment.
+  StandardSchedulerSettings standardSchedulerSettings;
+
   AutomaticScaling();
 
   AutomaticScaling.fromJson(core.Map _json) {
@@ -2967,6 +2970,10 @@ class AutomaticScaling {
       requestUtilization =
           new RequestUtilization.fromJson(_json["requestUtilization"]);
     }
+    if (_json.containsKey("standardSchedulerSettings")) {
+      standardSchedulerSettings = new StandardSchedulerSettings.fromJson(
+          _json["standardSchedulerSettings"]);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -3007,6 +3014,9 @@ class AutomaticScaling {
     }
     if (requestUtilization != null) {
       _json["requestUtilization"] = (requestUtilization).toJson();
+    }
+    if (standardSchedulerSettings != null) {
+      _json["standardSchedulerSettings"] = (standardSchedulerSettings).toJson();
     }
     return _json;
   }
@@ -5362,6 +5372,58 @@ class SslSettings {
         new core.Map<core.String, core.Object>();
     if (certificateId != null) {
       _json["certificateId"] = certificateId;
+    }
+    return _json;
+  }
+}
+
+/// Scheduler settings for standard environment.
+class StandardSchedulerSettings {
+  /// Maximum number of instances for an app version. Set to a non-positive
+  /// value (0 by convention) to disable max_instances configuration.
+  core.int maxInstances;
+
+  /// Minimum number of instances for an app version. Set to a non-positive
+  /// value (0 by convention) to disable min_instances configuration.
+  core.int minInstances;
+
+  /// Target CPU utilization ratio to maintain when scaling.
+  core.double targetCpuUtilization;
+
+  /// Target throughput utilization ratio to maintain when scaling
+  core.double targetThroughputUtilization;
+
+  StandardSchedulerSettings();
+
+  StandardSchedulerSettings.fromJson(core.Map _json) {
+    if (_json.containsKey("maxInstances")) {
+      maxInstances = _json["maxInstances"];
+    }
+    if (_json.containsKey("minInstances")) {
+      minInstances = _json["minInstances"];
+    }
+    if (_json.containsKey("targetCpuUtilization")) {
+      targetCpuUtilization = _json["targetCpuUtilization"];
+    }
+    if (_json.containsKey("targetThroughputUtilization")) {
+      targetThroughputUtilization = _json["targetThroughputUtilization"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (maxInstances != null) {
+      _json["maxInstances"] = maxInstances;
+    }
+    if (minInstances != null) {
+      _json["minInstances"] = minInstances;
+    }
+    if (targetCpuUtilization != null) {
+      _json["targetCpuUtilization"] = targetCpuUtilization;
+    }
+    if (targetThroughputUtilization != null) {
+      _json["targetThroughputUtilization"] = targetThroughputUtilization;
     }
     return _json;
   }

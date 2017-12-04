@@ -17,7 +17,7 @@
     "description": "API for working with Fusion Tables data.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/fusiontables",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/p_O8VQ1GgwnmLUmXhlZf5JsJdkk\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/_bC0Z0nYODnrZBcW4xrPKn1ZzhA\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -799,6 +799,29 @@
                         "https://www.googleapis.com/auth/fusiontables"
                     ]
                 },
+                "refetchSheet": {
+                    "description": "Replaces rows of the table with the rows of the spreadsheet that is first imported from. Current rows remain visible until all replacement rows are ready.",
+                    "httpMethod": "POST",
+                    "id": "fusiontables.table.refetchSheet",
+                    "parameterOrder": [
+                        "tableId"
+                    ],
+                    "parameters": {
+                        "tableId": {
+                            "description": "Table whose rows will be replaced from the spreadsheet.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "tables/{tableId}/refetch",
+                    "response": {
+                        "$ref": "Task"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/fusiontables"
+                    ]
+                },
                 "replaceRows": {
                     "description": "Replaces rows of an existing table. Current rows remain visible until all replacement rows are ready.",
                     "httpMethod": "POST",
@@ -1198,7 +1221,7 @@
             }
         }
     },
-    "revision": "20170413",
+    "revision": "20171117",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Bucket": {

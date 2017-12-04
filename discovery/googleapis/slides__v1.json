@@ -40,50 +40,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
-            "location": "query",
-            "type": "string"
-        },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "$.xgafv": {
-            "description": "V1 error format.",
-            "enum": [
-                "1",
-                "2"
-            ],
-            "enumDescriptions": [
-                "v1 error format",
-                "v2 error format"
-            ],
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
-            "location": "query",
-            "type": "string"
-        },
-        "alt": {
-            "default": "json",
-            "description": "Data format for response.",
-            "enum": [
-                "json",
-                "media",
-                "proto"
-            ],
-            "enumDescriptions": [
-                "Responses with Content-Type of application/json",
-                "Media download with context-dependent Content-Type",
-                "Responses with Content-Type of application/x-protobuf"
-            ],
-            "location": "query",
-            "type": "string"
-        },
         "access_token": {
             "description": "OAuth access token.",
             "location": "query",
@@ -105,13 +61,13 @@
             "location": "query",
             "type": "boolean"
         },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
+        "bearer_token": {
+            "description": "OAuth bearer token.",
             "location": "query",
             "type": "string"
         },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
         },
@@ -125,39 +81,56 @@
             "description": "Returns response with indentations and line breaks.",
             "location": "query",
             "type": "boolean"
+        },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
+        "$.xgafv": {
+            "description": "V1 error format.",
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "alt": {
+            "default": "json",
+            "description": "Data format for response.",
+            "enum": [
+                "json",
+                "media",
+                "proto"
+            ],
+            "enumDescriptions": [
+                "Responses with Content-Type of application/json",
+                "Media download with context-dependent Content-Type",
+                "Responses with Content-Type of application/x-protobuf"
+            ],
+            "location": "query",
+            "type": "string"
         }
     },
     "protocol": "rest",
     "resources": {
         "presentations": {
             "methods": {
-                "get": {
-                    "description": "Gets the latest version of the specified presentation.",
-                    "httpMethod": "GET",
-                    "id": "slides.presentations.get",
-                    "parameterOrder": [
-                        "presentationId"
-                    ],
-                    "parameters": {
-                        "presentationId": {
-                            "description": "The ID of the presentation to retrieve.",
-                            "location": "path",
-                            "pattern": "^[^/]+$",
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "v1/presentations/{+presentationId}",
-                    "response": {
-                        "$ref": "Presentation"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/drive",
-                        "https://www.googleapis.com/auth/drive.readonly",
-                        "https://www.googleapis.com/auth/presentations",
-                        "https://www.googleapis.com/auth/presentations.readonly"
-                    ]
-                },
                 "create": {
                     "description": "Creates a new presentation using the title given in the request. Other\nfields in the request are ignored.\nReturns the created presentation.",
                     "httpMethod": "POST",
@@ -205,61 +178,38 @@
                         "https://www.googleapis.com/auth/spreadsheets",
                         "https://www.googleapis.com/auth/spreadsheets.readonly"
                     ]
+                },
+                "get": {
+                    "description": "Gets the latest version of the specified presentation.",
+                    "httpMethod": "GET",
+                    "id": "slides.presentations.get",
+                    "parameterOrder": [
+                        "presentationId"
+                    ],
+                    "parameters": {
+                        "presentationId": {
+                            "description": "The ID of the presentation to retrieve.",
+                            "location": "path",
+                            "pattern": "^[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "v1/presentations/{+presentationId}",
+                    "response": {
+                        "$ref": "Presentation"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/drive",
+                        "https://www.googleapis.com/auth/drive.readonly",
+                        "https://www.googleapis.com/auth/presentations",
+                        "https://www.googleapis.com/auth/presentations.readonly"
+                    ]
                 }
             },
             "resources": {
                 "pages": {
                     "methods": {
-                        "getThumbnail": {
-                            "description": "Generates a thumbnail of the latest version of the specified page in the\npresentation and returns a URL to the thumbnail image.",
-                            "httpMethod": "GET",
-                            "id": "slides.presentations.pages.getThumbnail",
-                            "parameterOrder": [
-                                "presentationId",
-                                "pageObjectId"
-                            ],
-                            "parameters": {
-                                "thumbnailProperties.mimeType": {
-                                    "description": "The optional mime type of the thumbnail image.\n\nIf you don't specify the mime type, the default mime type will be PNG.",
-                                    "enum": [
-                                        "PNG"
-                                    ],
-                                    "location": "query",
-                                    "type": "string"
-                                },
-                                "thumbnailProperties.thumbnailSize": {
-                                    "description": "The optional thumbnail image size.\n\nIf you don't specify the size, the server chooses a default size of the\nimage.",
-                                    "enum": [
-                                        "THUMBNAIL_SIZE_UNSPECIFIED",
-                                        "LARGE"
-                                    ],
-                                    "location": "query",
-                                    "type": "string"
-                                },
-                                "presentationId": {
-                                    "description": "The ID of the presentation to retrieve.",
-                                    "location": "path",
-                                    "required": true,
-                                    "type": "string"
-                                },
-                                "pageObjectId": {
-                                    "description": "The object ID of the page whose thumbnail to retrieve.",
-                                    "location": "path",
-                                    "required": true,
-                                    "type": "string"
-                                }
-                            },
-                            "path": "v1/presentations/{presentationId}/pages/{pageObjectId}/thumbnail",
-                            "response": {
-                                "$ref": "Thumbnail"
-                            },
-                            "scopes": [
-                                "https://www.googleapis.com/auth/drive",
-                                "https://www.googleapis.com/auth/drive.readonly",
-                                "https://www.googleapis.com/auth/presentations",
-                                "https://www.googleapis.com/auth/presentations.readonly"
-                            ]
-                        },
                         "get": {
                             "description": "Gets the latest version of the specified page in the presentation.",
                             "httpMethod": "GET",
@@ -292,547 +242,65 @@
                                 "https://www.googleapis.com/auth/presentations",
                                 "https://www.googleapis.com/auth/presentations.readonly"
                             ]
+                        },
+                        "getThumbnail": {
+                            "description": "Generates a thumbnail of the latest version of the specified page in the\npresentation and returns a URL to the thumbnail image.",
+                            "httpMethod": "GET",
+                            "id": "slides.presentations.pages.getThumbnail",
+                            "parameterOrder": [
+                                "presentationId",
+                                "pageObjectId"
+                            ],
+                            "parameters": {
+                                "pageObjectId": {
+                                    "description": "The object ID of the page whose thumbnail to retrieve.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "thumbnailProperties.mimeType": {
+                                    "description": "The optional mime type of the thumbnail image.\n\nIf you don't specify the mime type, the default mime type will be PNG.",
+                                    "enum": [
+                                        "PNG"
+                                    ],
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "thumbnailProperties.thumbnailSize": {
+                                    "description": "The optional thumbnail image size.\n\nIf you don't specify the size, the server chooses a default size of the\nimage.",
+                                    "enum": [
+                                        "THUMBNAIL_SIZE_UNSPECIFIED",
+                                        "LARGE"
+                                    ],
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "presentationId": {
+                                    "description": "The ID of the presentation to retrieve.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/presentations/{presentationId}/pages/{pageObjectId}/thumbnail",
+                            "response": {
+                                "$ref": "Thumbnail"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/drive",
+                                "https://www.googleapis.com/auth/drive.readonly",
+                                "https://www.googleapis.com/auth/presentations",
+                                "https://www.googleapis.com/auth/presentations.readonly"
+                            ]
                         }
                     }
                 }
             }
         }
     },
-    "revision": "20171102",
+    "revision": "20171117",
     "rootUrl": "https://slides.googleapis.com/",
     "schemas": {
-        "DeleteTextRequest": {
-            "description": "Deletes text from a shape or a table cell.",
-            "id": "DeleteTextRequest",
-            "properties": {
-                "objectId": {
-                    "description": "The object ID of the shape or table from which the text will be deleted.",
-                    "type": "string"
-                },
-                "textRange": {
-                    "$ref": "Range",
-                    "description": "The range of text to delete, based on TextElement indexes.\n\nThere is always an implicit newline character at the end of a shape's or\ntable cell's text that cannot be deleted. `Range.Type.ALL` will use the\ncorrect bounds, but care must be taken when specifying explicit bounds for\nrange types `FROM_START_INDEX` and `FIXED_RANGE`. For example, if the text\nis \"ABC\", followed by an implicit newline, then the maximum value is 2 for\n`text_range.start_index` and 3 for `text_range.end_index`.\n\nDeleting text that crosses a paragraph boundary may result in changes\nto paragraph styles and lists as the two paragraphs are merged.\n\nRanges that include only one code unit of a surrogate pair are expanded to\ninclude both code units."
-                },
-                "cellLocation": {
-                    "$ref": "TableCellLocation",
-                    "description": "The optional table cell location if the text is to be deleted from a table\ncell. If present, the object_id must refer to a table."
-                }
-            },
-            "type": "object"
-        },
-        "UpdatePageElementTransformRequest": {
-            "description": "Updates the transform of a page element.\n\nUpdating the transform of a group will change the absolute transform of the\npage elements in that group, which can change their visual appearance. See\nthe documentation for PageElement.transform for more details.",
-            "id": "UpdatePageElementTransformRequest",
-            "properties": {
-                "objectId": {
-                    "description": "The object ID of the page element to update.",
-                    "type": "string"
-                },
-                "transform": {
-                    "$ref": "AffineTransform",
-                    "description": "The input transform matrix used to update the page element."
-                },
-                "applyMode": {
-                    "description": "The apply mode of the transform update.",
-                    "enum": [
-                        "APPLY_MODE_UNSPECIFIED",
-                        "RELATIVE",
-                        "ABSOLUTE"
-                    ],
-                    "enumDescriptions": [
-                        "Unspecified mode.",
-                        "Applies the new AffineTransform matrix to the existing one, and\nreplaces the existing one with the resulting concatenation.",
-                        "Replaces the existing AffineTransform matrix with the new one."
-                    ],
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "DeleteObjectRequest": {
-            "description": "Deletes an object, either pages or\npage elements, from the\npresentation.",
-            "id": "DeleteObjectRequest",
-            "properties": {
-                "objectId": {
-                    "description": "The object ID of the page or page element to delete.\n\nIf after a delete operation a group contains\nonly 1 or no page elements, the group is also deleted.\n\nIf a placeholder is deleted on a layout, any empty inheriting shapes are\nalso deleted.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Dimension": {
-            "description": "A magnitude in a single direction in the specified units.",
-            "id": "Dimension",
-            "properties": {
-                "magnitude": {
-                    "description": "The magnitude.",
-                    "format": "double",
-                    "type": "number"
-                },
-                "unit": {
-                    "description": "The units for magnitude.",
-                    "enum": [
-                        "UNIT_UNSPECIFIED",
-                        "EMU",
-                        "PT"
-                    ],
-                    "enumDescriptions": [
-                        "The units are unknown.",
-                        "An English Metric Unit (EMU) is defined as 1/360,000 of a centimeter\nand thus there are 914,400 EMUs per inch, and 12,700 EMUs per point.",
-                        "A point, 1/72 of an inch."
-                    ],
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "TextElement": {
-            "description": "A TextElement describes the content of a range of indices in the text content\nof a Shape or TableCell.",
-            "id": "TextElement",
-            "properties": {
-                "textRun": {
-                    "$ref": "TextRun",
-                    "description": "A TextElement representing a run of text where all of the characters\nin the run have the same TextStyle.\n\nThe `start_index` and `end_index` of TextRuns will always be fully\ncontained in the index range of a single `paragraph_marker` TextElement.\nIn other words, a TextRun will never span multiple paragraphs."
-                },
-                "autoText": {
-                    "$ref": "AutoText",
-                    "description": "A TextElement representing a spot in the text that is dynamically\nreplaced with content that can change over time."
-                },
-                "paragraphMarker": {
-                    "$ref": "ParagraphMarker",
-                    "description": "A marker representing the beginning of a new paragraph.\n\nThe `start_index` and `end_index` of this TextElement represent the\nrange of the paragraph. Other TextElements with an index range contained\ninside this paragraph's range are considered to be part of this\nparagraph. The range of indices of two separate paragraphs will never\noverlap."
-                },
-                "startIndex": {
-                    "description": "The zero-based start index of this text element, in Unicode code units.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "endIndex": {
-                    "description": "The zero-based end index of this text element, exclusive, in Unicode code\nunits.",
-                    "format": "int32",
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "LineFill": {
-            "description": "The fill of the line.",
-            "id": "LineFill",
-            "properties": {
-                "solidFill": {
-                    "$ref": "SolidFill",
-                    "description": "Solid color fill."
-                }
-            },
-            "type": "object"
-        },
-        "VideoProperties": {
-            "description": "The properties of the Video.",
-            "id": "VideoProperties",
-            "properties": {
-                "outline": {
-                    "$ref": "Outline",
-                    "description": "The outline of the video. The default outline matches the defaults for new\nvideos created in the Slides editor."
-                }
-            },
-            "type": "object"
-        },
-        "InsertTableRowsRequest": {
-            "description": "Inserts rows into a table.",
-            "id": "InsertTableRowsRequest",
-            "properties": {
-                "number": {
-                    "description": "The number of rows to be inserted. Maximum 20 per request.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "cellLocation": {
-                    "$ref": "TableCellLocation",
-                    "description": "The reference table cell location from which rows will be inserted.\n\nA new row will be inserted above (or below) the row where the reference\ncell is. If the reference cell is a merged cell, a new row will be\ninserted above (or below) the merged cell."
-                },
-                "tableObjectId": {
-                    "description": "The table to insert rows into.",
-                    "type": "string"
-                },
-                "insertBelow": {
-                    "description": "Whether to insert new rows below the reference cell location.\n\n- `True`: insert below the cell.\n- `False`: insert above the cell.",
-                    "type": "boolean"
-                }
-            },
-            "type": "object"
-        },
-        "LayoutProperties": {
-            "description": "The properties of Page are only\nrelevant for pages with page_type LAYOUT.",
-            "id": "LayoutProperties",
-            "properties": {
-                "masterObjectId": {
-                    "description": "The object ID of the master that this layout is based on.",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "The name of the layout.",
-                    "type": "string"
-                },
-                "displayName": {
-                    "description": "The human-readable name of the layout.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Presentation": {
-            "description": "A Google Slides presentation.",
-            "id": "Presentation",
-            "properties": {
-                "notesMaster": {
-                    "$ref": "Page",
-                    "description": "The notes master in the presentation. It serves three purposes:\n\n- Placeholder shapes on a notes master contain the default text styles and\n  shape properties of all placeholder shapes on notes pages. Specifically,\n  a `SLIDE_IMAGE` placeholder shape contains the slide thumbnail, and a\n  `BODY` placeholder shape contains the speaker notes.\n- The notes master page properties define the common page properties\n  inherited by all notes pages.\n- Any other shapes on the notes master will appear on all notes pages.\n\nThe notes master is read-only."
-                },
-                "title": {
-                    "description": "The title of the presentation.",
-                    "type": "string"
-                },
-                "layouts": {
-                    "description": "The layouts in the presentation. A layout is a template that determines\nhow content is arranged and styled on the slides that inherit from that\nlayout.",
-                    "items": {
-                        "$ref": "Page"
-                    },
-                    "type": "array"
-                },
-                "locale": {
-                    "description": "The locale of the presentation, as an IETF BCP 47 language tag.",
-                    "type": "string"
-                },
-                "masters": {
-                    "description": "The slide masters in the presentation. A slide master contains all common\npage elements and the common properties for a set of layouts. They serve\nthree purposes:\n\n- Placeholder shapes on a master contain the default text styles and shape\n  properties of all placeholder shapes on pages that use that master.\n- The master page properties define the common page properties inherited by\n  its layouts.\n- Any other shapes on the master slide will appear on all slides using that\n  master, regardless of their layout.",
-                    "items": {
-                        "$ref": "Page"
-                    },
-                    "type": "array"
-                },
-                "pageSize": {
-                    "$ref": "Size",
-                    "description": "The size of pages in the presentation."
-                },
-                "presentationId": {
-                    "description": "The ID of the presentation.",
-                    "type": "string"
-                },
-                "slides": {
-                    "description": "The slides in the presentation.\nA slide inherits properties from a slide layout.",
-                    "items": {
-                        "$ref": "Page"
-                    },
-                    "type": "array"
-                },
-                "revisionId": {
-                    "description": "The revision ID of the presentation. Can be used in update requests\nto assert that the presentation revision hasn't changed since the last\nread operation. Only populated if the user has edit access to the\npresentation.\n\nThe format of the revision ID may change over time, so it should be treated\nopaquely. A returned revision ID is only guaranteed to be valid for 24\nhours after it has been returned and cannot be shared across users. If the\nrevision ID is unchanged between calls, then the presentation has not\nchanged. Conversely, a changed ID (for the same presentation and user)\nusually means the presentation has been updated; however, a changed ID can\nalso be due to internal factors such as ID format changes.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "LineProperties": {
-            "description": "The properties of the Line.\n\nWhen unset, these fields default to values that match the appearance of\nnew lines created in the Slides editor.",
-            "id": "LineProperties",
-            "properties": {
-                "dashStyle": {
-                    "description": "The dash style of the line.",
-                    "enum": [
-                        "DASH_STYLE_UNSPECIFIED",
-                        "SOLID",
-                        "DOT",
-                        "DASH",
-                        "DASH_DOT",
-                        "LONG_DASH",
-                        "LONG_DASH_DOT"
-                    ],
-                    "enumDescriptions": [
-                        "Unspecified dash style.",
-                        "Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'solid'.\nThis is the default dash style.",
-                        "Dotted line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dot'.",
-                        "Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dash'.",
-                        "Alternating dashes and dots. Corresponds to ECMA-376 ST_PresetLineDashVal\nvalue 'dashDot'.",
-                        "Line with large dashes. Corresponds to ECMA-376 ST_PresetLineDashVal\nvalue 'lgDash'.",
-                        "Alternating large dashes and dots. Corresponds to ECMA-376\nST_PresetLineDashVal value 'lgDashDot'."
-                    ],
-                    "type": "string"
-                },
-                "link": {
-                    "$ref": "Link",
-                    "description": "The hyperlink destination of the line. If unset, there is no link."
-                },
-                "startArrow": {
-                    "description": "The style of the arrow at the beginning of the line.",
-                    "enum": [
-                        "ARROW_STYLE_UNSPECIFIED",
-                        "NONE",
-                        "STEALTH_ARROW",
-                        "FILL_ARROW",
-                        "FILL_CIRCLE",
-                        "FILL_SQUARE",
-                        "FILL_DIAMOND",
-                        "OPEN_ARROW",
-                        "OPEN_CIRCLE",
-                        "OPEN_SQUARE",
-                        "OPEN_DIAMOND"
-                    ],
-                    "enumDescriptions": [
-                        "An unspecified arrow style.",
-                        "No arrow.",
-                        "Arrow with notched back. Corresponds to ECMA-376 ST_LineEndType value\n'stealth'.",
-                        "Filled arrow. Corresponds to ECMA-376 ST_LineEndType value 'triangle'.",
-                        "Filled circle. Corresponds to ECMA-376 ST_LineEndType value 'oval'.",
-                        "Filled square.",
-                        "Filled diamond. Corresponds to ECMA-376 ST_LineEndType value 'diamond'.",
-                        "Hollow arrow.",
-                        "Hollow circle.",
-                        "Hollow square.",
-                        "Hollow diamond."
-                    ],
-                    "type": "string"
-                },
-                "endArrow": {
-                    "description": "The style of the arrow at the end of the line.",
-                    "enum": [
-                        "ARROW_STYLE_UNSPECIFIED",
-                        "NONE",
-                        "STEALTH_ARROW",
-                        "FILL_ARROW",
-                        "FILL_CIRCLE",
-                        "FILL_SQUARE",
-                        "FILL_DIAMOND",
-                        "OPEN_ARROW",
-                        "OPEN_CIRCLE",
-                        "OPEN_SQUARE",
-                        "OPEN_DIAMOND"
-                    ],
-                    "enumDescriptions": [
-                        "An unspecified arrow style.",
-                        "No arrow.",
-                        "Arrow with notched back. Corresponds to ECMA-376 ST_LineEndType value\n'stealth'.",
-                        "Filled arrow. Corresponds to ECMA-376 ST_LineEndType value 'triangle'.",
-                        "Filled circle. Corresponds to ECMA-376 ST_LineEndType value 'oval'.",
-                        "Filled square.",
-                        "Filled diamond. Corresponds to ECMA-376 ST_LineEndType value 'diamond'.",
-                        "Hollow arrow.",
-                        "Hollow circle.",
-                        "Hollow square.",
-                        "Hollow diamond."
-                    ],
-                    "type": "string"
-                },
-                "weight": {
-                    "$ref": "Dimension",
-                    "description": "The thickness of the line."
-                },
-                "lineFill": {
-                    "$ref": "LineFill",
-                    "description": "The fill of the line. The default line fill matches the defaults for new\nlines created in the Slides editor."
-                }
-            },
-            "type": "object"
-        },
-        "OpaqueColor": {
-            "description": "A themeable solid color value.",
-            "id": "OpaqueColor",
-            "properties": {
-                "rgbColor": {
-                    "$ref": "RgbColor",
-                    "description": "An opaque RGB color."
-                },
-                "themeColor": {
-                    "description": "An opaque theme color.",
-                    "enum": [
-                        "THEME_COLOR_TYPE_UNSPECIFIED",
-                        "DARK1",
-                        "LIGHT1",
-                        "DARK2",
-                        "LIGHT2",
-                        "ACCENT1",
-                        "ACCENT2",
-                        "ACCENT3",
-                        "ACCENT4",
-                        "ACCENT5",
-                        "ACCENT6",
-                        "HYPERLINK",
-                        "FOLLOWED_HYPERLINK",
-                        "TEXT1",
-                        "BACKGROUND1",
-                        "TEXT2",
-                        "BACKGROUND2"
-                    ],
-                    "enumDescriptions": [
-                        "Unspecified theme color. This value should not be used.",
-                        "Represents the first dark color.",
-                        "Represents the first light color.",
-                        "Represents the second dark color.",
-                        "Represents the second light color.",
-                        "Represents the first accent color.",
-                        "Represents the second accent color.",
-                        "Represents the third accent color.",
-                        "Represents the fourth accent color.",
-                        "Represents the fifth accent color.",
-                        "Represents the sixth accent color.",
-                        "Represents the color to use for hyperlinks.",
-                        "Represents the color to use for visited hyperlinks.",
-                        "Represents the first text color.",
-                        "Represents the first background color.",
-                        "Represents the second text color.",
-                        "Represents the second background color."
-                    ],
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "ImageProperties": {
-            "description": "The properties of the Image.",
-            "id": "ImageProperties",
-            "properties": {
-                "outline": {
-                    "$ref": "Outline",
-                    "description": "The outline of the image. If not set, the image has no outline."
-                },
-                "brightness": {
-                    "description": "The brightness effect of the image. The value should be in the interval\n[-1.0, 1.0], where 0 means no effect. This property is read-only.",
-                    "format": "float",
-                    "type": "number"
-                },
-                "transparency": {
-                    "description": "The transparency effect of the image. The value should be in the interval\n[0.0, 1.0], where 0 means no effect and 1 means completely transparent.\nThis property is read-only.",
-                    "format": "float",
-                    "type": "number"
-                },
-                "shadow": {
-                    "$ref": "Shadow",
-                    "description": "The shadow of the image. If not set, the image has no shadow. This property\nis read-only."
-                },
-                "link": {
-                    "$ref": "Link",
-                    "description": "The hyperlink destination of the image. If unset, there is no link."
-                },
-                "contrast": {
-                    "description": "The contrast effect of the image. The value should be in the interval\n[-1.0, 1.0], where 0 means no effect. This property is read-only.",
-                    "format": "float",
-                    "type": "number"
-                },
-                "recolor": {
-                    "$ref": "Recolor",
-                    "description": "The recolor effect of the image. If not set, the image is not recolored.\nThis property is read-only."
-                },
-                "cropProperties": {
-                    "$ref": "CropProperties",
-                    "description": "The crop properties of the image. If not set, the image is not cropped.\nThis property is read-only."
-                }
-            },
-            "type": "object"
-        },
-        "ReplaceAllShapesWithImageResponse": {
-            "description": "The result of replacing shapes with an image.",
-            "id": "ReplaceAllShapesWithImageResponse",
-            "properties": {
-                "occurrencesChanged": {
-                    "description": "The number of shapes replaced with images.",
-                    "format": "int32",
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "Line": {
-            "description": "A PageElement kind representing a\nline, curved connector, or bent connector.",
-            "id": "Line",
-            "properties": {
-                "lineProperties": {
-                    "$ref": "LineProperties",
-                    "description": "The properties of the line."
-                },
-                "lineType": {
-                    "description": "The type of the line.",
-                    "enum": [
-                        "TYPE_UNSPECIFIED",
-                        "STRAIGHT_CONNECTOR_1",
-                        "BENT_CONNECTOR_2",
-                        "BENT_CONNECTOR_3",
-                        "BENT_CONNECTOR_4",
-                        "BENT_CONNECTOR_5",
-                        "CURVED_CONNECTOR_2",
-                        "CURVED_CONNECTOR_3",
-                        "CURVED_CONNECTOR_4",
-                        "CURVED_CONNECTOR_5"
-                    ],
-                    "enumDescriptions": [
-                        "An unspecified line type.",
-                        "Straight connector 1 form. Corresponds to ECMA-376 ST_ShapeType\n'straightConnector1'.",
-                        "Bent connector 2 form. Corresponds to ECMA-376 ST_ShapeType\n'bentConnector2'.",
-                        "Bent connector 3 form. Corresponds to ECMA-376 ST_ShapeType\n'bentConnector3'.",
-                        "Bent connector 4 form. Corresponds to ECMA-376 ST_ShapeType\n'bentConnector4'.",
-                        "Bent connector 5 form. Corresponds to ECMA-376 ST_ShapeType\n'bentConnector5'.",
-                        "Curved connector 2 form. Corresponds to ECMA-376 ST_ShapeType\n'curvedConnector2'.",
-                        "Curved connector 3 form. Corresponds to ECMA-376 ST_ShapeType\n'curvedConnector3'.",
-                        "Curved connector 4 form. Corresponds to ECMA-376 ST_ShapeType\n'curvedConnector4'.",
-                        "Curved connector 5 form. Corresponds to ECMA-376 ST_ShapeType\n'curvedConnector5'."
-                    ],
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "BatchUpdatePresentationResponse": {
-            "description": "Response message from a batch update.",
-            "id": "BatchUpdatePresentationResponse",
-            "properties": {
-                "presentationId": {
-                    "description": "The presentation the updates were applied to.",
-                    "type": "string"
-                },
-                "replies": {
-                    "description": "The reply of the updates.  This maps 1:1 with the updates, although\nreplies to some requests may be empty.",
-                    "items": {
-                        "$ref": "Response"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "CreateSheetsChartRequest": {
-            "description": "Creates an embedded Google Sheets chart.\n\nNOTE: Chart creation requires at least one of the spreadsheets.readonly,\nspreadsheets, drive.readonly, or drive OAuth scopes.",
-            "id": "CreateSheetsChartRequest",
-            "properties": {
-                "chartId": {
-                    "description": "The ID of the specific chart in the Google Sheets spreadsheet.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "objectId": {
-                    "description": "A user-supplied object ID.\n\nIf specified, the ID must be unique among all pages and page elements in\nthe presentation. The ID should start with a word character [a-zA-Z0-9_]\nand then followed by any number of the following characters [a-zA-Z0-9_-:].\nThe length of the ID should not be less than 5 or greater than 50.\nIf empty, a unique identifier will be generated.",
-                    "type": "string"
-                },
-                "elementProperties": {
-                    "$ref": "PageElementProperties",
-                    "description": "The element properties for the chart.\n\nWhen the aspect ratio of the provided size does not match the chart aspect\nratio, the chart is scaled and centered with respect to the size in order\nto maintain aspect ratio. The provided transform is applied after this\noperation."
-                },
-                "spreadsheetId": {
-                    "description": "The ID of the Google Sheets spreadsheet that contains the chart.",
-                    "type": "string"
-                },
-                "linkingMode": {
-                    "description": "The mode with which the chart is linked to the source spreadsheet. When\nnot specified, the chart will be an image that is not linked.",
-                    "enum": [
-                        "NOT_LINKED_IMAGE",
-                        "LINKED"
-                    ],
-                    "enumDescriptions": [
-                        "The chart is not associated with the source spreadsheet and cannot be\nupdated. A chart that is not linked will be inserted as an image.",
-                        "Linking the chart allows it to be updated, and other collaborators will\nsee a link to the spreadsheet."
-                    ],
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
         "CreateImageResponse": {
             "description": "The result of creating an image.",
             "id": "CreateImageResponse",
@@ -863,10 +331,33 @@
             },
             "type": "object"
         },
+        "MasterProperties": {
+            "description": "The properties of Page that are only\nrelevant for pages with page_type MASTER.",
+            "id": "MasterProperties",
+            "properties": {
+                "displayName": {
+                    "description": "The human-readable name of the master.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Response": {
             "description": "A single response from an update.",
             "id": "Response",
             "properties": {
+                "createShape": {
+                    "$ref": "CreateShapeResponse",
+                    "description": "The result of creating a shape."
+                },
+                "replaceAllShapesWithImage": {
+                    "$ref": "ReplaceAllShapesWithImageResponse",
+                    "description": "The result of replacing all shapes matching some criteria with an\nimage."
+                },
+                "createTable": {
+                    "$ref": "CreateTableResponse",
+                    "description": "The result of creating a table."
+                },
                 "replaceAllText": {
                     "$ref": "ReplaceAllTextResponse",
                     "description": "The result of replacing text."
@@ -902,44 +393,21 @@
                 "groupObjects": {
                     "$ref": "GroupObjectsResponse",
                     "description": "The result of grouping objects."
-                },
-                "createShape": {
-                    "$ref": "CreateShapeResponse",
-                    "description": "The result of creating a shape."
-                },
-                "replaceAllShapesWithImage": {
-                    "$ref": "ReplaceAllShapesWithImageResponse",
-                    "description": "The result of replacing all shapes matching some criteria with an\nimage."
-                },
-                "createTable": {
-                    "$ref": "CreateTableResponse",
-                    "description": "The result of creating a table."
                 }
             },
             "type": "object"
         },
-        "MasterProperties": {
-            "description": "The properties of Page that are only\nrelevant for pages with page_type MASTER.",
-            "id": "MasterProperties",
+        "SubstringMatchCriteria": {
+            "description": "A criteria that matches a specific string of text in a shape or table.",
+            "id": "SubstringMatchCriteria",
             "properties": {
-                "displayName": {
-                    "description": "The human-readable name of the master.",
+                "text": {
+                    "description": "The text to search for in the shape or table.",
                     "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "TextRun": {
-            "description": "A TextElement kind that represents a run of text that all has the same\nstyling.",
-            "id": "TextRun",
-            "properties": {
-                "style": {
-                    "$ref": "TextStyle",
-                    "description": "The styling applied to this run."
                 },
-                "content": {
-                    "description": "The text of this run.",
-                    "type": "string"
+                "matchCase": {
+                    "description": "Indicates whether the search should respect case:\n\n- `True`: the search is case sensitive.\n- `False`: the search is case insensitive.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -987,17 +455,17 @@
             },
             "type": "object"
         },
-        "SubstringMatchCriteria": {
-            "description": "A criteria that matches a specific string of text in a shape or table.",
-            "id": "SubstringMatchCriteria",
+        "TextRun": {
+            "description": "A TextElement kind that represents a run of text that all has the same\nstyling.",
+            "id": "TextRun",
             "properties": {
-                "text": {
-                    "description": "The text to search for in the shape or table.",
-                    "type": "string"
+                "style": {
+                    "$ref": "TextStyle",
+                    "description": "The styling applied to this run."
                 },
-                "matchCase": {
-                    "description": "Indicates whether the search should respect case:\n\n- `True`: the search is case sensitive.\n- `False`: the search is case insensitive.",
-                    "type": "boolean"
+                "content": {
+                    "description": "The text of this run.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1038,10 +506,6 @@
             "description": "Creates a new table.",
             "id": "CreateTableRequest",
             "properties": {
-                "elementProperties": {
-                    "$ref": "PageElementProperties",
-                    "description": "The element properties for the table.\n\nThe table will be created at the provided size, subject to a minimum size.\nIf no size is provided, the table will be automatically sized.\n\nTable transforms must have a scale of 1 and no shear components. If no\ntransform is provided, the table will be centered on the page."
-                },
                 "rows": {
                     "description": "Number of rows in the table.",
                     "format": "int32",
@@ -1055,6 +519,10 @@
                     "description": "Number of columns in the table.",
                     "format": "int32",
                     "type": "integer"
+                },
+                "elementProperties": {
+                    "$ref": "PageElementProperties",
+                    "description": "The element properties for the table.\n\nThe table will be created at the provided size, subject to a minimum size.\nIf no size is provided, the table will be automatically sized.\n\nTable transforms must have a scale of 1 and no shear components. If no\ntransform is provided, the table will be centered on the page."
                 }
             },
             "type": "object"
@@ -1140,10 +608,6 @@
             "description": "The page background fill.",
             "id": "PageBackgroundFill",
             "properties": {
-                "stretchedPictureFill": {
-                    "$ref": "StretchedPictureFill",
-                    "description": "Stretched picture fill."
-                },
                 "solidFill": {
                     "$ref": "SolidFill",
                     "description": "Solid color fill."
@@ -1161,6 +625,10 @@
                         "If a property's state is INHERIT, then the property state uses the value of\ncorresponding `property_state` field on the parent shape. Elements that do\nnot inherit will never have an INHERIT property state."
                     ],
                     "type": "string"
+                },
+                "stretchedPictureFill": {
+                    "$ref": "StretchedPictureFill",
+                    "description": "Stretched picture fill."
                 }
             },
             "type": "object"
@@ -1273,10 +741,6 @@
             "description": "Common properties for a page element.\n\nNote: When you initially create a\nPageElement, the API may modify\nthe values of both `size` and `transform`, but the\nvisual size will be unchanged.",
             "id": "PageElementProperties",
             "properties": {
-                "size": {
-                    "$ref": "Size",
-                    "description": "The size of the element."
-                },
                 "transform": {
                     "$ref": "AffineTransform",
                     "description": "The transform for the element."
@@ -1284,6 +748,10 @@
                 "pageObjectId": {
                     "description": "The object ID of the page where the element is located.",
                     "type": "string"
+                },
+                "size": {
+                    "$ref": "Size",
+                    "description": "The size of the element."
                 }
             },
             "type": "object"
@@ -1318,14 +786,6 @@
             "description": "Update the styling of text in a Shape or\nTable.",
             "id": "UpdateTextStyleRequest",
             "properties": {
-                "objectId": {
-                    "description": "The object ID of the shape or table with the text to be styled.",
-                    "type": "string"
-                },
-                "textRange": {
-                    "$ref": "Range",
-                    "description": "The range of text to style.\n\nThe range may be extended to include adjacent newlines.\n\nIf the range fully contains a paragraph belonging to a list, the\nparagraph's bullet is also updated with the matching text style."
-                },
                 "cellLocation": {
                     "$ref": "TableCellLocation",
                     "description": "The location of the cell in the table containing the text to style. If\n`object_id` refers to a table, `cell_location` must have a value.\nOtherwise, it must not."
@@ -1338,6 +798,14 @@
                     "description": "The fields that should be updated.\n\nAt least one field must be specified. The root `style` is implied and\nshould not be specified. A single `\"*\"` can be used as short-hand for\nlisting every field.\n\nFor example, to update the text style to bold, set `fields` to `\"bold\"`.\n\nTo reset a property to its default value, include its field name in the\nfield mask but leave the field itself unset.",
                     "format": "google-fieldmask",
                     "type": "string"
+                },
+                "objectId": {
+                    "description": "The object ID of the shape or table with the text to be styled.",
+                    "type": "string"
+                },
+                "textRange": {
+                    "$ref": "Range",
+                    "description": "The range of text to style.\n\nThe range may be extended to include adjacent newlines.\n\nIf the range fully contains a paragraph belonging to a list, the\nparagraph's bullet is also updated with the matching text style."
                 }
             },
             "type": "object"
@@ -1346,13 +814,13 @@
             "description": "Deletes a column from a table.",
             "id": "DeleteTableColumnRequest",
             "properties": {
-                "tableObjectId": {
-                    "description": "The table to delete columns from.",
-                    "type": "string"
-                },
                 "cellLocation": {
                     "$ref": "TableCellLocation",
                     "description": "The reference table cell location from which a column will be deleted.\n\nThe column this cell spans will be deleted. If this is a merged cell,\nmultiple columns will be deleted. If no columns remain in the table after\nthis deletion, the whole table is deleted."
+                },
+                "tableObjectId": {
+                    "description": "The table to delete columns from.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1395,6 +863,34 @@
             "description": "A visual element rendered on a page.",
             "id": "PageElement",
             "properties": {
+                "objectId": {
+                    "description": "The object ID for this page element. Object IDs used by\ngoogle.apps.slides.v1.Page and\ngoogle.apps.slides.v1.PageElement share the same namespace.",
+                    "type": "string"
+                },
+                "transform": {
+                    "$ref": "AffineTransform",
+                    "description": "The transform of the page element.\n\nThe visual appearance of the page element is determined by its absolute\ntransform. To compute the absolute transform, preconcatenate a page\nelement's transform with the transforms of all of its parent groups. If the\npage element is not in a group, its absolute transform is the same as the\nvalue in this field.\n\nThe initial transform for the newly created Group is always the identity transform."
+                },
+                "shape": {
+                    "$ref": "Shape",
+                    "description": "A generic shape."
+                },
+                "line": {
+                    "$ref": "Line",
+                    "description": "A line page element."
+                },
+                "description": {
+                    "description": "The description of the page element. Combined with title to display alt\ntext.",
+                    "type": "string"
+                },
+                "elementGroup": {
+                    "$ref": "Group",
+                    "description": "A collection of page elements joined as a single unit."
+                },
+                "image": {
+                    "$ref": "Image",
+                    "description": "An image page element."
+                },
                 "size": {
                     "$ref": "Size",
                     "description": "The size of the page element."
@@ -1418,34 +914,6 @@
                 "table": {
                     "$ref": "Table",
                     "description": "A table page element."
-                },
-                "transform": {
-                    "$ref": "AffineTransform",
-                    "description": "The transform of the page element.\n\nThe visual appearance of the page element is determined by its absolute\ntransform. To compute the absolute transform, preconcatenate a page\nelement's transform with the transforms of all of its parent groups. If the\npage element is not in a group, its absolute transform is the same as the\nvalue in this field.\n\nThe initial transform for the newly created Group is always the identity transform."
-                },
-                "objectId": {
-                    "description": "The object ID for this page element. Object IDs used by\ngoogle.apps.slides.v1.Page and\ngoogle.apps.slides.v1.PageElement share the same namespace.",
-                    "type": "string"
-                },
-                "shape": {
-                    "$ref": "Shape",
-                    "description": "A generic shape."
-                },
-                "line": {
-                    "$ref": "Line",
-                    "description": "A line page element."
-                },
-                "description": {
-                    "description": "The description of the page element. Combined with title to display alt\ntext.",
-                    "type": "string"
-                },
-                "elementGroup": {
-                    "$ref": "Group",
-                    "description": "A collection of page elements joined as a single unit."
-                },
-                "image": {
-                    "$ref": "Image",
-                    "description": "An image page element."
                 }
             },
             "type": "object"
@@ -1473,10 +941,6 @@
             "description": "Creates bullets for all of the paragraphs that overlap with the given\ntext index range.\n\nThe nesting level of each paragraph will be determined by counting leading\ntabs in front of each paragraph. To avoid excess space between the bullet and\nthe corresponding paragraph, these leading tabs are removed by this request.\nThis may change the indices of parts of the text.\n\nIf the paragraph immediately before paragraphs being updated is in a list\nwith a matching preset, the paragraphs being updated are added to that\npreceding list.",
             "id": "CreateParagraphBulletsRequest",
             "properties": {
-                "cellLocation": {
-                    "$ref": "TableCellLocation",
-                    "description": "The optional table cell location if the text to be modified is in a table\ncell. If present, the object_id must refer to a table."
-                },
                 "objectId": {
                     "description": "The object ID of the shape or table containing the text to add bullets to.",
                     "type": "string"
@@ -1522,6 +986,10 @@
                         "A numbered list with `ZERODIGIT`, `ALPHA` and `ROMAN` numeric glyphs for\nthe first 3 list nesting levels, followed by periods."
                     ],
                     "type": "string"
+                },
+                "cellLocation": {
+                    "$ref": "TableCellLocation",
+                    "description": "The optional table cell location if the text to be modified is in a table\ncell. If present, the object_id must refer to a table."
                 }
             },
             "type": "object"
@@ -1545,44 +1013,16 @@
             "description": "Represents the styling that can be applied to a TextRun.\n\nIf this text is contained in a shape with a parent placeholder, then these text styles may be\ninherited from the parent. Which text styles are inherited depend on the\nnesting level of lists:\n\n* A text run in a paragraph that is not in a list will inherit its text style\n  from the the newline character in the paragraph at the 0 nesting level of\n  the list inside the parent placeholder.\n* A text run in a paragraph that is in a list will inherit its text style\n  from the newline character in the paragraph at its corresponding nesting\n  level of the list inside the parent placeholder.\n\nInherited text styles are represented as unset fields in this message. If\ntext is contained in a shape without a parent placeholder, unsetting these\nfields will revert the style to a value matching the defaults in the Slides\neditor.",
             "id": "TextStyle",
             "properties": {
-                "weightedFontFamily": {
-                    "$ref": "WeightedFontFamily",
-                    "description": "The font family and rendered weight of the text.\n\nThis field is an extension of `font_family` meant to support explicit font\nweights without breaking backwards compatibility. As such, when reading the\nstyle of a range of text, the value of `weighted_font_family#font_family`\nwill always be equal to that of `font_family`. However, when writing, if\nboth fields are included in the field mask (either explicitly or through\nthe wildcard `\"*\"`), their values are reconciled as follows:\n\n* If `font_family` is set and `weighted_font_family` is not, the value of\n  `font_family` is applied with weight `400` (\"normal\").\n* If both fields are set, the value of `font_family` must match that of\n  `weighted_font_family#font_family`. If so, the font family and weight of\n  `weighted_font_family` is applied. Otherwise, a 400 bad request error is\n  returned.\n* If `weighted_font_family` is set and `font_family` is not, the font\n  family and weight of `weighted_font_family` is applied.\n* If neither field is set, the font family and weight of the text inherit\n  from the parent. Note that these properties cannot inherit separately\n  from each other.\n\nIf an update request specifies values for both `weighted_font_family` and\n`bold`, the `weighted_font_family` is applied first, then `bold`.\n\nIf `weighted_font_family#weight` is not set, it defaults to `400`.\n\nIf `weighted_font_family` is set, then `weighted_font_family#font_family`\nmust also be set with a non-empty value. Otherwise, a 400 bad request error\nis returned."
-                },
-                "smallCaps": {
-                    "description": "Whether or not the text is in small capital letters.",
-                    "type": "boolean"
-                },
-                "backgroundColor": {
-                    "$ref": "OptionalColor",
-                    "description": "The background color of the text. If set, the color is either opaque or\ntransparent, depending on if the `opaque_color` field in it is set."
-                },
-                "underline": {
-                    "description": "Whether or not the text is underlined.",
-                    "type": "boolean"
-                },
-                "link": {
-                    "$ref": "Link",
-                    "description": "The hyperlink destination of the text. If unset, there is no link. Links\nare not inherited from parent text.\n\nChanging the link in an update request causes some other changes to the\ntext style of the range:\n\n* When setting a link, the text foreground color will be set to\n  ThemeColorType.HYPERLINK and the text will\n  be underlined. If these fields are modified in the same\n  request, those values will be used instead of the link defaults.\n* Setting a link on a text range that overlaps with an existing link will\n  also update the existing link to point to the new URL.\n* Links are not settable on newline characters. As a result, setting a link\n  on a text range that crosses a paragraph boundary, such as `\"ABC\\n123\"`,\n  will separate the newline character(s) into their own text runs. The\n  link will be applied separately to the runs before and after the newline.\n* Removing a link will update the text style of the range to match the\n  style of the preceding text (or the default text styles if the preceding\n  text is another link) unless different styles are being set in the same\n  request."
-                },
-                "bold": {
-                    "description": "Whether or not the text is rendered as bold.",
-                    "type": "boolean"
-                },
-                "foregroundColor": {
-                    "$ref": "OptionalColor",
-                    "description": "The color of the text itself. If set, the color is either opaque or\ntransparent, depending on if the `opaque_color` field in it is set."
-                },
                 "fontFamily": {
                     "description": "The font family of the text.\n\nThe font family can be any font from the Font menu in Slides or from\n[Google Fonts] (https://fonts.google.com/). If the font name is\nunrecognized, the text is rendered in `Arial`.\n\nSome fonts can affect the weight of the text. If an update request\nspecifies values for both `font_family` and `bold`, the explicitly-set\n`bold` value is used.",
                     "type": "string"
                 },
-                "italic": {
-                    "description": "Whether or not the text is italicized.",
-                    "type": "boolean"
-                },
                 "strikethrough": {
                     "description": "Whether or not the text is struck through.",
+                    "type": "boolean"
+                },
+                "italic": {
+                    "description": "Whether or not the text is italicized.",
                     "type": "boolean"
                 },
                 "fontSize": {
@@ -1604,6 +1044,34 @@
                         "The text is vertically offset downwards (subscript)."
                     ],
                     "type": "string"
+                },
+                "weightedFontFamily": {
+                    "$ref": "WeightedFontFamily",
+                    "description": "The font family and rendered weight of the text.\n\nThis field is an extension of `font_family` meant to support explicit font\nweights without breaking backwards compatibility. As such, when reading the\nstyle of a range of text, the value of `weighted_font_family#font_family`\nwill always be equal to that of `font_family`. However, when writing, if\nboth fields are included in the field mask (either explicitly or through\nthe wildcard `\"*\"`), their values are reconciled as follows:\n\n* If `font_family` is set and `weighted_font_family` is not, the value of\n  `font_family` is applied with weight `400` (\"normal\").\n* If both fields are set, the value of `font_family` must match that of\n  `weighted_font_family#font_family`. If so, the font family and weight of\n  `weighted_font_family` is applied. Otherwise, a 400 bad request error is\n  returned.\n* If `weighted_font_family` is set and `font_family` is not, the font\n  family and weight of `weighted_font_family` is applied.\n* If neither field is set, the font family and weight of the text inherit\n  from the parent. Note that these properties cannot inherit separately\n  from each other.\n\nIf an update request specifies values for both `weighted_font_family` and\n`bold`, the `weighted_font_family` is applied first, then `bold`.\n\nIf `weighted_font_family#weight` is not set, it defaults to `400`.\n\nIf `weighted_font_family` is set, then `weighted_font_family#font_family`\nmust also be set with a non-empty value. Otherwise, a 400 bad request error\nis returned."
+                },
+                "smallCaps": {
+                    "description": "Whether or not the text is in small capital letters.",
+                    "type": "boolean"
+                },
+                "backgroundColor": {
+                    "$ref": "OptionalColor",
+                    "description": "The background color of the text. If set, the color is either opaque or\ntransparent, depending on if the `opaque_color` field in it is set."
+                },
+                "underline": {
+                    "description": "Whether or not the text is underlined.",
+                    "type": "boolean"
+                },
+                "link": {
+                    "$ref": "Link",
+                    "description": "The hyperlink destination of the text. If unset, there is no link. Links\nare not inherited from parent text.\n\nChanging the link in an update request causes some other changes to the\ntext style of the range:\n\n* When setting a link, the text foreground color will be set to\n  ThemeColorType.HYPERLINK and the text will\n  be underlined. If these fields are modified in the same\n  request, those values will be used instead of the link defaults.\n* Setting a link on a text range that overlaps with an existing link will\n  also update the existing link to point to the new URL.\n* Links are not settable on newline characters. As a result, setting a link\n  on a text range that crosses a paragraph boundary, such as `\"ABC\\n123\"`,\n  will separate the newline character(s) into their own text runs. The\n  link will be applied separately to the runs before and after the newline.\n* Removing a link will update the text style of the range to match the\n  style of the preceding text (or the default text styles if the preceding\n  text is another link) unless different styles are being set in the same\n  request."
+                },
+                "foregroundColor": {
+                    "$ref": "OptionalColor",
+                    "description": "The color of the text itself. If set, the color is either opaque or\ntransparent, depending on if the `opaque_color` field in it is set."
+                },
+                "bold": {
+                    "description": "Whether or not the text is rendered as bold.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -1612,6 +1080,10 @@
             "description": "Update the properties of a Video.",
             "id": "UpdateVideoPropertiesRequest",
             "properties": {
+                "objectId": {
+                    "description": "The object ID of the video the updates are applied to.",
+                    "type": "string"
+                },
                 "videoProperties": {
                     "$ref": "VideoProperties",
                     "description": "The video properties to update."
@@ -1619,10 +1091,6 @@
                 "fields": {
                     "description": "The fields that should be updated.\n\nAt least one field must be specified. The root `videoProperties` is\nimplied and should not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the video outline color, set `fields` to\n`\"outline.outlineFill.solidFill.color\"`.\n\nTo reset a property to its default value, include its field name in the\nfield mask but leave the field itself unset.",
                     "format": "google-fieldmask",
-                    "type": "string"
-                },
-                "objectId": {
-                    "description": "The object ID of the video the updates are applied to.",
                     "type": "string"
                 }
             },
@@ -1632,26 +1100,6 @@
             "description": "A single kind of update to apply to a presentation.",
             "id": "Request",
             "properties": {
-                "unmergeTableCells": {
-                    "$ref": "UnmergeTableCellsRequest",
-                    "description": "Unmerges cells in a Table."
-                },
-                "updatePageElementTransform": {
-                    "$ref": "UpdatePageElementTransformRequest",
-                    "description": "Updates the transform of a page element."
-                },
-                "updateTextStyle": {
-                    "$ref": "UpdateTextStyleRequest",
-                    "description": "Updates the styling of text within a Shape or Table."
-                },
-                "updateTableRowProperties": {
-                    "$ref": "UpdateTableRowPropertiesRequest",
-                    "description": "Updates the properties of a Table row."
-                },
-                "replaceAllShapesWithImage": {
-                    "$ref": "ReplaceAllShapesWithImageRequest",
-                    "description": "Replaces all shapes matching some criteria with an image."
-                },
                 "replaceAllText": {
                     "$ref": "ReplaceAllTextRequest",
                     "description": "Replaces all instances of specified text."
@@ -1684,13 +1132,13 @@
                     "$ref": "UpdateShapePropertiesRequest",
                     "description": "Updates the properties of a Shape."
                 },
-                "ungroupObjects": {
-                    "$ref": "UngroupObjectsRequest",
-                    "description": "Ungroups objects, such as groups."
-                },
                 "groupObjects": {
                     "$ref": "GroupObjectsRequest",
                     "description": "Groups objects, such as page elements."
+                },
+                "ungroupObjects": {
+                    "$ref": "UngroupObjectsRequest",
+                    "description": "Ungroups objects, such as groups."
                 },
                 "insertText": {
                     "$ref": "InsertTextRequest",
@@ -1708,13 +1156,13 @@
                     "$ref": "UpdatePagePropertiesRequest",
                     "description": "Updates the properties of a Page."
                 },
-                "deleteParagraphBullets": {
-                    "$ref": "DeleteParagraphBulletsRequest",
-                    "description": "Deletes bullets from paragraphs."
-                },
                 "createShape": {
                     "$ref": "CreateShapeRequest",
                     "description": "Creates a new shape."
+                },
+                "deleteParagraphBullets": {
+                    "$ref": "DeleteParagraphBulletsRequest",
+                    "description": "Deletes bullets from paragraphs."
                 },
                 "updateTableBorderProperties": {
                     "$ref": "UpdateTableBorderPropertiesRequest",
@@ -1732,13 +1180,13 @@
                     "$ref": "RefreshSheetsChartRequest",
                     "description": "Refreshes a Google Sheets chart."
                 },
-                "updateTableCellProperties": {
-                    "$ref": "UpdateTableCellPropertiesRequest",
-                    "description": "Updates the properties of a TableCell."
-                },
                 "createTable": {
                     "$ref": "CreateTableRequest",
                     "description": "Creates a new table."
+                },
+                "updateTableCellProperties": {
+                    "$ref": "UpdateTableCellPropertiesRequest",
+                    "description": "Updates the properties of a TableCell."
                 },
                 "deleteObject": {
                     "$ref": "DeleteObjectRequest",
@@ -1776,13 +1224,33 @@
                     "$ref": "CreateVideoRequest",
                     "description": "Creates a video."
                 },
+                "replaceAllShapesWithSheetsChart": {
+                    "$ref": "ReplaceAllShapesWithSheetsChartRequest",
+                    "description": "Replaces all shapes matching some criteria with a Google Sheets chart."
+                },
                 "createSheetsChart": {
                     "$ref": "CreateSheetsChartRequest",
                     "description": "Creates an embedded Google Sheets chart."
                 },
-                "replaceAllShapesWithSheetsChart": {
-                    "$ref": "ReplaceAllShapesWithSheetsChartRequest",
-                    "description": "Replaces all shapes matching some criteria with a Google Sheets chart."
+                "unmergeTableCells": {
+                    "$ref": "UnmergeTableCellsRequest",
+                    "description": "Unmerges cells in a Table."
+                },
+                "updatePageElementTransform": {
+                    "$ref": "UpdatePageElementTransformRequest",
+                    "description": "Updates the transform of a page element."
+                },
+                "updateTextStyle": {
+                    "$ref": "UpdateTextStyleRequest",
+                    "description": "Updates the styling of text within a Shape or Table."
+                },
+                "updateTableRowProperties": {
+                    "$ref": "UpdateTableRowPropertiesRequest",
+                    "description": "Updates the properties of a Table row."
+                },
+                "replaceAllShapesWithImage": {
+                    "$ref": "ReplaceAllShapesWithImageRequest",
+                    "description": "Replaces all shapes matching some criteria with an image."
                 }
             },
             "type": "object"
@@ -1791,17 +1259,17 @@
             "description": "Update the properties of an Image.",
             "id": "UpdateImagePropertiesRequest",
             "properties": {
-                "fields": {
-                    "description": "The fields that should be updated.\n\nAt least one field must be specified. The root `imageProperties` is\nimplied and should not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the image outline color, set `fields` to\n`\"outline.outlineFill.solidFill.color\"`.\n\nTo reset a property to its default value, include its field name in the\nfield mask but leave the field itself unset.",
-                    "format": "google-fieldmask",
-                    "type": "string"
-                },
                 "imageProperties": {
                     "$ref": "ImageProperties",
                     "description": "The image properties to update."
                 },
                 "objectId": {
                     "description": "The object ID of the image the updates are applied to.",
+                    "type": "string"
+                },
+                "fields": {
+                    "description": "The fields that should be updated.\n\nAt least one field must be specified. The root `imageProperties` is\nimplied and should not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the image outline color, set `fields` to\n`\"outline.outlineFill.solidFill.color\"`.\n\nTo reset a property to its default value, include its field name in the\nfield mask but leave the field itself unset.",
+                    "format": "google-fieldmask",
                     "type": "string"
                 }
             },
@@ -1811,6 +1279,41 @@
             "description": "Styles that apply to a whole paragraph.\n\nIf this text is contained in a shape with a parent placeholder, then these paragraph styles may be\ninherited from the parent. Which paragraph styles are inherited depend on the\nnesting level of lists:\n\n* A paragraph not in a list will inherit its paragraph style from the\n  paragraph at the 0 nesting level of the list inside the parent placeholder.\n* A paragraph in a list will inherit its paragraph style from the paragraph\n  at its corresponding nesting level of the list inside the parent\n  placeholder.\n\nInherited paragraph styles are represented as unset fields in this message.",
             "id": "ParagraphStyle",
             "properties": {
+                "indentEnd": {
+                    "$ref": "Dimension",
+                    "description": "The amount indentation for the paragraph on the side that corresponds to\nthe end of the text, based on the current text direction. If unset, the\nvalue is inherited from the parent."
+                },
+                "spacingMode": {
+                    "description": "The spacing mode for the paragraph.",
+                    "enum": [
+                        "SPACING_MODE_UNSPECIFIED",
+                        "NEVER_COLLAPSE",
+                        "COLLAPSE_LISTS"
+                    ],
+                    "enumDescriptions": [
+                        "The spacing mode is inherited from the parent.",
+                        "Paragraph spacing is always rendered.",
+                        "Paragraph spacing is skipped between list elements."
+                    ],
+                    "type": "string"
+                },
+                "indentStart": {
+                    "$ref": "Dimension",
+                    "description": "The amount indentation for the paragraph on the side that corresponds to\nthe start of the text, based on the current text direction. If unset, the\nvalue is inherited from the parent."
+                },
+                "spaceAbove": {
+                    "$ref": "Dimension",
+                    "description": "The amount of extra space above the paragraph. If unset, the value is\ninherited from the parent."
+                },
+                "indentFirstLine": {
+                    "$ref": "Dimension",
+                    "description": "The amount of indentation for the start of the first line of the paragraph.\nIf unset, the value is inherited from the parent."
+                },
+                "lineSpacing": {
+                    "description": "The amount of space between lines, as a percentage of normal, where normal\nis represented as 100.0. If unset, the value is inherited from the parent.",
+                    "format": "float",
+                    "type": "number"
+                },
                 "alignment": {
                     "description": "The text alignment for this paragraph.",
                     "enum": [
@@ -1829,15 +1332,6 @@
                     ],
                     "type": "string"
                 },
-                "lineSpacing": {
-                    "description": "The amount of space between lines, as a percentage of normal, where normal\nis represented as 100.0. If unset, the value is inherited from the parent.",
-                    "format": "float",
-                    "type": "number"
-                },
-                "indentFirstLine": {
-                    "$ref": "Dimension",
-                    "description": "The amount of indentation for the start of the first line of the paragraph.\nIf unset, the value is inherited from the parent."
-                },
                 "spaceBelow": {
                     "$ref": "Dimension",
                     "description": "The amount of extra space above the paragraph. If unset, the value is\ninherited from the parent."
@@ -1855,32 +1349,6 @@
                         "The text goes from right to left."
                     ],
                     "type": "string"
-                },
-                "spacingMode": {
-                    "description": "The spacing mode for the paragraph.",
-                    "enum": [
-                        "SPACING_MODE_UNSPECIFIED",
-                        "NEVER_COLLAPSE",
-                        "COLLAPSE_LISTS"
-                    ],
-                    "enumDescriptions": [
-                        "The spacing mode is inherited from the parent.",
-                        "Paragraph spacing is always rendered.",
-                        "Paragraph spacing is skipped between list elements."
-                    ],
-                    "type": "string"
-                },
-                "indentEnd": {
-                    "$ref": "Dimension",
-                    "description": "The amount indentation for the paragraph on the side that corresponds to\nthe end of the text, based on the current text direction. If unset, the\nvalue is inherited from the parent."
-                },
-                "indentStart": {
-                    "$ref": "Dimension",
-                    "description": "The amount indentation for the paragraph on the side that corresponds to\nthe start of the text, based on the current text direction. If unset, the\nvalue is inherited from the parent."
-                },
-                "spaceAbove": {
-                    "$ref": "Dimension",
-                    "description": "The amount of extra space above the paragraph. If unset, the value is\ninherited from the parent."
                 }
             },
             "type": "object"
@@ -1889,15 +1357,6 @@
             "description": "Updates the properties of a Table row.",
             "id": "UpdateTableRowPropertiesRequest",
             "properties": {
-                "fields": {
-                    "description": "The fields that should be updated.\n\nAt least one field must be specified. The root `tableRowProperties` is\nimplied and should not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the minimum row height, set `fields` to\n`\"min_row_height\"`.\n\nIf '\"min_row_height\"' is included in the field mask but the property is\nleft unset, the minimum row height will default to 0.",
-                    "format": "google-fieldmask",
-                    "type": "string"
-                },
-                "tableRowProperties": {
-                    "$ref": "TableRowProperties",
-                    "description": "The table row properties to update."
-                },
                 "objectId": {
                     "description": "The object ID of the table.",
                     "type": "string"
@@ -1909,6 +1368,15 @@
                         "type": "integer"
                     },
                     "type": "array"
+                },
+                "fields": {
+                    "description": "The fields that should be updated.\n\nAt least one field must be specified. The root `tableRowProperties` is\nimplied and should not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the minimum row height, set `fields` to\n`\"min_row_height\"`.\n\nIf '\"min_row_height\"' is included in the field mask but the property is\nleft unset, the minimum row height will default to 0.",
+                    "format": "google-fieldmask",
+                    "type": "string"
+                },
+                "tableRowProperties": {
+                    "$ref": "TableRowProperties",
+                    "description": "The table row properties to update."
                 }
             },
             "type": "object"
@@ -1932,6 +1400,35 @@
                 "tableCellBackgroundFill": {
                     "$ref": "TableCellBackgroundFill",
                     "description": "The background fill of the table cell. The default fill matches the fill\nfor newly created table cells in the Slides editor."
+                },
+                "contentAlignment": {
+                    "description": "The alignment of the content in the table cell. The default alignment\nmatches the alignment for newly created table cells in the Slides editor.",
+                    "enum": [
+                        "CONTENT_ALIGNMENT_UNSPECIFIED",
+                        "CONTENT_ALIGNMENT_UNSUPPORTED",
+                        "TOP",
+                        "MIDDLE",
+                        "BOTTOM"
+                    ],
+                    "enumDescriptions": [
+                        "An unspecified content alignment. The content alignment is inherited from\nthe parent if it exists.",
+                        "An unsupported content alignment.",
+                        "An alignment that aligns the content to the top of the content holder.\nCorresponds to ECMA-376 ST_TextAnchoringType 't'.",
+                        "An alignment that aligns the content to the middle of the content\nholder. Corresponds to ECMA-376 ST_TextAnchoringType 'ctr'.",
+                        "An alignment that aligns the content to the bottom of the content\nholder. Corresponds to ECMA-376 ST_TextAnchoringType 'b'."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RefreshSheetsChartRequest": {
+            "description": "Refreshes an embedded Google Sheets chart by replacing it with the latest\nversion of the chart from Google Sheets.\n\nNOTE: Refreshing charts requires  at least one of the spreadsheets.readonly,\nspreadsheets, drive.readonly, or drive OAuth scopes.",
+            "id": "RefreshSheetsChartRequest",
+            "properties": {
+                "objectId": {
+                    "description": "The object ID of the chart to refresh.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1940,6 +1437,20 @@
             "description": "The outline of a PageElement.\n\nIf these fields are unset, they may be inherited from a parent placeholder\nif it exists. If there is no parent, the fields will default to the value\nused for new page elements created in the Slides editor, which may depend on\nthe page element kind.",
             "id": "Outline",
             "properties": {
+                "propertyState": {
+                    "description": "The outline property state.\n\nUpdating the outline on a page element will implicitly update this field\nto `RENDERED`, unless another value is specified in the same request. To\nhave no outline on a page element, set this field to `NOT_RENDERED`. In\nthis case, any other outline fields set in the same request will be\nignored.",
+                    "enum": [
+                        "RENDERED",
+                        "NOT_RENDERED",
+                        "INHERIT"
+                    ],
+                    "enumDescriptions": [
+                        "If a property's state is RENDERED, then the element has the corresponding\nproperty when rendered on a page. If the element is a placeholder shape as\ndetermined by the placeholder\nfield, and it inherits from a placeholder shape, the corresponding field\nmay be unset, meaning that the property value is inherited from a parent\nplaceholder. If the element does not inherit, then the field will contain\nthe rendered value. This is the default value.",
+                        "If a property's state is NOT_RENDERED, then the element does not have the\ncorresponding property when rendered on a page. However, the field may\nstill be set so it can be inherited by child shapes. To remove a property\nfrom a rendered element, set its property_state to NOT_RENDERED.",
+                        "If a property's state is INHERIT, then the property state uses the value of\ncorresponding `property_state` field on the parent shape. Elements that do\nnot inherit will never have an INHERIT property state."
+                    ],
+                    "type": "string"
+                },
                 "outlineFill": {
                     "$ref": "OutlineFill",
                     "description": "The fill of the outline."
@@ -1969,31 +1480,28 @@
                         "Alternating large dashes and dots. Corresponds to ECMA-376\nST_PresetLineDashVal value 'lgDashDot'."
                     ],
                     "type": "string"
-                },
-                "propertyState": {
-                    "description": "The outline property state.\n\nUpdating the outline on a page element will implicitly update this field\nto `RENDERED`, unless another value is specified in the same request. To\nhave no outline on a page element, set this field to `NOT_RENDERED`. In\nthis case, any other outline fields set in the same request will be\nignored.",
-                    "enum": [
-                        "RENDERED",
-                        "NOT_RENDERED",
-                        "INHERIT"
-                    ],
-                    "enumDescriptions": [
-                        "If a property's state is RENDERED, then the element has the corresponding\nproperty when rendered on a page. If the element is a placeholder shape as\ndetermined by the placeholder\nfield, and it inherits from a placeholder shape, the corresponding field\nmay be unset, meaning that the property value is inherited from a parent\nplaceholder. If the element does not inherit, then the field will contain\nthe rendered value. This is the default value.",
-                        "If a property's state is NOT_RENDERED, then the element does not have the\ncorresponding property when rendered on a page. However, the field may\nstill be set so it can be inherited by child shapes. To remove a property\nfrom a rendered element, set its property_state to NOT_RENDERED.",
-                        "If a property's state is INHERIT, then the property state uses the value of\ncorresponding `property_state` field on the parent shape. Elements that do\nnot inherit will never have an INHERIT property state."
-                    ],
+                }
+            },
+            "type": "object"
+        },
+        "NotesProperties": {
+            "description": "The properties of Page that are only\nrelevant for pages with page_type NOTES.",
+            "id": "NotesProperties",
+            "properties": {
+                "speakerNotesObjectId": {
+                    "description": "The object ID of the shape on this notes page that contains the speaker\nnotes for the corresponding slide.\nThe actual shape may not always exist on the notes page. Inserting text\nusing this object ID will automatically create the shape. In this case, the\nactual shape may have different object ID. The `GetPresentation` or\n`GetPage` action will always return the latest object ID.",
                     "type": "string"
                 }
             },
             "type": "object"
         },
-        "RefreshSheetsChartRequest": {
-            "description": "Refreshes an embedded Google Sheets chart by replacing it with the latest\nversion of the chart from Google Sheets.\n\nNOTE: Refreshing charts requires  at least one of the spreadsheets.readonly,\nspreadsheets, drive.readonly, or drive OAuth scopes.",
-            "id": "RefreshSheetsChartRequest",
+        "TableColumnProperties": {
+            "description": "Properties of each column in a table.",
+            "id": "TableColumnProperties",
             "properties": {
-                "objectId": {
-                    "description": "The object ID of the chart to refresh.",
-                    "type": "string"
+                "columnWidth": {
+                    "$ref": "Dimension",
+                    "description": "Width of a column."
                 }
             },
             "type": "object"
@@ -2014,31 +1522,27 @@
                     "$ref": "Shadow",
                     "description": "The shadow properties of the shape. If unset, the shadow is inherited from\na parent placeholder if it exists. If the shape has no parent, then the\ndefault shadow matches the defaults for new shapes created in the Slides\neditor. This property is read-only."
                 },
+                "contentAlignment": {
+                    "description": "The alignment of the content in the shape. If unspecified,\nthe alignment is inherited from a parent placeholder if it exists. If the\nshape has no parent, the default alignment matches the alignment for new\nshapes created in the Slides editor.",
+                    "enum": [
+                        "CONTENT_ALIGNMENT_UNSPECIFIED",
+                        "CONTENT_ALIGNMENT_UNSUPPORTED",
+                        "TOP",
+                        "MIDDLE",
+                        "BOTTOM"
+                    ],
+                    "enumDescriptions": [
+                        "An unspecified content alignment. The content alignment is inherited from\nthe parent if it exists.",
+                        "An unsupported content alignment.",
+                        "An alignment that aligns the content to the top of the content holder.\nCorresponds to ECMA-376 ST_TextAnchoringType 't'.",
+                        "An alignment that aligns the content to the middle of the content\nholder. Corresponds to ECMA-376 ST_TextAnchoringType 'ctr'.",
+                        "An alignment that aligns the content to the bottom of the content\nholder. Corresponds to ECMA-376 ST_TextAnchoringType 'b'."
+                    ],
+                    "type": "string"
+                },
                 "link": {
                     "$ref": "Link",
                     "description": "The hyperlink destination of the shape. If unset, there is no link. Links\nare not inherited from parent placeholders."
-                }
-            },
-            "type": "object"
-        },
-        "TableColumnProperties": {
-            "description": "Properties of each column in a table.",
-            "id": "TableColumnProperties",
-            "properties": {
-                "columnWidth": {
-                    "$ref": "Dimension",
-                    "description": "Width of a column."
-                }
-            },
-            "type": "object"
-        },
-        "NotesProperties": {
-            "description": "The properties of Page that are only\nrelevant for pages with page_type NOTES.",
-            "id": "NotesProperties",
-            "properties": {
-                "speakerNotesObjectId": {
-                    "description": "The object ID of the shape on this notes page that contains the speaker\nnotes for the corresponding slide.\nThe actual shape may not always exist on the notes page. Inserting text\nusing this object ID will automatically create the shape. In this case, the\nactual shape may have different object ID. The `GetPresentation` or\n`GetPage` action will always return the latest object ID.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -2069,6 +1573,14 @@
             "description": "Update the properties of a TableCell.",
             "id": "UpdateTableCellPropertiesRequest",
             "properties": {
+                "objectId": {
+                    "description": "The object ID of the table.",
+                    "type": "string"
+                },
+                "tableRange": {
+                    "$ref": "TableRange",
+                    "description": "The table range representing the subset of the table to which the updates\nare applied. If a table range is not specified, the updates will apply to\nthe entire table."
+                },
                 "tableCellProperties": {
                     "$ref": "TableCellProperties",
                     "description": "The table cell properties to update."
@@ -2077,14 +1589,6 @@
                     "description": "The fields that should be updated.\n\nAt least one field must be specified. The root `tableCellProperties` is\nimplied and should not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the table cell background solid fill color, set\n`fields` to `\"tableCellBackgroundFill.solidFill.color\"`.\n\nTo reset a property to its default value, include its field name in the\nfield mask but leave the field itself unset.",
                     "format": "google-fieldmask",
                     "type": "string"
-                },
-                "objectId": {
-                    "description": "The object ID of the table.",
-                    "type": "string"
-                },
-                "tableRange": {
-                    "$ref": "TableRange",
-                    "description": "The table range representing the subset of the table to which the updates\nare applied. If a table range is not specified, the updates will apply to\nthe entire table."
                 }
             },
             "type": "object"
@@ -2093,14 +1597,6 @@
             "description": "Creates a new slide.",
             "id": "CreateSlideRequest",
             "properties": {
-                "slideLayoutReference": {
-                    "$ref": "LayoutReference",
-                    "description": "Layout reference of the slide to be inserted, based on the *current\nmaster*, which is one of the following:\n\n- The master of the previous slide index.\n- The master of the first slide, if the insertion_index is zero.\n- The first master in the presentation, if there are no slides.\n\nIf the LayoutReference is not found in the current master, a 400 bad\nrequest error is returned.\n\nIf you don't specify a layout reference, then the new slide will use the\npredefined layout `BLANK`."
-                },
-                "objectId": {
-                    "description": "A user-supplied object ID.\n\nIf you specify an ID, it must be unique among all pages and page elements\nin the presentation. The ID must start with an alphanumeric character or an\nunderscore (matches regex `[a-zA-Z0-9_]`); remaining characters\nmay include those as well as a hyphen or colon (matches regex\n`[a-zA-Z0-9_-:]`).\nThe length of the ID must not be less than 5 or greater than 50.\n\nIf you don't specify an ID, a unique one is generated.",
-                    "type": "string"
-                },
                 "insertionIndex": {
                     "description": "The optional zero-based index indicating where to insert the slides.\n\nIf you don't specify an index, the new slide is created at the end.",
                     "format": "int32",
@@ -2112,6 +1608,14 @@
                         "$ref": "LayoutPlaceholderIdMapping"
                     },
                     "type": "array"
+                },
+                "slideLayoutReference": {
+                    "$ref": "LayoutReference",
+                    "description": "Layout reference of the slide to be inserted, based on the *current\nmaster*, which is one of the following:\n\n- The master of the previous slide index.\n- The master of the first slide, if the insertion_index is zero.\n- The first master in the presentation, if there are no slides.\n\nIf the LayoutReference is not found in the current master, a 400 bad\nrequest error is returned.\n\nIf you don't specify a layout reference, then the new slide will use the\npredefined layout `BLANK`."
+                },
+                "objectId": {
+                    "description": "A user-supplied object ID.\n\nIf you specify an ID, it must be unique among all pages and page elements\nin the presentation. The ID must start with an alphanumeric character or an\nunderscore (matches regex `[a-zA-Z0-9_]`); remaining characters\nmay include those as well as a hyphen or colon (matches regex\n`[a-zA-Z0-9_-:]`).\nThe length of the ID must not be less than 5 or greater than 50.\n\nIf you don't specify an ID, a unique one is generated.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2160,6 +1664,10 @@
             "description": "The border styling properties of the\nTableBorderCell.",
             "id": "TableBorderProperties",
             "properties": {
+                "weight": {
+                    "$ref": "Dimension",
+                    "description": "The thickness of the border."
+                },
                 "tableBorderFill": {
                     "$ref": "TableBorderFill",
                     "description": "The fill of the table border."
@@ -2185,10 +1693,6 @@
                         "Alternating large dashes and dots. Corresponds to ECMA-376\nST_PresetLineDashVal value 'lgDashDot'."
                     ],
                     "type": "string"
-                },
-                "weight": {
-                    "$ref": "Dimension",
-                    "description": "The thickness of the border."
                 }
             },
             "type": "object"
@@ -2212,19 +1716,19 @@
             "description": "The general text content. The text must reside in a compatible shape (e.g.\ntext box or rectangle) or a table cell in a page.",
             "id": "TextContent",
             "properties": {
-                "lists": {
-                    "additionalProperties": {
-                        "$ref": "List"
-                    },
-                    "description": "The bulleted lists contained in this text, keyed by list ID.",
-                    "type": "object"
-                },
                 "textElements": {
                     "description": "The text contents broken down into its component parts, including styling\ninformation. This property is read-only.",
                     "items": {
                         "$ref": "TextElement"
                     },
                     "type": "array"
+                },
+                "lists": {
+                    "additionalProperties": {
+                        "$ref": "List"
+                    },
+                    "description": "The bulleted lists contained in this text, keyed by list ID.",
+                    "type": "object"
                 }
             },
             "type": "object"
@@ -2285,6 +1789,27 @@
             },
             "type": "object"
         },
+        "Thumbnail": {
+            "description": "The thumbnail of a page.",
+            "id": "Thumbnail",
+            "properties": {
+                "height": {
+                    "description": "The positive height in pixels of the thumbnail image.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "contentUrl": {
+                    "description": "The content URL of the thumbnail image.\n\nThe URL to the image has a default lifetime of 30 minutes.\nThis URL is tagged with the account of the requester. Anyone with the URL\neffectively accesses the image as the original requester. Access to the\nimage may be lost if the presentation's sharing settings change.\nThe mime type of the thumbnail image is the same as specified in the\n`GetPageThumbnailRequest`.",
+                    "type": "string"
+                },
+                "width": {
+                    "description": "The positive width in pixels of the thumbnail image.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "InsertTableColumnsRequest": {
             "description": "Inserts columns into a table.\n\nOther columns in the table will be resized to fit the new column.",
             "id": "InsertTableColumnsRequest",
@@ -2309,41 +1834,20 @@
             },
             "type": "object"
         },
-        "Thumbnail": {
-            "description": "The thumbnail of a page.",
-            "id": "Thumbnail",
-            "properties": {
-                "height": {
-                    "description": "The positive height in pixels of the thumbnail image.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "contentUrl": {
-                    "description": "The content URL of the thumbnail image.\n\nThe URL to the image has a default lifetime of 30 minutes.\nThis URL is tagged with the account of the requester. Anyone with the URL\neffectively accesses the image as the original requester. Access to the\nimage may be lost if the presentation's sharing settings change.\nThe mime type of the thumbnail image is the same as specified in the\n`GetPageThumbnailRequest`.",
-                    "type": "string"
-                },
-                "width": {
-                    "description": "The positive width in pixels of the thumbnail image.",
-                    "format": "int32",
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
         "LayoutPlaceholderIdMapping": {
             "description": "The user-specified ID mapping for a placeholder that will be created on a\nslide from a specified layout.",
             "id": "LayoutPlaceholderIdMapping",
             "properties": {
+                "objectId": {
+                    "description": "A user-supplied object ID for the placeholder identified above that to be\ncreated onto a slide.\n\nIf you specify an ID, it must be unique among all pages and page elements\nin the presentation. The ID must start with an alphanumeric character or an\nunderscore (matches regex `[a-zA-Z0-9_]`); remaining characters\nmay include those as well as a hyphen or colon (matches regex\n`[a-zA-Z0-9_-:]`).\nThe length of the ID must not be less than 5 or greater than 50.\n\nIf you don't specify an ID, a unique one is generated.",
+                    "type": "string"
+                },
                 "layoutPlaceholder": {
                     "$ref": "Placeholder",
                     "description": "The placeholder on a layout that will be applied to a slide. Only type and index are needed. For example, a\npredefined `TITLE_AND_BODY` layout may usually have a TITLE placeholder\nwith index 0 and a BODY placeholder with index 0."
                 },
                 "layoutPlaceholderObjectId": {
                     "description": "The object ID of the placeholder on a layout that will be applied\nto a slide.",
-                    "type": "string"
-                },
-                "objectId": {
-                    "description": "A user-supplied object ID for the placeholder identified above that to be\ncreated onto a slide.\n\nIf you specify an ID, it must be unique among all pages and page elements\nin the presentation. The ID must start with an alphanumeric character or an\nunderscore (matches regex `[a-zA-Z0-9_]`); remaining characters\nmay include those as well as a hyphen or colon (matches regex\n`[a-zA-Z0-9_-:]`).\nThe length of the ID must not be less than 5 or greater than 50.\n\nIf you don't specify an ID, a unique one is generated.",
                     "type": "string"
                 }
             },
@@ -2403,6 +1907,11 @@
             "description": "Update the properties of a Shape.",
             "id": "UpdateShapePropertiesRequest",
             "properties": {
+                "fields": {
+                    "description": "The fields that should be updated.\n\nAt least one field must be specified. The root `shapeProperties` is\nimplied and should not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the shape background solid fill color, set `fields`\nto `\"shapeBackgroundFill.solidFill.color\"`.\n\nTo reset a property to its default value, include its field name in the\nfield mask but leave the field itself unset.",
+                    "format": "google-fieldmask",
+                    "type": "string"
+                },
                 "objectId": {
                     "description": "The object ID of the shape the updates are applied to.",
                     "type": "string"
@@ -2410,22 +1919,6 @@
                 "shapeProperties": {
                     "$ref": "ShapeProperties",
                     "description": "The shape properties to update."
-                },
-                "fields": {
-                    "description": "The fields that should be updated.\n\nAt least one field must be specified. The root `shapeProperties` is\nimplied and should not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the shape background solid fill color, set `fields`\nto `\"shapeBackgroundFill.solidFill.color\"`.\n\nTo reset a property to its default value, include its field name in the\nfield mask but leave the field itself unset.",
-                    "format": "google-fieldmask",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "WordArt": {
-            "description": "A PageElement kind representing\nword art.",
-            "id": "WordArt",
-            "properties": {
-                "renderedText": {
-                    "description": "The text rendered as word art.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -2434,6 +1927,11 @@
             "description": "Updates the properties of a Table column.",
             "id": "UpdateTableColumnPropertiesRequest",
             "properties": {
+                "fields": {
+                    "description": "The fields that should be updated.\n\nAt least one field must be specified. The root `tableColumnProperties` is\nimplied and should not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the column width, set `fields` to `\"column_width\"`.\n\nIf '\"column_width\"' is included in the field mask but the property is left\nunset, the column width will default to 406,400 EMU (32 points).",
+                    "format": "google-fieldmask",
+                    "type": "string"
+                },
                 "objectId": {
                     "description": "The object ID of the table.",
                     "type": "string"
@@ -2449,10 +1947,16 @@
                 "tableColumnProperties": {
                     "$ref": "TableColumnProperties",
                     "description": "The table column properties to update.\n\nIf the value of `table_column_properties#column_width` in the request is\nless than 406,400 EMU (32 points), a 400 bad request error is returned."
-                },
-                "fields": {
-                    "description": "The fields that should be updated.\n\nAt least one field must be specified. The root `tableColumnProperties` is\nimplied and should not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the column width, set `fields` to `\"column_width\"`.\n\nIf '\"column_width\"' is included in the field mask but the property is left\nunset, the column width will default to 406,400 EMU (32 points).",
-                    "format": "google-fieldmask",
+                }
+            },
+            "type": "object"
+        },
+        "WordArt": {
+            "description": "A PageElement kind representing\nword art.",
+            "id": "WordArt",
+            "properties": {
+                "renderedText": {
+                    "description": "The text rendered as word art.",
                     "type": "string"
                 }
             },
@@ -2568,15 +2072,21 @@
             },
             "type": "object"
         },
+        "CreateShapeResponse": {
+            "description": "The result of creating a shape.",
+            "id": "CreateShapeResponse",
+            "properties": {
+                "objectId": {
+                    "description": "The object ID of the created shape.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "RgbColor": {
             "description": "An RGB color.",
             "id": "RgbColor",
             "properties": {
-                "red": {
-                    "description": "The red component of the color, from 0.0 to 1.0.",
-                    "format": "float",
-                    "type": "number"
-                },
                 "green": {
                     "description": "The green component of the color, from 0.0 to 1.0.",
                     "format": "float",
@@ -2586,17 +2096,11 @@
                     "description": "The blue component of the color, from 0.0 to 1.0.",
                     "format": "float",
                     "type": "number"
-                }
-            },
-            "type": "object"
-        },
-        "CreateShapeResponse": {
-            "description": "The result of creating a shape.",
-            "id": "CreateShapeResponse",
-            "properties": {
-                "objectId": {
-                    "description": "The object ID of the created shape.",
-                    "type": "string"
+                },
+                "red": {
+                    "description": "The red component of the color, from 0.0 to 1.0.",
+                    "format": "float",
+                    "type": "number"
                 }
             },
             "type": "object"
@@ -2645,10 +2149,6 @@
             "description": "Creates a new shape.",
             "id": "CreateShapeRequest",
             "properties": {
-                "elementProperties": {
-                    "$ref": "PageElementProperties",
-                    "description": "The element properties for the shape."
-                },
                 "objectId": {
                     "description": "A user-supplied object ID.\n\nIf you specify an ID, it must be unique among all pages and page elements\nin the presentation. The ID must start with an alphanumeric character or an\nunderscore (matches regex `[a-zA-Z0-9_]`); remaining characters\nmay include those as well as a hyphen or colon (matches regex\n`[a-zA-Z0-9_-:]`).\nThe length of the ID must not be less than 5 or greater than 50.\nIf empty, a unique identifier will be generated.",
                     "type": "string"
@@ -2946,6 +2446,10 @@
                         "Custom shape."
                     ],
                     "type": "string"
+                },
+                "elementProperties": {
+                    "$ref": "PageElementProperties",
+                    "description": "The element properties for the shape."
                 }
             },
             "type": "object"
@@ -2954,18 +2458,6 @@
             "description": "A PageElement kind representing a\nvideo.",
             "id": "Video",
             "properties": {
-                "source": {
-                    "description": "The video source.",
-                    "enum": [
-                        "SOURCE_UNSPECIFIED",
-                        "YOUTUBE"
-                    ],
-                    "enumDescriptions": [
-                        "The video source is unspecified.",
-                        "The video source is YouTube."
-                    ],
-                    "type": "string"
-                },
                 "url": {
                     "description": "An URL to a video. The URL is valid as long as the source video\nexists and sharing settings do not change.",
                     "type": "string"
@@ -2977,6 +2469,18 @@
                 "videoProperties": {
                     "$ref": "VideoProperties",
                     "description": "The properties of the video."
+                },
+                "source": {
+                    "description": "The video source.",
+                    "enum": [
+                        "SOURCE_UNSPECIFIED",
+                        "YOUTUBE"
+                    ],
+                    "enumDescriptions": [
+                        "The video source is unspecified.",
+                        "The video source is YouTube."
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2996,21 +2500,14 @@
             },
             "type": "object"
         },
-        "NestingLevel": {
-            "description": "Contains properties describing the look and feel of a list bullet at a given\nlevel of nesting.",
-            "id": "NestingLevel",
-            "properties": {
-                "bulletStyle": {
-                    "$ref": "TextStyle",
-                    "description": "The style of a bullet at this level of nesting."
-                }
-            },
-            "type": "object"
-        },
         "TableCell": {
             "description": "Properties and contents of each table cell.",
             "id": "TableCell",
             "properties": {
+                "text": {
+                    "$ref": "TextContent",
+                    "description": "The text content of the cell."
+                },
                 "tableCellProperties": {
                     "$ref": "TableCellProperties",
                     "description": "The properties of the table cell."
@@ -3028,10 +2525,17 @@
                     "description": "Column span of the cell.",
                     "format": "int32",
                     "type": "integer"
-                },
-                "text": {
-                    "$ref": "TextContent",
-                    "description": "The text content of the cell."
+                }
+            },
+            "type": "object"
+        },
+        "NestingLevel": {
+            "description": "Contains properties describing the look and feel of a list bullet at a given\nlevel of nesting.",
+            "id": "NestingLevel",
+            "properties": {
+                "bulletStyle": {
+                    "$ref": "TextStyle",
+                    "description": "The style of a bullet at this level of nesting."
                 }
             },
             "type": "object"
@@ -3040,10 +2544,6 @@
             "description": "Updates the properties of a Line.",
             "id": "UpdateLinePropertiesRequest",
             "properties": {
-                "objectId": {
-                    "description": "The object ID of the line the update is applied to.",
-                    "type": "string"
-                },
                 "lineProperties": {
                     "$ref": "LineProperties",
                     "description": "The line properties to update."
@@ -3051,6 +2551,10 @@
                 "fields": {
                     "description": "The fields that should be updated.\n\nAt least one field must be specified. The root `lineProperties` is\nimplied and should not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the line solid fill color, set `fields` to\n`\"lineFill.solidFill.color\"`.\n\nTo reset a property to its default value, include its field name in the\nfield mask but leave the field itself unset.",
                     "format": "google-fieldmask",
+                    "type": "string"
+                },
+                "objectId": {
+                    "description": "The object ID of the line the update is applied to.",
                     "type": "string"
                 }
             },
@@ -3085,17 +2589,17 @@
             "description": "Updates the position of slides in the presentation.",
             "id": "UpdateSlidesPositionRequest",
             "properties": {
+                "insertionIndex": {
+                    "description": "The index where the slides should be inserted, based on the slide\narrangement before the move takes place. Must be between zero and the\nnumber of slides in the presentation, inclusive.",
+                    "format": "int32",
+                    "type": "integer"
+                },
                 "slideObjectIds": {
                     "description": "The IDs of the slides in the presentation that should be moved.\nThe slides in this list must be in existing presentation order, without\nduplicates.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
-                },
-                "insertionIndex": {
-                    "description": "The index where the slides should be inserted, based on the slide\narrangement before the move takes place. Must be between zero and the\nnumber of slides in the presentation, inclusive.",
-                    "format": "int32",
-                    "type": "integer"
                 }
             },
             "type": "object"
@@ -3104,11 +2608,6 @@
             "description": "Updates the properties of a Page.",
             "id": "UpdatePagePropertiesRequest",
             "properties": {
-                "fields": {
-                    "description": "The fields that should be updated.\n\nAt least one field must be specified. The root `pageProperties` is\nimplied and should not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the page background solid fill color, set `fields`\nto `\"pageBackgroundFill.solidFill.color\"`.\n\nTo reset a property to its default value, include its field name in the\nfield mask but leave the field itself unset.",
-                    "format": "google-fieldmask",
-                    "type": "string"
-                },
                 "objectId": {
                     "description": "The object ID of the page the update is applied to.",
                     "type": "string"
@@ -3116,6 +2615,11 @@
                 "pageProperties": {
                     "$ref": "PageProperties",
                     "description": "The page properties to update."
+                },
+                "fields": {
+                    "description": "The fields that should be updated.\n\nAt least one field must be specified. The root `pageProperties` is\nimplied and should not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the page background solid fill color, set `fields`\nto `\"pageBackgroundFill.solidFill.color\"`.\n\nTo reset a property to its default value, include its field name in the\nfield mask but leave the field itself unset.",
+                    "format": "google-fieldmask",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -3196,16 +2700,16 @@
             "description": "Duplicates a slide or page element.\n\nWhen duplicating a slide, the duplicate slide will be created immediately\nfollowing the specified slide. When duplicating a page element, the duplicate\nwill be placed on the same page at the same position as the original.",
             "id": "DuplicateObjectRequest",
             "properties": {
+                "objectId": {
+                    "description": "The ID of the object to duplicate.",
+                    "type": "string"
+                },
                 "objectIds": {
                     "additionalProperties": {
                         "type": "string"
                     },
                     "description": "The object being duplicated may contain other objects, for example when\nduplicating a slide or a group page element. This map defines how the IDs\nof duplicated objects are generated: the keys are the IDs of the original\nobjects and its values are the IDs that will be assigned to the\ncorresponding duplicate object. The ID of the source object's duplicate\nmay be specified in this map as well, using the same value of the\n`object_id` field as a key and the newly desired ID as the value.\n\nAll keys must correspond to existing IDs in the presentation. All values\nmust be unique in the presentation and must start with an alphanumeric\ncharacter or an underscore (matches regex `[a-zA-Z0-9_]`); remaining\ncharacters may include those as well as a hyphen or colon (matches regex\n`[a-zA-Z0-9_-:]`). The length of the new ID must not be less than 5 or\ngreater than 50.\n\nIf any IDs of source objects are omitted from the map, a new random ID will\nbe assigned. If the map is empty or unset, all duplicate objects will\nreceive a new random ID.",
                     "type": "object"
-                },
-                "objectId": {
-                    "description": "The ID of the object to duplicate.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -3228,6 +2732,21 @@
                 "containsText": {
                     "$ref": "SubstringMatchCriteria",
                     "description": "Finds text in a shape matching this substring."
+                }
+            },
+            "type": "object"
+        },
+        "UnmergeTableCellsRequest": {
+            "description": "Unmerges cells in a Table.",
+            "id": "UnmergeTableCellsRequest",
+            "properties": {
+                "objectId": {
+                    "description": "The object ID of the table.",
+                    "type": "string"
+                },
+                "tableRange": {
+                    "$ref": "TableRange",
+                    "description": "The table range specifying which cells of the table to unmerge.\n\nAll merged cells in this range will be unmerged, and cells that are already\nunmerged will not be affected. If the range has no merged cells, the\nrequest will do nothing. If there is text in any of the merged cells, the\ntext will remain in the upper-left (\"head\") cell of the resulting block of\nunmerged cells."
                 }
             },
             "type": "object"
@@ -3292,21 +2811,6 @@
             },
             "type": "object"
         },
-        "UnmergeTableCellsRequest": {
-            "description": "Unmerges cells in a Table.",
-            "id": "UnmergeTableCellsRequest",
-            "properties": {
-                "objectId": {
-                    "description": "The object ID of the table.",
-                    "type": "string"
-                },
-                "tableRange": {
-                    "$ref": "TableRange",
-                    "description": "The table range specifying which cells of the table to unmerge.\n\nAll merged cells in this range will be unmerged, and cells that are already\nunmerged will not be affected. If the range has no merged cells, the\nrequest will do nothing. If there is text in any of the merged cells, the\ntext will remain in the upper-left (\"head\") cell of the resulting block of\nunmerged cells."
-                }
-            },
-            "type": "object"
-        },
         "ShapeBackgroundFill": {
             "description": "The shape background fill.",
             "id": "ShapeBackgroundFill",
@@ -3336,16 +2840,6 @@
             "description": "The crop properties of an object enclosed in a container. For example, an\nImage.\n\nThe crop properties is represented by the offsets of four edges which define\na crop rectangle. The offsets are measured in percentage from the\ncorresponding edges of the object's original bounding rectangle towards\ninside, relative to the object's original dimensions.\n\n- If the offset is in the interval (0, 1), the corresponding edge of crop\nrectangle is positioned inside of the object's original bounding rectangle.\n- If the offset is negative or greater than 1, the corresponding edge of crop\nrectangle is positioned outside of the object's original bounding rectangle.\n- If the left edge of the crop rectangle is on the right side of its right\nedge, the object will be flipped horizontally.\n- If the top edge of the crop rectangle is below its bottom edge, the object\nwill be flipped vertically.\n- If all offsets and rotation angle is 0, the object is not cropped.\n\nAfter cropping, the content in the crop rectangle will be stretched to fit\nits container.",
             "id": "CropProperties",
             "properties": {
-                "leftOffset": {
-                    "description": "The offset specifies the left edge of the crop rectangle that is located to\nthe right of the original bounding rectangle left edge, relative to the\nobject's original width.",
-                    "format": "float",
-                    "type": "number"
-                },
-                "rightOffset": {
-                    "description": "The offset specifies the right edge of the crop rectangle that is located\nto the left of the original bounding rectangle right edge, relative to the\nobject's original width.",
-                    "format": "float",
-                    "type": "number"
-                },
                 "bottomOffset": {
                     "description": "The offset specifies the bottom edge of the crop rectangle that is located\nabove the original bounding rectangle bottom edge, relative to the object's\noriginal height.",
                     "format": "float",
@@ -3358,6 +2852,16 @@
                 },
                 "topOffset": {
                     "description": "The offset specifies the top edge of the crop rectangle that is located\nbelow the original bounding rectangle top edge, relative to the object's\noriginal height.",
+                    "format": "float",
+                    "type": "number"
+                },
+                "leftOffset": {
+                    "description": "The offset specifies the left edge of the crop rectangle that is located to\nthe right of the original bounding rectangle left edge, relative to the\nobject's original width.",
+                    "format": "float",
+                    "type": "number"
+                },
+                "rightOffset": {
+                    "description": "The offset specifies the right edge of the crop rectangle that is located\nto the left of the original bounding rectangle right edge, relative to the\nobject's original width.",
                     "format": "float",
                     "type": "number"
                 }
@@ -3428,16 +2932,6 @@
             "description": "Specifies a contiguous range of an indexed collection, such as characters in\ntext.",
             "id": "Range",
             "properties": {
-                "startIndex": {
-                    "description": "The optional zero-based index of the beginning of the collection.\nRequired for `FIXED_RANGE` and `FROM_START_INDEX` ranges.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "endIndex": {
-                    "description": "The optional zero-based index of the end of the collection.\nRequired for `FIXED_RANGE` ranges.",
-                    "format": "int32",
-                    "type": "integer"
-                },
                 "type": {
                     "description": "The type of range.",
                     "enum": [
@@ -3453,6 +2947,16 @@
                         "Sets the range to be the whole length of the collection. Both the\n`start_index` and the `end_index` must not be\nspecified."
                     ],
                     "type": "string"
+                },
+                "startIndex": {
+                    "description": "The optional zero-based index of the beginning of the collection.\nRequired for `FIXED_RANGE` and `FROM_START_INDEX` ranges.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "endIndex": {
+                    "description": "The optional zero-based index of the end of the collection.\nRequired for `FIXED_RANGE` ranges.",
+                    "format": "int32",
+                    "type": "integer"
                 }
             },
             "type": "object"
@@ -3566,15 +3070,6 @@
             "description": "The shadow properties of a page element.\n\nIf these fields are unset, they may be inherited from a parent placeholder\nif it exists. If there is no parent, the fields will default to the value\nused for new page elements created in the Slides editor, which may depend on\nthe page element kind.",
             "id": "Shadow",
             "properties": {
-                "alpha": {
-                    "description": "The alpha of the shadow's color, from 0.0 to 1.0.",
-                    "format": "float",
-                    "type": "number"
-                },
-                "color": {
-                    "$ref": "OpaqueColor",
-                    "description": "The shadow color value."
-                },
                 "rotateWithShape": {
                     "description": "Whether the shadow should rotate with the shape.",
                     "type": "boolean"
@@ -3640,6 +3135,15 @@
                         "Bottom right."
                     ],
                     "type": "string"
+                },
+                "alpha": {
+                    "description": "The alpha of the shadow's color, from 0.0 to 1.0.",
+                    "format": "float",
+                    "type": "number"
+                },
+                "color": {
+                    "$ref": "OpaqueColor",
+                    "description": "The shadow color value."
                 }
             },
             "type": "object"
@@ -3694,6 +3198,17 @@
             },
             "type": "object"
         },
+        "CreateLineResponse": {
+            "description": "The result of creating a line.",
+            "id": "CreateLineResponse",
+            "properties": {
+                "objectId": {
+                    "description": "The object ID of the created line.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "TableCellLocation": {
             "description": "A location of a single table cell within a table.",
             "id": "TableCellLocation",
@@ -3707,17 +3222,6 @@
                     "description": "The 0-based column index.",
                     "format": "int32",
                     "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "CreateLineResponse": {
-            "description": "The result of creating a line.",
-            "id": "CreateLineResponse",
-            "properties": {
-                "objectId": {
-                    "description": "The object ID of the created line.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -4119,10 +3623,6 @@
             "description": "Inserts text into a shape or a table cell.",
             "id": "InsertTextRequest",
             "properties": {
-                "cellLocation": {
-                    "$ref": "TableCellLocation",
-                    "description": "The optional table cell location if the text is to be inserted into a table\ncell. If present, the object_id must refer to a table."
-                },
                 "objectId": {
                     "description": "The object ID of the shape or table where the text will be inserted.",
                     "type": "string"
@@ -4135,6 +3635,10 @@
                     "description": "The index where the text will be inserted, in Unicode code units, based\non TextElement indexes.\n\nThe index is zero-based and is computed from the start of the string.\nThe index may be adjusted to prevent insertions inside Unicode grapheme\nclusters. In these cases, the text will be inserted immediately after the\ngrapheme cluster.",
                     "format": "int32",
                     "type": "integer"
+                },
+                "cellLocation": {
+                    "$ref": "TableCellLocation",
+                    "description": "The optional table cell location if the text is to be inserted into a table\ncell. If present, the object_id must refer to a table."
                 }
             },
             "type": "object"
@@ -4143,6 +3647,21 @@
             "description": "AffineTransform uses a 3x3 matrix with an implied last row of [ 0 0 1 ]\nto transform source coordinates (x,y) into destination coordinates (x', y')\naccording to:\n\n      x'  x  =   shear_y  scale_y  translate_y  \n      1  [ 1 ]\n\nAfter transformation,\n\n     x' = scale_x * x + shear_x * y + translate_x;\n     y' = scale_y * y + shear_y * x + translate_y;\n\nThis message is therefore composed of these six matrix elements.",
             "id": "AffineTransform",
             "properties": {
+                "translateY": {
+                    "description": "The Y coordinate translation element.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "translateX": {
+                    "description": "The X coordinate translation element.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "shearY": {
+                    "description": "The Y coordinate shearing element.",
+                    "format": "double",
+                    "type": "number"
+                },
                 "unit": {
                     "description": "The units for translate elements.",
                     "enum": [
@@ -4169,21 +3688,6 @@
                 },
                 "scaleY": {
                     "description": "The Y coordinate scaling element.",
-                    "format": "double",
-                    "type": "number"
-                },
-                "translateY": {
-                    "description": "The Y coordinate translation element.",
-                    "format": "double",
-                    "type": "number"
-                },
-                "translateX": {
-                    "description": "The X coordinate translation element.",
-                    "format": "double",
-                    "type": "number"
-                },
-                "shearY": {
-                    "description": "The Y coordinate shearing element.",
                     "format": "double",
                     "type": "number"
                 }
@@ -4223,6 +3727,538 @@
             "properties": {
                 "objectId": {
                     "description": "The object ID of the created video.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DeleteTextRequest": {
+            "description": "Deletes text from a shape or a table cell.",
+            "id": "DeleteTextRequest",
+            "properties": {
+                "cellLocation": {
+                    "$ref": "TableCellLocation",
+                    "description": "The optional table cell location if the text is to be deleted from a table\ncell. If present, the object_id must refer to a table."
+                },
+                "objectId": {
+                    "description": "The object ID of the shape or table from which the text will be deleted.",
+                    "type": "string"
+                },
+                "textRange": {
+                    "$ref": "Range",
+                    "description": "The range of text to delete, based on TextElement indexes.\n\nThere is always an implicit newline character at the end of a shape's or\ntable cell's text that cannot be deleted. `Range.Type.ALL` will use the\ncorrect bounds, but care must be taken when specifying explicit bounds for\nrange types `FROM_START_INDEX` and `FIXED_RANGE`. For example, if the text\nis \"ABC\", followed by an implicit newline, then the maximum value is 2 for\n`text_range.start_index` and 3 for `text_range.end_index`.\n\nDeleting text that crosses a paragraph boundary may result in changes\nto paragraph styles and lists as the two paragraphs are merged.\n\nRanges that include only one code unit of a surrogate pair are expanded to\ninclude both code units."
+                }
+            },
+            "type": "object"
+        },
+        "UpdatePageElementTransformRequest": {
+            "description": "Updates the transform of a page element.\n\nUpdating the transform of a group will change the absolute transform of the\npage elements in that group, which can change their visual appearance. See\nthe documentation for PageElement.transform for more details.",
+            "id": "UpdatePageElementTransformRequest",
+            "properties": {
+                "objectId": {
+                    "description": "The object ID of the page element to update.",
+                    "type": "string"
+                },
+                "transform": {
+                    "$ref": "AffineTransform",
+                    "description": "The input transform matrix used to update the page element."
+                },
+                "applyMode": {
+                    "description": "The apply mode of the transform update.",
+                    "enum": [
+                        "APPLY_MODE_UNSPECIFIED",
+                        "RELATIVE",
+                        "ABSOLUTE"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified mode.",
+                        "Applies the new AffineTransform matrix to the existing one, and\nreplaces the existing one with the resulting concatenation.",
+                        "Replaces the existing AffineTransform matrix with the new one."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DeleteObjectRequest": {
+            "description": "Deletes an object, either pages or\npage elements, from the\npresentation.",
+            "id": "DeleteObjectRequest",
+            "properties": {
+                "objectId": {
+                    "description": "The object ID of the page or page element to delete.\n\nIf after a delete operation a group contains\nonly 1 or no page elements, the group is also deleted.\n\nIf a placeholder is deleted on a layout, any empty inheriting shapes are\nalso deleted.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Dimension": {
+            "description": "A magnitude in a single direction in the specified units.",
+            "id": "Dimension",
+            "properties": {
+                "magnitude": {
+                    "description": "The magnitude.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "unit": {
+                    "description": "The units for magnitude.",
+                    "enum": [
+                        "UNIT_UNSPECIFIED",
+                        "EMU",
+                        "PT"
+                    ],
+                    "enumDescriptions": [
+                        "The units are unknown.",
+                        "An English Metric Unit (EMU) is defined as 1/360,000 of a centimeter\nand thus there are 914,400 EMUs per inch, and 12,700 EMUs per point.",
+                        "A point, 1/72 of an inch."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TextElement": {
+            "description": "A TextElement describes the content of a range of indices in the text content\nof a Shape or TableCell.",
+            "id": "TextElement",
+            "properties": {
+                "startIndex": {
+                    "description": "The zero-based start index of this text element, in Unicode code units.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "endIndex": {
+                    "description": "The zero-based end index of this text element, exclusive, in Unicode code\nunits.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "textRun": {
+                    "$ref": "TextRun",
+                    "description": "A TextElement representing a run of text where all of the characters\nin the run have the same TextStyle.\n\nThe `start_index` and `end_index` of TextRuns will always be fully\ncontained in the index range of a single `paragraph_marker` TextElement.\nIn other words, a TextRun will never span multiple paragraphs."
+                },
+                "autoText": {
+                    "$ref": "AutoText",
+                    "description": "A TextElement representing a spot in the text that is dynamically\nreplaced with content that can change over time."
+                },
+                "paragraphMarker": {
+                    "$ref": "ParagraphMarker",
+                    "description": "A marker representing the beginning of a new paragraph.\n\nThe `start_index` and `end_index` of this TextElement represent the\nrange of the paragraph. Other TextElements with an index range contained\ninside this paragraph's range are considered to be part of this\nparagraph. The range of indices of two separate paragraphs will never\noverlap."
+                }
+            },
+            "type": "object"
+        },
+        "LineFill": {
+            "description": "The fill of the line.",
+            "id": "LineFill",
+            "properties": {
+                "solidFill": {
+                    "$ref": "SolidFill",
+                    "description": "Solid color fill."
+                }
+            },
+            "type": "object"
+        },
+        "VideoProperties": {
+            "description": "The properties of the Video.",
+            "id": "VideoProperties",
+            "properties": {
+                "outline": {
+                    "$ref": "Outline",
+                    "description": "The outline of the video. The default outline matches the defaults for new\nvideos created in the Slides editor."
+                }
+            },
+            "type": "object"
+        },
+        "InsertTableRowsRequest": {
+            "description": "Inserts rows into a table.",
+            "id": "InsertTableRowsRequest",
+            "properties": {
+                "number": {
+                    "description": "The number of rows to be inserted. Maximum 20 per request.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "cellLocation": {
+                    "$ref": "TableCellLocation",
+                    "description": "The reference table cell location from which rows will be inserted.\n\nA new row will be inserted above (or below) the row where the reference\ncell is. If the reference cell is a merged cell, a new row will be\ninserted above (or below) the merged cell."
+                },
+                "tableObjectId": {
+                    "description": "The table to insert rows into.",
+                    "type": "string"
+                },
+                "insertBelow": {
+                    "description": "Whether to insert new rows below the reference cell location.\n\n- `True`: insert below the cell.\n- `False`: insert above the cell.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "LayoutProperties": {
+            "description": "The properties of Page are only\nrelevant for pages with page_type LAYOUT.",
+            "id": "LayoutProperties",
+            "properties": {
+                "name": {
+                    "description": "The name of the layout.",
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "The human-readable name of the layout.",
+                    "type": "string"
+                },
+                "masterObjectId": {
+                    "description": "The object ID of the master that this layout is based on.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Presentation": {
+            "description": "A Google Slides presentation.",
+            "id": "Presentation",
+            "properties": {
+                "masters": {
+                    "description": "The slide masters in the presentation. A slide master contains all common\npage elements and the common properties for a set of layouts. They serve\nthree purposes:\n\n- Placeholder shapes on a master contain the default text styles and shape\n  properties of all placeholder shapes on pages that use that master.\n- The master page properties define the common page properties inherited by\n  its layouts.\n- Any other shapes on the master slide will appear on all slides using that\n  master, regardless of their layout.",
+                    "items": {
+                        "$ref": "Page"
+                    },
+                    "type": "array"
+                },
+                "locale": {
+                    "description": "The locale of the presentation, as an IETF BCP 47 language tag.",
+                    "type": "string"
+                },
+                "pageSize": {
+                    "$ref": "Size",
+                    "description": "The size of pages in the presentation."
+                },
+                "presentationId": {
+                    "description": "The ID of the presentation.",
+                    "type": "string"
+                },
+                "slides": {
+                    "description": "The slides in the presentation.\nA slide inherits properties from a slide layout.",
+                    "items": {
+                        "$ref": "Page"
+                    },
+                    "type": "array"
+                },
+                "revisionId": {
+                    "description": "The revision ID of the presentation. Can be used in update requests\nto assert that the presentation revision hasn't changed since the last\nread operation. Only populated if the user has edit access to the\npresentation.\n\nThe format of the revision ID may change over time, so it should be treated\nopaquely. A returned revision ID is only guaranteed to be valid for 24\nhours after it has been returned and cannot be shared across users. If the\nrevision ID is unchanged between calls, then the presentation has not\nchanged. Conversely, a changed ID (for the same presentation and user)\nusually means the presentation has been updated; however, a changed ID can\nalso be due to internal factors such as ID format changes.",
+                    "type": "string"
+                },
+                "notesMaster": {
+                    "$ref": "Page",
+                    "description": "The notes master in the presentation. It serves three purposes:\n\n- Placeholder shapes on a notes master contain the default text styles and\n  shape properties of all placeholder shapes on notes pages. Specifically,\n  a `SLIDE_IMAGE` placeholder shape contains the slide thumbnail, and a\n  `BODY` placeholder shape contains the speaker notes.\n- The notes master page properties define the common page properties\n  inherited by all notes pages.\n- Any other shapes on the notes master will appear on all notes pages.\n\nThe notes master is read-only."
+                },
+                "title": {
+                    "description": "The title of the presentation.",
+                    "type": "string"
+                },
+                "layouts": {
+                    "description": "The layouts in the presentation. A layout is a template that determines\nhow content is arranged and styled on the slides that inherit from that\nlayout.",
+                    "items": {
+                        "$ref": "Page"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "LineProperties": {
+            "description": "The properties of the Line.\n\nWhen unset, these fields default to values that match the appearance of\nnew lines created in the Slides editor.",
+            "id": "LineProperties",
+            "properties": {
+                "link": {
+                    "$ref": "Link",
+                    "description": "The hyperlink destination of the line. If unset, there is no link."
+                },
+                "dashStyle": {
+                    "description": "The dash style of the line.",
+                    "enum": [
+                        "DASH_STYLE_UNSPECIFIED",
+                        "SOLID",
+                        "DOT",
+                        "DASH",
+                        "DASH_DOT",
+                        "LONG_DASH",
+                        "LONG_DASH_DOT"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified dash style.",
+                        "Solid line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'solid'.\nThis is the default dash style.",
+                        "Dotted line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dot'.",
+                        "Dashed line. Corresponds to ECMA-376 ST_PresetLineDashVal value 'dash'.",
+                        "Alternating dashes and dots. Corresponds to ECMA-376 ST_PresetLineDashVal\nvalue 'dashDot'.",
+                        "Line with large dashes. Corresponds to ECMA-376 ST_PresetLineDashVal\nvalue 'lgDash'.",
+                        "Alternating large dashes and dots. Corresponds to ECMA-376\nST_PresetLineDashVal value 'lgDashDot'."
+                    ],
+                    "type": "string"
+                },
+                "startArrow": {
+                    "description": "The style of the arrow at the beginning of the line.",
+                    "enum": [
+                        "ARROW_STYLE_UNSPECIFIED",
+                        "NONE",
+                        "STEALTH_ARROW",
+                        "FILL_ARROW",
+                        "FILL_CIRCLE",
+                        "FILL_SQUARE",
+                        "FILL_DIAMOND",
+                        "OPEN_ARROW",
+                        "OPEN_CIRCLE",
+                        "OPEN_SQUARE",
+                        "OPEN_DIAMOND"
+                    ],
+                    "enumDescriptions": [
+                        "An unspecified arrow style.",
+                        "No arrow.",
+                        "Arrow with notched back. Corresponds to ECMA-376 ST_LineEndType value\n'stealth'.",
+                        "Filled arrow. Corresponds to ECMA-376 ST_LineEndType value 'triangle'.",
+                        "Filled circle. Corresponds to ECMA-376 ST_LineEndType value 'oval'.",
+                        "Filled square.",
+                        "Filled diamond. Corresponds to ECMA-376 ST_LineEndType value 'diamond'.",
+                        "Hollow arrow.",
+                        "Hollow circle.",
+                        "Hollow square.",
+                        "Hollow diamond."
+                    ],
+                    "type": "string"
+                },
+                "endArrow": {
+                    "description": "The style of the arrow at the end of the line.",
+                    "enum": [
+                        "ARROW_STYLE_UNSPECIFIED",
+                        "NONE",
+                        "STEALTH_ARROW",
+                        "FILL_ARROW",
+                        "FILL_CIRCLE",
+                        "FILL_SQUARE",
+                        "FILL_DIAMOND",
+                        "OPEN_ARROW",
+                        "OPEN_CIRCLE",
+                        "OPEN_SQUARE",
+                        "OPEN_DIAMOND"
+                    ],
+                    "enumDescriptions": [
+                        "An unspecified arrow style.",
+                        "No arrow.",
+                        "Arrow with notched back. Corresponds to ECMA-376 ST_LineEndType value\n'stealth'.",
+                        "Filled arrow. Corresponds to ECMA-376 ST_LineEndType value 'triangle'.",
+                        "Filled circle. Corresponds to ECMA-376 ST_LineEndType value 'oval'.",
+                        "Filled square.",
+                        "Filled diamond. Corresponds to ECMA-376 ST_LineEndType value 'diamond'.",
+                        "Hollow arrow.",
+                        "Hollow circle.",
+                        "Hollow square.",
+                        "Hollow diamond."
+                    ],
+                    "type": "string"
+                },
+                "weight": {
+                    "$ref": "Dimension",
+                    "description": "The thickness of the line."
+                },
+                "lineFill": {
+                    "$ref": "LineFill",
+                    "description": "The fill of the line. The default line fill matches the defaults for new\nlines created in the Slides editor."
+                }
+            },
+            "type": "object"
+        },
+        "OpaqueColor": {
+            "description": "A themeable solid color value.",
+            "id": "OpaqueColor",
+            "properties": {
+                "rgbColor": {
+                    "$ref": "RgbColor",
+                    "description": "An opaque RGB color."
+                },
+                "themeColor": {
+                    "description": "An opaque theme color.",
+                    "enum": [
+                        "THEME_COLOR_TYPE_UNSPECIFIED",
+                        "DARK1",
+                        "LIGHT1",
+                        "DARK2",
+                        "LIGHT2",
+                        "ACCENT1",
+                        "ACCENT2",
+                        "ACCENT3",
+                        "ACCENT4",
+                        "ACCENT5",
+                        "ACCENT6",
+                        "HYPERLINK",
+                        "FOLLOWED_HYPERLINK",
+                        "TEXT1",
+                        "BACKGROUND1",
+                        "TEXT2",
+                        "BACKGROUND2"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified theme color. This value should not be used.",
+                        "Represents the first dark color.",
+                        "Represents the first light color.",
+                        "Represents the second dark color.",
+                        "Represents the second light color.",
+                        "Represents the first accent color.",
+                        "Represents the second accent color.",
+                        "Represents the third accent color.",
+                        "Represents the fourth accent color.",
+                        "Represents the fifth accent color.",
+                        "Represents the sixth accent color.",
+                        "Represents the color to use for hyperlinks.",
+                        "Represents the color to use for visited hyperlinks.",
+                        "Represents the first text color.",
+                        "Represents the first background color.",
+                        "Represents the second text color.",
+                        "Represents the second background color."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ImageProperties": {
+            "description": "The properties of the Image.",
+            "id": "ImageProperties",
+            "properties": {
+                "brightness": {
+                    "description": "The brightness effect of the image. The value should be in the interval\n[-1.0, 1.0], where 0 means no effect. This property is read-only.",
+                    "format": "float",
+                    "type": "number"
+                },
+                "transparency": {
+                    "description": "The transparency effect of the image. The value should be in the interval\n[0.0, 1.0], where 0 means no effect and 1 means completely transparent.\nThis property is read-only.",
+                    "format": "float",
+                    "type": "number"
+                },
+                "shadow": {
+                    "$ref": "Shadow",
+                    "description": "The shadow of the image. If not set, the image has no shadow. This property\nis read-only."
+                },
+                "link": {
+                    "$ref": "Link",
+                    "description": "The hyperlink destination of the image. If unset, there is no link."
+                },
+                "contrast": {
+                    "description": "The contrast effect of the image. The value should be in the interval\n[-1.0, 1.0], where 0 means no effect. This property is read-only.",
+                    "format": "float",
+                    "type": "number"
+                },
+                "cropProperties": {
+                    "$ref": "CropProperties",
+                    "description": "The crop properties of the image. If not set, the image is not cropped.\nThis property is read-only."
+                },
+                "recolor": {
+                    "$ref": "Recolor",
+                    "description": "The recolor effect of the image. If not set, the image is not recolored.\nThis property is read-only."
+                },
+                "outline": {
+                    "$ref": "Outline",
+                    "description": "The outline of the image. If not set, the image has no outline."
+                }
+            },
+            "type": "object"
+        },
+        "ReplaceAllShapesWithImageResponse": {
+            "description": "The result of replacing shapes with an image.",
+            "id": "ReplaceAllShapesWithImageResponse",
+            "properties": {
+                "occurrencesChanged": {
+                    "description": "The number of shapes replaced with images.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "Line": {
+            "description": "A PageElement kind representing a\nline, curved connector, or bent connector.",
+            "id": "Line",
+            "properties": {
+                "lineType": {
+                    "description": "The type of the line.",
+                    "enum": [
+                        "TYPE_UNSPECIFIED",
+                        "STRAIGHT_CONNECTOR_1",
+                        "BENT_CONNECTOR_2",
+                        "BENT_CONNECTOR_3",
+                        "BENT_CONNECTOR_4",
+                        "BENT_CONNECTOR_5",
+                        "CURVED_CONNECTOR_2",
+                        "CURVED_CONNECTOR_3",
+                        "CURVED_CONNECTOR_4",
+                        "CURVED_CONNECTOR_5"
+                    ],
+                    "enumDescriptions": [
+                        "An unspecified line type.",
+                        "Straight connector 1 form. Corresponds to ECMA-376 ST_ShapeType\n'straightConnector1'.",
+                        "Bent connector 2 form. Corresponds to ECMA-376 ST_ShapeType\n'bentConnector2'.",
+                        "Bent connector 3 form. Corresponds to ECMA-376 ST_ShapeType\n'bentConnector3'.",
+                        "Bent connector 4 form. Corresponds to ECMA-376 ST_ShapeType\n'bentConnector4'.",
+                        "Bent connector 5 form. Corresponds to ECMA-376 ST_ShapeType\n'bentConnector5'.",
+                        "Curved connector 2 form. Corresponds to ECMA-376 ST_ShapeType\n'curvedConnector2'.",
+                        "Curved connector 3 form. Corresponds to ECMA-376 ST_ShapeType\n'curvedConnector3'.",
+                        "Curved connector 4 form. Corresponds to ECMA-376 ST_ShapeType\n'curvedConnector4'.",
+                        "Curved connector 5 form. Corresponds to ECMA-376 ST_ShapeType\n'curvedConnector5'."
+                    ],
+                    "type": "string"
+                },
+                "lineProperties": {
+                    "$ref": "LineProperties",
+                    "description": "The properties of the line."
+                }
+            },
+            "type": "object"
+        },
+        "CreateSheetsChartRequest": {
+            "description": "Creates an embedded Google Sheets chart.\n\nNOTE: Chart creation requires at least one of the spreadsheets.readonly,\nspreadsheets, drive.readonly, or drive OAuth scopes.",
+            "id": "CreateSheetsChartRequest",
+            "properties": {
+                "objectId": {
+                    "description": "A user-supplied object ID.\n\nIf specified, the ID must be unique among all pages and page elements in\nthe presentation. The ID should start with a word character [a-zA-Z0-9_]\nand then followed by any number of the following characters [a-zA-Z0-9_-:].\nThe length of the ID should not be less than 5 or greater than 50.\nIf empty, a unique identifier will be generated.",
+                    "type": "string"
+                },
+                "elementProperties": {
+                    "$ref": "PageElementProperties",
+                    "description": "The element properties for the chart.\n\nWhen the aspect ratio of the provided size does not match the chart aspect\nratio, the chart is scaled and centered with respect to the size in order\nto maintain aspect ratio. The provided transform is applied after this\noperation."
+                },
+                "spreadsheetId": {
+                    "description": "The ID of the Google Sheets spreadsheet that contains the chart.",
+                    "type": "string"
+                },
+                "linkingMode": {
+                    "description": "The mode with which the chart is linked to the source spreadsheet. When\nnot specified, the chart will be an image that is not linked.",
+                    "enum": [
+                        "NOT_LINKED_IMAGE",
+                        "LINKED"
+                    ],
+                    "enumDescriptions": [
+                        "The chart is not associated with the source spreadsheet and cannot be\nupdated. A chart that is not linked will be inserted as an image.",
+                        "Linking the chart allows it to be updated, and other collaborators will\nsee a link to the spreadsheet."
+                    ],
+                    "type": "string"
+                },
+                "chartId": {
+                    "description": "The ID of the specific chart in the Google Sheets spreadsheet.",
+                    "format": "int32",
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "BatchUpdatePresentationResponse": {
+            "description": "Response message from a batch update.",
+            "id": "BatchUpdatePresentationResponse",
+            "properties": {
+                "replies": {
+                    "description": "The reply of the updates.  This maps 1:1 with the updates, although\nreplies to some requests may be empty.",
+                    "items": {
+                        "$ref": "Response"
+                    },
+                    "type": "array"
+                },
+                "presentationId": {
+                    "description": "The presentation the updates were applied to.",
                     "type": "string"
                 }
             },

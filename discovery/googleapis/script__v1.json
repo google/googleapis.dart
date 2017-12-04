@@ -2,12 +2,6 @@
     "auth": {
         "oauth2": {
             "scopes": {
-                "https://www.googleapis.com/auth/userinfo.email": {
-                    "description": "View your email address"
-                },
-                "https://www.google.com/calendar/feeds": {
-                    "description": "Manage your calendars"
-                },
                 "https://www.googleapis.com/auth/groups": {
                     "description": "View and manage your Google Groups"
                 },
@@ -20,20 +14,26 @@
                 "https://www.googleapis.com/auth/admin.directory.user": {
                     "description": "View and manage the provisioning of users on your domain"
                 },
-                "https://www.googleapis.com/auth/spreadsheets": {
-                    "description": "View and manage your spreadsheets in Google Drive"
+                "https://www.googleapis.com/auth/admin.directory.group": {
+                    "description": "View and manage the provisioning of groups on your domain"
                 },
                 "https://mail.google.com/": {
                     "description": "Read, send, delete, and manage your email"
                 },
-                "https://www.googleapis.com/auth/admin.directory.group": {
-                    "description": "View and manage the provisioning of groups on your domain"
+                "https://www.googleapis.com/auth/spreadsheets": {
+                    "description": "View and manage your spreadsheets in Google Drive"
                 },
                 "https://www.googleapis.com/auth/forms": {
                     "description": "View and manage your forms in Google Drive"
                 },
                 "https://www.google.com/m8/feeds": {
                     "description": "Manage your contacts"
+                },
+                "https://www.googleapis.com/auth/userinfo.email": {
+                    "description": "View your email address"
+                },
+                "https://www.google.com/calendar/feeds": {
+                    "description": "Manage your calendars"
                 }
             }
         }
@@ -54,6 +54,37 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
+        "pp": {
+            "default": "true",
+            "description": "Pretty-print response.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "bearer_token": {
+            "description": "OAuth bearer token.",
+            "location": "query",
+            "type": "string"
+        },
         "upload_protocol": {
             "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
@@ -75,11 +106,6 @@
             "location": "query",
             "type": "string"
         },
-        "callback": {
-            "description": "JSONP",
-            "location": "query",
-            "type": "string"
-        },
         "$.xgafv": {
             "description": "V1 error format.",
             "enum": [
@@ -90,6 +116,11 @@
                 "v1 error format",
                 "v2 error format"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
             "location": "query",
             "type": "string"
         },
@@ -106,37 +137,6 @@
                 "Media download with context-dependent Content-Type",
                 "Responses with Content-Type of application/x-protobuf"
             ],
-            "location": "query",
-            "type": "string"
-        },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-            "location": "query",
-            "type": "string"
-        },
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
-        },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
-        "pp": {
-            "default": "true",
-            "description": "Pretty-print response.",
-            "location": "query",
-            "type": "boolean"
-        },
-        "bearer_token": {
-            "description": "OAuth bearer token.",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
         }
@@ -184,40 +184,17 @@
             }
         }
     },
-    "revision": "20171108",
+    "revision": "20171130",
     "rootUrl": "https://script.googleapis.com/",
     "schemas": {
-        "Status": {
-            "description": "If a `run` or `runAsync` call succeeds but the script function (or Apps Script itself) throws an exception, the response body's error field contains this `Status` object.",
-            "id": "Status",
-            "properties": {
-                "code": {
-                    "description": "The status code. For this API, this value either: <ul> <li> 3, indicating an `INVALID_ARGUMENT` error, or</li> <li> 1, indicating a `CANCELLED` asynchronous execution.</li> </ul>",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "message": {
-                    "description": "A developer-facing error message, which is in English. Any user-facing error message is localized and sent in the [google.rpc.Status.details](google.rpc.Status.details) field, or localized by the client.",
-                    "type": "string"
-                },
-                "details": {
-                    "description": "An array that contains a single ExecutionError object that provides information about the nature of the error.",
-                    "items": {
-                        "additionalProperties": {
-                            "description": "Properties of the object. Contains field @type with type URL.",
-                            "type": "any"
-                        },
-                        "type": "object"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
         "ExecutionRequest": {
             "description": "A request to run the function in a script. The script is identified by the\nspecified `script_id`. Executing a function on a script returns results\nbased on the implementation of the script.",
             "id": "ExecutionRequest",
             "properties": {
+                "sessionState": {
+                    "description": "For Android add-ons only. An ID that represents the user's current session\nin the Android app for Google Docs or Sheets, included as extra data in the\n[Intent](https://developer.android.com/guide/components/intents-filters.html)\nthat launches the add-on. When an Android add-on is run with a session\nstate, it gains the privileges of a\n[bound](https://developers.google.com/apps-script/guides/bound)\nscript&mdash;that is, it can access information like the user's current\ncursor position (in Docs) or selected cell (in Sheets). To retrieve the\nstate, call\n`Intent.getStringExtra(\"com.google.android.apps.docs.addons.SessionState\")`.\nOptional.",
+                    "type": "string"
+                },
                 "function": {
                     "description": "The name of the function to execute in the given script. The name does not\ninclude parentheses or parameters.",
                     "type": "string"
@@ -232,10 +209,6 @@
                         "type": "any"
                     },
                     "type": "array"
-                },
-                "sessionState": {
-                    "description": "For Android add-ons only. An ID that represents the user's current session\nin the Android app for Google Docs or Sheets, included as extra data in the\n[Intent](https://developer.android.com/guide/components/intents-filters.html)\nthat launches the add-on. When an Android add-on is run with a session\nstate, it gains the privileges of a\n[bound](https://developers.google.com/apps-script/guides/bound)\nscript&mdash;that is, it can access information like the user's current\ncursor position (in Docs) or selected cell (in Sheets). To retrieve the\nstate, call\n`Intent.getStringExtra(\"com.google.android.apps.docs.addons.SessionState\")`.\nOptional.",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -252,11 +225,11 @@
             "type": "object"
         },
         "Operation": {
-            "description": "A representation of a execution of an Apps Script function that is started using run or runAsync. The execution response does not arrive until the function finishes executing. The maximum execution runtime is listed in the [Apps Script quotas guide](/apps-script/guides/services/quotas#current_limitations). <p>After the execution is started, it can have one of four outcomes:</p> <ul> <li> If the script function returns successfully, the\n  response field contains an\n  ExecutionResponse object\n  with the function's return value in the object's `result` field.</li>\n<li> If the script function (or Apps Script itself) throws an exception, the\n  error field contains a\n  Status object. The `Status` object's `details`\n  field contains an array with a single\n  ExecutionError object that\n  provides information about the nature of the error.</li>\n<li> If the execution was asynchronous and has not yet completed,\n  the done field is `false` and\n  the neither the `response` nor `error` fields are present.</li>\n<li> If the `run` or `runAsync` call itself fails (for example, because of a\n  malformed request or an authorization error), the method returns an HTTP\n  response code in the 4XX range with a different format for the response\n  body. Client libraries automatically convert a 4XX response into an\n  exception class.</li>\n</ul>",
+            "description": "A representation of a execution of an Apps Script function that is started using run. The execution response does not arrive until the function finishes executing. The maximum execution runtime is listed in the [Apps Script quotas guide](/apps-script/guides/services/quotas#current_limitations). <p>After the execution is started, it can have one of four outcomes:</p> <ul> <li> If the script function returns successfully, the\n  response field contains an\n  ExecutionResponse object\n  with the function's return value in the object's `result` field.</li>\n<li> If the script function (or Apps Script itself) throws an exception, the\n  error field contains a\n  Status object. The `Status` object's `details`\n  field contains an array with a single\n  ExecutionError object that\n  provides information about the nature of the error.</li>\n<li> If the execution has not yet completed,\n  the done field is `false` and\n  the neither the `response` nor `error` fields are present.</li>\n<li> If the `run` call itself fails (for example, because of a\n  malformed request or an authorization error), the method returns an HTTP\n  response code in the 4XX range with a different format for the response\n  body. Client libraries automatically convert a 4XX response into an\n  exception class.</li>\n</ul>",
             "id": "Operation",
             "properties": {
                 "done": {
-                    "description": "This field is only used with asynchronous executions. It indicates whether the script execution has completed. A completed execution has a populated `response` field containing the ExecutionResponse from function that was executed.",
+                    "description": "This field indicates whether the script execution has completed. A completed execution has a populated `response` field containing the ExecutionResponse from function that was executed.",
                     "type": "boolean"
                 },
                 "response": {
@@ -269,7 +242,7 @@
                 },
                 "error": {
                     "$ref": "Status",
-                    "description": "If a `run` or `runAsync` call succeeds but the script function (or Apps Script itself) throws an exception, this field contains a Status object. The `Status` object's `details` field contains an array with a single ExecutionError object that provides information about the nature of the error."
+                    "description": "If a `run` call succeeds but the script function (or Apps Script itself) throws an exception, this field contains a Status object. The `Status` object's `details` field contains an array with a single ExecutionError object that provides information about the nature of the error."
                 }
             },
             "type": "object"
@@ -278,35 +251,62 @@
             "description": "A stack trace through the script that shows where the execution failed.",
             "id": "ScriptStackTraceElement",
             "properties": {
-                "function": {
-                    "description": "The name of the function that failed.",
-                    "type": "string"
-                },
                 "lineNumber": {
                     "description": "The line number where the script failed.",
                     "format": "int32",
                     "type": "integer"
+                },
+                "function": {
+                    "description": "The name of the function that failed.",
+                    "type": "string"
                 }
             },
             "type": "object"
         },
         "ExecutionError": {
-            "description": "An object that provides information about the nature of an error resulting\nfrom an attempted execution of a script function using the Apps Script API.\nIf a run or\nrunAsync call\nsucceeds but the script function (or Apps Script itself) throws an exception,\nthe response body's error field\ncontains a\nStatus object. The `Status` object's `details` field\ncontains an array with a single one of these `ExecutionError` objects.",
+            "description": "An object that provides information about the nature of an error resulting\nfrom an attempted execution of a script function using the Apps Script API.\nIf a run call\nsucceeds but the script function (or Apps Script itself) throws an exception,\nthe response body's error field\ncontains a\nStatus object. The `Status` object's `details` field\ncontains an array with a single one of these `ExecutionError` objects.",
             "id": "ExecutionError",
             "properties": {
-                "scriptStackTraceElements": {
-                    "description": "An array of objects that provide a stack trace through the script to show\nwhere the execution failed, with the deepest call first.",
-                    "items": {
-                        "$ref": "ScriptStackTraceElement"
-                    },
-                    "type": "array"
-                },
                 "errorType": {
                     "description": "The error type, for example `TypeError` or `ReferenceError`. If the error\ntype is unavailable, this field is not included.",
                     "type": "string"
                 },
                 "errorMessage": {
                     "description": "The error message thrown by Apps Script, usually localized into the user's\nlanguage.",
+                    "type": "string"
+                },
+                "scriptStackTraceElements": {
+                    "description": "An array of objects that provide a stack trace through the script to show\nwhere the execution failed, with the deepest call first.",
+                    "items": {
+                        "$ref": "ScriptStackTraceElement"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Status": {
+            "description": "If a `run` call succeeds but the script function (or Apps Script itself) throws an exception, the response body's error field contains this `Status` object.",
+            "id": "Status",
+            "properties": {
+                "details": {
+                    "description": "An array that contains a single ExecutionError object that provides information about the nature of the error.",
+                    "items": {
+                        "additionalProperties": {
+                            "description": "Properties of the object. Contains field @type with type URL.",
+                            "type": "any"
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "code": {
+                    "description": "The status code. For this API, this value either: <ul> <li> 3, indicating an `INVALID_ARGUMENT` error, or</li> <li> 1, indicating a `CANCELLED` execution.</li> </ul>",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "message": {
+                    "description": "A developer-facing error message, which is in English. Any user-facing error message is localized and sent in the [google.rpc.Status.details](google.rpc.Status.details) field, or localized by the client.",
                     "type": "string"
                 }
             },

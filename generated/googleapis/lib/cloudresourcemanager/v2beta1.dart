@@ -281,11 +281,6 @@ class FoldersResourceApi {
   ///
   /// Request parameters:
   ///
-  /// [pageToken] - A pagination token returned from a previous call to
-  /// `ListFolders`
-  /// that indicates where this listing should continue from.
-  /// This field is optional.
-  ///
   /// [pageSize] - The maximum number of Folders to return in the response.
   /// This field is optional.
   ///
@@ -300,6 +295,11 @@ class FoldersResourceApi {
   /// should
   /// be returned.
   ///
+  /// [pageToken] - A pagination token returned from a previous call to
+  /// `ListFolders`
+  /// that indicates where this listing should continue from.
+  /// This field is optional.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -311,10 +311,10 @@ class FoldersResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListFoldersResponse> list(
-      {core.String pageToken,
-      core.int pageSize,
+      {core.int pageSize,
       core.String parent,
       core.bool showDeleted,
+      core.String pageToken,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -323,9 +323,6 @@ class FoldersResourceApi {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     var _body = null;
 
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
     }
@@ -334,6 +331,9 @@ class FoldersResourceApi {
     }
     if (showDeleted != null) {
       _queryParams["showDeleted"] = ["${showDeleted}"];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

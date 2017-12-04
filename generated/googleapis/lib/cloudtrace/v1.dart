@@ -204,13 +204,13 @@ class ProjectsTracesResourceApi {
   /// data was
   /// collected from the application.
   ///
-  /// [startTime] - Start of the time interval (inclusive) during which the
-  /// trace data was
-  /// collected from the application.
-  ///
   /// [pageToken] - Token identifying the page of results to return. If
   /// provided, use the
   /// value of the `next_page_token` field from a previous request. Optional.
+  ///
+  /// [startTime] - Start of the time interval (inclusive) during which the
+  /// trace data was
+  /// collected from the application.
   ///
   /// [pageSize] - Maximum number of traces to return. If not specified or <= 0,
   /// the
@@ -253,8 +253,8 @@ class ProjectsTracesResourceApi {
   async.Future<ListTracesResponse> list(core.String projectId,
       {core.String filter,
       core.String endTime,
-      core.String startTime,
       core.String pageToken,
+      core.String startTime,
       core.int pageSize,
       core.String view,
       core.String orderBy,
@@ -275,11 +275,11 @@ class ProjectsTracesResourceApi {
     if (endTime != null) {
       _queryParams["endTime"] = [endTime];
     }
-    if (startTime != null) {
-      _queryParams["startTime"] = [startTime];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
+    }
+    if (startTime != null) {
+      _queryParams["startTime"] = [startTime];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];

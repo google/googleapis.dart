@@ -2263,26 +2263,20 @@ class OrderShipment {
   /// Acceptable values are:
   /// - "gsx"
   /// - "ups"
-  /// - "united parcel service"
   /// - "usps"
-  /// - "united states postal service"
   /// - "fedex"
   /// - "dhl"
   /// - "ecourier"
   /// - "cxt"
   /// - "google"
-  /// - "on trac"
   /// - "ontrac"
-  /// - "on-trac"
-  /// - "on_trac"
-  /// - "delvic"
+  /// - "emsy"
+  /// - "ont"
+  /// - "deliv"
   /// - "dynamex"
   /// - "lasership"
-  /// - "smartpost"
-  /// - "fedex smartpost"
   /// - "mpx"
   /// - "uds"
-  /// - "united delivery service"
   core.String carrier;
 
   /// Date on which the shipment has been created, in ISO 8601 format.
@@ -2365,6 +2359,10 @@ class OrderShipmentLineItemShipment {
   /// required.
   core.String lineItemId;
 
+  /// The ID of the product to ship. This is the REST ID used in the products
+  /// service. Either lineItemId or productId is required.
+  core.String productId;
+
   /// The quantity that is shipped.
   core.int quantity;
 
@@ -2373,6 +2371,9 @@ class OrderShipmentLineItemShipment {
   OrderShipmentLineItemShipment.fromJson(core.Map _json) {
     if (_json.containsKey("lineItemId")) {
       lineItemId = _json["lineItemId"];
+    }
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
     }
     if (_json.containsKey("quantity")) {
       quantity = _json["quantity"];
@@ -2384,6 +2385,9 @@ class OrderShipmentLineItemShipment {
         new core.Map<core.String, core.Object>();
     if (lineItemId != null) {
       _json["lineItemId"] = lineItemId;
+    }
+    if (productId != null) {
+      _json["productId"] = productId;
     }
     if (quantity != null) {
       _json["quantity"] = quantity;
@@ -2475,12 +2479,24 @@ class OrdersCancelLineItemRequest {
   /// The amount must not be larger than the net amount left on the order.
   Price amount;
 
+  /// Amount to refund for the cancelation. Optional. If not set, Google will
+  /// calculate the default based on the price and tax of the items involved.
+  /// The amount must not be larger than the net amount left on the order.
+  Price amountPretax;
+
+  /// Tax amount that correspond to cancellation amount in amountPretax.
+  Price amountTax;
+
   /// The ID of the line item to cancel. Either lineItemId or productId is
   /// required.
   core.String lineItemId;
 
   /// The ID of the operation. Unique across all operations for a given order.
   core.String operationId;
+
+  /// The ID of the product to cancel. This is the REST ID used in the products
+  /// service. Either lineItemId or productId is required.
+  core.String productId;
 
   /// The quantity to cancel.
   core.int quantity;
@@ -2497,11 +2513,20 @@ class OrdersCancelLineItemRequest {
     if (_json.containsKey("amount")) {
       amount = new Price.fromJson(_json["amount"]);
     }
+    if (_json.containsKey("amountPretax")) {
+      amountPretax = new Price.fromJson(_json["amountPretax"]);
+    }
+    if (_json.containsKey("amountTax")) {
+      amountTax = new Price.fromJson(_json["amountTax"]);
+    }
     if (_json.containsKey("lineItemId")) {
       lineItemId = _json["lineItemId"];
     }
     if (_json.containsKey("operationId")) {
       operationId = _json["operationId"];
+    }
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
     }
     if (_json.containsKey("quantity")) {
       quantity = _json["quantity"];
@@ -2520,11 +2545,20 @@ class OrdersCancelLineItemRequest {
     if (amount != null) {
       _json["amount"] = (amount).toJson();
     }
+    if (amountPretax != null) {
+      _json["amountPretax"] = (amountPretax).toJson();
+    }
+    if (amountTax != null) {
+      _json["amountTax"] = (amountTax).toJson();
+    }
     if (lineItemId != null) {
       _json["lineItemId"] = lineItemId;
     }
     if (operationId != null) {
       _json["operationId"] = operationId;
+    }
+    if (productId != null) {
+      _json["productId"] = productId;
     }
     if (quantity != null) {
       _json["quantity"] = quantity;
@@ -2898,9 +2932,21 @@ class OrdersCustomBatchRequestEntryCancelLineItem {
   /// The amount must not be larger than the net amount left on the order.
   Price amount;
 
+  /// Amount to refund for the cancelation. Optional. If not set, Google will
+  /// calculate the default based on the price and tax of the items involved.
+  /// The amount must not be larger than the net amount left on the order.
+  Price amountPretax;
+
+  /// Tax amount that correspond to cancellation amount in amountPretax.
+  Price amountTax;
+
   /// The ID of the line item to cancel. Either lineItemId or productId is
   /// required.
   core.String lineItemId;
+
+  /// The ID of the product to cancel. This is the REST ID used in the products
+  /// service. Either lineItemId or productId is required.
+  core.String productId;
 
   /// The quantity to cancel.
   core.int quantity;
@@ -2917,8 +2963,17 @@ class OrdersCustomBatchRequestEntryCancelLineItem {
     if (_json.containsKey("amount")) {
       amount = new Price.fromJson(_json["amount"]);
     }
+    if (_json.containsKey("amountPretax")) {
+      amountPretax = new Price.fromJson(_json["amountPretax"]);
+    }
+    if (_json.containsKey("amountTax")) {
+      amountTax = new Price.fromJson(_json["amountTax"]);
+    }
     if (_json.containsKey("lineItemId")) {
       lineItemId = _json["lineItemId"];
+    }
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
     }
     if (_json.containsKey("quantity")) {
       quantity = _json["quantity"];
@@ -2937,8 +2992,17 @@ class OrdersCustomBatchRequestEntryCancelLineItem {
     if (amount != null) {
       _json["amount"] = (amount).toJson();
     }
+    if (amountPretax != null) {
+      _json["amountPretax"] = (amountPretax).toJson();
+    }
+    if (amountTax != null) {
+      _json["amountTax"] = (amountTax).toJson();
+    }
     if (lineItemId != null) {
       _json["lineItemId"] = lineItemId;
+    }
+    if (productId != null) {
+      _json["productId"] = productId;
     }
     if (quantity != null) {
       _json["quantity"] = quantity;
@@ -2957,6 +3021,13 @@ class OrdersCustomBatchRequestEntryRefund {
   /// The amount that is refunded.
   Price amount;
 
+  /// The amount that is refunded. Either amount or amountPretax and amountTax
+  /// should be filled.
+  Price amountPretax;
+
+  /// Tax amount that correspond to refund amount in amountPretax.
+  Price amountTax;
+
   /// The reason for the refund.
   core.String reason;
 
@@ -2968,6 +3039,12 @@ class OrdersCustomBatchRequestEntryRefund {
   OrdersCustomBatchRequestEntryRefund.fromJson(core.Map _json) {
     if (_json.containsKey("amount")) {
       amount = new Price.fromJson(_json["amount"]);
+    }
+    if (_json.containsKey("amountPretax")) {
+      amountPretax = new Price.fromJson(_json["amountPretax"]);
+    }
+    if (_json.containsKey("amountTax")) {
+      amountTax = new Price.fromJson(_json["amountTax"]);
     }
     if (_json.containsKey("reason")) {
       reason = _json["reason"];
@@ -2982,6 +3059,12 @@ class OrdersCustomBatchRequestEntryRefund {
         new core.Map<core.String, core.Object>();
     if (amount != null) {
       _json["amount"] = (amount).toJson();
+    }
+    if (amountPretax != null) {
+      _json["amountPretax"] = (amountPretax).toJson();
+    }
+    if (amountTax != null) {
+      _json["amountTax"] = (amountTax).toJson();
     }
     if (reason != null) {
       _json["reason"] = reason;
@@ -2998,6 +3081,10 @@ class OrdersCustomBatchRequestEntryReturnLineItem {
   /// required.
   core.String lineItemId;
 
+  /// The ID of the product to return. This is the REST ID used in the products
+  /// service. Either lineItemId or productId is required.
+  core.String productId;
+
   /// The quantity to return.
   core.int quantity;
 
@@ -3012,6 +3099,9 @@ class OrdersCustomBatchRequestEntryReturnLineItem {
   OrdersCustomBatchRequestEntryReturnLineItem.fromJson(core.Map _json) {
     if (_json.containsKey("lineItemId")) {
       lineItemId = _json["lineItemId"];
+    }
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
     }
     if (_json.containsKey("quantity")) {
       quantity = _json["quantity"];
@@ -3029,6 +3119,9 @@ class OrdersCustomBatchRequestEntryReturnLineItem {
         new core.Map<core.String, core.Object>();
     if (lineItemId != null) {
       _json["lineItemId"] = lineItemId;
+    }
+    if (productId != null) {
+      _json["productId"] = productId;
     }
     if (quantity != null) {
       _json["quantity"] = quantity;
@@ -3409,6 +3502,13 @@ class OrdersRefundRequest {
   /// The amount that is refunded.
   Price amount;
 
+  /// The amount that is refunded. Either amount or amountPretax and amountTax
+  /// should be filled.
+  Price amountPretax;
+
+  /// Tax amount that correspond to refund amount in amountPretax.
+  Price amountTax;
+
   /// The ID of the operation. Unique across all operations for a given order.
   core.String operationId;
 
@@ -3423,6 +3523,12 @@ class OrdersRefundRequest {
   OrdersRefundRequest.fromJson(core.Map _json) {
     if (_json.containsKey("amount")) {
       amount = new Price.fromJson(_json["amount"]);
+    }
+    if (_json.containsKey("amountPretax")) {
+      amountPretax = new Price.fromJson(_json["amountPretax"]);
+    }
+    if (_json.containsKey("amountTax")) {
+      amountTax = new Price.fromJson(_json["amountTax"]);
     }
     if (_json.containsKey("operationId")) {
       operationId = _json["operationId"];
@@ -3440,6 +3546,12 @@ class OrdersRefundRequest {
         new core.Map<core.String, core.Object>();
     if (amount != null) {
       _json["amount"] = (amount).toJson();
+    }
+    if (amountPretax != null) {
+      _json["amountPretax"] = (amountPretax).toJson();
+    }
+    if (amountTax != null) {
+      _json["amountTax"] = (amountTax).toJson();
     }
     if (operationId != null) {
       _json["operationId"] = operationId;
@@ -3494,6 +3606,10 @@ class OrdersReturnLineItemRequest {
   /// The ID of the operation. Unique across all operations for a given order.
   core.String operationId;
 
+  /// The ID of the product to return. This is the REST ID used in the products
+  /// service. Either lineItemId or productId is required.
+  core.String productId;
+
   /// The quantity to return.
   core.int quantity;
 
@@ -3511,6 +3627,9 @@ class OrdersReturnLineItemRequest {
     }
     if (_json.containsKey("operationId")) {
       operationId = _json["operationId"];
+    }
+    if (_json.containsKey("productId")) {
+      productId = _json["productId"];
     }
     if (_json.containsKey("quantity")) {
       quantity = _json["quantity"];
@@ -3531,6 +3650,9 @@ class OrdersReturnLineItemRequest {
     }
     if (operationId != null) {
       _json["operationId"] = operationId;
+    }
+    if (productId != null) {
+      _json["productId"] = productId;
     }
     if (quantity != null) {
       _json["quantity"] = quantity;
@@ -3886,6 +4008,10 @@ class TestOrder {
   /// Line items that are ordered. At least one line item must be provided.
   core.List<TestOrderLineItem> lineItems;
 
+  /// Determines if test order must be pulled by merchant or pushed to merchant
+  /// via push integration.
+  core.String notificationMode;
+
   /// The details of the payment method.
   TestOrderPaymentMethod paymentMethod;
 
@@ -3918,6 +4044,9 @@ class TestOrder {
       lineItems = _json["lineItems"]
           .map((value) => new TestOrderLineItem.fromJson(value))
           .toList();
+    }
+    if (_json.containsKey("notificationMode")) {
+      notificationMode = _json["notificationMode"];
     }
     if (_json.containsKey("paymentMethod")) {
       paymentMethod =
@@ -3953,6 +4082,9 @@ class TestOrder {
     }
     if (lineItems != null) {
       _json["lineItems"] = lineItems.map((value) => (value).toJson()).toList();
+    }
+    if (notificationMode != null) {
+      _json["notificationMode"] = notificationMode;
     }
     if (paymentMethod != null) {
       _json["paymentMethod"] = (paymentMethod).toJson();

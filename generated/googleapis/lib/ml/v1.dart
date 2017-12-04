@@ -92,8 +92,9 @@ class ProjectsResourceApi {
   }
 
   /// Performs prediction on the data in the request.
-  ///
-  /// **** REMOVE FROM GENERATED DOCUMENTATION
+  /// Cloud ML Engine implements a custom `predict` verb on top of an HTTP POST
+  /// method. For details of the format, see the **guide to the
+  /// [predict request format](/ml-engine/docs/v1/predict-request)**.
   ///
   /// [request] - The metadata request object.
   ///
@@ -353,8 +354,6 @@ class ProjectsJobsResourceApi {
   /// [parent] - Required. The name of the project for which to list jobs.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - Optional. Specifies the subset of jobs to retrieve.
-  ///
   /// [pageToken] - Optional. A page token to request the next page of results.
   ///
   /// You get the token from the `next_page_token` field of the response from
@@ -367,6 +366,8 @@ class ProjectsJobsResourceApi {
   ///
   /// The default value is 20, and the maximum page size is 100.
   ///
+  /// [filter] - Optional. Specifies the subset of jobs to retrieve.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -378,9 +379,9 @@ class ProjectsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListJobsResponse> list(core.String parent,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -392,14 +393,14 @@ class ProjectsJobsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1266,8 +1267,6 @@ class ProjectsModelsVersionsResourceApi {
   /// [parent] - Required. The name of the model for which to list the version.
   /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
   ///
-  /// [filter] - Optional. Specifies the subset of versions to retrieve.
-  ///
   /// [pageToken] - Optional. A page token to request the next page of results.
   ///
   /// You get the token from the `next_page_token` field of the response from
@@ -1280,6 +1279,8 @@ class ProjectsModelsVersionsResourceApi {
   ///
   /// The default value is 20, and the maximum page size is 100.
   ///
+  /// [filter] - Optional. Specifies the subset of versions to retrieve.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1291,9 +1292,9 @@ class ProjectsModelsVersionsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleCloudMlV1ListVersionsResponse> list(core.String parent,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1305,14 +1306,14 @@ class ProjectsModelsVersionsResourceApi {
     if (parent == null) {
       throw new core.ArgumentError("Parameter parent is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1638,11 +1639,11 @@ class ProjectsOperationsResourceApi {
   /// [name] - The name of the operation's parent resource.
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [filter] - The standard list filter.
-  ///
   /// [pageToken] - The standard list page token.
   ///
   /// [pageSize] - The standard list page size.
+  ///
+  /// [filter] - The standard list filter.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1655,9 +1656,9 @@ class ProjectsOperationsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<GoogleLongrunningListOperationsResponse> list(core.String name,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1669,14 +1670,14 @@ class ProjectsOperationsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2481,7 +2482,11 @@ class GoogleCloudMlV1OperationMetadata {
   /// - "DELETE_MODEL" : An operation to delete an existing model.
   /// - "UPDATE_MODEL" : An operation to update an existing model.
   /// - "UPDATE_VERSION" : An operation to update an existing version.
+  /// - "UPDATE_CONFIG" : An operation to update project configuration.
   core.String operationType;
+
+  /// Contains the project number associated with the operation.
+  core.String projectNumber;
 
   /// The time operation processing started.
   core.String startTime;
@@ -2509,6 +2514,9 @@ class GoogleCloudMlV1OperationMetadata {
     }
     if (_json.containsKey("operationType")) {
       operationType = _json["operationType"];
+    }
+    if (_json.containsKey("projectNumber")) {
+      projectNumber = _json["projectNumber"];
     }
     if (_json.containsKey("startTime")) {
       startTime = _json["startTime"];
@@ -2538,6 +2546,9 @@ class GoogleCloudMlV1OperationMetadata {
     }
     if (operationType != null) {
       _json["operationType"] = operationType;
+    }
+    if (projectNumber != null) {
+      _json["projectNumber"] = projectNumber;
     }
     if (startTime != null) {
       _json["startTime"] = startTime;
@@ -2664,193 +2675,6 @@ class GoogleCloudMlV1ParameterSpec {
 }
 
 /// Request for predictions to be issued against a trained model.
-///
-/// The body of the request is a single JSON object with a single top-level
-/// field:
-///
-/// <dl>
-///   <dt>instances</dt>
-///   <dd>A JSON array containing values representing the instances to use for
-///       prediction.</dd>
-/// </dl>
-///
-/// The structure of each element of the instances list is determined by your
-/// model's input definition. Instances can include named inputs or can contain
-/// only unlabeled values.
-///
-/// Not all data includes named inputs. Some instances will be simple
-/// JSON values (boolean, number, or string). However, instances are often lists
-/// of simple values, or complex nested lists. Here are some examples of request
-/// bodies:
-///
-/// CSV data with each row encoded as a string value:
-/// <pre>
-/// {"instances": ["1.0,true,\\"x\\"", "-2.0,false,\\"y\\""]}
-/// </pre>
-/// Plain text:
-/// <pre>
-/// {"instances": ["the quick brown fox", "la bruja le dio"]}
-/// </pre>
-/// Sentences encoded as lists of words (vectors of strings):
-/// <pre>
-/// {
-///   "instances": [
-///     ["the","quick","brown"],
-///     ["la","bruja","le"],
-///     ...
-///   ]
-/// }
-/// </pre>
-/// Floating point scalar values:
-/// <pre>
-/// {"instances": [0.0, 1.1, 2.2]}
-/// </pre>
-/// Vectors of integers:
-/// <pre>
-/// {
-///   "instances": [
-///     [0, 1, 2],
-///     [3, 4, 5],
-///     ...
-///   ]
-/// }
-/// </pre>
-/// Tensors (in this case, two-dimensional tensors):
-/// <pre>
-/// {
-///   "instances": [
-///     [
-///       [0, 1, 2],
-///       [3, 4, 5]
-///     ],
-///     ...
-///   ]
-/// }
-/// </pre>
-/// Images can be represented different ways. In this encoding scheme the first
-/// two dimensions represent the rows and columns of the image, and the third
-/// contains lists (vectors) of the R, G, and B values for each pixel.
-/// <pre>
-/// {
-///   "instances": [
-///     [
-///       [
-///         [138, 30, 66],
-///         [130, 20, 56],
-///         ...
-///       ],
-///       [
-///         [126, 38, 61],
-///         [122, 24, 57],
-///         ...
-///       ],
-///       ...
-///     ],
-///     ...
-///   ]
-/// }
-/// </pre>
-/// JSON strings must be encoded as UTF-8. To send binary data, you must
-/// base64-encode the data and mark it as binary. To mark a JSON string
-/// as binary, replace it with a JSON object with a single attribute named
-/// `b64`:
-/// <pre>{"b64": "..."} </pre>
-/// For example:
-///
-/// Two Serialized tf.Examples (fake data, for illustrative purposes only):
-/// <pre>
-/// {"instances": [{"b64": "X5ad6u"}, {"b64": "IA9j4nx"}]}
-/// </pre>
-/// Two JPEG image byte strings (fake data, for illustrative purposes only):
-/// <pre>
-/// {"instances": [{"b64": "ASa8asdf"}, {"b64": "JLK7ljk3"}]}
-/// </pre>
-/// If your data includes named references, format each instance as a JSON
-/// object
-/// with the named references as the keys:
-///
-/// JSON input data to be preprocessed:
-/// <pre>
-/// {
-///   "instances": [
-///     {
-///       "a": 1.0,
-///       "b": true,
-///       "c": "x"
-///     },
-///     {
-///       "a": -2.0,
-///       "b": false,
-///       "c": "y"
-///     }
-///   ]
-/// }
-/// </pre>
-/// Some models have an underlying TensorFlow graph that accepts multiple input
-/// tensors. In this case, you should use the names of JSON name/value pairs to
-/// identify the input tensors, as shown in the following exmaples:
-///
-/// For a graph with input tensor aliases "tag" (string) and "image"
-/// (base64-encoded string):
-/// <pre>
-/// {
-///   "instances": [
-///     {
-///       "tag": "beach",
-///       "image": {"b64": "ASa8asdf"}
-///     },
-///     {
-///       "tag": "car",
-///       "image": {"b64": "JLK7ljk3"}
-///     }
-///   ]
-/// }
-/// </pre>
-/// For a graph with input tensor aliases "tag" (string) and "image"
-/// (3-dimensional array of 8-bit ints):
-/// <pre>
-/// {
-///   "instances": [
-///     {
-///       "tag": "beach",
-///       "image": [
-///         [
-///           [138, 30, 66],
-///           [130, 20, 56],
-///           ...
-///         ],
-///         [
-///           [126, 38, 61],
-///           [122, 24, 57],
-///           ...
-///         ],
-///         ...
-///       ]
-///     },
-///     {
-///       "tag": "car",
-///       "image": [
-///         [
-///           [255, 0, 102],
-///           [255, 0, 97],
-///           ...
-///         ],
-///         [
-///           [254, 1, 101],
-///           [254, 2, 93],
-///           ...
-///         ],
-///         ...
-///       ]
-///     },
-///     ...
-///   ]
-/// }
-/// </pre>
-/// If the call is successful, the response body will contain one prediction
-/// entry per instance in the request body. If prediction fails for any
-/// instance, the response body will contain no predictions and will contian
-/// a single error entry instead.
 class GoogleCloudMlV1PredictRequest {
   ///
   /// Required. The prediction request body.
@@ -2919,6 +2743,16 @@ class GoogleCloudMlV1PredictionInput {
   /// such as when the model is specified by uri.
   core.String runtimeVersion;
 
+  /// Optional. The name of the signature defined in the SavedModel to use for
+  /// this job. Please refer to
+  /// [SavedModel](https://tensorflow.github.io/serving/serving_basic.html)
+  /// for information about how to use signatures.
+  ///
+  /// Defaults to
+  /// [DEFAULT_SERVING_SIGNATURE_DEF_KEY](https://www.tensorflow.org/api_docs/python/tf/saved_model/signature_constants)
+  /// , which is "serving_default".
+  core.String signatureName;
+
   /// Use this field if you want to specify a Google Cloud Storage path for
   /// the model to use.
   core.String uri;
@@ -2957,6 +2791,9 @@ class GoogleCloudMlV1PredictionInput {
     if (_json.containsKey("runtimeVersion")) {
       runtimeVersion = _json["runtimeVersion"];
     }
+    if (_json.containsKey("signatureName")) {
+      signatureName = _json["signatureName"];
+    }
     if (_json.containsKey("uri")) {
       uri = _json["uri"];
     }
@@ -2991,6 +2828,9 @@ class GoogleCloudMlV1PredictionInput {
     }
     if (runtimeVersion != null) {
       _json["runtimeVersion"] = runtimeVersion;
+    }
+    if (signatureName != null) {
+      _json["signatureName"] = signatureName;
     }
     if (uri != null) {
       _json["uri"] = uri;
@@ -3176,6 +3016,10 @@ class GoogleCloudMlV1TrainingInput {
   /// Required. The Python module name to run after installing the packages.
   core.String pythonModule;
 
+  /// Optional. The version of Python used in training. If not set, the default
+  /// version is '2.7'.
+  core.String pythonVersion;
+
   /// Required. The Google Compute Engine region to run the training job in.
   core.String region;
 
@@ -3265,6 +3109,9 @@ class GoogleCloudMlV1TrainingInput {
     if (_json.containsKey("pythonModule")) {
       pythonModule = _json["pythonModule"];
     }
+    if (_json.containsKey("pythonVersion")) {
+      pythonVersion = _json["pythonVersion"];
+    }
     if (_json.containsKey("region")) {
       region = _json["region"];
     }
@@ -3308,6 +3155,9 @@ class GoogleCloudMlV1TrainingInput {
     }
     if (pythonModule != null) {
       _json["pythonModule"] = pythonModule;
+    }
+    if (pythonVersion != null) {
+      _json["pythonVersion"] = pythonVersion;
     }
     if (region != null) {
       _json["region"] = region;

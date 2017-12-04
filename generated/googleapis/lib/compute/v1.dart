@@ -7320,8 +7320,8 @@ class ImagesResourceApi {
     return _response.then((data) => new Operation.fromJson(data));
   }
 
-  /// Retrieves the list of private images available to the specified project.
-  /// Private images are images you create that belong to your project. This
+  /// Retrieves the list of custom images available to the specified project.
+  /// Custom images are images you create that belong to your project. This
   /// method does not get any images that belong to other projects, including
   /// publicly-available images, like Debian 8. If you want to get a list of
   /// publicly-available images, use this method to make a request to the
@@ -26101,7 +26101,8 @@ class Address {
   /// The static IP address represented by this resource.
   core.String address;
 
-  /// The type of address to reserve. If unspecified, defaults to EXTERNAL.
+  /// The type of address to reserve, either INTERNAL or EXTERNAL. If
+  /// unspecified, defaults to EXTERNAL.
   /// Possible string values are:
   /// - "EXTERNAL"
   /// - "INTERNAL"
@@ -27026,16 +27027,16 @@ class AttachedDiskInitializeParams {
   ///
   /// projects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD
   ///
-  /// To create a disk with a private image that you created, specify the image
+  /// To create a disk with a custom image that you created, specify the image
   /// name in the following format:
   ///
-  /// global/images/my-private-image
+  /// global/images/my-custom-image
   ///
-  /// You can also specify a private image by its image family, which returns
-  /// the latest version of the image in that family. Replace the image name
-  /// with family/family-name:
+  /// You can also specify a custom image by its image family, which returns the
+  /// latest version of the image in that family. Replace the image name with
+  /// family/family-name:
   ///
-  /// global/images/family/my-private-family
+  /// global/images/family/my-image-family
   ///
   /// If the source image is deleted later, this field will not be set.
   core.String sourceImage;
@@ -30354,16 +30355,16 @@ class Disk {
   ///
   /// projects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD
   ///
-  /// To create a disk with a private image that you created, specify the image
+  /// To create a disk with a custom image that you created, specify the image
   /// name in the following format:
   ///
-  /// global/images/my-private-image
+  /// global/images/my-custom-image
   ///
-  /// You can also specify a private image by its image family, which returns
-  /// the latest version of the image in that family. Replace the image name
-  /// with family/family-name:
+  /// You can also specify a custom image by its image family, which returns the
+  /// latest version of the image in that family. Replace the image name with
+  /// family/family-name:
   ///
-  /// global/images/family/my-private-family
+  /// global/images/family/my-image-family
   core.String sourceImage;
 
   /// The customer-supplied encryption key of the source image. Required if the
@@ -38407,14 +38408,14 @@ class InstancesStartWithEncryptionKeyRequest {
   }
 }
 
-/// Protocol definitions for Mixer API to support Interconnect. Next available
-/// tag: 25
+/// Represents an Interconnects resource. The Interconnects resource is a
+/// dedicated connection between Google's network and your on-premises network.
+/// For more information, see the  Dedicated overview page.
 class Interconnect {
-  /// Administrative status of the interconnect. When this is set to ?true?, the
-  /// Interconnect is functional and may carry traffic (assuming there are
-  /// functional InterconnectAttachments and other requirements are satisfied).
-  /// When set to ?false?, no packets will be carried over this Interconnect and
-  /// no BGP routes will be exchanged over it. By default, it is set to ?true?.
+  /// Administrative status of the interconnect. When this is set to true, the
+  /// Interconnect is functional and can carry traffic. When set to false, no
+  /// packets can be carried over the interconnect and no BGP routes are
+  /// exchanged over it. By default, the status is set to true.
   core.bool adminEnabled;
 
   /// [Output Only] List of CircuitInfo objects, that describe the individual
@@ -38451,7 +38452,8 @@ class Interconnect {
   /// to use this Interconnect.
   core.List<core.String> interconnectAttachments;
 
-  ///
+  /// Type of interconnect. Note that "IT_PRIVATE" has been deprecated in favor
+  /// of "DEDICATED"
   /// Possible string values are:
   /// - "DEDICATED"
   /// - "IT_PRIVATE"
@@ -38461,7 +38463,9 @@ class Interconnect {
   /// interconnects.
   core.String kind;
 
-  ///
+  /// Type of link requested. This field indicates speed of each of the links in
+  /// the bundle, not the entire bundle. Only 10G per link is allowed for a
+  /// dedicated interconnect. Options: Ethernet_10G_LR
   /// Possible string values are:
   /// - "LINK_TYPE_ETHERNET_10G_LR"
   core.String linkType;
@@ -38488,10 +38492,8 @@ class Interconnect {
   /// [Output Only] The current status of whether or not this Interconnect is
   /// functional.
   /// Possible string values are:
-  /// - "ACTIVE"
   /// - "OS_ACTIVE"
   /// - "OS_UNPROVISIONED"
-  /// - "UNPROVISIONED"
   core.String operationalStatus;
 
   /// [Output Only] IP address configured on the customer side of the
@@ -38653,8 +38655,8 @@ class Interconnect {
   }
 }
 
-/// Protocol definitions for Mixer API to support InterconnectAttachment. Next
-/// available tag: 23
+/// Represents an InterconnectAttachment (VLAN attachment) resource. For more
+/// information, see  Creating VLAN Attachments.
 class InterconnectAttachment {
   /// [Output Only] IPv4 address + prefix length to be configured on Cloud
   /// Router Interface for this interconnect attachment.
@@ -38667,8 +38669,7 @@ class InterconnectAttachment {
   /// customer router subinterface for this interconnect attachment.
   core.String customerRouterIpAddress;
 
-  /// An optional description of this resource. Provide this property when you
-  /// create the resource.
+  /// An optional description of this resource.
   core.String description;
 
   /// [Output Only] Google reference ID, to be used when raising support tickets
@@ -38699,15 +38700,13 @@ class InterconnectAttachment {
   /// [Output Only] The current status of whether or not this interconnect
   /// attachment is functional.
   /// Possible string values are:
-  /// - "ACTIVE"
   /// - "OS_ACTIVE"
   /// - "OS_UNPROVISIONED"
-  /// - "UNPROVISIONED"
   core.String operationalStatus;
 
-  /// [Output Only] Information specific to a Private InterconnectAttachment.
-  /// Only populated if the interconnect that this is attached is of type
-  /// IT_PRIVATE.
+  /// [Output Only] Information specific to an InterconnectAttachment. This
+  /// property is populated if the interconnect that this is attached to is of
+  /// type DEDICATED.
   InterconnectAttachmentPrivateInfo privateInterconnectInfo;
 
   /// [Output Only] URL of the region where the regional interconnect attachment
@@ -39194,8 +39193,8 @@ class InterconnectAttachmentList {
   }
 }
 
-/// Private information for an interconnect attachment when this belongs to an
-/// interconnect of type IT_PRIVATE.
+/// Information for an interconnect attachment when this belongs to an
+/// interconnect of type DEDICATED.
 class InterconnectAttachmentPrivateInfo {
   /// [Output Only] 802.1q encapsulation tag to be used for traffic between
   /// Google and the customer, going to and from this network and region.
@@ -39368,8 +39367,7 @@ class InterconnectAttachmentsScopedList {
 /// CircuitInfo objects are created by Google, so all fields are output only.
 /// Next id: 4
 class InterconnectCircuitInfo {
-  /// Customer-side demarc ID for this circuit. This will only be set if it was
-  /// provided by the Customer to Google during circuit turn-up.
+  /// Customer-side demarc ID for this circuit.
   core.String customerDemarcId;
 
   /// Google-assigned unique ID for this circuit. Assigned at circuit turn-up.
@@ -39591,24 +39589,25 @@ class InterconnectList {
   }
 }
 
-/// Protocol definitions for Mixer API to support InterconnectLocation.
+/// Represents an InterconnectLocations resource. The InterconnectLocations
+/// resource describes the locations where you can connect to Google's networks.
+/// For more information, see  Colocation Facilities.
 class InterconnectLocation {
   /// [Output Only] The postal address of the Point of Presence, each line in
   /// the address is separated by a newline character.
   core.String address;
 
-  /// Availability zone for this location. Within a city, maintenance will not
-  /// be simultaneously scheduled in more than one availability zone. Example:
-  /// "zone1" or "zone2".
+  /// [Output Only] Availability zone for this location. Within a metropolitan
+  /// area (metro), maintenance will not be simultaneously scheduled in more
+  /// than one availability zone. Example: "zone1" or "zone2".
   core.String availabilityZone;
 
-  /// City designator used by the Interconnect UI to locate this
-  /// InterconnectLocation within the Continent. For example: "Chicago, IL",
-  /// "Amsterdam, Netherlands".
+  /// [Output Only] Metropolitan area designator that indicates which city an
+  /// interconnect is located. For example: "Chicago, IL", "Amsterdam,
+  /// Netherlands".
   core.String city;
 
-  /// Continent for this location. Used by the location picker in the
-  /// Interconnect UI.
+  /// [Output Only] Continent for this location.
   /// Possible string values are:
   /// - "AFRICA"
   /// - "ASIA_PAC"
@@ -39995,11 +39994,14 @@ class InterconnectOutageNotification {
   /// that will be affected.
   core.List<core.String> affectedCircuits;
 
-  /// Short user-visible description of the purpose of the outage.
+  /// A description about the purpose of the outage.
   core.String description;
+
+  /// Scheduled end time for the outage (milliseconds since Unix epoch).
   core.String endTime;
 
-  ///
+  /// Form this outage is expected to take. Note that the "IT_" versions of this
+  /// enum have been deprecated in favor of the unprefixed values.
   /// Possible string values are:
   /// - "IT_OUTAGE"
   /// - "IT_PARTIAL_OUTAGE"
@@ -40010,17 +40012,18 @@ class InterconnectOutageNotification {
   /// Unique identifier for this outage notification.
   core.String name;
 
-  ///
+  /// The party that generated this notification. Note that "NSRC_GOOGLE" has
+  /// been deprecated in favor of "GOOGLE"
   /// Possible string values are:
   /// - "GOOGLE"
   /// - "NSRC_GOOGLE"
   core.String source;
 
-  /// Scheduled start and end times for the outage (milliseconds since Unix
-  /// epoch).
+  /// Scheduled start time for the outage (milliseconds since Unix epoch).
   core.String startTime;
 
-  ///
+  /// State of this notification. Note that the "NS_" versions of this enum have
+  /// been deprecated in favor of the unprefixed values.
   /// Possible string values are:
   /// - "ACTIVE"
   /// - "CANCELLED"
@@ -43071,6 +43074,7 @@ class Quota {
   /// - "INSTANCE_GROUP_MANAGERS"
   /// - "INSTANCE_TEMPLATES"
   /// - "INTERCONNECTS"
+  /// - "INTERNAL_ADDRESSES"
   /// - "IN_USE_ADDRESSES"
   /// - "LOCAL_SSD_TOTAL_GB"
   /// - "NETWORKS"
@@ -43078,6 +43082,8 @@ class Quota {
   /// - "NVIDIA_P100_GPUS"
   /// - "PREEMPTIBLE_CPUS"
   /// - "PREEMPTIBLE_LOCAL_SSD_GB"
+  /// - "PREEMPTIBLE_NVIDIA_K80_GPUS"
+  /// - "PREEMPTIBLE_NVIDIA_P100_GPUS"
   /// - "REGIONAL_AUTOSCALERS"
   /// - "REGIONAL_INSTANCE_GROUP_MANAGERS"
   /// - "ROUTERS"

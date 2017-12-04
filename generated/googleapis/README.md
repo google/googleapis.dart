@@ -542,6 +542,12 @@ Obtains end-user authorization grants for use with other Google APIs.
 
 Official API documentation: https://developers.google.com/accounts/docs/OAuth2
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Cloud OS Login API - oslogin v1
+
+Manages OS login configuration for Google account users.
+
+Official API documentation: https://cloud.google.com/compute/docs/oslogin/rest/
+
 #### ![Logo](https://www.google.com/images/icons/product/pagespeed-16.png) PageSpeed Insights API - pagespeedonline v1
 
 Analyzes the performance of a web page and provides tailored suggestions to make that page faster.
@@ -583,6 +589,13 @@ Official API documentation: https://developers.google.com/+/api/
 Builds on top of the Google+ platform for Google Apps Domains.
 
 Official API documentation: https://developers.google.com/+/domains/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Poly API - poly v1
+
+The Poly API provides read-only access to assets hosted on <a href="https://poly.google.com">poly.google.com</a>.
+
+
+Official API documentation: https://devsite.googleplex.com/poly/
 
 #### ![Logo](https://www.google.com/images/icons/feature/predictionapi-16.png) Prediction API - prediction v1.6
 
@@ -626,6 +639,12 @@ Official API documentation: https://developers.google.com/apps-script/execution/
 Provides tools for running validation tests against single URLs
 
 Official API documentation: https://developers.google.com/webmaster-tools/search-console-api/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Service Consumer Management API - serviceconsumermanagement v1
+
+Provides management methods for configuring service producer resources on Google Cloud.
+
+Official API documentation: https://cloud.google.com/service-consumer-management/docs/overview
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Google Service Control API - servicecontrol v1
 

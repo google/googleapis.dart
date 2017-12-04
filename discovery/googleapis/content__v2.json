@@ -15,7 +15,7 @@
     "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
     "discoveryVersion": "v1",
     "documentationLink": "https://developers.google.com/shopping-content",
-    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/TgNfPYqOhCTXLdaKdCegKtHEoEA\"",
+    "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/oXnvbTGBTx6tn_o_vg2UhQHX08E\"",
     "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -103,7 +103,7 @@
                             "type": "string"
                         },
                         "merchantId": {
-                            "description": "The ID of the managing account. If this account is not a multi-client account, then this parameter must be the same as accountId.",
+                            "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.",
                             "format": "uint64",
                             "location": "path",
                             "required": true,
@@ -173,7 +173,7 @@
                             "type": "boolean"
                         },
                         "merchantId": {
-                            "description": "The ID of the managing account. This must be a multi-client account.",
+                            "description": "The ID of the managing account. This must be a multi-client account, and accountId must be the ID of a sub-account of this account.",
                             "format": "uint64",
                             "location": "path",
                             "required": true,
@@ -202,7 +202,7 @@
                             "type": "string"
                         },
                         "merchantId": {
-                            "description": "The ID of the managing account. If this account is not a multi-client account, then this parameter must be the same as accountId.",
+                            "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.",
                             "format": "uint64",
                             "location": "path",
                             "required": true,
@@ -306,7 +306,7 @@
                             "type": "boolean"
                         },
                         "merchantId": {
-                            "description": "The ID of the managing account. If this account is not a multi-client account, then this parameter must be the same as accountId.",
+                            "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.",
                             "format": "uint64",
                             "location": "path",
                             "required": true,
@@ -346,7 +346,7 @@
                             "type": "boolean"
                         },
                         "merchantId": {
-                            "description": "The ID of the managing account. If this account is not a multi-client account, then this parameter must be the same as accountId.",
+                            "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.",
                             "format": "uint64",
                             "location": "path",
                             "required": true,
@@ -399,7 +399,7 @@
                             "type": "string"
                         },
                         "merchantId": {
-                            "description": "The ID of the managing account. If this account is not a multi-client account, then this parameter must be the same as accountId.",
+                            "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.",
                             "format": "uint64",
                             "location": "path",
                             "required": true,
@@ -492,7 +492,7 @@
                             "type": "string"
                         },
                         "merchantId": {
-                            "description": "The ID of the managing account. If this account is not a multi-client account, then this parameter must be the same as accountId.",
+                            "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.",
                             "format": "uint64",
                             "location": "path",
                             "required": true,
@@ -564,7 +564,7 @@
                             "type": "boolean"
                         },
                         "merchantId": {
-                            "description": "The ID of the managing account. If this account is not a multi-client account, then this parameter must be the same as accountId.",
+                            "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.",
                             "format": "uint64",
                             "location": "path",
                             "required": true,
@@ -604,7 +604,7 @@
                             "type": "boolean"
                         },
                         "merchantId": {
-                            "description": "The ID of the managing account. If this account is not a multi-client account, then this parameter must be the same as accountId.",
+                            "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.",
                             "format": "uint64",
                             "location": "path",
                             "required": true,
@@ -1888,7 +1888,7 @@
                             "type": "string"
                         },
                         "merchantId": {
-                            "description": "The ID of the managing account. If this account is not a multi-client account, then this parameter must be the same as accountId.",
+                            "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.",
                             "format": "uint64",
                             "location": "path",
                             "required": true,
@@ -1984,7 +1984,7 @@
                             "type": "boolean"
                         },
                         "merchantId": {
-                            "description": "The ID of the managing account. If this account is not a multi-client account, then this parameter must be the same as accountId.",
+                            "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.",
                             "format": "uint64",
                             "location": "path",
                             "required": true,
@@ -2024,7 +2024,7 @@
                             "type": "boolean"
                         },
                         "merchantId": {
-                            "description": "The ID of the managing account. If this account is not a multi-client account, then this parameter must be the same as accountId.",
+                            "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.",
                             "format": "uint64",
                             "location": "path",
                             "required": true,
@@ -2045,7 +2045,7 @@
             }
         }
     },
-    "revision": "20171102",
+    "revision": "20171124",
     "rootUrl": "https://www.googleapis.com/",
     "schemas": {
         "Account": {
@@ -2062,6 +2062,10 @@
                         "$ref": "AccountAdwordsLink"
                     },
                     "type": "array"
+                },
+                "googleMyBusinessLink": {
+                    "$ref": "AccountGoogleMyBusinessLink",
+                    "description": "The GMB account which is linked or in the process of being linked with the Merchant Center accounnt."
                 },
                 "id": {
                     "annotations": {
@@ -2127,6 +2131,20 @@
                 },
                 "status": {
                     "description": "Status of the link between this Merchant Center account and the AdWords account. Upon retrieval, it represents the actual status of the link and can be either active if it was approved in Google AdWords or pending if it's pending approval. Upon insertion, it represents the intended status of the link. Re-uploading a link with status active when it's still pending or with status pending when it's already active will have no effect: the status will remain unchanged. Re-uploading a link with deprecated status inactive is equivalent to not submitting the link at all and will delete the link if it was active or cancel the link request if it was pending.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AccountGoogleMyBusinessLink": {
+            "id": "AccountGoogleMyBusinessLink",
+            "properties": {
+                "gmbEmail": {
+                    "description": "The GMB email address.",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "Status of the link between this Merchant Center account and the GMB account.",
                     "type": "string"
                 }
             },
@@ -4226,7 +4244,7 @@
             "id": "OrderShipment",
             "properties": {
                 "carrier": {
-                    "description": "The carrier handling the shipment.\n\nAcceptable values are:  \n- \"gsx\" \n- \"ups\" \n- \"united parcel service\" \n- \"usps\" \n- \"united states postal service\" \n- \"fedex\" \n- \"dhl\" \n- \"ecourier\" \n- \"cxt\" \n- \"google\" \n- \"on trac\" \n- \"ontrac\" \n- \"on-trac\" \n- \"on_trac\" \n- \"delvic\" \n- \"dynamex\" \n- \"lasership\" \n- \"smartpost\" \n- \"fedex smartpost\" \n- \"mpx\" \n- \"uds\" \n- \"united delivery service\"",
+                    "description": "The carrier handling the shipment.\n\nAcceptable values are:  \n- \"gsx\" \n- \"ups\" \n- \"usps\" \n- \"fedex\" \n- \"dhl\" \n- \"ecourier\" \n- \"cxt\" \n- \"google\" \n- \"ontrac\" \n- \"emsy\" \n- \"ont\" \n- \"deliv\" \n- \"dynamex\" \n- \"lasership\" \n- \"mpx\" \n- \"uds\"",
                     "type": "string"
                 },
                 "creationDate": {
@@ -4264,6 +4282,10 @@
             "properties": {
                 "lineItemId": {
                     "description": "The id of the line item that is shipped. Either lineItemId or productId is required.",
+                    "type": "string"
+                },
+                "productId": {
+                    "description": "The ID of the product to ship. This is the REST ID used in the products service. Either lineItemId or productId is required.",
                     "type": "string"
                 },
                 "quantity": {
@@ -4317,12 +4339,24 @@
                     "$ref": "Price",
                     "description": "Amount to refund for the cancelation. Optional. If not set, Google will calculate the default based on the price and tax of the items involved. The amount must not be larger than the net amount left on the order."
                 },
+                "amountPretax": {
+                    "$ref": "Price",
+                    "description": "Amount to refund for the cancelation. Optional. If not set, Google will calculate the default based on the price and tax of the items involved. The amount must not be larger than the net amount left on the order."
+                },
+                "amountTax": {
+                    "$ref": "Price",
+                    "description": "Tax amount that correspond to cancellation amount in amountPretax."
+                },
                 "lineItemId": {
                     "description": "The ID of the line item to cancel. Either lineItemId or productId is required.",
                     "type": "string"
                 },
                 "operationId": {
                     "description": "The ID of the operation. Unique across all operations for a given order.",
+                    "type": "string"
+                },
+                "productId": {
+                    "description": "The ID of the product to cancel. This is the REST ID used in the products service. Either lineItemId or productId is required.",
                     "type": "string"
                 },
                 "quantity": {
@@ -4508,8 +4542,20 @@
                     "$ref": "Price",
                     "description": "Amount to refund for the cancelation. Optional. If not set, Google will calculate the default based on the price and tax of the items involved. The amount must not be larger than the net amount left on the order."
                 },
+                "amountPretax": {
+                    "$ref": "Price",
+                    "description": "Amount to refund for the cancelation. Optional. If not set, Google will calculate the default based on the price and tax of the items involved. The amount must not be larger than the net amount left on the order."
+                },
+                "amountTax": {
+                    "$ref": "Price",
+                    "description": "Tax amount that correspond to cancellation amount in amountPretax."
+                },
                 "lineItemId": {
                     "description": "The ID of the line item to cancel. Either lineItemId or productId is required.",
+                    "type": "string"
+                },
+                "productId": {
+                    "description": "The ID of the product to cancel. This is the REST ID used in the products service. Either lineItemId or productId is required.",
                     "type": "string"
                 },
                 "quantity": {
@@ -4535,6 +4581,14 @@
                     "$ref": "Price",
                     "description": "The amount that is refunded."
                 },
+                "amountPretax": {
+                    "$ref": "Price",
+                    "description": "The amount that is refunded. Either amount or amountPretax and amountTax should be filled."
+                },
+                "amountTax": {
+                    "$ref": "Price",
+                    "description": "Tax amount that correspond to refund amount in amountPretax."
+                },
                 "reason": {
                     "description": "The reason for the refund.",
                     "type": "string"
@@ -4551,6 +4605,10 @@
             "properties": {
                 "lineItemId": {
                     "description": "The ID of the line item to return. Either lineItemId or productId is required.",
+                    "type": "string"
+                },
+                "productId": {
+                    "description": "The ID of the product to return. This is the REST ID used in the products service. Either lineItemId or productId is required.",
                     "type": "string"
                 },
                 "quantity": {
@@ -4750,6 +4808,14 @@
                     "$ref": "Price",
                     "description": "The amount that is refunded."
                 },
+                "amountPretax": {
+                    "$ref": "Price",
+                    "description": "The amount that is refunded. Either amount or amountPretax and amountTax should be filled."
+                },
+                "amountTax": {
+                    "$ref": "Price",
+                    "description": "Tax amount that correspond to refund amount in amountPretax."
+                },
                 "operationId": {
                     "description": "The ID of the operation. Unique across all operations for a given order.",
                     "type": "string"
@@ -4789,6 +4855,10 @@
                 },
                 "operationId": {
                     "description": "The ID of the operation. Unique across all operations for a given order.",
+                    "type": "string"
+                },
+                "productId": {
+                    "description": "The ID of the product to return. This is the REST ID used in the products service. Either lineItemId or productId is required.",
                     "type": "string"
                 },
                 "quantity": {
@@ -6168,6 +6238,10 @@
                         "$ref": "TestOrderLineItem"
                     },
                     "type": "array"
+                },
+                "notificationMode": {
+                    "description": "Determines if test order must be pulled by merchant or pushed to merchant via push integration.",
+                    "type": "string"
                 },
                 "paymentMethod": {
                     "$ref": "TestOrderPaymentMethod",

@@ -1,6 +1,6 @@
 packages:
 - googleapis:
-    version: 0.47.0
+    version: 0.47.1
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -85,6 +85,7 @@ packages:
     - ml:v1 # https://cloud.google.com/ml-engine/
     - monitoring:v3  # https://cloud.google.com/monitoring/api/
     - oauth2:v2  # https://developers.google.com/accounts/docs/OAuth2UserAgent
+    - oslogin:v1  # https://cloud.google.com/compute/docs/oslogin/rest/
     - pagespeedonline:v1  # https://developers.google.com/speed/docs/insights/about
     - pagespeedonline:v2  # https://developers.google.com/speed/docs/insights/about
     - partners:v2  # https://developers.google.com/partners/
@@ -92,6 +93,7 @@ packages:
     - playcustomapp:v1  # https://developers.google.com/android/work/play/custom-app-api
     - plusDomains:v1  # https://developers.google.com/+/domains/
     - plus:v1  # https://developers.google.com/+/api/
+    - poly:v1  # https://devsite.googleplex.com/poly/
     - prediction:v1.6  # https://developers.google.com/prediction/
     - pubsub:v1  # https://cloud.google.com/pubsub/
     - reseller:v1  # https://developers.google.com/admin-sdk/reseller/
@@ -101,6 +103,7 @@ packages:
     - searchconsole:v1  # https://developers.google.com/webmaster-tools/search-console-api/
     - servicecontrol:v1  # https://cloud.google.com/service-control/
     - servicemanagement:v1  # https://cloud.google.com/service-management/
+    - serviceconsumermanagement:v1  # https://cloud.google.com/service-consumer-management/docs/overview
     - serviceuser:v1  # https://cloud.google.com/service-user/
     - sheets:v4  # https://developers.google.com/sheets/reference/rest/
     - siteVerification:v1  # https://developers.google.com/site-verification/
@@ -127,7 +130,7 @@ packages:
     - youtube:v3  # https://developers.google.com/youtube/
 
 - googleapis_beta:
-    version: 0.41.0
+    version: 0.42.0
     author: Dart Team <misc@dartlang.org>
     homepage: http://www.dartlang.org/googleapis/
     readme: resources/README.md
@@ -142,6 +145,7 @@ packages:
     - cloudresourcemanager:v1beta1  # https://cloud.google.com/resource-manager
     - cloudtasks:v2beta2  # https://cloud.google.com/cloud-tasks/
     - clouduseraccounts:beta # https://cloud.google.com/compute/docs/access/user-accounts/api/latest/
+    - dialogflow:v2beta1  # https://cloud.google.com/dialogflow-enterprise/
     - dataflow:v1b3  # https://cloud.google.com/dataflow/
     - dlp:v2beta1 # https://cloud.google.com/dlp/
     - dns:v2beta1  # https://cloud.google.com/dns/docs/
@@ -162,6 +166,7 @@ packages:
     - sqladmin:v1beta3  # https://developers.google.com/cloud-sql/docs/admin-api/
     - sqladmin:v1beta4  # https://developers.google.com/cloud-sql/docs/admin-api/
     - taskqueue:v1beta2  # https://developers.google.com/appengine/docs/python/taskqueue/rest/libraries
+    - tpu:v1alpha1  # https://cloud.google.com/tpu/
     - toolresults:v1beta3  # https://developers.google.com/cloud-test-lab/
     - videointelligence:v1beta1  # https://cloud.google.com/video-intelligence/
 

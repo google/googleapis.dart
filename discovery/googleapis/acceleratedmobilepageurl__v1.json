@@ -15,6 +15,34 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
+            "location": "query",
+            "type": "string"
+        },
+        "$.xgafv": {
+            "description": "V1 error format.",
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
         "alt": {
             "default": "json",
             "description": "Data format for response.",
@@ -72,34 +100,6 @@
             "description": "Returns response with indentations and line breaks.",
             "location": "query",
             "type": "boolean"
-        },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
-            "location": "query",
-            "type": "string"
-        },
-        "$.xgafv": {
-            "description": "V1 error format.",
-            "enum": [
-                "1",
-                "2"
-            ],
-            "enumDescriptions": [
-                "v1 error format",
-                "v2 error format"
-            ],
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
-            "location": "query",
-            "type": "string"
         }
     },
     "protocol": "rest",
@@ -126,6 +126,27 @@
     "revision": "20171025",
     "rootUrl": "https://acceleratedmobilepageurl.googleapis.com/",
     "schemas": {
+        "BatchGetAmpUrlsResponse": {
+            "description": "Batch AMP URL response.",
+            "id": "BatchGetAmpUrlsResponse",
+            "properties": {
+                "ampUrls": {
+                    "description": "For each URL in BatchAmpUrlsRequest, the URL response. The response might\nnot be in the same order as URLs in the batch request.\nIf BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated\nonly once.",
+                    "items": {
+                        "$ref": "AmpUrl"
+                    },
+                    "type": "array"
+                },
+                "urlErrors": {
+                    "description": "The errors for requested URLs that have no AMP URL.",
+                    "items": {
+                        "$ref": "AmpUrlError"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "AmpUrl": {
             "description": "AMP URL response for a requested URL.",
             "id": "AmpUrl",
@@ -200,27 +221,6 @@
                     "description": "List of URLs to look up for the paired AMP URLs.\nThe URLs are case-sensitive. Up to 50 URLs per lookup\n(see [Usage Limits](/amp/cache/reference/limits)).",
                     "items": {
                         "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "BatchGetAmpUrlsResponse": {
-            "description": "Batch AMP URL response.",
-            "id": "BatchGetAmpUrlsResponse",
-            "properties": {
-                "ampUrls": {
-                    "description": "For each URL in BatchAmpUrlsRequest, the URL response. The response might\nnot be in the same order as URLs in the batch request.\nIf BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated\nonly once.",
-                    "items": {
-                        "$ref": "AmpUrl"
-                    },
-                    "type": "array"
-                },
-                "urlErrors": {
-                    "description": "The errors for requested URLs that have no AMP URL.",
-                    "items": {
-                        "$ref": "AmpUrlError"
                     },
                     "type": "array"
                 }

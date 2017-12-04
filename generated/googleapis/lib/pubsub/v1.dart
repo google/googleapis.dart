@@ -54,6 +54,125 @@ class ProjectsSnapshotsResourceApi {
   ProjectsSnapshotsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
+  /// Creates a snapshot from the requested subscription.
+  /// If the snapshot already exists, returns `ALREADY_EXISTS`.
+  /// If the requested subscription doesn't exist, returns `NOT_FOUND`.
+  /// If the backlog in the subscription is too old -- and the resulting
+  /// snapshot
+  /// would expire in less than 1 hour -- then `FAILED_PRECONDITION` is
+  /// returned.
+  /// See also the `Snapshot.expire_time` field.
+  ///
+  /// If the name is not provided in the request, the server will assign a
+  /// random
+  /// name for this snapshot on the same project as the subscription, conforming
+  /// to the
+  /// [resource name
+  /// format](https://cloud.google.com/pubsub/docs/overview#names). The
+  /// generated
+  /// name is populated in the returned Snapshot object. Note that for REST API
+  /// requests, you must specify a name in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Optional user-provided name for this snapshot.
+  /// If the name is not provided in the request, the server will assign a
+  /// random
+  /// name for this snapshot on the same project as the subscription.
+  /// Note that for REST API requests, you must specify a name.
+  /// Format is `projects/{project}/snapshots/{snap}`.
+  /// Value must have pattern "^projects/[^/]+/snapshots/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Snapshot].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Snapshot> create(CreateSnapshotRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PUT",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Snapshot.fromJson(data));
+  }
+
+  /// Removes an existing snapshot. All messages retained in the snapshot
+  /// are immediately dropped. After a snapshot is deleted, a new one may be
+  /// created with the same name, but the new one has no association with the
+  /// old
+  /// snapshot or its subscription, unless the same subscription is specified.
+  ///
+  /// Request parameters:
+  ///
+  /// [snapshot] - The name of the snapshot to delete.
+  /// Format is `projects/{project}/snapshots/{snap}`.
+  /// Value must have pattern "^projects/[^/]+/snapshots/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String snapshot, {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (snapshot == null) {
+      throw new core.ArgumentError("Parameter snapshot is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$snapshot');
+
+    var _response = _requester.request(_url, "DELETE",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Empty.fromJson(data));
+  }
+
   /// Gets the access control policy for a resource.
   /// Returns an empty policy if the resource exists and does not have a policy
   /// set.
@@ -102,6 +221,116 @@ class ProjectsSnapshotsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new Policy.fromJson(data));
+  }
+
+  /// Lists the existing snapshots.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - The name of the cloud project that snapshots belong to.
+  /// Format is `projects/{project}`.
+  /// Value must have pattern "^projects/[^/]+$".
+  ///
+  /// [pageToken] - The value returned by the last `ListSnapshotsResponse`;
+  /// indicates that this
+  /// is a continuation of a prior `ListSnapshots` call, and that the system
+  /// should return the next page of data.
+  ///
+  /// [pageSize] - Maximum number of snapshots to return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSnapshotsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSnapshotsResponse> list(core.String project,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (project == null) {
+      throw new core.ArgumentError("Parameter project is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$project') +
+        '/snapshots';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new ListSnapshotsResponse.fromJson(data));
+  }
+
+  /// Updates an existing snapshot. Note that certain properties of a
+  /// snapshot are not modifiable.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the snapshot.
+  /// Value must have pattern "^projects/[^/]+/snapshots/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Snapshot].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Snapshot> patch(UpdateSnapshotRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Snapshot.fromJson(data));
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -672,6 +901,62 @@ class ProjectsSubscriptionsResourceApi {
     return _response.then((data) => new Empty.fromJson(data));
   }
 
+  /// Updates an existing subscription. Note that certain properties of a
+  /// subscription, such as its topic, are not modifiable.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the subscription. It must have the format
+  /// `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must
+  /// start with a letter, and contain only letters (`[A-Za-z]`), numbers
+  /// (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
+  /// plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters
+  /// in length, and it must not start with `"goog"`.
+  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Subscription].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Subscription> patch(
+      UpdateSubscriptionRequest request, core.String name,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (name == null) {
+      throw new core.ArgumentError("Parameter name is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    var _response = _requester.request(_url, "PATCH",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new Subscription.fromJson(data));
+  }
+
   /// Pulls messages from the server. Returns an empty list if there are no
   /// messages available in the backlog. The server may return `UNAVAILABLE` if
   /// there are too many concurrent pull requests pending for the given
@@ -725,6 +1010,58 @@ class ProjectsSubscriptionsResourceApi {
         uploadMedia: _uploadMedia,
         downloadOptions: _downloadOptions);
     return _response.then((data) => new PullResponse.fromJson(data));
+  }
+
+  /// Seeks an existing subscription to a point in time or to a given snapshot,
+  /// whichever is provided in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [subscription] - The subscription to affect.
+  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SeekResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SeekResponse> seek(SeekRequest request, core.String subscription,
+      {core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (request != null) {
+      _body = convert.JSON.encode((request).toJson());
+    }
+    if (subscription == null) {
+      throw new core.ArgumentError("Parameter subscription is required.");
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$subscription') +
+        ':seek';
+
+    var _response = _requester.request(_url, "POST",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response.then((data) => new SeekResponse.fromJson(data));
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -847,6 +1184,8 @@ class ProjectsSubscriptionsResourceApi {
 class ProjectsTopicsResourceApi {
   final commons.ApiRequester _requester;
 
+  ProjectsTopicsSnapshotsResourceApi get snapshots =>
+      new ProjectsTopicsSnapshotsResourceApi(_requester);
   ProjectsTopicsSubscriptionsResourceApi get subscriptions =>
       new ProjectsTopicsSubscriptionsResourceApi(_requester);
 
@@ -1277,13 +1616,80 @@ class ProjectsTopicsResourceApi {
   }
 }
 
+class ProjectsTopicsSnapshotsResourceApi {
+  final commons.ApiRequester _requester;
+
+  ProjectsTopicsSnapshotsResourceApi(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists the names of the snapshots on this topic.
+  ///
+  /// Request parameters:
+  ///
+  /// [topic] - The name of the topic that snapshots are attached to.
+  /// Format is `projects/{project}/topics/{topic}`.
+  /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
+  ///
+  /// [pageToken] - The value returned by the last `ListTopicSnapshotsResponse`;
+  /// indicates
+  /// that this is a continuation of a prior `ListTopicSnapshots` call, and
+  /// that the system should return the next page of data.
+  ///
+  /// [pageSize] - Maximum number of snapshot names to return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListTopicSnapshotsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListTopicSnapshotsResponse> list(core.String topic,
+      {core.String pageToken, core.int pageSize, core.String $fields}) {
+    var _url = null;
+    var _queryParams = new core.Map();
+    var _uploadMedia = null;
+    var _uploadOptions = null;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    var _body = null;
+
+    if (topic == null) {
+      throw new core.ArgumentError("Parameter topic is required.");
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if ($fields != null) {
+      _queryParams["fields"] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$topic') + '/snapshots';
+
+    var _response = _requester.request(_url, "GET",
+        body: _body,
+        queryParams: _queryParams,
+        uploadOptions: _uploadOptions,
+        uploadMedia: _uploadMedia,
+        downloadOptions: _downloadOptions);
+    return _response
+        .then((data) => new ListTopicSnapshotsResponse.fromJson(data));
+  }
+}
+
 class ProjectsTopicsSubscriptionsResourceApi {
   final commons.ApiRequester _requester;
 
   ProjectsTopicsSubscriptionsResourceApi(commons.ApiRequester client)
       : _requester = client;
 
-  /// Lists the name of the subscriptions for this topic.
+  /// Lists the names of the subscriptions on this topic.
   ///
   /// Request parameters:
   ///
@@ -1425,6 +1831,37 @@ class Binding {
   }
 }
 
+/// Request for the `CreateSnapshot` method.
+class CreateSnapshotRequest {
+  /// The subscription whose backlog the snapshot retains.
+  /// Specifically, the created snapshot is guaranteed to retain:
+  ///  (a) The existing backlog on the subscription. More precisely, this is
+  ///      defined as the messages in the subscription's backlog that are
+  ///      unacknowledged upon the successful completion of the
+  ///      `CreateSnapshot` request; as well as:
+  ///  (b) Any messages published to the subscription's topic following the
+  ///      successful completion of the CreateSnapshot request.
+  /// Format is `projects/{project}/subscriptions/{sub}`.
+  core.String subscription;
+
+  CreateSnapshotRequest();
+
+  CreateSnapshotRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("subscription")) {
+      subscription = _json["subscription"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (subscription != null) {
+      _json["subscription"] = subscription;
+    }
+    return _json;
+  }
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs. A typical example is to use it as the request
 /// or the response type of an API method. For instance:
@@ -1442,6 +1879,41 @@ class Empty {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
+/// Response for the `ListSnapshots` method.
+class ListSnapshotsResponse {
+  /// If not empty, indicates that there may be more snapshot that match the
+  /// request; this value should be passed in a new `ListSnapshotsRequest`.
+  core.String nextPageToken;
+
+  /// The resulting snapshots.
+  core.List<Snapshot> snapshots;
+
+  ListSnapshotsResponse();
+
+  ListSnapshotsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("snapshots")) {
+      snapshots = _json["snapshots"]
+          .map((value) => new Snapshot.fromJson(value))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (snapshots != null) {
+      _json["snapshots"] = snapshots.map((value) => (value).toJson()).toList();
+    }
     return _json;
   }
 }
@@ -1478,6 +1950,40 @@ class ListSubscriptionsResponse {
     if (subscriptions != null) {
       _json["subscriptions"] =
           subscriptions.map((value) => (value).toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Response for the `ListTopicSnapshots` method.
+class ListTopicSnapshotsResponse {
+  /// If not empty, indicates that there may be more snapshots that match
+  /// the request; this value should be passed in a new
+  /// `ListTopicSnapshotsRequest` to get more snapshots.
+  core.String nextPageToken;
+
+  /// The names of the snapshots that match the request.
+  core.List<core.String> snapshots;
+
+  ListTopicSnapshotsResponse();
+
+  ListTopicSnapshotsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey("nextPageToken")) {
+      nextPageToken = _json["nextPageToken"];
+    }
+    if (_json.containsKey("snapshots")) {
+      snapshots = _json["snapshots"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (nextPageToken != null) {
+      _json["nextPageToken"] = nextPageToken;
+    }
+    if (snapshots != null) {
+      _json["snapshots"] = snapshots;
     }
     return _json;
   }
@@ -1977,6 +2483,62 @@ class ReceivedMessage {
   }
 }
 
+/// Request for the `Seek` method.
+class SeekRequest {
+  /// The snapshot to seek to. The snapshot's topic must be the same as that of
+  /// the provided subscription.
+  /// Format is `projects/{project}/snapshots/{snap}`.
+  core.String snapshot;
+
+  /// The time to seek to.
+  /// Messages retained in the subscription that were published before this
+  /// time are marked as acknowledged, and messages retained in the
+  /// subscription that were published after this time are marked as
+  /// unacknowledged. Note that this operation affects only those messages
+  /// retained in the subscription (configured by the combination of
+  /// `message_retention_duration` and `retain_acked_messages`). For example,
+  /// if `time` corresponds to a point before the message retention
+  /// window (or to a point before the system's notion of the subscription
+  /// creation time), only retained messages will be marked as unacknowledged,
+  /// and already-expunged messages will not be restored.
+  core.String time;
+
+  SeekRequest();
+
+  SeekRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("snapshot")) {
+      snapshot = _json["snapshot"];
+    }
+    if (_json.containsKey("time")) {
+      time = _json["time"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (snapshot != null) {
+      _json["snapshot"] = snapshot;
+    }
+    if (time != null) {
+      _json["time"] = time;
+    }
+    return _json;
+  }
+}
+
+class SeekResponse {
+  SeekResponse();
+
+  SeekResponse.fromJson(core.Map _json) {}
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    return _json;
+  }
+}
+
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
   /// REQUIRED: The complete policy to be applied to the `resource`. The size of
@@ -1998,6 +2560,59 @@ class SetIamPolicyRequest {
         new core.Map<core.String, core.Object>();
     if (policy != null) {
       _json["policy"] = (policy).toJson();
+    }
+    return _json;
+  }
+}
+
+/// A snapshot resource.
+class Snapshot {
+  /// The snapshot is guaranteed to exist up until this time.
+  /// A newly-created snapshot expires no later than 7 days from the time of its
+  /// creation. Its exact lifetime is determined at creation by the existing
+  /// backlog in the source subscription. Specifically, the lifetime of the
+  /// snapshot is `7 days - (age of oldest unacked message in the
+  /// subscription)`.
+  /// For example, consider a subscription whose oldest unacked message is 3
+  /// days
+  /// old. If a snapshot is created from this subscription, the snapshot --
+  /// which
+  /// will always capture this 3-day-old backlog as long as the snapshot
+  /// exists -- will expire in 4 days. The service will refuse to create a
+  /// snapshot that would expire in less than 1 hour after creation.
+  core.String expireTime;
+
+  /// The name of the snapshot.
+  core.String name;
+
+  /// The name of the topic from which this snapshot is retaining messages.
+  core.String topic;
+
+  Snapshot();
+
+  Snapshot.fromJson(core.Map _json) {
+    if (_json.containsKey("expireTime")) {
+      expireTime = _json["expireTime"];
+    }
+    if (_json.containsKey("name")) {
+      name = _json["name"];
+    }
+    if (_json.containsKey("topic")) {
+      topic = _json["topic"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (expireTime != null) {
+      _json["expireTime"] = expireTime;
+    }
+    if (name != null) {
+      _json["name"] = name;
+    }
+    if (topic != null) {
+      _json["topic"] = topic;
     }
     return _json;
   }
@@ -2028,6 +2643,17 @@ class Subscription {
   /// system will eventually redeliver the message.
   core.int ackDeadlineSeconds;
 
+  /// How long to retain unacknowledged messages in the subscription's backlog,
+  /// from the moment a message is published.
+  /// If `retain_acked_messages` is true, then this also configures the
+  /// retention
+  /// of acknowledged messages, and thus configures how far back in time a
+  /// `Seek`
+  /// can be done. Defaults to 7 days. Cannot be more than 7 days or less than
+  /// 10
+  /// minutes.
+  core.String messageRetentionDuration;
+
   /// The name of the subscription. It must have the format
   /// `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must
   /// start with a letter, and contain only letters (`[A-Za-z]`), numbers
@@ -2041,6 +2667,13 @@ class Subscription {
   /// will pull and ack messages using API methods.
   PushConfig pushConfig;
 
+  /// Indicates whether to retain acknowledged messages. If true, then
+  /// messages are not expunged from the subscription's backlog, even if they
+  /// are
+  /// acknowledged, until they fall out of the `message_retention_duration`
+  /// window.
+  core.bool retainAckedMessages;
+
   /// The name of the topic from which this subscription is receiving messages.
   /// Format is `projects/{project}/topics/{topic}`.
   /// The value of this field will be `_deleted-topic_` if the topic has been
@@ -2053,11 +2686,17 @@ class Subscription {
     if (_json.containsKey("ackDeadlineSeconds")) {
       ackDeadlineSeconds = _json["ackDeadlineSeconds"];
     }
+    if (_json.containsKey("messageRetentionDuration")) {
+      messageRetentionDuration = _json["messageRetentionDuration"];
+    }
     if (_json.containsKey("name")) {
       name = _json["name"];
     }
     if (_json.containsKey("pushConfig")) {
       pushConfig = new PushConfig.fromJson(_json["pushConfig"]);
+    }
+    if (_json.containsKey("retainAckedMessages")) {
+      retainAckedMessages = _json["retainAckedMessages"];
     }
     if (_json.containsKey("topic")) {
       topic = _json["topic"];
@@ -2070,11 +2709,17 @@ class Subscription {
     if (ackDeadlineSeconds != null) {
       _json["ackDeadlineSeconds"] = ackDeadlineSeconds;
     }
+    if (messageRetentionDuration != null) {
+      _json["messageRetentionDuration"] = messageRetentionDuration;
+    }
     if (name != null) {
       _json["name"] = name;
     }
     if (pushConfig != null) {
       _json["pushConfig"] = (pushConfig).toJson();
+    }
+    if (retainAckedMessages != null) {
+      _json["retainAckedMessages"] = retainAckedMessages;
     }
     if (topic != null) {
       _json["topic"] = topic;
@@ -2156,6 +2801,72 @@ class Topic {
         new core.Map<core.String, core.Object>();
     if (name != null) {
       _json["name"] = name;
+    }
+    return _json;
+  }
+}
+
+/// Request for the UpdateSnapshot method.
+class UpdateSnapshotRequest {
+  /// The updated snpashot object.
+  Snapshot snapshot;
+
+  /// Indicates which fields in the provided snapshot to update.
+  /// Must be specified and non-empty.
+  core.String updateMask;
+
+  UpdateSnapshotRequest();
+
+  UpdateSnapshotRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("snapshot")) {
+      snapshot = new Snapshot.fromJson(_json["snapshot"]);
+    }
+    if (_json.containsKey("updateMask")) {
+      updateMask = _json["updateMask"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (snapshot != null) {
+      _json["snapshot"] = (snapshot).toJson();
+    }
+    if (updateMask != null) {
+      _json["updateMask"] = updateMask;
+    }
+    return _json;
+  }
+}
+
+/// Request for the UpdateSubscription method.
+class UpdateSubscriptionRequest {
+  /// The updated subscription object.
+  Subscription subscription;
+
+  /// Indicates which fields in the provided subscription to update.
+  /// Must be specified and non-empty.
+  core.String updateMask;
+
+  UpdateSubscriptionRequest();
+
+  UpdateSubscriptionRequest.fromJson(core.Map _json) {
+    if (_json.containsKey("subscription")) {
+      subscription = new Subscription.fromJson(_json["subscription"]);
+    }
+    if (_json.containsKey("updateMask")) {
+      updateMask = _json["updateMask"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (subscription != null) {
+      _json["subscription"] = (subscription).toJson();
+    }
+    if (updateMask != null) {
+      _json["updateMask"] = updateMask;
     }
     return _json;
   }

@@ -290,18 +290,6 @@ class ProjectsGroupsResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
-  /// [ancestorsOfGroup] - A group name:
-  /// "projects/{project_id_or_number}/groups/{group_id}". Returns groups that
-  /// are ancestors of the specified group. The groups are returned in order,
-  /// starting with the immediate parent and ending with the most distant
-  /// ancestor. If the specified group has no immediate parent, the results are
-  /// empty.
-  ///
-  /// [childrenOfGroup] - A group name:
-  /// "projects/{project_id_or_number}/groups/{group_id}". Returns groups whose
-  /// parentName field contains the group name. If no groups have this parent,
-  /// the results are empty.
-  ///
   /// [descendantsOfGroup] - A group name:
   /// "projects/{project_id_or_number}/groups/{group_id}". Returns the
   /// descendants of the specified group. This is a superset of the results
@@ -316,6 +304,18 @@ class ProjectsGroupsResourceApi {
   /// [pageSize] - A positive number that is the maximum number of results to
   /// return.
   ///
+  /// [ancestorsOfGroup] - A group name:
+  /// "projects/{project_id_or_number}/groups/{group_id}". Returns groups that
+  /// are ancestors of the specified group. The groups are returned in order,
+  /// starting with the immediate parent and ending with the most distant
+  /// ancestor. If the specified group has no immediate parent, the results are
+  /// empty.
+  ///
+  /// [childrenOfGroup] - A group name:
+  /// "projects/{project_id_or_number}/groups/{group_id}". Returns groups whose
+  /// parentName field contains the group name. If no groups have this parent,
+  /// the results are empty.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -327,11 +327,11 @@ class ProjectsGroupsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListGroupsResponse> list(core.String name,
-      {core.String ancestorsOfGroup,
-      core.String childrenOfGroup,
-      core.String descendantsOfGroup,
+      {core.String descendantsOfGroup,
       core.String pageToken,
       core.int pageSize,
+      core.String ancestorsOfGroup,
+      core.String childrenOfGroup,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -343,12 +343,6 @@ class ProjectsGroupsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
-    if (ancestorsOfGroup != null) {
-      _queryParams["ancestorsOfGroup"] = [ancestorsOfGroup];
-    }
-    if (childrenOfGroup != null) {
-      _queryParams["childrenOfGroup"] = [childrenOfGroup];
-    }
     if (descendantsOfGroup != null) {
       _queryParams["descendantsOfGroup"] = [descendantsOfGroup];
     }
@@ -357,6 +351,12 @@ class ProjectsGroupsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (ancestorsOfGroup != null) {
+      _queryParams["ancestorsOfGroup"] = [ancestorsOfGroup];
+    }
+    if (childrenOfGroup != null) {
+      _queryParams["childrenOfGroup"] = [childrenOfGroup];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -461,12 +461,12 @@ class ProjectsGroupsMembersResourceApi {
   /// field causes the method to return additional results from the previous
   /// method call.
   ///
-  /// [pageSize] - A positive number that is the maximum number of results to
-  /// return.
-  ///
   /// [interval_startTime] - Optional. The beginning of the time interval. The
   /// default value for the start time is the end time. The start time must not
   /// be later than the end time.
+  ///
+  /// [pageSize] - A positive number that is the maximum number of results to
+  /// return.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -482,8 +482,8 @@ class ProjectsGroupsMembersResourceApi {
       {core.String interval_endTime,
       core.String filter,
       core.String pageToken,
-      core.int pageSize,
       core.String interval_startTime,
+      core.int pageSize,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -504,11 +504,11 @@ class ProjectsGroupsMembersResourceApi {
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
-    if (pageSize != null) {
-      _queryParams["pageSize"] = ["${pageSize}"];
-    }
     if (interval_startTime != null) {
       _queryParams["interval.startTime"] = [interval_startTime];
+    }
+    if (pageSize != null) {
+      _queryParams["pageSize"] = ["${pageSize}"];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -689,6 +689,12 @@ class ProjectsMetricDescriptorsResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [filter] - If this field is empty, all custom and system-defined metric
+  /// descriptors are returned. Otherwise, the filter specifies which metric
+  /// descriptors are to be returned. For example, the following filter matches
+  /// all custom metrics:
+  /// metric.type = starts_with("custom.googleapis.com/")
+  ///
   /// [pageToken] - If this field is not empty then it must contain the
   /// nextPageToken value returned by a previous call to this method. Using this
   /// field causes the method to return additional results from the previous
@@ -696,12 +702,6 @@ class ProjectsMetricDescriptorsResourceApi {
   ///
   /// [pageSize] - A positive number that is the maximum number of results to
   /// return.
-  ///
-  /// [filter] - If this field is empty, all custom and system-defined metric
-  /// descriptors are returned. Otherwise, the filter specifies which metric
-  /// descriptors are to be returned. For example, the following filter matches
-  /// all custom metrics:
-  /// metric.type = starts_with("custom.googleapis.com/")
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -714,9 +714,9 @@ class ProjectsMetricDescriptorsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListMetricDescriptorsResponse> list(core.String name,
-      {core.String pageToken,
+      {core.String filter,
+      core.String pageToken,
       core.int pageSize,
-      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -728,14 +728,14 @@ class ProjectsMetricDescriptorsResourceApi {
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
     }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -956,6 +956,76 @@ class ProjectsTimeSeriesResourceApi {
   /// "projects/{project_id_or_number}".
   /// Value must have pattern "^projects/[^/]+$".
   ///
+  /// [aggregation_crossSeriesReducer] - The approach to be used to combine time
+  /// series. Not all reducer functions may be applied to all time series,
+  /// depending on the metric type and the value type of the original time
+  /// series. Reduction may change the metric type of value type of the time
+  /// series.Time series data must be aligned in order to perform cross-time
+  /// series reduction. If crossSeriesReducer is specified, then
+  /// perSeriesAligner must be specified and not equal ALIGN_NONE and
+  /// alignmentPeriod must be specified; otherwise, an error is returned.
+  /// Possible string values are:
+  /// - "REDUCE_NONE" : A REDUCE_NONE.
+  /// - "REDUCE_MEAN" : A REDUCE_MEAN.
+  /// - "REDUCE_MIN" : A REDUCE_MIN.
+  /// - "REDUCE_MAX" : A REDUCE_MAX.
+  /// - "REDUCE_SUM" : A REDUCE_SUM.
+  /// - "REDUCE_STDDEV" : A REDUCE_STDDEV.
+  /// - "REDUCE_COUNT" : A REDUCE_COUNT.
+  /// - "REDUCE_COUNT_TRUE" : A REDUCE_COUNT_TRUE.
+  /// - "REDUCE_FRACTION_TRUE" : A REDUCE_FRACTION_TRUE.
+  /// - "REDUCE_PERCENTILE_99" : A REDUCE_PERCENTILE_99.
+  /// - "REDUCE_PERCENTILE_95" : A REDUCE_PERCENTILE_95.
+  /// - "REDUCE_PERCENTILE_50" : A REDUCE_PERCENTILE_50.
+  /// - "REDUCE_PERCENTILE_05" : A REDUCE_PERCENTILE_05.
+  ///
+  /// [filter] - A monitoring filter that specifies which time series should be
+  /// returned. The filter must specify a single metric type, and can
+  /// additionally specify metric labels and other information. For example:
+  /// metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
+  ///     metric.label.instance_name = "my-instance-name"
+  ///
+  /// [aggregation_perSeriesAligner] - The approach to be used to align
+  /// individual time series. Not all alignment functions may be applied to all
+  /// time series, depending on the metric type and value type of the original
+  /// time series. Alignment may change the metric type or the value type of the
+  /// time series.Time series data must be aligned in order to perform
+  /// cross-time series reduction. If crossSeriesReducer is specified, then
+  /// perSeriesAligner must be specified and not equal ALIGN_NONE and
+  /// alignmentPeriod must be specified; otherwise, an error is returned.
+  /// Possible string values are:
+  /// - "ALIGN_NONE" : A ALIGN_NONE.
+  /// - "ALIGN_DELTA" : A ALIGN_DELTA.
+  /// - "ALIGN_RATE" : A ALIGN_RATE.
+  /// - "ALIGN_INTERPOLATE" : A ALIGN_INTERPOLATE.
+  /// - "ALIGN_NEXT_OLDER" : A ALIGN_NEXT_OLDER.
+  /// - "ALIGN_MIN" : A ALIGN_MIN.
+  /// - "ALIGN_MAX" : A ALIGN_MAX.
+  /// - "ALIGN_MEAN" : A ALIGN_MEAN.
+  /// - "ALIGN_COUNT" : A ALIGN_COUNT.
+  /// - "ALIGN_SUM" : A ALIGN_SUM.
+  /// - "ALIGN_STDDEV" : A ALIGN_STDDEV.
+  /// - "ALIGN_COUNT_TRUE" : A ALIGN_COUNT_TRUE.
+  /// - "ALIGN_FRACTION_TRUE" : A ALIGN_FRACTION_TRUE.
+  /// - "ALIGN_PERCENTILE_99" : A ALIGN_PERCENTILE_99.
+  /// - "ALIGN_PERCENTILE_95" : A ALIGN_PERCENTILE_95.
+  /// - "ALIGN_PERCENTILE_50" : A ALIGN_PERCENTILE_50.
+  /// - "ALIGN_PERCENTILE_05" : A ALIGN_PERCENTILE_05.
+  ///
+  /// [pageToken] - If this field is not empty then it must contain the
+  /// nextPageToken value returned by a previous call to this method. Using this
+  /// field causes the method to return additional results from the previous
+  /// method call.
+  ///
+  /// [interval_startTime] - Optional. The beginning of the time interval. The
+  /// default value for the start time is the end time. The start time must not
+  /// be later than the end time.
+  ///
+  /// [view] - Specifies which information is returned about the time series.
+  /// Possible string values are:
+  /// - "FULL" : A FULL.
+  /// - "HEADERS" : A HEADERS.
+  ///
   /// [aggregation_groupByFields] - The set of fields to preserve when
   /// crossSeriesReducer is specified. The groupByFields determine how the time
   /// series are partitioned into subsets prior to applying the aggregation
@@ -988,76 +1058,6 @@ class ProjectsTimeSeriesResourceApi {
   /// should be returned. By default, results are not ordered. Currently, this
   /// field must be left blank.
   ///
-  /// [aggregation_crossSeriesReducer] - The approach to be used to combine time
-  /// series. Not all reducer functions may be applied to all time series,
-  /// depending on the metric type and the value type of the original time
-  /// series. Reduction may change the metric type of value type of the time
-  /// series.Time series data must be aligned in order to perform cross-time
-  /// series reduction. If crossSeriesReducer is specified, then
-  /// perSeriesAligner must be specified and not equal ALIGN_NONE and
-  /// alignmentPeriod must be specified; otherwise, an error is returned.
-  /// Possible string values are:
-  /// - "REDUCE_NONE" : A REDUCE_NONE.
-  /// - "REDUCE_MEAN" : A REDUCE_MEAN.
-  /// - "REDUCE_MIN" : A REDUCE_MIN.
-  /// - "REDUCE_MAX" : A REDUCE_MAX.
-  /// - "REDUCE_SUM" : A REDUCE_SUM.
-  /// - "REDUCE_STDDEV" : A REDUCE_STDDEV.
-  /// - "REDUCE_COUNT" : A REDUCE_COUNT.
-  /// - "REDUCE_COUNT_TRUE" : A REDUCE_COUNT_TRUE.
-  /// - "REDUCE_FRACTION_TRUE" : A REDUCE_FRACTION_TRUE.
-  /// - "REDUCE_PERCENTILE_99" : A REDUCE_PERCENTILE_99.
-  /// - "REDUCE_PERCENTILE_95" : A REDUCE_PERCENTILE_95.
-  /// - "REDUCE_PERCENTILE_50" : A REDUCE_PERCENTILE_50.
-  /// - "REDUCE_PERCENTILE_05" : A REDUCE_PERCENTILE_05.
-  ///
-  /// [filter] - A monitoring filter that specifies which time series should be
-  /// returned. The filter must specify a single metric type, and can
-  /// additionally specify metric labels and other information. For example:
-  /// metric.type = "compute.googleapis.com/instance/cpu/usage_time" AND
-  ///     metric.label.instance_name = "my-instance-name"
-  ///
-  /// [pageToken] - If this field is not empty then it must contain the
-  /// nextPageToken value returned by a previous call to this method. Using this
-  /// field causes the method to return additional results from the previous
-  /// method call.
-  ///
-  /// [aggregation_perSeriesAligner] - The approach to be used to align
-  /// individual time series. Not all alignment functions may be applied to all
-  /// time series, depending on the metric type and value type of the original
-  /// time series. Alignment may change the metric type or the value type of the
-  /// time series.Time series data must be aligned in order to perform
-  /// cross-time series reduction. If crossSeriesReducer is specified, then
-  /// perSeriesAligner must be specified and not equal ALIGN_NONE and
-  /// alignmentPeriod must be specified; otherwise, an error is returned.
-  /// Possible string values are:
-  /// - "ALIGN_NONE" : A ALIGN_NONE.
-  /// - "ALIGN_DELTA" : A ALIGN_DELTA.
-  /// - "ALIGN_RATE" : A ALIGN_RATE.
-  /// - "ALIGN_INTERPOLATE" : A ALIGN_INTERPOLATE.
-  /// - "ALIGN_NEXT_OLDER" : A ALIGN_NEXT_OLDER.
-  /// - "ALIGN_MIN" : A ALIGN_MIN.
-  /// - "ALIGN_MAX" : A ALIGN_MAX.
-  /// - "ALIGN_MEAN" : A ALIGN_MEAN.
-  /// - "ALIGN_COUNT" : A ALIGN_COUNT.
-  /// - "ALIGN_SUM" : A ALIGN_SUM.
-  /// - "ALIGN_STDDEV" : A ALIGN_STDDEV.
-  /// - "ALIGN_COUNT_TRUE" : A ALIGN_COUNT_TRUE.
-  /// - "ALIGN_FRACTION_TRUE" : A ALIGN_FRACTION_TRUE.
-  /// - "ALIGN_PERCENTILE_99" : A ALIGN_PERCENTILE_99.
-  /// - "ALIGN_PERCENTILE_95" : A ALIGN_PERCENTILE_95.
-  /// - "ALIGN_PERCENTILE_50" : A ALIGN_PERCENTILE_50.
-  /// - "ALIGN_PERCENTILE_05" : A ALIGN_PERCENTILE_05.
-  ///
-  /// [interval_startTime] - Optional. The beginning of the time interval. The
-  /// default value for the start time is the end time. The start time must not
-  /// be later than the end time.
-  ///
-  /// [view] - Specifies which information is returned about the time series.
-  /// Possible string values are:
-  /// - "FULL" : A FULL.
-  /// - "HEADERS" : A HEADERS.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1069,17 +1069,17 @@ class ProjectsTimeSeriesResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListTimeSeriesResponse> list(core.String name,
-      {core.List<core.String> aggregation_groupByFields,
+      {core.String aggregation_crossSeriesReducer,
+      core.String filter,
+      core.String aggregation_perSeriesAligner,
+      core.String pageToken,
+      core.String interval_startTime,
+      core.String view,
+      core.List<core.String> aggregation_groupByFields,
       core.String interval_endTime,
       core.String aggregation_alignmentPeriod,
       core.int pageSize,
       core.String orderBy,
-      core.String aggregation_crossSeriesReducer,
-      core.String filter,
-      core.String pageToken,
-      core.String aggregation_perSeriesAligner,
-      core.String interval_startTime,
-      core.String view,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -1090,6 +1090,28 @@ class ProjectsTimeSeriesResourceApi {
 
     if (name == null) {
       throw new core.ArgumentError("Parameter name is required.");
+    }
+    if (aggregation_crossSeriesReducer != null) {
+      _queryParams["aggregation.crossSeriesReducer"] = [
+        aggregation_crossSeriesReducer
+      ];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
+    }
+    if (aggregation_perSeriesAligner != null) {
+      _queryParams["aggregation.perSeriesAligner"] = [
+        aggregation_perSeriesAligner
+      ];
+    }
+    if (pageToken != null) {
+      _queryParams["pageToken"] = [pageToken];
+    }
+    if (interval_startTime != null) {
+      _queryParams["interval.startTime"] = [interval_startTime];
+    }
+    if (view != null) {
+      _queryParams["view"] = [view];
     }
     if (aggregation_groupByFields != null) {
       _queryParams["aggregation.groupByFields"] = aggregation_groupByFields;
@@ -1107,28 +1129,6 @@ class ProjectsTimeSeriesResourceApi {
     }
     if (orderBy != null) {
       _queryParams["orderBy"] = [orderBy];
-    }
-    if (aggregation_crossSeriesReducer != null) {
-      _queryParams["aggregation.crossSeriesReducer"] = [
-        aggregation_crossSeriesReducer
-      ];
-    }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
-    if (pageToken != null) {
-      _queryParams["pageToken"] = [pageToken];
-    }
-    if (aggregation_perSeriesAligner != null) {
-      _queryParams["aggregation.perSeriesAligner"] = [
-        aggregation_perSeriesAligner
-      ];
-    }
-    if (interval_startTime != null) {
-      _queryParams["interval.startTime"] = [interval_startTime];
-    }
-    if (view != null) {
-      _queryParams["view"] = [view];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -2424,6 +2424,67 @@ class HttpCheck {
   }
 }
 
+/// Nimbus InternalCheckers.
+class InternalChecker {
+  /// The checker ID.
+  core.String checkerId;
+
+  /// The checker's human-readable name.
+  core.String displayName;
+
+  /// The GCP zone the uptime check should egress from. Only respected for
+  /// internal uptime checks, where internal_network is specified.
+  core.String gcpZone;
+
+  /// The internal network to perform this uptime check on.
+  core.String network;
+
+  /// The GCP project ID. Not necessarily the same as the project_id for the
+  /// config.
+  core.String projectId;
+
+  InternalChecker();
+
+  InternalChecker.fromJson(core.Map _json) {
+    if (_json.containsKey("checkerId")) {
+      checkerId = _json["checkerId"];
+    }
+    if (_json.containsKey("displayName")) {
+      displayName = _json["displayName"];
+    }
+    if (_json.containsKey("gcpZone")) {
+      gcpZone = _json["gcpZone"];
+    }
+    if (_json.containsKey("network")) {
+      network = _json["network"];
+    }
+    if (_json.containsKey("projectId")) {
+      projectId = _json["projectId"];
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final core.Map<core.String, core.Object> _json =
+        new core.Map<core.String, core.Object>();
+    if (checkerId != null) {
+      _json["checkerId"] = checkerId;
+    }
+    if (displayName != null) {
+      _json["displayName"] = displayName;
+    }
+    if (gcpZone != null) {
+      _json["gcpZone"] = gcpZone;
+    }
+    if (network != null) {
+      _json["network"] = network;
+    }
+    if (projectId != null) {
+      _json["projectId"] = projectId;
+    }
+    return _json;
+  }
+}
+
 /// A description of a label.
 class LabelDescriptor {
   /// A human-readable description for the label.
@@ -2865,54 +2926,11 @@ class MetricDescriptor {
   /// "appengine.googleapis.com/http/server/response_latencies"
   core.String type;
 
-  /// The unit in which the metric value is reported. It is only applicable if
-  /// the value_type is INT64, DOUBLE, or DISTRIBUTION. The supported units are
-  /// a subset of The Unified Code for Units of Measure
-  /// (http://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT)
-  /// bit bit
-  /// By byte
-  /// s second
-  /// min minute
-  /// h hour
-  /// d dayPrefixes (PREFIX)
-  /// k kilo (10**3)
-  /// M mega (10**6)
-  /// G giga (10**9)
-  /// T tera (10**12)
-  /// P peta (10**15)
-  /// E exa (10**18)
-  /// Z zetta (10**21)
-  /// Y yotta (10**24)
-  /// m milli (10**-3)
-  /// u micro (10**-6)
-  /// n nano (10**-9)
-  /// p pico (10**-12)
-  /// f femto (10**-15)
-  /// a atto (10**-18)
-  /// z zepto (10**-21)
-  /// y yocto (10**-24)
-  /// Ki kibi (2**10)
-  /// Mi mebi (2**20)
-  /// Gi gibi (2**30)
-  /// Ti tebi (2**40)GrammarThe grammar includes the dimensionless unit 1, such
-  /// as 1/s.The grammar also includes these connectors:
-  /// / division (as an infix operator, e.g. 1/s).
-  /// . multiplication (as an infix operator, e.g. GBy.d)The grammar for a unit
-  /// is as follows:
-  /// Expression = Component { "." Component } { "/" Component } ;
-  ///
-  /// Component = [ PREFIX ] UNIT [ Annotation ]
-  ///           | Annotation
-  ///           | "1"
-  ///           ;
-  ///
-  /// Annotation = "{" NAME "}" ;
-  /// Notes:
-  /// Annotation is just a comment if it follows a UNIT and is  equivalent to 1
-  /// if it is used alone. For examples,  {requests}/s == 1/s, By{transmitted}/s
-  /// == By/s.
-  /// NAME is a sequence of non-blank printable ASCII characters not  containing
-  /// '{' or '}'.
+  /// Optional. The unit in which the metric value is reported. For example,
+  /// kBy/s means kilobytes/sec, and 1 is the dimensionless unit. The supported
+  /// units are a subset of The Unified Code for Units of Measure standard
+  /// (http://unitsofmeasure.org/ucum.html).<br><br> This field is part of the
+  /// metric's documentation, but it is ignored by Stackdriver.
   core.String unit;
 
   /// Whether the measurement is an integer, a floating-point number, etc. Some
@@ -3688,6 +3706,14 @@ class UptimeCheckConfig {
   /// Contains information needed to make an HTTP or HTTPS check.
   HttpCheck httpCheck;
 
+  /// The internal checkers that this check will egress from. If is_internal is
+  /// true and this list is empty, the check will egress from all
+  /// InternalCheckers configured for the project that owns this CheckConfig.
+  core.List<InternalChecker> internalCheckers;
+
+  /// Denotes whether this check is a check that egresses from InternalCheckers.
+  core.bool isInternal;
+
   /// The monitored resource associated with the configuration.
   MonitoredResource monitoredResource;
 
@@ -3731,6 +3757,14 @@ class UptimeCheckConfig {
     if (_json.containsKey("httpCheck")) {
       httpCheck = new HttpCheck.fromJson(_json["httpCheck"]);
     }
+    if (_json.containsKey("internalCheckers")) {
+      internalCheckers = _json["internalCheckers"]
+          .map((value) => new InternalChecker.fromJson(value))
+          .toList();
+    }
+    if (_json.containsKey("isInternal")) {
+      isInternal = _json["isInternal"];
+    }
     if (_json.containsKey("monitoredResource")) {
       monitoredResource =
           new MonitoredResource.fromJson(_json["monitoredResource"]);
@@ -3767,6 +3801,13 @@ class UptimeCheckConfig {
     }
     if (httpCheck != null) {
       _json["httpCheck"] = (httpCheck).toJson();
+    }
+    if (internalCheckers != null) {
+      _json["internalCheckers"] =
+          internalCheckers.map((value) => (value).toJson()).toList();
+    }
+    if (isInternal != null) {
+      _json["isInternal"] = isInternal;
     }
     if (monitoredResource != null) {
       _json["monitoredResource"] = (monitoredResource).toJson();

@@ -123,6 +123,12 @@ Manages Google Cloud Dataflow projects on Google Cloud Platform.
 
 Official API documentation: https://cloud.google.com/dataflow
 
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Dialogflow API - dialogflow v2beta1
+
+An end-to-end development suite for conversational interfaces (e.g., chatbots, voice-powered apps and devices).
+
+Official API documentation: https://cloud.google.com/dialogflow-enterprise/
+
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) DLP API - dlp v2beta1
 
 The Google Data Loss Prevention API provides methods for detection of privacy-sensitive fragments in text, images, and Google Cloud Platform storage repositories.
@@ -243,6 +249,12 @@ Official API documentation: https://developers.google.com/appengine/docs/python/
 Reads and publishes results from Firebase Test Lab.
 
 Official API documentation: https://firebase.google.com/docs/test-lab/
+
+#### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud TPU API - tpu v1alpha1
+
+TPU API provides customers with access to Google TPU technology.
+
+Official API documentation: https://cloud.google.com/tpu/
 
 #### ![Logo](http://www.google.com/images/icons/product/search-16.gif) Cloud Video Intelligence API - videointelligence v1beta1
 

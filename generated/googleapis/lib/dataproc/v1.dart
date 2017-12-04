@@ -703,9 +703,6 @@ class ProjectsRegionsJobsResourceApi {
   /// [region] - Required. The Cloud Dataproc region in which to handle the
   /// request.
   ///
-  /// [clusterName] - Optional. If set, the returned jobs list includes only
-  /// jobs that were submitted to the named cluster.
-  ///
   /// [filter] - Optional. A filter constraining the jobs to list. Filters are
   /// case-sensitive and have the following syntax:field = value AND field =
   /// value ...where field is status.state or labels.[KEY], and [KEY] is a label
@@ -728,6 +725,9 @@ class ProjectsRegionsJobsResourceApi {
   ///
   /// [pageSize] - Optional. The number of results to return in each response.
   ///
+  /// [clusterName] - Optional. If set, the returned jobs list includes only
+  /// jobs that were submitted to the named cluster.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -739,11 +739,11 @@ class ProjectsRegionsJobsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListJobsResponse> list(core.String projectId, core.String region,
-      {core.String clusterName,
-      core.String filter,
+      {core.String filter,
       core.String jobStateMatcher,
       core.String pageToken,
       core.int pageSize,
+      core.String clusterName,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -758,9 +758,6 @@ class ProjectsRegionsJobsResourceApi {
     if (region == null) {
       throw new core.ArgumentError("Parameter region is required.");
     }
-    if (clusterName != null) {
-      _queryParams["clusterName"] = [clusterName];
-    }
     if (filter != null) {
       _queryParams["filter"] = [filter];
     }
@@ -772,6 +769,9 @@ class ProjectsRegionsJobsResourceApi {
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (clusterName != null) {
+      _queryParams["clusterName"] = [clusterName];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];

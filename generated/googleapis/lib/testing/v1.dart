@@ -1494,7 +1494,7 @@ class Locale {
   /// @OutputOnly
   core.String name;
 
-  /// A human-friendy string representing the region for this locale.
+  /// A human-friendly string representing the region for this locale.
   /// Example: "United States"
   /// Not present for every locale.
   /// @OutputOnly

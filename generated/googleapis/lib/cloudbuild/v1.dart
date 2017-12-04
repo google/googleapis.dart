@@ -404,11 +404,11 @@ class ProjectsBuildsResourceApi {
   ///
   /// [projectId] - ID of the project.
   ///
-  /// [filter] - The raw filter text to constrain the results.
-  ///
   /// [pageToken] - Token to provide to skip to a particular spot in the list.
   ///
   /// [pageSize] - Number of results to return in the list.
+  ///
+  /// [filter] - The raw filter text to constrain the results.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -421,9 +421,9 @@ class ProjectsBuildsResourceApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListBuildsResponse> list(core.String projectId,
-      {core.String filter,
-      core.String pageToken,
+      {core.String pageToken,
       core.int pageSize,
+      core.String filter,
       core.String $fields}) {
     var _url = null;
     var _queryParams = new core.Map();
@@ -435,14 +435,14 @@ class ProjectsBuildsResourceApi {
     if (projectId == null) {
       throw new core.ArgumentError("Parameter projectId is required.");
     }
-    if (filter != null) {
-      _queryParams["filter"] = [filter];
-    }
     if (pageToken != null) {
       _queryParams["pageToken"] = [pageToken];
     }
     if (pageSize != null) {
       _queryParams["pageSize"] = ["${pageSize}"];
+    }
+    if (filter != null) {
+      _queryParams["filter"] = [filter];
     }
     if ($fields != null) {
       _queryParams["fields"] = [$fields];
@@ -1156,6 +1156,16 @@ class BuildOperationMetadata {
 
 /// Optional arguments to enable specific features of builds.
 class BuildOptions {
+  /// Requested disk size for the VM that runs the build. Note that this is
+  /// *NOT*
+  /// "disk free"; some of the space will be used by the operating system and
+  /// build utilities. Also note that this is the minimum disk size that will be
+  /// allocated for the build -- the build may run with a larger disk than
+  /// requested. At present, the maximum disk size is 1000GB; builds that
+  /// request
+  /// more than the maximum are rejected with an error.
+  core.String diskSizeGb;
+
   /// LogStreamingOption to define build log streaming behavior to Google Cloud
   /// Storage.
   /// Possible string values are:
@@ -1166,6 +1176,13 @@ class BuildOptions {
   /// Storage; they will be
   /// written when the build is completed.
   core.String logStreamingOption;
+
+  /// GCE VM size to run the build on.
+  /// Possible string values are:
+  /// - "UNSPECIFIED" : Standard machine type.
+  /// - "N1_HIGHCPU_8" : Highcpu machine with 8 CPUs.
+  /// - "N1_HIGHCPU_32" : Highcpu machine with 32 CPUs.
+  core.String machineType;
 
   /// Requested verifiability options.
   /// Possible string values are:
@@ -1187,8 +1204,14 @@ class BuildOptions {
   BuildOptions();
 
   BuildOptions.fromJson(core.Map _json) {
+    if (_json.containsKey("diskSizeGb")) {
+      diskSizeGb = _json["diskSizeGb"];
+    }
     if (_json.containsKey("logStreamingOption")) {
       logStreamingOption = _json["logStreamingOption"];
+    }
+    if (_json.containsKey("machineType")) {
+      machineType = _json["machineType"];
     }
     if (_json.containsKey("requestedVerifyOption")) {
       requestedVerifyOption = _json["requestedVerifyOption"];
@@ -1204,8 +1227,14 @@ class BuildOptions {
   core.Map<core.String, core.Object> toJson() {
     final core.Map<core.String, core.Object> _json =
         new core.Map<core.String, core.Object>();
+    if (diskSizeGb != null) {
+      _json["diskSizeGb"] = diskSizeGb;
+    }
     if (logStreamingOption != null) {
       _json["logStreamingOption"] = logStreamingOption;
+    }
+    if (machineType != null) {
+      _json["machineType"] = machineType;
     }
     if (requestedVerifyOption != null) {
       _json["requestedVerifyOption"] = requestedVerifyOption;
